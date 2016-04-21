@@ -34,15 +34,15 @@ set(QUEUES_INCLUDES
 
 include_directories(${QUEUES_INCLUDES})
 
-if(NOT MSVC)
-  add_definitions(-std=c++11)
-endif()
-
 if(MSVC AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_QUEUES_EXPORTS")
 endif()
 
 add_library(aws-cpp-sdk-queues ${LIBTYPE} ${QUEUES_SRC})
+
+target_include_directories(aws-cpp-sdk-queues PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-queues aws-cpp-sdk-sqs)
 list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-queues")
 set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)

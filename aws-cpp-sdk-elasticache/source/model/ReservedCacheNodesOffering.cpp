@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -135,11 +135,11 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_fixedPriceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".FixedPrice=" << m_fixedPrice << "&";
+        oStream << location << index << locationValue << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
   if(m_usagePriceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UsagePrice=" << m_usagePrice << "&";
+        oStream << location << index << locationValue << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
   if(m_productDescriptionHasBeenSet)
   {
@@ -151,10 +151,11 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".RecurringCharge";
+        recurringChargesSs << location << index << locationValue << ".RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
@@ -176,11 +177,11 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_fixedPriceHasBeenSet)
   {
-      oStream << location << ".FixedPrice=" << m_fixedPrice << "&";
+        oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
   if(m_usagePriceHasBeenSet)
   {
-      oStream << location << ".UsagePrice=" << m_usagePrice << "&";
+        oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
   if(m_productDescriptionHasBeenSet)
   {
@@ -192,11 +193,12 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".RecurringCharge";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream recurringChargesSs;
+        recurringChargesSs << location <<  ".RecurringCharge." << recurringChargesIdx++;
+        item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
 }

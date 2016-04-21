@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ using namespace Aws::Utils;
 RestoreDBInstanceToPointInTimeRequest::RestoreDBInstanceToPointInTimeRequest() : 
     m_sourceDBInstanceIdentifierHasBeenSet(false),
     m_targetDBInstanceIdentifierHasBeenSet(false),
-    m_restoreTime(0.0),
     m_restoreTimeHasBeenSet(false),
     m_useLatestRestorableTime(false),
     m_useLatestRestorableTimeHasBeenSet(false),
@@ -49,9 +48,8 @@ RestoreDBInstanceToPointInTimeRequest::RestoreDBInstanceToPointInTimeRequest() :
     m_storageTypeHasBeenSet(false),
     m_tdeCredentialArnHasBeenSet(false),
     m_tdeCredentialPasswordHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_dBSecurityGroupsHasBeenSet(false),
-    m_domainHasBeenSet(false)
+    m_domainHasBeenSet(false),
+    m_domainIAMRoleNameHasBeenSet(false)
 {
 }
 
@@ -69,7 +67,7 @@ Aws::String RestoreDBInstanceToPointInTimeRequest::SerializePayload() const
   }
   if(m_restoreTimeHasBeenSet)
   {
-    ss << "RestoreTime=" << m_restoreTime << "&";
+    ss << "RestoreTime=" << StringUtils::URLEncode(m_restoreTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_useLatestRestorableTimeHasBeenSet)
   {
@@ -148,29 +146,13 @@ Aws::String RestoreDBInstanceToPointInTimeRequest::SerializePayload() const
   {
     ss << "TdeCredentialPassword=" << StringUtils::URLEncode(m_tdeCredentialPassword.c_str()) << "&";
   }
-  if(m_vpcSecurityGroupIdsHasBeenSet)
-  {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
-    {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
-    }
-  }
-  if(m_dBSecurityGroupsHasBeenSet)
-  {
-    unsigned dBSecurityGroupsCount = 1;
-    for(auto& item : m_dBSecurityGroups)
-    {
-      ss << "DBSecurityGroups.member." << dBSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dBSecurityGroupsCount++;
-    }
-  }
   if(m_domainHasBeenSet)
   {
     ss << "Domain=" << StringUtils::URLEncode(m_domain.c_str()) << "&";
+  }
+  if(m_domainIAMRoleNameHasBeenSet)
+  {
+    ss << "DomainIAMRoleName=" << StringUtils::URLEncode(m_domainIAMRoleName.c_str()) << "&";
   }
   ss << "Version=2014-10-31";
   return ss.str();

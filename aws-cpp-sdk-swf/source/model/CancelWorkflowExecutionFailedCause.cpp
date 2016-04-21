@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/swf/model/CancelWorkflowExecutionFailedCause.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int OPERATION_NOT_PERMITTED_HASH = HashingUtils::HashString("OPERAT
 
 namespace Aws
 {
-namespace SWF
-{
-namespace Model
-{
-namespace CancelWorkflowExecutionFailedCauseMapper
-{
-CancelWorkflowExecutionFailedCause GetCancelWorkflowExecutionFailedCauseForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == UNHANDLED_DECISION_HASH)
+  namespace SWF
   {
-    return CancelWorkflowExecutionFailedCause::UNHANDLED_DECISION;
-  }
-  else if (hashCode == OPERATION_NOT_PERMITTED_HASH)
-  {
-    return CancelWorkflowExecutionFailedCause::OPERATION_NOT_PERMITTED;
-  }
+    namespace Model
+    {
+      namespace CancelWorkflowExecutionFailedCauseMapper
+      {
 
-  return CancelWorkflowExecutionFailedCause::NOT_SET;
-}
 
-Aws::String GetNameForCancelWorkflowExecutionFailedCause(CancelWorkflowExecutionFailedCause value)
-{
-  switch(value)
-  {
-  case CancelWorkflowExecutionFailedCause::UNHANDLED_DECISION:
-    return "UNHANDLED_DECISION";
-  case CancelWorkflowExecutionFailedCause::OPERATION_NOT_PERMITTED:
-    return "OPERATION_NOT_PERMITTED";
-  default:
-    return "";
-  }
-}
+        CancelWorkflowExecutionFailedCause GetCancelWorkflowExecutionFailedCauseForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == UNHANDLED_DECISION_HASH)
+          {
+            return CancelWorkflowExecutionFailedCause::UNHANDLED_DECISION;
+          }
+          else if (hashCode == OPERATION_NOT_PERMITTED_HASH)
+          {
+            return CancelWorkflowExecutionFailedCause::OPERATION_NOT_PERMITTED;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<CancelWorkflowExecutionFailedCause>(hashCode);
+          }
 
-} // namespace CancelWorkflowExecutionFailedCauseMapper
-} // namespace Model
-} // namespace SWF
+          return CancelWorkflowExecutionFailedCause::NOT_SET;
+        }
+
+        Aws::String GetNameForCancelWorkflowExecutionFailedCause(CancelWorkflowExecutionFailedCause enumValue)
+        {
+          switch(enumValue)
+          {
+          case CancelWorkflowExecutionFailedCause::UNHANDLED_DECISION:
+            return "UNHANDLED_DECISION";
+          case CancelWorkflowExecutionFailedCause::OPERATION_NOT_PERMITTED:
+            return "OPERATION_NOT_PERMITTED";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace CancelWorkflowExecutionFailedCauseMapper
+    } // namespace Model
+  } // namespace SWF
 } // namespace Aws

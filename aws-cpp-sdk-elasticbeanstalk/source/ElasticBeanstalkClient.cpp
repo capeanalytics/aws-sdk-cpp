@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,7 +27,9 @@
 #include <aws/elasticbeanstalk/ElasticBeanstalkEndpoint.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkErrorMarshaller.h>
 #include <aws/elasticbeanstalk/model/AbortEnvironmentUpdateRequest.h>
+#include <aws/elasticbeanstalk/model/ApplyEnvironmentManagedActionRequest.h>
 #include <aws/elasticbeanstalk/model/CheckDNSAvailabilityRequest.h>
+#include <aws/elasticbeanstalk/model/ComposeEnvironmentsRequest.h>
 #include <aws/elasticbeanstalk/model/CreateApplicationRequest.h>
 #include <aws/elasticbeanstalk/model/CreateApplicationVersionRequest.h>
 #include <aws/elasticbeanstalk/model/CreateConfigurationTemplateRequest.h>
@@ -42,6 +44,8 @@
 #include <aws/elasticbeanstalk/model/DescribeConfigurationOptionsRequest.h>
 #include <aws/elasticbeanstalk/model/DescribeConfigurationSettingsRequest.h>
 #include <aws/elasticbeanstalk/model/DescribeEnvironmentHealthRequest.h>
+#include <aws/elasticbeanstalk/model/DescribeEnvironmentManagedActionHistoryRequest.h>
+#include <aws/elasticbeanstalk/model/DescribeEnvironmentManagedActionsRequest.h>
 #include <aws/elasticbeanstalk/model/DescribeEnvironmentResourcesRequest.h>
 #include <aws/elasticbeanstalk/model/DescribeEnvironmentsRequest.h>
 #include <aws/elasticbeanstalk/model/DescribeEventsRequest.h>
@@ -73,7 +77,8 @@ static const char* ALLOCATION_TAG = "ElasticBeanstalkClient";
 
 ElasticBeanstalkClient::ElasticBeanstalkClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElasticBeanstalkErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -82,7 +87,8 @@ ElasticBeanstalkClient::ElasticBeanstalkClient(const Client::ClientConfiguration
 
 ElasticBeanstalkClient::ElasticBeanstalkClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElasticBeanstalkErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -92,7 +98,8 @@ ElasticBeanstalkClient::ElasticBeanstalkClient(const AWSCredentials& credentials
 ElasticBeanstalkClient::ElasticBeanstalkClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElasticBeanstalkErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -108,7 +115,7 @@ void ElasticBeanstalkClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << ElasticBeanstalkEndpoint::ForRegion(config.region);
   }
@@ -149,6 +156,36 @@ void ElasticBeanstalkClient::AbortEnvironmentUpdateAsyncHelper(const AbortEnviro
   handler(this, request, AbortEnvironmentUpdate(request), context);
 }
 
+ApplyEnvironmentManagedActionOutcome ElasticBeanstalkClient::ApplyEnvironmentManagedAction(const ApplyEnvironmentManagedActionRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ApplyEnvironmentManagedActionOutcome(ApplyEnvironmentManagedActionResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ApplyEnvironmentManagedActionOutcome(outcome.GetError());
+  }
+}
+
+ApplyEnvironmentManagedActionOutcomeCallable ElasticBeanstalkClient::ApplyEnvironmentManagedActionCallable(const ApplyEnvironmentManagedActionRequest& request) const
+{
+  return std::async(std::launch::async, &ElasticBeanstalkClient::ApplyEnvironmentManagedAction, this, request);
+}
+
+void ElasticBeanstalkClient::ApplyEnvironmentManagedActionAsync(const ApplyEnvironmentManagedActionRequest& request, const ApplyEnvironmentManagedActionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&ElasticBeanstalkClient::ApplyEnvironmentManagedActionAsyncHelper, this, request, handler, context);
+}
+
+void ElasticBeanstalkClient::ApplyEnvironmentManagedActionAsyncHelper(const ApplyEnvironmentManagedActionRequest& request, const ApplyEnvironmentManagedActionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ApplyEnvironmentManagedAction(request), context);
+}
+
 CheckDNSAvailabilityOutcome ElasticBeanstalkClient::CheckDNSAvailability(const CheckDNSAvailabilityRequest& request) const
 {
   Aws::StringStream ss;
@@ -177,6 +214,36 @@ void ElasticBeanstalkClient::CheckDNSAvailabilityAsync(const CheckDNSAvailabilit
 void ElasticBeanstalkClient::CheckDNSAvailabilityAsyncHelper(const CheckDNSAvailabilityRequest& request, const CheckDNSAvailabilityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, CheckDNSAvailability(request), context);
+}
+
+ComposeEnvironmentsOutcome ElasticBeanstalkClient::ComposeEnvironments(const ComposeEnvironmentsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ComposeEnvironmentsOutcome(ComposeEnvironmentsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ComposeEnvironmentsOutcome(outcome.GetError());
+  }
+}
+
+ComposeEnvironmentsOutcomeCallable ElasticBeanstalkClient::ComposeEnvironmentsCallable(const ComposeEnvironmentsRequest& request) const
+{
+  return std::async(std::launch::async, &ElasticBeanstalkClient::ComposeEnvironments, this, request);
+}
+
+void ElasticBeanstalkClient::ComposeEnvironmentsAsync(const ComposeEnvironmentsRequest& request, const ComposeEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&ElasticBeanstalkClient::ComposeEnvironmentsAsyncHelper, this, request, handler, context);
+}
+
+void ElasticBeanstalkClient::ComposeEnvironmentsAsyncHelper(const ComposeEnvironmentsRequest& request, const ComposeEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ComposeEnvironments(request), context);
 }
 
 CreateApplicationOutcome ElasticBeanstalkClient::CreateApplication(const CreateApplicationRequest& request) const
@@ -597,6 +664,66 @@ void ElasticBeanstalkClient::DescribeEnvironmentHealthAsync(const DescribeEnviro
 void ElasticBeanstalkClient::DescribeEnvironmentHealthAsyncHelper(const DescribeEnvironmentHealthRequest& request, const DescribeEnvironmentHealthResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeEnvironmentHealth(request), context);
+}
+
+DescribeEnvironmentManagedActionHistoryOutcome ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistory(const DescribeEnvironmentManagedActionHistoryRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeEnvironmentManagedActionHistoryOutcome(DescribeEnvironmentManagedActionHistoryResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeEnvironmentManagedActionHistoryOutcome(outcome.GetError());
+  }
+}
+
+DescribeEnvironmentManagedActionHistoryOutcomeCallable ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistoryCallable(const DescribeEnvironmentManagedActionHistoryRequest& request) const
+{
+  return std::async(std::launch::async, &ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistory, this, request);
+}
+
+void ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistoryAsync(const DescribeEnvironmentManagedActionHistoryRequest& request, const DescribeEnvironmentManagedActionHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistoryAsyncHelper, this, request, handler, context);
+}
+
+void ElasticBeanstalkClient::DescribeEnvironmentManagedActionHistoryAsyncHelper(const DescribeEnvironmentManagedActionHistoryRequest& request, const DescribeEnvironmentManagedActionHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeEnvironmentManagedActionHistory(request), context);
+}
+
+DescribeEnvironmentManagedActionsOutcome ElasticBeanstalkClient::DescribeEnvironmentManagedActions(const DescribeEnvironmentManagedActionsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeEnvironmentManagedActionsOutcome(DescribeEnvironmentManagedActionsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeEnvironmentManagedActionsOutcome(outcome.GetError());
+  }
+}
+
+DescribeEnvironmentManagedActionsOutcomeCallable ElasticBeanstalkClient::DescribeEnvironmentManagedActionsCallable(const DescribeEnvironmentManagedActionsRequest& request) const
+{
+  return std::async(std::launch::async, &ElasticBeanstalkClient::DescribeEnvironmentManagedActions, this, request);
+}
+
+void ElasticBeanstalkClient::DescribeEnvironmentManagedActionsAsync(const DescribeEnvironmentManagedActionsRequest& request, const DescribeEnvironmentManagedActionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&ElasticBeanstalkClient::DescribeEnvironmentManagedActionsAsyncHelper, this, request, handler, context);
+}
+
+void ElasticBeanstalkClient::DescribeEnvironmentManagedActionsAsyncHelper(const DescribeEnvironmentManagedActionsRequest& request, const DescribeEnvironmentManagedActionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeEnvironmentManagedActions(request), context);
 }
 
 DescribeEnvironmentResourcesOutcome ElasticBeanstalkClient::DescribeEnvironmentResources(const DescribeEnvironmentResourcesRequest& request) const

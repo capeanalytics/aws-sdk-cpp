@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,18 +24,20 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
 ViewerCertificate::ViewerCertificate() : 
-    m_iAMCertificateIdHasBeenSet(false),
     m_cloudFrontDefaultCertificate(false),
     m_cloudFrontDefaultCertificateHasBeenSet(false),
+    m_iAMCertificateIdHasBeenSet(false),
+    m_aCMCertificateArnHasBeenSet(false),
     m_sSLSupportMethodHasBeenSet(false),
     m_minimumProtocolVersionHasBeenSet(false)
 {
 }
 
 ViewerCertificate::ViewerCertificate(const XmlNode& xmlNode) : 
-    m_iAMCertificateIdHasBeenSet(false),
     m_cloudFrontDefaultCertificate(false),
     m_cloudFrontDefaultCertificateHasBeenSet(false),
+    m_iAMCertificateIdHasBeenSet(false),
+    m_aCMCertificateArnHasBeenSet(false),
     m_sSLSupportMethodHasBeenSet(false),
     m_minimumProtocolVersionHasBeenSet(false)
 {
@@ -48,17 +50,23 @@ ViewerCertificate& ViewerCertificate::operator =(const XmlNode& xmlNode)
 
   if(!resultNode.IsNull())
   {
+    XmlNode cloudFrontDefaultCertificateNode = resultNode.FirstChild("CloudFrontDefaultCertificate");
+    if(!cloudFrontDefaultCertificateNode.IsNull())
+    {
+      m_cloudFrontDefaultCertificate = StringUtils::ConvertToBool(StringUtils::Trim(cloudFrontDefaultCertificateNode.GetText().c_str()).c_str());
+      m_cloudFrontDefaultCertificateHasBeenSet = true;
+    }
     XmlNode iAMCertificateIdNode = resultNode.FirstChild("IAMCertificateId");
     if(!iAMCertificateIdNode.IsNull())
     {
       m_iAMCertificateId = StringUtils::Trim(iAMCertificateIdNode.GetText().c_str());
       m_iAMCertificateIdHasBeenSet = true;
     }
-    XmlNode cloudFrontDefaultCertificateNode = resultNode.FirstChild("CloudFrontDefaultCertificate");
-    if(!cloudFrontDefaultCertificateNode.IsNull())
+    XmlNode aCMCertificateArnNode = resultNode.FirstChild("ACMCertificateArn");
+    if(!aCMCertificateArnNode.IsNull())
     {
-      m_cloudFrontDefaultCertificate = StringUtils::ConvertToBool(StringUtils::Trim(cloudFrontDefaultCertificateNode.GetText().c_str()).c_str());
-      m_cloudFrontDefaultCertificateHasBeenSet = true;
+      m_aCMCertificateArn = StringUtils::Trim(aCMCertificateArnNode.GetText().c_str());
+      m_aCMCertificateArnHasBeenSet = true;
     }
     XmlNode sSLSupportMethodNode = resultNode.FirstChild("SSLSupportMethod");
     if(!sSLSupportMethodNode.IsNull())
@@ -80,18 +88,24 @@ ViewerCertificate& ViewerCertificate::operator =(const XmlNode& xmlNode)
 void ViewerCertificate::AddToNode(XmlNode& parentNode) const
 {
   Aws::StringStream ss;
-  if(m_iAMCertificateIdHasBeenSet)
-  {
-   XmlNode iAMCertificateIdNode = parentNode.CreateChildElement("IAMCertificateId");
-   iAMCertificateIdNode.SetText(m_iAMCertificateId);
-  }
-
   if(m_cloudFrontDefaultCertificateHasBeenSet)
   {
    XmlNode cloudFrontDefaultCertificateNode = parentNode.CreateChildElement("CloudFrontDefaultCertificate");
   ss << m_cloudFrontDefaultCertificate;
    cloudFrontDefaultCertificateNode.SetText(ss.str());
   ss.str("");
+  }
+
+  if(m_iAMCertificateIdHasBeenSet)
+  {
+   XmlNode iAMCertificateIdNode = parentNode.CreateChildElement("IAMCertificateId");
+   iAMCertificateIdNode.SetText(m_iAMCertificateId);
+  }
+
+  if(m_aCMCertificateArnHasBeenSet)
+  {
+   XmlNode aCMCertificateArnNode = parentNode.CreateChildElement("ACMCertificateArn");
+   aCMCertificateArnNode.SetText(m_aCMCertificateArn);
   }
 
   if(m_sSLSupportMethodHasBeenSet)

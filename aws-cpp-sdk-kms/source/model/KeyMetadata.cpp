@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,14 +25,12 @@ KeyMetadata::KeyMetadata() :
     m_aWSAccountIdHasBeenSet(false),
     m_keyIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
     m_enabled(false),
     m_enabledHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_keyUsageHasBeenSet(false),
     m_keyStateHasBeenSet(false),
-    m_deletionDate(0.0),
     m_deletionDateHasBeenSet(false)
 {
 }
@@ -41,14 +39,12 @@ KeyMetadata::KeyMetadata(const JsonValue& jsonValue) :
     m_aWSAccountIdHasBeenSet(false),
     m_keyIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
     m_enabled(false),
     m_enabledHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_keyUsageHasBeenSet(false),
     m_keyStateHasBeenSet(false),
-    m_deletionDate(0.0),
     m_deletionDateHasBeenSet(false)
 {
   *this = jsonValue;
@@ -146,8 +142,7 @@ JsonValue KeyMetadata::Jsonize() const
 
   if(m_creationDateHasBeenSet)
   {
-   payload.WithDouble("CreationDate", m_creationDate);
-
+   payload.WithDouble("CreationDate", m_creationDate.SecondsWithMSPrecision());
   }
 
   if(m_enabledHasBeenSet)
@@ -174,9 +169,8 @@ JsonValue KeyMetadata::Jsonize() const
 
   if(m_deletionDateHasBeenSet)
   {
-   payload.WithDouble("DeletionDate", m_deletionDate);
-
+   payload.WithDouble("DeletionDate", m_deletionDate.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

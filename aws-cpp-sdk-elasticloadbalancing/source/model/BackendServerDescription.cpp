@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -75,9 +75,10 @@ void BackendServerDescription::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_policyNamesHasBeenSet)
   {
+      unsigned policyNamesIdx = 1;
       for(auto& item : m_policyNames)
       {
-        oStream << location << index << locationValue << ".PolicyNames=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".PolicyNames.member." << policyNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }
@@ -90,9 +91,10 @@ void BackendServerDescription::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_policyNamesHasBeenSet)
   {
+      unsigned policyNamesIdx = 1;
       for(auto& item : m_policyNames)
       {
-        oStream << location << ".PolicyNames=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".PolicyNames.member." << policyNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

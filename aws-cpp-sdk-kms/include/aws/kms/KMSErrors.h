@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -56,11 +56,11 @@ enum class AWS_KMS_API KMSErrors
   INVALID_CIPHERTEXT,
   INVALID_GRANT_ID,
   INVALID_GRANT_TOKEN,
-  INVALID_KEY_STATE_TRANSITION,
   INVALID_KEY_USAGE,
   INVALID_MARKER,
   KEY_UNAVAILABLE,
   K_M_S_INTERNAL,
+  K_M_S_INVALID_STATE,
   LIMIT_EXCEEDED,
   MALFORMED_POLICY_DOCUMENT,
   NOT_FOUND,

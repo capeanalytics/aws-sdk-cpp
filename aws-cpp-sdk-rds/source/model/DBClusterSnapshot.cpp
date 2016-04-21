@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ DBClusterSnapshot::DBClusterSnapshot() :
     m_availabilityZonesHasBeenSet(false),
     m_dBClusterSnapshotIdentifierHasBeenSet(false),
     m_dBClusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTime(0.0),
     m_snapshotCreateTimeHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_allocatedStorage(0),
@@ -36,14 +35,16 @@ DBClusterSnapshot::DBClusterSnapshot() :
     m_port(0),
     m_portHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
-    m_clusterCreateTime(0.0),
     m_clusterCreateTimeHasBeenSet(false),
     m_masterUsernameHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
     m_licenseModelHasBeenSet(false),
     m_snapshotTypeHasBeenSet(false),
     m_percentProgress(0),
-    m_percentProgressHasBeenSet(false)
+    m_percentProgressHasBeenSet(false),
+    m_storageEncrypted(false),
+    m_storageEncryptedHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false)
 {
 }
 
@@ -51,7 +52,6 @@ DBClusterSnapshot::DBClusterSnapshot(const XmlNode& xmlNode) :
     m_availabilityZonesHasBeenSet(false),
     m_dBClusterSnapshotIdentifierHasBeenSet(false),
     m_dBClusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTime(0.0),
     m_snapshotCreateTimeHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_allocatedStorage(0),
@@ -60,14 +60,16 @@ DBClusterSnapshot::DBClusterSnapshot(const XmlNode& xmlNode) :
     m_port(0),
     m_portHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
-    m_clusterCreateTime(0.0),
     m_clusterCreateTimeHasBeenSet(false),
     m_masterUsernameHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
     m_licenseModelHasBeenSet(false),
     m_snapshotTypeHasBeenSet(false),
     m_percentProgress(0),
-    m_percentProgressHasBeenSet(false)
+    m_percentProgressHasBeenSet(false),
+    m_storageEncrypted(false),
+    m_storageEncryptedHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -105,7 +107,7 @@ DBClusterSnapshot& DBClusterSnapshot::operator =(const XmlNode& xmlNode)
     XmlNode snapshotCreateTimeNode = resultNode.FirstChild("SnapshotCreateTime");
     if(!snapshotCreateTimeNode.IsNull())
     {
-      m_snapshotCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(snapshotCreateTimeNode.GetText().c_str()).c_str());
+      m_snapshotCreateTime = DateTime(StringUtils::Trim(snapshotCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_snapshotCreateTimeHasBeenSet = true;
     }
     XmlNode engineNode = resultNode.FirstChild("Engine");
@@ -141,7 +143,7 @@ DBClusterSnapshot& DBClusterSnapshot::operator =(const XmlNode& xmlNode)
     XmlNode clusterCreateTimeNode = resultNode.FirstChild("ClusterCreateTime");
     if(!clusterCreateTimeNode.IsNull())
     {
-      m_clusterCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(clusterCreateTimeNode.GetText().c_str()).c_str());
+      m_clusterCreateTime = DateTime(StringUtils::Trim(clusterCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_clusterCreateTimeHasBeenSet = true;
     }
     XmlNode masterUsernameNode = resultNode.FirstChild("MasterUsername");
@@ -174,6 +176,18 @@ DBClusterSnapshot& DBClusterSnapshot::operator =(const XmlNode& xmlNode)
       m_percentProgress = StringUtils::ConvertToInt32(StringUtils::Trim(percentProgressNode.GetText().c_str()).c_str());
       m_percentProgressHasBeenSet = true;
     }
+    XmlNode storageEncryptedNode = resultNode.FirstChild("StorageEncrypted");
+    if(!storageEncryptedNode.IsNull())
+    {
+      m_storageEncrypted = StringUtils::ConvertToBool(StringUtils::Trim(storageEncryptedNode.GetText().c_str()).c_str());
+      m_storageEncryptedHasBeenSet = true;
+    }
+    XmlNode kmsKeyIdNode = resultNode.FirstChild("KmsKeyId");
+    if(!kmsKeyIdNode.IsNull())
+    {
+      m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
+      m_kmsKeyIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -183,9 +197,10 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
 {
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dBClusterSnapshotIdentifierHasBeenSet)
@@ -198,7 +213,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_snapshotCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SnapshotCreateTime=" << m_snapshotCreateTime << "&";
+      oStream << location << index << locationValue << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_engineHasBeenSet)
   {
@@ -222,7 +237,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_clusterCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ClusterCreateTime=" << m_clusterCreateTime << "&";
+      oStream << location << index << locationValue << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_masterUsernameHasBeenSet)
   {
@@ -244,15 +259,24 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".PercentProgress=" << m_percentProgress << "&";
   }
+  if(m_storageEncryptedHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".StorageEncrypted=" << m_storageEncrypted << "&";
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
 }
 
 void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dBClusterSnapshotIdentifierHasBeenSet)
@@ -265,7 +289,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_snapshotCreateTimeHasBeenSet)
   {
-      oStream << location << ".SnapshotCreateTime=" << m_snapshotCreateTime << "&";
+      oStream << location << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_engineHasBeenSet)
   {
@@ -289,7 +313,7 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_clusterCreateTimeHasBeenSet)
   {
-      oStream << location << ".ClusterCreateTime=" << m_clusterCreateTime << "&";
+      oStream << location << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_masterUsernameHasBeenSet)
   {
@@ -310,5 +334,13 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   if(m_percentProgressHasBeenSet)
   {
       oStream << location << ".PercentProgress=" << m_percentProgress << "&";
+  }
+  if(m_storageEncryptedHasBeenSet)
+  {
+      oStream << location << ".StorageEncrypted=" << m_storageEncrypted << "&";
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+      oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
 }

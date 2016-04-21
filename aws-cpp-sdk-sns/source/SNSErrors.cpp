@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -20,15 +20,14 @@ using namespace Aws::Client;
 using namespace Aws::SNS;
 using namespace Aws::Utils;
 
-static const int AUTHORIZATION_ERROR_HASH = HashingUtils::HashString("AuthorizationError");
-static const int NOT_FOUND_HASH = HashingUtils::HashString("NotFound");
+static const int INVALID_PARAMETER_HASH = HashingUtils::HashString("InvalidParameter");
+static const int TOPIC_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("TopicLimitExceeded");
+static const int PLATFORM_APPLICATION_DISABLED_HASH = HashingUtils::HashString("PlatformApplicationDisabled");
 static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("InternalError");
 static const int SUBSCRIPTION_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("SubscriptionLimitExceeded");
-static const int TAGGING_OPERATION_FAILED_HASH = HashingUtils::HashString("TaggingOperationFailed");
+static const int AUTHORIZATION_ERROR_HASH = HashingUtils::HashString("AuthorizationError");
 static const int ENDPOINT_DISABLED_HASH = HashingUtils::HashString("EndpointDisabled");
-static const int INVALID_PARAMETER_HASH = HashingUtils::HashString("InvalidParameter");
-static const int PLATFORM_APPLICATION_DISABLED_HASH = HashingUtils::HashString("PlatformApplicationDisabled");
-static const int TOPIC_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("TopicLimitExceeded");
+static const int NOT_FOUND_HASH = HashingUtils::HashString("NotFound");
 
 namespace Aws
 {
@@ -41,41 +40,37 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
   int hashCode = HashingUtils::HashString(errorName);
 
-  if (hashCode == AUTHORIZATION_ERROR_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::AUTHORIZATION_ERROR), false);
-  }
-  else if (hashCode == NOT_FOUND_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::NOT_FOUND), false);
-  }
-  else if (hashCode == INTERNAL_ERROR_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::INTERNAL_ERROR), false);
-  }
-  else if (hashCode == SUBSCRIPTION_LIMIT_EXCEEDED_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::SUBSCRIPTION_LIMIT_EXCEEDED), false);
-  }
-  else if (hashCode == TAGGING_OPERATION_FAILED_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::TAGGING_OPERATION_FAILED), false);
-  }
-  else if (hashCode == ENDPOINT_DISABLED_HASH)
-  {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::ENDPOINT_DISABLED), false);
-  }
-  else if (hashCode == INVALID_PARAMETER_HASH)
+  if (hashCode == INVALID_PARAMETER_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::INVALID_PARAMETER), false);
+  }
+  else if (hashCode == TOPIC_LIMIT_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::TOPIC_LIMIT_EXCEEDED), false);
   }
   else if (hashCode == PLATFORM_APPLICATION_DISABLED_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::PLATFORM_APPLICATION_DISABLED), false);
   }
-  else if (hashCode == TOPIC_LIMIT_EXCEEDED_HASH)
+  else if (hashCode == INTERNAL_ERROR_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::TOPIC_LIMIT_EXCEEDED), false);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::INTERNAL_ERROR), true);
+  }
+  else if (hashCode == SUBSCRIPTION_LIMIT_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::SUBSCRIPTION_LIMIT_EXCEEDED), false);
+  }
+  else if (hashCode == AUTHORIZATION_ERROR_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::AUTHORIZATION_ERROR), false);
+  }
+  else if (hashCode == ENDPOINT_DISABLED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::ENDPOINT_DISABLED), false);
+  }
+  else if (hashCode == NOT_FOUND_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(SNSErrors::NOT_FOUND), false);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

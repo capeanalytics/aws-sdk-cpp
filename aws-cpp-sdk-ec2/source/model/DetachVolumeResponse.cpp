@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -16,22 +16,22 @@
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
 #include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/logging/LogMacros.h>
 
 #include <utility>
 
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
+using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
 DetachVolumeResponse::DetachVolumeResponse() : 
-    m_attachTime(0.0),
     m_deleteOnTermination(false)
 {
 }
 
 DetachVolumeResponse::DetachVolumeResponse(const AmazonWebServiceResult<XmlDocument>& result) : 
-    m_attachTime(0.0),
     m_deleteOnTermination(false)
 {
   *this = result;
@@ -72,7 +72,7 @@ DetachVolumeResponse& DetachVolumeResponse::operator =(const AmazonWebServiceRes
     XmlNode attachTimeNode = resultNode.FirstChild("attachTime");
     if(!attachTimeNode.IsNull())
     {
-      m_attachTime = StringUtils::ConvertToDouble(StringUtils::Trim(attachTimeNode.GetText().c_str()).c_str());
+      m_attachTime = DateTime(StringUtils::Trim(attachTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
     XmlNode deleteOnTerminationNode = resultNode.FirstChild("deleteOnTermination");
     if(!deleteOnTerminationNode.IsNull())
@@ -83,6 +83,7 @@ DetachVolumeResponse& DetachVolumeResponse::operator =(const AmazonWebServiceRes
 
   XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
   m_responseMetadata = responseMetadataNode;
+  AWS_LOGSTREAM_DEBUG("Aws::EC2::Model::DetachVolumeResponse", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
 
   return *this;
 }

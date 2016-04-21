@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -122,7 +122,7 @@ Image& Image::operator =(const XmlNode& xmlNode)
       m_public = StringUtils::ConvertToBool(StringUtils::Trim(publicNode.GetText().c_str()).c_str());
       m_publicHasBeenSet = true;
     }
-    XmlNode productCodesNode = resultNode.FirstChild("ProductCodes");
+    XmlNode productCodesNode = resultNode.FirstChild("productCodes");
     if(!productCodesNode.IsNull())
     {
       XmlNode productCodesMember = productCodesNode.FirstChild("item");
@@ -206,7 +206,7 @@ Image& Image::operator =(const XmlNode& xmlNode)
       m_rootDeviceName = StringUtils::Trim(rootDeviceNameNode.GetText().c_str());
       m_rootDeviceNameHasBeenSet = true;
     }
-    XmlNode blockDeviceMappingsNode = resultNode.FirstChild("BlockDeviceMappings");
+    XmlNode blockDeviceMappingsNode = resultNode.FirstChild("blockDeviceMapping");
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("item");
@@ -224,7 +224,7 @@ Image& Image::operator =(const XmlNode& xmlNode)
       m_virtualizationType = VirtualizationTypeMapper::GetVirtualizationTypeForName(StringUtils::Trim(virtualizationTypeNode.GetText().c_str()).c_str());
       m_virtualizationTypeHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -275,10 +275,11 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_productCodesHasBeenSet)
   {
+      unsigned productCodesIdx = 1;
       for(auto& item : m_productCodes)
       {
         Aws::StringStream productCodesSs;
-        productCodesSs << location << index << locationValue << ".item";
+        productCodesSs << location << index << locationValue << ".ProductCodes." << productCodesIdx++;
         item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
@@ -334,10 +335,11 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_blockDeviceMappingsHasBeenSet)
   {
+      unsigned blockDeviceMappingsIdx = 1;
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location << index << locationValue << ".item";
+        blockDeviceMappingsSs << location << index << locationValue << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -347,10 +349,11 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -388,11 +391,12 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_productCodesHasBeenSet)
   {
+      unsigned productCodesIdx = 1;
       for(auto& item : m_productCodes)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream productCodesSs;
+        productCodesSs << location <<  ".item." << productCodesIdx++;
+        item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
   if(m_architectureHasBeenSet)
@@ -447,11 +451,12 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_blockDeviceMappingsHasBeenSet)
   {
+      unsigned blockDeviceMappingsIdx = 1;
       for(auto& item : m_blockDeviceMappings)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream blockDeviceMappingsSs;
+        blockDeviceMappingsSs << location <<  ".item." << blockDeviceMappingsIdx++;
+        item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
   if(m_virtualizationTypeHasBeenSet)
@@ -460,11 +465,12 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_hypervisorHasBeenSet)

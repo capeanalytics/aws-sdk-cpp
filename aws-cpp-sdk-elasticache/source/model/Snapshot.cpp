@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ Snapshot::Snapshot() :
     m_numCacheNodes(0),
     m_numCacheNodesHasBeenSet(false),
     m_preferredAvailabilityZoneHasBeenSet(false),
-    m_cacheClusterCreateTime(0.0),
     m_cacheClusterCreateTimeHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_topicArnHasBeenSet(false),
@@ -63,7 +62,6 @@ Snapshot::Snapshot(const XmlNode& xmlNode) :
     m_numCacheNodes(0),
     m_numCacheNodesHasBeenSet(false),
     m_preferredAvailabilityZoneHasBeenSet(false),
-    m_cacheClusterCreateTime(0.0),
     m_cacheClusterCreateTimeHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_topicArnHasBeenSet(false),
@@ -145,7 +143,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     XmlNode cacheClusterCreateTimeNode = resultNode.FirstChild("CacheClusterCreateTime");
     if(!cacheClusterCreateTimeNode.IsNull())
     {
-      m_cacheClusterCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(cacheClusterCreateTimeNode.GetText().c_str()).c_str());
+      m_cacheClusterCreateTime = DateTime(StringUtils::Trim(cacheClusterCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_cacheClusterCreateTimeHasBeenSet = true;
     }
     XmlNode preferredMaintenanceWindowNode = resultNode.FirstChild("PreferredMaintenanceWindow");
@@ -259,7 +257,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_cacheClusterCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CacheClusterCreateTime=" << m_cacheClusterCreateTime << "&";
+      oStream << location << index << locationValue << ".CacheClusterCreateTime=" << StringUtils::URLEncode(m_cacheClusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
@@ -299,10 +297,11 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_nodeSnapshotsHasBeenSet)
   {
+      unsigned nodeSnapshotsIdx = 1;
       for(auto& item : m_nodeSnapshots)
       {
         Aws::StringStream nodeSnapshotsSs;
-        nodeSnapshotsSs << location << index << locationValue << ".NodeSnapshot";
+        nodeSnapshotsSs << location << index << locationValue << ".NodeSnapshot." << nodeSnapshotsIdx++;
         item.OutputToStream(oStream, nodeSnapshotsSs.str().c_str());
       }
   }
@@ -348,7 +347,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_cacheClusterCreateTimeHasBeenSet)
   {
-      oStream << location << ".CacheClusterCreateTime=" << m_cacheClusterCreateTime << "&";
+      oStream << location << ".CacheClusterCreateTime=" << StringUtils::URLEncode(m_cacheClusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
@@ -388,11 +387,12 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_nodeSnapshotsHasBeenSet)
   {
+      unsigned nodeSnapshotsIdx = 1;
       for(auto& item : m_nodeSnapshots)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".NodeSnapshot";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream nodeSnapshotsSs;
+        nodeSnapshotsSs << location <<  ".NodeSnapshot." << nodeSnapshotsIdx++;
+        item.OutputToStream(oStream, nodeSnapshotsSs.str().c_str());
       }
   }
 }

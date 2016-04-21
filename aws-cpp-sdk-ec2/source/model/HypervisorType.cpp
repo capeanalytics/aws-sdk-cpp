@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/ec2/model/HypervisorType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int xen_HASH = HashingUtils::HashString("xen");
 
 namespace Aws
 {
-namespace EC2
-{
-namespace Model
-{
-namespace HypervisorTypeMapper
-{
-HypervisorType GetHypervisorTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == ovm_HASH)
+  namespace EC2
   {
-    return HypervisorType::ovm;
-  }
-  else if (hashCode == xen_HASH)
-  {
-    return HypervisorType::xen;
-  }
+    namespace Model
+    {
+      namespace HypervisorTypeMapper
+      {
 
-  return HypervisorType::NOT_SET;
-}
 
-Aws::String GetNameForHypervisorType(HypervisorType value)
-{
-  switch(value)
-  {
-  case HypervisorType::ovm:
-    return "ovm";
-  case HypervisorType::xen:
-    return "xen";
-  default:
-    return "";
-  }
-}
+        HypervisorType GetHypervisorTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == ovm_HASH)
+          {
+            return HypervisorType::ovm;
+          }
+          else if (hashCode == xen_HASH)
+          {
+            return HypervisorType::xen;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<HypervisorType>(hashCode);
+          }
 
-} // namespace HypervisorTypeMapper
-} // namespace Model
-} // namespace EC2
+          return HypervisorType::NOT_SET;
+        }
+
+        Aws::String GetNameForHypervisorType(HypervisorType enumValue)
+        {
+          switch(enumValue)
+          {
+          case HypervisorType::ovm:
+            return "ovm";
+          case HypervisorType::xen:
+            return "xen";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace HypervisorTypeMapper
+    } // namespace Model
+  } // namespace EC2
 } // namespace Aws

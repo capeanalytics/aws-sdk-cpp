@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -99,6 +99,24 @@ UpdateFunctionCodeResult& UpdateFunctionCodeResult::operator =(const AmazonWebSe
   if(jsonValue.ValueExists("LastModified"))
   {
     m_lastModified = jsonValue.GetString("LastModified");
+
+  }
+
+  if(jsonValue.ValueExists("CodeSha256"))
+  {
+    m_codeSha256 = jsonValue.GetString("CodeSha256");
+
+  }
+
+  if(jsonValue.ValueExists("Version"))
+  {
+    m_version = jsonValue.GetString("Version");
+
+  }
+
+  if(jsonValue.ValueExists("VpcConfig"))
+  {
+    m_vpcConfig = jsonValue.GetObject("VpcConfig");
 
   }
 

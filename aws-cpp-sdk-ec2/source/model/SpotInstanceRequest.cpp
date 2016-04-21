@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,17 +30,17 @@ SpotInstanceRequest::SpotInstanceRequest() :
     m_stateHasBeenSet(false),
     m_faultHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_validFrom(0.0),
     m_validFromHasBeenSet(false),
-    m_validUntil(0.0),
     m_validUntilHasBeenSet(false),
     m_launchGroupHasBeenSet(false),
     m_availabilityZoneGroupHasBeenSet(false),
     m_launchSpecificationHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_productDescriptionHasBeenSet(false),
+    m_blockDurationMinutes(0),
+    m_blockDurationMinutesHasBeenSet(false),
+    m_actualBlockHourlyPriceHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_launchedAvailabilityZoneHasBeenSet(false)
 {
@@ -53,17 +53,17 @@ SpotInstanceRequest::SpotInstanceRequest(const XmlNode& xmlNode) :
     m_stateHasBeenSet(false),
     m_faultHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_validFrom(0.0),
     m_validFromHasBeenSet(false),
-    m_validUntil(0.0),
     m_validUntilHasBeenSet(false),
     m_launchGroupHasBeenSet(false),
     m_availabilityZoneGroupHasBeenSet(false),
     m_launchSpecificationHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_productDescriptionHasBeenSet(false),
+    m_blockDurationMinutes(0),
+    m_blockDurationMinutesHasBeenSet(false),
+    m_actualBlockHourlyPriceHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_launchedAvailabilityZoneHasBeenSet(false)
 {
@@ -115,13 +115,13 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     XmlNode validFromNode = resultNode.FirstChild("validFrom");
     if(!validFromNode.IsNull())
     {
-      m_validFrom = StringUtils::ConvertToDouble(StringUtils::Trim(validFromNode.GetText().c_str()).c_str());
+      m_validFrom = DateTime(StringUtils::Trim(validFromNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_validFromHasBeenSet = true;
     }
     XmlNode validUntilNode = resultNode.FirstChild("validUntil");
     if(!validUntilNode.IsNull())
     {
-      m_validUntil = StringUtils::ConvertToDouble(StringUtils::Trim(validUntilNode.GetText().c_str()).c_str());
+      m_validUntil = DateTime(StringUtils::Trim(validUntilNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_validUntilHasBeenSet = true;
     }
     XmlNode launchGroupNode = resultNode.FirstChild("launchGroup");
@@ -151,7 +151,7 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
     XmlNode createTimeNode = resultNode.FirstChild("createTime");
     if(!createTimeNode.IsNull())
     {
-      m_createTime = StringUtils::ConvertToDouble(StringUtils::Trim(createTimeNode.GetText().c_str()).c_str());
+      m_createTime = DateTime(StringUtils::Trim(createTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createTimeHasBeenSet = true;
     }
     XmlNode productDescriptionNode = resultNode.FirstChild("productDescription");
@@ -160,7 +160,19 @@ SpotInstanceRequest& SpotInstanceRequest::operator =(const XmlNode& xmlNode)
       m_productDescription = RIProductDescriptionMapper::GetRIProductDescriptionForName(StringUtils::Trim(productDescriptionNode.GetText().c_str()).c_str());
       m_productDescriptionHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode blockDurationMinutesNode = resultNode.FirstChild("blockDurationMinutes");
+    if(!blockDurationMinutesNode.IsNull())
+    {
+      m_blockDurationMinutes = StringUtils::ConvertToInt32(StringUtils::Trim(blockDurationMinutesNode.GetText().c_str()).c_str());
+      m_blockDurationMinutesHasBeenSet = true;
+    }
+    XmlNode actualBlockHourlyPriceNode = resultNode.FirstChild("actualBlockHourlyPrice");
+    if(!actualBlockHourlyPriceNode.IsNull())
+    {
+      m_actualBlockHourlyPrice = StringUtils::Trim(actualBlockHourlyPriceNode.GetText().c_str());
+      m_actualBlockHourlyPriceHasBeenSet = true;
+    }
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -215,11 +227,11 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_validFromHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ValidFrom=" << m_validFrom << "&";
+      oStream << location << index << locationValue << ".ValidFrom=" << StringUtils::URLEncode(m_validFrom.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_validUntilHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ValidUntil=" << m_validUntil << "&";
+      oStream << location << index << locationValue << ".ValidUntil=" << StringUtils::URLEncode(m_validUntil.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_launchGroupHasBeenSet)
   {
@@ -241,18 +253,27 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_createTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateTime=" << m_createTime << "&";
+      oStream << location << index << locationValue << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_productDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".ProductDescription=" << RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription) << "&";
   }
+  if(m_blockDurationMinutesHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".BlockDurationMinutes=" << m_blockDurationMinutes << "&";
+  }
+  if(m_actualBlockHourlyPriceHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ActualBlockHourlyPrice=" << StringUtils::URLEncode(m_actualBlockHourlyPrice.c_str()) << "&";
+  }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -294,11 +315,11 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_validFromHasBeenSet)
   {
-      oStream << location << ".ValidFrom=" << m_validFrom << "&";
+      oStream << location << ".ValidFrom=" << StringUtils::URLEncode(m_validFrom.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_validUntilHasBeenSet)
   {
-      oStream << location << ".ValidUntil=" << m_validUntil << "&";
+      oStream << location << ".ValidUntil=" << StringUtils::URLEncode(m_validUntil.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_launchGroupHasBeenSet)
   {
@@ -320,19 +341,28 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_createTimeHasBeenSet)
   {
-      oStream << location << ".CreateTime=" << m_createTime << "&";
+      oStream << location << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_productDescriptionHasBeenSet)
   {
       oStream << location << ".ProductDescription=" << RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription) << "&";
   }
+  if(m_blockDurationMinutesHasBeenSet)
+  {
+      oStream << location << ".BlockDurationMinutes=" << m_blockDurationMinutes << "&";
+  }
+  if(m_actualBlockHourlyPriceHasBeenSet)
+  {
+      oStream << location << ".ActualBlockHourlyPrice=" << StringUtils::URLEncode(m_actualBlockHourlyPrice.c_str()) << "&";
+  }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_launchedAvailabilityZoneHasBeenSet)

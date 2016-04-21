@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -50,10 +50,12 @@ enum class AWS_SES_API SESErrors
 
   ALREADY_EXISTS= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
   CANNOT_DELETE,
+  INVALID_LAMBDA_FUNCTION,
   INVALID_POLICY,
-  INVALID_S3_BUCKET,
+  INVALID_S3_CONFIGURATION,
   INVALID_SNS_TOPIC,
   LIMIT_EXCEEDED,
+  MAIL_FROM_DOMAIN_NOT_VERIFIED,
   MESSAGE_REJECTED,
   RULE_DOES_NOT_EXIST,
   RULE_SET_DOES_NOT_EXIST

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ Aws::String DescribeKeyPairsRequest::SerializePayload() const
     unsigned keyNamesCount = 1;
     for(auto& item : m_keyNames)
     {
-      ss << "KeyNames.member." << keyNamesCount << "="
+      ss << "KeyName." << keyNamesCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       keyNamesCount++;
     }
@@ -50,11 +50,11 @@ Aws::String DescribeKeyPairsRequest::SerializePayload() const
     unsigned filtersCount = 1;
     for(auto& item : m_filters)
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
+      item.OutputToStream(ss, "Filter.", filtersCount, "");
       filtersCount++;
     }
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

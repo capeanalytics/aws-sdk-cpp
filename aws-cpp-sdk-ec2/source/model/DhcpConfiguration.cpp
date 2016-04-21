@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ DhcpConfiguration& DhcpConfiguration::operator =(const XmlNode& xmlNode)
       m_key = StringUtils::Trim(keyNode.GetText().c_str());
       m_keyHasBeenSet = true;
     }
-    XmlNode valuesNode = resultNode.FirstChild("Values");
+    XmlNode valuesNode = resultNode.FirstChild("valueSet");
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("item");
@@ -73,10 +73,11 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_valuesHasBeenSet)
   {
+      unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
         Aws::StringStream valuesSs;
-        valuesSs << location << index << locationValue << ".item";
+        valuesSs << location << index << locationValue << ".ValueSet." << valuesIdx++;
         item.OutputToStream(oStream, valuesSs.str().c_str());
       }
   }
@@ -90,11 +91,12 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_valuesHasBeenSet)
   {
+      unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream valuesSs;
+        valuesSs << location <<  ".item." << valuesIdx++;
+        item.OutputToStream(oStream, valuesSs.str().c_str());
       }
   }
 }

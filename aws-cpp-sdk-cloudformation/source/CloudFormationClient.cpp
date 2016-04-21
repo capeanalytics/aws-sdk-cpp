@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,17 +27,23 @@
 #include <aws/cloudformation/CloudFormationEndpoint.h>
 #include <aws/cloudformation/CloudFormationErrorMarshaller.h>
 #include <aws/cloudformation/model/CancelUpdateStackRequest.h>
+#include <aws/cloudformation/model/ContinueUpdateRollbackRequest.h>
+#include <aws/cloudformation/model/CreateChangeSetRequest.h>
 #include <aws/cloudformation/model/CreateStackRequest.h>
+#include <aws/cloudformation/model/DeleteChangeSetRequest.h>
 #include <aws/cloudformation/model/DeleteStackRequest.h>
 #include <aws/cloudformation/model/DescribeAccountLimitsRequest.h>
+#include <aws/cloudformation/model/DescribeChangeSetRequest.h>
 #include <aws/cloudformation/model/DescribeStackEventsRequest.h>
 #include <aws/cloudformation/model/DescribeStackResourceRequest.h>
 #include <aws/cloudformation/model/DescribeStackResourcesRequest.h>
 #include <aws/cloudformation/model/DescribeStacksRequest.h>
 #include <aws/cloudformation/model/EstimateTemplateCostRequest.h>
+#include <aws/cloudformation/model/ExecuteChangeSetRequest.h>
 #include <aws/cloudformation/model/GetStackPolicyRequest.h>
 #include <aws/cloudformation/model/GetTemplateRequest.h>
 #include <aws/cloudformation/model/GetTemplateSummaryRequest.h>
+#include <aws/cloudformation/model/ListChangeSetsRequest.h>
 #include <aws/cloudformation/model/ListStackResourcesRequest.h>
 #include <aws/cloudformation/model/ListStacksRequest.h>
 #include <aws/cloudformation/model/SetStackPolicyRequest.h>
@@ -59,7 +65,8 @@ static const char* ALLOCATION_TAG = "CloudFormationClient";
 
 CloudFormationClient::CloudFormationClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudFormationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -68,7 +75,8 @@ CloudFormationClient::CloudFormationClient(const Client::ClientConfiguration& cl
 
 CloudFormationClient::CloudFormationClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudFormationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -78,7 +86,8 @@ CloudFormationClient::CloudFormationClient(const AWSCredentials& credentials, co
 CloudFormationClient::CloudFormationClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudFormationErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -94,7 +103,7 @@ void CloudFormationClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << CloudFormationEndpoint::ForRegion(config.region);
   }
@@ -135,6 +144,66 @@ void CloudFormationClient::CancelUpdateStackAsyncHelper(const CancelUpdateStackR
   handler(this, request, CancelUpdateStack(request), context);
 }
 
+ContinueUpdateRollbackOutcome CloudFormationClient::ContinueUpdateRollback(const ContinueUpdateRollbackRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ContinueUpdateRollbackOutcome(ContinueUpdateRollbackResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ContinueUpdateRollbackOutcome(outcome.GetError());
+  }
+}
+
+ContinueUpdateRollbackOutcomeCallable CloudFormationClient::ContinueUpdateRollbackCallable(const ContinueUpdateRollbackRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::ContinueUpdateRollback, this, request);
+}
+
+void CloudFormationClient::ContinueUpdateRollbackAsync(const ContinueUpdateRollbackRequest& request, const ContinueUpdateRollbackResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::ContinueUpdateRollbackAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::ContinueUpdateRollbackAsyncHelper(const ContinueUpdateRollbackRequest& request, const ContinueUpdateRollbackResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ContinueUpdateRollback(request), context);
+}
+
+CreateChangeSetOutcome CloudFormationClient::CreateChangeSet(const CreateChangeSetRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CreateChangeSetOutcome(CreateChangeSetResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CreateChangeSetOutcome(outcome.GetError());
+  }
+}
+
+CreateChangeSetOutcomeCallable CloudFormationClient::CreateChangeSetCallable(const CreateChangeSetRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::CreateChangeSet, this, request);
+}
+
+void CloudFormationClient::CreateChangeSetAsync(const CreateChangeSetRequest& request, const CreateChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::CreateChangeSetAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::CreateChangeSetAsyncHelper(const CreateChangeSetRequest& request, const CreateChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CreateChangeSet(request), context);
+}
+
 CreateStackOutcome CloudFormationClient::CreateStack(const CreateStackRequest& request) const
 {
   Aws::StringStream ss;
@@ -163,6 +232,36 @@ void CloudFormationClient::CreateStackAsync(const CreateStackRequest& request, c
 void CloudFormationClient::CreateStackAsyncHelper(const CreateStackRequest& request, const CreateStackResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, CreateStack(request), context);
+}
+
+DeleteChangeSetOutcome CloudFormationClient::DeleteChangeSet(const DeleteChangeSetRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DeleteChangeSetOutcome(DeleteChangeSetResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DeleteChangeSetOutcome(outcome.GetError());
+  }
+}
+
+DeleteChangeSetOutcomeCallable CloudFormationClient::DeleteChangeSetCallable(const DeleteChangeSetRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::DeleteChangeSet, this, request);
+}
+
+void CloudFormationClient::DeleteChangeSetAsync(const DeleteChangeSetRequest& request, const DeleteChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::DeleteChangeSetAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::DeleteChangeSetAsyncHelper(const DeleteChangeSetRequest& request, const DeleteChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DeleteChangeSet(request), context);
 }
 
 DeleteStackOutcome CloudFormationClient::DeleteStack(const DeleteStackRequest& request) const
@@ -223,6 +322,36 @@ void CloudFormationClient::DescribeAccountLimitsAsync(const DescribeAccountLimit
 void CloudFormationClient::DescribeAccountLimitsAsyncHelper(const DescribeAccountLimitsRequest& request, const DescribeAccountLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeAccountLimits(request), context);
+}
+
+DescribeChangeSetOutcome CloudFormationClient::DescribeChangeSet(const DescribeChangeSetRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeChangeSetOutcome(DescribeChangeSetResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeChangeSetOutcome(outcome.GetError());
+  }
+}
+
+DescribeChangeSetOutcomeCallable CloudFormationClient::DescribeChangeSetCallable(const DescribeChangeSetRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::DescribeChangeSet, this, request);
+}
+
+void CloudFormationClient::DescribeChangeSetAsync(const DescribeChangeSetRequest& request, const DescribeChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::DescribeChangeSetAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::DescribeChangeSetAsyncHelper(const DescribeChangeSetRequest& request, const DescribeChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeChangeSet(request), context);
 }
 
 DescribeStackEventsOutcome CloudFormationClient::DescribeStackEvents(const DescribeStackEventsRequest& request) const
@@ -375,6 +504,36 @@ void CloudFormationClient::EstimateTemplateCostAsyncHelper(const EstimateTemplat
   handler(this, request, EstimateTemplateCost(request), context);
 }
 
+ExecuteChangeSetOutcome CloudFormationClient::ExecuteChangeSet(const ExecuteChangeSetRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ExecuteChangeSetOutcome(ExecuteChangeSetResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ExecuteChangeSetOutcome(outcome.GetError());
+  }
+}
+
+ExecuteChangeSetOutcomeCallable CloudFormationClient::ExecuteChangeSetCallable(const ExecuteChangeSetRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::ExecuteChangeSet, this, request);
+}
+
+void CloudFormationClient::ExecuteChangeSetAsync(const ExecuteChangeSetRequest& request, const ExecuteChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::ExecuteChangeSetAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::ExecuteChangeSetAsyncHelper(const ExecuteChangeSetRequest& request, const ExecuteChangeSetResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ExecuteChangeSet(request), context);
+}
+
 GetStackPolicyOutcome CloudFormationClient::GetStackPolicy(const GetStackPolicyRequest& request) const
 {
   Aws::StringStream ss;
@@ -463,6 +622,36 @@ void CloudFormationClient::GetTemplateSummaryAsync(const GetTemplateSummaryReque
 void CloudFormationClient::GetTemplateSummaryAsyncHelper(const GetTemplateSummaryRequest& request, const GetTemplateSummaryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, GetTemplateSummary(request), context);
+}
+
+ListChangeSetsOutcome CloudFormationClient::ListChangeSets(const ListChangeSetsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListChangeSetsOutcome(ListChangeSetsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListChangeSetsOutcome(outcome.GetError());
+  }
+}
+
+ListChangeSetsOutcomeCallable CloudFormationClient::ListChangeSetsCallable(const ListChangeSetsRequest& request) const
+{
+  return std::async(std::launch::async, &CloudFormationClient::ListChangeSets, this, request);
+}
+
+void CloudFormationClient::ListChangeSetsAsync(const ListChangeSetsRequest& request, const ListChangeSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudFormationClient::ListChangeSetsAsyncHelper, this, request, handler, context);
+}
+
+void CloudFormationClient::ListChangeSetsAsyncHelper(const ListChangeSetsRequest& request, const ListChangeSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListChangeSets(request), context);
 }
 
 ListStackResourcesOutcome CloudFormationClient::ListStackResources(const ListStackResourcesRequest& request) const

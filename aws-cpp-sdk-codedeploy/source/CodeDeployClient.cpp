@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,7 +27,10 @@
 #include <aws/codedeploy/CodeDeployEndpoint.h>
 #include <aws/codedeploy/CodeDeployErrorMarshaller.h>
 #include <aws/codedeploy/model/AddTagsToOnPremisesInstancesRequest.h>
+#include <aws/codedeploy/model/BatchGetApplicationRevisionsRequest.h>
 #include <aws/codedeploy/model/BatchGetApplicationsRequest.h>
+#include <aws/codedeploy/model/BatchGetDeploymentGroupsRequest.h>
+#include <aws/codedeploy/model/BatchGetDeploymentInstancesRequest.h>
 #include <aws/codedeploy/model/BatchGetDeploymentsRequest.h>
 #include <aws/codedeploy/model/BatchGetOnPremisesInstancesRequest.h>
 #include <aws/codedeploy/model/CreateApplicationRequest.h>
@@ -72,7 +75,8 @@ static const char* ALLOCATION_TAG = "CodeDeployClient";
 
 CodeDeployClient::CodeDeployClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CodeDeployErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -81,7 +85,8 @@ CodeDeployClient::CodeDeployClient(const Client::ClientConfiguration& clientConf
 
 CodeDeployClient::CodeDeployClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CodeDeployErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -91,7 +96,8 @@ CodeDeployClient::CodeDeployClient(const AWSCredentials& credentials, const Clie
 CodeDeployClient::CodeDeployClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CodeDeployErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -107,7 +113,7 @@ void CodeDeployClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << CodeDeployEndpoint::ForRegion(config.region);
   }
@@ -149,6 +155,37 @@ void CodeDeployClient::AddTagsToOnPremisesInstancesAsyncHelper(const AddTagsToOn
   handler(this, request, AddTagsToOnPremisesInstances(request), context);
 }
 
+BatchGetApplicationRevisionsOutcome CodeDeployClient::BatchGetApplicationRevisions(const BatchGetApplicationRevisionsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return BatchGetApplicationRevisionsOutcome(BatchGetApplicationRevisionsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return BatchGetApplicationRevisionsOutcome(outcome.GetError());
+  }
+}
+
+BatchGetApplicationRevisionsOutcomeCallable CodeDeployClient::BatchGetApplicationRevisionsCallable(const BatchGetApplicationRevisionsRequest& request) const
+{
+  return std::async(std::launch::async, &CodeDeployClient::BatchGetApplicationRevisions, this, request);
+}
+
+void CodeDeployClient::BatchGetApplicationRevisionsAsync(const BatchGetApplicationRevisionsRequest& request, const BatchGetApplicationRevisionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CodeDeployClient::BatchGetApplicationRevisionsAsyncHelper, this, request, handler, context);
+}
+
+void CodeDeployClient::BatchGetApplicationRevisionsAsyncHelper(const BatchGetApplicationRevisionsRequest& request, const BatchGetApplicationRevisionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, BatchGetApplicationRevisions(request), context);
+}
+
 BatchGetApplicationsOutcome CodeDeployClient::BatchGetApplications(const BatchGetApplicationsRequest& request) const
 {
   Aws::StringStream ss;
@@ -178,6 +215,68 @@ void CodeDeployClient::BatchGetApplicationsAsync(const BatchGetApplicationsReque
 void CodeDeployClient::BatchGetApplicationsAsyncHelper(const BatchGetApplicationsRequest& request, const BatchGetApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, BatchGetApplications(request), context);
+}
+
+BatchGetDeploymentGroupsOutcome CodeDeployClient::BatchGetDeploymentGroups(const BatchGetDeploymentGroupsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return BatchGetDeploymentGroupsOutcome(BatchGetDeploymentGroupsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return BatchGetDeploymentGroupsOutcome(outcome.GetError());
+  }
+}
+
+BatchGetDeploymentGroupsOutcomeCallable CodeDeployClient::BatchGetDeploymentGroupsCallable(const BatchGetDeploymentGroupsRequest& request) const
+{
+  return std::async(std::launch::async, &CodeDeployClient::BatchGetDeploymentGroups, this, request);
+}
+
+void CodeDeployClient::BatchGetDeploymentGroupsAsync(const BatchGetDeploymentGroupsRequest& request, const BatchGetDeploymentGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CodeDeployClient::BatchGetDeploymentGroupsAsyncHelper, this, request, handler, context);
+}
+
+void CodeDeployClient::BatchGetDeploymentGroupsAsyncHelper(const BatchGetDeploymentGroupsRequest& request, const BatchGetDeploymentGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, BatchGetDeploymentGroups(request), context);
+}
+
+BatchGetDeploymentInstancesOutcome CodeDeployClient::BatchGetDeploymentInstances(const BatchGetDeploymentInstancesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return BatchGetDeploymentInstancesOutcome(BatchGetDeploymentInstancesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return BatchGetDeploymentInstancesOutcome(outcome.GetError());
+  }
+}
+
+BatchGetDeploymentInstancesOutcomeCallable CodeDeployClient::BatchGetDeploymentInstancesCallable(const BatchGetDeploymentInstancesRequest& request) const
+{
+  return std::async(std::launch::async, &CodeDeployClient::BatchGetDeploymentInstances, this, request);
+}
+
+void CodeDeployClient::BatchGetDeploymentInstancesAsync(const BatchGetDeploymentInstancesRequest& request, const BatchGetDeploymentInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CodeDeployClient::BatchGetDeploymentInstancesAsyncHelper, this, request, handler, context);
+}
+
+void CodeDeployClient::BatchGetDeploymentInstancesAsyncHelper(const BatchGetDeploymentInstancesRequest& request, const BatchGetDeploymentInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, BatchGetDeploymentInstances(request), context);
 }
 
 BatchGetDeploymentsOutcome CodeDeployClient::BatchGetDeployments(const BatchGetDeploymentsRequest& request) const

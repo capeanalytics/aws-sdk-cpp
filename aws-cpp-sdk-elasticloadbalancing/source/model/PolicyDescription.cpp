@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -85,10 +85,11 @@ void PolicyDescription::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_policyAttributeDescriptionsHasBeenSet)
   {
+      unsigned policyAttributeDescriptionsIdx = 1;
       for(auto& item : m_policyAttributeDescriptions)
       {
         Aws::StringStream policyAttributeDescriptionsSs;
-        policyAttributeDescriptionsSs << location << index << locationValue << ".PolicyAttributeDescriptions";
+        policyAttributeDescriptionsSs << location << index << locationValue << ".PolicyAttributeDescriptions.member." << policyAttributeDescriptionsIdx++;
         item.OutputToStream(oStream, policyAttributeDescriptionsSs.str().c_str());
       }
   }
@@ -106,11 +107,12 @@ void PolicyDescription::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_policyAttributeDescriptionsHasBeenSet)
   {
+      unsigned policyAttributeDescriptionsIdx = 1;
       for(auto& item : m_policyAttributeDescriptions)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".PolicyAttributeDescriptions";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream policyAttributeDescriptionsSs;
+        policyAttributeDescriptionsSs << location <<  ".PolicyAttributeDescriptions.member." << policyAttributeDescriptionsIdx++;
+        item.OutputToStream(oStream, policyAttributeDescriptionsSs.str().c_str());
       }
   }
 }

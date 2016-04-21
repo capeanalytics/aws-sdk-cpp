@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ using namespace Aws::Utils;
 
 ServiceEvent::ServiceEvent() : 
     m_idHasBeenSet(false),
-    m_createdAt(0.0),
     m_createdAtHasBeenSet(false),
     m_messageHasBeenSet(false)
 {
@@ -31,7 +30,6 @@ ServiceEvent::ServiceEvent() :
 
 ServiceEvent::ServiceEvent(const JsonValue& jsonValue) : 
     m_idHasBeenSet(false),
-    m_createdAt(0.0),
     m_createdAtHasBeenSet(false),
     m_messageHasBeenSet(false)
 {
@@ -76,8 +74,7 @@ JsonValue ServiceEvent::Jsonize() const
 
   if(m_createdAtHasBeenSet)
   {
-   payload.WithDouble("createdAt", m_createdAt);
-
+   payload.WithDouble("createdAt", m_createdAt.SecondsWithMSPrecision());
   }
 
   if(m_messageHasBeenSet)
@@ -86,5 +83,5 @@ JsonValue ServiceEvent::Jsonize() const
 
   }
 
-  return std::move(payload);
+  return payload;
 }

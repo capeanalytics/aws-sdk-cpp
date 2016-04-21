@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ using namespace Aws::Utils;
 StreamingDistribution::StreamingDistribution() : 
     m_idHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_lastModifiedTime(0.0),
     m_lastModifiedTimeHasBeenSet(false),
     m_domainNameHasBeenSet(false),
     m_activeTrustedSignersHasBeenSet(false),
@@ -37,7 +36,6 @@ StreamingDistribution::StreamingDistribution() :
 StreamingDistribution::StreamingDistribution(const XmlNode& xmlNode) : 
     m_idHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_lastModifiedTime(0.0),
     m_lastModifiedTimeHasBeenSet(false),
     m_domainNameHasBeenSet(false),
     m_activeTrustedSignersHasBeenSet(false),
@@ -67,7 +65,7 @@ StreamingDistribution& StreamingDistribution::operator =(const XmlNode& xmlNode)
     XmlNode lastModifiedTimeNode = resultNode.FirstChild("LastModifiedTime");
     if(!lastModifiedTimeNode.IsNull())
     {
-      m_lastModifiedTime = StringUtils::ConvertToDouble(StringUtils::Trim(lastModifiedTimeNode.GetText().c_str()).c_str());
+      m_lastModifiedTime = DateTime(StringUtils::Trim(lastModifiedTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_lastModifiedTimeHasBeenSet = true;
     }
     XmlNode domainNameNode = resultNode.FirstChild("DomainName");
@@ -110,10 +108,8 @@ void StreamingDistribution::AddToNode(XmlNode& parentNode) const
 
   if(m_lastModifiedTimeHasBeenSet)
   {
-   XmlNode lastModifiedTimeNode = parentNode.CreateChildElement("LastModifiedTime");
-  ss << m_lastModifiedTime;
-   lastModifiedTimeNode.SetText(ss.str());
-  ss.str("");
+     XmlNode lastModifiedTimeNode = parentNode.CreateChildElement("LastModifiedTime");
+     lastModifiedTimeNode.SetText(m_lastModifiedTime.ToGmtString(DateFormat::ISO_8601));
   }
 
   if(m_domainNameHasBeenSet)

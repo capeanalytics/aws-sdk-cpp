@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -23,11 +23,8 @@ using namespace Aws::Utils;
 
 StepExecutionStatusDetail::StepExecutionStatusDetail() : 
     m_stateHasBeenSet(false),
-    m_creationDateTime(0.0),
     m_creationDateTimeHasBeenSet(false),
-    m_startDateTime(0.0),
     m_startDateTimeHasBeenSet(false),
-    m_endDateTime(0.0),
     m_endDateTimeHasBeenSet(false),
     m_lastStateChangeReasonHasBeenSet(false)
 {
@@ -35,11 +32,8 @@ StepExecutionStatusDetail::StepExecutionStatusDetail() :
 
 StepExecutionStatusDetail::StepExecutionStatusDetail(const JsonValue& jsonValue) : 
     m_stateHasBeenSet(false),
-    m_creationDateTime(0.0),
     m_creationDateTimeHasBeenSet(false),
-    m_startDateTime(0.0),
     m_startDateTimeHasBeenSet(false),
-    m_endDateTime(0.0),
     m_endDateTimeHasBeenSet(false),
     m_lastStateChangeReasonHasBeenSet(false)
 {
@@ -97,20 +91,17 @@ JsonValue StepExecutionStatusDetail::Jsonize() const
 
   if(m_creationDateTimeHasBeenSet)
   {
-   payload.WithDouble("CreationDateTime", m_creationDateTime);
-
+   payload.WithDouble("CreationDateTime", m_creationDateTime.SecondsWithMSPrecision());
   }
 
   if(m_startDateTimeHasBeenSet)
   {
-   payload.WithDouble("StartDateTime", m_startDateTime);
-
+   payload.WithDouble("StartDateTime", m_startDateTime.SecondsWithMSPrecision());
   }
 
   if(m_endDateTimeHasBeenSet)
   {
-   payload.WithDouble("EndDateTime", m_endDateTime);
-
+   payload.WithDouble("EndDateTime", m_endDateTime.SecondsWithMSPrecision());
   }
 
   if(m_lastStateChangeReasonHasBeenSet)
@@ -119,5 +110,5 @@ JsonValue StepExecutionStatusDetail::Jsonize() const
 
   }
 
-  return std::move(payload);
+  return payload;
 }

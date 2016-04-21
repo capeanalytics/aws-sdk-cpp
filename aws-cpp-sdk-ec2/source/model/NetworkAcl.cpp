@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
       m_isDefault = StringUtils::ConvertToBool(StringUtils::Trim(isDefaultNode.GetText().c_str()).c_str());
       m_isDefaultHasBeenSet = true;
     }
-    XmlNode entriesNode = resultNode.FirstChild("Entries");
+    XmlNode entriesNode = resultNode.FirstChild("entrySet");
     if(!entriesNode.IsNull())
     {
       XmlNode entriesMember = entriesNode.FirstChild("item");
@@ -82,7 +82,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
 
       m_entriesHasBeenSet = true;
     }
-    XmlNode associationsNode = resultNode.FirstChild("Associations");
+    XmlNode associationsNode = resultNode.FirstChild("associationSet");
     if(!associationsNode.IsNull())
     {
       XmlNode associationsMember = associationsNode.FirstChild("item");
@@ -94,7 +94,7 @@ NetworkAcl& NetworkAcl::operator =(const XmlNode& xmlNode)
 
       m_associationsHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -127,28 +127,31 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_entriesHasBeenSet)
   {
+      unsigned entriesIdx = 1;
       for(auto& item : m_entries)
       {
         Aws::StringStream entriesSs;
-        entriesSs << location << index << locationValue << ".item";
+        entriesSs << location << index << locationValue << ".EntrySet." << entriesIdx++;
         item.OutputToStream(oStream, entriesSs.str().c_str());
       }
   }
   if(m_associationsHasBeenSet)
   {
+      unsigned associationsIdx = 1;
       for(auto& item : m_associations)
       {
         Aws::StringStream associationsSs;
-        associationsSs << location << index << locationValue << ".item";
+        associationsSs << location << index << locationValue << ".AssociationSet." << associationsIdx++;
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -170,29 +173,32 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_entriesHasBeenSet)
   {
+      unsigned entriesIdx = 1;
       for(auto& item : m_entries)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream entriesSs;
+        entriesSs << location <<  ".item." << entriesIdx++;
+        item.OutputToStream(oStream, entriesSs.str().c_str());
       }
   }
   if(m_associationsHasBeenSet)
   {
+      unsigned associationsIdx = 1;
       for(auto& item : m_associations)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream associationsSs;
+        associationsSs << location <<  ".item." << associationsIdx++;
+        item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
 }

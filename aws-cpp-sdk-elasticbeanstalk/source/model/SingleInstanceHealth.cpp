@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,10 +28,12 @@ SingleInstanceHealth::SingleInstanceHealth() :
     m_healthStatusHasBeenSet(false),
     m_colorHasBeenSet(false),
     m_causesHasBeenSet(false),
-    m_launchedAt(0.0),
     m_launchedAtHasBeenSet(false),
     m_applicationMetricsHasBeenSet(false),
-    m_systemHasBeenSet(false)
+    m_systemHasBeenSet(false),
+    m_deploymentHasBeenSet(false),
+    m_availabilityZoneHasBeenSet(false),
+    m_instanceTypeHasBeenSet(false)
 {
 }
 
@@ -40,10 +42,12 @@ SingleInstanceHealth::SingleInstanceHealth(const XmlNode& xmlNode) :
     m_healthStatusHasBeenSet(false),
     m_colorHasBeenSet(false),
     m_causesHasBeenSet(false),
-    m_launchedAt(0.0),
     m_launchedAtHasBeenSet(false),
     m_applicationMetricsHasBeenSet(false),
-    m_systemHasBeenSet(false)
+    m_systemHasBeenSet(false),
+    m_deploymentHasBeenSet(false),
+    m_availabilityZoneHasBeenSet(false),
+    m_instanceTypeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -87,7 +91,7 @@ SingleInstanceHealth& SingleInstanceHealth::operator =(const XmlNode& xmlNode)
     XmlNode launchedAtNode = resultNode.FirstChild("LaunchedAt");
     if(!launchedAtNode.IsNull())
     {
-      m_launchedAt = StringUtils::ConvertToDouble(StringUtils::Trim(launchedAtNode.GetText().c_str()).c_str());
+      m_launchedAt = DateTime(StringUtils::Trim(launchedAtNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_launchedAtHasBeenSet = true;
     }
     XmlNode applicationMetricsNode = resultNode.FirstChild("ApplicationMetrics");
@@ -101,6 +105,24 @@ SingleInstanceHealth& SingleInstanceHealth::operator =(const XmlNode& xmlNode)
     {
       m_system = systemNode;
       m_systemHasBeenSet = true;
+    }
+    XmlNode deploymentNode = resultNode.FirstChild("Deployment");
+    if(!deploymentNode.IsNull())
+    {
+      m_deployment = deploymentNode;
+      m_deploymentHasBeenSet = true;
+    }
+    XmlNode availabilityZoneNode = resultNode.FirstChild("AvailabilityZone");
+    if(!availabilityZoneNode.IsNull())
+    {
+      m_availabilityZone = StringUtils::Trim(availabilityZoneNode.GetText().c_str());
+      m_availabilityZoneHasBeenSet = true;
+    }
+    XmlNode instanceTypeNode = resultNode.FirstChild("InstanceType");
+    if(!instanceTypeNode.IsNull())
+    {
+      m_instanceType = StringUtils::Trim(instanceTypeNode.GetText().c_str());
+      m_instanceTypeHasBeenSet = true;
     }
   }
 
@@ -123,14 +145,15 @@ void SingleInstanceHealth::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_causesHasBeenSet)
   {
+      unsigned causesIdx = 1;
       for(auto& item : m_causes)
       {
-        oStream << location << index << locationValue << ".Causes=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".Causes.member." << causesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_launchedAtHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LaunchedAt=" << m_launchedAt << "&";
+      oStream << location << index << locationValue << ".LaunchedAt=" << StringUtils::URLEncode(m_launchedAt.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_applicationMetricsHasBeenSet)
   {
@@ -143,6 +166,20 @@ void SingleInstanceHealth::OutputToStream(Aws::OStream& oStream, const char* loc
       Aws::StringStream systemLocationAndMemberSs;
       systemLocationAndMemberSs << location << index << locationValue << ".System";
       m_system.OutputToStream(oStream, systemLocationAndMemberSs.str().c_str());
+  }
+  if(m_deploymentHasBeenSet)
+  {
+      Aws::StringStream deploymentLocationAndMemberSs;
+      deploymentLocationAndMemberSs << location << index << locationValue << ".Deployment";
+      m_deployment.OutputToStream(oStream, deploymentLocationAndMemberSs.str().c_str());
+  }
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+  if(m_instanceTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 }
 
@@ -162,14 +199,15 @@ void SingleInstanceHealth::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_causesHasBeenSet)
   {
+      unsigned causesIdx = 1;
       for(auto& item : m_causes)
       {
-        oStream << location << ".Causes=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".Causes.member." << causesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_launchedAtHasBeenSet)
   {
-      oStream << location << ".LaunchedAt=" << m_launchedAt << "&";
+      oStream << location << ".LaunchedAt=" << StringUtils::URLEncode(m_launchedAt.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_applicationMetricsHasBeenSet)
   {
@@ -182,5 +220,19 @@ void SingleInstanceHealth::OutputToStream(Aws::OStream& oStream, const char* loc
       Aws::String systemLocationAndMember(location);
       systemLocationAndMember += ".System";
       m_system.OutputToStream(oStream, systemLocationAndMember.c_str());
+  }
+  if(m_deploymentHasBeenSet)
+  {
+      Aws::String deploymentLocationAndMember(location);
+      deploymentLocationAndMember += ".Deployment";
+      m_deployment.OutputToStream(oStream, deploymentLocationAndMember.c_str());
+  }
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+  if(m_instanceTypeHasBeenSet)
+  {
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 }

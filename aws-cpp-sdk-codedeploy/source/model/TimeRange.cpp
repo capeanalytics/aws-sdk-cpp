@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -22,17 +22,13 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 TimeRange::TimeRange() : 
-    m_start(0.0),
     m_startHasBeenSet(false),
-    m_end(0.0),
     m_endHasBeenSet(false)
 {
 }
 
 TimeRange::TimeRange(const JsonValue& jsonValue) : 
-    m_start(0.0),
     m_startHasBeenSet(false),
-    m_end(0.0),
     m_endHasBeenSet(false)
 {
   *this = jsonValue;
@@ -63,15 +59,13 @@ JsonValue TimeRange::Jsonize() const
 
   if(m_startHasBeenSet)
   {
-   payload.WithDouble("start", m_start);
-
+   payload.WithDouble("start", m_start.SecondsWithMSPrecision());
   }
 
   if(m_endHasBeenSet)
   {
-   payload.WithDouble("end", m_end);
-
+   payload.WithDouble("end", m_end.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

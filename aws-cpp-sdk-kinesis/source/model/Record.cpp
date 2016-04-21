@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ using namespace Aws::Utils;
 
 Record::Record() : 
     m_sequenceNumberHasBeenSet(false),
-    m_approximateArrivalTimestamp(0.0),
     m_approximateArrivalTimestampHasBeenSet(false),
     m_dataHasBeenSet(false),
     m_partitionKeyHasBeenSet(false)
@@ -33,7 +32,6 @@ Record::Record() :
 
 Record::Record(const JsonValue& jsonValue) : 
     m_sequenceNumberHasBeenSet(false),
-    m_approximateArrivalTimestamp(0.0),
     m_approximateArrivalTimestampHasBeenSet(false),
     m_dataHasBeenSet(false),
     m_partitionKeyHasBeenSet(false)
@@ -60,7 +58,6 @@ Record& Record::operator =(const JsonValue& jsonValue)
   if(jsonValue.ValueExists("Data"))
   {
     m_data = HashingUtils::Base64Decode(jsonValue.GetString("Data"));
-
     m_dataHasBeenSet = true;
   }
 
@@ -86,8 +83,7 @@ JsonValue Record::Jsonize() const
 
   if(m_approximateArrivalTimestampHasBeenSet)
   {
-   payload.WithDouble("ApproximateArrivalTimestamp", m_approximateArrivalTimestamp);
-
+   payload.WithDouble("ApproximateArrivalTimestamp", m_approximateArrivalTimestamp.SecondsWithMSPrecision());
   }
 
   if(m_dataHasBeenSet)
@@ -101,5 +97,5 @@ JsonValue Record::Jsonize() const
 
   }
 
-  return std::move(payload);
+  return payload;
 }

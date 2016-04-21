@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -49,6 +49,7 @@ enum class AWS_CLOUDWATCHLOGS_API CloudWatchLogsErrors
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   DATA_ALREADY_ACCEPTED= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  INVALID_OPERATION,
   INVALID_PARAMETER,
   INVALID_SEQUENCE_TOKEN,
   LIMIT_EXCEEDED,

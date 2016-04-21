@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,14 +26,16 @@ using namespace Aws::Utils;
 DomainMembership::DomainMembership() : 
     m_domainHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_connectivityHasBeenSet(false)
+    m_fQDNHasBeenSet(false),
+    m_iAMRoleNameHasBeenSet(false)
 {
 }
 
 DomainMembership::DomainMembership(const XmlNode& xmlNode) : 
     m_domainHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_connectivityHasBeenSet(false)
+    m_fQDNHasBeenSet(false),
+    m_iAMRoleNameHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -56,11 +58,17 @@ DomainMembership& DomainMembership::operator =(const XmlNode& xmlNode)
       m_status = StringUtils::Trim(statusNode.GetText().c_str());
       m_statusHasBeenSet = true;
     }
-    XmlNode connectivityNode = resultNode.FirstChild("Connectivity");
-    if(!connectivityNode.IsNull())
+    XmlNode fQDNNode = resultNode.FirstChild("FQDN");
+    if(!fQDNNode.IsNull())
     {
-      m_connectivity = StringUtils::Trim(connectivityNode.GetText().c_str());
-      m_connectivityHasBeenSet = true;
+      m_fQDN = StringUtils::Trim(fQDNNode.GetText().c_str());
+      m_fQDNHasBeenSet = true;
+    }
+    XmlNode iAMRoleNameNode = resultNode.FirstChild("IAMRoleName");
+    if(!iAMRoleNameNode.IsNull())
+    {
+      m_iAMRoleName = StringUtils::Trim(iAMRoleNameNode.GetText().c_str());
+      m_iAMRoleNameHasBeenSet = true;
     }
   }
 
@@ -77,9 +85,13 @@ void DomainMembership::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
-  if(m_connectivityHasBeenSet)
+  if(m_fQDNHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Connectivity=" << StringUtils::URLEncode(m_connectivity.c_str()) << "&";
+      oStream << location << index << locationValue << ".FQDN=" << StringUtils::URLEncode(m_fQDN.c_str()) << "&";
+  }
+  if(m_iAMRoleNameHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".IAMRoleName=" << StringUtils::URLEncode(m_iAMRoleName.c_str()) << "&";
   }
 }
 
@@ -93,8 +105,12 @@ void DomainMembership::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
-  if(m_connectivityHasBeenSet)
+  if(m_fQDNHasBeenSet)
   {
-      oStream << location << ".Connectivity=" << StringUtils::URLEncode(m_connectivity.c_str()) << "&";
+      oStream << location << ".FQDN=" << StringUtils::URLEncode(m_fQDN.c_str()) << "&";
+  }
+  if(m_iAMRoleNameHasBeenSet)
+  {
+      oStream << location << ".IAMRoleName=" << StringUtils::URLEncode(m_iAMRoleName.c_str()) << "&";
   }
 }

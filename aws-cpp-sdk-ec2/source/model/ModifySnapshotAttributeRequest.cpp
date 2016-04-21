@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ Aws::String ModifySnapshotAttributeRequest::SerializePayload() const
     unsigned userIdsCount = 1;
     for(auto& item : m_userIds)
     {
-      ss << "UserIds.member." << userIdsCount << "="
+      ss << "UserId." << userIdsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       userIdsCount++;
     }
@@ -66,7 +66,7 @@ Aws::String ModifySnapshotAttributeRequest::SerializePayload() const
     unsigned groupNamesCount = 1;
     for(auto& item : m_groupNames)
     {
-      ss << "GroupNames.member." << groupNamesCount << "="
+      ss << "UserGroup." << groupNamesCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       groupNamesCount++;
     }
@@ -75,7 +75,7 @@ Aws::String ModifySnapshotAttributeRequest::SerializePayload() const
   {
     m_createVolumePermission.OutputToStream(ss, "CreateVolumePermission.");
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

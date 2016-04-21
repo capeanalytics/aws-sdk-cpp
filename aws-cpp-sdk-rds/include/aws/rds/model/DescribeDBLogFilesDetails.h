@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,9 +30,11 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p>This data type is used as a response element to <a>DescribeDBLogFiles</a>.</p>
-  */
+
+  /**
+   * <p>This data type is used as a response element to
+   * <a>DescribeDBLogFiles</a>.</p>
+   */
   class AWS_RDS_API DescribeDBLogFilesDetails
   {
   public:
@@ -43,69 +45,69 @@ namespace Model
     void OutputToStream(Aws::OStream& ostream, const char* location, unsigned index, const char* locationValue) const;
     void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline const Aws::String& GetLogFileName() const{ return m_logFileName; }
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline void SetLogFileName(const Aws::String& value) { m_logFileNameHasBeenSet = true; m_logFileName = value; }
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline void SetLogFileName(Aws::String&& value) { m_logFileNameHasBeenSet = true; m_logFileName = value; }
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline void SetLogFileName(const char* value) { m_logFileNameHasBeenSet = true; m_logFileName.assign(value); }
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline DescribeDBLogFilesDetails& WithLogFileName(const Aws::String& value) { SetLogFileName(value); return *this;}
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline DescribeDBLogFilesDetails& WithLogFileName(Aws::String&& value) { SetLogFileName(value); return *this;}
 
-    /*
-     <p> The name of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The name of the log file for the specified DB instance. </p>
+     */
     inline DescribeDBLogFilesDetails& WithLogFileName(const char* value) { SetLogFileName(value); return *this;}
 
-    /*
-     <p> A POSIX timestamp when the last log entry was written. </p>
-    */
+    /**
+     * <p> A POSIX timestamp when the last log entry was written. </p>
+     */
     inline long long GetLastWritten() const{ return m_lastWritten; }
 
-    /*
-     <p> A POSIX timestamp when the last log entry was written. </p>
-    */
+    /**
+     * <p> A POSIX timestamp when the last log entry was written. </p>
+     */
     inline void SetLastWritten(long long value) { m_lastWrittenHasBeenSet = true; m_lastWritten = value; }
 
-    /*
-     <p> A POSIX timestamp when the last log entry was written. </p>
-    */
+    /**
+     * <p> A POSIX timestamp when the last log entry was written. </p>
+     */
     inline DescribeDBLogFilesDetails& WithLastWritten(long long value) { SetLastWritten(value); return *this;}
 
-    /*
-     <p> The size, in bytes, of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The size, in bytes, of the log file for the specified DB instance. </p>
+     */
     inline long long GetSize() const{ return m_size; }
 
-    /*
-     <p> The size, in bytes, of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The size, in bytes, of the log file for the specified DB instance. </p>
+     */
     inline void SetSize(long long value) { m_sizeHasBeenSet = true; m_size = value; }
 
-    /*
-     <p> The size, in bytes, of the log file for the specified DB instance. </p>
-    */
+    /**
+     * <p> The size, in bytes, of the log file for the specified DB instance. </p>
+     */
     inline DescribeDBLogFilesDetails& WithSize(long long value) { SetSize(value); return *this;}
 
   private:

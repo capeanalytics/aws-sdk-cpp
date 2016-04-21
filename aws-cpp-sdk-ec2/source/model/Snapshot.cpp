@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ Snapshot::Snapshot() :
     m_snapshotIdHasBeenSet(false),
     m_volumeIdHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_startTime(0.0),
+    m_stateMessageHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_progressHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
@@ -39,6 +39,7 @@ Snapshot::Snapshot() :
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
+    m_dataEncryptionKeyIdHasBeenSet(false),
     m_responseMetadataHasBeenSet(false)
 {
 }
@@ -47,7 +48,7 @@ Snapshot::Snapshot(const XmlNode& xmlNode) :
     m_snapshotIdHasBeenSet(false),
     m_volumeIdHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_startTime(0.0),
+    m_stateMessageHasBeenSet(false),
     m_startTimeHasBeenSet(false),
     m_progressHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
@@ -59,6 +60,7 @@ Snapshot::Snapshot(const XmlNode& xmlNode) :
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
+    m_dataEncryptionKeyIdHasBeenSet(false),
     m_responseMetadataHasBeenSet(false)
 {
   *this = xmlNode;
@@ -88,10 +90,16 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
       m_state = SnapshotStateMapper::GetSnapshotStateForName(StringUtils::Trim(stateNode.GetText().c_str()).c_str());
       m_stateHasBeenSet = true;
     }
+    XmlNode stateMessageNode = resultNode.FirstChild("statusMessage");
+    if(!stateMessageNode.IsNull())
+    {
+      m_stateMessage = StringUtils::Trim(stateMessageNode.GetText().c_str());
+      m_stateMessageHasBeenSet = true;
+    }
     XmlNode startTimeNode = resultNode.FirstChild("startTime");
     if(!startTimeNode.IsNull())
     {
-      m_startTime = StringUtils::ConvertToDouble(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str());
+      m_startTime = DateTime(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_startTimeHasBeenSet = true;
     }
     XmlNode progressNode = resultNode.FirstChild("progress");
@@ -124,7 +132,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
       m_ownerAlias = StringUtils::Trim(ownerAliasNode.GetText().c_str());
       m_ownerAliasHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -148,6 +156,12 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
       m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
       m_kmsKeyIdHasBeenSet = true;
     }
+    XmlNode dataEncryptionKeyIdNode = resultNode.FirstChild("dataEncryptionKeyId");
+    if(!dataEncryptionKeyIdNode.IsNull())
+    {
+      m_dataEncryptionKeyId = StringUtils::Trim(dataEncryptionKeyIdNode.GetText().c_str());
+      m_dataEncryptionKeyIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -167,9 +181,13 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   {
       oStream << location << index << locationValue << ".State=" << SnapshotStateMapper::GetNameForSnapshotState(m_state) << "&";
   }
+  if(m_stateMessageHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".StateMessage=" << StringUtils::URLEncode(m_stateMessage.c_str()) << "&";
+  }
   if(m_startTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StartTime=" << m_startTime << "&";
+      oStream << location << index << locationValue << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_progressHasBeenSet)
   {
@@ -193,10 +211,11 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -207,6 +226,10 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_dataEncryptionKeyIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DataEncryptionKeyId=" << StringUtils::URLEncode(m_dataEncryptionKeyId.c_str()) << "&";
   }
   if(m_responseMetadataHasBeenSet)
   {
@@ -230,9 +253,13 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   {
       oStream << location << ".State=" << SnapshotStateMapper::GetNameForSnapshotState(m_state) << "&";
   }
+  if(m_stateMessageHasBeenSet)
+  {
+      oStream << location << ".StateMessage=" << StringUtils::URLEncode(m_stateMessage.c_str()) << "&";
+  }
   if(m_startTimeHasBeenSet)
   {
-      oStream << location << ".StartTime=" << m_startTime << "&";
+      oStream << location << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_progressHasBeenSet)
   {
@@ -256,11 +283,12 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_encryptedHasBeenSet)
@@ -270,6 +298,10 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_dataEncryptionKeyIdHasBeenSet)
+  {
+      oStream << location << ".DataEncryptionKeyId=" << StringUtils::URLEncode(m_dataEncryptionKeyId.c_str()) << "&";
   }
   if(m_responseMetadataHasBeenSet)
   {

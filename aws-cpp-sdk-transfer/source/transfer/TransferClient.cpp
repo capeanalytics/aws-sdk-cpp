@@ -39,6 +39,16 @@ static UploadBufferResourceType ResourceFactoryFunction(void)
     return Aws::MakeShared< UploadBuffer >(ALLOCATION_TAG, UPLOAD_BUFFER_SIZE);
 }
 
+TransferClientConfiguration::TransferClientConfiguration() :
+    m_uploadBufferCount(1),
+    m_uploadBufferManager(nullptr)
+{
+}
+
+TransferClientConfiguration::~TransferClientConfiguration()
+{
+}
+
 TransferClient::TransferClient(const std::shared_ptr<Aws::S3::S3Client>& s3Client, const TransferClientConfiguration& config) :
     m_s3Client(s3Client),
     m_config(config),
@@ -58,6 +68,24 @@ TransferClient::~TransferClient()
 std::shared_ptr<UploadFileRequest> TransferClient::UploadFile(const Aws::String& fileName, const Aws::String& bucketName, const Aws::String& keyName, const Aws::String& contentType, bool createBucket, bool doConsistencyChecks)
 {
     auto request = Aws::MakeShared<UploadFileRequest>(ALLOCATION_TAG, fileName, bucketName, keyName, contentType, m_s3Client, createBucket, doConsistencyChecks);
+
+    UploadFileInternal(request);
+
+    return request;
+}
+
+std::shared_ptr<UploadFileRequest> TransferClient::UploadFile(const Aws::String& fileName, const Aws::String& bucketName, const Aws::String& keyName, const Aws::String& contentType, const Aws::Map<Aws::String, Aws::String>& metadata, bool createBucket, bool doConsistencyChecks)
+{
+    auto request = Aws::MakeShared<UploadFileRequest>(ALLOCATION_TAG, fileName, bucketName, keyName, contentType, metadata, m_s3Client, createBucket, doConsistencyChecks);
+
+    UploadFileInternal(request);
+
+    return request;
+}
+
+std::shared_ptr<UploadFileRequest> TransferClient::UploadFile(const Aws::String& fileName, const Aws::String& bucketName, const Aws::String& keyName, const Aws::String& contentType, Aws::Map<Aws::String, Aws::String>&& metadata, bool createBucket, bool doConsistencyChecks)
+{
+    auto request = Aws::MakeShared<UploadFileRequest>(ALLOCATION_TAG, fileName, bucketName, keyName, contentType, std::move(metadata), m_s3Client, createBucket, doConsistencyChecks);
 
     UploadFileInternal(request);
 

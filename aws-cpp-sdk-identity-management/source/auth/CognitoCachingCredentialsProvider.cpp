@@ -1,5 +1,5 @@
 /*
-  * Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+  * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
   *
   * Licensed under the Apache License, Version 2.0 (the "License").
   * You may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
 using namespace Aws::Auth;
 using namespace Aws::CognitoIdentity;
 using namespace Aws::CognitoIdentity::Model;
+using namespace Aws::Utils;
 
 static const char* LOG_TAG = "CognitoCachingCredentialsProvider";
 static const char* MEM_TAG = "CognitoCachingCredentialsProvider";
@@ -36,6 +37,7 @@ CognitoCachingCredentialsProvider::CognitoCachingCredentialsProvider
         m_cachedCredentials("", ""),
         m_expiry(0.0)
 {
+    m_identityRepository->SetLoginsUpdatedCallback(std::bind(&CognitoCachingCredentialsProvider::OnLoginsUpdated, this, std::placeholders::_1));
 }
 
 AWSCredentials CognitoCachingCredentialsProvider::GetAWSCredentials()
@@ -54,11 +56,21 @@ AWSCredentials CognitoCachingCredentialsProvider::GetAWSCredentials()
                 AWS_LOG_INFO(LOG_TAG, "Successfully obtained cognito credentials");
                 const auto& cognitoCreds = getCredentialsForIdentityOutcome.GetResult().GetCredentials();
 
+                //If we went from anonymous to authenticated on a different machine than the original
+                //login, then we need to swap out the identity id to be the parent id.
+                const auto& parentIdentityId = getCredentialsForIdentityOutcome.GetResult().GetIdentityId();
+
+                if (m_identityRepository->GetIdentityId() != parentIdentityId)
+                {
+                    AWS_LOG_INFO(LOG_TAG, "A parent identity was from cognito which is different from the anonymous identity. Swapping that out now.");
+                    m_identityRepository->PersistIdentityId(parentIdentityId);
+                }
+
                 m_cachedCredentials.SetAWSAccessKeyId(cognitoCreds.GetAccessKeyId());
                 m_cachedCredentials.SetAWSSecretKey(cognitoCreds.GetSecretKey());
                 m_cachedCredentials.SetSessionToken(cognitoCreds.GetSessionToken());
-                m_expiry = cognitoCreds.GetExpiration();
-                AWS_LOGSTREAM_INFO(LOG_TAG, "Credentials will expire next at " << m_expiry);
+                m_expiry = cognitoCreds.GetExpiration().SecondsWithMSPrecision();
+                AWS_LOGSTREAM_INFO(LOG_TAG, "Credentials will expire next at " << m_expiry.load());
             }
             else
             {
@@ -74,11 +86,16 @@ AWSCredentials CognitoCachingCredentialsProvider::GetAWSCredentials()
 
 bool CognitoCachingCredentialsProvider::IsTimeExpired(double expiry)
 {
-    using namespace std::chrono;
     //30s grace buffer so requests have time to finish before expiry.
     static const double GRACE_BUFFER = 30.0;   
 
-    return expiry < (Utils::DateTime::ComputeCurrentTimestampInAmazonFormat() - GRACE_BUFFER);
+    return DateTime::Now().SecondsWithMSPrecision() > (expiry - GRACE_BUFFER);
+}
+
+void CognitoCachingCredentialsProvider::OnLoginsUpdated(const PersistentCognitoIdentityProvider&)
+{
+    AWS_LOG_INFO(LOG_TAG, "Logins Updated in the identity repository, resetting the expiry to force a refresh on the next run.");
+    m_expiry.store(DateTime().SecondsWithMSPrecision());
 }
 
 
@@ -98,7 +115,7 @@ GetCredentialsForIdentityOutcome FetchCredentialsFromCognito(const CognitoIdenti
         auto accountId = identityRepository.GetAccountId();
         auto identityPoolId = identityRepository.GetIdentityPoolId();
 
-        AWS_LOGSTREAM_INFO(logTag, "Identity not found, requesting an anonymous id for accountId " <<
+        AWS_LOGSTREAM_INFO(logTag, "Identity not found, requesting an id for accountId " <<
                                          accountId << " identity pool id " << identityPoolId <<
                                          " with logins.");
 
@@ -107,7 +124,6 @@ GetCredentialsForIdentityOutcome FetchCredentialsFromCognito(const CognitoIdenti
         getIdRequest.SetIdentityPoolId(identityPoolId);
         if(includeLogins)
         {
-
             getIdRequest.SetLogins(cognitoLogins);
         }
 
@@ -116,12 +132,7 @@ GetCredentialsForIdentityOutcome FetchCredentialsFromCognito(const CognitoIdenti
         {
             auto identityId = getIdOutcome.GetResult().GetIdentityId();
             AWS_LOGSTREAM_INFO(logTag, "Successfully retrieved identity: " << identityId);
-            identityRepository.PersistIdentityId(identityId);
-
-            if(includeLogins)
-            {
-                identityRepository.PersistLogins(logins);
-            }
+            identityRepository.PersistIdentityId(identityId);            
         }
         else
         {

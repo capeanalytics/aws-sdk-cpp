@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -46,23 +46,23 @@ void ListPartsRequest::AddQueryStringParameters(URI& uri) const
     Aws::StringStream ss;
     if(m_maxPartsHasBeenSet)
     {
-     ss << m_maxParts;
-     uri.AddQueryStringParameter("max-parts", ss.str());
-     ss.str("");
+      ss << m_maxParts;
+      uri.AddQueryStringParameter("max-parts", ss.str());
+      ss.str("");
     }
 
     if(m_partNumberMarkerHasBeenSet)
     {
-     ss << m_partNumberMarker;
-     uri.AddQueryStringParameter("part-number-marker", ss.str());
-     ss.str("");
+      ss << m_partNumberMarker;
+      uri.AddQueryStringParameter("part-number-marker", ss.str());
+      ss.str("");
     }
 
     if(m_uploadIdHasBeenSet)
     {
-     ss << m_uploadId;
-     uri.AddQueryStringParameter("uploadId", ss.str());
-     ss.str("");
+      ss << m_uploadId;
+      uri.AddQueryStringParameter("uploadId", ss.str());
+      ss.str("");
     }
 
 }
@@ -73,9 +73,8 @@ Aws::Http::HeaderValueCollection ListPartsRequest::GetRequestSpecificHeaders() c
   Aws::StringStream ss;
   if(m_requestPayerHasBeenSet)
   {
-   headers.insert(Aws::Http::HeaderValuePair("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer)));
+    headers.insert(Aws::Http::HeaderValuePair("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer)));
   }
 
-  return std::move(headers);
-
+  return headers;
 }

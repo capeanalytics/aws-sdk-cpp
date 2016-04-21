@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -36,7 +36,9 @@ UpdateAutoScalingGroupRequest::UpdateAutoScalingGroupRequest() :
     m_healthCheckGracePeriodHasBeenSet(false),
     m_placementGroupHasBeenSet(false),
     m_vPCZoneIdentifierHasBeenSet(false),
-    m_terminationPoliciesHasBeenSet(false)
+    m_terminationPoliciesHasBeenSet(false),
+    m_newInstancesProtectedFromScaleIn(false),
+    m_newInstancesProtectedFromScaleInHasBeenSet(false)
 {
 }
 
@@ -103,6 +105,10 @@ Aws::String UpdateAutoScalingGroupRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       terminationPoliciesCount++;
     }
+  }
+  if(m_newInstancesProtectedFromScaleInHasBeenSet)
+  {
+    ss << "NewInstancesProtectedFromScaleIn=" << m_newInstancesProtectedFromScaleIn << "&";
   }
   ss << "Version=2011-01-01";
   return ss.str();

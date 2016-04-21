@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -75,9 +75,10 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_loadAverageHasBeenSet)
   {
+      unsigned loadAverageIdx = 1;
       for(auto& item : m_loadAverage)
       {
-        oStream << location << index << locationValue << ".LoadAverage=" << item << "&";
+        oStream << location << index << locationValue << ".LoadAverage.member." << loadAverageIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
 }
@@ -92,9 +93,10 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_loadAverageHasBeenSet)
   {
+      unsigned loadAverageIdx = 1;
       for(auto& item : m_loadAverage)
       {
-        oStream << location << ".LoadAverage=" << item << "&";
+          oStream << location << ".LoadAverage.member." << loadAverageIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
 }

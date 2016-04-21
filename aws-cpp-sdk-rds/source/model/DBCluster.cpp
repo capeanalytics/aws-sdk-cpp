@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -36,12 +36,10 @@ DBCluster::DBCluster() :
     m_dBSubnetGroupHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_percentProgressHasBeenSet(false),
-    m_earliestRestorableTime(0.0),
     m_earliestRestorableTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
-    m_latestRestorableTime(0.0),
     m_latestRestorableTimeHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
@@ -51,7 +49,11 @@ DBCluster::DBCluster() :
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_dBClusterMembersHasBeenSet(false),
     m_vpcSecurityGroupsHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false)
+    m_hostedZoneIdHasBeenSet(false),
+    m_storageEncrypted(false),
+    m_storageEncryptedHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_dbClusterResourceIdHasBeenSet(false)
 {
 }
 
@@ -68,12 +70,10 @@ DBCluster::DBCluster(const XmlNode& xmlNode) :
     m_dBSubnetGroupHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_percentProgressHasBeenSet(false),
-    m_earliestRestorableTime(0.0),
     m_earliestRestorableTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
-    m_latestRestorableTime(0.0),
     m_latestRestorableTimeHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
@@ -83,7 +83,11 @@ DBCluster::DBCluster(const XmlNode& xmlNode) :
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_dBClusterMembersHasBeenSet(false),
     m_vpcSecurityGroupsHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false)
+    m_hostedZoneIdHasBeenSet(false),
+    m_storageEncrypted(false),
+    m_storageEncryptedHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_dbClusterResourceIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -163,7 +167,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     XmlNode earliestRestorableTimeNode = resultNode.FirstChild("EarliestRestorableTime");
     if(!earliestRestorableTimeNode.IsNull())
     {
-      m_earliestRestorableTime = StringUtils::ConvertToDouble(StringUtils::Trim(earliestRestorableTimeNode.GetText().c_str()).c_str());
+      m_earliestRestorableTime = DateTime(StringUtils::Trim(earliestRestorableTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_earliestRestorableTimeHasBeenSet = true;
     }
     XmlNode endpointNode = resultNode.FirstChild("Endpoint");
@@ -187,7 +191,7 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     XmlNode latestRestorableTimeNode = resultNode.FirstChild("LatestRestorableTime");
     if(!latestRestorableTimeNode.IsNull())
     {
-      m_latestRestorableTime = StringUtils::ConvertToDouble(StringUtils::Trim(latestRestorableTimeNode.GetText().c_str()).c_str());
+      m_latestRestorableTime = DateTime(StringUtils::Trim(latestRestorableTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_latestRestorableTimeHasBeenSet = true;
     }
     XmlNode portNode = resultNode.FirstChild("Port");
@@ -256,6 +260,24 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
       m_hostedZoneId = StringUtils::Trim(hostedZoneIdNode.GetText().c_str());
       m_hostedZoneIdHasBeenSet = true;
     }
+    XmlNode storageEncryptedNode = resultNode.FirstChild("StorageEncrypted");
+    if(!storageEncryptedNode.IsNull())
+    {
+      m_storageEncrypted = StringUtils::ConvertToBool(StringUtils::Trim(storageEncryptedNode.GetText().c_str()).c_str());
+      m_storageEncryptedHasBeenSet = true;
+    }
+    XmlNode kmsKeyIdNode = resultNode.FirstChild("KmsKeyId");
+    if(!kmsKeyIdNode.IsNull())
+    {
+      m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
+      m_kmsKeyIdHasBeenSet = true;
+    }
+    XmlNode dbClusterResourceIdNode = resultNode.FirstChild("DbClusterResourceId");
+    if(!dbClusterResourceIdNode.IsNull())
+    {
+      m_dbClusterResourceId = StringUtils::Trim(dbClusterResourceIdNode.GetText().c_str());
+      m_dbClusterResourceIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -269,9 +291,10 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_backupRetentionPeriodHasBeenSet)
@@ -308,7 +331,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_earliestRestorableTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EarliestRestorableTime=" << m_earliestRestorableTime << "&";
+      oStream << location << index << locationValue << ".EarliestRestorableTime=" << StringUtils::URLEncode(m_earliestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endpointHasBeenSet)
   {
@@ -324,7 +347,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_latestRestorableTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LatestRestorableTime=" << m_latestRestorableTime << "&";
+      oStream << location << index << locationValue << ".LatestRestorableTime=" << StringUtils::URLEncode(m_latestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_portHasBeenSet)
   {
@@ -336,10 +359,11 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_dBClusterOptionGroupMembershipsHasBeenSet)
   {
+      unsigned dBClusterOptionGroupMembershipsIdx = 1;
       for(auto& item : m_dBClusterOptionGroupMemberships)
       {
         Aws::StringStream dBClusterOptionGroupMembershipsSs;
-        dBClusterOptionGroupMembershipsSs << location << index << locationValue << ".DBClusterOptionGroup";
+        dBClusterOptionGroupMembershipsSs << location << index << locationValue << ".DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
         item.OutputToStream(oStream, dBClusterOptionGroupMembershipsSs.str().c_str());
       }
   }
@@ -353,25 +377,39 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_dBClusterMembersHasBeenSet)
   {
+      unsigned dBClusterMembersIdx = 1;
       for(auto& item : m_dBClusterMembers)
       {
         Aws::StringStream dBClusterMembersSs;
-        dBClusterMembersSs << location << index << locationValue << ".DBClusterMember";
+        dBClusterMembersSs << location << index << locationValue << ".DBClusterMember." << dBClusterMembersIdx++;
         item.OutputToStream(oStream, dBClusterMembersSs.str().c_str());
       }
   }
   if(m_vpcSecurityGroupsHasBeenSet)
   {
+      unsigned vpcSecurityGroupsIdx = 1;
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership";
+        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
   if(m_hostedZoneIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".HostedZoneId=" << StringUtils::URLEncode(m_hostedZoneId.c_str()) << "&";
+  }
+  if(m_storageEncryptedHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".StorageEncrypted=" << m_storageEncrypted << "&";
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_dbClusterResourceIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DbClusterResourceId=" << StringUtils::URLEncode(m_dbClusterResourceId.c_str()) << "&";
   }
 }
 
@@ -383,9 +421,10 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_backupRetentionPeriodHasBeenSet)
@@ -422,7 +461,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_earliestRestorableTimeHasBeenSet)
   {
-      oStream << location << ".EarliestRestorableTime=" << m_earliestRestorableTime << "&";
+      oStream << location << ".EarliestRestorableTime=" << StringUtils::URLEncode(m_earliestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endpointHasBeenSet)
   {
@@ -438,7 +477,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_latestRestorableTimeHasBeenSet)
   {
-      oStream << location << ".LatestRestorableTime=" << m_latestRestorableTime << "&";
+      oStream << location << ".LatestRestorableTime=" << StringUtils::URLEncode(m_latestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_portHasBeenSet)
   {
@@ -450,11 +489,12 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_dBClusterOptionGroupMembershipsHasBeenSet)
   {
+      unsigned dBClusterOptionGroupMembershipsIdx = 1;
       for(auto& item : m_dBClusterOptionGroupMemberships)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DBClusterOptionGroup";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream dBClusterOptionGroupMembershipsSs;
+        dBClusterOptionGroupMembershipsSs << location <<  ".DBClusterOptionGroup." << dBClusterOptionGroupMembershipsIdx++;
+        item.OutputToStream(oStream, dBClusterOptionGroupMembershipsSs.str().c_str());
       }
   }
   if(m_preferredBackupWindowHasBeenSet)
@@ -467,24 +507,38 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_dBClusterMembersHasBeenSet)
   {
+      unsigned dBClusterMembersIdx = 1;
       for(auto& item : m_dBClusterMembers)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DBClusterMember";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream dBClusterMembersSs;
+        dBClusterMembersSs << location <<  ".DBClusterMember." << dBClusterMembersIdx++;
+        item.OutputToStream(oStream, dBClusterMembersSs.str().c_str());
       }
   }
   if(m_vpcSecurityGroupsHasBeenSet)
   {
+      unsigned vpcSecurityGroupsIdx = 1;
       for(auto& item : m_vpcSecurityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".VpcSecurityGroupMembership";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream vpcSecurityGroupsSs;
+        vpcSecurityGroupsSs << location <<  ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
   if(m_hostedZoneIdHasBeenSet)
   {
       oStream << location << ".HostedZoneId=" << StringUtils::URLEncode(m_hostedZoneId.c_str()) << "&";
+  }
+  if(m_storageEncryptedHasBeenSet)
+  {
+      oStream << location << ".StorageEncrypted=" << m_storageEncrypted << "&";
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+      oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_dbClusterResourceIdHasBeenSet)
+  {
+      oStream << location << ".DbClusterResourceId=" << StringUtils::URLEncode(m_dbClusterResourceId.c_str()) << "&";
   }
 }

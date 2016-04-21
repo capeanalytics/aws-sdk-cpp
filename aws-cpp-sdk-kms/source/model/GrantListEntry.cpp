@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ GrantListEntry::GrantListEntry() :
     m_keyIdHasBeenSet(false),
     m_grantIdHasBeenSet(false),
     m_nameHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
     m_granteePrincipalHasBeenSet(false),
     m_retiringPrincipalHasBeenSet(false),
@@ -39,7 +38,6 @@ GrantListEntry::GrantListEntry(const JsonValue& jsonValue) :
     m_keyIdHasBeenSet(false),
     m_grantIdHasBeenSet(false),
     m_nameHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
     m_granteePrincipalHasBeenSet(false),
     m_retiringPrincipalHasBeenSet(false),
@@ -145,8 +143,7 @@ JsonValue GrantListEntry::Jsonize() const
 
   if(m_creationDateHasBeenSet)
   {
-   payload.WithDouble("CreationDate", m_creationDate);
-
+   payload.WithDouble("CreationDate", m_creationDate.SecondsWithMSPrecision());
   }
 
   if(m_granteePrincipalHasBeenSet)
@@ -184,5 +181,5 @@ JsonValue GrantListEntry::Jsonize() const
 
   }
 
-  return std::move(payload);
+  return payload;
 }

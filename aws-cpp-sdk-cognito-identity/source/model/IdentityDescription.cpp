@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,9 +24,7 @@ using namespace Aws::Utils;
 IdentityDescription::IdentityDescription() : 
     m_identityIdHasBeenSet(false),
     m_loginsHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
-    m_lastModifiedDate(0.0),
     m_lastModifiedDateHasBeenSet(false)
 {
 }
@@ -34,9 +32,7 @@ IdentityDescription::IdentityDescription() :
 IdentityDescription::IdentityDescription(const JsonValue& jsonValue) : 
     m_identityIdHasBeenSet(false),
     m_loginsHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
-    m_lastModifiedDate(0.0),
     m_lastModifiedDateHasBeenSet(false)
 {
   *this = jsonValue;
@@ -101,15 +97,13 @@ JsonValue IdentityDescription::Jsonize() const
 
   if(m_creationDateHasBeenSet)
   {
-   payload.WithDouble("CreationDate", m_creationDate);
-
+   payload.WithDouble("CreationDate", m_creationDate.SecondsWithMSPrecision());
   }
 
   if(m_lastModifiedDateHasBeenSet)
   {
-   payload.WithDouble("LastModifiedDate", m_lastModifiedDate);
-
+   payload.WithDouble("LastModifiedDate", m_lastModifiedDate.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

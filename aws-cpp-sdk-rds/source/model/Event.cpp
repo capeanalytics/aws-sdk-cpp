@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ Event::Event() :
     m_sourceTypeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventCategoriesHasBeenSet(false),
-    m_date(0.0),
     m_dateHasBeenSet(false)
 {
 }
@@ -38,7 +37,6 @@ Event::Event(const XmlNode& xmlNode) :
     m_sourceTypeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventCategoriesHasBeenSet(false),
-    m_date(0.0),
     m_dateHasBeenSet(false)
 {
   *this = xmlNode;
@@ -59,7 +57,7 @@ Event& Event::operator =(const XmlNode& xmlNode)
     XmlNode sourceTypeNode = resultNode.FirstChild("SourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = StringUtils::Trim(sourceTypeNode.GetText().c_str());
+      m_sourceType = SourceTypeMapper::GetSourceTypeForName(StringUtils::Trim(sourceTypeNode.GetText().c_str()).c_str());
       m_sourceTypeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("Message");
@@ -83,7 +81,7 @@ Event& Event::operator =(const XmlNode& xmlNode)
     XmlNode dateNode = resultNode.FirstChild("Date");
     if(!dateNode.IsNull())
     {
-      m_date = StringUtils::ConvertToDouble(StringUtils::Trim(dateNode.GetText().c_str()).c_str());
+      m_date = DateTime(StringUtils::Trim(dateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_dateHasBeenSet = true;
     }
   }
@@ -99,7 +97,7 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(m_sourceType.c_str()) << "&";
+      oStream << location << index << locationValue << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
   }
   if(m_messageHasBeenSet)
   {
@@ -107,14 +105,15 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_eventCategoriesHasBeenSet)
   {
+      unsigned eventCategoriesIdx = 1;
       for(auto& item : m_eventCategories)
       {
-        oStream << location << index << locationValue << ".EventCategory=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Date=" << m_date << "&";
+      oStream << location << index << locationValue << ".Date=" << StringUtils::URLEncode(m_date.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
 
@@ -126,7 +125,7 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << ".SourceType=" << StringUtils::URLEncode(m_sourceType.c_str()) << "&";
+      oStream << location << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
   }
   if(m_messageHasBeenSet)
   {
@@ -134,13 +133,14 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_eventCategoriesHasBeenSet)
   {
+      unsigned eventCategoriesIdx = 1;
       for(auto& item : m_eventCategories)
       {
-        oStream << location << ".EventCategory=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_dateHasBeenSet)
   {
-      oStream << location << ".Date=" << m_date << "&";
+      oStream << location << ".Date=" << StringUtils::URLEncode(m_date.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }

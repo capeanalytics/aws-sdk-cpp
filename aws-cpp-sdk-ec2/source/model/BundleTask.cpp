@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,9 +27,7 @@ BundleTask::BundleTask() :
     m_instanceIdHasBeenSet(false),
     m_bundleIdHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_startTime(0.0),
     m_startTimeHasBeenSet(false),
-    m_updateTime(0.0),
     m_updateTimeHasBeenSet(false),
     m_storageHasBeenSet(false),
     m_progressHasBeenSet(false),
@@ -41,9 +39,7 @@ BundleTask::BundleTask(const XmlNode& xmlNode) :
     m_instanceIdHasBeenSet(false),
     m_bundleIdHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_startTime(0.0),
     m_startTimeHasBeenSet(false),
-    m_updateTime(0.0),
     m_updateTimeHasBeenSet(false),
     m_storageHasBeenSet(false),
     m_progressHasBeenSet(false),
@@ -79,13 +75,13 @@ BundleTask& BundleTask::operator =(const XmlNode& xmlNode)
     XmlNode startTimeNode = resultNode.FirstChild("startTime");
     if(!startTimeNode.IsNull())
     {
-      m_startTime = StringUtils::ConvertToDouble(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str());
+      m_startTime = DateTime(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_startTimeHasBeenSet = true;
     }
     XmlNode updateTimeNode = resultNode.FirstChild("updateTime");
     if(!updateTimeNode.IsNull())
     {
-      m_updateTime = StringUtils::ConvertToDouble(StringUtils::Trim(updateTimeNode.GetText().c_str()).c_str());
+      m_updateTime = DateTime(StringUtils::Trim(updateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_updateTimeHasBeenSet = true;
     }
     XmlNode storageNode = resultNode.FirstChild("storage");
@@ -127,11 +123,11 @@ void BundleTask::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_startTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StartTime=" << m_startTime << "&";
+      oStream << location << index << locationValue << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_updateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UpdateTime=" << m_updateTime << "&";
+      oStream << location << index << locationValue << ".UpdateTime=" << StringUtils::URLEncode(m_updateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_storageHasBeenSet)
   {
@@ -167,11 +163,11 @@ void BundleTask::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_startTimeHasBeenSet)
   {
-      oStream << location << ".StartTime=" << m_startTime << "&";
+      oStream << location << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_updateTimeHasBeenSet)
   {
-      oStream << location << ".UpdateTime=" << m_updateTime << "&";
+      oStream << location << ".UpdateTime=" << StringUtils::URLEncode(m_updateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_storageHasBeenSet)
   {

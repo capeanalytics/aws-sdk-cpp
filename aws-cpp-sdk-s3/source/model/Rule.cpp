@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,7 +30,8 @@ Rule::Rule() :
     m_statusHasBeenSet(false),
     m_transitionHasBeenSet(false),
     m_noncurrentVersionTransitionHasBeenSet(false),
-    m_noncurrentVersionExpirationHasBeenSet(false)
+    m_noncurrentVersionExpirationHasBeenSet(false),
+    m_abortIncompleteMultipartUploadHasBeenSet(false)
 {
 }
 
@@ -41,7 +42,8 @@ Rule::Rule(const XmlNode& xmlNode) :
     m_statusHasBeenSet(false),
     m_transitionHasBeenSet(false),
     m_noncurrentVersionTransitionHasBeenSet(false),
-    m_noncurrentVersionExpirationHasBeenSet(false)
+    m_noncurrentVersionExpirationHasBeenSet(false),
+    m_abortIncompleteMultipartUploadHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -94,6 +96,12 @@ Rule& Rule::operator =(const XmlNode& xmlNode)
       m_noncurrentVersionExpiration = noncurrentVersionExpirationNode;
       m_noncurrentVersionExpirationHasBeenSet = true;
     }
+    XmlNode abortIncompleteMultipartUploadNode = resultNode.FirstChild("AbortIncompleteMultipartUpload");
+    if(!abortIncompleteMultipartUploadNode.IsNull())
+    {
+      m_abortIncompleteMultipartUpload = abortIncompleteMultipartUploadNode;
+      m_abortIncompleteMultipartUploadHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -142,6 +150,12 @@ void Rule::AddToNode(XmlNode& parentNode) const
   {
    XmlNode noncurrentVersionExpirationNode = parentNode.CreateChildElement("NoncurrentVersionExpiration");
    m_noncurrentVersionExpiration.AddToNode(noncurrentVersionExpirationNode);
+  }
+
+  if(m_abortIncompleteMultipartUploadHasBeenSet)
+  {
+   XmlNode abortIncompleteMultipartUploadNode = parentNode.CreateChildElement("AbortIncompleteMultipartUpload");
+   m_abortIncompleteMultipartUpload.AddToNode(abortIncompleteMultipartUploadNode);
   }
 
 }

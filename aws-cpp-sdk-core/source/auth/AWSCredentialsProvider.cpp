@@ -42,14 +42,15 @@ using namespace Aws::Internal;
 
 
 static const char* ACCESS_KEY_ENV_VARIABLE = "AWS_ACCESS_KEY_ID";
-static const char* SECRET_KEY_ENV_VAR = "AWS_SECRET_KEY_ID";
+static const char* SECRET_KEY_ENV_VAR = "AWS_SECRET_ACCESS_KEY";
+static const char* SESSION_TOKEN_ENV_VARIABLE = "AWS_SESSION_TOKEN";
 static const char* DEFAULT_PROFILE = "default";
-static const char* AWS_PROFILE_ENVIRONMENT_VARIABLE = "AWS_PROFILE";
+static const char* AWS_PROFILE_ENVIRONMENT_VARIABLE = "AWS_DEFAULT_PROFILE";
 static const char* AWS_ACCESS_KEY_ID = "aws_access_key_id";
 static const char* AWS_SECRET_ACCESS_KEY = "aws_secret_access_key";
 static const char* AWS_SESSION_TOKEN = "aws_session_token";
 
-static const char* AWS_CREDENTIAL_PROFILES_FILE = "AWS_CREDENTIAL_PROFILES_FILE";
+static const char* AWS_CREDENTIAL_PROFILES_FILE = "AWS_SHARED_CREDENTIALS_FILE";
 
 static const char* PROFILE_DEFAULT_FILENAME = "credentials";
 
@@ -81,31 +82,34 @@ bool AWSCredentialsProvider::IsTimeToRefresh(long reloadFrequency)
 static const char* environmentLogTag = "EnvironmentAWSCredentialsProvider";
 
 
-EnvironmentAWSCredentialsProvider::EnvironmentAWSCredentialsProvider()
-{
-}
-
-
 AWSCredentials EnvironmentAWSCredentialsProvider::GetAWSCredentials()
 {
     char* accessKey = std::getenv(ACCESS_KEY_ENV_VARIABLE);
-
+    AWSCredentials credentials("", "", "");
 
     if (accessKey != nullptr)
     {
-        AWS_LOG_INFO(environmentLogTag, "Found credential in environment with access key id %s.", accessKey);
-        char* secretKey = std::getenv(SECRET_KEY_ENV_VAR);
+        credentials.SetAWSAccessKeyId(accessKey);
 
+        AWS_LOGSTREAM_INFO(environmentLogTag, "Found credential in environment with access key id " << accessKey);
+        char* secretKey = std::getenv(SECRET_KEY_ENV_VAR);
 
         if (secretKey)
         {
-            AWS_LOG_INFO(environmentLogTag, "Found secret key, returning credentials.");
-            return AWSCredentials(accessKey, secretKey);
+            credentials.SetAWSSecretKey(secretKey);
+            AWS_LOG_INFO(environmentLogTag, "Found secret key");
+        }
+
+        char* sessionToken = std::getenv(SESSION_TOKEN_ENV_VARIABLE);
+
+        if(sessionToken)
+        {
+            credentials.SetSessionToken(sessionToken);
+            AWS_LOG_INFO(environmentLogTag, "Found sessionToken");
         }
     }
 
-
-    return AWSCredentials("", "");
+    return credentials;
 }
 
 static Aws::String GetBaseDirectory()
@@ -178,7 +182,8 @@ ProfileConfigFileAWSCredentialsProvider::ProfileConfigFileAWSCredentialsProvider
     }
 
 
-    AWS_LOG_INFO(profileLogTag, "Setting provider to read credentials from %s, for use with profile %s.", m_fileName.c_str(), m_profileToUse.c_str());
+    AWS_LOGSTREAM_INFO(profileLogTag, "Setting provider to read credentials from " <<  m_fileName
+                                      << ", for use with profile " << m_profileToUse);
 }
 
 ProfileConfigFileAWSCredentialsProvider::ProfileConfigFileAWSCredentialsProvider(const char* profile, long refreshRateMs) :
@@ -187,7 +192,8 @@ ProfileConfigFileAWSCredentialsProvider::ProfileConfigFileAWSCredentialsProvider
         m_credentials(nullptr),
         m_loadFrequencyMs(refreshRateMs)
 {
-    AWS_LOG_INFO(profileLogTag, "Setting provider to read credentials from %s, for use with profile %s.", m_fileName.c_str(), m_profileToUse.c_str());
+    AWS_LOGSTREAM_INFO(profileLogTag, "Setting provider to read credentials from " << m_fileName
+                                      << ", for use with profile " << m_profileToUse);
 }
 
 AWSCredentials ProfileConfigFileAWSCredentialsProvider::GetAWSCredentials()
@@ -254,7 +260,7 @@ Aws::Map<Aws::String, Aws::String> ProfileConfigFileAWSCredentialsProvider::Pars
             if (trimmedLine.front() == '[' && trimmedLine.back() == ']')
             {
                 profile = StringUtils::Trim(trimmedLine.substr(1, trimmedLine.length() - 2).c_str());
-                AWS_LOG_DEBUG(profileLogTag, "Found profile %s.", profile.c_str());
+                AWS_LOGSTREAM_DEBUG(profileLogTag, "Found profile " << profile);
             }
 
             Aws::Vector<Aws::String> propertyPair = StringUtils::Split(trimmedLine, '=');
@@ -274,45 +280,28 @@ Aws::Map<Aws::String, Aws::String> ProfileConfigFileAWSCredentialsProvider::Pars
     if (profileFile.is_open())
         profileFile.close();
 
-    return std::move(propertyValueMap);
+    return propertyValueMap;
 }
-
-
-Aws::String ProfileConfigFileAWSCredentialsProvider::GetAccountIdForProfile(const Aws::String& profileName)
-{
-    auto profileMap = ProfileConfigFileAWSCredentialsProvider::ParseProfileConfigFile(ProfileConfigFileAWSCredentialsProvider::GetProfileFilename());
-
-    Aws::String key = profileName.c_str() + Aws::String(":") + AWS_ACCOUNT_ID;
-    auto iter = profileMap.find(key);
-    if (iter != profileMap.cend())
-    {
-        return iter->second.c_str();
-    }
-
-    return Aws::String("");
-}
-
 
 static const char* instanceLogTag = "InstanceProfileCredentialsProvider";
-
 
 InstanceProfileCredentialsProvider::InstanceProfileCredentialsProvider(long refreshRateMs) :
         m_credentials(nullptr),
         m_loadFrequencyMs(refreshRateMs)
 {
-    AWS_LOG_INFO(instanceLogTag, "Creating Instance with default EC2MetadataClient and refresh rate %d.", refreshRateMs);
+    AWS_LOGSTREAM_INFO(instanceLogTag, "Creating Instance with default EC2MetadataClient and refresh rate " << refreshRateMs);
 
     m_metadataClient = Aws::MakeShared<EC2MetadataClient>(instanceLogTag);
 }
 
 
-InstanceProfileCredentialsProvider::InstanceProfileCredentialsProvider(std::shared_ptr<EC2MetadataClient> mdClient,
+InstanceProfileCredentialsProvider::InstanceProfileCredentialsProvider(const std::shared_ptr<EC2MetadataClient>& mdClient,
                                                                        long refreshRateMs) :
         m_metadataClient(mdClient),
         m_credentials(nullptr),
         m_loadFrequencyMs(refreshRateMs)
 {
-    AWS_LOG_INFO(instanceLogTag, "Creating Instance with injected EC2MetadataClient and refresh rate %d.", refreshRateMs);
+    AWS_LOGSTREAM_INFO(instanceLogTag, "Creating Instance with injected EC2MetadataClient and refresh rate " << refreshRateMs);
 }
 
 
@@ -350,14 +339,14 @@ void InstanceProfileCredentialsProvider::RefreshIfExpired()
         if (jsonValue.WasParseSuccessful())
         {
             accessKey = jsonValue.GetString(accessKeyId);
-            AWS_LOG_INFO(instanceLogTag, "Successfully pulled credentials from metadata service with access key %s", accessKey.c_str());
+            AWS_LOGSTREAM_INFO(instanceLogTag, "Successfully pulled credentials from metadata service with access key " << accessKey);
 
             secretKey = jsonValue.GetString(secretAccessKey);
             token = jsonValue.GetString("Token");
         }
         else
         {
-            AWS_LOG_ERROR(instanceLogTag, "Failed to parse output from Ec2MetadataService with error %s.", jsonValue.GetErrorMessage().c_str());
+            AWS_LOGSTREAM_ERROR(instanceLogTag, "Failed to parse output from Ec2MetadataService with error " << jsonValue.GetErrorMessage());
         }
 
         m_credentials = Aws::MakeShared<AWSCredentials>(instanceLogTag, accessKey, secretKey, token);

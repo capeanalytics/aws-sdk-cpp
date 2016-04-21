@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ DeploymentConfigInfo::DeploymentConfigInfo() :
     m_deploymentConfigIdHasBeenSet(false),
     m_deploymentConfigNameHasBeenSet(false),
     m_minimumHealthyHostsHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false)
 {
 }
@@ -34,7 +33,6 @@ DeploymentConfigInfo::DeploymentConfigInfo(const JsonValue& jsonValue) :
     m_deploymentConfigIdHasBeenSet(false),
     m_deploymentConfigNameHasBeenSet(false),
     m_minimumHealthyHostsHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false)
 {
   *this = jsonValue;
@@ -97,9 +95,8 @@ JsonValue DeploymentConfigInfo::Jsonize() const
 
   if(m_createTimeHasBeenSet)
   {
-   payload.WithDouble("createTime", m_createTime);
-
+   payload.WithDouble("createTime", m_createTime.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

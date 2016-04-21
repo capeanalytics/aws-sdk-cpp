@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -66,7 +66,7 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
       m_volumeStatus = volumeStatusNode;
       m_volumeStatusHasBeenSet = true;
     }
-    XmlNode eventsNode = resultNode.FirstChild("Events");
+    XmlNode eventsNode = resultNode.FirstChild("eventsSet");
     if(!eventsNode.IsNull())
     {
       XmlNode eventsMember = eventsNode.FirstChild("item");
@@ -78,7 +78,7 @@ VolumeStatusItem& VolumeStatusItem::operator =(const XmlNode& xmlNode)
 
       m_eventsHasBeenSet = true;
     }
-    XmlNode actionsNode = resultNode.FirstChild("Actions");
+    XmlNode actionsNode = resultNode.FirstChild("actionsSet");
     if(!actionsNode.IsNull())
     {
       XmlNode actionsMember = actionsNode.FirstChild("item");
@@ -113,19 +113,21 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_eventsHasBeenSet)
   {
+      unsigned eventsIdx = 1;
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location << index << locationValue << ".item";
+        eventsSs << location << index << locationValue << ".EventsSet." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
   if(m_actionsHasBeenSet)
   {
+      unsigned actionsIdx = 1;
       for(auto& item : m_actions)
       {
         Aws::StringStream actionsSs;
-        actionsSs << location << index << locationValue << ".item";
+        actionsSs << location << index << locationValue << ".ActionsSet." << actionsIdx++;
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }
@@ -149,20 +151,22 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_eventsHasBeenSet)
   {
+      unsigned eventsIdx = 1;
       for(auto& item : m_events)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream eventsSs;
+        eventsSs << location <<  ".item." << eventsIdx++;
+        item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
   if(m_actionsHasBeenSet)
   {
+      unsigned actionsIdx = 1;
       for(auto& item : m_actions)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream actionsSs;
+        actionsSs << location <<  ".item." << actionsIdx++;
+        item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }
 }

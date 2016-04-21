@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/elasticache/model/AutomaticFailoverStatus.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -24,54 +26,67 @@ static const int disabling_HASH = HashingUtils::HashString("disabling");
 
 namespace Aws
 {
-namespace ElastiCache
-{
-namespace Model
-{
-namespace AutomaticFailoverStatusMapper
-{
-AutomaticFailoverStatus GetAutomaticFailoverStatusForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
+  namespace ElastiCache
+  {
+    namespace Model
+    {
+      namespace AutomaticFailoverStatusMapper
+      {
 
-  if (hashCode == enabled_HASH)
-  {
-    return AutomaticFailoverStatus::enabled;
-  }
-  else if (hashCode == disabled_HASH)
-  {
-    return AutomaticFailoverStatus::disabled;
-  }
-  else if (hashCode == enabling_HASH)
-  {
-    return AutomaticFailoverStatus::enabling;
-  }
-  else if (hashCode == disabling_HASH)
-  {
-    return AutomaticFailoverStatus::disabling;
-  }
 
-  return AutomaticFailoverStatus::NOT_SET;
-}
+        AutomaticFailoverStatus GetAutomaticFailoverStatusForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == enabled_HASH)
+          {
+            return AutomaticFailoverStatus::enabled;
+          }
+          else if (hashCode == disabled_HASH)
+          {
+            return AutomaticFailoverStatus::disabled;
+          }
+          else if (hashCode == enabling_HASH)
+          {
+            return AutomaticFailoverStatus::enabling;
+          }
+          else if (hashCode == disabling_HASH)
+          {
+            return AutomaticFailoverStatus::disabling;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<AutomaticFailoverStatus>(hashCode);
+          }
 
-Aws::String GetNameForAutomaticFailoverStatus(AutomaticFailoverStatus value)
-{
-  switch(value)
-  {
-  case AutomaticFailoverStatus::enabled:
-    return "enabled";
-  case AutomaticFailoverStatus::disabled:
-    return "disabled";
-  case AutomaticFailoverStatus::enabling:
-    return "enabling";
-  case AutomaticFailoverStatus::disabling:
-    return "disabling";
-  default:
-    return "";
-  }
-}
+          return AutomaticFailoverStatus::NOT_SET;
+        }
 
-} // namespace AutomaticFailoverStatusMapper
-} // namespace Model
-} // namespace ElastiCache
+        Aws::String GetNameForAutomaticFailoverStatus(AutomaticFailoverStatus enumValue)
+        {
+          switch(enumValue)
+          {
+          case AutomaticFailoverStatus::enabled:
+            return "enabled";
+          case AutomaticFailoverStatus::disabled:
+            return "disabled";
+          case AutomaticFailoverStatus::enabling:
+            return "enabling";
+          case AutomaticFailoverStatus::disabling:
+            return "disabling";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace AutomaticFailoverStatusMapper
+    } // namespace Model
+  } // namespace ElastiCache
 } // namespace Aws

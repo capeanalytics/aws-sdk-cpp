@@ -8,12 +8,20 @@ Release
 *~
 *#
 
+#compiled python files
+*.pyc
+
 #Vagrant stuff
 Vagrantfile
 .vagrant
 
 #Mac stuff
 .DS_Store
+
+#doxygen
+doxygen/html/
+doxygen/latex/
+
 
 #cmake artifacts
 dependencies
@@ -59,3 +67,5 @@ openssl
 zlib
 credentials
 
+#maven
+code-generation/generator/target/

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ LoadBalancerDescription::LoadBalancerDescription() :
     m_healthCheckHasBeenSet(false),
     m_sourceSecurityGroupHasBeenSet(false),
     m_securityGroupsHasBeenSet(false),
-    m_createdTime(0.0),
     m_createdTimeHasBeenSet(false),
     m_schemeHasBeenSet(false)
 {
@@ -59,7 +58,6 @@ LoadBalancerDescription::LoadBalancerDescription(const XmlNode& xmlNode) :
     m_healthCheckHasBeenSet(false),
     m_sourceSecurityGroupHasBeenSet(false),
     m_securityGroupsHasBeenSet(false),
-    m_createdTime(0.0),
     m_createdTimeHasBeenSet(false),
     m_schemeHasBeenSet(false)
 {
@@ -195,7 +193,7 @@ LoadBalancerDescription& LoadBalancerDescription::operator =(const XmlNode& xmlN
     XmlNode createdTimeNode = resultNode.FirstChild("CreatedTime");
     if(!createdTimeNode.IsNull())
     {
-      m_createdTime = StringUtils::ConvertToDouble(StringUtils::Trim(createdTimeNode.GetText().c_str()).c_str());
+      m_createdTime = DateTime(StringUtils::Trim(createdTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createdTimeHasBeenSet = true;
     }
     XmlNode schemeNode = resultNode.FirstChild("Scheme");
@@ -229,10 +227,11 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_listenerDescriptionsHasBeenSet)
   {
+      unsigned listenerDescriptionsIdx = 1;
       for(auto& item : m_listenerDescriptions)
       {
         Aws::StringStream listenerDescriptionsSs;
-        listenerDescriptionsSs << location << index << locationValue << ".ListenerDescriptions";
+        listenerDescriptionsSs << location << index << locationValue << ".ListenerDescriptions.member." << listenerDescriptionsIdx++;
         item.OutputToStream(oStream, listenerDescriptionsSs.str().c_str());
       }
   }
@@ -244,25 +243,28 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_backendServerDescriptionsHasBeenSet)
   {
+      unsigned backendServerDescriptionsIdx = 1;
       for(auto& item : m_backendServerDescriptions)
       {
         Aws::StringStream backendServerDescriptionsSs;
-        backendServerDescriptionsSs << location << index << locationValue << ".BackendServerDescriptions";
+        backendServerDescriptionsSs << location << index << locationValue << ".BackendServerDescriptions.member." << backendServerDescriptionsIdx++;
         item.OutputToStream(oStream, backendServerDescriptionsSs.str().c_str());
       }
   }
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZones=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".AvailabilityZones.member." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_subnetsHasBeenSet)
   {
+      unsigned subnetsIdx = 1;
       for(auto& item : m_subnets)
       {
-        oStream << location << index << locationValue << ".Subnets=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".Subnets.member." << subnetsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vPCIdHasBeenSet)
@@ -271,10 +273,11 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_instancesHasBeenSet)
   {
+      unsigned instancesIdx = 1;
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location << index << locationValue << ".Instances";
+        instancesSs << location << index << locationValue << ".Instances.member." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
@@ -292,14 +295,15 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
-        oStream << location << index << locationValue << ".SecurityGroups=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".SecurityGroups.member." << securityGroupsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_createdTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreatedTime=" << m_createdTime << "&";
+      oStream << location << index << locationValue << ".CreatedTime=" << StringUtils::URLEncode(m_createdTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_schemeHasBeenSet)
   {
@@ -327,11 +331,12 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_listenerDescriptionsHasBeenSet)
   {
+      unsigned listenerDescriptionsIdx = 1;
       for(auto& item : m_listenerDescriptions)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".ListenerDescriptions";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream listenerDescriptionsSs;
+        listenerDescriptionsSs << location <<  ".ListenerDescriptions.member." << listenerDescriptionsIdx++;
+        item.OutputToStream(oStream, listenerDescriptionsSs.str().c_str());
       }
   }
   if(m_policiesHasBeenSet)
@@ -342,25 +347,28 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_backendServerDescriptionsHasBeenSet)
   {
+      unsigned backendServerDescriptionsIdx = 1;
       for(auto& item : m_backendServerDescriptions)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".BackendServerDescriptions";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream backendServerDescriptionsSs;
+        backendServerDescriptionsSs << location <<  ".BackendServerDescriptions.member." << backendServerDescriptionsIdx++;
+        item.OutputToStream(oStream, backendServerDescriptionsSs.str().c_str());
       }
   }
   if(m_availabilityZonesHasBeenSet)
   {
+      unsigned availabilityZonesIdx = 1;
       for(auto& item : m_availabilityZones)
       {
-        oStream << location << ".AvailabilityZones=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".AvailabilityZones.member." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_subnetsHasBeenSet)
   {
+      unsigned subnetsIdx = 1;
       for(auto& item : m_subnets)
       {
-        oStream << location << ".Subnets=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".Subnets.member." << subnetsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vPCIdHasBeenSet)
@@ -369,11 +377,12 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_instancesHasBeenSet)
   {
+      unsigned instancesIdx = 1;
       for(auto& item : m_instances)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Instances";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream instancesSs;
+        instancesSs << location <<  ".Instances.member." << instancesIdx++;
+        item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
   if(m_healthCheckHasBeenSet)
@@ -390,14 +399,15 @@ void LoadBalancerDescription::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
-        oStream << location << ".SecurityGroups=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SecurityGroups.member." << securityGroupsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_createdTimeHasBeenSet)
   {
-      oStream << location << ".CreatedTime=" << m_createdTime << "&";
+      oStream << location << ".CreatedTime=" << StringUtils::URLEncode(m_createdTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_schemeHasBeenSet)
   {

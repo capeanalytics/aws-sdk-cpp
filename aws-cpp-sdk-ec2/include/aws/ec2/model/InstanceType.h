@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ namespace Model
     m4_2xlarge,
     m4_4xlarge,
     m4_10xlarge,
+    t2_nano,
     t2_micro,
     t2_small,
     t2_medium,
@@ -68,6 +69,7 @@ namespace Model
     cc1_4xlarge,
     cc2_8xlarge,
     g2_2xlarge,
+    g2_8xlarge,
     cg1_4xlarge,
     r3_large,
     r3_xlarge,

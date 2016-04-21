@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ CacheCluster::CacheCluster() :
     m_numCacheNodes(0),
     m_numCacheNodesHasBeenSet(false),
     m_preferredAvailabilityZoneHasBeenSet(false),
-    m_cacheClusterCreateTime(0.0),
     m_cacheClusterCreateTimeHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
@@ -64,7 +63,6 @@ CacheCluster::CacheCluster(const XmlNode& xmlNode) :
     m_numCacheNodes(0),
     m_numCacheNodesHasBeenSet(false),
     m_preferredAvailabilityZoneHasBeenSet(false),
-    m_cacheClusterCreateTime(0.0),
     m_cacheClusterCreateTimeHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
@@ -147,7 +145,7 @@ CacheCluster& CacheCluster::operator =(const XmlNode& xmlNode)
     XmlNode cacheClusterCreateTimeNode = resultNode.FirstChild("CacheClusterCreateTime");
     if(!cacheClusterCreateTimeNode.IsNull())
     {
-      m_cacheClusterCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(cacheClusterCreateTimeNode.GetText().c_str()).c_str());
+      m_cacheClusterCreateTime = DateTime(StringUtils::Trim(cacheClusterCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_cacheClusterCreateTimeHasBeenSet = true;
     }
     XmlNode preferredMaintenanceWindowNode = resultNode.FirstChild("PreferredMaintenanceWindow");
@@ -287,7 +285,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_cacheClusterCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CacheClusterCreateTime=" << m_cacheClusterCreateTime << "&";
+      oStream << location << index << locationValue << ".CacheClusterCreateTime=" << StringUtils::URLEncode(m_cacheClusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
@@ -307,10 +305,11 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_cacheSecurityGroupsHasBeenSet)
   {
+      unsigned cacheSecurityGroupsIdx = 1;
       for(auto& item : m_cacheSecurityGroups)
       {
         Aws::StringStream cacheSecurityGroupsSs;
-        cacheSecurityGroupsSs << location << index << locationValue << ".CacheSecurityGroup";
+        cacheSecurityGroupsSs << location << index << locationValue << ".CacheSecurityGroup." << cacheSecurityGroupsIdx++;
         item.OutputToStream(oStream, cacheSecurityGroupsSs.str().c_str());
       }
   }
@@ -326,10 +325,11 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_cacheNodesHasBeenSet)
   {
+      unsigned cacheNodesIdx = 1;
       for(auto& item : m_cacheNodes)
       {
         Aws::StringStream cacheNodesSs;
-        cacheNodesSs << location << index << locationValue << ".CacheNode";
+        cacheNodesSs << location << index << locationValue << ".CacheNode." << cacheNodesIdx++;
         item.OutputToStream(oStream, cacheNodesSs.str().c_str());
       }
   }
@@ -339,10 +339,11 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location << index << locationValue << ".SecurityGroups";
+        securityGroupsSs << location << index << locationValue << ".SecurityGroups.member." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
@@ -402,7 +403,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_cacheClusterCreateTimeHasBeenSet)
   {
-      oStream << location << ".CacheClusterCreateTime=" << m_cacheClusterCreateTime << "&";
+      oStream << location << ".CacheClusterCreateTime=" << StringUtils::URLEncode(m_cacheClusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
@@ -422,11 +423,12 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_cacheSecurityGroupsHasBeenSet)
   {
+      unsigned cacheSecurityGroupsIdx = 1;
       for(auto& item : m_cacheSecurityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".CacheSecurityGroup";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream cacheSecurityGroupsSs;
+        cacheSecurityGroupsSs << location <<  ".CacheSecurityGroup." << cacheSecurityGroupsIdx++;
+        item.OutputToStream(oStream, cacheSecurityGroupsSs.str().c_str());
       }
   }
   if(m_cacheParameterGroupHasBeenSet)
@@ -441,11 +443,12 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_cacheNodesHasBeenSet)
   {
+      unsigned cacheNodesIdx = 1;
       for(auto& item : m_cacheNodes)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".CacheNode";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream cacheNodesSs;
+        cacheNodesSs << location <<  ".CacheNode." << cacheNodesIdx++;
+        item.OutputToStream(oStream, cacheNodesSs.str().c_str());
       }
   }
   if(m_autoMinorVersionUpgradeHasBeenSet)
@@ -454,11 +457,12 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".SecurityGroups";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream securityGroupsSs;
+        securityGroupsSs << location <<  ".SecurityGroups.member." << securityGroupsIdx++;
+        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
   if(m_replicationGroupIdHasBeenSet)

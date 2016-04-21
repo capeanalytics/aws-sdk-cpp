@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/dynamodb/model/StreamViewType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -24,54 +26,67 @@ static const int KEYS_ONLY_HASH = HashingUtils::HashString("KEYS_ONLY");
 
 namespace Aws
 {
-namespace DynamoDB
-{
-namespace Model
-{
-namespace StreamViewTypeMapper
-{
-StreamViewType GetStreamViewTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
+  namespace DynamoDB
+  {
+    namespace Model
+    {
+      namespace StreamViewTypeMapper
+      {
 
-  if (hashCode == NEW_IMAGE_HASH)
-  {
-    return StreamViewType::NEW_IMAGE;
-  }
-  else if (hashCode == OLD_IMAGE_HASH)
-  {
-    return StreamViewType::OLD_IMAGE;
-  }
-  else if (hashCode == NEW_AND_OLD_IMAGES_HASH)
-  {
-    return StreamViewType::NEW_AND_OLD_IMAGES;
-  }
-  else if (hashCode == KEYS_ONLY_HASH)
-  {
-    return StreamViewType::KEYS_ONLY;
-  }
 
-  return StreamViewType::NOT_SET;
-}
+        StreamViewType GetStreamViewTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == NEW_IMAGE_HASH)
+          {
+            return StreamViewType::NEW_IMAGE;
+          }
+          else if (hashCode == OLD_IMAGE_HASH)
+          {
+            return StreamViewType::OLD_IMAGE;
+          }
+          else if (hashCode == NEW_AND_OLD_IMAGES_HASH)
+          {
+            return StreamViewType::NEW_AND_OLD_IMAGES;
+          }
+          else if (hashCode == KEYS_ONLY_HASH)
+          {
+            return StreamViewType::KEYS_ONLY;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<StreamViewType>(hashCode);
+          }
 
-Aws::String GetNameForStreamViewType(StreamViewType value)
-{
-  switch(value)
-  {
-  case StreamViewType::NEW_IMAGE:
-    return "NEW_IMAGE";
-  case StreamViewType::OLD_IMAGE:
-    return "OLD_IMAGE";
-  case StreamViewType::NEW_AND_OLD_IMAGES:
-    return "NEW_AND_OLD_IMAGES";
-  case StreamViewType::KEYS_ONLY:
-    return "KEYS_ONLY";
-  default:
-    return "";
-  }
-}
+          return StreamViewType::NOT_SET;
+        }
 
-} // namespace StreamViewTypeMapper
-} // namespace Model
-} // namespace DynamoDB
+        Aws::String GetNameForStreamViewType(StreamViewType enumValue)
+        {
+          switch(enumValue)
+          {
+          case StreamViewType::NEW_IMAGE:
+            return "NEW_IMAGE";
+          case StreamViewType::OLD_IMAGE:
+            return "OLD_IMAGE";
+          case StreamViewType::NEW_AND_OLD_IMAGES:
+            return "NEW_AND_OLD_IMAGES";
+          case StreamViewType::KEYS_ONLY:
+            return "KEYS_ONLY";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace StreamViewTypeMapper
+    } // namespace Model
+  } // namespace DynamoDB
 } // namespace Aws

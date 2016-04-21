@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ Role::Role() :
     m_roleNameHasBeenSet(false),
     m_roleIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_assumeRolePolicyDocumentHasBeenSet(false)
 {
@@ -39,7 +38,6 @@ Role::Role(const XmlNode& xmlNode) :
     m_roleNameHasBeenSet(false),
     m_roleIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_assumeRolePolicyDocumentHasBeenSet(false)
 {
@@ -79,7 +77,7 @@ Role& Role::operator =(const XmlNode& xmlNode)
     XmlNode createDateNode = resultNode.FirstChild("CreateDate");
     if(!createDateNode.IsNull())
     {
-      m_createDate = StringUtils::ConvertToDouble(StringUtils::Trim(createDateNode.GetText().c_str()).c_str());
+      m_createDate = DateTime(StringUtils::Trim(createDateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createDateHasBeenSet = true;
     }
     XmlNode assumeRolePolicyDocumentNode = resultNode.FirstChild("AssumeRolePolicyDocument");
@@ -113,7 +111,7 @@ void Role::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateDate=" << m_createDate << "&";
+      oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_assumeRolePolicyDocumentHasBeenSet)
   {
@@ -141,7 +139,7 @@ void Role::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << ".CreateDate=" << m_createDate << "&";
+      oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_assumeRolePolicyDocumentHasBeenSet)
   {

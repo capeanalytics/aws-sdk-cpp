@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,9 +27,7 @@ ReservedInstances::ReservedInstances() :
     m_reservedInstancesIdHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
-    m_start(0.0),
     m_startHasBeenSet(false),
-    m_end(0.0),
     m_endHasBeenSet(false),
     m_duration(0),
     m_durationHasBeenSet(false),
@@ -53,9 +51,7 @@ ReservedInstances::ReservedInstances(const XmlNode& xmlNode) :
     m_reservedInstancesIdHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
-    m_start(0.0),
     m_startHasBeenSet(false),
-    m_end(0.0),
     m_endHasBeenSet(false),
     m_duration(0),
     m_durationHasBeenSet(false),
@@ -103,13 +99,13 @@ ReservedInstances& ReservedInstances::operator =(const XmlNode& xmlNode)
     XmlNode startNode = resultNode.FirstChild("start");
     if(!startNode.IsNull())
     {
-      m_start = StringUtils::ConvertToDouble(StringUtils::Trim(startNode.GetText().c_str()).c_str());
+      m_start = DateTime(StringUtils::Trim(startNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_startHasBeenSet = true;
     }
     XmlNode endNode = resultNode.FirstChild("end");
     if(!endNode.IsNull())
     {
-      m_end = StringUtils::ConvertToDouble(StringUtils::Trim(endNode.GetText().c_str()).c_str());
+      m_end = DateTime(StringUtils::Trim(endNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_endHasBeenSet = true;
     }
     XmlNode durationNode = resultNode.FirstChild("duration");
@@ -148,7 +144,7 @@ ReservedInstances& ReservedInstances::operator =(const XmlNode& xmlNode)
       m_state = ReservedInstanceStateMapper::GetReservedInstanceStateForName(StringUtils::Trim(stateNode.GetText().c_str()).c_str());
       m_stateHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -178,7 +174,7 @@ ReservedInstances& ReservedInstances::operator =(const XmlNode& xmlNode)
       m_offeringType = OfferingTypeValuesMapper::GetOfferingTypeValuesForName(StringUtils::Trim(offeringTypeNode.GetText().c_str()).c_str());
       m_offeringTypeHasBeenSet = true;
     }
-    XmlNode recurringChargesNode = resultNode.FirstChild("RecurringCharges");
+    XmlNode recurringChargesNode = resultNode.FirstChild("recurringCharges");
     if(!recurringChargesNode.IsNull())
     {
       XmlNode recurringChargesMember = recurringChargesNode.FirstChild("item");
@@ -211,11 +207,11 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_startHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Start=" << m_start << "&";
+      oStream << location << index << locationValue << ".Start=" << StringUtils::URLEncode(m_start.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endHasBeenSet)
   {
-      oStream << location << index << locationValue << ".End=" << m_end << "&";
+      oStream << location << index << locationValue << ".End=" << StringUtils::URLEncode(m_end.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_durationHasBeenSet)
   {
@@ -243,10 +239,11 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -264,10 +261,11 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".item";
+        recurringChargesSs << location << index << locationValue << ".RecurringCharges." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
@@ -289,11 +287,11 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_startHasBeenSet)
   {
-      oStream << location << ".Start=" << m_start << "&";
+      oStream << location << ".Start=" << StringUtils::URLEncode(m_start.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endHasBeenSet)
   {
-      oStream << location << ".End=" << m_end << "&";
+      oStream << location << ".End=" << StringUtils::URLEncode(m_end.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_durationHasBeenSet)
   {
@@ -321,11 +319,12 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_instanceTenancyHasBeenSet)
@@ -342,11 +341,12 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream recurringChargesSs;
+        recurringChargesSs << location <<  ".item." << recurringChargesIdx++;
+        item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
 }

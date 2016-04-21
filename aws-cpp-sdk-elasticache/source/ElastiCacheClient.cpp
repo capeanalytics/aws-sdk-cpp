@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@
 #include <aws/elasticache/model/DescribeReservedCacheNodesRequest.h>
 #include <aws/elasticache/model/DescribeReservedCacheNodesOfferingsRequest.h>
 #include <aws/elasticache/model/DescribeSnapshotsRequest.h>
+#include <aws/elasticache/model/ListAllowedNodeTypeModificationsRequest.h>
 #include <aws/elasticache/model/ListTagsForResourceRequest.h>
 #include <aws/elasticache/model/ModifyCacheClusterRequest.h>
 #include <aws/elasticache/model/ModifyCacheParameterGroupRequest.h>
@@ -78,7 +79,8 @@ static const char* ALLOCATION_TAG = "ElastiCacheClient";
 
 ElastiCacheClient::ElastiCacheClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElastiCacheErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -87,7 +89,8 @@ ElastiCacheClient::ElastiCacheClient(const Client::ClientConfiguration& clientCo
 
 ElastiCacheClient::ElastiCacheClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElastiCacheErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -97,7 +100,8 @@ ElastiCacheClient::ElastiCacheClient(const AWSCredentials& credentials, const Cl
 ElastiCacheClient::ElastiCacheClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<ElastiCacheErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -113,7 +117,7 @@ void ElastiCacheClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << ElastiCacheEndpoint::ForRegion(config.region);
   }
@@ -932,6 +936,36 @@ void ElastiCacheClient::DescribeSnapshotsAsync(const DescribeSnapshotsRequest& r
 void ElastiCacheClient::DescribeSnapshotsAsyncHelper(const DescribeSnapshotsRequest& request, const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeSnapshots(request), context);
+}
+
+ListAllowedNodeTypeModificationsOutcome ElastiCacheClient::ListAllowedNodeTypeModifications(const ListAllowedNodeTypeModificationsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListAllowedNodeTypeModificationsOutcome(ListAllowedNodeTypeModificationsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListAllowedNodeTypeModificationsOutcome(outcome.GetError());
+  }
+}
+
+ListAllowedNodeTypeModificationsOutcomeCallable ElastiCacheClient::ListAllowedNodeTypeModificationsCallable(const ListAllowedNodeTypeModificationsRequest& request) const
+{
+  return std::async(std::launch::async, &ElastiCacheClient::ListAllowedNodeTypeModifications, this, request);
+}
+
+void ElastiCacheClient::ListAllowedNodeTypeModificationsAsync(const ListAllowedNodeTypeModificationsRequest& request, const ListAllowedNodeTypeModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&ElastiCacheClient::ListAllowedNodeTypeModificationsAsyncHelper, this, request, handler, context);
+}
+
+void ElastiCacheClient::ListAllowedNodeTypeModificationsAsyncHelper(const ListAllowedNodeTypeModificationsRequest& request, const ListAllowedNodeTypeModificationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListAllowedNodeTypeModifications(request), context);
 }
 
 ListTagsForResourceOutcome ElastiCacheClient::ListTagsForResource(const ListTagsForResourceRequest& request) const

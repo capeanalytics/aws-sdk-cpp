@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ using namespace Aws::Utils;
 RestoreDBClusterToPointInTimeRequest::RestoreDBClusterToPointInTimeRequest() : 
     m_dBClusterIdentifierHasBeenSet(false),
     m_sourceDBClusterIdentifierHasBeenSet(false),
-    m_restoreToTime(0.0),
     m_restoreToTimeHasBeenSet(false),
     m_useLatestRestorableTime(false),
     m_useLatestRestorableTimeHasBeenSet(false),
@@ -31,7 +30,8 @@ RestoreDBClusterToPointInTimeRequest::RestoreDBClusterToPointInTimeRequest() :
     m_dBSubnetGroupNameHasBeenSet(false),
     m_optionGroupNameHasBeenSet(false),
     m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+    m_tagsHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false)
 {
 }
 
@@ -49,7 +49,7 @@ Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
   }
   if(m_restoreToTimeHasBeenSet)
   {
-    ss << "RestoreToTime=" << m_restoreToTime << "&";
+    ss << "RestoreToTime=" << StringUtils::URLEncode(m_restoreToTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_useLatestRestorableTimeHasBeenSet)
   {
@@ -85,6 +85,10 @@ Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
       item.OutputToStream(ss, "Tags.member.", tagsCount, "");
       tagsCount++;
     }
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+    ss << "KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
   ss << "Version=2014-10-31";
   return ss.str();

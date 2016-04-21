@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -132,7 +132,7 @@ ReservedInstancesOffering& ReservedInstancesOffering::operator =(const XmlNode& 
       m_offeringType = OfferingTypeValuesMapper::GetOfferingTypeValuesForName(StringUtils::Trim(offeringTypeNode.GetText().c_str()).c_str());
       m_offeringTypeHasBeenSet = true;
     }
-    XmlNode recurringChargesNode = resultNode.FirstChild("RecurringCharges");
+    XmlNode recurringChargesNode = resultNode.FirstChild("recurringCharges");
     if(!recurringChargesNode.IsNull())
     {
       XmlNode recurringChargesMember = recurringChargesNode.FirstChild("item");
@@ -150,7 +150,7 @@ ReservedInstancesOffering& ReservedInstancesOffering::operator =(const XmlNode& 
       m_marketplace = StringUtils::ConvertToBool(StringUtils::Trim(marketplaceNode.GetText().c_str()).c_str());
       m_marketplaceHasBeenSet = true;
     }
-    XmlNode pricingDetailsNode = resultNode.FirstChild("PricingDetails");
+    XmlNode pricingDetailsNode = resultNode.FirstChild("pricingDetailsSet");
     if(!pricingDetailsNode.IsNull())
     {
       XmlNode pricingDetailsMember = pricingDetailsNode.FirstChild("item");
@@ -211,10 +211,11 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".item";
+        recurringChargesSs << location << index << locationValue << ".RecurringCharges." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
@@ -224,10 +225,11 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_pricingDetailsHasBeenSet)
   {
+      unsigned pricingDetailsIdx = 1;
       for(auto& item : m_pricingDetails)
       {
         Aws::StringStream pricingDetailsSs;
-        pricingDetailsSs << location << index << locationValue << ".item";
+        pricingDetailsSs << location << index << locationValue << ".PricingDetailsSet." << pricingDetailsIdx++;
         item.OutputToStream(oStream, pricingDetailsSs.str().c_str());
       }
   }
@@ -277,11 +279,12 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_recurringChargesHasBeenSet)
   {
+      unsigned recurringChargesIdx = 1;
       for(auto& item : m_recurringCharges)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream recurringChargesSs;
+        recurringChargesSs << location <<  ".item." << recurringChargesIdx++;
+        item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
   if(m_marketplaceHasBeenSet)
@@ -290,11 +293,12 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_pricingDetailsHasBeenSet)
   {
+      unsigned pricingDetailsIdx = 1;
       for(auto& item : m_pricingDetails)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream pricingDetailsSs;
+        pricingDetailsSs << location <<  ".item." << pricingDetailsIdx++;
+        item.OutputToStream(oStream, pricingDetailsSs.str().c_str());
       }
   }
 }

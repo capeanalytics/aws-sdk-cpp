@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -22,21 +22,15 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 StepTimeline::StepTimeline() : 
-    m_creationDateTime(0.0),
     m_creationDateTimeHasBeenSet(false),
-    m_startDateTime(0.0),
     m_startDateTimeHasBeenSet(false),
-    m_endDateTime(0.0),
     m_endDateTimeHasBeenSet(false)
 {
 }
 
 StepTimeline::StepTimeline(const JsonValue& jsonValue) : 
-    m_creationDateTime(0.0),
     m_creationDateTimeHasBeenSet(false),
-    m_startDateTime(0.0),
     m_startDateTimeHasBeenSet(false),
-    m_endDateTime(0.0),
     m_endDateTimeHasBeenSet(false)
 {
   *this = jsonValue;
@@ -74,21 +68,18 @@ JsonValue StepTimeline::Jsonize() const
 
   if(m_creationDateTimeHasBeenSet)
   {
-   payload.WithDouble("CreationDateTime", m_creationDateTime);
-
+   payload.WithDouble("CreationDateTime", m_creationDateTime.SecondsWithMSPrecision());
   }
 
   if(m_startDateTimeHasBeenSet)
   {
-   payload.WithDouble("StartDateTime", m_startDateTime);
-
+   payload.WithDouble("StartDateTime", m_startDateTime.SecondsWithMSPrecision());
   }
 
   if(m_endDateTimeHasBeenSet)
   {
-   payload.WithDouble("EndDateTime", m_endDateTime);
-
+   payload.WithDouble("EndDateTime", m_endDateTime.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

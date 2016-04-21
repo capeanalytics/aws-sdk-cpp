@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -42,7 +42,9 @@ RestoreFromClusterSnapshotRequest::RestoreFromClusterSnapshotRequest() :
     m_automatedSnapshotRetentionPeriod(0),
     m_automatedSnapshotRetentionPeriodHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false)
+    m_nodeTypeHasBeenSet(false),
+    m_additionalInfoHasBeenSet(false),
+    m_iamRolesHasBeenSet(false)
 {
 }
 
@@ -137,6 +139,20 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
   if(m_nodeTypeHasBeenSet)
   {
     ss << "NodeType=" << StringUtils::URLEncode(m_nodeType.c_str()) << "&";
+  }
+  if(m_additionalInfoHasBeenSet)
+  {
+    ss << "AdditionalInfo=" << StringUtils::URLEncode(m_additionalInfo.c_str()) << "&";
+  }
+  if(m_iamRolesHasBeenSet)
+  {
+    unsigned iamRolesCount = 1;
+    for(auto& item : m_iamRoles)
+    {
+      ss << "IamRoles.member." << iamRolesCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      iamRolesCount++;
+    }
   }
   ss << "Version=2012-12-01";
   return ss.str();

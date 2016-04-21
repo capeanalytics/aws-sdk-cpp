@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,7 +27,8 @@ CreateRouteRequest::CreateRouteRequest() :
     m_gatewayIdHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
-    m_vpcPeeringConnectionIdHasBeenSet(false)
+    m_vpcPeeringConnectionIdHasBeenSet(false),
+    m_natGatewayIdHasBeenSet(false)
 {
 }
 
@@ -63,7 +64,11 @@ Aws::String CreateRouteRequest::SerializePayload() const
   {
     ss << "VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
   }
-  ss << "Version=2015-04-15";
+  if(m_natGatewayIdHasBeenSet)
+  {
+    ss << "NatGatewayId=" << StringUtils::URLEncode(m_natGatewayId.c_str()) << "&";
+  }
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ AvailabilityZone& AvailabilityZone::operator =(const XmlNode& xmlNode)
       m_regionName = StringUtils::Trim(regionNameNode.GetText().c_str());
       m_regionNameHasBeenSet = true;
     }
-    XmlNode messagesNode = resultNode.FirstChild("Messages");
+    XmlNode messagesNode = resultNode.FirstChild("messageSet");
     if(!messagesNode.IsNull())
     {
       XmlNode messagesMember = messagesNode.FirstChild("item");
@@ -97,10 +97,11 @@ void AvailabilityZone::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_messagesHasBeenSet)
   {
+      unsigned messagesIdx = 1;
       for(auto& item : m_messages)
       {
         Aws::StringStream messagesSs;
-        messagesSs << location << index << locationValue << ".item";
+        messagesSs << location << index << locationValue << ".MessageSet." << messagesIdx++;
         item.OutputToStream(oStream, messagesSs.str().c_str());
       }
   }
@@ -122,11 +123,12 @@ void AvailabilityZone::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_messagesHasBeenSet)
   {
+      unsigned messagesIdx = 1;
       for(auto& item : m_messages)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream messagesSs;
+        messagesSs << location <<  ".item." << messagesIdx++;
+        item.OutputToStream(oStream, messagesSs.str().c_str());
       }
   }
 }

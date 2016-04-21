@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ PrefixList& PrefixList::operator =(const XmlNode& xmlNode)
       m_prefixListName = StringUtils::Trim(prefixListNameNode.GetText().c_str());
       m_prefixListNameHasBeenSet = true;
     }
-    XmlNode cidrsNode = resultNode.FirstChild("Cidrs");
+    XmlNode cidrsNode = resultNode.FirstChild("cidrSet");
     if(!cidrsNode.IsNull())
     {
       XmlNode cidrsMember = cidrsNode.FirstChild("item");
@@ -85,9 +85,10 @@ void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_cidrsHasBeenSet)
   {
+      unsigned cidrsIdx = 1;
       for(auto& item : m_cidrs)
       {
-        oStream << location << index << locationValue << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".CidrSet." << cidrsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }
@@ -104,9 +105,10 @@ void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_cidrsHasBeenSet)
   {
+      unsigned cidrsIdx = 1;
       for(auto& item : m_cidrs)
       {
-        oStream << location << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".item." << cidrsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

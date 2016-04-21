@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/logs/model/OrderBy.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int LastEventTime_HASH = HashingUtils::HashString("LastEventTime");
 
 namespace Aws
 {
-namespace CloudWatchLogs
-{
-namespace Model
-{
-namespace OrderByMapper
-{
-OrderBy GetOrderByForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == LogStreamName_HASH)
+  namespace CloudWatchLogs
   {
-    return OrderBy::LogStreamName;
-  }
-  else if (hashCode == LastEventTime_HASH)
-  {
-    return OrderBy::LastEventTime;
-  }
+    namespace Model
+    {
+      namespace OrderByMapper
+      {
 
-  return OrderBy::NOT_SET;
-}
 
-Aws::String GetNameForOrderBy(OrderBy value)
-{
-  switch(value)
-  {
-  case OrderBy::LogStreamName:
-    return "LogStreamName";
-  case OrderBy::LastEventTime:
-    return "LastEventTime";
-  default:
-    return "";
-  }
-}
+        OrderBy GetOrderByForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == LogStreamName_HASH)
+          {
+            return OrderBy::LogStreamName;
+          }
+          else if (hashCode == LastEventTime_HASH)
+          {
+            return OrderBy::LastEventTime;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<OrderBy>(hashCode);
+          }
 
-} // namespace OrderByMapper
-} // namespace Model
-} // namespace CloudWatchLogs
+          return OrderBy::NOT_SET;
+        }
+
+        Aws::String GetNameForOrderBy(OrderBy enumValue)
+        {
+          switch(enumValue)
+          {
+          case OrderBy::LogStreamName:
+            return "LogStreamName";
+          case OrderBy::LastEventTime:
+            return "LastEventTime";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace OrderByMapper
+    } // namespace Model
+  } // namespace CloudWatchLogs
 } // namespace Aws

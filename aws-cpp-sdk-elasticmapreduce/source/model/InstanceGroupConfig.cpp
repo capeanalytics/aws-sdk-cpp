@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -29,7 +29,8 @@ InstanceGroupConfig::InstanceGroupConfig() :
     m_instanceTypeHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_ebsConfigurationHasBeenSet(false)
 {
 }
 
@@ -41,7 +42,8 @@ InstanceGroupConfig::InstanceGroupConfig(const JsonValue& jsonValue) :
     m_instanceTypeHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_ebsConfigurationHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -100,6 +102,13 @@ InstanceGroupConfig& InstanceGroupConfig::operator =(const JsonValue& jsonValue)
     m_configurationsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("EbsConfiguration"))
+  {
+    m_ebsConfiguration = jsonValue.GetObject("EbsConfiguration");
+
+    m_ebsConfigurationHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -152,5 +161,11 @@ JsonValue InstanceGroupConfig::Jsonize() const
 
   }
 
-  return std::move(payload);
+  if(m_ebsConfigurationHasBeenSet)
+  {
+   payload.WithObject("EbsConfiguration", m_ebsConfiguration.Jsonize());
+
+  }
+
+  return payload;
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
     unsigned userIdsCount = 1;
     for(auto& item : m_userIds)
     {
-      ss << "UserIds.member." << userIdsCount << "="
+      ss << "UserId." << userIdsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       userIdsCount++;
     }
@@ -69,7 +69,7 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
     unsigned userGroupsCount = 1;
     for(auto& item : m_userGroups)
     {
-      ss << "UserGroups.member." << userGroupsCount << "="
+      ss << "UserGroup." << userGroupsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       userGroupsCount++;
     }
@@ -79,7 +79,7 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
     unsigned productCodesCount = 1;
     for(auto& item : m_productCodes)
     {
-      ss << "ProductCodes.member." << productCodesCount << "="
+      ss << "ProductCode." << productCodesCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       productCodesCount++;
     }
@@ -96,7 +96,7 @@ Aws::String ModifyImageAttributeRequest::SerializePayload() const
   {
     m_description.OutputToStream(ss, "Description.");
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

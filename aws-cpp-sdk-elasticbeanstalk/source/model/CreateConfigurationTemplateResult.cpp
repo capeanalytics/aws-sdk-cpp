@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -16,23 +16,21 @@
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
 #include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/logging/LogMacros.h>
 
 #include <utility>
 
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
+using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateConfigurationTemplateResult::CreateConfigurationTemplateResult() : 
-    m_dateCreated(0.0),
-    m_dateUpdated(0.0)
+CreateConfigurationTemplateResult::CreateConfigurationTemplateResult()
 {
 }
 
-CreateConfigurationTemplateResult::CreateConfigurationTemplateResult(const AmazonWebServiceResult<XmlDocument>& result) : 
-    m_dateCreated(0.0),
-    m_dateUpdated(0.0)
+CreateConfigurationTemplateResult::CreateConfigurationTemplateResult(const AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
 }
@@ -82,12 +80,12 @@ CreateConfigurationTemplateResult& CreateConfigurationTemplateResult::operator =
     XmlNode dateCreatedNode = resultNode.FirstChild("DateCreated");
     if(!dateCreatedNode.IsNull())
     {
-      m_dateCreated = StringUtils::ConvertToDouble(StringUtils::Trim(dateCreatedNode.GetText().c_str()).c_str());
+      m_dateCreated = DateTime(StringUtils::Trim(dateCreatedNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
     XmlNode dateUpdatedNode = resultNode.FirstChild("DateUpdated");
     if(!dateUpdatedNode.IsNull())
     {
-      m_dateUpdated = StringUtils::ConvertToDouble(StringUtils::Trim(dateUpdatedNode.GetText().c_str()).c_str());
+      m_dateUpdated = DateTime(StringUtils::Trim(dateUpdatedNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
     XmlNode optionSettingsNode = resultNode.FirstChild("OptionSettings");
     if(!optionSettingsNode.IsNull())
@@ -104,6 +102,7 @@ CreateConfigurationTemplateResult& CreateConfigurationTemplateResult::operator =
 
   XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
   m_responseMetadata = responseMetadataNode;
+  AWS_LOGSTREAM_DEBUG("Aws::ElasticBeanstalk::Model::CreateConfigurationTemplateResult", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
 
   return *this;
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/elasticmapreduce/model/InstanceGroupType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -23,48 +25,61 @@ static const int TASK_HASH = HashingUtils::HashString("TASK");
 
 namespace Aws
 {
-namespace EMR
-{
-namespace Model
-{
-namespace InstanceGroupTypeMapper
-{
-InstanceGroupType GetInstanceGroupTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == MASTER_HASH)
+  namespace EMR
   {
-    return InstanceGroupType::MASTER;
-  }
-  else if (hashCode == CORE_HASH)
-  {
-    return InstanceGroupType::CORE;
-  }
-  else if (hashCode == TASK_HASH)
-  {
-    return InstanceGroupType::TASK;
-  }
+    namespace Model
+    {
+      namespace InstanceGroupTypeMapper
+      {
 
-  return InstanceGroupType::NOT_SET;
-}
 
-Aws::String GetNameForInstanceGroupType(InstanceGroupType value)
-{
-  switch(value)
-  {
-  case InstanceGroupType::MASTER:
-    return "MASTER";
-  case InstanceGroupType::CORE:
-    return "CORE";
-  case InstanceGroupType::TASK:
-    return "TASK";
-  default:
-    return "";
-  }
-}
+        InstanceGroupType GetInstanceGroupTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == MASTER_HASH)
+          {
+            return InstanceGroupType::MASTER;
+          }
+          else if (hashCode == CORE_HASH)
+          {
+            return InstanceGroupType::CORE;
+          }
+          else if (hashCode == TASK_HASH)
+          {
+            return InstanceGroupType::TASK;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<InstanceGroupType>(hashCode);
+          }
 
-} // namespace InstanceGroupTypeMapper
-} // namespace Model
-} // namespace EMR
+          return InstanceGroupType::NOT_SET;
+        }
+
+        Aws::String GetNameForInstanceGroupType(InstanceGroupType enumValue)
+        {
+          switch(enumValue)
+          {
+          case InstanceGroupType::MASTER:
+            return "MASTER";
+          case InstanceGroupType::CORE:
+            return "CORE";
+          case InstanceGroupType::TASK:
+            return "TASK";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace InstanceGroupTypeMapper
+    } // namespace Model
+  } // namespace EMR
 } // namespace Aws

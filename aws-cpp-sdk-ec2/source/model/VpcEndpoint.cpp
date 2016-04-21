@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ VpcEndpoint::VpcEndpoint() :
     m_stateHasBeenSet(false),
     m_policyDocumentHasBeenSet(false),
     m_routeTableIdsHasBeenSet(false),
-    m_creationTimestamp(0.0),
     m_creationTimestampHasBeenSet(false)
 {
 }
@@ -42,7 +41,6 @@ VpcEndpoint::VpcEndpoint(const XmlNode& xmlNode) :
     m_stateHasBeenSet(false),
     m_policyDocumentHasBeenSet(false),
     m_routeTableIdsHasBeenSet(false),
-    m_creationTimestamp(0.0),
     m_creationTimestampHasBeenSet(false)
 {
   *this = xmlNode;
@@ -84,7 +82,7 @@ VpcEndpoint& VpcEndpoint::operator =(const XmlNode& xmlNode)
       m_policyDocument = StringUtils::Trim(policyDocumentNode.GetText().c_str());
       m_policyDocumentHasBeenSet = true;
     }
-    XmlNode routeTableIdsNode = resultNode.FirstChild("RouteTableIds");
+    XmlNode routeTableIdsNode = resultNode.FirstChild("routeTableIdSet");
     if(!routeTableIdsNode.IsNull())
     {
       XmlNode routeTableIdsMember = routeTableIdsNode.FirstChild("item");
@@ -99,7 +97,7 @@ VpcEndpoint& VpcEndpoint::operator =(const XmlNode& xmlNode)
     XmlNode creationTimestampNode = resultNode.FirstChild("creationTimestamp");
     if(!creationTimestampNode.IsNull())
     {
-      m_creationTimestamp = StringUtils::ConvertToDouble(StringUtils::Trim(creationTimestampNode.GetText().c_str()).c_str());
+      m_creationTimestamp = DateTime(StringUtils::Trim(creationTimestampNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_creationTimestampHasBeenSet = true;
     }
   }
@@ -131,14 +129,15 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location, un
   }
   if(m_routeTableIdsHasBeenSet)
   {
+      unsigned routeTableIdsIdx = 1;
       for(auto& item : m_routeTableIds)
       {
-        oStream << location << index << locationValue << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".RouteTableIdSet." << routeTableIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_creationTimestampHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreationTimestamp=" << m_creationTimestamp << "&";
+      oStream << location << index << locationValue << ".CreationTimestamp=" << StringUtils::URLEncode(m_creationTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
 
@@ -166,13 +165,14 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_routeTableIdsHasBeenSet)
   {
+      unsigned routeTableIdsIdx = 1;
       for(auto& item : m_routeTableIds)
       {
-        oStream << location << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".item." << routeTableIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_creationTimestampHasBeenSet)
   {
-      oStream << location << ".CreationTimestamp=" << m_creationTimestamp << "&";
+      oStream << location << ".CreationTimestamp=" << StringUtils::URLEncode(m_creationTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }

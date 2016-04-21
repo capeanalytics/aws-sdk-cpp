@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -33,7 +33,10 @@ InstanceGroup::InstanceGroup() :
     m_runningInstanceCount(0),
     m_runningInstanceCountHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_ebsBlockDevicesHasBeenSet(false),
+    m_ebsOptimized(false),
+    m_ebsOptimizedHasBeenSet(false)
 {
 }
 
@@ -49,7 +52,10 @@ InstanceGroup::InstanceGroup(const JsonValue& jsonValue) :
     m_runningInstanceCount(0),
     m_runningInstanceCountHasBeenSet(false),
     m_statusHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_ebsBlockDevicesHasBeenSet(false),
+    m_ebsOptimized(false),
+    m_ebsOptimizedHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -129,6 +135,23 @@ InstanceGroup& InstanceGroup::operator =(const JsonValue& jsonValue)
     m_configurationsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("EbsBlockDevices"))
+  {
+    Array<JsonValue> ebsBlockDevicesJsonList = jsonValue.GetArray("EbsBlockDevices");
+    for(unsigned ebsBlockDevicesIndex = 0; ebsBlockDevicesIndex < ebsBlockDevicesJsonList.GetLength(); ++ebsBlockDevicesIndex)
+    {
+      m_ebsBlockDevices.push_back(ebsBlockDevicesJsonList[ebsBlockDevicesIndex].AsObject());
+    }
+    m_ebsBlockDevicesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("EbsOptimized"))
+  {
+    m_ebsOptimized = jsonValue.GetBool("EbsOptimized");
+
+    m_ebsOptimizedHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -199,5 +222,22 @@ JsonValue InstanceGroup::Jsonize() const
 
   }
 
-  return std::move(payload);
+  if(m_ebsBlockDevicesHasBeenSet)
+  {
+   Array<JsonValue> ebsBlockDevicesJsonList(m_ebsBlockDevices.size());
+   for(unsigned ebsBlockDevicesIndex = 0; ebsBlockDevicesIndex < ebsBlockDevicesJsonList.GetLength(); ++ebsBlockDevicesIndex)
+   {
+     ebsBlockDevicesJsonList[ebsBlockDevicesIndex].AsObject(m_ebsBlockDevices[ebsBlockDevicesIndex].Jsonize());
+   }
+   payload.WithArray("EbsBlockDevices", std::move(ebsBlockDevicesJsonList));
+
+  }
+
+  if(m_ebsOptimizedHasBeenSet)
+  {
+   payload.WithBool("EbsOptimized", m_ebsOptimized);
+
+  }
+
+  return payload;
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ InstanceStatusSummary& InstanceStatusSummary::operator =(const XmlNode& xmlNode)
       m_status = SummaryStatusMapper::GetSummaryStatusForName(StringUtils::Trim(statusNode.GetText().c_str()).c_str());
       m_statusHasBeenSet = true;
     }
-    XmlNode detailsNode = resultNode.FirstChild("Details");
+    XmlNode detailsNode = resultNode.FirstChild("details");
     if(!detailsNode.IsNull())
     {
       XmlNode detailsMember = detailsNode.FirstChild("item");
@@ -73,10 +73,11 @@ void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_detailsHasBeenSet)
   {
+      unsigned detailsIdx = 1;
       for(auto& item : m_details)
       {
         Aws::StringStream detailsSs;
-        detailsSs << location << index << locationValue << ".item";
+        detailsSs << location << index << locationValue << ".Details." << detailsIdx++;
         item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
@@ -90,11 +91,12 @@ void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_detailsHasBeenSet)
   {
+      unsigned detailsIdx = 1;
       for(auto& item : m_details)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream detailsSs;
+        detailsSs << location <<  ".item." << detailsIdx++;
+        item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
 }

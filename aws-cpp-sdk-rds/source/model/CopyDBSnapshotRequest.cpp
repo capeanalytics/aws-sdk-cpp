@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ using namespace Aws::Utils;
 CopyDBSnapshotRequest::CopyDBSnapshotRequest() : 
     m_sourceDBSnapshotIdentifierHasBeenSet(false),
     m_targetDBSnapshotIdentifierHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_copyTags(false),
     m_copyTagsHasBeenSet(false)
@@ -39,6 +40,10 @@ Aws::String CopyDBSnapshotRequest::SerializePayload() const
   if(m_targetDBSnapshotIdentifierHasBeenSet)
   {
     ss << "TargetDBSnapshotIdentifier=" << StringUtils::URLEncode(m_targetDBSnapshotIdentifier.c_str()) << "&";
+  }
+  if(m_kmsKeyIdHasBeenSet)
+  {
+    ss << "KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
   if(m_tagsHasBeenSet)
   {

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,9 +30,11 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p> An Active Directory Domain membership record associated with the DB instance. </p>
-  */
+
+  /**
+   * <p> An Active Directory Domain membership record associated with the DB
+   * instance. </p>
+   */
   class AWS_RDS_API DomainMembership
   {
   public:
@@ -43,118 +45,169 @@ namespace Model
     void OutputToStream(Aws::OStream& ostream, const char* location, unsigned index, const char* locationValue) const;
     void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline const Aws::String& GetDomain() const{ return m_domain; }
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline DomainMembership& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline DomainMembership& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
 
-    /*
-     <p> The identifier of the Active Directory Domain. </p>
-    */
+    /**
+     * <p> The identifier of the Active Directory Domain. </p>
+     */
     inline DomainMembership& WithDomain(const char* value) { SetDomain(value); return *this;}
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline const Aws::String& GetStatus() const{ return m_status; }
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline DomainMembership& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline DomainMembership& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
 
-    /*
-     <p> The status of the DB instance's Active Directory Domain membership (e.g. joined, pending-join, failed etc). </p>
-    */
+    /**
+     * <p> The status of the DB instance's Active Directory Domain membership, such as
+     * joined, pending-join, failed etc). </p>
+     */
     inline DomainMembership& WithStatus(const char* value) { SetStatus(value); return *this;}
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline const Aws::String& GetConnectivity() const{ return m_connectivity; }
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline const Aws::String& GetFQDN() const{ return m_fQDN; }
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline void SetConnectivity(const Aws::String& value) { m_connectivityHasBeenSet = true; m_connectivity = value; }
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline void SetFQDN(const Aws::String& value) { m_fQDNHasBeenSet = true; m_fQDN = value; }
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline void SetConnectivity(Aws::String&& value) { m_connectivityHasBeenSet = true; m_connectivity = value; }
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline void SetFQDN(Aws::String&& value) { m_fQDNHasBeenSet = true; m_fQDN = value; }
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline void SetConnectivity(const char* value) { m_connectivityHasBeenSet = true; m_connectivity.assign(value); }
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline void SetFQDN(const char* value) { m_fQDNHasBeenSet = true; m_fQDN.assign(value); }
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline DomainMembership& WithConnectivity(const Aws::String& value) { SetConnectivity(value); return *this;}
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline DomainMembership& WithFQDN(const Aws::String& value) { SetFQDN(value); return *this;}
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline DomainMembership& WithConnectivity(Aws::String&& value) { SetConnectivity(value); return *this;}
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline DomainMembership& WithFQDN(Aws::String&& value) { SetFQDN(value); return *this;}
 
-    /*
-     <p> The observed connectivity of the Active Directory Domain. </p>
-    */
-    inline DomainMembership& WithConnectivity(const char* value) { SetConnectivity(value); return *this;}
+    /**
+     * <p> The fully qualified domain name of the Active Directory Domain. </p>
+     */
+    inline DomainMembership& WithFQDN(const char* value) { SetFQDN(value); return *this;}
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline const Aws::String& GetIAMRoleName() const{ return m_iAMRoleName; }
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline void SetIAMRoleName(const Aws::String& value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName = value; }
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline void SetIAMRoleName(Aws::String&& value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName = value; }
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline void SetIAMRoleName(const char* value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName.assign(value); }
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline DomainMembership& WithIAMRoleName(const Aws::String& value) { SetIAMRoleName(value); return *this;}
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline DomainMembership& WithIAMRoleName(Aws::String&& value) { SetIAMRoleName(value); return *this;}
+
+    /**
+     * <p> The name of the IAM role to be used when making API calls to the Directory
+     * Service. </p>
+     */
+    inline DomainMembership& WithIAMRoleName(const char* value) { SetIAMRoleName(value); return *this;}
 
   private:
     Aws::String m_domain;
     bool m_domainHasBeenSet;
     Aws::String m_status;
     bool m_statusHasBeenSet;
-    Aws::String m_connectivity;
-    bool m_connectivityHasBeenSet;
+    Aws::String m_fQDN;
+    bool m_fQDNHasBeenSet;
+    Aws::String m_iAMRoleName;
+    bool m_iAMRoleNameHasBeenSet;
   };
 
 } // namespace Model

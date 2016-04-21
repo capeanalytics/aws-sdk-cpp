@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ ImportInstanceLaunchSpecification& ImportInstanceLaunchSpecification::operator =
       m_architecture = ArchitectureValuesMapper::GetArchitectureValuesForName(StringUtils::Trim(architectureNode.GetText().c_str()).c_str());
       m_architectureHasBeenSet = true;
     }
-    XmlNode groupNamesNode = resultNode.FirstChild("GroupNames");
+    XmlNode groupNamesNode = resultNode.FirstChild("GroupName");
     if(!groupNamesNode.IsNull())
     {
       XmlNode groupNamesMember = groupNamesNode.FirstChild("SecurityGroup");
@@ -80,7 +80,7 @@ ImportInstanceLaunchSpecification& ImportInstanceLaunchSpecification::operator =
 
       m_groupNamesHasBeenSet = true;
     }
-    XmlNode groupIdsNode = resultNode.FirstChild("GroupIds");
+    XmlNode groupIdsNode = resultNode.FirstChild("GroupId");
     if(!groupIdsNode.IsNull())
     {
       XmlNode groupIdsMember = groupIdsNode.FirstChild("SecurityGroupId");
@@ -153,16 +153,18 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
   }
   if(m_groupNamesHasBeenSet)
   {
+      unsigned groupNamesIdx = 1;
       for(auto& item : m_groupNames)
       {
-        oStream << location << index << locationValue << ".SecurityGroup=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".GroupName." << groupNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_groupIdsHasBeenSet)
   {
+      unsigned groupIdsIdx = 1;
       for(auto& item : m_groupIds)
       {
-        oStream << location << index << locationValue << ".SecurityGroupId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".GroupId." << groupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_additionalInfoHasBeenSet)
@@ -211,16 +213,18 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
   }
   if(m_groupNamesHasBeenSet)
   {
+      unsigned groupNamesIdx = 1;
       for(auto& item : m_groupNames)
       {
-        oStream << location << ".SecurityGroup=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SecurityGroup." << groupNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_groupIdsHasBeenSet)
   {
+      unsigned groupIdsIdx = 1;
       for(auto& item : m_groupIds)
       {
-        oStream << location << ".SecurityGroupId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SecurityGroupId." << groupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_additionalInfoHasBeenSet)

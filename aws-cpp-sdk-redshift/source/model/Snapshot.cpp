@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,13 +26,11 @@ using namespace Aws::Utils;
 Snapshot::Snapshot() : 
     m_snapshotIdentifierHasBeenSet(false),
     m_clusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTime(0.0),
     m_snapshotCreateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
-    m_clusterCreateTime(0.0),
     m_clusterCreateTimeHasBeenSet(false),
     m_masterUsernameHasBeenSet(false),
     m_clusterVersionHasBeenSet(false),
@@ -70,13 +68,11 @@ Snapshot::Snapshot() :
 Snapshot::Snapshot(const XmlNode& xmlNode) : 
     m_snapshotIdentifierHasBeenSet(false),
     m_clusterIdentifierHasBeenSet(false),
-    m_snapshotCreateTime(0.0),
     m_snapshotCreateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
-    m_clusterCreateTime(0.0),
     m_clusterCreateTimeHasBeenSet(false),
     m_masterUsernameHasBeenSet(false),
     m_clusterVersionHasBeenSet(false),
@@ -133,7 +129,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     XmlNode snapshotCreateTimeNode = resultNode.FirstChild("SnapshotCreateTime");
     if(!snapshotCreateTimeNode.IsNull())
     {
-      m_snapshotCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(snapshotCreateTimeNode.GetText().c_str()).c_str());
+      m_snapshotCreateTime = DateTime(StringUtils::Trim(snapshotCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_snapshotCreateTimeHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
@@ -157,7 +153,7 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
     XmlNode clusterCreateTimeNode = resultNode.FirstChild("ClusterCreateTime");
     if(!clusterCreateTimeNode.IsNull())
     {
-      m_clusterCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(clusterCreateTimeNode.GetText().c_str()).c_str());
+      m_clusterCreateTime = DateTime(StringUtils::Trim(clusterCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_clusterCreateTimeHasBeenSet = true;
     }
     XmlNode masterUsernameNode = resultNode.FirstChild("MasterUsername");
@@ -321,7 +317,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_snapshotCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SnapshotCreateTime=" << m_snapshotCreateTime << "&";
+      oStream << location << index << locationValue << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_statusHasBeenSet)
   {
@@ -337,7 +333,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_clusterCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ClusterCreateTime=" << m_clusterCreateTime << "&";
+      oStream << location << index << locationValue << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_masterUsernameHasBeenSet)
   {
@@ -381,10 +377,11 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_accountsWithRestoreAccessHasBeenSet)
   {
+      unsigned accountsWithRestoreAccessIdx = 1;
       for(auto& item : m_accountsWithRestoreAccess)
       {
         Aws::StringStream accountsWithRestoreAccessSs;
-        accountsWithRestoreAccessSs << location << index << locationValue << ".AccountWithRestoreAccess";
+        accountsWithRestoreAccessSs << location << index << locationValue << ".AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
         item.OutputToStream(oStream, accountsWithRestoreAccessSs.str().c_str());
       }
   }
@@ -394,19 +391,19 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_totalBackupSizeInMegaBytesHasBeenSet)
   {
-      oStream << location << index << locationValue << ".TotalBackupSizeInMegaBytes=" << m_totalBackupSizeInMegaBytes << "&";
+        oStream << location << index << locationValue << ".TotalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_totalBackupSizeInMegaBytes) << "&";
   }
   if(m_actualIncrementalBackupSizeInMegaBytesHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ActualIncrementalBackupSizeInMegaBytes=" << m_actualIncrementalBackupSizeInMegaBytes << "&";
+        oStream << location << index << locationValue << ".ActualIncrementalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_actualIncrementalBackupSizeInMegaBytes) << "&";
   }
   if(m_backupProgressInMegaBytesHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BackupProgressInMegaBytes=" << m_backupProgressInMegaBytes << "&";
+        oStream << location << index << locationValue << ".BackupProgressInMegaBytes=" << StringUtils::URLEncode(m_backupProgressInMegaBytes) << "&";
   }
   if(m_currentBackupRateInMegaBytesPerSecondHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrentBackupRateInMegaBytesPerSecond=" << m_currentBackupRateInMegaBytesPerSecond << "&";
+        oStream << location << index << locationValue << ".CurrentBackupRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentBackupRateInMegaBytesPerSecond) << "&";
   }
   if(m_estimatedSecondsToCompletionHasBeenSet)
   {
@@ -422,18 +419,20 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag";
+        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_restorableNodeTypesHasBeenSet)
   {
+      unsigned restorableNodeTypesIdx = 1;
       for(auto& item : m_restorableNodeTypes)
       {
-        oStream << location << index << locationValue << ".NodeType=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }
@@ -450,7 +449,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_snapshotCreateTimeHasBeenSet)
   {
-      oStream << location << ".SnapshotCreateTime=" << m_snapshotCreateTime << "&";
+      oStream << location << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_statusHasBeenSet)
   {
@@ -466,7 +465,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_clusterCreateTimeHasBeenSet)
   {
-      oStream << location << ".ClusterCreateTime=" << m_clusterCreateTime << "&";
+      oStream << location << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_masterUsernameHasBeenSet)
   {
@@ -510,11 +509,12 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_accountsWithRestoreAccessHasBeenSet)
   {
+      unsigned accountsWithRestoreAccessIdx = 1;
       for(auto& item : m_accountsWithRestoreAccess)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".AccountWithRestoreAccess";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream accountsWithRestoreAccessSs;
+        accountsWithRestoreAccessSs << location <<  ".AccountWithRestoreAccess." << accountsWithRestoreAccessIdx++;
+        item.OutputToStream(oStream, accountsWithRestoreAccessSs.str().c_str());
       }
   }
   if(m_ownerAccountHasBeenSet)
@@ -523,19 +523,19 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_totalBackupSizeInMegaBytesHasBeenSet)
   {
-      oStream << location << ".TotalBackupSizeInMegaBytes=" << m_totalBackupSizeInMegaBytes << "&";
+        oStream << location << ".TotalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_totalBackupSizeInMegaBytes) << "&";
   }
   if(m_actualIncrementalBackupSizeInMegaBytesHasBeenSet)
   {
-      oStream << location << ".ActualIncrementalBackupSizeInMegaBytes=" << m_actualIncrementalBackupSizeInMegaBytes << "&";
+        oStream << location << ".ActualIncrementalBackupSizeInMegaBytes=" << StringUtils::URLEncode(m_actualIncrementalBackupSizeInMegaBytes) << "&";
   }
   if(m_backupProgressInMegaBytesHasBeenSet)
   {
-      oStream << location << ".BackupProgressInMegaBytes=" << m_backupProgressInMegaBytes << "&";
+        oStream << location << ".BackupProgressInMegaBytes=" << StringUtils::URLEncode(m_backupProgressInMegaBytes) << "&";
   }
   if(m_currentBackupRateInMegaBytesPerSecondHasBeenSet)
   {
-      oStream << location << ".CurrentBackupRateInMegaBytesPerSecond=" << m_currentBackupRateInMegaBytesPerSecond << "&";
+        oStream << location << ".CurrentBackupRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentBackupRateInMegaBytesPerSecond) << "&";
   }
   if(m_estimatedSecondsToCompletionHasBeenSet)
   {
@@ -551,18 +551,20 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Tag";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".Tag." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_restorableNodeTypesHasBeenSet)
   {
+      unsigned restorableNodeTypesIdx = 1;
       for(auto& item : m_restorableNodeTypes)
       {
-        oStream << location << ".NodeType=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

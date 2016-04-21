@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -89,7 +89,7 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location, 
   }
   if(m_priceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Price=" << m_price << "&";
+        oStream << location << index << locationValue << ".Price=" << StringUtils::URLEncode(m_price) << "&";
   }
   if(m_currencyCodeHasBeenSet)
   {
@@ -109,7 +109,7 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_priceHasBeenSet)
   {
-      oStream << location << ".Price=" << m_price << "&";
+        oStream << location << ".Price=" << StringUtils::URLEncode(m_price) << "&";
   }
   if(m_currencyCodeHasBeenSet)
   {

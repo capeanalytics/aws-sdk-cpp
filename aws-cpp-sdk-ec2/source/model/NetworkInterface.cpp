@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -43,7 +43,8 @@ NetworkInterface::NetworkInterface() :
     m_attachmentHasBeenSet(false),
     m_associationHasBeenSet(false),
     m_tagSetHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false)
+    m_privateIpAddressesHasBeenSet(false),
+    m_interfaceTypeHasBeenSet(false)
 {
 }
 
@@ -67,7 +68,8 @@ NetworkInterface::NetworkInterface(const XmlNode& xmlNode) :
     m_attachmentHasBeenSet(false),
     m_associationHasBeenSet(false),
     m_tagSetHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false)
+    m_privateIpAddressesHasBeenSet(false),
+    m_interfaceTypeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -156,7 +158,7 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
       m_sourceDestCheck = StringUtils::ConvertToBool(StringUtils::Trim(sourceDestCheckNode.GetText().c_str()).c_str());
       m_sourceDestCheckHasBeenSet = true;
     }
-    XmlNode groupsNode = resultNode.FirstChild("Groups");
+    XmlNode groupsNode = resultNode.FirstChild("groupSet");
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("item");
@@ -180,7 +182,7 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
       m_association = associationNode;
       m_associationHasBeenSet = true;
     }
-    XmlNode tagSetNode = resultNode.FirstChild("TagSet");
+    XmlNode tagSetNode = resultNode.FirstChild("tagSet");
     if(!tagSetNode.IsNull())
     {
       XmlNode tagSetMember = tagSetNode.FirstChild("item");
@@ -192,7 +194,7 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
 
       m_tagSetHasBeenSet = true;
     }
-    XmlNode privateIpAddressesNode = resultNode.FirstChild("PrivateIpAddresses");
+    XmlNode privateIpAddressesNode = resultNode.FirstChild("privateIpAddressesSet");
     if(!privateIpAddressesNode.IsNull())
     {
       XmlNode privateIpAddressesMember = privateIpAddressesNode.FirstChild("item");
@@ -203,6 +205,12 @@ NetworkInterface& NetworkInterface::operator =(const XmlNode& xmlNode)
       }
 
       m_privateIpAddressesHasBeenSet = true;
+    }
+    XmlNode interfaceTypeNode = resultNode.FirstChild("interfaceType");
+    if(!interfaceTypeNode.IsNull())
+    {
+      m_interfaceType = NetworkInterfaceTypeMapper::GetNetworkInterfaceTypeForName(StringUtils::Trim(interfaceTypeNode.GetText().c_str()).c_str());
+      m_interfaceTypeHasBeenSet = true;
     }
   }
 
@@ -265,10 +273,11 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location << index << locationValue << ".item";
+        groupsSs << location << index << locationValue << ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
@@ -286,21 +295,27 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_tagSetHasBeenSet)
   {
+      unsigned tagSetIdx = 1;
       for(auto& item : m_tagSet)
       {
         Aws::StringStream tagSetSs;
-        tagSetSs << location << index << locationValue << ".item";
+        tagSetSs << location << index << locationValue << ".TagSet." << tagSetIdx++;
         item.OutputToStream(oStream, tagSetSs.str().c_str());
       }
   }
   if(m_privateIpAddressesHasBeenSet)
   {
+      unsigned privateIpAddressesIdx = 1;
       for(auto& item : m_privateIpAddresses)
       {
         Aws::StringStream privateIpAddressesSs;
-        privateIpAddressesSs << location << index << locationValue << ".item";
+        privateIpAddressesSs << location << index << locationValue << ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
+  }
+  if(m_interfaceTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InterfaceType=" << NetworkInterfaceTypeMapper::GetNameForNetworkInterfaceType(m_interfaceType) << "&";
   }
 }
 
@@ -360,11 +375,12 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream groupsSs;
+        groupsSs << location <<  ".item." << groupsIdx++;
+        item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
   if(m_attachmentHasBeenSet)
@@ -381,20 +397,26 @@ void NetworkInterface::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_tagSetHasBeenSet)
   {
+      unsigned tagSetIdx = 1;
       for(auto& item : m_tagSet)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagSetSs;
+        tagSetSs << location <<  ".item." << tagSetIdx++;
+        item.OutputToStream(oStream, tagSetSs.str().c_str());
       }
   }
   if(m_privateIpAddressesHasBeenSet)
   {
+      unsigned privateIpAddressesIdx = 1;
       for(auto& item : m_privateIpAddresses)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream privateIpAddressesSs;
+        privateIpAddressesSs << location <<  ".item." << privateIpAddressesIdx++;
+        item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
+  }
+  if(m_interfaceTypeHasBeenSet)
+  {
+      oStream << location << ".InterfaceType=" << NetworkInterfaceTypeMapper::GetNameForNetworkInterfaceType(m_interfaceType) << "&";
   }
 }

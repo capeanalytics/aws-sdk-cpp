@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@
 #include <aws/email/model/DescribeReceiptRuleRequest.h>
 #include <aws/email/model/DescribeReceiptRuleSetRequest.h>
 #include <aws/email/model/GetIdentityDkimAttributesRequest.h>
+#include <aws/email/model/GetIdentityMailFromDomainAttributesRequest.h>
 #include <aws/email/model/GetIdentityNotificationAttributesRequest.h>
 #include <aws/email/model/GetIdentityPoliciesRequest.h>
 #include <aws/email/model/GetIdentityVerificationAttributesRequest.h>
@@ -58,6 +59,7 @@
 #include <aws/email/model/SetActiveReceiptRuleSetRequest.h>
 #include <aws/email/model/SetIdentityDkimEnabledRequest.h>
 #include <aws/email/model/SetIdentityFeedbackForwardingEnabledRequest.h>
+#include <aws/email/model/SetIdentityMailFromDomainRequest.h>
 #include <aws/email/model/SetIdentityNotificationTopicRequest.h>
 #include <aws/email/model/SetReceiptRulePositionRequest.h>
 #include <aws/email/model/UpdateReceiptRuleRequest.h>
@@ -75,12 +77,13 @@ using namespace Aws::Http;
 using namespace Aws::Utils::Xml;
 
 
-static const char* SERVICE_NAME = "email";
+static const char* SERVICE_NAME = "ses";
 static const char* ALLOCATION_TAG = "SESClient";
 
 SESClient::SESClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<SESErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -89,7 +92,8 @@ SESClient::SESClient(const Client::ClientConfiguration& clientConfiguration) :
 
 SESClient::SESClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<SESErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -99,7 +103,8 @@ SESClient::SESClient(const AWSCredentials& credentials, const Client::ClientConf
 SESClient::SESClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<SESErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -115,7 +120,7 @@ void SESClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << SESEndpoint::ForRegion(config.region);
   }
@@ -544,6 +549,36 @@ void SESClient::GetIdentityDkimAttributesAsync(const GetIdentityDkimAttributesRe
 void SESClient::GetIdentityDkimAttributesAsyncHelper(const GetIdentityDkimAttributesRequest& request, const GetIdentityDkimAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, GetIdentityDkimAttributes(request), context);
+}
+
+GetIdentityMailFromDomainAttributesOutcome SESClient::GetIdentityMailFromDomainAttributes(const GetIdentityMailFromDomainAttributesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return GetIdentityMailFromDomainAttributesOutcome(GetIdentityMailFromDomainAttributesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return GetIdentityMailFromDomainAttributesOutcome(outcome.GetError());
+  }
+}
+
+GetIdentityMailFromDomainAttributesOutcomeCallable SESClient::GetIdentityMailFromDomainAttributesCallable(const GetIdentityMailFromDomainAttributesRequest& request) const
+{
+  return std::async(std::launch::async, &SESClient::GetIdentityMailFromDomainAttributes, this, request);
+}
+
+void SESClient::GetIdentityMailFromDomainAttributesAsync(const GetIdentityMailFromDomainAttributesRequest& request, const GetIdentityMailFromDomainAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&SESClient::GetIdentityMailFromDomainAttributesAsyncHelper, this, request, handler, context);
+}
+
+void SESClient::GetIdentityMailFromDomainAttributesAsyncHelper(const GetIdentityMailFromDomainAttributesRequest& request, const GetIdentityMailFromDomainAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetIdentityMailFromDomainAttributes(request), context);
 }
 
 GetIdentityNotificationAttributesOutcome SESClient::GetIdentityNotificationAttributes(const GetIdentityNotificationAttributesRequest& request) const
@@ -1084,6 +1119,36 @@ void SESClient::SetIdentityFeedbackForwardingEnabledAsync(const SetIdentityFeedb
 void SESClient::SetIdentityFeedbackForwardingEnabledAsyncHelper(const SetIdentityFeedbackForwardingEnabledRequest& request, const SetIdentityFeedbackForwardingEnabledResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, SetIdentityFeedbackForwardingEnabled(request), context);
+}
+
+SetIdentityMailFromDomainOutcome SESClient::SetIdentityMailFromDomain(const SetIdentityMailFromDomainRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return SetIdentityMailFromDomainOutcome(SetIdentityMailFromDomainResult(outcome.GetResult()));
+  }
+  else
+  {
+    return SetIdentityMailFromDomainOutcome(outcome.GetError());
+  }
+}
+
+SetIdentityMailFromDomainOutcomeCallable SESClient::SetIdentityMailFromDomainCallable(const SetIdentityMailFromDomainRequest& request) const
+{
+  return std::async(std::launch::async, &SESClient::SetIdentityMailFromDomain, this, request);
+}
+
+void SESClient::SetIdentityMailFromDomainAsync(const SetIdentityMailFromDomainRequest& request, const SetIdentityMailFromDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&SESClient::SetIdentityMailFromDomainAsyncHelper, this, request, handler, context);
+}
+
+void SESClient::SetIdentityMailFromDomainAsyncHelper(const SetIdentityMailFromDomainRequest& request, const SetIdentityMailFromDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, SetIdentityMailFromDomain(request), context);
 }
 
 SetIdentityNotificationTopicOutcome SESClient::SetIdentityNotificationTopic(const SetIdentityNotificationTopicRequest& request) const

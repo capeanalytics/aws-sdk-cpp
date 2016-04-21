@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -34,7 +34,8 @@ ContainerInstance::ContainerInstance() :
     m_runningTasksCountHasBeenSet(false),
     m_pendingTasksCount(0),
     m_pendingTasksCountHasBeenSet(false),
-    m_agentUpdateStatusHasBeenSet(false)
+    m_agentUpdateStatusHasBeenSet(false),
+    m_attributesHasBeenSet(false)
 {
 }
 
@@ -51,7 +52,8 @@ ContainerInstance::ContainerInstance(const JsonValue& jsonValue) :
     m_runningTasksCountHasBeenSet(false),
     m_pendingTasksCount(0),
     m_pendingTasksCountHasBeenSet(false),
-    m_agentUpdateStatusHasBeenSet(false)
+    m_agentUpdateStatusHasBeenSet(false),
+    m_attributesHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -134,6 +136,16 @@ ContainerInstance& ContainerInstance::operator =(const JsonValue& jsonValue)
     m_agentUpdateStatusHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("attributes"))
+  {
+    Array<JsonValue> attributesJsonList = jsonValue.GetArray("attributes");
+    for(unsigned attributesIndex = 0; attributesIndex < attributesJsonList.GetLength(); ++attributesIndex)
+    {
+      m_attributes.push_back(attributesJsonList[attributesIndex].AsObject());
+    }
+    m_attributesHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -210,5 +222,16 @@ JsonValue ContainerInstance::Jsonize() const
    payload.WithString("agentUpdateStatus", AgentUpdateStatusMapper::GetNameForAgentUpdateStatus(m_agentUpdateStatus));
   }
 
-  return std::move(payload);
+  if(m_attributesHasBeenSet)
+  {
+   Array<JsonValue> attributesJsonList(m_attributes.size());
+   for(unsigned attributesIndex = 0; attributesIndex < attributesJsonList.GetLength(); ++attributesIndex)
+   {
+     attributesJsonList[attributesIndex].AsObject(m_attributes[attributesIndex].Jsonize());
+   }
+   payload.WithArray("attributes", std::move(attributesJsonList));
+
+  }
+
+  return payload;
 }

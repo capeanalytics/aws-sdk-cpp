@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/swf/model/CloseStatus.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -26,66 +28,79 @@ static const int TIMED_OUT_HASH = HashingUtils::HashString("TIMED_OUT");
 
 namespace Aws
 {
-namespace SWF
-{
-namespace Model
-{
-namespace CloseStatusMapper
-{
-CloseStatus GetCloseStatusForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
+  namespace SWF
+  {
+    namespace Model
+    {
+      namespace CloseStatusMapper
+      {
 
-  if (hashCode == COMPLETED_HASH)
-  {
-    return CloseStatus::COMPLETED;
-  }
-  else if (hashCode == FAILED_HASH)
-  {
-    return CloseStatus::FAILED;
-  }
-  else if (hashCode == CANCELED_HASH)
-  {
-    return CloseStatus::CANCELED;
-  }
-  else if (hashCode == TERMINATED_HASH)
-  {
-    return CloseStatus::TERMINATED;
-  }
-  else if (hashCode == CONTINUED_AS_NEW_HASH)
-  {
-    return CloseStatus::CONTINUED_AS_NEW;
-  }
-  else if (hashCode == TIMED_OUT_HASH)
-  {
-    return CloseStatus::TIMED_OUT;
-  }
 
-  return CloseStatus::NOT_SET;
-}
+        CloseStatus GetCloseStatusForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == COMPLETED_HASH)
+          {
+            return CloseStatus::COMPLETED;
+          }
+          else if (hashCode == FAILED_HASH)
+          {
+            return CloseStatus::FAILED;
+          }
+          else if (hashCode == CANCELED_HASH)
+          {
+            return CloseStatus::CANCELED;
+          }
+          else if (hashCode == TERMINATED_HASH)
+          {
+            return CloseStatus::TERMINATED;
+          }
+          else if (hashCode == CONTINUED_AS_NEW_HASH)
+          {
+            return CloseStatus::CONTINUED_AS_NEW;
+          }
+          else if (hashCode == TIMED_OUT_HASH)
+          {
+            return CloseStatus::TIMED_OUT;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<CloseStatus>(hashCode);
+          }
 
-Aws::String GetNameForCloseStatus(CloseStatus value)
-{
-  switch(value)
-  {
-  case CloseStatus::COMPLETED:
-    return "COMPLETED";
-  case CloseStatus::FAILED:
-    return "FAILED";
-  case CloseStatus::CANCELED:
-    return "CANCELED";
-  case CloseStatus::TERMINATED:
-    return "TERMINATED";
-  case CloseStatus::CONTINUED_AS_NEW:
-    return "CONTINUED_AS_NEW";
-  case CloseStatus::TIMED_OUT:
-    return "TIMED_OUT";
-  default:
-    return "";
-  }
-}
+          return CloseStatus::NOT_SET;
+        }
 
-} // namespace CloseStatusMapper
-} // namespace Model
-} // namespace SWF
+        Aws::String GetNameForCloseStatus(CloseStatus enumValue)
+        {
+          switch(enumValue)
+          {
+          case CloseStatus::COMPLETED:
+            return "COMPLETED";
+          case CloseStatus::FAILED:
+            return "FAILED";
+          case CloseStatus::CANCELED:
+            return "CANCELED";
+          case CloseStatus::TERMINATED:
+            return "TERMINATED";
+          case CloseStatus::CONTINUED_AS_NEW:
+            return "CONTINUED_AS_NEW";
+          case CloseStatus::TIMED_OUT:
+            return "TIMED_OUT";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace CloseStatusMapper
+    } // namespace Model
+  } // namespace SWF
 } // namespace Aws

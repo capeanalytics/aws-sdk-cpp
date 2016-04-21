@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/ecs/model/TransportProtocol.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int udp_HASH = HashingUtils::HashString("udp");
 
 namespace Aws
 {
-namespace ECS
-{
-namespace Model
-{
-namespace TransportProtocolMapper
-{
-TransportProtocol GetTransportProtocolForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == tcp_HASH)
+  namespace ECS
   {
-    return TransportProtocol::tcp;
-  }
-  else if (hashCode == udp_HASH)
-  {
-    return TransportProtocol::udp;
-  }
+    namespace Model
+    {
+      namespace TransportProtocolMapper
+      {
 
-  return TransportProtocol::NOT_SET;
-}
 
-Aws::String GetNameForTransportProtocol(TransportProtocol value)
-{
-  switch(value)
-  {
-  case TransportProtocol::tcp:
-    return "tcp";
-  case TransportProtocol::udp:
-    return "udp";
-  default:
-    return "";
-  }
-}
+        TransportProtocol GetTransportProtocolForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == tcp_HASH)
+          {
+            return TransportProtocol::tcp;
+          }
+          else if (hashCode == udp_HASH)
+          {
+            return TransportProtocol::udp;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<TransportProtocol>(hashCode);
+          }
 
-} // namespace TransportProtocolMapper
-} // namespace Model
-} // namespace ECS
+          return TransportProtocol::NOT_SET;
+        }
+
+        Aws::String GetNameForTransportProtocol(TransportProtocol enumValue)
+        {
+          switch(enumValue)
+          {
+          case TransportProtocol::tcp:
+            return "tcp";
+          case TransportProtocol::udp:
+            return "udp";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace TransportProtocolMapper
+    } // namespace Model
+  } // namespace ECS
 } // namespace Aws

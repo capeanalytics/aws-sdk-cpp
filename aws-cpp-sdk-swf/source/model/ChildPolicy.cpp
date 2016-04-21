@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/swf/model/ChildPolicy.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -23,48 +25,61 @@ static const int ABANDON_HASH = HashingUtils::HashString("ABANDON");
 
 namespace Aws
 {
-namespace SWF
-{
-namespace Model
-{
-namespace ChildPolicyMapper
-{
-ChildPolicy GetChildPolicyForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == TERMINATE_HASH)
+  namespace SWF
   {
-    return ChildPolicy::TERMINATE;
-  }
-  else if (hashCode == REQUEST_CANCEL_HASH)
-  {
-    return ChildPolicy::REQUEST_CANCEL;
-  }
-  else if (hashCode == ABANDON_HASH)
-  {
-    return ChildPolicy::ABANDON;
-  }
+    namespace Model
+    {
+      namespace ChildPolicyMapper
+      {
 
-  return ChildPolicy::NOT_SET;
-}
 
-Aws::String GetNameForChildPolicy(ChildPolicy value)
-{
-  switch(value)
-  {
-  case ChildPolicy::TERMINATE:
-    return "TERMINATE";
-  case ChildPolicy::REQUEST_CANCEL:
-    return "REQUEST_CANCEL";
-  case ChildPolicy::ABANDON:
-    return "ABANDON";
-  default:
-    return "";
-  }
-}
+        ChildPolicy GetChildPolicyForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == TERMINATE_HASH)
+          {
+            return ChildPolicy::TERMINATE;
+          }
+          else if (hashCode == REQUEST_CANCEL_HASH)
+          {
+            return ChildPolicy::REQUEST_CANCEL;
+          }
+          else if (hashCode == ABANDON_HASH)
+          {
+            return ChildPolicy::ABANDON;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<ChildPolicy>(hashCode);
+          }
 
-} // namespace ChildPolicyMapper
-} // namespace Model
-} // namespace SWF
+          return ChildPolicy::NOT_SET;
+        }
+
+        Aws::String GetNameForChildPolicy(ChildPolicy enumValue)
+        {
+          switch(enumValue)
+          {
+          case ChildPolicy::TERMINATE:
+            return "TERMINATE";
+          case ChildPolicy::REQUEST_CANCEL:
+            return "REQUEST_CANCEL";
+          case ChildPolicy::ABANDON:
+            return "ABANDON";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace ChildPolicyMapper
+    } // namespace Model
+  } // namespace SWF
 } // namespace Aws

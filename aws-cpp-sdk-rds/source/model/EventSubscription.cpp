@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -157,16 +157,18 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_sourceIdsListHasBeenSet)
   {
+      unsigned sourceIdsListIdx = 1;
       for(auto& item : m_sourceIdsList)
       {
-        oStream << location << index << locationValue << ".SourceId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_eventCategoriesListHasBeenSet)
   {
+      unsigned eventCategoriesListIdx = 1;
       for(auto& item : m_eventCategoriesList)
       {
-        oStream << location << index << locationValue << ".EventCategory=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_enabledHasBeenSet)
@@ -203,16 +205,18 @@ void EventSubscription::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_sourceIdsListHasBeenSet)
   {
+      unsigned sourceIdsListIdx = 1;
       for(auto& item : m_sourceIdsList)
       {
-        oStream << location << ".SourceId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SourceId." << sourceIdsListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_eventCategoriesListHasBeenSet)
   {
+      unsigned eventCategoriesListIdx = 1;
       for(auto& item : m_eventCategoriesList)
       {
-        oStream << location << ".EventCategory=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".EventCategory." << eventCategoriesListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_enabledHasBeenSet)

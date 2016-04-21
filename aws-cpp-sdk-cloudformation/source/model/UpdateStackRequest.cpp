@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -29,9 +29,11 @@ UpdateStackRequest::UpdateStackRequest() :
     m_stackPolicyDuringUpdateURLHasBeenSet(false),
     m_parametersHasBeenSet(false),
     m_capabilitiesHasBeenSet(false),
+    m_resourceTypesHasBeenSet(false),
     m_stackPolicyBodyHasBeenSet(false),
     m_stackPolicyURLHasBeenSet(false),
-    m_notificationARNsHasBeenSet(false)
+    m_notificationARNsHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -82,6 +84,16 @@ Aws::String UpdateStackRequest::SerializePayload() const
       capabilitiesCount++;
     }
   }
+  if(m_resourceTypesHasBeenSet)
+  {
+    unsigned resourceTypesCount = 1;
+    for(auto& item : m_resourceTypes)
+    {
+      ss << "ResourceTypes.member." << resourceTypesCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      resourceTypesCount++;
+    }
+  }
   if(m_stackPolicyBodyHasBeenSet)
   {
     ss << "StackPolicyBody=" << StringUtils::URLEncode(m_stackPolicyBody.c_str()) << "&";
@@ -98,6 +110,15 @@ Aws::String UpdateStackRequest::SerializePayload() const
       ss << "NotificationARNs.member." << notificationARNsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       notificationARNsCount++;
+    }
+  }
+  if(m_tagsHasBeenSet)
+  {
+    unsigned tagsCount = 1;
+    for(auto& item : m_tags)
+    {
+      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+      tagsCount++;
     }
   }
   ss << "Version=2010-05-15";

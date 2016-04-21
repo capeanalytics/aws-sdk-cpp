@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p></p>
-  */
+  /**
+   * <p/>
+   */
   class AWS_RDS_API DescribeDBClusterParameterGroupsResult
   {
   public:
@@ -45,74 +45,95 @@ namespace Model
     DescribeDBClusterParameterGroupsResult(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     DescribeDBClusterParameterGroupsResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(Aws::String&& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(const char* value) { m_marker.assign(value); }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribeDBClusterParameterGroupsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribeDBClusterParameterGroupsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribeDBClusterParameterGroups</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to the value
+     * specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribeDBClusterParameterGroupsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline const Aws::Vector<DBClusterParameterGroup>& GetDBClusterParameterGroups() const{ return m_dBClusterParameterGroups; }
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline void SetDBClusterParameterGroups(const Aws::Vector<DBClusterParameterGroup>& value) { m_dBClusterParameterGroups = value; }
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline void SetDBClusterParameterGroups(Aws::Vector<DBClusterParameterGroup>&& value) { m_dBClusterParameterGroups = value; }
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline DescribeDBClusterParameterGroupsResult& WithDBClusterParameterGroups(const Aws::Vector<DBClusterParameterGroup>& value) { SetDBClusterParameterGroups(value); return *this;}
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline DescribeDBClusterParameterGroupsResult& WithDBClusterParameterGroups(Aws::Vector<DBClusterParameterGroup>&& value) { SetDBClusterParameterGroups(value); return *this;}
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline DescribeDBClusterParameterGroupsResult& AddDBClusterParameterGroups(const DBClusterParameterGroup& value) { m_dBClusterParameterGroups.push_back(value); return *this; }
 
-    /*
-     <p>A list of DB cluster parameter groups.</p>
-    */
+    /**
+     * <p>A list of DB cluster parameter groups.</p>
+     */
     inline DescribeDBClusterParameterGroupsResult& AddDBClusterParameterGroups(DBClusterParameterGroup&& value) { m_dBClusterParameterGroups.push_back(value); return *this; }
 
     

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -31,8 +31,11 @@
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/logging/LogMacros.h>
-
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
+#include <aws/core/utils/crypto/MD5.h>
 #include <thread>
+#include <aws/core/utils/HashingUtils.h>
 
 
 using namespace Aws;
@@ -46,6 +49,46 @@ static const int SUCCESS_RESPONSE_MIN = 200;
 static const int SUCCESS_RESPONSE_MAX = 299;
 static const char* LOG_TAG = "AWSClient";
 
+std::atomic<int> AWSClient::s_refCount(0);
+
+void AWSClient::InitializeGlobalStatics()
+{
+    int currentRefCount = s_refCount.load();
+    if (!currentRefCount)
+    {      
+        int expectedRefCount = 0;    
+        Utils::EnumParseOverflowContainer* expectedPtrValue = nullptr;
+        Utils::EnumParseOverflowContainer* container = Aws::New<Utils::EnumParseOverflowContainer>(LOG_TAG);        
+        if (!s_refCount.compare_exchange_strong(expectedRefCount, 1) ||
+             !Aws::CheckAndSwapEnumOverflowContainer(expectedPtrValue, container))
+        {
+            Aws::Delete(container);
+        }        
+    }
+    else
+    {
+        ++s_refCount;
+    }
+}
+
+void AWSClient::CleanupGlobalStatics()
+{
+    int currentRefCount = s_refCount.load(); 
+    Utils::EnumParseOverflowContainer* expectedPtrValue = Aws::GetEnumOverflowContainer();
+
+    if (currentRefCount == 1)
+    {
+        if (s_refCount.compare_exchange_strong(currentRefCount, 0) &&
+            Aws::CheckAndSwapEnumOverflowContainer(expectedPtrValue, nullptr))
+        {
+            Aws::Delete(expectedPtrValue);           
+            return;
+        }        
+    }
+
+    --s_refCount;
+}
+
 AWSClient::AWSClient(const std::shared_ptr<Aws::Http::HttpClientFactory const>& clientFactory,
     const Aws::Client::ClientConfiguration& configuration,
     const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
@@ -58,12 +101,15 @@ AWSClient::AWSClient(const std::shared_ptr<Aws::Http::HttpClientFactory const>& 
     m_writeRateLimiter(configuration.writeRateLimiter),
     m_readRateLimiter(configuration.readRateLimiter),
     m_userAgent(configuration.userAgent),
-    m_hostHeaderOverride(hostHeaderOverride)
+    m_hostHeaderOverride(hostHeaderOverride),
+    m_hash(Aws::MakeUnique<Aws::Utils::Crypto::MD5>(LOG_TAG))
 {
+    InitializeGlobalStatics();
 }
 
 AWSClient::~AWSClient()
 {
+    CleanupGlobalStatics();
 }
 
 void AWSClient::DisableRequestProcessing() 
@@ -211,7 +257,7 @@ void AWSClient::AddHeadersToRequest(const std::shared_ptr<Aws::Http::HttpRequest
 }
 
 void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest,
-    const std::shared_ptr<Aws::IOStream>& body) const
+    const std::shared_ptr<Aws::IOStream>& body, bool needsContentMd5) const
 {
     httpRequest->AddContentBody(body);
 
@@ -237,6 +283,22 @@ void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpReq
             httpRequest->SetContentLength(ss.str());
         }
     }
+
+    if (needsContentMd5 && body && !httpRequest->HasHeader(Http::CONTENT_MD5_HEADER))
+    {
+        AWS_LOGSTREAM_TRACE(LOG_TAG, "Found body, and content-md5 needs to be set" <<
+           ", attempting to compute content-md5");
+
+        //changing the internal state of the hash computation is not a logical state
+        //change as far as constness goes for this class. Due to the platform specificness
+        //of hash computations, we can't control the fact that computing a hash mutates
+        //state on some platforms such as windows (but that isn't a concern of this class.
+        auto md5HashResult = const_cast<AWSClient*>(this)->m_hash->Calculate(*body);
+        if(md5HashResult.IsSuccess())
+        {
+            httpRequest->SetHeaderValue(Http::CONTENT_MD5_HEADER, HashingUtils::Base64Encode(md5HashResult.GetResult()));
+        }
+    }
 }
 
 void AWSClient::BuildHttpRequest(const Aws::AmazonWebServiceRequest& request,
@@ -244,7 +306,7 @@ void AWSClient::BuildHttpRequest(const Aws::AmazonWebServiceRequest& request,
 {
     //do headers first since the request likely will set content-length as it's own header.
     AddHeadersToRequest(httpRequest, request.GetHeaders());
-    AddContentBodyToRequest(httpRequest, request.GetBody());
+    AddContentBodyToRequest(httpRequest, request.GetBody(), request.ShouldComputeContentMd5());
 
     // Pass along handlers for processing data sent/received in bytes
     httpRequest->SetDataReceivedEventHandler(request.GetDataReceivedEventHandler());

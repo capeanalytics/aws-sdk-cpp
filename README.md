@@ -2,25 +2,27 @@
 # aws-sdk-cpp
 The AWS SDK for C++ provides a modern C++ (version C++ 11 or later) interface for Amazon Web Services (AWS). It is meant to be performant and fully functioning with low- and high-level SDKs, while minimizing dependencies and providing platform portability (Windows, OSX, Linux, and mobile).  
 
-We are launching the AWS SDK for C++ in its current experimental state while we gather feedback from
-users and the open source community to harden the APIs. We also are adding support for individual services
-as we become more confident that the client generator can properly support each protocol. Support for more
-services will be coming in the near future. We invite our customers to follow along with our progress and join
+AWS SDK for C++ is in developer preview while we gather one last round of feedback from
+users and the open source community reviews the APIs. We invite our customers to follow along with our progress and join
 the development efforts by submitting pull requests and sending us feedback and ideas via GitHub Issues.
 
 ###Introducting the AWS SDK for C++ from AWS re:invent 2015
 The following video explains many of the core features and also high-level SDKs
-https://www.youtube.com/watch?v=fm4Aa3Whwos&list=PLhr1KZpdzuke5pqzTvI2ZxwP8-NwLACuU&index=9
+
+[![Introducing the AWS SDK for C++](https://img.youtube.com/vi/fm4Aa3Whwos/0.jpg)]
+(https://www.youtube.com/watch?v=fm4Aa3Whwos&list=PLhr1KZpdzuke5pqzTvI2ZxwP8-NwLACuU&index=9 "Introducing the AWS SDK for C++")
 
 ###Building the SDK:
 Use the information below to build the entire source tree for your platform, run unit tests, and build integration tests.  
 
-####Minimum Compiler Versions:
+####Minimum Requirements:
 * Visual Studio 2013 or later
-..* Visual Studio 2013 does not provide default move constructors and operators. 
-..* Later versions of Visual Studio provide a standards-compliant compiler. 
-* GNU Compiler Collection (GCC) 4.9 or later
-* Clang 3.3 or later
+  * Visual Studio 2013 does not provide default move constructors and operators. 
+  * Later versions of Visual Studio provide a standards-compliant compiler. 
+* OR GNU Compiler Collection (GCC) 4.9 or later
+* OR Clang 3.3 or later
+* 4GB of RAM
+  * 4GB of RAM is required to build some of the larger clients. The SDK build may fail on EC2 instance types t2.micro, t2.small and other small instance types due to insufficient memory. 
 
 ####Creating an Out-of-Source Build (Recommended):
 To create an **out-of-source build**: 
@@ -52,6 +54,15 @@ msbuild INSTALL.vcxproj /p:Configuration=Release
 ```
 
 ####CMake Variables
+
+#####BUILD_ONLY
+Allows you to only build the clients you want to use. This will resolve low level client dependencies if you set this to a high-level sdk such as aws-cpp-sdk-transfer. This will also build integration and unit tests related to the projects you select if they exist. aws-cpp-sdk-core always builds regardless of the value of this argument. This is a list argument. Example: -DBUILD_ONLY="aws-cpp-sdk-s3;aws-cpp-sdk-dynamodb;aws-cpp-sdk-cognito-identity"
+
+#####ADD_CUSTOM_CLIENTS
+Allows you to build any arbitrary clients based on the api definition. Simply place your definition in the code-generation/api-definitions folder. Then pass this arg to cmake. The cmake configure step will generate your client and include it as a subdirectory in your build. This is particularly useful if you want to generate a C++ client for using one of your API Gateway services. To use this feature you need to have python 2.7, java, jdk1.8, and maven installed and in your executable path. Example: -DADD_CUSTOM_CLIENTS="serviceName=myCustomService; version=2015-12-21;serviceName=someOtherService; version=2015-08-15"
+
+#####REGENERATE_CLIENTS
+This argument will wipe out all generated code and generate the client directories from the code-generation/api-definitions folder. To use this argument, you need to have python 2.7, java, jdk1.8, and maven installed in your executable path. Example: -DREGENERATE_CLIENTS=1
 
 #####CUSTOM_MEMORY_MANAGEMENT  
 To use a custom memory manager, set the value to 1. You can install a custom allocator, and all STL types will use the custom allocation interface. If the value is set to 0, you still might want to use the STL template types to help with DLL safety on Windows. 
@@ -250,6 +261,7 @@ struct AWS_CORE_API ClientConfiguration
     Aws::String userAgent;
     Aws::Http::Scheme scheme;
     Aws::Region region;
+    Aws::String authenticationRegion;
     unsigned maxConnections;
     long requestTimeoutMs;
     long connectTimeoutMs;
@@ -261,6 +273,7 @@ struct AWS_CORE_API ClientConfiguration
     Aws::String proxyPassword;
     std::shared_ptr<Aws::Utils::Threading::Executor> executor;
     bool verifySSL;
+    Aws::String caPath;
     std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> writeRateLimiter;
     std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> readRateLimiter;
 };
@@ -274,6 +287,9 @@ The default value for scheme is HTTPS. You can set this value to HTTP if the inf
 
 #####Region
 The region specifies where you want the client to communicate. Examples include us-east-1 or us-west-1. You must ensure the service you want to use has an endpoint in the region you configure.
+
+#####Authentication Region
+The authentication region allows you to specify an arbitrary region to use for signing. If you don't set this we fall back to Region. If you do set this, you are also responsible for setting endpoint override to connect to the endpoint that cooresponds with your custom region.
 
 #####Max Connections
 The default value for the maximum number of allowed connections to a single server for your HTTP communications is 25. You can set this value as high as you can support the bandwidth. We recommend a value around 25.
@@ -295,6 +311,9 @@ The default behavior for the executor is to create and detach a thread for each 
 
 #####Verify SSL
 If necessary, you can disable SSL certificate verification by setting the verify SSL value to false.
+
+#####CA Path
+You can tell the http client where to find your certificate trust store ( e.g. a directory prepared with OpenSSL c_rehash utility). This should not be necessary unless you are doing some weird symlink farm stuff for your environment. This has no effect on Windows or OSX.
 
 #####Write Rate Limiter and Read Rate Limiter
 The write and read rate limiters are used to throttle the bandwidth used by the transport layer. The default for these limiters is open. You can use the default implementation with your desired rates, or you can create your own instance by implementing a subclass of RateLimiterInterface.
@@ -445,7 +464,25 @@ getObjectRequest.SetResponseStreamFactory([](){ return Aws::New<Aws::FStream>( A
 auto getObjectOutcome = s3Client->GetObject(getObjectRequest);
 ```
 
+###Contributing Back
+*Please Do!
 
+#####Guidlines
+* Don't make changes to generated clients directly. Make your changes in the generator. Changes to Core, Scripts, and High-Level interfaces are fine directly in the code.
+* Do not use non-trivial statics anywhere. This will cause custom memory managers to crash in random places.
+* Use 4 spaces for indents and never use tabs.
+* No exceptions.... no exceptions. Use the Outcome pattern for returning data if you need to also return an optional error code.
+* Always think about platform independence. If this is impossible, put a nice abstraction on top of it and use an abstract factory.
+* Use RAII, Aws::New and Aws::Delete should only appear in constructors and destructors.
+* Be sure to follow the rule of 5.
+* Use the C++ 11 standard where possible.
+* Use UpperCamelCase for custom type names and function names. Use m_* for member variables. Don't use statics. If you must, use UpperCammelCase for static variables
+* Always be const correct, and be mindful of when you need to support r-values. We don't trust compilers to optimize this uniformly accross builds so please be explicit.
+* Namespace names should be UpperCammelCase. Never put a using namespace statement in a header file unless it is scoped by a class. It is fine to use a using namespace statement in a cpp file.
+* Use enum class, not enum
+* prefer `#pragma once for include guards.
+* Forward declare whenever possible.
+* Use nullptr instead of NULL.
 
 
 

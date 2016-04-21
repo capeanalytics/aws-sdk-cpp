@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,9 +28,7 @@ Stack::Stack() :
     m_stackNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_parametersHasBeenSet(false),
-    m_creationTime(0.0),
     m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTime(0.0),
     m_lastUpdatedTimeHasBeenSet(false),
     m_stackStatusHasBeenSet(false),
     m_stackStatusReasonHasBeenSet(false),
@@ -50,9 +48,7 @@ Stack::Stack(const XmlNode& xmlNode) :
     m_stackNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_parametersHasBeenSet(false),
-    m_creationTime(0.0),
     m_creationTimeHasBeenSet(false),
-    m_lastUpdatedTime(0.0),
     m_lastUpdatedTimeHasBeenSet(false),
     m_stackStatusHasBeenSet(false),
     m_stackStatusReasonHasBeenSet(false),
@@ -107,13 +103,13 @@ Stack& Stack::operator =(const XmlNode& xmlNode)
     XmlNode creationTimeNode = resultNode.FirstChild("CreationTime");
     if(!creationTimeNode.IsNull())
     {
-      m_creationTime = StringUtils::ConvertToDouble(StringUtils::Trim(creationTimeNode.GetText().c_str()).c_str());
+      m_creationTime = DateTime(StringUtils::Trim(creationTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_creationTimeHasBeenSet = true;
     }
     XmlNode lastUpdatedTimeNode = resultNode.FirstChild("LastUpdatedTime");
     if(!lastUpdatedTimeNode.IsNull())
     {
-      m_lastUpdatedTime = StringUtils::ConvertToDouble(StringUtils::Trim(lastUpdatedTimeNode.GetText().c_str()).c_str());
+      m_lastUpdatedTime = DateTime(StringUtils::Trim(lastUpdatedTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_lastUpdatedTimeHasBeenSet = true;
     }
     XmlNode stackStatusNode = resultNode.FirstChild("StackStatus");
@@ -209,20 +205,21 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_parametersHasBeenSet)
   {
+      unsigned parametersIdx = 1;
       for(auto& item : m_parameters)
       {
         Aws::StringStream parametersSs;
-        parametersSs << location << index << locationValue << ".Parameters";
+        parametersSs << location << index << locationValue << ".Parameters.member." << parametersIdx++;
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
   if(m_creationTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreationTime=" << m_creationTime << "&";
+      oStream << location << index << locationValue << ".CreationTime=" << StringUtils::URLEncode(m_creationTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_lastUpdatedTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LastUpdatedTime=" << m_lastUpdatedTime << "&";
+      oStream << location << index << locationValue << ".LastUpdatedTime=" << StringUtils::URLEncode(m_lastUpdatedTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_stackStatusHasBeenSet)
   {
@@ -238,9 +235,10 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_notificationARNsHasBeenSet)
   {
+      unsigned notificationARNsIdx = 1;
       for(auto& item : m_notificationARNs)
       {
-        oStream << location << index << locationValue << ".NotificationARNs=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".NotificationARNs.member." << notificationARNsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_timeoutInMinutesHasBeenSet)
@@ -249,26 +247,29 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   }
   if(m_capabilitiesHasBeenSet)
   {
+      unsigned capabilitiesIdx = 1;
       for(auto& item : m_capabilities)
       {
-        oStream << location << index << locationValue << ".Capabilities=" << CapabilityMapper::GetNameForCapability(item) << "&";
+        oStream << location << index << locationValue << ".Capabilities.member." << capabilitiesIdx++ << "=" << CapabilityMapper::GetNameForCapability(item) << "&";
       }
   }
   if(m_outputsHasBeenSet)
   {
+      unsigned outputsIdx = 1;
       for(auto& item : m_outputs)
       {
         Aws::StringStream outputsSs;
-        outputsSs << location << index << locationValue << ".Outputs";
+        outputsSs << location << index << locationValue << ".Outputs.member." << outputsIdx++;
         item.OutputToStream(oStream, outputsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tags";
+        tagsSs << location << index << locationValue << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -290,20 +291,21 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_parametersHasBeenSet)
   {
+      unsigned parametersIdx = 1;
       for(auto& item : m_parameters)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Parameters";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream parametersSs;
+        parametersSs << location <<  ".Parameters.member." << parametersIdx++;
+        item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
   if(m_creationTimeHasBeenSet)
   {
-      oStream << location << ".CreationTime=" << m_creationTime << "&";
+      oStream << location << ".CreationTime=" << StringUtils::URLEncode(m_creationTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_lastUpdatedTimeHasBeenSet)
   {
-      oStream << location << ".LastUpdatedTime=" << m_lastUpdatedTime << "&";
+      oStream << location << ".LastUpdatedTime=" << StringUtils::URLEncode(m_lastUpdatedTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_stackStatusHasBeenSet)
   {
@@ -319,9 +321,10 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_notificationARNsHasBeenSet)
   {
+      unsigned notificationARNsIdx = 1;
       for(auto& item : m_notificationARNs)
       {
-        oStream << location << ".NotificationARNs=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".NotificationARNs.member." << notificationARNsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_timeoutInMinutesHasBeenSet)
@@ -330,27 +333,30 @@ void Stack::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_capabilitiesHasBeenSet)
   {
+      unsigned capabilitiesIdx = 1;
       for(auto& item : m_capabilities)
       {
-        oStream << location << ".Capabilities=" << CapabilityMapper::GetNameForCapability(item) << "&";
+        oStream << location << ".Capabilities.member." << capabilitiesIdx++ << "=" << CapabilityMapper::GetNameForCapability(item) << "&";
       }
   }
   if(m_outputsHasBeenSet)
   {
+      unsigned outputsIdx = 1;
       for(auto& item : m_outputs)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Outputs";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream outputsSs;
+        outputsSs << location <<  ".Outputs.member." << outputsIdx++;
+        item.OutputToStream(oStream, outputsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Tags";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
 }

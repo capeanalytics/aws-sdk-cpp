@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -73,9 +73,10 @@ void SolutionStackDescription::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_permittedFileTypesHasBeenSet)
   {
+      unsigned permittedFileTypesIdx = 1;
       for(auto& item : m_permittedFileTypes)
       {
-        oStream << location << index << locationValue << ".PermittedFileTypes=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".PermittedFileTypes.member." << permittedFileTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }
@@ -88,9 +89,10 @@ void SolutionStackDescription::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_permittedFileTypesHasBeenSet)
   {
+      unsigned permittedFileTypesIdx = 1;
       for(auto& item : m_permittedFileTypes)
       {
-        oStream << location << ".PermittedFileTypes=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".PermittedFileTypes.member." << permittedFileTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

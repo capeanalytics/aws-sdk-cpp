@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ InstanceProfile::InstanceProfile() :
     m_instanceProfileNameHasBeenSet(false),
     m_instanceProfileIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_rolesHasBeenSet(false)
 {
@@ -39,7 +38,6 @@ InstanceProfile::InstanceProfile(const XmlNode& xmlNode) :
     m_instanceProfileNameHasBeenSet(false),
     m_instanceProfileIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_rolesHasBeenSet(false)
 {
@@ -79,7 +77,7 @@ InstanceProfile& InstanceProfile::operator =(const XmlNode& xmlNode)
     XmlNode createDateNode = resultNode.FirstChild("CreateDate");
     if(!createDateNode.IsNull())
     {
-      m_createDate = StringUtils::ConvertToDouble(StringUtils::Trim(createDateNode.GetText().c_str()).c_str());
+      m_createDate = DateTime(StringUtils::Trim(createDateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createDateHasBeenSet = true;
     }
     XmlNode rolesNode = resultNode.FirstChild("Roles");
@@ -119,14 +117,15 @@ void InstanceProfile::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateDate=" << m_createDate << "&";
+      oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_rolesHasBeenSet)
   {
+      unsigned rolesIdx = 1;
       for(auto& item : m_roles)
       {
         Aws::StringStream rolesSs;
-        rolesSs << location << index << locationValue << ".Roles";
+        rolesSs << location << index << locationValue << ".Roles.member." << rolesIdx++;
         item.OutputToStream(oStream, rolesSs.str().c_str());
       }
   }
@@ -152,15 +151,16 @@ void InstanceProfile::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << ".CreateDate=" << m_createDate << "&";
+      oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_rolesHasBeenSet)
   {
+      unsigned rolesIdx = 1;
       for(auto& item : m_roles)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Roles";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream rolesSs;
+        rolesSs << location <<  ".Roles.member." << rolesIdx++;
+        item.OutputToStream(oStream, rolesSs.str().c_str());
       }
   }
 }

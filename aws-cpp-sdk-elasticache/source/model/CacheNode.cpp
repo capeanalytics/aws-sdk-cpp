@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ using namespace Aws::Utils;
 CacheNode::CacheNode() : 
     m_cacheNodeIdHasBeenSet(false),
     m_cacheNodeStatusHasBeenSet(false),
-    m_cacheNodeCreateTime(0.0),
     m_cacheNodeCreateTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_parameterGroupStatusHasBeenSet(false),
@@ -38,7 +37,6 @@ CacheNode::CacheNode() :
 CacheNode::CacheNode(const XmlNode& xmlNode) : 
     m_cacheNodeIdHasBeenSet(false),
     m_cacheNodeStatusHasBeenSet(false),
-    m_cacheNodeCreateTime(0.0),
     m_cacheNodeCreateTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_parameterGroupStatusHasBeenSet(false),
@@ -69,7 +67,7 @@ CacheNode& CacheNode::operator =(const XmlNode& xmlNode)
     XmlNode cacheNodeCreateTimeNode = resultNode.FirstChild("CacheNodeCreateTime");
     if(!cacheNodeCreateTimeNode.IsNull())
     {
-      m_cacheNodeCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(cacheNodeCreateTimeNode.GetText().c_str()).c_str());
+      m_cacheNodeCreateTime = DateTime(StringUtils::Trim(cacheNodeCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_cacheNodeCreateTimeHasBeenSet = true;
     }
     XmlNode endpointNode = resultNode.FirstChild("Endpoint");
@@ -113,7 +111,7 @@ void CacheNode::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   }
   if(m_cacheNodeCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CacheNodeCreateTime=" << m_cacheNodeCreateTime << "&";
+      oStream << location << index << locationValue << ".CacheNodeCreateTime=" << StringUtils::URLEncode(m_cacheNodeCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endpointHasBeenSet)
   {
@@ -147,7 +145,7 @@ void CacheNode::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_cacheNodeCreateTimeHasBeenSet)
   {
-      oStream << location << ".CacheNodeCreateTime=" << m_cacheNodeCreateTime << "&";
+      oStream << location << ".CacheNodeCreateTime=" << StringUtils::URLEncode(m_cacheNodeCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_endpointHasBeenSet)
   {

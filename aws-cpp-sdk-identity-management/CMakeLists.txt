@@ -33,16 +33,16 @@ set(IDENTITY_MGMT_INCLUDES
 
 include_directories(${IDENTITY_MGMT_INCLUDES})
 
-if(NOT MSVC)
-  add_definitions(-std=c++11)
-endif()
-
 if(MSVC AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_IDENTITY_MANAGEMENT_EXPORTS")
     add_definitions(-DGTEST_LINKED_AS_SHARED_LIBRARY=1)
 endif()
 
 add_library(aws-cpp-sdk-identity-management ${LIBTYPE} ${IDENTITY_MGMT_SRC})
+
+target_include_directories(aws-cpp-sdk-identity-management PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-identity-management aws-cpp-sdk-cognito-identity)
   list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-identity-management")
   set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)

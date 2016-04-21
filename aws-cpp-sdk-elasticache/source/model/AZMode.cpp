@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/elasticache/model/AZMode.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int cross_az_HASH = HashingUtils::HashString("cross-az");
 
 namespace Aws
 {
-namespace ElastiCache
-{
-namespace Model
-{
-namespace AZModeMapper
-{
-AZMode GetAZModeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == single_az_HASH)
+  namespace ElastiCache
   {
-    return AZMode::single_az;
-  }
-  else if (hashCode == cross_az_HASH)
-  {
-    return AZMode::cross_az;
-  }
+    namespace Model
+    {
+      namespace AZModeMapper
+      {
 
-  return AZMode::NOT_SET;
-}
 
-Aws::String GetNameForAZMode(AZMode value)
-{
-  switch(value)
-  {
-  case AZMode::single_az:
-    return "single-az";
-  case AZMode::cross_az:
-    return "cross-az";
-  default:
-    return "";
-  }
-}
+        AZMode GetAZModeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == single_az_HASH)
+          {
+            return AZMode::single_az;
+          }
+          else if (hashCode == cross_az_HASH)
+          {
+            return AZMode::cross_az;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<AZMode>(hashCode);
+          }
 
-} // namespace AZModeMapper
-} // namespace Model
-} // namespace ElastiCache
+          return AZMode::NOT_SET;
+        }
+
+        Aws::String GetNameForAZMode(AZMode enumValue)
+        {
+          switch(enumValue)
+          {
+          case AZMode::single_az:
+            return "single-az";
+          case AZMode::cross_az:
+            return "cross-az";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace AZModeMapper
+    } // namespace Model
+  } // namespace ElastiCache
 } // namespace Aws

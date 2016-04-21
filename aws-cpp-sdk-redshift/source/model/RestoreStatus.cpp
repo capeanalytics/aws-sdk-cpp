@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ void RestoreStatus::OutputToStream(Aws::OStream& oStream, const char* location, 
   }
   if(m_currentRestoreRateInMegaBytesPerSecondHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrentRestoreRateInMegaBytesPerSecond=" << m_currentRestoreRateInMegaBytesPerSecond << "&";
+        oStream << location << index << locationValue << ".CurrentRestoreRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentRestoreRateInMegaBytesPerSecond) << "&";
   }
   if(m_snapshotSizeInMegaBytesHasBeenSet)
   {
@@ -137,7 +137,7 @@ void RestoreStatus::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_currentRestoreRateInMegaBytesPerSecondHasBeenSet)
   {
-      oStream << location << ".CurrentRestoreRateInMegaBytesPerSecond=" << m_currentRestoreRateInMegaBytesPerSecond << "&";
+        oStream << location << ".CurrentRestoreRateInMegaBytesPerSecond=" << StringUtils::URLEncode(m_currentRestoreRateInMegaBytesPerSecond) << "&";
   }
   if(m_snapshotSizeInMegaBytesHasBeenSet)
   {

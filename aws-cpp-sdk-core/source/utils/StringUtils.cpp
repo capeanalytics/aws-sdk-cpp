@@ -15,7 +15,6 @@
 
 
 #include <aws/core/utils/StringUtils.h>
-
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <algorithm>
 #include <iomanip>
@@ -54,7 +53,7 @@ Aws::String StringUtils::ToLower(const char* source)
     copy.resize(sourceLength);
     std::transform(source, source + sourceLength, copy.begin(), ::tolower);
 
-    return std::move(copy);
+    return copy;
 }
 
 
@@ -65,7 +64,7 @@ Aws::String StringUtils::ToUpper(const char* source)
     copy.resize(sourceLength);
     std::transform(source, source + sourceLength, copy.begin(), ::toupper);
 
-    return std::move(copy);
+    return copy;
 }
 
 
@@ -92,7 +91,7 @@ Aws::Vector<Aws::String> StringUtils::Split(const Aws::String& toSplit, char spl
         }
     }
 
-    return std::move(returnValues);
+    return returnValues;
 }
 
 
@@ -110,7 +109,7 @@ Aws::Vector<Aws::String> StringUtils::SplitOnLine(const Aws::String& toSplit)
         }
     }
 
-    return std::move(returnValues);
+    return returnValues;
 }
 
 
@@ -124,17 +123,32 @@ Aws::String StringUtils::URLEncode(const char* unsafe)
     for (auto i = unsafe, n = unsafe + unsafeLength; i != n; ++i)
     {
         char c = *i;
-        if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~')
+		//MSVC 2015 has an assertion that c is positive in isalnum(). This breaks unicode support.
+		//bypass that with the first check.
+        if (c >= 0 && (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~'))
         {
             escaped << c;
         }
         else
         {
-            escaped << '%' << std::setw(2) << ((int) c) << std::setw(0);
+            //this unsigned char cast allows us to handle unicode characters.
+            escaped << '%' << std::setw(2) << int((unsigned char)c) << std::setw(0);
         }
     }
 
     return escaped.str();
+}
+
+Aws::String StringUtils::URLEncode(double unsafe)
+{
+    char buffer[32];
+#if defined(_MSC_VER) && _MSC_VER < 1900
+    _snprintf_s(buffer, sizeof(buffer), _TRUNCATE, "%g", unsafe);
+#else
+    snprintf(buffer, sizeof(buffer), "%g", unsafe);
+#endif
+
+    return StringUtils::URLEncode(buffer);
 }
 
 
@@ -171,7 +185,7 @@ Aws::String StringUtils::LTrim(const char* source)
 {
     Aws::String copy(source);
     copy.erase(copy.begin(), std::find_if(copy.begin(), copy.end(), std::not1(std::ptr_fun<int, int>(::isspace))));
-    return std::move(copy);
+    return copy;
 }
 
 // trim from end
@@ -179,7 +193,7 @@ Aws::String StringUtils::RTrim(const char* source)
 {
     Aws::String copy(source);
     copy.erase(std::find_if(copy.rbegin(), copy.rend(), std::not1(std::ptr_fun<int, int>(::isspace))).base(), copy.end());
-    return std::move(copy);
+    return copy;
 }
 
 // trim from both ends

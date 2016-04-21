@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/ec2/model/TrafficType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -23,48 +25,61 @@ static const int ALL_HASH = HashingUtils::HashString("ALL");
 
 namespace Aws
 {
-namespace EC2
-{
-namespace Model
-{
-namespace TrafficTypeMapper
-{
-TrafficType GetTrafficTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == ACCEPT_HASH)
+  namespace EC2
   {
-    return TrafficType::ACCEPT;
-  }
-  else if (hashCode == REJECT_HASH)
-  {
-    return TrafficType::REJECT;
-  }
-  else if (hashCode == ALL_HASH)
-  {
-    return TrafficType::ALL;
-  }
+    namespace Model
+    {
+      namespace TrafficTypeMapper
+      {
 
-  return TrafficType::NOT_SET;
-}
 
-Aws::String GetNameForTrafficType(TrafficType value)
-{
-  switch(value)
-  {
-  case TrafficType::ACCEPT:
-    return "ACCEPT";
-  case TrafficType::REJECT:
-    return "REJECT";
-  case TrafficType::ALL:
-    return "ALL";
-  default:
-    return "";
-  }
-}
+        TrafficType GetTrafficTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == ACCEPT_HASH)
+          {
+            return TrafficType::ACCEPT;
+          }
+          else if (hashCode == REJECT_HASH)
+          {
+            return TrafficType::REJECT;
+          }
+          else if (hashCode == ALL_HASH)
+          {
+            return TrafficType::ALL;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<TrafficType>(hashCode);
+          }
 
-} // namespace TrafficTypeMapper
-} // namespace Model
-} // namespace EC2
+          return TrafficType::NOT_SET;
+        }
+
+        Aws::String GetNameForTrafficType(TrafficType enumValue)
+        {
+          switch(enumValue)
+          {
+          case TrafficType::ACCEPT:
+            return "ACCEPT";
+          case TrafficType::REJECT:
+            return "REJECT";
+          case TrafficType::ALL:
+            return "ALL";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace TrafficTypeMapper
+    } // namespace Model
+  } // namespace EC2
 } // namespace Aws

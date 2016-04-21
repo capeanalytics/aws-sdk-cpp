@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,7 +26,11 @@ DescribeDBSnapshotsRequest::DescribeDBSnapshotsRequest() :
     m_filtersHasBeenSet(false),
     m_maxRecords(0),
     m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
+    m_markerHasBeenSet(false),
+    m_includeShared(false),
+    m_includeSharedHasBeenSet(false),
+    m_includePublic(false),
+    m_includePublicHasBeenSet(false)
 {
 }
 
@@ -62,6 +66,14 @@ Aws::String DescribeDBSnapshotsRequest::SerializePayload() const
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
+  }
+  if(m_includeSharedHasBeenSet)
+  {
+    ss << "IncludeShared=" << m_includeShared << "&";
+  }
+  if(m_includePublicHasBeenSet)
+  {
+    ss << "IncludePublic=" << m_includePublic << "&";
   }
   ss << "Version=2014-10-31";
   return ss.str();

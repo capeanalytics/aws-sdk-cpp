@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -59,6 +59,18 @@ CreateMultipartUploadResult& CreateMultipartUploadResult::operator =(const Amazo
   }
 
   const auto& headers = result.GetHeaderValueCollection();
+  const auto& abortDateIter = headers.find("x-amz-abort-date");
+  if(abortDateIter != headers.end())
+  {
+    m_abortDate = DateTime(abortDateIter->second, DateFormat::RFC822);
+  }
+
+  const auto& abortRuleIdIter = headers.find("x-amz-abort-rule-id");
+  if(abortRuleIdIter != headers.end())
+  {
+    m_abortRuleId = abortRuleIdIter->second;
+  }
+
   const auto& serverSideEncryptionIter = headers.find("x-amz-server-side-encryption");
   if(serverSideEncryptionIter != headers.end())
   {

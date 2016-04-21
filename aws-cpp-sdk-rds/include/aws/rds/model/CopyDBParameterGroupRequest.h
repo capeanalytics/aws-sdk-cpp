@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,119 +26,216 @@ namespace RDS
 namespace Model
 {
 
-  /*
-    <p></p>
-  */
+  /**
+   * <p/>
+   */
   class AWS_RDS_API CopyDBParameterGroupRequest : public RDSRequest
   {
   public:
     CopyDBParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
-
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline const Aws::String& GetSourceDBParameterGroupIdentifier() const{ return m_sourceDBParameterGroupIdentifier; }
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline void SetSourceDBParameterGroupIdentifier(const Aws::String& value) { m_sourceDBParameterGroupIdentifierHasBeenSet = true; m_sourceDBParameterGroupIdentifier = value; }
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline void SetSourceDBParameterGroupIdentifier(Aws::String&& value) { m_sourceDBParameterGroupIdentifierHasBeenSet = true; m_sourceDBParameterGroupIdentifier = value; }
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline void SetSourceDBParameterGroupIdentifier(const char* value) { m_sourceDBParameterGroupIdentifierHasBeenSet = true; m_sourceDBParameterGroupIdentifier.assign(value); }
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline CopyDBParameterGroupRequest& WithSourceDBParameterGroupIdentifier(const Aws::String& value) { SetSourceDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline CopyDBParameterGroupRequest& WithSourceDBParameterGroupIdentifier(Aws::String&& value) { SetSourceDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</li> <li>If the source DB parameter group is in a different region than the copy, specify a valid DB parameter group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li> </ul>
-    */
+    /**
+     * <p> The identifier or ARN for the source DB parameter group. For information
+     * about creating an ARN, see <a
+     * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN">
+     * Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p>
+     * <ul> <li>Must specify a valid DB parameter group.</li> <li>If the source DB
+     * parameter group is in the same region as the copy, specify a valid DB parameter
+     * group identifier, for example <code>my-db-param-group</code>, or a valid
+     * ARN.</li> <li>If the source DB parameter group is in a different region than the
+     * copy, specify a valid DB parameter group ARN, for example
+     * <code>arn:aws:rds:us-west-2:123456789012:pg:special-parameters</code>.</li>
+     * </ul>
+     */
     inline CopyDBParameterGroupRequest& WithSourceDBParameterGroupIdentifier(const char* value) { SetSourceDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline const Aws::String& GetTargetDBParameterGroupIdentifier() const{ return m_targetDBParameterGroupIdentifier; }
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline void SetTargetDBParameterGroupIdentifier(const Aws::String& value) { m_targetDBParameterGroupIdentifierHasBeenSet = true; m_targetDBParameterGroupIdentifier = value; }
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline void SetTargetDBParameterGroupIdentifier(Aws::String&& value) { m_targetDBParameterGroupIdentifierHasBeenSet = true; m_targetDBParameterGroupIdentifier = value; }
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline void SetTargetDBParameterGroupIdentifier(const char* value) { m_targetDBParameterGroupIdentifierHasBeenSet = true; m_targetDBParameterGroupIdentifier.assign(value); }
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupIdentifier(const Aws::String& value) { SetTargetDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupIdentifier(Aws::String&& value) { SetTargetDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255 alphanumeric characters or hyphens</li> <li>First character must be a letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li> </ul> <p>Example: <code>my-db-parameter-group</code></p>
-    */
+    /**
+     * <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p>
+     * <ul> <li>Cannot be null, empty, or blank</li> <li>Must contain from 1 to 255
+     * alphanumeric characters or hyphens</li> <li>First character must be a
+     * letter</li> <li>Cannot end with a hyphen or contain two consecutive hyphens</li>
+     * </ul> <p>Example: <code>my-db-parameter-group</code></p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupIdentifier(const char* value) { SetTargetDBParameterGroupIdentifier(value); return *this;}
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline const Aws::String& GetTargetDBParameterGroupDescription() const{ return m_targetDBParameterGroupDescription; }
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline void SetTargetDBParameterGroupDescription(const Aws::String& value) { m_targetDBParameterGroupDescriptionHasBeenSet = true; m_targetDBParameterGroupDescription = value; }
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline void SetTargetDBParameterGroupDescription(Aws::String&& value) { m_targetDBParameterGroupDescriptionHasBeenSet = true; m_targetDBParameterGroupDescription = value; }
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline void SetTargetDBParameterGroupDescription(const char* value) { m_targetDBParameterGroupDescriptionHasBeenSet = true; m_targetDBParameterGroupDescription.assign(value); }
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupDescription(const Aws::String& value) { SetTargetDBParameterGroupDescription(value); return *this;}
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupDescription(Aws::String&& value) { SetTargetDBParameterGroupDescription(value); return *this;}
 
-    /*
-     <p>A description for the copied DB parameter group.</p>
-    */
+    /**
+     * <p>A description for the copied DB parameter group.</p>
+     */
     inline CopyDBParameterGroupRequest& WithTargetDBParameterGroupDescription(const char* value) { SetTargetDBParameterGroupDescription(value); return *this;}
 
     

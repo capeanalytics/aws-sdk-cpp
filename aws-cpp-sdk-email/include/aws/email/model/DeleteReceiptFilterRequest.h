@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,34 +24,47 @@ namespace SES
 namespace Model
 {
 
-  /*
-  */
+  /**
+   */
   class AWS_SES_API DeleteReceiptFilterRequest : public SESRequest
   {
   public:
     DeleteReceiptFilterRequest();
     Aws::String SerializePayload() const override;
 
-
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline const Aws::String& GetFilterName() const{ return m_filterName; }
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline void SetFilterName(const Aws::String& value) { m_filterNameHasBeenSet = true; m_filterName = value; }
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline void SetFilterName(Aws::String&& value) { m_filterNameHasBeenSet = true; m_filterName = value; }
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline void SetFilterName(const char* value) { m_filterNameHasBeenSet = true; m_filterName.assign(value); }
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline DeleteReceiptFilterRequest& WithFilterName(const Aws::String& value) { SetFilterName(value); return *this;}
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline DeleteReceiptFilterRequest& WithFilterName(Aws::String&& value) { SetFilterName(value); return *this;}
 
-    
+    /**
+     * <p>The name of the IP address filter to delete.</p>
+     */
     inline DeleteReceiptFilterRequest& WithFilterName(const char* value) { SetFilterName(value); return *this;}
 
   private:

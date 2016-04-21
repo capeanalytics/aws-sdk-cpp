@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,7 +25,8 @@ GetShardIteratorRequest::GetShardIteratorRequest() :
     m_streamNameHasBeenSet(false),
     m_shardIdHasBeenSet(false),
     m_shardIteratorTypeHasBeenSet(false),
-    m_startingSequenceNumberHasBeenSet(false)
+    m_startingSequenceNumberHasBeenSet(false),
+    m_timestampHasBeenSet(false)
 {
 }
 
@@ -56,6 +57,11 @@ Aws::String GetShardIteratorRequest::SerializePayload() const
 
   }
 
+  if(m_timestampHasBeenSet)
+  {
+   payload.WithDouble("Timestamp", m_timestamp.SecondsWithMSPrecision());
+  }
+
   return payload.WriteReadable();
 }
 
@@ -63,7 +69,7 @@ Aws::Http::HeaderValueCollection GetShardIteratorRequest::GetRequestSpecificHead
 {
   Aws::Http::HeaderValueCollection headers;
   headers.insert(Aws::Http::HeaderValuePair("X-Amz-Target", "Kinesis_20131202.GetShardIterator"));
-  return std::move(headers);
+  return headers;
 
 }
 

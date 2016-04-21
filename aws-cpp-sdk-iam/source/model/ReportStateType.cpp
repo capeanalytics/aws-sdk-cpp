@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/iam/model/ReportStateType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -23,48 +25,61 @@ static const int COMPLETE_HASH = HashingUtils::HashString("COMPLETE");
 
 namespace Aws
 {
-namespace IAM
-{
-namespace Model
-{
-namespace ReportStateTypeMapper
-{
-ReportStateType GetReportStateTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == STARTED_HASH)
+  namespace IAM
   {
-    return ReportStateType::STARTED;
-  }
-  else if (hashCode == INPROGRESS_HASH)
-  {
-    return ReportStateType::INPROGRESS;
-  }
-  else if (hashCode == COMPLETE_HASH)
-  {
-    return ReportStateType::COMPLETE;
-  }
+    namespace Model
+    {
+      namespace ReportStateTypeMapper
+      {
 
-  return ReportStateType::NOT_SET;
-}
 
-Aws::String GetNameForReportStateType(ReportStateType value)
-{
-  switch(value)
-  {
-  case ReportStateType::STARTED:
-    return "STARTED";
-  case ReportStateType::INPROGRESS:
-    return "INPROGRESS";
-  case ReportStateType::COMPLETE:
-    return "COMPLETE";
-  default:
-    return "";
-  }
-}
+        ReportStateType GetReportStateTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == STARTED_HASH)
+          {
+            return ReportStateType::STARTED;
+          }
+          else if (hashCode == INPROGRESS_HASH)
+          {
+            return ReportStateType::INPROGRESS;
+          }
+          else if (hashCode == COMPLETE_HASH)
+          {
+            return ReportStateType::COMPLETE;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<ReportStateType>(hashCode);
+          }
 
-} // namespace ReportStateTypeMapper
-} // namespace Model
-} // namespace IAM
+          return ReportStateType::NOT_SET;
+        }
+
+        Aws::String GetNameForReportStateType(ReportStateType enumValue)
+        {
+          switch(enumValue)
+          {
+          case ReportStateType::STARTED:
+            return "STARTED";
+          case ReportStateType::INPROGRESS:
+            return "INPROGRESS";
+          case ReportStateType::COMPLETE:
+            return "COMPLETE";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace ReportStateTypeMapper
+    } // namespace Model
+  } // namespace IAM
 } // namespace Aws

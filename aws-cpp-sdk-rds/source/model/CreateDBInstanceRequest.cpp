@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -63,7 +63,11 @@ CreateDBInstanceRequest::CreateDBInstanceRequest() :
     m_copyTagsToSnapshot(false),
     m_copyTagsToSnapshotHasBeenSet(false),
     m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false)
+    m_monitoringIntervalHasBeenSet(false),
+    m_monitoringRoleArnHasBeenSet(false),
+    m_domainIAMRoleNameHasBeenSet(false),
+    m_promotionTier(0),
+    m_promotionTierHasBeenSet(false)
 {
 }
 
@@ -223,6 +227,18 @@ Aws::String CreateDBInstanceRequest::SerializePayload() const
   if(m_monitoringIntervalHasBeenSet)
   {
     ss << "MonitoringInterval=" << m_monitoringInterval << "&";
+  }
+  if(m_monitoringRoleArnHasBeenSet)
+  {
+    ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
+  }
+  if(m_domainIAMRoleNameHasBeenSet)
+  {
+    ss << "DomainIAMRoleName=" << StringUtils::URLEncode(m_domainIAMRoleName.c_str()) << "&";
+  }
+  if(m_promotionTierHasBeenSet)
+  {
+    ss << "PromotionTier=" << m_promotionTier << "&";
   }
   ss << "Version=2014-10-31";
   return ss.str();

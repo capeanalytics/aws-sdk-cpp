@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -23,12 +23,12 @@
 #pragma warning(disable : 4251)
   #ifdef USE_IMPORT_EXPORT
     #ifdef AWS_OPSWORKS_EXPORTS
-      #define AWS_OPSWORKS_API __declspec(dllexport)
+       #define AWS_OPSWORKS_API __declspec(dllexport)
     #else
-      #define AWS_OPSWORKS_API __declspec(dllimport)
+       #define AWS_OPSWORKS_API __declspec(dllimport)
     #endif /* AWS_OPSWORKS_EXPORTS */
   #else
-     #define AWS_OPSWORKS_API
+       #define AWS_OPSWORKS_API
    #endif //
 #else /* defined (_MSC_VER) */
 #define AWS_OPSWORKS_API

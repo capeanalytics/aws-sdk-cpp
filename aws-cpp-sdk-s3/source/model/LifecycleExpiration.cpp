@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,18 +24,20 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
 LifecycleExpiration::LifecycleExpiration() : 
-    m_date(0.0),
     m_dateHasBeenSet(false),
     m_days(0),
-    m_daysHasBeenSet(false)
+    m_daysHasBeenSet(false),
+    m_expiredObjectDeleteMarker(false),
+    m_expiredObjectDeleteMarkerHasBeenSet(false)
 {
 }
 
 LifecycleExpiration::LifecycleExpiration(const XmlNode& xmlNode) : 
-    m_date(0.0),
     m_dateHasBeenSet(false),
     m_days(0),
-    m_daysHasBeenSet(false)
+    m_daysHasBeenSet(false),
+    m_expiredObjectDeleteMarker(false),
+    m_expiredObjectDeleteMarkerHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -49,7 +51,7 @@ LifecycleExpiration& LifecycleExpiration::operator =(const XmlNode& xmlNode)
     XmlNode dateNode = resultNode.FirstChild("Date");
     if(!dateNode.IsNull())
     {
-      m_date = StringUtils::ConvertToDouble(StringUtils::Trim(dateNode.GetText().c_str()).c_str());
+      m_date = DateTime(StringUtils::Trim(dateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_dateHasBeenSet = true;
     }
     XmlNode daysNode = resultNode.FirstChild("Days");
@@ -57,6 +59,12 @@ LifecycleExpiration& LifecycleExpiration::operator =(const XmlNode& xmlNode)
     {
       m_days = StringUtils::ConvertToInt32(StringUtils::Trim(daysNode.GetText().c_str()).c_str());
       m_daysHasBeenSet = true;
+    }
+    XmlNode expiredObjectDeleteMarkerNode = resultNode.FirstChild("ExpiredObjectDeleteMarker");
+    if(!expiredObjectDeleteMarkerNode.IsNull())
+    {
+      m_expiredObjectDeleteMarker = StringUtils::ConvertToBool(StringUtils::Trim(expiredObjectDeleteMarkerNode.GetText().c_str()).c_str());
+      m_expiredObjectDeleteMarkerHasBeenSet = true;
     }
   }
 
@@ -68,10 +76,8 @@ void LifecycleExpiration::AddToNode(XmlNode& parentNode) const
   Aws::StringStream ss;
   if(m_dateHasBeenSet)
   {
-   XmlNode dateNode = parentNode.CreateChildElement("Date");
-  ss << m_date;
-   dateNode.SetText(ss.str());
-  ss.str("");
+     XmlNode dateNode = parentNode.CreateChildElement("Date");
+     dateNode.SetText(m_date.ToGmtString(DateFormat::ISO_8601));
   }
 
   if(m_daysHasBeenSet)
@@ -79,6 +85,14 @@ void LifecycleExpiration::AddToNode(XmlNode& parentNode) const
    XmlNode daysNode = parentNode.CreateChildElement("Days");
   ss << m_days;
    daysNode.SetText(ss.str());
+  ss.str("");
+  }
+
+  if(m_expiredObjectDeleteMarkerHasBeenSet)
+  {
+   XmlNode expiredObjectDeleteMarkerNode = parentNode.CreateChildElement("ExpiredObjectDeleteMarker");
+  ss << m_expiredObjectDeleteMarker;
+   expiredObjectDeleteMarkerNode.SetText(ss.str());
   ss.str("");
   }
 

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ using namespace Aws::Utils;
 ApplicationInfo::ApplicationInfo() : 
     m_applicationIdHasBeenSet(false),
     m_applicationNameHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_linkedToGitHub(false),
     m_linkedToGitHubHasBeenSet(false)
@@ -34,7 +33,6 @@ ApplicationInfo::ApplicationInfo() :
 ApplicationInfo::ApplicationInfo(const JsonValue& jsonValue) : 
     m_applicationIdHasBeenSet(false),
     m_applicationNameHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_linkedToGitHub(false),
     m_linkedToGitHubHasBeenSet(false)
@@ -93,8 +91,7 @@ JsonValue ApplicationInfo::Jsonize() const
 
   if(m_createTimeHasBeenSet)
   {
-   payload.WithDouble("createTime", m_createTime);
-
+   payload.WithDouble("createTime", m_createTime.SecondsWithMSPrecision());
   }
 
   if(m_linkedToGitHubHasBeenSet)
@@ -103,5 +100,5 @@ JsonValue ApplicationInfo::Jsonize() const
 
   }
 
-  return std::move(payload);
+  return payload;
 }

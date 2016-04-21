@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/ec2/model/TelemetryStatus.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int DOWN_HASH = HashingUtils::HashString("DOWN");
 
 namespace Aws
 {
-namespace EC2
-{
-namespace Model
-{
-namespace TelemetryStatusMapper
-{
-TelemetryStatus GetTelemetryStatusForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == UP_HASH)
+  namespace EC2
   {
-    return TelemetryStatus::UP;
-  }
-  else if (hashCode == DOWN_HASH)
-  {
-    return TelemetryStatus::DOWN;
-  }
+    namespace Model
+    {
+      namespace TelemetryStatusMapper
+      {
 
-  return TelemetryStatus::NOT_SET;
-}
 
-Aws::String GetNameForTelemetryStatus(TelemetryStatus value)
-{
-  switch(value)
-  {
-  case TelemetryStatus::UP:
-    return "UP";
-  case TelemetryStatus::DOWN:
-    return "DOWN";
-  default:
-    return "";
-  }
-}
+        TelemetryStatus GetTelemetryStatusForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == UP_HASH)
+          {
+            return TelemetryStatus::UP;
+          }
+          else if (hashCode == DOWN_HASH)
+          {
+            return TelemetryStatus::DOWN;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<TelemetryStatus>(hashCode);
+          }
 
-} // namespace TelemetryStatusMapper
-} // namespace Model
-} // namespace EC2
+          return TelemetryStatus::NOT_SET;
+        }
+
+        Aws::String GetNameForTelemetryStatus(TelemetryStatus enumValue)
+        {
+          switch(enumValue)
+          {
+          case TelemetryStatus::UP:
+            return "UP";
+          case TelemetryStatus::DOWN:
+            return "DOWN";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace TelemetryStatusMapper
+    } // namespace Model
+  } // namespace EC2
 } // namespace Aws

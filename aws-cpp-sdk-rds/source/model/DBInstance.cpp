@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ DBInstance::DBInstance() :
     m_endpointHasBeenSet(false),
     m_allocatedStorage(0),
     m_allocatedStorageHasBeenSet(false),
-    m_instanceCreateTime(0.0),
     m_instanceCreateTimeHasBeenSet(false),
     m_preferredBackupWindowHasBeenSet(false),
     m_backupRetentionPeriod(0),
@@ -45,7 +44,6 @@ DBInstance::DBInstance() :
     m_dBSubnetGroupHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
-    m_latestRestorableTime(0.0),
     m_latestRestorableTimeHasBeenSet(false),
     m_multiAZ(false),
     m_multiAZHasBeenSet(false),
@@ -77,7 +75,11 @@ DBInstance::DBInstance() :
     m_copyTagsToSnapshot(false),
     m_copyTagsToSnapshotHasBeenSet(false),
     m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false)
+    m_monitoringIntervalHasBeenSet(false),
+    m_enhancedMonitoringResourceArnHasBeenSet(false),
+    m_monitoringRoleArnHasBeenSet(false),
+    m_promotionTier(0),
+    m_promotionTierHasBeenSet(false)
 {
 }
 
@@ -91,7 +93,6 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_endpointHasBeenSet(false),
     m_allocatedStorage(0),
     m_allocatedStorageHasBeenSet(false),
-    m_instanceCreateTime(0.0),
     m_instanceCreateTimeHasBeenSet(false),
     m_preferredBackupWindowHasBeenSet(false),
     m_backupRetentionPeriod(0),
@@ -103,7 +104,6 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_dBSubnetGroupHasBeenSet(false),
     m_preferredMaintenanceWindowHasBeenSet(false),
     m_pendingModifiedValuesHasBeenSet(false),
-    m_latestRestorableTime(0.0),
     m_latestRestorableTimeHasBeenSet(false),
     m_multiAZ(false),
     m_multiAZHasBeenSet(false),
@@ -135,7 +135,11 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_copyTagsToSnapshot(false),
     m_copyTagsToSnapshotHasBeenSet(false),
     m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false)
+    m_monitoringIntervalHasBeenSet(false),
+    m_enhancedMonitoringResourceArnHasBeenSet(false),
+    m_monitoringRoleArnHasBeenSet(false),
+    m_promotionTier(0),
+    m_promotionTierHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -197,7 +201,7 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     XmlNode instanceCreateTimeNode = resultNode.FirstChild("InstanceCreateTime");
     if(!instanceCreateTimeNode.IsNull())
     {
-      m_instanceCreateTime = StringUtils::ConvertToDouble(StringUtils::Trim(instanceCreateTimeNode.GetText().c_str()).c_str());
+      m_instanceCreateTime = DateTime(StringUtils::Trim(instanceCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_instanceCreateTimeHasBeenSet = true;
     }
     XmlNode preferredBackupWindowNode = resultNode.FirstChild("PreferredBackupWindow");
@@ -275,7 +279,7 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     XmlNode latestRestorableTimeNode = resultNode.FirstChild("LatestRestorableTime");
     if(!latestRestorableTimeNode.IsNull())
     {
-      m_latestRestorableTime = StringUtils::ConvertToDouble(StringUtils::Trim(latestRestorableTimeNode.GetText().c_str()).c_str());
+      m_latestRestorableTime = DateTime(StringUtils::Trim(latestRestorableTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_latestRestorableTimeHasBeenSet = true;
     }
     XmlNode multiAZNode = resultNode.FirstChild("MultiAZ");
@@ -440,6 +444,24 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
       m_monitoringInterval = StringUtils::ConvertToInt32(StringUtils::Trim(monitoringIntervalNode.GetText().c_str()).c_str());
       m_monitoringIntervalHasBeenSet = true;
     }
+    XmlNode enhancedMonitoringResourceArnNode = resultNode.FirstChild("EnhancedMonitoringResourceArn");
+    if(!enhancedMonitoringResourceArnNode.IsNull())
+    {
+      m_enhancedMonitoringResourceArn = StringUtils::Trim(enhancedMonitoringResourceArnNode.GetText().c_str());
+      m_enhancedMonitoringResourceArnHasBeenSet = true;
+    }
+    XmlNode monitoringRoleArnNode = resultNode.FirstChild("MonitoringRoleArn");
+    if(!monitoringRoleArnNode.IsNull())
+    {
+      m_monitoringRoleArn = StringUtils::Trim(monitoringRoleArnNode.GetText().c_str());
+      m_monitoringRoleArnHasBeenSet = true;
+    }
+    XmlNode promotionTierNode = resultNode.FirstChild("PromotionTier");
+    if(!promotionTierNode.IsNull())
+    {
+      m_promotionTier = StringUtils::ConvertToInt32(StringUtils::Trim(promotionTierNode.GetText().c_str()).c_str());
+      m_promotionTierHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -483,7 +505,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_instanceCreateTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceCreateTime=" << m_instanceCreateTime << "&";
+      oStream << location << index << locationValue << ".InstanceCreateTime=" << StringUtils::URLEncode(m_instanceCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredBackupWindowHasBeenSet)
   {
@@ -495,28 +517,31 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_dBSecurityGroupsHasBeenSet)
   {
+      unsigned dBSecurityGroupsIdx = 1;
       for(auto& item : m_dBSecurityGroups)
       {
         Aws::StringStream dBSecurityGroupsSs;
-        dBSecurityGroupsSs << location << index << locationValue << ".DBSecurityGroup";
+        dBSecurityGroupsSs << location << index << locationValue << ".DBSecurityGroup." << dBSecurityGroupsIdx++;
         item.OutputToStream(oStream, dBSecurityGroupsSs.str().c_str());
       }
   }
   if(m_vpcSecurityGroupsHasBeenSet)
   {
+      unsigned vpcSecurityGroupsIdx = 1;
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership";
+        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
   if(m_dBParameterGroupsHasBeenSet)
   {
+      unsigned dBParameterGroupsIdx = 1;
       for(auto& item : m_dBParameterGroups)
       {
         Aws::StringStream dBParameterGroupsSs;
-        dBParameterGroupsSs << location << index << locationValue << ".DBParameterGroup";
+        dBParameterGroupsSs << location << index << locationValue << ".DBParameterGroup." << dBParameterGroupsIdx++;
         item.OutputToStream(oStream, dBParameterGroupsSs.str().c_str());
       }
   }
@@ -542,7 +567,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_latestRestorableTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LatestRestorableTime=" << m_latestRestorableTime << "&";
+      oStream << location << index << locationValue << ".LatestRestorableTime=" << StringUtils::URLEncode(m_latestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_multiAZHasBeenSet)
   {
@@ -562,9 +587,10 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_readReplicaDBInstanceIdentifiersHasBeenSet)
   {
+      unsigned readReplicaDBInstanceIdentifiersIdx = 1;
       for(auto& item : m_readReplicaDBInstanceIdentifiers)
       {
-        oStream << location << index << locationValue << ".ReadReplicaDBInstanceIdentifier=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ReadReplicaDBInstanceIdentifier." << readReplicaDBInstanceIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_licenseModelHasBeenSet)
@@ -577,10 +603,11 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_optionGroupMembershipsHasBeenSet)
   {
+      unsigned optionGroupMembershipsIdx = 1;
       for(auto& item : m_optionGroupMemberships)
       {
         Aws::StringStream optionGroupMembershipsSs;
-        optionGroupMembershipsSs << location << index << locationValue << ".OptionGroupMembership";
+        optionGroupMembershipsSs << location << index << locationValue << ".OptionGroupMembership." << optionGroupMembershipsIdx++;
         item.OutputToStream(oStream, optionGroupMembershipsSs.str().c_str());
       }
   }
@@ -598,10 +625,11 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_statusInfosHasBeenSet)
   {
+      unsigned statusInfosIdx = 1;
       for(auto& item : m_statusInfos)
       {
         Aws::StringStream statusInfosSs;
-        statusInfosSs << location << index << locationValue << ".DBInstanceStatusInfo";
+        statusInfosSs << location << index << locationValue << ".DBInstanceStatusInfo." << statusInfosIdx++;
         item.OutputToStream(oStream, statusInfosSs.str().c_str());
       }
   }
@@ -639,10 +667,11 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_domainMembershipsHasBeenSet)
   {
+      unsigned domainMembershipsIdx = 1;
       for(auto& item : m_domainMemberships)
       {
         Aws::StringStream domainMembershipsSs;
-        domainMembershipsSs << location << index << locationValue << ".DomainMembership";
+        domainMembershipsSs << location << index << locationValue << ".DomainMembership." << domainMembershipsIdx++;
         item.OutputToStream(oStream, domainMembershipsSs.str().c_str());
       }
   }
@@ -653,6 +682,18 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   if(m_monitoringIntervalHasBeenSet)
   {
       oStream << location << index << locationValue << ".MonitoringInterval=" << m_monitoringInterval << "&";
+  }
+  if(m_enhancedMonitoringResourceArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnhancedMonitoringResourceArn=" << StringUtils::URLEncode(m_enhancedMonitoringResourceArn.c_str()) << "&";
+  }
+  if(m_monitoringRoleArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
+  }
+  if(m_promotionTierHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PromotionTier=" << m_promotionTier << "&";
   }
 }
 
@@ -694,7 +735,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_instanceCreateTimeHasBeenSet)
   {
-      oStream << location << ".InstanceCreateTime=" << m_instanceCreateTime << "&";
+      oStream << location << ".InstanceCreateTime=" << StringUtils::URLEncode(m_instanceCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_preferredBackupWindowHasBeenSet)
   {
@@ -706,29 +747,32 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_dBSecurityGroupsHasBeenSet)
   {
+      unsigned dBSecurityGroupsIdx = 1;
       for(auto& item : m_dBSecurityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DBSecurityGroup";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream dBSecurityGroupsSs;
+        dBSecurityGroupsSs << location <<  ".DBSecurityGroup." << dBSecurityGroupsIdx++;
+        item.OutputToStream(oStream, dBSecurityGroupsSs.str().c_str());
       }
   }
   if(m_vpcSecurityGroupsHasBeenSet)
   {
+      unsigned vpcSecurityGroupsIdx = 1;
       for(auto& item : m_vpcSecurityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".VpcSecurityGroupMembership";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream vpcSecurityGroupsSs;
+        vpcSecurityGroupsSs << location <<  ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
   if(m_dBParameterGroupsHasBeenSet)
   {
+      unsigned dBParameterGroupsIdx = 1;
       for(auto& item : m_dBParameterGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DBParameterGroup";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream dBParameterGroupsSs;
+        dBParameterGroupsSs << location <<  ".DBParameterGroup." << dBParameterGroupsIdx++;
+        item.OutputToStream(oStream, dBParameterGroupsSs.str().c_str());
       }
   }
   if(m_availabilityZoneHasBeenSet)
@@ -753,7 +797,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_latestRestorableTimeHasBeenSet)
   {
-      oStream << location << ".LatestRestorableTime=" << m_latestRestorableTime << "&";
+      oStream << location << ".LatestRestorableTime=" << StringUtils::URLEncode(m_latestRestorableTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_multiAZHasBeenSet)
   {
@@ -773,9 +817,10 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_readReplicaDBInstanceIdentifiersHasBeenSet)
   {
+      unsigned readReplicaDBInstanceIdentifiersIdx = 1;
       for(auto& item : m_readReplicaDBInstanceIdentifiers)
       {
-        oStream << location << ".ReadReplicaDBInstanceIdentifier=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ReadReplicaDBInstanceIdentifier." << readReplicaDBInstanceIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_licenseModelHasBeenSet)
@@ -788,11 +833,12 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_optionGroupMembershipsHasBeenSet)
   {
+      unsigned optionGroupMembershipsIdx = 1;
       for(auto& item : m_optionGroupMemberships)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".OptionGroupMembership";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream optionGroupMembershipsSs;
+        optionGroupMembershipsSs << location <<  ".OptionGroupMembership." << optionGroupMembershipsIdx++;
+        item.OutputToStream(oStream, optionGroupMembershipsSs.str().c_str());
       }
   }
   if(m_characterSetNameHasBeenSet)
@@ -809,11 +855,12 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_statusInfosHasBeenSet)
   {
+      unsigned statusInfosIdx = 1;
       for(auto& item : m_statusInfos)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DBInstanceStatusInfo";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream statusInfosSs;
+        statusInfosSs << location <<  ".DBInstanceStatusInfo." << statusInfosIdx++;
+        item.OutputToStream(oStream, statusInfosSs.str().c_str());
       }
   }
   if(m_storageTypeHasBeenSet)
@@ -850,11 +897,12 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_domainMembershipsHasBeenSet)
   {
+      unsigned domainMembershipsIdx = 1;
       for(auto& item : m_domainMemberships)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".DomainMembership";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream domainMembershipsSs;
+        domainMembershipsSs << location <<  ".DomainMembership." << domainMembershipsIdx++;
+        item.OutputToStream(oStream, domainMembershipsSs.str().c_str());
       }
   }
   if(m_copyTagsToSnapshotHasBeenSet)
@@ -864,5 +912,17 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   if(m_monitoringIntervalHasBeenSet)
   {
       oStream << location << ".MonitoringInterval=" << m_monitoringInterval << "&";
+  }
+  if(m_enhancedMonitoringResourceArnHasBeenSet)
+  {
+      oStream << location << ".EnhancedMonitoringResourceArn=" << StringUtils::URLEncode(m_enhancedMonitoringResourceArn.c_str()) << "&";
+  }
+  if(m_monitoringRoleArnHasBeenSet)
+  {
+      oStream << location << ".MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
+  }
+  if(m_promotionTierHasBeenSet)
+  {
+      oStream << location << ".PromotionTier=" << m_promotionTier << "&";
   }
 }

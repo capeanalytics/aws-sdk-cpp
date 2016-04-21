@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ DescribeEnvironmentsRequest::DescribeEnvironmentsRequest() :
     m_environmentNamesHasBeenSet(false),
     m_includeDeleted(false),
     m_includeDeletedHasBeenSet(false),
-    m_includedDeletedBackTo(0.0),
     m_includedDeletedBackToHasBeenSet(false)
 {
 }
@@ -69,7 +68,7 @@ Aws::String DescribeEnvironmentsRequest::SerializePayload() const
   }
   if(m_includedDeletedBackToHasBeenSet)
   {
-    ss << "IncludedDeletedBackTo=" << m_includedDeletedBackTo << "&";
+    ss << "IncludedDeletedBackTo=" << StringUtils::URLEncode(m_includedDeletedBackTo.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   ss << "Version=2010-12-01";
   return ss.str();

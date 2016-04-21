@@ -50,9 +50,11 @@ project(aws-cpp-sdk-lambda)
   list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-lambda")
   set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
-  if(NOT MSVC)
-    add_definitions(-std=c++11)
-  endif()
+  target_include_directories(aws-cpp-sdk-lambda PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+  
+  target_link_libraries(aws-cpp-sdk-lambda aws-cpp-sdk-core)
 
   #uncomment when unit tests are automatically generated
   #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)

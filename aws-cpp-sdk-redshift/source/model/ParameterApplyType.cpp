@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/redshift/model/ParameterApplyType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int dynamic_HASH = HashingUtils::HashString("dynamic");
 
 namespace Aws
 {
-namespace Redshift
-{
-namespace Model
-{
-namespace ParameterApplyTypeMapper
-{
-ParameterApplyType GetParameterApplyTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == static__HASH)
+  namespace Redshift
   {
-    return ParameterApplyType::static_;
-  }
-  else if (hashCode == dynamic_HASH)
-  {
-    return ParameterApplyType::dynamic;
-  }
+    namespace Model
+    {
+      namespace ParameterApplyTypeMapper
+      {
 
-  return ParameterApplyType::NOT_SET;
-}
 
-Aws::String GetNameForParameterApplyType(ParameterApplyType value)
-{
-  switch(value)
-  {
-  case ParameterApplyType::static_:
-    return "static";
-  case ParameterApplyType::dynamic:
-    return "dynamic";
-  default:
-    return "";
-  }
-}
+        ParameterApplyType GetParameterApplyTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == static__HASH)
+          {
+            return ParameterApplyType::static_;
+          }
+          else if (hashCode == dynamic_HASH)
+          {
+            return ParameterApplyType::dynamic;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<ParameterApplyType>(hashCode);
+          }
 
-} // namespace ParameterApplyTypeMapper
-} // namespace Model
-} // namespace Redshift
+          return ParameterApplyType::NOT_SET;
+        }
+
+        Aws::String GetNameForParameterApplyType(ParameterApplyType enumValue)
+        {
+          switch(enumValue)
+          {
+          case ParameterApplyType::static_:
+            return "static";
+          case ParameterApplyType::dynamic:
+            return "dynamic";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace ParameterApplyTypeMapper
+    } // namespace Model
+  } // namespace Redshift
 } // namespace Aws

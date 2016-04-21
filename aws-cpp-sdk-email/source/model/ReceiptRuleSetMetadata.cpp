@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,14 +25,12 @@ using namespace Aws::Utils;
 
 ReceiptRuleSetMetadata::ReceiptRuleSetMetadata() : 
     m_nameHasBeenSet(false),
-    m_createdTimestamp(0.0),
     m_createdTimestampHasBeenSet(false)
 {
 }
 
 ReceiptRuleSetMetadata::ReceiptRuleSetMetadata(const XmlNode& xmlNode) : 
     m_nameHasBeenSet(false),
-    m_createdTimestamp(0.0),
     m_createdTimestampHasBeenSet(false)
 {
   *this = xmlNode;
@@ -53,7 +51,7 @@ ReceiptRuleSetMetadata& ReceiptRuleSetMetadata::operator =(const XmlNode& xmlNod
     XmlNode createdTimestampNode = resultNode.FirstChild("CreatedTimestamp");
     if(!createdTimestampNode.IsNull())
     {
-      m_createdTimestamp = StringUtils::ConvertToDouble(StringUtils::Trim(createdTimestampNode.GetText().c_str()).c_str());
+      m_createdTimestamp = DateTime(StringUtils::Trim(createdTimestampNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createdTimestampHasBeenSet = true;
     }
   }
@@ -69,7 +67,7 @@ void ReceiptRuleSetMetadata::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_createdTimestampHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreatedTimestamp=" << m_createdTimestamp << "&";
+      oStream << location << index << locationValue << ".CreatedTimestamp=" << StringUtils::URLEncode(m_createdTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
 
@@ -81,6 +79,6 @@ void ReceiptRuleSetMetadata::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_createdTimestampHasBeenSet)
   {
-      oStream << location << ".CreatedTimestamp=" << m_createdTimestamp << "&";
+      oStream << location << ".CreatedTimestamp=" << StringUtils::URLEncode(m_createdTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }

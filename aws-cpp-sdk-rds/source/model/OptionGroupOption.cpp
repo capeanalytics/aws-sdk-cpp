@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -183,9 +183,10 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_optionsDependedOnHasBeenSet)
   {
+      unsigned optionsDependedOnIdx = 1;
       for(auto& item : m_optionsDependedOn)
       {
-        oStream << location << index << locationValue << ".OptionName=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_persistentHasBeenSet)
@@ -198,10 +199,11 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_optionGroupOptionSettingsHasBeenSet)
   {
+      unsigned optionGroupOptionSettingsIdx = 1;
       for(auto& item : m_optionGroupOptionSettings)
       {
         Aws::StringStream optionGroupOptionSettingsSs;
-        optionGroupOptionSettingsSs << location << index << locationValue << ".OptionGroupOptionSetting";
+        optionGroupOptionSettingsSs << location << index << locationValue << ".OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
         item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
@@ -239,9 +241,10 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_optionsDependedOnHasBeenSet)
   {
+      unsigned optionsDependedOnIdx = 1;
       for(auto& item : m_optionsDependedOn)
       {
-        oStream << location << ".OptionName=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_persistentHasBeenSet)
@@ -254,11 +257,12 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_optionGroupOptionSettingsHasBeenSet)
   {
+      unsigned optionGroupOptionSettingsIdx = 1;
       for(auto& item : m_optionGroupOptionSettings)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".OptionGroupOptionSetting";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream optionGroupOptionSettingsSs;
+        optionGroupOptionSettingsSs << location <<  ".OptionGroupOptionSetting." << optionGroupOptionSettingsIdx++;
+        item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
 }

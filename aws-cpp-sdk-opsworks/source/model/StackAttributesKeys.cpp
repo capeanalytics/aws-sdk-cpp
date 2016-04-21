@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/opsworks/model/StackAttributesKeys.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -21,36 +23,49 @@ static const int Color_HASH = HashingUtils::HashString("Color");
 
 namespace Aws
 {
-namespace OpsWorks
-{
-namespace Model
-{
-namespace StackAttributesKeysMapper
-{
-StackAttributesKeys GetStackAttributesKeysForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == Color_HASH)
+  namespace OpsWorks
   {
-    return StackAttributesKeys::Color;
-  }
+    namespace Model
+    {
+      namespace StackAttributesKeysMapper
+      {
 
-  return StackAttributesKeys::NOT_SET;
-}
 
-Aws::String GetNameForStackAttributesKeys(StackAttributesKeys value)
-{
-  switch(value)
-  {
-  case StackAttributesKeys::Color:
-    return "Color";
-  default:
-    return "";
-  }
-}
+        StackAttributesKeys GetStackAttributesKeysForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == Color_HASH)
+          {
+            return StackAttributesKeys::Color;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<StackAttributesKeys>(hashCode);
+          }
 
-} // namespace StackAttributesKeysMapper
-} // namespace Model
-} // namespace OpsWorks
+          return StackAttributesKeys::NOT_SET;
+        }
+
+        Aws::String GetNameForStackAttributesKeys(StackAttributesKeys enumValue)
+        {
+          switch(enumValue)
+          {
+          case StackAttributesKeys::Color:
+            return "Color";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace StackAttributesKeysMapper
+    } // namespace Model
+  } // namespace OpsWorks
 } // namespace Aws

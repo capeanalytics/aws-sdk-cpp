@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -39,12 +39,12 @@ Aws::String DescribeAccountAttributesRequest::SerializePayload() const
     unsigned attributeNamesCount = 1;
     for(auto& item : m_attributeNames)
     {
-      ss << "AttributeNames.member." << attributeNamesCount << "="
+      ss << "AttributeName." << attributeNamesCount << "="
           << StringUtils::URLEncode(AccountAttributeNameMapper::GetNameForAccountAttributeName(item).c_str()) << "&";
       attributeNamesCount++;
     }
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

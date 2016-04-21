@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ AccountAttribute& AccountAttribute::operator =(const XmlNode& xmlNode)
       m_attributeName = StringUtils::Trim(attributeNameNode.GetText().c_str());
       m_attributeNameHasBeenSet = true;
     }
-    XmlNode attributeValuesNode = resultNode.FirstChild("AttributeValues");
+    XmlNode attributeValuesNode = resultNode.FirstChild("attributeValueSet");
     if(!attributeValuesNode.IsNull())
     {
       XmlNode attributeValuesMember = attributeValuesNode.FirstChild("item");
@@ -73,10 +73,11 @@ void AccountAttribute::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_attributeValuesHasBeenSet)
   {
+      unsigned attributeValuesIdx = 1;
       for(auto& item : m_attributeValues)
       {
         Aws::StringStream attributeValuesSs;
-        attributeValuesSs << location << index << locationValue << ".item";
+        attributeValuesSs << location << index << locationValue << ".AttributeValueSet." << attributeValuesIdx++;
         item.OutputToStream(oStream, attributeValuesSs.str().c_str());
       }
   }
@@ -90,11 +91,12 @@ void AccountAttribute::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_attributeValuesHasBeenSet)
   {
+      unsigned attributeValuesIdx = 1;
       for(auto& item : m_attributeValues)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream attributeValuesSs;
+        attributeValuesSs << location <<  ".item." << attributeValuesIdx++;
+        item.OutputToStream(oStream, attributeValuesSs.str().c_str());
       }
   }
 }

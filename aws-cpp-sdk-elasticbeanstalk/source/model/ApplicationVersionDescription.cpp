@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,10 +28,9 @@ ApplicationVersionDescription::ApplicationVersionDescription() :
     m_descriptionHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
     m_sourceBundleHasBeenSet(false),
-    m_dateCreated(0.0),
     m_dateCreatedHasBeenSet(false),
-    m_dateUpdated(0.0),
-    m_dateUpdatedHasBeenSet(false)
+    m_dateUpdatedHasBeenSet(false),
+    m_statusHasBeenSet(false)
 {
 }
 
@@ -40,10 +39,9 @@ ApplicationVersionDescription::ApplicationVersionDescription(const XmlNode& xmlN
     m_descriptionHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
     m_sourceBundleHasBeenSet(false),
-    m_dateCreated(0.0),
     m_dateCreatedHasBeenSet(false),
-    m_dateUpdated(0.0),
-    m_dateUpdatedHasBeenSet(false)
+    m_dateUpdatedHasBeenSet(false),
+    m_statusHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -81,14 +79,20 @@ ApplicationVersionDescription& ApplicationVersionDescription::operator =(const X
     XmlNode dateCreatedNode = resultNode.FirstChild("DateCreated");
     if(!dateCreatedNode.IsNull())
     {
-      m_dateCreated = StringUtils::ConvertToDouble(StringUtils::Trim(dateCreatedNode.GetText().c_str()).c_str());
+      m_dateCreated = DateTime(StringUtils::Trim(dateCreatedNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_dateCreatedHasBeenSet = true;
     }
     XmlNode dateUpdatedNode = resultNode.FirstChild("DateUpdated");
     if(!dateUpdatedNode.IsNull())
     {
-      m_dateUpdated = StringUtils::ConvertToDouble(StringUtils::Trim(dateUpdatedNode.GetText().c_str()).c_str());
+      m_dateUpdated = DateTime(StringUtils::Trim(dateUpdatedNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_dateUpdatedHasBeenSet = true;
+    }
+    XmlNode statusNode = resultNode.FirstChild("Status");
+    if(!statusNode.IsNull())
+    {
+      m_status = ApplicationVersionStatusMapper::GetApplicationVersionStatusForName(StringUtils::Trim(statusNode.GetText().c_str()).c_str());
+      m_statusHasBeenSet = true;
     }
   }
 
@@ -117,11 +121,15 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
   }
   if(m_dateCreatedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DateCreated=" << m_dateCreated << "&";
+      oStream << location << index << locationValue << ".DateCreated=" << StringUtils::URLEncode(m_dateCreated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_dateUpdatedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DateUpdated=" << m_dateUpdated << "&";
+      oStream << location << index << locationValue << ".DateUpdated=" << StringUtils::URLEncode(m_dateUpdated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_statusHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Status=" << ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status) << "&";
   }
 }
 
@@ -147,10 +155,14 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
   }
   if(m_dateCreatedHasBeenSet)
   {
-      oStream << location << ".DateCreated=" << m_dateCreated << "&";
+      oStream << location << ".DateCreated=" << StringUtils::URLEncode(m_dateCreated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_dateUpdatedHasBeenSet)
   {
-      oStream << location << ".DateUpdated=" << m_dateUpdated << "&";
+      oStream << location << ".DateUpdated=" << StringUtils::URLEncode(m_dateUpdated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
+  }
+  if(m_statusHasBeenSet)
+  {
+      oStream << location << ".Status=" << ApplicationVersionStatusMapper::GetNameForApplicationVersionStatus(m_status) << "&";
   }
 }

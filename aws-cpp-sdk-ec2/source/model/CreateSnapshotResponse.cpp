@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -16,23 +16,23 @@
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
 #include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/logging/LogMacros.h>
 
 #include <utility>
 
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
+using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
 CreateSnapshotResponse::CreateSnapshotResponse() : 
-    m_startTime(0.0),
     m_volumeSize(0),
     m_encrypted(false)
 {
 }
 
 CreateSnapshotResponse::CreateSnapshotResponse(const AmazonWebServiceResult<XmlDocument>& result) : 
-    m_startTime(0.0),
     m_volumeSize(0),
     m_encrypted(false)
 {
@@ -66,10 +66,15 @@ CreateSnapshotResponse& CreateSnapshotResponse::operator =(const AmazonWebServic
     {
       m_state = SnapshotStateMapper::GetSnapshotStateForName(StringUtils::Trim(stateNode.GetText().c_str()).c_str());
     }
+    XmlNode stateMessageNode = resultNode.FirstChild("statusMessage");
+    if(!stateMessageNode.IsNull())
+    {
+      m_stateMessage = StringUtils::Trim(stateMessageNode.GetText().c_str());
+    }
     XmlNode startTimeNode = resultNode.FirstChild("startTime");
     if(!startTimeNode.IsNull())
     {
-      m_startTime = StringUtils::ConvertToDouble(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str());
+      m_startTime = DateTime(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
     XmlNode progressNode = resultNode.FirstChild("progress");
     if(!progressNode.IsNull())
@@ -96,7 +101,7 @@ CreateSnapshotResponse& CreateSnapshotResponse::operator =(const AmazonWebServic
     {
       m_ownerAlias = StringUtils::Trim(ownerAliasNode.GetText().c_str());
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -117,10 +122,16 @@ CreateSnapshotResponse& CreateSnapshotResponse::operator =(const AmazonWebServic
     {
       m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
     }
+    XmlNode dataEncryptionKeyIdNode = resultNode.FirstChild("dataEncryptionKeyId");
+    if(!dataEncryptionKeyIdNode.IsNull())
+    {
+      m_dataEncryptionKeyId = StringUtils::Trim(dataEncryptionKeyIdNode.GetText().c_str());
+    }
   }
 
   XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
   m_responseMetadata = responseMetadataNode;
+  AWS_LOGSTREAM_DEBUG("Aws::EC2::Model::CreateSnapshotResponse", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
 
   return *this;
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -141,17 +141,19 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_memberClustersHasBeenSet)
   {
+      unsigned memberClustersIdx = 1;
       for(auto& item : m_memberClusters)
       {
-        oStream << location << index << locationValue << ".ClusterId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ClusterId." << memberClustersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_nodeGroupsHasBeenSet)
   {
+      unsigned nodeGroupsIdx = 1;
       for(auto& item : m_nodeGroups)
       {
         Aws::StringStream nodeGroupsSs;
-        nodeGroupsSs << location << index << locationValue << ".NodeGroup";
+        nodeGroupsSs << location << index << locationValue << ".NodeGroup." << nodeGroupsIdx++;
         item.OutputToStream(oStream, nodeGroupsSs.str().c_str());
       }
   }
@@ -187,18 +189,20 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_memberClustersHasBeenSet)
   {
+      unsigned memberClustersIdx = 1;
       for(auto& item : m_memberClusters)
       {
-        oStream << location << ".ClusterId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ClusterId." << memberClustersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_nodeGroupsHasBeenSet)
   {
+      unsigned nodeGroupsIdx = 1;
       for(auto& item : m_nodeGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".NodeGroup";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream nodeGroupsSs;
+        nodeGroupsSs << location <<  ".NodeGroup." << nodeGroupsIdx++;
+        item.OutputToStream(oStream, nodeGroupsSs.str().c_str());
       }
   }
   if(m_snapshottingClusterIdHasBeenSet)

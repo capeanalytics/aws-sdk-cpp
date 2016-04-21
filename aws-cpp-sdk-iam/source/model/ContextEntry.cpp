@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -81,9 +81,10 @@ void ContextEntry::OutputToStream(Aws::OStream& oStream, const char* location, u
   }
   if(m_contextKeyValuesHasBeenSet)
   {
+      unsigned contextKeyValuesIdx = 1;
       for(auto& item : m_contextKeyValues)
       {
-        oStream << location << index << locationValue << ".ContextKeyValues=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ContextKeyValues.member." << contextKeyValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_contextKeyTypeHasBeenSet)
@@ -100,9 +101,10 @@ void ContextEntry::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_contextKeyValuesHasBeenSet)
   {
+      unsigned contextKeyValuesIdx = 1;
       for(auto& item : m_contextKeyValues)
       {
-        oStream << location << ".ContextKeyValues=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ContextKeyValues.member." << contextKeyValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_contextKeyTypeHasBeenSet)

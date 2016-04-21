@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
       m_sourceDestCheck = StringUtils::ConvertToBool(StringUtils::Trim(sourceDestCheckNode.GetText().c_str()).c_str());
       m_sourceDestCheckHasBeenSet = true;
     }
-    XmlNode groupsNode = resultNode.FirstChild("Groups");
+    XmlNode groupsNode = resultNode.FirstChild("groupSet");
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("item");
@@ -152,7 +152,7 @@ InstanceNetworkInterface& InstanceNetworkInterface::operator =(const XmlNode& xm
       m_association = associationNode;
       m_associationHasBeenSet = true;
     }
-    XmlNode privateIpAddressesNode = resultNode.FirstChild("PrivateIpAddresses");
+    XmlNode privateIpAddressesNode = resultNode.FirstChild("privateIpAddressesSet");
     if(!privateIpAddressesNode.IsNull())
     {
       XmlNode privateIpAddressesMember = privateIpAddressesNode.FirstChild("item");
@@ -213,10 +213,11 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location << index << locationValue << ".item";
+        groupsSs << location << index << locationValue << ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
@@ -234,10 +235,11 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_privateIpAddressesHasBeenSet)
   {
+      unsigned privateIpAddressesIdx = 1;
       for(auto& item : m_privateIpAddresses)
       {
         Aws::StringStream privateIpAddressesSs;
-        privateIpAddressesSs << location << index << locationValue << ".item";
+        privateIpAddressesSs << location << index << locationValue << ".PrivateIpAddressesSet." << privateIpAddressesIdx++;
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
   }
@@ -287,11 +289,12 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream groupsSs;
+        groupsSs << location <<  ".item." << groupsIdx++;
+        item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
   if(m_attachmentHasBeenSet)
@@ -308,11 +311,12 @@ void InstanceNetworkInterface::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_privateIpAddressesHasBeenSet)
   {
+      unsigned privateIpAddressesIdx = 1;
       for(auto& item : m_privateIpAddresses)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream privateIpAddressesSs;
+        privateIpAddressesSs << location <<  ".item." << privateIpAddressesIdx++;
+        item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
   }
 }

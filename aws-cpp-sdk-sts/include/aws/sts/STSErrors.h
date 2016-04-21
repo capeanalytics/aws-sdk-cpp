@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -54,7 +54,8 @@ enum class AWS_STS_API STSErrors
   I_D_P_COMMUNICATION_ERROR,
   I_D_P_REJECTED_CLAIM,
   MALFORMED_POLICY_DOCUMENT,
-  PACKED_POLICY_TOO_LARGE
+  PACKED_POLICY_TOO_LARGE,
+  REGION_DISABLED
 };
 namespace STSErrorMapper
 {

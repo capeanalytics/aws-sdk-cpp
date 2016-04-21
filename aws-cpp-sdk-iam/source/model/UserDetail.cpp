@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ UserDetail::UserDetail() :
     m_userNameHasBeenSet(false),
     m_userIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_userPolicyListHasBeenSet(false),
     m_groupListHasBeenSet(false),
@@ -41,7 +40,6 @@ UserDetail::UserDetail(const XmlNode& xmlNode) :
     m_userNameHasBeenSet(false),
     m_userIdHasBeenSet(false),
     m_arnHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
     m_userPolicyListHasBeenSet(false),
     m_groupListHasBeenSet(false),
@@ -83,7 +81,7 @@ UserDetail& UserDetail::operator =(const XmlNode& xmlNode)
     XmlNode createDateNode = resultNode.FirstChild("CreateDate");
     if(!createDateNode.IsNull())
     {
-      m_createDate = StringUtils::ConvertToDouble(StringUtils::Trim(createDateNode.GetText().c_str()).c_str());
+      m_createDate = DateTime(StringUtils::Trim(createDateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createDateHasBeenSet = true;
     }
     XmlNode userPolicyListNode = resultNode.FirstChild("UserPolicyList");
@@ -147,30 +145,33 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location, uns
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateDate=" << m_createDate << "&";
+      oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_userPolicyListHasBeenSet)
   {
+      unsigned userPolicyListIdx = 1;
       for(auto& item : m_userPolicyList)
       {
         Aws::StringStream userPolicyListSs;
-        userPolicyListSs << location << index << locationValue << ".UserPolicyList";
+        userPolicyListSs << location << index << locationValue << ".UserPolicyList.member." << userPolicyListIdx++;
         item.OutputToStream(oStream, userPolicyListSs.str().c_str());
       }
   }
   if(m_groupListHasBeenSet)
   {
+      unsigned groupListIdx = 1;
       for(auto& item : m_groupList)
       {
-        oStream << location << index << locationValue << ".GroupList=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".GroupList.member." << groupListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_attachedManagedPoliciesHasBeenSet)
   {
+      unsigned attachedManagedPoliciesIdx = 1;
       for(auto& item : m_attachedManagedPolicies)
       {
         Aws::StringStream attachedManagedPoliciesSs;
-        attachedManagedPoliciesSs << location << index << locationValue << ".AttachedManagedPolicies";
+        attachedManagedPoliciesSs << location << index << locationValue << ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
         item.OutputToStream(oStream, attachedManagedPoliciesSs.str().c_str());
       }
   }
@@ -196,31 +197,34 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << ".CreateDate=" << m_createDate << "&";
+      oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_userPolicyListHasBeenSet)
   {
+      unsigned userPolicyListIdx = 1;
       for(auto& item : m_userPolicyList)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".UserPolicyList";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream userPolicyListSs;
+        userPolicyListSs << location <<  ".UserPolicyList.member." << userPolicyListIdx++;
+        item.OutputToStream(oStream, userPolicyListSs.str().c_str());
       }
   }
   if(m_groupListHasBeenSet)
   {
+      unsigned groupListIdx = 1;
       for(auto& item : m_groupList)
       {
-        oStream << location << ".GroupList=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".GroupList.member." << groupListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_attachedManagedPoliciesHasBeenSet)
   {
+      unsigned attachedManagedPoliciesIdx = 1;
       for(auto& item : m_attachedManagedPolicies)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".AttachedManagedPolicies";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream attachedManagedPoliciesSs;
+        attachedManagedPoliciesSs << location <<  ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
+        item.OutputToStream(oStream, attachedManagedPoliciesSs.str().c_str());
       }
   }
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -43,11 +43,10 @@ RestoreDBInstanceFromDBSnapshotRequest::RestoreDBInstanceFromDBSnapshotRequest()
     m_storageTypeHasBeenSet(false),
     m_tdeCredentialArnHasBeenSet(false),
     m_tdeCredentialPasswordHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_dBSecurityGroupsHasBeenSet(false),
     m_domainHasBeenSet(false),
     m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false)
+    m_copyTagsToSnapshotHasBeenSet(false),
+    m_domainIAMRoleNameHasBeenSet(false)
 {
 }
 
@@ -132,26 +131,6 @@ Aws::String RestoreDBInstanceFromDBSnapshotRequest::SerializePayload() const
   {
     ss << "TdeCredentialPassword=" << StringUtils::URLEncode(m_tdeCredentialPassword.c_str()) << "&";
   }
-  if(m_vpcSecurityGroupIdsHasBeenSet)
-  {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
-    {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
-    }
-  }
-  if(m_dBSecurityGroupsHasBeenSet)
-  {
-    unsigned dBSecurityGroupsCount = 1;
-    for(auto& item : m_dBSecurityGroups)
-    {
-      ss << "DBSecurityGroups.member." << dBSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dBSecurityGroupsCount++;
-    }
-  }
   if(m_domainHasBeenSet)
   {
     ss << "Domain=" << StringUtils::URLEncode(m_domain.c_str()) << "&";
@@ -159,6 +138,10 @@ Aws::String RestoreDBInstanceFromDBSnapshotRequest::SerializePayload() const
   if(m_copyTagsToSnapshotHasBeenSet)
   {
     ss << "CopyTagsToSnapshot=" << m_copyTagsToSnapshot << "&";
+  }
+  if(m_domainIAMRoleNameHasBeenSet)
+  {
+    ss << "DomainIAMRoleName=" << StringUtils::URLEncode(m_domainIAMRoleName.c_str()) << "&";
   }
   ss << "Version=2014-10-31";
   return ss.str();

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ NewDhcpConfiguration& NewDhcpConfiguration::operator =(const XmlNode& xmlNode)
       m_key = StringUtils::Trim(keyNode.GetText().c_str());
       m_keyHasBeenSet = true;
     }
-    XmlNode valuesNode = resultNode.FirstChild("Values");
+    XmlNode valuesNode = resultNode.FirstChild("Value");
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("item");
@@ -73,9 +73,10 @@ void NewDhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_valuesHasBeenSet)
   {
+      unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << index << locationValue << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".Value." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }
@@ -88,9 +89,10 @@ void NewDhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_valuesHasBeenSet)
   {
+      unsigned valuesIdx = 1;
       for(auto& item : m_values)
       {
-        oStream << location << ".item=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".item." << valuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

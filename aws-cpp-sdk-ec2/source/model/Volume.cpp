@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ Volume::Volume() :
     m_snapshotIdHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_attachmentsHasBeenSet(false),
     m_tagsHasBeenSet(false),
@@ -51,7 +50,6 @@ Volume::Volume(const XmlNode& xmlNode) :
     m_snapshotIdHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_stateHasBeenSet(false),
-    m_createTime(0.0),
     m_createTimeHasBeenSet(false),
     m_attachmentsHasBeenSet(false),
     m_tagsHasBeenSet(false),
@@ -105,10 +103,10 @@ Volume& Volume::operator =(const XmlNode& xmlNode)
     XmlNode createTimeNode = resultNode.FirstChild("createTime");
     if(!createTimeNode.IsNull())
     {
-      m_createTime = StringUtils::ConvertToDouble(StringUtils::Trim(createTimeNode.GetText().c_str()).c_str());
+      m_createTime = DateTime(StringUtils::Trim(createTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createTimeHasBeenSet = true;
     }
-    XmlNode attachmentsNode = resultNode.FirstChild("Attachments");
+    XmlNode attachmentsNode = resultNode.FirstChild("attachmentSet");
     if(!attachmentsNode.IsNull())
     {
       XmlNode attachmentsMember = attachmentsNode.FirstChild("item");
@@ -120,7 +118,7 @@ Volume& Volume::operator =(const XmlNode& xmlNode)
 
       m_attachmentsHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -185,23 +183,25 @@ void Volume::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
   }
   if(m_createTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateTime=" << m_createTime << "&";
+      oStream << location << index << locationValue << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_attachmentsHasBeenSet)
   {
+      unsigned attachmentsIdx = 1;
       for(auto& item : m_attachments)
       {
         Aws::StringStream attachmentsSs;
-        attachmentsSs << location << index << locationValue << ".item";
+        attachmentsSs << location << index << locationValue << ".AttachmentSet." << attachmentsIdx++;
         item.OutputToStream(oStream, attachmentsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -253,24 +253,26 @@ void Volume::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_createTimeHasBeenSet)
   {
-      oStream << location << ".CreateTime=" << m_createTime << "&";
+      oStream << location << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_attachmentsHasBeenSet)
   {
+      unsigned attachmentsIdx = 1;
       for(auto& item : m_attachments)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream attachmentsSs;
+        attachmentsSs << location <<  ".item." << attachmentsIdx++;
+        item.OutputToStream(oStream, attachmentsSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_volumeTypeHasBeenSet)

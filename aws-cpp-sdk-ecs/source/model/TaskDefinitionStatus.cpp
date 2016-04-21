@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/ecs/model/TaskDefinitionStatus.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int INACTIVE_HASH = HashingUtils::HashString("INACTIVE");
 
 namespace Aws
 {
-namespace ECS
-{
-namespace Model
-{
-namespace TaskDefinitionStatusMapper
-{
-TaskDefinitionStatus GetTaskDefinitionStatusForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == ACTIVE_HASH)
+  namespace ECS
   {
-    return TaskDefinitionStatus::ACTIVE;
-  }
-  else if (hashCode == INACTIVE_HASH)
-  {
-    return TaskDefinitionStatus::INACTIVE;
-  }
+    namespace Model
+    {
+      namespace TaskDefinitionStatusMapper
+      {
 
-  return TaskDefinitionStatus::NOT_SET;
-}
 
-Aws::String GetNameForTaskDefinitionStatus(TaskDefinitionStatus value)
-{
-  switch(value)
-  {
-  case TaskDefinitionStatus::ACTIVE:
-    return "ACTIVE";
-  case TaskDefinitionStatus::INACTIVE:
-    return "INACTIVE";
-  default:
-    return "";
-  }
-}
+        TaskDefinitionStatus GetTaskDefinitionStatusForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == ACTIVE_HASH)
+          {
+            return TaskDefinitionStatus::ACTIVE;
+          }
+          else if (hashCode == INACTIVE_HASH)
+          {
+            return TaskDefinitionStatus::INACTIVE;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<TaskDefinitionStatus>(hashCode);
+          }
 
-} // namespace TaskDefinitionStatusMapper
-} // namespace Model
-} // namespace ECS
+          return TaskDefinitionStatus::NOT_SET;
+        }
+
+        Aws::String GetNameForTaskDefinitionStatus(TaskDefinitionStatus enumValue)
+        {
+          switch(enumValue)
+          {
+          case TaskDefinitionStatus::ACTIVE:
+            return "ACTIVE";
+          case TaskDefinitionStatus::INACTIVE:
+            return "INACTIVE";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace TaskDefinitionStatusMapper
+    } // namespace Model
+  } // namespace ECS
 } // namespace Aws

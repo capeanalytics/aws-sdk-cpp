@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -28,7 +28,9 @@ Instance::Instance() :
     m_publicIpAddressHasBeenSet(false),
     m_privateDnsNameHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
-    m_statusHasBeenSet(false)
+    m_statusHasBeenSet(false),
+    m_instanceGroupIdHasBeenSet(false),
+    m_ebsVolumesHasBeenSet(false)
 {
 }
 
@@ -39,7 +41,9 @@ Instance::Instance(const JsonValue& jsonValue) :
     m_publicIpAddressHasBeenSet(false),
     m_privateDnsNameHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
-    m_statusHasBeenSet(false)
+    m_statusHasBeenSet(false),
+    m_instanceGroupIdHasBeenSet(false),
+    m_ebsVolumesHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -95,6 +99,23 @@ Instance& Instance::operator =(const JsonValue& jsonValue)
     m_statusHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("InstanceGroupId"))
+  {
+    m_instanceGroupId = jsonValue.GetString("InstanceGroupId");
+
+    m_instanceGroupIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("EbsVolumes"))
+  {
+    Array<JsonValue> ebsVolumesJsonList = jsonValue.GetArray("EbsVolumes");
+    for(unsigned ebsVolumesIndex = 0; ebsVolumesIndex < ebsVolumesJsonList.GetLength(); ++ebsVolumesIndex)
+    {
+      m_ebsVolumes.push_back(ebsVolumesJsonList[ebsVolumesIndex].AsObject());
+    }
+    m_ebsVolumesHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -144,5 +165,22 @@ JsonValue Instance::Jsonize() const
 
   }
 
-  return std::move(payload);
+  if(m_instanceGroupIdHasBeenSet)
+  {
+   payload.WithString("InstanceGroupId", m_instanceGroupId);
+
+  }
+
+  if(m_ebsVolumesHasBeenSet)
+  {
+   Array<JsonValue> ebsVolumesJsonList(m_ebsVolumes.size());
+   for(unsigned ebsVolumesIndex = 0; ebsVolumesIndex < ebsVolumesJsonList.GetLength(); ++ebsVolumesIndex)
+   {
+     ebsVolumesJsonList[ebsVolumesIndex].AsObject(m_ebsVolumes[ebsVolumesIndex].Jsonize());
+   }
+   payload.WithArray("EbsVolumes", std::move(ebsVolumesJsonList));
+
+  }
+
+  return payload;
 }

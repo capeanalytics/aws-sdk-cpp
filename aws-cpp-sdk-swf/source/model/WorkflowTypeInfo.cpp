@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,9 +25,7 @@ WorkflowTypeInfo::WorkflowTypeInfo() :
     m_workflowTypeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_descriptionHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
-    m_deprecationDate(0.0),
     m_deprecationDateHasBeenSet(false)
 {
 }
@@ -36,9 +34,7 @@ WorkflowTypeInfo::WorkflowTypeInfo(const JsonValue& jsonValue) :
     m_workflowTypeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_descriptionHasBeenSet(false),
-    m_creationDate(0.0),
     m_creationDateHasBeenSet(false),
-    m_deprecationDate(0.0),
     m_deprecationDateHasBeenSet(false)
 {
   *this = jsonValue;
@@ -107,15 +103,13 @@ JsonValue WorkflowTypeInfo::Jsonize() const
 
   if(m_creationDateHasBeenSet)
   {
-   payload.WithDouble("creationDate", m_creationDate);
-
+   payload.WithDouble("creationDate", m_creationDate.SecondsWithMSPrecision());
   }
 
   if(m_deprecationDateHasBeenSet)
   {
-   payload.WithDouble("deprecationDate", m_deprecationDate);
-
+   payload.WithDouble("deprecationDate", m_deprecationDate.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

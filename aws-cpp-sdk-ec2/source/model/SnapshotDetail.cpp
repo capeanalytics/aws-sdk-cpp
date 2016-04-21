@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -129,7 +129,7 @@ void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location,
 {
   if(m_diskImageSizeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DiskImageSize=" << m_diskImageSize << "&";
+        oStream << location << index << locationValue << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
   }
   if(m_descriptionHasBeenSet)
   {
@@ -175,7 +175,7 @@ void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location)
 {
   if(m_diskImageSizeHasBeenSet)
   {
-      oStream << location << ".DiskImageSize=" << m_diskImageSize << "&";
+        oStream << location << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
   }
   if(m_descriptionHasBeenSet)
   {

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/s3/model/MFADelete.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int Disabled_HASH = HashingUtils::HashString("Disabled");
 
 namespace Aws
 {
-namespace S3
-{
-namespace Model
-{
-namespace MFADeleteMapper
-{
-MFADelete GetMFADeleteForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == Enabled_HASH)
+  namespace S3
   {
-    return MFADelete::Enabled;
-  }
-  else if (hashCode == Disabled_HASH)
-  {
-    return MFADelete::Disabled;
-  }
+    namespace Model
+    {
+      namespace MFADeleteMapper
+      {
 
-  return MFADelete::NOT_SET;
-}
 
-Aws::String GetNameForMFADelete(MFADelete value)
-{
-  switch(value)
-  {
-  case MFADelete::Enabled:
-    return "Enabled";
-  case MFADelete::Disabled:
-    return "Disabled";
-  default:
-    return "";
-  }
-}
+        MFADelete GetMFADeleteForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == Enabled_HASH)
+          {
+            return MFADelete::Enabled;
+          }
+          else if (hashCode == Disabled_HASH)
+          {
+            return MFADelete::Disabled;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<MFADelete>(hashCode);
+          }
 
-} // namespace MFADeleteMapper
-} // namespace Model
-} // namespace S3
+          return MFADelete::NOT_SET;
+        }
+
+        Aws::String GetNameForMFADelete(MFADelete enumValue)
+        {
+          switch(enumValue)
+          {
+          case MFADelete::Enabled:
+            return "Enabled";
+          case MFADelete::Disabled:
+            return "Disabled";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace MFADeleteMapper
+    } // namespace Model
+  } // namespace S3
 } // namespace Aws

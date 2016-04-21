@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ ImportImageTask& ImportImageTask::operator =(const XmlNode& xmlNode)
       m_description = StringUtils::Trim(descriptionNode.GetText().c_str());
       m_descriptionHasBeenSet = true;
     }
-    XmlNode snapshotDetailsNode = resultNode.FirstChild("SnapshotDetails");
+    XmlNode snapshotDetailsNode = resultNode.FirstChild("snapshotDetailSet");
     if(!snapshotDetailsNode.IsNull())
     {
       XmlNode snapshotDetailsMember = snapshotDetailsNode.FirstChild("item");
@@ -165,10 +165,11 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_snapshotDetailsHasBeenSet)
   {
+      unsigned snapshotDetailsIdx = 1;
       for(auto& item : m_snapshotDetails)
       {
         Aws::StringStream snapshotDetailsSs;
-        snapshotDetailsSs << location << index << locationValue << ".item";
+        snapshotDetailsSs << location << index << locationValue << ".SnapshotDetailSet." << snapshotDetailsIdx++;
         item.OutputToStream(oStream, snapshotDetailsSs.str().c_str());
       }
   }
@@ -218,11 +219,12 @@ void ImportImageTask::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_snapshotDetailsHasBeenSet)
   {
+      unsigned snapshotDetailsIdx = 1;
       for(auto& item : m_snapshotDetails)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream snapshotDetailsSs;
+        snapshotDetailsSs << location <<  ".item." << snapshotDetailsIdx++;
+        item.OutputToStream(oStream, snapshotDetailsSs.str().c_str());
       }
   }
   if(m_imageIdHasBeenSet)

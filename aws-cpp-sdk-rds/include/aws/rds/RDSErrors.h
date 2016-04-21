@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ enum class AWS_RDS_API RDSErrors
   AUTHORIZATION_NOT_FOUND_FAULT,
   AUTHORIZATION_QUOTA_EXCEEDED_FAULT,
   CERTIFICATE_NOT_FOUND_FAULT,
+  DOMAIN_NOT_FOUND_FAULT,
   D_B_CLUSTER_ALREADY_EXISTS_FAULT,
   D_B_CLUSTER_NOT_FOUND_FAULT,
   D_B_CLUSTER_PARAMETER_GROUP_NOT_FOUND_FAULT,
@@ -107,6 +108,7 @@ enum class AWS_RDS_API RDSErrors
   RESERVED_D_B_INSTANCE_NOT_FOUND_FAULT,
   RESERVED_D_B_INSTANCE_QUOTA_EXCEEDED_FAULT,
   RESOURCE_NOT_FOUND_FAULT,
+  SHARED_SNAPSHOT_QUOTA_EXCEEDED_FAULT,
   SNAPSHOT_QUOTA_EXCEEDED_FAULT,
   SOURCE_NOT_FOUND_FAULT,
   STORAGE_QUOTA_EXCEEDED_FAULT,

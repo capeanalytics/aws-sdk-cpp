@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,18 +27,25 @@
 #include <aws/lambda/LambdaEndpoint.h>
 #include <aws/lambda/LambdaErrorMarshaller.h>
 #include <aws/lambda/model/AddPermissionRequest.h>
+#include <aws/lambda/model/CreateAliasRequest.h>
 #include <aws/lambda/model/CreateEventSourceMappingRequest.h>
 #include <aws/lambda/model/CreateFunctionRequest.h>
+#include <aws/lambda/model/DeleteAliasRequest.h>
 #include <aws/lambda/model/DeleteEventSourceMappingRequest.h>
 #include <aws/lambda/model/DeleteFunctionRequest.h>
+#include <aws/lambda/model/GetAliasRequest.h>
 #include <aws/lambda/model/GetEventSourceMappingRequest.h>
 #include <aws/lambda/model/GetFunctionRequest.h>
 #include <aws/lambda/model/GetFunctionConfigurationRequest.h>
 #include <aws/lambda/model/GetPolicyRequest.h>
 #include <aws/lambda/model/InvokeRequest.h>
+#include <aws/lambda/model/ListAliasesRequest.h>
 #include <aws/lambda/model/ListEventSourceMappingsRequest.h>
 #include <aws/lambda/model/ListFunctionsRequest.h>
+#include <aws/lambda/model/ListVersionsByFunctionRequest.h>
+#include <aws/lambda/model/PublishVersionRequest.h>
 #include <aws/lambda/model/RemovePermissionRequest.h>
+#include <aws/lambda/model/UpdateAliasRequest.h>
 #include <aws/lambda/model/UpdateEventSourceMappingRequest.h>
 #include <aws/lambda/model/UpdateFunctionCodeRequest.h>
 #include <aws/lambda/model/UpdateFunctionConfigurationRequest.h>
@@ -56,7 +63,8 @@ static const char* ALLOCATION_TAG = "LambdaClient";
 
 LambdaClient::LambdaClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -65,7 +73,8 @@ LambdaClient::LambdaClient(const Client::ClientConfiguration& clientConfiguratio
 
 LambdaClient::LambdaClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -75,7 +84,8 @@ LambdaClient::LambdaClient(const AWSCredentials& credentials, const Client::Clie
 LambdaClient::LambdaClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<LambdaErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -91,7 +101,7 @@ void LambdaClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << LambdaEndpoint::ForRegion(config.region);
   }
@@ -107,7 +117,7 @@ AddPermissionOutcome LambdaClient::AddPermission(const AddPermissionRequest& req
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/policy";
+  ss << "/policy";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
@@ -133,6 +143,39 @@ void LambdaClient::AddPermissionAsync(const AddPermissionRequest& request, const
 void LambdaClient::AddPermissionAsyncHelper(const AddPermissionRequest& request, const AddPermissionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, AddPermission(request), context);
+}
+
+CreateAliasOutcome LambdaClient::CreateAlias(const CreateAliasRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/aliases";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CreateAliasOutcome(CreateAliasResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CreateAliasOutcome(outcome.GetError());
+  }
+}
+
+CreateAliasOutcomeCallable LambdaClient::CreateAliasCallable(const CreateAliasRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::CreateAlias, this, request);
+}
+
+void LambdaClient::CreateAliasAsync(const CreateAliasRequest& request, const CreateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::CreateAliasAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::CreateAliasAsyncHelper(const CreateAliasRequest& request, const CreateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CreateAlias(request), context);
 }
 
 CreateEventSourceMappingOutcome LambdaClient::CreateEventSourceMapping(const CreateEventSourceMappingRequest& request) const
@@ -195,6 +238,40 @@ void LambdaClient::CreateFunctionAsync(const CreateFunctionRequest& request, con
 void LambdaClient::CreateFunctionAsyncHelper(const CreateFunctionRequest& request, const CreateFunctionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, CreateFunction(request), context);
+}
+
+DeleteAliasOutcome LambdaClient::DeleteAlias(const DeleteAliasRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/aliases/";
+  ss << request.GetName();
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_DELETE);
+  if(outcome.IsSuccess())
+  {
+    return DeleteAliasOutcome(NoResult());
+  }
+  else
+  {
+    return DeleteAliasOutcome(outcome.GetError());
+  }
+}
+
+DeleteAliasOutcomeCallable LambdaClient::DeleteAliasCallable(const DeleteAliasRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::DeleteAlias, this, request);
+}
+
+void LambdaClient::DeleteAliasAsync(const DeleteAliasRequest& request, const DeleteAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::DeleteAliasAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::DeleteAliasAsyncHelper(const DeleteAliasRequest& request, const DeleteAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DeleteAlias(request), context);
 }
 
 DeleteEventSourceMappingOutcome LambdaClient::DeleteEventSourceMapping(const DeleteEventSourceMappingRequest& request) const
@@ -261,6 +338,40 @@ void LambdaClient::DeleteFunctionAsyncHelper(const DeleteFunctionRequest& reques
   handler(this, request, DeleteFunction(request), context);
 }
 
+GetAliasOutcome LambdaClient::GetAlias(const GetAliasRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/aliases/";
+  ss << request.GetName();
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return GetAliasOutcome(GetAliasResult(outcome.GetResult()));
+  }
+  else
+  {
+    return GetAliasOutcome(outcome.GetError());
+  }
+}
+
+GetAliasOutcomeCallable LambdaClient::GetAliasCallable(const GetAliasRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::GetAlias, this, request);
+}
+
+void LambdaClient::GetAliasAsync(const GetAliasRequest& request, const GetAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::GetAliasAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::GetAliasAsyncHelper(const GetAliasRequest& request, const GetAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetAlias(request), context);
+}
+
 GetEventSourceMappingOutcome LambdaClient::GetEventSourceMapping(const GetEventSourceMappingRequest& request) const
 {
   Aws::StringStream ss;
@@ -298,7 +409,6 @@ GetFunctionOutcome LambdaClient::GetFunction(const GetFunctionRequest& request) 
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -331,7 +441,7 @@ GetFunctionConfigurationOutcome LambdaClient::GetFunctionConfiguration(const Get
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/configuration";
+  ss << "/configuration";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -364,7 +474,7 @@ GetPolicyOutcome LambdaClient::GetPolicy(const GetPolicyRequest& request) const
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/policy";
+  ss << "/policy";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -423,6 +533,39 @@ void LambdaClient::InvokeAsync(const InvokeRequest& request, const InvokeRespons
 void LambdaClient::InvokeAsyncHelper(const InvokeRequest& request, const InvokeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, Invoke(request), context);
+}
+
+ListAliasesOutcome LambdaClient::ListAliases(const ListAliasesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/aliases";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return ListAliasesOutcome(ListAliasesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListAliasesOutcome(outcome.GetError());
+  }
+}
+
+ListAliasesOutcomeCallable LambdaClient::ListAliasesCallable(const ListAliasesRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::ListAliases, this, request);
+}
+
+void LambdaClient::ListAliasesAsync(const ListAliasesRequest& request, const ListAliasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::ListAliasesAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::ListAliasesAsyncHelper(const ListAliasesRequest& request, const ListAliasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListAliases(request), context);
 }
 
 ListEventSourceMappingsOutcome LambdaClient::ListEventSourceMappings(const ListEventSourceMappingsRequest& request) const
@@ -487,12 +630,78 @@ void LambdaClient::ListFunctionsAsyncHelper(const ListFunctionsRequest& request,
   handler(this, request, ListFunctions(request), context);
 }
 
+ListVersionsByFunctionOutcome LambdaClient::ListVersionsByFunction(const ListVersionsByFunctionRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/versions";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return ListVersionsByFunctionOutcome(ListVersionsByFunctionResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListVersionsByFunctionOutcome(outcome.GetError());
+  }
+}
+
+ListVersionsByFunctionOutcomeCallable LambdaClient::ListVersionsByFunctionCallable(const ListVersionsByFunctionRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::ListVersionsByFunction, this, request);
+}
+
+void LambdaClient::ListVersionsByFunctionAsync(const ListVersionsByFunctionRequest& request, const ListVersionsByFunctionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::ListVersionsByFunctionAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::ListVersionsByFunctionAsyncHelper(const ListVersionsByFunctionRequest& request, const ListVersionsByFunctionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListVersionsByFunction(request), context);
+}
+
+PublishVersionOutcome LambdaClient::PublishVersion(const PublishVersionRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/versions";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return PublishVersionOutcome(PublishVersionResult(outcome.GetResult()));
+  }
+  else
+  {
+    return PublishVersionOutcome(outcome.GetError());
+  }
+}
+
+PublishVersionOutcomeCallable LambdaClient::PublishVersionCallable(const PublishVersionRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::PublishVersion, this, request);
+}
+
+void LambdaClient::PublishVersionAsync(const PublishVersionRequest& request, const PublishVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::PublishVersionAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::PublishVersionAsyncHelper(const PublishVersionRequest& request, const PublishVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, PublishVersion(request), context);
+}
+
 RemovePermissionOutcome LambdaClient::RemovePermission(const RemovePermissionRequest& request) const
 {
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/policy/";
+  ss << "/policy/";
   ss << request.GetStatementId();
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_DELETE);
@@ -519,6 +728,40 @@ void LambdaClient::RemovePermissionAsync(const RemovePermissionRequest& request,
 void LambdaClient::RemovePermissionAsyncHelper(const RemovePermissionRequest& request, const RemovePermissionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, RemovePermission(request), context);
+}
+
+UpdateAliasOutcome LambdaClient::UpdateAlias(const UpdateAliasRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-03-31/functions/";
+  ss << request.GetFunctionName();
+  ss << "/aliases/";
+  ss << request.GetName();
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
+  if(outcome.IsSuccess())
+  {
+    return UpdateAliasOutcome(UpdateAliasResult(outcome.GetResult()));
+  }
+  else
+  {
+    return UpdateAliasOutcome(outcome.GetError());
+  }
+}
+
+UpdateAliasOutcomeCallable LambdaClient::UpdateAliasCallable(const UpdateAliasRequest& request) const
+{
+  return std::async(std::launch::async, &LambdaClient::UpdateAlias, this, request);
+}
+
+void LambdaClient::UpdateAliasAsync(const UpdateAliasRequest& request, const UpdateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&LambdaClient::UpdateAliasAsyncHelper, this, request, handler, context);
+}
+
+void LambdaClient::UpdateAliasAsyncHelper(const UpdateAliasRequest& request, const UpdateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateAlias(request), context);
 }
 
 UpdateEventSourceMappingOutcome LambdaClient::UpdateEventSourceMapping(const UpdateEventSourceMappingRequest& request) const
@@ -558,7 +801,7 @@ UpdateFunctionCodeOutcome LambdaClient::UpdateFunctionCode(const UpdateFunctionC
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/code";
+  ss << "/code";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
   if(outcome.IsSuccess())
@@ -591,7 +834,7 @@ UpdateFunctionConfigurationOutcome LambdaClient::UpdateFunctionConfiguration(con
   Aws::StringStream ss;
   ss << m_uri << "/2015-03-31/functions/";
   ss << request.GetFunctionName();
-  ss << "/versions/HEAD/configuration";
+  ss << "/configuration";
 
   JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
   if(outcome.IsSuccess())

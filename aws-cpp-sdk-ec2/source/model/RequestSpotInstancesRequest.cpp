@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -27,12 +27,12 @@ RequestSpotInstancesRequest::RequestSpotInstancesRequest() :
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
     m_typeHasBeenSet(false),
-    m_validFrom(0.0),
     m_validFromHasBeenSet(false),
-    m_validUntil(0.0),
     m_validUntilHasBeenSet(false),
     m_launchGroupHasBeenSet(false),
     m_availabilityZoneGroupHasBeenSet(false),
+    m_blockDurationMinutes(0),
+    m_blockDurationMinutesHasBeenSet(false),
     m_launchSpecificationHasBeenSet(false)
 {
 }
@@ -63,11 +63,11 @@ Aws::String RequestSpotInstancesRequest::SerializePayload() const
   }
   if(m_validFromHasBeenSet)
   {
-    ss << "ValidFrom=" << m_validFrom << "&";
+    ss << "ValidFrom=" << StringUtils::URLEncode(m_validFrom.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_validUntilHasBeenSet)
   {
-    ss << "ValidUntil=" << m_validUntil << "&";
+    ss << "ValidUntil=" << StringUtils::URLEncode(m_validUntil.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_launchGroupHasBeenSet)
   {
@@ -77,11 +77,15 @@ Aws::String RequestSpotInstancesRequest::SerializePayload() const
   {
     ss << "AvailabilityZoneGroup=" << StringUtils::URLEncode(m_availabilityZoneGroup.c_str()) << "&";
   }
+  if(m_blockDurationMinutesHasBeenSet)
+  {
+    ss << "BlockDurationMinutes=" << m_blockDurationMinutes << "&";
+  }
   if(m_launchSpecificationHasBeenSet)
   {
     m_launchSpecification.OutputToStream(ss, "LaunchSpecification.");
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

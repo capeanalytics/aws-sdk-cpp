@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ ImportInstanceTaskDetails& ImportInstanceTaskDetails::operator =(const XmlNode& 
 
   if(!resultNode.IsNull())
   {
-    XmlNode volumesNode = resultNode.FirstChild("Volumes");
+    XmlNode volumesNode = resultNode.FirstChild("volumes");
     if(!volumesNode.IsNull())
     {
       XmlNode volumesMember = volumesNode.FirstChild("item");
@@ -85,10 +85,11 @@ void ImportInstanceTaskDetails::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_volumesHasBeenSet)
   {
+      unsigned volumesIdx = 1;
       for(auto& item : m_volumes)
       {
         Aws::StringStream volumesSs;
-        volumesSs << location << index << locationValue << ".item";
+        volumesSs << location << index << locationValue << ".Volumes." << volumesIdx++;
         item.OutputToStream(oStream, volumesSs.str().c_str());
       }
   }
@@ -110,11 +111,12 @@ void ImportInstanceTaskDetails::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_volumesHasBeenSet)
   {
+      unsigned volumesIdx = 1;
       for(auto& item : m_volumes)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream volumesSs;
+        volumesSs << location <<  ".item." << volumesIdx++;
+        item.OutputToStream(oStream, volumesSs.str().c_str());
       }
   }
   if(m_instanceIdHasBeenSet)

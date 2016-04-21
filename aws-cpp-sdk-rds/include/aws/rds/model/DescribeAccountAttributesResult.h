@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -34,9 +34,9 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p>Data returned by the <b>DescribeAccountAttributes</b> action.</p>
-  */
+  /**
+   * <p>Data returned by the <b>DescribeAccountAttributes</b> action.</p>
+   */
   class AWS_RDS_API DescribeAccountAttributesResult
   {
   public:
@@ -44,39 +44,53 @@ namespace Model
     DescribeAccountAttributesResult(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     DescribeAccountAttributesResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline const Aws::Vector<AccountQuota>& GetAccountQuotas() const{ return m_accountQuotas; }
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline void SetAccountQuotas(const Aws::Vector<AccountQuota>& value) { m_accountQuotas = value; }
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline void SetAccountQuotas(Aws::Vector<AccountQuota>&& value) { m_accountQuotas = value; }
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline DescribeAccountAttributesResult& WithAccountQuotas(const Aws::Vector<AccountQuota>& value) { SetAccountQuotas(value); return *this;}
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline DescribeAccountAttributesResult& WithAccountQuotas(Aws::Vector<AccountQuota>&& value) { SetAccountQuotas(value); return *this;}
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline DescribeAccountAttributesResult& AddAccountQuotas(const AccountQuota& value) { m_accountQuotas.push_back(value); return *this; }
 
-    /*
-     <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
-    */
+    /**
+     * <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a
+     * name, a count of usage toward the quota maximum, and a maximum value for the
+     * quota.</p>
+     */
     inline DescribeAccountAttributesResult& AddAccountQuotas(AccountQuota&& value) { m_accountQuotas.push_back(value); return *this; }
 
     

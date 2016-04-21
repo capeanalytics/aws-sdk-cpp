@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -75,19 +75,21 @@ void LaunchPermissionModifications::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_addHasBeenSet)
   {
+      unsigned addIdx = 1;
       for(auto& item : m_add)
       {
         Aws::StringStream addSs;
-        addSs << location << index << locationValue << ".item";
+        addSs << location << index << locationValue << ".Add." << addIdx++;
         item.OutputToStream(oStream, addSs.str().c_str());
       }
   }
   if(m_removeHasBeenSet)
   {
+      unsigned removeIdx = 1;
       for(auto& item : m_remove)
       {
         Aws::StringStream removeSs;
-        removeSs << location << index << locationValue << ".item";
+        removeSs << location << index << locationValue << ".Remove." << removeIdx++;
         item.OutputToStream(oStream, removeSs.str().c_str());
       }
   }
@@ -97,20 +99,22 @@ void LaunchPermissionModifications::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_addHasBeenSet)
   {
+      unsigned addIdx = 1;
       for(auto& item : m_add)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream addSs;
+        addSs << location <<  ".item." << addIdx++;
+        item.OutputToStream(oStream, addSs.str().c_str());
       }
   }
   if(m_removeHasBeenSet)
   {
+      unsigned removeIdx = 1;
       for(auto& item : m_remove)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream removeSs;
+        removeSs << location <<  ".item." << removeIdx++;
+        item.OutputToStream(oStream, removeSs.str().c_str());
       }
   }
 }

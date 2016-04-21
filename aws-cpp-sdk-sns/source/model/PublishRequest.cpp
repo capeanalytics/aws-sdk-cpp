@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ PublishRequest::PublishRequest() :
     m_messageHasBeenSet(false),
     m_subjectHasBeenSet(false),
     m_messageStructureHasBeenSet(false),
-    m_attributesHasBeenSet(false),
     m_messageAttributesHasBeenSet(false)
 {
 }
@@ -54,26 +53,14 @@ Aws::String PublishRequest::SerializePayload() const
   {
     ss << "MessageStructure=" << StringUtils::URLEncode(m_messageStructure.c_str()) << "&";
   }
-  if(m_attributesHasBeenSet)
-  {
-    unsigned attributesCount = 1;
-    for(auto& item : m_attributes)
-    {
-      ss << "${member.value.locationName}." << attributesCount << ".${member.value.shape.mapKey.locationName}="
-          << StringUtils::URLEncode(item.first.c_str()) << "&";
-      ss << "${member.value.locationName}." << attributesCount << ".${member.value.shape.mapValue.locationName}="
-          << StringUtils::URLEncode(item.second.c_str()) << "&";
-      attributesCount++;
-    }
-  }
   if(m_messageAttributesHasBeenSet)
   {
     unsigned messageAttributesCount = 1;
     for(auto& item : m_messageAttributes)
     {
-      ss << "${member.value.locationName}." << messageAttributesCount << ".Name="
+      ss << "MessageAttributes.entry." << messageAttributesCount << ".Name="
           << StringUtils::URLEncode(item.first.c_str()) << "&";
-      item.second.OutputToStream(ss, "${member.value.locationName}.", messageAttributesCount, ".Value");
+      item.second.OutputToStream(ss, "MessageAttributes.entry.", messageAttributesCount, ".Value");
       messageAttributesCount++;
     }
   }

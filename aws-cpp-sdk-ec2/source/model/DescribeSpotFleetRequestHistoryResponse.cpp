@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -16,23 +16,21 @@
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
 #include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/logging/LogMacros.h>
 
 #include <utility>
 
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
+using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DescribeSpotFleetRequestHistoryResponse::DescribeSpotFleetRequestHistoryResponse() : 
-    m_startTime(0.0),
-    m_lastEvaluatedTime(0.0)
+DescribeSpotFleetRequestHistoryResponse::DescribeSpotFleetRequestHistoryResponse()
 {
 }
 
-DescribeSpotFleetRequestHistoryResponse::DescribeSpotFleetRequestHistoryResponse(const AmazonWebServiceResult<XmlDocument>& result) : 
-    m_startTime(0.0),
-    m_lastEvaluatedTime(0.0)
+DescribeSpotFleetRequestHistoryResponse::DescribeSpotFleetRequestHistoryResponse(const AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
 }
@@ -57,14 +55,14 @@ DescribeSpotFleetRequestHistoryResponse& DescribeSpotFleetRequestHistoryResponse
     XmlNode startTimeNode = resultNode.FirstChild("startTime");
     if(!startTimeNode.IsNull())
     {
-      m_startTime = StringUtils::ConvertToDouble(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str());
+      m_startTime = DateTime(StringUtils::Trim(startTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
     XmlNode lastEvaluatedTimeNode = resultNode.FirstChild("lastEvaluatedTime");
     if(!lastEvaluatedTimeNode.IsNull())
     {
-      m_lastEvaluatedTime = StringUtils::ConvertToDouble(StringUtils::Trim(lastEvaluatedTimeNode.GetText().c_str()).c_str());
+      m_lastEvaluatedTime = DateTime(StringUtils::Trim(lastEvaluatedTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
     }
-    XmlNode historyRecordsNode = resultNode.FirstChild("HistoryRecords");
+    XmlNode historyRecordsNode = resultNode.FirstChild("historyRecordSet");
     if(!historyRecordsNode.IsNull())
     {
       XmlNode historyRecordsMember = historyRecordsNode.FirstChild("item");
@@ -84,6 +82,7 @@ DescribeSpotFleetRequestHistoryResponse& DescribeSpotFleetRequestHistoryResponse
 
   XmlNode responseMetadataNode = rootNode.FirstChild("ResponseMetadata");
   m_responseMetadata = responseMetadataNode;
+  AWS_LOGSTREAM_DEBUG("Aws::EC2::Model::DescribeSpotFleetRequestHistoryResponse", "x-amzn-request-id: " << m_responseMetadata.GetRequestId() );
 
   return *this;
 }

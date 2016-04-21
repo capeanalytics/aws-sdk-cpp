@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/elasticbeanstalk/model/ConfigurationOptionValueType.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -22,42 +24,55 @@ static const int List_HASH = HashingUtils::HashString("List");
 
 namespace Aws
 {
-namespace ElasticBeanstalk
-{
-namespace Model
-{
-namespace ConfigurationOptionValueTypeMapper
-{
-ConfigurationOptionValueType GetConfigurationOptionValueTypeForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == Scalar_HASH)
+  namespace ElasticBeanstalk
   {
-    return ConfigurationOptionValueType::Scalar;
-  }
-  else if (hashCode == List_HASH)
-  {
-    return ConfigurationOptionValueType::List;
-  }
+    namespace Model
+    {
+      namespace ConfigurationOptionValueTypeMapper
+      {
 
-  return ConfigurationOptionValueType::NOT_SET;
-}
 
-Aws::String GetNameForConfigurationOptionValueType(ConfigurationOptionValueType value)
-{
-  switch(value)
-  {
-  case ConfigurationOptionValueType::Scalar:
-    return "Scalar";
-  case ConfigurationOptionValueType::List:
-    return "List";
-  default:
-    return "";
-  }
-}
+        ConfigurationOptionValueType GetConfigurationOptionValueTypeForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == Scalar_HASH)
+          {
+            return ConfigurationOptionValueType::Scalar;
+          }
+          else if (hashCode == List_HASH)
+          {
+            return ConfigurationOptionValueType::List;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<ConfigurationOptionValueType>(hashCode);
+          }
 
-} // namespace ConfigurationOptionValueTypeMapper
-} // namespace Model
-} // namespace ElasticBeanstalk
+          return ConfigurationOptionValueType::NOT_SET;
+        }
+
+        Aws::String GetNameForConfigurationOptionValueType(ConfigurationOptionValueType enumValue)
+        {
+          switch(enumValue)
+          {
+          case ConfigurationOptionValueType::Scalar:
+            return "Scalar";
+          case ConfigurationOptionValueType::List:
+            return "List";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace ConfigurationOptionValueTypeMapper
+    } // namespace Model
+  } // namespace ElasticBeanstalk
 } // namespace Aws

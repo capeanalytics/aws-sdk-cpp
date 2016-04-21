@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -35,9 +35,10 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p>Contains the result of a successful invocation of the <a>DescribeDBClusters</a> action.</p>
-  */
+  /**
+   * <p>Contains the result of a successful invocation of the
+   * <a>DescribeDBClusters</a> action.</p>
+   */
   class AWS_RDS_API DescribeDBClustersResult
   {
   public:
@@ -45,74 +46,81 @@ namespace Model
     DescribeDBClustersResult(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     DescribeDBClustersResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline void SetMarker(Aws::String&& value) { m_marker = value; }
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline void SetMarker(const char* value) { m_marker.assign(value); }
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline DescribeDBClustersResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline DescribeDBClustersResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
 
-    /*
-     <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
-    */
+    /**
+     * <p>A pagination token that can be used in a subsequent DescribeDBClusters
+     * request.</p>
+     */
     inline DescribeDBClustersResult& WithMarker(const char* value) { SetMarker(value); return *this;}
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline const Aws::Vector<DBCluster>& GetDBClusters() const{ return m_dBClusters; }
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline void SetDBClusters(const Aws::Vector<DBCluster>& value) { m_dBClusters = value; }
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline void SetDBClusters(Aws::Vector<DBCluster>&& value) { m_dBClusters = value; }
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline DescribeDBClustersResult& WithDBClusters(const Aws::Vector<DBCluster>& value) { SetDBClusters(value); return *this;}
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline DescribeDBClustersResult& WithDBClusters(Aws::Vector<DBCluster>&& value) { SetDBClusters(value); return *this;}
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline DescribeDBClustersResult& AddDBClusters(const DBCluster& value) { m_dBClusters.push_back(value); return *this; }
 
-    /*
-     <p>Contains a list of DB clusters for the user.</p>
-    */
+    /**
+     * <p>Contains a list of DB clusters for the user.</p>
+     */
     inline DescribeDBClustersResult& AddDBClusters(DBCluster&& value) { m_dBClusters.push_back(value); return *this; }
 
     

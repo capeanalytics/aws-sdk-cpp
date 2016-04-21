@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,6 +26,8 @@
 #include <aws/logs/CloudWatchLogsClient.h>
 #include <aws/logs/CloudWatchLogsEndpoint.h>
 #include <aws/logs/CloudWatchLogsErrorMarshaller.h>
+#include <aws/logs/model/CancelExportTaskRequest.h>
+#include <aws/logs/model/CreateExportTaskRequest.h>
 #include <aws/logs/model/CreateLogGroupRequest.h>
 #include <aws/logs/model/CreateLogStreamRequest.h>
 #include <aws/logs/model/DeleteDestinationRequest.h>
@@ -35,6 +37,7 @@
 #include <aws/logs/model/DeleteRetentionPolicyRequest.h>
 #include <aws/logs/model/DeleteSubscriptionFilterRequest.h>
 #include <aws/logs/model/DescribeDestinationsRequest.h>
+#include <aws/logs/model/DescribeExportTasksRequest.h>
 #include <aws/logs/model/DescribeLogGroupsRequest.h>
 #include <aws/logs/model/DescribeLogStreamsRequest.h>
 #include <aws/logs/model/DescribeMetricFiltersRequest.h>
@@ -62,7 +65,8 @@ static const char* ALLOCATION_TAG = "CloudWatchLogsClient";
 
 CloudWatchLogsClient::CloudWatchLogsClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudWatchLogsErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -71,7 +75,8 @@ CloudWatchLogsClient::CloudWatchLogsClient(const Client::ClientConfiguration& cl
 
 CloudWatchLogsClient::CloudWatchLogsClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudWatchLogsErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -81,7 +86,8 @@ CloudWatchLogsClient::CloudWatchLogsClient(const AWSCredentials& credentials, co
 CloudWatchLogsClient::CloudWatchLogsClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<CloudWatchLogsErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -97,7 +103,7 @@ void CloudWatchLogsClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << CloudWatchLogsEndpoint::ForRegion(config.region);
   }
@@ -108,6 +114,68 @@ void CloudWatchLogsClient::init(const ClientConfiguration& config)
 
   m_uri = ss.str();
 }
+CancelExportTaskOutcome CloudWatchLogsClient::CancelExportTask(const CancelExportTaskRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CancelExportTaskOutcome(NoResult());
+  }
+  else
+  {
+    return CancelExportTaskOutcome(outcome.GetError());
+  }
+}
+
+CancelExportTaskOutcomeCallable CloudWatchLogsClient::CancelExportTaskCallable(const CancelExportTaskRequest& request) const
+{
+  return std::async(std::launch::async, &CloudWatchLogsClient::CancelExportTask, this, request);
+}
+
+void CloudWatchLogsClient::CancelExportTaskAsync(const CancelExportTaskRequest& request, const CancelExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudWatchLogsClient::CancelExportTaskAsyncHelper, this, request, handler, context);
+}
+
+void CloudWatchLogsClient::CancelExportTaskAsyncHelper(const CancelExportTaskRequest& request, const CancelExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CancelExportTask(request), context);
+}
+
+CreateExportTaskOutcome CloudWatchLogsClient::CreateExportTask(const CreateExportTaskRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CreateExportTaskOutcome(CreateExportTaskResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CreateExportTaskOutcome(outcome.GetError());
+  }
+}
+
+CreateExportTaskOutcomeCallable CloudWatchLogsClient::CreateExportTaskCallable(const CreateExportTaskRequest& request) const
+{
+  return std::async(std::launch::async, &CloudWatchLogsClient::CreateExportTask, this, request);
+}
+
+void CloudWatchLogsClient::CreateExportTaskAsync(const CreateExportTaskRequest& request, const CreateExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudWatchLogsClient::CreateExportTaskAsyncHelper, this, request, handler, context);
+}
+
+void CloudWatchLogsClient::CreateExportTaskAsyncHelper(const CreateExportTaskRequest& request, const CreateExportTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CreateExportTask(request), context);
+}
+
 CreateLogGroupOutcome CloudWatchLogsClient::CreateLogGroup(const CreateLogGroupRequest& request) const
 {
   Aws::StringStream ss;
@@ -385,6 +453,37 @@ void CloudWatchLogsClient::DescribeDestinationsAsync(const DescribeDestinationsR
 void CloudWatchLogsClient::DescribeDestinationsAsyncHelper(const DescribeDestinationsRequest& request, const DescribeDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeDestinations(request), context);
+}
+
+DescribeExportTasksOutcome CloudWatchLogsClient::DescribeExportTasks(const DescribeExportTasksRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeExportTasksOutcome(DescribeExportTasksResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeExportTasksOutcome(outcome.GetError());
+  }
+}
+
+DescribeExportTasksOutcomeCallable CloudWatchLogsClient::DescribeExportTasksCallable(const DescribeExportTasksRequest& request) const
+{
+  return std::async(std::launch::async, &CloudWatchLogsClient::DescribeExportTasks, this, request);
+}
+
+void CloudWatchLogsClient::DescribeExportTasksAsync(const DescribeExportTasksRequest& request, const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&CloudWatchLogsClient::DescribeExportTasksAsyncHelper, this, request, handler, context);
+}
+
+void CloudWatchLogsClient::DescribeExportTasksAsyncHelper(const DescribeExportTasksRequest& request, const DescribeExportTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeExportTasks(request), context);
 }
 
 DescribeLogGroupsOutcome CloudWatchLogsClient::DescribeLogGroups(const DescribeLogGroupsRequest& request) const

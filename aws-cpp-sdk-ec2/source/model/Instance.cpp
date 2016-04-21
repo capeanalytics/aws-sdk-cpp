@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ Instance::Instance() :
     m_amiLaunchIndexHasBeenSet(false),
     m_productCodesHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
-    m_launchTime(0.0),
     m_launchTimeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -80,7 +79,6 @@ Instance::Instance(const XmlNode& xmlNode) :
     m_amiLaunchIndexHasBeenSet(false),
     m_productCodesHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
-    m_launchTime(0.0),
     m_launchTimeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -168,7 +166,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
       m_amiLaunchIndex = StringUtils::ConvertToInt32(StringUtils::Trim(amiLaunchIndexNode.GetText().c_str()).c_str());
       m_amiLaunchIndexHasBeenSet = true;
     }
-    XmlNode productCodesNode = resultNode.FirstChild("ProductCodes");
+    XmlNode productCodesNode = resultNode.FirstChild("productCodes");
     if(!productCodesNode.IsNull())
     {
       XmlNode productCodesMember = productCodesNode.FirstChild("item");
@@ -189,7 +187,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
     XmlNode launchTimeNode = resultNode.FirstChild("launchTime");
     if(!launchTimeNode.IsNull())
     {
-      m_launchTime = StringUtils::ConvertToDouble(StringUtils::Trim(launchTimeNode.GetText().c_str()).c_str());
+      m_launchTime = DateTime(StringUtils::Trim(launchTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_launchTimeHasBeenSet = true;
     }
     XmlNode placementNode = resultNode.FirstChild("placement");
@@ -270,7 +268,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
       m_rootDeviceName = StringUtils::Trim(rootDeviceNameNode.GetText().c_str());
       m_rootDeviceNameHasBeenSet = true;
     }
-    XmlNode blockDeviceMappingsNode = resultNode.FirstChild("BlockDeviceMappings");
+    XmlNode blockDeviceMappingsNode = resultNode.FirstChild("blockDeviceMapping");
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("item");
@@ -306,7 +304,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
       m_clientToken = StringUtils::Trim(clientTokenNode.GetText().c_str());
       m_clientTokenHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -318,7 +316,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
 
       m_tagsHasBeenSet = true;
     }
-    XmlNode securityGroupsNode = resultNode.FirstChild("SecurityGroups");
+    XmlNode securityGroupsNode = resultNode.FirstChild("groupSet");
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
@@ -342,7 +340,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
       m_hypervisor = HypervisorTypeMapper::GetHypervisorTypeForName(StringUtils::Trim(hypervisorNode.GetText().c_str()).c_str());
       m_hypervisorHasBeenSet = true;
     }
-    XmlNode networkInterfacesNode = resultNode.FirstChild("NetworkInterfaces");
+    XmlNode networkInterfacesNode = resultNode.FirstChild("networkInterfaceSet");
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("item");
@@ -415,10 +413,11 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_productCodesHasBeenSet)
   {
+      unsigned productCodesIdx = 1;
       for(auto& item : m_productCodes)
       {
         Aws::StringStream productCodesSs;
-        productCodesSs << location << index << locationValue << ".item";
+        productCodesSs << location << index << locationValue << ".ProductCodes." << productCodesIdx++;
         item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
@@ -428,7 +427,7 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_launchTimeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LaunchTime=" << m_launchTime << "&";
+      oStream << location << index << locationValue << ".LaunchTime=" << StringUtils::URLEncode(m_launchTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_placementHasBeenSet)
   {
@@ -490,10 +489,11 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_blockDeviceMappingsHasBeenSet)
   {
+      unsigned blockDeviceMappingsIdx = 1;
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location << index << locationValue << ".item";
+        blockDeviceMappingsSs << location << index << locationValue << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -515,19 +515,21 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location << index << locationValue << ".item";
+        securityGroupsSs << location << index << locationValue << ".GroupSet." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
@@ -541,10 +543,11 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   }
   if(m_networkInterfacesHasBeenSet)
   {
+      unsigned networkInterfacesIdx = 1;
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location << index << locationValue << ".item";
+        networkInterfacesSs << location << index << locationValue << ".NetworkInterfaceSet." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -602,11 +605,12 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_productCodesHasBeenSet)
   {
+      unsigned productCodesIdx = 1;
       for(auto& item : m_productCodes)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream productCodesSs;
+        productCodesSs << location <<  ".item." << productCodesIdx++;
+        item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
   if(m_instanceTypeHasBeenSet)
@@ -615,7 +619,7 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_launchTimeHasBeenSet)
   {
-      oStream << location << ".LaunchTime=" << m_launchTime << "&";
+      oStream << location << ".LaunchTime=" << StringUtils::URLEncode(m_launchTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_placementHasBeenSet)
   {
@@ -677,11 +681,12 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_blockDeviceMappingsHasBeenSet)
   {
+      unsigned blockDeviceMappingsIdx = 1;
       for(auto& item : m_blockDeviceMappings)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream blockDeviceMappingsSs;
+        blockDeviceMappingsSs << location <<  ".item." << blockDeviceMappingsIdx++;
+        item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
   if(m_virtualizationTypeHasBeenSet)
@@ -702,20 +707,22 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_securityGroupsHasBeenSet)
   {
+      unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream securityGroupsSs;
+        securityGroupsSs << location <<  ".item." << securityGroupsIdx++;
+        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
   if(m_sourceDestCheckHasBeenSet)
@@ -728,11 +735,12 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_networkInterfacesHasBeenSet)
   {
+      unsigned networkInterfacesIdx = 1;
       for(auto& item : m_networkInterfaces)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream networkInterfacesSs;
+        networkInterfacesSs << location <<  ".item." << networkInterfacesIdx++;
+        item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
   if(m_iamInstanceProfileHasBeenSet)

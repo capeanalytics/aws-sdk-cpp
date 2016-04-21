@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -73,10 +73,11 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location, 
   }
   if(m_attributesHasBeenSet)
   {
+      unsigned attributesIdx = 1;
       for(auto& item : m_attributes)
       {
         Aws::StringStream attributesSs;
-        attributesSs << location << index << locationValue << ".Attribute";
+        attributesSs << location << index << locationValue << ".Attribute." << attributesIdx++;
         item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }
@@ -90,11 +91,12 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_attributesHasBeenSet)
   {
+      unsigned attributesIdx = 1;
       for(auto& item : m_attributes)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Attribute";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream attributesSs;
+        attributesSs << location <<  ".Attribute." << attributesIdx++;
+        item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }
 }

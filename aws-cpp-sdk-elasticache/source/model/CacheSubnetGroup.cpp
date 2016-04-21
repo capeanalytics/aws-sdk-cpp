@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -97,10 +97,11 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_subnetsHasBeenSet)
   {
+      unsigned subnetsIdx = 1;
       for(auto& item : m_subnets)
       {
         Aws::StringStream subnetsSs;
-        subnetsSs << location << index << locationValue << ".Subnet";
+        subnetsSs << location << index << locationValue << ".Subnet." << subnetsIdx++;
         item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }
@@ -122,11 +123,12 @@ void CacheSubnetGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_subnetsHasBeenSet)
   {
+      unsigned subnetsIdx = 1;
       for(auto& item : m_subnets)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".Subnet";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream subnetsSs;
+        subnetsSs << location <<  ".Subnet." << subnetsIdx++;
+        item.OutputToStream(oStream, subnetsSs.str().c_str());
       }
   }
 }

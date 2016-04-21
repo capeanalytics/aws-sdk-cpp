@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p>Data returned by the <b>DescribeCertificates</b> action.</p>
-  */
+  /**
+   * <p>Data returned by the <b>DescribeCertificates</b> action.</p>
+   */
   class AWS_RDS_API DescribeCertificatesResult
   {
   public:
@@ -45,74 +45,95 @@ namespace Model
     DescribeCertificatesResult(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     DescribeCertificatesResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline const Aws::Vector<Certificate>& GetCertificates() const{ return m_certificates; }
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline void SetCertificates(const Aws::Vector<Certificate>& value) { m_certificates = value; }
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificates = value; }
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline DescribeCertificatesResult& WithCertificates(const Aws::Vector<Certificate>& value) { SetCertificates(value); return *this;}
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline DescribeCertificatesResult& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(value); return *this;}
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline DescribeCertificatesResult& AddCertificates(const Certificate& value) { m_certificates.push_back(value); return *this; }
 
-    /*
-     <p>The list of <a>Certificate</a> objects for the AWS account.</p>
-    */
+    /**
+     * <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+     */
     inline DescribeCertificatesResult& AddCertificates(Certificate&& value) { m_certificates.push_back(value); return *this; }
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline void SetMarker(Aws::String&& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline void SetMarker(const char* value) { m_marker.assign(value); }
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline DescribeCertificatesResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline DescribeCertificatesResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <a>DescribeCertificates</a> request. If this parameter is specified, the
+     * response includes only records beyond the marker, up to the value specified by
+     * <code>MaxRecords</code> . </p>
+     */
     inline DescribeCertificatesResult& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     

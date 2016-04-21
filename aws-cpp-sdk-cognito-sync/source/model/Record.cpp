@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,10 +26,8 @@ Record::Record() :
     m_valueHasBeenSet(false),
     m_syncCount(0),
     m_syncCountHasBeenSet(false),
-    m_lastModifiedDate(0.0),
     m_lastModifiedDateHasBeenSet(false),
     m_lastModifiedByHasBeenSet(false),
-    m_deviceLastModifiedDate(0.0),
     m_deviceLastModifiedDateHasBeenSet(false)
 {
 }
@@ -39,10 +37,8 @@ Record::Record(const JsonValue& jsonValue) :
     m_valueHasBeenSet(false),
     m_syncCount(0),
     m_syncCountHasBeenSet(false),
-    m_lastModifiedDate(0.0),
     m_lastModifiedDateHasBeenSet(false),
     m_lastModifiedByHasBeenSet(false),
-    m_deviceLastModifiedDate(0.0),
     m_deviceLastModifiedDateHasBeenSet(false)
 {
   *this = jsonValue;
@@ -119,8 +115,7 @@ JsonValue Record::Jsonize() const
 
   if(m_lastModifiedDateHasBeenSet)
   {
-   payload.WithDouble("LastModifiedDate", m_lastModifiedDate);
-
+   payload.WithDouble("LastModifiedDate", m_lastModifiedDate.SecondsWithMSPrecision());
   }
 
   if(m_lastModifiedByHasBeenSet)
@@ -131,9 +126,8 @@ JsonValue Record::Jsonize() const
 
   if(m_deviceLastModifiedDateHasBeenSet)
   {
-   payload.WithDouble("DeviceLastModifiedDate", m_deviceLastModifiedDate);
-
+   payload.WithDouble("DeviceLastModifiedDate", m_deviceLastModifiedDate.SecondsWithMSPrecision());
   }
 
-  return std::move(payload);
+  return payload;
 }

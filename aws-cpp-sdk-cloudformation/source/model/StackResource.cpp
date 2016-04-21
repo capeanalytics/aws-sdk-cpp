@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ StackResource::StackResource() :
     m_logicalResourceIdHasBeenSet(false),
     m_physicalResourceIdHasBeenSet(false),
     m_resourceTypeHasBeenSet(false),
-    m_timestamp(0.0),
     m_timestampHasBeenSet(false),
     m_resourceStatusHasBeenSet(false),
     m_resourceStatusReasonHasBeenSet(false),
@@ -43,7 +42,6 @@ StackResource::StackResource(const XmlNode& xmlNode) :
     m_logicalResourceIdHasBeenSet(false),
     m_physicalResourceIdHasBeenSet(false),
     m_resourceTypeHasBeenSet(false),
-    m_timestamp(0.0),
     m_timestampHasBeenSet(false),
     m_resourceStatusHasBeenSet(false),
     m_resourceStatusReasonHasBeenSet(false),
@@ -91,7 +89,7 @@ StackResource& StackResource::operator =(const XmlNode& xmlNode)
     XmlNode timestampNode = resultNode.FirstChild("Timestamp");
     if(!timestampNode.IsNull())
     {
-      m_timestamp = StringUtils::ConvertToDouble(StringUtils::Trim(timestampNode.GetText().c_str()).c_str());
+      m_timestamp = DateTime(StringUtils::Trim(timestampNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_timestampHasBeenSet = true;
     }
     XmlNode resourceStatusNode = resultNode.FirstChild("ResourceStatus");
@@ -141,7 +139,7 @@ void StackResource::OutputToStream(Aws::OStream& oStream, const char* location, 
   }
   if(m_timestampHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Timestamp=" << m_timestamp << "&";
+      oStream << location << index << locationValue << ".Timestamp=" << StringUtils::URLEncode(m_timestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_resourceStatusHasBeenSet)
   {
@@ -181,7 +179,7 @@ void StackResource::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_timestampHasBeenSet)
   {
-      oStream << location << ".Timestamp=" << m_timestamp << "&";
+      oStream << location << ".Timestamp=" << StringUtils::URLEncode(m_timestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_resourceStatusHasBeenSet)
   {

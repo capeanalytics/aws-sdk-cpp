@@ -21,7 +21,7 @@
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/logging/LogMacros.h>
 #include <aws/core/utils/ratelimiter/RateLimiterInterface.h>
-
+#include <cassert>
 #include <algorithm>
 
 
@@ -95,8 +95,16 @@ void SetOptCodeForHttpMethod(CURL* requestHandle, const HttpRequest& request)
             curl_easy_setopt(requestHandle, CURLOPT_HTTPGET, 1L);
             curl_easy_setopt(requestHandle, CURLOPT_NOBODY, 1L);
             break;
-        default:
+        case HttpMethod::HTTP_PATCH:
+            curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "PATCH");
+            break;
+        case HttpMethod::HTTP_DELETE:
             curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
+            curl_easy_setopt(requestHandle, CURLOPT_NOBODY, 1L);
+            break;
+        default:
+            assert(0);
+            curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "GET");
             break;
     }
 }
@@ -106,7 +114,7 @@ CurlHttpClient::CurlHttpClient(const ClientConfiguration& clientConfig) :
     m_curlHandleContainer(clientConfig.maxConnections, clientConfig.requestTimeoutMs, clientConfig.connectTimeoutMs),
     m_isUsingProxy(!clientConfig.proxyHost.empty()), m_proxyUserName(clientConfig.proxyUserName),
     m_proxyPassword(clientConfig.proxyPassword), m_proxyHost(clientConfig.proxyHost),
-    m_proxyPort(clientConfig.proxyPort), m_verifySSL(clientConfig.verifySSL), m_allowRedirects(clientConfig.followRedirects)
+    m_proxyPort(clientConfig.proxyPort), m_verifySSL(clientConfig.verifySSL), m_caPath(clientConfig.caPath), m_allowRedirects(clientConfig.followRedirects)
 {
 }
 
@@ -114,7 +122,11 @@ CurlHttpClient::CurlHttpClient(const ClientConfiguration& clientConfig) :
 std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, Aws::Utils::RateLimits::RateLimiterInterface* readLimiter,
                                                           Aws::Utils::RateLimits::RateLimiterInterface* writeLimiter) const
 {
-    Aws::String url = request.GetURIString();
+    //handle uri encoding at last second. Otherwise, the signer and the http layer will mismatch.
+    URI uri = request.GetUri();
+    uri.SetPath(URI::URLEncodePath(uri.GetPath()));
+    Aws::String url = uri.GetURIString();
+
     AWS_LOGSTREAM_TRACE(CurlTag, "Making request to " << url);
     struct curl_slist* headers = NULL;
 
@@ -164,11 +176,18 @@ std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, 
         CurlReadCallbackContext readContext(this, &request);
 
         SetOptCodeForHttpMethod(connectionHandle, request);
+
         curl_easy_setopt(connectionHandle, CURLOPT_URL, url.c_str());
         curl_easy_setopt(connectionHandle, CURLOPT_WRITEFUNCTION, &CurlHttpClient::WriteData);
         curl_easy_setopt(connectionHandle, CURLOPT_WRITEDATA, &writeContext);
         curl_easy_setopt(connectionHandle, CURLOPT_HEADERFUNCTION, &CurlHttpClient::WriteHeader);
         curl_easy_setopt(connectionHandle, CURLOPT_HEADERDATA, response.get());
+
+        //we only want to override the default path if someone has explicitly told us to.
+        if(!m_caPath.empty())
+        {
+            curl_easy_setopt(connectionHandle, CURLOPT_CAPATH, m_caPath.c_str());
+        }
 
 	// only set by android test builds because the emulator is missing a cert needed for aws services
 #ifdef TEST_CERT_PATH
@@ -236,11 +255,16 @@ std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, 
                 response->SetContentType(contentType);
                 AWS_LOGSTREAM_DEBUG(CurlTag, "Returned content type " << contentType);
             }
-            curl_easy_reset(connectionHandle);
+
             AWS_LOGSTREAM_DEBUG(CurlTag, "Releasing curl handle " << connectionHandle);
         }
 
         m_curlHandleContainer.ReleaseCurlHandle(connectionHandle);
+        //go ahead and flush the response body stream
+        if(response)
+        {
+            response->GetResponseBody().flush();
+        }
     }
 
     if (headers)

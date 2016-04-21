@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@ namespace RDS
 {
 namespace Model
 {
-  /*
-    <p>Data returned from the <b>DescribePendingMaintenanceActions</b> action.</p>
-  */
+  /**
+   * <p>Data returned from the <b>DescribePendingMaintenanceActions</b> action.</p>
+   */
   class AWS_RDS_API DescribePendingMaintenanceActionsResult
   {
   public:
@@ -45,74 +45,95 @@ namespace Model
     DescribePendingMaintenanceActionsResult(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     DescribePendingMaintenanceActionsResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline const Aws::Vector<ResourcePendingMaintenanceActions>& GetPendingMaintenanceActions() const{ return m_pendingMaintenanceActions; }
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline void SetPendingMaintenanceActions(const Aws::Vector<ResourcePendingMaintenanceActions>& value) { m_pendingMaintenanceActions = value; }
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline void SetPendingMaintenanceActions(Aws::Vector<ResourcePendingMaintenanceActions>&& value) { m_pendingMaintenanceActions = value; }
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline DescribePendingMaintenanceActionsResult& WithPendingMaintenanceActions(const Aws::Vector<ResourcePendingMaintenanceActions>& value) { SetPendingMaintenanceActions(value); return *this;}
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline DescribePendingMaintenanceActionsResult& WithPendingMaintenanceActions(Aws::Vector<ResourcePendingMaintenanceActions>&& value) { SetPendingMaintenanceActions(value); return *this;}
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline DescribePendingMaintenanceActionsResult& AddPendingMaintenanceActions(const ResourcePendingMaintenanceActions& value) { m_pendingMaintenanceActions.push_back(value); return *this; }
 
-    /*
-     <p>A list of the pending maintenance actions for the resource.</p>
-    */
+    /**
+     * <p>A list of the pending maintenance actions for the resource.</p>
+     */
     inline DescribePendingMaintenanceActionsResult& AddPendingMaintenanceActions(ResourcePendingMaintenanceActions&& value) { m_pendingMaintenanceActions.push_back(value); return *this; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(Aws::String&& value) { m_marker = value; }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline void SetMarker(const char* value) { m_marker.assign(value); }
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribePendingMaintenanceActionsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribePendingMaintenanceActionsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
 
-    /*
-     <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
-    */
+    /**
+     * <p> An optional pagination token provided by a previous
+     * <code>DescribePendingMaintenanceActions</code> request. If this parameter is
+     * specified, the response includes only records beyond the marker, up to a number
+     * of records specified by <code>MaxRecords</code>. </p>
+     */
     inline DescribePendingMaintenanceActionsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     

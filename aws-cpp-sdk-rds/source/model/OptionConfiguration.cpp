@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -115,24 +115,27 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_dBSecurityGroupMembershipsHasBeenSet)
   {
+      unsigned dBSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_dBSecurityGroupMemberships)
       {
-        oStream << location << index << locationValue << ".DBSecurityGroupName=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vpcSecurityGroupMembershipsHasBeenSet)
   {
+      unsigned vpcSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_vpcSecurityGroupMemberships)
       {
-        oStream << location << index << locationValue << ".VpcSecurityGroupId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_optionSettingsHasBeenSet)
   {
+      unsigned optionSettingsIdx = 1;
       for(auto& item : m_optionSettings)
       {
         Aws::StringStream optionSettingsSs;
-        optionSettingsSs << location << index << locationValue << ".OptionSetting";
+        optionSettingsSs << location << index << locationValue << ".OptionSetting." << optionSettingsIdx++;
         item.OutputToStream(oStream, optionSettingsSs.str().c_str());
       }
   }
@@ -150,25 +153,28 @@ void OptionConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_dBSecurityGroupMembershipsHasBeenSet)
   {
+      unsigned dBSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_dBSecurityGroupMemberships)
       {
-        oStream << location << ".DBSecurityGroupName=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".DBSecurityGroupName." << dBSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_vpcSecurityGroupMembershipsHasBeenSet)
   {
+      unsigned vpcSecurityGroupMembershipsIdx = 1;
       for(auto& item : m_vpcSecurityGroupMemberships)
       {
-        oStream << location << ".VpcSecurityGroupId=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".VpcSecurityGroupId." << vpcSecurityGroupMembershipsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_optionSettingsHasBeenSet)
   {
+      unsigned optionSettingsIdx = 1;
       for(auto& item : m_optionSettings)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".OptionSetting";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream optionSettingsSs;
+        optionSettingsSs << location <<  ".OptionSetting." << optionSettingsIdx++;
+        item.OutputToStream(oStream, optionSettingsSs.str().c_str());
       }
   }
 }

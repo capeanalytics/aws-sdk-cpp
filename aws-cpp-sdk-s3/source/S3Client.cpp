@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -40,9 +40,10 @@
 #include <aws/s3/model/DeleteBucketWebsiteRequest.h>
 #include <aws/s3/model/DeleteObjectRequest.h>
 #include <aws/s3/model/DeleteObjectsRequest.h>
+#include <aws/s3/model/GetBucketAccelerateConfigurationRequest.h>
 #include <aws/s3/model/GetBucketAclRequest.h>
 #include <aws/s3/model/GetBucketCorsRequest.h>
-#include <aws/s3/model/GetBucketLifecycleRequest.h>
+#include <aws/s3/model/GetBucketLifecycleConfigurationRequest.h>
 #include <aws/s3/model/GetBucketLocationRequest.h>
 #include <aws/s3/model/GetBucketLoggingRequest.h>
 #include <aws/s3/model/GetBucketNotificationConfigurationRequest.h>
@@ -61,9 +62,10 @@
 #include <aws/s3/model/ListObjectVersionsRequest.h>
 #include <aws/s3/model/ListObjectsRequest.h>
 #include <aws/s3/model/ListPartsRequest.h>
+#include <aws/s3/model/PutBucketAccelerateConfigurationRequest.h>
 #include <aws/s3/model/PutBucketAclRequest.h>
 #include <aws/s3/model/PutBucketCorsRequest.h>
-#include <aws/s3/model/PutBucketLifecycleRequest.h>
+#include <aws/s3/model/PutBucketLifecycleConfigurationRequest.h>
 #include <aws/s3/model/PutBucketLoggingRequest.h>
 #include <aws/s3/model/PutBucketNotificationConfigurationRequest.h>
 #include <aws/s3/model/PutBucketPolicyRequest.h>
@@ -92,7 +94,8 @@ static const char* ALLOCATION_TAG = "S3Client";
 
 S3Client::S3Client(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<S3ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -101,7 +104,8 @@ S3Client::S3Client(const Client::ClientConfiguration& clientConfiguration) :
 
 S3Client::S3Client(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<S3ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -111,7 +115,8 @@ S3Client::S3Client(const AWSCredentials& credentials, const Client::ClientConfig
 S3Client::S3Client(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<S3ErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -127,7 +132,7 @@ void S3Client::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << S3Endpoint::ForRegion(config.region);
   }
@@ -590,6 +595,38 @@ void S3Client::DeleteObjectsAsyncHelper(const DeleteObjectsRequest& request, con
   handler(this, request, DeleteObjects(request), context);
 }
 
+GetBucketAccelerateConfigurationOutcome S3Client::GetBucketAccelerateConfiguration(const GetBucketAccelerateConfigurationRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  ss << request.GetBucket();
+  ss << "?accelerate";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return GetBucketAccelerateConfigurationOutcome(GetBucketAccelerateConfigurationResult(outcome.GetResult()));
+  }
+  else
+  {
+    return GetBucketAccelerateConfigurationOutcome(outcome.GetError());
+  }
+}
+
+GetBucketAccelerateConfigurationOutcomeCallable S3Client::GetBucketAccelerateConfigurationCallable(const GetBucketAccelerateConfigurationRequest& request) const
+{
+  return std::async(std::launch::async, &S3Client::GetBucketAccelerateConfiguration, this, request);
+}
+
+void S3Client::GetBucketAccelerateConfigurationAsync(const GetBucketAccelerateConfigurationRequest& request, const GetBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&S3Client::GetBucketAccelerateConfigurationAsyncHelper, this, request, handler, context);
+}
+
+void S3Client::GetBucketAccelerateConfigurationAsyncHelper(const GetBucketAccelerateConfigurationRequest& request, const GetBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetBucketAccelerateConfiguration(request), context);
+}
+
 GetBucketAclOutcome S3Client::GetBucketAcl(const GetBucketAclRequest& request) const
 {
   Aws::StringStream ss;
@@ -654,7 +691,7 @@ void S3Client::GetBucketCorsAsyncHelper(const GetBucketCorsRequest& request, con
   handler(this, request, GetBucketCors(request), context);
 }
 
-GetBucketLifecycleOutcome S3Client::GetBucketLifecycle(const GetBucketLifecycleRequest& request) const
+GetBucketLifecycleConfigurationOutcome S3Client::GetBucketLifecycleConfiguration(const GetBucketLifecycleConfigurationRequest& request) const
 {
   Aws::StringStream ss;
   ss << m_uri << "/";
@@ -663,27 +700,27 @@ GetBucketLifecycleOutcome S3Client::GetBucketLifecycle(const GetBucketLifecycleR
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
   {
-    return GetBucketLifecycleOutcome(GetBucketLifecycleResult(outcome.GetResult()));
+    return GetBucketLifecycleConfigurationOutcome(GetBucketLifecycleConfigurationResult(outcome.GetResult()));
   }
   else
   {
-    return GetBucketLifecycleOutcome(outcome.GetError());
+    return GetBucketLifecycleConfigurationOutcome(outcome.GetError());
   }
 }
 
-GetBucketLifecycleOutcomeCallable S3Client::GetBucketLifecycleCallable(const GetBucketLifecycleRequest& request) const
+GetBucketLifecycleConfigurationOutcomeCallable S3Client::GetBucketLifecycleConfigurationCallable(const GetBucketLifecycleConfigurationRequest& request) const
 {
-  return std::async(std::launch::async, &S3Client::GetBucketLifecycle, this, request);
+  return std::async(std::launch::async, &S3Client::GetBucketLifecycleConfiguration, this, request);
 }
 
-void S3Client::GetBucketLifecycleAsync(const GetBucketLifecycleRequest& request, const GetBucketLifecycleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+void S3Client::GetBucketLifecycleConfigurationAsync(const GetBucketLifecycleConfigurationRequest& request, const GetBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
-  m_executor->Submit(&S3Client::GetBucketLifecycleAsyncHelper, this, request, handler, context);
+  m_executor->Submit(&S3Client::GetBucketLifecycleConfigurationAsyncHelper, this, request, handler, context);
 }
 
-void S3Client::GetBucketLifecycleAsyncHelper(const GetBucketLifecycleRequest& request, const GetBucketLifecycleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+void S3Client::GetBucketLifecycleConfigurationAsyncHelper(const GetBucketLifecycleConfigurationRequest& request, const GetBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
-  handler(this, request, GetBucketLifecycle(request), context);
+  handler(this, request, GetBucketLifecycleConfiguration(request), context);
 }
 
 GetBucketLocationOutcome S3Client::GetBucketLocation(const GetBucketLocationRequest& request) const
@@ -1297,6 +1334,38 @@ void S3Client::ListPartsAsyncHelper(const ListPartsRequest& request, const ListP
   handler(this, request, ListParts(request), context);
 }
 
+PutBucketAccelerateConfigurationOutcome S3Client::PutBucketAccelerateConfiguration(const PutBucketAccelerateConfigurationRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  ss << request.GetBucket();
+  ss << "?accelerate";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
+  if(outcome.IsSuccess())
+  {
+    return PutBucketAccelerateConfigurationOutcome(NoResult());
+  }
+  else
+  {
+    return PutBucketAccelerateConfigurationOutcome(outcome.GetError());
+  }
+}
+
+PutBucketAccelerateConfigurationOutcomeCallable S3Client::PutBucketAccelerateConfigurationCallable(const PutBucketAccelerateConfigurationRequest& request) const
+{
+  return std::async(std::launch::async, &S3Client::PutBucketAccelerateConfiguration, this, request);
+}
+
+void S3Client::PutBucketAccelerateConfigurationAsync(const PutBucketAccelerateConfigurationRequest& request, const PutBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&S3Client::PutBucketAccelerateConfigurationAsyncHelper, this, request, handler, context);
+}
+
+void S3Client::PutBucketAccelerateConfigurationAsyncHelper(const PutBucketAccelerateConfigurationRequest& request, const PutBucketAccelerateConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, PutBucketAccelerateConfiguration(request), context);
+}
+
 PutBucketAclOutcome S3Client::PutBucketAcl(const PutBucketAclRequest& request) const
 {
   Aws::StringStream ss;
@@ -1361,7 +1430,7 @@ void S3Client::PutBucketCorsAsyncHelper(const PutBucketCorsRequest& request, con
   handler(this, request, PutBucketCors(request), context);
 }
 
-PutBucketLifecycleOutcome S3Client::PutBucketLifecycle(const PutBucketLifecycleRequest& request) const
+PutBucketLifecycleConfigurationOutcome S3Client::PutBucketLifecycleConfiguration(const PutBucketLifecycleConfigurationRequest& request) const
 {
   Aws::StringStream ss;
   ss << m_uri << "/";
@@ -1370,27 +1439,27 @@ PutBucketLifecycleOutcome S3Client::PutBucketLifecycle(const PutBucketLifecycleR
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
   if(outcome.IsSuccess())
   {
-    return PutBucketLifecycleOutcome(NoResult());
+    return PutBucketLifecycleConfigurationOutcome(NoResult());
   }
   else
   {
-    return PutBucketLifecycleOutcome(outcome.GetError());
+    return PutBucketLifecycleConfigurationOutcome(outcome.GetError());
   }
 }
 
-PutBucketLifecycleOutcomeCallable S3Client::PutBucketLifecycleCallable(const PutBucketLifecycleRequest& request) const
+PutBucketLifecycleConfigurationOutcomeCallable S3Client::PutBucketLifecycleConfigurationCallable(const PutBucketLifecycleConfigurationRequest& request) const
 {
-  return std::async(std::launch::async, &S3Client::PutBucketLifecycle, this, request);
+  return std::async(std::launch::async, &S3Client::PutBucketLifecycleConfiguration, this, request);
 }
 
-void S3Client::PutBucketLifecycleAsync(const PutBucketLifecycleRequest& request, const PutBucketLifecycleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+void S3Client::PutBucketLifecycleConfigurationAsync(const PutBucketLifecycleConfigurationRequest& request, const PutBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
-  m_executor->Submit(&S3Client::PutBucketLifecycleAsyncHelper, this, request, handler, context);
+  m_executor->Submit(&S3Client::PutBucketLifecycleConfigurationAsyncHelper, this, request, handler, context);
 }
 
-void S3Client::PutBucketLifecycleAsyncHelper(const PutBucketLifecycleRequest& request, const PutBucketLifecycleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+void S3Client::PutBucketLifecycleConfigurationAsyncHelper(const PutBucketLifecycleConfigurationRequest& request, const PutBucketLifecycleConfigurationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
-  handler(this, request, PutBucketLifecycle(request), context);
+  handler(this, request, PutBucketLifecycleConfiguration(request), context);
 }
 
 PutBucketLoggingOutcome S3Client::PutBucketLogging(const PutBucketLoggingRequest& request) const

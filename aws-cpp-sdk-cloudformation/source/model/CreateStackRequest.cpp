@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ CreateStackRequest::CreateStackRequest() :
     m_timeoutInMinutesHasBeenSet(false),
     m_notificationARNsHasBeenSet(false),
     m_capabilitiesHasBeenSet(false),
+    m_resourceTypesHasBeenSet(false),
     m_onFailureHasBeenSet(false),
     m_stackPolicyBodyHasBeenSet(false),
     m_stackPolicyURLHasBeenSet(false),
@@ -88,6 +89,16 @@ Aws::String CreateStackRequest::SerializePayload() const
       ss << "Capabilities.member." << capabilitiesCount << "="
           << StringUtils::URLEncode(CapabilityMapper::GetNameForCapability(item).c_str()) << "&";
       capabilitiesCount++;
+    }
+  }
+  if(m_resourceTypesHasBeenSet)
+  {
+    unsigned resourceTypesCount = 1;
+    for(auto& item : m_resourceTypes)
+    {
+      ss << "ResourceTypes.member." << resourceTypesCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      resourceTypesCount++;
     }
   }
   if(m_onFailureHasBeenSet)

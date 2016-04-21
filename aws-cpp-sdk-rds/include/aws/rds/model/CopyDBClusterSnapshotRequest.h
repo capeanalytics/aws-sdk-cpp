@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,84 +26,146 @@ namespace RDS
 namespace Model
 {
 
-  /*
-    <p></p>
-  */
+  /**
+   * <p/>
+   */
   class AWS_RDS_API CopyDBClusterSnapshotRequest : public RDSRequest
   {
   public:
     CopyDBClusterSnapshotRequest();
     Aws::String SerializePayload() const override;
 
-
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline const Aws::String& GetSourceDBClusterSnapshotIdentifier() const{ return m_sourceDBClusterSnapshotIdentifier; }
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline void SetSourceDBClusterSnapshotIdentifier(const Aws::String& value) { m_sourceDBClusterSnapshotIdentifierHasBeenSet = true; m_sourceDBClusterSnapshotIdentifier = value; }
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline void SetSourceDBClusterSnapshotIdentifier(Aws::String&& value) { m_sourceDBClusterSnapshotIdentifierHasBeenSet = true; m_sourceDBClusterSnapshotIdentifier = value; }
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline void SetSourceDBClusterSnapshotIdentifier(const char* value) { m_sourceDBClusterSnapshotIdentifierHasBeenSet = true; m_sourceDBClusterSnapshotIdentifier.assign(value); }
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithSourceDBClusterSnapshotIdentifier(const Aws::String& value) { SetSourceDBClusterSnapshotIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithSourceDBClusterSnapshotIdentifier(Aws::String&& value) { SetSourceDBClusterSnapshotIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
-    */
+    /**
+     * <p>The identifier of the DB cluster snapshot to copy. This parameter is not
+     * case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63
+     * alphanumeric characters or hyphens.</li> <li>First character must be a
+     * letter.</li> <li>Cannot end with a hyphen or contain two consecutive
+     * hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot1</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithSourceDBClusterSnapshotIdentifier(const char* value) { SetSourceDBClusterSnapshotIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline const Aws::String& GetTargetDBClusterSnapshotIdentifier() const{ return m_targetDBClusterSnapshotIdentifier; }
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline void SetTargetDBClusterSnapshotIdentifier(const Aws::String& value) { m_targetDBClusterSnapshotIdentifierHasBeenSet = true; m_targetDBClusterSnapshotIdentifier = value; }
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline void SetTargetDBClusterSnapshotIdentifier(Aws::String&& value) { m_targetDBClusterSnapshotIdentifierHasBeenSet = true; m_targetDBClusterSnapshotIdentifier = value; }
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline void SetTargetDBClusterSnapshotIdentifier(const char* value) { m_targetDBClusterSnapshotIdentifierHasBeenSet = true; m_targetDBClusterSnapshotIdentifier.assign(value); }
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithTargetDBClusterSnapshotIdentifier(const Aws::String& value) { SetTargetDBClusterSnapshotIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithTargetDBClusterSnapshotIdentifier(Aws::String&& value) { SetTargetDBClusterSnapshotIdentifier(value); return *this;}
 
-    /*
-     <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li> <li>First character must be a letter.</li> <li>Cannot end with a hyphen or contain two consecutive hyphens.</li> </ul> <p>Example: <code>my-cluster-snapshot2</code></p>
-    */
+    /**
+     * <p>The identifier of the new DB cluster snapshot to create from the source DB
+     * cluster snapshot. This parameter is not case-sensitive. </p> <p>Constraints:</p>
+     * <ul> <li>Must contain from 1 to 63 alphanumeric characters or hyphens.</li>
+     * <li>First character must be a letter.</li> <li>Cannot end with a hyphen or
+     * contain two consecutive hyphens.</li> </ul> <p>Example:
+     * <code>my-cluster-snapshot2</code></p>
+     */
     inline CopyDBClusterSnapshotRequest& WithTargetDBClusterSnapshotIdentifier(const char* value) { SetTargetDBClusterSnapshotIdentifier(value); return *this;}
 
     

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 */
 #include <aws/cloudformation/model/Capability.h>
 #include <aws/core/utils/HashingUtils.h>
+#include <aws/core/Globals.h>
+#include <aws/core/utils/EnumParseOverflowContainer.h>
 
 using namespace Aws::Utils;
 
@@ -21,36 +23,49 @@ static const int CAPABILITY_IAM_HASH = HashingUtils::HashString("CAPABILITY_IAM"
 
 namespace Aws
 {
-namespace CloudFormation
-{
-namespace Model
-{
-namespace CapabilityMapper
-{
-Capability GetCapabilityForName(const Aws::String& name)
-{
-  int hashCode = HashingUtils::HashString(name.c_str());
-
-  if (hashCode == CAPABILITY_IAM_HASH)
+  namespace CloudFormation
   {
-    return Capability::CAPABILITY_IAM;
-  }
+    namespace Model
+    {
+      namespace CapabilityMapper
+      {
 
-  return Capability::NOT_SET;
-}
 
-Aws::String GetNameForCapability(Capability value)
-{
-  switch(value)
-  {
-  case Capability::CAPABILITY_IAM:
-    return "CAPABILITY_IAM";
-  default:
-    return "";
-  }
-}
+        Capability GetCapabilityForName(const Aws::String& name)
+        {
+          int hashCode = HashingUtils::HashString(name.c_str());
+          if (hashCode == CAPABILITY_IAM_HASH)
+          {
+            return Capability::CAPABILITY_IAM;
+          }
+          EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+          if(overflowContainer)
+          {
+            overflowContainer->StoreOverflow(hashCode, name);
+            return static_cast<Capability>(hashCode);
+          }
 
-} // namespace CapabilityMapper
-} // namespace Model
-} // namespace CloudFormation
+          return Capability::NOT_SET;
+        }
+
+        Aws::String GetNameForCapability(Capability enumValue)
+        {
+          switch(enumValue)
+          {
+          case Capability::CAPABILITY_IAM:
+            return "CAPABILITY_IAM";
+          default:
+            EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
+            if(overflowContainer)
+            {
+              return overflowContainer->RetrieveOverflow(static_cast<int>(enumValue));
+            }
+
+            return "";
+          }
+        }
+
+      } // namespace CapabilityMapper
+    } // namespace Model
+  } // namespace CloudFormation
 } // namespace Aws

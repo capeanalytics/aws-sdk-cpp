@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -67,6 +67,7 @@
 #include <aws/rds/model/DescribeDBParameterGroupsRequest.h>
 #include <aws/rds/model/DescribeDBParametersRequest.h>
 #include <aws/rds/model/DescribeDBSecurityGroupsRequest.h>
+#include <aws/rds/model/DescribeDBSnapshotAttributesRequest.h>
 #include <aws/rds/model/DescribeDBSnapshotsRequest.h>
 #include <aws/rds/model/DescribeDBSubnetGroupsRequest.h>
 #include <aws/rds/model/DescribeEngineDefaultClusterParametersRequest.h>
@@ -87,6 +88,7 @@
 #include <aws/rds/model/ModifyDBClusterParameterGroupRequest.h>
 #include <aws/rds/model/ModifyDBInstanceRequest.h>
 #include <aws/rds/model/ModifyDBParameterGroupRequest.h>
+#include <aws/rds/model/ModifyDBSnapshotAttributeRequest.h>
 #include <aws/rds/model/ModifyDBSubnetGroupRequest.h>
 #include <aws/rds/model/ModifyEventSubscriptionRequest.h>
 #include <aws/rds/model/ModifyOptionGroupRequest.h>
@@ -117,7 +119,8 @@ static const char* ALLOCATION_TAG = "RDSClient";
 
 RDSClient::RDSClient(const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
+        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<RDSErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -126,7 +129,8 @@ RDSClient::RDSClient(const Client::ClientConfiguration& clientConfiguration) :
 
 RDSClient::RDSClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
   BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials), SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<RDSErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -136,7 +140,8 @@ RDSClient::RDSClient(const AWSCredentials& credentials, const Client::ClientConf
 RDSClient::RDSClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
   const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
   BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
-    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider, SERVICE_NAME, clientConfiguration.region),
+    Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
+         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
     Aws::MakeShared<RDSErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -152,7 +157,7 @@ void RDSClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty())
+  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
   {
     ss << RDSEndpoint::ForRegion(config.region);
   }
@@ -1393,6 +1398,36 @@ void RDSClient::DescribeDBSecurityGroupsAsyncHelper(const DescribeDBSecurityGrou
   handler(this, request, DescribeDBSecurityGroups(request), context);
 }
 
+DescribeDBSnapshotAttributesOutcome RDSClient::DescribeDBSnapshotAttributes(const DescribeDBSnapshotAttributesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeDBSnapshotAttributesOutcome(DescribeDBSnapshotAttributesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeDBSnapshotAttributesOutcome(outcome.GetError());
+  }
+}
+
+DescribeDBSnapshotAttributesOutcomeCallable RDSClient::DescribeDBSnapshotAttributesCallable(const DescribeDBSnapshotAttributesRequest& request) const
+{
+  return std::async(std::launch::async, &RDSClient::DescribeDBSnapshotAttributes, this, request);
+}
+
+void RDSClient::DescribeDBSnapshotAttributesAsync(const DescribeDBSnapshotAttributesRequest& request, const DescribeDBSnapshotAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&RDSClient::DescribeDBSnapshotAttributesAsyncHelper, this, request, handler, context);
+}
+
+void RDSClient::DescribeDBSnapshotAttributesAsyncHelper(const DescribeDBSnapshotAttributesRequest& request, const DescribeDBSnapshotAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeDBSnapshotAttributes(request), context);
+}
+
 DescribeDBSnapshotsOutcome RDSClient::DescribeDBSnapshots(const DescribeDBSnapshotsRequest& request) const
 {
   Aws::StringStream ss;
@@ -1991,6 +2026,36 @@ void RDSClient::ModifyDBParameterGroupAsync(const ModifyDBParameterGroupRequest&
 void RDSClient::ModifyDBParameterGroupAsyncHelper(const ModifyDBParameterGroupRequest& request, const ModifyDBParameterGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, ModifyDBParameterGroup(request), context);
+}
+
+ModifyDBSnapshotAttributeOutcome RDSClient::ModifyDBSnapshotAttribute(const ModifyDBSnapshotAttributeRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+  XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ModifyDBSnapshotAttributeOutcome(ModifyDBSnapshotAttributeResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ModifyDBSnapshotAttributeOutcome(outcome.GetError());
+  }
+}
+
+ModifyDBSnapshotAttributeOutcomeCallable RDSClient::ModifyDBSnapshotAttributeCallable(const ModifyDBSnapshotAttributeRequest& request) const
+{
+  return std::async(std::launch::async, &RDSClient::ModifyDBSnapshotAttribute, this, request);
+}
+
+void RDSClient::ModifyDBSnapshotAttributeAsync(const ModifyDBSnapshotAttributeRequest& request, const ModifyDBSnapshotAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit(&RDSClient::ModifyDBSnapshotAttributeAsyncHelper, this, request, handler, context);
+}
+
+void RDSClient::ModifyDBSnapshotAttributeAsyncHelper(const ModifyDBSnapshotAttributeRequest& request, const ModifyDBSnapshotAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ModifyDBSnapshotAttribute(request), context);
 }
 
 ModifyDBSubnetGroupOutcome RDSClient::ModifyDBSubnetGroup(const ModifyDBSubnetGroupRequest& request) const

@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
     unsigned securityGroupsCount = 1;
     for(auto& item : m_securityGroups)
     {
-      ss << "SecurityGroups.member." << securityGroupsCount << "="
+      ss << "SecurityGroup." << securityGroupsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       securityGroupsCount++;
     }
@@ -90,7 +90,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
     unsigned securityGroupIdsCount = 1;
     for(auto& item : m_securityGroupIds)
     {
-      ss << "SecurityGroupIds.member." << securityGroupIdsCount << "="
+      ss << "SecurityGroupId." << securityGroupIdsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       securityGroupIdsCount++;
     }
@@ -120,7 +120,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
     unsigned blockDeviceMappingsCount = 1;
     for(auto& item : m_blockDeviceMappings)
     {
-      item.OutputToStream(ss, "BlockDeviceMappings.member.", blockDeviceMappingsCount, "");
+      item.OutputToStream(ss, "BlockDeviceMapping.", blockDeviceMappingsCount, "");
       blockDeviceMappingsCount++;
     }
   }
@@ -157,7 +157,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
     unsigned networkInterfacesCount = 1;
     for(auto& item : m_networkInterfaces)
     {
-      item.OutputToStream(ss, "NetworkInterfaces.member.", networkInterfacesCount, "");
+      item.OutputToStream(ss, "NetworkInterface.", networkInterfacesCount, "");
       networkInterfacesCount++;
     }
   }
@@ -169,7 +169,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
   {
     ss << "EbsOptimized=" << m_ebsOptimized << "&";
   }
-  ss << "Version=2015-04-15";
+  ss << "Version=2015-10-01";
   return ss.str();
 }
 

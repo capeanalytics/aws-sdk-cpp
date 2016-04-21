@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -26,9 +26,7 @@ using namespace Aws::Utils;
 ReservedInstancesListing::ReservedInstancesListing() : 
     m_reservedInstancesListingIdHasBeenSet(false),
     m_reservedInstancesIdHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
-    m_updateDate(0.0),
     m_updateDateHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
@@ -42,9 +40,7 @@ ReservedInstancesListing::ReservedInstancesListing() :
 ReservedInstancesListing::ReservedInstancesListing(const XmlNode& xmlNode) : 
     m_reservedInstancesListingIdHasBeenSet(false),
     m_reservedInstancesIdHasBeenSet(false),
-    m_createDate(0.0),
     m_createDateHasBeenSet(false),
-    m_updateDate(0.0),
     m_updateDateHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
@@ -77,13 +73,13 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
     XmlNode createDateNode = resultNode.FirstChild("createDate");
     if(!createDateNode.IsNull())
     {
-      m_createDate = StringUtils::ConvertToDouble(StringUtils::Trim(createDateNode.GetText().c_str()).c_str());
+      m_createDate = DateTime(StringUtils::Trim(createDateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_createDateHasBeenSet = true;
     }
     XmlNode updateDateNode = resultNode.FirstChild("updateDate");
     if(!updateDateNode.IsNull())
     {
-      m_updateDate = StringUtils::ConvertToDouble(StringUtils::Trim(updateDateNode.GetText().c_str()).c_str());
+      m_updateDate = DateTime(StringUtils::Trim(updateDateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_updateDateHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("status");
@@ -98,7 +94,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
       m_statusMessage = StringUtils::Trim(statusMessageNode.GetText().c_str());
       m_statusMessageHasBeenSet = true;
     }
-    XmlNode instanceCountsNode = resultNode.FirstChild("InstanceCounts");
+    XmlNode instanceCountsNode = resultNode.FirstChild("instanceCounts");
     if(!instanceCountsNode.IsNull())
     {
       XmlNode instanceCountsMember = instanceCountsNode.FirstChild("item");
@@ -110,7 +106,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
 
       m_instanceCountsHasBeenSet = true;
     }
-    XmlNode priceSchedulesNode = resultNode.FirstChild("PriceSchedules");
+    XmlNode priceSchedulesNode = resultNode.FirstChild("priceSchedules");
     if(!priceSchedulesNode.IsNull())
     {
       XmlNode priceSchedulesMember = priceSchedulesNode.FirstChild("item");
@@ -122,7 +118,7 @@ ReservedInstancesListing& ReservedInstancesListing::operator =(const XmlNode& xm
 
       m_priceSchedulesHasBeenSet = true;
     }
-    XmlNode tagsNode = resultNode.FirstChild("Tags");
+    XmlNode tagsNode = resultNode.FirstChild("tagSet");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
@@ -157,11 +153,11 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CreateDate=" << m_createDate << "&";
+      oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_updateDateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UpdateDate=" << m_updateDate << "&";
+      oStream << location << index << locationValue << ".UpdateDate=" << StringUtils::URLEncode(m_updateDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_statusHasBeenSet)
   {
@@ -173,28 +169,31 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_instanceCountsHasBeenSet)
   {
+      unsigned instanceCountsIdx = 1;
       for(auto& item : m_instanceCounts)
       {
         Aws::StringStream instanceCountsSs;
-        instanceCountsSs << location << index << locationValue << ".item";
+        instanceCountsSs << location << index << locationValue << ".InstanceCounts." << instanceCountsIdx++;
         item.OutputToStream(oStream, instanceCountsSs.str().c_str());
       }
   }
   if(m_priceSchedulesHasBeenSet)
   {
+      unsigned priceSchedulesIdx = 1;
       for(auto& item : m_priceSchedules)
       {
         Aws::StringStream priceSchedulesSs;
-        priceSchedulesSs << location << index << locationValue << ".item";
+        priceSchedulesSs << location << index << locationValue << ".PriceSchedules." << priceSchedulesIdx++;
         item.OutputToStream(oStream, priceSchedulesSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".item";
+        tagsSs << location << index << locationValue << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -216,11 +215,11 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_createDateHasBeenSet)
   {
-      oStream << location << ".CreateDate=" << m_createDate << "&";
+      oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_updateDateHasBeenSet)
   {
-      oStream << location << ".UpdateDate=" << m_updateDate << "&";
+      oStream << location << ".UpdateDate=" << StringUtils::URLEncode(m_updateDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
   if(m_statusHasBeenSet)
   {
@@ -232,29 +231,32 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   }
   if(m_instanceCountsHasBeenSet)
   {
+      unsigned instanceCountsIdx = 1;
       for(auto& item : m_instanceCounts)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream instanceCountsSs;
+        instanceCountsSs << location <<  ".item." << instanceCountsIdx++;
+        item.OutputToStream(oStream, instanceCountsSs.str().c_str());
       }
   }
   if(m_priceSchedulesHasBeenSet)
   {
+      unsigned priceSchedulesIdx = 1;
       for(auto& item : m_priceSchedules)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream priceSchedulesSs;
+        priceSchedulesSs << location <<  ".item." << priceSchedulesIdx++;
+        item.OutputToStream(oStream, priceSchedulesSs.str().c_str());
       }
   }
   if(m_tagsHasBeenSet)
   {
+      unsigned tagsIdx = 1;
       for(auto& item : m_tags)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream tagsSs;
+        tagsSs << location <<  ".item." << tagsIdx++;
+        item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_clientTokenHasBeenSet)

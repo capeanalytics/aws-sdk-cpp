@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -49,6 +49,7 @@ enum class AWS_S3_API S3Errors
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   BUCKET_ALREADY_EXISTS= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  BUCKET_ALREADY_OWNED_BY_YOU,
   NO_SUCH_BUCKET,
   NO_SUCH_KEY,
   NO_SUCH_UPLOAD,

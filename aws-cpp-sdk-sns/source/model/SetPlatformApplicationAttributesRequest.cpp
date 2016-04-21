@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -38,9 +38,9 @@ Aws::String SetPlatformApplicationAttributesRequest::SerializePayload() const
     unsigned attributesCount = 1;
     for(auto& item : m_attributes)
     {
-      ss << "${member.value.locationName}." << attributesCount << ".${member.value.shape.mapKey.locationName}="
+      ss << "Attributes.entry." << attributesCount << ".key="
           << StringUtils::URLEncode(item.first.c_str()) << "&";
-      ss << "${member.value.locationName}." << attributesCount << ".${member.value.shape.mapValue.locationName}="
+      ss << "Attributes.entry." << attributesCount << ".value="
           << StringUtils::URLEncode(item.second.c_str()) << "&";
       attributesCount++;
     }

@@ -29,16 +29,15 @@ set(ACCESS_MANAGEMENT_INCLUDES
 
 include_directories(${ACCESS_MANAGEMENT_INCLUDES})
 
-if(NOT MSVC)
-  add_definitions(-std=c++11)
-endif()
-
 if(MSVC AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_ACCESS_MANAGEMENT_EXPORTS")
-    add_definitions(-DGTEST_LINKED_AS_SHARED_LIBRARY=1)
 endif()
 
 add_library(aws-cpp-sdk-access-management ${LIBTYPE} ${ACCESS_MANAGEMENT_SRC})
+
+target_include_directories(aws-cpp-sdk-access-management PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-access-management aws-cpp-sdk-cognito-identity aws-cpp-sdk-iam)
 list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-access-management")
 set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)

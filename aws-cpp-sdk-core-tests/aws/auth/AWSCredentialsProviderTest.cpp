@@ -145,11 +145,11 @@ TEST(ProfileConfigFileAWSCredentialsProviderTest, TestWithEnvVars)
 
     Aws::String configFileName = ProfileConfigFileAWSCredentialsProvider::GetProfileFilename() + "_blah";
   
-    Aws::String oldValue = GetEnv("AWS_CREDENTIAL_PROFILES_FILE");
-    setenv("AWS_CREDENTIAL_PROFILES_FILE", configFileName.c_str(), 1);
-    Aws::String oldProfileValue = GetEnv("AWS_PROFILE");
+    Aws::String oldValue = GetEnv("AWS_SHARED_CREDENTIALS_FILE");
+    setenv("AWS_SHARED_CREDENTIALS_FILE", configFileName.c_str(), 1);
+    Aws::String oldProfileValue = GetEnv("AWS_DEFAULT_PROFILE");
     const char* profile = "someProfile";
-    setenv("AWS_PROFILE", profile, 1);
+    setenv("AWS_DEFAULT_PROFILE", profile, 1);
     Aws::OFStream configFile(configFileName.c_str(), Aws::OFStream::out | Aws::OFStream::trunc);
 
     configFile << "[ someProfile]" << std::endl;
@@ -163,14 +163,14 @@ TEST(ProfileConfigFileAWSCredentialsProviderTest, TestWithEnvVars)
 
     ProfileConfigFileAWSCredentialsProvider provider(10);
     if (!oldValue.empty())
-        setenv("AWS_CREDENTIAL_PROFILES_FILE", oldValue.c_str(), 1);
+        setenv("AWS_SHARED_CREDENTIALS_FILE", oldValue.c_str(), 1);
     else
-        unsetenv("AWS_CREDENTIAL_PROFILES_FILE");
+        unsetenv("AWS_SHARED_CREDENTIALS_FILE");
 
     if (!oldProfileValue.empty())
-        setenv("AWS_PROFILE", oldProfileValue.c_str(), 1);
+        setenv("AWS_DEFAULT_PROFILE", oldProfileValue.c_str(), 1);
     else
-        unsetenv("AWS_PROFILE");
+        unsetenv("AWS_DEFAULT_PROFILE");
 
     ASSERT_STREQ("SomeProfileAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
     ASSERT_STREQ("SomeProfileSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
@@ -186,11 +186,11 @@ TEST(ProfileConfigFileAWSCredentialsProviderTest, TestWithEnvVarsButSpecifiedPro
 
     Aws::String configFileName = ProfileConfigFileAWSCredentialsProvider::GetProfileFilename() + "_blah";
 
-    Aws::String oldValue = GetEnv("AWS_CREDENTIAL_PROFILES_FILE");
-    setenv("AWS_CREDENTIAL_PROFILES_FILE", configFileName.c_str(), 1);
-    Aws::String oldProfileValue = GetEnv("AWS_PROFILE");
+    Aws::String oldValue = GetEnv("AWS_SHARED_CREDENTIALS_FILE");
+    setenv("AWS_SHARED_CREDENTIALS_FILE", configFileName.c_str(), 1);
+    Aws::String oldProfileValue = GetEnv("AWS_DEFAULT_PROFILE");
     const char* profile = "someProfile";
-    setenv("AWS_PROFILE", profile, 1);
+    setenv("AWS_DEFAULT_PROFILE", profile, 1);
     Aws::OFStream configFile(configFileName.c_str(), Aws::OFStream::out | Aws::OFStream::trunc);
 
     configFile << " [ someProfile]" << std::endl;
@@ -210,10 +210,10 @@ TEST(ProfileConfigFileAWSCredentialsProviderTest, TestWithEnvVarsButSpecifiedPro
     ProfileConfigFileAWSCredentialsProvider provider("customProfile", 10);
 
     if (!oldValue.empty())
-        setenv("AWS_CREDENTIAL_PROFILES_FILE", oldValue.c_str(), 1);
+        setenv("AWS_SHARED_CREDENTIALS_FILE", oldValue.c_str(), 1);
 
     if (!oldProfileValue.empty())
-        setenv("AWS_PROFILE", oldProfileValue.c_str(), 1);
+        setenv("AWS_DEFAULT_PROFILE", oldProfileValue.c_str(), 1);
 
     ASSERT_STREQ("customProfileAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
     ASSERT_STREQ("customProfileSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
@@ -226,24 +226,24 @@ TEST(ProfileConfigFileAWSCredentialsProviderTest, TestNotSetup)
 {
     AWS_BEGIN_MEMORY_TEST(16, 10)
 
-    Aws::String oldProfileFile = GetEnv("AWS_CREDENTIAL_PROFILES_FILE");  
-    Aws::String oldProfileValue = GetEnv("AWS_PROFILE");
+    Aws::String oldProfileFile = GetEnv("AWS_SHARED_CREDENTIALS_FILE");  
+    Aws::String oldProfileValue = GetEnv("AWS_DEFAULT_PROFILE");
     Aws::String oldAWSAccessKeyValue = GetEnv("AWS_ACCESS_KEY_ID");
-    Aws::String oldSecretKeyValue = GetEnv("AWS_SECRET_KEY_ID");
+    Aws::String oldSecretKeyValue = GetEnv("AWS_SECRET_ACCESS_KEY");
 
     unsetenv("AWS_ACCESS_KEY_ID");
-    unsetenv("AWS_SECRET_KEY_ID");
-    unsetenv("AWS_CREDENTIAL_PROFILES_FILE");
+    unsetenv("AWS_SECRET_ACCESS_KEY");
+    unsetenv("AWS_SHARED_CREDENTIALS_FILE");
 
     ProfileConfigFileAWSCredentialsProvider provider;
     if (!oldProfileFile.empty())
-        setenv("AWS_CREDENTIAL_PROFILES_FILE", oldProfileFile.c_str(), 1);
+        setenv("AWS_SHARED_CREDENTIALS_FILE", oldProfileFile.c_str(), 1);
     if (!oldProfileValue.empty())
-        setenv("AWS_PROFILE", oldProfileValue.c_str(), 1);
+        setenv("AWS_DEFAULT_PROFILE", oldProfileValue.c_str(), 1);
     if (!oldAWSAccessKeyValue.empty())
         setenv("AWS_ACCESS_KEY_ID", oldAWSAccessKeyValue.c_str(), 1);
     if (!oldSecretKeyValue.empty())
-        setenv("AWS_SECRET_KEY_ID", oldSecretKeyValue.c_str(), 1);
+        setenv("AWS_SECRET_ACCESS_KEY", oldSecretKeyValue.c_str(), 1);
 
     ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
     ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
@@ -259,11 +259,13 @@ TEST(EnvironmentAWSCredentialsProviderTest, TestEnvironmentVariablesExist)
     AWS_BEGIN_MEMORY_TEST(16, 10)
 
     setenv("AWS_ACCESS_KEY_ID", "Access Key", 1);
-    setenv("AWS_SECRET_KEY_ID", "Secret Key", 1);
+    setenv("AWS_SECRET_ACCESS_KEY", "Secret Key", 1);
+    setenv("AWS_SESSION_TOKEN", "Session Token", 1);
 
     EnvironmentAWSCredentialsProvider provider;
-    ASSERT_STREQ("Access Key", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("Secret Key", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("Access Key", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("Secret Key", provider.GetAWSCredentials().GetAWSSecretKey());
+    ASSERT_EQ("Session Token", provider.GetAWSCredentials().GetSessionToken());
 
     AWS_END_MEMORY_TEST
 }
@@ -274,11 +276,11 @@ TEST(EnvironmentAWSCredentialsProviderTest, TestEnvironmentVariablesDoNotExist)
     AWS_BEGIN_MEMORY_TEST(16, 10)
 
     unsetenv("AWS_ACCESS_KEY_ID");
-    unsetenv("AWS_SECRET_KEY_ID");
+    unsetenv("AWS_SECRET_ACCESS_KEY");
 
     EnvironmentAWSCredentialsProvider provider;
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSSecretKey());
 
     AWS_END_MEMORY_TEST
 }
@@ -294,8 +296,8 @@ TEST(InstanceProfileCredentialsProviderTest, TestEC2MetadataClientReturnsGoodDat
     mockClient->SetMockedCredentialsValue(validCredentials);
 
     InstanceProfileCredentialsProvider provider(mockClient, 1000 * 60 * 15);
-    ASSERT_STREQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey());
 
     AWS_END_MEMORY_TEST
 }
@@ -311,17 +313,17 @@ TEST(InstanceProfileCredentialsProviderTest, TestThatProviderRefreshes)
     mockClient->SetMockedCredentialsValue(validCredentials);
 
     InstanceProfileCredentialsProvider provider(mockClient, 10);
-    ASSERT_STREQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey());
 
     const char* nextSetOfCredentials = "{ \"AccessKeyId\": \"betterAccessKey\", \"SecretAccessKey\": \"betterSecretKey\", \"Token\": \"betterToken\" }";
     mockClient->SetMockedCredentialsValue(nextSetOfCredentials);
-    ASSERT_STREQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("goodAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("goodSecretKey", provider.GetAWSCredentials().GetAWSSecretKey());
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    ASSERT_STREQ("betterAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("betterSecretKey", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("betterAccessKey", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("betterSecretKey", provider.GetAWSCredentials().GetAWSSecretKey());
 
     AWS_END_MEMORY_TEST
 }
@@ -335,13 +337,13 @@ TEST(InstanceProfileCredentialsProviderTest, TestEC2MetadataClientCouldntFindCre
     mockClient->SetMockedCredentialsValue(emptyCredentials);
 
     InstanceProfileCredentialsProvider provider(mockClient, 1000 * 60 * 15);
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSSecretKey());
 
     const char* missingInfo = "{ }";
     mockClient->SetMockedCredentialsValue(missingInfo);
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSSecretKey());
 
     AWS_END_MEMORY_TEST
 }
@@ -355,8 +357,8 @@ TEST(InstanceProfileCredentialsProviderTest, TestEC2MetadataClientReturnsBadData
     mockClient->SetMockedCredentialsValue(badData);
 
     InstanceProfileCredentialsProvider provider(mockClient, 1000 * 60 * 15);
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSAccessKeyId().c_str());
-    ASSERT_STREQ("", provider.GetAWSCredentials().GetAWSSecretKey().c_str());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSAccessKeyId());
+    ASSERT_EQ("", provider.GetAWSCredentials().GetAWSSecretKey());
 
     AWS_END_MEMORY_TEST
 }

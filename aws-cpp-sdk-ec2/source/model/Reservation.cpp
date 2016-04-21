@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ Reservation& Reservation::operator =(const XmlNode& xmlNode)
       m_requesterId = StringUtils::Trim(requesterIdNode.GetText().c_str());
       m_requesterIdHasBeenSet = true;
     }
-    XmlNode groupsNode = resultNode.FirstChild("Groups");
+    XmlNode groupsNode = resultNode.FirstChild("groupSet");
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("item");
@@ -80,7 +80,7 @@ Reservation& Reservation::operator =(const XmlNode& xmlNode)
 
       m_groupsHasBeenSet = true;
     }
-    XmlNode instancesNode = resultNode.FirstChild("Instances");
+    XmlNode instancesNode = resultNode.FirstChild("instancesSet");
     if(!instancesNode.IsNull())
     {
       XmlNode instancesMember = instancesNode.FirstChild("item");
@@ -113,19 +113,21 @@ void Reservation::OutputToStream(Aws::OStream& oStream, const char* location, un
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location << index << locationValue << ".item";
+        groupsSs << location << index << locationValue << ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
   if(m_instancesHasBeenSet)
   {
+      unsigned instancesIdx = 1;
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location << index << locationValue << ".item";
+        instancesSs << location << index << locationValue << ".InstancesSet." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
@@ -153,20 +155,22 @@ void Reservation::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_groupsHasBeenSet)
   {
+      unsigned groupsIdx = 1;
       for(auto& item : m_groups)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream groupsSs;
+        groupsSs << location <<  ".item." << groupsIdx++;
+        item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
   if(m_instancesHasBeenSet)
   {
+      unsigned instancesIdx = 1;
       for(auto& item : m_instances)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".item";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream instancesSs;
+        instancesSs << location <<  ".item." << instancesIdx++;
+        item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }
   if(m_responseMetadataHasBeenSet)

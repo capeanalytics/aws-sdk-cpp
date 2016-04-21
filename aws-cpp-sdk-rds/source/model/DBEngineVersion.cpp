@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -149,19 +149,21 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_supportedCharacterSetsHasBeenSet)
   {
+      unsigned supportedCharacterSetsIdx = 1;
       for(auto& item : m_supportedCharacterSets)
       {
         Aws::StringStream supportedCharacterSetsSs;
-        supportedCharacterSetsSs << location << index << locationValue << ".CharacterSet";
+        supportedCharacterSetsSs << location << index << locationValue << ".CharacterSet." << supportedCharacterSetsIdx++;
         item.OutputToStream(oStream, supportedCharacterSetsSs.str().c_str());
       }
   }
   if(m_validUpgradeTargetHasBeenSet)
   {
+      unsigned validUpgradeTargetIdx = 1;
       for(auto& item : m_validUpgradeTarget)
       {
         Aws::StringStream validUpgradeTargetSs;
-        validUpgradeTargetSs << location << index << locationValue << ".UpgradeTarget";
+        validUpgradeTargetSs << location << index << locationValue << ".UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
@@ -197,20 +199,22 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_supportedCharacterSetsHasBeenSet)
   {
+      unsigned supportedCharacterSetsIdx = 1;
       for(auto& item : m_supportedCharacterSets)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".CharacterSet";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream supportedCharacterSetsSs;
+        supportedCharacterSetsSs << location <<  ".CharacterSet." << supportedCharacterSetsIdx++;
+        item.OutputToStream(oStream, supportedCharacterSetsSs.str().c_str());
       }
   }
   if(m_validUpgradeTargetHasBeenSet)
   {
+      unsigned validUpgradeTargetIdx = 1;
       for(auto& item : m_validUpgradeTarget)
       {
-        Aws::String locationAndListMember(location);
-        locationAndListMember += ".UpgradeTarget";
-        item.OutputToStream(oStream, locationAndListMember.c_str());
+        Aws::StringStream validUpgradeTargetSs;
+        validUpgradeTargetSs << location <<  ".UpgradeTarget." << validUpgradeTargetIdx++;
+        item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
 }

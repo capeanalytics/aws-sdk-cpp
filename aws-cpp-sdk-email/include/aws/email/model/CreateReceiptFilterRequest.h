@@ -1,5 +1,5 @@
 /*
-* Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -24,28 +24,47 @@ namespace SES
 namespace Model
 {
 
-  /*
-  */
+  /**
+   */
   class AWS_SES_API CreateReceiptFilterRequest : public SESRequest
   {
   public:
     CreateReceiptFilterRequest();
     Aws::String SerializePayload() const override;
 
-
-    
+    /**
+     * <p>A data structure that describes the IP address filter to create, which
+     * consists of a name, an IP address range, and whether to allow or block mail from
+     * it.</p>
+     */
     inline const ReceiptFilter& GetFilter() const{ return m_filter; }
 
-    
+    /**
+     * <p>A data structure that describes the IP address filter to create, which
+     * consists of a name, an IP address range, and whether to allow or block mail from
+     * it.</p>
+     */
     inline void SetFilter(const ReceiptFilter& value) { m_filterHasBeenSet = true; m_filter = value; }
 
-    
+    /**
+     * <p>A data structure that describes the IP address filter to create, which
+     * consists of a name, an IP address range, and whether to allow or block mail from
+     * it.</p>
+     */
     inline void SetFilter(ReceiptFilter&& value) { m_filterHasBeenSet = true; m_filter = value; }
 
-    
+    /**
+     * <p>A data structure that describes the IP address filter to create, which
+     * consists of a name, an IP address range, and whether to allow or block mail from
+     * it.</p>
+     */
     inline CreateReceiptFilterRequest& WithFilter(const ReceiptFilter& value) { SetFilter(value); return *this;}
 
-    
+    /**
+     * <p>A data structure that describes the IP address filter to create, which
+     * consists of a name, an IP address range, and whether to allow or block mail from
+     * it.</p>
+     */
     inline CreateReceiptFilterRequest& WithFilter(ReceiptFilter&& value) { SetFilter(value); return *this;}
 
   private:
