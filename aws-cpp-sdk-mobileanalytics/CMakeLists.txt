@@ -46,6 +46,9 @@ project(aws-cpp-sdk-mobileanalytics)
   endif()
 
   add_library(aws-cpp-sdk-mobileanalytics ${LIBTYPE} ${MOBILEANALYTICS_SRC})
+  target_link_libraries(aws-cpp-sdk-mobileanalytics aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-mobileanalytics")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-mobileanalytics PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

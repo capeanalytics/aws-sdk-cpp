@@ -46,6 +46,9 @@ project(aws-cpp-sdk-iam)
   endif()
 
   add_library(aws-cpp-sdk-iam ${LIBTYPE} ${IAM_SRC})
+  target_link_libraries(aws-cpp-sdk-iam aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-iam")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-iam PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

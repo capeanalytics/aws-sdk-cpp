@@ -46,6 +46,9 @@ project(aws-cpp-sdk-kinesis)
   endif()
 
   add_library(aws-cpp-sdk-kinesis ${LIBTYPE} ${KINESIS_SRC})
+  target_link_libraries(aws-cpp-sdk-kinesis aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-kinesis")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-kinesis PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

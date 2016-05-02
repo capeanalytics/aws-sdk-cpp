@@ -16,7 +16,7 @@
 # minimum version of cmake that 
 #   (1) supports ExternalProject_Add URL_HASH
 #   (2) correctly extracts OPENSSL's version number from openssl/opensslv.h in version 1.0.2d
-cmake_minimum_required (VERSION 3.1.2)
+cmake_minimum_required (VERSION 2.8)
 
 # Cmake invocation variables:
 #   CUSTOM_MEMORY_MANAGEMENT - if set to 1, generates the sdk project files with custom memory management enabled, otherwise disables it
@@ -30,7 +30,7 @@ cmake_minimum_required (VERSION 3.1.2)
 #                          to use these arguments, you should add the api definition .normal.json file for your service to the api-description folder in the generator.
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
-
+set(AWS_INSTALLED_LIBS "")
 # there isn't a reliable way of detecting what architecture we want to build for in a cross-compiling environment, so force the user
 # to specify on the command line.  Since testing string equality is ugly and awkward in cmake, we use the specified architecture
 # to conditionally set a symbol to 1 so that we can continue to just do "if (SYMBOL)" for our conditional execution
@@ -1280,4 +1280,16 @@ else()
     #   add_subdirectory(aws-cpp-sdk-redshift-integration-tests)
 endif()
 
+
+set(AWSSDKCPP_VERSION "0.0.1")
+configure_file(${PROJECT_SOURCE_DIR}/AWSSDKCPPConfigVersion.cmake.in ${PROJECT_BINARY_DIR}/AWSSDKCPPConfigVersion.cmake @ONLY)
+install(FILES ${PROJECT_BINARY_DIR}/AWSSDKCPPConfigVersion.cmake DESTINATION "share")
+
+set(CONFIG_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/include")
+set(CONFIG_LIB_DIRS "${CMAKE_INSTALL_PREFIX}/lib/${SDK_INSTALL_BINARY_PREFIX}/${CMAKE_BUILD_TYPE}")
+
+configure_file(${PROJECT_SOURCE_DIR}/AWSSDKCPPConfig.cmake.in ${PROJECT_BINARY_DIR}/AWSSDKCPPConfig.cmake @ONLY)
+install(FILES ${PROJECT_BINARY_DIR}/AWSSDKCPPConfig.cmake DESTINATION "share")
+
 export(TARGETS ${EXPORTS} FILE aws-sdk-cpp-config.cmake)
+

@@ -46,6 +46,9 @@ project(aws-cpp-sdk-datapipeline)
   endif()
 
   add_library(aws-cpp-sdk-datapipeline ${LIBTYPE} ${DATAPIPELINE_SRC})
+  target_link_libraries(aws-cpp-sdk-datapipeline aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-datapipeline")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-datapipeline PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

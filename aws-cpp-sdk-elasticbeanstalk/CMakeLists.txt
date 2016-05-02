@@ -46,6 +46,9 @@ project(aws-cpp-sdk-elasticbeanstalk)
   endif()
 
   add_library(aws-cpp-sdk-elasticbeanstalk ${LIBTYPE} ${ELASTICBEANSTALK_SRC})
+  target_link_libraries(aws-cpp-sdk-elasticbeanstalk aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-elasticbeanstalk")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-elasticbeanstalk PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

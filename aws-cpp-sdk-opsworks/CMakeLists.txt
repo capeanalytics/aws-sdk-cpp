@@ -46,6 +46,9 @@ project(aws-cpp-sdk-opsworks)
   endif()
 
   add_library(aws-cpp-sdk-opsworks ${LIBTYPE} ${OPSWORKS_SRC})
+  target_link_libraries(aws-cpp-sdk-opsworks aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-opsworks")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-opsworks PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

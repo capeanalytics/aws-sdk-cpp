@@ -47,6 +47,10 @@ project(aws-cpp-sdk-ec2)
 
   add_library(aws-cpp-sdk-ec2 ${LIBTYPE} ${EC2_SRC})
 
+  target_link_libraries(aws-cpp-sdk-ec2 aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-ec2")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
+
   target_include_directories(aws-cpp-sdk-ec2 PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)

@@ -44,6 +44,8 @@ target_include_directories(aws-cpp-sdk-queues PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-queues aws-cpp-sdk-sqs)
+list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-queues")
+set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
 install (TARGETS aws-cpp-sdk-queues
          ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}

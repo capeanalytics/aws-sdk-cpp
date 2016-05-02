@@ -46,6 +46,9 @@ project(aws-cpp-sdk-swf)
   endif()
 
   add_library(aws-cpp-sdk-swf ${LIBTYPE} ${SWF_SRC})
+  target_link_libraries(aws-cpp-sdk-swf aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-swf")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-swf PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

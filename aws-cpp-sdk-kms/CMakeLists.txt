@@ -46,6 +46,9 @@ project(aws-cpp-sdk-kms)
   endif()
 
   add_library(aws-cpp-sdk-kms ${LIBTYPE} ${KMS_SRC})
+  target_link_libraries(aws-cpp-sdk-kms aws-cpp-sdk-core)
+  list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-kms")
+  set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
   target_include_directories(aws-cpp-sdk-kms PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

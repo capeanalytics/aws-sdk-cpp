@@ -39,6 +39,8 @@ target_include_directories(aws-cpp-sdk-access-management PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-access-management aws-cpp-sdk-cognito-identity aws-cpp-sdk-iam)
+list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-access-management")
+set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
 install (TARGETS aws-cpp-sdk-access-management 
          ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}

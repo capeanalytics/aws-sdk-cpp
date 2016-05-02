@@ -45,6 +45,8 @@ target_include_directories(aws-cpp-sdk-transfer PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 target_link_libraries(aws-cpp-sdk-transfer aws-cpp-sdk-s3)
+list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-transfer")
+set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
 install (TARGETS aws-cpp-sdk-transfer
          ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
