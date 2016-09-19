@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,6 +32,7 @@ Aws::String DeleteHsmConfigurationRequest::SerializePayload() const
   {
     ss << "HsmConfigurationIdentifier=" << StringUtils::URLEncode(m_hsmConfigurationIdentifier.c_str()) << "&";
   }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }

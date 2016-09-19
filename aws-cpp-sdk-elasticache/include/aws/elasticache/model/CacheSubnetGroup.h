@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,9 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents the output of one of the following actions:</p> <ul> <li>
-   * <i>CreateCacheSubnetGroup</i> </li> <li> <i>ModifyCacheSubnetGroup</i> </li>
-   * </ul>
+   * <p>Represents the output of one of the following actions:</p> <ul> <li> <p>
+   * <i>CreateCacheSubnetGroup</i> </p> </li> <li> <p> <i>ModifyCacheSubnetGroup</i>
+   * </p> </li> </ul>
    */
   class AWS_ELASTICACHE_API CacheSubnetGroup
   {

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,37 +33,44 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline const Aws::String& GetQueueUrl() const{ return m_queueUrl; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(const Aws::String& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(Aws::String&& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(const char* value) { m_queueUrlHasBeenSet = true; m_queueUrl.assign(value); }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline ChangeMessageVisibilityRequest& WithQueueUrl(const Aws::String& value) { SetQueueUrl(value); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline ChangeMessageVisibilityRequest& WithQueueUrl(Aws::String&& value) { SetQueueUrl(value); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline ChangeMessageVisibilityRequest& WithQueueUrl(const char* value) { SetQueueUrl(value); return *this;}
 
@@ -120,26 +127,26 @@ namespace Model
      * <p>The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
      * message's visibility timeout.</p>
      */
-    inline long GetVisibilityTimeout() const{ return m_visibilityTimeout; }
+    inline int GetVisibilityTimeout() const{ return m_visibilityTimeout; }
 
     /**
      * <p>The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
      * message's visibility timeout.</p>
      */
-    inline void SetVisibilityTimeout(long value) { m_visibilityTimeoutHasBeenSet = true; m_visibilityTimeout = value; }
+    inline void SetVisibilityTimeout(int value) { m_visibilityTimeoutHasBeenSet = true; m_visibilityTimeout = value; }
 
     /**
      * <p>The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
      * message's visibility timeout.</p>
      */
-    inline ChangeMessageVisibilityRequest& WithVisibilityTimeout(long value) { SetVisibilityTimeout(value); return *this;}
+    inline ChangeMessageVisibilityRequest& WithVisibilityTimeout(int value) { SetVisibilityTimeout(value); return *this;}
 
   private:
     Aws::String m_queueUrl;
     bool m_queueUrlHasBeenSet;
     Aws::String m_receiptHandle;
     bool m_receiptHandleHasBeenSet;
-    long m_visibilityTimeout;
+    int m_visibilityTimeout;
     bool m_visibilityTimeoutHasBeenSet;
   };
 

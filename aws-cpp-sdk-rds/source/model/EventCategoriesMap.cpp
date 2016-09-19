@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 EventCategoriesMap::EventCategoriesMap() : 
     m_sourceTypeHasBeenSet(false),
@@ -71,6 +77,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
   {
       oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(m_sourceType.c_str()) << "&";
   }
+
   if(m_eventCategoriesHasBeenSet)
   {
       unsigned eventCategoriesIdx = 1;
@@ -79,6 +86,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
         oStream << location << index << locationValue << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -96,3 +104,7 @@ void EventCategoriesMap::OutputToStream(Aws::OStream& oStream, const char* locat
       }
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

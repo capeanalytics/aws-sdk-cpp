@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,6 +34,10 @@ namespace SES
 {
 namespace Model
 {
+  /**
+   * <p>A list of names of sending authorization policies that apply to an
+   * identity.</p>
+   */
   class AWS_SES_API ListIdentityPoliciesResult
   {
   public:

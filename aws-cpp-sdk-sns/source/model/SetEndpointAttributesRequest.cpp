@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String SetEndpointAttributesRequest::SerializePayload() const
   {
     ss << "EndpointArn=" << StringUtils::URLEncode(m_endpointArn.c_str()) << "&";
   }
+
   if(m_attributesHasBeenSet)
   {
     unsigned attributesCount = 1;
@@ -45,6 +46,7 @@ Aws::String SetEndpointAttributesRequest::SerializePayload() const
       attributesCount++;
     }
   }
+
   ss << "Version=2010-03-31";
   return ss.str();
 }

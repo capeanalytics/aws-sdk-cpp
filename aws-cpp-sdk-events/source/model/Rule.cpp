@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudWatchEvents::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudWatchEvents
+{
+namespace Model
+{
 
 Rule::Rule() : 
     m_nameHasBeenSet(false),
@@ -145,3 +151,7 @@ JsonValue Rule::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CloudWatchEvents
+} // namespace Aws

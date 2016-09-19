@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 PolicyRole::PolicyRole() : 
     m_roleNameHasBeenSet(false),
@@ -65,10 +71,12 @@ void PolicyRole::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".RoleName=" << StringUtils::URLEncode(m_roleName.c_str()) << "&";
   }
+
   if(m_roleIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".RoleId=" << StringUtils::URLEncode(m_roleId.c_str()) << "&";
   }
+
 }
 
 void PolicyRole::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void PolicyRole::OutputToStream(Aws::OStream& oStream, const char* location) con
       oStream << location << ".RoleId=" << StringUtils::URLEncode(m_roleId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -28,6 +28,8 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to send a bounce message to the sender of an email you
+   * received through Amazon SES.</p>
    */
   class AWS_SES_API SendBounceRequest : public SESRequest
   {

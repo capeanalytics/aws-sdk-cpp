@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Requester_HASH = HashingUtils::HashString("Requester");
-static const int BucketOwner_HASH = HashingUtils::HashString("BucketOwner");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace PayerMapper
       {
+
+        static const int Requester_HASH = HashingUtils::HashString("Requester");
+        static const int BucketOwner_HASH = HashingUtils::HashString("BucketOwner");
 
 
         Payer GetPayerForName(const Aws::String& name)

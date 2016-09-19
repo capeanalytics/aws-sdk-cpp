@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int InstanceIds_HASH = HashingUtils::HashString("InstanceIds");
-static const int AgentVersion_HASH = HashingUtils::HashString("AgentVersion");
-static const int PingStatus_HASH = HashingUtils::HashString("PingStatus");
-static const int PlatformTypes_HASH = HashingUtils::HashString("PlatformTypes");
 
 namespace Aws
 {
@@ -32,6 +28,14 @@ namespace Aws
     {
       namespace InstanceInformationFilterKeyMapper
       {
+
+        static const int InstanceIds_HASH = HashingUtils::HashString("InstanceIds");
+        static const int AgentVersion_HASH = HashingUtils::HashString("AgentVersion");
+        static const int PingStatus_HASH = HashingUtils::HashString("PingStatus");
+        static const int PlatformTypes_HASH = HashingUtils::HashString("PlatformTypes");
+        static const int ActivationIds_HASH = HashingUtils::HashString("ActivationIds");
+        static const int IamRole_HASH = HashingUtils::HashString("IamRole");
+        static const int ResourceType_HASH = HashingUtils::HashString("ResourceType");
 
 
         InstanceInformationFilterKey GetInstanceInformationFilterKeyForName(const Aws::String& name)
@@ -52,6 +56,18 @@ namespace Aws
           else if (hashCode == PlatformTypes_HASH)
           {
             return InstanceInformationFilterKey::PlatformTypes;
+          }
+          else if (hashCode == ActivationIds_HASH)
+          {
+            return InstanceInformationFilterKey::ActivationIds;
+          }
+          else if (hashCode == IamRole_HASH)
+          {
+            return InstanceInformationFilterKey::IamRole;
+          }
+          else if (hashCode == ResourceType_HASH)
+          {
+            return InstanceInformationFilterKey::ResourceType;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -75,6 +91,12 @@ namespace Aws
             return "PingStatus";
           case InstanceInformationFilterKey::PlatformTypes:
             return "PlatformTypes";
+          case InstanceInformationFilterKey::ActivationIds:
+            return "ActivationIds";
+          case InstanceInformationFilterKey::IamRole:
+            return "IamRole";
+          case InstanceInformationFilterKey::ResourceType:
+            return "ResourceType";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

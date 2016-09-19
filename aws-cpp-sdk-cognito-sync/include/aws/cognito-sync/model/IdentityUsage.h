@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -154,17 +154,17 @@ namespace Model
     /**
      * Number of datasets for the identity.
      */
-    inline long GetDatasetCount() const{ return m_datasetCount; }
+    inline int GetDatasetCount() const{ return m_datasetCount; }
 
     /**
      * Number of datasets for the identity.
      */
-    inline void SetDatasetCount(long value) { m_datasetCountHasBeenSet = true; m_datasetCount = value; }
+    inline void SetDatasetCount(int value) { m_datasetCountHasBeenSet = true; m_datasetCount = value; }
 
     /**
      * Number of datasets for the identity.
      */
-    inline IdentityUsage& WithDatasetCount(long value) { SetDatasetCount(value); return *this;}
+    inline IdentityUsage& WithDatasetCount(int value) { SetDatasetCount(value); return *this;}
 
     /**
      * Total data storage for this identity.
@@ -188,7 +188,7 @@ namespace Model
     bool m_identityPoolIdHasBeenSet;
     Aws::Utils::DateTime m_lastModifiedDate;
     bool m_lastModifiedDateHasBeenSet;
-    long m_datasetCount;
+    int m_datasetCount;
     bool m_datasetCountHasBeenSet;
     long long m_dataStorage;
     bool m_dataStorageHasBeenSet;

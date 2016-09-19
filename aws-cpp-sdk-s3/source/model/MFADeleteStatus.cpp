@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Enabled_HASH = HashingUtils::HashString("Enabled");
-static const int Disabled_HASH = HashingUtils::HashString("Disabled");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace MFADeleteStatusMapper
       {
+
+        static const int Enabled_HASH = HashingUtils::HashString("Enabled");
+        static const int Disabled_HASH = HashingUtils::HashString("Disabled");
 
 
         MFADeleteStatus GetMFADeleteStatusForName(const Aws::String& name)

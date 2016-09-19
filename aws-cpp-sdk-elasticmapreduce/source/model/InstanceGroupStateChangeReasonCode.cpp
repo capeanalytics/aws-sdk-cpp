@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("INTERNAL_ERROR");
-static const int VALIDATION_ERROR_HASH = HashingUtils::HashString("VALIDATION_ERROR");
-static const int INSTANCE_FAILURE_HASH = HashingUtils::HashString("INSTANCE_FAILURE");
-static const int CLUSTER_TERMINATED_HASH = HashingUtils::HashString("CLUSTER_TERMINATED");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace InstanceGroupStateChangeReasonCodeMapper
       {
+
+        static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("INTERNAL_ERROR");
+        static const int VALIDATION_ERROR_HASH = HashingUtils::HashString("VALIDATION_ERROR");
+        static const int INSTANCE_FAILURE_HASH = HashingUtils::HashString("INSTANCE_FAILURE");
+        static const int CLUSTER_TERMINATED_HASH = HashingUtils::HashString("CLUSTER_TERMINATED");
 
 
         InstanceGroupStateChangeReasonCode GetInstanceGroupStateChangeReasonCodeForName(const Aws::String& name)

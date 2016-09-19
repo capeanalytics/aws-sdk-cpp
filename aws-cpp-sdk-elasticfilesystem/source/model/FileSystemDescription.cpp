@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::EFS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EFS
+{
+namespace Model
+{
 
 FileSystemDescription::FileSystemDescription() : 
     m_ownerIdHasBeenSet(false),
@@ -30,7 +36,8 @@ FileSystemDescription::FileSystemDescription() :
     m_nameHasBeenSet(false),
     m_numberOfMountTargets(0),
     m_numberOfMountTargetsHasBeenSet(false),
-    m_sizeInBytesHasBeenSet(false)
+    m_sizeInBytesHasBeenSet(false),
+    m_performanceModeHasBeenSet(false)
 {
 }
 
@@ -43,7 +50,8 @@ FileSystemDescription::FileSystemDescription(const JsonValue& jsonValue) :
     m_nameHasBeenSet(false),
     m_numberOfMountTargets(0),
     m_numberOfMountTargetsHasBeenSet(false),
-    m_sizeInBytesHasBeenSet(false)
+    m_sizeInBytesHasBeenSet(false),
+    m_performanceModeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -106,6 +114,13 @@ FileSystemDescription& FileSystemDescription::operator =(const JsonValue& jsonVa
     m_sizeInBytesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("PerformanceMode"))
+  {
+    m_performanceMode = PerformanceModeMapper::GetPerformanceModeForName(jsonValue.GetString("PerformanceMode"));
+
+    m_performanceModeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -159,5 +174,14 @@ JsonValue FileSystemDescription::Jsonize() const
 
   }
 
+  if(m_performanceModeHasBeenSet)
+  {
+   payload.WithString("PerformanceMode", PerformanceModeMapper::GetNameForPerformanceMode(m_performanceMode));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace EFS
+} // namespace Aws

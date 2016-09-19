@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -115,11 +115,55 @@ namespace Model
      */
     inline S3Location& WithKey(const char* value) { SetKey(value); return *this;}
 
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline S3Location& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline S3Location& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
+
+    /**
+     * <p>Amazon resource number for the cross-account access role that allows GameLift
+     * access to the S3 bucket.</p>
+     */
+    inline S3Location& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
+
   private:
     Aws::String m_bucket;
     bool m_bucketHasBeenSet;
     Aws::String m_key;
     bool m_keyHasBeenSet;
+    Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet;
   };
 
 } // namespace Model

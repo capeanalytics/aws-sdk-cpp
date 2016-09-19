@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -154,19 +154,19 @@ namespace Model
      * <p>The number of events to return. Possible values are 1 through 50. The default
      * is 10.</p>
      */
-    inline long GetMaxResults() const{ return m_maxResults; }
+    inline int GetMaxResults() const{ return m_maxResults; }
 
     /**
      * <p>The number of events to return. Possible values are 1 through 50. The default
      * is 10.</p>
      */
-    inline void SetMaxResults(long value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
 
     /**
      * <p>The number of events to return. Possible values are 1 through 50. The default
      * is 10.</p>
      */
-    inline LookupEventsRequest& WithMaxResults(long value) { SetMaxResults(value); return *this;}
+    inline LookupEventsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
     /**
      * <p>The token to use to get the next page of results after a previous API call.
@@ -238,7 +238,7 @@ namespace Model
     bool m_startTimeHasBeenSet;
     Aws::Utils::DateTime m_endTime;
     bool m_endTimeHasBeenSet;
-    long m_maxResults;
+    int m_maxResults;
     bool m_maxResultsHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String DisableVgwRoutePropagationRequest::SerializePayload() const
   {
     ss << "RouteTableId=" << StringUtils::URLEncode(m_routeTableId.c_str()) << "&";
   }
+
   if(m_gatewayIdHasBeenSet)
   {
     ss << "GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

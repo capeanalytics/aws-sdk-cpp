@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String UpdateOpenIDConnectProviderThumbprintRequest::SerializePayload() con
   {
     ss << "OpenIDConnectProviderArn=" << StringUtils::URLEncode(m_openIDConnectProviderArn.c_str()) << "&";
   }
+
   if(m_thumbprintListHasBeenSet)
   {
     unsigned thumbprintListCount = 1;
@@ -43,6 +44,7 @@ Aws::String UpdateOpenIDConnectProviderThumbprintRequest::SerializePayload() con
       thumbprintListCount++;
     }
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

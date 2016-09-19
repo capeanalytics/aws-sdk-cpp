@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 NetworkAcl::NetworkAcl() : 
     m_networkAclIdHasBeenSet(false),
@@ -117,14 +123,17 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".NetworkAclId=" << StringUtils::URLEncode(m_networkAclId.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_isDefaultHasBeenSet)
   {
       oStream << location << index << locationValue << ".IsDefault=" << m_isDefault << "&";
   }
+
   if(m_entriesHasBeenSet)
   {
       unsigned entriesIdx = 1;
@@ -135,6 +144,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, entriesSs.str().c_str());
       }
   }
+
   if(m_associationsHasBeenSet)
   {
       unsigned associationsIdx = 1;
@@ -145,6 +155,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -155,6 +166,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -202,3 +214,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

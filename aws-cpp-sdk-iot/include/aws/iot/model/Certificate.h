@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -114,27 +114,32 @@ namespace Model
     inline Certificate& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
 
     /**
-     * <p>The status of the certificate.</p>
+     * <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is
+     * deprecated and should not be used.</p>
      */
     inline const CertificateStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the certificate.</p>
+     * <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is
+     * deprecated and should not be used.</p>
      */
     inline void SetStatus(const CertificateStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The status of the certificate.</p>
+     * <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is
+     * deprecated and should not be used.</p>
      */
     inline void SetStatus(CertificateStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The status of the certificate.</p>
+     * <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is
+     * deprecated and should not be used.</p>
      */
     inline Certificate& WithStatus(const CertificateStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the certificate.</p>
+     * <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is
+     * deprecated and should not be used.</p>
      */
     inline Certificate& WithStatus(CertificateStatus&& value) { SetStatus(value); return *this;}
 

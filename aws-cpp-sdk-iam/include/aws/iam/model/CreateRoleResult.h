@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -44,27 +44,27 @@ namespace Model
     CreateRoleResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p>Information about the role.</p>
+     * <p>A structure containing details about the new role.</p>
      */
     inline const Role& GetRole() const{ return m_role; }
 
     /**
-     * <p>Information about the role.</p>
+     * <p>A structure containing details about the new role.</p>
      */
     inline void SetRole(const Role& value) { m_role = value; }
 
     /**
-     * <p>Information about the role.</p>
+     * <p>A structure containing details about the new role.</p>
      */
     inline void SetRole(Role&& value) { m_role = value; }
 
     /**
-     * <p>Information about the role.</p>
+     * <p>A structure containing details about the new role.</p>
      */
     inline CreateRoleResult& WithRole(const Role& value) { SetRole(value); return *this;}
 
     /**
-     * <p>Information about the role.</p>
+     * <p>A structure containing details about the new role.</p>
      */
     inline CreateRoleResult& WithRole(Role&& value) { SetRole(value); return *this;}
 

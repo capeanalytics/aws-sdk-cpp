@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 MessageDsn::MessageDsn() : 
     m_reportingMtaHasBeenSet(false),
@@ -79,10 +85,12 @@ void MessageDsn::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".ReportingMta=" << StringUtils::URLEncode(m_reportingMta.c_str()) << "&";
   }
+
   if(m_arrivalDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".ArrivalDate=" << StringUtils::URLEncode(m_arrivalDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_extensionFieldsHasBeenSet)
   {
       unsigned extensionFieldsIdx = 1;
@@ -93,6 +101,7 @@ void MessageDsn::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, extensionFieldsSs.str().c_str());
       }
   }
+
 }
 
 void MessageDsn::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void MessageDsn::OutputToStream(Aws::OStream& oStream, const char* location) con
       }
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

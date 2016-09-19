@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -220,17 +220,17 @@ namespace Model
     /**
      * Size of the body in bytes.
      */
-    inline long GetContentLength() const{ return m_contentLength; }
+    inline long long GetContentLength() const{ return m_contentLength; }
 
     /**
      * Size of the body in bytes.
      */
-    inline void SetContentLength(long value) { m_contentLength = value; }
+    inline void SetContentLength(long long value) { m_contentLength = value; }
 
     /**
      * Size of the body in bytes.
      */
-    inline GetObjectResult& WithContentLength(long value) { SetContentLength(value); return *this;}
+    inline GetObjectResult& WithContentLength(long long value) { SetContentLength(value); return *this;}
 
     /**
      * An ETag is an opaque identifier assigned by a web server to a specific version
@@ -280,7 +280,7 @@ namespace Model
      * supports more flexible metadata than the REST API. For example, using SOAP, you
      * can create metadata whose values are not legal HTTP headers.
      */
-    inline long GetMissingMeta() const{ return m_missingMeta; }
+    inline int GetMissingMeta() const{ return m_missingMeta; }
 
     /**
      * This is set to the number of metadata entries not returned in x-amz-meta
@@ -288,7 +288,7 @@ namespace Model
      * supports more flexible metadata than the REST API. For example, using SOAP, you
      * can create metadata whose values are not legal HTTP headers.
      */
-    inline void SetMissingMeta(long value) { m_missingMeta = value; }
+    inline void SetMissingMeta(int value) { m_missingMeta = value; }
 
     /**
      * This is set to the number of metadata entries not returned in x-amz-meta
@@ -296,7 +296,7 @@ namespace Model
      * supports more flexible metadata than the REST API. For example, using SOAP, you
      * can create metadata whose values are not legal HTTP headers.
      */
-    inline GetObjectResult& WithMissingMeta(long value) { SetMissingMeta(value); return *this;}
+    inline GetObjectResult& WithMissingMeta(int value) { SetMissingMeta(value); return *this;}
 
     /**
      * Version of the object.
@@ -906,9 +906,9 @@ namespace Model
     Aws::String m_expiration;
     Aws::String m_restore;
     Aws::Utils::DateTime m_lastModified;
-    long m_contentLength;
+    long long m_contentLength;
     Aws::String m_eTag;
-    long m_missingMeta;
+    int m_missingMeta;
     Aws::String m_versionId;
     Aws::String m_cacheControl;
     Aws::String m_contentDisposition;

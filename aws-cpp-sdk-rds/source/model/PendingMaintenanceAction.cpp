@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 PendingMaintenanceAction::PendingMaintenanceAction() : 
     m_actionHasBeenSet(false),
@@ -97,26 +103,32 @@ void PendingMaintenanceAction::OutputToStream(Aws::OStream& oStream, const char*
   {
       oStream << location << index << locationValue << ".Action=" << StringUtils::URLEncode(m_action.c_str()) << "&";
   }
+
   if(m_autoAppliedAfterDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutoAppliedAfterDate=" << StringUtils::URLEncode(m_autoAppliedAfterDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_forcedApplyDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".ForcedApplyDate=" << StringUtils::URLEncode(m_forcedApplyDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_optInStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".OptInStatus=" << StringUtils::URLEncode(m_optInStatus.c_str()) << "&";
   }
+
   if(m_currentApplyDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CurrentApplyDate=" << StringUtils::URLEncode(m_currentApplyDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
 }
 
 void PendingMaintenanceAction::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -146,3 +158,7 @@ void PendingMaintenanceAction::OutputToStream(Aws::OStream& oStream, const char*
       oStream << location << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

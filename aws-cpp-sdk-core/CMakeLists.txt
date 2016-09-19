@@ -1,7 +1,5 @@
-cmake_minimum_required(VERSION 2.8.5)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-core)
-
-find_package(Git)
 
 if(GIT_FOUND)
     execute_process(COMMAND ${GIT_EXECUTABLE} describe --abbrev=0 --tags
@@ -24,6 +22,19 @@ if(GIT_FOUND)
     endif()
 endif()
 
+# If building shared libraries, custom memory management enabled is the default, otherwise regular memory management is the default.
+# We make custom memory management the default on shared library builds because it is safer and much more difficult to accidentally
+# allocate in one DLLs heap while freeing in another (which will lead to runtime crashes)
+if(("${CUSTOM_MEMORY_MANAGEMENT}" STREQUAL "1") OR (BUILD_SHARED_LIBS AND NOT ("${CUSTOM_MEMORY_MANAGEMENT}" STREQUAL "0")))
+    set(USE_AWS_MEMORY_MANAGEMENT ON)
+    message(STATUS "Custom memory management enabled; stl objects now using custom allocators")
+else()
+    set(USE_AWS_MEMORY_MANAGEMENT OFF)
+    message(STATUS "Custom memory management disabled")
+endif()
+
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/SDKConfig.h.in" 
+               "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/SDKConfig.h")
 
 # Pretty sure we can use a regex here...
 # Go ahead and glob every directory so we can work around Visual Studio's crap.
@@ -33,6 +44,8 @@ file(GLOB AWS_CLIENT_HEADERS "include/aws/core/client/*.h")
 file(GLOB AWS_INTERNAL_HEADERS "include/aws/core/internal/*.h")
 file(GLOB HTTP_HEADERS "include/aws/core/http/*.h")
 file(GLOB HTTP_STANDARD_HEADERS "include/aws/core/http/standard/*.h")
+file(GLOB CONFIG_HEADERS "include/aws/core/config/*.h")
+file(GLOB PLATFORM_HEADERS "include/aws/core/platform/*.h")
 file(GLOB UTILS_HEADERS "include/aws/core/utils/*.h")
 file(GLOB UTILS_EVENT_HEADERS "include/aws/core/utils/event/*.h")
 file(GLOB UTILS_BASE64_HEADERS "include/aws/core/utils/base64/*.h")
@@ -57,6 +70,7 @@ file(GLOB AWS_INTERNAL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/internal/*.cpp
 file(GLOB AWS_MODEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/aws/model/*.cpp")
 file(GLOB HTTP_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/http/*.cpp")
 file(GLOB HTTP_STANDARD_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/http/standard/*.cpp")
+file(GLOB CONFIG_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/config/*.cpp")
 file(GLOB UTILS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/*.cpp")
 file(GLOB UTILS_EVENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/event/*.cpp")
 file(GLOB UTILS_BASE64_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/base64/*.cpp")
@@ -67,6 +81,7 @@ file(GLOB UTILS_XML_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/xml/*.cpp")
 file(GLOB UTILS_LOGGING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/logging/*.cpp")
 file(GLOB UTILS_MEMORY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/memory/*.cpp")
 file(GLOB UTILS_STREAM_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/stream/*.cpp")
+file(GLOB UTILS_CRYPTO_FACTORY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/factory/*.cpp")
 
 # http client implementations
 if(ENABLE_CURL_CLIENT)
@@ -90,14 +105,41 @@ elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
 endif()   
 
 
-file(GLOB AWSNativeSDK_SHARED_SRC
+file(GLOB AWS_NATIVE_SDK_COMMON_SRC
+    ${AWS_SOURCE}
+    ${AWS_TINYXML2_SOURCE}
+    ${AWS_AUTH_SOURCE}
+    ${AWS_CLIENT_SOURCE}
+    ${AWS_INTERNAL_SOURCE}
+    ${HTTP_SOURCE}
+    ${HTTP_STANDARD_SOURCE}
+    ${HTTP_CLIENT_SOURCE}
+    ${CONFIG_SOURCE}
+    ${UTILS_EVENT_SOURCE}
+    ${UTILS_BASE64_SOURCE}
+    ${UTILS_CRYPTO_SOURCE}
+    ${UTILS_JSON_SOURCE}
+    ${UTILS_THREADING_SOURCE}
+    ${UTILS_RETRY_SOURCE}
+    ${UTILS_XML_SOURCE}
+    ${UTILS_STREAM_SOURCE}
+    ${UTILS_LOGGING_SOURCE}
+    ${UTILS_MEMORY_SOURCE}
+    ${HTTP_CURL_CLIENT_SOURCE}
+    ${UTILS_CRYPTO_OPENSSL_SOURCE}
+    ${UTILS_CRYPTO_COMMONCRYPTO_SOURCE}
+)
+
+file(GLOB AWS_NATIVE_SDK_COMMON_HEADERS
   ${AWS_HEADERS}
   ${AWS_AUTH_HEADERS}
   ${AWS_CLIENT_HEADERS}
   ${AWS_INTERNAL_HEADERS}
   ${HTTP_HEADERS}
   ${HTTP_STANDARD_HEADERS}
+  ${CONFIG_HEADERS}
   ${HTTP_CLIENT_HEADERS}
+  ${PLATFORM_HEADERS}
   ${UTILS_HEADERS}
   ${UTILS_EVENT_HEADERS}
   ${UTILS_BASE64_HEADERS}
@@ -118,73 +160,71 @@ file(GLOB AWSNativeSDK_SHARED_SRC
   ${UTILS_CRYPTO_BCRYPT_HEADERS}
   ${UTILS_CRYPTO_OPENSSL_HEADERS}
   ${UTILS_CRYPTO_COMMONCRYPTO_HEADERS}
-
-  ${AWS_SOURCE}
-  ${AWS_TINYXML2_SOURCE}
-  ${AWS_JSONCPP_SOURCE}
-  ${AWS_AUTH_SOURCE}
-  ${AWS_CLIENT_SOURCE}
-  ${AWS_INTERNAL_SOURCE}
-  ${HTTP_SOURCE}
-  ${HTTP_STANDARD_SOURCE}
-  ${HTTP_CLIENT_SOURCE}
-  ${UTILS_SOURCE}
-  ${UTILS_EVENT_SOURCE}
-  ${UTILS_BASE64_SOURCE}
-  ${UTILS_CRYPTO_SOURCE}
-  ${UTILS_JSON_SOURCE}
-  ${UTILS_THREADING_SOURCE}
-  ${UTILS_RETRY_SOURCE}
-  ${UTILS_XML_SOURCE}
-  ${UTILS_STREAM_SOURCE}
-  ${UTILS_LOGGING_SOURCE}
-  ${UTILS_MEMORY_SOURCE}
-  ${UTILS_STREAM_SOURCE}
-  ${HTTP_CURL_CLIENT_SOURCE}
-  ${HTTP_WINDOWS_CLIENT_SOURCE}
-  ${UTILS_CRYPTO_BCRYPT_SOURCE}
-  ${UTILS_CRYPTO_OPENSSL_SOURCE}
-  ${UTILS_CRYPTO_COMMONCRYPTO_SOURCE}
 ) 
 
 # misc platform-specific, not related to features (encryption/http clients)
 if(PLATFORM_WINDOWS)
 
   #add your windows specific impl stuff here.
-  file(GLOB UTILS_WINDOWS_SOURCE = "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/windows/*.cpp")
+  file(GLOB PLATFORM_WINDOWS_SOURCE = "${CMAKE_CURRENT_SOURCE_DIR}/source/platform/windows/*.cpp")
 
-  file(GLOB AWSNativeSDK_WINDOWS_SRC 
-    ${UTILS_WINDOWS_SOURCE}
+  file(GLOB AWS_NATIVE_SDK_WINDOWS_SRC 
+    ${PLATFORM_WINDOWS_SOURCE}
   )
-endif()
-
-if(PLATFORM_LINUX OR PLATFORM_ANDROID OR PLATFORM_APPLE)
+elseif(PLATFORM_LINUX OR PLATFORM_APPLE)
 
   #add unix specific impl stuff here.
 
-  file(GLOB UTILS_UNIX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/unix/*.cpp")
+  file(GLOB PLATFORM_LINUX_SHARED_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/platform/linux-shared/*.cpp")
 
-  file(GLOB AWSNativeSDK_UNIX_SRC 
-     ${UTILS_UNIX_SOURCE}
+  file(GLOB AWS_NATIVE_SDK_LINUX_SHARED_SRC 
+     ${PLATFORM_LINUX_SHARED_SOURCE}
    )
-endif()
+elseif(PLATFORM_ANDROID)
+  file(GLOB UTILS_LOGGING_ANDROID_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/logging/android/*.h")
+  file(GLOB PLATFORM_ANDROID_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/platform/android/*.cpp")
 
-if(PLATFORM_ANDROID)
-    file(GLOB UTILS_LOGGING_ANDROID_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/logging/android/*.cpp")
-    file(GLOB UTILS_LOGGING_ANDROID_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/logging/android/*.h")
-
-  file(GLOB AWSNativeSDK_ANDROID_SRC 
-     ${UTILS_LOGGING_ANDROID_SOURCE}
+  file(GLOB AWS_NATIVE_SDK_ANDROID_SRC 
+     ${PLATFORM_ANDROID_SOURCE}
+  )
+  file(GLOB AWS_NATIVE_SDK_ANDROID_HEADERS
      ${UTILS_LOGGING_ANDROID_HEADERS}
   )
+elseif(PLATFORM_CUSTOM)
+  gather_custom_core_source(AWS_NATIVE_SDK_CUSTOM_SRC)
 endif()
 
+file(GLOB AWS_NATIVE_SDK_NON_UNITY_SRC
+    ${HTTP_WINDOWS_CLIENT_SOURCE}
+    ${UTILS_CRYPTO_BCRYPT_SOURCE}
+    ${AWS_NATIVE_SDK_WINDOWS_SRC}
+    ${UTILS_CRYPTO_FACTORY_SOURCE}
+    ${UTILS_SOURCE}
+    ${AWS_JSONCPP_SOURCE}
+)
 
-file(GLOB AWSNativeSDK_SRC
-  ${AWSNativeSDK_SHARED_SRC}
-  ${AWSNativeSDK_WINDOWS_SRC}
-  ${AWSNativeSDK_UNIX_SRC}
-  ${AWSNativeSDK_ANDROID_SRC}
+file(GLOB AWS_NATIVE_SDK_UNITY_SRC
+  ${AWS_NATIVE_SDK_COMMON_SRC}
+  ${AWS_NATIVE_SDK_LINUX_SHARED_SRC}
+  ${AWS_NATIVE_SDK_ANDROID_SRC}
+  ${AWS_NATIVE_SDK_CUSTOM_SRC}
+)
+
+if(ENABLE_UNITY_BUILD)
+    enable_unity_build("core" AWS_NATIVE_SDK_UNITY_SRC)
+endif()
+
+file(GLOB AWS_NATIVE_SDK_UNIFIED_HEADERS
+  ${AWS_NATIVE_SDK_COMMON_HEADERS}
+  ${AWS_NATIVE_SDK_WINDOWS_HEADERS}
+  ${AWS_NATIVE_SDK_UNIX_HEADERS}
+  ${AWS_NATIVE_SDK_ANDROID_HEADERS}
+)
+
+file(GLOB AWS_NATIVE_SDK_SRC
+    ${AWS_NATIVE_SDK_UNIFIED_HEADERS}
+    ${AWS_NATIVE_SDK_UNITY_SRC}
+    ${AWS_NATIVE_SDK_NON_UNITY_SRC}
 )
 
 # Visual studio project directory structure
@@ -195,6 +235,8 @@ if(MSVC)
     source_group("Header Files\\aws\\core\\internal" FILES ${AWS_INTERNAL_HEADERS})
     source_group("Header Files\\aws\\core\\http" FILES ${HTTP_HEADERS})
     source_group("Header Files\\aws\\core\\http\\standard" FILES ${HTTP_STANDARD_HEADERS})
+    source_group("Header Files\\aws\\core\\config" FILES ${CONFIG_HEADERS})
+    source_group("Header Files\\aws\\core\\platform" FILES ${PLATFORM_HEADERS})
     source_group("Header Files\\aws\\core\\utils" FILES ${UTILS_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\base64" FILES ${UTILS_BASE64_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\crypto" FILES ${UTILS_CRYPTO_HEADERS})
@@ -234,9 +276,12 @@ if(MSVC)
     source_group("Source Files\\internal" FILES ${AWS_INTERNAL_SOURCE})
     source_group("Source Files\\http" FILES ${HTTP_SOURCE})
     source_group("Source Files\\http\\standard" FILES ${HTTP_STANDARD_SOURCE})
+    source_group("Source Files\\config" FILES ${CONFIG_SOURCE})
+    source_group("Source Files\\platform\\windows" FILES ${PLATFORM_WINDOWS_SOURCE})
     source_group("Source Files\\utils" FILES ${UTILS_SOURCE})
     source_group("Source Files\\utils\\base64" FILES ${UTILS_BASE64_SOURCE})
     source_group("Source Files\\utils\\crypto" FILES ${UTILS_CRYPTO_SOURCE})
+    source_group("Source Files\\utils\\crypto\\factory" FILES ${UTILS_CRYPTO_FACTORY_SOURCE})
     source_group("Source Files\\utils\\exceptions" FILES ${UTILS_EXCEPTIONS_SOURCE})
     source_group("Source Files\\utils\\json" FILES ${UTILS_JSON_SOURCE})
     source_group("Source Files\\utils\\threading" FILES ${UTILS_THREADING_SOURCE})
@@ -260,13 +305,15 @@ if(MSVC)
     elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
             source_group("Source Files\\utils\\crypto\\commoncrypto" FILES ${UTILS_CRYPTO_COMMONCRYPTO_SOURCE})
     endif()
+
+
 endif(MSVC)
 
 set(Core_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 
 include_directories(${Core_INCLUDES})
 
-if(PLATFORM_WINDOWS AND MSVC AND BUILD_SHARED_LIBS)
+if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
   add_definitions("-DAWS_CORE_EXPORTS=1")
 endif()
 
@@ -278,71 +325,57 @@ if(PLATFORM_ANDROID)
 
 endif()
 
-add_library(aws-cpp-sdk-core ${LIBTYPE} ${AWSNativeSDK_SRC})
+add_library(aws-cpp-sdk-core ${LIBTYPE} ${AWS_NATIVE_SDK_SRC})
 list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-core")
 set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
-if(PLATFORM_ANDROID)
-    if(ENABLE_CURL_CLIENT)
-        add_dependencies(aws-cpp-sdk-core CURL)
-    endif()
-    if(ENABLE_OPENSSL_ENCRYPTION)
-        add_dependencies(aws-cpp-sdk-core OPENSSL)
-    endif()
+if(ENABLE_CURL_CLIENT AND BUILD_CURL)
+    add_dependencies(aws-cpp-sdk-core CURL)
+endif()
+
+if(ENABLE_OPENSSL_ENCRYPTION AND BUILD_OPENSSL)
+    add_dependencies(aws-cpp-sdk-core OPENSSL)
 endif()
 
 target_include_directories(aws-cpp-sdk-core PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
-target_link_libraries(aws-cpp-sdk-core ${PLATFORM_DEP_LIBS} ${CRYPTO_LIBS} ${CLIENT_LIBS})
-
+target_link_libraries(aws-cpp-sdk-core ${PLATFORM_DEP_LIBS} ${CLIENT_LIBS} ${CRYPTO_LIBS})
 
 target_compile_definitions(aws-cpp-sdk-core PUBLIC -DJSON_USE_EXCEPTION=0)
 
-# If building shared libraries, custom memory management enabled is the default, otherwise regular memory management is the default.
-# We make custom memory management the default on shared library builds because it is safer and much more difficult to accidentally
-# allocate in one DLLs heap while freeing in another (which will lead to runtime crashes)
-if(("${CUSTOM_MEMORY_MANAGEMENT}" STREQUAL "1") OR (BUILD_SHARED_LIBS AND NOT ("${CUSTOM_MEMORY_MANAGEMENT}" STREQUAL "0")))
-    target_compile_definitions(aws-cpp-sdk-core PUBLIC -DAWS_CUSTOM_MEMORY_MANAGEMENT)
-    message(STATUS "Custom memory management enabled; stl objects now using custom allocators")
-else()
-    message(STATUS "Custom memory management disabled")
+if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
+    target_compile_definitions(aws-cpp-sdk-core PUBLIC -DUSE_IMPORT_EXPORT=1)
 endif()
 
 if(NOT PLATFORM_WINDOWS)
-    target_compile_options(aws-cpp-sdk-core PUBLIC -std=c++11)
-    if(NOT BUILD_SHARED_LIBS)
-        target_compile_options(aws-cpp-sdk-core PUBLIC -fPIC)
-    endif()
+    target_compile_options(aws-cpp-sdk-core PUBLIC -std=c++${CPP_STANDARD})
 
-    if(PLATFORM_LINUX OR PLATFORM_ANDROID OR PLATFORM_APPLE)
-        # max warning level, warnings are errors, turn off unused private field. We have one for an empty class.
-        # We also have some nested comments in the auto-generated member comments so turn that off as well
-       target_compile_options(aws-cpp-sdk-core PRIVATE -Wall -Werror -Wno-comment)
-
-       if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-           target_compile_options(aws-cpp-sdk-core PRIVATE -Wno-unused-private-field)
-       endif()
+    if(USE_GCC_FLAGS)
+        if(NOT ENABLE_RTTI)
+            target_compile_options(aws-cpp-sdk-core PUBLIC -fno-rtti)
+        endif()
     endif()
 elseif(MSVC)
-    target_compile_options(aws-cpp-sdk-core PRIVATE /bigobj)
 
-    # warnings as errors, max warning level (4)
-    if(NOT CMAKE_CXX_FLAGS MATCHES "/WX")
-        target_compile_options(aws-cpp-sdk-core PRIVATE /WX)
-    endif()
-
-    # taken from http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
-    if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-        string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-    else()
-        target_compile_options(aws-cpp-sdk-core PRIVATE /W4)
+    if(NOT ENABLE_RTTI)
+        target_compile_options(aws-cpp-sdk-core PUBLIC /GR-)
     endif()
 endif()
 
-install (TARGETS aws-cpp-sdk-core ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-                                  LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-				                  RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+if(SIMPLE_INSTALL)
+    install (TARGETS aws-cpp-sdk-core ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+                                      LIBRARY DESTINATION lib
+                                      RUNTIME DESTINATION bin)
+else()
+    if(PLATFORM_CUSTOM)
+        install_custom_library(aws-cpp-sdk-core)
+    else()
+        install (TARGETS aws-cpp-sdk-core ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+                                          LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+                                          RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+endif()
 
 install (FILES ${AWS_HEADERS} DESTINATION include/aws/core)
 install (FILES ${AWS_AUTH_HEADERS} DESTINATION include/aws/core/auth)
@@ -350,6 +383,7 @@ install (FILES ${AWS_CLIENT_HEADERS} DESTINATION include/aws/core/client)
 install (FILES ${AWS_INTERNAL_HEADERS} DESTINATION include/aws/core/internal)
 install (FILES ${HTTP_HEADERS} DESTINATION include/aws/core/http)
 install (FILES ${HTTP_STANDARD_HEADERS} DESTINATION include/aws/core/http/standard)
+install (FILES ${PLATFORM_HEADERS} DESTINATION include/aws/core/platform)
 install (FILES ${UTILS_HEADERS} DESTINATION include/aws/core/utils)
 install (FILES ${UTILS_EVENT_HEADERS} DESTINATION include/aws/core/utils/event)
 install (FILES ${UTILS_BASE64_HEADERS} DESTINATION include/aws/core/utils/base64)
@@ -382,3 +416,6 @@ elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
   install (FILES ${UTILS_CRYPTO_COMMONCRYPTO_HEADERS} DESTINATION include/aws/core/utils/crypto/commoncrypto)
 endif()
 
+if(MSVC)
+  install (FILES nuget/aws-cpp-sdk-core.autopkg DESTINATION nuget)
+endif()

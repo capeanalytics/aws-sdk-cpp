@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -23,6 +23,7 @@ using namespace Aws::Utils;
 
 ListTaskDefinitionFamiliesRequest::ListTaskDefinitionFamiliesRequest() : 
     m_familyPrefixHasBeenSet(false),
+    m_statusHasBeenSet(false),
     m_nextTokenHasBeenSet(false),
     m_maxResults(0),
     m_maxResultsHasBeenSet(false)
@@ -37,6 +38,11 @@ Aws::String ListTaskDefinitionFamiliesRequest::SerializePayload() const
   {
    payload.WithString("familyPrefix", m_familyPrefix);
 
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", TaskDefinitionFamilyStatusMapper::GetNameForTaskDefinitionFamilyStatus(m_status));
   }
 
   if(m_nextTokenHasBeenSet)

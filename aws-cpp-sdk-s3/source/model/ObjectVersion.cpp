@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::S3::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace S3
+{
+namespace Model
+{
 
 ObjectVersion::ObjectVersion() : 
     m_eTagHasBeenSet(false),
@@ -167,3 +173,7 @@ void ObjectVersion::AddToNode(XmlNode& parentNode) const
   }
 
 }
+
+} // namespace Model
+} // namespace S3
+} // namespace Aws

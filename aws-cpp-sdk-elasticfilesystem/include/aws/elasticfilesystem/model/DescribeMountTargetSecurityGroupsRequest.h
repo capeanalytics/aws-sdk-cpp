@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,7 @@ namespace Model
 {
 
   /**
+   * <p/>
    */
   class AWS_EFS_API DescribeMountTargetSecurityGroupsRequest : public EFSRequest
   {
@@ -33,37 +34,37 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline const Aws::String& GetMountTargetId() const{ return m_mountTargetId; }
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline void SetMountTargetId(const Aws::String& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = value; }
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline void SetMountTargetId(Aws::String&& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = value; }
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline void SetMountTargetId(const char* value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId.assign(value); }
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline DescribeMountTargetSecurityGroupsRequest& WithMountTargetId(const Aws::String& value) { SetMountTargetId(value); return *this;}
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline DescribeMountTargetSecurityGroupsRequest& WithMountTargetId(Aws::String&& value) { SetMountTargetId(value); return *this;}
 
     /**
-     * <p>The ID of the mount target whose security groups you want to retrieve.</p>
+     * <p>ID of the mount target whose security groups you want to retrieve.</p>
      */
     inline DescribeMountTargetSecurityGroupsRequest& WithMountTargetId(const char* value) { SetMountTargetId(value); return *this;}
 

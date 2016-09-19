@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,10 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to generate the CNAME records needed to set up Easy DKIM
+   * with Amazon SES. For more information about setting up Easy DKIM, see the <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API VerifyDomainDkimRequest : public SESRequest
   {

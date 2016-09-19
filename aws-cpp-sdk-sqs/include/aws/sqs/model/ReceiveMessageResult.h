@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,7 +35,7 @@ namespace SQS
 namespace Model
 {
   /**
-   * A list of received messages.
+   * <p>A list of received messages.</p>
    */
   class AWS_SQS_API ReceiveMessageResult
   {

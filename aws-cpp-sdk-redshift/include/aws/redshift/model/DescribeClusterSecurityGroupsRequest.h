@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -98,7 +98,7 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code></p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p> The maximum number of response records to return in each call. If the number
@@ -108,7 +108,7 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code></p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p> The maximum number of response records to return in each call. If the number
@@ -118,7 +118,7 @@ namespace Model
      * marker value. </p> <p>Default: <code>100</code></p> <p>Constraints: minimum 20,
      * maximum 100.</p>
      */
-    inline DescribeClusterSecurityGroupsRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeClusterSecurityGroupsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p> An optional parameter that specifies the starting point to return a set of
@@ -367,7 +367,7 @@ namespace Model
   private:
     Aws::String m_clusterSecurityGroupName;
     bool m_clusterSecurityGroupNameHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

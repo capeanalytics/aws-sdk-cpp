@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -76,6 +76,12 @@ GetIntegrationResult& GetIntegrationResult::operator =(const AmazonWebServiceRes
     {
       m_requestTemplates[requestTemplatesItem.first] = requestTemplatesItem.second.AsString();
     }
+  }
+
+  if(jsonValue.ValueExists("passthroughBehavior"))
+  {
+    m_passthroughBehavior = jsonValue.GetString("passthroughBehavior");
+
   }
 
   if(jsonValue.ValueExists("cacheNamespace"))

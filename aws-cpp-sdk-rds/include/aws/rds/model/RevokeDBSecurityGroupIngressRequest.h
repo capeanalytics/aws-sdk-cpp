@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,37 +34,37 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline const Aws::String& GetDBSecurityGroupName() const{ return m_dBSecurityGroupName; }
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline void SetDBSecurityGroupName(const Aws::String& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = value; }
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline void SetDBSecurityGroupName(Aws::String&& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = value; }
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline void SetDBSecurityGroupName(const char* value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName.assign(value); }
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline RevokeDBSecurityGroupIngressRequest& WithDBSecurityGroupName(const Aws::String& value) { SetDBSecurityGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline RevokeDBSecurityGroupIngressRequest& WithDBSecurityGroupName(Aws::String&& value) { SetDBSecurityGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB security group to revoke ingress from. </p>
+     * <p>The name of the DB security group to revoke ingress from.</p>
      */
     inline RevokeDBSecurityGroupIngressRequest& WithDBSecurityGroupName(const char* value) { SetDBSecurityGroupName(value); return *this;}
 

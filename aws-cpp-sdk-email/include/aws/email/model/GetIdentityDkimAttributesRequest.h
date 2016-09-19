@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,13 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request for the status of Amazon SES Easy DKIM signing for an
+   * identity. For domain identities, this request also returns the DKIM tokens that
+   * are required for Easy DKIM signing, and whether Amazon SES successfully verified
+   * that these tokens were published. For more information about Easy DKIM, see the
+   * <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API GetIdentityDkimAttributesRequest : public SESRequest
   {

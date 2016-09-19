@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,16 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int SOA_HASH = HashingUtils::HashString("SOA");
-static const int A_HASH = HashingUtils::HashString("A");
-static const int TXT_HASH = HashingUtils::HashString("TXT");
-static const int NS_HASH = HashingUtils::HashString("NS");
-static const int CNAME_HASH = HashingUtils::HashString("CNAME");
-static const int MX_HASH = HashingUtils::HashString("MX");
-static const int PTR_HASH = HashingUtils::HashString("PTR");
-static const int SRV_HASH = HashingUtils::HashString("SRV");
-static const int SPF_HASH = HashingUtils::HashString("SPF");
-static const int AAAA_HASH = HashingUtils::HashString("AAAA");
 
 namespace Aws
 {
@@ -38,6 +28,18 @@ namespace Aws
     {
       namespace RRTypeMapper
       {
+
+        static const int SOA_HASH = HashingUtils::HashString("SOA");
+        static const int A_HASH = HashingUtils::HashString("A");
+        static const int TXT_HASH = HashingUtils::HashString("TXT");
+        static const int NS_HASH = HashingUtils::HashString("NS");
+        static const int CNAME_HASH = HashingUtils::HashString("CNAME");
+        static const int MX_HASH = HashingUtils::HashString("MX");
+        static const int NAPTR_HASH = HashingUtils::HashString("NAPTR");
+        static const int PTR_HASH = HashingUtils::HashString("PTR");
+        static const int SRV_HASH = HashingUtils::HashString("SRV");
+        static const int SPF_HASH = HashingUtils::HashString("SPF");
+        static const int AAAA_HASH = HashingUtils::HashString("AAAA");
 
 
         RRType GetRRTypeForName(const Aws::String& name)
@@ -66,6 +68,10 @@ namespace Aws
           else if (hashCode == MX_HASH)
           {
             return RRType::MX;
+          }
+          else if (hashCode == NAPTR_HASH)
+          {
+            return RRType::NAPTR;
           }
           else if (hashCode == PTR_HASH)
           {
@@ -109,6 +115,8 @@ namespace Aws
             return "CNAME";
           case RRType::MX:
             return "MX";
+          case RRType::NAPTR:
+            return "NAPTR";
           case RRType::PTR:
             return "PTR";
           case RRType::SRV:

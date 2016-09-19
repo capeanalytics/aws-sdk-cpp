@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InstanceCapacity::InstanceCapacity() : 
     m_instanceTypeHasBeenSet(false),
@@ -77,14 +83,17 @@ void InstanceCapacity::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
+
   if(m_availableCapacityHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailableCapacity=" << m_availableCapacity << "&";
   }
+
   if(m_totalCapacityHasBeenSet)
   {
       oStream << location << index << locationValue << ".TotalCapacity=" << m_totalCapacity << "&";
   }
+
 }
 
 void InstanceCapacity::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -102,3 +111,7 @@ void InstanceCapacity::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << ".TotalCapacity=" << m_totalCapacity << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

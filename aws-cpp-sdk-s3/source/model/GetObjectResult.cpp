@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -139,12 +139,13 @@ GetObjectResult& GetObjectResult::operator =(AmazonWebServiceResult<ResponseStre
   const auto& lastModifiedIter = headers.find("last-modified");
   if(lastModifiedIter != headers.end())
   {
+    m_lastModified = DateTime(lastModifiedIter->second, DateFormat::RFC822);
   }
 
   const auto& contentLengthIter = headers.find("content-length");
   if(contentLengthIter != headers.end())
   {
-     m_contentLength = StringUtils::ConvertToInt32(contentLengthIter->second.c_str());
+     m_contentLength = StringUtils::ConvertToInt64(contentLengthIter->second.c_str());
   }
 
   const auto& eTagIter = headers.find("etag");
@@ -204,6 +205,7 @@ GetObjectResult& GetObjectResult::operator =(AmazonWebServiceResult<ResponseStre
   const auto& expiresIter = headers.find("expires");
   if(expiresIter != headers.end())
   {
+    m_expires = DateTime(expiresIter->second, DateFormat::RFC822);
   }
 
   const auto& websiteRedirectLocationIter = headers.find("x-amz-website-redirect-location");

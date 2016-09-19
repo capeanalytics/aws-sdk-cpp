@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,19 +17,27 @@
 
 #include <utility>
 
-using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace GameLift
+{
+namespace Model
+{
+
 S3Location::S3Location() : 
     m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
+    m_keyHasBeenSet(false),
+    m_roleArnHasBeenSet(false)
 {
 }
 
 S3Location::S3Location(const JsonValue& jsonValue) : 
     m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
+    m_keyHasBeenSet(false),
+    m_roleArnHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -48,6 +56,13 @@ S3Location& S3Location::operator =(const JsonValue& jsonValue)
     m_key = jsonValue.GetString("Key");
 
     m_keyHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RoleArn"))
+  {
+    m_roleArn = jsonValue.GetString("RoleArn");
+
+    m_roleArnHasBeenSet = true;
   }
 
   return *this;
@@ -69,5 +84,15 @@ JsonValue S3Location::Jsonize() const
 
   }
 
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("RoleArn", m_roleArn);
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace GameLift
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 EnvironmentInfoDescription::EnvironmentInfoDescription() : 
     m_infoTypeHasBeenSet(false),
@@ -81,18 +87,22 @@ void EnvironmentInfoDescription::OutputToStream(Aws::OStream& oStream, const cha
   {
       oStream << location << index << locationValue << ".InfoType=" << EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType) << "&";
   }
+
   if(m_ec2InstanceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".Ec2InstanceId=" << StringUtils::URLEncode(m_ec2InstanceId.c_str()) << "&";
   }
+
   if(m_sampleTimestampHasBeenSet)
   {
       oStream << location << index << locationValue << ".SampleTimestamp=" << StringUtils::URLEncode(m_sampleTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_messageHasBeenSet)
   {
       oStream << location << index << locationValue << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
+
 }
 
 void EnvironmentInfoDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void EnvironmentInfoDescription::OutputToStream(Aws::OStream& oStream, const cha
       oStream << location << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

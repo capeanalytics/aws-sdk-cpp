@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,8 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to delete an email address from the list of email
+   * addresses you have attempted to verify under your AWS account.</p>
    */
   class AWS_SES_API DeleteVerifiedEmailAddressRequest : public SESRequest
   {

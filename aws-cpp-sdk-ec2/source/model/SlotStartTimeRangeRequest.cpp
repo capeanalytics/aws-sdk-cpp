@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 SlotStartTimeRangeRequest::SlotStartTimeRangeRequest() : 
     m_earliestTimeHasBeenSet(false),
@@ -65,10 +71,12 @@ void SlotStartTimeRangeRequest::OutputToStream(Aws::OStream& oStream, const char
   {
       oStream << location << index << locationValue << ".EarliestTime=" << StringUtils::URLEncode(m_earliestTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_latestTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".LatestTime=" << StringUtils::URLEncode(m_latestTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void SlotStartTimeRangeRequest::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void SlotStartTimeRangeRequest::OutputToStream(Aws::OStream& oStream, const char
       oStream << location << ".LatestTime=" << StringUtils::URLEncode(m_latestTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

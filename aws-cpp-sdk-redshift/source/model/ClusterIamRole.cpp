@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 ClusterIamRole::ClusterIamRole() : 
     m_iamRoleArnHasBeenSet(false),
@@ -65,10 +71,12 @@ void ClusterIamRole::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".IamRoleArn=" << StringUtils::URLEncode(m_iamRoleArn.c_str()) << "&";
   }
+
   if(m_applyStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".ApplyStatus=" << StringUtils::URLEncode(m_applyStatus.c_str()) << "&";
   }
+
 }
 
 void ClusterIamRole::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void ClusterIamRole::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".ApplyStatus=" << StringUtils::URLEncode(m_applyStatus.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

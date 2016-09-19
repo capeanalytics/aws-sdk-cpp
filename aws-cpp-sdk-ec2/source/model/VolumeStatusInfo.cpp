@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VolumeStatusInfo::VolumeStatusInfo() : 
     m_statusHasBeenSet(false),
@@ -71,6 +77,7 @@ void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".Status=" << VolumeStatusInfoStatusMapper::GetNameForVolumeStatusInfoStatus(m_status) << "&";
   }
+
   if(m_detailsHasBeenSet)
   {
       unsigned detailsIdx = 1;
@@ -81,6 +88,7 @@ void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
+
 }
 
 void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void VolumeStatusInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

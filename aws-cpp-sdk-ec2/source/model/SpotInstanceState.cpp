@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int open_HASH = HashingUtils::HashString("open");
-static const int active_HASH = HashingUtils::HashString("active");
-static const int closed_HASH = HashingUtils::HashString("closed");
-static const int cancelled_HASH = HashingUtils::HashString("cancelled");
-static const int failed_HASH = HashingUtils::HashString("failed");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace SpotInstanceStateMapper
       {
+
+        static const int open_HASH = HashingUtils::HashString("open");
+        static const int active_HASH = HashingUtils::HashString("active");
+        static const int closed_HASH = HashingUtils::HashString("closed");
+        static const int cancelled_HASH = HashingUtils::HashString("cancelled");
+        static const int failed_HASH = HashingUtils::HashString("failed");
 
 
         SpotInstanceState GetSpotInstanceStateForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudFormation
+{
+namespace Model
+{
 
 StackSummary::StackSummary() : 
     m_stackIdHasBeenSet(false),
@@ -113,34 +119,42 @@ void StackSummary::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".StackId=" << StringUtils::URLEncode(m_stackId.c_str()) << "&";
   }
+
   if(m_stackNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".StackName=" << StringUtils::URLEncode(m_stackName.c_str()) << "&";
   }
+
   if(m_templateDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".TemplateDescription=" << StringUtils::URLEncode(m_templateDescription.c_str()) << "&";
   }
+
   if(m_creationTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreationTime=" << StringUtils::URLEncode(m_creationTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_lastUpdatedTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".LastUpdatedTime=" << StringUtils::URLEncode(m_lastUpdatedTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_deletionTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeletionTime=" << StringUtils::URLEncode(m_deletionTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_stackStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".StackStatus=" << StackStatusMapper::GetNameForStackStatus(m_stackStatus) << "&";
   }
+
   if(m_stackStatusReasonHasBeenSet)
   {
       oStream << location << index << locationValue << ".StackStatusReason=" << StringUtils::URLEncode(m_stackStatusReason.c_str()) << "&";
   }
+
 }
 
 void StackSummary::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -178,3 +192,7 @@ void StackSummary::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".StackStatusReason=" << StringUtils::URLEncode(m_stackStatusReason.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudFormation
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ALL_ATTRIBUTES_HASH = HashingUtils::HashString("ALL_ATTRIBUTES");
-static const int ALL_PROJECTED_ATTRIBUTES_HASH = HashingUtils::HashString("ALL_PROJECTED_ATTRIBUTES");
-static const int SPECIFIC_ATTRIBUTES_HASH = HashingUtils::HashString("SPECIFIC_ATTRIBUTES");
-static const int COUNT_HASH = HashingUtils::HashString("COUNT");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace SelectMapper
       {
+
+        static const int ALL_ATTRIBUTES_HASH = HashingUtils::HashString("ALL_ATTRIBUTES");
+        static const int ALL_PROJECTED_ATTRIBUTES_HASH = HashingUtils::HashString("ALL_PROJECTED_ATTRIBUTES");
+        static const int SPECIFIC_ATTRIBUTES_HASH = HashingUtils::HashString("SPECIFIC_ATTRIBUTES");
+        static const int COUNT_HASH = HashingUtils::HashString("COUNT");
 
 
         Select GetSelectForName(const Aws::String& name)

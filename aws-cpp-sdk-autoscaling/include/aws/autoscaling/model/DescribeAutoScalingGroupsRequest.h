@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,7 @@ namespace Model
 {
 
   /**
+   * <p>Contains the parameters for DescribeAutoScalingGroups.</p>
    */
   class AWS_AUTOSCALING_API DescribeAutoScalingGroupsRequest : public AutoScalingRequest
   {
@@ -34,42 +35,50 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline const Aws::Vector<Aws::String>& GetAutoScalingGroupNames() const{ return m_autoScalingGroupNames; }
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline void SetAutoScalingGroupNames(const Aws::Vector<Aws::String>& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames = value; }
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline void SetAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames = value; }
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline DescribeAutoScalingGroupsRequest& WithAutoScalingGroupNames(const Aws::Vector<Aws::String>& value) { SetAutoScalingGroupNames(value); return *this;}
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline DescribeAutoScalingGroupsRequest& WithAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroupNames(value); return *this;}
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline DescribeAutoScalingGroupsRequest& AddAutoScalingGroupNames(const Aws::String& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames.push_back(value); return *this; }
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline DescribeAutoScalingGroupsRequest& AddAutoScalingGroupNames(Aws::String&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames.push_back(value); return *this; }
 
     /**
-     * <p>The group names.</p>
+     * <p>The group names. If you omit this parameter, all Auto Scaling groups are
+     * described.</p>
      */
     inline DescribeAutoScalingGroupsRequest& AddAutoScalingGroupNames(const char* value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames.push_back(value); return *this; }
 
@@ -118,24 +127,24 @@ namespace Model
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline DescribeAutoScalingGroupsRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeAutoScalingGroupsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_autoScalingGroupNames;
     bool m_autoScalingGroupNamesHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
   };
 

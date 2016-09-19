@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -45,47 +45,92 @@ namespace Model
     Aws::Utils::Json::JsonValue Jsonize() const;
 
     /**
-     * <p>The log driver to use for the container. This parameter requires version 1.18
-     * of the Docker Remote API or greater on your container instance. To check the
-     * Docker Remote API version on your container instance, log into your container
-     * instance and run the following command: <code>sudo docker version | grep "Server
-     * API version"</code></p>
+     * <p>The log driver to use for the container. The valid values listed for this
+     * parameter are log drivers that the Amazon ECS container agent can communicate
+     * with by default. </p> <note> <p>If you have a custom driver that is not listed
+     * above that you would like to work with the Amazon ECS container agent, you can
+     * fork the Amazon ECS container agent project that is <a
+     * href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and
+     * customize it to work with that driver. We encourage you to submit pull requests
+     * for changes that you would like to have included. However, Amazon Web Services
+     * does not currently provide support for running modified copies of this
+     * software.</p> </note> <p>This parameter requires version 1.18 of the Docker
+     * Remote API or greater on your container instance. To check the Docker Remote API
+     * version on your container instance, log into your container instance and run the
+     * following command: <code>sudo docker version | grep "Server API version"</code>
+     * </p>
      */
     inline const LogDriver& GetLogDriver() const{ return m_logDriver; }
 
     /**
-     * <p>The log driver to use for the container. This parameter requires version 1.18
-     * of the Docker Remote API or greater on your container instance. To check the
-     * Docker Remote API version on your container instance, log into your container
-     * instance and run the following command: <code>sudo docker version | grep "Server
-     * API version"</code></p>
+     * <p>The log driver to use for the container. The valid values listed for this
+     * parameter are log drivers that the Amazon ECS container agent can communicate
+     * with by default. </p> <note> <p>If you have a custom driver that is not listed
+     * above that you would like to work with the Amazon ECS container agent, you can
+     * fork the Amazon ECS container agent project that is <a
+     * href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and
+     * customize it to work with that driver. We encourage you to submit pull requests
+     * for changes that you would like to have included. However, Amazon Web Services
+     * does not currently provide support for running modified copies of this
+     * software.</p> </note> <p>This parameter requires version 1.18 of the Docker
+     * Remote API or greater on your container instance. To check the Docker Remote API
+     * version on your container instance, log into your container instance and run the
+     * following command: <code>sudo docker version | grep "Server API version"</code>
+     * </p>
      */
     inline void SetLogDriver(const LogDriver& value) { m_logDriverHasBeenSet = true; m_logDriver = value; }
 
     /**
-     * <p>The log driver to use for the container. This parameter requires version 1.18
-     * of the Docker Remote API or greater on your container instance. To check the
-     * Docker Remote API version on your container instance, log into your container
-     * instance and run the following command: <code>sudo docker version | grep "Server
-     * API version"</code></p>
+     * <p>The log driver to use for the container. The valid values listed for this
+     * parameter are log drivers that the Amazon ECS container agent can communicate
+     * with by default. </p> <note> <p>If you have a custom driver that is not listed
+     * above that you would like to work with the Amazon ECS container agent, you can
+     * fork the Amazon ECS container agent project that is <a
+     * href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and
+     * customize it to work with that driver. We encourage you to submit pull requests
+     * for changes that you would like to have included. However, Amazon Web Services
+     * does not currently provide support for running modified copies of this
+     * software.</p> </note> <p>This parameter requires version 1.18 of the Docker
+     * Remote API or greater on your container instance. To check the Docker Remote API
+     * version on your container instance, log into your container instance and run the
+     * following command: <code>sudo docker version | grep "Server API version"</code>
+     * </p>
      */
     inline void SetLogDriver(LogDriver&& value) { m_logDriverHasBeenSet = true; m_logDriver = value; }
 
     /**
-     * <p>The log driver to use for the container. This parameter requires version 1.18
-     * of the Docker Remote API or greater on your container instance. To check the
-     * Docker Remote API version on your container instance, log into your container
-     * instance and run the following command: <code>sudo docker version | grep "Server
-     * API version"</code></p>
+     * <p>The log driver to use for the container. The valid values listed for this
+     * parameter are log drivers that the Amazon ECS container agent can communicate
+     * with by default. </p> <note> <p>If you have a custom driver that is not listed
+     * above that you would like to work with the Amazon ECS container agent, you can
+     * fork the Amazon ECS container agent project that is <a
+     * href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and
+     * customize it to work with that driver. We encourage you to submit pull requests
+     * for changes that you would like to have included. However, Amazon Web Services
+     * does not currently provide support for running modified copies of this
+     * software.</p> </note> <p>This parameter requires version 1.18 of the Docker
+     * Remote API or greater on your container instance. To check the Docker Remote API
+     * version on your container instance, log into your container instance and run the
+     * following command: <code>sudo docker version | grep "Server API version"</code>
+     * </p>
      */
     inline LogConfiguration& WithLogDriver(const LogDriver& value) { SetLogDriver(value); return *this;}
 
     /**
-     * <p>The log driver to use for the container. This parameter requires version 1.18
-     * of the Docker Remote API or greater on your container instance. To check the
-     * Docker Remote API version on your container instance, log into your container
-     * instance and run the following command: <code>sudo docker version | grep "Server
-     * API version"</code></p>
+     * <p>The log driver to use for the container. The valid values listed for this
+     * parameter are log drivers that the Amazon ECS container agent can communicate
+     * with by default. </p> <note> <p>If you have a custom driver that is not listed
+     * above that you would like to work with the Amazon ECS container agent, you can
+     * fork the Amazon ECS container agent project that is <a
+     * href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and
+     * customize it to work with that driver. We encourage you to submit pull requests
+     * for changes that you would like to have included. However, Amazon Web Services
+     * does not currently provide support for running modified copies of this
+     * software.</p> </note> <p>This parameter requires version 1.18 of the Docker
+     * Remote API or greater on your container instance. To check the Docker Remote API
+     * version on your container instance, log into your container instance and run the
+     * following command: <code>sudo docker version | grep "Server API version"</code>
+     * </p>
      */
     inline LogConfiguration& WithLogDriver(LogDriver&& value) { SetLogDriver(value); return *this;}
 
@@ -94,7 +139,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetOptions() const{ return m_options; }
 
@@ -103,7 +148,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline void SetOptions(const Aws::Map<Aws::String, Aws::String>& value) { m_optionsHasBeenSet = true; m_options = value; }
 
@@ -112,7 +157,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline void SetOptions(Aws::Map<Aws::String, Aws::String>&& value) { m_optionsHasBeenSet = true; m_options = value; }
 
@@ -121,7 +166,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& WithOptions(const Aws::Map<Aws::String, Aws::String>& value) { SetOptions(value); return *this;}
 
@@ -130,7 +175,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& WithOptions(Aws::Map<Aws::String, Aws::String>&& value) { SetOptions(value); return *this;}
 
@@ -139,7 +184,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(const Aws::String& key, const Aws::String& value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -148,7 +193,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(Aws::String&& key, const Aws::String& value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -157,7 +202,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(const Aws::String& key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -166,7 +211,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(Aws::String&& key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -175,7 +220,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(const char* key, Aws::String&& value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -184,7 +229,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(Aws::String&& key, const char* value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 
@@ -193,7 +238,7 @@ namespace Model
      * version 1.19 of the Docker Remote API or greater on your container instance. To
      * check the Docker Remote API version on your container instance, log into your
      * container instance and run the following command: <code>sudo docker version |
-     * grep "Server API version"</code></p>
+     * grep "Server API version"</code> </p>
      */
     inline LogConfiguration& AddOptions(const char* key, const char* value) { m_optionsHasBeenSet = true; m_options[key] = value; return *this; }
 

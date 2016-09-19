@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,6 +19,13 @@
 using namespace Aws::Client;
 using namespace Aws::EC2;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace EC2ErrorMapper
+{
 
 static const int INVALID_ROUTE_TABLE_I_D__NOT_FOUND_HASH = HashingUtils::HashString("InvalidRouteTableID.NotFound");
 static const int INSUFFICIENT_FREE_ADDRESSES_IN_SUBNET_HASH = HashingUtils::HashString("InsufficientFreeAddressesInSubnet");
@@ -194,12 +201,6 @@ static const int INVALID_ATTACHMENT__NOT_FOUND_HASH = HashingUtils::HashString("
 static const int SNAPSHOT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("SnapshotLimitExceeded");
 static const int MAX_SPOT_FLEET_REQUEST_COUNT_EXCEEDED_HASH = HashingUtils::HashString("MaxSpotFleetRequestCountExceeded");
 
-namespace Aws
-{
-namespace EC2
-{
-namespace EC2ErrorMapper
-{
 
 /*
 The if-else chains in this file are converted into a jump table by the compiler,

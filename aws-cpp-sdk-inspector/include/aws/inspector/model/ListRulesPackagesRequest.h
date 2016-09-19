@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -94,24 +94,24 @@ namespace Model
      * <p>You can use this parameter to indicate the maximum number of items you want
      * in the response. The default value is 10. The maximum value is 500.</p>
      */
-    inline long GetMaxResults() const{ return m_maxResults; }
+    inline int GetMaxResults() const{ return m_maxResults; }
 
     /**
      * <p>You can use this parameter to indicate the maximum number of items you want
      * in the response. The default value is 10. The maximum value is 500.</p>
      */
-    inline void SetMaxResults(long value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
 
     /**
      * <p>You can use this parameter to indicate the maximum number of items you want
      * in the response. The default value is 10. The maximum value is 500.</p>
      */
-    inline ListRulesPackagesRequest& WithMaxResults(long value) { SetMaxResults(value); return *this;}
+    inline ListRulesPackagesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
   private:
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxResults;
+    int m_maxResults;
     bool m_maxResultsHasBeenSet;
   };
 

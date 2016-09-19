@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,6 +17,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ecs/model/DeploymentConfiguration.h>
+#include <aws/core/utils/DateTime.h>
 #include <aws/ecs/model/LoadBalancer.h>
 #include <aws/ecs/model/Deployment.h>
 #include <aws/ecs/model/ServiceEvent.h>
@@ -51,7 +52,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline const Aws::String& GetServiceArn() const{ return m_serviceArn; }
 
@@ -60,7 +62,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline void SetServiceArn(const Aws::String& value) { m_serviceArnHasBeenSet = true; m_serviceArn = value; }
 
@@ -69,7 +72,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline void SetServiceArn(Aws::String&& value) { m_serviceArnHasBeenSet = true; m_serviceArn = value; }
 
@@ -78,7 +82,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline void SetServiceArn(const char* value) { m_serviceArnHasBeenSet = true; m_serviceArn.assign(value); }
 
@@ -87,7 +92,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline Service& WithServiceArn(const Aws::String& value) { SetServiceArn(value); return *this;}
 
@@ -96,7 +102,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline Service& WithServiceArn(Aws::String&& value) { SetServiceArn(value); return *this;}
 
@@ -105,7 +112,8 @@ namespace Model
      * the <code>arn:aws:ecs</code> namespace, followed by the region of the service,
      * the AWS account ID of the service owner, the <code>service</code> namespace, and
      * then the service name. For example,
-     * arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>.</p>
+     * <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i>
+     * </code>.</p>
      */
     inline Service& WithServiceArn(const char* value) { SetServiceArn(value); return *this;}
 
@@ -166,93 +174,86 @@ namespace Model
     inline Service& WithServiceName(const char* value) { SetServiceName(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline const Aws::String& GetClusterArn() const{ return m_clusterArn; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline void SetClusterArn(const Aws::String& value) { m_clusterArnHasBeenSet = true; m_clusterArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline void SetClusterArn(Aws::String&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline void SetClusterArn(const char* value) { m_clusterArnHasBeenSet = true; m_clusterArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline Service& WithClusterArn(const Aws::String& value) { SetClusterArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline Service& WithClusterArn(Aws::String&& value) { SetClusterArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the of the cluster that hosts the
-     * service.</p>
+     * <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
      */
     inline Service& WithClusterArn(const char* value) { SetClusterArn(value); return *this;}
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline const Aws::Vector<LoadBalancer>& GetLoadBalancers() const{ return m_loadBalancers; }
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline void SetLoadBalancers(const Aws::Vector<LoadBalancer>& value) { m_loadBalancersHasBeenSet = true; m_loadBalancers = value; }
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline void SetLoadBalancers(Aws::Vector<LoadBalancer>&& value) { m_loadBalancersHasBeenSet = true; m_loadBalancers = value; }
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline Service& WithLoadBalancers(const Aws::Vector<LoadBalancer>& value) { SetLoadBalancers(value); return *this;}
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline Service& WithLoadBalancers(Aws::Vector<LoadBalancer>&& value) { SetLoadBalancers(value); return *this;}
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline Service& AddLoadBalancers(const LoadBalancer& value) { m_loadBalancersHasBeenSet = true; m_loadBalancers.push_back(value); return *this; }
 
     /**
-     * <p>A list of load balancer objects, containing the load balancer name, the
-     * container name (as it appears in a container definition), and the container port
-     * to access from the load balancer.</p>
+     * <p>A list of Elastic Load Balancing load balancer objects, containing the load
+     * balancer name, the container name (as it appears in a container definition), and
+     * the container port to access from the load balancer.</p>
      */
     inline Service& AddLoadBalancers(LoadBalancer&& value) { m_loadBalancersHasBeenSet = true; m_loadBalancers.push_back(value); return *this; }
 
@@ -303,57 +304,57 @@ namespace Model
      * on the service. This value is specified when the service is created with
      * <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
      */
-    inline long GetDesiredCount() const{ return m_desiredCount; }
+    inline int GetDesiredCount() const{ return m_desiredCount; }
 
     /**
      * <p>The desired number of instantiations of the task definition to keep running
      * on the service. This value is specified when the service is created with
      * <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
      */
-    inline void SetDesiredCount(long value) { m_desiredCountHasBeenSet = true; m_desiredCount = value; }
+    inline void SetDesiredCount(int value) { m_desiredCountHasBeenSet = true; m_desiredCount = value; }
 
     /**
      * <p>The desired number of instantiations of the task definition to keep running
      * on the service. This value is specified when the service is created with
      * <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
      */
-    inline Service& WithDesiredCount(long value) { SetDesiredCount(value); return *this;}
+    inline Service& WithDesiredCount(int value) { SetDesiredCount(value); return *this;}
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>RUNNING</code>
      * state.</p>
      */
-    inline long GetRunningCount() const{ return m_runningCount; }
+    inline int GetRunningCount() const{ return m_runningCount; }
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>RUNNING</code>
      * state.</p>
      */
-    inline void SetRunningCount(long value) { m_runningCountHasBeenSet = true; m_runningCount = value; }
+    inline void SetRunningCount(int value) { m_runningCountHasBeenSet = true; m_runningCount = value; }
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>RUNNING</code>
      * state.</p>
      */
-    inline Service& WithRunningCount(long value) { SetRunningCount(value); return *this;}
+    inline Service& WithRunningCount(int value) { SetRunningCount(value); return *this;}
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>PENDING</code>
      * state.</p>
      */
-    inline long GetPendingCount() const{ return m_pendingCount; }
+    inline int GetPendingCount() const{ return m_pendingCount; }
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>PENDING</code>
      * state.</p>
      */
-    inline void SetPendingCount(long value) { m_pendingCountHasBeenSet = true; m_pendingCount = value; }
+    inline void SetPendingCount(int value) { m_pendingCountHasBeenSet = true; m_pendingCount = value; }
 
     /**
      * <p>The number of tasks in the cluster that are in the <code>PENDING</code>
      * state.</p>
      */
-    inline Service& WithPendingCount(long value) { SetPendingCount(value); return *this;}
+    inline Service& WithPendingCount(int value) { SetPendingCount(value); return *this;}
 
     /**
      * <p>The task definition to use for tasks in the service. This value is specified
@@ -472,49 +473,49 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline Service& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline Service& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role associated with the service
      * that allows the Amazon ECS container agent to register container instances with
-     * a load balancer. </p>
+     * an Elastic Load Balancing load balancer.</p>
      */
     inline Service& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
 
@@ -560,6 +561,31 @@ namespace Model
      */
     inline Service& AddEvents(ServiceEvent&& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
 
+    /**
+     * <p>The Unix timestamp for when the service was created.</p>
+     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+
+    /**
+     * <p>The Unix timestamp for when the service was created.</p>
+     */
+    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+
+    /**
+     * <p>The Unix timestamp for when the service was created.</p>
+     */
+    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+
+    /**
+     * <p>The Unix timestamp for when the service was created.</p>
+     */
+    inline Service& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
+
+    /**
+     * <p>The Unix timestamp for when the service was created.</p>
+     */
+    inline Service& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(value); return *this;}
+
   private:
     Aws::String m_serviceArn;
     bool m_serviceArnHasBeenSet;
@@ -571,11 +597,11 @@ namespace Model
     bool m_loadBalancersHasBeenSet;
     Aws::String m_status;
     bool m_statusHasBeenSet;
-    long m_desiredCount;
+    int m_desiredCount;
     bool m_desiredCountHasBeenSet;
-    long m_runningCount;
+    int m_runningCount;
     bool m_runningCountHasBeenSet;
-    long m_pendingCount;
+    int m_pendingCount;
     bool m_pendingCountHasBeenSet;
     Aws::String m_taskDefinition;
     bool m_taskDefinitionHasBeenSet;
@@ -587,6 +613,8 @@ namespace Model
     bool m_roleArnHasBeenSet;
     Aws::Vector<ServiceEvent> m_events;
     bool m_eventsHasBeenSet;
+    Aws::Utils::DateTime m_createdAt;
+    bool m_createdAtHasBeenSet;
   };
 
 } // namespace Model

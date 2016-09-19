@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,14 +35,17 @@ Aws::String CreateLoginProfileRequest::SerializePayload() const
   {
     ss << "UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_passwordHasBeenSet)
   {
     ss << "Password=" << StringUtils::URLEncode(m_password.c_str()) << "&";
   }
+
   if(m_passwordResetRequiredHasBeenSet)
   {
     ss << "PasswordResetRequired=" << m_passwordResetRequired << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int citrix_HASH = HashingUtils::HashString("citrix");
-static const int vmware_HASH = HashingUtils::HashString("vmware");
-static const int microsoft_HASH = HashingUtils::HashString("microsoft");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ExportEnvironmentMapper
       {
+
+        static const int citrix_HASH = HashingUtils::HashString("citrix");
+        static const int vmware_HASH = HashingUtils::HashString("vmware");
+        static const int microsoft_HASH = HashingUtils::HashString("microsoft");
 
 
         ExportEnvironment GetExportEnvironmentForName(const Aws::String& name)

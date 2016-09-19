@@ -24,7 +24,7 @@
 
 using namespace Aws::Utils;
 
-void StringUtils::Replace(Aws::String &s, const char* search, const char* replace)
+void StringUtils::Replace(Aws::String& s, const char* search, const char* replace)
 {
     if(!search || !replace)
     {
@@ -122,17 +122,43 @@ Aws::String StringUtils::URLEncode(const char* unsafe)
     size_t unsafeLength = strlen(unsafe);
     for (auto i = unsafe, n = unsafe + unsafeLength; i != n; ++i)
     {
-        char c = *i;
+        int c = *i;
 		//MSVC 2015 has an assertion that c is positive in isalnum(). This breaks unicode support.
 		//bypass that with the first check.
         if (c >= 0 && (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~'))
         {
-            escaped << c;
+            escaped << (char)c;
         }
         else
         {
             //this unsigned char cast allows us to handle unicode characters.
             escaped << '%' << std::setw(2) << int((unsigned char)c) << std::setw(0);
+        }
+    }
+
+    return escaped.str();
+}
+
+Aws::String StringUtils::UTF8Escape(const char* unicodeString, const char* delimiter)
+{
+    Aws::StringStream escaped;
+    escaped.fill('0');
+    escaped << std::hex << std::uppercase;
+
+    size_t unsafeLength = strlen(unicodeString);
+    for (auto i = unicodeString, n = unicodeString + unsafeLength; i != n; ++i)
+    {
+        int c = *i;
+        //MSVC 2015 has an assertion that c is positive in isalnum(). This breaks unicode support.
+        //bypass that with the first check.
+        if (c >= ' ' && c < 127 )
+        {
+            escaped << (char)c;
+        }
+        else
+        {
+            //this unsigned char cast allows us to handle unicode characters.
+            escaped << delimiter << std::setw(2) << int((unsigned char)c) << std::setw(0);
         }
     }
 
@@ -169,7 +195,7 @@ Aws::String StringUtils::URLDecode(const char* safe)
             hex[1] = *(i + 2);
             hex[2] = 0;
             i += 2;
-            int hexAsInteger = strtol(hex, nullptr, 16);
+            auto hexAsInteger = strtol(hex, nullptr, 16);
             unescaped << (char)hexAsInteger;
         }
         else

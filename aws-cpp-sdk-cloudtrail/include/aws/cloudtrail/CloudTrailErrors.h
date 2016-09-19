@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace CloudTrail
 {
-enum class AWS_CLOUDTRAIL_API CloudTrailErrors
+enum class CloudTrailErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +67,7 @@ enum class AWS_CLOUDTRAIL_API CloudTrailErrors
   INVALID_TIME_RANGE,
   INVALID_TOKEN,
   INVALID_TRAIL_NAME,
+  KMS,
   KMS_KEY_DISABLED,
   KMS_KEY_NOT_FOUND,
   MAXIMUM_NUMBER_OF_TRAILS_EXCEEDED,

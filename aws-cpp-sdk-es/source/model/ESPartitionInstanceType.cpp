@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,20 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int m3_medium_elasticsearch_HASH = HashingUtils::HashString("m3.medium.elasticsearch");
-static const int m3_large_elasticsearch_HASH = HashingUtils::HashString("m3.large.elasticsearch");
-static const int m3_xlarge_elasticsearch_HASH = HashingUtils::HashString("m3.xlarge.elasticsearch");
-static const int m3_2xlarge_elasticsearch_HASH = HashingUtils::HashString("m3.2xlarge.elasticsearch");
-static const int t2_micro_elasticsearch_HASH = HashingUtils::HashString("t2.micro.elasticsearch");
-static const int t2_small_elasticsearch_HASH = HashingUtils::HashString("t2.small.elasticsearch");
-static const int t2_medium_elasticsearch_HASH = HashingUtils::HashString("t2.medium.elasticsearch");
-static const int r3_large_elasticsearch_HASH = HashingUtils::HashString("r3.large.elasticsearch");
-static const int r3_xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.xlarge.elasticsearch");
-static const int r3_2xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.2xlarge.elasticsearch");
-static const int r3_4xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.4xlarge.elasticsearch");
-static const int r3_8xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.8xlarge.elasticsearch");
-static const int i2_xlarge_elasticsearch_HASH = HashingUtils::HashString("i2.xlarge.elasticsearch");
-static const int i2_2xlarge_elasticsearch_HASH = HashingUtils::HashString("i2.2xlarge.elasticsearch");
 
 namespace Aws
 {
@@ -42,6 +28,26 @@ namespace Aws
     {
       namespace ESPartitionInstanceTypeMapper
       {
+
+        static const int m3_medium_elasticsearch_HASH = HashingUtils::HashString("m3.medium.elasticsearch");
+        static const int m3_large_elasticsearch_HASH = HashingUtils::HashString("m3.large.elasticsearch");
+        static const int m3_xlarge_elasticsearch_HASH = HashingUtils::HashString("m3.xlarge.elasticsearch");
+        static const int m3_2xlarge_elasticsearch_HASH = HashingUtils::HashString("m3.2xlarge.elasticsearch");
+        static const int m4_large_elasticsearch_HASH = HashingUtils::HashString("m4.large.elasticsearch");
+        static const int m4_xlarge_elasticsearch_HASH = HashingUtils::HashString("m4.xlarge.elasticsearch");
+        static const int m4_2xlarge_elasticsearch_HASH = HashingUtils::HashString("m4.2xlarge.elasticsearch");
+        static const int m4_4xlarge_elasticsearch_HASH = HashingUtils::HashString("m4.4xlarge.elasticsearch");
+        static const int m4_10xlarge_elasticsearch_HASH = HashingUtils::HashString("m4.10xlarge.elasticsearch");
+        static const int t2_micro_elasticsearch_HASH = HashingUtils::HashString("t2.micro.elasticsearch");
+        static const int t2_small_elasticsearch_HASH = HashingUtils::HashString("t2.small.elasticsearch");
+        static const int t2_medium_elasticsearch_HASH = HashingUtils::HashString("t2.medium.elasticsearch");
+        static const int r3_large_elasticsearch_HASH = HashingUtils::HashString("r3.large.elasticsearch");
+        static const int r3_xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.xlarge.elasticsearch");
+        static const int r3_2xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.2xlarge.elasticsearch");
+        static const int r3_4xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.4xlarge.elasticsearch");
+        static const int r3_8xlarge_elasticsearch_HASH = HashingUtils::HashString("r3.8xlarge.elasticsearch");
+        static const int i2_xlarge_elasticsearch_HASH = HashingUtils::HashString("i2.xlarge.elasticsearch");
+        static const int i2_2xlarge_elasticsearch_HASH = HashingUtils::HashString("i2.2xlarge.elasticsearch");
 
 
         ESPartitionInstanceType GetESPartitionInstanceTypeForName(const Aws::String& name)
@@ -62,6 +68,26 @@ namespace Aws
           else if (hashCode == m3_2xlarge_elasticsearch_HASH)
           {
             return ESPartitionInstanceType::m3_2xlarge_elasticsearch;
+          }
+          else if (hashCode == m4_large_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::m4_large_elasticsearch;
+          }
+          else if (hashCode == m4_xlarge_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::m4_xlarge_elasticsearch;
+          }
+          else if (hashCode == m4_2xlarge_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::m4_2xlarge_elasticsearch;
+          }
+          else if (hashCode == m4_4xlarge_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::m4_4xlarge_elasticsearch;
+          }
+          else if (hashCode == m4_10xlarge_elasticsearch_HASH)
+          {
+            return ESPartitionInstanceType::m4_10xlarge_elasticsearch;
           }
           else if (hashCode == t2_micro_elasticsearch_HASH)
           {
@@ -125,6 +151,16 @@ namespace Aws
             return "m3.xlarge.elasticsearch";
           case ESPartitionInstanceType::m3_2xlarge_elasticsearch:
             return "m3.2xlarge.elasticsearch";
+          case ESPartitionInstanceType::m4_large_elasticsearch:
+            return "m4.large.elasticsearch";
+          case ESPartitionInstanceType::m4_xlarge_elasticsearch:
+            return "m4.xlarge.elasticsearch";
+          case ESPartitionInstanceType::m4_2xlarge_elasticsearch:
+            return "m4.2xlarge.elasticsearch";
+          case ESPartitionInstanceType::m4_4xlarge_elasticsearch:
+            return "m4.4xlarge.elasticsearch";
+          case ESPartitionInstanceType::m4_10xlarge_elasticsearch:
+            return "m4.10xlarge.elasticsearch";
           case ESPartitionInstanceType::t2_micro_elasticsearch:
             return "t2.micro.elasticsearch";
           case ESPartitionInstanceType::t2_small_elasticsearch:

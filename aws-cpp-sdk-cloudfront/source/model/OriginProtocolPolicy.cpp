@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int http_only_HASH = HashingUtils::HashString("http-only");
-static const int match_viewer_HASH = HashingUtils::HashString("match-viewer");
-static const int https_only_HASH = HashingUtils::HashString("https-only");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace OriginProtocolPolicyMapper
       {
+
+        static const int http_only_HASH = HashingUtils::HashString("http-only");
+        static const int match_viewer_HASH = HashingUtils::HashString("match-viewer");
+        static const int https_only_HASH = HashingUtils::HashString("https-only");
 
 
         OriginProtocolPolicy GetOriginProtocolPolicyForName(const Aws::String& name)

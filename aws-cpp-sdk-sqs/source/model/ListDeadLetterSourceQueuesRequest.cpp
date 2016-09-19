@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,6 +32,7 @@ Aws::String ListDeadLetterSourceQueuesRequest::SerializePayload() const
   {
     ss << "QueueUrl=" << StringUtils::URLEncode(m_queueUrl.c_str()) << "&";
   }
+
   ss << "Version=2012-11-05";
   return ss.str();
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,18 +17,26 @@
 
 #include <utility>
 
-using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace SSM
+{
+namespace Model
+{
+
 DocumentIdentifier::DocumentIdentifier() : 
     m_nameHasBeenSet(false),
+    m_ownerHasBeenSet(false),
     m_platformTypesHasBeenSet(false)
 {
 }
 
 DocumentIdentifier::DocumentIdentifier(const JsonValue& jsonValue) : 
     m_nameHasBeenSet(false),
+    m_ownerHasBeenSet(false),
     m_platformTypesHasBeenSet(false)
 {
   *this = jsonValue;
@@ -41,6 +49,13 @@ DocumentIdentifier& DocumentIdentifier::operator =(const JsonValue& jsonValue)
     m_name = jsonValue.GetString("Name");
 
     m_nameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Owner"))
+  {
+    m_owner = jsonValue.GetString("Owner");
+
+    m_ownerHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("PlatformTypes"))
@@ -66,6 +81,12 @@ JsonValue DocumentIdentifier::Jsonize() const
 
   }
 
+  if(m_ownerHasBeenSet)
+  {
+   payload.WithString("Owner", m_owner);
+
+  }
+
   if(m_platformTypesHasBeenSet)
   {
    Array<JsonValue> platformTypesJsonList(m_platformTypes.size());
@@ -79,3 +100,7 @@ JsonValue DocumentIdentifier::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace SSM
+} // namespace Aws

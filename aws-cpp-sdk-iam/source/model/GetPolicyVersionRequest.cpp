@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String GetPolicyVersionRequest::SerializePayload() const
   {
     ss << "PolicyArn=" << StringUtils::URLEncode(m_policyArn.c_str()) << "&";
   }
+
   if(m_versionIdHasBeenSet)
   {
     ss << "VersionId=" << StringUtils::URLEncode(m_versionId.c_str()) << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

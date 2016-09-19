@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-lambda-integration-tests)
 
 # Headers are included in the source so that they show up in Visual Studio.
@@ -25,7 +25,12 @@ set(AWS_LAMBDA_INTEGRATION_TEST_APPLICATION_INCLUDES
 project(${PROJECT_NAME})
 
 include_directories(${AWS_LAMBDA_INTEGRATION_TEST_APPLICATION_INCLUDES})
-add_definitions(-DRESOURCES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources")
+
+if(PLATFORM_ANDROID)
+  add_definitions(-DRESOURCES_DIR="resources")
+else()
+  add_definitions(-DRESOURCES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/resources")
+endif()
 
 if(MSVC AND BUILD_SHARED_LIBS)
     add_definitions(-DGTEST_LINKED_AS_SHARED_LIBRARY=1)

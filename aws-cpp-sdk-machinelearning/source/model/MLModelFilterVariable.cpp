@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,16 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CreatedAt_HASH = HashingUtils::HashString("CreatedAt");
-static const int LastUpdatedAt_HASH = HashingUtils::HashString("LastUpdatedAt");
-static const int Status_HASH = HashingUtils::HashString("Status");
-static const int Name_HASH = HashingUtils::HashString("Name");
-static const int IAMUser_HASH = HashingUtils::HashString("IAMUser");
-static const int TrainingDataSourceId_HASH = HashingUtils::HashString("TrainingDataSourceId");
-static const int RealtimeEndpointStatus_HASH = HashingUtils::HashString("RealtimeEndpointStatus");
-static const int MLModelType_HASH = HashingUtils::HashString("MLModelType");
-static const int Algorithm_HASH = HashingUtils::HashString("Algorithm");
-static const int TrainingDataURI_HASH = HashingUtils::HashString("TrainingDataURI");
 
 namespace Aws
 {
@@ -38,6 +28,17 @@ namespace Aws
     {
       namespace MLModelFilterVariableMapper
       {
+
+        static const int CreatedAt_HASH = HashingUtils::HashString("CreatedAt");
+        static const int LastUpdatedAt_HASH = HashingUtils::HashString("LastUpdatedAt");
+        static const int Status_HASH = HashingUtils::HashString("Status");
+        static const int Name_HASH = HashingUtils::HashString("Name");
+        static const int IAMUser_HASH = HashingUtils::HashString("IAMUser");
+        static const int TrainingDataSourceId_HASH = HashingUtils::HashString("TrainingDataSourceId");
+        static const int RealtimeEndpointStatus_HASH = HashingUtils::HashString("RealtimeEndpointStatus");
+        static const int MLModelType_HASH = HashingUtils::HashString("MLModelType");
+        static const int Algorithm_HASH = HashingUtils::HashString("Algorithm");
+        static const int TrainingDataURI_HASH = HashingUtils::HashString("TrainingDataURI");
 
 
         MLModelFilterVariable GetMLModelFilterVariableForName(const Aws::String& name)

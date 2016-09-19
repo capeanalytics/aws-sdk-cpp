@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int FINISHED_HASH = HashingUtils::HashString("FINISHED");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
-static const int FALSE_HASH = HashingUtils::HashString("FALSE");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace TaskStatusMapper
       {
+
+        static const int FINISHED_HASH = HashingUtils::HashString("FINISHED");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
+        static const int FALSE_HASH = HashingUtils::HashString("FALSE");
 
 
         TaskStatus GetTaskStatusForName(const Aws::String& name)

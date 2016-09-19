@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int immediate_HASH = HashingUtils::HashString("immediate");
-static const int pending_reboot_HASH = HashingUtils::HashString("pending-reboot");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ApplyMethodMapper
       {
+
+        static const int immediate_HASH = HashingUtils::HashString("immediate");
+        static const int pending_reboot_HASH = HashingUtils::HashString("pending-reboot");
 
 
         ApplyMethod GetApplyMethodForName(const Aws::String& name)

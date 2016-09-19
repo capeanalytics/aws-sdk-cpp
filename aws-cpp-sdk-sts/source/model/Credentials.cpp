@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::STS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace STS
+{
+namespace Model
+{
 
 Credentials::Credentials() : 
     m_accessKeyIdHasBeenSet(false),
@@ -81,18 +87,22 @@ void Credentials::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".AccessKeyId=" << StringUtils::URLEncode(m_accessKeyId.c_str()) << "&";
   }
+
   if(m_secretAccessKeyHasBeenSet)
   {
       oStream << location << index << locationValue << ".SecretAccessKey=" << StringUtils::URLEncode(m_secretAccessKey.c_str()) << "&";
   }
+
   if(m_sessionTokenHasBeenSet)
   {
       oStream << location << index << locationValue << ".SessionToken=" << StringUtils::URLEncode(m_sessionToken.c_str()) << "&";
   }
+
   if(m_expirationHasBeenSet)
   {
       oStream << location << index << locationValue << ".Expiration=" << StringUtils::URLEncode(m_expiration.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void Credentials::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void Credentials::OutputToStream(Aws::OStream& oStream, const char* location) co
       oStream << location << ".Expiration=" << StringUtils::URLEncode(m_expiration.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace STS
+} // namespace Aws

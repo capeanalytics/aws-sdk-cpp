@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 SNSAction::SNSAction() : 
     m_topicArnHasBeenSet(false),
@@ -65,10 +71,12 @@ void SNSAction::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   {
       oStream << location << index << locationValue << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
+
   if(m_encodingHasBeenSet)
   {
       oStream << location << index << locationValue << ".Encoding=" << SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding) << "&";
   }
+
 }
 
 void SNSAction::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void SNSAction::OutputToStream(Aws::OStream& oStream, const char* location) cons
       oStream << location << ".Encoding=" << SNSActionEncodingMapper::GetNameForSNSActionEncoding(m_encoding) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

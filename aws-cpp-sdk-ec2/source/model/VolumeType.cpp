@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int standard_HASH = HashingUtils::HashString("standard");
-static const int io1_HASH = HashingUtils::HashString("io1");
-static const int gp2_HASH = HashingUtils::HashString("gp2");
-static const int sc1_HASH = HashingUtils::HashString("sc1");
-static const int st1_HASH = HashingUtils::HashString("st1");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace VolumeTypeMapper
       {
+
+        static const int standard_HASH = HashingUtils::HashString("standard");
+        static const int io1_HASH = HashingUtils::HashString("io1");
+        static const int gp2_HASH = HashingUtils::HashString("gp2");
+        static const int sc1_HASH = HashingUtils::HashString("sc1");
+        static const int st1_HASH = HashingUtils::HashString("st1");
 
 
         VolumeType GetVolumeTypeForName(const Aws::String& name)

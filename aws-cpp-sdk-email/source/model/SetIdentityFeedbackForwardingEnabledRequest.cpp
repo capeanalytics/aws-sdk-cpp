@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,10 +34,12 @@ Aws::String SetIdentityFeedbackForwardingEnabledRequest::SerializePayload() cons
   {
     ss << "Identity=" << StringUtils::URLEncode(m_identity.c_str()) << "&";
   }
+
   if(m_forwardingEnabledHasBeenSet)
   {
     ss << "ForwardingEnabled=" << m_forwardingEnabled << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

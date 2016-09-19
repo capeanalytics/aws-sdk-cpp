@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudFormation
+{
+namespace Model
+{
 
 StackEvent::StackEvent() : 
     m_stackIdHasBeenSet(false),
@@ -129,42 +135,52 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".StackId=" << StringUtils::URLEncode(m_stackId.c_str()) << "&";
   }
+
   if(m_eventIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".EventId=" << StringUtils::URLEncode(m_eventId.c_str()) << "&";
   }
+
   if(m_stackNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".StackName=" << StringUtils::URLEncode(m_stackName.c_str()) << "&";
   }
+
   if(m_logicalResourceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".LogicalResourceId=" << StringUtils::URLEncode(m_logicalResourceId.c_str()) << "&";
   }
+
   if(m_physicalResourceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".PhysicalResourceId=" << StringUtils::URLEncode(m_physicalResourceId.c_str()) << "&";
   }
+
   if(m_resourceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ResourceType=" << StringUtils::URLEncode(m_resourceType.c_str()) << "&";
   }
+
   if(m_timestampHasBeenSet)
   {
       oStream << location << index << locationValue << ".Timestamp=" << StringUtils::URLEncode(m_timestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_resourceStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".ResourceStatus=" << ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus) << "&";
   }
+
   if(m_resourceStatusReasonHasBeenSet)
   {
       oStream << location << index << locationValue << ".ResourceStatusReason=" << StringUtils::URLEncode(m_resourceStatusReason.c_str()) << "&";
   }
+
   if(m_resourcePropertiesHasBeenSet)
   {
       oStream << location << index << locationValue << ".ResourceProperties=" << StringUtils::URLEncode(m_resourceProperties.c_str()) << "&";
   }
+
 }
 
 void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -210,3 +226,7 @@ void StackEvent::OutputToStream(Aws::OStream& oStream, const char* location) con
       oStream << location << ".ResourceProperties=" << StringUtils::URLEncode(m_resourceProperties.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudFormation
+} // namespace Aws

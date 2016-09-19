@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,86 +36,86 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline const Aws::String& GetEngineName() const{ return m_engineName; }
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline void SetEngineName(const Aws::String& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline void SetEngineName(const char* value) { m_engineNameHasBeenSet = true; m_engineName.assign(value); }
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithEngineName(const Aws::String& value) { SetEngineName(value); return *this;}
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithEngineName(Aws::String&& value) { SetEngineName(value); return *this;}
 
     /**
-     * <p> A required parameter. Options available for the given engine name will be
-     * described. </p>
+     * <p>A required parameter. Options available for the given engine name will be
+     * described.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithEngineName(const char* value) { SetEngineName(value); return *this;}
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline const Aws::String& GetMajorEngineVersion() const{ return m_majorEngineVersion; }
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline void SetMajorEngineVersion(const Aws::String& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = value; }
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline void SetMajorEngineVersion(Aws::String&& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = value; }
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline void SetMajorEngineVersion(const char* value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion.assign(value); }
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithMajorEngineVersion(const Aws::String& value) { SetMajorEngineVersion(value); return *this;}
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithMajorEngineVersion(Aws::String&& value) { SetMajorEngineVersion(value); return *this;}
 
     /**
-     * <p> If specified, filters the results to include only options for the specified
-     * major engine version. </p>
+     * <p>If specified, filters the results to include only options for the specified
+     * major engine version.</p>
      */
     inline DescribeOptionGroupOptionsRequest& WithMajorEngineVersion(const char* value) { SetMajorEngineVersion(value); return *this;}
 
@@ -160,7 +160,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -168,7 +168,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -176,7 +176,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline DescribeOptionGroupOptionsRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeOptionGroupOptionsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p>An optional pagination token provided by a previous request. If this
@@ -234,7 +234,7 @@ namespace Model
     bool m_majorEngineVersionHasBeenSet;
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

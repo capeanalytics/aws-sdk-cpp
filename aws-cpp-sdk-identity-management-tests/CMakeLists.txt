@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-identity-management-tests)
 
 # Headers are included in the source so that they show up in Visual Studio.
@@ -40,7 +40,7 @@ endif()
 target_link_libraries(runIdentityManagementTests aws-cpp-sdk-identity-management testing-resources)
 copyDlls(runIdentityManagementTests aws-cpp-sdk-identity-management aws-cpp-sdk-core aws-cpp-sdk-cognito-identity testing-resources)
 
-if(NOT PLATFORM_ANDROID)
+if(NOT CMAKE_CROSSCOMPILING)
     ADD_CUSTOM_COMMAND( TARGET runIdentityManagementTests POST_BUILD COMMAND $<TARGET_FILE:runIdentityManagementTests>)
     SET_TARGET_PROPERTIES(runIdentityManagementTests PROPERTIES OUTPUT_NAME runIdentityManagementTests)
 endif()

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int prefix_HASH = HashingUtils::HashString("prefix");
-static const int suffix_HASH = HashingUtils::HashString("suffix");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace FilterRuleNameMapper
       {
+
+        static const int prefix_HASH = HashingUtils::HashString("prefix");
+        static const int suffix_HASH = HashingUtils::HashString("suffix");
 
 
         FilterRuleName GetFilterRuleNameForName(const Aws::String& name)

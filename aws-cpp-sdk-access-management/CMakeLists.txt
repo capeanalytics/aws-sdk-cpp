@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-access-management)
 
 file(GLOB AWS_ACCESS_MANAGEMENT_HEADERS
@@ -29,7 +29,7 @@ set(ACCESS_MANAGEMENT_INCLUDES
 
 include_directories(${ACCESS_MANAGEMENT_INCLUDES})
 
-if(MSVC AND BUILD_SHARED_LIBS)
+if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_ACCESS_MANAGEMENT_EXPORTS")
 endif()
 
@@ -42,9 +42,20 @@ target_link_libraries(aws-cpp-sdk-access-management aws-cpp-sdk-cognito-identity
 list(APPEND AWS_INSTALLED_LIBS "aws-cpp-sdk-access-management")
 set(AWS_INSTALLED_LIBS "${AWS_INSTALLED_LIBS}" PARENT_SCOPE)
 
-install (TARGETS aws-cpp-sdk-access-management 
-         ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-         LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-         RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+if(SIMPLE_INSTALL)
+    install (TARGETS aws-cpp-sdk-access-management
+            ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+            LIBRARY DESTINATION lib
+            RUNTIME DESTINATION bin)
+else()
+    if(PLATFORM_CUSTOM)
+        install_custom_library(aws-cpp-sdk-access-management)
+    else()
+        install (TARGETS aws-cpp-sdk-access-management
+                 ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+                 LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+                 RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+endif()
 
 install (FILES ${AWS_ACCESS_MANAGEMENT_HEADERS} DESTINATION include/aws/access-management)

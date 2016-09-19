@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,10 +26,10 @@ namespace Model
 
   /**
    * <p>A JSON object containing one or more of the following fields:</p> <ul> <li>
-   * <a>UpdateSnapshotScheduleInput$Description</a> </li> <li>
-   * <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </li> <li>
-   * <a>UpdateSnapshotScheduleInput$StartAt</a> </li> <li>
-   * <a>UpdateSnapshotScheduleInput$VolumeARN</a> </li> </ul>
+   * <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p>
+   * <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p>
+   * <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p>
+   * <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>
    */
   class AWS_STORAGEGATEWAY_API UpdateSnapshotScheduleRequest : public StorageGatewayRequest
   {
@@ -86,36 +86,36 @@ namespace Model
      * <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the
      * time zone of the gateway.</p>
      */
-    inline long GetStartAt() const{ return m_startAt; }
+    inline int GetStartAt() const{ return m_startAt; }
 
     /**
      * <p>The hour of the day at which the snapshot schedule begins represented as
      * <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the
      * time zone of the gateway.</p>
      */
-    inline void SetStartAt(long value) { m_startAtHasBeenSet = true; m_startAt = value; }
+    inline void SetStartAt(int value) { m_startAtHasBeenSet = true; m_startAt = value; }
 
     /**
      * <p>The hour of the day at which the snapshot schedule begins represented as
      * <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the
      * time zone of the gateway.</p>
      */
-    inline UpdateSnapshotScheduleRequest& WithStartAt(long value) { SetStartAt(value); return *this;}
+    inline UpdateSnapshotScheduleRequest& WithStartAt(int value) { SetStartAt(value); return *this;}
 
     /**
      * <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
      */
-    inline long GetRecurrenceInHours() const{ return m_recurrenceInHours; }
+    inline int GetRecurrenceInHours() const{ return m_recurrenceInHours; }
 
     /**
      * <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
      */
-    inline void SetRecurrenceInHours(long value) { m_recurrenceInHoursHasBeenSet = true; m_recurrenceInHours = value; }
+    inline void SetRecurrenceInHours(int value) { m_recurrenceInHoursHasBeenSet = true; m_recurrenceInHours = value; }
 
     /**
      * <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
      */
-    inline UpdateSnapshotScheduleRequest& WithRecurrenceInHours(long value) { SetRecurrenceInHours(value); return *this;}
+    inline UpdateSnapshotScheduleRequest& WithRecurrenceInHours(int value) { SetRecurrenceInHours(value); return *this;}
 
     /**
      * <p>Optional description of the snapshot that overwrites the existing
@@ -162,9 +162,9 @@ namespace Model
   private:
     Aws::String m_volumeARN;
     bool m_volumeARNHasBeenSet;
-    long m_startAt;
+    int m_startAt;
     bool m_startAtHasBeenSet;
-    long m_recurrenceInHours;
+    int m_recurrenceInHours;
     bool m_recurrenceInHoursHasBeenSet;
     Aws::String m_description;
     bool m_descriptionHasBeenSet;

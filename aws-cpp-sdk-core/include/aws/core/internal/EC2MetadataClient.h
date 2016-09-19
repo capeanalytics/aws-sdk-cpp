@@ -40,8 +40,7 @@ namespace Aws
              * Builds an instance using "http://169.254.169.254" as the endpoint if not specified otherwise,
              * and the default http stack if httpClientFactory is not specified.
              */
-            EC2MetadataClient(const char* endpoint = "http://169.254.169.254",
-                std::shared_ptr<Http::HttpClientFactory const> httpClientFactory = nullptr);
+            EC2MetadataClient(const char* endpoint = "http://169.254.169.254");
 
             virtual ~EC2MetadataClient();
 
@@ -50,6 +49,12 @@ namespace Aws
              * default credential information (if any).
              */
             virtual Aws::String GetDefaultCredentials() const;
+
+            /**
+             * connects to the Amazon EC2 Instance metadata Service to retrieve the region
+             * the current EC2 instance is running in.
+             */
+            virtual Aws::String GetCurrentRegion() const;
 
             /**
              * Connects to the metadata service to read the specified resource and

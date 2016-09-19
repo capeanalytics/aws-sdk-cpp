@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,10 +35,10 @@ namespace Model
 
   /**
    * <p>Contains the results of a successful call to the
-   * <a>DescribeDBSnapshotAttributes</a> API.</p> <p>Manual DB snapshot attributes
-   * are used to authorize other AWS accounts to copy or restore a manual DB
-   * snapshot. For more information, see the <a>ModifyDBSnapshotAttribute</a>
-   * API.</p>
+   * <a>DescribeDBSnapshotAttributes</a> API action.</p> <p>Manual DB snapshot
+   * attributes are used to authorize other AWS accounts to copy or restore a manual
+   * DB snapshot. For more information, see the <a>ModifyDBSnapshotAttribute</a> API
+   * action.</p>
    */
   class AWS_RDS_API DBSnapshotAttributesResult
   {

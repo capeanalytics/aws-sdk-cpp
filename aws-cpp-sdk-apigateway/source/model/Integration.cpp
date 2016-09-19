@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::APIGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace APIGateway
+{
+namespace Model
+{
 
 Integration::Integration() : 
     m_typeHasBeenSet(false),
@@ -28,6 +34,7 @@ Integration::Integration() :
     m_credentialsHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
+    m_passthroughBehaviorHasBeenSet(false),
     m_cacheNamespaceHasBeenSet(false),
     m_cacheKeyParametersHasBeenSet(false),
     m_integrationResponsesHasBeenSet(false)
@@ -41,6 +48,7 @@ Integration::Integration(const JsonValue& jsonValue) :
     m_credentialsHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
+    m_passthroughBehaviorHasBeenSet(false),
     m_cacheNamespaceHasBeenSet(false),
     m_cacheKeyParametersHasBeenSet(false),
     m_integrationResponsesHasBeenSet(false)
@@ -96,6 +104,13 @@ Integration& Integration::operator =(const JsonValue& jsonValue)
       m_requestTemplates[requestTemplatesItem.first] = requestTemplatesItem.second.AsString();
     }
     m_requestTemplatesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("passthroughBehavior"))
+  {
+    m_passthroughBehavior = jsonValue.GetString("passthroughBehavior");
+
+    m_passthroughBehaviorHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("cacheNamespace"))
@@ -177,6 +192,12 @@ JsonValue Integration::Jsonize() const
 
   }
 
+  if(m_passthroughBehaviorHasBeenSet)
+  {
+   payload.WithString("passthroughBehavior", m_passthroughBehavior);
+
+  }
+
   if(m_cacheNamespaceHasBeenSet)
   {
    payload.WithString("cacheNamespace", m_cacheNamespace);
@@ -207,3 +228,7 @@ JsonValue Integration::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace APIGateway
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PROVISIONED_HASH = HashingUtils::HashString("PROVISIONED");
-static const int PENDING_HASH = HashingUtils::HashString("PENDING");
-static const int INSYNC_HASH = HashingUtils::HashString("INSYNC");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ChangeTokenStatusMapper
       {
+
+        static const int PROVISIONED_HASH = HashingUtils::HashString("PROVISIONED");
+        static const int PENDING_HASH = HashingUtils::HashString("PENDING");
+        static const int INSYNC_HASH = HashingUtils::HashString("INSYNC");
 
 
         ChangeTokenStatus GetChangeTokenStatusForName(const Aws::String& name)

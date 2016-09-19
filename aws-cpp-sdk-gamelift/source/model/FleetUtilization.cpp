@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,12 +17,20 @@
 
 #include <utility>
 
-using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace GameLift
+{
+namespace Model
+{
+
 FleetUtilization::FleetUtilization() : 
     m_fleetIdHasBeenSet(false),
+    m_activeServerProcessCount(0),
+    m_activeServerProcessCountHasBeenSet(false),
     m_activeGameSessionCount(0),
     m_activeGameSessionCountHasBeenSet(false),
     m_currentPlayerSessionCount(0),
@@ -34,6 +42,8 @@ FleetUtilization::FleetUtilization() :
 
 FleetUtilization::FleetUtilization(const JsonValue& jsonValue) : 
     m_fleetIdHasBeenSet(false),
+    m_activeServerProcessCount(0),
+    m_activeServerProcessCountHasBeenSet(false),
     m_activeGameSessionCount(0),
     m_activeGameSessionCountHasBeenSet(false),
     m_currentPlayerSessionCount(0),
@@ -51,6 +61,13 @@ FleetUtilization& FleetUtilization::operator =(const JsonValue& jsonValue)
     m_fleetId = jsonValue.GetString("FleetId");
 
     m_fleetIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ActiveServerProcessCount"))
+  {
+    m_activeServerProcessCount = jsonValue.GetInteger("ActiveServerProcessCount");
+
+    m_activeServerProcessCountHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ActiveGameSessionCount"))
@@ -87,6 +104,12 @@ JsonValue FleetUtilization::Jsonize() const
 
   }
 
+  if(m_activeServerProcessCountHasBeenSet)
+  {
+   payload.WithInteger("ActiveServerProcessCount", m_activeServerProcessCount);
+
+  }
+
   if(m_activeGameSessionCountHasBeenSet)
   {
    payload.WithInteger("ActiveGameSessionCount", m_activeGameSessionCount);
@@ -107,3 +130,7 @@ JsonValue FleetUtilization::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace GameLift
+} // namespace Aws

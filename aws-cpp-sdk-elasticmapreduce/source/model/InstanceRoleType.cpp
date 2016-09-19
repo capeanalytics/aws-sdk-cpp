@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int MASTER_HASH = HashingUtils::HashString("MASTER");
-static const int CORE_HASH = HashingUtils::HashString("CORE");
-static const int TASK_HASH = HashingUtils::HashString("TASK");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace InstanceRoleTypeMapper
       {
+
+        static const int MASTER_HASH = HashingUtils::HashString("MASTER");
+        static const int CORE_HASH = HashingUtils::HashString("CORE");
+        static const int TASK_HASH = HashingUtils::HashString("TASK");
 
 
         InstanceRoleType GetInstanceRoleTypeForName(const Aws::String& name)

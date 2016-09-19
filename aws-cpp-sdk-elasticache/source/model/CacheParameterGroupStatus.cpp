@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 CacheParameterGroupStatus::CacheParameterGroupStatus() : 
     m_cacheParameterGroupNameHasBeenSet(false),
@@ -79,10 +85,12 @@ void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char
   {
       oStream << location << index << locationValue << ".CacheParameterGroupName=" << StringUtils::URLEncode(m_cacheParameterGroupName.c_str()) << "&";
   }
+
   if(m_parameterApplyStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".ParameterApplyStatus=" << StringUtils::URLEncode(m_parameterApplyStatus.c_str()) << "&";
   }
+
   if(m_cacheNodeIdsToRebootHasBeenSet)
   {
       unsigned cacheNodeIdsToRebootIdx = 1;
@@ -91,6 +99,7 @@ void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char
         oStream << location << index << locationValue << ".CacheNodeId." << cacheNodeIdsToRebootIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -112,3 +121,7 @@ void CacheParameterGroupStatus::OutputToStream(Aws::OStream& oStream, const char
       }
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,6 +19,13 @@
 using namespace Aws::Client;
 using namespace Aws::Redshift;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace RedshiftErrorMapper
+{
 
 static const int TAG_LIMIT_EXCEEDED_FAULT_HASH = HashingUtils::HashString("TagLimitExceededFault");
 static const int RESERVED_NODE_NOT_FOUND_FAULT_HASH = HashingUtils::HashString("ReservedNodeNotFound");
@@ -104,12 +111,6 @@ static const int SUBSCRIPTION_CATEGORY_NOT_FOUND_FAULT_HASH = HashingUtils::Hash
 static const int ACCESS_TO_SNAPSHOT_DENIED_FAULT_HASH = HashingUtils::HashString("AccessToSnapshotDenied");
 static const int INSUFFICIENT_S3_BUCKET_POLICY_FAULT_HASH = HashingUtils::HashString("InsufficientS3BucketPolicyFault");
 
-namespace Aws
-{
-namespace Redshift
-{
-namespace RedshiftErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

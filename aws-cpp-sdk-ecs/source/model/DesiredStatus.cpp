@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int RUNNING_HASH = HashingUtils::HashString("RUNNING");
-static const int PENDING_HASH = HashingUtils::HashString("PENDING");
-static const int STOPPED_HASH = HashingUtils::HashString("STOPPED");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace DesiredStatusMapper
       {
+
+        static const int RUNNING_HASH = HashingUtils::HashString("RUNNING");
+        static const int PENDING_HASH = HashingUtils::HashString("PENDING");
+        static const int STOPPED_HASH = HashingUtils::HashString("STOPPED");
 
 
         DesiredStatus GetDesiredStatusForName(const Aws::String& name)

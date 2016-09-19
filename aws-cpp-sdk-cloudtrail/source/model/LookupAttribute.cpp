@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudTrail
+{
+namespace Model
+{
 
 LookupAttribute::LookupAttribute() : 
     m_attributeKeyHasBeenSet(false),
@@ -70,3 +76,7 @@ JsonValue LookupAttribute::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CloudTrail
+} // namespace Aws

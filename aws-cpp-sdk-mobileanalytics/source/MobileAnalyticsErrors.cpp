@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,14 +20,15 @@ using namespace Aws::Client;
 using namespace Aws::MobileAnalytics;
 using namespace Aws::Utils;
 
-static const int BAD_REQUEST_HASH = HashingUtils::HashString("BadRequestException");
-
 namespace Aws
 {
 namespace MobileAnalytics
 {
 namespace MobileAnalyticsErrorMapper
 {
+
+static const int BAD_REQUEST_HASH = HashingUtils::HashString("BadRequestException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

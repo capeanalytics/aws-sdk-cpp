@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,7 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int RECURRING_HASH = HashingUtils::HashString("RECURRING");
 
 namespace Aws
 {
@@ -29,6 +28,8 @@ namespace Aws
     {
       namespace OfferingTypeMapper
       {
+
+        static const int RECURRING_HASH = HashingUtils::HashString("RECURRING");
 
 
         OfferingType GetOfferingTypeForName(const Aws::String& name)

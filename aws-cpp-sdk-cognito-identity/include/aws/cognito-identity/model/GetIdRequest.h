@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -109,120 +109,120 @@ namespace Model
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetLogins() const{ return m_logins; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline void SetLogins(const Aws::Map<Aws::String, Aws::String>& value) { m_loginsHasBeenSet = true; m_logins = value; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline void SetLogins(Aws::Map<Aws::String, Aws::String>&& value) { m_loginsHasBeenSet = true; m_logins = value; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& WithLogins(const Aws::Map<Aws::String, Aws::String>& value) { SetLogins(value); return *this;}
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& WithLogins(Aws::Map<Aws::String, Aws::String>&& value) { SetLogins(value); return *this;}
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(const Aws::String& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(Aws::String&& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(const Aws::String& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(Aws::String&& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(const char* key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(Aws::String&& key, const char* value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
      * tokens.</p> <p>The available provider names for <code>Logins</code> are as
-     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code> </li> <li>Google:
-     * <code>accounts.google.com</code> </li> <li>Amazon: <code>www.amazon.com</code>
-     * </li> <li>Twitter: <code>api.twitter.com</code> </li> <li>Digits:
-     * <code>www.digits.com</code> </li> </ul> </p>
+     * follows: <ul> <li>Facebook: <code>graph.facebook.com</code></li> <li>Google:
+     * <code>accounts.google.com</code></li> <li>Amazon:
+     * <code>www.amazon.com</code></li> <li>Twitter: <code>api.twitter.com</code></li>
+     * <li>Digits: <code>www.digits.com</code></li> </ul> </p>
      */
     inline GetIdRequest& AddLogins(const char* key, const char* value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
 

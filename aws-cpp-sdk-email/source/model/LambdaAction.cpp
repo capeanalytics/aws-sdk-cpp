@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 LambdaAction::LambdaAction() : 
     m_topicArnHasBeenSet(false),
@@ -73,14 +79,17 @@ void LambdaAction::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
+
   if(m_functionArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".FunctionArn=" << StringUtils::URLEncode(m_functionArn.c_str()) << "&";
   }
+
   if(m_invocationTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".InvocationType=" << InvocationTypeMapper::GetNameForInvocationType(m_invocationType) << "&";
   }
+
 }
 
 void LambdaAction::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void LambdaAction::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".InvocationType=" << InvocationTypeMapper::GetNameForInvocationType(m_invocationType) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

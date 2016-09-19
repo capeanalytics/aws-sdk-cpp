@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,7 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int RuleSet_HASH = HashingUtils::HashString("RuleSet");
 
 namespace Aws
 {
@@ -29,6 +28,8 @@ namespace Aws
     {
       namespace StopScopeMapper
       {
+
+        static const int RuleSet_HASH = HashingUtils::HashString("RuleSet");
 
 
         StopScope GetStopScopeForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 ReservedCacheNode::ReservedCacheNode() : 
     m_reservedCacheNodeIdHasBeenSet(false),
@@ -159,46 +165,57 @@ void ReservedCacheNode::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".ReservedCacheNodeId=" << StringUtils::URLEncode(m_reservedCacheNodeId.c_str()) << "&";
   }
+
   if(m_reservedCacheNodesOfferingIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReservedCacheNodesOfferingId=" << StringUtils::URLEncode(m_reservedCacheNodesOfferingId.c_str()) << "&";
   }
+
   if(m_cacheNodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
+
   if(m_startTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_durationHasBeenSet)
   {
       oStream << location << index << locationValue << ".Duration=" << m_duration << "&";
   }
+
   if(m_fixedPriceHasBeenSet)
   {
         oStream << location << index << locationValue << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
+
   if(m_usagePriceHasBeenSet)
   {
         oStream << location << index << locationValue << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
+
   if(m_cacheNodeCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeCount=" << m_cacheNodeCount << "&";
   }
+
   if(m_productDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".ProductDescription=" << StringUtils::URLEncode(m_productDescription.c_str()) << "&";
   }
+
   if(m_offeringTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".OfferingType=" << StringUtils::URLEncode(m_offeringType.c_str()) << "&";
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(m_state.c_str()) << "&";
   }
+
   if(m_recurringChargesHasBeenSet)
   {
       unsigned recurringChargesIdx = 1;
@@ -209,6 +226,7 @@ void ReservedCacheNode::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
+
 }
 
 void ReservedCacheNode::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -268,3 +286,7 @@ void ReservedCacheNode::OutputToStream(Aws::OStream& oStream, const char* locati
       }
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

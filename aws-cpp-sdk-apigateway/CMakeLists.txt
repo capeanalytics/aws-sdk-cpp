@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-apigateway)
 
   file(GLOB AWS_APIGATEWAY_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-apigateway)
     "source/model/*.cpp"
   )
 
-  file(GLOB APIGATEWAY_SRC
+  file(GLOB APIGATEWAY_UNIFIED_HEADERS
     ${AWS_APIGATEWAY_HEADERS}
     ${AWS_APIGATEWAY_MODEL_HEADERS}
+  )
+
+  file(GLOB APIGATEWAY_UNITY_SRC
     ${AWS_APIGATEWAY_SOURCE}
     ${AWS_APIGATEWAY_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("APIGATEWAY" APIGATEWAY_UNITY_SRC)
+  endif()
+
+  file(GLOB APIGATEWAY_SRC
+    ${APIGATEWAY_UNIFIED_HEADERS}
+    ${APIGATEWAY_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-apigateway)
 
   include_directories(${APIGATEWAY_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_APIGATEWAY_EXPORTS")
   endif()
 
@@ -53,14 +65,28 @@ project(aws-cpp-sdk-apigateway)
   
   target_link_libraries(aws-cpp-sdk-apigateway aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-apigateway
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-apigateway
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-apigateway)
+    else()
+      install (TARGETS aws-cpp-sdk-apigateway
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_APIGATEWAY_HEADERS} DESTINATION include/aws/apigateway)
   install (FILES ${AWS_APIGATEWAY_MODEL_HEADERS} DESTINATION include/aws/apigateway/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-apigateway.autopkg DESTINATION nuget)
+  endif()
+
+
 

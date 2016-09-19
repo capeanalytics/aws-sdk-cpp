@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,18 +36,22 @@ Aws::String ListAttachedRolePoliciesRequest::SerializePayload() const
   {
     ss << "RoleName=" << StringUtils::URLEncode(m_roleName.c_str()) << "&";
   }
+
   if(m_pathPrefixHasBeenSet)
   {
     ss << "PathPrefix=" << StringUtils::URLEncode(m_pathPrefix.c_str()) << "&";
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   if(m_maxItemsHasBeenSet)
   {
     ss << "MaxItems=" << m_maxItems << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

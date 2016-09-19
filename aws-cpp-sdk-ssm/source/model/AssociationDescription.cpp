@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SSM
+{
+namespace Model
+{
 
 AssociationDescription::AssociationDescription() : 
     m_nameHasBeenSet(false),
@@ -75,7 +81,7 @@ AssociationDescription& AssociationDescription::operator =(const JsonValue& json
     Aws::Map<Aws::String, JsonValue> parametersJsonMap = jsonValue.GetObject("Parameters").GetAllObjects();
     for(auto& parametersItem : parametersJsonMap)
     {
-      Array<JsonValue> parameterValueListJsonList = parametersItem.second.GetArray("ParameterValueList");
+      Array<JsonValue> parameterValueListJsonList = parametersItem.second.AsArray();
       Aws::Vector<Aws::String> parameterValueListList((size_t)parameterValueListJsonList.GetLength());
       for(unsigned parameterValueListIndex = 0; parameterValueListIndex < parameterValueListJsonList.GetLength(); ++parameterValueListIndex)
       {
@@ -134,3 +140,7 @@ JsonValue AssociationDescription::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace SSM
+} // namespace Aws

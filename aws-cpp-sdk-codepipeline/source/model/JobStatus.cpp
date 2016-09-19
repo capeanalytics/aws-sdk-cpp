@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,13 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Created_HASH = HashingUtils::HashString("Created");
-static const int Queued_HASH = HashingUtils::HashString("Queued");
-static const int Dispatched_HASH = HashingUtils::HashString("Dispatched");
-static const int InProgress_HASH = HashingUtils::HashString("InProgress");
-static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
-static const int Succeeded_HASH = HashingUtils::HashString("Succeeded");
-static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 namespace Aws
 {
@@ -35,6 +28,14 @@ namespace Aws
     {
       namespace JobStatusMapper
       {
+
+        static const int Created_HASH = HashingUtils::HashString("Created");
+        static const int Queued_HASH = HashingUtils::HashString("Queued");
+        static const int Dispatched_HASH = HashingUtils::HashString("Dispatched");
+        static const int InProgress_HASH = HashingUtils::HashString("InProgress");
+        static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
+        static const int Succeeded_HASH = HashingUtils::HashString("Succeeded");
+        static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 
         JobStatus GetJobStatusForName(const Aws::String& name)

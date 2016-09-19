@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int start_replication_HASH = HashingUtils::HashString("start-replication");
-static const int resume_processing_HASH = HashingUtils::HashString("resume-processing");
-static const int reload_target_HASH = HashingUtils::HashString("reload-target");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace StartReplicationTaskTypeValueMapper
       {
+
+        static const int start_replication_HASH = HashingUtils::HashString("start-replication");
+        static const int resume_processing_HASH = HashingUtils::HashString("resume-processing");
+        static const int reload_target_HASH = HashingUtils::HashString("reload-target");
 
 
         StartReplicationTaskTypeValue GetStartReplicationTaskTypeValueForName(const Aws::String& name)

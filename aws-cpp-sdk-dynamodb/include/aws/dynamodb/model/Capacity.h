@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -31,7 +31,7 @@ namespace Model
 
   /**
    * <p>Represents the amount of provisioned throughput capacity consumed on a table
-   * or an index. </p>
+   * or an index.</p>
    */
   class AWS_DYNAMODB_API Capacity
   {

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 NodeSnapshot::NodeSnapshot() : 
     m_cacheNodeIdHasBeenSet(false),
@@ -81,18 +87,22 @@ void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".CacheNodeId=" << StringUtils::URLEncode(m_cacheNodeId.c_str()) << "&";
   }
+
   if(m_cacheSizeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheSize=" << StringUtils::URLEncode(m_cacheSize.c_str()) << "&";
   }
+
   if(m_cacheNodeCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeCreateTime=" << StringUtils::URLEncode(m_cacheNodeCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_snapshotCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

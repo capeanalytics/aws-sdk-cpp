@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,7 @@ namespace Model
 {
 
   /**
+   * <p>Contains the parameters for DescribeLoadBalancers.</p>
    */
   class AWS_AUTOSCALING_API DescribeLoadBalancersRequest : public AutoScalingRequest
   {
@@ -112,24 +113,24 @@ namespace Model
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p>The maximum number of items to return with this call.</p>
      */
-    inline DescribeLoadBalancersRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeLoadBalancersRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
   private:
     Aws::String m_autoScalingGroupName;
     bool m_autoScalingGroupNameHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
   };
 

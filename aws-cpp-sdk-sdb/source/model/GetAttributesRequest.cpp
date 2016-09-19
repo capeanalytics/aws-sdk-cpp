@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,10 +36,12 @@ Aws::String GetAttributesRequest::SerializePayload() const
   {
     ss << "DomainName=" << StringUtils::URLEncode(m_domainName.c_str()) << "&";
   }
+
   if(m_itemNameHasBeenSet)
   {
     ss << "ItemName=" << StringUtils::URLEncode(m_itemName.c_str()) << "&";
   }
+
   if(m_attributeNamesHasBeenSet)
   {
     unsigned attributeNamesCount = 1;
@@ -50,10 +52,12 @@ Aws::String GetAttributesRequest::SerializePayload() const
       attributeNamesCount++;
     }
   }
+
   if(m_consistentReadHasBeenSet)
   {
     ss << "ConsistentRead=" << m_consistentRead << "&";
   }
+
   ss << "Version=2009-04-15";
   return ss.str();
 }

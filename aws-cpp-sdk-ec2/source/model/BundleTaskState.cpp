@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,13 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int pending_HASH = HashingUtils::HashString("pending");
-static const int waiting_for_shutdown_HASH = HashingUtils::HashString("waiting-for-shutdown");
-static const int bundling_HASH = HashingUtils::HashString("bundling");
-static const int storing_HASH = HashingUtils::HashString("storing");
-static const int cancelling_HASH = HashingUtils::HashString("cancelling");
-static const int complete_HASH = HashingUtils::HashString("complete");
-static const int failed_HASH = HashingUtils::HashString("failed");
 
 namespace Aws
 {
@@ -35,6 +28,14 @@ namespace Aws
     {
       namespace BundleTaskStateMapper
       {
+
+        static const int pending_HASH = HashingUtils::HashString("pending");
+        static const int waiting_for_shutdown_HASH = HashingUtils::HashString("waiting-for-shutdown");
+        static const int bundling_HASH = HashingUtils::HashString("bundling");
+        static const int storing_HASH = HashingUtils::HashString("storing");
+        static const int cancelling_HASH = HashingUtils::HashString("cancelling");
+        static const int complete_HASH = HashingUtils::HashString("complete");
+        static const int failed_HASH = HashingUtils::HashString("failed");
 
 
         BundleTaskState GetBundleTaskStateForName(const Aws::String& name)

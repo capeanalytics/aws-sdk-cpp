@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SQS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SQS
+{
+namespace Model
+{
 
 ChangeMessageVisibilityBatchResultEntry::ChangeMessageVisibilityBatchResultEntry() : 
     m_idHasBeenSet(false)
@@ -57,6 +63,7 @@ void ChangeMessageVisibilityBatchResultEntry::OutputToStream(Aws::OStream& oStre
   {
       oStream << location << index << locationValue << ".Id=" << StringUtils::URLEncode(m_id.c_str()) << "&";
   }
+
 }
 
 void ChangeMessageVisibilityBatchResultEntry::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -66,3 +73,7 @@ void ChangeMessageVisibilityBatchResultEntry::OutputToStream(Aws::OStream& oStre
       oStream << location << ".Id=" << StringUtils::URLEncode(m_id.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SQS
+} // namespace Aws

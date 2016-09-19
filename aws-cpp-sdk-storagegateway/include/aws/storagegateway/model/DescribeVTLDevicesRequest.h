@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -59,65 +59,65 @@ namespace Model
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline const Aws::Vector<Aws::String>& GetVTLDeviceARNs() const{ return m_vTLDeviceARNs; }
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline void SetVTLDeviceARNs(const Aws::Vector<Aws::String>& value) { m_vTLDeviceARNsHasBeenSet = true; m_vTLDeviceARNs = value; }
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline void SetVTLDeviceARNs(Aws::Vector<Aws::String>&& value) { m_vTLDeviceARNsHasBeenSet = true; m_vTLDeviceARNs = value; }
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline DescribeVTLDevicesRequest& WithVTLDeviceARNs(const Aws::Vector<Aws::String>& value) { SetVTLDeviceARNs(value); return *this;}
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline DescribeVTLDevicesRequest& WithVTLDeviceARNs(Aws::Vector<Aws::String>&& value) { SetVTLDeviceARNs(value); return *this;}
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline DescribeVTLDevicesRequest& AddVTLDeviceARNs(const Aws::String& value) { m_vTLDeviceARNsHasBeenSet = true; m_vTLDeviceARNs.push_back(value); return *this; }
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline DescribeVTLDevicesRequest& AddVTLDeviceARNs(Aws::String&& value) { m_vTLDeviceARNsHasBeenSet = true; m_vTLDeviceARNs.push_back(value); return *this; }
 
     /**
      * <p>An array of strings, where each string represents the Amazon Resource Name
-     * (ARN) of a VTL device.</p> <note>All of the specified VTL devices must be from
-     * the same gateway. If no VTL devices are specified, the result will contain all
-     * devices on the specified gateway.</note>
+     * (ARN) of a VTL device.</p> <note><p>All of the specified VTL devices must be
+     * from the same gateway. If no VTL devices are specified, the result will contain
+     * all devices on the specified gateway.</p> </note>
      */
     inline DescribeVTLDevicesRequest& AddVTLDeviceARNs(const char* value) { m_vTLDeviceARNsHasBeenSet = true; m_vTLDeviceARNs.push_back(value); return *this; }
 
@@ -167,19 +167,19 @@ namespace Model
      * <p>Specifies that the number of VTL devices described be limited to the
      * specified number.</p>
      */
-    inline long GetLimit() const{ return m_limit; }
+    inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>Specifies that the number of VTL devices described be limited to the
      * specified number.</p>
      */
-    inline void SetLimit(long value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>Specifies that the number of VTL devices described be limited to the
      * specified number.</p>
      */
-    inline DescribeVTLDevicesRequest& WithLimit(long value) { SetLimit(value); return *this;}
+    inline DescribeVTLDevicesRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
   private:
     Aws::String m_gatewayARN;
@@ -188,7 +188,7 @@ namespace Model
     bool m_vTLDeviceARNsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_limit;
+    int m_limit;
     bool m_limitHasBeenSet;
   };
 

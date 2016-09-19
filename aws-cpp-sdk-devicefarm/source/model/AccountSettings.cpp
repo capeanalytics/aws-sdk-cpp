@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,19 +17,27 @@
 
 #include <utility>
 
-using namespace Aws::DeviceFarm::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace DeviceFarm
+{
+namespace Model
+{
+
 AccountSettings::AccountSettings() : 
     m_awsAccountNumberHasBeenSet(false),
-    m_unmeteredDevicesHasBeenSet(false)
+    m_unmeteredDevicesHasBeenSet(false),
+    m_unmeteredRemoteAccessDevicesHasBeenSet(false)
 {
 }
 
 AccountSettings::AccountSettings(const JsonValue& jsonValue) : 
     m_awsAccountNumberHasBeenSet(false),
-    m_unmeteredDevicesHasBeenSet(false)
+    m_unmeteredDevicesHasBeenSet(false),
+    m_unmeteredRemoteAccessDevicesHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -51,6 +59,16 @@ AccountSettings& AccountSettings::operator =(const JsonValue& jsonValue)
       m_unmeteredDevices[DevicePlatformMapper::GetDevicePlatformForName(unmeteredDevicesItem.first)] = unmeteredDevicesItem.second.AsInteger();
     }
     m_unmeteredDevicesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("unmeteredRemoteAccessDevices"))
+  {
+    Aws::Map<Aws::String, JsonValue> unmeteredRemoteAccessDevicesJsonMap = jsonValue.GetObject("unmeteredRemoteAccessDevices").GetAllObjects();
+    for(auto& unmeteredRemoteAccessDevicesItem : unmeteredRemoteAccessDevicesJsonMap)
+    {
+      m_unmeteredRemoteAccessDevices[DevicePlatformMapper::GetDevicePlatformForName(unmeteredRemoteAccessDevicesItem.first)] = unmeteredRemoteAccessDevicesItem.second.AsInteger();
+    }
+    m_unmeteredRemoteAccessDevicesHasBeenSet = true;
   }
 
   return *this;
@@ -77,5 +95,20 @@ JsonValue AccountSettings::Jsonize() const
 
   }
 
+  if(m_unmeteredRemoteAccessDevicesHasBeenSet)
+  {
+   JsonValue unmeteredRemoteAccessDevicesJsonMap;
+   for(auto& unmeteredRemoteAccessDevicesItem : m_unmeteredRemoteAccessDevices)
+   {
+     unmeteredRemoteAccessDevicesJsonMap.WithInteger(DevicePlatformMapper::GetNameForDevicePlatform(unmeteredRemoteAccessDevicesItem.first), unmeteredRemoteAccessDevicesItem.second);
+   }
+   payload.WithObject("unmeteredRemoteAccessDevices", std::move(unmeteredRemoteAccessDevicesJsonMap));
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace DeviceFarm
+} // namespace Aws

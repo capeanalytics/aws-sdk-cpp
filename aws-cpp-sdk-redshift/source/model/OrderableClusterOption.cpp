@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 OrderableClusterOption::OrderableClusterOption() : 
     m_clusterVersionHasBeenSet(false),
@@ -87,14 +93,17 @@ void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << index << locationValue << ".ClusterVersion=" << StringUtils::URLEncode(m_clusterVersion.c_str()) << "&";
   }
+
   if(m_clusterTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClusterType=" << StringUtils::URLEncode(m_clusterType.c_str()) << "&";
   }
+
   if(m_nodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".NodeType=" << StringUtils::URLEncode(m_nodeType.c_str()) << "&";
   }
+
   if(m_availabilityZonesHasBeenSet)
   {
       unsigned availabilityZonesIdx = 1;
@@ -105,6 +114,7 @@ void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* l
         item.OutputToStream(oStream, availabilityZonesSs.str().c_str());
       }
   }
+
 }
 
 void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -132,3 +142,7 @@ void OrderableClusterOption::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

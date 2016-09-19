@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,12 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PENDING_HASH = HashingUtils::HashString("PENDING");
-static const int STAGING_HASH = HashingUtils::HashString("STAGING");
-static const int STAGED_HASH = HashingUtils::HashString("STAGED");
-static const int UPDATING_HASH = HashingUtils::HashString("UPDATING");
-static const int UPDATED_HASH = HashingUtils::HashString("UPDATED");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 namespace Aws
 {
@@ -34,6 +28,13 @@ namespace Aws
     {
       namespace AgentUpdateStatusMapper
       {
+
+        static const int PENDING_HASH = HashingUtils::HashString("PENDING");
+        static const int STAGING_HASH = HashingUtils::HashString("STAGING");
+        static const int STAGED_HASH = HashingUtils::HashString("STAGED");
+        static const int UPDATING_HASH = HashingUtils::HashString("UPDATING");
+        static const int UPDATED_HASH = HashingUtils::HashString("UPDATED");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 
         AgentUpdateStatus GetAgentUpdateStatusForName(const Aws::String& name)

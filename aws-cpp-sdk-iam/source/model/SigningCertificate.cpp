@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 SigningCertificate::SigningCertificate() : 
     m_userNameHasBeenSet(false),
@@ -89,22 +95,27 @@ void SigningCertificate::OutputToStream(Aws::OStream& oStream, const char* locat
   {
       oStream << location << index << locationValue << ".UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_certificateIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".CertificateId=" << StringUtils::URLEncode(m_certificateId.c_str()) << "&";
   }
+
   if(m_certificateBodyHasBeenSet)
   {
       oStream << location << index << locationValue << ".CertificateBody=" << StringUtils::URLEncode(m_certificateBody.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
   }
+
   if(m_uploadDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".UploadDate=" << StringUtils::URLEncode(m_uploadDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void SigningCertificate::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -130,3 +141,7 @@ void SigningCertificate::OutputToStream(Aws::OStream& oStream, const char* locat
       oStream << location << ".UploadDate=" << StringUtils::URLEncode(m_uploadDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

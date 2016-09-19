@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int TERMINATE_JOB_FLOW_HASH = HashingUtils::HashString("TERMINATE_JOB_FLOW");
-static const int TERMINATE_CLUSTER_HASH = HashingUtils::HashString("TERMINATE_CLUSTER");
-static const int CANCEL_AND_WAIT_HASH = HashingUtils::HashString("CANCEL_AND_WAIT");
-static const int CONTINUE_HASH = HashingUtils::HashString("CONTINUE");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace ActionOnFailureMapper
       {
+
+        static const int TERMINATE_JOB_FLOW_HASH = HashingUtils::HashString("TERMINATE_JOB_FLOW");
+        static const int TERMINATE_CLUSTER_HASH = HashingUtils::HashString("TERMINATE_CLUSTER");
+        static const int CANCEL_AND_WAIT_HASH = HashingUtils::HashString("CANCEL_AND_WAIT");
+        static const int CONTINUE_HASH = HashingUtils::HashString("CONTINUE");
 
 
         ActionOnFailure GetActionOnFailureForName(const Aws::String& name)

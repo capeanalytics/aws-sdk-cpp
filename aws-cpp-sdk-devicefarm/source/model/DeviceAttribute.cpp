@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ARN_HASH = HashingUtils::HashString("ARN");
-static const int PLATFORM_HASH = HashingUtils::HashString("PLATFORM");
-static const int FORM_FACTOR_HASH = HashingUtils::HashString("FORM_FACTOR");
-static const int MANUFACTURER_HASH = HashingUtils::HashString("MANUFACTURER");
 
 namespace Aws
 {
@@ -32,6 +28,12 @@ namespace Aws
     {
       namespace DeviceAttributeMapper
       {
+
+        static const int ARN_HASH = HashingUtils::HashString("ARN");
+        static const int PLATFORM_HASH = HashingUtils::HashString("PLATFORM");
+        static const int FORM_FACTOR_HASH = HashingUtils::HashString("FORM_FACTOR");
+        static const int MANUFACTURER_HASH = HashingUtils::HashString("MANUFACTURER");
+        static const int REMOTE_ACCESS_ENABLED_HASH = HashingUtils::HashString("REMOTE_ACCESS_ENABLED");
 
 
         DeviceAttribute GetDeviceAttributeForName(const Aws::String& name)
@@ -52,6 +54,10 @@ namespace Aws
           else if (hashCode == MANUFACTURER_HASH)
           {
             return DeviceAttribute::MANUFACTURER;
+          }
+          else if (hashCode == REMOTE_ACCESS_ENABLED_HASH)
+          {
+            return DeviceAttribute::REMOTE_ACCESS_ENABLED;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -75,6 +81,8 @@ namespace Aws
             return "FORM_FACTOR";
           case DeviceAttribute::MANUFACTURER:
             return "MANUFACTURER";
+          case DeviceAttribute::REMOTE_ACCESS_ENABLED:
+            return "REMOTE_ACCESS_ENABLED";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

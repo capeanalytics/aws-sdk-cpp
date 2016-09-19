@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudFormation
+{
+namespace Model
+{
 
 ResourceChangeDetail::ResourceChangeDetail() : 
     m_targetHasBeenSet(false),
@@ -83,18 +89,22 @@ void ResourceChangeDetail::OutputToStream(Aws::OStream& oStream, const char* loc
       targetLocationAndMemberSs << location << index << locationValue << ".Target";
       m_target.OutputToStream(oStream, targetLocationAndMemberSs.str().c_str());
   }
+
   if(m_evaluationHasBeenSet)
   {
       oStream << location << index << locationValue << ".Evaluation=" << EvaluationTypeMapper::GetNameForEvaluationType(m_evaluation) << "&";
   }
+
   if(m_changeSourceHasBeenSet)
   {
       oStream << location << index << locationValue << ".ChangeSource=" << ChangeSourceMapper::GetNameForChangeSource(m_changeSource) << "&";
   }
+
   if(m_causingEntityHasBeenSet)
   {
       oStream << location << index << locationValue << ".CausingEntity=" << StringUtils::URLEncode(m_causingEntity.c_str()) << "&";
   }
+
 }
 
 void ResourceChangeDetail::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -118,3 +128,7 @@ void ResourceChangeDetail::OutputToStream(Aws::OStream& oStream, const char* loc
       oStream << location << ".CausingEntity=" << StringUtils::URLEncode(m_causingEntity.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudFormation
+} // namespace Aws

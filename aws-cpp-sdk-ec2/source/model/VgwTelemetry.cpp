@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VgwTelemetry::VgwTelemetry() : 
     m_outsideIpAddressHasBeenSet(false),
@@ -91,22 +97,27 @@ void VgwTelemetry::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".OutsideIpAddress=" << StringUtils::URLEncode(m_outsideIpAddress.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << TelemetryStatusMapper::GetNameForTelemetryStatus(m_status) << "&";
   }
+
   if(m_lastStatusChangeHasBeenSet)
   {
       oStream << location << index << locationValue << ".LastStatusChange=" << StringUtils::URLEncode(m_lastStatusChange.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_acceptedRouteCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".AcceptedRouteCount=" << m_acceptedRouteCount << "&";
   }
+
 }
 
 void VgwTelemetry::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -132,3 +143,7 @@ void VgwTelemetry::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".AcceptedRouteCount=" << m_acceptedRouteCount << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

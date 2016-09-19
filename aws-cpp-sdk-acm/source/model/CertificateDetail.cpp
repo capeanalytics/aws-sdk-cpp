@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::ACM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ACM
+{
+namespace Model
+{
 
 CertificateDetail::CertificateDetail() : 
     m_certificateArnHasBeenSet(false),
@@ -38,7 +44,8 @@ CertificateDetail::CertificateDetail() :
     m_notAfterHasBeenSet(false),
     m_keyAlgorithmHasBeenSet(false),
     m_signatureAlgorithmHasBeenSet(false),
-    m_inUseByHasBeenSet(false)
+    m_inUseByHasBeenSet(false),
+    m_failureReasonHasBeenSet(false)
 {
 }
 
@@ -59,7 +66,8 @@ CertificateDetail::CertificateDetail(const JsonValue& jsonValue) :
     m_notAfterHasBeenSet(false),
     m_keyAlgorithmHasBeenSet(false),
     m_signatureAlgorithmHasBeenSet(false),
-    m_inUseByHasBeenSet(false)
+    m_inUseByHasBeenSet(false),
+    m_failureReasonHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -194,6 +202,13 @@ CertificateDetail& CertificateDetail::operator =(const JsonValue& jsonValue)
     m_inUseByHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("FailureReason"))
+  {
+    m_failureReason = FailureReasonMapper::GetFailureReasonForName(jsonValue.GetString("FailureReason"));
+
+    m_failureReasonHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -310,5 +325,14 @@ JsonValue CertificateDetail::Jsonize() const
 
   }
 
+  if(m_failureReasonHasBeenSet)
+  {
+   payload.WithString("FailureReason", FailureReasonMapper::GetNameForFailureReason(m_failureReason));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace ACM
+} // namespace Aws

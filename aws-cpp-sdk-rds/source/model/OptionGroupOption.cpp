@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 OptionGroupOption::OptionGroupOption() : 
     m_nameHasBeenSet(false),
@@ -34,11 +40,13 @@ OptionGroupOption::OptionGroupOption() :
     m_defaultPort(0),
     m_defaultPortHasBeenSet(false),
     m_optionsDependedOnHasBeenSet(false),
+    m_optionsConflictsWithHasBeenSet(false),
     m_persistent(false),
     m_persistentHasBeenSet(false),
     m_permanent(false),
     m_permanentHasBeenSet(false),
-    m_optionGroupOptionSettingsHasBeenSet(false)
+    m_optionGroupOptionSettingsHasBeenSet(false),
+    m_optionGroupOptionVersionsHasBeenSet(false)
 {
 }
 
@@ -53,11 +61,13 @@ OptionGroupOption::OptionGroupOption(const XmlNode& xmlNode) :
     m_defaultPort(0),
     m_defaultPortHasBeenSet(false),
     m_optionsDependedOnHasBeenSet(false),
+    m_optionsConflictsWithHasBeenSet(false),
     m_persistent(false),
     m_persistentHasBeenSet(false),
     m_permanent(false),
     m_permanentHasBeenSet(false),
-    m_optionGroupOptionSettingsHasBeenSet(false)
+    m_optionGroupOptionSettingsHasBeenSet(false),
+    m_optionGroupOptionVersionsHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -122,6 +132,18 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
 
       m_optionsDependedOnHasBeenSet = true;
     }
+    XmlNode optionsConflictsWithNode = resultNode.FirstChild("OptionsConflictsWith");
+    if(!optionsConflictsWithNode.IsNull())
+    {
+      XmlNode optionsConflictsWithMember = optionsConflictsWithNode.FirstChild("OptionConflictName");
+      while(!optionsConflictsWithMember.IsNull())
+      {
+        m_optionsConflictsWith.push_back(StringUtils::Trim(optionsConflictsWithMember.GetText().c_str()));
+        optionsConflictsWithMember = optionsConflictsWithMember.NextNode("OptionConflictName");
+      }
+
+      m_optionsConflictsWithHasBeenSet = true;
+    }
     XmlNode persistentNode = resultNode.FirstChild("Persistent");
     if(!persistentNode.IsNull())
     {
@@ -146,6 +168,18 @@ OptionGroupOption& OptionGroupOption::operator =(const XmlNode& xmlNode)
 
       m_optionGroupOptionSettingsHasBeenSet = true;
     }
+    XmlNode optionGroupOptionVersionsNode = resultNode.FirstChild("OptionGroupOptionVersions");
+    if(!optionGroupOptionVersionsNode.IsNull())
+    {
+      XmlNode optionGroupOptionVersionsMember = optionGroupOptionVersionsNode.FirstChild("OptionVersion");
+      while(!optionGroupOptionVersionsMember.IsNull())
+      {
+        m_optionGroupOptionVersions.push_back(optionGroupOptionVersionsMember);
+        optionGroupOptionVersionsMember = optionGroupOptionVersionsMember.NextNode("OptionVersion");
+      }
+
+      m_optionGroupOptionVersionsHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -157,30 +191,37 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_engineNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineName=" << StringUtils::URLEncode(m_engineName.c_str()) << "&";
   }
+
   if(m_majorEngineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".MajorEngineVersion=" << StringUtils::URLEncode(m_majorEngineVersion.c_str()) << "&";
   }
+
   if(m_minimumRequiredMinorEngineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".MinimumRequiredMinorEngineVersion=" << StringUtils::URLEncode(m_minimumRequiredMinorEngineVersion.c_str()) << "&";
   }
+
   if(m_portRequiredHasBeenSet)
   {
       oStream << location << index << locationValue << ".PortRequired=" << m_portRequired << "&";
   }
+
   if(m_defaultPortHasBeenSet)
   {
       oStream << location << index << locationValue << ".DefaultPort=" << m_defaultPort << "&";
   }
+
   if(m_optionsDependedOnHasBeenSet)
   {
       unsigned optionsDependedOnIdx = 1;
@@ -189,14 +230,26 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
         oStream << location << index << locationValue << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
+  if(m_optionsConflictsWithHasBeenSet)
+  {
+      unsigned optionsConflictsWithIdx = 1;
+      for(auto& item : m_optionsConflictsWith)
+      {
+        oStream << location << index << locationValue << ".OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
   if(m_persistentHasBeenSet)
   {
       oStream << location << index << locationValue << ".Persistent=" << m_persistent << "&";
   }
+
   if(m_permanentHasBeenSet)
   {
       oStream << location << index << locationValue << ".Permanent=" << m_permanent << "&";
   }
+
   if(m_optionGroupOptionSettingsHasBeenSet)
   {
       unsigned optionGroupOptionSettingsIdx = 1;
@@ -207,6 +260,18 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
+
+  if(m_optionGroupOptionVersionsHasBeenSet)
+  {
+      unsigned optionGroupOptionVersionsIdx = 1;
+      for(auto& item : m_optionGroupOptionVersions)
+      {
+        Aws::StringStream optionGroupOptionVersionsSs;
+        optionGroupOptionVersionsSs << location << index << locationValue << ".OptionVersion." << optionGroupOptionVersionsIdx++;
+        item.OutputToStream(oStream, optionGroupOptionVersionsSs.str().c_str());
+      }
+  }
+
 }
 
 void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -247,6 +312,14 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
         oStream << location << ".OptionName." << optionsDependedOnIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+  if(m_optionsConflictsWithHasBeenSet)
+  {
+      unsigned optionsConflictsWithIdx = 1;
+      for(auto& item : m_optionsConflictsWith)
+      {
+        oStream << location << ".OptionConflictName." << optionsConflictsWithIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
   if(m_persistentHasBeenSet)
   {
       oStream << location << ".Persistent=" << m_persistent << "&";
@@ -265,4 +338,18 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, optionGroupOptionSettingsSs.str().c_str());
       }
   }
+  if(m_optionGroupOptionVersionsHasBeenSet)
+  {
+      unsigned optionGroupOptionVersionsIdx = 1;
+      for(auto& item : m_optionGroupOptionVersions)
+      {
+        Aws::StringStream optionGroupOptionVersionsSs;
+        optionGroupOptionVersionsSs << location <<  ".OptionVersion." << optionGroupOptionVersionsIdx++;
+        item.OutputToStream(oStream, optionGroupOptionVersionsSs.str().c_str());
+      }
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

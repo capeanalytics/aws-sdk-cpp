@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,19 +17,27 @@
 
 #include <utility>
 
-using namespace Aws::ConfigService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace ConfigService
+{
+namespace Model
+{
+
 SourceDetail::SourceDetail() : 
     m_eventSourceHasBeenSet(false),
-    m_messageTypeHasBeenSet(false)
+    m_messageTypeHasBeenSet(false),
+    m_maximumExecutionFrequencyHasBeenSet(false)
 {
 }
 
 SourceDetail::SourceDetail(const JsonValue& jsonValue) : 
     m_eventSourceHasBeenSet(false),
-    m_messageTypeHasBeenSet(false)
+    m_messageTypeHasBeenSet(false),
+    m_maximumExecutionFrequencyHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -50,6 +58,13 @@ SourceDetail& SourceDetail::operator =(const JsonValue& jsonValue)
     m_messageTypeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("MaximumExecutionFrequency"))
+  {
+    m_maximumExecutionFrequency = MaximumExecutionFrequencyMapper::GetMaximumExecutionFrequencyForName(jsonValue.GetString("MaximumExecutionFrequency"));
+
+    m_maximumExecutionFrequencyHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -67,5 +82,14 @@ JsonValue SourceDetail::Jsonize() const
    payload.WithString("MessageType", MessageTypeMapper::GetNameForMessageType(m_messageType));
   }
 
+  if(m_maximumExecutionFrequencyHasBeenSet)
+  {
+   payload.WithString("MaximumExecutionFrequency", MaximumExecutionFrequencyMapper::GetNameForMaximumExecutionFrequency(m_maximumExecutionFrequency));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace ConfigService
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 Group::Group() : 
     m_pathHasBeenSet(false),
@@ -89,22 +95,27 @@ void Group::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   {
       oStream << location << index << locationValue << ".Path=" << StringUtils::URLEncode(m_path.c_str()) << "&";
   }
+
   if(m_groupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
+
   if(m_groupIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
   }
+
   if(m_arnHasBeenSet)
   {
       oStream << location << index << locationValue << ".Arn=" << StringUtils::URLEncode(m_arn.c_str()) << "&";
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void Group::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -130,3 +141,7 @@ void Group::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

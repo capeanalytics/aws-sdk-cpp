@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InstanceStatusDetails::InstanceStatusDetails() : 
     m_nameHasBeenSet(false),
@@ -73,14 +79,17 @@ void InstanceStatusDetails::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".Name=" << StatusNameMapper::GetNameForStatusName(m_name) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
   }
+
   if(m_impairedSinceHasBeenSet)
   {
       oStream << location << index << locationValue << ".ImpairedSince=" << StringUtils::URLEncode(m_impairedSince.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void InstanceStatusDetails::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void InstanceStatusDetails::OutputToStream(Aws::OStream& oStream, const char* lo
       oStream << location << ".ImpairedSince=" << StringUtils::URLEncode(m_impairedSince.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

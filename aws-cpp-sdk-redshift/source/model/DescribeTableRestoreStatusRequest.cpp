@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,18 +36,22 @@ Aws::String DescribeTableRestoreStatusRequest::SerializePayload() const
   {
     ss << "ClusterIdentifier=" << StringUtils::URLEncode(m_clusterIdentifier.c_str()) << "&";
   }
+
   if(m_tableRestoreRequestIdHasBeenSet)
   {
     ss << "TableRestoreRequestId=" << StringUtils::URLEncode(m_tableRestoreRequestId.c_str()) << "&";
   }
+
   if(m_maxRecordsHasBeenSet)
   {
     ss << "MaxRecords=" << m_maxRecords << "&";
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }

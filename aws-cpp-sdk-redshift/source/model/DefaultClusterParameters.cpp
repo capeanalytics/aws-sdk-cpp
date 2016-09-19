@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 DefaultClusterParameters::DefaultClusterParameters() : 
     m_parameterGroupFamilyHasBeenSet(false),
@@ -79,10 +85,12 @@ void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char*
   {
       oStream << location << index << locationValue << ".ParameterGroupFamily=" << StringUtils::URLEncode(m_parameterGroupFamily.c_str()) << "&";
   }
+
   if(m_markerHasBeenSet)
   {
       oStream << location << index << locationValue << ".Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   if(m_parametersHasBeenSet)
   {
       unsigned parametersIdx = 1;
@@ -93,6 +101,7 @@ void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char*
         item.OutputToStream(oStream, parametersSs.str().c_str());
       }
   }
+
 }
 
 void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void DefaultClusterParameters::OutputToStream(Aws::OStream& oStream, const char*
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

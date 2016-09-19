@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 SnapshotDetail::SnapshotDetail() : 
     m_diskImageSize(0.0),
@@ -131,44 +137,54 @@ void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location,
   {
         oStream << location << index << locationValue << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_formatHasBeenSet)
   {
       oStream << location << index << locationValue << ".Format=" << StringUtils::URLEncode(m_format.c_str()) << "&";
   }
+
   if(m_urlHasBeenSet)
   {
       oStream << location << index << locationValue << ".Url=" << StringUtils::URLEncode(m_url.c_str()) << "&";
   }
+
   if(m_userBucketHasBeenSet)
   {
       Aws::StringStream userBucketLocationAndMemberSs;
       userBucketLocationAndMemberSs << location << index << locationValue << ".UserBucket";
       m_userBucket.OutputToStream(oStream, userBucketLocationAndMemberSs.str().c_str());
   }
+
   if(m_deviceNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeviceName=" << StringUtils::URLEncode(m_deviceName.c_str()) << "&";
   }
+
   if(m_snapshotIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotId=" << StringUtils::URLEncode(m_snapshotId.c_str()) << "&";
   }
+
   if(m_progressHasBeenSet)
   {
       oStream << location << index << locationValue << ".Progress=" << StringUtils::URLEncode(m_progress.c_str()) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
 }
 
 void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -216,3 +232,7 @@ void SnapshotDetail::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

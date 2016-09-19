@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VpcEndpoint::VpcEndpoint() : 
     m_vpcEndpointIdHasBeenSet(false),
@@ -111,22 +117,27 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".VpcEndpointId=" << StringUtils::URLEncode(m_vpcEndpointId.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_serviceNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".ServiceName=" << StringUtils::URLEncode(m_serviceName.c_str()) << "&";
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << StateMapper::GetNameForState(m_state) << "&";
   }
+
   if(m_policyDocumentHasBeenSet)
   {
       oStream << location << index << locationValue << ".PolicyDocument=" << StringUtils::URLEncode(m_policyDocument.c_str()) << "&";
   }
+
   if(m_routeTableIdsHasBeenSet)
   {
       unsigned routeTableIdsIdx = 1;
@@ -135,10 +146,12 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location, un
         oStream << location << index << locationValue << ".RouteTableIdSet." << routeTableIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_creationTimestampHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreationTimestamp=" << StringUtils::URLEncode(m_creationTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -176,3 +189,7 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) co
       oStream << location << ".CreationTimestamp=" << StringUtils::URLEncode(m_creationTimestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

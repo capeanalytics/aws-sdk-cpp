@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VpcPeeringConnection::VpcPeeringConnection() : 
     m_accepterVpcInfoHasBeenSet(false),
@@ -105,22 +111,26 @@ void VpcPeeringConnection::OutputToStream(Aws::OStream& oStream, const char* loc
       accepterVpcInfoLocationAndMemberSs << location << index << locationValue << ".AccepterVpcInfo";
       m_accepterVpcInfo.OutputToStream(oStream, accepterVpcInfoLocationAndMemberSs.str().c_str());
   }
+
   if(m_expirationTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ExpirationTime=" << StringUtils::URLEncode(m_expirationTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_requesterVpcInfoHasBeenSet)
   {
       Aws::StringStream requesterVpcInfoLocationAndMemberSs;
       requesterVpcInfoLocationAndMemberSs << location << index << locationValue << ".RequesterVpcInfo";
       m_requesterVpcInfo.OutputToStream(oStream, requesterVpcInfoLocationAndMemberSs.str().c_str());
   }
+
   if(m_statusHasBeenSet)
   {
       Aws::StringStream statusLocationAndMemberSs;
       statusLocationAndMemberSs << location << index << locationValue << ".Status";
       m_status.OutputToStream(oStream, statusLocationAndMemberSs.str().c_str());
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -131,10 +141,12 @@ void VpcPeeringConnection::OutputToStream(Aws::OStream& oStream, const char* loc
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
   if(m_vpcPeeringConnectionIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
   }
+
 }
 
 void VpcPeeringConnection::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -176,3 +188,7 @@ void VpcPeeringConnection::OutputToStream(Aws::OStream& oStream, const char* loc
       oStream << location << ".VpcPeeringConnectionId=" << StringUtils::URLEncode(m_vpcPeeringConnectionId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -45,25 +45,39 @@ namespace Model
     VirtualInterface& operator=(const Aws::Utils::Json::JsonValue& jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline const Aws::String& GetOwnerAccount() const{ return m_ownerAccount; }
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline void SetOwnerAccount(const Aws::String& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = value; }
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline void SetOwnerAccount(Aws::String&& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = value; }
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline void SetOwnerAccount(const char* value) { m_ownerAccountHasBeenSet = true; m_ownerAccount.assign(value); }
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline VirtualInterface& WithOwnerAccount(const Aws::String& value) { SetOwnerAccount(value); return *this;}
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline VirtualInterface& WithOwnerAccount(Aws::String&& value) { SetOwnerAccount(value); return *this;}
 
-    
+    /**
+     * <p>The AWS account that will own the new virtual interface.</p>
+     */
     inline VirtualInterface& WithOwnerAccount(const char* value) { SetOwnerAccount(value); return *this;}
 
     
@@ -172,22 +186,22 @@ namespace Model
     inline VirtualInterface& WithVirtualInterfaceName(const char* value) { SetVirtualInterfaceName(value); return *this;}
 
     
-    inline long GetVlan() const{ return m_vlan; }
+    inline int GetVlan() const{ return m_vlan; }
 
     
-    inline void SetVlan(long value) { m_vlanHasBeenSet = true; m_vlan = value; }
+    inline void SetVlan(int value) { m_vlanHasBeenSet = true; m_vlan = value; }
 
     
-    inline VirtualInterface& WithVlan(long value) { SetVlan(value); return *this;}
+    inline VirtualInterface& WithVlan(int value) { SetVlan(value); return *this;}
 
     
-    inline long GetAsn() const{ return m_asn; }
+    inline int GetAsn() const{ return m_asn; }
 
     
-    inline void SetAsn(long value) { m_asnHasBeenSet = true; m_asn = value; }
+    inline void SetAsn(int value) { m_asnHasBeenSet = true; m_asn = value; }
 
     
-    inline VirtualInterface& WithAsn(long value) { SetAsn(value); return *this;}
+    inline VirtualInterface& WithAsn(int value) { SetAsn(value); return *this;}
 
     
     inline const Aws::String& GetAuthKey() const{ return m_authKey; }
@@ -357,9 +371,9 @@ namespace Model
     bool m_virtualInterfaceTypeHasBeenSet;
     Aws::String m_virtualInterfaceName;
     bool m_virtualInterfaceNameHasBeenSet;
-    long m_vlan;
+    int m_vlan;
     bool m_vlanHasBeenSet;
-    long m_asn;
+    int m_asn;
     bool m_asnHasBeenSet;
     Aws::String m_authKey;
     bool m_authKeyHasBeenSet;

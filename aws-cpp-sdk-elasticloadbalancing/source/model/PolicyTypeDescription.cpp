@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticLoadBalancing
+{
+namespace Model
+{
 
 PolicyTypeDescription::PolicyTypeDescription() : 
     m_policyTypeNameHasBeenSet(false),
@@ -79,10 +85,12 @@ void PolicyTypeDescription::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".PolicyTypeName=" << StringUtils::URLEncode(m_policyTypeName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_policyAttributeTypeDescriptionsHasBeenSet)
   {
       unsigned policyAttributeTypeDescriptionsIdx = 1;
@@ -93,6 +101,7 @@ void PolicyTypeDescription::OutputToStream(Aws::OStream& oStream, const char* lo
         item.OutputToStream(oStream, policyAttributeTypeDescriptionsSs.str().c_str());
       }
   }
+
 }
 
 void PolicyTypeDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void PolicyTypeDescription::OutputToStream(Aws::OStream& oStream, const char* lo
       }
   }
 }
+
+} // namespace Model
+} // namespace ElasticLoadBalancing
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,14 +17,22 @@
 
 #include <utility>
 
-using namespace Aws::CodePipeline::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CodePipeline
+{
+namespace Model
+{
 
 ActionExecution::ActionExecution() : 
     m_statusHasBeenSet(false),
     m_summaryHasBeenSet(false),
     m_lastStatusChangeHasBeenSet(false),
+    m_tokenHasBeenSet(false),
+    m_lastUpdatedByHasBeenSet(false),
     m_externalExecutionIdHasBeenSet(false),
     m_externalExecutionUrlHasBeenSet(false),
     m_percentComplete(0),
@@ -37,6 +45,8 @@ ActionExecution::ActionExecution(const JsonValue& jsonValue) :
     m_statusHasBeenSet(false),
     m_summaryHasBeenSet(false),
     m_lastStatusChangeHasBeenSet(false),
+    m_tokenHasBeenSet(false),
+    m_lastUpdatedByHasBeenSet(false),
     m_externalExecutionIdHasBeenSet(false),
     m_externalExecutionUrlHasBeenSet(false),
     m_percentComplete(0),
@@ -67,6 +77,20 @@ ActionExecution& ActionExecution::operator =(const JsonValue& jsonValue)
     m_lastStatusChange = jsonValue.GetDouble("lastStatusChange");
 
     m_lastStatusChangeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("token"))
+  {
+    m_token = jsonValue.GetString("token");
+
+    m_tokenHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("lastUpdatedBy"))
+  {
+    m_lastUpdatedBy = jsonValue.GetString("lastUpdatedBy");
+
+    m_lastUpdatedByHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("externalExecutionId"))
@@ -120,6 +144,18 @@ JsonValue ActionExecution::Jsonize() const
    payload.WithDouble("lastStatusChange", m_lastStatusChange.SecondsWithMSPrecision());
   }
 
+  if(m_tokenHasBeenSet)
+  {
+   payload.WithString("token", m_token);
+
+  }
+
+  if(m_lastUpdatedByHasBeenSet)
+  {
+   payload.WithString("lastUpdatedBy", m_lastUpdatedBy);
+
+  }
+
   if(m_externalExecutionIdHasBeenSet)
   {
    payload.WithString("externalExecutionId", m_externalExecutionId);
@@ -146,3 +182,7 @@ JsonValue ActionExecution::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CodePipeline
+} // namespace Aws

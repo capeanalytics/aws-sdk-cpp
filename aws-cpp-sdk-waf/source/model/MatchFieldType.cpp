@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int URI_HASH = HashingUtils::HashString("URI");
-static const int QUERY_STRING_HASH = HashingUtils::HashString("QUERY_STRING");
-static const int HEADER_HASH = HashingUtils::HashString("HEADER");
-static const int METHOD_HASH = HashingUtils::HashString("METHOD");
-static const int BODY_HASH = HashingUtils::HashString("BODY");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace MatchFieldTypeMapper
       {
+
+        static const int URI_HASH = HashingUtils::HashString("URI");
+        static const int QUERY_STRING_HASH = HashingUtils::HashString("QUERY_STRING");
+        static const int HEADER_HASH = HashingUtils::HashString("HEADER");
+        static const int METHOD_HASH = HashingUtils::HashString("METHOD");
+        static const int BODY_HASH = HashingUtils::HashString("BODY");
 
 
         MatchFieldType GetMatchFieldTypeForName(const Aws::String& name)

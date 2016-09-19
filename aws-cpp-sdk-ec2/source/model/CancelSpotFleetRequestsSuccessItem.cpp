@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 CancelSpotFleetRequestsSuccessItem::CancelSpotFleetRequestsSuccessItem() : 
     m_spotFleetRequestIdHasBeenSet(false),
@@ -73,14 +79,17 @@ void CancelSpotFleetRequestsSuccessItem::OutputToStream(Aws::OStream& oStream, c
   {
       oStream << location << index << locationValue << ".SpotFleetRequestId=" << StringUtils::URLEncode(m_spotFleetRequestId.c_str()) << "&";
   }
+
   if(m_currentSpotFleetRequestStateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CurrentSpotFleetRequestState=" << BatchStateMapper::GetNameForBatchState(m_currentSpotFleetRequestState) << "&";
   }
+
   if(m_previousSpotFleetRequestStateHasBeenSet)
   {
       oStream << location << index << locationValue << ".PreviousSpotFleetRequestState=" << BatchStateMapper::GetNameForBatchState(m_previousSpotFleetRequestState) << "&";
   }
+
 }
 
 void CancelSpotFleetRequestsSuccessItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void CancelSpotFleetRequestsSuccessItem::OutputToStream(Aws::OStream& oStream, c
       oStream << location << ".PreviousSpotFleetRequestState=" << BatchStateMapper::GetNameForBatchState(m_previousSpotFleetRequestState) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

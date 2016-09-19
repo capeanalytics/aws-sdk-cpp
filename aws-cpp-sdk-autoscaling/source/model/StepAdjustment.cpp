@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace AutoScaling
+{
+namespace Model
+{
 
 StepAdjustment::StepAdjustment() : 
     m_metricIntervalLowerBound(0.0),
@@ -79,14 +85,17 @@ void StepAdjustment::OutputToStream(Aws::OStream& oStream, const char* location,
   {
         oStream << location << index << locationValue << ".MetricIntervalLowerBound=" << StringUtils::URLEncode(m_metricIntervalLowerBound) << "&";
   }
+
   if(m_metricIntervalUpperBoundHasBeenSet)
   {
         oStream << location << index << locationValue << ".MetricIntervalUpperBound=" << StringUtils::URLEncode(m_metricIntervalUpperBound) << "&";
   }
+
   if(m_scalingAdjustmentHasBeenSet)
   {
       oStream << location << index << locationValue << ".ScalingAdjustment=" << m_scalingAdjustment << "&";
   }
+
 }
 
 void StepAdjustment::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -104,3 +113,7 @@ void StepAdjustment::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".ScalingAdjustment=" << m_scalingAdjustment << "&";
   }
 }
+
+} // namespace Model
+} // namespace AutoScaling
+} // namespace Aws

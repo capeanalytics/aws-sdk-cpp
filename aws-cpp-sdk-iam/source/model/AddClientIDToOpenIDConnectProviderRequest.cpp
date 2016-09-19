@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String AddClientIDToOpenIDConnectProviderRequest::SerializePayload() const
   {
     ss << "OpenIDConnectProviderArn=" << StringUtils::URLEncode(m_openIDConnectProviderArn.c_str()) << "&";
   }
+
   if(m_clientIDHasBeenSet)
   {
     ss << "ClientID=" << StringUtils::URLEncode(m_clientID.c_str()) << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

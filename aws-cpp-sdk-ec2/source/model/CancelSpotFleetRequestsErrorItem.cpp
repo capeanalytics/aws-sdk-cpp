@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 CancelSpotFleetRequestsErrorItem::CancelSpotFleetRequestsErrorItem() : 
     m_spotFleetRequestIdHasBeenSet(false),
@@ -65,12 +71,14 @@ void CancelSpotFleetRequestsErrorItem::OutputToStream(Aws::OStream& oStream, con
   {
       oStream << location << index << locationValue << ".SpotFleetRequestId=" << StringUtils::URLEncode(m_spotFleetRequestId.c_str()) << "&";
   }
+
   if(m_errorHasBeenSet)
   {
       Aws::StringStream errorLocationAndMemberSs;
       errorLocationAndMemberSs << location << index << locationValue << ".Error";
       m_error.OutputToStream(oStream, errorLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void CancelSpotFleetRequestsErrorItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -86,3 +94,7 @@ void CancelSpotFleetRequestsErrorItem::OutputToStream(Aws::OStream& oStream, con
       m_error.OutputToStream(oStream, errorLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

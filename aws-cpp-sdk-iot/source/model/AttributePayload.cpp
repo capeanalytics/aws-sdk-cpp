@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,17 +17,27 @@
 
 #include <utility>
 
-using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace IoT
+{
+namespace Model
+{
+
 AttributePayload::AttributePayload() : 
-    m_attributesHasBeenSet(false)
+    m_attributesHasBeenSet(false),
+    m_merge(false),
+    m_mergeHasBeenSet(false)
 {
 }
 
 AttributePayload::AttributePayload(const JsonValue& jsonValue) : 
-    m_attributesHasBeenSet(false)
+    m_attributesHasBeenSet(false),
+    m_merge(false),
+    m_mergeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -42,6 +52,13 @@ AttributePayload& AttributePayload::operator =(const JsonValue& jsonValue)
       m_attributes[attributesItem.first] = attributesItem.second.AsString();
     }
     m_attributesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("merge"))
+  {
+    m_merge = jsonValue.GetBool("merge");
+
+    m_mergeHasBeenSet = true;
   }
 
   return *this;
@@ -62,5 +79,15 @@ JsonValue AttributePayload::Jsonize() const
 
   }
 
+  if(m_mergeHasBeenSet)
+  {
+   payload.WithBool("merge", m_merge);
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace IoT
+} // namespace Aws

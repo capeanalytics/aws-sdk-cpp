@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBSnapshotAttributesResult::DBSnapshotAttributesResult() : 
     m_dBSnapshotIdentifierHasBeenSet(false),
@@ -71,6 +77,7 @@ void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const cha
   {
       oStream << location << index << locationValue << ".DBSnapshotIdentifier=" << StringUtils::URLEncode(m_dBSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_dBSnapshotAttributesHasBeenSet)
   {
       unsigned dBSnapshotAttributesIdx = 1;
@@ -81,6 +88,7 @@ void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const cha
         item.OutputToStream(oStream, dBSnapshotAttributesSs.str().c_str());
       }
   }
+
 }
 
 void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const cha
       }
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

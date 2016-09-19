@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,19 +17,29 @@
 
 #include <utility>
 
-using namespace Aws::CodePipeline::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace CodePipeline
+{
+namespace Model
+{
+
 CurrentRevision::CurrentRevision() : 
     m_revisionHasBeenSet(false),
-    m_changeIdentifierHasBeenSet(false)
+    m_changeIdentifierHasBeenSet(false),
+    m_createdHasBeenSet(false),
+    m_revisionSummaryHasBeenSet(false)
 {
 }
 
 CurrentRevision::CurrentRevision(const JsonValue& jsonValue) : 
     m_revisionHasBeenSet(false),
-    m_changeIdentifierHasBeenSet(false)
+    m_changeIdentifierHasBeenSet(false),
+    m_createdHasBeenSet(false),
+    m_revisionSummaryHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -48,6 +58,20 @@ CurrentRevision& CurrentRevision::operator =(const JsonValue& jsonValue)
     m_changeIdentifier = jsonValue.GetString("changeIdentifier");
 
     m_changeIdentifierHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("created"))
+  {
+    m_created = jsonValue.GetDouble("created");
+
+    m_createdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("revisionSummary"))
+  {
+    m_revisionSummary = jsonValue.GetString("revisionSummary");
+
+    m_revisionSummaryHasBeenSet = true;
   }
 
   return *this;
@@ -69,5 +93,20 @@ JsonValue CurrentRevision::Jsonize() const
 
   }
 
+  if(m_createdHasBeenSet)
+  {
+   payload.WithDouble("created", m_created.SecondsWithMSPrecision());
+  }
+
+  if(m_revisionSummaryHasBeenSet)
+  {
+   payload.WithString("revisionSummary", m_revisionSummary);
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace CodePipeline
+} // namespace Aws

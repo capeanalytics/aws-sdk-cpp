@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 Address::Address() : 
     m_instanceIdHasBeenSet(false),
@@ -113,34 +119,42 @@ void Address::OutputToStream(Aws::OStream& oStream, const char* location, unsign
   {
       oStream << location << index << locationValue << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
+
   if(m_publicIpHasBeenSet)
   {
       oStream << location << index << locationValue << ".PublicIp=" << StringUtils::URLEncode(m_publicIp.c_str()) << "&";
   }
+
   if(m_allocationIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllocationId=" << StringUtils::URLEncode(m_allocationId.c_str()) << "&";
   }
+
   if(m_associationIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".AssociationId=" << StringUtils::URLEncode(m_associationId.c_str()) << "&";
   }
+
   if(m_domainHasBeenSet)
   {
       oStream << location << index << locationValue << ".Domain=" << DomainTypeMapper::GetNameForDomainType(m_domain) << "&";
   }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+
   if(m_networkInterfaceOwnerIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".NetworkInterfaceOwnerId=" << StringUtils::URLEncode(m_networkInterfaceOwnerId.c_str()) << "&";
   }
+
   if(m_privateIpAddressHasBeenSet)
   {
       oStream << location << index << locationValue << ".PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
   }
+
 }
 
 void Address::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -178,3 +192,7 @@ void Address::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

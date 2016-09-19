@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::ConfigService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ConfigService
+{
+namespace Model
+{
 
 Evaluation::Evaluation() : 
     m_complianceResourceTypeHasBeenSet(false),
@@ -114,3 +120,7 @@ JsonValue Evaluation::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace ConfigService
+} // namespace Aws

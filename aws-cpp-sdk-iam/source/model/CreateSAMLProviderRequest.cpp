@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String CreateSAMLProviderRequest::SerializePayload() const
   {
     ss << "SAMLMetadataDocument=" << StringUtils::URLEncode(m_sAMLMetadataDocument.c_str()) << "&";
   }
+
   if(m_nameHasBeenSet)
   {
     ss << "Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

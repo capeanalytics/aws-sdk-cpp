@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PENDING_HASH = HashingUtils::HashString("PENDING");
-static const int INPROGRESS_HASH = HashingUtils::HashString("INPROGRESS");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
-static const int COMPLETED_HASH = HashingUtils::HashString("COMPLETED");
-static const int DELETED_HASH = HashingUtils::HashString("DELETED");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace EntityStatusMapper
       {
+
+        static const int PENDING_HASH = HashingUtils::HashString("PENDING");
+        static const int INPROGRESS_HASH = HashingUtils::HashString("INPROGRESS");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
+        static const int COMPLETED_HASH = HashingUtils::HashString("COMPLETED");
+        static const int DELETED_HASH = HashingUtils::HashString("DELETED");
 
 
         EntityStatus GetEntityStatusForName(const Aws::String& name)

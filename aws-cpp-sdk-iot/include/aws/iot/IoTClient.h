@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,13 +26,17 @@
 #include <aws/iot/model/CreatePolicyResult.h>
 #include <aws/iot/model/CreatePolicyVersionResult.h>
 #include <aws/iot/model/CreateThingResult.h>
+#include <aws/iot/model/CreateThingTypeResult.h>
 #include <aws/iot/model/DeleteCACertificateResult.h>
 #include <aws/iot/model/DeleteRegistrationCodeResult.h>
 #include <aws/iot/model/DeleteThingResult.h>
+#include <aws/iot/model/DeleteThingTypeResult.h>
+#include <aws/iot/model/DeprecateThingTypeResult.h>
 #include <aws/iot/model/DescribeCACertificateResult.h>
 #include <aws/iot/model/DescribeCertificateResult.h>
 #include <aws/iot/model/DescribeEndpointResult.h>
 #include <aws/iot/model/DescribeThingResult.h>
+#include <aws/iot/model/DescribeThingTypeResult.h>
 #include <aws/iot/model/DetachThingPrincipalResult.h>
 #include <aws/iot/model/GetLoggingOptionsResult.h>
 #include <aws/iot/model/GetPolicyResult.h>
@@ -42,11 +46,14 @@
 #include <aws/iot/model/ListCACertificatesResult.h>
 #include <aws/iot/model/ListCertificatesResult.h>
 #include <aws/iot/model/ListCertificatesByCAResult.h>
+#include <aws/iot/model/ListOutgoingCertificatesResult.h>
 #include <aws/iot/model/ListPoliciesResult.h>
+#include <aws/iot/model/ListPolicyPrincipalsResult.h>
 #include <aws/iot/model/ListPolicyVersionsResult.h>
 #include <aws/iot/model/ListPrincipalPoliciesResult.h>
 #include <aws/iot/model/ListPrincipalThingsResult.h>
 #include <aws/iot/model/ListThingPrincipalsResult.h>
+#include <aws/iot/model/ListThingTypesResult.h>
 #include <aws/iot/model/ListThingsResult.h>
 #include <aws/iot/model/ListTopicRulesResult.h>
 #include <aws/iot/model/RegisterCACertificateResult.h>
@@ -108,6 +115,7 @@ namespace Model
         class CreatePolicyRequest;
         class CreatePolicyVersionRequest;
         class CreateThingRequest;
+        class CreateThingTypeRequest;
         class CreateTopicRuleRequest;
         class DeleteCACertificateRequest;
         class DeleteCertificateRequest;
@@ -115,11 +123,14 @@ namespace Model
         class DeletePolicyVersionRequest;
         class DeleteRegistrationCodeRequest;
         class DeleteThingRequest;
+        class DeleteThingTypeRequest;
         class DeleteTopicRuleRequest;
+        class DeprecateThingTypeRequest;
         class DescribeCACertificateRequest;
         class DescribeCertificateRequest;
         class DescribeEndpointRequest;
         class DescribeThingRequest;
+        class DescribeThingTypeRequest;
         class DetachPrincipalPolicyRequest;
         class DetachThingPrincipalRequest;
         class DisableTopicRuleRequest;
@@ -132,11 +143,14 @@ namespace Model
         class ListCACertificatesRequest;
         class ListCertificatesRequest;
         class ListCertificatesByCARequest;
+        class ListOutgoingCertificatesRequest;
         class ListPoliciesRequest;
+        class ListPolicyPrincipalsRequest;
         class ListPolicyVersionsRequest;
         class ListPrincipalPoliciesRequest;
         class ListPrincipalThingsRequest;
         class ListThingPrincipalsRequest;
+        class ListThingTypesRequest;
         class ListThingsRequest;
         class ListTopicRulesRequest;
         class RegisterCACertificateRequest;
@@ -159,6 +173,7 @@ namespace Model
         typedef Aws::Utils::Outcome<CreatePolicyResult, Aws::Client::AWSError<IoTErrors>> CreatePolicyOutcome;
         typedef Aws::Utils::Outcome<CreatePolicyVersionResult, Aws::Client::AWSError<IoTErrors>> CreatePolicyVersionOutcome;
         typedef Aws::Utils::Outcome<CreateThingResult, Aws::Client::AWSError<IoTErrors>> CreateThingOutcome;
+        typedef Aws::Utils::Outcome<CreateThingTypeResult, Aws::Client::AWSError<IoTErrors>> CreateThingTypeOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> CreateTopicRuleOutcome;
         typedef Aws::Utils::Outcome<DeleteCACertificateResult, Aws::Client::AWSError<IoTErrors>> DeleteCACertificateOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> DeleteCertificateOutcome;
@@ -166,11 +181,14 @@ namespace Model
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> DeletePolicyVersionOutcome;
         typedef Aws::Utils::Outcome<DeleteRegistrationCodeResult, Aws::Client::AWSError<IoTErrors>> DeleteRegistrationCodeOutcome;
         typedef Aws::Utils::Outcome<DeleteThingResult, Aws::Client::AWSError<IoTErrors>> DeleteThingOutcome;
+        typedef Aws::Utils::Outcome<DeleteThingTypeResult, Aws::Client::AWSError<IoTErrors>> DeleteThingTypeOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> DeleteTopicRuleOutcome;
+        typedef Aws::Utils::Outcome<DeprecateThingTypeResult, Aws::Client::AWSError<IoTErrors>> DeprecateThingTypeOutcome;
         typedef Aws::Utils::Outcome<DescribeCACertificateResult, Aws::Client::AWSError<IoTErrors>> DescribeCACertificateOutcome;
         typedef Aws::Utils::Outcome<DescribeCertificateResult, Aws::Client::AWSError<IoTErrors>> DescribeCertificateOutcome;
         typedef Aws::Utils::Outcome<DescribeEndpointResult, Aws::Client::AWSError<IoTErrors>> DescribeEndpointOutcome;
         typedef Aws::Utils::Outcome<DescribeThingResult, Aws::Client::AWSError<IoTErrors>> DescribeThingOutcome;
+        typedef Aws::Utils::Outcome<DescribeThingTypeResult, Aws::Client::AWSError<IoTErrors>> DescribeThingTypeOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> DetachPrincipalPolicyOutcome;
         typedef Aws::Utils::Outcome<DetachThingPrincipalResult, Aws::Client::AWSError<IoTErrors>> DetachThingPrincipalOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<IoTErrors>> DisableTopicRuleOutcome;
@@ -183,11 +201,14 @@ namespace Model
         typedef Aws::Utils::Outcome<ListCACertificatesResult, Aws::Client::AWSError<IoTErrors>> ListCACertificatesOutcome;
         typedef Aws::Utils::Outcome<ListCertificatesResult, Aws::Client::AWSError<IoTErrors>> ListCertificatesOutcome;
         typedef Aws::Utils::Outcome<ListCertificatesByCAResult, Aws::Client::AWSError<IoTErrors>> ListCertificatesByCAOutcome;
+        typedef Aws::Utils::Outcome<ListOutgoingCertificatesResult, Aws::Client::AWSError<IoTErrors>> ListOutgoingCertificatesOutcome;
         typedef Aws::Utils::Outcome<ListPoliciesResult, Aws::Client::AWSError<IoTErrors>> ListPoliciesOutcome;
+        typedef Aws::Utils::Outcome<ListPolicyPrincipalsResult, Aws::Client::AWSError<IoTErrors>> ListPolicyPrincipalsOutcome;
         typedef Aws::Utils::Outcome<ListPolicyVersionsResult, Aws::Client::AWSError<IoTErrors>> ListPolicyVersionsOutcome;
         typedef Aws::Utils::Outcome<ListPrincipalPoliciesResult, Aws::Client::AWSError<IoTErrors>> ListPrincipalPoliciesOutcome;
         typedef Aws::Utils::Outcome<ListPrincipalThingsResult, Aws::Client::AWSError<IoTErrors>> ListPrincipalThingsOutcome;
         typedef Aws::Utils::Outcome<ListThingPrincipalsResult, Aws::Client::AWSError<IoTErrors>> ListThingPrincipalsOutcome;
+        typedef Aws::Utils::Outcome<ListThingTypesResult, Aws::Client::AWSError<IoTErrors>> ListThingTypesOutcome;
         typedef Aws::Utils::Outcome<ListThingsResult, Aws::Client::AWSError<IoTErrors>> ListThingsOutcome;
         typedef Aws::Utils::Outcome<ListTopicRulesResult, Aws::Client::AWSError<IoTErrors>> ListTopicRulesOutcome;
         typedef Aws::Utils::Outcome<RegisterCACertificateResult, Aws::Client::AWSError<IoTErrors>> RegisterCACertificateOutcome;
@@ -210,6 +231,7 @@ namespace Model
         typedef std::future<CreatePolicyOutcome> CreatePolicyOutcomeCallable;
         typedef std::future<CreatePolicyVersionOutcome> CreatePolicyVersionOutcomeCallable;
         typedef std::future<CreateThingOutcome> CreateThingOutcomeCallable;
+        typedef std::future<CreateThingTypeOutcome> CreateThingTypeOutcomeCallable;
         typedef std::future<CreateTopicRuleOutcome> CreateTopicRuleOutcomeCallable;
         typedef std::future<DeleteCACertificateOutcome> DeleteCACertificateOutcomeCallable;
         typedef std::future<DeleteCertificateOutcome> DeleteCertificateOutcomeCallable;
@@ -217,11 +239,14 @@ namespace Model
         typedef std::future<DeletePolicyVersionOutcome> DeletePolicyVersionOutcomeCallable;
         typedef std::future<DeleteRegistrationCodeOutcome> DeleteRegistrationCodeOutcomeCallable;
         typedef std::future<DeleteThingOutcome> DeleteThingOutcomeCallable;
+        typedef std::future<DeleteThingTypeOutcome> DeleteThingTypeOutcomeCallable;
         typedef std::future<DeleteTopicRuleOutcome> DeleteTopicRuleOutcomeCallable;
+        typedef std::future<DeprecateThingTypeOutcome> DeprecateThingTypeOutcomeCallable;
         typedef std::future<DescribeCACertificateOutcome> DescribeCACertificateOutcomeCallable;
         typedef std::future<DescribeCertificateOutcome> DescribeCertificateOutcomeCallable;
         typedef std::future<DescribeEndpointOutcome> DescribeEndpointOutcomeCallable;
         typedef std::future<DescribeThingOutcome> DescribeThingOutcomeCallable;
+        typedef std::future<DescribeThingTypeOutcome> DescribeThingTypeOutcomeCallable;
         typedef std::future<DetachPrincipalPolicyOutcome> DetachPrincipalPolicyOutcomeCallable;
         typedef std::future<DetachThingPrincipalOutcome> DetachThingPrincipalOutcomeCallable;
         typedef std::future<DisableTopicRuleOutcome> DisableTopicRuleOutcomeCallable;
@@ -234,11 +259,14 @@ namespace Model
         typedef std::future<ListCACertificatesOutcome> ListCACertificatesOutcomeCallable;
         typedef std::future<ListCertificatesOutcome> ListCertificatesOutcomeCallable;
         typedef std::future<ListCertificatesByCAOutcome> ListCertificatesByCAOutcomeCallable;
+        typedef std::future<ListOutgoingCertificatesOutcome> ListOutgoingCertificatesOutcomeCallable;
         typedef std::future<ListPoliciesOutcome> ListPoliciesOutcomeCallable;
+        typedef std::future<ListPolicyPrincipalsOutcome> ListPolicyPrincipalsOutcomeCallable;
         typedef std::future<ListPolicyVersionsOutcome> ListPolicyVersionsOutcomeCallable;
         typedef std::future<ListPrincipalPoliciesOutcome> ListPrincipalPoliciesOutcomeCallable;
         typedef std::future<ListPrincipalThingsOutcome> ListPrincipalThingsOutcomeCallable;
         typedef std::future<ListThingPrincipalsOutcome> ListThingPrincipalsOutcomeCallable;
+        typedef std::future<ListThingTypesOutcome> ListThingTypesOutcomeCallable;
         typedef std::future<ListThingsOutcome> ListThingsOutcomeCallable;
         typedef std::future<ListTopicRulesOutcome> ListTopicRulesOutcomeCallable;
         typedef std::future<RegisterCACertificateOutcome> RegisterCACertificateOutcomeCallable;
@@ -264,6 +292,7 @@ namespace Model
     typedef std::function<void(const IoTClient*, const Model::CreatePolicyRequest&, const Model::CreatePolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreatePolicyResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::CreatePolicyVersionRequest&, const Model::CreatePolicyVersionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreatePolicyVersionResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::CreateThingRequest&, const Model::CreateThingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateThingResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::CreateThingTypeRequest&, const Model::CreateThingTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateThingTypeResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::CreateTopicRuleRequest&, const Model::CreateTopicRuleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateTopicRuleResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DeleteCACertificateRequest&, const Model::DeleteCACertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteCACertificateResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DeleteCertificateRequest&, const Model::DeleteCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteCertificateResponseReceivedHandler;
@@ -271,11 +300,14 @@ namespace Model
     typedef std::function<void(const IoTClient*, const Model::DeletePolicyVersionRequest&, const Model::DeletePolicyVersionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeletePolicyVersionResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DeleteRegistrationCodeRequest&, const Model::DeleteRegistrationCodeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteRegistrationCodeResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DeleteThingRequest&, const Model::DeleteThingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteThingResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::DeleteThingTypeRequest&, const Model::DeleteThingTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteThingTypeResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DeleteTopicRuleRequest&, const Model::DeleteTopicRuleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteTopicRuleResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::DeprecateThingTypeRequest&, const Model::DeprecateThingTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeprecateThingTypeResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DescribeCACertificateRequest&, const Model::DescribeCACertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCACertificateResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DescribeCertificateRequest&, const Model::DescribeCertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeCertificateResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DescribeEndpointRequest&, const Model::DescribeEndpointOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeEndpointResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DescribeThingRequest&, const Model::DescribeThingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeThingResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::DescribeThingTypeRequest&, const Model::DescribeThingTypeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeThingTypeResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DetachPrincipalPolicyRequest&, const Model::DetachPrincipalPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachPrincipalPolicyResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DetachThingPrincipalRequest&, const Model::DetachThingPrincipalOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DetachThingPrincipalResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::DisableTopicRuleRequest&, const Model::DisableTopicRuleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DisableTopicRuleResponseReceivedHandler;
@@ -288,11 +320,14 @@ namespace Model
     typedef std::function<void(const IoTClient*, const Model::ListCACertificatesRequest&, const Model::ListCACertificatesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListCACertificatesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListCertificatesRequest&, const Model::ListCertificatesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListCertificatesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListCertificatesByCARequest&, const Model::ListCertificatesByCAOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListCertificatesByCAResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::ListOutgoingCertificatesRequest&, const Model::ListOutgoingCertificatesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListOutgoingCertificatesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListPoliciesRequest&, const Model::ListPoliciesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPoliciesResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::ListPolicyPrincipalsRequest&, const Model::ListPolicyPrincipalsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPolicyPrincipalsResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListPolicyVersionsRequest&, const Model::ListPolicyVersionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPolicyVersionsResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListPrincipalPoliciesRequest&, const Model::ListPrincipalPoliciesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPrincipalPoliciesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListPrincipalThingsRequest&, const Model::ListPrincipalThingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPrincipalThingsResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListThingPrincipalsRequest&, const Model::ListThingPrincipalsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListThingPrincipalsResponseReceivedHandler;
+    typedef std::function<void(const IoTClient*, const Model::ListThingTypesRequest&, const Model::ListThingTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListThingTypesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListThingsRequest&, const Model::ListThingsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListThingsResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::ListTopicRulesRequest&, const Model::ListTopicRulesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListTopicRulesResponseReceivedHandler;
     typedef std::function<void(const IoTClient*, const Model::RegisterCACertificateRequest&, const Model::RegisterCACertificateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterCACertificateResponseReceivedHandler;
@@ -340,8 +375,7 @@ namespace Model
         * the default http client factory will be used
         */
         IoTClient(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~IoTClient();
 
@@ -456,7 +490,7 @@ namespace Model
          * directory, and then specifying that directory on the command line. The following
          * commands show how to create a batch of certificates given a batch of CSRs. </p>
          * <p>Assuming a set of CSRs are located inside of the directory
-         * my-csr-directory:</p>&gt; <p>On Linux and OS X, the command is:</p> <p>$ ls
+         * my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls
          * my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr
          * --certificate-signing-request file://my-csr-directory/{}</p> <p> This command
          * lists all of the CSRs in my-csr-directory and pipes each CSR file name to the
@@ -483,7 +517,7 @@ namespace Model
          * directory, and then specifying that directory on the command line. The following
          * commands show how to create a batch of certificates given a batch of CSRs. </p>
          * <p>Assuming a set of CSRs are located inside of the directory
-         * my-csr-directory:</p>&gt; <p>On Linux and OS X, the command is:</p> <p>$ ls
+         * my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls
          * my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr
          * --certificate-signing-request file://my-csr-directory/{}</p> <p> This command
          * lists all of the CSRs in my-csr-directory and pipes each CSR file name to the
@@ -512,7 +546,7 @@ namespace Model
          * directory, and then specifying that directory on the command line. The following
          * commands show how to create a batch of certificates given a batch of CSRs. </p>
          * <p>Assuming a set of CSRs are located inside of the directory
-         * my-csr-directory:</p>&gt; <p>On Linux and OS X, the command is:</p> <p>$ ls
+         * my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls
          * my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr
          * --certificate-signing-request file://my-csr-directory/{}</p> <p> This command
          * lists all of the CSRs in my-csr-directory and pipes each CSR file name to the
@@ -624,23 +658,42 @@ namespace Model
         virtual void CreatePolicyVersionAsync(const Model::CreatePolicyVersionRequest& request, const CreatePolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Creates a thing in the Thing Registry.</p>
+         * <p>Creates a thing record in the thing registry.</p>
          */
         virtual Model::CreateThingOutcome CreateThing(const Model::CreateThingRequest& request) const;
 
         /**
-         * <p>Creates a thing in the Thing Registry.</p>
+         * <p>Creates a thing record in the thing registry.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CreateThingOutcomeCallable CreateThingCallable(const Model::CreateThingRequest& request) const;
 
         /**
-         * <p>Creates a thing in the Thing Registry.</p>
+         * <p>Creates a thing record in the thing registry.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreateThingAsync(const Model::CreateThingRequest& request, const CreateThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Creates a new thing type.</p>
+         */
+        virtual Model::CreateThingTypeOutcome CreateThingType(const Model::CreateThingTypeRequest& request) const;
+
+        /**
+         * <p>Creates a new thing type.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::CreateThingTypeOutcomeCallable CreateThingTypeCallable(const Model::CreateThingTypeRequest& request) const;
+
+        /**
+         * <p>Creates a new thing type.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void CreateThingTypeAsync(const Model::CreateThingTypeRequest& request, const CreateThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Creates a rule. Creating rules is an administrator-level action. Any user who
@@ -802,23 +855,54 @@ namespace Model
         virtual void DeleteRegistrationCodeAsync(const Model::DeleteRegistrationCodeRequest& request, const DeleteRegistrationCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified thing from the Thing Registry.</p>
+         * <p>Deletes the specified thing.</p>
          */
         virtual Model::DeleteThingOutcome DeleteThing(const Model::DeleteThingRequest& request) const;
 
         /**
-         * <p>Deletes the specified thing from the Thing Registry.</p>
+         * <p>Deletes the specified thing.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteThingOutcomeCallable DeleteThingCallable(const Model::DeleteThingRequest& request) const;
 
         /**
-         * <p>Deletes the specified thing from the Thing Registry.</p>
+         * <p>Deletes the specified thing.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteThingAsync(const Model::DeleteThingRequest& request, const DeleteThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Deletes the specified thing type . You cannot delete a thing type if it has
+         * things associated with it. To delete a thing type, first mark it as deprecated
+         * by calling <a>DeprecateThingType</a>, then remove any associated things by
+         * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         */
+        virtual Model::DeleteThingTypeOutcome DeleteThingType(const Model::DeleteThingTypeRequest& request) const;
+
+        /**
+         * <p>Deletes the specified thing type . You cannot delete a thing type if it has
+         * things associated with it. To delete a thing type, first mark it as deprecated
+         * by calling <a>DeprecateThingType</a>, then remove any associated things by
+         * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DeleteThingTypeOutcomeCallable DeleteThingTypeCallable(const Model::DeleteThingTypeRequest& request) const;
+
+        /**
+         * <p>Deletes the specified thing type . You cannot delete a thing type if it has
+         * things associated with it. To delete a thing type, first mark it as deprecated
+         * by calling <a>DeprecateThingType</a>, then remove any associated things by
+         * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DeleteThingTypeAsync(const Model::DeleteThingTypeRequest& request, const DeleteThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Deletes the specified rule.</p>
@@ -838,6 +922,28 @@ namespace Model
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteTopicRuleAsync(const Model::DeleteTopicRuleRequest& request, const DeleteTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Deprecates a thing type. You can not associate new things with deprecated
+         * thing type.</p>
+         */
+        virtual Model::DeprecateThingTypeOutcome DeprecateThingType(const Model::DeprecateThingTypeRequest& request) const;
+
+        /**
+         * <p>Deprecates a thing type. You can not associate new things with deprecated
+         * thing type.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DeprecateThingTypeOutcomeCallable DeprecateThingTypeCallable(const Model::DeprecateThingTypeRequest& request) const;
+
+        /**
+         * <p>Deprecates a thing type. You can not associate new things with deprecated
+         * thing type.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DeprecateThingTypeAsync(const Model::DeprecateThingTypeRequest& request, const DeprecateThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Describes a registered CA certificate.</p>
@@ -878,25 +984,19 @@ namespace Model
         virtual void DescribeCertificateAsync(const Model::DescribeCertificateRequest& request, const DescribeCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call. You
-         * specify the following URI when updating state information for your thing:
-         * https://<i>endpoint</i>/things/<i>thingName</i>/shadow.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
          */
         virtual Model::DescribeEndpointOutcome DescribeEndpoint(const Model::DescribeEndpointRequest& request) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call. You
-         * specify the following URI when updating state information for your thing:
-         * https://<i>endpoint</i>/things/<i>thingName</i>/shadow.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeEndpointOutcomeCallable DescribeEndpointCallable(const Model::DescribeEndpointRequest& request) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call. You
-         * specify the following URI when updating state information for your thing:
-         * https://<i>endpoint</i>/things/<i>thingName</i>/shadow.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -920,6 +1020,25 @@ namespace Model
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeThingAsync(const Model::DescribeThingRequest& request, const DescribeThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Gets information about the specified thing type.</p>
+         */
+        virtual Model::DescribeThingTypeOutcome DescribeThingType(const Model::DescribeThingTypeRequest& request) const;
+
+        /**
+         * <p>Gets information about the specified thing type.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeThingTypeOutcomeCallable DescribeThingTypeCallable(const Model::DescribeThingTypeRequest& request) const;
+
+        /**
+         * <p>Gets information about the specified thing type.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeThingTypeAsync(const Model::DescribeThingTypeRequest& request, const DescribeThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Removes the specified policy from the specified certificate.</p>
@@ -1165,6 +1284,25 @@ namespace Model
         virtual void ListCertificatesByCAAsync(const Model::ListCertificatesByCARequest& request, const ListCertificatesByCAResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         */
+        virtual Model::ListOutgoingCertificatesOutcome ListOutgoingCertificates(const Model::ListOutgoingCertificatesRequest& request) const;
+
+        /**
+         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListOutgoingCertificatesOutcomeCallable ListOutgoingCertificatesCallable(const Model::ListOutgoingCertificatesRequest& request) const;
+
+        /**
+         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListOutgoingCertificatesAsync(const Model::ListOutgoingCertificatesRequest& request, const ListOutgoingCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Lists your policies.</p>
          */
         virtual Model::ListPoliciesOutcome ListPolicies(const Model::ListPoliciesRequest& request) const;
@@ -1184,13 +1322,32 @@ namespace Model
         virtual void ListPoliciesAsync(const Model::ListPoliciesRequest& request, const ListPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the versions of the specified policy, and identifies the default
+         * <p>Lists the principals associated with the specified policy.</p>
+         */
+        virtual Model::ListPolicyPrincipalsOutcome ListPolicyPrincipals(const Model::ListPolicyPrincipalsRequest& request) const;
+
+        /**
+         * <p>Lists the principals associated with the specified policy.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListPolicyPrincipalsOutcomeCallable ListPolicyPrincipalsCallable(const Model::ListPolicyPrincipalsRequest& request) const;
+
+        /**
+         * <p>Lists the principals associated with the specified policy.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListPolicyPrincipalsAsync(const Model::ListPolicyPrincipalsRequest& request, const ListPolicyPrincipalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Lists the versions of the specified policy and identifies the default
          * version.</p>
          */
         virtual Model::ListPolicyVersionsOutcome ListPolicyVersions(const Model::ListPolicyVersionsRequest& request) const;
 
         /**
-         * <p>Lists the versions of the specified policy, and identifies the default
+         * <p>Lists the versions of the specified policy and identifies the default
          * version.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
@@ -1198,7 +1355,7 @@ namespace Model
         virtual Model::ListPolicyVersionsOutcomeCallable ListPolicyVersionsCallable(const Model::ListPolicyVersionsRequest& request) const;
 
         /**
-         * <p>Lists the versions of the specified policy, and identifies the default
+         * <p>Lists the versions of the specified policy and identifies the default
          * version.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
@@ -1272,25 +1429,47 @@ namespace Model
         virtual void ListThingPrincipalsAsync(const Model::ListThingPrincipalsRequest& request, const ListThingPrincipalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists your things. You can pass an AttributeName or AttributeValue to filter
-         * your things (for example, "ListThings where AttributeName=Color and
-         * AttributeValue=Red").</p>
+         * <p>Lists the existing thing types.</p>
+         */
+        virtual Model::ListThingTypesOutcome ListThingTypes(const Model::ListThingTypesRequest& request) const;
+
+        /**
+         * <p>Lists the existing thing types.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListThingTypesOutcomeCallable ListThingTypesCallable(const Model::ListThingTypesRequest& request) const;
+
+        /**
+         * <p>Lists the existing thing types.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListThingTypesAsync(const Model::ListThingTypesRequest& request, const ListThingTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
+         * parameters to filter your things. For example, calling <code>ListThings</code>
+         * with attributeName=Color and attributeValue=Red retrieves all things in the
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
          */
         virtual Model::ListThingsOutcome ListThings(const Model::ListThingsRequest& request) const;
 
         /**
-         * <p>Lists your things. You can pass an AttributeName or AttributeValue to filter
-         * your things (for example, "ListThings where AttributeName=Color and
-         * AttributeValue=Red").</p>
+         * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
+         * parameters to filter your things. For example, calling <code>ListThings</code>
+         * with attributeName=Color and attributeValue=Red retrieves all things in the
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListThingsOutcomeCallable ListThingsCallable(const Model::ListThingsRequest& request) const;
 
         /**
-         * <p>Lists your things. You can pass an AttributeName or AttributeValue to filter
-         * your things (for example, "ListThings where AttributeName=Color and
-         * AttributeValue=Red").</p>
+         * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
+         * parameters to filter your things. For example, calling <code>ListThings</code>
+         * with attributeName=Color and attributeValue=Red retrieves all things in the
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1606,6 +1785,7 @@ namespace Model
         void CreatePolicyAsyncHelper(const Model::CreatePolicyRequest& request, const CreatePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CreatePolicyVersionAsyncHelper(const Model::CreatePolicyVersionRequest& request, const CreatePolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CreateThingAsyncHelper(const Model::CreateThingRequest& request, const CreateThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void CreateThingTypeAsyncHelper(const Model::CreateThingTypeRequest& request, const CreateThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CreateTopicRuleAsyncHelper(const Model::CreateTopicRuleRequest& request, const CreateTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteCACertificateAsyncHelper(const Model::DeleteCACertificateRequest& request, const DeleteCACertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteCertificateAsyncHelper(const Model::DeleteCertificateRequest& request, const DeleteCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
@@ -1613,11 +1793,14 @@ namespace Model
         void DeletePolicyVersionAsyncHelper(const Model::DeletePolicyVersionRequest& request, const DeletePolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteRegistrationCodeAsyncHelper(const Model::DeleteRegistrationCodeRequest& request, const DeleteRegistrationCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteThingAsyncHelper(const Model::DeleteThingRequest& request, const DeleteThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DeleteThingTypeAsyncHelper(const Model::DeleteThingTypeRequest& request, const DeleteThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteTopicRuleAsyncHelper(const Model::DeleteTopicRuleRequest& request, const DeleteTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DeprecateThingTypeAsyncHelper(const Model::DeprecateThingTypeRequest& request, const DeprecateThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeCACertificateAsyncHelper(const Model::DescribeCACertificateRequest& request, const DescribeCACertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeCertificateAsyncHelper(const Model::DescribeCertificateRequest& request, const DescribeCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeEndpointAsyncHelper(const Model::DescribeEndpointRequest& request, const DescribeEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeThingAsyncHelper(const Model::DescribeThingRequest& request, const DescribeThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeThingTypeAsyncHelper(const Model::DescribeThingTypeRequest& request, const DescribeThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DetachPrincipalPolicyAsyncHelper(const Model::DetachPrincipalPolicyRequest& request, const DetachPrincipalPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DetachThingPrincipalAsyncHelper(const Model::DetachThingPrincipalRequest& request, const DetachThingPrincipalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DisableTopicRuleAsyncHelper(const Model::DisableTopicRuleRequest& request, const DisableTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
@@ -1630,11 +1813,14 @@ namespace Model
         void ListCACertificatesAsyncHelper(const Model::ListCACertificatesRequest& request, const ListCACertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListCertificatesAsyncHelper(const Model::ListCertificatesRequest& request, const ListCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListCertificatesByCAAsyncHelper(const Model::ListCertificatesByCARequest& request, const ListCertificatesByCAResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListOutgoingCertificatesAsyncHelper(const Model::ListOutgoingCertificatesRequest& request, const ListOutgoingCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListPoliciesAsyncHelper(const Model::ListPoliciesRequest& request, const ListPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListPolicyPrincipalsAsyncHelper(const Model::ListPolicyPrincipalsRequest& request, const ListPolicyPrincipalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListPolicyVersionsAsyncHelper(const Model::ListPolicyVersionsRequest& request, const ListPolicyVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListPrincipalPoliciesAsyncHelper(const Model::ListPrincipalPoliciesRequest& request, const ListPrincipalPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListPrincipalThingsAsyncHelper(const Model::ListPrincipalThingsRequest& request, const ListPrincipalThingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListThingPrincipalsAsyncHelper(const Model::ListThingPrincipalsRequest& request, const ListThingPrincipalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListThingTypesAsyncHelper(const Model::ListThingTypesRequest& request, const ListThingTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListThingsAsyncHelper(const Model::ListThingsRequest& request, const ListThingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListTopicRulesAsyncHelper(const Model::ListTopicRulesRequest& request, const ListTopicRulesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void RegisterCACertificateAsyncHelper(const Model::RegisterCACertificateRequest& request, const RegisterCACertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;

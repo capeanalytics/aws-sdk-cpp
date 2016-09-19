@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,37 +33,58 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline const Aws::String& GetAccountAlias() const{ return m_accountAlias; }
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline void SetAccountAlias(const Aws::String& value) { m_accountAliasHasBeenSet = true; m_accountAlias = value; }
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline void SetAccountAlias(Aws::String&& value) { m_accountAliasHasBeenSet = true; m_accountAlias = value; }
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline void SetAccountAlias(const char* value) { m_accountAliasHasBeenSet = true; m_accountAlias.assign(value); }
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline CreateAccountAliasRequest& WithAccountAlias(const Aws::String& value) { SetAccountAlias(value); return *this;}
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline CreateAccountAliasRequest& WithAccountAlias(Aws::String&& value) { SetAccountAlias(value); return *this;}
 
     /**
-     * <p>The account alias to create.</p>
+     * <p>The account alias to create.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of lowercase letters, digits, and dashes. You
+     * cannot start or finish with a dash, nor can you have two dashes in a row.</p>
      */
     inline CreateAccountAliasRequest& WithAccountAlias(const char* value) { SetAccountAlias(value); return *this;}
 

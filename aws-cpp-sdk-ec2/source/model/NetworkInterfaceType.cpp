@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int interface_HASH = HashingUtils::HashString("interface");
-static const int natGateway_HASH = HashingUtils::HashString("natGateway");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace NetworkInterfaceTypeMapper
       {
+
+        static const int interface_HASH = HashingUtils::HashString("interface");
+        static const int natGateway_HASH = HashingUtils::HashString("natGateway");
 
 
         NetworkInterfaceType GetNetworkInterfaceTypeForName(const Aws::String& name)

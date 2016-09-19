@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,21 +17,29 @@
 
 #include <utility>
 
-using namespace Aws::CodePipeline::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CodePipeline
+{
+namespace Model
+{
 
 StageState::StageState() : 
     m_stageNameHasBeenSet(false),
     m_inboundTransitionStateHasBeenSet(false),
-    m_actionStatesHasBeenSet(false)
+    m_actionStatesHasBeenSet(false),
+    m_latestExecutionHasBeenSet(false)
 {
 }
 
 StageState::StageState(const JsonValue& jsonValue) : 
     m_stageNameHasBeenSet(false),
     m_inboundTransitionStateHasBeenSet(false),
-    m_actionStatesHasBeenSet(false)
+    m_actionStatesHasBeenSet(false),
+    m_latestExecutionHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -60,6 +68,13 @@ StageState& StageState::operator =(const JsonValue& jsonValue)
       m_actionStates.push_back(actionStatesJsonList[actionStatesIndex].AsObject());
     }
     m_actionStatesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("latestExecution"))
+  {
+    m_latestExecution = jsonValue.GetObject("latestExecution");
+
+    m_latestExecutionHasBeenSet = true;
   }
 
   return *this;
@@ -92,5 +107,15 @@ JsonValue StageState::Jsonize() const
 
   }
 
+  if(m_latestExecutionHasBeenSet)
+  {
+   payload.WithObject("latestExecution", m_latestExecution.Jsonize());
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace CodePipeline
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,6 +34,10 @@ namespace SES
 {
 namespace Model
 {
+  /**
+   * <p>Represents a list of data points. This list contains aggregated data from the
+   * previous two weeks of your sending activity with Amazon SES.</p>
+   */
   class AWS_SES_API GetSendStatisticsResult
   {
   public:

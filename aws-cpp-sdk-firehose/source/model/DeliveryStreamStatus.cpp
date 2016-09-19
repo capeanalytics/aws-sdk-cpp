@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CREATING_HASH = HashingUtils::HashString("CREATING");
-static const int DELETING_HASH = HashingUtils::HashString("DELETING");
-static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace DeliveryStreamStatusMapper
       {
+
+        static const int CREATING_HASH = HashingUtils::HashString("CREATING");
+        static const int DELETING_HASH = HashingUtils::HashString("DELETING");
+        static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
 
 
         DeliveryStreamStatus GetDeliveryStreamStatusForName(const Aws::String& name)

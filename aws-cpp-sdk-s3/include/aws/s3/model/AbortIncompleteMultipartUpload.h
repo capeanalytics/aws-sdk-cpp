@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -46,22 +46,22 @@ namespace Model
      * Indicates the number of days that must pass since initiation for Lifecycle to
      * abort an Incomplete Multipart Upload.
      */
-    inline long GetDaysAfterInitiation() const{ return m_daysAfterInitiation; }
+    inline int GetDaysAfterInitiation() const{ return m_daysAfterInitiation; }
 
     /**
      * Indicates the number of days that must pass since initiation for Lifecycle to
      * abort an Incomplete Multipart Upload.
      */
-    inline void SetDaysAfterInitiation(long value) { m_daysAfterInitiationHasBeenSet = true; m_daysAfterInitiation = value; }
+    inline void SetDaysAfterInitiation(int value) { m_daysAfterInitiationHasBeenSet = true; m_daysAfterInitiation = value; }
 
     /**
      * Indicates the number of days that must pass since initiation for Lifecycle to
      * abort an Incomplete Multipart Upload.
      */
-    inline AbortIncompleteMultipartUpload& WithDaysAfterInitiation(long value) { SetDaysAfterInitiation(value); return *this;}
+    inline AbortIncompleteMultipartUpload& WithDaysAfterInitiation(int value) { SetDaysAfterInitiation(value); return *this;}
 
   private:
-    long m_daysAfterInitiation;
+    int m_daysAfterInitiation;
     bool m_daysAfterInitiationHasBeenSet;
   };
 

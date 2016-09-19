@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SSM
+{
+namespace Model
+{
 
 CommandPlugin::CommandPlugin() : 
     m_nameHasBeenSet(false),
@@ -160,3 +166,7 @@ JsonValue CommandPlugin::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace SSM
+} // namespace Aws

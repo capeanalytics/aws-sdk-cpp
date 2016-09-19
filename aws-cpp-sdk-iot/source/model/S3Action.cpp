@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,21 +17,29 @@
 
 #include <utility>
 
-using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IoT
+{
+namespace Model
+{
 
 S3Action::S3Action() : 
     m_roleArnHasBeenSet(false),
     m_bucketNameHasBeenSet(false),
-    m_keyHasBeenSet(false)
+    m_keyHasBeenSet(false),
+    m_cannedAclHasBeenSet(false)
 {
 }
 
 S3Action::S3Action(const JsonValue& jsonValue) : 
     m_roleArnHasBeenSet(false),
     m_bucketNameHasBeenSet(false),
-    m_keyHasBeenSet(false)
+    m_keyHasBeenSet(false),
+    m_cannedAclHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -59,6 +67,13 @@ S3Action& S3Action::operator =(const JsonValue& jsonValue)
     m_keyHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("cannedAcl"))
+  {
+    m_cannedAcl = CannedAccessControlListMapper::GetCannedAccessControlListForName(jsonValue.GetString("cannedAcl"));
+
+    m_cannedAclHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -84,5 +99,14 @@ JsonValue S3Action::Jsonize() const
 
   }
 
+  if(m_cannedAclHasBeenSet)
+  {
+   payload.WithString("cannedAcl", CannedAccessControlListMapper::GetNameForCannedAccessControlList(m_cannedAcl));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace IoT
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -79,19 +79,19 @@ namespace Model
      * Size of the body in bytes. This parameter is useful when the size of the body
      * cannot be determined automatically.
      */
-    inline long GetContentLength() const{ return m_contentLength; }
+    inline long long GetContentLength() const{ return m_contentLength; }
 
     /**
      * Size of the body in bytes. This parameter is useful when the size of the body
      * cannot be determined automatically.
      */
-    inline void SetContentLength(long value) { m_contentLengthHasBeenSet = true; m_contentLength = value; }
+    inline void SetContentLength(long long value) { m_contentLengthHasBeenSet = true; m_contentLength = value; }
 
     /**
      * Size of the body in bytes. This parameter is useful when the size of the body
      * cannot be determined automatically.
      */
-    inline UploadPartRequest& WithContentLength(long value) { SetContentLength(value); return *this;}
+    inline UploadPartRequest& WithContentLength(long long value) { SetContentLength(value); return *this;}
 
     /**
      * The base64-encoded 128-bit MD5 digest of the part data.
@@ -167,19 +167,19 @@ namespace Model
      * Part number of part being uploaded. This is a positive integer between 1 and
      * 10,000.
      */
-    inline long GetPartNumber() const{ return m_partNumber; }
+    inline int GetPartNumber() const{ return m_partNumber; }
 
     /**
      * Part number of part being uploaded. This is a positive integer between 1 and
      * 10,000.
      */
-    inline void SetPartNumber(long value) { m_partNumberHasBeenSet = true; m_partNumber = value; }
+    inline void SetPartNumber(int value) { m_partNumberHasBeenSet = true; m_partNumber = value; }
 
     /**
      * Part number of part being uploaded. This is a positive integer between 1 and
      * 10,000.
      */
-    inline UploadPartRequest& WithPartNumber(long value) { SetPartNumber(value); return *this;}
+    inline UploadPartRequest& WithPartNumber(int value) { SetPartNumber(value); return *this;}
 
     /**
      * Upload ID identifying the multipart upload whose part is being uploaded.
@@ -388,13 +388,13 @@ namespace Model
   private:
     Aws::String m_bucket;
     bool m_bucketHasBeenSet;
-    long m_contentLength;
+    long long m_contentLength;
     bool m_contentLengthHasBeenSet;
     Aws::String m_contentMD5;
     bool m_contentMD5HasBeenSet;
     Aws::String m_key;
     bool m_keyHasBeenSet;
-    long m_partNumber;
+    int m_partNumber;
     bool m_partNumberHasBeenSet;
     Aws::String m_uploadId;
     bool m_uploadIdHasBeenSet;

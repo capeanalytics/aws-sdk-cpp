@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int FailedDocumentsOnly_HASH = HashingUtils::HashString("FailedDocumentsOnly");
-static const int AllDocuments_HASH = HashingUtils::HashString("AllDocuments");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ElasticsearchS3BackupModeMapper
       {
+
+        static const int FailedDocumentsOnly_HASH = HashingUtils::HashString("FailedDocumentsOnly");
+        static const int AllDocuments_HASH = HashingUtils::HashString("AllDocuments");
 
 
         ElasticsearchS3BackupMode GetElasticsearchS3BackupModeForName(const Aws::String& name)

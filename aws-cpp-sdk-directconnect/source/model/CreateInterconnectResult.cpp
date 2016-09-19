@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -69,6 +69,12 @@ CreateInterconnectResult& CreateInterconnectResult::operator =(const AmazonWebSe
   if(jsonValue.ValueExists("bandwidth"))
   {
     m_bandwidth = jsonValue.GetString("bandwidth");
+
+  }
+
+  if(jsonValue.ValueExists("loaIssueTime"))
+  {
+    m_loaIssueTime = jsonValue.GetDouble("loaIssueTime");
 
   }
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudFront
+{
+namespace Model
+{
 
 Aliases::Aliases() : 
     m_quantity(0),
@@ -89,3 +95,7 @@ void Aliases::AddToNode(XmlNode& parentNode) const
   }
 
 }
+
+} // namespace Model
+} // namespace CloudFront
+} // namespace Aws

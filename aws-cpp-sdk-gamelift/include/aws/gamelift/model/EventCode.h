@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -41,7 +41,8 @@ namespace Model
     FLEET_VALIDATION_EXECUTABLE_RUNTIME_FAILURE,
     FLEET_VALIDATION_TIMED_OUT,
     FLEET_ACTIVATION_FAILED,
-    FLEET_ACTIVATION_FAILED_NO_INSTANCES
+    FLEET_ACTIVATION_FAILED_NO_INSTANCES,
+    FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED
   };
 
 namespace EventCodeMapper

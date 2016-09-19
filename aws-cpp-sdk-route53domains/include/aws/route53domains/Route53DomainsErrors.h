@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace Route53Domains
 {
-enum class AWS_ROUTE53DOMAINS_API Route53DomainsErrors
+enum class Route53DomainsErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////

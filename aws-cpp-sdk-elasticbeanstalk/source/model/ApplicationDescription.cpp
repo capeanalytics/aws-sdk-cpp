@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 ApplicationDescription::ApplicationDescription() : 
     m_applicationNameHasBeenSet(false),
@@ -109,18 +115,22 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << index << locationValue << ".ApplicationName=" << StringUtils::URLEncode(m_applicationName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_dateCreatedHasBeenSet)
   {
       oStream << location << index << locationValue << ".DateCreated=" << StringUtils::URLEncode(m_dateCreated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_dateUpdatedHasBeenSet)
   {
       oStream << location << index << locationValue << ".DateUpdated=" << StringUtils::URLEncode(m_dateUpdated.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_versionsHasBeenSet)
   {
       unsigned versionsIdx = 1;
@@ -129,6 +139,7 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
         oStream << location << index << locationValue << ".Versions.member." << versionsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_configurationTemplatesHasBeenSet)
   {
       unsigned configurationTemplatesIdx = 1;
@@ -137,6 +148,7 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
         oStream << location << index << locationValue << ".ConfigurationTemplates.member." << configurationTemplatesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -174,3 +186,7 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

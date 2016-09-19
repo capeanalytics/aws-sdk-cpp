@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,37 +33,58 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetUserName() const{ return m_userName; }
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = value; }
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline ListMFADevicesRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline ListMFADevicesRequest& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
 
     /**
-     * <p>The name of the user whose MFA devices you want to list.</p>
+     * <p>The name of the user whose MFA devices you want to list.</p> <p>The <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
+     * string of characters consisting of upper and lowercase alphanumeric characters
+     * with no spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline ListMFADevicesRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
 
@@ -131,9 +152,9 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline long GetMaxItems() const{ return m_maxItems; }
+    inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
      * <p>Use this only when paginating results to indicate the maximum number of items
@@ -143,9 +164,9 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline void SetMaxItems(long value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
      * <p>Use this only when paginating results to indicate the maximum number of items
@@ -155,16 +176,16 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline ListMFADevicesRequest& WithMaxItems(long value) { SetMaxItems(value); return *this;}
+    inline ListMFADevicesRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 
   private:
     Aws::String m_userName;
     bool m_userNameHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_maxItems;
+    int m_maxItems;
     bool m_maxItemsHasBeenSet;
   };
 

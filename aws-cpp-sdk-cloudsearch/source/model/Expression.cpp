@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 Expression::Expression() : 
     m_expressionNameHasBeenSet(false),
@@ -65,10 +71,12 @@ void Expression::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".ExpressionName=" << StringUtils::URLEncode(m_expressionName.c_str()) << "&";
   }
+
   if(m_expressionValueHasBeenSet)
   {
       oStream << location << index << locationValue << ".ExpressionValue=" << StringUtils::URLEncode(m_expressionValue.c_str()) << "&";
   }
+
 }
 
 void Expression::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void Expression::OutputToStream(Aws::OStream& oStream, const char* location) con
       oStream << location << ".ExpressionValue=" << StringUtils::URLEncode(m_expressionValue.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

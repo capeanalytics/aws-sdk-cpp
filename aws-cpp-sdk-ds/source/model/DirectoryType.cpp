@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int SimpleAD_HASH = HashingUtils::HashString("SimpleAD");
-static const int ADConnector_HASH = HashingUtils::HashString("ADConnector");
-static const int MicrosoftAD_HASH = HashingUtils::HashString("MicrosoftAD");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace DirectoryTypeMapper
       {
+
+        static const int SimpleAD_HASH = HashingUtils::HashString("SimpleAD");
+        static const int ADConnector_HASH = HashingUtils::HashString("ADConnector");
+        static const int MicrosoftAD_HASH = HashingUtils::HashString("MicrosoftAD");
 
 
         DirectoryType GetDirectoryTypeForName(const Aws::String& name)

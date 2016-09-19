@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PredictiveModelType_HASH = HashingUtils::HashString("PredictiveModelType");
-static const int Algorithm_HASH = HashingUtils::HashString("Algorithm");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace DetailsAttributesMapper
       {
+
+        static const int PredictiveModelType_HASH = HashingUtils::HashString("PredictiveModelType");
+        static const int Algorithm_HASH = HashingUtils::HashString("Algorithm");
 
 
         DetailsAttributes GetDetailsAttributesForName(const Aws::String& name)

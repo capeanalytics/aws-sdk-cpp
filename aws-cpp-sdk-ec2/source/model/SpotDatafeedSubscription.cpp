@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 SpotDatafeedSubscription::SpotDatafeedSubscription() : 
     m_ownerIdHasBeenSet(false),
@@ -89,24 +95,29 @@ void SpotDatafeedSubscription::OutputToStream(Aws::OStream& oStream, const char*
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
   }
+
   if(m_bucketHasBeenSet)
   {
       oStream << location << index << locationValue << ".Bucket=" << StringUtils::URLEncode(m_bucket.c_str()) << "&";
   }
+
   if(m_prefixHasBeenSet)
   {
       oStream << location << index << locationValue << ".Prefix=" << StringUtils::URLEncode(m_prefix.c_str()) << "&";
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << DatafeedSubscriptionStateMapper::GetNameForDatafeedSubscriptionState(m_state) << "&";
   }
+
   if(m_faultHasBeenSet)
   {
       Aws::StringStream faultLocationAndMemberSs;
       faultLocationAndMemberSs << location << index << locationValue << ".Fault";
       m_fault.OutputToStream(oStream, faultLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void SpotDatafeedSubscription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -134,3 +145,7 @@ void SpotDatafeedSubscription::OutputToStream(Aws::OStream& oStream, const char*
       m_fault.OutputToStream(oStream, faultLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

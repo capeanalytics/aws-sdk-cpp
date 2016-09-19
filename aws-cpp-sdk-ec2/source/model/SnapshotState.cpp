@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int pending_HASH = HashingUtils::HashString("pending");
-static const int completed_HASH = HashingUtils::HashString("completed");
-static const int error_HASH = HashingUtils::HashString("error");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace SnapshotStateMapper
       {
+
+        static const int pending_HASH = HashingUtils::HashString("pending");
+        static const int completed_HASH = HashingUtils::HashString("completed");
+        static const int error_HASH = HashingUtils::HashString("error");
 
 
         SnapshotState GetSnapshotStateForName(const Aws::String& name)

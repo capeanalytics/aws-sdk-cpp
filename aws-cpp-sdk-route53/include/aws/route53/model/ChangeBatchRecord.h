@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -131,35 +131,35 @@ namespace Model
     /**
      * <p>The current state of the request. <code>PENDING</code> indicates that this
      * request has not yet been applied to all Amazon Route 53 DNS servers.</p>
-     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code></p>
+     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code> </p>
      */
     inline const ChangeStatus& GetStatus() const{ return m_status; }
 
     /**
      * <p>The current state of the request. <code>PENDING</code> indicates that this
      * request has not yet been applied to all Amazon Route 53 DNS servers.</p>
-     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code></p>
+     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code> </p>
      */
     inline void SetStatus(const ChangeStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
      * <p>The current state of the request. <code>PENDING</code> indicates that this
      * request has not yet been applied to all Amazon Route 53 DNS servers.</p>
-     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code></p>
+     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code> </p>
      */
     inline void SetStatus(ChangeStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
      * <p>The current state of the request. <code>PENDING</code> indicates that this
      * request has not yet been applied to all Amazon Route 53 DNS servers.</p>
-     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code></p>
+     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code> </p>
      */
     inline ChangeBatchRecord& WithStatus(const ChangeStatus& value) { SetStatus(value); return *this;}
 
     /**
      * <p>The current state of the request. <code>PENDING</code> indicates that this
      * request has not yet been applied to all Amazon Route 53 DNS servers.</p>
-     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code></p>
+     * <p>Valid Values: <code>PENDING</code> | <code>INSYNC</code> </p>
      */
     inline ChangeBatchRecord& WithStatus(ChangeStatus&& value) { SetStatus(value); return *this;}
 

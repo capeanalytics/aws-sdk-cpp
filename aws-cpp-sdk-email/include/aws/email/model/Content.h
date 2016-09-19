@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,7 +35,7 @@ namespace Model
    * <p>Represents textual data, plus an optional character set specification.</p>
    * <p>By default, the text must be 7-bit ASCII, due to the constraints of the SMTP
    * protocol. If the text must contain any other characters, then you must also
-   * specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS. </p>
+   * specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.</p>
    */
   class AWS_SES_API Content
   {

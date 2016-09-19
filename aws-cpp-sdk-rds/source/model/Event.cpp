@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,16 +19,23 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 Event::Event() : 
     m_sourceIdentifierHasBeenSet(false),
     m_sourceTypeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventCategoriesHasBeenSet(false),
-    m_dateHasBeenSet(false)
+    m_dateHasBeenSet(false),
+    m_sourceArnHasBeenSet(false)
 {
 }
 
@@ -37,7 +44,8 @@ Event::Event(const XmlNode& xmlNode) :
     m_sourceTypeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventCategoriesHasBeenSet(false),
-    m_dateHasBeenSet(false)
+    m_dateHasBeenSet(false),
+    m_sourceArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -84,6 +92,12 @@ Event& Event::operator =(const XmlNode& xmlNode)
       m_date = DateTime(StringUtils::Trim(dateNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_dateHasBeenSet = true;
     }
+    XmlNode sourceArnNode = resultNode.FirstChild("SourceArn");
+    if(!sourceArnNode.IsNull())
+    {
+      m_sourceArn = StringUtils::Trim(sourceArnNode.GetText().c_str());
+      m_sourceArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -95,14 +109,17 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   {
       oStream << location << index << locationValue << ".SourceIdentifier=" << StringUtils::URLEncode(m_sourceIdentifier.c_str()) << "&";
   }
+
   if(m_sourceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
   }
+
   if(m_messageHasBeenSet)
   {
       oStream << location << index << locationValue << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
+
   if(m_eventCategoriesHasBeenSet)
   {
       unsigned eventCategoriesIdx = 1;
@@ -111,10 +128,17 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
         oStream << location << index << locationValue << ".EventCategory." << eventCategoriesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_dateHasBeenSet)
   {
       oStream << location << index << locationValue << ".Date=" << StringUtils::URLEncode(m_date.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
+  if(m_sourceArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SourceArn=" << StringUtils::URLEncode(m_sourceArn.c_str()) << "&";
+  }
+
 }
 
 void Event::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -143,4 +167,12 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location) const
   {
       oStream << location << ".Date=" << StringUtils::URLEncode(m_date.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+  if(m_sourceArnHasBeenSet)
+  {
+      oStream << location << ".SourceArn=" << StringUtils::URLEncode(m_sourceArn.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Healthy_HASH = HashingUtils::HashString("Healthy");
-static const int Unhealthy_HASH = HashingUtils::HashString("Unhealthy");
-static const int LastKnownStatus_HASH = HashingUtils::HashString("LastKnownStatus");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace InsufficientDataHealthStatusMapper
       {
+
+        static const int Healthy_HASH = HashingUtils::HashString("Healthy");
+        static const int Unhealthy_HASH = HashingUtils::HashString("Unhealthy");
+        static const int LastKnownStatus_HASH = HashingUtils::HashString("LastKnownStatus");
 
 
         InsufficientDataHealthStatus GetInsufficientDataHealthStatusForName(const Aws::String& name)

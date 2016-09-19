@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InstanceStatusSummary::InstanceStatusSummary() : 
     m_statusHasBeenSet(false),
@@ -71,6 +77,7 @@ void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".Status=" << SummaryStatusMapper::GetNameForSummaryStatus(m_status) << "&";
   }
+
   if(m_detailsHasBeenSet)
   {
       unsigned detailsIdx = 1;
@@ -81,6 +88,7 @@ void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* lo
         item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
+
 }
 
 void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void InstanceStatusSummary::OutputToStream(Aws::OStream& oStream, const char* lo
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

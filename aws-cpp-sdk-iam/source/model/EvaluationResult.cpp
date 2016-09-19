@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 EvaluationResult::EvaluationResult() : 
     m_evalActionNameHasBeenSet(false),
@@ -133,14 +139,17 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".EvalActionName=" << StringUtils::URLEncode(m_evalActionName.c_str()) << "&";
   }
+
   if(m_evalResourceNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".EvalResourceName=" << StringUtils::URLEncode(m_evalResourceName.c_str()) << "&";
   }
+
   if(m_evalDecisionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EvalDecision=" << PolicyEvaluationDecisionTypeMapper::GetNameForPolicyEvaluationDecisionType(m_evalDecision) << "&";
   }
+
   if(m_matchedStatementsHasBeenSet)
   {
       unsigned matchedStatementsIdx = 1;
@@ -151,6 +160,7 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, matchedStatementsSs.str().c_str());
       }
   }
+
   if(m_missingContextValuesHasBeenSet)
   {
       unsigned missingContextValuesIdx = 1;
@@ -159,9 +169,20 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
         oStream << location << index << locationValue << ".MissingContextValues.member." << missingContextValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_evalDecisionDetailsHasBeenSet)
   {
+      unsigned evalDecisionDetailsIdx = 1;
+      for(auto& item : m_evalDecisionDetails)
+      {
+        oStream << location << index << locationValue << ".EvalDecisionDetails.entry." << evalDecisionDetailsIdx << ".key="
+            << StringUtils::URLEncode(item.first.c_str()) << "&";
+        oStream << location << index << locationValue << ".EvalDecisionDetails.entry." << evalDecisionDetailsIdx << ".value="
+            << StringUtils::URLEncode(PolicyEvaluationDecisionTypeMapper::GetNameForPolicyEvaluationDecisionType(item.second).c_str()) << "&";
+        evalDecisionDetailsIdx++;
+      }
   }
+
   if(m_resourceSpecificResultsHasBeenSet)
   {
       unsigned resourceSpecificResultsIdx = 1;
@@ -172,6 +193,7 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, resourceSpecificResultsSs.str().c_str());
       }
   }
+
 }
 
 void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -208,6 +230,16 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_evalDecisionDetailsHasBeenSet)
   {
+      unsigned evalDecisionDetailsIdx = 1;
+      for(auto& item : m_evalDecisionDetails)
+      {
+        oStream << location << ".EvalDecisionDetails.entry."  << evalDecisionDetailsIdx << ".key="
+            << StringUtils::URLEncode(item.first.c_str()) << "&";
+        oStream << location <<  ".EvalDecisionDetails.entry." << evalDecisionDetailsIdx << ".value="
+            << StringUtils::URLEncode(PolicyEvaluationDecisionTypeMapper::GetNameForPolicyEvaluationDecisionType(item.second).c_str()) << "&";
+        evalDecisionDetailsIdx++;
+      }
+
   }
   if(m_resourceSpecificResultsHasBeenSet)
   {
@@ -220,3 +252,7 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

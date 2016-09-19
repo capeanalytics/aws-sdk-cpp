@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,6 +32,7 @@ Aws::String DeleteDBSnapshotRequest::SerializePayload() const
   {
     ss << "DBSnapshotIdentifier=" << StringUtils::URLEncode(m_dBSnapshotIdentifier.c_str()) << "&";
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,15 +17,21 @@
 
 #include <utility>
 
-using namespace Aws::CloudTrail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudTrail
+{
+namespace Model
+{
 
 Trail::Trail() : 
     m_nameHasBeenSet(false),
     m_s3BucketNameHasBeenSet(false),
     m_s3KeyPrefixHasBeenSet(false),
-    m_snsTopicNameHasBeenSet(false),
+    m_snsTopicARNHasBeenSet(false),
     m_includeGlobalServiceEvents(false),
     m_includeGlobalServiceEventsHasBeenSet(false),
     m_isMultiRegionTrail(false),
@@ -44,7 +50,7 @@ Trail::Trail(const JsonValue& jsonValue) :
     m_nameHasBeenSet(false),
     m_s3BucketNameHasBeenSet(false),
     m_s3KeyPrefixHasBeenSet(false),
-    m_snsTopicNameHasBeenSet(false),
+    m_snsTopicARNHasBeenSet(false),
     m_includeGlobalServiceEvents(false),
     m_includeGlobalServiceEventsHasBeenSet(false),
     m_isMultiRegionTrail(false),
@@ -83,11 +89,11 @@ Trail& Trail::operator =(const JsonValue& jsonValue)
     m_s3KeyPrefixHasBeenSet = true;
   }
 
-  if(jsonValue.ValueExists("SnsTopicName"))
+  if(jsonValue.ValueExists("SnsTopicARN"))
   {
-    m_snsTopicName = jsonValue.GetString("SnsTopicName");
+    m_snsTopicARN = jsonValue.GetString("SnsTopicARN");
 
-    m_snsTopicNameHasBeenSet = true;
+    m_snsTopicARNHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("IncludeGlobalServiceEvents"))
@@ -171,9 +177,9 @@ JsonValue Trail::Jsonize() const
 
   }
 
-  if(m_snsTopicNameHasBeenSet)
+  if(m_snsTopicARNHasBeenSet)
   {
-   payload.WithString("SnsTopicName", m_snsTopicName);
+   payload.WithString("SnsTopicARN", m_snsTopicARN);
 
   }
 
@@ -227,3 +233,7 @@ JsonValue Trail::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CloudTrail
+} // namespace Aws

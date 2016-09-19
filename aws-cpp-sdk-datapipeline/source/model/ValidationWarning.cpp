@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::DataPipeline::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace DataPipeline
+{
+namespace Model
+{
 
 ValidationWarning::ValidationWarning() : 
     m_idHasBeenSet(false),
@@ -79,3 +85,7 @@ JsonValue ValidationWarning::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace DataPipeline
+} // namespace Aws

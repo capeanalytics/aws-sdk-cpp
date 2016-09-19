@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,65 +34,65 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline const Aws::String& GetDBSecurityGroupName() const{ return m_dBSecurityGroupName; }
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline void SetDBSecurityGroupName(const Aws::String& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = value; }
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline void SetDBSecurityGroupName(Aws::String&& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = value; }
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline void SetDBSecurityGroupName(const char* value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName.assign(value); }
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline DeleteDBSecurityGroupRequest& WithDBSecurityGroupName(const Aws::String& value) { SetDBSecurityGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline DeleteDBSecurityGroupRequest& WithDBSecurityGroupName(Aws::String&& value) { SetDBSecurityGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB security group to delete. </p> <note>You cannot delete
-     * the default DB security group.</note> <p> Constraints: </p> <ul> <li>Must be 1
-     * to 255 alphanumeric characters</li> <li>First character must be a letter</li>
-     * <li>Cannot end with a hyphen or contain two consecutive hyphens</li> <li>Must
-     * not be "Default"</li> <li>Cannot contain spaces</li> </ul>
+     * <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete
+     * the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must
+     * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
+     * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
+     * hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
      */
     inline DeleteDBSecurityGroupRequest& WithDBSecurityGroupName(const char* value) { SetDBSecurityGroupName(value); return *this;}
 

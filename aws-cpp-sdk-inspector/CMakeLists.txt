@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-inspector)
 
   file(GLOB AWS_INSPECTOR_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-inspector)
     "source/model/*.cpp"
   )
 
-  file(GLOB INSPECTOR_SRC
+  file(GLOB INSPECTOR_UNIFIED_HEADERS
     ${AWS_INSPECTOR_HEADERS}
     ${AWS_INSPECTOR_MODEL_HEADERS}
+  )
+
+  file(GLOB INSPECTOR_UNITY_SRC
     ${AWS_INSPECTOR_SOURCE}
     ${AWS_INSPECTOR_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("INSPECTOR" INSPECTOR_UNITY_SRC)
+  endif()
+
+  file(GLOB INSPECTOR_SRC
+    ${INSPECTOR_UNIFIED_HEADERS}
+    ${INSPECTOR_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-inspector)
 
   include_directories(${INSPECTOR_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_INSPECTOR_EXPORTS")
   endif()
 
@@ -53,14 +65,28 @@ project(aws-cpp-sdk-inspector)
   
   target_link_libraries(aws-cpp-sdk-inspector aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-inspector
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-inspector
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-inspector)
+    else()
+      install (TARGETS aws-cpp-sdk-inspector
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_INSPECTOR_HEADERS} DESTINATION include/aws/inspector)
   install (FILES ${AWS_INSPECTOR_MODEL_HEADERS} DESTINATION include/aws/inspector/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-inspector.autopkg DESTINATION nuget)
+  endif()
+
+
 

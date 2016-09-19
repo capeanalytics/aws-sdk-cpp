@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -78,31 +78,36 @@ namespace Model
 
     /**
      * <p>The layer type. A stack cannot have more than one built-in layer of the same
-     * type. It can have any number of custom layers.</p>
+     * type. It can have any number of custom layers. Built-in layers are not available
+     * in Chef 12 stacks.</p>
      */
     inline const LayerType& GetType() const{ return m_type; }
 
     /**
      * <p>The layer type. A stack cannot have more than one built-in layer of the same
-     * type. It can have any number of custom layers.</p>
+     * type. It can have any number of custom layers. Built-in layers are not available
+     * in Chef 12 stacks.</p>
      */
     inline void SetType(const LayerType& value) { m_typeHasBeenSet = true; m_type = value; }
 
     /**
      * <p>The layer type. A stack cannot have more than one built-in layer of the same
-     * type. It can have any number of custom layers.</p>
+     * type. It can have any number of custom layers. Built-in layers are not available
+     * in Chef 12 stacks.</p>
      */
     inline void SetType(LayerType&& value) { m_typeHasBeenSet = true; m_type = value; }
 
     /**
      * <p>The layer type. A stack cannot have more than one built-in layer of the same
-     * type. It can have any number of custom layers.</p>
+     * type. It can have any number of custom layers. Built-in layers are not available
+     * in Chef 12 stacks.</p>
      */
     inline CreateLayerRequest& WithType(const LayerType& value) { SetType(value); return *this;}
 
     /**
      * <p>The layer type. A stack cannot have more than one built-in layer of the same
-     * type. It can have any number of custom layers.</p>
+     * type. It can have any number of custom layers. Built-in layers are not available
+     * in Chef 12 stacks.</p>
      */
     inline CreateLayerRequest& WithType(LayerType&& value) { SetType(value); return *this;}
 

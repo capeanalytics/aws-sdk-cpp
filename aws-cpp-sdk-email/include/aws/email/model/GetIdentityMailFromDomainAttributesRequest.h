@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,11 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to return the Amazon SES custom MAIL FROM attributes for
+   * a list of identities. For information about using a custom MAIL FROM domain, see
+   * the <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API GetIdentityMailFromDomainAttributesRequest : public SESRequest
   {

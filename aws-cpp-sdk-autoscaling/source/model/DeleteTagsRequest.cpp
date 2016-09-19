@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -37,6 +37,7 @@ Aws::String DeleteTagsRequest::SerializePayload() const
       tagsCount++;
     }
   }
+
   ss << "Version=2011-01-01";
   return ss.str();
 }

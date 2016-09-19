@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SNS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SNS
+{
+namespace Model
+{
 
 Topic::Topic() : 
     m_topicArnHasBeenSet(false)
@@ -57,6 +63,7 @@ void Topic::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   {
       oStream << location << index << locationValue << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
+
 }
 
 void Topic::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -66,3 +73,7 @@ void Topic::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SNS
+} // namespace Aws

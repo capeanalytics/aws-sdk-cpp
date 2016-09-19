@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int String_HASH = HashingUtils::HashString("String");
-static const int Number_HASH = HashingUtils::HashString("Number");
-static const int Boolean_HASH = HashingUtils::HashString("Boolean");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ActionConfigurationPropertyTypeMapper
       {
+
+        static const int String_HASH = HashingUtils::HashString("String");
+        static const int Number_HASH = HashingUtils::HashString("Number");
+        static const int Boolean_HASH = HashingUtils::HashString("Boolean");
 
 
         ActionConfigurationPropertyType GetActionConfigurationPropertyTypeForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String CancelJobRequest::SerializePayload() const
   {
     ss << "JobId=" << StringUtils::URLEncode(m_jobId.c_str()) << "&";
   }
+
   if(m_aPIVersionHasBeenSet)
   {
     ss << "APIVersion=" << StringUtils::URLEncode(m_aPIVersion.c_str()) << "&";
   }
+
   ss << "Version=2010-06-01";
   return ss.str();
 }

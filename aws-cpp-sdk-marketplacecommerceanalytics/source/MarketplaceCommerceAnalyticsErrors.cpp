@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,14 +20,15 @@ using namespace Aws::Client;
 using namespace Aws::MarketplaceCommerceAnalytics;
 using namespace Aws::Utils;
 
-static const int MARKETPLACE_COMMERCE_ANALYTICS_HASH = HashingUtils::HashString("MarketplaceCommerceAnalyticsException");
-
 namespace Aws
 {
 namespace MarketplaceCommerceAnalytics
 {
 namespace MarketplaceCommerceAnalyticsErrorMapper
 {
+
+static const int MARKETPLACE_COMMERCE_ANALYTICS_HASH = HashingUtils::HashString("MarketplaceCommerceAnalyticsException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

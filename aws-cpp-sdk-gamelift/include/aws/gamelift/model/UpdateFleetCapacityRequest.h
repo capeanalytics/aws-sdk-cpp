@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -73,23 +73,63 @@ namespace Model
     /**
      * <p>Number of EC2 instances you want this fleet to host.</p>
      */
-    inline long GetDesiredInstances() const{ return m_desiredInstances; }
+    inline int GetDesiredInstances() const{ return m_desiredInstances; }
 
     /**
      * <p>Number of EC2 instances you want this fleet to host.</p>
      */
-    inline void SetDesiredInstances(long value) { m_desiredInstancesHasBeenSet = true; m_desiredInstances = value; }
+    inline void SetDesiredInstances(int value) { m_desiredInstancesHasBeenSet = true; m_desiredInstances = value; }
 
     /**
      * <p>Number of EC2 instances you want this fleet to host.</p>
      */
-    inline UpdateFleetCapacityRequest& WithDesiredInstances(long value) { SetDesiredInstances(value); return *this;}
+    inline UpdateFleetCapacityRequest& WithDesiredInstances(int value) { SetDesiredInstances(value); return *this;}
+
+    /**
+     * <p>Minimum value allowed for the fleet's instance count. Default if not set is
+     * 0.</p>
+     */
+    inline int GetMinSize() const{ return m_minSize; }
+
+    /**
+     * <p>Minimum value allowed for the fleet's instance count. Default if not set is
+     * 0.</p>
+     */
+    inline void SetMinSize(int value) { m_minSizeHasBeenSet = true; m_minSize = value; }
+
+    /**
+     * <p>Minimum value allowed for the fleet's instance count. Default if not set is
+     * 0.</p>
+     */
+    inline UpdateFleetCapacityRequest& WithMinSize(int value) { SetMinSize(value); return *this;}
+
+    /**
+     * <p>Maximum value allowed for the fleet's instance count. Default if not set is
+     * 1.</p>
+     */
+    inline int GetMaxSize() const{ return m_maxSize; }
+
+    /**
+     * <p>Maximum value allowed for the fleet's instance count. Default if not set is
+     * 1.</p>
+     */
+    inline void SetMaxSize(int value) { m_maxSizeHasBeenSet = true; m_maxSize = value; }
+
+    /**
+     * <p>Maximum value allowed for the fleet's instance count. Default if not set is
+     * 1.</p>
+     */
+    inline UpdateFleetCapacityRequest& WithMaxSize(int value) { SetMaxSize(value); return *this;}
 
   private:
     Aws::String m_fleetId;
     bool m_fleetIdHasBeenSet;
-    long m_desiredInstances;
+    int m_desiredInstances;
     bool m_desiredInstancesHasBeenSet;
+    int m_minSize;
+    bool m_minSizeHasBeenSet;
+    int m_maxSize;
+    bool m_maxSizeHasBeenSet;
   };
 
 } // namespace Model

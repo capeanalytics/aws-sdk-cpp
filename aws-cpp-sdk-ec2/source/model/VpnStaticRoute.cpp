@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VpnStaticRoute::VpnStaticRoute() : 
     m_destinationCidrBlockHasBeenSet(false),
@@ -73,14 +79,17 @@ void VpnStaticRoute::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".DestinationCidrBlock=" << StringUtils::URLEncode(m_destinationCidrBlock.c_str()) << "&";
   }
+
   if(m_sourceHasBeenSet)
   {
       oStream << location << index << locationValue << ".Source=" << VpnStaticRouteSourceMapper::GetNameForVpnStaticRouteSource(m_source) << "&";
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << VpnStateMapper::GetNameForVpnState(m_state) << "&";
   }
+
 }
 
 void VpnStaticRoute::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void VpnStaticRoute::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".State=" << VpnStateMapper::GetNameForVpnState(m_state) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

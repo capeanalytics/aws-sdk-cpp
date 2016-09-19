@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 SnapshotCopyGrant::SnapshotCopyGrant() : 
     m_snapshotCopyGrantNameHasBeenSet(false),
@@ -79,10 +85,12 @@ void SnapshotCopyGrant::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".SnapshotCopyGrantName=" << StringUtils::URLEncode(m_snapshotCopyGrantName.c_str()) << "&";
   }
+
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -93,6 +101,7 @@ void SnapshotCopyGrant::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void SnapshotCopyGrant::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void SnapshotCopyGrant::OutputToStream(Aws::OStream& oStream, const char* locati
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

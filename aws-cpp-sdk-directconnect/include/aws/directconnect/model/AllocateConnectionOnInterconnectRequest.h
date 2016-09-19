@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,43 +38,43 @@ namespace Model
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline const Aws::String& GetBandwidth() const{ return m_bandwidth; }
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline void SetBandwidth(const Aws::String& value) { m_bandwidthHasBeenSet = true; m_bandwidth = value; }
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline void SetBandwidth(Aws::String&& value) { m_bandwidthHasBeenSet = true; m_bandwidth = value; }
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline void SetBandwidth(const char* value) { m_bandwidthHasBeenSet = true; m_bandwidth.assign(value); }
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline AllocateConnectionOnInterconnectRequest& WithBandwidth(const Aws::String& value) { SetBandwidth(value); return *this;}
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline AllocateConnectionOnInterconnectRequest& WithBandwidth(Aws::String&& value) { SetBandwidth(value); return *this;}
 
     /**
      * <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default:
-     * None</p>
+     * None</p> <p>Values: 50M, 100M, 200M, 300M, 400M, or 500M</p>
      */
     inline AllocateConnectionOnInterconnectRequest& WithBandwidth(const char* value) { SetBandwidth(value); return *this;}
 
@@ -208,19 +208,19 @@ namespace Model
      * <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p>
      * <p>Default: None</p>
      */
-    inline long GetVlan() const{ return m_vlan; }
+    inline int GetVlan() const{ return m_vlan; }
 
     /**
      * <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p>
      * <p>Default: None</p>
      */
-    inline void SetVlan(long value) { m_vlanHasBeenSet = true; m_vlan = value; }
+    inline void SetVlan(int value) { m_vlanHasBeenSet = true; m_vlan = value; }
 
     /**
      * <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p>
      * <p>Default: None</p>
      */
-    inline AllocateConnectionOnInterconnectRequest& WithVlan(long value) { SetVlan(value); return *this;}
+    inline AllocateConnectionOnInterconnectRequest& WithVlan(int value) { SetVlan(value); return *this;}
 
   private:
     Aws::String m_bandwidth;
@@ -231,7 +231,7 @@ namespace Model
     bool m_ownerAccountHasBeenSet;
     Aws::String m_interconnectId;
     bool m_interconnectIdHasBeenSet;
-    long m_vlan;
+    int m_vlan;
     bool m_vlanHasBeenSet;
   };
 

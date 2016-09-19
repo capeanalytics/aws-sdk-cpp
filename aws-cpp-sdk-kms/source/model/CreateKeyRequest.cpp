@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -24,7 +24,10 @@ using namespace Aws::Utils;
 CreateKeyRequest::CreateKeyRequest() : 
     m_policyHasBeenSet(false),
     m_descriptionHasBeenSet(false),
-    m_keyUsageHasBeenSet(false)
+    m_keyUsageHasBeenSet(false),
+    m_originHasBeenSet(false),
+    m_bypassPolicyLockoutSafetyCheck(false),
+    m_bypassPolicyLockoutSafetyCheckHasBeenSet(false)
 {
 }
 
@@ -47,6 +50,17 @@ Aws::String CreateKeyRequest::SerializePayload() const
   if(m_keyUsageHasBeenSet)
   {
    payload.WithString("KeyUsage", KeyUsageTypeMapper::GetNameForKeyUsageType(m_keyUsage));
+  }
+
+  if(m_originHasBeenSet)
+  {
+   payload.WithString("Origin", OriginTypeMapper::GetNameForOriginType(m_origin));
+  }
+
+  if(m_bypassPolicyLockoutSafetyCheckHasBeenSet)
+  {
+   payload.WithBool("BypassPolicyLockoutSafetyCheck", m_bypassPolicyLockoutSafetyCheck);
+
   }
 
   return payload.WriteReadable();

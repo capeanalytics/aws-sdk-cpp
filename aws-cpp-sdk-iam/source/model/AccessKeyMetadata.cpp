@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 AccessKeyMetadata::AccessKeyMetadata() : 
     m_userNameHasBeenSet(false),
@@ -81,18 +87,22 @@ void AccessKeyMetadata::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_accessKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".AccessKeyId=" << StringUtils::URLEncode(m_accessKeyId.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void AccessKeyMetadata::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void AccessKeyMetadata::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

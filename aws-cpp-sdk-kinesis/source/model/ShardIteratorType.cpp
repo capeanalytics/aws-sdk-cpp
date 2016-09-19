@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int AT_SEQUENCE_NUMBER_HASH = HashingUtils::HashString("AT_SEQUENCE_NUMBER");
-static const int AFTER_SEQUENCE_NUMBER_HASH = HashingUtils::HashString("AFTER_SEQUENCE_NUMBER");
-static const int TRIM_HORIZON_HASH = HashingUtils::HashString("TRIM_HORIZON");
-static const int LATEST_HASH = HashingUtils::HashString("LATEST");
-static const int AT_TIMESTAMP_HASH = HashingUtils::HashString("AT_TIMESTAMP");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ShardIteratorTypeMapper
       {
+
+        static const int AT_SEQUENCE_NUMBER_HASH = HashingUtils::HashString("AT_SEQUENCE_NUMBER");
+        static const int AFTER_SEQUENCE_NUMBER_HASH = HashingUtils::HashString("AFTER_SEQUENCE_NUMBER");
+        static const int TRIM_HORIZON_HASH = HashingUtils::HashString("TRIM_HORIZON");
+        static const int LATEST_HASH = HashingUtils::HashString("LATEST");
+        static const int AT_TIMESTAMP_HASH = HashingUtils::HashString("AT_TIMESTAMP");
 
 
         ShardIteratorType GetShardIteratorTypeForName(const Aws::String& name)

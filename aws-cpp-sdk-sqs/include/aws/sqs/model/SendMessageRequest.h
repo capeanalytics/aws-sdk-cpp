@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -27,6 +27,7 @@ namespace Model
 {
 
   /**
+   * <p/>
    */
   class AWS_SQS_API SendMessageRequest : public SQSRequest
   {
@@ -35,37 +36,44 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline const Aws::String& GetQueueUrl() const{ return m_queueUrl; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(const Aws::String& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(Aws::String&& value) { m_queueUrlHasBeenSet = true; m_queueUrl = value; }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline void SetQueueUrl(const char* value) { m_queueUrlHasBeenSet = true; m_queueUrl.assign(value); }
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline SendMessageRequest& WithQueueUrl(const Aws::String& value) { SetQueueUrl(value); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline SendMessageRequest& WithQueueUrl(Aws::String&& value) { SetQueueUrl(value); return *this;}
 
     /**
-     * <p>The URL of the Amazon SQS queue to take action on.</p>
+     * <p>The URL of the Amazon SQS queue to take action on.</p> <p>Queue URLs are
+     * case-sensitive.</p>
      */
     inline SendMessageRequest& WithQueueUrl(const char* value) { SetQueueUrl(value); return *this;}
 
@@ -117,7 +125,7 @@ namespace Model
      * processing after the delay time is finished. If you don't specify a value, the
      * default value for the queue applies. </p>
      */
-    inline long GetDelaySeconds() const{ return m_delaySeconds; }
+    inline int GetDelaySeconds() const{ return m_delaySeconds; }
 
     /**
      * <p> The number of seconds (0 to 900 - 15 minutes) to delay a specific message.
@@ -125,7 +133,7 @@ namespace Model
      * processing after the delay time is finished. If you don't specify a value, the
      * default value for the queue applies. </p>
      */
-    inline void SetDelaySeconds(long value) { m_delaySecondsHasBeenSet = true; m_delaySeconds = value; }
+    inline void SetDelaySeconds(int value) { m_delaySecondsHasBeenSet = true; m_delaySeconds = value; }
 
     /**
      * <p> The number of seconds (0 to 900 - 15 minutes) to delay a specific message.
@@ -133,7 +141,7 @@ namespace Model
      * processing after the delay time is finished. If you don't specify a value, the
      * default value for the queue applies. </p>
      */
-    inline SendMessageRequest& WithDelaySeconds(long value) { SetDelaySeconds(value); return *this;}
+    inline SendMessageRequest& WithDelaySeconds(int value) { SetDelaySeconds(value); return *this;}
 
     /**
      * <p>Each message attribute consists of a Name, Type, and Value. For more
@@ -228,7 +236,7 @@ namespace Model
     bool m_queueUrlHasBeenSet;
     Aws::String m_messageBody;
     bool m_messageBodyHasBeenSet;
-    long m_delaySeconds;
+    int m_delaySeconds;
     bool m_delaySecondsHasBeenSet;
     Aws::Map<Aws::String, MessageAttributeValue> m_messageAttributes;
     bool m_messageAttributesHasBeenSet;

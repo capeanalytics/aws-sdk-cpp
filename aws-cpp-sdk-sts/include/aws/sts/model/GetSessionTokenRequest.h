@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -40,7 +40,7 @@ namespace Model
      * hour). If the duration is longer than one hour, the session for AWS account
      * owners defaults to one hour.</p>
      */
-    inline long GetDurationSeconds() const{ return m_durationSeconds; }
+    inline int GetDurationSeconds() const{ return m_durationSeconds; }
 
     /**
      * <p>The duration, in seconds, that the credentials should remain valid.
@@ -50,7 +50,7 @@ namespace Model
      * hour). If the duration is longer than one hour, the session for AWS account
      * owners defaults to one hour.</p>
      */
-    inline void SetDurationSeconds(long value) { m_durationSecondsHasBeenSet = true; m_durationSeconds = value; }
+    inline void SetDurationSeconds(int value) { m_durationSecondsHasBeenSet = true; m_durationSeconds = value; }
 
     /**
      * <p>The duration, in seconds, that the credentials should remain valid.
@@ -60,7 +60,7 @@ namespace Model
      * hour). If the duration is longer than one hour, the session for AWS account
      * owners defaults to one hour.</p>
      */
-    inline GetSessionTokenRequest& WithDurationSeconds(long value) { SetDurationSeconds(value); return *this;}
+    inline GetSessionTokenRequest& WithDurationSeconds(int value) { SetDurationSeconds(value); return *this;}
 
     /**
      * <p>The identification number of the MFA device that is associated with the IAM
@@ -72,8 +72,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetSerialNumber() const{ return m_serialNumber; }
 
@@ -87,8 +87,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetSerialNumber(const Aws::String& value) { m_serialNumberHasBeenSet = true; m_serialNumber = value; }
 
@@ -102,8 +102,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetSerialNumber(Aws::String&& value) { m_serialNumberHasBeenSet = true; m_serialNumber = value; }
 
@@ -117,8 +117,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetSerialNumber(const char* value) { m_serialNumberHasBeenSet = true; m_serialNumber.assign(value); }
 
@@ -132,8 +132,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetSessionTokenRequest& WithSerialNumber(const Aws::String& value) { SetSerialNumber(value); return *this;}
 
@@ -147,8 +147,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetSessionTokenRequest& WithSerialNumber(Aws::String&& value) { SetSerialNumber(value); return *this;}
 
@@ -162,8 +162,8 @@ namespace Model
      * IAM user by going to the AWS Management Console and viewing the user's security
      * credentials. </p> <p>The format for this parameter, as described by its regex
      * pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetSessionTokenRequest& WithSerialNumber(const char* value) { SetSerialNumber(value); return *this;}
 
@@ -245,7 +245,7 @@ namespace Model
     inline GetSessionTokenRequest& WithTokenCode(const char* value) { SetTokenCode(value); return *this;}
 
   private:
-    long m_durationSeconds;
+    int m_durationSeconds;
     bool m_durationSecondsHasBeenSet;
     Aws::String m_serialNumber;
     bool m_serialNumberHasBeenSet;

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int EQ_HASH = HashingUtils::HashString("EQ");
-static const int REF_EQ_HASH = HashingUtils::HashString("REF_EQ");
-static const int LE_HASH = HashingUtils::HashString("LE");
-static const int GE_HASH = HashingUtils::HashString("GE");
-static const int BETWEEN_HASH = HashingUtils::HashString("BETWEEN");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace OperatorTypeMapper
       {
+
+        static const int EQ_HASH = HashingUtils::HashString("EQ");
+        static const int REF_EQ_HASH = HashingUtils::HashString("REF_EQ");
+        static const int LE_HASH = HashingUtils::HashString("LE");
+        static const int GE_HASH = HashingUtils::HashString("GE");
+        static const int BETWEEN_HASH = HashingUtils::HashString("BETWEEN");
 
 
         OperatorType GetOperatorTypeForName(const Aws::String& name)

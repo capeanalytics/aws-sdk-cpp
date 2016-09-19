@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -29,7 +29,9 @@ CreateFleetRequest::CreateFleetRequest() :
     m_serverLaunchParametersHasBeenSet(false),
     m_logPathsHasBeenSet(false),
     m_eC2InstanceTypeHasBeenSet(false),
-    m_eC2InboundPermissionsHasBeenSet(false)
+    m_eC2InboundPermissionsHasBeenSet(false),
+    m_newGameSessionProtectionPolicyHasBeenSet(false),
+    m_runtimeConfigurationHasBeenSet(false)
 {
 }
 
@@ -91,6 +93,17 @@ Aws::String CreateFleetRequest::SerializePayload() const
      eC2InboundPermissionsJsonList[eC2InboundPermissionsIndex].AsObject(m_eC2InboundPermissions[eC2InboundPermissionsIndex].Jsonize());
    }
    payload.WithArray("EC2InboundPermissions", std::move(eC2InboundPermissionsJsonList));
+
+  }
+
+  if(m_newGameSessionProtectionPolicyHasBeenSet)
+  {
+   payload.WithString("NewGameSessionProtectionPolicy", ProtectionPolicyMapper::GetNameForProtectionPolicy(m_newGameSessionProtectionPolicy));
+  }
+
+  if(m_runtimeConfigurationHasBeenSet)
+  {
+   payload.WithObject("RuntimeConfiguration", m_runtimeConfiguration.Jsonize());
 
   }
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,18 +36,22 @@ Aws::String DownloadDBLogFilePortionRequest::SerializePayload() const
   {
     ss << "DBInstanceIdentifier=" << StringUtils::URLEncode(m_dBInstanceIdentifier.c_str()) << "&";
   }
+
   if(m_logFileNameHasBeenSet)
   {
     ss << "LogFileName=" << StringUtils::URLEncode(m_logFileName.c_str()) << "&";
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   if(m_numberOfLinesHasBeenSet)
   {
     ss << "NumberOfLines=" << m_numberOfLines << "&";
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

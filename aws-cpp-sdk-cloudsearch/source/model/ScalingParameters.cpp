@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 ScalingParameters::ScalingParameters() : 
     m_desiredInstanceTypeHasBeenSet(false),
@@ -77,14 +83,17 @@ void ScalingParameters::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".DesiredInstanceType=" << PartitionInstanceTypeMapper::GetNameForPartitionInstanceType(m_desiredInstanceType) << "&";
   }
+
   if(m_desiredReplicationCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".DesiredReplicationCount=" << m_desiredReplicationCount << "&";
   }
+
   if(m_desiredPartitionCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".DesiredPartitionCount=" << m_desiredPartitionCount << "&";
   }
+
 }
 
 void ScalingParameters::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -102,3 +111,7 @@ void ScalingParameters::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".DesiredPartitionCount=" << m_desiredPartitionCount << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

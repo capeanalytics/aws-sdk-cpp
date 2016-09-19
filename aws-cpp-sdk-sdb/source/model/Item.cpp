@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SimpleDB::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SimpleDB
+{
+namespace Model
+{
 
 Item::Item() : 
     m_nameHasBeenSet(false),
@@ -79,10 +85,12 @@ void Item::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   if(m_alternateNameEncodingHasBeenSet)
   {
       oStream << location << index << locationValue << ".AlternateNameEncoding=" << StringUtils::URLEncode(m_alternateNameEncoding.c_str()) << "&";
   }
+
   if(m_attributesHasBeenSet)
   {
       unsigned attributesIdx = 1;
@@ -93,6 +101,7 @@ void Item::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
         item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }
+
 }
 
 void Item::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void Item::OutputToStream(Aws::OStream& oStream, const char* location) const
       }
   }
 }
+
+} // namespace Model
+} // namespace SimpleDB
+} // namespace Aws

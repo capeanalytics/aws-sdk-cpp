@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 HostProperties::HostProperties() : 
     m_sockets(0),
@@ -87,18 +93,22 @@ void HostProperties::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".Sockets=" << m_sockets << "&";
   }
+
   if(m_coresHasBeenSet)
   {
       oStream << location << index << locationValue << ".Cores=" << m_cores << "&";
   }
+
   if(m_totalVCpusHasBeenSet)
   {
       oStream << location << index << locationValue << ".TotalVCpus=" << m_totalVCpus << "&";
   }
+
   if(m_instanceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
+
 }
 
 void HostProperties::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -120,3 +130,7 @@ void HostProperties::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".InstanceType=" << StringUtils::URLEncode(m_instanceType.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

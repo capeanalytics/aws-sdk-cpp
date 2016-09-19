@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -23,7 +23,8 @@ using namespace Aws::Utils;
 
 GetCredentialsForIdentityRequest::GetCredentialsForIdentityRequest() : 
     m_identityIdHasBeenSet(false),
-    m_loginsHasBeenSet(false)
+    m_loginsHasBeenSet(false),
+    m_customRoleArnHasBeenSet(false)
 {
 }
 
@@ -45,6 +46,12 @@ Aws::String GetCredentialsForIdentityRequest::SerializePayload() const
      loginsJsonMap.WithString(loginsItem.first, loginsItem.second);
    }
    payload.WithObject("Logins", std::move(loginsJsonMap));
+
+  }
+
+  if(m_customRoleArnHasBeenSet)
+  {
+   payload.WithString("CustomRoleArn", m_customRoleArn);
 
   }
 

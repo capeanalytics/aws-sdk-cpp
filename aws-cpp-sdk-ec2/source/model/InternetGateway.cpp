@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InternetGateway::InternetGateway() : 
     m_internetGatewayIdHasBeenSet(false),
@@ -85,6 +91,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".InternetGatewayId=" << StringUtils::URLEncode(m_internetGatewayId.c_str()) << "&";
   }
+
   if(m_attachmentsHasBeenSet)
   {
       unsigned attachmentsIdx = 1;
@@ -95,6 +102,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, attachmentsSs.str().c_str());
       }
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -105,6 +113,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -134,3 +143,7 @@ void InternetGateway::OutputToStream(Aws::OStream& oStream, const char* location
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

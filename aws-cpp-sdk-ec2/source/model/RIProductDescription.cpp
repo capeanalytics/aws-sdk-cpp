@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Linux_UNIX_HASH = HashingUtils::HashString("Linux/UNIX");
-static const int Linux_UNIX_Amazon_VPC_HASH = HashingUtils::HashString("Linux/UNIX (Amazon VPC)");
-static const int Windows_HASH = HashingUtils::HashString("Windows");
-static const int Windows_Amazon_VPC_HASH = HashingUtils::HashString("Windows (Amazon VPC)");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace RIProductDescriptionMapper
       {
+
+        static const int Linux_UNIX_HASH = HashingUtils::HashString("Linux/UNIX");
+        static const int Linux_UNIX_Amazon_VPC_HASH = HashingUtils::HashString("Linux/UNIX (Amazon VPC)");
+        static const int Windows_HASH = HashingUtils::HashString("Windows");
+        static const int Windows_Amazon_VPC_HASH = HashingUtils::HashString("Windows (Amazon VPC)");
 
 
         RIProductDescription GetRIProductDescriptionForName(const Aws::String& name)

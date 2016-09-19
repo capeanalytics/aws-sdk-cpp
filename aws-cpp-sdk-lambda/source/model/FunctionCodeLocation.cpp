@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::Lambda::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Lambda
+{
+namespace Model
+{
 
 FunctionCodeLocation::FunctionCodeLocation() : 
     m_repositoryTypeHasBeenSet(false),
@@ -71,3 +77,7 @@ JsonValue FunctionCodeLocation::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace Lambda
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -46,50 +46,42 @@ namespace Model
     GetContextKeysForPrincipalPolicyResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline const Aws::Vector<Aws::String>& GetContextKeyNames() const{ return m_contextKeyNames; }
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline void SetContextKeyNames(const Aws::Vector<Aws::String>& value) { m_contextKeyNames = value; }
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline void SetContextKeyNames(Aws::Vector<Aws::String>&& value) { m_contextKeyNames = value; }
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline GetContextKeysForPrincipalPolicyResult& WithContextKeyNames(const Aws::Vector<Aws::String>& value) { SetContextKeyNames(value); return *this;}
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline GetContextKeysForPrincipalPolicyResult& WithContextKeyNames(Aws::Vector<Aws::String>&& value) { SetContextKeyNames(value); return *this;}
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline GetContextKeysForPrincipalPolicyResult& AddContextKeyNames(const Aws::String& value) { m_contextKeyNames.push_back(value); return *this; }
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline GetContextKeysForPrincipalPolicyResult& AddContextKeyNames(Aws::String&& value) { m_contextKeyNames.push_back(value); return *this; }
 
     /**
-     * <p>The list of context keys that are used in the <code>Condition</code> elements
-     * of the input policies.</p>
+     * <p>The list of context keys that are referenced in the input policies.</p>
      */
     inline GetContextKeysForPrincipalPolicyResult& AddContextKeyNames(const char* value) { m_contextKeyNames.push_back(value); return *this; }
 

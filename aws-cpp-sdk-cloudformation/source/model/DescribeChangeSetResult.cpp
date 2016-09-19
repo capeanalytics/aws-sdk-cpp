@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -87,6 +87,11 @@ DescribeChangeSetResult& DescribeChangeSetResult::operator =(const AmazonWebServ
     if(!creationTimeNode.IsNull())
     {
       m_creationTime = DateTime(StringUtils::Trim(creationTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
+    }
+    XmlNode executionStatusNode = resultNode.FirstChild("ExecutionStatus");
+    if(!executionStatusNode.IsNull())
+    {
+      m_executionStatus = ExecutionStatusMapper::GetExecutionStatusForName(StringUtils::Trim(executionStatusNode.GetText().c_str()).c_str());
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())

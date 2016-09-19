@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,12 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int DoesNotExist_HASH = HashingUtils::HashString("DoesNotExist");
-static const int MessageTooLarge_HASH = HashingUtils::HashString("MessageTooLarge");
-static const int ExceededQuota_HASH = HashingUtils::HashString("ExceededQuota");
-static const int ContentRejected_HASH = HashingUtils::HashString("ContentRejected");
-static const int Undefined_HASH = HashingUtils::HashString("Undefined");
-static const int TemporaryFailure_HASH = HashingUtils::HashString("TemporaryFailure");
 
 namespace Aws
 {
@@ -34,6 +28,13 @@ namespace Aws
     {
       namespace BounceTypeMapper
       {
+
+        static const int DoesNotExist_HASH = HashingUtils::HashString("DoesNotExist");
+        static const int MessageTooLarge_HASH = HashingUtils::HashString("MessageTooLarge");
+        static const int ExceededQuota_HASH = HashingUtils::HashString("ExceededQuota");
+        static const int ContentRejected_HASH = HashingUtils::HashString("ContentRejected");
+        static const int Undefined_HASH = HashingUtils::HashString("Undefined");
+        static const int TemporaryFailure_HASH = HashingUtils::HashString("TemporaryFailure");
 
 
         BounceType GetBounceTypeForName(const Aws::String& name)

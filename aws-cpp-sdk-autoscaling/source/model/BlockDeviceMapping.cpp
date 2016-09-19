@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace AutoScaling
+{
+namespace Model
+{
 
 BlockDeviceMapping::BlockDeviceMapping() : 
     m_virtualNameHasBeenSet(false),
@@ -83,20 +89,24 @@ void BlockDeviceMapping::OutputToStream(Aws::OStream& oStream, const char* locat
   {
       oStream << location << index << locationValue << ".VirtualName=" << StringUtils::URLEncode(m_virtualName.c_str()) << "&";
   }
+
   if(m_deviceNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeviceName=" << StringUtils::URLEncode(m_deviceName.c_str()) << "&";
   }
+
   if(m_ebsHasBeenSet)
   {
       Aws::StringStream ebsLocationAndMemberSs;
       ebsLocationAndMemberSs << location << index << locationValue << ".Ebs";
       m_ebs.OutputToStream(oStream, ebsLocationAndMemberSs.str().c_str());
   }
+
   if(m_noDeviceHasBeenSet)
   {
       oStream << location << index << locationValue << ".NoDevice=" << m_noDevice << "&";
   }
+
 }
 
 void BlockDeviceMapping::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -120,3 +130,7 @@ void BlockDeviceMapping::OutputToStream(Aws::OStream& oStream, const char* locat
       oStream << location << ".NoDevice=" << m_noDevice << "&";
   }
 }
+
+} // namespace Model
+} // namespace AutoScaling
+} // namespace Aws

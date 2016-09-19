@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,19 +17,27 @@
 
 #include <utility>
 
-using namespace Aws::IoT::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace IoT
+{
+namespace Model
+{
+
 FirehoseAction::FirehoseAction() : 
     m_roleArnHasBeenSet(false),
-    m_deliveryStreamNameHasBeenSet(false)
+    m_deliveryStreamNameHasBeenSet(false),
+    m_separatorHasBeenSet(false)
 {
 }
 
 FirehoseAction::FirehoseAction(const JsonValue& jsonValue) : 
     m_roleArnHasBeenSet(false),
-    m_deliveryStreamNameHasBeenSet(false)
+    m_deliveryStreamNameHasBeenSet(false),
+    m_separatorHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -48,6 +56,13 @@ FirehoseAction& FirehoseAction::operator =(const JsonValue& jsonValue)
     m_deliveryStreamName = jsonValue.GetString("deliveryStreamName");
 
     m_deliveryStreamNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("separator"))
+  {
+    m_separator = jsonValue.GetString("separator");
+
+    m_separatorHasBeenSet = true;
   }
 
   return *this;
@@ -69,5 +84,15 @@ JsonValue FirehoseAction::Jsonize() const
 
   }
 
+  if(m_separatorHasBeenSet)
+  {
+   payload.WithString("separator", m_separator);
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace IoT
+} // namespace Aws

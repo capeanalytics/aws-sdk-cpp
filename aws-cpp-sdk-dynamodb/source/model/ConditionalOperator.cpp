@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int AND_HASH = HashingUtils::HashString("AND");
-static const int OR_HASH = HashingUtils::HashString("OR");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ConditionalOperatorMapper
       {
+
+        static const int AND_HASH = HashingUtils::HashString("AND");
+        static const int OR_HASH = HashingUtils::HashString("OR");
 
 
         ConditionalOperator GetConditionalOperatorForName(const Aws::String& name)

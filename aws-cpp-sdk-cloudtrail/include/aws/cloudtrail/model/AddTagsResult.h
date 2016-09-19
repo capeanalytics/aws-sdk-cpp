@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,8 +32,8 @@ namespace CloudTrail
 namespace Model
 {
   /**
-   * <p> Returns the objects or data listed below if successful. Otherwise, returns
-   * an error. </p>
+   * <p>Returns the objects or data listed below if successful. Otherwise, returns an
+   * error.</p>
    */
   class AWS_CLOUDTRAIL_API AddTagsResult
   {

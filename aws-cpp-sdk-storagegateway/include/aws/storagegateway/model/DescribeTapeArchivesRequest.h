@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,49 +38,49 @@ namespace Model
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline const Aws::Vector<Aws::String>& GetTapeARNs() const{ return m_tapeARNs; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline void SetTapeARNs(const Aws::Vector<Aws::String>& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = value; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline void SetTapeARNs(Aws::Vector<Aws::String>&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = value; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline DescribeTapeArchivesRequest& WithTapeARNs(const Aws::Vector<Aws::String>& value) { SetTapeARNs(value); return *this;}
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline DescribeTapeArchivesRequest& WithTapeARNs(Aws::Vector<Aws::String>&& value) { SetTapeARNs(value); return *this;}
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline DescribeTapeArchivesRequest& AddTapeARNs(const Aws::String& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline DescribeTapeArchivesRequest& AddTapeARNs(Aws::String&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
-     * virtual tapes you want to describe. </p>
+     * virtual tapes you want to describe.</p>
      */
     inline DescribeTapeArchivesRequest& AddTapeARNs(const char* value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
 
@@ -130,26 +130,26 @@ namespace Model
      * <p>Specifies that the number of virtual tapes descried be limited to the
      * specified number.</p>
      */
-    inline long GetLimit() const{ return m_limit; }
+    inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>Specifies that the number of virtual tapes descried be limited to the
      * specified number.</p>
      */
-    inline void SetLimit(long value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>Specifies that the number of virtual tapes descried be limited to the
      * specified number.</p>
      */
-    inline DescribeTapeArchivesRequest& WithLimit(long value) { SetLimit(value); return *this;}
+    inline DescribeTapeArchivesRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_tapeARNs;
     bool m_tapeARNsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_limit;
+    int m_limit;
     bool m_limitHasBeenSet;
   };
 

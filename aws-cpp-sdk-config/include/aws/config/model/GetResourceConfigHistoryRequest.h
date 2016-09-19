@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -198,21 +198,21 @@ namespace Model
      * is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config
      * uses the default.</p>
      */
-    inline long GetLimit() const{ return m_limit; }
+    inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>The maximum number of configuration items returned on each page. The default
      * is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config
      * uses the default.</p>
      */
-    inline void SetLimit(long value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>The maximum number of configuration items returned on each page. The default
      * is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config
      * uses the default.</p>
      */
-    inline GetResourceConfigHistoryRequest& WithLimit(long value) { SetLimit(value); return *this;}
+    inline GetResourceConfigHistoryRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
     /**
      * <p>The <code>nextToken</code> string returned on a previous page that you use to
@@ -267,7 +267,7 @@ namespace Model
     bool m_earlierTimeHasBeenSet;
     ChronologicalOrder m_chronologicalOrder;
     bool m_chronologicalOrderHasBeenSet;
-    long m_limit;
+    int m_limit;
     bool m_limitHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;

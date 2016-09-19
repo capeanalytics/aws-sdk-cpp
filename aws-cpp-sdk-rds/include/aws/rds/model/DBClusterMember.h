@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -99,43 +99,43 @@ namespace Model
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline const Aws::String& GetDBClusterParameterGroupStatus() const{ return m_dBClusterParameterGroupStatus; }
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline void SetDBClusterParameterGroupStatus(const Aws::String& value) { m_dBClusterParameterGroupStatusHasBeenSet = true; m_dBClusterParameterGroupStatus = value; }
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline void SetDBClusterParameterGroupStatus(Aws::String&& value) { m_dBClusterParameterGroupStatusHasBeenSet = true; m_dBClusterParameterGroupStatus = value; }
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline void SetDBClusterParameterGroupStatus(const char* value) { m_dBClusterParameterGroupStatusHasBeenSet = true; m_dBClusterParameterGroupStatus.assign(value); }
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline DBClusterMember& WithDBClusterParameterGroupStatus(const Aws::String& value) { SetDBClusterParameterGroupStatus(value); return *this;}
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline DBClusterMember& WithDBClusterParameterGroupStatus(Aws::String&& value) { SetDBClusterParameterGroupStatus(value); return *this;}
 
     /**
      * <p>Specifies the status of the DB cluster parameter group for this member of the
-     * DB cluster. </p>
+     * DB cluster.</p>
      */
     inline DBClusterMember& WithDBClusterParameterGroupStatus(const char* value) { SetDBClusterParameterGroupStatus(value); return *this;}
 
@@ -146,7 +146,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
      * Fault Tolerance for an Aurora DB Cluster</a>. </p>
      */
-    inline long GetPromotionTier() const{ return m_promotionTier; }
+    inline int GetPromotionTier() const{ return m_promotionTier; }
 
     /**
      * <p>A value that specifies the order in which an Aurora Replica is promoted to
@@ -155,7 +155,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
      * Fault Tolerance for an Aurora DB Cluster</a>. </p>
      */
-    inline void SetPromotionTier(long value) { m_promotionTierHasBeenSet = true; m_promotionTier = value; }
+    inline void SetPromotionTier(int value) { m_promotionTierHasBeenSet = true; m_promotionTier = value; }
 
     /**
      * <p>A value that specifies the order in which an Aurora Replica is promoted to
@@ -164,7 +164,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance">
      * Fault Tolerance for an Aurora DB Cluster</a>. </p>
      */
-    inline DBClusterMember& WithPromotionTier(long value) { SetPromotionTier(value); return *this;}
+    inline DBClusterMember& WithPromotionTier(int value) { SetPromotionTier(value); return *this;}
 
   private:
     Aws::String m_dBInstanceIdentifier;
@@ -173,7 +173,7 @@ namespace Model
     bool m_isClusterWriterHasBeenSet;
     Aws::String m_dBClusterParameterGroupStatus;
     bool m_dBClusterParameterGroupStatusHasBeenSet;
-    long m_promotionTier;
+    int m_promotionTier;
     bool m_promotionTierHasBeenSet;
   };
 

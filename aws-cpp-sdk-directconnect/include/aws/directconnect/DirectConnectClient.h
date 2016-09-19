@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,8 +33,10 @@
 #include <aws/directconnect/model/DeleteConnectionResult.h>
 #include <aws/directconnect/model/DeleteInterconnectResult.h>
 #include <aws/directconnect/model/DeleteVirtualInterfaceResult.h>
+#include <aws/directconnect/model/DescribeConnectionLoaResult.h>
 #include <aws/directconnect/model/DescribeConnectionsResult.h>
 #include <aws/directconnect/model/DescribeConnectionsOnInterconnectResult.h>
+#include <aws/directconnect/model/DescribeInterconnectLoaResult.h>
 #include <aws/directconnect/model/DescribeInterconnectsResult.h>
 #include <aws/directconnect/model/DescribeLocationsResult.h>
 #include <aws/directconnect/model/DescribeVirtualGatewaysResult.h>
@@ -97,8 +99,10 @@ namespace Model
         class DeleteConnectionRequest;
         class DeleteInterconnectRequest;
         class DeleteVirtualInterfaceRequest;
+        class DescribeConnectionLoaRequest;
         class DescribeConnectionsRequest;
         class DescribeConnectionsOnInterconnectRequest;
+        class DescribeInterconnectLoaRequest;
         class DescribeInterconnectsRequest;
         class DescribeVirtualInterfacesRequest;
 
@@ -115,8 +119,10 @@ namespace Model
         typedef Aws::Utils::Outcome<DeleteConnectionResult, Aws::Client::AWSError<DirectConnectErrors>> DeleteConnectionOutcome;
         typedef Aws::Utils::Outcome<DeleteInterconnectResult, Aws::Client::AWSError<DirectConnectErrors>> DeleteInterconnectOutcome;
         typedef Aws::Utils::Outcome<DeleteVirtualInterfaceResult, Aws::Client::AWSError<DirectConnectErrors>> DeleteVirtualInterfaceOutcome;
+        typedef Aws::Utils::Outcome<DescribeConnectionLoaResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeConnectionLoaOutcome;
         typedef Aws::Utils::Outcome<DescribeConnectionsResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeConnectionsOutcome;
         typedef Aws::Utils::Outcome<DescribeConnectionsOnInterconnectResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeConnectionsOnInterconnectOutcome;
+        typedef Aws::Utils::Outcome<DescribeInterconnectLoaResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeInterconnectLoaOutcome;
         typedef Aws::Utils::Outcome<DescribeInterconnectsResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeInterconnectsOutcome;
         typedef Aws::Utils::Outcome<DescribeLocationsResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeLocationsOutcome;
         typedef Aws::Utils::Outcome<DescribeVirtualGatewaysResult, Aws::Client::AWSError<DirectConnectErrors>> DescribeVirtualGatewaysOutcome;
@@ -135,8 +141,10 @@ namespace Model
         typedef std::future<DeleteConnectionOutcome> DeleteConnectionOutcomeCallable;
         typedef std::future<DeleteInterconnectOutcome> DeleteInterconnectOutcomeCallable;
         typedef std::future<DeleteVirtualInterfaceOutcome> DeleteVirtualInterfaceOutcomeCallable;
+        typedef std::future<DescribeConnectionLoaOutcome> DescribeConnectionLoaOutcomeCallable;
         typedef std::future<DescribeConnectionsOutcome> DescribeConnectionsOutcomeCallable;
         typedef std::future<DescribeConnectionsOnInterconnectOutcome> DescribeConnectionsOnInterconnectOutcomeCallable;
+        typedef std::future<DescribeInterconnectLoaOutcome> DescribeInterconnectLoaOutcomeCallable;
         typedef std::future<DescribeInterconnectsOutcome> DescribeInterconnectsOutcomeCallable;
         typedef std::future<DescribeLocationsOutcome> DescribeLocationsOutcomeCallable;
         typedef std::future<DescribeVirtualGatewaysOutcome> DescribeVirtualGatewaysOutcomeCallable;
@@ -158,8 +166,10 @@ namespace Model
     typedef std::function<void(const DirectConnectClient*, const Model::DeleteConnectionRequest&, const Model::DeleteConnectionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteConnectionResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DeleteInterconnectRequest&, const Model::DeleteInterconnectOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteInterconnectResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DeleteVirtualInterfaceRequest&, const Model::DeleteVirtualInterfaceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DeleteVirtualInterfaceResponseReceivedHandler;
+    typedef std::function<void(const DirectConnectClient*, const Model::DescribeConnectionLoaRequest&, const Model::DescribeConnectionLoaOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeConnectionLoaResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DescribeConnectionsRequest&, const Model::DescribeConnectionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeConnectionsResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DescribeConnectionsOnInterconnectRequest&, const Model::DescribeConnectionsOnInterconnectOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeConnectionsOnInterconnectResponseReceivedHandler;
+    typedef std::function<void(const DirectConnectClient*, const Model::DescribeInterconnectLoaRequest&, const Model::DescribeInterconnectLoaOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInterconnectLoaResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DescribeInterconnectsRequest&, const Model::DescribeInterconnectsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeInterconnectsResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DescribeLocationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeLocationsResponseReceivedHandler;
     typedef std::function<void(const DirectConnectClient*, const Model::DescribeVirtualGatewaysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVirtualGatewaysResponseReceivedHandler;
@@ -201,22 +211,23 @@ namespace Model
         * the default http client factory will be used
         */
         DirectConnectClient(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~DirectConnectClient();
 
         /**
          * <p>Creates a hosted connection on an interconnect.</p> <p>Allocates a VLAN
          * number and a specified amount of bandwidth for use by a hosted connection on the
-         * given interconnect.</p>
+         * given interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          */
         virtual Model::AllocateConnectionOnInterconnectOutcome AllocateConnectionOnInterconnect(const Model::AllocateConnectionOnInterconnectRequest& request) const;
 
         /**
          * <p>Creates a hosted connection on an interconnect.</p> <p>Allocates a VLAN
          * number and a specified amount of bandwidth for use by a hosted connection on the
-         * given interconnect.</p>
+         * given interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -225,7 +236,8 @@ namespace Model
         /**
          * <p>Creates a hosted connection on an interconnect.</p> <p>Allocates a VLAN
          * number and a specified amount of bandwidth for use by a hosted connection on the
-         * given interconnect.</p>
+         * given interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -442,7 +454,8 @@ namespace Model
          * a connection on their interconnect by calling AllocateConnectionOnInterconnect.
          * The end customer can then connect to AWS resources by creating a virtual
          * interface on their connection, using the VLAN assigned to them by the AWS Direct
-         * Connect partner.</p>
+         * Connect partner.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          */
         virtual Model::CreateInterconnectOutcome CreateInterconnect(const Model::CreateInterconnectRequest& request) const;
 
@@ -459,7 +472,8 @@ namespace Model
          * a connection on their interconnect by calling AllocateConnectionOnInterconnect.
          * The end customer can then connect to AWS resources by creating a virtual
          * interface on their connection, using the VLAN assigned to them by the AWS Direct
-         * Connect partner.</p>
+         * Connect partner.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -478,7 +492,8 @@ namespace Model
          * a connection on their interconnect by calling AllocateConnectionOnInterconnect.
          * The end customer can then connect to AWS resources by creating a virtual
          * interface on their connection, using the VLAN assigned to them by the AWS Direct
-         * Connect partner.</p>
+         * Connect partner.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -566,19 +581,22 @@ namespace Model
         virtual void DeleteConnectionAsync(const Model::DeleteConnectionRequest& request, const DeleteConnectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified interconnect.</p>
+         * <p>Deletes the specified interconnect.</p> <note> <p>This is intended for use by
+         * AWS Direct Connect partners only.</p> </note>
          */
         virtual Model::DeleteInterconnectOutcome DeleteInterconnect(const Model::DeleteInterconnectRequest& request) const;
 
         /**
-         * <p>Deletes the specified interconnect.</p>
+         * <p>Deletes the specified interconnect.</p> <note> <p>This is intended for use by
+         * AWS Direct Connect partners only.</p> </note>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteInterconnectOutcomeCallable DeleteInterconnectCallable(const Model::DeleteInterconnectRequest& request) const;
 
         /**
-         * <p>Deletes the specified interconnect.</p>
+         * <p>Deletes the specified interconnect.</p> <note> <p>This is intended for use by
+         * AWS Direct Connect partners only.</p> </note>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -604,6 +622,43 @@ namespace Model
         virtual void DeleteVirtualInterfaceAsync(const Model::DeleteVirtualInterfaceRequest& request, const DeleteVirtualInterfaceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Returns the LOA-CFA for a Connection.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that your APN partner or
+         * service provider uses when establishing your cross connect to AWS at the
+         * colocation facility. For more information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         */
+        virtual Model::DescribeConnectionLoaOutcome DescribeConnectionLoa(const Model::DescribeConnectionLoaRequest& request) const;
+
+        /**
+         * <p>Returns the LOA-CFA for a Connection.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that your APN partner or
+         * service provider uses when establishing your cross connect to AWS at the
+         * colocation facility. For more information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeConnectionLoaOutcomeCallable DescribeConnectionLoaCallable(const Model::DescribeConnectionLoaRequest& request) const;
+
+        /**
+         * <p>Returns the LOA-CFA for a Connection.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that your APN partner or
+         * service provider uses when establishing your cross connect to AWS at the
+         * colocation facility. For more information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeConnectionLoaAsync(const Model::DescribeConnectionLoaRequest& request, const DescribeConnectionLoaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Displays all connections in this region.</p> <p>If a connection ID is
          * provided, the call returns only that particular connection.</p>
          */
@@ -627,13 +682,15 @@ namespace Model
 
         /**
          * <p>Return a list of connections that have been provisioned on the given
-         * interconnect.</p>
+         * interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          */
         virtual Model::DescribeConnectionsOnInterconnectOutcome DescribeConnectionsOnInterconnect(const Model::DescribeConnectionsOnInterconnectRequest& request) const;
 
         /**
          * <p>Return a list of connections that have been provisioned on the given
-         * interconnect.</p>
+         * interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -641,11 +698,49 @@ namespace Model
 
         /**
          * <p>Return a list of connections that have been provisioned on the given
-         * interconnect.</p>
+         * interconnect.</p> <note> <p>This is intended for use by AWS Direct Connect
+         * partners only.</p> </note>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeConnectionsOnInterconnectAsync(const Model::DescribeConnectionsOnInterconnectRequest& request, const DescribeConnectionsOnInterconnectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Returns the LOA-CFA for an Interconnect.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that is used when
+         * establishing your cross connect to AWS at the colocation facility. For more
+         * information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         */
+        virtual Model::DescribeInterconnectLoaOutcome DescribeInterconnectLoa(const Model::DescribeInterconnectLoaRequest& request) const;
+
+        /**
+         * <p>Returns the LOA-CFA for an Interconnect.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that is used when
+         * establishing your cross connect to AWS at the colocation facility. For more
+         * information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeInterconnectLoaOutcomeCallable DescribeInterconnectLoaCallable(const Model::DescribeInterconnectLoaRequest& request) const;
+
+        /**
+         * <p>Returns the LOA-CFA for an Interconnect.</p> <p>The Letter of Authorization -
+         * Connecting Facility Assignment (LOA-CFA) is a document that is used when
+         * establishing your cross connect to AWS at the colocation facility. For more
+         * information, see <a
+         * href="http://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting
+         * Cross Connects at AWS Direct Connect Locations</a> in the AWS Direct Connect
+         * user guide.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeInterconnectLoaAsync(const Model::DescribeInterconnectLoaRequest& request, const DescribeInterconnectLoaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Returns a list of interconnects owned by the AWS account.</p> <p>If an
@@ -790,8 +885,10 @@ namespace Model
         void DeleteConnectionAsyncHelper(const Model::DeleteConnectionRequest& request, const DeleteConnectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteInterconnectAsyncHelper(const Model::DeleteInterconnectRequest& request, const DeleteInterconnectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DeleteVirtualInterfaceAsyncHelper(const Model::DeleteVirtualInterfaceRequest& request, const DeleteVirtualInterfaceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeConnectionLoaAsyncHelper(const Model::DescribeConnectionLoaRequest& request, const DescribeConnectionLoaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeConnectionsAsyncHelper(const Model::DescribeConnectionsRequest& request, const DescribeConnectionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeConnectionsOnInterconnectAsyncHelper(const Model::DescribeConnectionsOnInterconnectRequest& request, const DescribeConnectionsOnInterconnectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeInterconnectLoaAsyncHelper(const Model::DescribeInterconnectLoaRequest& request, const DescribeInterconnectLoaResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeInterconnectsAsyncHelper(const Model::DescribeInterconnectsRequest& request, const DescribeInterconnectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeLocationsAsyncHelper(const DescribeLocationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeVirtualGatewaysAsyncHelper(const DescribeVirtualGatewaysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;

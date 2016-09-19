@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ALL_HASH = HashingUtils::HashString("ALL");
-static const int KEYS_ONLY_HASH = HashingUtils::HashString("KEYS_ONLY");
-static const int INCLUDE_HASH = HashingUtils::HashString("INCLUDE");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ProjectionTypeMapper
       {
+
+        static const int ALL_HASH = HashingUtils::HashString("ALL");
+        static const int KEYS_ONLY_HASH = HashingUtils::HashString("KEYS_ONLY");
+        static const int INCLUDE_HASH = HashingUtils::HashString("INCLUDE");
 
 
         ProjectionType GetProjectionTypeForName(const Aws::String& name)

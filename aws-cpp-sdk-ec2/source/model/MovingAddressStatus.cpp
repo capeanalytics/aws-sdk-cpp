@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 MovingAddressStatus::MovingAddressStatus() : 
     m_publicIpHasBeenSet(false),
@@ -65,10 +71,12 @@ void MovingAddressStatus::OutputToStream(Aws::OStream& oStream, const char* loca
   {
       oStream << location << index << locationValue << ".PublicIp=" << StringUtils::URLEncode(m_publicIp.c_str()) << "&";
   }
+
   if(m_moveStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".MoveStatus=" << MoveStatusMapper::GetNameForMoveStatus(m_moveStatus) << "&";
   }
+
 }
 
 void MovingAddressStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void MovingAddressStatus::OutputToStream(Aws::OStream& oStream, const char* loca
       oStream << location << ".MoveStatus=" << MoveStatusMapper::GetNameForMoveStatus(m_moveStatus) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

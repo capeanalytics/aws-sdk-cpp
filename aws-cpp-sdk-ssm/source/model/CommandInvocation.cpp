@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SSM
+{
+namespace Model
+{
 
 CommandInvocation::CommandInvocation() : 
     m_commandIdHasBeenSet(false),
@@ -29,7 +35,9 @@ CommandInvocation::CommandInvocation() :
     m_requestedDateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_traceOutputHasBeenSet(false),
-    m_commandPluginsHasBeenSet(false)
+    m_commandPluginsHasBeenSet(false),
+    m_serviceRoleHasBeenSet(false),
+    m_notificationConfigHasBeenSet(false)
 {
 }
 
@@ -41,7 +49,9 @@ CommandInvocation::CommandInvocation(const JsonValue& jsonValue) :
     m_requestedDateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_traceOutputHasBeenSet(false),
-    m_commandPluginsHasBeenSet(false)
+    m_commandPluginsHasBeenSet(false),
+    m_serviceRoleHasBeenSet(false),
+    m_notificationConfigHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -107,6 +117,20 @@ CommandInvocation& CommandInvocation::operator =(const JsonValue& jsonValue)
     m_commandPluginsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ServiceRole"))
+  {
+    m_serviceRole = jsonValue.GetString("ServiceRole");
+
+    m_serviceRoleHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("NotificationConfig"))
+  {
+    m_notificationConfig = jsonValue.GetObject("NotificationConfig");
+
+    m_notificationConfigHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -165,5 +189,21 @@ JsonValue CommandInvocation::Jsonize() const
 
   }
 
+  if(m_serviceRoleHasBeenSet)
+  {
+   payload.WithString("ServiceRole", m_serviceRole);
+
+  }
+
+  if(m_notificationConfigHasBeenSet)
+  {
+   payload.WithObject("NotificationConfig", m_notificationConfig.Jsonize());
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace SSM
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,9 +26,8 @@ namespace Model
 
   /**
    * <p>Gets information about a specific traffic policy version. To get the
-   * information, send a GET request to the /<i>Route 53 API
-   * version</i>/trafficpolicy resource, and specify the ID and the version of the
-   * traffic policy.</p>
+   * information, send a GET request to the /2013-04-01/trafficpolicy resource, and
+   * specify the ID and the version of the traffic policy.</p>
    */
   class AWS_ROUTE53_API GetTrafficPolicyRequest : public Route53Request
   {
@@ -75,24 +74,24 @@ namespace Model
      * <p>The version number of the traffic policy that you want to get information
      * about.</p>
      */
-    inline long GetVersion() const{ return m_version; }
+    inline int GetVersion() const{ return m_version; }
 
     /**
      * <p>The version number of the traffic policy that you want to get information
      * about.</p>
      */
-    inline void SetVersion(long value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(int value) { m_versionHasBeenSet = true; m_version = value; }
 
     /**
      * <p>The version number of the traffic policy that you want to get information
      * about.</p>
      */
-    inline GetTrafficPolicyRequest& WithVersion(long value) { SetVersion(value); return *this;}
+    inline GetTrafficPolicyRequest& WithVersion(int value) { SetVersion(value); return *this;}
 
   private:
     Aws::String m_id;
     bool m_idHasBeenSet;
-    long m_version;
+    int m_version;
     bool m_versionHasBeenSet;
   };
 

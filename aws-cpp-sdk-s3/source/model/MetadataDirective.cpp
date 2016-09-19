@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int COPY_HASH = HashingUtils::HashString("COPY");
-static const int REPLACE_HASH = HashingUtils::HashString("REPLACE");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace MetadataDirectiveMapper
       {
+
+        static const int COPY_HASH = HashingUtils::HashString("COPY");
+        static const int REPLACE_HASH = HashingUtils::HashString("REPLACE");
 
 
         MetadataDirective GetMetadataDirectiveForName(const Aws::String& name)

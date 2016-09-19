@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,6 +19,13 @@
 using namespace Aws::Client;
 using namespace Aws::ElastiCache;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace ElastiCacheErrorMapper
+{
 
 static const int INVALID_A_R_N_FAULT_HASH = HashingUtils::HashString("InvalidARN");
 static const int CACHE_CLUSTER_ALREADY_EXISTS_FAULT_HASH = HashingUtils::HashString("CacheClusterAlreadyExists");
@@ -61,12 +68,6 @@ static const int CACHE_CLUSTER_NOT_FOUND_FAULT_HASH = HashingUtils::HashString("
 static const int CACHE_PARAMETER_GROUP_QUOTA_EXCEEDED_FAULT_HASH = HashingUtils::HashString("CacheParameterGroupQuotaExceeded");
 static const int CACHE_SECURITY_GROUP_NOT_FOUND_FAULT_HASH = HashingUtils::HashString("CacheSecurityGroupNotFound");
 
-namespace Aws
-{
-namespace ElastiCache
-{
-namespace ElastiCacheErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int MoveInProgress_HASH = HashingUtils::HashString("MoveInProgress");
-static const int InVpc_HASH = HashingUtils::HashString("InVpc");
-static const int InClassic_HASH = HashingUtils::HashString("InClassic");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace StatusMapper
       {
+
+        static const int MoveInProgress_HASH = HashingUtils::HashString("MoveInProgress");
+        static const int InVpc_HASH = HashingUtils::HashString("InVpc");
+        static const int InClassic_HASH = HashingUtils::HashString("InClassic");
 
 
         Status GetStatusForName(const Aws::String& name)

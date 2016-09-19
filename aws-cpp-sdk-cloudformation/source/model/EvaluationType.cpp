@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Static_HASH = HashingUtils::HashString("Static");
-static const int Dynamic_HASH = HashingUtils::HashString("Dynamic");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace EvaluationTypeMapper
       {
+
+        static const int Static_HASH = HashingUtils::HashString("Static");
+        static const int Dynamic_HASH = HashingUtils::HashString("Dynamic");
 
 
         EvaluationType GetEvaluationTypeForName(const Aws::String& name)

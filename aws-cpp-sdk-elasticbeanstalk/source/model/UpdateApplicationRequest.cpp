@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
   {
     ss << "ApplicationName=" << StringUtils::URLEncode(m_applicationName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

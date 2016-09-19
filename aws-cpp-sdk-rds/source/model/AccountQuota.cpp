@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 AccountQuota::AccountQuota() : 
     m_accountQuotaNameHasBeenSet(false),
@@ -77,14 +83,17 @@ void AccountQuota::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".AccountQuotaName=" << StringUtils::URLEncode(m_accountQuotaName.c_str()) << "&";
   }
+
   if(m_usedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Used=" << m_used << "&";
   }
+
   if(m_maxHasBeenSet)
   {
       oStream << location << index << locationValue << ".Max=" << m_max << "&";
   }
+
 }
 
 void AccountQuota::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -102,3 +111,7 @@ void AccountQuota::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".Max=" << m_max << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

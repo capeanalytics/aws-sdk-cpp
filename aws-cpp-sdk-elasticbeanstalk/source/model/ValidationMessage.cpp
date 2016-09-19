@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 ValidationMessage::ValidationMessage() : 
     m_messageHasBeenSet(false),
@@ -81,18 +87,22 @@ void ValidationMessage::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
+
   if(m_severityHasBeenSet)
   {
       oStream << location << index << locationValue << ".Severity=" << ValidationSeverityMapper::GetNameForValidationSeverity(m_severity) << "&";
   }
+
   if(m_namespaceHasBeenSet)
   {
       oStream << location << index << locationValue << ".Namespace=" << StringUtils::URLEncode(m_namespace.c_str()) << "&";
   }
+
   if(m_optionNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".OptionName=" << StringUtils::URLEncode(m_optionName.c_str()) << "&";
   }
+
 }
 
 void ValidationMessage::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void ValidationMessage::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".OptionName=" << StringUtils::URLEncode(m_optionName.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

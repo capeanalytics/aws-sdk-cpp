@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SSM
+{
+namespace Model
+{
 
 Command::Command() : 
     m_commandIdHasBeenSet(false),
@@ -31,7 +37,9 @@ Command::Command() :
     m_requestedDateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
-    m_outputS3KeyPrefixHasBeenSet(false)
+    m_outputS3KeyPrefixHasBeenSet(false),
+    m_serviceRoleHasBeenSet(false),
+    m_notificationConfigHasBeenSet(false)
 {
 }
 
@@ -45,7 +53,9 @@ Command::Command(const JsonValue& jsonValue) :
     m_requestedDateTimeHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
-    m_outputS3KeyPrefixHasBeenSet(false)
+    m_outputS3KeyPrefixHasBeenSet(false),
+    m_serviceRoleHasBeenSet(false),
+    m_notificationConfigHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -85,7 +95,7 @@ Command& Command::operator =(const JsonValue& jsonValue)
     Aws::Map<Aws::String, JsonValue> parametersJsonMap = jsonValue.GetObject("Parameters").GetAllObjects();
     for(auto& parametersItem : parametersJsonMap)
     {
-      Array<JsonValue> parameterValueListJsonList = parametersItem.second.GetArray("ParameterValueList");
+      Array<JsonValue> parameterValueListJsonList = parametersItem.second.AsArray();
       Aws::Vector<Aws::String> parameterValueListList((size_t)parameterValueListJsonList.GetLength());
       for(unsigned parameterValueListIndex = 0; parameterValueListIndex < parameterValueListJsonList.GetLength(); ++parameterValueListIndex)
       {
@@ -132,6 +142,20 @@ Command& Command::operator =(const JsonValue& jsonValue)
     m_outputS3KeyPrefix = jsonValue.GetString("OutputS3KeyPrefix");
 
     m_outputS3KeyPrefixHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ServiceRole"))
+  {
+    m_serviceRole = jsonValue.GetString("ServiceRole");
+
+    m_serviceRoleHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("NotificationConfig"))
+  {
+    m_notificationConfig = jsonValue.GetObject("NotificationConfig");
+
+    m_notificationConfigHasBeenSet = true;
   }
 
   return *this;
@@ -213,5 +237,21 @@ JsonValue Command::Jsonize() const
 
   }
 
+  if(m_serviceRoleHasBeenSet)
+  {
+   payload.WithString("ServiceRole", m_serviceRole);
+
+  }
+
+  if(m_notificationConfigHasBeenSet)
+  {
+   payload.WithObject("NotificationConfig", m_notificationConfig.Jsonize());
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace SSM
+} // namespace Aws

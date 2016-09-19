@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SimpleDB::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SimpleDB
+{
+namespace Model
+{
 
 DeletableItem::DeletableItem() : 
     m_nameHasBeenSet(false),
@@ -71,6 +77,7 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location, 
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   if(m_attributesHasBeenSet)
   {
       unsigned attributesIdx = 1;
@@ -81,6 +88,7 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location, 
         item.OutputToStream(oStream, attributesSs.str().c_str());
       }
   }
+
 }
 
 void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void DeletableItem::OutputToStream(Aws::OStream& oStream, const char* location) 
       }
   }
 }
+
+} // namespace Model
+} // namespace SimpleDB
+} // namespace Aws

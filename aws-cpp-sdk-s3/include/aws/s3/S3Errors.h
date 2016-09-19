@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace S3
 {
-enum class AWS_S3_API S3Errors
+enum class S3Errors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////

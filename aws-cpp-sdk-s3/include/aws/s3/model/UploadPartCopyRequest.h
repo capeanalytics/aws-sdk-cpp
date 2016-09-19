@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -313,19 +313,19 @@ namespace Model
      * Part number of part being copied. This is a positive integer between 1 and
      * 10,000.
      */
-    inline long GetPartNumber() const{ return m_partNumber; }
+    inline int GetPartNumber() const{ return m_partNumber; }
 
     /**
      * Part number of part being copied. This is a positive integer between 1 and
      * 10,000.
      */
-    inline void SetPartNumber(long value) { m_partNumberHasBeenSet = true; m_partNumber = value; }
+    inline void SetPartNumber(int value) { m_partNumberHasBeenSet = true; m_partNumber = value; }
 
     /**
      * Part number of part being copied. This is a positive integer between 1 and
      * 10,000.
      */
-    inline UploadPartCopyRequest& WithPartNumber(long value) { SetPartNumber(value); return *this;}
+    inline UploadPartCopyRequest& WithPartNumber(int value) { SetPartNumber(value); return *this;}
 
     /**
      * Upload ID identifying the multipart upload whose part is being copied.
@@ -681,7 +681,7 @@ namespace Model
     bool m_copySourceRangeHasBeenSet;
     Aws::String m_key;
     bool m_keyHasBeenSet;
-    long m_partNumber;
+    int m_partNumber;
     bool m_partNumberHasBeenSet;
     Aws::String m_uploadId;
     bool m_uploadIdHasBeenSet;

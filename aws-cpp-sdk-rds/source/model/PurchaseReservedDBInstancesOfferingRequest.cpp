@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,14 +36,17 @@ Aws::String PurchaseReservedDBInstancesOfferingRequest::SerializePayload() const
   {
     ss << "ReservedDBInstancesOfferingId=" << StringUtils::URLEncode(m_reservedDBInstancesOfferingId.c_str()) << "&";
   }
+
   if(m_reservedDBInstanceIdHasBeenSet)
   {
     ss << "ReservedDBInstanceId=" << StringUtils::URLEncode(m_reservedDBInstanceId.c_str()) << "&";
   }
+
   if(m_dBInstanceCountHasBeenSet)
   {
     ss << "DBInstanceCount=" << m_dBInstanceCount << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
     unsigned tagsCount = 1;
@@ -53,6 +56,7 @@ Aws::String PurchaseReservedDBInstancesOfferingRequest::SerializePayload() const
       tagsCount++;
     }
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

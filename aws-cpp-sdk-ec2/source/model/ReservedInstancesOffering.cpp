@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ReservedInstancesOffering::ReservedInstancesOffering() : 
     m_reservedInstancesOfferingIdHasBeenSet(false),
@@ -173,42 +179,52 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
   {
       oStream << location << index << locationValue << ".ReservedInstancesOfferingId=" << StringUtils::URLEncode(m_reservedInstancesOfferingId.c_str()) << "&";
   }
+
   if(m_instanceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
   }
+
   if(m_availabilityZoneHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+
   if(m_durationHasBeenSet)
   {
       oStream << location << index << locationValue << ".Duration=" << m_duration << "&";
   }
+
   if(m_usagePriceHasBeenSet)
   {
       oStream << location << index << locationValue << ".UsagePrice=" << m_usagePrice << "&";
   }
+
   if(m_fixedPriceHasBeenSet)
   {
       oStream << location << index << locationValue << ".FixedPrice=" << m_fixedPrice << "&";
   }
+
   if(m_productDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".ProductDescription=" << RIProductDescriptionMapper::GetNameForRIProductDescription(m_productDescription) << "&";
   }
+
   if(m_instanceTenancyHasBeenSet)
   {
       oStream << location << index << locationValue << ".InstanceTenancy=" << TenancyMapper::GetNameForTenancy(m_instanceTenancy) << "&";
   }
+
   if(m_currencyCodeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CurrencyCode=" << CurrencyCodeValuesMapper::GetNameForCurrencyCodeValues(m_currencyCode) << "&";
   }
+
   if(m_offeringTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".OfferingType=" << OfferingTypeValuesMapper::GetNameForOfferingTypeValues(m_offeringType) << "&";
   }
+
   if(m_recurringChargesHasBeenSet)
   {
       unsigned recurringChargesIdx = 1;
@@ -219,10 +235,12 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
+
   if(m_marketplaceHasBeenSet)
   {
       oStream << location << index << locationValue << ".Marketplace=" << m_marketplace << "&";
   }
+
   if(m_pricingDetailsHasBeenSet)
   {
       unsigned pricingDetailsIdx = 1;
@@ -233,6 +251,7 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
         item.OutputToStream(oStream, pricingDetailsSs.str().c_str());
       }
   }
+
 }
 
 void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -302,3 +321,7 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

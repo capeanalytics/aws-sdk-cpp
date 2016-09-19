@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -16,6 +16,7 @@
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/gamelift/GameLiftRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/gamelift/model/ProtectionPolicy.h>
 
 namespace Aws
 {
@@ -78,81 +79,136 @@ namespace Model
     inline UpdateFleetAttributesRequest& WithFleetId(const char* value) { SetFleetId(value); return *this;}
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline UpdateFleetAttributesRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline UpdateFleetAttributesRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
 
     /**
-     * <p>Descriptive label associated with this fleet. Fleet names do not need to be
+     * <p>Descriptive label associated with a fleet. Fleet names do not need to be
      * unique.</p>
      */
     inline UpdateFleetAttributesRequest& WithName(const char* value) { SetName(value); return *this;}
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline const Aws::String& GetDescription() const{ return m_description; }
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline UpdateFleetAttributesRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline UpdateFleetAttributesRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
 
     /**
-     * <p>Human-readable description of the fleet.</p>
+     * <p>Human-readable description of a fleet.</p>
      */
     inline UpdateFleetAttributesRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
+
+    /**
+     * <p>Game session protection policy to apply to all new instances created in this
+     * fleet. Instances that already exist are not affected. You can set protection for
+     * individual instances using <a>UpdateGameSession</a>.</p>
+     * <ul><li><b>NoProtection</b> – The game session can be terminated during a
+     * scale-down event.</li> <li><b>FullProtection</b> – If the game session is in an
+     * <code>ACTIVE</code> status, it cannot be terminated during a scale-down
+     * event.</li></ul>
+     */
+    inline const ProtectionPolicy& GetNewGameSessionProtectionPolicy() const{ return m_newGameSessionProtectionPolicy; }
+
+    /**
+     * <p>Game session protection policy to apply to all new instances created in this
+     * fleet. Instances that already exist are not affected. You can set protection for
+     * individual instances using <a>UpdateGameSession</a>.</p>
+     * <ul><li><b>NoProtection</b> – The game session can be terminated during a
+     * scale-down event.</li> <li><b>FullProtection</b> – If the game session is in an
+     * <code>ACTIVE</code> status, it cannot be terminated during a scale-down
+     * event.</li></ul>
+     */
+    inline void SetNewGameSessionProtectionPolicy(const ProtectionPolicy& value) { m_newGameSessionProtectionPolicyHasBeenSet = true; m_newGameSessionProtectionPolicy = value; }
+
+    /**
+     * <p>Game session protection policy to apply to all new instances created in this
+     * fleet. Instances that already exist are not affected. You can set protection for
+     * individual instances using <a>UpdateGameSession</a>.</p>
+     * <ul><li><b>NoProtection</b> – The game session can be terminated during a
+     * scale-down event.</li> <li><b>FullProtection</b> – If the game session is in an
+     * <code>ACTIVE</code> status, it cannot be terminated during a scale-down
+     * event.</li></ul>
+     */
+    inline void SetNewGameSessionProtectionPolicy(ProtectionPolicy&& value) { m_newGameSessionProtectionPolicyHasBeenSet = true; m_newGameSessionProtectionPolicy = value; }
+
+    /**
+     * <p>Game session protection policy to apply to all new instances created in this
+     * fleet. Instances that already exist are not affected. You can set protection for
+     * individual instances using <a>UpdateGameSession</a>.</p>
+     * <ul><li><b>NoProtection</b> – The game session can be terminated during a
+     * scale-down event.</li> <li><b>FullProtection</b> – If the game session is in an
+     * <code>ACTIVE</code> status, it cannot be terminated during a scale-down
+     * event.</li></ul>
+     */
+    inline UpdateFleetAttributesRequest& WithNewGameSessionProtectionPolicy(const ProtectionPolicy& value) { SetNewGameSessionProtectionPolicy(value); return *this;}
+
+    /**
+     * <p>Game session protection policy to apply to all new instances created in this
+     * fleet. Instances that already exist are not affected. You can set protection for
+     * individual instances using <a>UpdateGameSession</a>.</p>
+     * <ul><li><b>NoProtection</b> – The game session can be terminated during a
+     * scale-down event.</li> <li><b>FullProtection</b> – If the game session is in an
+     * <code>ACTIVE</code> status, it cannot be terminated during a scale-down
+     * event.</li></ul>
+     */
+    inline UpdateFleetAttributesRequest& WithNewGameSessionProtectionPolicy(ProtectionPolicy&& value) { SetNewGameSessionProtectionPolicy(value); return *this;}
 
   private:
     Aws::String m_fleetId;
@@ -161,6 +217,8 @@ namespace Model
     bool m_nameHasBeenSet;
     Aws::String m_description;
     bool m_descriptionHasBeenSet;
+    ProtectionPolicy m_newGameSessionProtectionPolicy;
+    bool m_newGameSessionProtectionPolicyHasBeenSet;
   };
 
 } // namespace Model

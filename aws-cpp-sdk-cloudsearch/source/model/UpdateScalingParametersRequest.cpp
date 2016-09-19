@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String UpdateScalingParametersRequest::SerializePayload() const
   {
     ss << "DomainName=" << StringUtils::URLEncode(m_domainName.c_str()) << "&";
   }
+
   if(m_scalingParametersHasBeenSet)
   {
-    m_scalingParameters.OutputToStream(ss, "ScalingParameters.");
+    m_scalingParameters.OutputToStream(ss, "ScalingParameters");
   }
+
   ss << "Version=2013-01-01";
   return ss.str();
 }

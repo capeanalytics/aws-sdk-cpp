@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int merge_HASH = HashingUtils::HashString("merge");
-static const int overwrite_HASH = HashingUtils::HashString("overwrite");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace PutModeMapper
       {
+
+        static const int merge_HASH = HashingUtils::HashString("merge");
+        static const int overwrite_HASH = HashingUtils::HashString("overwrite");
 
 
         PutMode GetPutModeForName(const Aws::String& name)

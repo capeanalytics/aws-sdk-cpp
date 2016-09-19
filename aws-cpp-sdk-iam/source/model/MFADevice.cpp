@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 MFADevice::MFADevice() : 
     m_userNameHasBeenSet(false),
@@ -73,14 +79,17 @@ void MFADevice::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   {
       oStream << location << index << locationValue << ".UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_serialNumberHasBeenSet)
   {
       oStream << location << index << locationValue << ".SerialNumber=" << StringUtils::URLEncode(m_serialNumber.c_str()) << "&";
   }
+
   if(m_enableDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnableDate=" << StringUtils::URLEncode(m_enableDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void MFADevice::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void MFADevice::OutputToStream(Aws::OStream& oStream, const char* location) cons
       oStream << location << ".EnableDate=" << StringUtils::URLEncode(m_enableDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,6 +14,7 @@
 */
 #include <aws/s3/model/PutBucketAccelerateConfigurationRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 
@@ -31,11 +32,11 @@ Aws::String PutBucketAccelerateConfigurationRequest::SerializePayload() const
 {
   XmlDocument payloadDoc = XmlDocument::CreateWithRootNode("AccelerateConfiguration");
 
-  XmlNode rootNode = payloadDoc.GetRootElement();
-  rootNode.SetAttributeValue("xmlns", "http://s3.amazonaws.com/doc/2006-03-01/");
+  XmlNode parentNode = payloadDoc.GetRootElement();
+  parentNode.SetAttributeValue("xmlns", "http://s3.amazonaws.com/doc/2006-03-01/");
 
-  m_accelerateConfiguration.AddToNode(rootNode);
-  if(rootNode.HasChildren())
+  m_accelerateConfiguration.AddToNode(parentNode);
+  if(parentNode.HasChildren())
   {
     return payloadDoc.ConvertToString();
   }

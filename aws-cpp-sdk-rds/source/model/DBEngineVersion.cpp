@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBEngineVersion::DBEngineVersion() : 
     m_engineHasBeenSet(false),
@@ -125,28 +131,34 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
   if(m_dBParameterGroupFamilyHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBParameterGroupFamily=" << StringUtils::URLEncode(m_dBParameterGroupFamily.c_str()) << "&";
   }
+
   if(m_dBEngineDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBEngineDescription=" << StringUtils::URLEncode(m_dBEngineDescription.c_str()) << "&";
   }
+
   if(m_dBEngineVersionDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBEngineVersionDescription=" << StringUtils::URLEncode(m_dBEngineVersionDescription.c_str()) << "&";
   }
+
   if(m_defaultCharacterSetHasBeenSet)
   {
       Aws::StringStream defaultCharacterSetLocationAndMemberSs;
       defaultCharacterSetLocationAndMemberSs << location << index << locationValue << ".DefaultCharacterSet";
       m_defaultCharacterSet.OutputToStream(oStream, defaultCharacterSetLocationAndMemberSs.str().c_str());
   }
+
   if(m_supportedCharacterSetsHasBeenSet)
   {
       unsigned supportedCharacterSetsIdx = 1;
@@ -157,6 +169,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, supportedCharacterSetsSs.str().c_str());
       }
   }
+
   if(m_validUpgradeTargetHasBeenSet)
   {
       unsigned validUpgradeTargetIdx = 1;
@@ -167,6 +180,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
+
 }
 
 void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -218,3 +232,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       }
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

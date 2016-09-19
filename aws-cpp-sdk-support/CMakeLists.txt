@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-support)
 
   file(GLOB AWS_SUPPORT_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-support)
     "source/model/*.cpp"
   )
 
-  file(GLOB SUPPORT_SRC
+  file(GLOB SUPPORT_UNIFIED_HEADERS
     ${AWS_SUPPORT_HEADERS}
     ${AWS_SUPPORT_MODEL_HEADERS}
+  )
+
+  file(GLOB SUPPORT_UNITY_SRC
     ${AWS_SUPPORT_SOURCE}
     ${AWS_SUPPORT_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("SUPPORT" SUPPORT_UNITY_SRC)
+  endif()
+
+  file(GLOB SUPPORT_SRC
+    ${SUPPORT_UNIFIED_HEADERS}
+    ${SUPPORT_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-support)
 
   include_directories(${SUPPORT_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_SUPPORT_EXPORTS")
   endif()
 
@@ -53,14 +65,28 @@ project(aws-cpp-sdk-support)
   
   target_link_libraries(aws-cpp-sdk-support aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-support
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-support
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-support)
+    else()
+      install (TARGETS aws-cpp-sdk-support
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_SUPPORT_HEADERS} DESTINATION include/aws/support)
   install (FILES ${AWS_SUPPORT_MODEL_HEADERS} DESTINATION include/aws/support/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-support.autopkg DESTINATION nuget)
+  endif()
+
+
 

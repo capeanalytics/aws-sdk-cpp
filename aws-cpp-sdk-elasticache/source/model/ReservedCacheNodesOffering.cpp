@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 ReservedCacheNodesOffering::ReservedCacheNodesOffering() : 
     m_reservedCacheNodesOfferingIdHasBeenSet(false),
@@ -125,30 +131,37 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   {
       oStream << location << index << locationValue << ".ReservedCacheNodesOfferingId=" << StringUtils::URLEncode(m_reservedCacheNodesOfferingId.c_str()) << "&";
   }
+
   if(m_cacheNodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
+
   if(m_durationHasBeenSet)
   {
       oStream << location << index << locationValue << ".Duration=" << m_duration << "&";
   }
+
   if(m_fixedPriceHasBeenSet)
   {
         oStream << location << index << locationValue << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
+
   if(m_usagePriceHasBeenSet)
   {
         oStream << location << index << locationValue << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
+
   if(m_productDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".ProductDescription=" << StringUtils::URLEncode(m_productDescription.c_str()) << "&";
   }
+
   if(m_offeringTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".OfferingType=" << StringUtils::URLEncode(m_offeringType.c_str()) << "&";
   }
+
   if(m_recurringChargesHasBeenSet)
   {
       unsigned recurringChargesIdx = 1;
@@ -159,6 +172,7 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
+
 }
 
 void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -202,3 +216,7 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
       }
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

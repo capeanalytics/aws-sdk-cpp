@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,63 +35,98 @@ namespace Model
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline const Aws::String& GetPathPrefix() const{ return m_pathPrefix; }
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline void SetPathPrefix(const Aws::String& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = value; }
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline void SetPathPrefix(Aws::String&& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = value; }
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline void SetPathPrefix(const char* value) { m_pathPrefixHasBeenSet = true; m_pathPrefix.assign(value); }
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline ListServerCertificatesRequest& WithPathPrefix(const Aws::String& value) { SetPathPrefix(value); return *this;}
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline ListServerCertificatesRequest& WithPathPrefix(Aws::String&& value) { SetPathPrefix(value); return *this;}
 
     /**
      * <p> The path prefix for filtering the results. For example:
      * <code>/company/servercerts</code> would get all server certificates for which
-     * the path starts with <code>/company/servercerts</code>. </p> <p> This parameter
-     * is optional. If it is not included, it defaults to a slash (/), listing all
-     * server certificates. </p>
+     * the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is
+     * optional. If it is not included, it defaults to a slash (/), listing all server
+     * certificates. The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+     * for this parameter is a string of characters consisting of either a forward
+     * slash (/) by itself or a string that must begin and end with forward slashes,
+     * containing any ASCII character from the ! (\u0021) thru the DEL character
+     * (\u007F), including most punctuation characters, digits, and upper and
+     * lowercased letters.</p>
      */
     inline ListServerCertificatesRequest& WithPathPrefix(const char* value) { SetPathPrefix(value); return *this;}
 
@@ -159,9 +194,9 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline long GetMaxItems() const{ return m_maxItems; }
+    inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
      * <p>Use this only when paginating results to indicate the maximum number of items
@@ -171,9 +206,9 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline void SetMaxItems(long value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
      * <p>Use this only when paginating results to indicate the maximum number of items
@@ -183,16 +218,16 @@ namespace Model
      * Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
-     * subsequent call that tells the service where to continue from. </p>
+     * subsequent call that tells the service where to continue from.</p>
      */
-    inline ListServerCertificatesRequest& WithMaxItems(long value) { SetMaxItems(value); return *this;}
+    inline ListServerCertificatesRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 
   private:
     Aws::String m_pathPrefix;
     bool m_pathPrefixHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_maxItems;
+    int m_maxItems;
     bool m_maxItemsHasBeenSet;
   };
 

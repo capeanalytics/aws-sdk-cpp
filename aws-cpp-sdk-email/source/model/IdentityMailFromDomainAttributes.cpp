@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 IdentityMailFromDomainAttributes::IdentityMailFromDomainAttributes() : 
     m_mailFromDomainHasBeenSet(false),
@@ -73,14 +79,17 @@ void IdentityMailFromDomainAttributes::OutputToStream(Aws::OStream& oStream, con
   {
       oStream << location << index << locationValue << ".MailFromDomain=" << StringUtils::URLEncode(m_mailFromDomain.c_str()) << "&";
   }
+
   if(m_mailFromDomainStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".MailFromDomainStatus=" << CustomMailFromStatusMapper::GetNameForCustomMailFromStatus(m_mailFromDomainStatus) << "&";
   }
+
   if(m_behaviorOnMXFailureHasBeenSet)
   {
       oStream << location << index << locationValue << ".BehaviorOnMXFailure=" << BehaviorOnMXFailureMapper::GetNameForBehaviorOnMXFailure(m_behaviorOnMXFailure) << "&";
   }
+
 }
 
 void IdentityMailFromDomainAttributes::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void IdentityMailFromDomainAttributes::OutputToStream(Aws::OStream& oStream, con
       oStream << location << ".BehaviorOnMXFailure=" << BehaviorOnMXFailureMapper::GetNameForBehaviorOnMXFailure(m_behaviorOnMXFailure) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

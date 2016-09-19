@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InstanceNetworkInterfaceSpecification::InstanceNetworkInterfaceSpecification() : 
     m_networkInterfaceIdHasBeenSet(false),
@@ -149,22 +155,27 @@ void InstanceNetworkInterfaceSpecification::OutputToStream(Aws::OStream& oStream
   {
       oStream << location << index << locationValue << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+
   if(m_deviceIndexHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeviceIndex=" << m_deviceIndex << "&";
   }
+
   if(m_subnetIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_privateIpAddressHasBeenSet)
   {
       oStream << location << index << locationValue << ".PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
   }
+
   if(m_groupsHasBeenSet)
   {
       unsigned groupsIdx = 1;
@@ -173,10 +184,12 @@ void InstanceNetworkInterfaceSpecification::OutputToStream(Aws::OStream& oStream
         oStream << location << index << locationValue << ".SecurityGroupId." << groupsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_deleteOnTerminationHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
   }
+
   if(m_privateIpAddressesHasBeenSet)
   {
       unsigned privateIpAddressesIdx = 1;
@@ -187,14 +200,17 @@ void InstanceNetworkInterfaceSpecification::OutputToStream(Aws::OStream& oStream
         item.OutputToStream(oStream, privateIpAddressesSs.str().c_str());
       }
   }
+
   if(m_secondaryPrivateIpAddressCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".SecondaryPrivateIpAddressCount=" << m_secondaryPrivateIpAddressCount << "&";
   }
+
   if(m_associatePublicIpAddressHasBeenSet)
   {
       oStream << location << index << locationValue << ".AssociatePublicIpAddress=" << m_associatePublicIpAddress << "&";
   }
+
 }
 
 void InstanceNetworkInterfaceSpecification::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -250,3 +266,7 @@ void InstanceNetworkInterfaceSpecification::OutputToStream(Aws::OStream& oStream
       oStream << location << ".AssociatePublicIpAddress=" << m_associatePublicIpAddress << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

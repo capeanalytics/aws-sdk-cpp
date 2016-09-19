@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CREATE_PENDING_HASH = HashingUtils::HashString("CREATE_PENDING");
-static const int CREATE_IN_PROGRESS_HASH = HashingUtils::HashString("CREATE_IN_PROGRESS");
-static const int CREATE_COMPLETE_HASH = HashingUtils::HashString("CREATE_COMPLETE");
-static const int DELETE_COMPLETE_HASH = HashingUtils::HashString("DELETE_COMPLETE");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ChangeSetStatusMapper
       {
+
+        static const int CREATE_PENDING_HASH = HashingUtils::HashString("CREATE_PENDING");
+        static const int CREATE_IN_PROGRESS_HASH = HashingUtils::HashString("CREATE_IN_PROGRESS");
+        static const int CREATE_COMPLETE_HASH = HashingUtils::HashString("CREATE_COMPLETE");
+        static const int DELETE_COMPLETE_HASH = HashingUtils::HashString("DELETE_COMPLETE");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 
         ChangeSetStatus GetChangeSetStatusForName(const Aws::String& name)

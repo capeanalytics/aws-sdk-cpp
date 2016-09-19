@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,6 +20,13 @@ using namespace Aws::Client;
 using namespace Aws::IoT;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace IoT
+{
+namespace IoTErrorMapper
+{
+
 static const int CERTIFICATE_VALIDATION_HASH = HashingUtils::HashString("CertificateValidationException");
 static const int TRANSFER_ALREADY_COMPLETED_HASH = HashingUtils::HashString("TransferAlreadyCompletedException");
 static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
@@ -29,6 +36,7 @@ static const int UNAUTHORIZED_HASH = HashingUtils::HashString("UnauthorizedExcep
 static const int REGISTRATION_CODE_VALIDATION_HASH = HashingUtils::HashString("RegistrationCodeValidationException");
 static const int CERTIFICATE_CONFLICT_HASH = HashingUtils::HashString("CertificateConflictException");
 static const int INVALID_REQUEST_HASH = HashingUtils::HashString("InvalidRequestException");
+static const int VERSION_CONFLICT_HASH = HashingUtils::HashString("VersionConflictException");
 static const int INTERNAL_HASH = HashingUtils::HashString("InternalException");
 static const int RESOURCE_ALREADY_EXISTS_HASH = HashingUtils::HashString("ResourceAlreadyExistsException");
 static const int CERTIFICATE_STATE_HASH = HashingUtils::HashString("CertificateStateException");
@@ -36,12 +44,6 @@ static const int MALFORMED_POLICY_HASH = HashingUtils::HashString("MalformedPoli
 static const int DELETE_CONFLICT_HASH = HashingUtils::HashString("DeleteConflictException");
 static const int TRANSFER_CONFLICT_HASH = HashingUtils::HashString("TransferConflictException");
 
-namespace Aws
-{
-namespace IoT
-{
-namespace IoTErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
@@ -82,6 +84,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_REQUEST_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTErrors::INVALID_REQUEST), false);
+  }
+  else if (hashCode == VERSION_CONFLICT_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IoTErrors::VERSION_CONFLICT), false);
   }
   else if (hashCode == INTERNAL_HASH)
   {

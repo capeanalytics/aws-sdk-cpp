@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VolumeStatusItem::VolumeStatusItem() : 
     m_volumeIdHasBeenSet(false),
@@ -101,16 +107,19 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".VolumeId=" << StringUtils::URLEncode(m_volumeId.c_str()) << "&";
   }
+
   if(m_availabilityZoneHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+
   if(m_volumeStatusHasBeenSet)
   {
       Aws::StringStream volumeStatusLocationAndMemberSs;
       volumeStatusLocationAndMemberSs << location << index << locationValue << ".VolumeStatus";
       m_volumeStatus.OutputToStream(oStream, volumeStatusLocationAndMemberSs.str().c_str());
   }
+
   if(m_eventsHasBeenSet)
   {
       unsigned eventsIdx = 1;
@@ -121,6 +130,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
+
   if(m_actionsHasBeenSet)
   {
       unsigned actionsIdx = 1;
@@ -131,6 +141,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }
+
 }
 
 void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -170,3 +181,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

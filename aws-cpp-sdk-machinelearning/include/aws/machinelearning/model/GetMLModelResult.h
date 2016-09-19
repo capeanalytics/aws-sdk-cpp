@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,8 +38,8 @@ namespace MachineLearning
 namespace Model
 {
   /**
-   * <p>Represents the output of a <a>GetMLModel</a> operation, and provides detailed
-   * information about a <code>MLModel</code>.</p>
+   * <p>Represents the output of a <code>GetMLModel</code> operation, and provides
+   * detailed information about a <code>MLModel</code>.</p>
    */
   class AWS_MACHINELEARNING_API GetMLModelResult
   {
@@ -49,44 +49,51 @@ namespace Model
     GetMLModelResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline const Aws::String& GetMLModelId() const{ return m_mLModelId; }
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline void SetMLModelId(const Aws::String& value) { m_mLModelId = value; }
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline void SetMLModelId(Aws::String&& value) { m_mLModelId = value; }
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline void SetMLModelId(const char* value) { m_mLModelId.assign(value); }
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline GetMLModelResult& WithMLModelId(const Aws::String& value) { SetMLModelId(value); return *this;}
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline GetMLModelResult& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
 
     /**
-     * <p>The MLModel ID which is same as the <code>MLModelId</code> in the
-     * request.</p>
+     * <p>The MLModel ID<?oxy_insert_start author="annbech"
+     * timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the
+     * <code>MLModelId</code> in the request.</p>
      */
     inline GetMLModelResult& WithMLModelId(const char* value) { SetMLModelId(value); return *this;}
 
@@ -275,9 +282,9 @@ namespace Model
      * Learning (Amazon ML) submitted a request to describe a
      * <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is
      * processing.</li> <li> <code>FAILED</code> - The request did not run to
-     * completion. It is not usable.</li> <li> <code>COMPLETED</code> - The request
-     * completed successfully.</li> <li> <code>DELETED</code> - The
-     * <code>MLModel</code> is marked as deleted. It is not usable.</li> </ul>
+     * completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The
+     * request completed successfully.</li> <li> <code>DELETED</code> - The
+     * <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
      */
     inline const EntityStatus& GetStatus() const{ return m_status; }
 
@@ -287,9 +294,9 @@ namespace Model
      * Learning (Amazon ML) submitted a request to describe a
      * <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is
      * processing.</li> <li> <code>FAILED</code> - The request did not run to
-     * completion. It is not usable.</li> <li> <code>COMPLETED</code> - The request
-     * completed successfully.</li> <li> <code>DELETED</code> - The
-     * <code>MLModel</code> is marked as deleted. It is not usable.</li> </ul>
+     * completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The
+     * request completed successfully.</li> <li> <code>DELETED</code> - The
+     * <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
      */
     inline void SetStatus(const EntityStatus& value) { m_status = value; }
 
@@ -299,9 +306,9 @@ namespace Model
      * Learning (Amazon ML) submitted a request to describe a
      * <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is
      * processing.</li> <li> <code>FAILED</code> - The request did not run to
-     * completion. It is not usable.</li> <li> <code>COMPLETED</code> - The request
-     * completed successfully.</li> <li> <code>DELETED</code> - The
-     * <code>MLModel</code> is marked as deleted. It is not usable.</li> </ul>
+     * completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The
+     * request completed successfully.</li> <li> <code>DELETED</code> - The
+     * <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
      */
     inline void SetStatus(EntityStatus&& value) { m_status = value; }
 
@@ -311,9 +318,9 @@ namespace Model
      * Learning (Amazon ML) submitted a request to describe a
      * <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is
      * processing.</li> <li> <code>FAILED</code> - The request did not run to
-     * completion. It is not usable.</li> <li> <code>COMPLETED</code> - The request
-     * completed successfully.</li> <li> <code>DELETED</code> - The
-     * <code>MLModel</code> is marked as deleted. It is not usable.</li> </ul>
+     * completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The
+     * request completed successfully.</li> <li> <code>DELETED</code> - The
+     * <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
      */
     inline GetMLModelResult& WithStatus(const EntityStatus& value) { SetStatus(value); return *this;}
 
@@ -323,9 +330,9 @@ namespace Model
      * Learning (Amazon ML) submitted a request to describe a
      * <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is
      * processing.</li> <li> <code>FAILED</code> - The request did not run to
-     * completion. It is not usable.</li> <li> <code>COMPLETED</code> - The request
-     * completed successfully.</li> <li> <code>DELETED</code> - The
-     * <code>MLModel</code> is marked as deleted. It is not usable.</li> </ul>
+     * completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The
+     * request completed successfully.</li> <li> <code>DELETED</code> - The
+     * <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
      */
     inline GetMLModelResult& WithStatus(EntityStatus&& value) { SetStatus(value); return *this;}
 
@@ -365,325 +372,409 @@ namespace Model
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetTrainingParameters() const{ return m_trainingParameters; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline void SetTrainingParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_trainingParameters = value; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline void SetTrainingParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_trainingParameters = value; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& WithTrainingParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetTrainingParameters(value); return *this;}
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& WithTrainingParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetTrainingParameters(value); return *this;}
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(const Aws::String& key, const Aws::String& value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(Aws::String&& key, const Aws::String& value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(const Aws::String& key, Aws::String&& value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(Aws::String&& key, Aws::String&& value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(const char* key, Aws::String&& value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(Aws::String&& key, const char* value) { m_trainingParameters[key] = value; return *this; }
 
     /**
      * <p>A list of the training parameters in the <code>MLModel</code>. The list is
-     * implemented as a map of key/value pairs.</p> <p>The following is the current set
-     * of training parameters: </p> <ul> <li>
-     * <p><code>sgd.l1RegularizationAmount</code> - Coefficient regularization L1 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to zero, resulting in a sparse feature set. If you use this
-     * parameter, specify a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value
-     * is a double that ranges from 0 to MAX_DOUBLE. The default is not to use L1
-     * normalization. The parameter cannot be used when <code>L2</code> is specified.
+     * implemented as a map of key-value pairs.</p> <p>The following is the current set
+     * of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code>
+     * - The maximum allowed size of the model. Depending on the input data, the size
+     * of the model might affect its performance.</p> <p> The value is an integer that
+     * ranges from <code>100000</code> to <code>2147483648</code>. The default value is
+     * <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number
+     * of times that the training process traverses the observations to build the
+     * <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to
+     * <code>10000</code>. The default value is <code>10</code>.</p></li>
+     * <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training
+     * data. Shuffling data improves a model's ability to find the optimal solution for
+     * a variety of data types. The valid values are <code>auto</code> and
+     * <code>none</code>. The default value is <code>none</code>. We strongly recommend
+     * that you shuffle your data.</p></li> <li>
+     * <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to zero, resulting in a sparse feature set. If you
+     * use this parameter, start by specifying a small value, such as
+     * <code>1.0E-08</code>.</p> <p>The value is a double that ranges from
+     * <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1
+     * normalization. This parameter can't be used when <code>L2</code> is specified.
      * Use this parameter sparingly.</p> </li> <li>
-     * <p><code>sgd.l2RegularizationAmount</code> - Coefficient regularization L2 norm.
-     * It controls overfitting the data by penalizing large coefficients. This tends to
-     * drive coefficients to small, nonzero values. If you use this parameter, specify
-     * a small value, such as 1.0E-04 or 1.0E-08.</p> <p>The value is a double that
-     * ranges from 0 to MAX_DOUBLE. The default is not to use L2 normalization. This
-     * parameter cannot be used when <code>L1</code> is specified. Use this parameter
-     * sparingly.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times
-     * that the training process traverses the observations to build the
-     * <code>MLModel</code>. The value is an integer that ranges from 1 to 10000. The
-     * default value is 10. </p></li> <li> <p><code>sgd.maxMLModelSizeInBytes</code> -
-     * The maximum allowed size of the model. Depending on the input data, the model
-     * size might affect performance. </p> <p> The value is an integer that ranges from
-     * 100000 to 2147483648. The default value is 33554432. </p> </li> </ul>
+     * <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2
+     * norm. It controls overfitting the data by penalizing large coefficients. This
+     * tends to drive coefficients to small, nonzero values. If you use this parameter,
+     * start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The
+     * value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>.
+     * The default is to not use L2 normalization. This parameter can't be used when
+     * <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
      */
     inline GetMLModelResult& AddTrainingParameters(const char* key, const char* value) { m_trainingParameters[key] = value; return *this; }
 
@@ -732,80 +823,83 @@ namespace Model
     /**
      * <p>Identifies the <code>MLModel</code> category. The following are the available
      * types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What
-     * listing price should a house have?"</li> <li>BINARY -- Produces one of two
+     * price should a house be listed at?"</li> <li>BINARY -- Produces one of two
      * possible results. For example, "Is this an e-commerce website?"</li>
-     * <li>MULTICLASS -- Produces more than two possible results. For example, "Is this
-     * a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+     * <li>MULTICLASS -- Produces one of several possible results. For example, "Is
+     * this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
      */
     inline const MLModelType& GetMLModelType() const{ return m_mLModelType; }
 
     /**
      * <p>Identifies the <code>MLModel</code> category. The following are the available
      * types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What
-     * listing price should a house have?"</li> <li>BINARY -- Produces one of two
+     * price should a house be listed at?"</li> <li>BINARY -- Produces one of two
      * possible results. For example, "Is this an e-commerce website?"</li>
-     * <li>MULTICLASS -- Produces more than two possible results. For example, "Is this
-     * a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+     * <li>MULTICLASS -- Produces one of several possible results. For example, "Is
+     * this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
      */
     inline void SetMLModelType(const MLModelType& value) { m_mLModelType = value; }
 
     /**
      * <p>Identifies the <code>MLModel</code> category. The following are the available
      * types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What
-     * listing price should a house have?"</li> <li>BINARY -- Produces one of two
+     * price should a house be listed at?"</li> <li>BINARY -- Produces one of two
      * possible results. For example, "Is this an e-commerce website?"</li>
-     * <li>MULTICLASS -- Produces more than two possible results. For example, "Is this
-     * a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+     * <li>MULTICLASS -- Produces one of several possible results. For example, "Is
+     * this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
      */
     inline void SetMLModelType(MLModelType&& value) { m_mLModelType = value; }
 
     /**
      * <p>Identifies the <code>MLModel</code> category. The following are the available
      * types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What
-     * listing price should a house have?"</li> <li>BINARY -- Produces one of two
+     * price should a house be listed at?"</li> <li>BINARY -- Produces one of two
      * possible results. For example, "Is this an e-commerce website?"</li>
-     * <li>MULTICLASS -- Produces more than two possible results. For example, "Is this
-     * a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+     * <li>MULTICLASS -- Produces one of several possible results. For example, "Is
+     * this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
      */
     inline GetMLModelResult& WithMLModelType(const MLModelType& value) { SetMLModelType(value); return *this;}
 
     /**
      * <p>Identifies the <code>MLModel</code> category. The following are the available
      * types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What
-     * listing price should a house have?"</li> <li>BINARY -- Produces one of two
+     * price should a house be listed at?"</li> <li>BINARY -- Produces one of two
      * possible results. For example, "Is this an e-commerce website?"</li>
-     * <li>MULTICLASS -- Produces more than two possible results. For example, "Is this
-     * a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+     * <li>MULTICLASS -- Produces one of several possible results. For example, "Is
+     * this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
      */
     inline GetMLModelResult& WithMLModelType(MLModelType&& value) { SetMLModelType(value); return *this;}
 
     /**
-     * <p>The scoring threshold is used in binary classification <code>MLModel</code>s,
-     * and marks the boundary between a positive prediction and a negative
-     * prediction.</p> <p>Output values greater than or equal to the threshold receive
-     * a positive result from the MLModel, such as <code>true</code>. Output values
-     * less than the threshold receive a negative response from the MLModel, such as
-     * <code>false</code>.</p>
+     * <p>The scoring threshold is used in binary classification
+     * <code>MLModel</code><?oxy_insert_start author="laurama"
+     * timestamp="20160329T114851-0700"> <?oxy_insert_end>models. It marks the boundary
+     * between a positive prediction and a negative prediction.</p> <p>Output values
+     * greater than or equal to the threshold receive a positive result from the
+     * MLModel, such as <code>true</code>. Output values less than the threshold
+     * receive a negative response from the MLModel, such as <code>false</code>.</p>
      */
     inline double GetScoreThreshold() const{ return m_scoreThreshold; }
 
     /**
-     * <p>The scoring threshold is used in binary classification <code>MLModel</code>s,
-     * and marks the boundary between a positive prediction and a negative
-     * prediction.</p> <p>Output values greater than or equal to the threshold receive
-     * a positive result from the MLModel, such as <code>true</code>. Output values
-     * less than the threshold receive a negative response from the MLModel, such as
-     * <code>false</code>.</p>
+     * <p>The scoring threshold is used in binary classification
+     * <code>MLModel</code><?oxy_insert_start author="laurama"
+     * timestamp="20160329T114851-0700"> <?oxy_insert_end>models. It marks the boundary
+     * between a positive prediction and a negative prediction.</p> <p>Output values
+     * greater than or equal to the threshold receive a positive result from the
+     * MLModel, such as <code>true</code>. Output values less than the threshold
+     * receive a negative response from the MLModel, such as <code>false</code>.</p>
      */
     inline void SetScoreThreshold(double value) { m_scoreThreshold = value; }
 
     /**
-     * <p>The scoring threshold is used in binary classification <code>MLModel</code>s,
-     * and marks the boundary between a positive prediction and a negative
-     * prediction.</p> <p>Output values greater than or equal to the threshold receive
-     * a positive result from the MLModel, such as <code>true</code>. Output values
-     * less than the threshold receive a negative response from the MLModel, such as
-     * <code>false</code>.</p>
+     * <p>The scoring threshold is used in binary classification
+     * <code>MLModel</code><?oxy_insert_start author="laurama"
+     * timestamp="20160329T114851-0700"> <?oxy_insert_end>models. It marks the boundary
+     * between a positive prediction and a negative prediction.</p> <p>Output values
+     * greater than or equal to the threshold receive a positive result from the
+     * MLModel, such as <code>true</code>. Output values less than the threshold
+     * receive a negative response from the MLModel, such as <code>false</code>.</p>
      */
     inline GetMLModelResult& WithScoreThreshold(double value) { SetScoreThreshold(value); return *this;}
 
@@ -882,107 +976,206 @@ namespace Model
     inline GetMLModelResult& WithLogUri(const char* value) { SetLogUri(value); return *this;}
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline const Aws::String& GetMessage() const{ return m_message; }
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline void SetMessage(const Aws::String& value) { m_message = value; }
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline void SetMessage(Aws::String&& value) { m_message = value; }
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline void SetMessage(const char* value) { m_message.assign(value); }
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline GetMLModelResult& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline GetMLModelResult& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
 
     /**
-     * <p>Description of the most recent details about accessing the
+     * <p>A description of the most recent details about accessing the
      * <code>MLModel</code>.</p>
      */
     inline GetMLModelResult& WithMessage(const char* value) { SetMessage(value); return *this;}
 
     /**
+     * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
+     * processing the <code>MLModel</code>, normalized and scaled on computation
+     * resources. <code>ComputeTime</code> is only available if the
+     * <code>MLModel</code> is in the <code>COMPLETED</code> state.</p>
+     */
+    inline long long GetComputeTime() const{ return m_computeTime; }
+
+    /**
+     * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
+     * processing the <code>MLModel</code>, normalized and scaled on computation
+     * resources. <code>ComputeTime</code> is only available if the
+     * <code>MLModel</code> is in the <code>COMPLETED</code> state.</p>
+     */
+    inline void SetComputeTime(long long value) { m_computeTime = value; }
+
+    /**
+     * <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent
+     * processing the <code>MLModel</code>, normalized and scaled on computation
+     * resources. <code>ComputeTime</code> is only available if the
+     * <code>MLModel</code> is in the <code>COMPLETED</code> state.</p>
+     */
+    inline GetMLModelResult& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is
+     * only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or
+     * <code>FAILED</code> state.</p>
+     */
+    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is
+     * only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or
+     * <code>FAILED</code> state.</p>
+     */
+    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAt = value; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is
+     * only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or
+     * <code>FAILED</code> state.</p>
+     */
+    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAt = value; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is
+     * only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or
+     * <code>FAILED</code> state.</p>
+     */
+    inline GetMLModelResult& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is
+     * only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or
+     * <code>FAILED</code> state.</p>
+     */
+    inline GetMLModelResult& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(value); return *this;}
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the
+     * <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+     */
+    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the
+     * <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+     */
+    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAt = value; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the
+     * <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+     */
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAt = value; }
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the
+     * <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+     */
+    inline GetMLModelResult& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
+
+    /**
+     * <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code>
+     * as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the
+     * <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+     */
+    inline GetMLModelResult& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+
+    /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline const Aws::String& GetRecipe() const{ return m_recipe; }
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline void SetRecipe(const Aws::String& value) { m_recipe = value; }
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline void SetRecipe(Aws::String&& value) { m_recipe = value; }
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline void SetRecipe(const char* value) { m_recipe.assign(value); }
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline GetMLModelResult& WithRecipe(const Aws::String& value) { SetRecipe(value); return *this;}
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline GetMLModelResult& WithRecipe(Aws::String&& value) { SetRecipe(value); return *this;}
 
     /**
      * <p>The recipe to use when training the <code>MLModel</code>. The
      * <code>Recipe</code> provides detailed information about the observation data to
-     * use during training, as well as manipulations to perform on the observation data
-     * during training.</p> <note><title>Note</title> <p>This parameter is provided as
-     * part of the verbose format.</p></note>
+     * use during training, and manipulations to perform on the observation data during
+     * training.</p> <note><title>Note</title> <p>This parameter is provided as part of
+     * the verbose format.</p></note>
      */
     inline GetMLModelResult& WithRecipe(const char* value) { SetRecipe(value); return *this;}
 
@@ -1052,6 +1245,9 @@ namespace Model
     Aws::Utils::DateTime m_scoreThresholdLastUpdatedAt;
     Aws::String m_logUri;
     Aws::String m_message;
+    long long m_computeTime;
+    Aws::Utils::DateTime m_finishedAt;
+    Aws::Utils::DateTime m_startedAt;
     Aws::String m_recipe;
     Aws::String m_schema;
   };

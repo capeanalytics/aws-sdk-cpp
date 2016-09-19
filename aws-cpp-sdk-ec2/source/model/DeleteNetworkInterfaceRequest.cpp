@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,10 +34,12 @@ Aws::String DeleteNetworkInterfaceRequest::SerializePayload() const
   {
     ss << "DryRun=" << m_dryRun << "&";
   }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
     ss << "NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

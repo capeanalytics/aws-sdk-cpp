@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 EventDescription::EventDescription() : 
     m_eventDateHasBeenSet(false),
@@ -113,34 +119,42 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".EventDate=" << StringUtils::URLEncode(m_eventDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_messageHasBeenSet)
   {
       oStream << location << index << locationValue << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
+
   if(m_applicationNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".ApplicationName=" << StringUtils::URLEncode(m_applicationName.c_str()) << "&";
   }
+
   if(m_versionLabelHasBeenSet)
   {
       oStream << location << index << locationValue << ".VersionLabel=" << StringUtils::URLEncode(m_versionLabel.c_str()) << "&";
   }
+
   if(m_templateNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".TemplateName=" << StringUtils::URLEncode(m_templateName.c_str()) << "&";
   }
+
   if(m_environmentNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnvironmentName=" << StringUtils::URLEncode(m_environmentName.c_str()) << "&";
   }
+
   if(m_requestIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".RequestId=" << StringUtils::URLEncode(m_requestId.c_str()) << "&";
   }
+
   if(m_severityHasBeenSet)
   {
       oStream << location << index << locationValue << ".Severity=" << EventSeverityMapper::GetNameForEventSeverity(m_severity) << "&";
   }
+
 }
 
 void EventDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -178,3 +192,7 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << ".Severity=" << EventSeverityMapper::GetNameForEventSeverity(m_severity) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

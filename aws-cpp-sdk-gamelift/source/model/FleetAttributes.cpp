@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace GameLift
+{
+namespace Model
+{
 
 FleetAttributes::FleetAttributes() : 
     m_fleetIdHasBeenSet(false),
@@ -31,7 +37,9 @@ FleetAttributes::FleetAttributes() :
     m_buildIdHasBeenSet(false),
     m_serverLaunchPathHasBeenSet(false),
     m_serverLaunchParametersHasBeenSet(false),
-    m_logPathsHasBeenSet(false)
+    m_logPathsHasBeenSet(false),
+    m_newGameSessionProtectionPolicyHasBeenSet(false),
+    m_operatingSystemHasBeenSet(false)
 {
 }
 
@@ -45,7 +53,9 @@ FleetAttributes::FleetAttributes(const JsonValue& jsonValue) :
     m_buildIdHasBeenSet(false),
     m_serverLaunchPathHasBeenSet(false),
     m_serverLaunchParametersHasBeenSet(false),
-    m_logPathsHasBeenSet(false)
+    m_logPathsHasBeenSet(false),
+    m_newGameSessionProtectionPolicyHasBeenSet(false),
+    m_operatingSystemHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -125,6 +135,20 @@ FleetAttributes& FleetAttributes::operator =(const JsonValue& jsonValue)
     m_logPathsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("NewGameSessionProtectionPolicy"))
+  {
+    m_newGameSessionProtectionPolicy = ProtectionPolicyMapper::GetProtectionPolicyForName(jsonValue.GetString("NewGameSessionProtectionPolicy"));
+
+    m_newGameSessionProtectionPolicyHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OperatingSystem"))
+  {
+    m_operatingSystem = OperatingSystemMapper::GetOperatingSystemForName(jsonValue.GetString("OperatingSystem"));
+
+    m_operatingSystemHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -194,5 +218,19 @@ JsonValue FleetAttributes::Jsonize() const
 
   }
 
+  if(m_newGameSessionProtectionPolicyHasBeenSet)
+  {
+   payload.WithString("NewGameSessionProtectionPolicy", ProtectionPolicyMapper::GetNameForProtectionPolicy(m_newGameSessionProtectionPolicy));
+  }
+
+  if(m_operatingSystemHasBeenSet)
+  {
+   payload.WithString("OperatingSystem", OperatingSystemMapper::GetNameForOperatingSystem(m_operatingSystem));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace GameLift
+} // namespace Aws

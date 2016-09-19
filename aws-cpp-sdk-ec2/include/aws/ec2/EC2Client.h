@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -101,6 +101,7 @@
 #include <aws/ec2/model/DescribeRouteTablesResponse.h>
 #include <aws/ec2/model/DescribeScheduledInstanceAvailabilityResponse.h>
 #include <aws/ec2/model/DescribeScheduledInstancesResponse.h>
+#include <aws/ec2/model/DescribeSecurityGroupReferencesResponse.h>
 #include <aws/ec2/model/DescribeSecurityGroupsResponse.h>
 #include <aws/ec2/model/DescribeSnapshotAttributeResponse.h>
 #include <aws/ec2/model/DescribeSnapshotsResponse.h>
@@ -110,6 +111,7 @@
 #include <aws/ec2/model/DescribeSpotFleetRequestsResponse.h>
 #include <aws/ec2/model/DescribeSpotInstanceRequestsResponse.h>
 #include <aws/ec2/model/DescribeSpotPriceHistoryResponse.h>
+#include <aws/ec2/model/DescribeStaleSecurityGroupsResponse.h>
 #include <aws/ec2/model/DescribeSubnetsResponse.h>
 #include <aws/ec2/model/DescribeTagsResponse.h>
 #include <aws/ec2/model/DescribeVolumeAttributeResponse.h>
@@ -131,6 +133,7 @@
 #include <aws/ec2/model/EnableVpcClassicLinkResponse.h>
 #include <aws/ec2/model/EnableVpcClassicLinkDnsSupportResponse.h>
 #include <aws/ec2/model/GetConsoleOutputResponse.h>
+#include <aws/ec2/model/GetConsoleScreenshotResponse.h>
 #include <aws/ec2/model/GetPasswordDataResponse.h>
 #include <aws/ec2/model/ImportImageResponse.h>
 #include <aws/ec2/model/ImportInstanceResponse.h>
@@ -320,6 +323,7 @@ namespace Model
         class DescribeRouteTablesRequest;
         class DescribeScheduledInstanceAvailabilityRequest;
         class DescribeScheduledInstancesRequest;
+        class DescribeSecurityGroupReferencesRequest;
         class DescribeSecurityGroupsRequest;
         class DescribeSnapshotAttributeRequest;
         class DescribeSnapshotsRequest;
@@ -329,6 +333,7 @@ namespace Model
         class DescribeSpotFleetRequestsRequest;
         class DescribeSpotInstanceRequestsRequest;
         class DescribeSpotPriceHistoryRequest;
+        class DescribeStaleSecurityGroupsRequest;
         class DescribeSubnetsRequest;
         class DescribeTagsRequest;
         class DescribeVolumeAttributeRequest;
@@ -358,6 +363,7 @@ namespace Model
         class EnableVpcClassicLinkRequest;
         class EnableVpcClassicLinkDnsSupportRequest;
         class GetConsoleOutputRequest;
+        class GetConsoleScreenshotRequest;
         class GetPasswordDataRequest;
         class ImportImageRequest;
         class ImportInstanceRequest;
@@ -522,6 +528,7 @@ namespace Model
         typedef Aws::Utils::Outcome<DescribeRouteTablesResponse, Aws::Client::AWSError<EC2Errors>> DescribeRouteTablesOutcome;
         typedef Aws::Utils::Outcome<DescribeScheduledInstanceAvailabilityResponse, Aws::Client::AWSError<EC2Errors>> DescribeScheduledInstanceAvailabilityOutcome;
         typedef Aws::Utils::Outcome<DescribeScheduledInstancesResponse, Aws::Client::AWSError<EC2Errors>> DescribeScheduledInstancesOutcome;
+        typedef Aws::Utils::Outcome<DescribeSecurityGroupReferencesResponse, Aws::Client::AWSError<EC2Errors>> DescribeSecurityGroupReferencesOutcome;
         typedef Aws::Utils::Outcome<DescribeSecurityGroupsResponse, Aws::Client::AWSError<EC2Errors>> DescribeSecurityGroupsOutcome;
         typedef Aws::Utils::Outcome<DescribeSnapshotAttributeResponse, Aws::Client::AWSError<EC2Errors>> DescribeSnapshotAttributeOutcome;
         typedef Aws::Utils::Outcome<DescribeSnapshotsResponse, Aws::Client::AWSError<EC2Errors>> DescribeSnapshotsOutcome;
@@ -531,6 +538,7 @@ namespace Model
         typedef Aws::Utils::Outcome<DescribeSpotFleetRequestsResponse, Aws::Client::AWSError<EC2Errors>> DescribeSpotFleetRequestsOutcome;
         typedef Aws::Utils::Outcome<DescribeSpotInstanceRequestsResponse, Aws::Client::AWSError<EC2Errors>> DescribeSpotInstanceRequestsOutcome;
         typedef Aws::Utils::Outcome<DescribeSpotPriceHistoryResponse, Aws::Client::AWSError<EC2Errors>> DescribeSpotPriceHistoryOutcome;
+        typedef Aws::Utils::Outcome<DescribeStaleSecurityGroupsResponse, Aws::Client::AWSError<EC2Errors>> DescribeStaleSecurityGroupsOutcome;
         typedef Aws::Utils::Outcome<DescribeSubnetsResponse, Aws::Client::AWSError<EC2Errors>> DescribeSubnetsOutcome;
         typedef Aws::Utils::Outcome<DescribeTagsResponse, Aws::Client::AWSError<EC2Errors>> DescribeTagsOutcome;
         typedef Aws::Utils::Outcome<DescribeVolumeAttributeResponse, Aws::Client::AWSError<EC2Errors>> DescribeVolumeAttributeOutcome;
@@ -560,6 +568,7 @@ namespace Model
         typedef Aws::Utils::Outcome<EnableVpcClassicLinkResponse, Aws::Client::AWSError<EC2Errors>> EnableVpcClassicLinkOutcome;
         typedef Aws::Utils::Outcome<EnableVpcClassicLinkDnsSupportResponse, Aws::Client::AWSError<EC2Errors>> EnableVpcClassicLinkDnsSupportOutcome;
         typedef Aws::Utils::Outcome<GetConsoleOutputResponse, Aws::Client::AWSError<EC2Errors>> GetConsoleOutputOutcome;
+        typedef Aws::Utils::Outcome<GetConsoleScreenshotResponse, Aws::Client::AWSError<EC2Errors>> GetConsoleScreenshotOutcome;
         typedef Aws::Utils::Outcome<GetPasswordDataResponse, Aws::Client::AWSError<EC2Errors>> GetPasswordDataOutcome;
         typedef Aws::Utils::Outcome<ImportImageResponse, Aws::Client::AWSError<EC2Errors>> ImportImageOutcome;
         typedef Aws::Utils::Outcome<ImportInstanceResponse, Aws::Client::AWSError<EC2Errors>> ImportInstanceOutcome;
@@ -724,6 +733,7 @@ namespace Model
         typedef std::future<DescribeRouteTablesOutcome> DescribeRouteTablesOutcomeCallable;
         typedef std::future<DescribeScheduledInstanceAvailabilityOutcome> DescribeScheduledInstanceAvailabilityOutcomeCallable;
         typedef std::future<DescribeScheduledInstancesOutcome> DescribeScheduledInstancesOutcomeCallable;
+        typedef std::future<DescribeSecurityGroupReferencesOutcome> DescribeSecurityGroupReferencesOutcomeCallable;
         typedef std::future<DescribeSecurityGroupsOutcome> DescribeSecurityGroupsOutcomeCallable;
         typedef std::future<DescribeSnapshotAttributeOutcome> DescribeSnapshotAttributeOutcomeCallable;
         typedef std::future<DescribeSnapshotsOutcome> DescribeSnapshotsOutcomeCallable;
@@ -733,6 +743,7 @@ namespace Model
         typedef std::future<DescribeSpotFleetRequestsOutcome> DescribeSpotFleetRequestsOutcomeCallable;
         typedef std::future<DescribeSpotInstanceRequestsOutcome> DescribeSpotInstanceRequestsOutcomeCallable;
         typedef std::future<DescribeSpotPriceHistoryOutcome> DescribeSpotPriceHistoryOutcomeCallable;
+        typedef std::future<DescribeStaleSecurityGroupsOutcome> DescribeStaleSecurityGroupsOutcomeCallable;
         typedef std::future<DescribeSubnetsOutcome> DescribeSubnetsOutcomeCallable;
         typedef std::future<DescribeTagsOutcome> DescribeTagsOutcomeCallable;
         typedef std::future<DescribeVolumeAttributeOutcome> DescribeVolumeAttributeOutcomeCallable;
@@ -762,6 +773,7 @@ namespace Model
         typedef std::future<EnableVpcClassicLinkOutcome> EnableVpcClassicLinkOutcomeCallable;
         typedef std::future<EnableVpcClassicLinkDnsSupportOutcome> EnableVpcClassicLinkDnsSupportOutcomeCallable;
         typedef std::future<GetConsoleOutputOutcome> GetConsoleOutputOutcomeCallable;
+        typedef std::future<GetConsoleScreenshotOutcome> GetConsoleScreenshotOutcomeCallable;
         typedef std::future<GetPasswordDataOutcome> GetPasswordDataOutcomeCallable;
         typedef std::future<ImportImageOutcome> ImportImageOutcomeCallable;
         typedef std::future<ImportInstanceOutcome> ImportInstanceOutcomeCallable;
@@ -929,6 +941,7 @@ namespace Model
     typedef std::function<void(const EC2Client*, const Model::DescribeRouteTablesRequest&, const Model::DescribeRouteTablesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeRouteTablesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeScheduledInstanceAvailabilityRequest&, const Model::DescribeScheduledInstanceAvailabilityOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeScheduledInstanceAvailabilityResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeScheduledInstancesRequest&, const Model::DescribeScheduledInstancesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeScheduledInstancesResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupReferencesRequest&, const Model::DescribeSecurityGroupReferencesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupReferencesResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSecurityGroupsRequest&, const Model::DescribeSecurityGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSecurityGroupsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSnapshotAttributeRequest&, const Model::DescribeSnapshotAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotAttributeResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSnapshotsRequest&, const Model::DescribeSnapshotsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSnapshotsResponseReceivedHandler;
@@ -938,6 +951,7 @@ namespace Model
     typedef std::function<void(const EC2Client*, const Model::DescribeSpotFleetRequestsRequest&, const Model::DescribeSpotFleetRequestsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSpotFleetRequestsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSpotInstanceRequestsRequest&, const Model::DescribeSpotInstanceRequestsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSpotInstanceRequestsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSpotPriceHistoryRequest&, const Model::DescribeSpotPriceHistoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSpotPriceHistoryResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::DescribeStaleSecurityGroupsRequest&, const Model::DescribeStaleSecurityGroupsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeStaleSecurityGroupsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeSubnetsRequest&, const Model::DescribeSubnetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeSubnetsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeTagsRequest&, const Model::DescribeTagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeTagsResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::DescribeVolumeAttributeRequest&, const Model::DescribeVolumeAttributeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeVolumeAttributeResponseReceivedHandler;
@@ -967,6 +981,7 @@ namespace Model
     typedef std::function<void(const EC2Client*, const Model::EnableVpcClassicLinkRequest&, const Model::EnableVpcClassicLinkOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableVpcClassicLinkResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::EnableVpcClassicLinkDnsSupportRequest&, const Model::EnableVpcClassicLinkDnsSupportOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableVpcClassicLinkDnsSupportResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetConsoleOutputRequest&, const Model::GetConsoleOutputOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetConsoleOutputResponseReceivedHandler;
+    typedef std::function<void(const EC2Client*, const Model::GetConsoleScreenshotRequest&, const Model::GetConsoleScreenshotOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetConsoleScreenshotResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::GetPasswordDataRequest&, const Model::GetPasswordDataOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPasswordDataResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ImportImageRequest&, const Model::ImportImageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ImportImageResponseReceivedHandler;
     typedef std::function<void(const EC2Client*, const Model::ImportInstanceRequest&, const Model::ImportInstanceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ImportInstanceResponseReceivedHandler;
@@ -1046,8 +1061,7 @@ namespace Model
         * the default http client factory will be used
         */
         EC2Client(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~EC2Client();
 
@@ -5263,6 +5277,31 @@ namespace Model
         virtual void DescribeScheduledInstancesAsync(const Model::DescribeScheduledInstancesRequest& request, const DescribeScheduledInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+         * connection that are referencing the security groups you've specified in this
+         * request. </p>
+         */
+        virtual Model::DescribeSecurityGroupReferencesOutcome DescribeSecurityGroupReferences(const Model::DescribeSecurityGroupReferencesRequest& request) const;
+
+        /**
+         * <p>[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+         * connection that are referencing the security groups you've specified in this
+         * request. </p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeSecurityGroupReferencesOutcomeCallable DescribeSecurityGroupReferencesCallable(const Model::DescribeSecurityGroupReferencesRequest& request) const;
+
+        /**
+         * <p>[EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+         * connection that are referencing the security groups you've specified in this
+         * request. </p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeSecurityGroupReferencesAsync(const Model::DescribeSecurityGroupReferencesRequest& request, const DescribeSecurityGroupReferencesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Describes one or more of your security groups.</p> <p>A security group is for
          * use with instances either in the EC2-Classic platform or in a specific VPC. For
          * more information, see <a
@@ -5651,6 +5690,34 @@ namespace Model
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeSpotPriceHistoryAsync(const Model::DescribeSpotPriceHistoryRequest& request, const DescribeSpotPriceHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>[EC2-VPC only] Describes the stale security group rules for security groups
+         * in a specified VPC. Rules are stale when they reference a deleted security group
+         * in a peer VPC, or a security group in a peer VPC for which the VPC peering
+         * connection has been deleted. </p>
+         */
+        virtual Model::DescribeStaleSecurityGroupsOutcome DescribeStaleSecurityGroups(const Model::DescribeStaleSecurityGroupsRequest& request) const;
+
+        /**
+         * <p>[EC2-VPC only] Describes the stale security group rules for security groups
+         * in a specified VPC. Rules are stale when they reference a deleted security group
+         * in a peer VPC, or a security group in a peer VPC for which the VPC peering
+         * connection has been deleted. </p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeStaleSecurityGroupsOutcomeCallable DescribeStaleSecurityGroupsCallable(const Model::DescribeStaleSecurityGroupsRequest& request) const;
+
+        /**
+         * <p>[EC2-VPC only] Describes the stale security group rules for security groups
+         * in a specified VPC. Rules are stale when they reference a deleted security group
+         * in a peer VPC, or a security group in a peer VPC for which the VPC peering
+         * connection has been deleted. </p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeStaleSecurityGroupsAsync(const Model::DescribeStaleSecurityGroupsRequest& request, const DescribeStaleSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Describes one or more of your subnets.</p> <p>For more information about
@@ -6603,6 +6670,28 @@ namespace Model
         virtual void GetConsoleOutputAsync(const Model::GetConsoleOutputRequest& request, const GetConsoleOutputResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Retrieve a JPG-format screenshot of a running instance to help with
+         * troubleshooting.</p> <p>The returned content is base64-encoded.</p>
+         */
+        virtual Model::GetConsoleScreenshotOutcome GetConsoleScreenshot(const Model::GetConsoleScreenshotRequest& request) const;
+
+        /**
+         * <p>Retrieve a JPG-format screenshot of a running instance to help with
+         * troubleshooting.</p> <p>The returned content is base64-encoded.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::GetConsoleScreenshotOutcomeCallable GetConsoleScreenshotCallable(const Model::GetConsoleScreenshotRequest& request) const;
+
+        /**
+         * <p>Retrieve a JPG-format screenshot of a running instance to help with
+         * troubleshooting.</p> <p>The returned content is base64-encoded.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void GetConsoleScreenshotAsync(const Model::GetConsoleScreenshotRequest& request, const GetConsoleScreenshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Retrieves the encrypted administrator password for an instance running
          * Windows.</p> <p>The Windows password is generated at boot if the
          * <code>EC2Config</code> service plugin, <code>Ec2SetPassword</code>, is enabled.
@@ -7401,9 +7490,7 @@ namespace Model
          * address is moved, it is no longer available for use in the EC2-Classic platform,
          * unless you move it back using the <a>RestoreAddressToClassic</a> request. You
          * cannot move an Elastic IP address that was originally allocated for use in the
-         * EC2-VPC platform to the EC2-Classic platform. You cannot migrate an Elastic IP
-         * address that's associated with a reverse DNS record. Contact AWS account and
-         * billing support to remove the reverse DNS record. </p>
+         * EC2-VPC platform to the EC2-Classic platform. </p>
          */
         virtual Model::MoveAddressToVpcOutcome MoveAddressToVpc(const Model::MoveAddressToVpcRequest& request) const;
 
@@ -7414,9 +7501,7 @@ namespace Model
          * address is moved, it is no longer available for use in the EC2-Classic platform,
          * unless you move it back using the <a>RestoreAddressToClassic</a> request. You
          * cannot move an Elastic IP address that was originally allocated for use in the
-         * EC2-VPC platform to the EC2-Classic platform. You cannot migrate an Elastic IP
-         * address that's associated with a reverse DNS record. Contact AWS account and
-         * billing support to remove the reverse DNS record. </p>
+         * EC2-VPC platform to the EC2-Classic platform. </p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -7429,9 +7514,7 @@ namespace Model
          * address is moved, it is no longer available for use in the EC2-Classic platform,
          * unless you move it back using the <a>RestoreAddressToClassic</a> request. You
          * cannot move an Elastic IP address that was originally allocated for use in the
-         * EC2-VPC platform to the EC2-Classic platform. You cannot migrate an Elastic IP
-         * address that's associated with a reverse DNS record. Contact AWS account and
-         * billing support to remove the reverse DNS record. </p>
+         * EC2-VPC platform to the EC2-Classic platform. </p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -8082,8 +8165,8 @@ namespace Model
         /**
          * <p>Resets an attribute of an instance to its default value. To reset the
          * <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped
-         * state. To reset the <code>SourceDestCheck</code>, the instance can be either
-         * running or stopped.</p> <p>The <code>SourceDestCheck</code> attribute controls
+         * state. To reset the <code>sourceDestCheck</code>, the instance can be either
+         * running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls
          * whether source/destination checking is enabled. The default value is
          * <code>true</code>, which means checking is enabled. This value must be
          * <code>false</code> for a NAT instance to perform NAT. For more information, see
@@ -8096,8 +8179,8 @@ namespace Model
         /**
          * <p>Resets an attribute of an instance to its default value. To reset the
          * <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped
-         * state. To reset the <code>SourceDestCheck</code>, the instance can be either
-         * running or stopped.</p> <p>The <code>SourceDestCheck</code> attribute controls
+         * state. To reset the <code>sourceDestCheck</code>, the instance can be either
+         * running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls
          * whether source/destination checking is enabled. The default value is
          * <code>true</code>, which means checking is enabled. This value must be
          * <code>false</code> for a NAT instance to perform NAT. For more information, see
@@ -8112,8 +8195,8 @@ namespace Model
         /**
          * <p>Resets an attribute of an instance to its default value. To reset the
          * <code>kernel</code> or <code>ramdisk</code>, the instance must be in a stopped
-         * state. To reset the <code>SourceDestCheck</code>, the instance can be either
-         * running or stopped.</p> <p>The <code>SourceDestCheck</code> attribute controls
+         * state. To reset the <code>sourceDestCheck</code>, the instance can be either
+         * running or stopped.</p> <p>The <code>sourceDestCheck</code> attribute controls
          * whether source/destination checking is enabled. The default value is
          * <code>true</code>, which means checking is enabled. This value must be
          * <code>false</code> for a NAT instance to perform NAT. For more information, see
@@ -8179,9 +8262,7 @@ namespace Model
          * <p>Restores an Elastic IP address that was previously moved to the EC2-VPC
          * platform back to the EC2-Classic platform. You cannot move an Elastic IP address
          * that was originally allocated for use in EC2-VPC. The Elastic IP address must
-         * not be associated with an instance or network interface. You cannot restore an
-         * Elastic IP address that's associated with a reverse DNS record. Contact AWS
-         * account and billing support to remove the reverse DNS record. </p>
+         * not be associated with an instance or network interface. </p>
          */
         virtual Model::RestoreAddressToClassicOutcome RestoreAddressToClassic(const Model::RestoreAddressToClassicRequest& request) const;
 
@@ -8189,9 +8270,7 @@ namespace Model
          * <p>Restores an Elastic IP address that was previously moved to the EC2-VPC
          * platform back to the EC2-Classic platform. You cannot move an Elastic IP address
          * that was originally allocated for use in EC2-VPC. The Elastic IP address must
-         * not be associated with an instance or network interface. You cannot restore an
-         * Elastic IP address that's associated with a reverse DNS record. Contact AWS
-         * account and billing support to remove the reverse DNS record. </p>
+         * not be associated with an instance or network interface. </p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -8201,9 +8280,7 @@ namespace Model
          * <p>Restores an Elastic IP address that was previously moved to the EC2-VPC
          * platform back to the EC2-Classic platform. You cannot move an Elastic IP address
          * that was originally allocated for use in EC2-VPC. The Elastic IP address must
-         * not be associated with an instance or network interface. You cannot restore an
-         * Elastic IP address that's associated with a reverse DNS record. Contact AWS
-         * account and billing support to remove the reverse DNS record. </p>
+         * not be associated with an instance or network interface. </p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -8300,9 +8377,13 @@ namespace Model
          * <a>DescribeInstances</a>.</p> <p>To ensure faster instance launches, break up
          * large requests into smaller batches. For example, create five separate launch
          * requests for 100 instances each instead of one launch request for 500
-         * instances.</p> <p>If you don't specify a security group when launching an
-         * instance, Amazon EC2 uses the default security group. For more information, see
-         * <a
+         * instances.</p> <p>To tag your instance, ensure that it is <code>running</code>
+         * as <a>CreateTags</a> requires a resource ID. For more information about tagging,
+         * see <a
+         * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
+         * Your Amazon EC2 Resources</a>.</p> <p>If you don't specify a security group when
+         * launching an instance, Amazon EC2 uses the default security group. For more
+         * information, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security
          * Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
          * <p>[EC2-VPC only accounts] If you don't specify a subnet in the request, we
@@ -8342,9 +8423,13 @@ namespace Model
          * <a>DescribeInstances</a>.</p> <p>To ensure faster instance launches, break up
          * large requests into smaller batches. For example, create five separate launch
          * requests for 100 instances each instead of one launch request for 500
-         * instances.</p> <p>If you don't specify a security group when launching an
-         * instance, Amazon EC2 uses the default security group. For more information, see
-         * <a
+         * instances.</p> <p>To tag your instance, ensure that it is <code>running</code>
+         * as <a>CreateTags</a> requires a resource ID. For more information about tagging,
+         * see <a
+         * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
+         * Your Amazon EC2 Resources</a>.</p> <p>If you don't specify a security group when
+         * launching an instance, Amazon EC2 uses the default security group. For more
+         * information, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security
          * Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
          * <p>[EC2-VPC only accounts] If you don't specify a subnet in the request, we
@@ -8386,9 +8471,13 @@ namespace Model
          * <a>DescribeInstances</a>.</p> <p>To ensure faster instance launches, break up
          * large requests into smaller batches. For example, create five separate launch
          * requests for 100 instances each instead of one launch request for 500
-         * instances.</p> <p>If you don't specify a security group when launching an
-         * instance, Amazon EC2 uses the default security group. For more information, see
-         * <a
+         * instances.</p> <p>To tag your instance, ensure that it is <code>running</code>
+         * as <a>CreateTags</a> requires a resource ID. For more information about tagging,
+         * see <a
+         * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging
+         * Your Amazon EC2 Resources</a>.</p> <p>If you don't specify a security group when
+         * launching an instance, Amazon EC2 uses the default security group. For more
+         * information, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Security
          * Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
          * <p>[EC2-VPC only accounts] If you don't specify a subnet in the request, we
@@ -8541,8 +8630,11 @@ namespace Model
          * automatically deleted. For more information about the differences between
          * rebooting, stopping, and terminating instances, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For
-         * more information about troubleshooting, see <a
+         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>When
+         * you stop an instance, we attempt to shut it down forcibly after a short while.
+         * If your instance appears stuck in the stopping state after a period of time,
+         * there may be an issue with the underlying host computer. For more information,
+         * see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshooting
          * Stopping Your Instance</a> in the <i>Amazon Elastic Compute Cloud User
          * Guide</i>.</p>
@@ -8567,8 +8659,11 @@ namespace Model
          * automatically deleted. For more information about the differences between
          * rebooting, stopping, and terminating instances, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For
-         * more information about troubleshooting, see <a
+         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>When
+         * you stop an instance, we attempt to shut it down forcibly after a short while.
+         * If your instance appears stuck in the stopping state after a period of time,
+         * there may be an issue with the underlying host computer. For more information,
+         * see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshooting
          * Stopping Your Instance</a> in the <i>Amazon Elastic Compute Cloud User
          * Guide</i>.</p>
@@ -8595,8 +8690,11 @@ namespace Model
          * automatically deleted. For more information about the differences between
          * rebooting, stopping, and terminating instances, see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Instance
-         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>For
-         * more information about troubleshooting, see <a
+         * Lifecycle</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>When
+         * you stop an instance, we attempt to shut it down forcibly after a short while.
+         * If your instance appears stuck in the stopping state after a period of time,
+         * there may be an issue with the underlying host computer. For more information,
+         * see <a
          * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html">Troubleshooting
          * Stopping Your Instance</a> in the <i>Amazon Elastic Compute Cloud User
          * Guide</i>.</p>
@@ -8849,6 +8947,7 @@ namespace Model
         void DescribeRouteTablesAsyncHelper(const Model::DescribeRouteTablesRequest& request, const DescribeRouteTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeScheduledInstanceAvailabilityAsyncHelper(const Model::DescribeScheduledInstanceAvailabilityRequest& request, const DescribeScheduledInstanceAvailabilityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeScheduledInstancesAsyncHelper(const Model::DescribeScheduledInstancesRequest& request, const DescribeScheduledInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeSecurityGroupReferencesAsyncHelper(const Model::DescribeSecurityGroupReferencesRequest& request, const DescribeSecurityGroupReferencesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSecurityGroupsAsyncHelper(const Model::DescribeSecurityGroupsRequest& request, const DescribeSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSnapshotAttributeAsyncHelper(const Model::DescribeSnapshotAttributeRequest& request, const DescribeSnapshotAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSnapshotsAsyncHelper(const Model::DescribeSnapshotsRequest& request, const DescribeSnapshotsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
@@ -8858,6 +8957,7 @@ namespace Model
         void DescribeSpotFleetRequestsAsyncHelper(const Model::DescribeSpotFleetRequestsRequest& request, const DescribeSpotFleetRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSpotInstanceRequestsAsyncHelper(const Model::DescribeSpotInstanceRequestsRequest& request, const DescribeSpotInstanceRequestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSpotPriceHistoryAsyncHelper(const Model::DescribeSpotPriceHistoryRequest& request, const DescribeSpotPriceHistoryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeStaleSecurityGroupsAsyncHelper(const Model::DescribeStaleSecurityGroupsRequest& request, const DescribeStaleSecurityGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeSubnetsAsyncHelper(const Model::DescribeSubnetsRequest& request, const DescribeSubnetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeTagsAsyncHelper(const Model::DescribeTagsRequest& request, const DescribeTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeVolumeAttributeAsyncHelper(const Model::DescribeVolumeAttributeRequest& request, const DescribeVolumeAttributeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
@@ -8887,6 +8987,7 @@ namespace Model
         void EnableVpcClassicLinkAsyncHelper(const Model::EnableVpcClassicLinkRequest& request, const EnableVpcClassicLinkResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void EnableVpcClassicLinkDnsSupportAsyncHelper(const Model::EnableVpcClassicLinkDnsSupportRequest& request, const EnableVpcClassicLinkDnsSupportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetConsoleOutputAsyncHelper(const Model::GetConsoleOutputRequest& request, const GetConsoleOutputResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void GetConsoleScreenshotAsyncHelper(const Model::GetConsoleScreenshotRequest& request, const GetConsoleScreenshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetPasswordDataAsyncHelper(const Model::GetPasswordDataRequest& request, const GetPasswordDataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ImportImageAsyncHelper(const Model::ImportImageRequest& request, const ImportImageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ImportInstanceAsyncHelper(const Model::ImportInstanceRequest& request, const ImportInstanceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;

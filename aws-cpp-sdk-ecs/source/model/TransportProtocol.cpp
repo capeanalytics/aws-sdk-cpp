@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int tcp_HASH = HashingUtils::HashString("tcp");
-static const int udp_HASH = HashingUtils::HashString("udp");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace TransportProtocolMapper
       {
+
+        static const int tcp_HASH = HashingUtils::HashString("tcp");
+        static const int udp_HASH = HashingUtils::HashString("udp");
 
 
         TransportProtocol GetTransportProtocolForName(const Aws::String& name)

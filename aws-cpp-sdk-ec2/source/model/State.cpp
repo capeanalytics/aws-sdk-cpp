@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Pending_HASH = HashingUtils::HashString("Pending");
-static const int Available_HASH = HashingUtils::HashString("Available");
-static const int Deleting_HASH = HashingUtils::HashString("Deleting");
-static const int Deleted_HASH = HashingUtils::HashString("Deleted");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace StateMapper
       {
+
+        static const int Pending_HASH = HashingUtils::HashString("Pending");
+        static const int Available_HASH = HashingUtils::HashString("Available");
+        static const int Deleting_HASH = HashingUtils::HashString("Deleting");
+        static const int Deleted_HASH = HashingUtils::HashString("Deleted");
 
 
         State GetStateForName(const Aws::String& name)

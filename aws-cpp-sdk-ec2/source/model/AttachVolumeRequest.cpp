@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,18 +36,22 @@ Aws::String AttachVolumeRequest::SerializePayload() const
   {
     ss << "DryRun=" << m_dryRun << "&";
   }
+
   if(m_volumeIdHasBeenSet)
   {
     ss << "VolumeId=" << StringUtils::URLEncode(m_volumeId.c_str()) << "&";
   }
+
   if(m_instanceIdHasBeenSet)
   {
     ss << "InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
+
   if(m_deviceHasBeenSet)
   {
     ss << "Device=" << StringUtils::URLEncode(m_device.c_str()) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

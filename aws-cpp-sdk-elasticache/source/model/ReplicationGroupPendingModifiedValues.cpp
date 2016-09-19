@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 ReplicationGroupPendingModifiedValues::ReplicationGroupPendingModifiedValues() : 
     m_primaryClusterIdHasBeenSet(false),
@@ -65,10 +71,12 @@ void ReplicationGroupPendingModifiedValues::OutputToStream(Aws::OStream& oStream
   {
       oStream << location << index << locationValue << ".PrimaryClusterId=" << StringUtils::URLEncode(m_primaryClusterId.c_str()) << "&";
   }
+
   if(m_automaticFailoverStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutomaticFailoverStatus=" << PendingAutomaticFailoverStatusMapper::GetNameForPendingAutomaticFailoverStatus(m_automaticFailoverStatus) << "&";
   }
+
 }
 
 void ReplicationGroupPendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void ReplicationGroupPendingModifiedValues::OutputToStream(Aws::OStream& oStream
       oStream << location << ".AutomaticFailoverStatus=" << PendingAutomaticFailoverStatusMapper::GetNameForPendingAutomaticFailoverStatus(m_automaticFailoverStatus) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

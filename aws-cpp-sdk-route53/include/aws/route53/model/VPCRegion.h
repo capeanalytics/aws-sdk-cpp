@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,6 +32,7 @@ namespace Model
     eu_central_1,
     ap_southeast_1,
     ap_southeast_2,
+    ap_south_1,
     ap_northeast_1,
     ap_northeast_2,
     sa_east_1,

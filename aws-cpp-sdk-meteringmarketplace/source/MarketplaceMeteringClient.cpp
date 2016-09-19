@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -39,10 +39,11 @@ using namespace Aws::Utils::Json;
 static const char* SERVICE_NAME = "aws-marketplace";
 static const char* ALLOCATION_TAG = "MarketplaceMeteringClient";
 
+
 MarketplaceMeteringClient::MarketplaceMeteringClient(const Client::ClientConfiguration& clientConfiguration) :
-  BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
+  BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<DefaultAWSCredentialsProviderChain>(ALLOCATION_TAG),
-        SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
+        SERVICE_NAME, clientConfiguration.region),
     Aws::MakeShared<MarketplaceMeteringErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -50,9 +51,9 @@ MarketplaceMeteringClient::MarketplaceMeteringClient(const Client::ClientConfigu
 }
 
 MarketplaceMeteringClient::MarketplaceMeteringClient(const AWSCredentials& credentials, const Client::ClientConfiguration& clientConfiguration) :
-  BASECLASS(Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
+  BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, Aws::MakeShared<SimpleAWSCredentialsProvider>(ALLOCATION_TAG, credentials),
-         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
+         SERVICE_NAME, clientConfiguration.region),
     Aws::MakeShared<MarketplaceMeteringErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -60,10 +61,10 @@ MarketplaceMeteringClient::MarketplaceMeteringClient(const AWSCredentials& crede
 }
 
 MarketplaceMeteringClient::MarketplaceMeteringClient(const std::shared_ptr<AWSCredentialsProvider>& credentialsProvider,
-  const Client::ClientConfiguration& clientConfiguration, const std::shared_ptr<HttpClientFactory const>& httpClientFactory) :
-  BASECLASS(httpClientFactory != nullptr ? httpClientFactory : Aws::MakeShared<HttpClientFactory>(ALLOCATION_TAG), clientConfiguration,
+  const Client::ClientConfiguration& clientConfiguration) :
+  BASECLASS(clientConfiguration,
     Aws::MakeShared<AWSAuthV4Signer>(ALLOCATION_TAG, credentialsProvider,
-         SERVICE_NAME, clientConfiguration.authenticationRegion.empty() ? RegionMapper::GetRegionName(clientConfiguration.region) : clientConfiguration.authenticationRegion),
+         SERVICE_NAME, clientConfiguration.region),
     Aws::MakeShared<MarketplaceMeteringErrorMarshaller>(ALLOCATION_TAG)),
     m_executor(clientConfiguration.executor)
 {
@@ -79,9 +80,9 @@ void MarketplaceMeteringClient::init(const ClientConfiguration& config)
   Aws::StringStream ss;
   ss << SchemeMapper::ToString(config.scheme) << "://";
 
-  if(config.endpointOverride.empty() && config.authenticationRegion.empty())
+  if(config.endpointOverride.empty())
   {
-    ss << MarketplaceMeteringEndpoint::ForRegion(config.region);
+    ss << MarketplaceMeteringEndpoint::ForRegion(config.region, config.useDualStack);
   }
   else
   {
@@ -90,6 +91,7 @@ void MarketplaceMeteringClient::init(const ClientConfiguration& config)
 
   m_uri = ss.str();
 }
+
 MeterUsageOutcome MarketplaceMeteringClient::MeterUsage(const MeterUsageRequest& request) const
 {
   Aws::StringStream ss;
@@ -108,12 +110,12 @@ MeterUsageOutcome MarketplaceMeteringClient::MeterUsage(const MeterUsageRequest&
 
 MeterUsageOutcomeCallable MarketplaceMeteringClient::MeterUsageCallable(const MeterUsageRequest& request) const
 {
-  return std::async(std::launch::async, &MarketplaceMeteringClient::MeterUsage, this, request);
+  return std::async(std::launch::async, [this, request](){ return this->MeterUsage(request); } );
 }
 
 void MarketplaceMeteringClient::MeterUsageAsync(const MeterUsageRequest& request, const MeterUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
-  m_executor->Submit(&MarketplaceMeteringClient::MeterUsageAsyncHelper, this, request, handler, context);
+  m_executor->Submit( [this, request, handler, context](){ this->MeterUsageAsyncHelper( request, handler, context ); } );
 }
 
 void MarketplaceMeteringClient::MeterUsageAsyncHelper(const MeterUsageRequest& request, const MeterUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

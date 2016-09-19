@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::MachineLearning::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace MachineLearning
+{
+namespace Model
+{
 
 MLModel::MLModel() : 
     m_mLModelIdHasBeenSet(false),
@@ -39,7 +45,11 @@ MLModel::MLModel() :
     m_scoreThreshold(0.0),
     m_scoreThresholdHasBeenSet(false),
     m_scoreThresholdLastUpdatedAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
+    m_messageHasBeenSet(false),
+    m_computeTime(0),
+    m_computeTimeHasBeenSet(false),
+    m_finishedAtHasBeenSet(false),
+    m_startedAtHasBeenSet(false)
 {
 }
 
@@ -61,7 +71,11 @@ MLModel::MLModel(const JsonValue& jsonValue) :
     m_scoreThreshold(0.0),
     m_scoreThresholdHasBeenSet(false),
     m_scoreThresholdLastUpdatedAtHasBeenSet(false),
-    m_messageHasBeenSet(false)
+    m_messageHasBeenSet(false),
+    m_computeTime(0),
+    m_computeTimeHasBeenSet(false),
+    m_finishedAtHasBeenSet(false),
+    m_startedAtHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -183,6 +197,27 @@ MLModel& MLModel::operator =(const JsonValue& jsonValue)
     m_messageHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ComputeTime"))
+  {
+    m_computeTime = jsonValue.GetInt64("ComputeTime");
+
+    m_computeTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("FinishedAt"))
+  {
+    m_finishedAt = jsonValue.GetDouble("FinishedAt");
+
+    m_finishedAtHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StartedAt"))
+  {
+    m_startedAt = jsonValue.GetDouble("StartedAt");
+
+    m_startedAtHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -285,5 +320,25 @@ JsonValue MLModel::Jsonize() const
 
   }
 
+  if(m_computeTimeHasBeenSet)
+  {
+   payload.WithInt64("ComputeTime", m_computeTime);
+
+  }
+
+  if(m_finishedAtHasBeenSet)
+  {
+   payload.WithDouble("FinishedAt", m_finishedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_startedAtHasBeenSet)
+  {
+   payload.WithDouble("StartedAt", m_startedAt.SecondsWithMSPrecision());
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace MachineLearning
+} // namespace Aws

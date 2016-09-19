@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int FAIL_WITH_403_HASH = HashingUtils::HashString("FAIL_WITH_403");
-static const int SUCCEED_WITH_RESPONSE_HEADER_HASH = HashingUtils::HashString("SUCCEED_WITH_RESPONSE_HEADER");
-static const int SUCCEED_WITHOUT_RESPONSE_HEADER_HASH = HashingUtils::HashString("SUCCEED_WITHOUT_RESPONSE_HEADER");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace UnauthorizedCacheControlHeaderStrategyMapper
       {
+
+        static const int FAIL_WITH_403_HASH = HashingUtils::HashString("FAIL_WITH_403");
+        static const int SUCCEED_WITH_RESPONSE_HEADER_HASH = HashingUtils::HashString("SUCCEED_WITH_RESPONSE_HEADER");
+        static const int SUCCEED_WITHOUT_RESPONSE_HEADER_HASH = HashingUtils::HashString("SUCCEED_WITHOUT_RESPONSE_HEADER");
 
 
         UnauthorizedCacheControlHeaderStrategy GetUnauthorizedCacheControlHeaderStrategyForName(const Aws::String& name)

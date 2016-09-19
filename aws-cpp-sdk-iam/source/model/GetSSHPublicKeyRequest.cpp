@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,14 +34,17 @@ Aws::String GetSSHPublicKeyRequest::SerializePayload() const
   {
     ss << "UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_sSHPublicKeyIdHasBeenSet)
   {
     ss << "SSHPublicKeyId=" << StringUtils::URLEncode(m_sSHPublicKeyId.c_str()) << "&";
   }
+
   if(m_encodingHasBeenSet)
   {
     ss << "Encoding=" << EncodingTypeMapper::GetNameForEncodingType(m_encoding) << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

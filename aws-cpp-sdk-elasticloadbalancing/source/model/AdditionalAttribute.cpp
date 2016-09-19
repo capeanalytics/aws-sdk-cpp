@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticLoadBalancing
+{
+namespace Model
+{
 
 AdditionalAttribute::AdditionalAttribute() : 
     m_keyHasBeenSet(false),
@@ -65,10 +71,12 @@ void AdditionalAttribute::OutputToStream(Aws::OStream& oStream, const char* loca
   {
       oStream << location << index << locationValue << ".Key=" << StringUtils::URLEncode(m_key.c_str()) << "&";
   }
+
   if(m_valueHasBeenSet)
   {
       oStream << location << index << locationValue << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
+
 }
 
 void AdditionalAttribute::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void AdditionalAttribute::OutputToStream(Aws::OStream& oStream, const char* loca
       oStream << location << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticLoadBalancing
+} // namespace Aws

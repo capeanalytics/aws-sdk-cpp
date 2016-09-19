@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -39,7 +39,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
@@ -48,7 +51,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
 
@@ -57,7 +63,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
 
@@ -66,7 +75,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
 
@@ -75,7 +87,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline ListClustersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
@@ -84,7 +99,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline ListClustersRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
 
@@ -93,7 +111,10 @@ namespace Model
      * <code>ListClusters</code> request where <code>maxResults</code> was used and the
      * results exceeded the value of that parameter. Pagination continues from the end
      * of the previous results that returned the <code>nextToken</code> value. This
-     * value is <code>null</code> when there are no more results to return.</p>
+     * value is <code>null</code> when there are no more results to return.</p> <note>
+     * <p>This token should be treated as an opaque identifier that is only used to
+     * retrieve the next items in a list and not for other programmatic purposes.</p>
+     * </note>
      */
     inline ListClustersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 
@@ -107,7 +128,7 @@ namespace Model
      * If this parameter is not used, then <code>ListClusters</code> returns up to 100
      * results and a <code>nextToken</code> value if applicable.</p>
      */
-    inline long GetMaxResults() const{ return m_maxResults; }
+    inline int GetMaxResults() const{ return m_maxResults; }
 
     /**
      * <p>The maximum number of cluster results returned by <code>ListClusters</code>
@@ -119,7 +140,7 @@ namespace Model
      * If this parameter is not used, then <code>ListClusters</code> returns up to 100
      * results and a <code>nextToken</code> value if applicable.</p>
      */
-    inline void SetMaxResults(long value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
 
     /**
      * <p>The maximum number of cluster results returned by <code>ListClusters</code>
@@ -131,12 +152,12 @@ namespace Model
      * If this parameter is not used, then <code>ListClusters</code> returns up to 100
      * results and a <code>nextToken</code> value if applicable.</p>
      */
-    inline ListClustersRequest& WithMaxResults(long value) { SetMaxResults(value); return *this;}
+    inline ListClustersRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
   private:
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxResults;
+    int m_maxResults;
     bool m_maxResultsHasBeenSet;
   };
 

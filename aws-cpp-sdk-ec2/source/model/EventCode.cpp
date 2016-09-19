@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int instance_reboot_HASH = HashingUtils::HashString("instance-reboot");
-static const int system_reboot_HASH = HashingUtils::HashString("system-reboot");
-static const int system_maintenance_HASH = HashingUtils::HashString("system-maintenance");
-static const int instance_retirement_HASH = HashingUtils::HashString("instance-retirement");
-static const int instance_stop_HASH = HashingUtils::HashString("instance-stop");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace EventCodeMapper
       {
+
+        static const int instance_reboot_HASH = HashingUtils::HashString("instance-reboot");
+        static const int system_reboot_HASH = HashingUtils::HashString("system-reboot");
+        static const int system_maintenance_HASH = HashingUtils::HashString("system-maintenance");
+        static const int instance_retirement_HASH = HashingUtils::HashString("instance-retirement");
+        static const int instance_stop_HASH = HashingUtils::HashString("instance-stop");
 
 
         EventCode GetEventCodeForName(const Aws::String& name)

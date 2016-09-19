@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,11 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to add or update a sending authorization policy for an
+   * identity. Sending authorization is an Amazon SES feature that enables you to
+   * authorize other senders to use your identities. For information, see the <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API PutIdentityPolicyRequest : public SESRequest
   {

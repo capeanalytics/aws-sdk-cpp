@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 DomainStatus::DomainStatus() : 
     m_domainIdHasBeenSet(false),
@@ -165,60 +171,73 @@ void DomainStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".DomainId=" << StringUtils::URLEncode(m_domainId.c_str()) << "&";
   }
+
   if(m_domainNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".DomainName=" << StringUtils::URLEncode(m_domainName.c_str()) << "&";
   }
+
   if(m_aRNHasBeenSet)
   {
       oStream << location << index << locationValue << ".ARN=" << StringUtils::URLEncode(m_aRN.c_str()) << "&";
   }
+
   if(m_createdHasBeenSet)
   {
       oStream << location << index << locationValue << ".Created=" << m_created << "&";
   }
+
   if(m_deletedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Deleted=" << m_deleted << "&";
   }
+
   if(m_docServiceHasBeenSet)
   {
       Aws::StringStream docServiceLocationAndMemberSs;
       docServiceLocationAndMemberSs << location << index << locationValue << ".DocService";
       m_docService.OutputToStream(oStream, docServiceLocationAndMemberSs.str().c_str());
   }
+
   if(m_searchServiceHasBeenSet)
   {
       Aws::StringStream searchServiceLocationAndMemberSs;
       searchServiceLocationAndMemberSs << location << index << locationValue << ".SearchService";
       m_searchService.OutputToStream(oStream, searchServiceLocationAndMemberSs.str().c_str());
   }
+
   if(m_requiresIndexDocumentsHasBeenSet)
   {
       oStream << location << index << locationValue << ".RequiresIndexDocuments=" << m_requiresIndexDocuments << "&";
   }
+
   if(m_processingHasBeenSet)
   {
       oStream << location << index << locationValue << ".Processing=" << m_processing << "&";
   }
+
   if(m_searchInstanceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SearchInstanceType=" << StringUtils::URLEncode(m_searchInstanceType.c_str()) << "&";
   }
+
   if(m_searchPartitionCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".SearchPartitionCount=" << m_searchPartitionCount << "&";
   }
+
   if(m_searchInstanceCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".SearchInstanceCount=" << m_searchInstanceCount << "&";
   }
+
   if(m_limitsHasBeenSet)
   {
       Aws::StringStream limitsLocationAndMemberSs;
       limitsLocationAndMemberSs << location << index << locationValue << ".Limits";
       m_limits.OutputToStream(oStream, limitsLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void DomainStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -282,3 +301,7 @@ void DomainStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
       m_limits.OutputToStream(oStream, limitsLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

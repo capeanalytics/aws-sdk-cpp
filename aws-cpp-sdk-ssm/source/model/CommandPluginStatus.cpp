@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,12 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Pending_HASH = HashingUtils::HashString("Pending");
-static const int InProgress_HASH = HashingUtils::HashString("InProgress");
-static const int Success_HASH = HashingUtils::HashString("Success");
-static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
-static const int Cancelled_HASH = HashingUtils::HashString("Cancelled");
-static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 namespace Aws
 {
@@ -34,6 +28,13 @@ namespace Aws
     {
       namespace CommandPluginStatusMapper
       {
+
+        static const int Pending_HASH = HashingUtils::HashString("Pending");
+        static const int InProgress_HASH = HashingUtils::HashString("InProgress");
+        static const int Success_HASH = HashingUtils::HashString("Success");
+        static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
+        static const int Cancelled_HASH = HashingUtils::HashString("Cancelled");
+        static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 
         CommandPluginStatus GetCommandPluginStatusForName(const Aws::String& name)

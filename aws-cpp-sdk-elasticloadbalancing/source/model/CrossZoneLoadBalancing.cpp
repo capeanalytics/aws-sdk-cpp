@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticLoadBalancing
+{
+namespace Model
+{
 
 CrossZoneLoadBalancing::CrossZoneLoadBalancing() : 
     m_enabled(false),
@@ -59,6 +65,7 @@ void CrossZoneLoadBalancing::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << index << locationValue << ".Enabled=" << m_enabled << "&";
   }
+
 }
 
 void CrossZoneLoadBalancing::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -68,3 +75,7 @@ void CrossZoneLoadBalancing::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << ".Enabled=" << m_enabled << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticLoadBalancing
+} // namespace Aws

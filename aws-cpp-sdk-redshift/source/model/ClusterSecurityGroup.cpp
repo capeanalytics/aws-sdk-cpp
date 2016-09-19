@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 ClusterSecurityGroup::ClusterSecurityGroup() : 
     m_clusterSecurityGroupNameHasBeenSet(false),
@@ -107,10 +113,12 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
   {
       oStream << location << index << locationValue << ".ClusterSecurityGroupName=" << StringUtils::URLEncode(m_clusterSecurityGroupName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_eC2SecurityGroupsHasBeenSet)
   {
       unsigned eC2SecurityGroupsIdx = 1;
@@ -121,6 +129,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }
+
   if(m_iPRangesHasBeenSet)
   {
       unsigned iPRangesIdx = 1;
@@ -131,6 +140,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
         item.OutputToStream(oStream, iPRangesSs.str().c_str());
       }
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -141,6 +151,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -184,3 +195,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

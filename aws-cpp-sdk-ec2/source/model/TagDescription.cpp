@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 TagDescription::TagDescription() : 
     m_resourceIdHasBeenSet(false),
@@ -81,18 +87,22 @@ void TagDescription::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".ResourceId=" << StringUtils::URLEncode(m_resourceId.c_str()) << "&";
   }
+
   if(m_resourceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ResourceType=" << ResourceTypeMapper::GetNameForResourceType(m_resourceType) << "&";
   }
+
   if(m_keyHasBeenSet)
   {
       oStream << location << index << locationValue << ".Key=" << StringUtils::URLEncode(m_key.c_str()) << "&";
   }
+
   if(m_valueHasBeenSet)
   {
       oStream << location << index << locationValue << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
+
 }
 
 void TagDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void TagDescription::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

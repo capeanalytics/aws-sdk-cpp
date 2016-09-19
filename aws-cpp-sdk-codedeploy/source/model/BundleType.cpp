@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int tar_HASH = HashingUtils::HashString("tar");
-static const int tgz_HASH = HashingUtils::HashString("tgz");
-static const int zip_HASH = HashingUtils::HashString("zip");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace BundleTypeMapper
       {
+
+        static const int tar_HASH = HashingUtils::HashString("tar");
+        static const int tgz_HASH = HashingUtils::HashString("tgz");
+        static const int zip_HASH = HashingUtils::HashString("zip");
 
 
         BundleType GetBundleTypeForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,11 +17,18 @@
 
 #include <utility>
 
-using namespace Aws::StorageGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace StorageGateway
+{
+namespace Model
+{
+
 GatewayInfo::GatewayInfo() : 
+    m_gatewayIdHasBeenSet(false),
     m_gatewayARNHasBeenSet(false),
     m_gatewayTypeHasBeenSet(false),
     m_gatewayOperationalStateHasBeenSet(false),
@@ -30,6 +37,7 @@ GatewayInfo::GatewayInfo() :
 }
 
 GatewayInfo::GatewayInfo(const JsonValue& jsonValue) : 
+    m_gatewayIdHasBeenSet(false),
     m_gatewayARNHasBeenSet(false),
     m_gatewayTypeHasBeenSet(false),
     m_gatewayOperationalStateHasBeenSet(false),
@@ -40,6 +48,13 @@ GatewayInfo::GatewayInfo(const JsonValue& jsonValue) :
 
 GatewayInfo& GatewayInfo::operator =(const JsonValue& jsonValue)
 {
+  if(jsonValue.ValueExists("GatewayId"))
+  {
+    m_gatewayId = jsonValue.GetString("GatewayId");
+
+    m_gatewayIdHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("GatewayARN"))
   {
     m_gatewayARN = jsonValue.GetString("GatewayARN");
@@ -75,6 +90,12 @@ JsonValue GatewayInfo::Jsonize() const
 {
   JsonValue payload;
 
+  if(m_gatewayIdHasBeenSet)
+  {
+   payload.WithString("GatewayId", m_gatewayId);
+
+  }
+
   if(m_gatewayARNHasBeenSet)
   {
    payload.WithString("GatewayARN", m_gatewayARN);
@@ -101,3 +122,7 @@ JsonValue GatewayInfo::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace StorageGateway
+} // namespace Aws

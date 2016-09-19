@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,7 @@ namespace Model
 {
 
   /**
+   * <p/>
    */
   class AWS_LAMBDA_API CreateEventSourceMappingRequest : public LambdaRequest
   {
@@ -108,9 +109,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
@@ -126,9 +127,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
@@ -144,9 +145,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
@@ -162,9 +163,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
@@ -180,9 +181,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
@@ -198,9 +199,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(value); return *this;}
 
@@ -216,9 +217,9 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS
      * Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to
      * specify only the function name with the account ID qualifier (for example,
-     * <code>account-id:Thumbnail</code>). </p> <p> Note that the length constraint
+     * <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint
      * applies only to the ARN. If you specify only the function name, it is limited to
-     * 64 character in length. </p>
+     * 64 character in length.</p>
      */
     inline CreateEventSourceMappingRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
@@ -245,21 +246,21 @@ namespace Model
      * source at the time of invoking your function. Your function receives an event
      * with all the retrieved records. The default is 100 records.</p>
      */
-    inline long GetBatchSize() const{ return m_batchSize; }
+    inline int GetBatchSize() const{ return m_batchSize; }
 
     /**
      * <p>The largest number of records that AWS Lambda will retrieve from your event
      * source at the time of invoking your function. Your function receives an event
      * with all the retrieved records. The default is 100 records.</p>
      */
-    inline void SetBatchSize(long value) { m_batchSizeHasBeenSet = true; m_batchSize = value; }
+    inline void SetBatchSize(int value) { m_batchSizeHasBeenSet = true; m_batchSize = value; }
 
     /**
      * <p>The largest number of records that AWS Lambda will retrieve from your event
      * source at the time of invoking your function. Your function receives an event
      * with all the retrieved records. The default is 100 records.</p>
      */
-    inline CreateEventSourceMappingRequest& WithBatchSize(long value) { SetBatchSize(value); return *this;}
+    inline CreateEventSourceMappingRequest& WithBatchSize(int value) { SetBatchSize(value); return *this;}
 
     /**
      * <p>The position in the stream where AWS Lambda should start reading. For more
@@ -308,7 +309,7 @@ namespace Model
     bool m_functionNameHasBeenSet;
     bool m_enabled;
     bool m_enabledHasBeenSet;
-    long m_batchSize;
+    int m_batchSize;
     bool m_batchSizeHasBeenSet;
     EventSourcePosition m_startingPosition;
     bool m_startingPositionHasBeenSet;

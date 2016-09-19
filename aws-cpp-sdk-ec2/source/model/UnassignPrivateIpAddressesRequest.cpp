@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String UnassignPrivateIpAddressesRequest::SerializePayload() const
   {
     ss << "NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+
   if(m_privateIpAddressesHasBeenSet)
   {
     unsigned privateIpAddressesCount = 1;
@@ -43,6 +44,7 @@ Aws::String UnassignPrivateIpAddressesRequest::SerializePayload() const
       privateIpAddressesCount++;
     }
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

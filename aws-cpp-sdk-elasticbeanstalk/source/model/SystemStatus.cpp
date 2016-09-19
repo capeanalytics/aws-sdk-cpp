@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 SystemStatus::SystemStatus() : 
     m_cPUUtilizationHasBeenSet(false),
@@ -73,6 +79,7 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
       cPUUtilizationLocationAndMemberSs << location << index << locationValue << ".CPUUtilization";
       m_cPUUtilization.OutputToStream(oStream, cPUUtilizationLocationAndMemberSs.str().c_str());
   }
+
   if(m_loadAverageHasBeenSet)
   {
       unsigned loadAverageIdx = 1;
@@ -81,6 +88,7 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
         oStream << location << index << locationValue << ".LoadAverage.member." << loadAverageIdx++ << "=" << StringUtils::URLEncode(item) << "&";
       }
   }
+
 }
 
 void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void SystemStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
       }
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

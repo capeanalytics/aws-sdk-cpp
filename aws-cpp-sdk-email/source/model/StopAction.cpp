@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 StopAction::StopAction() : 
     m_scopeHasBeenSet(false),
@@ -65,10 +71,12 @@ void StopAction::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".Scope=" << StopScopeMapper::GetNameForStopScope(m_scope) << "&";
   }
+
   if(m_topicArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
+
 }
 
 void StopAction::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void StopAction::OutputToStream(Aws::OStream& oStream, const char* location) con
       oStream << location << ".TopicArn=" << StringUtils::URLEncode(m_topicArn.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

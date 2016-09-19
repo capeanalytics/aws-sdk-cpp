@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,8 +26,8 @@ namespace Model
 
   /**
    * <p>A JSON object containing one or more of the following fields:</p> <ul> <li>
-   * <a>DeleteChapCredentialsInput$InitiatorName</a> </li> <li>
-   * <a>DeleteChapCredentialsInput$TargetARN</a> </li> </ul>
+   * <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p>
+   * <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>
    */
   class AWS_STORAGEGATEWAY_API DeleteChapCredentialsRequest : public StorageGatewayRequest
   {

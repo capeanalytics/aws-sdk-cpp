@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -158,65 +158,65 @@ namespace Model
     /**
      * <p>The minimum size of the group.</p>
      */
-    inline long GetMinSize() const{ return m_minSize; }
+    inline int GetMinSize() const{ return m_minSize; }
 
     /**
      * <p>The minimum size of the group.</p>
      */
-    inline void SetMinSize(long value) { m_minSizeHasBeenSet = true; m_minSize = value; }
+    inline void SetMinSize(int value) { m_minSizeHasBeenSet = true; m_minSize = value; }
 
     /**
      * <p>The minimum size of the group.</p>
      */
-    inline AutoScalingGroup& WithMinSize(long value) { SetMinSize(value); return *this;}
+    inline AutoScalingGroup& WithMinSize(int value) { SetMinSize(value); return *this;}
 
     /**
      * <p>The maximum size of the group.</p>
      */
-    inline long GetMaxSize() const{ return m_maxSize; }
+    inline int GetMaxSize() const{ return m_maxSize; }
 
     /**
      * <p>The maximum size of the group.</p>
      */
-    inline void SetMaxSize(long value) { m_maxSizeHasBeenSet = true; m_maxSize = value; }
+    inline void SetMaxSize(int value) { m_maxSizeHasBeenSet = true; m_maxSize = value; }
 
     /**
      * <p>The maximum size of the group.</p>
      */
-    inline AutoScalingGroup& WithMaxSize(long value) { SetMaxSize(value); return *this;}
+    inline AutoScalingGroup& WithMaxSize(int value) { SetMaxSize(value); return *this;}
 
     /**
      * <p>The desired size of the group.</p>
      */
-    inline long GetDesiredCapacity() const{ return m_desiredCapacity; }
+    inline int GetDesiredCapacity() const{ return m_desiredCapacity; }
 
     /**
      * <p>The desired size of the group.</p>
      */
-    inline void SetDesiredCapacity(long value) { m_desiredCapacityHasBeenSet = true; m_desiredCapacity = value; }
+    inline void SetDesiredCapacity(int value) { m_desiredCapacityHasBeenSet = true; m_desiredCapacity = value; }
 
     /**
      * <p>The desired size of the group.</p>
      */
-    inline AutoScalingGroup& WithDesiredCapacity(long value) { SetDesiredCapacity(value); return *this;}
+    inline AutoScalingGroup& WithDesiredCapacity(int value) { SetDesiredCapacity(value); return *this;}
 
     /**
      * <p>The amount of time, in seconds, after a scaling activity completes before
      * another scaling activity can start.</p>
      */
-    inline long GetDefaultCooldown() const{ return m_defaultCooldown; }
+    inline int GetDefaultCooldown() const{ return m_defaultCooldown; }
 
     /**
      * <p>The amount of time, in seconds, after a scaling activity completes before
      * another scaling activity can start.</p>
      */
-    inline void SetDefaultCooldown(long value) { m_defaultCooldownHasBeenSet = true; m_defaultCooldown = value; }
+    inline void SetDefaultCooldown(int value) { m_defaultCooldownHasBeenSet = true; m_defaultCooldown = value; }
 
     /**
      * <p>The amount of time, in seconds, after a scaling activity completes before
      * another scaling activity can start.</p>
      */
-    inline AutoScalingGroup& WithDefaultCooldown(long value) { SetDefaultCooldown(value); return *this;}
+    inline AutoScalingGroup& WithDefaultCooldown(int value) { SetDefaultCooldown(value); return *this;}
 
     /**
      * <p>One or more Availability Zones for the group.</p>
@@ -299,6 +299,54 @@ namespace Model
     inline AutoScalingGroup& AddLoadBalancerNames(const char* value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
 
     /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetTargetGroupARNs() const{ return m_targetGroupARNs; }
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline void SetTargetGroupARNs(const Aws::Vector<Aws::String>& value) { m_targetGroupARNsHasBeenSet = true; m_targetGroupARNs = value; }
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline void SetTargetGroupARNs(Aws::Vector<Aws::String>&& value) { m_targetGroupARNsHasBeenSet = true; m_targetGroupARNs = value; }
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline AutoScalingGroup& WithTargetGroupARNs(const Aws::Vector<Aws::String>& value) { SetTargetGroupARNs(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline AutoScalingGroup& WithTargetGroupARNs(Aws::Vector<Aws::String>&& value) { SetTargetGroupARNs(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline AutoScalingGroup& AddTargetGroupARNs(const Aws::String& value) { m_targetGroupARNsHasBeenSet = true; m_targetGroupARNs.push_back(value); return *this; }
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline AutoScalingGroup& AddTargetGroupARNs(Aws::String&& value) { m_targetGroupARNsHasBeenSet = true; m_targetGroupARNs.push_back(value); return *this; }
+
+    /**
+     * <p>The Amazon Resource Names (ARN) of the target groups for your load
+     * balancer.</p>
+     */
+    inline AutoScalingGroup& AddTargetGroupARNs(const char* value) { m_targetGroupARNsHasBeenSet = true; m_targetGroupARNs.push_back(value); return *this; }
+
+    /**
      * <p>The service to use for the health checks. The valid values are
      * <code>EC2</code> and <code>ELB</code>.</p>
      */
@@ -344,19 +392,19 @@ namespace Model
      * <p>The amount of time, in seconds, that Auto Scaling waits before checking the
      * health status of an EC2 instance that has come into service.</p>
      */
-    inline long GetHealthCheckGracePeriod() const{ return m_healthCheckGracePeriod; }
+    inline int GetHealthCheckGracePeriod() const{ return m_healthCheckGracePeriod; }
 
     /**
      * <p>The amount of time, in seconds, that Auto Scaling waits before checking the
      * health status of an EC2 instance that has come into service.</p>
      */
-    inline void SetHealthCheckGracePeriod(long value) { m_healthCheckGracePeriodHasBeenSet = true; m_healthCheckGracePeriod = value; }
+    inline void SetHealthCheckGracePeriod(int value) { m_healthCheckGracePeriodHasBeenSet = true; m_healthCheckGracePeriod = value; }
 
     /**
      * <p>The amount of time, in seconds, that Auto Scaling waits before checking the
      * health status of an EC2 instance that has come into service.</p>
      */
-    inline AutoScalingGroup& WithHealthCheckGracePeriod(long value) { SetHealthCheckGracePeriod(value); return *this;}
+    inline AutoScalingGroup& WithHealthCheckGracePeriod(int value) { SetHealthCheckGracePeriod(value); return *this;}
 
     /**
      * <p>The EC2 instances associated with the group.</p>
@@ -742,21 +790,23 @@ namespace Model
     bool m_autoScalingGroupARNHasBeenSet;
     Aws::String m_launchConfigurationName;
     bool m_launchConfigurationNameHasBeenSet;
-    long m_minSize;
+    int m_minSize;
     bool m_minSizeHasBeenSet;
-    long m_maxSize;
+    int m_maxSize;
     bool m_maxSizeHasBeenSet;
-    long m_desiredCapacity;
+    int m_desiredCapacity;
     bool m_desiredCapacityHasBeenSet;
-    long m_defaultCooldown;
+    int m_defaultCooldown;
     bool m_defaultCooldownHasBeenSet;
     Aws::Vector<Aws::String> m_availabilityZones;
     bool m_availabilityZonesHasBeenSet;
     Aws::Vector<Aws::String> m_loadBalancerNames;
     bool m_loadBalancerNamesHasBeenSet;
+    Aws::Vector<Aws::String> m_targetGroupARNs;
+    bool m_targetGroupARNsHasBeenSet;
     Aws::String m_healthCheckType;
     bool m_healthCheckTypeHasBeenSet;
-    long m_healthCheckGracePeriod;
+    int m_healthCheckGracePeriod;
     bool m_healthCheckGracePeriodHasBeenSet;
     Aws::Vector<Instance> m_instances;
     bool m_instancesHasBeenSet;

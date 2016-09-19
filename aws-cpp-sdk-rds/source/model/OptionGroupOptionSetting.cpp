@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 OptionGroupOptionSetting::OptionGroupOptionSetting() : 
     m_settingNameHasBeenSet(false),
@@ -99,26 +105,32 @@ void OptionGroupOptionSetting::OutputToStream(Aws::OStream& oStream, const char*
   {
       oStream << location << index << locationValue << ".SettingName=" << StringUtils::URLEncode(m_settingName.c_str()) << "&";
   }
+
   if(m_settingDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".SettingDescription=" << StringUtils::URLEncode(m_settingDescription.c_str()) << "&";
   }
+
   if(m_defaultValueHasBeenSet)
   {
       oStream << location << index << locationValue << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue.c_str()) << "&";
   }
+
   if(m_applyTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ApplyType=" << StringUtils::URLEncode(m_applyType.c_str()) << "&";
   }
+
   if(m_allowedValuesHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllowedValues=" << StringUtils::URLEncode(m_allowedValues.c_str()) << "&";
   }
+
   if(m_isModifiableHasBeenSet)
   {
       oStream << location << index << locationValue << ".IsModifiable=" << m_isModifiable << "&";
   }
+
 }
 
 void OptionGroupOptionSetting::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -148,3 +160,7 @@ void OptionGroupOptionSetting::OutputToStream(Aws::OStream& oStream, const char*
       oStream << location << ".IsModifiable=" << m_isModifiable << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

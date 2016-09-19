@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticLoadBalancing
+{
+namespace Model
+{
 
 Policies::Policies() : 
     m_appCookieStickinessPoliciesHasBeenSet(false),
@@ -97,6 +103,7 @@ void Policies::OutputToStream(Aws::OStream& oStream, const char* location, unsig
         item.OutputToStream(oStream, appCookieStickinessPoliciesSs.str().c_str());
       }
   }
+
   if(m_lBCookieStickinessPoliciesHasBeenSet)
   {
       unsigned lBCookieStickinessPoliciesIdx = 1;
@@ -107,6 +114,7 @@ void Policies::OutputToStream(Aws::OStream& oStream, const char* location, unsig
         item.OutputToStream(oStream, lBCookieStickinessPoliciesSs.str().c_str());
       }
   }
+
   if(m_otherPoliciesHasBeenSet)
   {
       unsigned otherPoliciesIdx = 1;
@@ -115,6 +123,7 @@ void Policies::OutputToStream(Aws::OStream& oStream, const char* location, unsig
         oStream << location << index << locationValue << ".OtherPolicies.member." << otherPoliciesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void Policies::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -148,3 +157,7 @@ void Policies::OutputToStream(Aws::OStream& oStream, const char* location) const
       }
   }
 }
+
+} // namespace Model
+} // namespace ElasticLoadBalancing
+} // namespace Aws

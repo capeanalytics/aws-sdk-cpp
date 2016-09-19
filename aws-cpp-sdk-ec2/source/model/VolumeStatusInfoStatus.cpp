@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ok_HASH = HashingUtils::HashString("ok");
-static const int impaired_HASH = HashingUtils::HashString("impaired");
-static const int insufficient_data_HASH = HashingUtils::HashString("insufficient-data");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace VolumeStatusInfoStatusMapper
       {
+
+        static const int ok_HASH = HashingUtils::HashString("ok");
+        static const int impaired_HASH = HashingUtils::HashString("impaired");
+        static const int insufficient_data_HASH = HashingUtils::HashString("insufficient-data");
 
 
         VolumeStatusInfoStatus GetVolumeStatusInfoStatusForName(const Aws::String& name)

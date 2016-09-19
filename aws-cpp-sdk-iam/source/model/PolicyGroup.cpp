@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 PolicyGroup::PolicyGroup() : 
     m_groupNameHasBeenSet(false),
@@ -65,10 +71,12 @@ void PolicyGroup::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
+
   if(m_groupIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
   }
+
 }
 
 void PolicyGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void PolicyGroup::OutputToStream(Aws::OStream& oStream, const char* location) co
       oStream << location << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

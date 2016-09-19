@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,37 +36,37 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline const Aws::String& GetDBSubnetGroupName() const{ return m_dBSubnetGroupName; }
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline void SetDBSubnetGroupName(const Aws::String& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline void SetDBSubnetGroupName(const char* value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName.assign(value); }
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline DescribeDBSubnetGroupsRequest& WithDBSubnetGroupName(const Aws::String& value) { SetDBSubnetGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline DescribeDBSubnetGroupsRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(value); return *this;}
 
     /**
-     * <p> The name of the DB subnet group to return details for. </p>
+     * <p>The name of the DB subnet group to return details for.</p>
      */
     inline DescribeDBSubnetGroupsRequest& WithDBSubnetGroupName(const char* value) { SetDBSubnetGroupName(value); return *this;}
 
@@ -111,7 +111,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -119,7 +119,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -127,7 +127,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline DescribeDBSubnetGroupsRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeDBSubnetGroupsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous DescribeDBSubnetGroups
@@ -183,7 +183,7 @@ namespace Model
     bool m_dBSubnetGroupNameHasBeenSet;
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

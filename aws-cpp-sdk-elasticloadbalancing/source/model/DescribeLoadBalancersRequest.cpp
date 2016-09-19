@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -41,14 +41,17 @@ Aws::String DescribeLoadBalancersRequest::SerializePayload() const
       loadBalancerNamesCount++;
     }
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   if(m_pageSizeHasBeenSet)
   {
     ss << "PageSize=" << m_pageSize << "&";
   }
+
   ss << "Version=2012-06-01";
   return ss.str();
 }

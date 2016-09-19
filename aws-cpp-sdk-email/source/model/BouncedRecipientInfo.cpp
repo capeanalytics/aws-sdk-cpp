@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 BouncedRecipientInfo::BouncedRecipientInfo() : 
     m_recipientHasBeenSet(false),
@@ -81,20 +87,24 @@ void BouncedRecipientInfo::OutputToStream(Aws::OStream& oStream, const char* loc
   {
       oStream << location << index << locationValue << ".Recipient=" << StringUtils::URLEncode(m_recipient.c_str()) << "&";
   }
+
   if(m_recipientArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".RecipientArn=" << StringUtils::URLEncode(m_recipientArn.c_str()) << "&";
   }
+
   if(m_bounceTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".BounceType=" << BounceTypeMapper::GetNameForBounceType(m_bounceType) << "&";
   }
+
   if(m_recipientDsnFieldsHasBeenSet)
   {
       Aws::StringStream recipientDsnFieldsLocationAndMemberSs;
       recipientDsnFieldsLocationAndMemberSs << location << index << locationValue << ".RecipientDsnFields";
       m_recipientDsnFields.OutputToStream(oStream, recipientDsnFieldsLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void BouncedRecipientInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -118,3 +128,7 @@ void BouncedRecipientInfo::OutputToStream(Aws::OStream& oStream, const char* loc
       m_recipientDsnFields.OutputToStream(oStream, recipientDsnFieldsLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

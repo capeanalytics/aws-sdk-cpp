@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,43 +35,43 @@ namespace Model
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline const Aws::String& GetChangeSetName() const{ return m_changeSetName; }
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline void SetChangeSetName(const Aws::String& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = value; }
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline void SetChangeSetName(Aws::String&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = value; }
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline void SetChangeSetName(const char* value) { m_changeSetNameHasBeenSet = true; m_changeSetName.assign(value); }
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline DescribeChangeSetRequest& WithChangeSetName(const Aws::String& value) { SetChangeSetName(value); return *this;}
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline DescribeChangeSetRequest& WithChangeSetName(Aws::String&& value) { SetChangeSetName(value); return *this;}
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the change set that you want to
-     * describe. </p>
+     * describe.</p>
      */
     inline DescribeChangeSetRequest& WithChangeSetName(const char* value) { SetChangeSetName(value); return *this;}
 

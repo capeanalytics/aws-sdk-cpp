@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 DhcpConfiguration::DhcpConfiguration() : 
     m_keyHasBeenSet(false),
@@ -71,6 +77,7 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".Key=" << StringUtils::URLEncode(m_key.c_str()) << "&";
   }
+
   if(m_valuesHasBeenSet)
   {
       unsigned valuesIdx = 1;
@@ -81,6 +88,7 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, valuesSs.str().c_str());
       }
   }
+
 }
 
 void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +108,7 @@ void DhcpConfiguration::OutputToStream(Aws::OStream& oStream, const char* locati
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

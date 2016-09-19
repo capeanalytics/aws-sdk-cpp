@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,6 +38,7 @@ Aws::String DescribeOptionGroupsRequest::SerializePayload() const
   {
     ss << "OptionGroupName=" << StringUtils::URLEncode(m_optionGroupName.c_str()) << "&";
   }
+
   if(m_filtersHasBeenSet)
   {
     unsigned filtersCount = 1;
@@ -47,22 +48,27 @@ Aws::String DescribeOptionGroupsRequest::SerializePayload() const
       filtersCount++;
     }
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   if(m_maxRecordsHasBeenSet)
   {
     ss << "MaxRecords=" << m_maxRecords << "&";
   }
+
   if(m_engineNameHasBeenSet)
   {
     ss << "EngineName=" << StringUtils::URLEncode(m_engineName.c_str()) << "&";
   }
+
   if(m_majorEngineVersionHasBeenSet)
   {
     ss << "MajorEngineVersion=" << StringUtils::URLEncode(m_majorEngineVersion.c_str()) << "&";
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

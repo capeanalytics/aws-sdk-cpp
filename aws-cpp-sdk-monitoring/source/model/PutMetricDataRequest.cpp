@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String PutMetricDataRequest::SerializePayload() const
   {
     ss << "Namespace=" << StringUtils::URLEncode(m_namespace.c_str()) << "&";
   }
+
   if(m_metricDataHasBeenSet)
   {
     unsigned metricDataCount = 1;
@@ -42,6 +43,7 @@ Aws::String PutMetricDataRequest::SerializePayload() const
       metricDataCount++;
     }
   }
+
   ss << "Version=2010-08-01";
   return ss.str();
 }

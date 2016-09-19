@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 RouteTable::RouteTable() : 
     m_routeTableIdHasBeenSet(false),
@@ -121,10 +127,12 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".RouteTableId=" << StringUtils::URLEncode(m_routeTableId.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_routesHasBeenSet)
   {
       unsigned routesIdx = 1;
@@ -135,6 +143,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, routesSs.str().c_str());
       }
   }
+
   if(m_associationsHasBeenSet)
   {
       unsigned associationsIdx = 1;
@@ -145,6 +154,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -155,6 +165,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
   if(m_propagatingVgwsHasBeenSet)
   {
       unsigned propagatingVgwsIdx = 1;
@@ -165,6 +176,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, propagatingVgwsSs.str().c_str());
       }
   }
+
 }
 
 void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -218,3 +230,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) con
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

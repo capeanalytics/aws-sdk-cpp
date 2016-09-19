@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int on_HASH = HashingUtils::HashString("on");
-static const int off_HASH = HashingUtils::HashString("off");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace AutoPlacementMapper
       {
+
+        static const int on_HASH = HashingUtils::HashString("on");
+        static const int off_HASH = HashingUtils::HashString("off");
 
 
         AutoPlacement GetAutoPlacementForName(const Aws::String& name)

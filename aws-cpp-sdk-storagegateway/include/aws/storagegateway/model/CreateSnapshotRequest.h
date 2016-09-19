@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,8 +26,8 @@ namespace Model
 
   /**
    * <p>A JSON object containing one or more of the following fields:</p> <ul> <li>
-   * <a>CreateSnapshotInput$SnapshotDescription</a> </li> <li>
-   * <a>CreateSnapshotInput$VolumeARN</a> </li> </ul>
+   * <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p>
+   * <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
    */
   class AWS_STORAGEGATEWAY_API CreateSnapshotRequest : public StorageGatewayRequest
   {

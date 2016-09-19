@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 ReceiptRule::ReceiptRule() : 
     m_nameHasBeenSet(false),
@@ -113,14 +119,17 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   if(m_enabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".Enabled=" << m_enabled << "&";
   }
+
   if(m_tlsPolicyHasBeenSet)
   {
       oStream << location << index << locationValue << ".TlsPolicy=" << TlsPolicyMapper::GetNameForTlsPolicy(m_tlsPolicy) << "&";
   }
+
   if(m_recipientsHasBeenSet)
   {
       unsigned recipientsIdx = 1;
@@ -129,6 +138,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
         oStream << location << index << locationValue << ".Recipients.member." << recipientsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_actionsHasBeenSet)
   {
       unsigned actionsIdx = 1;
@@ -139,10 +149,12 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }
+
   if(m_scanEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".ScanEnabled=" << m_scanEnabled << "&";
   }
+
 }
 
 void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -182,3 +194,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) co
       oStream << location << ".ScanEnabled=" << m_scanEnabled << "&";
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

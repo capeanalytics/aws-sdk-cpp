@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::DirectConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace DirectConnect
+{
+namespace Model
+{
 
 Interconnect::Interconnect() : 
     m_interconnectIdHasBeenSet(false),
@@ -27,7 +33,8 @@ Interconnect::Interconnect() :
     m_interconnectStateHasBeenSet(false),
     m_regionHasBeenSet(false),
     m_locationHasBeenSet(false),
-    m_bandwidthHasBeenSet(false)
+    m_bandwidthHasBeenSet(false),
+    m_loaIssueTimeHasBeenSet(false)
 {
 }
 
@@ -37,7 +44,8 @@ Interconnect::Interconnect(const JsonValue& jsonValue) :
     m_interconnectStateHasBeenSet(false),
     m_regionHasBeenSet(false),
     m_locationHasBeenSet(false),
-    m_bandwidthHasBeenSet(false)
+    m_bandwidthHasBeenSet(false),
+    m_loaIssueTimeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -86,6 +94,13 @@ Interconnect& Interconnect::operator =(const JsonValue& jsonValue)
     m_bandwidthHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("loaIssueTime"))
+  {
+    m_loaIssueTime = jsonValue.GetDouble("loaIssueTime");
+
+    m_loaIssueTimeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -128,5 +143,14 @@ JsonValue Interconnect::Jsonize() const
 
   }
 
+  if(m_loaIssueTimeHasBeenSet)
+  {
+   payload.WithDouble("loaIssueTime", m_loaIssueTime.SecondsWithMSPrecision());
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace DirectConnect
+} // namespace Aws

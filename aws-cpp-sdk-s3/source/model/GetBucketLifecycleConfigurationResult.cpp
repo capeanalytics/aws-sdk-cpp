@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -40,14 +40,14 @@ GetBucketLifecycleConfigurationResult& GetBucketLifecycleConfigurationResult::op
 
   if(!resultNode.IsNull())
   {
-    XmlNode rulesNode = resultNode.FirstChild("Rules");
+    XmlNode rulesNode = resultNode.FirstChild("Rule");
     if(!rulesNode.IsNull())
     {
-      XmlNode rulesMember = rulesNode;
-      while(!rulesMember.IsNull())
+      XmlNode ruleMember = rulesNode;
+      while(!ruleMember.IsNull())
       {
-        m_rules.push_back(rulesMember);
-        rulesMember = rulesMember.NextNode("Rule");
+        m_rules.push_back(ruleMember);
+        ruleMember = ruleMember.NextNode("Rule");
       }
 
     }

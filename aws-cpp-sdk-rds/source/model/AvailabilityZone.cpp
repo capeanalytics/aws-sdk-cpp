@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 AvailabilityZone::AvailabilityZone() : 
     m_nameHasBeenSet(false)
@@ -57,6 +63,7 @@ void AvailabilityZone::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
 }
 
 void AvailabilityZone::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -66,3 +73,7 @@ void AvailabilityZone::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

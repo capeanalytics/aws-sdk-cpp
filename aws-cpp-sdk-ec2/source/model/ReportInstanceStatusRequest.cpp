@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -39,6 +39,7 @@ Aws::String ReportInstanceStatusRequest::SerializePayload() const
   {
     ss << "DryRun=" << m_dryRun << "&";
   }
+
   if(m_instancesHasBeenSet)
   {
     unsigned instancesCount = 1;
@@ -49,18 +50,22 @@ Aws::String ReportInstanceStatusRequest::SerializePayload() const
       instancesCount++;
     }
   }
+
   if(m_statusHasBeenSet)
   {
     ss << "Status=" << ReportStatusTypeMapper::GetNameForReportStatusType(m_status) << "&";
   }
+
   if(m_startTimeHasBeenSet)
   {
     ss << "StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_endTimeHasBeenSet)
   {
     ss << "EndTime=" << StringUtils::URLEncode(m_endTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_reasonCodesHasBeenSet)
   {
     unsigned reasonCodesCount = 1;
@@ -71,10 +76,12 @@ Aws::String ReportInstanceStatusRequest::SerializePayload() const
       reasonCodesCount++;
     }
   }
+
   if(m_descriptionHasBeenSet)
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,10 +35,12 @@ Aws::String ModifyDBSnapshotAttributeRequest::SerializePayload() const
   {
     ss << "DBSnapshotIdentifier=" << StringUtils::URLEncode(m_dBSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_attributeNameHasBeenSet)
   {
     ss << "AttributeName=" << StringUtils::URLEncode(m_attributeName.c_str()) << "&";
   }
+
   if(m_valuesToAddHasBeenSet)
   {
     unsigned valuesToAddCount = 1;
@@ -49,6 +51,7 @@ Aws::String ModifyDBSnapshotAttributeRequest::SerializePayload() const
       valuesToAddCount++;
     }
   }
+
   if(m_valuesToRemoveHasBeenSet)
   {
     unsigned valuesToRemoveCount = 1;
@@ -59,6 +62,7 @@ Aws::String ModifyDBSnapshotAttributeRequest::SerializePayload() const
       valuesToRemoveCount++;
     }
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

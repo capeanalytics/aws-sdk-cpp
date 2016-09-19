@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int EXACTLY_HASH = HashingUtils::HashString("EXACTLY");
-static const int STARTS_WITH_HASH = HashingUtils::HashString("STARTS_WITH");
-static const int ENDS_WITH_HASH = HashingUtils::HashString("ENDS_WITH");
-static const int CONTAINS_HASH = HashingUtils::HashString("CONTAINS");
-static const int CONTAINS_WORD_HASH = HashingUtils::HashString("CONTAINS_WORD");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace PositionalConstraintMapper
       {
+
+        static const int EXACTLY_HASH = HashingUtils::HashString("EXACTLY");
+        static const int STARTS_WITH_HASH = HashingUtils::HashString("STARTS_WITH");
+        static const int ENDS_WITH_HASH = HashingUtils::HashString("ENDS_WITH");
+        static const int CONTAINS_HASH = HashingUtils::HashString("CONTAINS");
+        static const int CONTAINS_WORD_HASH = HashingUtils::HashString("CONTAINS_WORD");
 
 
         PositionalConstraint GetPositionalConstraintForName(const Aws::String& name)

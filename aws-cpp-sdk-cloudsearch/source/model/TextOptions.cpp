@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 TextOptions::TextOptions() : 
     m_defaultValueHasBeenSet(false),
@@ -103,26 +109,32 @@ void TextOptions::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue.c_str()) << "&";
   }
+
   if(m_sourceFieldHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceField=" << StringUtils::URLEncode(m_sourceField.c_str()) << "&";
   }
+
   if(m_returnEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReturnEnabled=" << m_returnEnabled << "&";
   }
+
   if(m_sortEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".SortEnabled=" << m_sortEnabled << "&";
   }
+
   if(m_highlightEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".HighlightEnabled=" << m_highlightEnabled << "&";
   }
+
   if(m_analysisSchemeHasBeenSet)
   {
       oStream << location << index << locationValue << ".AnalysisScheme=" << StringUtils::URLEncode(m_analysisScheme.c_str()) << "&";
   }
+
 }
 
 void TextOptions::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -152,3 +164,7 @@ void TextOptions::OutputToStream(Aws::OStream& oStream, const char* location) co
       oStream << location << ".AnalysisScheme=" << StringUtils::URLEncode(m_analysisScheme.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

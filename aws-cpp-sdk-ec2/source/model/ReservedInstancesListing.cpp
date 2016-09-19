@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ReservedInstancesListing::ReservedInstancesListing() : 
     m_reservedInstancesListingIdHasBeenSet(false),
@@ -147,26 +153,32 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
   {
       oStream << location << index << locationValue << ".ReservedInstancesListingId=" << StringUtils::URLEncode(m_reservedInstancesListingId.c_str()) << "&";
   }
+
   if(m_reservedInstancesIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReservedInstancesId=" << StringUtils::URLEncode(m_reservedInstancesId.c_str()) << "&";
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_updateDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".UpdateDate=" << StringUtils::URLEncode(m_updateDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << ListingStatusMapper::GetNameForListingStatus(m_status) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_instanceCountsHasBeenSet)
   {
       unsigned instanceCountsIdx = 1;
@@ -177,6 +189,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
         item.OutputToStream(oStream, instanceCountsSs.str().c_str());
       }
   }
+
   if(m_priceSchedulesHasBeenSet)
   {
       unsigned priceSchedulesIdx = 1;
@@ -187,6 +200,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
         item.OutputToStream(oStream, priceSchedulesSs.str().c_str());
       }
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -197,10 +211,12 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
   if(m_clientTokenHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
+
 }
 
 void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -264,3 +280,7 @@ void ReservedInstancesListing::OutputToStream(Aws::OStream& oStream, const char*
       oStream << location << ".ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,9 +38,9 @@ namespace Model
    * <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is
    * an integer value starting with 1. For example, a parameter list for this action
    * might look like this:</p> </important>
-   * <p><code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code></p>
-   * <p><code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=<replaceable>Your_Receipt_Handle</replaceable></code></p>
-   * <p><code>&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code></p>
+   * <p><code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2]]></code></p>
+   * <p><code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=<replaceable>Your_Receipt_Handle</replaceable>]]></code></p>
+   * <p><code><![CDATA[&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45]]></code></p>
    */
   class AWS_SQS_API ChangeMessageVisibilityBatchRequestEntry
   {
@@ -139,24 +139,24 @@ namespace Model
     /**
      * <p>The new value (in seconds) for the message's visibility timeout.</p>
      */
-    inline long GetVisibilityTimeout() const{ return m_visibilityTimeout; }
+    inline int GetVisibilityTimeout() const{ return m_visibilityTimeout; }
 
     /**
      * <p>The new value (in seconds) for the message's visibility timeout.</p>
      */
-    inline void SetVisibilityTimeout(long value) { m_visibilityTimeoutHasBeenSet = true; m_visibilityTimeout = value; }
+    inline void SetVisibilityTimeout(int value) { m_visibilityTimeoutHasBeenSet = true; m_visibilityTimeout = value; }
 
     /**
      * <p>The new value (in seconds) for the message's visibility timeout.</p>
      */
-    inline ChangeMessageVisibilityBatchRequestEntry& WithVisibilityTimeout(long value) { SetVisibilityTimeout(value); return *this;}
+    inline ChangeMessageVisibilityBatchRequestEntry& WithVisibilityTimeout(int value) { SetVisibilityTimeout(value); return *this;}
 
   private:
     Aws::String m_id;
     bool m_idHasBeenSet;
     Aws::String m_receiptHandle;
     bool m_receiptHandleHasBeenSet;
-    long m_visibilityTimeout;
+    int m_visibilityTimeout;
     bool m_visibilityTimeoutHasBeenSet;
   };
 

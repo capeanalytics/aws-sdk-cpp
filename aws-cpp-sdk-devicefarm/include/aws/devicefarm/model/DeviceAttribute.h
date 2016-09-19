@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -28,7 +28,8 @@ namespace Model
     ARN,
     PLATFORM,
     FORM_FACTOR,
-    MANUFACTURER
+    MANUFACTURER,
+    REMOTE_ACCESS_ENABLED
   };
 
 namespace DeviceAttributeMapper

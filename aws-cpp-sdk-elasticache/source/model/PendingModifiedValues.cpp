@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 PendingModifiedValues::PendingModifiedValues() : 
     m_numCacheNodes(0),
@@ -89,6 +95,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".NumCacheNodes=" << m_numCacheNodes << "&";
   }
+
   if(m_cacheNodeIdsToRemoveHasBeenSet)
   {
       unsigned cacheNodeIdsToRemoveIdx = 1;
@@ -97,14 +104,17 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
         oStream << location << index << locationValue << ".CacheNodeId." << cacheNodeIdsToRemoveIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
   if(m_cacheNodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
+
 }
 
 void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -130,3 +140,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       oStream << location << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ACCEPT_HASH = HashingUtils::HashString("ACCEPT");
-static const int REJECT_HASH = HashingUtils::HashString("REJECT");
-static const int ALL_HASH = HashingUtils::HashString("ALL");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace TrafficTypeMapper
       {
+
+        static const int ACCEPT_HASH = HashingUtils::HashString("ACCEPT");
+        static const int REJECT_HASH = HashingUtils::HashString("REJECT");
+        static const int ALL_HASH = HashingUtils::HashString("ALL");
 
 
         TrafficType GetTrafficTypeForName(const Aws::String& name)

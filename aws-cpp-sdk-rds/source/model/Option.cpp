@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 Option::Option() : 
     m_optionNameHasBeenSet(false),
@@ -32,6 +38,7 @@ Option::Option() :
     m_permanentHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
+    m_optionVersionHasBeenSet(false),
     m_optionSettingsHasBeenSet(false),
     m_dBSecurityGroupMembershipsHasBeenSet(false),
     m_vpcSecurityGroupMembershipsHasBeenSet(false)
@@ -47,6 +54,7 @@ Option::Option(const XmlNode& xmlNode) :
     m_permanentHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
+    m_optionVersionHasBeenSet(false),
     m_optionSettingsHasBeenSet(false),
     m_dBSecurityGroupMembershipsHasBeenSet(false),
     m_vpcSecurityGroupMembershipsHasBeenSet(false)
@@ -89,6 +97,12 @@ Option& Option::operator =(const XmlNode& xmlNode)
     {
       m_port = StringUtils::ConvertToInt32(StringUtils::Trim(portNode.GetText().c_str()).c_str());
       m_portHasBeenSet = true;
+    }
+    XmlNode optionVersionNode = resultNode.FirstChild("OptionVersion");
+    if(!optionVersionNode.IsNull())
+    {
+      m_optionVersion = StringUtils::Trim(optionVersionNode.GetText().c_str());
+      m_optionVersionHasBeenSet = true;
     }
     XmlNode optionSettingsNode = resultNode.FirstChild("OptionSettings");
     if(!optionSettingsNode.IsNull())
@@ -137,22 +151,32 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
   {
       oStream << location << index << locationValue << ".OptionName=" << StringUtils::URLEncode(m_optionName.c_str()) << "&";
   }
+
   if(m_optionDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".OptionDescription=" << StringUtils::URLEncode(m_optionDescription.c_str()) << "&";
   }
+
   if(m_persistentHasBeenSet)
   {
       oStream << location << index << locationValue << ".Persistent=" << m_persistent << "&";
   }
+
   if(m_permanentHasBeenSet)
   {
       oStream << location << index << locationValue << ".Permanent=" << m_permanent << "&";
   }
+
   if(m_portHasBeenSet)
   {
       oStream << location << index << locationValue << ".Port=" << m_port << "&";
   }
+
+  if(m_optionVersionHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OptionVersion=" << StringUtils::URLEncode(m_optionVersion.c_str()) << "&";
+  }
+
   if(m_optionSettingsHasBeenSet)
   {
       unsigned optionSettingsIdx = 1;
@@ -163,6 +187,7 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
         item.OutputToStream(oStream, optionSettingsSs.str().c_str());
       }
   }
+
   if(m_dBSecurityGroupMembershipsHasBeenSet)
   {
       unsigned dBSecurityGroupMembershipsIdx = 1;
@@ -173,6 +198,7 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
         item.OutputToStream(oStream, dBSecurityGroupMembershipsSs.str().c_str());
       }
   }
+
   if(m_vpcSecurityGroupMembershipsHasBeenSet)
   {
       unsigned vpcSecurityGroupMembershipsIdx = 1;
@@ -183,6 +209,7 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
         item.OutputToStream(oStream, vpcSecurityGroupMembershipsSs.str().c_str());
       }
   }
+
 }
 
 void Option::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -206,6 +233,10 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_portHasBeenSet)
   {
       oStream << location << ".Port=" << m_port << "&";
+  }
+  if(m_optionVersionHasBeenSet)
+  {
+      oStream << location << ".OptionVersion=" << StringUtils::URLEncode(m_optionVersion.c_str()) << "&";
   }
   if(m_optionSettingsHasBeenSet)
   {
@@ -238,3 +269,7 @@ void Option::OutputToStream(Aws::OStream& oStream, const char* location) const
       }
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

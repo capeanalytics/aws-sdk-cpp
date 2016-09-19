@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudWatch
+{
+namespace Model
+{
 
 DimensionFilter::DimensionFilter() : 
     m_nameHasBeenSet(false),
@@ -65,10 +71,12 @@ void DimensionFilter::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
   if(m_valueHasBeenSet)
   {
       oStream << location << index << locationValue << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
+
 }
 
 void DimensionFilter::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void DimensionFilter::OutputToStream(Aws::OStream& oStream, const char* location
       oStream << location << ".Value=" << StringUtils::URLEncode(m_value.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudWatch
+} // namespace Aws

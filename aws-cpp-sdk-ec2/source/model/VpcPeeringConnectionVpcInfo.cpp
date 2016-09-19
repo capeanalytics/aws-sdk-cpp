@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 VpcPeeringConnectionVpcInfo::VpcPeeringConnectionVpcInfo() : 
     m_cidrBlockHasBeenSet(false),
@@ -81,20 +87,24 @@ void VpcPeeringConnectionVpcInfo::OutputToStream(Aws::OStream& oStream, const ch
   {
       oStream << location << index << locationValue << ".CidrBlock=" << StringUtils::URLEncode(m_cidrBlock.c_str()) << "&";
   }
+
   if(m_ownerIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_peeringOptionsHasBeenSet)
   {
       Aws::StringStream peeringOptionsLocationAndMemberSs;
       peeringOptionsLocationAndMemberSs << location << index << locationValue << ".PeeringOptions";
       m_peeringOptions.OutputToStream(oStream, peeringOptionsLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void VpcPeeringConnectionVpcInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -118,3 +128,7 @@ void VpcPeeringConnectionVpcInfo::OutputToStream(Aws::OStream& oStream, const ch
       m_peeringOptions.OutputToStream(oStream, peeringOptionsLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

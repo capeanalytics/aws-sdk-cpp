@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace KMS
+{
+namespace Model
+{
 
 KeyMetadata::KeyMetadata() : 
     m_aWSAccountIdHasBeenSet(false),
@@ -31,7 +37,10 @@ KeyMetadata::KeyMetadata() :
     m_descriptionHasBeenSet(false),
     m_keyUsageHasBeenSet(false),
     m_keyStateHasBeenSet(false),
-    m_deletionDateHasBeenSet(false)
+    m_deletionDateHasBeenSet(false),
+    m_validToHasBeenSet(false),
+    m_originHasBeenSet(false),
+    m_expirationModelHasBeenSet(false)
 {
 }
 
@@ -45,7 +54,10 @@ KeyMetadata::KeyMetadata(const JsonValue& jsonValue) :
     m_descriptionHasBeenSet(false),
     m_keyUsageHasBeenSet(false),
     m_keyStateHasBeenSet(false),
-    m_deletionDateHasBeenSet(false)
+    m_deletionDateHasBeenSet(false),
+    m_validToHasBeenSet(false),
+    m_originHasBeenSet(false),
+    m_expirationModelHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -115,6 +127,27 @@ KeyMetadata& KeyMetadata::operator =(const JsonValue& jsonValue)
     m_deletionDateHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ValidTo"))
+  {
+    m_validTo = jsonValue.GetDouble("ValidTo");
+
+    m_validToHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Origin"))
+  {
+    m_origin = OriginTypeMapper::GetOriginTypeForName(jsonValue.GetString("Origin"));
+
+    m_originHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ExpirationModel"))
+  {
+    m_expirationModel = ExpirationModelTypeMapper::GetExpirationModelTypeForName(jsonValue.GetString("ExpirationModel"));
+
+    m_expirationModelHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -172,5 +205,24 @@ JsonValue KeyMetadata::Jsonize() const
    payload.WithDouble("DeletionDate", m_deletionDate.SecondsWithMSPrecision());
   }
 
+  if(m_validToHasBeenSet)
+  {
+   payload.WithDouble("ValidTo", m_validTo.SecondsWithMSPrecision());
+  }
+
+  if(m_originHasBeenSet)
+  {
+   payload.WithString("Origin", OriginTypeMapper::GetNameForOriginType(m_origin));
+  }
+
+  if(m_expirationModelHasBeenSet)
+  {
+   payload.WithString("ExpirationModel", ExpirationModelTypeMapper::GetNameForExpirationModelType(m_expirationModel));
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace KMS
+} // namespace Aws

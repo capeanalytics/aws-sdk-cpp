@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ScheduledInstancesIamInstanceProfile::ScheduledInstancesIamInstanceProfile() : 
     m_arnHasBeenSet(false),
@@ -65,10 +71,12 @@ void ScheduledInstancesIamInstanceProfile::OutputToStream(Aws::OStream& oStream,
   {
       oStream << location << index << locationValue << ".Arn=" << StringUtils::URLEncode(m_arn.c_str()) << "&";
   }
+
   if(m_nameHasBeenSet)
   {
       oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
+
 }
 
 void ScheduledInstancesIamInstanceProfile::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void ScheduledInstancesIamInstanceProfile::OutputToStream(Aws::OStream& oStream,
       oStream << location << ".Name=" << StringUtils::URLEncode(m_name.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

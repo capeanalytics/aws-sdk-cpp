@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int GreaterThanOrEqualToThreshold_HASH = HashingUtils::HashString("GreaterThanOrEqualToThreshold");
-static const int GreaterThanThreshold_HASH = HashingUtils::HashString("GreaterThanThreshold");
-static const int LessThanThreshold_HASH = HashingUtils::HashString("LessThanThreshold");
-static const int LessThanOrEqualToThreshold_HASH = HashingUtils::HashString("LessThanOrEqualToThreshold");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace ComparisonOperatorMapper
       {
+
+        static const int GreaterThanOrEqualToThreshold_HASH = HashingUtils::HashString("GreaterThanOrEqualToThreshold");
+        static const int GreaterThanThreshold_HASH = HashingUtils::HashString("GreaterThanThreshold");
+        static const int LessThanThreshold_HASH = HashingUtils::HashString("LessThanThreshold");
+        static const int LessThanOrEqualToThreshold_HASH = HashingUtils::HashString("LessThanOrEqualToThreshold");
 
 
         ComparisonOperator GetComparisonOperatorForName(const Aws::String& name)

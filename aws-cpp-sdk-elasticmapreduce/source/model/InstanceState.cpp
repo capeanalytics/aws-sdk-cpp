@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int AWAITING_FULFILLMENT_HASH = HashingUtils::HashString("AWAITING_FULFILLMENT");
-static const int PROVISIONING_HASH = HashingUtils::HashString("PROVISIONING");
-static const int BOOTSTRAPPING_HASH = HashingUtils::HashString("BOOTSTRAPPING");
-static const int RUNNING_HASH = HashingUtils::HashString("RUNNING");
-static const int TERMINATED_HASH = HashingUtils::HashString("TERMINATED");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace InstanceStateMapper
       {
+
+        static const int AWAITING_FULFILLMENT_HASH = HashingUtils::HashString("AWAITING_FULFILLMENT");
+        static const int PROVISIONING_HASH = HashingUtils::HashString("PROVISIONING");
+        static const int BOOTSTRAPPING_HASH = HashingUtils::HashString("BOOTSTRAPPING");
+        static const int RUNNING_HASH = HashingUtils::HashString("RUNNING");
+        static const int TERMINATED_HASH = HashingUtils::HashString("TERMINATED");
 
 
         InstanceState GetInstanceStateForName(const Aws::String& name)

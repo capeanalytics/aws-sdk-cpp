@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 DateArrayOptions::DateArrayOptions() : 
     m_defaultValueHasBeenSet(false),
@@ -95,22 +101,27 @@ void DateArrayOptions::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue.c_str()) << "&";
   }
+
   if(m_sourceFieldsHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceFields=" << StringUtils::URLEncode(m_sourceFields.c_str()) << "&";
   }
+
   if(m_facetEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".FacetEnabled=" << m_facetEnabled << "&";
   }
+
   if(m_searchEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".SearchEnabled=" << m_searchEnabled << "&";
   }
+
   if(m_returnEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReturnEnabled=" << m_returnEnabled << "&";
   }
+
 }
 
 void DateArrayOptions::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -136,3 +147,7 @@ void DateArrayOptions::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << ".ReturnEnabled=" << m_returnEnabled << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

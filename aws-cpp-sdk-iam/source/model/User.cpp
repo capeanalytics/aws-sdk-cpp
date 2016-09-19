@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 User::User() : 
     m_pathHasBeenSet(false),
@@ -97,26 +103,32 @@ void User::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
   {
       oStream << location << index << locationValue << ".Path=" << StringUtils::URLEncode(m_path.c_str()) << "&";
   }
+
   if(m_userNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_userIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".UserId=" << StringUtils::URLEncode(m_userId.c_str()) << "&";
   }
+
   if(m_arnHasBeenSet)
   {
       oStream << location << index << locationValue << ".Arn=" << StringUtils::URLEncode(m_arn.c_str()) << "&";
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_passwordLastUsedHasBeenSet)
   {
       oStream << location << index << locationValue << ".PasswordLastUsed=" << StringUtils::URLEncode(m_passwordLastUsed.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void User::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -146,3 +158,7 @@ void User::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".PasswordLastUsed=" << StringUtils::URLEncode(m_passwordLastUsed.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

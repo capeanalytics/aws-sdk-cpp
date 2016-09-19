@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBSecurityGroup::DBSecurityGroup() : 
     m_ownerIdHasBeenSet(false),
@@ -29,7 +35,8 @@ DBSecurityGroup::DBSecurityGroup() :
     m_dBSecurityGroupDescriptionHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_eC2SecurityGroupsHasBeenSet(false),
-    m_iPRangesHasBeenSet(false)
+    m_iPRangesHasBeenSet(false),
+    m_dBSecurityGroupArnHasBeenSet(false)
 {
 }
 
@@ -39,7 +46,8 @@ DBSecurityGroup::DBSecurityGroup(const XmlNode& xmlNode) :
     m_dBSecurityGroupDescriptionHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_eC2SecurityGroupsHasBeenSet(false),
-    m_iPRangesHasBeenSet(false)
+    m_iPRangesHasBeenSet(false),
+    m_dBSecurityGroupArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -98,6 +106,12 @@ DBSecurityGroup& DBSecurityGroup::operator =(const XmlNode& xmlNode)
 
       m_iPRangesHasBeenSet = true;
     }
+    XmlNode dBSecurityGroupArnNode = resultNode.FirstChild("DBSecurityGroupArn");
+    if(!dBSecurityGroupArnNode.IsNull())
+    {
+      m_dBSecurityGroupArn = StringUtils::Trim(dBSecurityGroupArnNode.GetText().c_str());
+      m_dBSecurityGroupArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -109,18 +123,22 @@ void DBSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
   }
+
   if(m_dBSecurityGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBSecurityGroupName=" << StringUtils::URLEncode(m_dBSecurityGroupName.c_str()) << "&";
   }
+
   if(m_dBSecurityGroupDescriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBSecurityGroupDescription=" << StringUtils::URLEncode(m_dBSecurityGroupDescription.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_eC2SecurityGroupsHasBeenSet)
   {
       unsigned eC2SecurityGroupsIdx = 1;
@@ -131,6 +149,7 @@ void DBSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }
+
   if(m_iPRangesHasBeenSet)
   {
       unsigned iPRangesIdx = 1;
@@ -141,6 +160,12 @@ void DBSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, iPRangesSs.str().c_str());
       }
   }
+
+  if(m_dBSecurityGroupArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DBSecurityGroupArn=" << StringUtils::URLEncode(m_dBSecurityGroupArn.c_str()) << "&";
+  }
+
 }
 
 void DBSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -181,4 +206,12 @@ void DBSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location
         item.OutputToStream(oStream, iPRangesSs.str().c_str());
       }
   }
+  if(m_dBSecurityGroupArnHasBeenSet)
+  {
+      oStream << location << ".DBSecurityGroupArn=" << StringUtils::URLEncode(m_dBSecurityGroupArn.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,14 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Creating_HASH = HashingUtils::HashString("Creating");
-static const int Created_HASH = HashingUtils::HashString("Created");
-static const int Verifying_HASH = HashingUtils::HashString("Verifying");
-static const int VerifyFailed_HASH = HashingUtils::HashString("VerifyFailed");
-static const int Verified_HASH = HashingUtils::HashString("Verified");
-static const int Deleting_HASH = HashingUtils::HashString("Deleting");
-static const int Deleted_HASH = HashingUtils::HashString("Deleted");
-static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 namespace Aws
 {
@@ -36,6 +28,15 @@ namespace Aws
     {
       namespace TrustStateMapper
       {
+
+        static const int Creating_HASH = HashingUtils::HashString("Creating");
+        static const int Created_HASH = HashingUtils::HashString("Created");
+        static const int Verifying_HASH = HashingUtils::HashString("Verifying");
+        static const int VerifyFailed_HASH = HashingUtils::HashString("VerifyFailed");
+        static const int Verified_HASH = HashingUtils::HashString("Verified");
+        static const int Deleting_HASH = HashingUtils::HashString("Deleting");
+        static const int Deleted_HASH = HashingUtils::HashString("Deleted");
+        static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 
         TrustState GetTrustStateForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::DatabaseMigrationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace DatabaseMigrationService
+{
+namespace Model
+{
 
 Filter::Filter() : 
     m_nameHasBeenSet(false),
@@ -79,3 +85,7 @@ JsonValue Filter::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace DatabaseMigrationService
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ScheduledInstancesPlacement::ScheduledInstancesPlacement() : 
     m_availabilityZoneHasBeenSet(false),
@@ -65,10 +71,12 @@ void ScheduledInstancesPlacement::OutputToStream(Aws::OStream& oStream, const ch
   {
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+
   if(m_groupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
+
 }
 
 void ScheduledInstancesPlacement::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void ScheduledInstancesPlacement::OutputToStream(Aws::OStream& oStream, const ch
       oStream << location << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

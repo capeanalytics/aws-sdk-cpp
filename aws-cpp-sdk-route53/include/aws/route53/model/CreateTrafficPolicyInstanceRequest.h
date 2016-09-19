@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -133,20 +133,20 @@ namespace Model
     inline CreateTrafficPolicyInstanceRequest& WithName(const char* value) { SetName(value); return *this;}
 
     /**
-     * <p>The TTL that you want Amazon Route 53 to assign to all of the resource record
-     * sets that it creates in the specified hosted zone.</p>
+     * <p>(Optional) The TTL that you want Amazon Route 53 to assign to all of the
+     * resource record sets that it creates in the specified hosted zone.</p>
      */
     inline long long GetTTL() const{ return m_tTL; }
 
     /**
-     * <p>The TTL that you want Amazon Route 53 to assign to all of the resource record
-     * sets that it creates in the specified hosted zone.</p>
+     * <p>(Optional) The TTL that you want Amazon Route 53 to assign to all of the
+     * resource record sets that it creates in the specified hosted zone.</p>
      */
     inline void SetTTL(long long value) { m_tTLHasBeenSet = true; m_tTL = value; }
 
     /**
-     * <p>The TTL that you want Amazon Route 53 to assign to all of the resource record
-     * sets that it creates in the specified hosted zone.</p>
+     * <p>(Optional) The TTL that you want Amazon Route 53 to assign to all of the
+     * resource record sets that it creates in the specified hosted zone.</p>
      */
     inline CreateTrafficPolicyInstanceRequest& WithTTL(long long value) { SetTTL(value); return *this;}
 
@@ -196,19 +196,19 @@ namespace Model
      * <p>The version of the traffic policy that you want to use to create resource
      * record sets in the specified hosted zone.</p>
      */
-    inline long GetTrafficPolicyVersion() const{ return m_trafficPolicyVersion; }
+    inline int GetTrafficPolicyVersion() const{ return m_trafficPolicyVersion; }
 
     /**
      * <p>The version of the traffic policy that you want to use to create resource
      * record sets in the specified hosted zone.</p>
      */
-    inline void SetTrafficPolicyVersion(long value) { m_trafficPolicyVersionHasBeenSet = true; m_trafficPolicyVersion = value; }
+    inline void SetTrafficPolicyVersion(int value) { m_trafficPolicyVersionHasBeenSet = true; m_trafficPolicyVersion = value; }
 
     /**
      * <p>The version of the traffic policy that you want to use to create resource
      * record sets in the specified hosted zone.</p>
      */
-    inline CreateTrafficPolicyInstanceRequest& WithTrafficPolicyVersion(long value) { SetTrafficPolicyVersion(value); return *this;}
+    inline CreateTrafficPolicyInstanceRequest& WithTrafficPolicyVersion(int value) { SetTrafficPolicyVersion(value); return *this;}
 
   private:
     Aws::String m_hostedZoneId;
@@ -219,7 +219,7 @@ namespace Model
     bool m_tTLHasBeenSet;
     Aws::String m_trafficPolicyId;
     bool m_trafficPolicyIdHasBeenSet;
-    long m_trafficPolicyVersion;
+    int m_trafficPolicyVersion;
     bool m_trafficPolicyVersionHasBeenSet;
   };
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,7 @@ namespace Model
 {
 
   /**
+   * <p>Contains the parameters for DescribePolicies.</p>
    */
   class AWS_AUTOSCALING_API DescribePoliciesRequest : public AutoScalingRequest
   {
@@ -70,65 +71,65 @@ namespace Model
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline const Aws::Vector<Aws::String>& GetPolicyNames() const{ return m_policyNames; }
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline void SetPolicyNames(const Aws::Vector<Aws::String>& value) { m_policyNamesHasBeenSet = true; m_policyNames = value; }
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline void SetPolicyNames(Aws::Vector<Aws::String>&& value) { m_policyNamesHasBeenSet = true; m_policyNames = value; }
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline DescribePoliciesRequest& WithPolicyNames(const Aws::Vector<Aws::String>& value) { SetPolicyNames(value); return *this;}
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline DescribePoliciesRequest& WithPolicyNames(Aws::Vector<Aws::String>&& value) { SetPolicyNames(value); return *this;}
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline DescribePoliciesRequest& AddPolicyNames(const Aws::String& value) { m_policyNamesHasBeenSet = true; m_policyNames.push_back(value); return *this; }
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline DescribePoliciesRequest& AddPolicyNames(Aws::String&& value) { m_policyNamesHasBeenSet = true; m_policyNames.push_back(value); return *this; }
 
     /**
      * <p>One or more policy names or policy ARNs to be described. If you omit this
-     * list, all policy names are described. If an group name is provided, the results
-     * are limited to that group. This list is limited to 50 items. If you specify an
-     * unknown policy name, it is ignored with no error.</p>
+     * parameter, all policy names are described. If an group name is provided, the
+     * results are limited to that group. This list is limited to 50 items. If you
+     * specify an unknown policy name, it is ignored with no error.</p>
      */
     inline DescribePoliciesRequest& AddPolicyNames(const char* value) { m_policyNamesHasBeenSet = true; m_policyNames.push_back(value); return *this; }
 
@@ -225,17 +226,17 @@ namespace Model
     /**
      * <p>The maximum number of items to be returned with each call.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p>The maximum number of items to be returned with each call.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p>The maximum number of items to be returned with each call.</p>
      */
-    inline DescribePoliciesRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribePoliciesRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
   private:
     Aws::String m_autoScalingGroupName;
@@ -246,7 +247,7 @@ namespace Model
     bool m_policyTypesHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
   };
 

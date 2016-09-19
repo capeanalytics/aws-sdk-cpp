@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -31,6 +31,9 @@ namespace DatabaseMigrationService
 {
 namespace Model
 {
+  /**
+   * <p/>
+   */
   class AWS_DATABASEMIGRATIONSERVICE_API RemoveTagsFromResourceResult
   {
   public:

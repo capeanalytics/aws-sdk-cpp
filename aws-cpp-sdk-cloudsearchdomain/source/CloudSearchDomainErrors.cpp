@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,15 +20,16 @@ using namespace Aws::Client;
 using namespace Aws::CloudSearchDomain;
 using namespace Aws::Utils;
 
-static const int DOCUMENT_SERVICE_HASH = HashingUtils::HashString("DocumentServiceException");
-static const int SEARCH_HASH = HashingUtils::HashString("SearchException");
-
 namespace Aws
 {
 namespace CloudSearchDomain
 {
 namespace CloudSearchDomainErrorMapper
 {
+
+static const int DOCUMENT_SERVICE_HASH = HashingUtils::HashString("DocumentServiceException");
+static const int SEARCH_HASH = HashingUtils::HashString("SearchException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

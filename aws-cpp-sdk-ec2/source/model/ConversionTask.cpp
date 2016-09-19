@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ConversionTask::ConversionTask() : 
     m_conversionTaskIdHasBeenSet(false),
@@ -111,30 +117,36 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".ConversionTaskId=" << StringUtils::URLEncode(m_conversionTaskId.c_str()) << "&";
   }
+
   if(m_expirationTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ExpirationTime=" << StringUtils::URLEncode(m_expirationTime.c_str()) << "&";
   }
+
   if(m_importInstanceHasBeenSet)
   {
       Aws::StringStream importInstanceLocationAndMemberSs;
       importInstanceLocationAndMemberSs << location << index << locationValue << ".ImportInstance";
       m_importInstance.OutputToStream(oStream, importInstanceLocationAndMemberSs.str().c_str());
   }
+
   if(m_importVolumeHasBeenSet)
   {
       Aws::StringStream importVolumeLocationAndMemberSs;
       importVolumeLocationAndMemberSs << location << index << locationValue << ".ImportVolume";
       m_importVolume.OutputToStream(oStream, importVolumeLocationAndMemberSs.str().c_str());
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << ConversionTaskStateMapper::GetNameForConversionTaskState(m_state) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -145,6 +157,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location,
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -188,3 +201,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location)
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

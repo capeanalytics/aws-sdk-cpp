@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String ReorderReceiptRuleSetRequest::SerializePayload() const
   {
     ss << "RuleSetName=" << StringUtils::URLEncode(m_ruleSetName.c_str()) << "&";
   }
+
   if(m_ruleNamesHasBeenSet)
   {
     unsigned ruleNamesCount = 1;
@@ -43,6 +44,7 @@ Aws::String ReorderReceiptRuleSetRequest::SerializePayload() const
       ruleNamesCount++;
     }
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::ECS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ECS
+{
+namespace Model
+{
 
 ContainerDefinition::ContainerDefinition() : 
     m_nameHasBeenSet(false),
@@ -28,6 +34,8 @@ ContainerDefinition::ContainerDefinition() :
     m_cpuHasBeenSet(false),
     m_memory(0),
     m_memoryHasBeenSet(false),
+    m_memoryReservation(0),
+    m_memoryReservationHasBeenSet(false),
     m_linksHasBeenSet(false),
     m_portMappingsHasBeenSet(false),
     m_essential(false),
@@ -63,6 +71,8 @@ ContainerDefinition::ContainerDefinition(const JsonValue& jsonValue) :
     m_cpuHasBeenSet(false),
     m_memory(0),
     m_memoryHasBeenSet(false),
+    m_memoryReservation(0),
+    m_memoryReservationHasBeenSet(false),
     m_linksHasBeenSet(false),
     m_portMappingsHasBeenSet(false),
     m_essential(false),
@@ -120,6 +130,13 @@ ContainerDefinition& ContainerDefinition::operator =(const JsonValue& jsonValue)
     m_memory = jsonValue.GetInteger("memory");
 
     m_memoryHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("memoryReservation"))
+  {
+    m_memoryReservation = jsonValue.GetInteger("memoryReservation");
+
+    m_memoryReservationHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("links"))
@@ -339,6 +356,12 @@ JsonValue ContainerDefinition::Jsonize() const
 
   }
 
+  if(m_memoryReservationHasBeenSet)
+  {
+   payload.WithInteger("memoryReservation", m_memoryReservation);
+
+  }
+
   if(m_linksHasBeenSet)
   {
    Array<JsonValue> linksJsonList(m_links.size());
@@ -532,3 +555,7 @@ JsonValue ContainerDefinition::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace ECS
+} // namespace Aws

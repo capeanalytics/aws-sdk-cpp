@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Scalar_HASH = HashingUtils::HashString("Scalar");
-static const int List_HASH = HashingUtils::HashString("List");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ConfigurationOptionValueTypeMapper
       {
+
+        static const int Scalar_HASH = HashingUtils::HashString("Scalar");
+        static const int List_HASH = HashingUtils::HashString("List");
 
 
         ConfigurationOptionValueType GetConfigurationOptionValueTypeForName(const Aws::String& name)

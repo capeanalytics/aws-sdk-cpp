@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 Storage::Storage() : 
     m_s3HasBeenSet(false)
@@ -59,6 +65,7 @@ void Storage::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       s3LocationAndMemberSs << location << index << locationValue << ".S3";
       m_s3.OutputToStream(oStream, s3LocationAndMemberSs.str().c_str());
   }
+
 }
 
 void Storage::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -70,3 +77,7 @@ void Storage::OutputToStream(Aws::OStream& oStream, const char* location) const
       m_s3.OutputToStream(oStream, s3LocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

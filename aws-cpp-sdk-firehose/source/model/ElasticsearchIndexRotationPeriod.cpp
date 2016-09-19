@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int NoRotation_HASH = HashingUtils::HashString("NoRotation");
-static const int OneHour_HASH = HashingUtils::HashString("OneHour");
-static const int OneDay_HASH = HashingUtils::HashString("OneDay");
-static const int OneWeek_HASH = HashingUtils::HashString("OneWeek");
-static const int OneMonth_HASH = HashingUtils::HashString("OneMonth");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ElasticsearchIndexRotationPeriodMapper
       {
+
+        static const int NoRotation_HASH = HashingUtils::HashString("NoRotation");
+        static const int OneHour_HASH = HashingUtils::HashString("OneHour");
+        static const int OneDay_HASH = HashingUtils::HashString("OneDay");
+        static const int OneWeek_HASH = HashingUtils::HashString("OneWeek");
+        static const int OneMonth_HASH = HashingUtils::HashString("OneMonth");
 
 
         ElasticsearchIndexRotationPeriod GetElasticsearchIndexRotationPeriodForName(const Aws::String& name)

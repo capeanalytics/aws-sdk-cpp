@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,7 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CHILD_POLICY_APPLIED_HASH = HashingUtils::HashString("CHILD_POLICY_APPLIED");
 
 namespace Aws
 {
@@ -29,6 +28,8 @@ namespace Aws
     {
       namespace WorkflowExecutionCancelRequestedCauseMapper
       {
+
+        static const int CHILD_POLICY_APPLIED_HASH = HashingUtils::HashString("CHILD_POLICY_APPLIED");
 
 
         WorkflowExecutionCancelRequestedCause GetWorkflowExecutionCancelRequestedCauseForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,7 @@ ListInstancesRequest::ListInstancesRequest() :
     m_clusterIdHasBeenSet(false),
     m_instanceGroupIdHasBeenSet(false),
     m_instanceGroupTypesHasBeenSet(false),
+    m_instanceStatesHasBeenSet(false),
     m_markerHasBeenSet(false)
 {
 }
@@ -53,6 +54,17 @@ Aws::String ListInstancesRequest::SerializePayload() const
      instanceGroupTypesJsonList[instanceGroupTypesIndex].AsString(InstanceGroupTypeMapper::GetNameForInstanceGroupType(m_instanceGroupTypes[instanceGroupTypesIndex]));
    }
    payload.WithArray("InstanceGroupTypes", std::move(instanceGroupTypesJsonList));
+
+  }
+
+  if(m_instanceStatesHasBeenSet)
+  {
+   Array<JsonValue> instanceStatesJsonList(m_instanceStates.size());
+   for(unsigned instanceStatesIndex = 0; instanceStatesIndex < instanceStatesJsonList.GetLength(); ++instanceStatesIndex)
+   {
+     instanceStatesJsonList[instanceStatesIndex].AsString(InstanceStateMapper::GetNameForInstanceState(m_instanceStates[instanceStatesIndex]));
+   }
+   payload.WithArray("InstanceStates", std::move(instanceStatesJsonList));
 
   }
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::WorkSpaces::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace WorkSpaces
+{
+namespace Model
+{
 
 WorkspaceRequest::WorkspaceRequest() : 
     m_directoryIdHasBeenSet(false),
@@ -29,7 +35,9 @@ WorkspaceRequest::WorkspaceRequest() :
     m_userVolumeEncryptionEnabled(false),
     m_userVolumeEncryptionEnabledHasBeenSet(false),
     m_rootVolumeEncryptionEnabled(false),
-    m_rootVolumeEncryptionEnabledHasBeenSet(false)
+    m_rootVolumeEncryptionEnabledHasBeenSet(false),
+    m_workspacePropertiesHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -41,7 +49,9 @@ WorkspaceRequest::WorkspaceRequest(const JsonValue& jsonValue) :
     m_userVolumeEncryptionEnabled(false),
     m_userVolumeEncryptionEnabledHasBeenSet(false),
     m_rootVolumeEncryptionEnabled(false),
-    m_rootVolumeEncryptionEnabledHasBeenSet(false)
+    m_rootVolumeEncryptionEnabledHasBeenSet(false),
+    m_workspacePropertiesHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -90,6 +100,23 @@ WorkspaceRequest& WorkspaceRequest::operator =(const JsonValue& jsonValue)
     m_rootVolumeEncryptionEnabledHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("WorkspaceProperties"))
+  {
+    m_workspaceProperties = jsonValue.GetObject("WorkspaceProperties");
+
+    m_workspacePropertiesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Tags"))
+  {
+    Array<JsonValue> tagsJsonList = jsonValue.GetArray("Tags");
+    for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+    {
+      m_tags.push_back(tagsJsonList[tagsIndex].AsObject());
+    }
+    m_tagsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -133,5 +160,26 @@ JsonValue WorkspaceRequest::Jsonize() const
 
   }
 
+  if(m_workspacePropertiesHasBeenSet)
+  {
+   payload.WithObject("WorkspaceProperties", m_workspaceProperties.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace WorkSpaces
+} // namespace Aws

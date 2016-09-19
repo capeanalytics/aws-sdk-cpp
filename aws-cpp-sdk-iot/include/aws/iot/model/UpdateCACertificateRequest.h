@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,6 +17,7 @@
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/CACertificateStatus.h>
+#include <aws/iot/model/AutoRegistrationStatus.h>
 
 namespace Aws
 {
@@ -76,35 +77,72 @@ namespace Model
     inline UpdateCACertificateRequest& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
 
     /**
-     * <p>The updated status of the CA certificate.</p>
+     * <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status
+     * value REGISTER_INACTIVE is deprecated and should not be used.</p>
      */
     inline const CACertificateStatus& GetNewStatus() const{ return m_newStatus; }
 
     /**
-     * <p>The updated status of the CA certificate.</p>
+     * <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status
+     * value REGISTER_INACTIVE is deprecated and should not be used.</p>
      */
     inline void SetNewStatus(const CACertificateStatus& value) { m_newStatusHasBeenSet = true; m_newStatus = value; }
 
     /**
-     * <p>The updated status of the CA certificate.</p>
+     * <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status
+     * value REGISTER_INACTIVE is deprecated and should not be used.</p>
      */
     inline void SetNewStatus(CACertificateStatus&& value) { m_newStatusHasBeenSet = true; m_newStatus = value; }
 
     /**
-     * <p>The updated status of the CA certificate.</p>
+     * <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status
+     * value REGISTER_INACTIVE is deprecated and should not be used.</p>
      */
     inline UpdateCACertificateRequest& WithNewStatus(const CACertificateStatus& value) { SetNewStatus(value); return *this;}
 
     /**
-     * <p>The updated status of the CA certificate.</p>
+     * <p>The updated status of the CA certificate.</p> <p><b>Note:</b> The status
+     * value REGISTER_INACTIVE is deprecated and should not be used.</p>
      */
     inline UpdateCACertificateRequest& WithNewStatus(CACertificateStatus&& value) { SetNewStatus(value); return *this;}
+
+    /**
+     * <p>The new value for the auto registration status. Valid values are: "ENABLE" or
+     * "DISABLE".</p>
+     */
+    inline const AutoRegistrationStatus& GetNewAutoRegistrationStatus() const{ return m_newAutoRegistrationStatus; }
+
+    /**
+     * <p>The new value for the auto registration status. Valid values are: "ENABLE" or
+     * "DISABLE".</p>
+     */
+    inline void SetNewAutoRegistrationStatus(const AutoRegistrationStatus& value) { m_newAutoRegistrationStatusHasBeenSet = true; m_newAutoRegistrationStatus = value; }
+
+    /**
+     * <p>The new value for the auto registration status. Valid values are: "ENABLE" or
+     * "DISABLE".</p>
+     */
+    inline void SetNewAutoRegistrationStatus(AutoRegistrationStatus&& value) { m_newAutoRegistrationStatusHasBeenSet = true; m_newAutoRegistrationStatus = value; }
+
+    /**
+     * <p>The new value for the auto registration status. Valid values are: "ENABLE" or
+     * "DISABLE".</p>
+     */
+    inline UpdateCACertificateRequest& WithNewAutoRegistrationStatus(const AutoRegistrationStatus& value) { SetNewAutoRegistrationStatus(value); return *this;}
+
+    /**
+     * <p>The new value for the auto registration status. Valid values are: "ENABLE" or
+     * "DISABLE".</p>
+     */
+    inline UpdateCACertificateRequest& WithNewAutoRegistrationStatus(AutoRegistrationStatus&& value) { SetNewAutoRegistrationStatus(value); return *this;}
 
   private:
     Aws::String m_certificateId;
     bool m_certificateIdHasBeenSet;
     CACertificateStatus m_newStatus;
     bool m_newStatusHasBeenSet;
+    AutoRegistrationStatus m_newAutoRegistrationStatus;
+    bool m_newAutoRegistrationStatusHasBeenSet;
   };
 
 } // namespace Model

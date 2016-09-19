@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int BLOCK_HASH = HashingUtils::HashString("BLOCK");
-static const int ALLOW_HASH = HashingUtils::HashString("ALLOW");
-static const int COUNT_HASH = HashingUtils::HashString("COUNT");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace WafActionTypeMapper
       {
+
+        static const int BLOCK_HASH = HashingUtils::HashString("BLOCK");
+        static const int ALLOW_HASH = HashingUtils::HashString("ALLOW");
+        static const int COUNT_HASH = HashingUtils::HashString("COUNT");
 
 
         WafActionType GetWafActionTypeForName(const Aws::String& name)

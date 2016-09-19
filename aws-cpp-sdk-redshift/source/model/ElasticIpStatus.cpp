@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 ElasticIpStatus::ElasticIpStatus() : 
     m_elasticIpHasBeenSet(false),
@@ -65,10 +71,12 @@ void ElasticIpStatus::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".ElasticIp=" << StringUtils::URLEncode(m_elasticIp.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
 }
 
 void ElasticIpStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void ElasticIpStatus::OutputToStream(Aws::OStream& oStream, const char* location
       oStream << location << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

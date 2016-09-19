@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Inbound_HASH = HashingUtils::HashString("Inbound");
-static const int Outbound_HASH = HashingUtils::HashString("Outbound");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace StageTransitionTypeMapper
       {
+
+        static const int Inbound_HASH = HashingUtils::HashString("Inbound");
+        static const int Outbound_HASH = HashingUtils::HashString("Outbound");
 
 
         StageTransitionType GetStageTransitionTypeForName(const Aws::String& name)

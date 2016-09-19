@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,9 +20,15 @@
 
 #include <utility>
 
-using namespace Aws::SQS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SQS
+{
+namespace Model
+{
 
 MessageAttributeValue::MessageAttributeValue() : 
     m_stringValueHasBeenSet(false),
@@ -101,10 +107,12 @@ void MessageAttributeValue::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".StringValue=" << StringUtils::URLEncode(m_stringValue.c_str()) << "&";
   }
+
   if(m_binaryValueHasBeenSet)
   {
       oStream << location << index << locationValue << ".BinaryValue=" << StringUtils::URLEncode(HashingUtils::Base64Encode(m_binaryValue).c_str()) << "&";
   }
+
   if(m_stringListValuesHasBeenSet)
   {
       unsigned stringListValuesIdx = 1;
@@ -113,6 +121,7 @@ void MessageAttributeValue::OutputToStream(Aws::OStream& oStream, const char* lo
         oStream << location << index << locationValue << ".StringListValue." << stringListValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_binaryListValuesHasBeenSet)
   {
       unsigned binaryListValuesIdx = 1;
@@ -121,10 +130,12 @@ void MessageAttributeValue::OutputToStream(Aws::OStream& oStream, const char* lo
         oStream << location << index << locationValue << ".BinaryListValue." << binaryListValuesIdx++ << "=" << StringUtils::URLEncode(HashingUtils::Base64Encode(item).c_str()) << "&";
       }
   }
+
   if(m_dataTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".DataType=" << StringUtils::URLEncode(m_dataType.c_str()) << "&";
   }
+
 }
 
 void MessageAttributeValue::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -158,3 +169,7 @@ void MessageAttributeValue::OutputToStream(Aws::OStream& oStream, const char* lo
       oStream << location << ".DataType=" << StringUtils::URLEncode(m_dataType.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace SQS
+} // namespace Aws

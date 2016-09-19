@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-sdb)
 
   file(GLOB AWS_SDB_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-sdb)
     "source/model/*.cpp"
   )
 
-  file(GLOB SDB_SRC
+  file(GLOB SDB_UNIFIED_HEADERS
     ${AWS_SDB_HEADERS}
     ${AWS_SDB_MODEL_HEADERS}
+  )
+
+  file(GLOB SDB_UNITY_SRC
     ${AWS_SDB_SOURCE}
     ${AWS_SDB_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("SDB" SDB_UNITY_SRC)
+  endif()
+
+  file(GLOB SDB_SRC
+    ${SDB_UNIFIED_HEADERS}
+    ${SDB_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-sdb)
 
   include_directories(${SDB_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_SIMPLEDB_EXPORTS")
   endif()
 
@@ -56,14 +68,28 @@ project(aws-cpp-sdk-sdb)
   
   target_link_libraries(aws-cpp-sdk-sdb aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-sdb
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-sdb
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-sdb)
+    else()
+      install (TARGETS aws-cpp-sdk-sdb
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_SDB_HEADERS} DESTINATION include/aws/sdb)
   install (FILES ${AWS_SDB_MODEL_HEADERS} DESTINATION include/aws/sdb/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-sdb.autopkg DESTINATION nuget)
+  endif()
+
+
 

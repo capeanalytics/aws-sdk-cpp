@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int InvalidImageDigest_HASH = HashingUtils::HashString("InvalidImageDigest");
-static const int InvalidImageTag_HASH = HashingUtils::HashString("InvalidImageTag");
-static const int ImageTagDoesNotMatchDigest_HASH = HashingUtils::HashString("ImageTagDoesNotMatchDigest");
-static const int ImageNotFound_HASH = HashingUtils::HashString("ImageNotFound");
-static const int MissingDigestAndTag_HASH = HashingUtils::HashString("MissingDigestAndTag");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ImageFailureCodeMapper
       {
+
+        static const int InvalidImageDigest_HASH = HashingUtils::HashString("InvalidImageDigest");
+        static const int InvalidImageTag_HASH = HashingUtils::HashString("InvalidImageTag");
+        static const int ImageTagDoesNotMatchDigest_HASH = HashingUtils::HashString("ImageTagDoesNotMatchDigest");
+        static const int ImageNotFound_HASH = HashingUtils::HashString("ImageNotFound");
+        static const int MissingDigestAndTag_HASH = HashingUtils::HashString("MissingDigestAndTag");
 
 
         ImageFailureCode GetImageFailureCodeForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace MachineLearning
 {
-enum class AWS_MACHINELEARNING_API MachineLearningErrors
+enum class MachineLearningErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -51,8 +51,10 @@ enum class AWS_MACHINELEARNING_API MachineLearningErrors
   IDEMPOTENT_PARAMETER_MISMATCH= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
   INTERNAL_SERVER,
   INVALID_INPUT,
+  INVALID_TAG,
   LIMIT_EXCEEDED,
-  PREDICTOR_NOT_MOUNTED
+  PREDICTOR_NOT_MOUNTED,
+  TAG_LIMIT_EXCEEDED
 };
 namespace MachineLearningErrorMapper
 {

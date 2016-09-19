@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,7 @@ namespace Model
 {
 
   /**
+   * <p/>
    */
   class AWS_SUPPORT_API DescribeCommunicationsRequest : public SupportRequest
   {
@@ -37,49 +38,49 @@ namespace Model
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline const Aws::String& GetCaseId() const{ return m_caseId; }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline void SetCaseId(const Aws::String& value) { m_caseIdHasBeenSet = true; m_caseId = value; }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline void SetCaseId(Aws::String&& value) { m_caseIdHasBeenSet = true; m_caseId = value; }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline void SetCaseId(const char* value) { m_caseIdHasBeenSet = true; m_caseId.assign(value); }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline DescribeCommunicationsRequest& WithCaseId(const Aws::String& value) { SetCaseId(value); return *this;}
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline DescribeCommunicationsRequest& WithCaseId(Aws::String&& value) { SetCaseId(value); return *this;}
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
      * alphanumeric string formatted as shown in this example:
-     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i></p>
+     * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
     inline DescribeCommunicationsRequest& WithCaseId(const char* value) { SetCaseId(value); return *this;}
 
@@ -205,17 +206,17 @@ namespace Model
     /**
      * <p>The maximum number of results to return before paginating.</p>
      */
-    inline long GetMaxResults() const{ return m_maxResults; }
+    inline int GetMaxResults() const{ return m_maxResults; }
 
     /**
      * <p>The maximum number of results to return before paginating.</p>
      */
-    inline void SetMaxResults(long value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
 
     /**
      * <p>The maximum number of results to return before paginating.</p>
      */
-    inline DescribeCommunicationsRequest& WithMaxResults(long value) { SetMaxResults(value); return *this;}
+    inline DescribeCommunicationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
   private:
     Aws::String m_caseId;
@@ -226,7 +227,7 @@ namespace Model
     bool m_afterTimeHasBeenSet;
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet;
-    long m_maxResults;
+    int m_maxResults;
     bool m_maxResultsHasBeenSet;
   };
 

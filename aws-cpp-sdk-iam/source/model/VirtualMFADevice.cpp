@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,9 +20,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 VirtualMFADevice::VirtualMFADevice() : 
     m_serialNumberHasBeenSet(false),
@@ -90,24 +96,29 @@ void VirtualMFADevice::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".SerialNumber=" << StringUtils::URLEncode(m_serialNumber.c_str()) << "&";
   }
+
   if(m_base32StringSeedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Base32StringSeed=" << StringUtils::URLEncode(HashingUtils::Base64Encode(m_base32StringSeed).c_str()) << "&";
   }
+
   if(m_qRCodePNGHasBeenSet)
   {
       oStream << location << index << locationValue << ".QRCodePNG=" << StringUtils::URLEncode(HashingUtils::Base64Encode(m_qRCodePNG).c_str()) << "&";
   }
+
   if(m_userHasBeenSet)
   {
       Aws::StringStream userLocationAndMemberSs;
       userLocationAndMemberSs << location << index << locationValue << ".User";
       m_user.OutputToStream(oStream, userLocationAndMemberSs.str().c_str());
   }
+
   if(m_enableDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnableDate=" << StringUtils::URLEncode(m_enableDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void VirtualMFADevice::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -135,3 +146,7 @@ void VirtualMFADevice::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << ".EnableDate=" << StringUtils::URLEncode(m_enableDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,14 +34,17 @@ Aws::String SetIdentityMailFromDomainRequest::SerializePayload() const
   {
     ss << "Identity=" << StringUtils::URLEncode(m_identity.c_str()) << "&";
   }
+
   if(m_mailFromDomainHasBeenSet)
   {
     ss << "MailFromDomain=" << StringUtils::URLEncode(m_mailFromDomain.c_str()) << "&";
   }
+
   if(m_behaviorOnMXFailureHasBeenSet)
   {
     ss << "BehaviorOnMXFailure=" << BehaviorOnMXFailureMapper::GetNameForBehaviorOnMXFailure(m_behaviorOnMXFailure) << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

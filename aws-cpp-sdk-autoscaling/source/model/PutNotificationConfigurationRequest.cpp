@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,10 +34,12 @@ Aws::String PutNotificationConfigurationRequest::SerializePayload() const
   {
     ss << "AutoScalingGroupName=" << StringUtils::URLEncode(m_autoScalingGroupName.c_str()) << "&";
   }
+
   if(m_topicARNHasBeenSet)
   {
     ss << "TopicARN=" << StringUtils::URLEncode(m_topicARN.c_str()) << "&";
   }
+
   if(m_notificationTypesHasBeenSet)
   {
     unsigned notificationTypesCount = 1;
@@ -48,6 +50,7 @@ Aws::String PutNotificationConfigurationRequest::SerializePayload() const
       notificationTypesCount++;
     }
   }
+
   ss << "Version=2011-01-01";
   return ss.str();
 }

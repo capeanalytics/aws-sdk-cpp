@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,13 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int description_HASH = HashingUtils::HashString("description");
-static const int kernel_HASH = HashingUtils::HashString("kernel");
-static const int ramdisk_HASH = HashingUtils::HashString("ramdisk");
-static const int launchPermission_HASH = HashingUtils::HashString("launchPermission");
-static const int productCodes_HASH = HashingUtils::HashString("productCodes");
-static const int blockDeviceMapping_HASH = HashingUtils::HashString("blockDeviceMapping");
-static const int sriovNetSupport_HASH = HashingUtils::HashString("sriovNetSupport");
 
 namespace Aws
 {
@@ -35,6 +28,14 @@ namespace Aws
     {
       namespace ImageAttributeNameMapper
       {
+
+        static const int description_HASH = HashingUtils::HashString("description");
+        static const int kernel_HASH = HashingUtils::HashString("kernel");
+        static const int ramdisk_HASH = HashingUtils::HashString("ramdisk");
+        static const int launchPermission_HASH = HashingUtils::HashString("launchPermission");
+        static const int productCodes_HASH = HashingUtils::HashString("productCodes");
+        static const int blockDeviceMapping_HASH = HashingUtils::HashString("blockDeviceMapping");
+        static const int sriovNetSupport_HASH = HashingUtils::HashString("sriovNetSupport");
 
 
         ImageAttributeName GetImageAttributeNameForName(const Aws::String& name)

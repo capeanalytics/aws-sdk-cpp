@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 AvailableCapacity::AvailableCapacity() : 
     m_availableInstanceCapacityHasBeenSet(false),
@@ -79,10 +85,12 @@ void AvailableCapacity::OutputToStream(Aws::OStream& oStream, const char* locati
         item.OutputToStream(oStream, availableInstanceCapacitySs.str().c_str());
       }
   }
+
   if(m_availableVCpusHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailableVCpus=" << m_availableVCpus << "&";
   }
+
 }
 
 void AvailableCapacity::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -102,3 +110,7 @@ void AvailableCapacity::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".AvailableVCpus=" << m_availableVCpus << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

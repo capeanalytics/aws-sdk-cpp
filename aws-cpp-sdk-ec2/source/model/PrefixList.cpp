@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 PrefixList::PrefixList() : 
     m_prefixListIdHasBeenSet(false),
@@ -79,10 +85,12 @@ void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".PrefixListId=" << StringUtils::URLEncode(m_prefixListId.c_str()) << "&";
   }
+
   if(m_prefixListNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".PrefixListName=" << StringUtils::URLEncode(m_prefixListName.c_str()) << "&";
   }
+
   if(m_cidrsHasBeenSet)
   {
       unsigned cidrsIdx = 1;
@@ -91,6 +99,7 @@ void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location, uns
         oStream << location << index << locationValue << ".CidrSet." << cidrsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -112,3 +121,7 @@ void PrefixList::OutputToStream(Aws::OStream& oStream, const char* location) con
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

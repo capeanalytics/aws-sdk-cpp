@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace WorkSpaces
 {
-enum class AWS_WORKSPACES_API WorkSpacesErrors
+enum class WorkSpacesErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -49,8 +49,11 @@ enum class AWS_WORKSPACES_API WorkSpacesErrors
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   INVALID_PARAMETER_VALUES= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  INVALID_RESOURCE_STATE,
+  OPERATION_IN_PROGRESS,
   RESOURCE_LIMIT_EXCEEDED,
-  RESOURCE_UNAVAILABLE
+  RESOURCE_UNAVAILABLE,
+  UNSUPPORTED_WORKSPACE_CONFIGURATION
 };
 namespace WorkSpacesErrorMapper
 {

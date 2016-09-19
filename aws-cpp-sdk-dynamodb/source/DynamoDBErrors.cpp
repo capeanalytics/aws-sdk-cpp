@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,18 +20,19 @@ using namespace Aws::Client;
 using namespace Aws::DynamoDB;
 using namespace Aws::Utils;
 
-static const int CONDITIONAL_CHECK_FAILED_HASH = HashingUtils::HashString("ConditionalCheckFailedException");
-static const int PROVISIONED_THROUGHPUT_EXCEEDED_HASH = HashingUtils::HashString("ProvisionedThroughputExceededException");
-static const int RESOURCE_IN_USE_HASH = HashingUtils::HashString("ResourceInUseException");
-static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
-static const int ITEM_COLLECTION_SIZE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ItemCollectionSizeLimitExceededException");
-
 namespace Aws
 {
 namespace DynamoDB
 {
 namespace DynamoDBErrorMapper
 {
+
+static const int CONDITIONAL_CHECK_FAILED_HASH = HashingUtils::HashString("ConditionalCheckFailedException");
+static const int PROVISIONED_THROUGHPUT_EXCEEDED_HASH = HashingUtils::HashString("ProvisionedThroughputExceededException");
+static const int RESOURCE_IN_USE_HASH = HashingUtils::HashString("ResourceInUseException");
+static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
+static const int ITEM_COLLECTION_SIZE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ItemCollectionSizeLimitExceededException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

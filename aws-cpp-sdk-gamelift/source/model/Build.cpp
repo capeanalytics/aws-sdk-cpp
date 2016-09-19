@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace GameLift
+{
+namespace Model
+{
 
 Build::Build() : 
     m_buildIdHasBeenSet(false),
@@ -28,6 +34,7 @@ Build::Build() :
     m_statusHasBeenSet(false),
     m_sizeOnDisk(0),
     m_sizeOnDiskHasBeenSet(false),
+    m_operatingSystemHasBeenSet(false),
     m_creationTimeHasBeenSet(false)
 {
 }
@@ -39,6 +46,7 @@ Build::Build(const JsonValue& jsonValue) :
     m_statusHasBeenSet(false),
     m_sizeOnDisk(0),
     m_sizeOnDiskHasBeenSet(false),
+    m_operatingSystemHasBeenSet(false),
     m_creationTimeHasBeenSet(false)
 {
   *this = jsonValue;
@@ -79,6 +87,13 @@ Build& Build::operator =(const JsonValue& jsonValue)
     m_sizeOnDisk = jsonValue.GetInt64("SizeOnDisk");
 
     m_sizeOnDiskHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OperatingSystem"))
+  {
+    m_operatingSystem = OperatingSystemMapper::GetOperatingSystemForName(jsonValue.GetString("OperatingSystem"));
+
+    m_operatingSystemHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("CreationTime"))
@@ -124,6 +139,11 @@ JsonValue Build::Jsonize() const
 
   }
 
+  if(m_operatingSystemHasBeenSet)
+  {
+   payload.WithString("OperatingSystem", OperatingSystemMapper::GetNameForOperatingSystem(m_operatingSystem));
+  }
+
   if(m_creationTimeHasBeenSet)
   {
    payload.WithDouble("CreationTime", m_creationTime.SecondsWithMSPrecision());
@@ -131,3 +151,7 @@ JsonValue Build::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace GameLift
+} // namespace Aws

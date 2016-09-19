@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ScheduledInstancesPrivateIpAddressConfig::ScheduledInstancesPrivateIpAddressConfig() : 
     m_privateIpAddressHasBeenSet(false),
@@ -67,10 +73,12 @@ void ScheduledInstancesPrivateIpAddressConfig::OutputToStream(Aws::OStream& oStr
   {
       oStream << location << index << locationValue << ".PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
   }
+
   if(m_primaryHasBeenSet)
   {
       oStream << location << index << locationValue << ".Primary=" << m_primary << "&";
   }
+
 }
 
 void ScheduledInstancesPrivateIpAddressConfig::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -84,3 +92,7 @@ void ScheduledInstancesPrivateIpAddressConfig::OutputToStream(Aws::OStream& oStr
       oStream << location << ".Primary=" << m_primary << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

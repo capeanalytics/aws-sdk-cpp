@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace Lambda
 {
-enum class AWS_LAMBDA_API LambdaErrors
+enum class LambdaErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +56,7 @@ enum class AWS_LAMBDA_API LambdaErrors
   INVALID_REQUEST_CONTENT,
   INVALID_SECURITY_GROUP_I_D,
   INVALID_SUBNET_I_D,
+  INVALID_ZIP_FILE,
   POLICY_LENGTH_EXCEEDED,
   REQUEST_TOO_LARGE,
   RESOURCE_CONFLICT,

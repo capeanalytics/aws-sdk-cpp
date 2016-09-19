@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ebs_HASH = HashingUtils::HashString("ebs");
-static const int instance_store_HASH = HashingUtils::HashString("instance-store");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace RootDeviceTypeMapper
       {
+
+        static const int ebs_HASH = HashingUtils::HashString("ebs");
+        static const int instance_store_HASH = HashingUtils::HashString("instance-store");
 
 
         RootDeviceType GetRootDeviceTypeForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int available_HASH = HashingUtils::HashString("available");
-static const int sold_HASH = HashingUtils::HashString("sold");
-static const int cancelled_HASH = HashingUtils::HashString("cancelled");
-static const int pending_HASH = HashingUtils::HashString("pending");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace ListingStateMapper
       {
+
+        static const int available_HASH = HashingUtils::HashString("available");
+        static const int sold_HASH = HashingUtils::HashString("sold");
+        static const int cancelled_HASH = HashingUtils::HashString("cancelled");
+        static const int pending_HASH = HashingUtils::HashString("pending");
 
 
         ListingState GetListingStateForName(const Aws::String& name)

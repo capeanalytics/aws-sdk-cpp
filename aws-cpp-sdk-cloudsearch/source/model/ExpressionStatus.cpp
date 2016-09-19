@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 ExpressionStatus::ExpressionStatus() : 
     m_optionsHasBeenSet(false),
@@ -67,12 +73,14 @@ void ExpressionStatus::OutputToStream(Aws::OStream& oStream, const char* locatio
       optionsLocationAndMemberSs << location << index << locationValue << ".Options";
       m_options.OutputToStream(oStream, optionsLocationAndMemberSs.str().c_str());
   }
+
   if(m_statusHasBeenSet)
   {
       Aws::StringStream statusLocationAndMemberSs;
       statusLocationAndMemberSs << location << index << locationValue << ".Status";
       m_status.OutputToStream(oStream, statusLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void ExpressionStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -90,3 +98,7 @@ void ExpressionStatus::OutputToStream(Aws::OStream& oStream, const char* locatio
       m_status.OutputToStream(oStream, statusLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

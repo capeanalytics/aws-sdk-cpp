@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,18 +35,22 @@ Aws::String SwapEnvironmentCNAMEsRequest::SerializePayload() const
   {
     ss << "SourceEnvironmentId=" << StringUtils::URLEncode(m_sourceEnvironmentId.c_str()) << "&";
   }
+
   if(m_sourceEnvironmentNameHasBeenSet)
   {
     ss << "SourceEnvironmentName=" << StringUtils::URLEncode(m_sourceEnvironmentName.c_str()) << "&";
   }
+
   if(m_destinationEnvironmentIdHasBeenSet)
   {
     ss << "DestinationEnvironmentId=" << StringUtils::URLEncode(m_destinationEnvironmentId.c_str()) << "&";
   }
+
   if(m_destinationEnvironmentNameHasBeenSet)
   {
     ss << "DestinationEnvironmentName=" << StringUtils::URLEncode(m_destinationEnvironmentName.c_str()) << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

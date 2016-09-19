@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::SES::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace SES
+{
+namespace Model
+{
 
 Destination::Destination() : 
     m_toAddressesHasBeenSet(false),
@@ -95,6 +101,7 @@ void Destination::OutputToStream(Aws::OStream& oStream, const char* location, un
         oStream << location << index << locationValue << ".ToAddresses.member." << toAddressesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_ccAddressesHasBeenSet)
   {
       unsigned ccAddressesIdx = 1;
@@ -103,6 +110,7 @@ void Destination::OutputToStream(Aws::OStream& oStream, const char* location, un
         oStream << location << index << locationValue << ".CcAddresses.member." << ccAddressesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_bccAddressesHasBeenSet)
   {
       unsigned bccAddressesIdx = 1;
@@ -111,6 +119,7 @@ void Destination::OutputToStream(Aws::OStream& oStream, const char* location, un
         oStream << location << index << locationValue << ".BccAddresses.member." << bccAddressesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
 }
 
 void Destination::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -140,3 +149,7 @@ void Destination::OutputToStream(Aws::OStream& oStream, const char* location) co
       }
   }
 }
+
+} // namespace Model
+} // namespace SES
+} // namespace Aws

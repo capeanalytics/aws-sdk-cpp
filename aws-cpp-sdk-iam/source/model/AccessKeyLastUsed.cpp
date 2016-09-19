@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 AccessKeyLastUsed::AccessKeyLastUsed() : 
     m_lastUsedDateHasBeenSet(false),
@@ -73,14 +79,17 @@ void AccessKeyLastUsed::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".LastUsedDate=" << StringUtils::URLEncode(m_lastUsedDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_serviceNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".ServiceName=" << StringUtils::URLEncode(m_serviceName.c_str()) << "&";
   }
+
   if(m_regionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Region=" << StringUtils::URLEncode(m_region.c_str()) << "&";
   }
+
 }
 
 void AccessKeyLastUsed::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -98,3 +107,7 @@ void AccessKeyLastUsed::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".Region=" << StringUtils::URLEncode(m_region.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Success_HASH = HashingUtils::HashString("Success");
-static const int Failure_HASH = HashingUtils::HashString("Failure");
-static const int Not_Applicable_HASH = HashingUtils::HashString("Not_Applicable");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace DeliveryStatusMapper
       {
+
+        static const int Success_HASH = HashingUtils::HashString("Success");
+        static const int Failure_HASH = HashingUtils::HashString("Failure");
+        static const int Not_Applicable_HASH = HashingUtils::HashString("Not_Applicable");
 
 
         DeliveryStatus GetDeliveryStatusForName(const Aws::String& name)

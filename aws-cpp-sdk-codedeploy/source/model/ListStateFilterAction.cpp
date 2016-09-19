@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int include_HASH = HashingUtils::HashString("include");
-static const int exclude_HASH = HashingUtils::HashString("exclude");
-static const int ignore_HASH = HashingUtils::HashString("ignore");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ListStateFilterActionMapper
       {
+
+        static const int include_HASH = HashingUtils::HashString("include");
+        static const int exclude_HASH = HashingUtils::HashString("exclude");
+        static const int ignore_HASH = HashingUtils::HashString("ignore");
 
 
         ListStateFilterAction GetListStateFilterActionForName(const Aws::String& name)

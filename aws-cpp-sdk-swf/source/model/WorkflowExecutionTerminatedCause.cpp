@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CHILD_POLICY_APPLIED_HASH = HashingUtils::HashString("CHILD_POLICY_APPLIED");
-static const int EVENT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("EVENT_LIMIT_EXCEEDED");
-static const int OPERATOR_INITIATED_HASH = HashingUtils::HashString("OPERATOR_INITIATED");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace WorkflowExecutionTerminatedCauseMapper
       {
+
+        static const int CHILD_POLICY_APPLIED_HASH = HashingUtils::HashString("CHILD_POLICY_APPLIED");
+        static const int EVENT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("EVENT_LIMIT_EXCEEDED");
+        static const int OPERATOR_INITIATED_HASH = HashingUtils::HashString("OPERATOR_INITIATED");
 
 
         WorkflowExecutionTerminatedCause GetWorkflowExecutionTerminatedCauseForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
-static const int DELETING_HASH = HashingUtils::HashString("DELETING");
 
 namespace Aws
 {
@@ -30,6 +28,11 @@ namespace Aws
     {
       namespace ConfigRuleStateMapper
       {
+
+        static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
+        static const int DELETING_HASH = HashingUtils::HashString("DELETING");
+        static const int DELETING_RESULTS_HASH = HashingUtils::HashString("DELETING_RESULTS");
+        static const int EVALUATING_HASH = HashingUtils::HashString("EVALUATING");
 
 
         ConfigRuleState GetConfigRuleStateForName(const Aws::String& name)
@@ -42,6 +45,14 @@ namespace Aws
           else if (hashCode == DELETING_HASH)
           {
             return ConfigRuleState::DELETING;
+          }
+          else if (hashCode == DELETING_RESULTS_HASH)
+          {
+            return ConfigRuleState::DELETING_RESULTS;
+          }
+          else if (hashCode == EVALUATING_HASH)
+          {
+            return ConfigRuleState::EVALUATING;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -61,6 +72,10 @@ namespace Aws
             return "ACTIVE";
           case ConfigRuleState::DELETING:
             return "DELETING";
+          case ConfigRuleState::DELETING_RESULTS:
+            return "DELETING_RESULTS";
+          case ConfigRuleState::EVALUATING:
+            return "EVALUATING";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

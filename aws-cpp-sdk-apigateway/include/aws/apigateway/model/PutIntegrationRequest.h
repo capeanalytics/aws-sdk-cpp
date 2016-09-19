@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -307,232 +307,363 @@ namespace Model
     inline PutIntegrationRequest& WithCredentials(const char* value) { SetCredentials(value); return *this;}
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetRequestParameters() const{ return m_requestParameters; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline void SetRequestParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_requestParametersHasBeenSet = true; m_requestParameters = value; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline void SetRequestParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_requestParametersHasBeenSet = true; m_requestParameters = value; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& WithRequestParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetRequestParameters(value); return *this;}
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& WithRequestParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetRequestParameters(value); return *this;}
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(const Aws::String& key, const Aws::String& value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(Aws::String&& key, const Aws::String& value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(const Aws::String& key, Aws::String&& value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(Aws::String&& key, Aws::String&& value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(const char* key, Aws::String&& value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(Aws::String&& key, const char* value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Represents request parameters that are sent with the backend request. Request
-     * parameters are represented as a key/value map, with a destination as the key and
-     * a source as the value. A source must match an existing method request parameter,
-     * or a static value. Static values must be enclosed with single quotes, and be
-     * pre-encoded based on their destination in the request. The destination must
-     * match the pattern <code>integration.request.{location}.{name}</code>, where
-     * <code>location</code> is either querystring, path, or header. <code>name</code>
-     * must be a valid, unique parameter name.</p>
+     * <p>A key-value map specifying request parameters that are passed from the method
+     * request to the back end. The key is an integration request parameter name and
+     * the associated value is a method request parameter value or static value that
+     * must be enclosed within single quotes and pre-encoded as required by the back
+     * end. The method request parameter value must match the pattern of
+     * <code>method.request.{location}.{name}</code>, where <code>location</code> is
+     * <code>querystring</code>, <code>path</code>, or <code>header</code> and
+     * <code>name</code> must be a valid and unique method request parameter name.</p>
      */
     inline PutIntegrationRequest& AddRequestParameters(const char* key, const char* value) { m_requestParametersHasBeenSet = true; m_requestParameters[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline const Aws::Map<Aws::String, Aws::String>& GetRequestTemplates() const{ return m_requestTemplates; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline void SetRequestTemplates(const Aws::Map<Aws::String, Aws::String>& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates = value; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline void SetRequestTemplates(Aws::Map<Aws::String, Aws::String>&& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates = value; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& WithRequestTemplates(const Aws::Map<Aws::String, Aws::String>& value) { SetRequestTemplates(value); return *this;}
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& WithRequestTemplates(Aws::Map<Aws::String, Aws::String>&& value) { SetRequestTemplates(value); return *this;}
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(const Aws::String& key, const Aws::String& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(Aws::String&& key, const Aws::String& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(const Aws::String& key, Aws::String&& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(Aws::String&& key, Aws::String&& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(const char* key, Aws::String&& value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(Aws::String&& key, const char* value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
 
     /**
-     * <p>Specifies the templates used to transform the method request body. Request
-     * templates are represented as a key/value map, with a content-type as the key and
-     * a template as the value.</p>
+     * <p>Represents a map of Velocity templates that are applied on the request
+     * payload based on the value of the Content-Type header sent by the client. The
+     * content type value is the key in this map, and the template (as a String) is the
+     * value.</p>
      */
     inline PutIntegrationRequest& AddRequestTemplates(const char* key, const char* value) { m_requestTemplatesHasBeenSet = true; m_requestTemplates[key] = value; return *this; }
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline const Aws::String& GetPassthroughBehavior() const{ return m_passthroughBehavior; }
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline void SetPassthroughBehavior(const Aws::String& value) { m_passthroughBehaviorHasBeenSet = true; m_passthroughBehavior = value; }
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline void SetPassthroughBehavior(Aws::String&& value) { m_passthroughBehaviorHasBeenSet = true; m_passthroughBehavior = value; }
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline void SetPassthroughBehavior(const char* value) { m_passthroughBehaviorHasBeenSet = true; m_passthroughBehavior.assign(value); }
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline PutIntegrationRequest& WithPassthroughBehavior(const Aws::String& value) { SetPassthroughBehavior(value); return *this;}
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline PutIntegrationRequest& WithPassthroughBehavior(Aws::String&& value) { SetPassthroughBehavior(value); return *this;}
+
+    /**
+     * <p>Specifies the pass-through behavior for incoming requests based on the
+     * Content-Type header in the request, and the available mapping templates
+     * specified as the <code>requestTemplates</code> property on the Integration
+     * resource. There are three valid values: <code>WHEN_NO_MATCH</code>,
+     * <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul>
+     * <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content
+     * types through to the integration back end without transformation.</p></li>
+     * <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415
+     * 'Unsupported Media Type' response.</p></li>
+     * <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration
+     * has NO content types mapped to templates. However if there is at least one
+     * content type defined, unmapped content types will be rejected with the same 415
+     * response.</p></li> </ul>
+     */
+    inline PutIntegrationRequest& WithPassthroughBehavior(const char* value) { SetPassthroughBehavior(value); return *this;}
 
     /**
      * <p>Specifies a put integration input's cache namespace.</p>
@@ -628,6 +759,8 @@ namespace Model
     bool m_requestParametersHasBeenSet;
     Aws::Map<Aws::String, Aws::String> m_requestTemplates;
     bool m_requestTemplatesHasBeenSet;
+    Aws::String m_passthroughBehavior;
+    bool m_passthroughBehaviorHasBeenSet;
     Aws::String m_cacheNamespace;
     bool m_cacheNamespaceHasBeenSet;
     Aws::Vector<Aws::String> m_cacheKeyParameters;

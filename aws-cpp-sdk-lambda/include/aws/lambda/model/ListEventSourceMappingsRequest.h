@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -29,6 +29,7 @@ namespace Model
 {
 
   /**
+   * <p/>
    */
   class AWS_LAMBDA_API ListEventSourceMappingsRequest : public LambdaRequest
   {
@@ -39,37 +40,44 @@ namespace Model
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline const Aws::String& GetEventSourceArn() const{ return m_eventSourceArn; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline void SetEventSourceArn(const Aws::String& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline void SetEventSourceArn(const char* value) { m_eventSourceArnHasBeenSet = true; m_eventSourceArn.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(const Aws::String& value) { SetEventSourceArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter
+     * is optional.)</p>
      */
     inline ListEventSourceMappingsRequest& WithEventSourceArn(const char* value) { SetEventSourceArn(value); return *this;}
 
@@ -224,19 +232,19 @@ namespace Model
      * <p>Optional integer. Specifies the maximum number of event sources to return in
      * response. This value must be greater than 0.</p>
      */
-    inline long GetMaxItems() const{ return m_maxItems; }
+    inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
      * <p>Optional integer. Specifies the maximum number of event sources to return in
      * response. This value must be greater than 0.</p>
      */
-    inline void SetMaxItems(long value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
      * <p>Optional integer. Specifies the maximum number of event sources to return in
      * response. This value must be greater than 0.</p>
      */
-    inline ListEventSourceMappingsRequest& WithMaxItems(long value) { SetMaxItems(value); return *this;}
+    inline ListEventSourceMappingsRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
 
   private:
     Aws::String m_eventSourceArn;
@@ -245,7 +253,7 @@ namespace Model
     bool m_functionNameHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_maxItems;
+    int m_maxItems;
     bool m_maxItemsHasBeenSet;
   };
 

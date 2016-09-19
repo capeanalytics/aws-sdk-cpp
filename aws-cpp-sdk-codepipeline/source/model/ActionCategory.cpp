@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Source_HASH = HashingUtils::HashString("Source");
-static const int Build_HASH = HashingUtils::HashString("Build");
-static const int Deploy_HASH = HashingUtils::HashString("Deploy");
-static const int Test_HASH = HashingUtils::HashString("Test");
-static const int Invoke_HASH = HashingUtils::HashString("Invoke");
 
 namespace Aws
 {
@@ -33,6 +28,13 @@ namespace Aws
     {
       namespace ActionCategoryMapper
       {
+
+        static const int Source_HASH = HashingUtils::HashString("Source");
+        static const int Build_HASH = HashingUtils::HashString("Build");
+        static const int Deploy_HASH = HashingUtils::HashString("Deploy");
+        static const int Test_HASH = HashingUtils::HashString("Test");
+        static const int Invoke_HASH = HashingUtils::HashString("Invoke");
+        static const int Approval_HASH = HashingUtils::HashString("Approval");
 
 
         ActionCategory GetActionCategoryForName(const Aws::String& name)
@@ -58,6 +60,10 @@ namespace Aws
           {
             return ActionCategory::Invoke;
           }
+          else if (hashCode == Approval_HASH)
+          {
+            return ActionCategory::Approval;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -82,6 +88,8 @@ namespace Aws
             return "Test";
           case ActionCategory::Invoke:
             return "Invoke";
+          case ActionCategory::Approval:
+            return "Approval";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

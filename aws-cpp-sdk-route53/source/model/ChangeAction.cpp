@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CREATE_HASH = HashingUtils::HashString("CREATE");
-static const int DELETE__HASH = HashingUtils::HashString("DELETE");
-static const int UPSERT_HASH = HashingUtils::HashString("UPSERT");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ChangeActionMapper
       {
+
+        static const int CREATE_HASH = HashingUtils::HashString("CREATE");
+        static const int DELETE__HASH = HashingUtils::HashString("DELETE");
+        static const int UPSERT_HASH = HashingUtils::HashString("UPSERT");
 
 
         ChangeAction GetChangeActionForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int deployed_HASH = HashingUtils::HashString("deployed");
-static const int pending_HASH = HashingUtils::HashString("pending");
-static const int failed_HASH = HashingUtils::HashString("failed");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ConfigurationDeploymentStatusMapper
       {
+
+        static const int deployed_HASH = HashingUtils::HashString("deployed");
+        static const int pending_HASH = HashingUtils::HashString("pending");
+        static const int failed_HASH = HashingUtils::HashString("failed");
 
 
         ConfigurationDeploymentStatus GetConfigurationDeploymentStatusForName(const Aws::String& name)

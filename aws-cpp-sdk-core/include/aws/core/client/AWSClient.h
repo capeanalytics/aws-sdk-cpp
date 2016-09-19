@@ -20,6 +20,7 @@
 #include <aws/core/http/HttpTypes.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/AmazonWebServiceResult.h>
+#include <aws/core/utils/crypto/Hash.h>
 #include <memory>
 #include <atomic>
 
@@ -66,7 +67,6 @@ namespace Aws
 
     namespace Client
     {
-
         template<typename ERROR_TYPE>
         class AWSError;
         class AWSErrorMarshaller;
@@ -85,17 +85,13 @@ namespace Aws
         {
         public:
             /**
-             * Initializes AWS Client to use clientFactory for creating the http stack.
              * configuration will be used for http client settings, retry strategy, throttles, and signing information.
              * supplied signer will be used for all requests.
              * errorMarshaller tells the client how to convert error payloads into AWSError objects.
-             * hostheaderOverride will override the host header of every request with the supplied value.
-             * If this value is nullptr, it will not be used.
              */
-            AWSClient(const std::shared_ptr<Aws::Http::HttpClientFactory const>& clientFactory,
-                const Aws::Client::ClientConfiguration& configuration,
+            AWSClient(const Aws::Client::ClientConfiguration& configuration,
                 const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
-                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller, const char* hostHeaderOverride = nullptr);
+                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller);
 
             virtual ~AWSClient();
 
@@ -180,7 +176,6 @@ namespace Aws
             void InitializeGlobalStatics();
             void CleanupGlobalStatics();
 
-            std::shared_ptr<Aws::Http::HttpClientFactory const> m_clientFactory;
             std::shared_ptr<Aws::Http::HttpClient> m_httpClient;
             std::shared_ptr<Aws::Client::AWSAuthSigner> m_signer;
             std::shared_ptr<AWSErrorMarshaller> m_errorMarshaller;
@@ -188,8 +183,7 @@ namespace Aws
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_writeRateLimiter;
             std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface> m_readRateLimiter;
             Aws::String m_userAgent;
-            const char* m_hostHeaderOverride;
-            Aws::UniquePtr<Aws::Utils::Crypto::MD5> m_hash;
+            std::shared_ptr<Aws::Utils::Crypto::Hash> m_hash;
             static std::atomic<int> s_refCount;
         };
 
@@ -207,11 +201,9 @@ namespace Aws
             /**
              * Simply calls AWSClient constructor.
              */
-            AWSJsonClient(const std::shared_ptr<Aws::Http::HttpClientFactory const>& clientFactory,
-                const Aws::Client::ClientConfiguration& configuration,
+            AWSJsonClient(const Aws::Client::ClientConfiguration& configuration,
                 const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
-                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller,
-                const char* hostHeaderOverride = nullptr);
+                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller);
 
             virtual ~AWSJsonClient() = default;
 
@@ -254,11 +246,9 @@ namespace Aws
 
             typedef AWSClient BASECLASS;
 
-            AWSXMLClient(const std::shared_ptr<Aws::Http::HttpClientFactory const>& clientFactory,
-                const Aws::Client::ClientConfiguration& configuration,
+            AWSXMLClient(const Aws::Client::ClientConfiguration& configuration,
                 const std::shared_ptr<Aws::Client::AWSAuthSigner>& signer,
-                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller,
-                const char* hostHeaderOverride = nullptr);
+                const std::shared_ptr<AWSErrorMarshaller>& errorMarshaller);
 
             virtual ~AWSXMLClient() = default;
 

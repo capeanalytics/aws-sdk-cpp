@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,7 +35,7 @@ namespace Model
 {
 
   /**
-   * <p>Returns information about the details of an action type. </p>
+   * <p>Returns information about the details of an action type.</p>
    */
   class AWS_CODEPIPELINE_API ActionType
   {

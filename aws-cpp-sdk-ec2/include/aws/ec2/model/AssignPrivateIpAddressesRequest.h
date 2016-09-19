@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -137,19 +137,19 @@ namespace Model
      * <p>The number of secondary IP addresses to assign to the network interface. You
      * can't specify this parameter when also specifying private IP addresses.</p>
      */
-    inline long GetSecondaryPrivateIpAddressCount() const{ return m_secondaryPrivateIpAddressCount; }
+    inline int GetSecondaryPrivateIpAddressCount() const{ return m_secondaryPrivateIpAddressCount; }
 
     /**
      * <p>The number of secondary IP addresses to assign to the network interface. You
      * can't specify this parameter when also specifying private IP addresses.</p>
      */
-    inline void SetSecondaryPrivateIpAddressCount(long value) { m_secondaryPrivateIpAddressCountHasBeenSet = true; m_secondaryPrivateIpAddressCount = value; }
+    inline void SetSecondaryPrivateIpAddressCount(int value) { m_secondaryPrivateIpAddressCountHasBeenSet = true; m_secondaryPrivateIpAddressCount = value; }
 
     /**
      * <p>The number of secondary IP addresses to assign to the network interface. You
      * can't specify this parameter when also specifying private IP addresses.</p>
      */
-    inline AssignPrivateIpAddressesRequest& WithSecondaryPrivateIpAddressCount(long value) { SetSecondaryPrivateIpAddressCount(value); return *this;}
+    inline AssignPrivateIpAddressesRequest& WithSecondaryPrivateIpAddressCount(int value) { SetSecondaryPrivateIpAddressCount(value); return *this;}
 
     /**
      * <p>Indicates whether to allow an IP address that is already assigned to another
@@ -177,7 +177,7 @@ namespace Model
     bool m_networkInterfaceIdHasBeenSet;
     Aws::Vector<Aws::String> m_privateIpAddresses;
     bool m_privateIpAddressesHasBeenSet;
-    long m_secondaryPrivateIpAddressCount;
+    int m_secondaryPrivateIpAddressCount;
     bool m_secondaryPrivateIpAddressCountHasBeenSet;
     bool m_allowReassignment;
     bool m_allowReassignmentHasBeenSet;

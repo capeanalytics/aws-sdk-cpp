@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 Endpoint::Endpoint() : 
     m_addressHasBeenSet(false),
@@ -75,14 +81,17 @@ void Endpoint::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   {
       oStream << location << index << locationValue << ".Address=" << StringUtils::URLEncode(m_address.c_str()) << "&";
   }
+
   if(m_portHasBeenSet)
   {
       oStream << location << index << locationValue << ".Port=" << m_port << "&";
   }
+
   if(m_hostedZoneIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".HostedZoneId=" << StringUtils::URLEncode(m_hostedZoneId.c_str()) << "&";
   }
+
 }
 
 void Endpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -100,3 +109,7 @@ void Endpoint::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".HostedZoneId=" << StringUtils::URLEncode(m_hostedZoneId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

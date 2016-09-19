@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,7 +26,11 @@ DescribeDBClusterSnapshotsRequest::DescribeDBClusterSnapshotsRequest() :
     m_filtersHasBeenSet(false),
     m_maxRecords(0),
     m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
+    m_markerHasBeenSet(false),
+    m_includeShared(false),
+    m_includeSharedHasBeenSet(false),
+    m_includePublic(false),
+    m_includePublicHasBeenSet(false)
 {
 }
 
@@ -38,14 +42,17 @@ Aws::String DescribeDBClusterSnapshotsRequest::SerializePayload() const
   {
     ss << "DBClusterIdentifier=" << StringUtils::URLEncode(m_dBClusterIdentifier.c_str()) << "&";
   }
+
   if(m_dBClusterSnapshotIdentifierHasBeenSet)
   {
     ss << "DBClusterSnapshotIdentifier=" << StringUtils::URLEncode(m_dBClusterSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_snapshotTypeHasBeenSet)
   {
     ss << "SnapshotType=" << StringUtils::URLEncode(m_snapshotType.c_str()) << "&";
   }
+
   if(m_filtersHasBeenSet)
   {
     unsigned filtersCount = 1;
@@ -55,14 +62,27 @@ Aws::String DescribeDBClusterSnapshotsRequest::SerializePayload() const
       filtersCount++;
     }
   }
+
   if(m_maxRecordsHasBeenSet)
   {
     ss << "MaxRecords=" << m_maxRecords << "&";
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
+  if(m_includeSharedHasBeenSet)
+  {
+    ss << "IncludeShared=" << m_includeShared << "&";
+  }
+
+  if(m_includePublicHasBeenSet)
+  {
+    ss << "IncludePublic=" << m_includePublic << "&";
+  }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

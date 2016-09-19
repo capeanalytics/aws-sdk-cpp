@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p> <p>The input for the <a>StopConfigurationRecorder</a> action.</p> </p>
+   * <p>The input for the <a>StopConfigurationRecorder</a> action.</p>
    */
   class AWS_CONFIGSERVICE_API StopConfigurationRecorderRequest : public ConfigServiceRequest
   {

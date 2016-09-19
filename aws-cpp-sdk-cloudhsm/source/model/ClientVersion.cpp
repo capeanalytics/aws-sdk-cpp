@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int _5_1_HASH = HashingUtils::HashString("5.1");
-static const int _5_3_HASH = HashingUtils::HashString("5.3");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ClientVersionMapper
       {
+
+        static const int _5_1_HASH = HashingUtils::HashString("5.1");
+        static const int _5_3_HASH = HashingUtils::HashString("5.3");
 
 
         ClientVersion GetClientVersionForName(const Aws::String& name)

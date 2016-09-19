@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -39,7 +39,7 @@ namespace Model
 
   /**
    * <p>Represents additional information about a job required for a job worker to
-   * complete the job. </p>
+   * complete the job.</p>
    */
   class AWS_CODEPIPELINE_API JobData
   {

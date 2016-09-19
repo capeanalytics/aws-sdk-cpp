@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int TERMINATE_HASH = HashingUtils::HashString("TERMINATE");
-static const int REQUEST_CANCEL_HASH = HashingUtils::HashString("REQUEST_CANCEL");
-static const int ABANDON_HASH = HashingUtils::HashString("ABANDON");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ChildPolicyMapper
       {
+
+        static const int TERMINATE_HASH = HashingUtils::HashString("TERMINATE");
+        static const int REQUEST_CANCEL_HASH = HashingUtils::HashString("REQUEST_CANCEL");
+        static const int ABANDON_HASH = HashingUtils::HashString("ABANDON");
 
 
         ChildPolicy GetChildPolicyForName(const Aws::String& name)

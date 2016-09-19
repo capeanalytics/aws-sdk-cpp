@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,19 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Policy_HASH = HashingUtils::HashString("Policy");
-static const int VisibilityTimeout_HASH = HashingUtils::HashString("VisibilityTimeout");
-static const int MaximumMessageSize_HASH = HashingUtils::HashString("MaximumMessageSize");
-static const int MessageRetentionPeriod_HASH = HashingUtils::HashString("MessageRetentionPeriod");
-static const int ApproximateNumberOfMessages_HASH = HashingUtils::HashString("ApproximateNumberOfMessages");
-static const int ApproximateNumberOfMessagesNotVisible_HASH = HashingUtils::HashString("ApproximateNumberOfMessagesNotVisible");
-static const int CreatedTimestamp_HASH = HashingUtils::HashString("CreatedTimestamp");
-static const int LastModifiedTimestamp_HASH = HashingUtils::HashString("LastModifiedTimestamp");
-static const int QueueArn_HASH = HashingUtils::HashString("QueueArn");
-static const int ApproximateNumberOfMessagesDelayed_HASH = HashingUtils::HashString("ApproximateNumberOfMessagesDelayed");
-static const int DelaySeconds_HASH = HashingUtils::HashString("DelaySeconds");
-static const int ReceiveMessageWaitTimeSeconds_HASH = HashingUtils::HashString("ReceiveMessageWaitTimeSeconds");
-static const int RedrivePolicy_HASH = HashingUtils::HashString("RedrivePolicy");
 
 namespace Aws
 {
@@ -42,11 +29,34 @@ namespace Aws
       namespace QueueAttributeNameMapper
       {
 
+        static const int All_HASH = HashingUtils::HashString("All");
+        static const int Policy_HASH = HashingUtils::HashString("Policy");
+        static const int VisibilityTimeout_HASH = HashingUtils::HashString("VisibilityTimeout");
+        static const int MaximumMessageSize_HASH = HashingUtils::HashString("MaximumMessageSize");
+        static const int MessageRetentionPeriod_HASH = HashingUtils::HashString("MessageRetentionPeriod");
+        static const int ApproximateNumberOfMessages_HASH = HashingUtils::HashString("ApproximateNumberOfMessages");
+        static const int ApproximateNumberOfMessagesNotVisible_HASH = HashingUtils::HashString("ApproximateNumberOfMessagesNotVisible");
+        static const int CreatedTimestamp_HASH = HashingUtils::HashString("CreatedTimestamp");
+        static const int LastModifiedTimestamp_HASH = HashingUtils::HashString("LastModifiedTimestamp");
+        static const int QueueArn_HASH = HashingUtils::HashString("QueueArn");
+        static const int ApproximateNumberOfMessagesDelayed_HASH = HashingUtils::HashString("ApproximateNumberOfMessagesDelayed");
+        static const int DelaySeconds_HASH = HashingUtils::HashString("DelaySeconds");
+        static const int ReceiveMessageWaitTimeSeconds_HASH = HashingUtils::HashString("ReceiveMessageWaitTimeSeconds");
+        static const int RedrivePolicy_HASH = HashingUtils::HashString("RedrivePolicy");
+        static const int SentTimestamp_HASH = HashingUtils::HashString("SentTimestamp");
+        static const int ApproximateFirstReceiveTimestamp_HASH = HashingUtils::HashString("ApproximateFirstReceiveTimestamp");
+        static const int ApproximateReceiveCount_HASH = HashingUtils::HashString("ApproximateReceiveCount");
+        static const int SenderId_HASH = HashingUtils::HashString("SenderId");
+
 
         QueueAttributeName GetQueueAttributeNameForName(const Aws::String& name)
         {
           int hashCode = HashingUtils::HashString(name.c_str());
-          if (hashCode == Policy_HASH)
+          if (hashCode == All_HASH)
+          {
+            return QueueAttributeName::All;
+          }
+          else if (hashCode == Policy_HASH)
           {
             return QueueAttributeName::Policy;
           }
@@ -98,6 +108,22 @@ namespace Aws
           {
             return QueueAttributeName::RedrivePolicy;
           }
+          else if (hashCode == SentTimestamp_HASH)
+          {
+            return QueueAttributeName::SentTimestamp;
+          }
+          else if (hashCode == ApproximateFirstReceiveTimestamp_HASH)
+          {
+            return QueueAttributeName::ApproximateFirstReceiveTimestamp;
+          }
+          else if (hashCode == ApproximateReceiveCount_HASH)
+          {
+            return QueueAttributeName::ApproximateReceiveCount;
+          }
+          else if (hashCode == SenderId_HASH)
+          {
+            return QueueAttributeName::SenderId;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -112,6 +138,8 @@ namespace Aws
         {
           switch(enumValue)
           {
+          case QueueAttributeName::All:
+            return "All";
           case QueueAttributeName::Policy:
             return "Policy";
           case QueueAttributeName::VisibilityTimeout:
@@ -138,6 +166,14 @@ namespace Aws
             return "ReceiveMessageWaitTimeSeconds";
           case QueueAttributeName::RedrivePolicy:
             return "RedrivePolicy";
+          case QueueAttributeName::SentTimestamp:
+            return "SentTimestamp";
+          case QueueAttributeName::ApproximateFirstReceiveTimestamp:
+            return "ApproximateFirstReceiveTimestamp";
+          case QueueAttributeName::ApproximateReceiveCount:
+            return "ApproximateReceiveCount";
+          case QueueAttributeName::SenderId:
+            return "SenderId";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

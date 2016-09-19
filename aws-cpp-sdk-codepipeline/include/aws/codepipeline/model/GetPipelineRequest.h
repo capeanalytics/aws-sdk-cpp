@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -81,24 +81,24 @@ namespace Model
      * <p>The version number of the pipeline. If you do not specify a version, defaults
      * to the most current version.</p>
      */
-    inline long GetVersion() const{ return m_version; }
+    inline int GetVersion() const{ return m_version; }
 
     /**
      * <p>The version number of the pipeline. If you do not specify a version, defaults
      * to the most current version.</p>
      */
-    inline void SetVersion(long value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(int value) { m_versionHasBeenSet = true; m_version = value; }
 
     /**
      * <p>The version number of the pipeline. If you do not specify a version, defaults
      * to the most current version.</p>
      */
-    inline GetPipelineRequest& WithVersion(long value) { SetVersion(value); return *this;}
+    inline GetPipelineRequest& WithVersion(int value) { SetVersion(value); return *this;}
 
   private:
     Aws::String m_name;
     bool m_nameHasBeenSet;
-    long m_version;
+    int m_version;
     bool m_versionHasBeenSet;
   };
 

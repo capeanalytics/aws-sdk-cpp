@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -280,8 +280,7 @@ namespace Model
         * the default http client factory will be used
         */
         InspectorClient(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~InspectorClient();
 

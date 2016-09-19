@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,13 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int DeploymentStart_HASH = HashingUtils::HashString("DeploymentStart");
-static const int DeploymentSuccess_HASH = HashingUtils::HashString("DeploymentSuccess");
-static const int DeploymentFailure_HASH = HashingUtils::HashString("DeploymentFailure");
-static const int DeploymentStop_HASH = HashingUtils::HashString("DeploymentStop");
-static const int InstanceStart_HASH = HashingUtils::HashString("InstanceStart");
-static const int InstanceSuccess_HASH = HashingUtils::HashString("InstanceSuccess");
-static const int InstanceFailure_HASH = HashingUtils::HashString("InstanceFailure");
 
 namespace Aws
 {
@@ -35,6 +28,14 @@ namespace Aws
     {
       namespace TriggerEventTypeMapper
       {
+
+        static const int DeploymentStart_HASH = HashingUtils::HashString("DeploymentStart");
+        static const int DeploymentSuccess_HASH = HashingUtils::HashString("DeploymentSuccess");
+        static const int DeploymentFailure_HASH = HashingUtils::HashString("DeploymentFailure");
+        static const int DeploymentStop_HASH = HashingUtils::HashString("DeploymentStop");
+        static const int InstanceStart_HASH = HashingUtils::HashString("InstanceStart");
+        static const int InstanceSuccess_HASH = HashingUtils::HashString("InstanceSuccess");
+        static const int InstanceFailure_HASH = HashingUtils::HashString("InstanceFailure");
 
 
         TriggerEventType GetTriggerEventTypeForName(const Aws::String& name)

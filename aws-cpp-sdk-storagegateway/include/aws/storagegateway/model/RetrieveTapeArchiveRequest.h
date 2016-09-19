@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -37,43 +37,43 @@ namespace Model
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline const Aws::String& GetTapeARN() const{ return m_tapeARN; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline void SetTapeARN(const Aws::String& value) { m_tapeARNHasBeenSet = true; m_tapeARN = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = value; }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline void SetTapeARN(const char* value) { m_tapeARNHasBeenSet = true; m_tapeARN.assign(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline RetrieveTapeArchiveRequest& WithTapeARN(const Aws::String& value) { SetTapeARN(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline RetrieveTapeArchiveRequest& WithTapeARN(Aws::String&& value) { SetTapeARN(value); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from
-     * the virtual tape shelf (VTS). </p>
+     * the virtual tape shelf (VTS).</p>
      */
     inline RetrieveTapeArchiveRequest& WithTapeARN(const char* value) { SetTapeARN(value); return *this;}
 

@@ -106,17 +106,17 @@ bool WinSyncHttpClient::StreamPayloadToRequest(const HttpRequest& request, void*
         char streamBuffer[ HTTP_REQUEST_WRITE_BUFFER_LENGTH ];
         bool done = false;
         while(success && !done)
-        {
+        {            
             payloadStream->read(streamBuffer, HTTP_REQUEST_WRITE_BUFFER_LENGTH);
             std::streamsize bytesRead = payloadStream->gcount();
             success = !payloadStream->bad();
-
+            
             uint64_t bytesWritten = 0;
             if (bytesRead > 0)
             {
                 bytesWritten = DoWriteData(hHttpRequest, streamBuffer, bytesRead);
                 if (!bytesWritten)
-                {
+                {                    
                     success = false;
                 }
             }
@@ -128,12 +128,12 @@ bool WinSyncHttpClient::StreamPayloadToRequest(const HttpRequest& request, void*
             }
 
             if(!payloadStream->good())
-            {
+            {                
                 done = true;
-            }
+            }           
 
-            success = success && IsRequestProcessingEnabled();
-        }
+            success = success && ContinueRequest(request) && IsRequestProcessingEnabled();
+        }        
 
         payloadStream->clear();
         payloadStream->seekg(startingPos, payloadStream->beg);
@@ -206,14 +206,17 @@ std::shared_ptr<HttpResponse> WinSyncHttpClient::BuildSuccessResponse(const Aws:
     {
         char body[1024];
         uint64_t bodySize = sizeof(body);
-        read = 0;
-        bool success = true;
+        int64_t numBytesResponseReceived = 0;
+        read = 0;    
+        
+        bool success = ContinueRequest(request);
 
         while (DoReadData(hHttpRequest, body, bodySize, read) && read > 0 && success)
         {
             response->GetResponseBody().write(body, read);
             if (read > 0)
             {
+                numBytesResponseReceived += read;
                 if (readLimiter != nullptr)
                 {
                     readLimiter->ApplyAndPayForCost(read);
@@ -225,7 +228,19 @@ std::shared_ptr<HttpResponse> WinSyncHttpClient::BuildSuccessResponse(const Aws:
                 }
             }
 
-            success = success && IsRequestProcessingEnabled();
+            success = success && ContinueRequest(request) && IsRequestProcessingEnabled();
+        }
+
+        if (response->HasHeader(Aws::Http::CONTENT_LENGTH_HEADER))
+        {
+            const Aws::String& contentLength = response->GetHeader(Aws::Http::CONTENT_LENGTH_HEADER);
+            AWS_LOGSTREAM_TRACE(GetLogTag(), "Response content-length header: " << contentLength);
+            AWS_LOGSTREAM_TRACE(GetLogTag(), "Response body length: " << numBytesResponseReceived);
+            if (StringUtils::ConvertToInt64(contentLength.c_str()) != numBytesResponseReceived)
+            {
+                success = false;
+                AWS_LOG_ERROR(GetLogTag(), "Response body length doesn't match the content-length header.");
+            }
         }
 
         if(!success)
@@ -282,9 +297,11 @@ std::shared_ptr<HttpResponse> WinSyncHttpClient::MakeRequest(HttpRequest& reques
     {
         response = BuildSuccessResponse(request, hHttpRequest, readLimiter);
     }
-    else if (!IsRequestProcessingEnabled())
+    else if (!IsRequestProcessingEnabled() || !ContinueRequest(request))
     {
-        AWS_LOG_INFO(GetLogTag(), "Request cancelled by client controller");
+        AWS_LOGSTREAM_INFO(GetLogTag(), "Request cancelled by client controller");
+        response = Aws::MakeShared<Aws::Http::Standard::StandardHttpResponse>(GetLogTag(), request);
+        response->SetResponseCode(Http::HttpResponseCode::NO_RESPONSE);
     }
     else
     {

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-cloudfront)
 
   file(GLOB AWS_CLOUDFRONT_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-cloudfront)
     "source/model/*.cpp"
   )
 
-  file(GLOB CLOUDFRONT_SRC
+  file(GLOB CLOUDFRONT_UNIFIED_HEADERS
     ${AWS_CLOUDFRONT_HEADERS}
     ${AWS_CLOUDFRONT_MODEL_HEADERS}
+  )
+
+  file(GLOB CLOUDFRONT_UNITY_SRC
     ${AWS_CLOUDFRONT_SOURCE}
     ${AWS_CLOUDFRONT_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("CLOUDFRONT" CLOUDFRONT_UNITY_SRC)
+  endif()
+
+  file(GLOB CLOUDFRONT_SRC
+    ${CLOUDFRONT_UNIFIED_HEADERS}
+    ${CLOUDFRONT_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-cloudfront)
 
   include_directories(${CLOUDFRONT_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_CLOUDFRONT_EXPORTS")
   endif()
 
@@ -56,14 +68,28 @@ project(aws-cpp-sdk-cloudfront)
   
   target_link_libraries(aws-cpp-sdk-cloudfront aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-cloudfront
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-cloudfront
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-cloudfront)
+    else()
+      install (TARGETS aws-cpp-sdk-cloudfront
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_CLOUDFRONT_HEADERS} DESTINATION include/aws/cloudfront)
   install (FILES ${AWS_CLOUDFRONT_MODEL_HEADERS} DESTINATION include/aws/cloudfront/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-cloudfront.autopkg DESTINATION nuget)
+  endif()
+
+
 

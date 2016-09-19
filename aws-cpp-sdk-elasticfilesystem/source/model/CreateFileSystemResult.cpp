@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -83,6 +83,12 @@ CreateFileSystemResult& CreateFileSystemResult::operator =(const AmazonWebServic
   if(jsonValue.ValueExists("SizeInBytes"))
   {
     m_sizeInBytes = jsonValue.GetObject("SizeInBytes");
+
+  }
+
+  if(jsonValue.ValueExists("PerformanceMode"))
+  {
+    m_performanceMode = PerformanceModeMapper::GetPerformanceModeForName(jsonValue.GetString("PerformanceMode"));
 
   }
 

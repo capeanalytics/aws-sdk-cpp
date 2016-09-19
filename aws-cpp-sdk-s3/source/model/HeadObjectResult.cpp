@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -83,7 +83,7 @@ HeadObjectResult& HeadObjectResult::operator =(const AmazonWebServiceResult<XmlD
   const auto& contentLengthIter = headers.find("content-length");
   if(contentLengthIter != headers.end())
   {
-     m_contentLength = StringUtils::ConvertToInt32(contentLengthIter->second.c_str());
+     m_contentLength = StringUtils::ConvertToInt64(contentLengthIter->second.c_str());
   }
 
   const auto& eTagIter = headers.find("etag");

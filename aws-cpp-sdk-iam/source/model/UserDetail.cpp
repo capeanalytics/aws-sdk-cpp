@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::IAM::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace IAM
+{
+namespace Model
+{
 
 UserDetail::UserDetail() : 
     m_pathHasBeenSet(false),
@@ -131,22 +137,27 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".Path=" << StringUtils::URLEncode(m_path.c_str()) << "&";
   }
+
   if(m_userNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".UserName=" << StringUtils::URLEncode(m_userName.c_str()) << "&";
   }
+
   if(m_userIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".UserId=" << StringUtils::URLEncode(m_userId.c_str()) << "&";
   }
+
   if(m_arnHasBeenSet)
   {
       oStream << location << index << locationValue << ".Arn=" << StringUtils::URLEncode(m_arn.c_str()) << "&";
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_userPolicyListHasBeenSet)
   {
       unsigned userPolicyListIdx = 1;
@@ -157,6 +168,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, userPolicyListSs.str().c_str());
       }
   }
+
   if(m_groupListHasBeenSet)
   {
       unsigned groupListIdx = 1;
@@ -165,6 +177,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location, uns
         oStream << location << index << locationValue << ".GroupList.member." << groupListIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_attachedManagedPoliciesHasBeenSet)
   {
       unsigned attachedManagedPoliciesIdx = 1;
@@ -175,6 +188,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, attachedManagedPoliciesSs.str().c_str());
       }
   }
+
 }
 
 void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -228,3 +242,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) con
       }
   }
 }
+
+} // namespace Model
+} // namespace IAM
+} // namespace Aws

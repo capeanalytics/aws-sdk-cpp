@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,14 +34,17 @@ Aws::String SetIdentityNotificationTopicRequest::SerializePayload() const
   {
     ss << "Identity=" << StringUtils::URLEncode(m_identity.c_str()) << "&";
   }
+
   if(m_notificationTypeHasBeenSet)
   {
     ss << "NotificationType=" << NotificationTypeMapper::GetNameForNotificationType(m_notificationType) << "&";
   }
+
   if(m_snsTopicHasBeenSet)
   {
     ss << "SnsTopic=" << StringUtils::URLEncode(m_snsTopic.c_str()) << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

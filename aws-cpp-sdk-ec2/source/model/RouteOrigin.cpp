@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int CreateRouteTable_HASH = HashingUtils::HashString("CreateRouteTable");
-static const int CreateRoute_HASH = HashingUtils::HashString("CreateRoute");
-static const int EnableVgwRoutePropagation_HASH = HashingUtils::HashString("EnableVgwRoutePropagation");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace RouteOriginMapper
       {
+
+        static const int CreateRouteTable_HASH = HashingUtils::HashString("CreateRouteTable");
+        static const int CreateRoute_HASH = HashingUtils::HashString("CreateRoute");
+        static const int EnableVgwRoutePropagation_HASH = HashingUtils::HashString("EnableVgwRoutePropagation");
 
 
         RouteOrigin GetRouteOriginForName(const Aws::String& name)

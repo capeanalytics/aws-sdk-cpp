@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CodeDeploy::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CodeDeploy
+{
+namespace Model
+{
 
 DeploymentInfo::DeploymentInfo() : 
     m_applicationNameHasBeenSet(false),
@@ -248,3 +254,7 @@ JsonValue DeploymentInfo::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CodeDeploy
+} // namespace Aws

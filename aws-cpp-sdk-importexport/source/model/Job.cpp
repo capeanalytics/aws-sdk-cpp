@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ImportExport::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ImportExport
+{
+namespace Model
+{
 
 Job::Job() : 
     m_jobIdHasBeenSet(false),
@@ -83,18 +89,22 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location, unsigned i
   {
       oStream << location << index << locationValue << ".JobId=" << StringUtils::URLEncode(m_jobId.c_str()) << "&";
   }
+
   if(m_creationDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreationDate=" << StringUtils::URLEncode(m_creationDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_isCanceledHasBeenSet)
   {
       oStream << location << index << locationValue << ".IsCanceled=" << m_isCanceled << "&";
   }
+
   if(m_jobTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".JobType=" << JobTypeMapper::GetNameForJobType(m_jobType) << "&";
   }
+
 }
 
 void Job::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +126,7 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".JobType=" << JobTypeMapper::GetNameForJobType(m_jobType) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ImportExport
+} // namespace Aws

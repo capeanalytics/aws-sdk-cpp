@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PERSON_HASH = HashingUtils::HashString("PERSON");
-static const int COMPANY_HASH = HashingUtils::HashString("COMPANY");
-static const int ASSOCIATION_HASH = HashingUtils::HashString("ASSOCIATION");
-static const int PUBLIC_BODY_HASH = HashingUtils::HashString("PUBLIC_BODY");
-static const int RESELLER_HASH = HashingUtils::HashString("RESELLER");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ContactTypeMapper
       {
+
+        static const int PERSON_HASH = HashingUtils::HashString("PERSON");
+        static const int COMPANY_HASH = HashingUtils::HashString("COMPANY");
+        static const int ASSOCIATION_HASH = HashingUtils::HashString("ASSOCIATION");
+        static const int PUBLIC_BODY_HASH = HashingUtils::HashString("PUBLIC_BODY");
+        static const int RESELLER_HASH = HashingUtils::HashString("RESELLER");
 
 
         ContactType GetContactTypeForName(const Aws::String& name)

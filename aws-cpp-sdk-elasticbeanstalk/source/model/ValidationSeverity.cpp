@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int error_HASH = HashingUtils::HashString("error");
-static const int warning_HASH = HashingUtils::HashString("warning");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ValidationSeverityMapper
       {
+
+        static const int error_HASH = HashingUtils::HashString("error");
+        static const int warning_HASH = HashingUtils::HashString("warning");
 
 
         ValidationSeverity GetValidationSeverityForName(const Aws::String& name)

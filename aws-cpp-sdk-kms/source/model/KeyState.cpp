@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Enabled_HASH = HashingUtils::HashString("Enabled");
-static const int Disabled_HASH = HashingUtils::HashString("Disabled");
-static const int PendingDeletion_HASH = HashingUtils::HashString("PendingDeletion");
 
 namespace Aws
 {
@@ -31,6 +28,11 @@ namespace Aws
     {
       namespace KeyStateMapper
       {
+
+        static const int Enabled_HASH = HashingUtils::HashString("Enabled");
+        static const int Disabled_HASH = HashingUtils::HashString("Disabled");
+        static const int PendingDeletion_HASH = HashingUtils::HashString("PendingDeletion");
+        static const int PendingImport_HASH = HashingUtils::HashString("PendingImport");
 
 
         KeyState GetKeyStateForName(const Aws::String& name)
@@ -47,6 +49,10 @@ namespace Aws
           else if (hashCode == PendingDeletion_HASH)
           {
             return KeyState::PendingDeletion;
+          }
+          else if (hashCode == PendingImport_HASH)
+          {
+            return KeyState::PendingImport;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -68,6 +74,8 @@ namespace Aws
             return "Disabled";
           case KeyState::PendingDeletion:
             return "PendingDeletion";
+          case KeyState::PendingImport:
+            return "PendingImport";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

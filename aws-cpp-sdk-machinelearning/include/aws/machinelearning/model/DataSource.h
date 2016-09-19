@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,8 +35,8 @@ namespace Model
 {
 
   /**
-   * <p> Represents the output of the <a>GetDataSource</a> operation. </p> <p> The
-   * content consists of the detailed metadata and data file information and the
+   * <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p>
+   * The content consists of the detailed metadata and data file information and the
    * current status of the <code>DataSource</code>. </p>
    */
   class AWS_MACHINELEARNING_API DataSource
@@ -125,44 +125,44 @@ namespace Model
     inline DataSource& WithDataLocationS3(const char* value) { SetDataLocationS3(value); return *this;}
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline const Aws::String& GetDataRearrangement() const{ return m_dataRearrangement; }
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline void SetDataRearrangement(const Aws::String& value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement = value; }
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline void SetDataRearrangement(Aws::String&& value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement = value; }
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline void SetDataRearrangement(const char* value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement.assign(value); }
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline DataSource& WithDataRearrangement(const Aws::String& value) { SetDataRearrangement(value); return *this;}
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline DataSource& WithDataRearrangement(Aws::String&& value) { SetDataRearrangement(value); return *this;}
 
     /**
-     * <p>A JSON string that represents the splitting requirement of a
-     * <code>Datasource</code>. </p>
+     * <p>A JSON string that represents the splitting and rearrangement requirement
+     * used when this <code>DataSource</code> was created.</p>
      */
     inline DataSource& WithDataRearrangement(const char* value) { SetDataRearrangement(value); return *this;}
 
@@ -509,6 +509,45 @@ namespace Model
      */
     inline DataSource& WithComputeStatistics(bool value) { SetComputeStatistics(value); return *this;}
 
+    
+    inline long long GetComputeTime() const{ return m_computeTime; }
+
+    
+    inline void SetComputeTime(long long value) { m_computeTimeHasBeenSet = true; m_computeTime = value; }
+
+    
+    inline DataSource& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
+
+    
+    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline DataSource& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline DataSource& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+
+    
+    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline DataSource& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
+
+    
+    inline DataSource& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+
   private:
     Aws::String m_dataSourceId;
     bool m_dataSourceIdHasBeenSet;
@@ -540,6 +579,12 @@ namespace Model
     bool m_roleARNHasBeenSet;
     bool m_computeStatistics;
     bool m_computeStatisticsHasBeenSet;
+    long long m_computeTime;
+    bool m_computeTimeHasBeenSet;
+    Aws::Utils::DateTime m_finishedAt;
+    bool m_finishedAtHasBeenSet;
+    Aws::Utils::DateTime m_startedAt;
+    bool m_startedAtHasBeenSet;
   };
 
 } // namespace Model

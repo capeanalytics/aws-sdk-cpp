@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 EnvironmentLink::EnvironmentLink() : 
     m_linkNameHasBeenSet(false),
@@ -65,10 +71,12 @@ void EnvironmentLink::OutputToStream(Aws::OStream& oStream, const char* location
   {
       oStream << location << index << locationValue << ".LinkName=" << StringUtils::URLEncode(m_linkName.c_str()) << "&";
   }
+
   if(m_environmentNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".EnvironmentName=" << StringUtils::URLEncode(m_environmentName.c_str()) << "&";
   }
+
 }
 
 void EnvironmentLink::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void EnvironmentLink::OutputToStream(Aws::OStream& oStream, const char* location
       oStream << location << ".EnvironmentName=" << StringUtils::URLEncode(m_environmentName.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

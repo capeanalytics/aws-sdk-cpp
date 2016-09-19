@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String ModifyDBClusterParameterGroupRequest::SerializePayload() const
   {
     ss << "DBClusterParameterGroupName=" << StringUtils::URLEncode(m_dBClusterParameterGroupName.c_str()) << "&";
   }
+
   if(m_parametersHasBeenSet)
   {
     unsigned parametersCount = 1;
@@ -42,6 +43,7 @@ Aws::String ModifyDBClusterParameterGroupRequest::SerializePayload() const
       parametersCount++;
     }
   }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }

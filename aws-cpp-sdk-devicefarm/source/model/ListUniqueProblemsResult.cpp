@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -41,7 +41,7 @@ ListUniqueProblemsResult& ListUniqueProblemsResult::operator =(const AmazonWebSe
     Aws::Map<Aws::String, JsonValue> uniqueProblemsJsonMap = jsonValue.GetObject("uniqueProblems").GetAllObjects();
     for(auto& uniqueProblemsItem : uniqueProblemsJsonMap)
     {
-      Array<JsonValue> uniqueProblemsJsonList = uniqueProblemsItem.second.GetArray("UniqueProblems");
+      Array<JsonValue> uniqueProblemsJsonList = uniqueProblemsItem.second.AsArray();
       Aws::Vector<UniqueProblem> uniqueProblemsList((size_t)uniqueProblemsJsonList.GetLength());
       for(unsigned uniqueProblemsIndex = 0; uniqueProblemsIndex < uniqueProblemsJsonList.GetLength(); ++uniqueProblemsIndex)
       {

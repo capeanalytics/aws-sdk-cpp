@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,7 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int TOKEN_HASH = HashingUtils::HashString("TOKEN");
 
 namespace Aws
 {
@@ -30,6 +29,9 @@ namespace Aws
       namespace AuthorizerTypeMapper
       {
 
+        static const int TOKEN_HASH = HashingUtils::HashString("TOKEN");
+        static const int COGNITO_USER_POOLS_HASH = HashingUtils::HashString("COGNITO_USER_POOLS");
+
 
         AuthorizerType GetAuthorizerTypeForName(const Aws::String& name)
         {
@@ -37,6 +39,10 @@ namespace Aws
           if (hashCode == TOKEN_HASH)
           {
             return AuthorizerType::TOKEN;
+          }
+          else if (hashCode == COGNITO_USER_POOLS_HASH)
+          {
+            return AuthorizerType::COGNITO_USER_POOLS;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -54,6 +60,8 @@ namespace Aws
           {
           case AuthorizerType::TOKEN:
             return "TOKEN";
+          case AuthorizerType::COGNITO_USER_POOLS:
+            return "COGNITO_USER_POOLS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

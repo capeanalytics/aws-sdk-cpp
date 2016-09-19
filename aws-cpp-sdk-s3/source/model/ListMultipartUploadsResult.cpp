@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -89,14 +89,14 @@ ListMultipartUploadsResult& ListMultipartUploadsResult::operator =(const AmazonW
     {
       m_isTruncated = StringUtils::ConvertToBool(StringUtils::Trim(isTruncatedNode.GetText().c_str()).c_str());
     }
-    XmlNode uploadsNode = resultNode.FirstChild("Uploads");
+    XmlNode uploadsNode = resultNode.FirstChild("Upload");
     if(!uploadsNode.IsNull())
     {
-      XmlNode uploadsMember = uploadsNode;
-      while(!uploadsMember.IsNull())
+      XmlNode uploadMember = uploadsNode;
+      while(!uploadMember.IsNull())
       {
-        m_uploads.push_back(uploadsMember);
-        uploadsMember = uploadsMember.NextNode("Upload");
+        m_uploads.push_back(uploadMember);
+        uploadMember = uploadMember.NextNode("Upload");
       }
 
     }

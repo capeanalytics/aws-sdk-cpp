@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -15,6 +15,7 @@
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/iot/model/DynamoKeyType.h>
 
 namespace Aws
 {
@@ -122,6 +123,62 @@ namespace Model
     inline DynamoDBAction& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
 
     /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline const Aws::String& GetOperation() const{ return m_operation; }
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline void SetOperation(const Aws::String& value) { m_operationHasBeenSet = true; m_operation = value; }
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline void SetOperation(Aws::String&& value) { m_operationHasBeenSet = true; m_operation = value; }
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline void SetOperation(const char* value) { m_operationHasBeenSet = true; m_operation.assign(value); }
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline DynamoDBAction& WithOperation(const Aws::String& value) { SetOperation(value); return *this;}
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline DynamoDBAction& WithOperation(Aws::String&& value) { SetOperation(value); return *this;}
+
+    /**
+     * <p>The type of operation to be performed. This follows the substitution
+     * template, so it can be <code>${operation}</code>, but the substitution must
+     * result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or
+     * <code>DELETE</code>.</p>
+     */
+    inline DynamoDBAction& WithOperation(const char* value) { SetOperation(value); return *this;}
+
+    /**
      * <p>The hash key name.</p>
      */
     inline const Aws::String& GetHashKeyField() const{ return m_hashKeyField; }
@@ -190,6 +247,31 @@ namespace Model
      * <p>The hash key value.</p>
      */
     inline DynamoDBAction& WithHashKeyValue(const char* value) { SetHashKeyValue(value); return *this;}
+
+    /**
+     * <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline const DynamoKeyType& GetHashKeyType() const{ return m_hashKeyType; }
+
+    /**
+     * <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline void SetHashKeyType(const DynamoKeyType& value) { m_hashKeyTypeHasBeenSet = true; m_hashKeyType = value; }
+
+    /**
+     * <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline void SetHashKeyType(DynamoKeyType&& value) { m_hashKeyTypeHasBeenSet = true; m_hashKeyType = value; }
+
+    /**
+     * <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline DynamoDBAction& WithHashKeyType(const DynamoKeyType& value) { SetHashKeyType(value); return *this;}
+
+    /**
+     * <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline DynamoDBAction& WithHashKeyType(DynamoKeyType&& value) { SetHashKeyType(value); return *this;}
 
     /**
      * <p>The range key name.</p>
@@ -262,6 +344,31 @@ namespace Model
     inline DynamoDBAction& WithRangeKeyValue(const char* value) { SetRangeKeyValue(value); return *this;}
 
     /**
+     * <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline const DynamoKeyType& GetRangeKeyType() const{ return m_rangeKeyType; }
+
+    /**
+     * <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline void SetRangeKeyType(const DynamoKeyType& value) { m_rangeKeyTypeHasBeenSet = true; m_rangeKeyType = value; }
+
+    /**
+     * <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline void SetRangeKeyType(DynamoKeyType&& value) { m_rangeKeyTypeHasBeenSet = true; m_rangeKeyType = value; }
+
+    /**
+     * <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline DynamoDBAction& WithRangeKeyType(const DynamoKeyType& value) { SetRangeKeyType(value); return *this;}
+
+    /**
+     * <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+     */
+    inline DynamoDBAction& WithRangeKeyType(DynamoKeyType&& value) { SetRangeKeyType(value); return *this;}
+
+    /**
      * <p>The action payload. This name can be customized.</p>
      */
     inline const Aws::String& GetPayloadField() const{ return m_payloadField; }
@@ -301,14 +408,20 @@ namespace Model
     bool m_tableNameHasBeenSet;
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet;
+    Aws::String m_operation;
+    bool m_operationHasBeenSet;
     Aws::String m_hashKeyField;
     bool m_hashKeyFieldHasBeenSet;
     Aws::String m_hashKeyValue;
     bool m_hashKeyValueHasBeenSet;
+    DynamoKeyType m_hashKeyType;
+    bool m_hashKeyTypeHasBeenSet;
     Aws::String m_rangeKeyField;
     bool m_rangeKeyFieldHasBeenSet;
     Aws::String m_rangeKeyValue;
     bool m_rangeKeyValueHasBeenSet;
+    DynamoKeyType m_rangeKeyType;
+    bool m_rangeKeyTypeHasBeenSet;
     Aws::String m_payloadField;
     bool m_payloadFieldHasBeenSet;
   };

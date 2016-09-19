@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,6 +34,9 @@ namespace DirectoryService
 {
 namespace Model
 {
+  /**
+   * <p>The result of a DescribeTrust request.</p>
+   */
   class AWS_DIRECTORYSERVICE_API DescribeTrustsResult
   {
   public:

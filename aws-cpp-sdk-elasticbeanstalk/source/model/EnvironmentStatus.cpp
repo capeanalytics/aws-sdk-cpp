@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Launching_HASH = HashingUtils::HashString("Launching");
-static const int Updating_HASH = HashingUtils::HashString("Updating");
-static const int Ready_HASH = HashingUtils::HashString("Ready");
-static const int Terminating_HASH = HashingUtils::HashString("Terminating");
-static const int Terminated_HASH = HashingUtils::HashString("Terminated");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace EnvironmentStatusMapper
       {
+
+        static const int Launching_HASH = HashingUtils::HashString("Launching");
+        static const int Updating_HASH = HashingUtils::HashString("Updating");
+        static const int Ready_HASH = HashingUtils::HashString("Ready");
+        static const int Terminating_HASH = HashingUtils::HashString("Terminating");
+        static const int Terminated_HASH = HashingUtils::HashString("Terminated");
 
 
         EnvironmentStatus GetEnvironmentStatusForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,6 +20,14 @@ using namespace Aws::Client;
 using namespace Aws::Lambda;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace Lambda
+{
+namespace LambdaErrorMapper
+{
+
+static const int INVALID_ZIP_FILE_HASH = HashingUtils::HashString("InvalidZipFileException");
 static const int SERVICE_HASH = HashingUtils::HashString("ServiceException");
 static const int TOO_MANY_REQUESTS_HASH = HashingUtils::HashString("TooManyRequestsException");
 static const int INVALID_SECURITY_GROUP_I_D_HASH = HashingUtils::HashString("InvalidSecurityGroupIDException");
@@ -36,18 +44,16 @@ static const int E_C2_ACCESS_DENIED_HASH = HashingUtils::HashString("EC2AccessDe
 static const int E_C2_THROTTLED_HASH = HashingUtils::HashString("EC2ThrottledException");
 static const int POLICY_LENGTH_EXCEEDED_HASH = HashingUtils::HashString("PolicyLengthExceededException");
 
-namespace Aws
-{
-namespace Lambda
-{
-namespace LambdaErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
   int hashCode = HashingUtils::HashString(errorName);
 
-  if (hashCode == SERVICE_HASH)
+  if (hashCode == INVALID_ZIP_FILE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(LambdaErrors::INVALID_ZIP_FILE), false);
+  }
+  else if (hashCode == SERVICE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(LambdaErrors::SERVICE), false);
   }

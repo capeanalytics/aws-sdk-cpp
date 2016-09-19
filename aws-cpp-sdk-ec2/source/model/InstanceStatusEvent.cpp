@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 InstanceStatusEvent::InstanceStatusEvent() : 
     m_codeHasBeenSet(false),
@@ -81,18 +87,22 @@ void InstanceStatusEvent::OutputToStream(Aws::OStream& oStream, const char* loca
   {
       oStream << location << index << locationValue << ".Code=" << EventCodeMapper::GetNameForEventCode(m_code) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_notBeforeHasBeenSet)
   {
       oStream << location << index << locationValue << ".NotBefore=" << StringUtils::URLEncode(m_notBefore.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_notAfterHasBeenSet)
   {
       oStream << location << index << locationValue << ".NotAfter=" << StringUtils::URLEncode(m_notAfter.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
 }
 
 void InstanceStatusEvent::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void InstanceStatusEvent::OutputToStream(Aws::OStream& oStream, const char* loca
       oStream << location << ".NotAfter=" << StringUtils::URLEncode(m_notAfter.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

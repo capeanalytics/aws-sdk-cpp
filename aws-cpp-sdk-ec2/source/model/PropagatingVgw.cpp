@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 PropagatingVgw::PropagatingVgw() : 
     m_gatewayIdHasBeenSet(false)
@@ -57,6 +63,7 @@ void PropagatingVgw::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
   }
+
 }
 
 void PropagatingVgw::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -66,3 +73,7 @@ void PropagatingVgw::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

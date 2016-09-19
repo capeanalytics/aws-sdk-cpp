@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBSnapshot::DBSnapshot() : 
     m_dBSnapshotIdentifierHasBeenSet(false),
@@ -51,7 +57,8 @@ DBSnapshot::DBSnapshot() :
     m_tdeCredentialArnHasBeenSet(false),
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_dBSnapshotArnHasBeenSet(false)
 {
 }
 
@@ -83,7 +90,8 @@ DBSnapshot::DBSnapshot(const XmlNode& xmlNode) :
     m_tdeCredentialArnHasBeenSet(false),
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_dBSnapshotArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -232,6 +240,12 @@ DBSnapshot& DBSnapshot::operator =(const XmlNode& xmlNode)
       m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
       m_kmsKeyIdHasBeenSet = true;
     }
+    XmlNode dBSnapshotArnNode = resultNode.FirstChild("DBSnapshotArn");
+    if(!dBSnapshotArnNode.IsNull())
+    {
+      m_dBSnapshotArn = StringUtils::Trim(dBSnapshotArnNode.GetText().c_str());
+      m_dBSnapshotArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -243,94 +257,122 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".DBSnapshotIdentifier=" << StringUtils::URLEncode(m_dBSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_dBInstanceIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBInstanceIdentifier=" << StringUtils::URLEncode(m_dBInstanceIdentifier.c_str()) << "&";
   }
+
   if(m_snapshotCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_engineHasBeenSet)
   {
       oStream << location << index << locationValue << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
   }
+
   if(m_allocatedStorageHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllocatedStorage=" << m_allocatedStorage << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
   if(m_portHasBeenSet)
   {
       oStream << location << index << locationValue << ".Port=" << m_port << "&";
   }
+
   if(m_availabilityZoneHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_instanceCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".InstanceCreateTime=" << StringUtils::URLEncode(m_instanceCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_masterUsernameHasBeenSet)
   {
       oStream << location << index << locationValue << ".MasterUsername=" << StringUtils::URLEncode(m_masterUsername.c_str()) << "&";
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
   if(m_licenseModelHasBeenSet)
   {
       oStream << location << index << locationValue << ".LicenseModel=" << StringUtils::URLEncode(m_licenseModel.c_str()) << "&";
   }
+
   if(m_snapshotTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotType=" << StringUtils::URLEncode(m_snapshotType.c_str()) << "&";
   }
+
   if(m_iopsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Iops=" << m_iops << "&";
   }
+
   if(m_optionGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".OptionGroupName=" << StringUtils::URLEncode(m_optionGroupName.c_str()) << "&";
   }
+
   if(m_percentProgressHasBeenSet)
   {
       oStream << location << index << locationValue << ".PercentProgress=" << m_percentProgress << "&";
   }
+
   if(m_sourceRegionHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceRegion=" << StringUtils::URLEncode(m_sourceRegion.c_str()) << "&";
   }
+
   if(m_sourceDBSnapshotIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceDBSnapshotIdentifier=" << StringUtils::URLEncode(m_sourceDBSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_storageTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
   }
+
   if(m_tdeCredentialArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".TdeCredentialArn=" << StringUtils::URLEncode(m_tdeCredentialArn.c_str()) << "&";
   }
+
   if(m_encryptedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
   }
+
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
+
+  if(m_dBSnapshotArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DBSnapshotArn=" << StringUtils::URLEncode(m_dBSnapshotArn.c_str()) << "&";
+  }
+
 }
 
 void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -427,4 +469,12 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
+  if(m_dBSnapshotArnHasBeenSet)
+  {
+      oStream << location << ".DBSnapshotArn=" << StringUtils::URLEncode(m_dBSnapshotArn.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int autoEnableIO_HASH = HashingUtils::HashString("autoEnableIO");
-static const int productCodes_HASH = HashingUtils::HashString("productCodes");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace VolumeAttributeNameMapper
       {
+
+        static const int autoEnableIO_HASH = HashingUtils::HashString("autoEnableIO");
+        static const int productCodes_HASH = HashingUtils::HashString("productCodes");
 
 
         VolumeAttributeName GetVolumeAttributeNameForName(const Aws::String& name)

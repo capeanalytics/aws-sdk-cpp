@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int SSLv3_HASH = HashingUtils::HashString("SSLv3");
-static const int TLSv1_HASH = HashingUtils::HashString("TLSv1");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace MinimumProtocolVersionMapper
       {
+
+        static const int SSLv3_HASH = HashingUtils::HashString("SSLv3");
+        static const int TLSv1_HASH = HashingUtils::HashString("TLSv1");
 
 
         MinimumProtocolVersion GetMinimumProtocolVersionForName(const Aws::String& name)

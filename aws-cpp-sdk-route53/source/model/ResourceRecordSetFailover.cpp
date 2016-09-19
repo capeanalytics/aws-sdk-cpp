@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PRIMARY_HASH = HashingUtils::HashString("PRIMARY");
-static const int SECONDARY_HASH = HashingUtils::HashString("SECONDARY");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ResourceRecordSetFailoverMapper
       {
+
+        static const int PRIMARY_HASH = HashingUtils::HashString("PRIMARY");
+        static const int SECONDARY_HASH = HashingUtils::HashString("SECONDARY");
 
 
         ResourceRecordSetFailover GetResourceRecordSetFailoverForName(const Aws::String& name)

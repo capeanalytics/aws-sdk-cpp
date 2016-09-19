@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 RecurringCharge::RecurringCharge() : 
     m_recurringChargeAmount(0.0),
@@ -67,10 +73,12 @@ void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location
   {
         oStream << location << index << locationValue << ".RecurringChargeAmount=" << StringUtils::URLEncode(m_recurringChargeAmount) << "&";
   }
+
   if(m_recurringChargeFrequencyHasBeenSet)
   {
       oStream << location << index << locationValue << ".RecurringChargeFrequency=" << StringUtils::URLEncode(m_recurringChargeFrequency.c_str()) << "&";
   }
+
 }
 
 void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -84,3 +92,7 @@ void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location
       oStream << location << ".RecurringChargeFrequency=" << StringUtils::URLEncode(m_recurringChargeFrequency.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

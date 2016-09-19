@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int All_HASH = HashingUtils::HashString("All");
-static const int AWS_HASH = HashingUtils::HashString("AWS");
-static const int Local_HASH = HashingUtils::HashString("Local");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace PolicyScopeTypeMapper
       {
+
+        static const int All_HASH = HashingUtils::HashString("All");
+        static const int AWS_HASH = HashingUtils::HashString("AWS");
+        static const int Local_HASH = HashingUtils::HashString("Local");
 
 
         PolicyScopeType GetPolicyScopeTypeForName(const Aws::String& name)

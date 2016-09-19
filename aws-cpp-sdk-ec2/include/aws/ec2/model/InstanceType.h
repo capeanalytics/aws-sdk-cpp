@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -48,6 +48,10 @@ namespace Model
     m2_2xlarge,
     m2_4xlarge,
     cr1_8xlarge,
+    x1_4xlarge,
+    x1_8xlarge,
+    x1_16xlarge,
+    x1_32xlarge,
     i2_xlarge,
     i2_2xlarge,
     i2_4xlarge,

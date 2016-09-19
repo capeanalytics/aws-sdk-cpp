@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,16 +19,23 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 Certificate::Certificate() : 
     m_certificateIdentifierHasBeenSet(false),
     m_certificateTypeHasBeenSet(false),
     m_thumbprintHasBeenSet(false),
     m_validFromHasBeenSet(false),
-    m_validTillHasBeenSet(false)
+    m_validTillHasBeenSet(false),
+    m_certificateArnHasBeenSet(false)
 {
 }
 
@@ -37,7 +44,8 @@ Certificate::Certificate(const XmlNode& xmlNode) :
     m_certificateTypeHasBeenSet(false),
     m_thumbprintHasBeenSet(false),
     m_validFromHasBeenSet(false),
-    m_validTillHasBeenSet(false)
+    m_validTillHasBeenSet(false),
+    m_certificateArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -78,6 +86,12 @@ Certificate& Certificate::operator =(const XmlNode& xmlNode)
       m_validTill = DateTime(StringUtils::Trim(validTillNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
       m_validTillHasBeenSet = true;
     }
+    XmlNode certificateArnNode = resultNode.FirstChild("CertificateArn");
+    if(!certificateArnNode.IsNull())
+    {
+      m_certificateArn = StringUtils::Trim(certificateArnNode.GetText().c_str());
+      m_certificateArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -89,22 +103,32 @@ void Certificate::OutputToStream(Aws::OStream& oStream, const char* location, un
   {
       oStream << location << index << locationValue << ".CertificateIdentifier=" << StringUtils::URLEncode(m_certificateIdentifier.c_str()) << "&";
   }
+
   if(m_certificateTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CertificateType=" << StringUtils::URLEncode(m_certificateType.c_str()) << "&";
   }
+
   if(m_thumbprintHasBeenSet)
   {
       oStream << location << index << locationValue << ".Thumbprint=" << StringUtils::URLEncode(m_thumbprint.c_str()) << "&";
   }
+
   if(m_validFromHasBeenSet)
   {
       oStream << location << index << locationValue << ".ValidFrom=" << StringUtils::URLEncode(m_validFrom.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_validTillHasBeenSet)
   {
       oStream << location << index << locationValue << ".ValidTill=" << StringUtils::URLEncode(m_validTill.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
+  if(m_certificateArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CertificateArn=" << StringUtils::URLEncode(m_certificateArn.c_str()) << "&";
+  }
+
 }
 
 void Certificate::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -129,4 +153,12 @@ void Certificate::OutputToStream(Aws::OStream& oStream, const char* location) co
   {
       oStream << location << ".ValidTill=" << StringUtils::URLEncode(m_validTill.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+  if(m_certificateArnHasBeenSet)
+  {
+      oStream << location << ".CertificateArn=" << StringUtils::URLEncode(m_certificateArn.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

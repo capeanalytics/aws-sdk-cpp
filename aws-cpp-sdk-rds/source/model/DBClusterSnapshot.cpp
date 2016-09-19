@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBClusterSnapshot::DBClusterSnapshot() : 
     m_availabilityZonesHasBeenSet(false),
@@ -44,7 +50,8 @@ DBClusterSnapshot::DBClusterSnapshot() :
     m_percentProgressHasBeenSet(false),
     m_storageEncrypted(false),
     m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_dBClusterSnapshotArnHasBeenSet(false)
 {
 }
 
@@ -69,7 +76,8 @@ DBClusterSnapshot::DBClusterSnapshot(const XmlNode& xmlNode) :
     m_percentProgressHasBeenSet(false),
     m_storageEncrypted(false),
     m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_dBClusterSnapshotArnHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -188,6 +196,12 @@ DBClusterSnapshot& DBClusterSnapshot::operator =(const XmlNode& xmlNode)
       m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
       m_kmsKeyIdHasBeenSet = true;
     }
+    XmlNode dBClusterSnapshotArnNode = resultNode.FirstChild("DBClusterSnapshotArn");
+    if(!dBClusterSnapshotArnNode.IsNull())
+    {
+      m_dBClusterSnapshotArn = StringUtils::Trim(dBClusterSnapshotArnNode.GetText().c_str());
+      m_dBClusterSnapshotArnHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -203,70 +217,92 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
         oStream << location << index << locationValue << ".AvailabilityZone." << availabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
+
   if(m_dBClusterSnapshotIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBClusterSnapshotIdentifier=" << StringUtils::URLEncode(m_dBClusterSnapshotIdentifier.c_str()) << "&";
   }
+
   if(m_dBClusterIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBClusterIdentifier=" << StringUtils::URLEncode(m_dBClusterIdentifier.c_str()) << "&";
   }
+
   if(m_snapshotCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotCreateTime=" << StringUtils::URLEncode(m_snapshotCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_engineHasBeenSet)
   {
       oStream << location << index << locationValue << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
   }
+
   if(m_allocatedStorageHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllocatedStorage=" << m_allocatedStorage << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
   if(m_portHasBeenSet)
   {
       oStream << location << index << locationValue << ".Port=" << m_port << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_clusterCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_masterUsernameHasBeenSet)
   {
       oStream << location << index << locationValue << ".MasterUsername=" << StringUtils::URLEncode(m_masterUsername.c_str()) << "&";
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
   if(m_licenseModelHasBeenSet)
   {
       oStream << location << index << locationValue << ".LicenseModel=" << StringUtils::URLEncode(m_licenseModel.c_str()) << "&";
   }
+
   if(m_snapshotTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotType=" << StringUtils::URLEncode(m_snapshotType.c_str()) << "&";
   }
+
   if(m_percentProgressHasBeenSet)
   {
       oStream << location << index << locationValue << ".PercentProgress=" << m_percentProgress << "&";
   }
+
   if(m_storageEncryptedHasBeenSet)
   {
       oStream << location << index << locationValue << ".StorageEncrypted=" << m_storageEncrypted << "&";
   }
+
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
+
+  if(m_dBClusterSnapshotArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DBClusterSnapshotArn=" << StringUtils::URLEncode(m_dBClusterSnapshotArn.c_str()) << "&";
+  }
+
 }
 
 void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -343,4 +379,12 @@ void DBClusterSnapshot::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
+  if(m_dBClusterSnapshotArnHasBeenSet)
+  {
+      oStream << location << ".DBClusterSnapshotArn=" << StringUtils::URLEncode(m_dBClusterSnapshotArn.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

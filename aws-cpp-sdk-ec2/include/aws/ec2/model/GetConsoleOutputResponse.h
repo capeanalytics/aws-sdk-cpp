@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -105,43 +105,43 @@ namespace Model
     inline GetConsoleOutputResponse& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(value); return *this;}
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline const Aws::String& GetOutput() const{ return m_output; }
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline void SetOutput(const Aws::String& value) { m_output = value; }
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline void SetOutput(Aws::String&& value) { m_output = value; }
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline void SetOutput(const char* value) { m_output.assign(value); }
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline GetConsoleOutputResponse& WithOutput(const Aws::String& value) { SetOutput(value); return *this;}
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline GetConsoleOutputResponse& WithOutput(Aws::String&& value) { SetOutput(value); return *this;}
 
     /**
-     * <p>The console output, Base64 encoded. If using a command line tool, the tools
+     * <p>The console output, base64-encoded. If using a command line tool, the tools
      * decode the output for you. </p>
      */
     inline GetConsoleOutputResponse& WithOutput(const char* value) { SetOutput(value); return *this;}

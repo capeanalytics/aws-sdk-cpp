@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -48,19 +48,19 @@ namespace Model
      * <p> The maximum processing rate for the real-time endpoint for
      * <code>MLModel</code>, measured in incoming requests per second.</p>
      */
-    inline long GetPeakRequestsPerSecond() const{ return m_peakRequestsPerSecond; }
+    inline int GetPeakRequestsPerSecond() const{ return m_peakRequestsPerSecond; }
 
     /**
      * <p> The maximum processing rate for the real-time endpoint for
      * <code>MLModel</code>, measured in incoming requests per second.</p>
      */
-    inline void SetPeakRequestsPerSecond(long value) { m_peakRequestsPerSecondHasBeenSet = true; m_peakRequestsPerSecond = value; }
+    inline void SetPeakRequestsPerSecond(int value) { m_peakRequestsPerSecondHasBeenSet = true; m_peakRequestsPerSecond = value; }
 
     /**
      * <p> The maximum processing rate for the real-time endpoint for
      * <code>MLModel</code>, measured in incoming requests per second.</p>
      */
-    inline RealtimeEndpointInfo& WithPeakRequestsPerSecond(long value) { SetPeakRequestsPerSecond(value); return *this;}
+    inline RealtimeEndpointInfo& WithPeakRequestsPerSecond(int value) { SetPeakRequestsPerSecond(value); return *this;}
 
     /**
      * <p>The time that the request to create the real-time endpoint for the
@@ -143,51 +143,56 @@ namespace Model
 
     /**
      * <p> The current status of the real-time endpoint for the <code>MLModel</code>.
-     * This element can have one of the following values: </p> <ul> <li>NONE - Endpoint
-     * does not exist or was previously deleted.</li> <li>READY - Endpoint is ready to
-     * be used for real-time predictions.</li> <li>UPDATING - Updating/creating the
-     * endpoint. </li> </ul>
+     * This element can have one of the following values: </p> <ul> <li>
+     * <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li>
+     * <code>READY</code> - Endpoint is ready to be used for real-time
+     * predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint.
+     * </li> </ul>
      */
     inline const RealtimeEndpointStatus& GetEndpointStatus() const{ return m_endpointStatus; }
 
     /**
      * <p> The current status of the real-time endpoint for the <code>MLModel</code>.
-     * This element can have one of the following values: </p> <ul> <li>NONE - Endpoint
-     * does not exist or was previously deleted.</li> <li>READY - Endpoint is ready to
-     * be used for real-time predictions.</li> <li>UPDATING - Updating/creating the
-     * endpoint. </li> </ul>
+     * This element can have one of the following values: </p> <ul> <li>
+     * <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li>
+     * <code>READY</code> - Endpoint is ready to be used for real-time
+     * predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint.
+     * </li> </ul>
      */
     inline void SetEndpointStatus(const RealtimeEndpointStatus& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
 
     /**
      * <p> The current status of the real-time endpoint for the <code>MLModel</code>.
-     * This element can have one of the following values: </p> <ul> <li>NONE - Endpoint
-     * does not exist or was previously deleted.</li> <li>READY - Endpoint is ready to
-     * be used for real-time predictions.</li> <li>UPDATING - Updating/creating the
-     * endpoint. </li> </ul>
+     * This element can have one of the following values: </p> <ul> <li>
+     * <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li>
+     * <code>READY</code> - Endpoint is ready to be used for real-time
+     * predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint.
+     * </li> </ul>
      */
     inline void SetEndpointStatus(RealtimeEndpointStatus&& value) { m_endpointStatusHasBeenSet = true; m_endpointStatus = value; }
 
     /**
      * <p> The current status of the real-time endpoint for the <code>MLModel</code>.
-     * This element can have one of the following values: </p> <ul> <li>NONE - Endpoint
-     * does not exist or was previously deleted.</li> <li>READY - Endpoint is ready to
-     * be used for real-time predictions.</li> <li>UPDATING - Updating/creating the
-     * endpoint. </li> </ul>
+     * This element can have one of the following values: </p> <ul> <li>
+     * <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li>
+     * <code>READY</code> - Endpoint is ready to be used for real-time
+     * predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint.
+     * </li> </ul>
      */
     inline RealtimeEndpointInfo& WithEndpointStatus(const RealtimeEndpointStatus& value) { SetEndpointStatus(value); return *this;}
 
     /**
      * <p> The current status of the real-time endpoint for the <code>MLModel</code>.
-     * This element can have one of the following values: </p> <ul> <li>NONE - Endpoint
-     * does not exist or was previously deleted.</li> <li>READY - Endpoint is ready to
-     * be used for real-time predictions.</li> <li>UPDATING - Updating/creating the
-     * endpoint. </li> </ul>
+     * This element can have one of the following values: </p> <ul> <li>
+     * <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li>
+     * <code>READY</code> - Endpoint is ready to be used for real-time
+     * predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint.
+     * </li> </ul>
      */
     inline RealtimeEndpointInfo& WithEndpointStatus(RealtimeEndpointStatus&& value) { SetEndpointStatus(value); return *this;}
 
   private:
-    long m_peakRequestsPerSecond;
+    int m_peakRequestsPerSecond;
     bool m_peakRequestsPerSecondHasBeenSet;
     Aws::Utils::DateTime m_createdAt;
     bool m_createdAtHasBeenSet;

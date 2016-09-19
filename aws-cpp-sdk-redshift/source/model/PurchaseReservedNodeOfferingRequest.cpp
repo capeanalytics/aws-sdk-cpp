@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,10 +34,12 @@ Aws::String PurchaseReservedNodeOfferingRequest::SerializePayload() const
   {
     ss << "ReservedNodeOfferingId=" << StringUtils::URLEncode(m_reservedNodeOfferingId.c_str()) << "&";
   }
+
   if(m_nodeCountHasBeenSet)
   {
     ss << "NodeCount=" << m_nodeCount << "&";
   }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }

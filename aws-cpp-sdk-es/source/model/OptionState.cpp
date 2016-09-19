@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int RequiresIndexDocuments_HASH = HashingUtils::HashString("RequiresIndexDocuments");
-static const int Processing_HASH = HashingUtils::HashString("Processing");
-static const int Active_HASH = HashingUtils::HashString("Active");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace OptionStateMapper
       {
+
+        static const int RequiresIndexDocuments_HASH = HashingUtils::HashString("RequiresIndexDocuments");
+        static const int Processing_HASH = HashingUtils::HashString("Processing");
+        static const int Active_HASH = HashingUtils::HashString("Active");
 
 
         OptionState GetOptionStateForName(const Aws::String& name)

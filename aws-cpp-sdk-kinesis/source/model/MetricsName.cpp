@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,14 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int IncomingBytes_HASH = HashingUtils::HashString("IncomingBytes");
-static const int IncomingRecords_HASH = HashingUtils::HashString("IncomingRecords");
-static const int OutgoingBytes_HASH = HashingUtils::HashString("OutgoingBytes");
-static const int OutgoingRecords_HASH = HashingUtils::HashString("OutgoingRecords");
-static const int WriteProvisionedThroughputExceeded_HASH = HashingUtils::HashString("WriteProvisionedThroughputExceeded");
-static const int ReadProvisionedThroughputExceeded_HASH = HashingUtils::HashString("ReadProvisionedThroughputExceeded");
-static const int IteratorAgeMilliseconds_HASH = HashingUtils::HashString("IteratorAgeMilliseconds");
-static const int ALL_HASH = HashingUtils::HashString("ALL");
 
 namespace Aws
 {
@@ -36,6 +28,15 @@ namespace Aws
     {
       namespace MetricsNameMapper
       {
+
+        static const int IncomingBytes_HASH = HashingUtils::HashString("IncomingBytes");
+        static const int IncomingRecords_HASH = HashingUtils::HashString("IncomingRecords");
+        static const int OutgoingBytes_HASH = HashingUtils::HashString("OutgoingBytes");
+        static const int OutgoingRecords_HASH = HashingUtils::HashString("OutgoingRecords");
+        static const int WriteProvisionedThroughputExceeded_HASH = HashingUtils::HashString("WriteProvisionedThroughputExceeded");
+        static const int ReadProvisionedThroughputExceeded_HASH = HashingUtils::HashString("ReadProvisionedThroughputExceeded");
+        static const int IteratorAgeMilliseconds_HASH = HashingUtils::HashString("IteratorAgeMilliseconds");
+        static const int ALL_HASH = HashingUtils::HashString("ALL");
 
 
         MetricsName GetMetricsNameForName(const Aws::String& name)

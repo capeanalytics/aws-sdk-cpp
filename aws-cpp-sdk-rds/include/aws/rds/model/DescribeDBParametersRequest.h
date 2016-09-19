@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,100 +35,100 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline const Aws::String& GetDBParameterGroupName() const{ return m_dBParameterGroupName; }
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBParameterGroupName(const Aws::String& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBParameterGroupName(const char* value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName.assign(value); }
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBParametersRequest& WithDBParameterGroupName(const Aws::String& value) { SetDBParameterGroupName(value); return *this;}
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBParametersRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
 
     /**
-     * <p> The name of a specific DB parameter group to return details for. </p>
-     * <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBParametersRequest& WithDBParameterGroupName(const char* value) { SetDBParameterGroupName(value); return *this;}
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline const Aws::String& GetSource() const{ return m_source; }
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = value; }
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline DescribeDBParametersRequest& WithSource(const Aws::String& value) { SetSource(value); return *this;}
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline DescribeDBParametersRequest& WithSource(Aws::String&& value) { SetSource(value); return *this;}
 
     /**
-     * <p> The parameter types to return. </p> <p>Default: All parameter types
-     * returned</p> <p>Valid Values: <code>user | system | engine-default</code></p>
+     * <p>The parameter types to return.</p> <p>Default: All parameter types
+     * returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
      */
     inline DescribeDBParametersRequest& WithSource(const char* value) { SetSource(value); return *this;}
 
@@ -173,7 +173,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -181,7 +181,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -189,7 +189,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline DescribeDBParametersRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeDBParametersRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -254,7 +254,7 @@ namespace Model
     bool m_sourceHasBeenSet;
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

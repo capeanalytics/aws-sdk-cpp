@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,16 +20,17 @@ using namespace Aws::Client;
 using namespace Aws::CloudHSM;
 using namespace Aws::Utils;
 
-static const int CLOUD_HSM_SERVICE_HASH = HashingUtils::HashString("CloudHsmServiceException");
-static const int CLOUD_HSM_INTERNAL_HASH = HashingUtils::HashString("CloudHsmInternalException");
-static const int INVALID_REQUEST_HASH = HashingUtils::HashString("InvalidRequestException");
-
 namespace Aws
 {
 namespace CloudHSM
 {
 namespace CloudHSMErrorMapper
 {
+
+static const int CLOUD_HSM_SERVICE_HASH = HashingUtils::HashString("CloudHsmServiceException");
+static const int CLOUD_HSM_INTERNAL_HASH = HashingUtils::HashString("CloudHsmInternalException");
+static const int INVALID_REQUEST_HASH = HashingUtils::HashString("InvalidRequestException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

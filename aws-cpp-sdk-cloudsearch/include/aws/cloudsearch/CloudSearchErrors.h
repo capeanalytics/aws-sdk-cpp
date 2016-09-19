@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace CloudSearch
 {
-enum class AWS_CLOUDSEARCH_API CloudSearchErrors
+enum class CloudSearchErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-devicefarm)
 
   file(GLOB AWS_DEVICEFARM_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-devicefarm)
     "source/model/*.cpp"
   )
 
-  file(GLOB DEVICEFARM_SRC
+  file(GLOB DEVICEFARM_UNIFIED_HEADERS
     ${AWS_DEVICEFARM_HEADERS}
     ${AWS_DEVICEFARM_MODEL_HEADERS}
+  )
+
+  file(GLOB DEVICEFARM_UNITY_SRC
     ${AWS_DEVICEFARM_SOURCE}
     ${AWS_DEVICEFARM_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("DEVICEFARM" DEVICEFARM_UNITY_SRC)
+  endif()
+
+  file(GLOB DEVICEFARM_SRC
+    ${DEVICEFARM_UNIFIED_HEADERS}
+    ${DEVICEFARM_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-devicefarm)
 
   include_directories(${DEVICEFARM_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_DEVICEFARM_EXPORTS")
   endif()
 
@@ -53,14 +65,28 @@ project(aws-cpp-sdk-devicefarm)
   
   target_link_libraries(aws-cpp-sdk-devicefarm aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-devicefarm
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-devicefarm
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-devicefarm)
+    else()
+      install (TARGETS aws-cpp-sdk-devicefarm
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_DEVICEFARM_HEADERS} DESTINATION include/aws/devicefarm)
   install (FILES ${AWS_DEVICEFARM_MODEL_HEADERS} DESTINATION include/aws/devicefarm/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-devicefarm.autopkg DESTINATION nuget)
+  endif()
+
+
 

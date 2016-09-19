@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace RDS
 {
-enum class AWS_RDS_API RDSErrors
+enum class RDSErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -95,6 +95,7 @@ enum class AWS_RDS_API RDSErrors
   INVALID_EVENT_SUBSCRIPTION_STATE_FAULT,
   INVALID_OPTION_GROUP_STATE_FAULT,
   INVALID_RESTORE_FAULT,
+  INVALID_S3_BUCKET_FAULT,
   INVALID_SUBNET,
   INVALID_V_P_C_NETWORK_STATE_FAULT,
   K_M_S_KEY_NOT_ACCESSIBLE_FAULT,

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,10 @@ namespace MachineLearning
 namespace Model
 {
   /**
-   * <p> Represents the output of a <a>DeleteBatchPrediction</a> operation.</p>
-   * <p>You can use the <a>GetBatchPrediction</a> operation and check the value of
-   * the <code>Status</code> parameter to see whether a <code>BatchPrediction</code>
-   * is marked as <code>DELETED</code>.</p>
+   * <p> Represents the output of a <code>DeleteBatchPrediction</code> operation.</p>
+   * <p>You can use the <code>GetBatchPrediction</code> operation and check the value
+   * of the <code>Status</code> parameter to see whether a
+   * <code>BatchPrediction</code> is marked as <code>DELETED</code>.</p>
    */
   class AWS_MACHINELEARNING_API DeleteBatchPredictionResult
   {

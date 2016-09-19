@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int VMDK_HASH = HashingUtils::HashString("VMDK");
-static const int RAW_HASH = HashingUtils::HashString("RAW");
-static const int VHD_HASH = HashingUtils::HashString("VHD");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace DiskImageFormatMapper
       {
+
+        static const int VMDK_HASH = HashingUtils::HashString("VMDK");
+        static const int RAW_HASH = HashingUtils::HashString("RAW");
+        static const int VHD_HASH = HashingUtils::HashString("VHD");
 
 
         DiskImageFormat GetDiskImageFormatForName(const Aws::String& name)

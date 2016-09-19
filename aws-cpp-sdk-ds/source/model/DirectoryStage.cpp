@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,17 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Requested_HASH = HashingUtils::HashString("Requested");
-static const int Creating_HASH = HashingUtils::HashString("Creating");
-static const int Created_HASH = HashingUtils::HashString("Created");
-static const int Active_HASH = HashingUtils::HashString("Active");
-static const int Inoperable_HASH = HashingUtils::HashString("Inoperable");
-static const int Impaired_HASH = HashingUtils::HashString("Impaired");
-static const int Restoring_HASH = HashingUtils::HashString("Restoring");
-static const int RestoreFailed_HASH = HashingUtils::HashString("RestoreFailed");
-static const int Deleting_HASH = HashingUtils::HashString("Deleting");
-static const int Deleted_HASH = HashingUtils::HashString("Deleted");
-static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 namespace Aws
 {
@@ -39,6 +28,18 @@ namespace Aws
     {
       namespace DirectoryStageMapper
       {
+
+        static const int Requested_HASH = HashingUtils::HashString("Requested");
+        static const int Creating_HASH = HashingUtils::HashString("Creating");
+        static const int Created_HASH = HashingUtils::HashString("Created");
+        static const int Active_HASH = HashingUtils::HashString("Active");
+        static const int Inoperable_HASH = HashingUtils::HashString("Inoperable");
+        static const int Impaired_HASH = HashingUtils::HashString("Impaired");
+        static const int Restoring_HASH = HashingUtils::HashString("Restoring");
+        static const int RestoreFailed_HASH = HashingUtils::HashString("RestoreFailed");
+        static const int Deleting_HASH = HashingUtils::HashString("Deleting");
+        static const int Deleted_HASH = HashingUtils::HashString("Deleted");
+        static const int Failed_HASH = HashingUtils::HashString("Failed");
 
 
         DirectoryStage GetDirectoryStageForName(const Aws::String& name)

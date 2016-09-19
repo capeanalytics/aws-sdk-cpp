@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 SecurityGroup::SecurityGroup() : 
     m_ownerIdHasBeenSet(false),
@@ -131,18 +137,22 @@ void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location, 
   {
       oStream << location << index << locationValue << ".OwnerId=" << StringUtils::URLEncode(m_ownerId.c_str()) << "&";
   }
+
   if(m_groupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
+
   if(m_groupIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".GroupId=" << StringUtils::URLEncode(m_groupId.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_ipPermissionsHasBeenSet)
   {
       unsigned ipPermissionsIdx = 1;
@@ -153,6 +163,7 @@ void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location, 
         item.OutputToStream(oStream, ipPermissionsSs.str().c_str());
       }
   }
+
   if(m_ipPermissionsEgressHasBeenSet)
   {
       unsigned ipPermissionsEgressIdx = 1;
@@ -163,10 +174,12 @@ void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location, 
         item.OutputToStream(oStream, ipPermissionsEgressSs.str().c_str());
       }
   }
+
   if(m_vpcIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -177,6 +190,7 @@ void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location, 
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -232,3 +246,7 @@ void SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location) 
       }
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

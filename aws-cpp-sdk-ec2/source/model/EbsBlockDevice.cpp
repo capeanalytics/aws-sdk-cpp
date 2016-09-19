@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 EbsBlockDevice::EbsBlockDevice() : 
     m_snapshotIdHasBeenSet(false),
@@ -105,26 +111,32 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".SnapshotId=" << StringUtils::URLEncode(m_snapshotId.c_str()) << "&";
   }
+
   if(m_volumeSizeHasBeenSet)
   {
       oStream << location << index << locationValue << ".VolumeSize=" << m_volumeSize << "&";
   }
+
   if(m_deleteOnTerminationHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
   }
+
   if(m_volumeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
   }
+
   if(m_iopsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Iops=" << m_iops << "&";
   }
+
   if(m_encryptedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
   }
+
 }
 
 void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -154,3 +166,7 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".Encrypted=" << m_encrypted << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

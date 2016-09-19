@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,14 +35,17 @@ Aws::String DescribeVpcAttributeRequest::SerializePayload() const
   {
     ss << "DryRun=" << m_dryRun << "&";
   }
+
   if(m_vpcIdHasBeenSet)
   {
     ss << "VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_attributeHasBeenSet)
   {
     ss << "Attribute=" << VpcAttributeNameMapper::GetNameForVpcAttributeName(m_attribute) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

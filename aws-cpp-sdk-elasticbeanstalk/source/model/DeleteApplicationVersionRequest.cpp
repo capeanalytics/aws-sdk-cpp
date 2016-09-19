@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,14 +35,17 @@ Aws::String DeleteApplicationVersionRequest::SerializePayload() const
   {
     ss << "ApplicationName=" << StringUtils::URLEncode(m_applicationName.c_str()) << "&";
   }
+
   if(m_versionLabelHasBeenSet)
   {
     ss << "VersionLabel=" << StringUtils::URLEncode(m_versionLabel.c_str()) << "&";
   }
+
   if(m_deleteSourceBundleHasBeenSet)
   {
     ss << "DeleteSourceBundle=" << m_deleteSourceBundle << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

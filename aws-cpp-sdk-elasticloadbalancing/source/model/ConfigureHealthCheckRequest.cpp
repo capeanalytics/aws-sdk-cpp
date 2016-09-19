@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String ConfigureHealthCheckRequest::SerializePayload() const
   {
     ss << "LoadBalancerName=" << StringUtils::URLEncode(m_loadBalancerName.c_str()) << "&";
   }
+
   if(m_healthCheckHasBeenSet)
   {
-    m_healthCheck.OutputToStream(ss, "HealthCheck.");
+    m_healthCheck.OutputToStream(ss, "HealthCheck");
   }
+
   ss << "Version=2012-06-01";
   return ss.str();
 }

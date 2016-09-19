@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int registerTime_HASH = HashingUtils::HashString("registerTime");
-static const int firstUsedTime_HASH = HashingUtils::HashString("firstUsedTime");
-static const int lastUsedTime_HASH = HashingUtils::HashString("lastUsedTime");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ApplicationRevisionSortByMapper
       {
+
+        static const int registerTime_HASH = HashingUtils::HashString("registerTime");
+        static const int firstUsedTime_HASH = HashingUtils::HashString("firstUsedTime");
+        static const int lastUsedTime_HASH = HashingUtils::HashString("lastUsedTime");
 
 
         ApplicationRevisionSortBy GetApplicationRevisionSortByForName(const Aws::String& name)

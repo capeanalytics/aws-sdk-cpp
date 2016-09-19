@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudWatchLogs
+{
+namespace Model
+{
 
 LogStream::LogStream() : 
     m_logStreamNameHasBeenSet(false),
@@ -171,3 +177,7 @@ JsonValue LogStream::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CloudWatchLogs
+} // namespace Aws

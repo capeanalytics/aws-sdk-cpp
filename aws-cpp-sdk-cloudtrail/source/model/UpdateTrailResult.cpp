@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -60,9 +60,9 @@ UpdateTrailResult& UpdateTrailResult::operator =(const AmazonWebServiceResult<Js
 
   }
 
-  if(jsonValue.ValueExists("SnsTopicName"))
+  if(jsonValue.ValueExists("SnsTopicARN"))
   {
-    m_snsTopicName = jsonValue.GetString("SnsTopicName");
+    m_snsTopicARN = jsonValue.GetString("SnsTopicARN");
 
   }
 

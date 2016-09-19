@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,7 @@ namespace Aws
 {
 namespace CodePipeline
 {
-enum class AWS_CODEPIPELINE_API CodePipelineErrors
+enum class CodePipelineErrors
 {
   //From Core//
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,9 @@ enum class AWS_CODEPIPELINE_API CodePipelineErrors
 
   ACTION_NOT_FOUND= static_cast<int>(Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
   ACTION_TYPE_NOT_FOUND,
+  APPROVAL_ALREADY_COMPLETED,
   INVALID_ACTION_DECLARATION,
+  INVALID_APPROVAL_TOKEN,
   INVALID_BLOCKER_DECLARATION,
   INVALID_CLIENT_TOKEN,
   INVALID_JOB,
@@ -61,10 +63,13 @@ enum class AWS_CODEPIPELINE_API CodePipelineErrors
   INVALID_STRUCTURE,
   JOB_NOT_FOUND,
   LIMIT_EXCEEDED,
+  NOT_LATEST_PIPELINE_EXECUTION,
+  PIPELINE_EXECUTION_NOT_FOUND,
   PIPELINE_NAME_IN_USE,
   PIPELINE_NOT_FOUND,
   PIPELINE_VERSION_NOT_FOUND,
-  STAGE_NOT_FOUND
+  STAGE_NOT_FOUND,
+  STAGE_NOT_RETRYABLE
 };
 namespace CodePipelineErrorMapper
 {

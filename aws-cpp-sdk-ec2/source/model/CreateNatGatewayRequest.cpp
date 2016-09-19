@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,14 +34,17 @@ Aws::String CreateNatGatewayRequest::SerializePayload() const
   {
     ss << "SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
+
   if(m_allocationIdHasBeenSet)
   {
     ss << "AllocationId=" << StringUtils::URLEncode(m_allocationId.c_str()) << "&";
   }
+
   if(m_clientTokenHasBeenSet)
   {
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

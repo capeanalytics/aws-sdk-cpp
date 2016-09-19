@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,14 +35,17 @@ Aws::String SetLoadBalancerListenerSSLCertificateRequest::SerializePayload() con
   {
     ss << "LoadBalancerName=" << StringUtils::URLEncode(m_loadBalancerName.c_str()) << "&";
   }
+
   if(m_loadBalancerPortHasBeenSet)
   {
     ss << "LoadBalancerPort=" << m_loadBalancerPort << "&";
   }
+
   if(m_sSLCertificateIdHasBeenSet)
   {
     ss << "SSLCertificateId=" << StringUtils::URLEncode(m_sSLCertificateId.c_str()) << "&";
   }
+
   ss << "Version=2012-06-01";
   return ss.str();
 }

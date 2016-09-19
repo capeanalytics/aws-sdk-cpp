@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -16,6 +16,7 @@
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/directconnect/model/ConnectionState.h>
+#include <aws/core/utils/DateTime.h>
 
 namespace Aws
 {
@@ -43,25 +44,39 @@ namespace Model
     Connection& operator=(const Aws::Utils::Json::JsonValue& jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline const Aws::String& GetOwnerAccount() const{ return m_ownerAccount; }
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline void SetOwnerAccount(const Aws::String& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = value; }
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline void SetOwnerAccount(Aws::String&& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = value; }
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline void SetOwnerAccount(const char* value) { m_ownerAccountHasBeenSet = true; m_ownerAccount.assign(value); }
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline Connection& WithOwnerAccount(const Aws::String& value) { SetOwnerAccount(value); return *this;}
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline Connection& WithOwnerAccount(Aws::String&& value) { SetOwnerAccount(value); return *this;}
 
-    
+    /**
+     * <p>The AWS account that will own the new connection.</p>
+     */
     inline Connection& WithOwnerAccount(const char* value) { SetOwnerAccount(value); return *this;}
 
     
@@ -206,34 +221,85 @@ namespace Model
     inline Connection& WithBandwidth(const char* value) { SetBandwidth(value); return *this;}
 
     
-    inline long GetVlan() const{ return m_vlan; }
+    inline int GetVlan() const{ return m_vlan; }
 
     
-    inline void SetVlan(long value) { m_vlanHasBeenSet = true; m_vlan = value; }
+    inline void SetVlan(int value) { m_vlanHasBeenSet = true; m_vlan = value; }
 
     
-    inline Connection& WithVlan(long value) { SetVlan(value); return *this;}
+    inline Connection& WithVlan(int value) { SetVlan(value); return *this;}
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline const Aws::String& GetPartnerName() const{ return m_partnerName; }
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline void SetPartnerName(const Aws::String& value) { m_partnerNameHasBeenSet = true; m_partnerName = value; }
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline void SetPartnerName(Aws::String&& value) { m_partnerNameHasBeenSet = true; m_partnerName = value; }
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline void SetPartnerName(const char* value) { m_partnerNameHasBeenSet = true; m_partnerName.assign(value); }
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline Connection& WithPartnerName(const Aws::String& value) { SetPartnerName(value); return *this;}
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline Connection& WithPartnerName(Aws::String&& value) { SetPartnerName(value); return *this;}
 
-    
+    /**
+     * <p>The name of the AWS Direct Connect service provider associated with the
+     * connection.</p>
+     */
     inline Connection& WithPartnerName(const char* value) { SetPartnerName(value); return *this;}
+
+    /**
+     * <p>The time of the most recent call to DescribeConnectionLoa for this
+     * Connection.</p>
+     */
+    inline const Aws::Utils::DateTime& GetLoaIssueTime() const{ return m_loaIssueTime; }
+
+    /**
+     * <p>The time of the most recent call to DescribeConnectionLoa for this
+     * Connection.</p>
+     */
+    inline void SetLoaIssueTime(const Aws::Utils::DateTime& value) { m_loaIssueTimeHasBeenSet = true; m_loaIssueTime = value; }
+
+    /**
+     * <p>The time of the most recent call to DescribeConnectionLoa for this
+     * Connection.</p>
+     */
+    inline void SetLoaIssueTime(Aws::Utils::DateTime&& value) { m_loaIssueTimeHasBeenSet = true; m_loaIssueTime = value; }
+
+    /**
+     * <p>The time of the most recent call to DescribeConnectionLoa for this
+     * Connection.</p>
+     */
+    inline Connection& WithLoaIssueTime(const Aws::Utils::DateTime& value) { SetLoaIssueTime(value); return *this;}
+
+    /**
+     * <p>The time of the most recent call to DescribeConnectionLoa for this
+     * Connection.</p>
+     */
+    inline Connection& WithLoaIssueTime(Aws::Utils::DateTime&& value) { SetLoaIssueTime(value); return *this;}
 
   private:
     Aws::String m_ownerAccount;
@@ -250,10 +316,12 @@ namespace Model
     bool m_locationHasBeenSet;
     Aws::String m_bandwidth;
     bool m_bandwidthHasBeenSet;
-    long m_vlan;
+    int m_vlan;
     bool m_vlanHasBeenSet;
     Aws::String m_partnerName;
     bool m_partnerNameHasBeenSet;
+    Aws::Utils::DateTime m_loaIssueTime;
+    bool m_loaIssueTimeHasBeenSet;
   };
 
 } // namespace Model

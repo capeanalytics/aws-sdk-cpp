@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,9 +34,9 @@ namespace Model
 {
 
   /**
-   * <p> Represents the output of <a>GetEvaluation</a> operation. </p> <p>The content
-   * consists of the detailed metadata and data file information and the current
-   * status of the <code>Evaluation</code>.</p>
+   * <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The
+   * content consists of the detailed metadata and data file information and the
+   * current status of the <code>Evaluation</code>.</p>
    */
   class AWS_MACHINELEARNING_API Evaluation
   {
@@ -407,9 +407,9 @@ namespace Model
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
      * observations referenced by the <code>DataSource</code>. One of the following
-     * metrics is returned, based on the type of the MLModel: </p> <ul> <li>
-     * <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC)
-     * technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
+     * metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul>
+     * <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve
+     * (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
      * regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique
      * to measure performance. RMSE measures the difference between predicted and
      * actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A
@@ -424,9 +424,9 @@ namespace Model
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
      * observations referenced by the <code>DataSource</code>. One of the following
-     * metrics is returned, based on the type of the MLModel: </p> <ul> <li>
-     * <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC)
-     * technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
+     * metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul>
+     * <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve
+     * (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
      * regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique
      * to measure performance. RMSE measures the difference between predicted and
      * actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A
@@ -441,9 +441,9 @@ namespace Model
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
      * observations referenced by the <code>DataSource</code>. One of the following
-     * metrics is returned, based on the type of the MLModel: </p> <ul> <li>
-     * <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC)
-     * technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
+     * metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul>
+     * <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve
+     * (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
      * regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique
      * to measure performance. RMSE measures the difference between predicted and
      * actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A
@@ -458,9 +458,9 @@ namespace Model
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
      * observations referenced by the <code>DataSource</code>. One of the following
-     * metrics is returned, based on the type of the MLModel: </p> <ul> <li>
-     * <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC)
-     * technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
+     * metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul>
+     * <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve
+     * (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
      * regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique
      * to measure performance. RMSE measures the difference between predicted and
      * actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A
@@ -475,9 +475,9 @@ namespace Model
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
      * observations referenced by the <code>DataSource</code>. One of the following
-     * metrics is returned, based on the type of the MLModel: </p> <ul> <li>
-     * <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC)
-     * technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
+     * metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul>
+     * <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve
+     * (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A
      * regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique
      * to measure performance. RMSE measures the difference between predicted and
      * actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A
@@ -531,6 +531,45 @@ namespace Model
      */
     inline Evaluation& WithMessage(const char* value) { SetMessage(value); return *this;}
 
+    
+    inline long long GetComputeTime() const{ return m_computeTime; }
+
+    
+    inline void SetComputeTime(long long value) { m_computeTimeHasBeenSet = true; m_computeTime = value; }
+
+    
+    inline Evaluation& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
+
+    
+    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline Evaluation& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline Evaluation& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+
+    
+    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline Evaluation& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
+
+    
+    inline Evaluation& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+
   private:
     Aws::String m_evaluationId;
     bool m_evaluationIdHasBeenSet;
@@ -554,6 +593,12 @@ namespace Model
     bool m_performanceMetricsHasBeenSet;
     Aws::String m_message;
     bool m_messageHasBeenSet;
+    long long m_computeTime;
+    bool m_computeTimeHasBeenSet;
+    Aws::Utils::DateTime m_finishedAt;
+    bool m_finishedAtHasBeenSet;
+    Aws::Utils::DateTime m_startedAt;
+    bool m_startedAtHasBeenSet;
   };
 
 } // namespace Model

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Event_HASH = HashingUtils::HashString("Event");
-static const int RequestResponse_HASH = HashingUtils::HashString("RequestResponse");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace InvocationTypeMapper
       {
+
+        static const int Event_HASH = HashingUtils::HashString("Event");
+        static const int RequestResponse_HASH = HashingUtils::HashString("RequestResponse");
 
 
         InvocationType GetInvocationTypeForName(const Aws::String& name)

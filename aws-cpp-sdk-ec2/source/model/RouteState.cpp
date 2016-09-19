@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int active_HASH = HashingUtils::HashString("active");
-static const int blackhole_HASH = HashingUtils::HashString("blackhole");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace RouteStateMapper
       {
+
+        static const int active_HASH = HashingUtils::HashString("active");
+        static const int blackhole_HASH = HashingUtils::HashString("blackhole");
 
 
         RouteState GetRouteStateForName(const Aws::String& name)

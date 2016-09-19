@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int None_HASH = HashingUtils::HashString("None");
-static const int Tail_HASH = HashingUtils::HashString("Tail");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace LogTypeMapper
       {
+
+        static const int None_HASH = HashingUtils::HashString("None");
+        static const int Tail_HASH = HashingUtils::HashString("Tail");
 
 
         LogType GetLogTypeForName(const Aws::String& name)

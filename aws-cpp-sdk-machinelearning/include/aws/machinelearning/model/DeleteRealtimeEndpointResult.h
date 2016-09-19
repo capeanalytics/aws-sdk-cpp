@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,9 +34,9 @@ namespace MachineLearning
 namespace Model
 {
   /**
-   * <p>Represents the output of an <a>DeleteRealtimeEndpoint</a> operation.</p>
-   * <p>The result contains the <code>MLModelId</code> and the endpoint information
-   * for the <code>MLModel</code>. </p>
+   * <p>Represents the output of an <code>DeleteRealtimeEndpoint</code>
+   * operation.</p> <p>The result contains the <code>MLModelId</code> and the
+   * endpoint information for the <code>MLModel</code>. </p>
    */
   class AWS_MACHINELEARNING_API DeleteRealtimeEndpointResult
   {

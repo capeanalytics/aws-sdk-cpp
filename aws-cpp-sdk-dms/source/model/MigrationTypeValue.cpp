@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int full_load_HASH = HashingUtils::HashString("full-load");
-static const int cdc_HASH = HashingUtils::HashString("cdc");
-static const int full_load_and_cdc_HASH = HashingUtils::HashString("full-load-and-cdc");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace MigrationTypeValueMapper
       {
+
+        static const int full_load_HASH = HashingUtils::HashString("full-load");
+        static const int cdc_HASH = HashingUtils::HashString("cdc");
+        static const int full_load_and_cdc_HASH = HashingUtils::HashString("full-load-and-cdc");
 
 
         MigrationTypeValue GetMigrationTypeValueForName(const Aws::String& name)

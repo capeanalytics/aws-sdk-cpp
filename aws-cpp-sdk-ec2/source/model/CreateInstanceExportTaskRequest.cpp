@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,18 +35,22 @@ Aws::String CreateInstanceExportTaskRequest::SerializePayload() const
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_instanceIdHasBeenSet)
   {
     ss << "InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
+
   if(m_targetEnvironmentHasBeenSet)
   {
     ss << "TargetEnvironment=" << ExportEnvironmentMapper::GetNameForExportEnvironment(m_targetEnvironment) << "&";
   }
+
   if(m_exportToS3TaskHasBeenSet)
   {
-    m_exportToS3Task.OutputToStream(ss, "ExportToS3Task.");
+    m_exportToS3Task.OutputToStream(ss, "ExportToS3Task");
   }
+
   ss << "Version=2015-10-01";
   return ss.str();
 }

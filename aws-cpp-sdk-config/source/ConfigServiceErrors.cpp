@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,12 +20,20 @@ using namespace Aws::Client;
 using namespace Aws::ConfigService;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace ConfigService
+{
+namespace ConfigServiceErrorMapper
+{
+
 static const int RESOURCE_IN_USE_HASH = HashingUtils::HashString("ResourceInUseException");
 static const int INVALID_RECORDING_GROUP_HASH = HashingUtils::HashString("InvalidRecordingGroupException");
 static const int MAX_NUMBER_OF_CONFIG_RULES_EXCEEDED_HASH = HashingUtils::HashString("MaxNumberOfConfigRulesExceededException");
 static const int INVALID_CONFIGURATION_RECORDER_NAME_HASH = HashingUtils::HashString("InvalidConfigurationRecorderNameException");
 static const int NO_SUCH_CONFIGURATION_RECORDER_HASH = HashingUtils::HashString("NoSuchConfigurationRecorderException");
 static const int INVALID_RESULT_TOKEN_HASH = HashingUtils::HashString("InvalidResultTokenException");
+static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
 static const int INVALID_ROLE_HASH = HashingUtils::HashString("InvalidRoleException");
 static const int NO_RUNNING_CONFIGURATION_RECORDER_HASH = HashingUtils::HashString("NoRunningConfigurationRecorderException");
 static const int INVALID_TIME_RANGE_HASH = HashingUtils::HashString("InvalidTimeRangeException");
@@ -46,12 +54,6 @@ static const int INVALID_DELIVERY_CHANNEL_NAME_HASH = HashingUtils::HashString("
 static const int INSUFFICIENT_PERMISSIONS_HASH = HashingUtils::HashString("InsufficientPermissionsException");
 static const int INVALID_S_N_S_TOPIC_A_R_N_HASH = HashingUtils::HashString("InvalidSNSTopicARNException");
 
-namespace Aws
-{
-namespace ConfigService
-{
-namespace ConfigServiceErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
@@ -80,6 +82,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_RESULT_TOKEN_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(ConfigServiceErrors::INVALID_RESULT_TOKEN), false);
+  }
+  else if (hashCode == LIMIT_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(ConfigServiceErrors::LIMIT_EXCEEDED), false);
   }
   else if (hashCode == INVALID_ROLE_HASH)
   {

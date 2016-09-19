@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int NONE_HASH = HashingUtils::HashString("NONE");
-static const int ALL_OLD_HASH = HashingUtils::HashString("ALL_OLD");
-static const int UPDATED_OLD_HASH = HashingUtils::HashString("UPDATED_OLD");
-static const int ALL_NEW_HASH = HashingUtils::HashString("ALL_NEW");
-static const int UPDATED_NEW_HASH = HashingUtils::HashString("UPDATED_NEW");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace ReturnValueMapper
       {
+
+        static const int NONE_HASH = HashingUtils::HashString("NONE");
+        static const int ALL_OLD_HASH = HashingUtils::HashString("ALL_OLD");
+        static const int UPDATED_OLD_HASH = HashingUtils::HashString("UPDATED_OLD");
+        static const int ALL_NEW_HASH = HashingUtils::HashString("ALL_NEW");
+        static const int UPDATED_NEW_HASH = HashingUtils::HashString("UPDATED_NEW");
 
 
         ReturnValue GetReturnValueForName(const Aws::String& name)

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int STANDARD_HASH = HashingUtils::HashString("STANDARD");
-static const int REDUCED_REDUNDANCY_HASH = HashingUtils::HashString("REDUCED_REDUNDANCY");
-static const int GLACIER_HASH = HashingUtils::HashString("GLACIER");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ObjectStorageClassMapper
       {
+
+        static const int STANDARD_HASH = HashingUtils::HashString("STANDARD");
+        static const int REDUCED_REDUNDANCY_HASH = HashingUtils::HashString("REDUCED_REDUNDANCY");
+        static const int GLACIER_HASH = HashingUtils::HashString("GLACIER");
 
 
         ObjectStorageClass GetObjectStorageClassForName(const Aws::String& name)

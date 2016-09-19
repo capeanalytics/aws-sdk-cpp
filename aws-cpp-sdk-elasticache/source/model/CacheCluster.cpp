@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElastiCache
+{
+namespace Model
+{
 
 CacheCluster::CacheCluster() : 
     m_cacheClusterIdHasBeenSet(false),
@@ -249,60 +255,73 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".CacheClusterId=" << StringUtils::URLEncode(m_cacheClusterId.c_str()) << "&";
   }
+
   if(m_configurationEndpointHasBeenSet)
   {
       Aws::StringStream configurationEndpointLocationAndMemberSs;
       configurationEndpointLocationAndMemberSs << location << index << locationValue << ".ConfigurationEndpoint";
       m_configurationEndpoint.OutputToStream(oStream, configurationEndpointLocationAndMemberSs.str().c_str());
   }
+
   if(m_clientDownloadLandingPageHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClientDownloadLandingPage=" << StringUtils::URLEncode(m_clientDownloadLandingPage.c_str()) << "&";
   }
+
   if(m_cacheNodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
+
   if(m_engineHasBeenSet)
   {
       oStream << location << index << locationValue << ".Engine=" << StringUtils::URLEncode(m_engine.c_str()) << "&";
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
   if(m_cacheClusterStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheClusterStatus=" << StringUtils::URLEncode(m_cacheClusterStatus.c_str()) << "&";
   }
+
   if(m_numCacheNodesHasBeenSet)
   {
       oStream << location << index << locationValue << ".NumCacheNodes=" << m_numCacheNodes << "&";
   }
+
   if(m_preferredAvailabilityZoneHasBeenSet)
   {
       oStream << location << index << locationValue << ".PreferredAvailabilityZone=" << StringUtils::URLEncode(m_preferredAvailabilityZone.c_str()) << "&";
   }
+
   if(m_cacheClusterCreateTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheClusterCreateTime=" << StringUtils::URLEncode(m_cacheClusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
       oStream << location << index << locationValue << ".PreferredMaintenanceWindow=" << StringUtils::URLEncode(m_preferredMaintenanceWindow.c_str()) << "&";
   }
+
   if(m_pendingModifiedValuesHasBeenSet)
   {
       Aws::StringStream pendingModifiedValuesLocationAndMemberSs;
       pendingModifiedValuesLocationAndMemberSs << location << index << locationValue << ".PendingModifiedValues";
       m_pendingModifiedValues.OutputToStream(oStream, pendingModifiedValuesLocationAndMemberSs.str().c_str());
   }
+
   if(m_notificationConfigurationHasBeenSet)
   {
       Aws::StringStream notificationConfigurationLocationAndMemberSs;
       notificationConfigurationLocationAndMemberSs << location << index << locationValue << ".NotificationConfiguration";
       m_notificationConfiguration.OutputToStream(oStream, notificationConfigurationLocationAndMemberSs.str().c_str());
   }
+
   if(m_cacheSecurityGroupsHasBeenSet)
   {
       unsigned cacheSecurityGroupsIdx = 1;
@@ -313,16 +332,19 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
         item.OutputToStream(oStream, cacheSecurityGroupsSs.str().c_str());
       }
   }
+
   if(m_cacheParameterGroupHasBeenSet)
   {
       Aws::StringStream cacheParameterGroupLocationAndMemberSs;
       cacheParameterGroupLocationAndMemberSs << location << index << locationValue << ".CacheParameterGroup";
       m_cacheParameterGroup.OutputToStream(oStream, cacheParameterGroupLocationAndMemberSs.str().c_str());
   }
+
   if(m_cacheSubnetGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheSubnetGroupName=" << StringUtils::URLEncode(m_cacheSubnetGroupName.c_str()) << "&";
   }
+
   if(m_cacheNodesHasBeenSet)
   {
       unsigned cacheNodesIdx = 1;
@@ -333,10 +355,12 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
         item.OutputToStream(oStream, cacheNodesSs.str().c_str());
       }
   }
+
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
   }
+
   if(m_securityGroupsHasBeenSet)
   {
       unsigned securityGroupsIdx = 1;
@@ -347,18 +371,22 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
+
   if(m_replicationGroupIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReplicationGroupId=" << StringUtils::URLEncode(m_replicationGroupId.c_str()) << "&";
   }
+
   if(m_snapshotRetentionLimitHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotRetentionLimit=" << m_snapshotRetentionLimit << "&";
   }
+
   if(m_snapshotWindowHasBeenSet)
   {
       oStream << location << index << locationValue << ".SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
   }
+
 }
 
 void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -478,3 +506,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElastiCache
+} // namespace Aws

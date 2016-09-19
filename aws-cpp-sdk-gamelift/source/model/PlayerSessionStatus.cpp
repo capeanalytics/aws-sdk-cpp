@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int RESERVED_HASH = HashingUtils::HashString("RESERVED");
-static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
-static const int COMPLETED_HASH = HashingUtils::HashString("COMPLETED");
-static const int TIMEDOUT_HASH = HashingUtils::HashString("TIMEDOUT");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace PlayerSessionStatusMapper
       {
+
+        static const int RESERVED_HASH = HashingUtils::HashString("RESERVED");
+        static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
+        static const int COMPLETED_HASH = HashingUtils::HashString("COMPLETED");
+        static const int TIMEDOUT_HASH = HashingUtils::HashString("TIMEDOUT");
 
 
         PlayerSessionStatus GetPlayerSessionStatusForName(const Aws::String& name)

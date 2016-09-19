@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -129,7 +129,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p>The maximum number of records to include in the response. If more records
@@ -137,7 +137,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p>The maximum number of records to include in the response. If more records
@@ -145,7 +145,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved.</p>
      */
-    inline DescribeTableRestoreStatusRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeTableRestoreStatusRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p>An optional pagination token provided by a previous
@@ -208,7 +208,7 @@ namespace Model
     bool m_clusterIdentifierHasBeenSet;
     Aws::String m_tableRestoreRequestId;
     bool m_tableRestoreRequestIdHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

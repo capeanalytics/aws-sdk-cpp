@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,11 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to begin Amazon SES domain verification and to generate
+   * the TXT records that you must publish to the DNS server of your domain to
+   * complete the verification. For information about domain verification, see the <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API VerifyDomainIdentityRequest : public SESRequest
   {

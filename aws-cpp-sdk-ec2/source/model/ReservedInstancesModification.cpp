@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ReservedInstancesModification::ReservedInstancesModification() : 
     m_reservedInstancesModificationIdHasBeenSet(false),
@@ -133,6 +139,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
   {
       oStream << location << index << locationValue << ".ReservedInstancesModificationId=" << StringUtils::URLEncode(m_reservedInstancesModificationId.c_str()) << "&";
   }
+
   if(m_reservedInstancesIdsHasBeenSet)
   {
       unsigned reservedInstancesIdsIdx = 1;
@@ -143,6 +150,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
         item.OutputToStream(oStream, reservedInstancesIdsSs.str().c_str());
       }
   }
+
   if(m_modificationResultsHasBeenSet)
   {
       unsigned modificationResultsIdx = 1;
@@ -153,30 +161,37 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
         item.OutputToStream(oStream, modificationResultsSs.str().c_str());
       }
   }
+
   if(m_createDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateDate=" << StringUtils::URLEncode(m_createDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_updateDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".UpdateDate=" << StringUtils::URLEncode(m_updateDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_effectiveDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".EffectiveDate=" << StringUtils::URLEncode(m_effectiveDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_clientTokenHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
+
 }
 
 void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -230,3 +245,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
       oStream << location << ".ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

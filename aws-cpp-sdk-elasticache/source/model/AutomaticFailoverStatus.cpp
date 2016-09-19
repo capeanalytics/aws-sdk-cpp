@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int enabled_HASH = HashingUtils::HashString("enabled");
-static const int disabled_HASH = HashingUtils::HashString("disabled");
-static const int enabling_HASH = HashingUtils::HashString("enabling");
-static const int disabling_HASH = HashingUtils::HashString("disabling");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace AutomaticFailoverStatusMapper
       {
+
+        static const int enabled_HASH = HashingUtils::HashString("enabled");
+        static const int disabled_HASH = HashingUtils::HashString("disabled");
+        static const int enabling_HASH = HashingUtils::HashString("enabling");
+        static const int disabling_HASH = HashingUtils::HashString("disabling");
 
 
         AutomaticFailoverStatus GetAutomaticFailoverStatusForName(const Aws::String& name)

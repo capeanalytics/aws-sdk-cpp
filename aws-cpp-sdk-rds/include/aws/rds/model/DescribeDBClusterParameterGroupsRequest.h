@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,58 +36,58 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline const Aws::String& GetDBClusterParameterGroupName() const{ return m_dBClusterParameterGroupName; }
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBClusterParameterGroupName(const Aws::String& value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName = value; }
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBClusterParameterGroupName(Aws::String&& value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName = value; }
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline void SetDBClusterParameterGroupName(const char* value) { m_dBClusterParameterGroupNameHasBeenSet = true; m_dBClusterParameterGroupName.assign(value); }
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBClusterParameterGroupsRequest& WithDBClusterParameterGroupName(const Aws::String& value) { SetDBClusterParameterGroupName(value); return *this;}
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBClusterParameterGroupsRequest& WithDBClusterParameterGroupName(Aws::String&& value) { SetDBClusterParameterGroupName(value); return *this;}
 
     /**
-     * <p> The name of a specific DB cluster parameter group to return details for.
-     * </p> <p>Constraints:</p> <ul> <li>Must be 1 to 255 alphanumeric characters</li>
-     * <li>First character must be a letter</li> <li>Cannot end with a hyphen or
-     * contain two consecutive hyphens</li> </ul>
+     * <p>The name of a specific DB cluster parameter group to return details for.</p>
+     * <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p>
+     * </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with
+     * a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
     inline DescribeDBClusterParameterGroupsRequest& WithDBClusterParameterGroupName(const char* value) { SetDBClusterParameterGroupName(value); return *this;}
 
@@ -132,7 +132,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline long GetMaxRecords() const{ return m_maxRecords; }
+    inline int GetMaxRecords() const{ return m_maxRecords; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -140,7 +140,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline void SetMaxRecords(long value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
+    inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -148,7 +148,7 @@ namespace Model
      * called a marker is included in the response so that the remaining results can be
      * retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
      */
-    inline DescribeDBClusterParameterGroupsRequest& WithMaxRecords(long value) { SetMaxRecords(value); return *this;}
+    inline DescribeDBClusterParameterGroupsRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -211,7 +211,7 @@ namespace Model
     bool m_dBClusterParameterGroupNameHasBeenSet;
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet;
-    long m_maxRecords;
+    int m_maxRecords;
     bool m_maxRecordsHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

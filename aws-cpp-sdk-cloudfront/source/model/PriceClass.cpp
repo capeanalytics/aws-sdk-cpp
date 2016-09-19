@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int PriceClass_100_HASH = HashingUtils::HashString("PriceClass_100");
-static const int PriceClass_200_HASH = HashingUtils::HashString("PriceClass_200");
-static const int PriceClass_All_HASH = HashingUtils::HashString("PriceClass_All");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace PriceClassMapper
       {
+
+        static const int PriceClass_100_HASH = HashingUtils::HashString("PriceClass_100");
+        static const int PriceClass_200_HASH = HashingUtils::HashString("PriceClass_200");
+        static const int PriceClass_All_HASH = HashingUtils::HashString("PriceClass_All");
 
 
         PriceClass GetPriceClassForName(const Aws::String& name)

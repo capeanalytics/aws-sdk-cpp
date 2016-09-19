@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,8 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to delete one of your Amazon SES identities (an email
+   * address or domain).</p>
    */
   class AWS_SES_API DeleteIdentityRequest : public SESRequest
   {

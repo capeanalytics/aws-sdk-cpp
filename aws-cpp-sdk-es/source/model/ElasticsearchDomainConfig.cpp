@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,11 +17,18 @@
 
 #include <utility>
 
-using namespace Aws::ElasticsearchService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
+namespace Aws
+{
+namespace ElasticsearchService
+{
+namespace Model
+{
+
 ElasticsearchDomainConfig::ElasticsearchDomainConfig() : 
+    m_elasticsearchVersionHasBeenSet(false),
     m_elasticsearchClusterConfigHasBeenSet(false),
     m_eBSOptionsHasBeenSet(false),
     m_accessPoliciesHasBeenSet(false),
@@ -31,6 +38,7 @@ ElasticsearchDomainConfig::ElasticsearchDomainConfig() :
 }
 
 ElasticsearchDomainConfig::ElasticsearchDomainConfig(const JsonValue& jsonValue) : 
+    m_elasticsearchVersionHasBeenSet(false),
     m_elasticsearchClusterConfigHasBeenSet(false),
     m_eBSOptionsHasBeenSet(false),
     m_accessPoliciesHasBeenSet(false),
@@ -42,6 +50,13 @@ ElasticsearchDomainConfig::ElasticsearchDomainConfig(const JsonValue& jsonValue)
 
 ElasticsearchDomainConfig& ElasticsearchDomainConfig::operator =(const JsonValue& jsonValue)
 {
+  if(jsonValue.ValueExists("ElasticsearchVersion"))
+  {
+    m_elasticsearchVersion = jsonValue.GetObject("ElasticsearchVersion");
+
+    m_elasticsearchVersionHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("ElasticsearchClusterConfig"))
   {
     m_elasticsearchClusterConfig = jsonValue.GetObject("ElasticsearchClusterConfig");
@@ -84,6 +99,12 @@ JsonValue ElasticsearchDomainConfig::Jsonize() const
 {
   JsonValue payload;
 
+  if(m_elasticsearchVersionHasBeenSet)
+  {
+   payload.WithObject("ElasticsearchVersion", m_elasticsearchVersion.Jsonize());
+
+  }
+
   if(m_elasticsearchClusterConfigHasBeenSet)
   {
    payload.WithObject("ElasticsearchClusterConfig", m_elasticsearchClusterConfig.Jsonize());
@@ -116,3 +137,7 @@ JsonValue ElasticsearchDomainConfig::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace ElasticsearchService
+} // namespace Aws

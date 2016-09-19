@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ON_DEMAND_HASH = HashingUtils::HashString("ON_DEMAND");
-static const int SPOT_HASH = HashingUtils::HashString("SPOT");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace MarketTypeMapper
       {
+
+        static const int ON_DEMAND_HASH = HashingUtils::HashString("ON_DEMAND");
+        static const int SPOT_HASH = HashingUtils::HashString("SPOT");
 
 
         MarketType GetMarketTypeForName(const Aws::String& name)

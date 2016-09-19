@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Block_HASH = HashingUtils::HashString("Block");
-static const int Allow_HASH = HashingUtils::HashString("Allow");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace ReceiptFilterPolicyMapper
       {
+
+        static const int Block_HASH = HashingUtils::HashString("Block");
+        static const int Allow_HASH = HashingUtils::HashString("Allow");
 
 
         ReceiptFilterPolicy GetReceiptFilterPolicyForName(const Aws::String& name)

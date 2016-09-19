@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 EC2SecurityGroup::EC2SecurityGroup() : 
     m_statusHasBeenSet(false),
@@ -87,14 +93,17 @@ void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
   if(m_eC2SecurityGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".EC2SecurityGroupName=" << StringUtils::URLEncode(m_eC2SecurityGroupName.c_str()) << "&";
   }
+
   if(m_eC2SecurityGroupOwnerIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".EC2SecurityGroupOwnerId=" << StringUtils::URLEncode(m_eC2SecurityGroupOwnerId.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -105,6 +114,7 @@ void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -132,3 +142,7 @@ void EC2SecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

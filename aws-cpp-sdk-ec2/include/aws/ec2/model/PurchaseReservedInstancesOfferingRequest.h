@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -96,17 +96,17 @@ namespace Model
     /**
      * <p>The number of Reserved Instances to purchase.</p>
      */
-    inline long GetInstanceCount() const{ return m_instanceCount; }
+    inline int GetInstanceCount() const{ return m_instanceCount; }
 
     /**
      * <p>The number of Reserved Instances to purchase.</p>
      */
-    inline void SetInstanceCount(long value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
+    inline void SetInstanceCount(int value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
 
     /**
      * <p>The number of Reserved Instances to purchase.</p>
      */
-    inline PurchaseReservedInstancesOfferingRequest& WithInstanceCount(long value) { SetInstanceCount(value); return *this;}
+    inline PurchaseReservedInstancesOfferingRequest& WithInstanceCount(int value) { SetInstanceCount(value); return *this;}
 
     /**
      * <p>Specified for Reserved Instance Marketplace offerings to limit the total
@@ -148,7 +148,7 @@ namespace Model
     bool m_dryRunHasBeenSet;
     Aws::String m_reservedInstancesOfferingId;
     bool m_reservedInstancesOfferingIdHasBeenSet;
-    long m_instanceCount;
+    int m_instanceCount;
     bool m_instanceCountHasBeenSet;
     ReservedInstanceLimitPrice m_limitPrice;
     bool m_limitPriceHasBeenSet;

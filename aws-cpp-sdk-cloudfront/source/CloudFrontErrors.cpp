@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,6 +19,13 @@
 using namespace Aws::Client;
 using namespace Aws::CloudFront;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudFront
+{
+namespace CloudFrontErrorMapper
+{
 
 static const int INVALID_WEB_A_C_L_ID_HASH = HashingUtils::HashString("InvalidWebACLId");
 static const int CLOUD_FRONT_ORIGIN_ACCESS_IDENTITY_ALREADY_EXISTS_HASH = HashingUtils::HashString("CloudFrontOriginAccessIdentityAlreadyExists");
@@ -70,12 +77,6 @@ static const int TOO_MANY_HEADERS_IN_FORWARDED_VALUES_HASH = HashingUtils::HashS
 static const int BATCH_TOO_LARGE_HASH = HashingUtils::HashString("BatchTooLarge");
 static const int TOO_MANY_DISTRIBUTION_C_N_A_M_ES_HASH = HashingUtils::HashString("TooManyDistributionCNAMEs");
 
-namespace Aws
-{
-namespace CloudFront
-{
-namespace CloudFrontErrorMapper
-{
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {

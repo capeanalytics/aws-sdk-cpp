@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int UNCOMPRESSED_HASH = HashingUtils::HashString("UNCOMPRESSED");
-static const int GZIP_HASH = HashingUtils::HashString("GZIP");
-static const int ZIP_HASH = HashingUtils::HashString("ZIP");
-static const int Snappy_HASH = HashingUtils::HashString("Snappy");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace CompressionFormatMapper
       {
+
+        static const int UNCOMPRESSED_HASH = HashingUtils::HashString("UNCOMPRESSED");
+        static const int GZIP_HASH = HashingUtils::HashString("GZIP");
+        static const int ZIP_HASH = HashingUtils::HashString("ZIP");
+        static const int Snappy_HASH = HashingUtils::HashString("Snappy");
 
 
         CompressionFormat GetCompressionFormatForName(const Aws::String& name)

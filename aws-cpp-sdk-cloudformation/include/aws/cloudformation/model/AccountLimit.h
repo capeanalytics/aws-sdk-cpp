@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -89,22 +89,22 @@ namespace Model
     /**
      * <p>The value that is associated with the account limit name.</p>
      */
-    inline long GetValue() const{ return m_value; }
+    inline int GetValue() const{ return m_value; }
 
     /**
      * <p>The value that is associated with the account limit name.</p>
      */
-    inline void SetValue(long value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
      * <p>The value that is associated with the account limit name.</p>
      */
-    inline AccountLimit& WithValue(long value) { SetValue(value); return *this;}
+    inline AccountLimit& WithValue(int value) { SetValue(value); return *this;}
 
   private:
     Aws::String m_name;
     bool m_nameHasBeenSet;
-    long m_value;
+    int m_value;
     bool m_valueHasBeenSet;
   };
 

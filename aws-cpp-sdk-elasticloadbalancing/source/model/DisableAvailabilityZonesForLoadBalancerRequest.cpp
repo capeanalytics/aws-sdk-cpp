@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String DisableAvailabilityZonesForLoadBalancerRequest::SerializePayload() c
   {
     ss << "LoadBalancerName=" << StringUtils::URLEncode(m_loadBalancerName.c_str()) << "&";
   }
+
   if(m_availabilityZonesHasBeenSet)
   {
     unsigned availabilityZonesCount = 1;
@@ -43,6 +44,7 @@ Aws::String DisableAvailabilityZonesForLoadBalancerRequest::SerializePayload() c
       availabilityZonesCount++;
     }
   }
+
   ss << "Version=2012-06-01";
   return ss.str();
 }

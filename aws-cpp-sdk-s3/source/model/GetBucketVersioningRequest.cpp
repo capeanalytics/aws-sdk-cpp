@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -14,6 +14,7 @@
 */
 #include <aws/s3/model/GetBucketVersioningRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
+#include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
 

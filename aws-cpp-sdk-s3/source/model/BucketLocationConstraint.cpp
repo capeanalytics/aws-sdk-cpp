@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,16 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int EU_HASH = HashingUtils::HashString("EU");
-static const int eu_west_1_HASH = HashingUtils::HashString("eu-west-1");
-static const int us_west_1_HASH = HashingUtils::HashString("us-west-1");
-static const int us_west_2_HASH = HashingUtils::HashString("us-west-2");
-static const int ap_southeast_1_HASH = HashingUtils::HashString("ap-southeast-1");
-static const int ap_southeast_2_HASH = HashingUtils::HashString("ap-southeast-2");
-static const int ap_northeast_1_HASH = HashingUtils::HashString("ap-northeast-1");
-static const int sa_east_1_HASH = HashingUtils::HashString("sa-east-1");
-static const int cn_north_1_HASH = HashingUtils::HashString("cn-north-1");
-static const int eu_central_1_HASH = HashingUtils::HashString("eu-central-1");
 
 namespace Aws
 {
@@ -38,6 +28,18 @@ namespace Aws
     {
       namespace BucketLocationConstraintMapper
       {
+
+        static const int EU_HASH = HashingUtils::HashString("EU");
+        static const int eu_west_1_HASH = HashingUtils::HashString("eu-west-1");
+        static const int us_west_1_HASH = HashingUtils::HashString("us-west-1");
+        static const int us_west_2_HASH = HashingUtils::HashString("us-west-2");
+        static const int ap_south_1_HASH = HashingUtils::HashString("ap-south-1");
+        static const int ap_southeast_1_HASH = HashingUtils::HashString("ap-southeast-1");
+        static const int ap_southeast_2_HASH = HashingUtils::HashString("ap-southeast-2");
+        static const int ap_northeast_1_HASH = HashingUtils::HashString("ap-northeast-1");
+        static const int sa_east_1_HASH = HashingUtils::HashString("sa-east-1");
+        static const int cn_north_1_HASH = HashingUtils::HashString("cn-north-1");
+        static const int eu_central_1_HASH = HashingUtils::HashString("eu-central-1");
 
 
         BucketLocationConstraint GetBucketLocationConstraintForName(const Aws::String& name)
@@ -58,6 +60,10 @@ namespace Aws
           else if (hashCode == us_west_2_HASH)
           {
             return BucketLocationConstraint::us_west_2;
+          }
+          else if (hashCode == ap_south_1_HASH)
+          {
+            return BucketLocationConstraint::ap_south_1;
           }
           else if (hashCode == ap_southeast_1_HASH)
           {
@@ -105,6 +111,8 @@ namespace Aws
             return "us-west-1";
           case BucketLocationConstraint::us_west_2:
             return "us-west-2";
+          case BucketLocationConstraint::ap_south_1:
+            return "ap-south-1";
           case BucketLocationConstraint::ap_southeast_1:
             return "ap-southeast-1";
           case BucketLocationConstraint::ap_southeast_2:

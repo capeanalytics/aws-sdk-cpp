@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,6 +26,7 @@
 #include <aws/codepipeline/model/CreatePipelineResult.h>
 #include <aws/codepipeline/model/GetJobDetailsResult.h>
 #include <aws/codepipeline/model/GetPipelineResult.h>
+#include <aws/codepipeline/model/GetPipelineExecutionResult.h>
 #include <aws/codepipeline/model/GetPipelineStateResult.h>
 #include <aws/codepipeline/model/GetThirdPartyJobDetailsResult.h>
 #include <aws/codepipeline/model/ListActionTypesResult.h>
@@ -33,6 +34,8 @@
 #include <aws/codepipeline/model/PollForJobsResult.h>
 #include <aws/codepipeline/model/PollForThirdPartyJobsResult.h>
 #include <aws/codepipeline/model/PutActionRevisionResult.h>
+#include <aws/codepipeline/model/PutApprovalResultResult.h>
+#include <aws/codepipeline/model/RetryStageExecutionResult.h>
 #include <aws/codepipeline/model/StartPipelineExecutionResult.h>
 #include <aws/codepipeline/model/UpdatePipelineResult.h>
 #include <aws/core/NoResult.h>
@@ -91,6 +94,7 @@ namespace Model
         class EnableStageTransitionRequest;
         class GetJobDetailsRequest;
         class GetPipelineRequest;
+        class GetPipelineExecutionRequest;
         class GetPipelineStateRequest;
         class GetThirdPartyJobDetailsRequest;
         class ListActionTypesRequest;
@@ -98,10 +102,12 @@ namespace Model
         class PollForJobsRequest;
         class PollForThirdPartyJobsRequest;
         class PutActionRevisionRequest;
+        class PutApprovalResultRequest;
         class PutJobFailureResultRequest;
         class PutJobSuccessResultRequest;
         class PutThirdPartyJobFailureResultRequest;
         class PutThirdPartyJobSuccessResultRequest;
+        class RetryStageExecutionRequest;
         class StartPipelineExecutionRequest;
         class UpdatePipelineRequest;
 
@@ -115,6 +121,7 @@ namespace Model
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<CodePipelineErrors>> EnableStageTransitionOutcome;
         typedef Aws::Utils::Outcome<GetJobDetailsResult, Aws::Client::AWSError<CodePipelineErrors>> GetJobDetailsOutcome;
         typedef Aws::Utils::Outcome<GetPipelineResult, Aws::Client::AWSError<CodePipelineErrors>> GetPipelineOutcome;
+        typedef Aws::Utils::Outcome<GetPipelineExecutionResult, Aws::Client::AWSError<CodePipelineErrors>> GetPipelineExecutionOutcome;
         typedef Aws::Utils::Outcome<GetPipelineStateResult, Aws::Client::AWSError<CodePipelineErrors>> GetPipelineStateOutcome;
         typedef Aws::Utils::Outcome<GetThirdPartyJobDetailsResult, Aws::Client::AWSError<CodePipelineErrors>> GetThirdPartyJobDetailsOutcome;
         typedef Aws::Utils::Outcome<ListActionTypesResult, Aws::Client::AWSError<CodePipelineErrors>> ListActionTypesOutcome;
@@ -122,10 +129,12 @@ namespace Model
         typedef Aws::Utils::Outcome<PollForJobsResult, Aws::Client::AWSError<CodePipelineErrors>> PollForJobsOutcome;
         typedef Aws::Utils::Outcome<PollForThirdPartyJobsResult, Aws::Client::AWSError<CodePipelineErrors>> PollForThirdPartyJobsOutcome;
         typedef Aws::Utils::Outcome<PutActionRevisionResult, Aws::Client::AWSError<CodePipelineErrors>> PutActionRevisionOutcome;
+        typedef Aws::Utils::Outcome<PutApprovalResultResult, Aws::Client::AWSError<CodePipelineErrors>> PutApprovalResultOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<CodePipelineErrors>> PutJobFailureResultOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<CodePipelineErrors>> PutJobSuccessResultOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<CodePipelineErrors>> PutThirdPartyJobFailureResultOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<CodePipelineErrors>> PutThirdPartyJobSuccessResultOutcome;
+        typedef Aws::Utils::Outcome<RetryStageExecutionResult, Aws::Client::AWSError<CodePipelineErrors>> RetryStageExecutionOutcome;
         typedef Aws::Utils::Outcome<StartPipelineExecutionResult, Aws::Client::AWSError<CodePipelineErrors>> StartPipelineExecutionOutcome;
         typedef Aws::Utils::Outcome<UpdatePipelineResult, Aws::Client::AWSError<CodePipelineErrors>> UpdatePipelineOutcome;
 
@@ -139,6 +148,7 @@ namespace Model
         typedef std::future<EnableStageTransitionOutcome> EnableStageTransitionOutcomeCallable;
         typedef std::future<GetJobDetailsOutcome> GetJobDetailsOutcomeCallable;
         typedef std::future<GetPipelineOutcome> GetPipelineOutcomeCallable;
+        typedef std::future<GetPipelineExecutionOutcome> GetPipelineExecutionOutcomeCallable;
         typedef std::future<GetPipelineStateOutcome> GetPipelineStateOutcomeCallable;
         typedef std::future<GetThirdPartyJobDetailsOutcome> GetThirdPartyJobDetailsOutcomeCallable;
         typedef std::future<ListActionTypesOutcome> ListActionTypesOutcomeCallable;
@@ -146,10 +156,12 @@ namespace Model
         typedef std::future<PollForJobsOutcome> PollForJobsOutcomeCallable;
         typedef std::future<PollForThirdPartyJobsOutcome> PollForThirdPartyJobsOutcomeCallable;
         typedef std::future<PutActionRevisionOutcome> PutActionRevisionOutcomeCallable;
+        typedef std::future<PutApprovalResultOutcome> PutApprovalResultOutcomeCallable;
         typedef std::future<PutJobFailureResultOutcome> PutJobFailureResultOutcomeCallable;
         typedef std::future<PutJobSuccessResultOutcome> PutJobSuccessResultOutcomeCallable;
         typedef std::future<PutThirdPartyJobFailureResultOutcome> PutThirdPartyJobFailureResultOutcomeCallable;
         typedef std::future<PutThirdPartyJobSuccessResultOutcome> PutThirdPartyJobSuccessResultOutcomeCallable;
+        typedef std::future<RetryStageExecutionOutcome> RetryStageExecutionOutcomeCallable;
         typedef std::future<StartPipelineExecutionOutcome> StartPipelineExecutionOutcomeCallable;
         typedef std::future<UpdatePipelineOutcome> UpdatePipelineOutcomeCallable;
 } // namespace Model
@@ -166,6 +178,7 @@ namespace Model
     typedef std::function<void(const CodePipelineClient*, const Model::EnableStageTransitionRequest&, const Model::EnableStageTransitionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > EnableStageTransitionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::GetJobDetailsRequest&, const Model::GetJobDetailsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetJobDetailsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::GetPipelineRequest&, const Model::GetPipelineOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPipelineResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::GetPipelineExecutionRequest&, const Model::GetPipelineExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPipelineExecutionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::GetPipelineStateRequest&, const Model::GetPipelineStateOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetPipelineStateResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::GetThirdPartyJobDetailsRequest&, const Model::GetThirdPartyJobDetailsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetThirdPartyJobDetailsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListActionTypesRequest&, const Model::ListActionTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListActionTypesResponseReceivedHandler;
@@ -173,81 +186,87 @@ namespace Model
     typedef std::function<void(const CodePipelineClient*, const Model::PollForJobsRequest&, const Model::PollForJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PollForJobsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PollForThirdPartyJobsRequest&, const Model::PollForThirdPartyJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PollForThirdPartyJobsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutActionRevisionRequest&, const Model::PutActionRevisionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutActionRevisionResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::PutApprovalResultRequest&, const Model::PutApprovalResultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutApprovalResultResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutJobFailureResultRequest&, const Model::PutJobFailureResultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutJobFailureResultResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutJobSuccessResultRequest&, const Model::PutJobSuccessResultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutJobSuccessResultResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutThirdPartyJobFailureResultRequest&, const Model::PutThirdPartyJobFailureResultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutThirdPartyJobFailureResultResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutThirdPartyJobSuccessResultRequest&, const Model::PutThirdPartyJobSuccessResultOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutThirdPartyJobSuccessResultResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::RetryStageExecutionRequest&, const Model::RetryStageExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RetryStageExecutionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::StartPipelineExecutionRequest&, const Model::StartPipelineExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartPipelineExecutionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::UpdatePipelineRequest&, const Model::UpdatePipelineOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdatePipelineResponseReceivedHandler;
 
   /**
-   * <fullname>AWS CodePipeline</fullname> <b>Overview</b> <p>This is the AWS
-   * CodePipeline API Reference. This guide provides descriptions of the actions and
-   * data types for AWS CodePipeline. Some functionality for your pipeline is only
-   * configurable through the API. For additional information, see the <a
-   * href="http://docs.aws.amazon.com/pipelines/latest/userguide/welcome.html">AWS
+   * <fullname>AWS CodePipeline</fullname> <p> <b>Overview</b> </p> <p>This is the
+   * AWS CodePipeline API Reference. This guide provides descriptions of the actions
+   * and data types for AWS CodePipeline. Some functionality for your pipeline is
+   * only configurable through the API. For additional information, see the <a
+   * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS
    * CodePipeline User Guide</a>.</p> <p>You can use the AWS CodePipeline API to work
    * with pipelines, stages, actions, gates, and transitions, as described below.</p>
-   * <p><i>Pipelines</i> are models of automated release processes. Each pipeline is
+   * <p> <i>Pipelines</i> are models of automated release processes. Each pipeline is
    * uniquely named, and consists of actions, gates, and stages. </p> <p>You can work
-   * with pipelines by calling: <ul> <li> <a>CreatePipeline</a>, which creates a
-   * uniquely-named pipeline.</li> <li> <a>DeletePipeline</a>, which deletes the
-   * specified pipeline.</li> <li> <a>GetPipeline</a>, which returns information
-   * about a pipeline structure.</li> <li> <a>GetPipelineState</a>, which returns
-   * information about the current state of the stages and actions of a
-   * pipeline.</li> <li> <a>ListPipelines</a>, which gets a summary of all of the
-   * pipelines associated with your account.</li> <li> <a>StartPipelineExecution</a>,
-   * which runs the the most recent revision of an artifact through the
-   * pipeline.</li> <li> <a>UpdatePipeline</a>, which updates a pipeline with edits
-   * or changes to the structure of the pipeline.</li> </ul> <p>Pipelines include
-   * <i>stages</i>, which are which are logical groupings of gates and actions. Each
-   * stage contains one or more actions that must complete before the next stage
-   * begins. A stage will result in success or failure. If a stage fails, then the
-   * pipeline stops at that stage and will remain stopped until either a new version
-   * of an artifact appears in the source location, or a user takes action to re-run
-   * the most recent artifact through the pipeline. You can call
-   * <a>GetPipelineState</a>, which displays the status of a pipeline, including the
-   * status of stages in the pipeline, or <a>GetPipeline</a>, which returns the
-   * entire structure of the pipeline, including the stages of that pipeline. For
-   * more information about the structure of stages and actions, also refer to the
-   * <ulink
-   * url="http://docs.aws.amazon.com/codepipeline/latest/UserGuide/pipeline-structure.html">AWS
-   * CodePipeline Pipeline Structure Reference</ulink>.</p> </p> <p>Pipeline stages
-   * include <i>actions</i>, which are categorized into categories such as source or
-   * build actions performed within a stage of a pipeline. For example, you can use a
+   * with pipelines by calling:</p> <ul> <li> <p> <a>CreatePipeline</a>, which
+   * creates a uniquely-named pipeline.</p> </li> <li> <p> <a>DeletePipeline</a>,
+   * which deletes the specified pipeline.</p> </li> <li> <p> <a>GetPipeline</a>,
+   * which returns information about a pipeline structure.</p> </li> <li> <p>
+   * <a>GetPipelineExecution</a>, which returns information about a specific
+   * execution of a pipeline.</p> </li> <li> <p> <a>GetPipelineState</a>, which
+   * returns information about the current state of the stages and actions of a
+   * pipeline.</p> </li> <li> <p> <a>ListPipelines</a>, which gets a summary of all
+   * of the pipelines associated with your account.</p> </li> <li> <p>
+   * <a>StartPipelineExecution</a>, which runs the the most recent revision of an
+   * artifact through the pipeline.</p> </li> <li> <p> <a>UpdatePipeline</a>, which
+   * updates a pipeline with edits or changes to the structure of the pipeline.</p>
+   * </li> </ul> <p>Pipelines include <i>stages</i>, which are which are logical
+   * groupings of gates and actions. Each stage contains one or more actions that
+   * must complete before the next stage begins. A stage will result in success or
+   * failure. If a stage fails, then the pipeline stops at that stage and will remain
+   * stopped until either a new version of an artifact appears in the source
+   * location, or a user takes action to re-run the most recent artifact through the
+   * pipeline. You can call <a>GetPipelineState</a>, which displays the status of a
+   * pipeline, including the status of stages in the pipeline, or <a>GetPipeline</a>,
+   * which returns the entire structure of the pipeline, including the stages of that
+   * pipeline. For more information about the structure of stages and actions, also
+   * refer to the <a
+   * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS
+   * CodePipeline Pipeline Structure Reference</a>.</p> <p>Pipeline stages include
+   * <i>actions</i>, which are categorized into categories such as source or build
+   * actions performed within a stage of a pipeline. For example, you can use a
    * source action to import artifacts into a pipeline from a source such as Amazon
    * S3. Like stages, you do not work with actions directly in most cases, but you do
    * define and interact with actions when working with pipeline operations such as
    * <a>CreatePipeline</a> and <a>GetPipelineState</a>. </p> <p>Pipelines also
    * include <i>transitions</i>, which allow the transition of artifacts from one
    * stage to the next in a pipeline after the actions in one stage complete.</p>
-   * <p>You can work with transitions by calling:</p> <ul> <li>
+   * <p>You can work with transitions by calling:</p> <ul> <li> <p>
    * <a>DisableStageTransition</a>, which prevents artifacts from transitioning to
-   * the next stage in a pipeline.</li> <li> <a>EnableStageTransition</a>, which
-   * enables transition of artifacts between stages in a pipeline. </li> </ul>
-   * <p><b>Using the API to integrate with AWS CodePipeline</b></p> <p>For
+   * the next stage in a pipeline.</p> </li> <li> <p> <a>EnableStageTransition</a>,
+   * which enables transition of artifacts between stages in a pipeline. </p> </li>
+   * </ul> <p> <b>Using the API to integrate with AWS CodePipeline</b> </p> <p>For
    * third-party integrators or developers who want to create their own integrations
    * with AWS CodePipeline, the expected sequence varies from the standard API user.
    * In order to integrate with AWS CodePipeline, developers will need to work with
-   * the following items:</p> <ul> <li>Jobs, which are instances of an action. For
+   * the following items:</p> <p> <b>Jobs</b>, which are instances of an action. For
    * example, a job for a source action might import a revision of an artifact from a
-   * source. <p>You can work with jobs by calling:</p> <ul> <li>
+   * source. </p> <p>You can work with jobs by calling:</p> <ul> <li> <p>
    * <a>AcknowledgeJob</a>, which confirms whether a job worker has received the
-   * specified job,</li> <li> <a>GetJobDetails</a>, which returns the details of a
-   * job,</li> <li> <a>PollForJobs</a>, which determines whether there are any jobs
-   * to act upon, </li> <li> <a>PutJobFailureResult</a>, which provides details of a
-   * job failure, and</li> <li> <a>PutJobSuccessResult</a>, which provides details of
-   * a job success.</li> </ul> </li> <li>Third party jobs, which are instances of an
+   * specified job,</p> </li> <li> <p> <a>GetJobDetails</a>, which returns the
+   * details of a job,</p> </li> <li> <p> <a>PollForJobs</a>, which determines
+   * whether there are any jobs to act upon, </p> </li> <li> <p>
+   * <a>PutJobFailureResult</a>, which provides details of a job failure, and</p>
+   * </li> <li> <p> <a>PutJobSuccessResult</a>, which provides details of a job
+   * success.</p> </li> </ul> <p> <b>Third party jobs</b>, which are instances of an
    * action created by a partner action and integrated into AWS CodePipeline. Partner
-   * actions are created by members of the AWS Partner Network. <p>You can work with
-   * third party jobs by calling:</p> <ul> <li> <a>AcknowledgeThirdPartyJob</a>,
-   * which confirms whether a job worker has received the specified job,</li> <li>
-   * <a>GetThirdPartyJobDetails</a>, which requests the details of a job for a
-   * partner action,</li> <li> <a>PollForThirdPartyJobs</a>, which determines whether
-   * there are any jobs to act upon, </li> <li> <a>PutThirdPartyJobFailureResult</a>,
-   * which provides details of a job failure, and</li> <li>
+   * actions are created by members of the AWS Partner Network.</p> <p>You can work
+   * with third party jobs by calling:</p> <ul> <li> <p>
+   * <a>AcknowledgeThirdPartyJob</a>, which confirms whether a job worker has
+   * received the specified job,</p> </li> <li> <p> <a>GetThirdPartyJobDetails</a>,
+   * which requests the details of a job for a partner action,</p> </li> <li> <p>
+   * <a>PollForThirdPartyJobs</a>, which determines whether there are any jobs to act
+   * upon, </p> </li> <li> <p> <a>PutThirdPartyJobFailureResult</a>, which provides
+   * details of a job failure, and</p> </li> <li> <p>
    * <a>PutThirdPartyJobSuccessResult</a>, which provides details of a job
-   * success.</li> </ul> </li> </ul>
+   * success.</p> </li> </ul>
    */
   class AWS_CODEPIPELINE_API CodePipelineClient : public Aws::Client::AWSJsonClient
   {
@@ -271,8 +290,7 @@ namespace Model
         * the default http client factory will be used
         */
         CodePipelineClient(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~CodePipelineClient();
 
@@ -364,16 +382,16 @@ namespace Model
         /**
          * <p>Marks a custom action as deleted. PollForJobs for the custom action will fail
          * after the action is marked for deletion. Only used for custom actions.</p>
-         * <important><p>You cannot recreate a custom action after it has been deleted
-         * unless you increase the version number of the action.</p></important>
+         * <important> <p>You cannot recreate a custom action after it has been deleted
+         * unless you increase the version number of the action.</p> </important>
          */
         virtual Model::DeleteCustomActionTypeOutcome DeleteCustomActionType(const Model::DeleteCustomActionTypeRequest& request) const;
 
         /**
          * <p>Marks a custom action as deleted. PollForJobs for the custom action will fail
          * after the action is marked for deletion. Only used for custom actions.</p>
-         * <important><p>You cannot recreate a custom action after it has been deleted
-         * unless you increase the version number of the action.</p></important>
+         * <important> <p>You cannot recreate a custom action after it has been deleted
+         * unless you increase the version number of the action.</p> </important>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -382,8 +400,8 @@ namespace Model
         /**
          * <p>Marks a custom action as deleted. PollForJobs for the custom action will fail
          * after the action is marked for deletion. Only used for custom actions.</p>
-         * <important><p>You cannot recreate a custom action after it has been deleted
-         * unless you increase the version number of the action.</p></important>
+         * <important> <p>You cannot recreate a custom action after it has been deleted
+         * unless you increase the version number of the action.</p> </important>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -410,13 +428,13 @@ namespace Model
 
         /**
          * <p>Prevents artifacts in a pipeline from transitioning to the next stage in the
-         * pipeline. </p>
+         * pipeline.</p>
          */
         virtual Model::DisableStageTransitionOutcome DisableStageTransition(const Model::DisableStageTransitionRequest& request) const;
 
         /**
          * <p>Prevents artifacts in a pipeline from transitioning to the next stage in the
-         * pipeline. </p>
+         * pipeline.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -424,7 +442,7 @@ namespace Model
 
         /**
          * <p>Prevents artifacts in a pipeline from transitioning to the next stage in the
-         * pipeline. </p>
+         * pipeline.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -451,21 +469,21 @@ namespace Model
 
         /**
          * <p>Returns information about a job. Only used for custom actions.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          */
         virtual Model::GetJobDetailsOutcome GetJobDetails(const Model::GetJobDetailsRequest& request) const;
 
         /**
          * <p>Returns information about a job. Only used for custom actions.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -473,11 +491,11 @@ namespace Model
 
         /**
          * <p>Returns information about a job. Only used for custom actions.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -512,22 +530,47 @@ namespace Model
         virtual void GetPipelineAsync(const Model::GetPipelineRequest& request, const GetPipelineResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Returns information about the state of a pipeline, including the stages,
-         * actions, and details about the last run of the pipeline.</p>
+         * <p>Returns information about an execution of a pipeline, including details about
+         * artifacts, the pipeline execution ID, and the name, version, and status of the
+         * pipeline.</p>
+         */
+        virtual Model::GetPipelineExecutionOutcome GetPipelineExecution(const Model::GetPipelineExecutionRequest& request) const;
+
+        /**
+         * <p>Returns information about an execution of a pipeline, including details about
+         * artifacts, the pipeline execution ID, and the name, version, and status of the
+         * pipeline.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::GetPipelineExecutionOutcomeCallable GetPipelineExecutionCallable(const Model::GetPipelineExecutionRequest& request) const;
+
+        /**
+         * <p>Returns information about an execution of a pipeline, including details about
+         * artifacts, the pipeline execution ID, and the name, version, and status of the
+         * pipeline.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void GetPipelineExecutionAsync(const Model::GetPipelineExecutionRequest& request, const GetPipelineExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Returns information about the state of a pipeline, including the stages and
+         * actions.</p>
          */
         virtual Model::GetPipelineStateOutcome GetPipelineState(const Model::GetPipelineStateRequest& request) const;
 
         /**
-         * <p>Returns information about the state of a pipeline, including the stages,
-         * actions, and details about the last run of the pipeline.</p>
+         * <p>Returns information about the state of a pipeline, including the stages and
+         * actions.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetPipelineStateOutcomeCallable GetPipelineStateCallable(const Model::GetPipelineStateRequest& request) const;
 
         /**
-         * <p>Returns information about the state of a pipeline, including the stages,
-         * actions, and details about the last run of the pipeline.</p>
+         * <p>Returns information about the state of a pipeline, including the stages and
+         * actions.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -535,21 +578,21 @@ namespace Model
 
         /**
          * <p>Requests the details of a job for a third party action. Only used for partner
-         * actions.</p> <important><p>When this API is called, AWS CodePipeline returns
+         * actions.</p> <important> <p>When this API is called, AWS CodePipeline returns
          * temporary credentials for the Amazon S3 bucket used to store artifacts for the
          * pipeline, if the action requires access to that Amazon S3 bucket for input or
          * output artifacts. Additionally, this API returns any secret values defined for
-         * the action.</p></important>
+         * the action.</p> </important>
          */
         virtual Model::GetThirdPartyJobDetailsOutcome GetThirdPartyJobDetails(const Model::GetThirdPartyJobDetailsRequest& request) const;
 
         /**
          * <p>Requests the details of a job for a third party action. Only used for partner
-         * actions.</p> <important><p>When this API is called, AWS CodePipeline returns
+         * actions.</p> <important> <p>When this API is called, AWS CodePipeline returns
          * temporary credentials for the Amazon S3 bucket used to store artifacts for the
          * pipeline, if the action requires access to that Amazon S3 bucket for input or
          * output artifacts. Additionally, this API returns any secret values defined for
-         * the action.</p></important>
+         * the action.</p> </important>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -557,11 +600,11 @@ namespace Model
 
         /**
          * <p>Requests the details of a job for a third party action. Only used for partner
-         * actions.</p> <important><p>When this API is called, AWS CodePipeline returns
+         * actions.</p> <important> <p>When this API is called, AWS CodePipeline returns
          * temporary credentials for the Amazon S3 bucket used to store artifacts for the
          * pipeline, if the action requires access to that Amazon S3 bucket for input or
          * output artifacts. Additionally, this API returns any secret values defined for
-         * the action.</p></important>
+         * the action.</p> </important>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -610,21 +653,21 @@ namespace Model
 
         /**
          * <p>Returns information about any jobs for AWS CodePipeline to act upon.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          */
         virtual Model::PollForJobsOutcome PollForJobs(const Model::PollForJobsRequest& request) const;
 
         /**
          * <p>Returns information about any jobs for AWS CodePipeline to act upon.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -632,11 +675,11 @@ namespace Model
 
         /**
          * <p>Returns information about any jobs for AWS CodePipeline to act upon.</p>
-         * <important><p>When this API is called, AWS CodePipeline returns temporary
+         * <important> <p>When this API is called, AWS CodePipeline returns temporary
          * credentials for the Amazon S3 bucket used to store artifacts for the pipeline,
          * if the action requires access to that Amazon S3 bucket for input or output
          * artifacts. Additionally, this API returns any secret values defined for the
-         * action.</p></important>
+         * action.</p> </important>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -644,19 +687,19 @@ namespace Model
 
         /**
          * <p>Determines whether there are any third party jobs for a job worker to act on.
-         * Only used for partner actions.</p> <important><p>When this API is called, AWS
+         * Only used for partner actions.</p> <important> <p>When this API is called, AWS
          * CodePipeline returns temporary credentials for the Amazon S3 bucket used to
          * store artifacts for the pipeline, if the action requires access to that Amazon
-         * S3 bucket for input or output artifacts.</p></important>
+         * S3 bucket for input or output artifacts.</p> </important>
          */
         virtual Model::PollForThirdPartyJobsOutcome PollForThirdPartyJobs(const Model::PollForThirdPartyJobsRequest& request) const;
 
         /**
          * <p>Determines whether there are any third party jobs for a job worker to act on.
-         * Only used for partner actions.</p> <important><p>When this API is called, AWS
+         * Only used for partner actions.</p> <important> <p>When this API is called, AWS
          * CodePipeline returns temporary credentials for the Amazon S3 bucket used to
          * store artifacts for the pipeline, if the action requires access to that Amazon
-         * S3 bucket for input or output artifacts.</p></important>
+         * S3 bucket for input or output artifacts.</p> </important>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -664,10 +707,10 @@ namespace Model
 
         /**
          * <p>Determines whether there are any third party jobs for a job worker to act on.
-         * Only used for partner actions.</p> <important><p>When this API is called, AWS
+         * Only used for partner actions.</p> <important> <p>When this API is called, AWS
          * CodePipeline returns temporary credentials for the Amazon S3 bucket used to
          * store artifacts for the pipeline, if the action requires access to that Amazon
-         * S3 bucket for input or output artifacts.</p></important>
+         * S3 bucket for input or output artifacts.</p> </important>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -691,6 +734,28 @@ namespace Model
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void PutActionRevisionAsync(const Model::PutActionRevisionRequest& request, const PutActionRevisionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Provides the response to a manual approval request to AWS CodePipeline. Valid
+         * responses include Approved and Rejected.</p>
+         */
+        virtual Model::PutApprovalResultOutcome PutApprovalResult(const Model::PutApprovalResultRequest& request) const;
+
+        /**
+         * <p>Provides the response to a manual approval request to AWS CodePipeline. Valid
+         * responses include Approved and Rejected.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::PutApprovalResultOutcomeCallable PutApprovalResultCallable(const Model::PutApprovalResultRequest& request) const;
+
+        /**
+         * <p>Provides the response to a manual approval request to AWS CodePipeline. Valid
+         * responses include Approved and Rejected.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void PutApprovalResultAsync(const Model::PutApprovalResultRequest& request, const PutApprovalResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Represents the failure of a job as returned to the pipeline by a job worker.
@@ -781,6 +846,28 @@ namespace Model
         virtual void PutThirdPartyJobSuccessResultAsync(const Model::PutThirdPartyJobSuccessResultRequest& request, const PutThirdPartyJobSuccessResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Resumes the pipeline execution by retrying the last failed actions in a
+         * stage.</p>
+         */
+        virtual Model::RetryStageExecutionOutcome RetryStageExecution(const Model::RetryStageExecutionRequest& request) const;
+
+        /**
+         * <p>Resumes the pipeline execution by retrying the last failed actions in a
+         * stage.</p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::RetryStageExecutionOutcomeCallable RetryStageExecutionCallable(const Model::RetryStageExecutionRequest& request) const;
+
+        /**
+         * <p>Resumes the pipeline execution by retrying the last failed actions in a
+         * stage.</p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void RetryStageExecutionAsync(const Model::RetryStageExecutionRequest& request, const RetryStageExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Starts the specified pipeline. Specifically, it begins processing the latest
          * commit to the source location specified as part of the pipeline.</p>
          */
@@ -845,6 +932,7 @@ namespace Model
         void EnableStageTransitionAsyncHelper(const Model::EnableStageTransitionRequest& request, const EnableStageTransitionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetJobDetailsAsyncHelper(const Model::GetJobDetailsRequest& request, const GetJobDetailsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetPipelineAsyncHelper(const Model::GetPipelineRequest& request, const GetPipelineResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void GetPipelineExecutionAsyncHelper(const Model::GetPipelineExecutionRequest& request, const GetPipelineExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetPipelineStateAsyncHelper(const Model::GetPipelineStateRequest& request, const GetPipelineStateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetThirdPartyJobDetailsAsyncHelper(const Model::GetThirdPartyJobDetailsRequest& request, const GetThirdPartyJobDetailsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListActionTypesAsyncHelper(const Model::ListActionTypesRequest& request, const ListActionTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
@@ -852,10 +940,12 @@ namespace Model
         void PollForJobsAsyncHelper(const Model::PollForJobsRequest& request, const PollForJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PollForThirdPartyJobsAsyncHelper(const Model::PollForThirdPartyJobsRequest& request, const PollForThirdPartyJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutActionRevisionAsyncHelper(const Model::PutActionRevisionRequest& request, const PutActionRevisionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void PutApprovalResultAsyncHelper(const Model::PutApprovalResultRequest& request, const PutApprovalResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutJobFailureResultAsyncHelper(const Model::PutJobFailureResultRequest& request, const PutJobFailureResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutJobSuccessResultAsyncHelper(const Model::PutJobSuccessResultRequest& request, const PutJobSuccessResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutThirdPartyJobFailureResultAsyncHelper(const Model::PutThirdPartyJobFailureResultRequest& request, const PutThirdPartyJobFailureResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutThirdPartyJobSuccessResultAsyncHelper(const Model::PutThirdPartyJobSuccessResultRequest& request, const PutThirdPartyJobSuccessResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void RetryStageExecutionAsyncHelper(const Model::RetryStageExecutionRequest& request, const RetryStageExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void StartPipelineExecutionAsyncHelper(const Model::StartPipelineExecutionRequest& request, const StartPipelineExecutionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void UpdatePipelineAsyncHelper(const Model::UpdatePipelineRequest& request, const UpdatePipelineResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ImportExport::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ImportExport
+{
+namespace Model
+{
 
 Artifact::Artifact() : 
     m_descriptionHasBeenSet(false),
@@ -65,10 +71,12 @@ void Artifact::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_uRLHasBeenSet)
   {
       oStream << location << index << locationValue << ".URL=" << StringUtils::URLEncode(m_uRL.c_str()) << "&";
   }
+
 }
 
 void Artifact::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void Artifact::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".URL=" << StringUtils::URLEncode(m_uRL.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ImportExport
+} // namespace Aws

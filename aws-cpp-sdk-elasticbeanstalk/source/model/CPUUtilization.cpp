@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ElasticBeanstalk
+{
+namespace Model
+{
 
 CPUUtilization::CPUUtilization() : 
     m_user(0.0),
@@ -119,30 +125,37 @@ void CPUUtilization::OutputToStream(Aws::OStream& oStream, const char* location,
   {
         oStream << location << index << locationValue << ".User=" << StringUtils::URLEncode(m_user) << "&";
   }
+
   if(m_niceHasBeenSet)
   {
         oStream << location << index << locationValue << ".Nice=" << StringUtils::URLEncode(m_nice) << "&";
   }
+
   if(m_systemHasBeenSet)
   {
         oStream << location << index << locationValue << ".System=" << StringUtils::URLEncode(m_system) << "&";
   }
+
   if(m_idleHasBeenSet)
   {
         oStream << location << index << locationValue << ".Idle=" << StringUtils::URLEncode(m_idle) << "&";
   }
+
   if(m_iOWaitHasBeenSet)
   {
         oStream << location << index << locationValue << ".IOWait=" << StringUtils::URLEncode(m_iOWait) << "&";
   }
+
   if(m_iRQHasBeenSet)
   {
         oStream << location << index << locationValue << ".IRQ=" << StringUtils::URLEncode(m_iRQ) << "&";
   }
+
   if(m_softIRQHasBeenSet)
   {
         oStream << location << index << locationValue << ".SoftIRQ=" << StringUtils::URLEncode(m_softIRQ) << "&";
   }
+
 }
 
 void CPUUtilization::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -176,3 +189,7 @@ void CPUUtilization::OutputToStream(Aws::OStream& oStream, const char* location)
         oStream << location << ".SoftIRQ=" << StringUtils::URLEncode(m_softIRQ) << "&";
   }
 }
+
+} // namespace Model
+} // namespace ElasticBeanstalk
+} // namespace Aws

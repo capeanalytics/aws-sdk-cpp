@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String CreateTagsRequest::SerializePayload() const
   {
     ss << "ResourceName=" << StringUtils::URLEncode(m_resourceName.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
     unsigned tagsCount = 1;
@@ -42,6 +43,7 @@ Aws::String CreateTagsRequest::SerializePayload() const
       tagsCount++;
     }
   }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }

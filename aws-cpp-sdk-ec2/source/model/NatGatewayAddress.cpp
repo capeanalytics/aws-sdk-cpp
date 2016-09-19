@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 NatGatewayAddress::NatGatewayAddress() : 
     m_publicIpHasBeenSet(false),
@@ -81,18 +87,22 @@ void NatGatewayAddress::OutputToStream(Aws::OStream& oStream, const char* locati
   {
       oStream << location << index << locationValue << ".PublicIp=" << StringUtils::URLEncode(m_publicIp.c_str()) << "&";
   }
+
   if(m_allocationIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllocationId=" << StringUtils::URLEncode(m_allocationId.c_str()) << "&";
   }
+
   if(m_privateIpHasBeenSet)
   {
       oStream << location << index << locationValue << ".PrivateIp=" << StringUtils::URLEncode(m_privateIp.c_str()) << "&";
   }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
+
 }
 
 void NatGatewayAddress::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -114,3 +124,7 @@ void NatGatewayAddress::OutputToStream(Aws::OStream& oStream, const char* locati
       oStream << location << ".NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

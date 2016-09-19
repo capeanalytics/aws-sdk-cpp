@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,7 +38,8 @@ namespace Model
    * the key and specifies the value (or values, if the context key supports multiple
    * values) to use in the simulation. This information is used when evaluating the
    * <code>Condition</code> elements of the input policies.</p> <p>This data type is
-   * used as an input parameter to <code><a>SimulatePolicy</a></code>.</p>
+   * used as an input parameter to <code> <a>SimulateCustomPolicy</a> </code> and
+   * <code> <a>SimulateCustomPolicy</a> </code>.</p>
    */
   class AWS_IAM_API ContextEntry
   {

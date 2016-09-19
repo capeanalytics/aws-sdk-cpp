@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::Firehose::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Firehose
+{
+namespace Model
+{
 
 RedshiftDestinationUpdate::RedshiftDestinationUpdate() : 
     m_roleARNHasBeenSet(false),
@@ -27,6 +33,7 @@ RedshiftDestinationUpdate::RedshiftDestinationUpdate() :
     m_copyCommandHasBeenSet(false),
     m_usernameHasBeenSet(false),
     m_passwordHasBeenSet(false),
+    m_retryOptionsHasBeenSet(false),
     m_s3UpdateHasBeenSet(false),
     m_cloudWatchLoggingOptionsHasBeenSet(false)
 {
@@ -38,6 +45,7 @@ RedshiftDestinationUpdate::RedshiftDestinationUpdate(const JsonValue& jsonValue)
     m_copyCommandHasBeenSet(false),
     m_usernameHasBeenSet(false),
     m_passwordHasBeenSet(false),
+    m_retryOptionsHasBeenSet(false),
     m_s3UpdateHasBeenSet(false),
     m_cloudWatchLoggingOptionsHasBeenSet(false)
 {
@@ -79,6 +87,13 @@ RedshiftDestinationUpdate& RedshiftDestinationUpdate::operator =(const JsonValue
     m_password = jsonValue.GetString("Password");
 
     m_passwordHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("RetryOptions"))
+  {
+    m_retryOptions = jsonValue.GetObject("RetryOptions");
+
+    m_retryOptionsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("S3Update"))
@@ -132,6 +147,12 @@ JsonValue RedshiftDestinationUpdate::Jsonize() const
 
   }
 
+  if(m_retryOptionsHasBeenSet)
+  {
+   payload.WithObject("RetryOptions", m_retryOptions.Jsonize());
+
+  }
+
   if(m_s3UpdateHasBeenSet)
   {
    payload.WithObject("S3Update", m_s3Update.Jsonize());
@@ -146,3 +167,7 @@ JsonValue RedshiftDestinationUpdate::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace Firehose
+} // namespace Aws

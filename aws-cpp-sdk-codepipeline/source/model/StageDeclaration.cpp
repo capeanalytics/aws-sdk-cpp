@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CodePipeline::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CodePipeline
+{
+namespace Model
+{
 
 StageDeclaration::StageDeclaration() : 
     m_nameHasBeenSet(false),
@@ -102,3 +108,7 @@ JsonValue StageDeclaration::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CodePipeline
+} // namespace Aws

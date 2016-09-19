@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -75,13 +75,22 @@ TestInvokeAuthorizerResult& TestInvokeAuthorizerResult::operator =(const AmazonW
     Aws::Map<Aws::String, JsonValue> authorizationJsonMap = jsonValue.GetObject("authorization").GetAllObjects();
     for(auto& authorizationItem : authorizationJsonMap)
     {
-      Array<JsonValue> listOfStringJsonList = authorizationItem.second.GetArray("ListOfString");
+      Array<JsonValue> listOfStringJsonList = authorizationItem.second.AsArray();
       Aws::Vector<Aws::String> listOfStringList((size_t)listOfStringJsonList.GetLength());
       for(unsigned listOfStringIndex = 0; listOfStringIndex < listOfStringJsonList.GetLength(); ++listOfStringIndex)
       {
         listOfStringList.push_back(listOfStringJsonList[listOfStringIndex].AsString());
       }
       m_authorization[authorizationItem.first] = std::move(listOfStringList);
+    }
+  }
+
+  if(jsonValue.ValueExists("claims"))
+  {
+    Aws::Map<Aws::String, JsonValue> claimsJsonMap = jsonValue.GetObject("claims").GetAllObjects();
+    for(auto& claimsItem : claimsJsonMap)
+    {
+      m_claims[claimsItem.first] = claimsItem.second.AsString();
     }
   }
 

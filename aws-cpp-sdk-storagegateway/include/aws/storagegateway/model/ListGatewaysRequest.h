@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,8 +26,8 @@ namespace Model
 
   /**
    * <p>A JSON object containing zero or more of the following fields:</p> <ul> <li>
-   * <a>ListGatewaysInput$Limit</a> </li> <li> <a>ListGatewaysInput$Marker</a> </li>
-   * </ul>
+   * <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p>
+   * <a>ListGatewaysInput$Marker</a> </p> </li> </ul>
    */
   class AWS_STORAGEGATEWAY_API ListGatewaysRequest : public StorageGatewayRequest
   {
@@ -83,24 +83,24 @@ namespace Model
      * <p>Specifies that the list of gateways returned be limited to the specified
      * number of items.</p>
      */
-    inline long GetLimit() const{ return m_limit; }
+    inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>Specifies that the list of gateways returned be limited to the specified
      * number of items.</p>
      */
-    inline void SetLimit(long value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>Specifies that the list of gateways returned be limited to the specified
      * number of items.</p>
      */
-    inline ListGatewaysRequest& WithLimit(long value) { SetLimit(value); return *this;}
+    inline ListGatewaysRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
   private:
     Aws::String m_marker;
     bool m_markerHasBeenSet;
-    long m_limit;
+    int m_limit;
     bool m_limitHasBeenSet;
   };
 

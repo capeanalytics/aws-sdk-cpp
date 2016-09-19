@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int lowestPrice_HASH = HashingUtils::HashString("lowestPrice");
-static const int diversified_HASH = HashingUtils::HashString("diversified");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace AllocationStrategyMapper
       {
+
+        static const int lowestPrice_HASH = HashingUtils::HashString("lowestPrice");
+        static const int diversified_HASH = HashingUtils::HashString("diversified");
 
 
         AllocationStrategy GetAllocationStrategyForName(const Aws::String& name)

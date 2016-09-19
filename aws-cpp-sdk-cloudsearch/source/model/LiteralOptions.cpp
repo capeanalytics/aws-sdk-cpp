@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 LiteralOptions::LiteralOptions() : 
     m_defaultValueHasBeenSet(false),
@@ -105,26 +111,32 @@ void LiteralOptions::OutputToStream(Aws::OStream& oStream, const char* location,
   {
       oStream << location << index << locationValue << ".DefaultValue=" << StringUtils::URLEncode(m_defaultValue.c_str()) << "&";
   }
+
   if(m_sourceFieldHasBeenSet)
   {
       oStream << location << index << locationValue << ".SourceField=" << StringUtils::URLEncode(m_sourceField.c_str()) << "&";
   }
+
   if(m_facetEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".FacetEnabled=" << m_facetEnabled << "&";
   }
+
   if(m_searchEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".SearchEnabled=" << m_searchEnabled << "&";
   }
+
   if(m_returnEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReturnEnabled=" << m_returnEnabled << "&";
   }
+
   if(m_sortEnabledHasBeenSet)
   {
       oStream << location << index << locationValue << ".SortEnabled=" << m_sortEnabled << "&";
   }
+
 }
 
 void LiteralOptions::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -154,3 +166,7 @@ void LiteralOptions::OutputToStream(Aws::OStream& oStream, const char* location)
       oStream << location << ".SortEnabled=" << m_sortEnabled << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

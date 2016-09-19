@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 EbsInstanceBlockDevice::EbsInstanceBlockDevice() : 
     m_volumeIdHasBeenSet(false),
@@ -83,18 +89,22 @@ void EbsInstanceBlockDevice::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << index << locationValue << ".VolumeId=" << StringUtils::URLEncode(m_volumeId.c_str()) << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << AttachmentStatusMapper::GetNameForAttachmentStatus(m_status) << "&";
   }
+
   if(m_attachTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".AttachTime=" << StringUtils::URLEncode(m_attachTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_deleteOnTerminationHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
   }
+
 }
 
 void EbsInstanceBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +126,7 @@ void EbsInstanceBlockDevice::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String CreateInstanceProfileRequest::SerializePayload() const
   {
     ss << "InstanceProfileName=" << StringUtils::URLEncode(m_instanceProfileName.c_str()) << "&";
   }
+
   if(m_pathHasBeenSet)
   {
     ss << "Path=" << StringUtils::URLEncode(m_path.c_str()) << "&";
   }
+
   ss << "Version=2010-05-08";
   return ss.str();
 }

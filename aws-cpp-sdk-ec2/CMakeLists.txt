@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-ec2)
 
   file(GLOB AWS_EC2_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-ec2)
     "source/model/*.cpp"
   )
 
-  file(GLOB EC2_SRC
+  file(GLOB EC2_UNIFIED_HEADERS
     ${AWS_EC2_HEADERS}
     ${AWS_EC2_MODEL_HEADERS}
+  )
+
+  file(GLOB EC2_UNITY_SRC
     ${AWS_EC2_SOURCE}
     ${AWS_EC2_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("EC2" EC2_UNITY_SRC)
+  endif()
+
+  file(GLOB EC2_SRC
+    ${EC2_UNIFIED_HEADERS}
+    ${EC2_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-ec2)
 
   include_directories(${EC2_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_EC2_EXPORTS")
   endif()
 
@@ -57,14 +69,28 @@ project(aws-cpp-sdk-ec2)
   
   target_link_libraries(aws-cpp-sdk-ec2 aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-ec2
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-ec2
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-ec2)
+    else()
+      install (TARGETS aws-cpp-sdk-ec2
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_EC2_HEADERS} DESTINATION include/aws/ec2)
   install (FILES ${AWS_EC2_MODEL_HEADERS} DESTINATION include/aws/ec2/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-ec2.autopkg DESTINATION nuget)
+  endif()
+
+
 

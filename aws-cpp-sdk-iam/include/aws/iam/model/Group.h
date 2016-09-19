@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about an IAM group entity.</p> <p> This data type is
-   * used as a response element in the following actions:</p> <ul> <li>
-   * <a>CreateGroup</a> </li> <li> <a>GetGroup</a> </li> <li> <a>ListGroups</a> </li>
-   * </ul>
+   * <p>Contains information about an IAM group entity.</p> <p>This data type is used
+   * as a response element in the following actions:</p> <ul> <li> <p>
+   * <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p>
+   * <a>ListGroups</a> </p> </li> </ul>
    */
   class AWS_IAM_API Group
   {

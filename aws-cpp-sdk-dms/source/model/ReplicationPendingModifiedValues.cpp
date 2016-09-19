@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,14 +17,22 @@
 
 #include <utility>
 
-using namespace Aws::DatabaseMigrationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace DatabaseMigrationService
+{
+namespace Model
+{
 
 ReplicationPendingModifiedValues::ReplicationPendingModifiedValues() : 
     m_replicationInstanceClassHasBeenSet(false),
     m_allocatedStorage(0),
     m_allocatedStorageHasBeenSet(false),
+    m_multiAZ(false),
+    m_multiAZHasBeenSet(false),
     m_engineVersionHasBeenSet(false)
 {
 }
@@ -33,6 +41,8 @@ ReplicationPendingModifiedValues::ReplicationPendingModifiedValues(const JsonVal
     m_replicationInstanceClassHasBeenSet(false),
     m_allocatedStorage(0),
     m_allocatedStorageHasBeenSet(false),
+    m_multiAZ(false),
+    m_multiAZHasBeenSet(false),
     m_engineVersionHasBeenSet(false)
 {
   *this = jsonValue;
@@ -52,6 +62,13 @@ ReplicationPendingModifiedValues& ReplicationPendingModifiedValues::operator =(c
     m_allocatedStorage = jsonValue.GetInteger("AllocatedStorage");
 
     m_allocatedStorageHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("MultiAZ"))
+  {
+    m_multiAZ = jsonValue.GetBool("MultiAZ");
+
+    m_multiAZHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("EngineVersion"))
@@ -80,6 +97,12 @@ JsonValue ReplicationPendingModifiedValues::Jsonize() const
 
   }
 
+  if(m_multiAZHasBeenSet)
+  {
+   payload.WithBool("MultiAZ", m_multiAZ);
+
+  }
+
   if(m_engineVersionHasBeenSet)
   {
    payload.WithString("EngineVersion", m_engineVersion);
@@ -88,3 +111,7 @@ JsonValue ReplicationPendingModifiedValues::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace DatabaseMigrationService
+} // namespace Aws

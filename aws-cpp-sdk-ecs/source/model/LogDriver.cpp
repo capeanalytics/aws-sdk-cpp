@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int json_file_HASH = HashingUtils::HashString("json-file");
-static const int syslog_HASH = HashingUtils::HashString("syslog");
-static const int journald_HASH = HashingUtils::HashString("journald");
-static const int gelf_HASH = HashingUtils::HashString("gelf");
-static const int fluentd_HASH = HashingUtils::HashString("fluentd");
 
 namespace Aws
 {
@@ -33,6 +28,14 @@ namespace Aws
     {
       namespace LogDriverMapper
       {
+
+        static const int json_file_HASH = HashingUtils::HashString("json-file");
+        static const int syslog_HASH = HashingUtils::HashString("syslog");
+        static const int journald_HASH = HashingUtils::HashString("journald");
+        static const int gelf_HASH = HashingUtils::HashString("gelf");
+        static const int fluentd_HASH = HashingUtils::HashString("fluentd");
+        static const int awslogs_HASH = HashingUtils::HashString("awslogs");
+        static const int splunk_HASH = HashingUtils::HashString("splunk");
 
 
         LogDriver GetLogDriverForName(const Aws::String& name)
@@ -58,6 +61,14 @@ namespace Aws
           {
             return LogDriver::fluentd;
           }
+          else if (hashCode == awslogs_HASH)
+          {
+            return LogDriver::awslogs;
+          }
+          else if (hashCode == splunk_HASH)
+          {
+            return LogDriver::splunk;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -82,6 +93,10 @@ namespace Aws
             return "gelf";
           case LogDriver::fluentd:
             return "fluentd";
+          case LogDriver::awslogs:
+            return "awslogs";
+          case LogDriver::splunk:
+            return "splunk";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

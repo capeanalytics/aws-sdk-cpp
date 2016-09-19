@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,18 +36,22 @@ Aws::String DescribeClusterParametersRequest::SerializePayload() const
   {
     ss << "ParameterGroupName=" << StringUtils::URLEncode(m_parameterGroupName.c_str()) << "&";
   }
+
   if(m_sourceHasBeenSet)
   {
     ss << "Source=" << StringUtils::URLEncode(m_source.c_str()) << "&";
   }
+
   if(m_maxRecordsHasBeenSet)
   {
     ss << "MaxRecords=" << m_maxRecords << "&";
   }
+
   if(m_markerHasBeenSet)
   {
     ss << "Marker=" << StringUtils::URLEncode(m_marker.c_str()) << "&";
   }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }

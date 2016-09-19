@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ACCEPT_ALL_HASH = HashingUtils::HashString("ACCEPT_ALL");
-static const int DENY_ALL_HASH = HashingUtils::HashString("DENY_ALL");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace PlayerSessionCreationPolicyMapper
       {
+
+        static const int ACCEPT_ALL_HASH = HashingUtils::HashString("ACCEPT_ALL");
+        static const int DENY_ALL_HASH = HashingUtils::HashString("DENY_ALL");
 
 
         PlayerSessionCreationPolicy GetPlayerSessionCreationPolicyForName(const Aws::String& name)

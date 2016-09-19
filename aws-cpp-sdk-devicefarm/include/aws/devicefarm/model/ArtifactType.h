@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -29,6 +29,7 @@ namespace Model
     SCREENSHOT,
     DEVICE_LOG,
     MESSAGE_LOG,
+    VIDEO_LOG,
     RESULT_LOG,
     SERVICE_LOG,
     WEBKIT_LOG,
@@ -47,7 +48,8 @@ namespace Model
     EXPLORER_EVENT_LOG,
     EXPLORER_SUMMARY_LOG,
     APPLICATION_CRASH_REPORT,
-    XCTEST_LOG
+    XCTEST_LOG,
+    VIDEO
   };
 
 namespace ArtifactTypeMapper

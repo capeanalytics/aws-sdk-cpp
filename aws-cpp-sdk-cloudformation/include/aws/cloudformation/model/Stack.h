@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -307,23 +307,23 @@ namespace Model
     inline Stack& WithStackStatusReason(const char* value) { SetStackStatusReason(value); return *this;}
 
     /**
-     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <p>
-     * <ul> <li><code>true</code>: disable rollback</li> <li><code>false</code>: enable
-     * rollback</li> </ul> </p>
+     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <ul>
+     * <li> <p> <code>true</code>: disable rollback</p> </li> <li> <p>
+     * <code>false</code>: enable rollback</p> </li> </ul>
      */
     inline bool GetDisableRollback() const{ return m_disableRollback; }
 
     /**
-     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <p>
-     * <ul> <li><code>true</code>: disable rollback</li> <li><code>false</code>: enable
-     * rollback</li> </ul> </p>
+     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <ul>
+     * <li> <p> <code>true</code>: disable rollback</p> </li> <li> <p>
+     * <code>false</code>: enable rollback</p> </li> </ul>
      */
     inline void SetDisableRollback(bool value) { m_disableRollbackHasBeenSet = true; m_disableRollback = value; }
 
     /**
-     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <p>
-     * <ul> <li><code>true</code>: disable rollback</li> <li><code>false</code>: enable
-     * rollback</li> </ul> </p>
+     * <p>Boolean to enable or disable rollback on stack creation failures:</p> <ul>
+     * <li> <p> <code>true</code>: disable rollback</p> </li> <li> <p>
+     * <code>false</code>: enable rollback</p> </li> </ul>
      */
     inline Stack& WithDisableRollback(bool value) { SetDisableRollback(value); return *this;}
 
@@ -370,17 +370,17 @@ namespace Model
     /**
      * <p>The amount of time within which stack creation should complete.</p>
      */
-    inline long GetTimeoutInMinutes() const{ return m_timeoutInMinutes; }
+    inline int GetTimeoutInMinutes() const{ return m_timeoutInMinutes; }
 
     /**
      * <p>The amount of time within which stack creation should complete.</p>
      */
-    inline void SetTimeoutInMinutes(long value) { m_timeoutInMinutesHasBeenSet = true; m_timeoutInMinutes = value; }
+    inline void SetTimeoutInMinutes(int value) { m_timeoutInMinutesHasBeenSet = true; m_timeoutInMinutes = value; }
 
     /**
      * <p>The amount of time within which stack creation should complete.</p>
      */
-    inline Stack& WithTimeoutInMinutes(long value) { SetTimeoutInMinutes(value); return *this;}
+    inline Stack& WithTimeoutInMinutes(int value) { SetTimeoutInMinutes(value); return *this;}
 
     /**
      * <p>The capabilities allowed in the stack.</p>
@@ -508,7 +508,7 @@ namespace Model
     bool m_disableRollbackHasBeenSet;
     Aws::Vector<Aws::String> m_notificationARNs;
     bool m_notificationARNsHasBeenSet;
-    long m_timeoutInMinutes;
+    int m_timeoutInMinutes;
     bool m_timeoutInMinutesHasBeenSet;
     Aws::Vector<Capability> m_capabilities;
     bool m_capabilitiesHasBeenSet;

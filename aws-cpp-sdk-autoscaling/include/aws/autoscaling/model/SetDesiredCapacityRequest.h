@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,7 @@ namespace Model
 {
 
   /**
+   * <p>Contains the parameters for SetDesiredCapacity.</p>
    */
   class AWS_AUTOSCALING_API SetDesiredCapacityRequest : public AutoScalingRequest
   {
@@ -71,19 +72,19 @@ namespace Model
      * <p>The number of EC2 instances that should be running in the Auto Scaling
      * group.</p>
      */
-    inline long GetDesiredCapacity() const{ return m_desiredCapacity; }
+    inline int GetDesiredCapacity() const{ return m_desiredCapacity; }
 
     /**
      * <p>The number of EC2 instances that should be running in the Auto Scaling
      * group.</p>
      */
-    inline void SetDesiredCapacity(long value) { m_desiredCapacityHasBeenSet = true; m_desiredCapacity = value; }
+    inline void SetDesiredCapacity(int value) { m_desiredCapacityHasBeenSet = true; m_desiredCapacity = value; }
 
     /**
      * <p>The number of EC2 instances that should be running in the Auto Scaling
      * group.</p>
      */
-    inline SetDesiredCapacityRequest& WithDesiredCapacity(long value) { SetDesiredCapacity(value); return *this;}
+    inline SetDesiredCapacityRequest& WithDesiredCapacity(int value) { SetDesiredCapacity(value); return *this;}
 
     /**
      * <p>By default, <code>SetDesiredCapacity</code> overrides any cooldown period
@@ -115,7 +116,7 @@ namespace Model
   private:
     Aws::String m_autoScalingGroupName;
     bool m_autoScalingGroupNameHasBeenSet;
-    long m_desiredCapacity;
+    int m_desiredCapacity;
     bool m_desiredCapacityHasBeenSet;
     bool m_honorCooldown;
     bool m_honorCooldownHasBeenSet;

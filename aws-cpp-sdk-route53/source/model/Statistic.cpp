@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int Average_HASH = HashingUtils::HashString("Average");
-static const int Sum_HASH = HashingUtils::HashString("Sum");
-static const int SampleCount_HASH = HashingUtils::HashString("SampleCount");
-static const int Maximum_HASH = HashingUtils::HashString("Maximum");
-static const int Minimum_HASH = HashingUtils::HashString("Minimum");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace StatisticMapper
       {
+
+        static const int Average_HASH = HashingUtils::HashString("Average");
+        static const int Sum_HASH = HashingUtils::HashString("Sum");
+        static const int SampleCount_HASH = HashingUtils::HashString("SampleCount");
+        static const int Maximum_HASH = HashingUtils::HashString("Maximum");
+        static const int Minimum_HASH = HashingUtils::HashString("Minimum");
 
 
         Statistic GetStatisticForName(const Aws::String& name)

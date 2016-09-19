@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,13 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("INTERNAL_ERROR");
-static const int VALIDATION_ERROR_HASH = HashingUtils::HashString("VALIDATION_ERROR");
-static const int INSTANCE_FAILURE_HASH = HashingUtils::HashString("INSTANCE_FAILURE");
-static const int BOOTSTRAP_FAILURE_HASH = HashingUtils::HashString("BOOTSTRAP_FAILURE");
-static const int USER_REQUEST_HASH = HashingUtils::HashString("USER_REQUEST");
-static const int STEP_FAILURE_HASH = HashingUtils::HashString("STEP_FAILURE");
-static const int ALL_STEPS_COMPLETED_HASH = HashingUtils::HashString("ALL_STEPS_COMPLETED");
 
 namespace Aws
 {
@@ -35,6 +28,14 @@ namespace Aws
     {
       namespace ClusterStateChangeReasonCodeMapper
       {
+
+        static const int INTERNAL_ERROR_HASH = HashingUtils::HashString("INTERNAL_ERROR");
+        static const int VALIDATION_ERROR_HASH = HashingUtils::HashString("VALIDATION_ERROR");
+        static const int INSTANCE_FAILURE_HASH = HashingUtils::HashString("INSTANCE_FAILURE");
+        static const int BOOTSTRAP_FAILURE_HASH = HashingUtils::HashString("BOOTSTRAP_FAILURE");
+        static const int USER_REQUEST_HASH = HashingUtils::HashString("USER_REQUEST");
+        static const int STEP_FAILURE_HASH = HashingUtils::HashString("STEP_FAILURE");
+        static const int ALL_STEPS_COMPLETED_HASH = HashingUtils::HashString("ALL_STEPS_COMPLETED");
 
 
         ClusterStateChangeReasonCode GetClusterStateChangeReasonCodeForName(const Aws::String& name)

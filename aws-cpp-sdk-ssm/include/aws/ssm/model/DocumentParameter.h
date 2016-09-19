@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -31,6 +31,10 @@ namespace SSM
 namespace Model
 {
 
+  /**
+   * <p>Parameters specified in the SSM document that execute on the server when the
+   * command is run. </p>
+   */
   class AWS_SSM_API DocumentParameter
   {
   public:

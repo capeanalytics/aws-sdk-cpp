@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,10 @@ namespace SES
 {
 namespace Model
 {
+  /**
+   * <p>Returns a TXT record that you must publish to the DNS server of your domain
+   * to complete domain verification with Amazon SES.</p>
+   */
   class AWS_SES_API VerifyDomainIdentityResult
   {
   public:

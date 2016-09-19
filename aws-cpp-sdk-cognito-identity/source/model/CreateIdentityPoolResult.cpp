@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -77,6 +77,24 @@ CreateIdentityPoolResult& CreateIdentityPoolResult::operator =(const AmazonWebSe
     for(unsigned openIdConnectProviderARNsIndex = 0; openIdConnectProviderARNsIndex < openIdConnectProviderARNsJsonList.GetLength(); ++openIdConnectProviderARNsIndex)
     {
       m_openIdConnectProviderARNs.push_back(openIdConnectProviderARNsJsonList[openIdConnectProviderARNsIndex].AsString());
+    }
+  }
+
+  if(jsonValue.ValueExists("CognitoIdentityProviders"))
+  {
+    Array<JsonValue> cognitoIdentityProvidersJsonList = jsonValue.GetArray("CognitoIdentityProviders");
+    for(unsigned cognitoIdentityProvidersIndex = 0; cognitoIdentityProvidersIndex < cognitoIdentityProvidersJsonList.GetLength(); ++cognitoIdentityProvidersIndex)
+    {
+      m_cognitoIdentityProviders.push_back(cognitoIdentityProvidersJsonList[cognitoIdentityProvidersIndex].AsObject());
+    }
+  }
+
+  if(jsonValue.ValueExists("SamlProviderARNs"))
+  {
+    Array<JsonValue> samlProviderARNsJsonList = jsonValue.GetArray("SamlProviderARNs");
+    for(unsigned samlProviderARNsIndex = 0; samlProviderARNsIndex < samlProviderARNsJsonList.GetLength(); ++samlProviderARNsIndex)
+    {
+      m_samlProviderARNs.push_back(samlProviderARNsJsonList[samlProviderARNsIndex].AsString());
     }
   }
 

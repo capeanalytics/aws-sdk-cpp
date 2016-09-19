@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -37,29 +37,29 @@ namespace Model
     /**
      * <p>When paginating results, specify the maximum number of items to return in the
      * response. If additional items exist beyond the number you specify, the
-     * <code>Truncated</code> element in the response is set to true.</p><p>This value
+     * <code>Truncated</code> element in the response is set to true.</p> <p>This value
      * is optional. If you include a value, it must be between 1 and 100, inclusive. If
      * you do not include a value, it defaults to 50.</p>
      */
-    inline long GetLimit() const{ return m_limit; }
+    inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>When paginating results, specify the maximum number of items to return in the
      * response. If additional items exist beyond the number you specify, the
-     * <code>Truncated</code> element in the response is set to true.</p><p>This value
+     * <code>Truncated</code> element in the response is set to true.</p> <p>This value
      * is optional. If you include a value, it must be between 1 and 100, inclusive. If
      * you do not include a value, it defaults to 50.</p>
      */
-    inline void SetLimit(long value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>When paginating results, specify the maximum number of items to return in the
      * response. If additional items exist beyond the number you specify, the
-     * <code>Truncated</code> element in the response is set to true.</p><p>This value
+     * <code>Truncated</code> element in the response is set to true.</p> <p>This value
      * is optional. If you include a value, it must be between 1 and 100, inclusive. If
      * you do not include a value, it defaults to 50.</p>
      */
-    inline ListGrantsRequest& WithLimit(long value) { SetLimit(value); return *this;}
+    inline ListGrantsRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only in a subsequent
@@ -112,76 +112,76 @@ namespace Model
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline const Aws::String& GetKeyId() const{ return m_keyId; }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline void SetKeyId(const Aws::String& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline void SetKeyId(const char* value) { m_keyIdHasBeenSet = true; m_keyId.assign(value); }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline ListGrantsRequest& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline ListGrantsRequest& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
-     * unique identifier or the fully specified ARN to a key. <ul> <li>Key ARN Example
-     * -
-     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</li>
-     * <li>Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012</li>
-     * </ul> </p>
+     * unique identifier or the fully specified ARN to a key.</p> <ul> <li> <p>Key ARN
+     * Example -
+     * arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p>
+     * </li> <li> <p>Globally Unique Key ID Example -
+     * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
     inline ListGrantsRequest& WithKeyId(const char* value) { SetKeyId(value); return *this;}
 
   private:
-    long m_limit;
+    int m_limit;
     bool m_limitHasBeenSet;
     Aws::String m_marker;
     bool m_markerHasBeenSet;

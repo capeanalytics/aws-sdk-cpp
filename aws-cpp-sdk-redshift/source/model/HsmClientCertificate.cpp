@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 HsmClientCertificate::HsmClientCertificate() : 
     m_hsmClientCertificateIdentifierHasBeenSet(false),
@@ -79,10 +85,12 @@ void HsmClientCertificate::OutputToStream(Aws::OStream& oStream, const char* loc
   {
       oStream << location << index << locationValue << ".HsmClientCertificateIdentifier=" << StringUtils::URLEncode(m_hsmClientCertificateIdentifier.c_str()) << "&";
   }
+
   if(m_hsmClientCertificatePublicKeyHasBeenSet)
   {
       oStream << location << index << locationValue << ".HsmClientCertificatePublicKey=" << StringUtils::URLEncode(m_hsmClientCertificatePublicKey.c_str()) << "&";
   }
+
   if(m_tagsHasBeenSet)
   {
       unsigned tagsIdx = 1;
@@ -93,6 +101,7 @@ void HsmClientCertificate::OutputToStream(Aws::OStream& oStream, const char* loc
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
+
 }
 
 void HsmClientCertificate::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +125,7 @@ void HsmClientCertificate::OutputToStream(Aws::OStream& oStream, const char* loc
       }
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,10 +33,12 @@ Aws::String DefineExpressionRequest::SerializePayload() const
   {
     ss << "DomainName=" << StringUtils::URLEncode(m_domainName.c_str()) << "&";
   }
+
   if(m_expressionHasBeenSet)
   {
-    m_expression.OutputToStream(ss, "Expression.");
+    m_expression.OutputToStream(ss, "Expression");
   }
+
   ss << "Version=2013-01-01";
   return ss.str();
 }

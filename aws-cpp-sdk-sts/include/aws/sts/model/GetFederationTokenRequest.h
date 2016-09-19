@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -38,8 +38,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
@@ -49,8 +49,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
@@ -60,8 +60,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
 
@@ -71,8 +71,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
@@ -82,8 +82,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetFederationTokenRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
@@ -93,8 +93,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetFederationTokenRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
 
@@ -104,8 +104,8 @@ namespace Model
      * reference the federated user name in a resource-based policy, such as in an
      * Amazon S3 bucket policy.</p> <p>The format for this parameter, as described by
      * its regex pattern, is a string of characters consisting of upper- and lower-case
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: =,.@-</p>
+     * alphanumeric characters with no spaces. You can also include underscores or any
+     * of the following characters: =,.@-</p>
      */
     inline GetFederationTokenRequest& WithName(const char* value) { SetName(value); return *this;}
 
@@ -313,7 +313,7 @@ namespace Model
      * (one hour). If the specified duration is longer than one hour, the session
      * obtained by using AWS account (root) credentials defaults to one hour.</p>
      */
-    inline long GetDurationSeconds() const{ return m_durationSeconds; }
+    inline int GetDurationSeconds() const{ return m_durationSeconds; }
 
     /**
      * <p>The duration, in seconds, that the session should last. Acceptable durations
@@ -323,7 +323,7 @@ namespace Model
      * (one hour). If the specified duration is longer than one hour, the session
      * obtained by using AWS account (root) credentials defaults to one hour.</p>
      */
-    inline void SetDurationSeconds(long value) { m_durationSecondsHasBeenSet = true; m_durationSeconds = value; }
+    inline void SetDurationSeconds(int value) { m_durationSecondsHasBeenSet = true; m_durationSeconds = value; }
 
     /**
      * <p>The duration, in seconds, that the session should last. Acceptable durations
@@ -333,14 +333,14 @@ namespace Model
      * (one hour). If the specified duration is longer than one hour, the session
      * obtained by using AWS account (root) credentials defaults to one hour.</p>
      */
-    inline GetFederationTokenRequest& WithDurationSeconds(long value) { SetDurationSeconds(value); return *this;}
+    inline GetFederationTokenRequest& WithDurationSeconds(int value) { SetDurationSeconds(value); return *this;}
 
   private:
     Aws::String m_name;
     bool m_nameHasBeenSet;
     Aws::String m_policy;
     bool m_policyHasBeenSet;
-    long m_durationSeconds;
+    int m_durationSeconds;
     bool m_durationSecondsHasBeenSet;
   };
 

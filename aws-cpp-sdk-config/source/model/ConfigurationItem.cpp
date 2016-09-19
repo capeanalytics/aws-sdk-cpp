@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::ConfigService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace ConfigService
+{
+namespace Model
+{
 
 ConfigurationItem::ConfigurationItem() : 
     m_versionHasBeenSet(false),
@@ -38,7 +44,8 @@ ConfigurationItem::ConfigurationItem() :
     m_tagsHasBeenSet(false),
     m_relatedEventsHasBeenSet(false),
     m_relationshipsHasBeenSet(false),
-    m_configurationHasBeenSet(false)
+    m_configurationHasBeenSet(false),
+    m_supplementaryConfigurationHasBeenSet(false)
 {
 }
 
@@ -59,7 +66,8 @@ ConfigurationItem::ConfigurationItem(const JsonValue& jsonValue) :
     m_tagsHasBeenSet(false),
     m_relatedEventsHasBeenSet(false),
     m_relationshipsHasBeenSet(false),
-    m_configurationHasBeenSet(false)
+    m_configurationHasBeenSet(false),
+    m_supplementaryConfigurationHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -194,6 +202,16 @@ ConfigurationItem& ConfigurationItem::operator =(const JsonValue& jsonValue)
     m_configurationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("supplementaryConfiguration"))
+  {
+    Aws::Map<Aws::String, JsonValue> supplementaryConfigurationJsonMap = jsonValue.GetObject("supplementaryConfiguration").GetAllObjects();
+    for(auto& supplementaryConfigurationItem : supplementaryConfigurationJsonMap)
+    {
+      m_supplementaryConfiguration[supplementaryConfigurationItem.first] = supplementaryConfigurationItem.second.AsString();
+    }
+    m_supplementaryConfigurationHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -314,5 +332,20 @@ JsonValue ConfigurationItem::Jsonize() const
 
   }
 
+  if(m_supplementaryConfigurationHasBeenSet)
+  {
+   JsonValue supplementaryConfigurationJsonMap;
+   for(auto& supplementaryConfigurationItem : m_supplementaryConfiguration)
+   {
+     supplementaryConfigurationJsonMap.WithString(supplementaryConfigurationItem.first, supplementaryConfigurationItem.second);
+   }
+   payload.WithObject("supplementaryConfiguration", std::move(supplementaryConfigurationJsonMap));
+
+  }
+
   return payload;
 }
+
+} // namespace Model
+} // namespace ConfigService
+} // namespace Aws

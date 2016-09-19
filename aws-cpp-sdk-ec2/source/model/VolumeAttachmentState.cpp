@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int attaching_HASH = HashingUtils::HashString("attaching");
-static const int attached_HASH = HashingUtils::HashString("attached");
-static const int detaching_HASH = HashingUtils::HashString("detaching");
-static const int detached_HASH = HashingUtils::HashString("detached");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace VolumeAttachmentStateMapper
       {
+
+        static const int attaching_HASH = HashingUtils::HashString("attaching");
+        static const int attached_HASH = HashingUtils::HashString("attached");
+        static const int detaching_HASH = HashingUtils::HashString("detaching");
+        static const int detached_HASH = HashingUtils::HashString("detached");
 
 
         VolumeAttachmentState GetVolumeAttachmentStateForName(const Aws::String& name)

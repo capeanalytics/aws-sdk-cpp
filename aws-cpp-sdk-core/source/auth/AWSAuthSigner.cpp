@@ -58,13 +58,17 @@ static const char* SIMPLE_DATE_FORMAT_STR = "%Y%m%d";
 
 static const char* v4LogTag = "AWSAuthV4Signer";
 
-Aws::String CanonicalizeRequestSigningString(HttpRequest& request)
+Aws::String CanonicalizeRequestSigningString(HttpRequest& request, bool urlEscapePath)
 {
     request.CanonicalizeRequest();
     Aws::StringStream signingStringStream;
     signingStringStream << HttpMethodMapper::GetNameForHttpMethod(request.GetMethod());
 
-    signingStringStream << NEWLINE << request.GetUri().GetURLEncodedPath() << NEWLINE;
+    //double encode paths unless explicitly stated otherwise (for s3 compatibility)
+    URI uriCpy = request.GetUri();
+    uriCpy.SetPath(uriCpy.GetURLEncodedPath());
+
+    signingStringStream << NEWLINE << (urlEscapePath ? uriCpy.GetURLEncodedPath() : uriCpy.GetPath()) << NEWLINE;
 
     if (request.GetQueryString().size() > 1 && request.GetQueryString().find("=") != std::string::npos)
     {
@@ -83,13 +87,14 @@ Aws::String CanonicalizeRequestSigningString(HttpRequest& request)
 }
 
 AWSAuthV4Signer::AWSAuthV4Signer(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-    const char* serviceName,
-    const Aws::String& region) :
+    const char* serviceName, const Aws::String& region, bool signPayloads, bool urlEscapePath) :
     m_credentialsProvider(credentialsProvider),
     m_serviceName(serviceName),
     m_region(region),
     m_hash(Aws::MakeUnique<Aws::Utils::Crypto::Sha256>(v4LogTag)),
-    m_HMAC(Aws::MakeUnique<Aws::Utils::Crypto::Sha256HMAC>(v4LogTag))
+    m_HMAC(Aws::MakeUnique<Aws::Utils::Crypto::Sha256HMAC>(v4LogTag)),
+    m_signPayloads(signPayloads),
+    m_urlEscapePath(urlEscapePath)
 {
 }
 
@@ -113,17 +118,26 @@ bool AWSAuthV4Signer::SignRequest(Aws::Http::HttpRequest& request) const
         request.SetAwsSessionToken(credentials.GetSessionToken());
     }
 
-    //calculate date header to use in internal signature (this also goes into date header).
-    Aws::String dateHeaderValue = DateTime::CalculateGmtTimestampAsString(LONG_DATE_FORMAT_STR);
-    request.SetHeaderValue(AWS_DATE_HEADER, dateHeaderValue);
-
-    Aws::String payloadHash(ComputePayloadHash(request));
-    if (payloadHash.empty())
+    Aws::String payloadHash(UNSIGNED_PAYLOAD);
+    if(m_signPayloads || request.GetUri().GetScheme() != Http::Scheme::HTTPS)
     {
-        return false;
+        payloadHash.assign(ComputePayloadHash(request));
+        if (payloadHash.empty())
+        {
+            return false;
+        }
+    }
+    else
+    {
+        AWS_LOGSTREAM_DEBUG(v4LogTag, "Note: Http payloads are not being signed. signPayloads=" << m_signPayloads
+                << " http scheme=" << Http::SchemeMapper::ToString(request.GetUri().GetScheme()));
     }
 
     request.SetHeaderValue("x-amz-content-sha256", payloadHash);
+
+    //calculate date header to use in internal signature (this also goes into date header).
+    Aws::String dateHeaderValue = DateTime::CalculateGmtTimestampAsString(LONG_DATE_FORMAT_STR);
+    request.SetHeaderValue(AWS_DATE_HEADER, dateHeaderValue);
 
     Aws::StringStream headersStream;
     Aws::StringStream signedHeadersStream;
@@ -144,7 +158,7 @@ bool AWSAuthV4Signer::SignRequest(Aws::Http::HttpRequest& request) const
     AWS_LOGSTREAM_DEBUG(v4LogTag, "Signed Headers value:" << signedHeadersValue);
 
     //generate generalized canonicalized request string.
-    Aws::String canonicalRequestString = CanonicalizeRequestSigningString(request);
+    Aws::String canonicalRequestString = CanonicalizeRequestSigningString(request, m_urlEscapePath);
 
     //append v4 stuff to the canonical request string.
     canonicalRequestString.append(canonicalHeadersString);
@@ -152,6 +166,7 @@ bool AWSAuthV4Signer::SignRequest(Aws::Http::HttpRequest& request) const
     canonicalRequestString.append(signedHeadersValue);
     canonicalRequestString.append(NEWLINE);
     canonicalRequestString.append(payloadHash);
+
     AWS_LOGSTREAM_DEBUG(v4LogTag, "Canonical Request String: " << canonicalRequestString);
 
     //now compute sha256 on that request string
@@ -226,7 +241,7 @@ bool AWSAuthV4Signer::PresignRequest(Aws::Http::HttpRequest& request, long long 
     ss.str("");
 
     //generate generalized canonicalized request string.
-    Aws::String canonicalRequestString = CanonicalizeRequestSigningString(request);
+    Aws::String canonicalRequestString = CanonicalizeRequestSigningString(request, m_urlEscapePath);
 
     //append v4 stuff to the canonical request string.
     canonicalRequestString.append(canonicalHeadersString);
@@ -326,6 +341,13 @@ Aws::String AWSAuthV4Signer::ComputePayloadHash(Aws::Http::HttpRequest& request)
     //compute hash on payload if it exists.
     auto hashResult = request.GetContentBody() ? m_hash->Calculate(*request.GetContentBody())
         : m_hash->Calculate("");
+
+    if(request.GetContentBody())
+    {
+        request.GetContentBody()->clear();
+        request.GetContentBody()->seekg(0);
+    }
+
     if (!hashResult.IsSuccess())
     {
         AWS_LOG_ERROR(v4LogTag, "Unable to hash (sha256) request body");

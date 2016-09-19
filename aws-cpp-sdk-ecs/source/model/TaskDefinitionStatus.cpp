@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
-static const int INACTIVE_HASH = HashingUtils::HashString("INACTIVE");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace TaskDefinitionStatusMapper
       {
+
+        static const int ACTIVE_HASH = HashingUtils::HashString("ACTIVE");
+        static const int INACTIVE_HASH = HashingUtils::HashString("INACTIVE");
 
 
         TaskDefinitionStatus GetTaskDefinitionStatusForName(const Aws::String& name)

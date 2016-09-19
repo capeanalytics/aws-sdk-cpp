@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -34,10 +34,12 @@ Aws::String SetIdentityDkimEnabledRequest::SerializePayload() const
   {
     ss << "Identity=" << StringUtils::URLEncode(m_identity.c_str()) << "&";
   }
+
   if(m_dkimEnabledHasBeenSet)
   {
     ss << "DkimEnabled=" << m_dkimEnabled << "&";
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

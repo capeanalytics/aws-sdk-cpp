@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 HistoryRecord::HistoryRecord() : 
     m_timestampHasBeenSet(false),
@@ -73,16 +79,19 @@ void HistoryRecord::OutputToStream(Aws::OStream& oStream, const char* location, 
   {
       oStream << location << index << locationValue << ".Timestamp=" << StringUtils::URLEncode(m_timestamp.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_eventTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".EventType=" << EventTypeMapper::GetNameForEventType(m_eventType) << "&";
   }
+
   if(m_eventInformationHasBeenSet)
   {
       Aws::StringStream eventInformationLocationAndMemberSs;
       eventInformationLocationAndMemberSs << location << index << locationValue << ".EventInformation";
       m_eventInformation.OutputToStream(oStream, eventInformationLocationAndMemberSs.str().c_str());
   }
+
 }
 
 void HistoryRecord::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -102,3 +111,7 @@ void HistoryRecord::OutputToStream(Aws::OStream& oStream, const char* location) 
       m_eventInformation.OutputToStream(oStream, eventInformationLocationAndMember.c_str());
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

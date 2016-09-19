@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::Redshift::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace Redshift
+{
+namespace Model
+{
 
 PendingModifiedValues::PendingModifiedValues() : 
     m_masterUserPasswordHasBeenSet(false),
@@ -119,34 +125,42 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".MasterUserPassword=" << StringUtils::URLEncode(m_masterUserPassword.c_str()) << "&";
   }
+
   if(m_nodeTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".NodeType=" << StringUtils::URLEncode(m_nodeType.c_str()) << "&";
   }
+
   if(m_numberOfNodesHasBeenSet)
   {
       oStream << location << index << locationValue << ".NumberOfNodes=" << m_numberOfNodes << "&";
   }
+
   if(m_clusterTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClusterType=" << StringUtils::URLEncode(m_clusterType.c_str()) << "&";
   }
+
   if(m_clusterVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClusterVersion=" << StringUtils::URLEncode(m_clusterVersion.c_str()) << "&";
   }
+
   if(m_automatedSnapshotRetentionPeriodHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutomatedSnapshotRetentionPeriod=" << m_automatedSnapshotRetentionPeriod << "&";
   }
+
   if(m_clusterIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".ClusterIdentifier=" << StringUtils::URLEncode(m_clusterIdentifier.c_str()) << "&";
   }
+
   if(m_publiclyAccessibleHasBeenSet)
   {
       oStream << location << index << locationValue << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
   }
+
 }
 
 void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -184,3 +198,7 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
       oStream << location << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
   }
 }
+
+} // namespace Model
+} // namespace Redshift
+} // namespace Aws

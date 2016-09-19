@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 CreateVolumePermission::CreateVolumePermission() : 
     m_userIdHasBeenSet(false),
@@ -65,10 +71,12 @@ void CreateVolumePermission::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << index << locationValue << ".UserId=" << StringUtils::URLEncode(m_userId.c_str()) << "&";
   }
+
   if(m_groupHasBeenSet)
   {
       oStream << location << index << locationValue << ".Group=" << PermissionGroupMapper::GetNameForPermissionGroup(m_group) << "&";
   }
+
 }
 
 void CreateVolumePermission::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -82,3 +90,7 @@ void CreateVolumePermission::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << ".Group=" << PermissionGroupMapper::GetNameForPermissionGroup(m_group) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

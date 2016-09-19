@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -15,6 +15,9 @@
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/workspaces/model/WorkspaceProperties.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/workspaces/model/Tag.h>
 
 namespace Aws
 {
@@ -259,6 +262,56 @@ namespace Model
      */
     inline WorkspaceRequest& WithRootVolumeEncryptionEnabled(bool value) { SetRootVolumeEncryptionEnabled(value); return *this;}
 
+    
+    inline const WorkspaceProperties& GetWorkspaceProperties() const{ return m_workspaceProperties; }
+
+    
+    inline void SetWorkspaceProperties(const WorkspaceProperties& value) { m_workspacePropertiesHasBeenSet = true; m_workspaceProperties = value; }
+
+    
+    inline void SetWorkspaceProperties(WorkspaceProperties&& value) { m_workspacePropertiesHasBeenSet = true; m_workspaceProperties = value; }
+
+    
+    inline WorkspaceRequest& WithWorkspaceProperties(const WorkspaceProperties& value) { SetWorkspaceProperties(value); return *this;}
+
+    
+    inline WorkspaceRequest& WithWorkspaceProperties(WorkspaceProperties&& value) { SetWorkspaceProperties(value); return *this;}
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline WorkspaceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline WorkspaceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline WorkspaceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
+    /**
+     * <p>The tags of the WorkSpace request.</p>
+     */
+    inline WorkspaceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+
   private:
     Aws::String m_directoryId;
     bool m_directoryIdHasBeenSet;
@@ -272,6 +325,10 @@ namespace Model
     bool m_userVolumeEncryptionEnabledHasBeenSet;
     bool m_rootVolumeEncryptionEnabled;
     bool m_rootVolumeEncryptionEnabledHasBeenSet;
+    WorkspaceProperties m_workspaceProperties;
+    bool m_workspacePropertiesHasBeenSet;
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet;
   };
 
 } // namespace Model

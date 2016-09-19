@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -20,18 +20,21 @@ using namespace Aws::Client;
 using namespace Aws::MachineLearning;
 using namespace Aws::Utils;
 
-static const int INTERNAL_SERVER_HASH = HashingUtils::HashString("InternalServerException");
-static const int PREDICTOR_NOT_MOUNTED_HASH = HashingUtils::HashString("PredictorNotMountedException");
-static const int IDEMPOTENT_PARAMETER_MISMATCH_HASH = HashingUtils::HashString("IdempotentParameterMismatchException");
-static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
-static const int INVALID_INPUT_HASH = HashingUtils::HashString("InvalidInputException");
-
 namespace Aws
 {
 namespace MachineLearning
 {
 namespace MachineLearningErrorMapper
 {
+
+static const int INTERNAL_SERVER_HASH = HashingUtils::HashString("InternalServerException");
+static const int TAG_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("TagLimitExceededException");
+static const int PREDICTOR_NOT_MOUNTED_HASH = HashingUtils::HashString("PredictorNotMountedException");
+static const int INVALID_TAG_HASH = HashingUtils::HashString("InvalidTagException");
+static const int IDEMPOTENT_PARAMETER_MISMATCH_HASH = HashingUtils::HashString("IdempotentParameterMismatchException");
+static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
+static const int INVALID_INPUT_HASH = HashingUtils::HashString("InvalidInputException");
+
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
@@ -41,9 +44,17 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(MachineLearningErrors::INTERNAL_SERVER), false);
   }
+  else if (hashCode == TAG_LIMIT_EXCEEDED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(MachineLearningErrors::TAG_LIMIT_EXCEEDED), false);
+  }
   else if (hashCode == PREDICTOR_NOT_MOUNTED_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(MachineLearningErrors::PREDICTOR_NOT_MOUNTED), false);
+  }
+  else if (hashCode == INVALID_TAG_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(MachineLearningErrors::INVALID_TAG), false);
   }
   else if (hashCode == IDEMPOTENT_PARAMETER_MISMATCH_HASH)
   {

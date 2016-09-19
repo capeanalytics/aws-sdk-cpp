@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -94,27 +94,42 @@ namespace Model
     inline ResetInstanceAttributeRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
 
     /**
-     * <p>The attribute to reset.</p>
+     * <p>The attribute to reset.</p> <important><p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>. To change an instance attribute, use
+     * <a>ModifyInstanceAttribute</a>.</p></important>
      */
     inline const InstanceAttributeName& GetAttribute() const{ return m_attribute; }
 
     /**
-     * <p>The attribute to reset.</p>
+     * <p>The attribute to reset.</p> <important><p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>. To change an instance attribute, use
+     * <a>ModifyInstanceAttribute</a>.</p></important>
      */
     inline void SetAttribute(const InstanceAttributeName& value) { m_attributeHasBeenSet = true; m_attribute = value; }
 
     /**
-     * <p>The attribute to reset.</p>
+     * <p>The attribute to reset.</p> <important><p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>. To change an instance attribute, use
+     * <a>ModifyInstanceAttribute</a>.</p></important>
      */
     inline void SetAttribute(InstanceAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = value; }
 
     /**
-     * <p>The attribute to reset.</p>
+     * <p>The attribute to reset.</p> <important><p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>. To change an instance attribute, use
+     * <a>ModifyInstanceAttribute</a>.</p></important>
      */
     inline ResetInstanceAttributeRequest& WithAttribute(const InstanceAttributeName& value) { SetAttribute(value); return *this;}
 
     /**
-     * <p>The attribute to reset.</p>
+     * <p>The attribute to reset.</p> <important><p>You can only reset the following
+     * attributes: <code>kernel</code> | <code>ramdisk</code> |
+     * <code>sourceDestCheck</code>. To change an instance attribute, use
+     * <a>ModifyInstanceAttribute</a>.</p></important>
      */
     inline ResetInstanceAttributeRequest& WithAttribute(InstanceAttributeName&& value) { SetAttribute(value); return *this;}
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,6 +32,9 @@ namespace SES
 {
 namespace Model
 {
+  /**
+   * <p>An empty element returned on a successful request.</p>
+   */
   class AWS_SES_API CreateReceiptRuleResult
   {
   public:

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,6 +35,7 @@ namespace Model
     AU_ID_NUMBER,
     AU_ID_TYPE,
     CA_LEGAL_TYPE,
+    CA_BUSINESS_ENTITY_TYPE,
     ES_IDENTIFICATION,
     ES_IDENTIFICATION_TYPE,
     ES_LEGAL_FORM,

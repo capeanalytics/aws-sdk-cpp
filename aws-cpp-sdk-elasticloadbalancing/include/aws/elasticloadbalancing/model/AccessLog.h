@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -45,17 +45,17 @@ namespace Model
     void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
     /**
-     * <p>Specifies whether access log is enabled for the load balancer.</p>
+     * <p>Specifies whether access logs are enabled for the load balancer.</p>
      */
     inline bool GetEnabled() const{ return m_enabled; }
 
     /**
-     * <p>Specifies whether access log is enabled for the load balancer.</p>
+     * <p>Specifies whether access logs are enabled for the load balancer.</p>
      */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
 
     /**
-     * <p>Specifies whether access log is enabled for the load balancer.</p>
+     * <p>Specifies whether access logs are enabled for the load balancer.</p>
      */
     inline AccessLog& WithEnabled(bool value) { SetEnabled(value); return *this;}
 
@@ -98,19 +98,19 @@ namespace Model
      * <p>The interval for publishing the access logs. You can specify an interval of
      * either 5 minutes or 60 minutes.</p> <p>Default: 60 minutes</p>
      */
-    inline long GetEmitInterval() const{ return m_emitInterval; }
+    inline int GetEmitInterval() const{ return m_emitInterval; }
 
     /**
      * <p>The interval for publishing the access logs. You can specify an interval of
      * either 5 minutes or 60 minutes.</p> <p>Default: 60 minutes</p>
      */
-    inline void SetEmitInterval(long value) { m_emitIntervalHasBeenSet = true; m_emitInterval = value; }
+    inline void SetEmitInterval(int value) { m_emitIntervalHasBeenSet = true; m_emitInterval = value; }
 
     /**
      * <p>The interval for publishing the access logs. You can specify an interval of
      * either 5 minutes or 60 minutes.</p> <p>Default: 60 minutes</p>
      */
-    inline AccessLog& WithEmitInterval(long value) { SetEmitInterval(value); return *this;}
+    inline AccessLog& WithEmitInterval(int value) { SetEmitInterval(value); return *this;}
 
     /**
      * <p>The logical hierarchy you created for your Amazon S3 bucket, for example
@@ -166,7 +166,7 @@ namespace Model
     bool m_enabledHasBeenSet;
     Aws::String m_s3BucketName;
     bool m_s3BucketNameHasBeenSet;
-    long m_emitInterval;
+    int m_emitInterval;
     bool m_emitIntervalHasBeenSet;
     Aws::String m_s3BucketPrefix;
     bool m_s3BucketPrefixHasBeenSet;

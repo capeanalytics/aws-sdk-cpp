@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -37,7 +37,7 @@ namespace Model
 
   /**
    * <p>Contains information about an IAM group, including all of the group's
-   * policies. </p> <p>This data type is used as a response element in the
+   * policies.</p> <p>This data type is used as a response element in the
    * <a>GetAccountAuthorizationDetails</a> action.</p>
    */
   class AWS_IAM_API GroupDetail

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12)
 project(aws-cpp-sdk-acm)
 
   file(GLOB AWS_ACM_HEADERS
@@ -17,11 +17,23 @@ project(aws-cpp-sdk-acm)
     "source/model/*.cpp"
   )
 
-  file(GLOB ACM_SRC
+  file(GLOB ACM_UNIFIED_HEADERS
     ${AWS_ACM_HEADERS}
     ${AWS_ACM_MODEL_HEADERS}
+  )
+
+  file(GLOB ACM_UNITY_SRC
     ${AWS_ACM_SOURCE}
     ${AWS_ACM_MODEL_SOURCE}
+  )
+
+  if(ENABLE_UNITY_BUILD)
+    enable_unity_build("ACM" ACM_UNITY_SRC)
+  endif()
+
+  file(GLOB ACM_SRC
+    ${ACM_UNIFIED_HEADERS}
+    ${ACM_UNITY_SRC}
   )
 
   if(WIN32)
@@ -41,7 +53,7 @@ project(aws-cpp-sdk-acm)
 
   include_directories(${ACM_INCLUDES})
 
-  if(MSVC AND BUILD_SHARED_LIBS)
+  if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
     add_definitions("-DAWS_ACM_EXPORTS")
   endif()
 
@@ -53,14 +65,28 @@ project(aws-cpp-sdk-acm)
   
   target_link_libraries(aws-cpp-sdk-acm aws-cpp-sdk-core)
 
-  #uncomment when unit tests are automatically generated
-  #add_test(run${metadata.namespace}Tests run${metadata.namespace}Tests)
-
-  install (TARGETS aws-cpp-sdk-acm
-           ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME}
-           RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/\${CMAKE_INSTALL_CONFIG_NAME})
+  if(SIMPLE_INSTALL)
+      install (TARGETS aws-cpp-sdk-acm
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}
+               LIBRARY DESTINATION lib
+               RUNTIME DESTINATION bin)
+  else()
+    if(PLATFORM_CUSTOM)
+      install_custom_library(aws-cpp-sdk-acm)
+    else()
+      install (TARGETS aws-cpp-sdk-acm
+               ARCHIVE DESTINATION ${ARCHIVE_DIRECTORY}/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               LIBRARY DESTINATION lib/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME}
+               RUNTIME DESTINATION bin/${SDK_INSTALL_BINARY_PREFIX}/${PLATFORM_INSTALL_QUALIFIER}/\${CMAKE_INSTALL_CONFIG_NAME})
+    endif()
+  endif()
 
   install (FILES ${AWS_ACM_HEADERS} DESTINATION include/aws/acm)
   install (FILES ${AWS_ACM_MODEL_HEADERS} DESTINATION include/aws/acm/model)
+
+  if(MSVC)
+    install (FILES nuget/aws-cpp-sdk-acm.autopkg DESTINATION nuget)
+  endif()
+
+
 

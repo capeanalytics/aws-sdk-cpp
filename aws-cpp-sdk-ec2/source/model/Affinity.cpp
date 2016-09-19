@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,8 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int default__HASH = HashingUtils::HashString("default");
-static const int host_HASH = HashingUtils::HashString("host");
 
 namespace Aws
 {
@@ -30,6 +28,9 @@ namespace Aws
     {
       namespace AffinityMapper
       {
+
+        static const int default__HASH = HashingUtils::HashString("default");
+        static const int host_HASH = HashingUtils::HashString("host");
 
 
         Affinity GetAffinityForName(const Aws::String& name)

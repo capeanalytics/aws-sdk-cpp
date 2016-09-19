@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,7 +35,7 @@ namespace Model
 
   /**
    * <p>Contains information about an event that was returned by a lookup request.
-   * The result includes a representation of a CloudTrail event. </p>
+   * The result includes a representation of a CloudTrail event.</p>
    */
   class AWS_CLOUDTRAIL_API Event
   {

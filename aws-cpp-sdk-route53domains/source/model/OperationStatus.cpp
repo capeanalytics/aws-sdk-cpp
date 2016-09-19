@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int SUBMITTED_HASH = HashingUtils::HashString("SUBMITTED");
-static const int IN_PROGRESS_HASH = HashingUtils::HashString("IN_PROGRESS");
-static const int ERROR__HASH = HashingUtils::HashString("ERROR");
-static const int SUCCESSFUL_HASH = HashingUtils::HashString("SUCCESSFUL");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace OperationStatusMapper
       {
+
+        static const int SUBMITTED_HASH = HashingUtils::HashString("SUBMITTED");
+        static const int IN_PROGRESS_HASH = HashingUtils::HashString("IN_PROGRESS");
+        static const int ERROR__HASH = HashingUtils::HashString("ERROR");
+        static const int SUCCESSFUL_HASH = HashingUtils::HashString("SUCCESSFUL");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
 
 
         OperationStatus GetOperationStatusForName(const Aws::String& name)

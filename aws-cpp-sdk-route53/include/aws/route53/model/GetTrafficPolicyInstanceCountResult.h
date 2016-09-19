@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -32,8 +32,8 @@ namespace Route53
 namespace Model
 {
   /**
-   * <p>A complex type that contains information about the number of traffic policy
-   * instances that are associated with the current AWS account.</p>
+   * <p>A complex type that contains information about the resource record sets that
+   * Amazon Route 53 created based on a specified traffic policy.</p>
    */
   class AWS_ROUTE53_API GetTrafficPolicyInstanceCountResult
   {
@@ -46,22 +46,22 @@ namespace Model
      * <p>The number of traffic policy instances that are associated with the current
      * AWS account.</p>
      */
-    inline long GetTrafficPolicyInstanceCount() const{ return m_trafficPolicyInstanceCount; }
+    inline int GetTrafficPolicyInstanceCount() const{ return m_trafficPolicyInstanceCount; }
 
     /**
      * <p>The number of traffic policy instances that are associated with the current
      * AWS account.</p>
      */
-    inline void SetTrafficPolicyInstanceCount(long value) { m_trafficPolicyInstanceCount = value; }
+    inline void SetTrafficPolicyInstanceCount(int value) { m_trafficPolicyInstanceCount = value; }
 
     /**
      * <p>The number of traffic policy instances that are associated with the current
      * AWS account.</p>
      */
-    inline GetTrafficPolicyInstanceCountResult& WithTrafficPolicyInstanceCount(long value) { SetTrafficPolicyInstanceCount(value); return *this;}
+    inline GetTrafficPolicyInstanceCountResult& WithTrafficPolicyInstanceCount(int value) { SetTrafficPolicyInstanceCount(value); return *this;}
 
   private:
-    long m_trafficPolicyInstanceCount;
+    int m_trafficPolicyInstanceCount;
   };
 
 } // namespace Model

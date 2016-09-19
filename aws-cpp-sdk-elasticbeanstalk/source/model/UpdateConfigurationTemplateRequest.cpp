@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -36,14 +36,17 @@ Aws::String UpdateConfigurationTemplateRequest::SerializePayload() const
   {
     ss << "ApplicationName=" << StringUtils::URLEncode(m_applicationName.c_str()) << "&";
   }
+
   if(m_templateNameHasBeenSet)
   {
     ss << "TemplateName=" << StringUtils::URLEncode(m_templateName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_optionSettingsHasBeenSet)
   {
     unsigned optionSettingsCount = 1;
@@ -53,6 +56,7 @@ Aws::String UpdateConfigurationTemplateRequest::SerializePayload() const
       optionSettingsCount++;
     }
   }
+
   if(m_optionsToRemoveHasBeenSet)
   {
     unsigned optionsToRemoveCount = 1;
@@ -62,6 +66,7 @@ Aws::String UpdateConfigurationTemplateRequest::SerializePayload() const
       optionsToRemoveCount++;
     }
   }
+
   ss << "Version=2010-12-01";
   return ss.str();
 }

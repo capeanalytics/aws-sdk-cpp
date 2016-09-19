@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::OpsWorks::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace OpsWorks
+{
+namespace Model
+{
 
 DeploymentCommand::DeploymentCommand() : 
     m_nameHasBeenSet(false),
@@ -48,7 +54,7 @@ DeploymentCommand& DeploymentCommand::operator =(const JsonValue& jsonValue)
     Aws::Map<Aws::String, JsonValue> argsJsonMap = jsonValue.GetObject("Args").GetAllObjects();
     for(auto& argsItem : argsJsonMap)
     {
-      Array<JsonValue> stringsJsonList = argsItem.second.GetArray("Strings");
+      Array<JsonValue> stringsJsonList = argsItem.second.AsArray();
       Aws::Vector<Aws::String> stringsList((size_t)stringsJsonList.GetLength());
       for(unsigned stringsIndex = 0; stringsIndex < stringsJsonList.GetLength(); ++stringsIndex)
       {
@@ -89,3 +95,7 @@ JsonValue DeploymentCommand::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace OpsWorks
+} // namespace Aws

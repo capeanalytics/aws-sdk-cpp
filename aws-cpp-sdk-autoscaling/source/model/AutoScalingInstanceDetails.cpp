@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace AutoScaling
+{
+namespace Model
+{
 
 AutoScalingInstanceDetails::AutoScalingInstanceDetails() : 
     m_instanceIdHasBeenSet(false),
@@ -107,30 +113,37 @@ void AutoScalingInstanceDetails::OutputToStream(Aws::OStream& oStream, const cha
   {
       oStream << location << index << locationValue << ".InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
+
   if(m_autoScalingGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutoScalingGroupName=" << StringUtils::URLEncode(m_autoScalingGroupName.c_str()) << "&";
   }
+
   if(m_availabilityZoneHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
+
   if(m_lifecycleStateHasBeenSet)
   {
       oStream << location << index << locationValue << ".LifecycleState=" << StringUtils::URLEncode(m_lifecycleState.c_str()) << "&";
   }
+
   if(m_healthStatusHasBeenSet)
   {
       oStream << location << index << locationValue << ".HealthStatus=" << StringUtils::URLEncode(m_healthStatus.c_str()) << "&";
   }
+
   if(m_launchConfigurationNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".LaunchConfigurationName=" << StringUtils::URLEncode(m_launchConfigurationName.c_str()) << "&";
   }
+
   if(m_protectedFromScaleInHasBeenSet)
   {
       oStream << location << index << locationValue << ".ProtectedFromScaleIn=" << m_protectedFromScaleIn << "&";
   }
+
 }
 
 void AutoScalingInstanceDetails::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -164,3 +177,7 @@ void AutoScalingInstanceDetails::OutputToStream(Aws::OStream& oStream, const cha
       oStream << location << ".ProtectedFromScaleIn=" << m_protectedFromScaleIn << "&";
   }
 }
+
+} // namespace Model
+} // namespace AutoScaling
+} // namespace Aws

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 NatGateway::NatGateway() : 
     m_vpcIdHasBeenSet(false),
@@ -32,7 +38,8 @@ NatGateway::NatGateway() :
     m_natGatewayAddressesHasBeenSet(false),
     m_stateHasBeenSet(false),
     m_failureCodeHasBeenSet(false),
-    m_failureMessageHasBeenSet(false)
+    m_failureMessageHasBeenSet(false),
+    m_provisionedBandwidthHasBeenSet(false)
 {
 }
 
@@ -45,7 +52,8 @@ NatGateway::NatGateway(const XmlNode& xmlNode) :
     m_natGatewayAddressesHasBeenSet(false),
     m_stateHasBeenSet(false),
     m_failureCodeHasBeenSet(false),
-    m_failureMessageHasBeenSet(false)
+    m_failureMessageHasBeenSet(false),
+    m_provisionedBandwidthHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -116,6 +124,12 @@ NatGateway& NatGateway::operator =(const XmlNode& xmlNode)
       m_failureMessage = StringUtils::Trim(failureMessageNode.GetText().c_str());
       m_failureMessageHasBeenSet = true;
     }
+    XmlNode provisionedBandwidthNode = resultNode.FirstChild("provisionedBandwidth");
+    if(!provisionedBandwidthNode.IsNull())
+    {
+      m_provisionedBandwidth = provisionedBandwidthNode;
+      m_provisionedBandwidthHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -127,22 +141,27 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location, uns
   {
       oStream << location << index << locationValue << ".VpcId=" << StringUtils::URLEncode(m_vpcId.c_str()) << "&";
   }
+
   if(m_subnetIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
+
   if(m_natGatewayIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".NatGatewayId=" << StringUtils::URLEncode(m_natGatewayId.c_str()) << "&";
   }
+
   if(m_createTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".CreateTime=" << StringUtils::URLEncode(m_createTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_deleteTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".DeleteTime=" << StringUtils::URLEncode(m_deleteTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_natGatewayAddressesHasBeenSet)
   {
       unsigned natGatewayAddressesIdx = 1;
@@ -153,18 +172,29 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location, uns
         item.OutputToStream(oStream, natGatewayAddressesSs.str().c_str());
       }
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << NatGatewayStateMapper::GetNameForNatGatewayState(m_state) << "&";
   }
+
   if(m_failureCodeHasBeenSet)
   {
       oStream << location << index << locationValue << ".FailureCode=" << StringUtils::URLEncode(m_failureCode.c_str()) << "&";
   }
+
   if(m_failureMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".FailureMessage=" << StringUtils::URLEncode(m_failureMessage.c_str()) << "&";
   }
+
+  if(m_provisionedBandwidthHasBeenSet)
+  {
+      Aws::StringStream provisionedBandwidthLocationAndMemberSs;
+      provisionedBandwidthLocationAndMemberSs << location << index << locationValue << ".ProvisionedBandwidth";
+      m_provisionedBandwidth.OutputToStream(oStream, provisionedBandwidthLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -211,4 +241,14 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
   {
       oStream << location << ".FailureMessage=" << StringUtils::URLEncode(m_failureMessage.c_str()) << "&";
   }
+  if(m_provisionedBandwidthHasBeenSet)
+  {
+      Aws::String provisionedBandwidthLocationAndMember(location);
+      provisionedBandwidthLocationAndMember += ".ProvisionedBandwidth";
+      m_provisionedBandwidth.OutputToStream(oStream, provisionedBandwidthLocationAndMember.c_str());
+  }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

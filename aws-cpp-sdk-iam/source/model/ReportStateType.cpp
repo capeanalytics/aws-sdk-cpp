@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int STARTED_HASH = HashingUtils::HashString("STARTED");
-static const int INPROGRESS_HASH = HashingUtils::HashString("INPROGRESS");
-static const int COMPLETE_HASH = HashingUtils::HashString("COMPLETE");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace ReportStateTypeMapper
       {
+
+        static const int STARTED_HASH = HashingUtils::HashString("STARTED");
+        static const int INPROGRESS_HASH = HashingUtils::HashString("INPROGRESS");
+        static const int COMPLETE_HASH = HashingUtils::HashString("COMPLETE");
 
 
         ReportStateType GetReportStateTypeForName(const Aws::String& name)

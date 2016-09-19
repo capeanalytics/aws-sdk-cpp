@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,10 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int NOT_STARTED_HASH = HashingUtils::HashString("NOT_STARTED");
-static const int IN_PROGRESS_HASH = HashingUtils::HashString("IN_PROGRESS");
-static const int FAILED_HASH = HashingUtils::HashString("FAILED");
-static const int SUCCEEDED_HASH = HashingUtils::HashString("SUCCEEDED");
 
 namespace Aws
 {
@@ -32,6 +28,11 @@ namespace Aws
     {
       namespace BulkPublishStatusMapper
       {
+
+        static const int NOT_STARTED_HASH = HashingUtils::HashString("NOT_STARTED");
+        static const int IN_PROGRESS_HASH = HashingUtils::HashString("IN_PROGRESS");
+        static const int FAILED_HASH = HashingUtils::HashString("FAILED");
+        static const int SUCCEEDED_HASH = HashingUtils::HashString("SUCCEEDED");
 
 
         BulkPublishStatus GetBulkPublishStatusForName(const Aws::String& name)

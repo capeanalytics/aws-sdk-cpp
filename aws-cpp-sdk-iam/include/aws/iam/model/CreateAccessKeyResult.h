@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -44,27 +44,27 @@ namespace Model
     CreateAccessKeyResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p>Information about the access key.</p>
+     * <p>A structure with details about the access key.</p>
      */
     inline const AccessKey& GetAccessKey() const{ return m_accessKey; }
 
     /**
-     * <p>Information about the access key.</p>
+     * <p>A structure with details about the access key.</p>
      */
     inline void SetAccessKey(const AccessKey& value) { m_accessKey = value; }
 
     /**
-     * <p>Information about the access key.</p>
+     * <p>A structure with details about the access key.</p>
      */
     inline void SetAccessKey(AccessKey&& value) { m_accessKey = value; }
 
     /**
-     * <p>Information about the access key.</p>
+     * <p>A structure with details about the access key.</p>
      */
     inline CreateAccessKeyResult& WithAccessKey(const AccessKey& value) { SetAccessKey(value); return *this;}
 
     /**
-     * <p>Information about the access key.</p>
+     * <p>A structure with details about the access key.</p>
      */
     inline CreateAccessKeyResult& WithAccessKey(AccessKey&& value) { SetAccessKey(value); return *this;}
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -271,87 +271,107 @@ namespace Model
     inline Run& WithCreated(Aws::Utils::DateTime&& value) { SetCreated(value); return *this;}
 
     /**
-     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>COMPLETED: A
-     * completed status.</p></li> <li><p>PENDING: A pending status.</p></li>
-     * <li><p>PROCESSING: A processing status.</p></li> <li><p>RUNNING: A running
-     * status.</p></li> <li><p>SCHEDULING: A scheduling status.</p></li> </ul>
+     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending status.</p></li> <li><p>PENDING_CONCURRENCY: A pending concurrency
+     * status.</p></li> <li><p>PENDING_DEVICE: A pending device status.</p></li>
+     * <li><p>PROCESSING: A processing status.</p></li> <li><p>SCHEDULING: A scheduling
+     * status.</p></li> <li><p>PREPARING: A preparing status.</p></li> <li><p>RUNNING:
+     * A running status.</p></li> <li><p>COMPLETED: A completed status.</p></li>
+     * <li><p>STOPPING: A stopping status.</p></li> </ul>
      */
     inline const ExecutionStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>COMPLETED: A
-     * completed status.</p></li> <li><p>PENDING: A pending status.</p></li>
-     * <li><p>PROCESSING: A processing status.</p></li> <li><p>RUNNING: A running
-     * status.</p></li> <li><p>SCHEDULING: A scheduling status.</p></li> </ul>
+     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending status.</p></li> <li><p>PENDING_CONCURRENCY: A pending concurrency
+     * status.</p></li> <li><p>PENDING_DEVICE: A pending device status.</p></li>
+     * <li><p>PROCESSING: A processing status.</p></li> <li><p>SCHEDULING: A scheduling
+     * status.</p></li> <li><p>PREPARING: A preparing status.</p></li> <li><p>RUNNING:
+     * A running status.</p></li> <li><p>COMPLETED: A completed status.</p></li>
+     * <li><p>STOPPING: A stopping status.</p></li> </ul>
      */
     inline void SetStatus(const ExecutionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>COMPLETED: A
-     * completed status.</p></li> <li><p>PENDING: A pending status.</p></li>
-     * <li><p>PROCESSING: A processing status.</p></li> <li><p>RUNNING: A running
-     * status.</p></li> <li><p>SCHEDULING: A scheduling status.</p></li> </ul>
+     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending status.</p></li> <li><p>PENDING_CONCURRENCY: A pending concurrency
+     * status.</p></li> <li><p>PENDING_DEVICE: A pending device status.</p></li>
+     * <li><p>PROCESSING: A processing status.</p></li> <li><p>SCHEDULING: A scheduling
+     * status.</p></li> <li><p>PREPARING: A preparing status.</p></li> <li><p>RUNNING:
+     * A running status.</p></li> <li><p>COMPLETED: A completed status.</p></li>
+     * <li><p>STOPPING: A stopping status.</p></li> </ul>
      */
     inline void SetStatus(ExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>COMPLETED: A
-     * completed status.</p></li> <li><p>PENDING: A pending status.</p></li>
-     * <li><p>PROCESSING: A processing status.</p></li> <li><p>RUNNING: A running
-     * status.</p></li> <li><p>SCHEDULING: A scheduling status.</p></li> </ul>
+     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending status.</p></li> <li><p>PENDING_CONCURRENCY: A pending concurrency
+     * status.</p></li> <li><p>PENDING_DEVICE: A pending device status.</p></li>
+     * <li><p>PROCESSING: A processing status.</p></li> <li><p>SCHEDULING: A scheduling
+     * status.</p></li> <li><p>PREPARING: A preparing status.</p></li> <li><p>RUNNING:
+     * A running status.</p></li> <li><p>COMPLETED: A completed status.</p></li>
+     * <li><p>STOPPING: A stopping status.</p></li> </ul>
      */
     inline Run& WithStatus(const ExecutionStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>COMPLETED: A
-     * completed status.</p></li> <li><p>PENDING: A pending status.</p></li>
-     * <li><p>PROCESSING: A processing status.</p></li> <li><p>RUNNING: A running
-     * status.</p></li> <li><p>SCHEDULING: A scheduling status.</p></li> </ul>
+     * <p>The run's status.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending status.</p></li> <li><p>PENDING_CONCURRENCY: A pending concurrency
+     * status.</p></li> <li><p>PENDING_DEVICE: A pending device status.</p></li>
+     * <li><p>PROCESSING: A processing status.</p></li> <li><p>SCHEDULING: A scheduling
+     * status.</p></li> <li><p>PREPARING: A preparing status.</p></li> <li><p>RUNNING:
+     * A running status.</p></li> <li><p>COMPLETED: A completed status.</p></li>
+     * <li><p>STOPPING: A stopping status.</p></li> </ul>
      */
     inline Run& WithStatus(ExecutionStatus&& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>ERRORED: An
-     * error condition.</p></li> <li><p>FAILED: A failed condition.</p></li>
-     * <li><p>SKIPPED: A skipped condition.</p></li> <li><p>STOPPED: A stopped
-     * condition.</p></li> <li><p>PASSED: A passing condition.</p></li> <li><p>PENDING:
-     * A pending condition.</p></li> <li><p>WARNED: A warning condition.</p></li> </ul>
+     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending condition.</p></li> <li><p>PASSED: A passing condition.</p></li>
+     * <li><p>WARNED: A warning condition.</p></li> <li><p>FAILED: A failed
+     * condition.</p></li> <li><p>SKIPPED: A skipped condition.</p></li>
+     * <li><p>ERRORED: An error condition.</p></li> <li><p>STOPPED: A stopped
+     * condition.</p></li> </ul>
      */
     inline const ExecutionResult& GetResult() const{ return m_result; }
 
     /**
-     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>ERRORED: An
-     * error condition.</p></li> <li><p>FAILED: A failed condition.</p></li>
-     * <li><p>SKIPPED: A skipped condition.</p></li> <li><p>STOPPED: A stopped
-     * condition.</p></li> <li><p>PASSED: A passing condition.</p></li> <li><p>PENDING:
-     * A pending condition.</p></li> <li><p>WARNED: A warning condition.</p></li> </ul>
+     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending condition.</p></li> <li><p>PASSED: A passing condition.</p></li>
+     * <li><p>WARNED: A warning condition.</p></li> <li><p>FAILED: A failed
+     * condition.</p></li> <li><p>SKIPPED: A skipped condition.</p></li>
+     * <li><p>ERRORED: An error condition.</p></li> <li><p>STOPPED: A stopped
+     * condition.</p></li> </ul>
      */
     inline void SetResult(const ExecutionResult& value) { m_resultHasBeenSet = true; m_result = value; }
 
     /**
-     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>ERRORED: An
-     * error condition.</p></li> <li><p>FAILED: A failed condition.</p></li>
-     * <li><p>SKIPPED: A skipped condition.</p></li> <li><p>STOPPED: A stopped
-     * condition.</p></li> <li><p>PASSED: A passing condition.</p></li> <li><p>PENDING:
-     * A pending condition.</p></li> <li><p>WARNED: A warning condition.</p></li> </ul>
+     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending condition.</p></li> <li><p>PASSED: A passing condition.</p></li>
+     * <li><p>WARNED: A warning condition.</p></li> <li><p>FAILED: A failed
+     * condition.</p></li> <li><p>SKIPPED: A skipped condition.</p></li>
+     * <li><p>ERRORED: An error condition.</p></li> <li><p>STOPPED: A stopped
+     * condition.</p></li> </ul>
      */
     inline void SetResult(ExecutionResult&& value) { m_resultHasBeenSet = true; m_result = value; }
 
     /**
-     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>ERRORED: An
-     * error condition.</p></li> <li><p>FAILED: A failed condition.</p></li>
-     * <li><p>SKIPPED: A skipped condition.</p></li> <li><p>STOPPED: A stopped
-     * condition.</p></li> <li><p>PASSED: A passing condition.</p></li> <li><p>PENDING:
-     * A pending condition.</p></li> <li><p>WARNED: A warning condition.</p></li> </ul>
+     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending condition.</p></li> <li><p>PASSED: A passing condition.</p></li>
+     * <li><p>WARNED: A warning condition.</p></li> <li><p>FAILED: A failed
+     * condition.</p></li> <li><p>SKIPPED: A skipped condition.</p></li>
+     * <li><p>ERRORED: An error condition.</p></li> <li><p>STOPPED: A stopped
+     * condition.</p></li> </ul>
      */
     inline Run& WithResult(const ExecutionResult& value) { SetResult(value); return *this;}
 
     /**
-     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>ERRORED: An
-     * error condition.</p></li> <li><p>FAILED: A failed condition.</p></li>
-     * <li><p>SKIPPED: A skipped condition.</p></li> <li><p>STOPPED: A stopped
-     * condition.</p></li> <li><p>PASSED: A passing condition.</p></li> <li><p>PENDING:
-     * A pending condition.</p></li> <li><p>WARNED: A warning condition.</p></li> </ul>
+     * <p>The run's result.</p> <p>Allowed values include:</p> <ul> <li><p>PENDING: A
+     * pending condition.</p></li> <li><p>PASSED: A passing condition.</p></li>
+     * <li><p>WARNED: A warning condition.</p></li> <li><p>FAILED: A failed
+     * condition.</p></li> <li><p>SKIPPED: A skipped condition.</p></li>
+     * <li><p>ERRORED: An error condition.</p></li> <li><p>STOPPED: A stopped
+     * condition.</p></li> </ul>
      */
     inline Run& WithResult(ExecutionResult&& value) { SetResult(value); return *this;}
 
@@ -468,32 +488,32 @@ namespace Model
     /**
      * <p>The total number of jobs for the run.</p>
      */
-    inline long GetTotalJobs() const{ return m_totalJobs; }
+    inline int GetTotalJobs() const{ return m_totalJobs; }
 
     /**
      * <p>The total number of jobs for the run.</p>
      */
-    inline void SetTotalJobs(long value) { m_totalJobsHasBeenSet = true; m_totalJobs = value; }
+    inline void SetTotalJobs(int value) { m_totalJobsHasBeenSet = true; m_totalJobs = value; }
 
     /**
      * <p>The total number of jobs for the run.</p>
      */
-    inline Run& WithTotalJobs(long value) { SetTotalJobs(value); return *this;}
+    inline Run& WithTotalJobs(int value) { SetTotalJobs(value); return *this;}
 
     /**
      * <p>The total number of completed jobs.</p>
      */
-    inline long GetCompletedJobs() const{ return m_completedJobs; }
+    inline int GetCompletedJobs() const{ return m_completedJobs; }
 
     /**
      * <p>The total number of completed jobs.</p>
      */
-    inline void SetCompletedJobs(long value) { m_completedJobsHasBeenSet = true; m_completedJobs = value; }
+    inline void SetCompletedJobs(int value) { m_completedJobsHasBeenSet = true; m_completedJobs = value; }
 
     /**
      * <p>The total number of completed jobs.</p>
      */
-    inline Run& WithCompletedJobs(long value) { SetCompletedJobs(value); return *this;}
+    inline Run& WithCompletedJobs(int value) { SetCompletedJobs(value); return *this;}
 
     /**
      * <p>Specifies the billing method for a test run: <code>metered</code> or
@@ -578,9 +598,9 @@ namespace Model
     bool m_countersHasBeenSet;
     Aws::String m_message;
     bool m_messageHasBeenSet;
-    long m_totalJobs;
+    int m_totalJobs;
     bool m_totalJobsHasBeenSet;
-    long m_completedJobs;
+    int m_completedJobs;
     bool m_completedJobsHasBeenSet;
     BillingMethod m_billingMethod;
     bool m_billingMethodHasBeenSet;

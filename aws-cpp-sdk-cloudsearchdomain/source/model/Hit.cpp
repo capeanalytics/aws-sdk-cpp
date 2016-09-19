@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearchDomain::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearchDomain
+{
+namespace Model
+{
 
 Hit::Hit() : 
     m_idHasBeenSet(false),
@@ -52,7 +58,7 @@ Hit& Hit::operator =(const JsonValue& jsonValue)
     Aws::Map<Aws::String, JsonValue> fieldsJsonMap = jsonValue.GetObject("fields").GetAllObjects();
     for(auto& fieldsItem : fieldsJsonMap)
     {
-      Array<JsonValue> fieldValueJsonList = fieldsItem.second.GetArray("FieldValue");
+      Array<JsonValue> fieldValueJsonList = fieldsItem.second.AsArray();
       Aws::Vector<Aws::String> fieldValueList((size_t)fieldValueJsonList.GetLength());
       for(unsigned fieldValueIndex = 0; fieldValueIndex < fieldValueJsonList.GetLength(); ++fieldValueIndex)
       {
@@ -136,3 +142,7 @@ JsonValue Hit::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace CloudSearchDomain
+} // namespace Aws

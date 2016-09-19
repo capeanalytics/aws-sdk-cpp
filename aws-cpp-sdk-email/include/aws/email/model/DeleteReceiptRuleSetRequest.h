@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -25,6 +25,11 @@ namespace Model
 {
 
   /**
+   * <p>Represents a request to delete a receipt rule set and all of the receipt
+   * rules it contains. You use receipt rule sets to receive email with Amazon SES.
+   * For more information, see the <a
+   * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
+   * SES Developer Guide</a>.</p>
    */
   class AWS_SES_API DeleteReceiptRuleSetRequest : public SESRequest
   {

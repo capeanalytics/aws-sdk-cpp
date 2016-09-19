@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace AutoScaling
+{
+namespace Model
+{
 
 ScheduledUpdateGroupAction::ScheduledUpdateGroupAction() : 
     m_autoScalingGroupNameHasBeenSet(false),
@@ -135,42 +141,52 @@ void ScheduledUpdateGroupAction::OutputToStream(Aws::OStream& oStream, const cha
   {
       oStream << location << index << locationValue << ".AutoScalingGroupName=" << StringUtils::URLEncode(m_autoScalingGroupName.c_str()) << "&";
   }
+
   if(m_scheduledActionNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".ScheduledActionName=" << StringUtils::URLEncode(m_scheduledActionName.c_str()) << "&";
   }
+
   if(m_scheduledActionARNHasBeenSet)
   {
       oStream << location << index << locationValue << ".ScheduledActionARN=" << StringUtils::URLEncode(m_scheduledActionARN.c_str()) << "&";
   }
+
   if(m_timeHasBeenSet)
   {
       oStream << location << index << locationValue << ".Time=" << StringUtils::URLEncode(m_time.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_startTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_endTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".EndTime=" << StringUtils::URLEncode(m_endTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_recurrenceHasBeenSet)
   {
       oStream << location << index << locationValue << ".Recurrence=" << StringUtils::URLEncode(m_recurrence.c_str()) << "&";
   }
+
   if(m_minSizeHasBeenSet)
   {
       oStream << location << index << locationValue << ".MinSize=" << m_minSize << "&";
   }
+
   if(m_maxSizeHasBeenSet)
   {
       oStream << location << index << locationValue << ".MaxSize=" << m_maxSize << "&";
   }
+
   if(m_desiredCapacityHasBeenSet)
   {
       oStream << location << index << locationValue << ".DesiredCapacity=" << m_desiredCapacity << "&";
   }
+
 }
 
 void ScheduledUpdateGroupAction::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -216,3 +232,7 @@ void ScheduledUpdateGroupAction::OutputToStream(Aws::OStream& oStream, const cha
       oStream << location << ".DesiredCapacity=" << m_desiredCapacity << "&";
   }
 }
+
+} // namespace Model
+} // namespace AutoScaling
+} // namespace Aws

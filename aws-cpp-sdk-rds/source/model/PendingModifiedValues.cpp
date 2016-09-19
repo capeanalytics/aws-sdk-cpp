@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 PendingModifiedValues::PendingModifiedValues() : 
     m_dBInstanceClassHasBeenSet(false),
@@ -35,11 +41,13 @@ PendingModifiedValues::PendingModifiedValues() :
     m_multiAZ(false),
     m_multiAZHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
+    m_licenseModelHasBeenSet(false),
     m_iops(0),
     m_iopsHasBeenSet(false),
     m_dBInstanceIdentifierHasBeenSet(false),
     m_storageTypeHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false)
+    m_cACertificateIdentifierHasBeenSet(false),
+    m_dBSubnetGroupNameHasBeenSet(false)
 {
 }
 
@@ -55,11 +63,13 @@ PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode) :
     m_multiAZ(false),
     m_multiAZHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
+    m_licenseModelHasBeenSet(false),
     m_iops(0),
     m_iopsHasBeenSet(false),
     m_dBInstanceIdentifierHasBeenSet(false),
     m_storageTypeHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false)
+    m_cACertificateIdentifierHasBeenSet(false),
+    m_dBSubnetGroupNameHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -112,6 +122,12 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
       m_engineVersion = StringUtils::Trim(engineVersionNode.GetText().c_str());
       m_engineVersionHasBeenSet = true;
     }
+    XmlNode licenseModelNode = resultNode.FirstChild("LicenseModel");
+    if(!licenseModelNode.IsNull())
+    {
+      m_licenseModel = StringUtils::Trim(licenseModelNode.GetText().c_str());
+      m_licenseModelHasBeenSet = true;
+    }
     XmlNode iopsNode = resultNode.FirstChild("Iops");
     if(!iopsNode.IsNull())
     {
@@ -136,6 +152,12 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
       m_cACertificateIdentifier = StringUtils::Trim(cACertificateIdentifierNode.GetText().c_str());
       m_cACertificateIdentifierHasBeenSet = true;
     }
+    XmlNode dBSubnetGroupNameNode = resultNode.FirstChild("DBSubnetGroupName");
+    if(!dBSubnetGroupNameNode.IsNull())
+    {
+      m_dBSubnetGroupName = StringUtils::Trim(dBSubnetGroupNameNode.GetText().c_str());
+      m_dBSubnetGroupNameHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -147,46 +169,67 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << index << locationValue << ".DBInstanceClass=" << StringUtils::URLEncode(m_dBInstanceClass.c_str()) << "&";
   }
+
   if(m_allocatedStorageHasBeenSet)
   {
       oStream << location << index << locationValue << ".AllocatedStorage=" << m_allocatedStorage << "&";
   }
+
   if(m_masterUserPasswordHasBeenSet)
   {
       oStream << location << index << locationValue << ".MasterUserPassword=" << StringUtils::URLEncode(m_masterUserPassword.c_str()) << "&";
   }
+
   if(m_portHasBeenSet)
   {
       oStream << location << index << locationValue << ".Port=" << m_port << "&";
   }
+
   if(m_backupRetentionPeriodHasBeenSet)
   {
       oStream << location << index << locationValue << ".BackupRetentionPeriod=" << m_backupRetentionPeriod << "&";
   }
+
   if(m_multiAZHasBeenSet)
   {
       oStream << location << index << locationValue << ".MultiAZ=" << m_multiAZ << "&";
   }
+
   if(m_engineVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+
+  if(m_licenseModelHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".LicenseModel=" << StringUtils::URLEncode(m_licenseModel.c_str()) << "&";
+  }
+
   if(m_iopsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Iops=" << m_iops << "&";
   }
+
   if(m_dBInstanceIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBInstanceIdentifier=" << StringUtils::URLEncode(m_dBInstanceIdentifier.c_str()) << "&";
   }
+
   if(m_storageTypeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StorageType=" << StringUtils::URLEncode(m_storageType.c_str()) << "&";
   }
+
   if(m_cACertificateIdentifierHasBeenSet)
   {
       oStream << location << index << locationValue << ".CACertificateIdentifier=" << StringUtils::URLEncode(m_cACertificateIdentifier.c_str()) << "&";
   }
+
+  if(m_dBSubnetGroupNameHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DBSubnetGroupName=" << StringUtils::URLEncode(m_dBSubnetGroupName.c_str()) << "&";
+  }
+
 }
 
 void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -219,6 +262,10 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << ".EngineVersion=" << StringUtils::URLEncode(m_engineVersion.c_str()) << "&";
   }
+  if(m_licenseModelHasBeenSet)
+  {
+      oStream << location << ".LicenseModel=" << StringUtils::URLEncode(m_licenseModel.c_str()) << "&";
+  }
   if(m_iopsHasBeenSet)
   {
       oStream << location << ".Iops=" << m_iops << "&";
@@ -235,4 +282,12 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   {
       oStream << location << ".CACertificateIdentifier=" << StringUtils::URLEncode(m_cACertificateIdentifier.c_str()) << "&";
   }
+  if(m_dBSubnetGroupNameHasBeenSet)
+  {
+      oStream << location << ".DBSubnetGroupName=" << StringUtils::URLEncode(m_dBSubnetGroupName.c_str()) << "&";
+  }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

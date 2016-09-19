@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace CloudSearch
+{
+namespace Model
+{
 
 OptionStatus::OptionStatus() : 
     m_creationDateHasBeenSet(false),
@@ -93,22 +99,27 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
   {
       oStream << location << index << locationValue << ".CreationDate=" << StringUtils::URLEncode(m_creationDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_updateDateHasBeenSet)
   {
       oStream << location << index << locationValue << ".UpdateDate=" << StringUtils::URLEncode(m_updateDate.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_updateVersionHasBeenSet)
   {
       oStream << location << index << locationValue << ".UpdateVersion=" << m_updateVersion << "&";
   }
+
   if(m_stateHasBeenSet)
   {
       oStream << location << index << locationValue << ".State=" << OptionStateMapper::GetNameForOptionState(m_state) << "&";
   }
+
   if(m_pendingDeletionHasBeenSet)
   {
       oStream << location << index << locationValue << ".PendingDeletion=" << m_pendingDeletion << "&";
   }
+
 }
 
 void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -134,3 +145,7 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
       oStream << location << ".PendingDeletion=" << m_pendingDeletion << "&";
   }
 }
+
+} // namespace Model
+} // namespace CloudSearch
+} // namespace Aws

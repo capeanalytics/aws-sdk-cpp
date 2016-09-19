@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,6 +33,7 @@ Aws::String RebootCacheClusterRequest::SerializePayload() const
   {
     ss << "CacheClusterId=" << StringUtils::URLEncode(m_cacheClusterId.c_str()) << "&";
   }
+
   if(m_cacheNodeIdsToRebootHasBeenSet)
   {
     unsigned cacheNodeIdsToRebootCount = 1;
@@ -43,6 +44,7 @@ Aws::String RebootCacheClusterRequest::SerializePayload() const
       cacheNodeIdsToRebootCount++;
     }
   }
+
   ss << "Version=2015-02-02";
   return ss.str();
 }

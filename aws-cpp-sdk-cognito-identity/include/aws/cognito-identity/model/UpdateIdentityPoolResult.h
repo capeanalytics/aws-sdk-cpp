@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,6 +17,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/cognito-identity/model/CognitoIdentityProvider.h>
 
 namespace Aws
 {
@@ -264,6 +265,96 @@ namespace Model
      */
     inline UpdateIdentityPoolResult& AddOpenIdConnectProviderARNs(const char* value) { m_openIdConnectProviderARNs.push_back(value); return *this; }
 
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline const Aws::Vector<CognitoIdentityProvider>& GetCognitoIdentityProviders() const{ return m_cognitoIdentityProviders; }
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline void SetCognitoIdentityProviders(const Aws::Vector<CognitoIdentityProvider>& value) { m_cognitoIdentityProviders = value; }
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline void SetCognitoIdentityProviders(Aws::Vector<CognitoIdentityProvider>&& value) { m_cognitoIdentityProviders = value; }
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline UpdateIdentityPoolResult& WithCognitoIdentityProviders(const Aws::Vector<CognitoIdentityProvider>& value) { SetCognitoIdentityProviders(value); return *this;}
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline UpdateIdentityPoolResult& WithCognitoIdentityProviders(Aws::Vector<CognitoIdentityProvider>&& value) { SetCognitoIdentityProviders(value); return *this;}
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline UpdateIdentityPoolResult& AddCognitoIdentityProviders(const CognitoIdentityProvider& value) { m_cognitoIdentityProviders.push_back(value); return *this; }
+
+    /**
+     * <p>A list representing an Amazon Cognito Identity User Pool and its client
+     * ID.</p>
+     */
+    inline UpdateIdentityPoolResult& AddCognitoIdentityProviders(CognitoIdentityProvider&& value) { m_cognitoIdentityProviders.push_back(value); return *this; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetSamlProviderARNs() const{ return m_samlProviderARNs; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline void SetSamlProviderARNs(const Aws::Vector<Aws::String>& value) { m_samlProviderARNs = value; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline void SetSamlProviderARNs(Aws::Vector<Aws::String>&& value) { m_samlProviderARNs = value; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline UpdateIdentityPoolResult& WithSamlProviderARNs(const Aws::Vector<Aws::String>& value) { SetSamlProviderARNs(value); return *this;}
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline UpdateIdentityPoolResult& WithSamlProviderARNs(Aws::Vector<Aws::String>&& value) { SetSamlProviderARNs(value); return *this;}
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline UpdateIdentityPoolResult& AddSamlProviderARNs(const Aws::String& value) { m_samlProviderARNs.push_back(value); return *this; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline UpdateIdentityPoolResult& AddSamlProviderARNs(Aws::String&& value) { m_samlProviderARNs.push_back(value); return *this; }
+
+    /**
+     * <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your
+     * identity pool.</p>
+     */
+    inline UpdateIdentityPoolResult& AddSamlProviderARNs(const char* value) { m_samlProviderARNs.push_back(value); return *this; }
+
   private:
     Aws::String m_identityPoolId;
     Aws::String m_identityPoolName;
@@ -271,6 +362,8 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_supportedLoginProviders;
     Aws::String m_developerProviderName;
     Aws::Vector<Aws::String> m_openIdConnectProviderARNs;
+    Aws::Vector<CognitoIdentityProvider> m_cognitoIdentityProviders;
+    Aws::Vector<Aws::String> m_samlProviderARNs;
   };
 
 } // namespace Model

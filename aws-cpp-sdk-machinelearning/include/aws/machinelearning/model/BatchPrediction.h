@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,9 +33,9 @@ namespace Model
 {
 
   /**
-   * <p> Represents the output of <a>GetBatchPrediction</a> operation.</p> <p> The
-   * content consists of the detailed metadata, the status, and the data file
-   * information of a <i>Batch Prediction</i>.</p>
+   * <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p>
+   * <p> The content consists of the detailed metadata, the status, and the data file
+   * information of a <code>Batch Prediction</code>.</p>
    */
   class AWS_MACHINELEARNING_API BatchPrediction
   {
@@ -369,7 +369,7 @@ namespace Model
      * the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine
      * Learning (Amazon ML) submitted a request to generate predictions for a batch of
      * observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li>
-     * <li> <code>FAILED</code> - The request to peform a batch prediction did not run
+     * <li> <code>FAILED</code> - The request to perform a batch prediction did not run
      * to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch
      * prediction process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
@@ -381,7 +381,7 @@ namespace Model
      * the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine
      * Learning (Amazon ML) submitted a request to generate predictions for a batch of
      * observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li>
-     * <li> <code>FAILED</code> - The request to peform a batch prediction did not run
+     * <li> <code>FAILED</code> - The request to perform a batch prediction did not run
      * to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch
      * prediction process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
@@ -393,7 +393,7 @@ namespace Model
      * the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine
      * Learning (Amazon ML) submitted a request to generate predictions for a batch of
      * observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li>
-     * <li> <code>FAILED</code> - The request to peform a batch prediction did not run
+     * <li> <code>FAILED</code> - The request to perform a batch prediction did not run
      * to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch
      * prediction process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
@@ -405,7 +405,7 @@ namespace Model
      * the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine
      * Learning (Amazon ML) submitted a request to generate predictions for a batch of
      * observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li>
-     * <li> <code>FAILED</code> - The request to peform a batch prediction did not run
+     * <li> <code>FAILED</code> - The request to perform a batch prediction did not run
      * to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch
      * prediction process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
@@ -417,7 +417,7 @@ namespace Model
      * the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine
      * Learning (Amazon ML) submitted a request to generate predictions for a batch of
      * observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li>
-     * <li> <code>FAILED</code> - The request to peform a batch prediction did not run
+     * <li> <code>FAILED</code> - The request to perform a batch prediction did not run
      * to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch
      * prediction process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
@@ -426,50 +426,50 @@ namespace Model
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline const Aws::String& GetOutputUri() const{ return m_outputUri; }
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline void SetOutputUri(const Aws::String& value) { m_outputUriHasBeenSet = true; m_outputUri = value; }
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline void SetOutputUri(Aws::String&& value) { m_outputUriHasBeenSet = true; m_outputUri = value; }
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline void SetOutputUri(const char* value) { m_outputUriHasBeenSet = true; m_outputUri.assign(value); }
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline BatchPrediction& WithOutputUri(const Aws::String& value) { SetOutputUri(value); return *this;}
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline BatchPrediction& WithOutputUri(Aws::String&& value) { SetOutputUri(value); return *this;}
 
     /**
      * <p>The location of an Amazon S3 bucket or directory to receive the operation
-     * results. The following substrings are not allowed in the s3 key portion of the
-     * "outputURI" field: ':', '//', '/./', '/../'.</p>
+     * results. The following substrings are not allowed in the <code>s3 key</code>
+     * portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
      */
     inline BatchPrediction& WithOutputUri(const char* value) { SetOutputUri(value); return *this;}
 
@@ -515,6 +515,63 @@ namespace Model
      */
     inline BatchPrediction& WithMessage(const char* value) { SetMessage(value); return *this;}
 
+    
+    inline long long GetComputeTime() const{ return m_computeTime; }
+
+    
+    inline void SetComputeTime(long long value) { m_computeTimeHasBeenSet = true; m_computeTime = value; }
+
+    
+    inline BatchPrediction& WithComputeTime(long long value) { SetComputeTime(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetFinishedAt() const{ return m_finishedAt; }
+
+    
+    inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+
+    
+    inline BatchPrediction& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline BatchPrediction& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+
+    
+    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+
+    
+    inline BatchPrediction& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
+
+    
+    inline BatchPrediction& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+
+    
+    inline long long GetTotalRecordCount() const{ return m_totalRecordCount; }
+
+    
+    inline void SetTotalRecordCount(long long value) { m_totalRecordCountHasBeenSet = true; m_totalRecordCount = value; }
+
+    
+    inline BatchPrediction& WithTotalRecordCount(long long value) { SetTotalRecordCount(value); return *this;}
+
+    
+    inline long long GetInvalidRecordCount() const{ return m_invalidRecordCount; }
+
+    
+    inline void SetInvalidRecordCount(long long value) { m_invalidRecordCountHasBeenSet = true; m_invalidRecordCount = value; }
+
+    
+    inline BatchPrediction& WithInvalidRecordCount(long long value) { SetInvalidRecordCount(value); return *this;}
+
   private:
     Aws::String m_batchPredictionId;
     bool m_batchPredictionIdHasBeenSet;
@@ -538,6 +595,16 @@ namespace Model
     bool m_outputUriHasBeenSet;
     Aws::String m_message;
     bool m_messageHasBeenSet;
+    long long m_computeTime;
+    bool m_computeTimeHasBeenSet;
+    Aws::Utils::DateTime m_finishedAt;
+    bool m_finishedAtHasBeenSet;
+    Aws::Utils::DateTime m_startedAt;
+    bool m_startedAtHasBeenSet;
+    long long m_totalRecordCount;
+    bool m_totalRecordCountHasBeenSet;
+    long long m_invalidRecordCount;
+    bool m_invalidRecordCountHasBeenSet;
   };
 
 } // namespace Model

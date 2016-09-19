@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -26,8 +26,9 @@ namespace Model
 
   /**
    * <p>A JSON object containing one or more of the following fields:</p> <ul> <li>
-   * <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </li>
-   * <li> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a>
+   * <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a>
+   * </p> </li> <li> <p>
+   * <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p>
    * </li> </ul>
    */
   class AWS_STORAGEGATEWAY_API UpdateBandwidthRateLimitRequest : public StorageGatewayRequest

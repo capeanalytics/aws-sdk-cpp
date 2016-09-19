@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace AutoScaling
+{
+namespace Model
+{
 
 Activity::Activity() : 
     m_activityIdHasBeenSet(false),
@@ -131,42 +137,52 @@ void Activity::OutputToStream(Aws::OStream& oStream, const char* location, unsig
   {
       oStream << location << index << locationValue << ".ActivityId=" << StringUtils::URLEncode(m_activityId.c_str()) << "&";
   }
+
   if(m_autoScalingGroupNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".AutoScalingGroupName=" << StringUtils::URLEncode(m_autoScalingGroupName.c_str()) << "&";
   }
+
   if(m_descriptionHasBeenSet)
   {
       oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
+
   if(m_causeHasBeenSet)
   {
       oStream << location << index << locationValue << ".Cause=" << StringUtils::URLEncode(m_cause.c_str()) << "&";
   }
+
   if(m_startTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StartTime=" << StringUtils::URLEncode(m_startTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_endTimeHasBeenSet)
   {
       oStream << location << index << locationValue << ".EndTime=" << StringUtils::URLEncode(m_endTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
+
   if(m_statusCodeHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusCode=" << ScalingActivityStatusCodeMapper::GetNameForScalingActivityStatusCode(m_statusCode) << "&";
   }
+
   if(m_statusMessageHasBeenSet)
   {
       oStream << location << index << locationValue << ".StatusMessage=" << StringUtils::URLEncode(m_statusMessage.c_str()) << "&";
   }
+
   if(m_progressHasBeenSet)
   {
       oStream << location << index << locationValue << ".Progress=" << m_progress << "&";
   }
+
   if(m_detailsHasBeenSet)
   {
       oStream << location << index << locationValue << ".Details=" << StringUtils::URLEncode(m_details.c_str()) << "&";
   }
+
 }
 
 void Activity::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -212,3 +228,7 @@ void Activity::OutputToStream(Aws::OStream& oStream, const char* location) const
       oStream << location << ".Details=" << StringUtils::URLEncode(m_details.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace AutoScaling
+} // namespace Aws

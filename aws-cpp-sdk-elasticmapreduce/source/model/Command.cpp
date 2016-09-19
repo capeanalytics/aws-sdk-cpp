@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::EMR::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EMR
+{
+namespace Model
+{
 
 Command::Command() : 
     m_nameHasBeenSet(false),
@@ -94,3 +100,7 @@ JsonValue Command::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace EMR
+} // namespace Aws

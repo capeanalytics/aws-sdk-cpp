@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::RDS::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace RDS
+{
+namespace Model
+{
 
 DBInstanceStatusInfo::DBInstanceStatusInfo() : 
     m_statusTypeHasBeenSet(false),
@@ -83,18 +89,22 @@ void DBInstanceStatusInfo::OutputToStream(Aws::OStream& oStream, const char* loc
   {
       oStream << location << index << locationValue << ".StatusType=" << StringUtils::URLEncode(m_statusType.c_str()) << "&";
   }
+
   if(m_normalHasBeenSet)
   {
       oStream << location << index << locationValue << ".Normal=" << m_normal << "&";
   }
+
   if(m_statusHasBeenSet)
   {
       oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(m_status.c_str()) << "&";
   }
+
   if(m_messageHasBeenSet)
   {
       oStream << location << index << locationValue << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
+
 }
 
 void DBInstanceStatusInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -116,3 +126,7 @@ void DBInstanceStatusInfo::OutputToStream(Aws::OStream& oStream, const char* loc
       oStream << location << ".Message=" << StringUtils::URLEncode(m_message.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace RDS
+} // namespace Aws

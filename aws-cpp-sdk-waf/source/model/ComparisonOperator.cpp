@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,12 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int EQ_HASH = HashingUtils::HashString("EQ");
-static const int NE_HASH = HashingUtils::HashString("NE");
-static const int LE_HASH = HashingUtils::HashString("LE");
-static const int LT_HASH = HashingUtils::HashString("LT");
-static const int GE_HASH = HashingUtils::HashString("GE");
-static const int GT_HASH = HashingUtils::HashString("GT");
 
 namespace Aws
 {
@@ -34,6 +28,13 @@ namespace Aws
     {
       namespace ComparisonOperatorMapper
       {
+
+        static const int EQ_HASH = HashingUtils::HashString("EQ");
+        static const int NE_HASH = HashingUtils::HashString("NE");
+        static const int LE_HASH = HashingUtils::HashString("LE");
+        static const int LT_HASH = HashingUtils::HashString("LT");
+        static const int GE_HASH = HashingUtils::HashString("GE");
+        static const int GT_HASH = HashingUtils::HashString("GT");
 
 
         ComparisonOperator GetComparisonOperatorForName(const Aws::String& name)

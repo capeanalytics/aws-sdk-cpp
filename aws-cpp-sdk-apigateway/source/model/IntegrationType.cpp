@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int HTTP_HASH = HashingUtils::HashString("HTTP");
-static const int AWS_HASH = HashingUtils::HashString("AWS");
-static const int MOCK_HASH = HashingUtils::HashString("MOCK");
 
 namespace Aws
 {
@@ -31,6 +28,10 @@ namespace Aws
     {
       namespace IntegrationTypeMapper
       {
+
+        static const int HTTP_HASH = HashingUtils::HashString("HTTP");
+        static const int AWS_HASH = HashingUtils::HashString("AWS");
+        static const int MOCK_HASH = HashingUtils::HashString("MOCK");
 
 
         IntegrationType GetIntegrationTypeForName(const Aws::String& name)

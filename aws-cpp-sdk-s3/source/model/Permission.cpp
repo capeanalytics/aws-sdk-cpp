@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,11 +19,6 @@
 
 using namespace Aws::Utils;
 
-static const int FULL_CONTROL_HASH = HashingUtils::HashString("FULL_CONTROL");
-static const int WRITE_HASH = HashingUtils::HashString("WRITE");
-static const int WRITE_ACP_HASH = HashingUtils::HashString("WRITE_ACP");
-static const int READ_HASH = HashingUtils::HashString("READ");
-static const int READ_ACP_HASH = HashingUtils::HashString("READ_ACP");
 
 namespace Aws
 {
@@ -33,6 +28,12 @@ namespace Aws
     {
       namespace PermissionMapper
       {
+
+        static const int FULL_CONTROL_HASH = HashingUtils::HashString("FULL_CONTROL");
+        static const int WRITE_HASH = HashingUtils::HashString("WRITE");
+        static const int WRITE_ACP_HASH = HashingUtils::HashString("WRITE_ACP");
+        static const int READ_HASH = HashingUtils::HashString("READ");
+        static const int READ_ACP_HASH = HashingUtils::HashString("READ_ACP");
 
 
         Permission GetPermissionForName(const Aws::String& name)

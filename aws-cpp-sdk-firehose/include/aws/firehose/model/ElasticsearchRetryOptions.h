@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -43,30 +43,30 @@ namespace Model
 
     /**
      * <p>After an initial failure to deliver to Amazon ES, the total amount of time
-     * during which Firehose re-attempts delivery. After this time has elapsed, the
-     * failed documents are written to Amazon S3. Default value is 300 seconds. A value
-     * of 0 (zero) results in no retries.</p>
+     * during which Firehose re-attempts delivery (including the first attempt). After
+     * this time has elapsed, the failed documents are written to Amazon S3. Default
+     * value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
      */
-    inline long GetDurationInSeconds() const{ return m_durationInSeconds; }
+    inline int GetDurationInSeconds() const{ return m_durationInSeconds; }
 
     /**
      * <p>After an initial failure to deliver to Amazon ES, the total amount of time
-     * during which Firehose re-attempts delivery. After this time has elapsed, the
-     * failed documents are written to Amazon S3. Default value is 300 seconds. A value
-     * of 0 (zero) results in no retries.</p>
+     * during which Firehose re-attempts delivery (including the first attempt). After
+     * this time has elapsed, the failed documents are written to Amazon S3. Default
+     * value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
      */
-    inline void SetDurationInSeconds(long value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
+    inline void SetDurationInSeconds(int value) { m_durationInSecondsHasBeenSet = true; m_durationInSeconds = value; }
 
     /**
      * <p>After an initial failure to deliver to Amazon ES, the total amount of time
-     * during which Firehose re-attempts delivery. After this time has elapsed, the
-     * failed documents are written to Amazon S3. Default value is 300 seconds. A value
-     * of 0 (zero) results in no retries.</p>
+     * during which Firehose re-attempts delivery (including the first attempt). After
+     * this time has elapsed, the failed documents are written to Amazon S3. Default
+     * value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
      */
-    inline ElasticsearchRetryOptions& WithDurationInSeconds(long value) { SetDurationInSeconds(value); return *this;}
+    inline ElasticsearchRetryOptions& WithDurationInSeconds(int value) { SetDurationInSeconds(value); return *this;}
 
   private:
-    long m_durationInSeconds;
+    int m_durationInSeconds;
     bool m_durationInSecondsHasBeenSet;
   };
 

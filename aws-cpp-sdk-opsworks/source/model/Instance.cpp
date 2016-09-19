@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -17,9 +17,15 @@
 
 #include <utility>
 
-using namespace Aws::OpsWorks::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace OpsWorks
+{
+namespace Model
+{
 
 Instance::Instance() : 
     m_agentVersionHasBeenSet(false),
@@ -62,6 +68,7 @@ Instance::Instance() :
     m_stackIdHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
+    m_tenancyHasBeenSet(false),
     m_virtualizationTypeHasBeenSet(false)
 {
 }
@@ -107,6 +114,7 @@ Instance::Instance(const JsonValue& jsonValue) :
     m_stackIdHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
+    m_tenancyHasBeenSet(false),
     m_virtualizationTypeHasBeenSet(false)
 {
   *this = jsonValue;
@@ -389,6 +397,13 @@ Instance& Instance::operator =(const JsonValue& jsonValue)
     m_subnetIdHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("Tenancy"))
+  {
+    m_tenancy = jsonValue.GetString("Tenancy");
+
+    m_tenancyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("VirtualizationType"))
   {
     m_virtualizationType = VirtualizationTypeMapper::GetVirtualizationTypeForName(jsonValue.GetString("VirtualizationType"));
@@ -643,6 +658,12 @@ JsonValue Instance::Jsonize() const
 
   }
 
+  if(m_tenancyHasBeenSet)
+  {
+   payload.WithString("Tenancy", m_tenancy);
+
+  }
+
   if(m_virtualizationTypeHasBeenSet)
   {
    payload.WithString("VirtualizationType", VirtualizationTypeMapper::GetNameForVirtualizationType(m_virtualizationType));
@@ -650,3 +671,7 @@ JsonValue Instance::Jsonize() const
 
   return payload;
 }
+
+} // namespace Model
+} // namespace OpsWorks
+} // namespace Aws

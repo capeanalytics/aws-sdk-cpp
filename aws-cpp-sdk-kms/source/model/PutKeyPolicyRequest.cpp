@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -24,7 +24,9 @@ using namespace Aws::Utils;
 PutKeyPolicyRequest::PutKeyPolicyRequest() : 
     m_keyIdHasBeenSet(false),
     m_policyNameHasBeenSet(false),
-    m_policyHasBeenSet(false)
+    m_policyHasBeenSet(false),
+    m_bypassPolicyLockoutSafetyCheck(false),
+    m_bypassPolicyLockoutSafetyCheckHasBeenSet(false)
 {
 }
 
@@ -47,6 +49,12 @@ Aws::String PutKeyPolicyRequest::SerializePayload() const
   if(m_policyHasBeenSet)
   {
    payload.WithString("Policy", m_policy);
+
+  }
+
+  if(m_bypassPolicyLockoutSafetyCheckHasBeenSet)
+  {
+   payload.WithBool("BypassPolicyLockoutSafetyCheck", m_bypassPolicyLockoutSafetyCheck);
 
   }
 

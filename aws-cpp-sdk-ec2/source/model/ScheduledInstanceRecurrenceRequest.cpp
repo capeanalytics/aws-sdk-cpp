@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -19,9 +19,15 @@
 
 #include <utility>
 
-using namespace Aws::EC2::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
+
+namespace Aws
+{
+namespace EC2
+{
+namespace Model
+{
 
 ScheduledInstanceRecurrenceRequest::ScheduledInstanceRecurrenceRequest() : 
     m_frequencyHasBeenSet(false),
@@ -99,10 +105,12 @@ void ScheduledInstanceRecurrenceRequest::OutputToStream(Aws::OStream& oStream, c
   {
       oStream << location << index << locationValue << ".Frequency=" << StringUtils::URLEncode(m_frequency.c_str()) << "&";
   }
+
   if(m_intervalHasBeenSet)
   {
       oStream << location << index << locationValue << ".Interval=" << m_interval << "&";
   }
+
   if(m_occurrenceDaysHasBeenSet)
   {
       unsigned occurrenceDaysIdx = 1;
@@ -111,14 +119,17 @@ void ScheduledInstanceRecurrenceRequest::OutputToStream(Aws::OStream& oStream, c
         oStream << location << index << locationValue << ".OccurrenceDay." << occurrenceDaysIdx++ << "=" << item << "&";
       }
   }
+
   if(m_occurrenceRelativeToEndHasBeenSet)
   {
       oStream << location << index << locationValue << ".OccurrenceRelativeToEnd=" << m_occurrenceRelativeToEnd << "&";
   }
+
   if(m_occurrenceUnitHasBeenSet)
   {
       oStream << location << index << locationValue << ".OccurrenceUnit=" << StringUtils::URLEncode(m_occurrenceUnit.c_str()) << "&";
   }
+
 }
 
 void ScheduledInstanceRecurrenceRequest::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -148,3 +159,7 @@ void ScheduledInstanceRecurrenceRequest::OutputToStream(Aws::OStream& oStream, c
       oStream << location << ".OccurrenceUnit=" << StringUtils::URLEncode(m_occurrenceUnit.c_str()) << "&";
   }
 }
+
+} // namespace Model
+} // namespace EC2
+} // namespace Aws

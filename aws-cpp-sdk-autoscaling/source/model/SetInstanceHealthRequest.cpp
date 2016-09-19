@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -35,14 +35,17 @@ Aws::String SetInstanceHealthRequest::SerializePayload() const
   {
     ss << "InstanceId=" << StringUtils::URLEncode(m_instanceId.c_str()) << "&";
   }
+
   if(m_healthStatusHasBeenSet)
   {
     ss << "HealthStatus=" << StringUtils::URLEncode(m_healthStatus.c_str()) << "&";
   }
+
   if(m_shouldRespectGracePeriodHasBeenSet)
   {
     ss << "ShouldRespectGracePeriod=" << m_shouldRespectGracePeriod << "&";
   }
+
   ss << "Version=2011-01-01";
   return ss.str();
 }

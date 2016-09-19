@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -242,8 +242,7 @@ namespace Model
         * the default http client factory will be used
         */
         ECSClient(const std::shared_ptr<Auth::AWSCredentialsProvider>& credentialsProvider,
-            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration(),
-            const std::shared_ptr<Http::HttpClientFactory const>& httpClientFactory = nullptr);
+            const Client::ClientConfiguration& clientConfiguration = Client::ClientConfiguration());
 
         virtual ~ECSClient();
 
@@ -280,16 +279,22 @@ namespace Model
          * definition. If the number of tasks running in a service drops below
          * <code>desiredCount</code>, Amazon ECS spawns another instantiation of the task
          * in the specified cluster. To update an existing service, see
-         * <a>UpdateService</a>.</p> <p>You can optionally specify a deployment
-         * configuration for your service. During a deployment (which is triggered by
-         * changing the task definition of a service with an <a>UpdateService</a>
-         * operation), the service scheduler uses the <code>minimumHealthyPercent</code>
-         * and <code>maximumPercent</code> parameters to determine the deployment
-         * strategy.</p> <p>If the <code>minimumHealthyPercent</code> is below 100%, the
-         * scheduler can ignore the <code>desiredCount</code> temporarily during a
-         * deployment. For example, if your service has a <code>desiredCount</code> of four
-         * tasks, a <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop
-         * two existing tasks before starting two new tasks. Tasks for services that <i>do
+         * <a>UpdateService</a>.</p> <p>In addition to maintaining the desired count of
+         * tasks in your service, you can optionally run your service behind a load
+         * balancer. The load balancer distributes traffic across the tasks that are
+         * associated with the service. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+         * Load Balancing</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can optionally specify a deployment configuration for your
+         * service. During a deployment (which is triggered by changing the task definition
+         * of a service with an <a>UpdateService</a> operation), the service scheduler uses
+         * the <code>minimumHealthyPercent</code> and <code>maximumPercent</code>
+         * parameters to determine the deployment strategy.</p> <p>If the
+         * <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the
+         * <code>desiredCount</code> temporarily during a deployment. For example, if your
+         * service has a <code>desiredCount</code> of four tasks, a
+         * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two
+         * existing tasks before starting two new tasks. Tasks for services that <i>do
          * not</i> use a load balancer are considered healthy if they are in the
          * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load
          * balancer are considered healthy if they are in the <code>RUNNING</code> state
@@ -322,16 +327,22 @@ namespace Model
          * definition. If the number of tasks running in a service drops below
          * <code>desiredCount</code>, Amazon ECS spawns another instantiation of the task
          * in the specified cluster. To update an existing service, see
-         * <a>UpdateService</a>.</p> <p>You can optionally specify a deployment
-         * configuration for your service. During a deployment (which is triggered by
-         * changing the task definition of a service with an <a>UpdateService</a>
-         * operation), the service scheduler uses the <code>minimumHealthyPercent</code>
-         * and <code>maximumPercent</code> parameters to determine the deployment
-         * strategy.</p> <p>If the <code>minimumHealthyPercent</code> is below 100%, the
-         * scheduler can ignore the <code>desiredCount</code> temporarily during a
-         * deployment. For example, if your service has a <code>desiredCount</code> of four
-         * tasks, a <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop
-         * two existing tasks before starting two new tasks. Tasks for services that <i>do
+         * <a>UpdateService</a>.</p> <p>In addition to maintaining the desired count of
+         * tasks in your service, you can optionally run your service behind a load
+         * balancer. The load balancer distributes traffic across the tasks that are
+         * associated with the service. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+         * Load Balancing</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can optionally specify a deployment configuration for your
+         * service. During a deployment (which is triggered by changing the task definition
+         * of a service with an <a>UpdateService</a> operation), the service scheduler uses
+         * the <code>minimumHealthyPercent</code> and <code>maximumPercent</code>
+         * parameters to determine the deployment strategy.</p> <p>If the
+         * <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the
+         * <code>desiredCount</code> temporarily during a deployment. For example, if your
+         * service has a <code>desiredCount</code> of four tasks, a
+         * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two
+         * existing tasks before starting two new tasks. Tasks for services that <i>do
          * not</i> use a load balancer are considered healthy if they are in the
          * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load
          * balancer are considered healthy if they are in the <code>RUNNING</code> state
@@ -366,16 +377,22 @@ namespace Model
          * definition. If the number of tasks running in a service drops below
          * <code>desiredCount</code>, Amazon ECS spawns another instantiation of the task
          * in the specified cluster. To update an existing service, see
-         * <a>UpdateService</a>.</p> <p>You can optionally specify a deployment
-         * configuration for your service. During a deployment (which is triggered by
-         * changing the task definition of a service with an <a>UpdateService</a>
-         * operation), the service scheduler uses the <code>minimumHealthyPercent</code>
-         * and <code>maximumPercent</code> parameters to determine the deployment
-         * strategy.</p> <p>If the <code>minimumHealthyPercent</code> is below 100%, the
-         * scheduler can ignore the <code>desiredCount</code> temporarily during a
-         * deployment. For example, if your service has a <code>desiredCount</code> of four
-         * tasks, a <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop
-         * two existing tasks before starting two new tasks. Tasks for services that <i>do
+         * <a>UpdateService</a>.</p> <p>In addition to maintaining the desired count of
+         * tasks in your service, you can optionally run your service behind a load
+         * balancer. The load balancer distributes traffic across the tasks that are
+         * associated with the service. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+         * Load Balancing</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can optionally specify a deployment configuration for your
+         * service. During a deployment (which is triggered by changing the task definition
+         * of a service with an <a>UpdateService</a> operation), the service scheduler uses
+         * the <code>minimumHealthyPercent</code> and <code>maximumPercent</code>
+         * parameters to determine the deployment strategy.</p> <p>If the
+         * <code>minimumHealthyPercent</code> is below 100%, the scheduler can ignore the
+         * <code>desiredCount</code> temporarily during a deployment. For example, if your
+         * service has a <code>desiredCount</code> of four tasks, a
+         * <code>minimumHealthyPercent</code> of 50% allows the scheduler to stop two
+         * existing tasks before starting two new tasks. Tasks for services that <i>do
          * not</i> use a load balancer are considered healthy if they are in the
          * <code>RUNNING</code> state; tasks for services that <i>do</i> use a load
          * balancer are considered healthy if they are in the <code>RUNNING</code> state
@@ -502,9 +519,11 @@ namespace Model
          * avoid any orphaned tasks from consuming resources.</p> <p>Deregistering a
          * container instance removes the instance from a cluster, but it does not
          * terminate the EC2 instance; if you are finished using the instance, be sure to
-         * terminate it in the Amazon EC2 console to stop billing.</p> <note><p>When you
-         * terminate a container instance, it is automatically deregistered from your
-         * cluster.</p></note>
+         * terminate it in the Amazon EC2 console to stop billing.</p> <note> <p>If you
+         * terminate a running container instance with a connected Amazon ECS container
+         * agent, the agent automatically deregisters the instance from your cluster
+         * (stopped container instances or instances with disconnected agents are not
+         * automatically deregistered when terminated).</p> </note>
          */
         virtual Model::DeregisterContainerInstanceOutcome DeregisterContainerInstance(const Model::DeregisterContainerInstanceRequest& request) const;
 
@@ -516,9 +535,11 @@ namespace Model
          * avoid any orphaned tasks from consuming resources.</p> <p>Deregistering a
          * container instance removes the instance from a cluster, but it does not
          * terminate the EC2 instance; if you are finished using the instance, be sure to
-         * terminate it in the Amazon EC2 console to stop billing.</p> <note><p>When you
-         * terminate a container instance, it is automatically deregistered from your
-         * cluster.</p></note>
+         * terminate it in the Amazon EC2 console to stop billing.</p> <note> <p>If you
+         * terminate a running container instance with a connected Amazon ECS container
+         * agent, the agent automatically deregisters the instance from your cluster
+         * (stopped container instances or instances with disconnected agents are not
+         * automatically deregistered when terminated).</p> </note>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -532,9 +553,11 @@ namespace Model
          * avoid any orphaned tasks from consuming resources.</p> <p>Deregistering a
          * container instance removes the instance from a cluster, but it does not
          * terminate the EC2 instance; if you are finished using the instance, be sure to
-         * terminate it in the Amazon EC2 console to stop billing.</p> <note><p>When you
-         * terminate a container instance, it is automatically deregistered from your
-         * cluster.</p></note>
+         * terminate it in the Amazon EC2 console to stop billing.</p> <note> <p>If you
+         * terminate a running container instance with a connected Amazon ECS container
+         * agent, the agent automatically deregisters the instance from your cluster
+         * (stopped container instances or instances with disconnected agents are not
+         * automatically deregistered when terminated).</p> </note>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -703,15 +726,15 @@ namespace Model
         virtual void DescribeTasksAsync(const Model::DescribeTasksRequest& request, const DescribeTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Returns an
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Returns an
          * endpoint for the Amazon EC2 Container Service agent to poll for updates.</p>
          */
         virtual Model::DiscoverPollEndpointOutcome DiscoverPollEndpoint(const Model::DiscoverPollEndpointRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Returns an
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Returns an
          * endpoint for the Amazon EC2 Container Service agent to poll for updates.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
@@ -719,8 +742,8 @@ namespace Model
         virtual Model::DiscoverPollEndpointOutcomeCallable DiscoverPollEndpointCallable(const Model::DiscoverPollEndpointRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Returns an
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Returns an
          * endpoint for the Amazon EC2 Container Service agent to poll for updates.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
@@ -787,16 +810,22 @@ namespace Model
         /**
          * <p>Returns a list of task definition families that are registered to your
          * account (which may include task definition families that no longer have any
-         * <code>ACTIVE</code> task definitions). You can filter the results with the
-         * <code>familyPrefix</code> parameter.</p>
+         * <code>ACTIVE</code> task definition revisions).</p> <p>You can filter out task
+         * definition families that do not contain any <code>ACTIVE</code> task definition
+         * revisions by setting the <code>status</code> parameter to <code>ACTIVE</code>.
+         * You can also filter the results with the <code>familyPrefix</code>
+         * parameter.</p>
          */
         virtual Model::ListTaskDefinitionFamiliesOutcome ListTaskDefinitionFamilies(const Model::ListTaskDefinitionFamiliesRequest& request) const;
 
         /**
          * <p>Returns a list of task definition families that are registered to your
          * account (which may include task definition families that no longer have any
-         * <code>ACTIVE</code> task definitions). You can filter the results with the
-         * <code>familyPrefix</code> parameter.</p>
+         * <code>ACTIVE</code> task definition revisions).</p> <p>You can filter out task
+         * definition families that do not contain any <code>ACTIVE</code> task definition
+         * revisions by setting the <code>status</code> parameter to <code>ACTIVE</code>.
+         * You can also filter the results with the <code>familyPrefix</code>
+         * parameter.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -805,8 +834,11 @@ namespace Model
         /**
          * <p>Returns a list of task definition families that are registered to your
          * account (which may include task definition families that no longer have any
-         * <code>ACTIVE</code> task definitions). You can filter the results with the
-         * <code>familyPrefix</code> parameter.</p>
+         * <code>ACTIVE</code> task definition revisions).</p> <p>You can filter out task
+         * definition families that do not contain any <code>ACTIVE</code> task definition
+         * revisions by setting the <code>status</code> parameter to <code>ACTIVE</code>.
+         * You can also filter the results with the <code>familyPrefix</code>
+         * parameter.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -841,7 +873,9 @@ namespace Model
          * <p>Returns a list of tasks for a specified cluster. You can filter the results
          * by family name, by a particular container instance, or by the desired status of
          * the task with the <code>family</code>, <code>containerInstance</code>, and
-         * <code>desiredStatus</code> parameters.</p>
+         * <code>desiredStatus</code> parameters.</p> <p>Recently-stopped tasks might
+         * appear in the returned results. Currently, stopped tasks appear in the returned
+         * results for at least one hour. </p>
          */
         virtual Model::ListTasksOutcome ListTasks(const Model::ListTasksRequest& request) const;
 
@@ -849,7 +883,9 @@ namespace Model
          * <p>Returns a list of tasks for a specified cluster. You can filter the results
          * by family name, by a particular container instance, or by the desired status of
          * the task with the <code>family</code>, <code>containerInstance</code>, and
-         * <code>desiredStatus</code> parameters.</p>
+         * <code>desiredStatus</code> parameters.</p> <p>Recently-stopped tasks might
+         * appear in the returned results. Currently, stopped tasks appear in the returned
+         * results for at least one hour. </p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -859,35 +895,37 @@ namespace Model
          * <p>Returns a list of tasks for a specified cluster. You can filter the results
          * by family name, by a particular container instance, or by the desired status of
          * the task with the <code>family</code>, <code>containerInstance</code>, and
-         * <code>desiredStatus</code> parameters.</p>
+         * <code>desiredStatus</code> parameters.</p> <p>Recently-stopped tasks might
+         * appear in the returned results. Currently, stopped tasks appear in the returned
+         * results for at least one hour. </p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListTasksAsync(const Model::ListTasksRequest& request, const ListTasksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Registers an EC2
-         * instance into the specified cluster. This instance becomes available to place
-         * containers on.</p>
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Registers an
+         * EC2 instance into the specified cluster. This instance becomes available to
+         * place containers on.</p>
          */
         virtual Model::RegisterContainerInstanceOutcome RegisterContainerInstance(const Model::RegisterContainerInstanceRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Registers an EC2
-         * instance into the specified cluster. This instance becomes available to place
-         * containers on.</p>
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Registers an
+         * EC2 instance into the specified cluster. This instance becomes available to
+         * place containers on.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::RegisterContainerInstanceOutcomeCallable RegisterContainerInstanceCallable(const Model::RegisterContainerInstanceRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Registers an EC2
-         * instance into the specified cluster. This instance becomes available to place
-         * containers on.</p>
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Registers an
+         * EC2 instance into the specified cluster. This instance becomes available to
+         * place containers on.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -900,7 +938,18 @@ namespace Model
          * task definition parameters and defaults, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon
          * ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p> <p>You can specify an IAM role for your task with the
+         * <code>taskRoleArn</code> parameter. When you specify an IAM role for a task, its
+         * containers can then use the latest versions of the AWS CLI or SDKs to make API
+         * requests to the AWS services that are specified in the IAM policy associated
+         * with the role. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM
+         * Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can specify a Docker networking mode for the containers in
+         * your task definition with the <code>networkMode</code> parameter. The available
+         * network modes correspond to those described in <a
+         * href="https://docs.docker.com/engine/reference/run/#/network-settings">Network
+         * settings</a> in the Docker run reference.</p>
          */
         virtual Model::RegisterTaskDefinitionOutcome RegisterTaskDefinition(const Model::RegisterTaskDefinitionRequest& request) const;
 
@@ -911,7 +960,18 @@ namespace Model
          * task definition parameters and defaults, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon
          * ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p> <p>You can specify an IAM role for your task with the
+         * <code>taskRoleArn</code> parameter. When you specify an IAM role for a task, its
+         * containers can then use the latest versions of the AWS CLI or SDKs to make API
+         * requests to the AWS services that are specified in the IAM policy associated
+         * with the role. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM
+         * Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can specify a Docker networking mode for the containers in
+         * your task definition with the <code>networkMode</code> parameter. The available
+         * network modes correspond to those described in <a
+         * href="https://docs.docker.com/engine/reference/run/#/network-settings">Network
+         * settings</a> in the Docker run reference.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -924,7 +984,18 @@ namespace Model
          * task definition parameters and defaults, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon
          * ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p> <p>You can specify an IAM role for your task with the
+         * <code>taskRoleArn</code> parameter. When you specify an IAM role for a task, its
+         * containers can then use the latest versions of the AWS CLI or SDKs to make API
+         * requests to the AWS services that are specified in the IAM policy associated
+         * with the role. For more information, see <a
+         * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM
+         * Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer
+         * Guide</i>.</p> <p>You can specify a Docker networking mode for the containers in
+         * your task definition with the <code>networkMode</code> parameter. The available
+         * network modes correspond to those described in <a
+         * href="https://docs.docker.com/engine/reference/run/#/network-settings">Network
+         * settings</a> in the Docker run reference.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1021,15 +1092,15 @@ namespace Model
         virtual void StopTaskAsync(const Model::StopTaskRequest& request, const StopTaskResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a container changed states.</p>
          */
         virtual Model::SubmitContainerStateChangeOutcome SubmitContainerStateChange(const Model::SubmitContainerStateChangeRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a container changed states.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
@@ -1037,8 +1108,8 @@ namespace Model
         virtual Model::SubmitContainerStateChangeOutcomeCallable SubmitContainerStateChangeCallable(const Model::SubmitContainerStateChangeRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a container changed states.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
@@ -1046,15 +1117,15 @@ namespace Model
         virtual void SubmitContainerStateChangeAsync(const Model::SubmitContainerStateChangeRequest& request, const SubmitContainerStateChangeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a task changed states.</p>
          */
         virtual Model::SubmitTaskStateChangeOutcome SubmitTaskStateChange(const Model::SubmitTaskStateChangeRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a task changed states.</p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
@@ -1062,8 +1133,8 @@ namespace Model
         virtual Model::SubmitTaskStateChangeOutcomeCallable SubmitTaskStateChangeCallable(const Model::SubmitTaskStateChangeRequest& request) const;
 
         /**
-         * <note><p>This action is only used by the Amazon EC2 Container Service agent, and
-         * it is not intended for use outside of the agent.</p></note> <p>Sent to
+         * <note> <p>This action is only used by the Amazon EC2 Container Service agent,
+         * and it is not intended for use outside of the agent.</p> </note> <p>Sent to
          * acknowledge that a task changed states.</p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
@@ -1075,8 +1146,8 @@ namespace Model
          * Updating the Amazon ECS container agent does not interrupt running tasks or
          * services on the container instance. The process for updating the agent differs
          * depending on whether your container instance was launched with the Amazon
-         * ECS-optimized AMI or another operating system.</p>
-         * <p><code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
+         * ECS-optimized AMI or another operating system.</p> <p>
+         * <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
          * Amazon Linux with the <code>ecs-init</code> service installed and running. For
          * help updating the Amazon ECS container agent on other operating systems, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually
@@ -1090,8 +1161,8 @@ namespace Model
          * Updating the Amazon ECS container agent does not interrupt running tasks or
          * services on the container instance. The process for updating the agent differs
          * depending on whether your container instance was launched with the Amazon
-         * ECS-optimized AMI or another operating system.</p>
-         * <p><code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
+         * ECS-optimized AMI or another operating system.</p> <p>
+         * <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
          * Amazon Linux with the <code>ecs-init</code> service installed and running. For
          * help updating the Amazon ECS container agent on other operating systems, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually
@@ -1107,8 +1178,8 @@ namespace Model
          * Updating the Amazon ECS container agent does not interrupt running tasks or
          * services on the container instance. The process for updating the agent differs
          * depending on whether your container instance was launched with the Amazon
-         * ECS-optimized AMI or another operating system.</p>
-         * <p><code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
+         * ECS-optimized AMI or another operating system.</p> <p>
+         * <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or
          * Amazon Linux with the <code>ecs-init</code> service installed and running. For
          * help updating the Amazon ECS container agent on other operating systems, see <a
          * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually

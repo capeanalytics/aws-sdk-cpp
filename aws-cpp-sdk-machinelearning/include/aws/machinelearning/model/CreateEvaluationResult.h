@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
@@ -33,11 +33,11 @@ namespace MachineLearning
 namespace Model
 {
   /**
-   * <p> Represents the output of a <a>CreateEvaluation</a> operation, and is an
-   * acknowledgement that Amazon ML received the request.</p>
-   * <p><a>CreateEvaluation</a> operation is asynchronous. You can poll for status
-   * updates by using the <a>GetEvaluation</a> operation and checking the
-   * <code>Status</code> parameter. </p>
+   * <p> Represents the output of a <code>CreateEvaluation</code> operation, and is
+   * an acknowledgement that Amazon ML received the request.</p>
+   * <p><code>CreateEvaluation</code> operation is asynchronous. You can poll for
+   * status updates by using the <code>GetEvcaluation</code> operation and checking
+   * the <code>Status</code> parameter. </p>
    */
   class AWS_MACHINELEARNING_API CreateEvaluationResult
   {
