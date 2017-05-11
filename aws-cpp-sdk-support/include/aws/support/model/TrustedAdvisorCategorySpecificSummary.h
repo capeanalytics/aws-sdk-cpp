@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/support/model/TrustedAdvisorCostOptimizingSummary.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>The container for summary information that relates to the category of the
-   * Trusted Advisor check.</p>
+   * Trusted Advisor check.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/TrustedAdvisorCategorySpecificSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API TrustedAdvisorCategorySpecificSummary
   {
@@ -58,7 +62,7 @@ namespace Model
      * <p>The summary information about cost savings for a Trusted Advisor check that
      * is in the Cost Optimizing category.</p>
      */
-    inline void SetCostOptimizing(TrustedAdvisorCostOptimizingSummary&& value) { m_costOptimizingHasBeenSet = true; m_costOptimizing = value; }
+    inline void SetCostOptimizing(TrustedAdvisorCostOptimizingSummary&& value) { m_costOptimizingHasBeenSet = true; m_costOptimizing = std::move(value); }
 
     /**
      * <p>The summary information about cost savings for a Trusted Advisor check that
@@ -70,7 +74,7 @@ namespace Model
      * <p>The summary information about cost savings for a Trusted Advisor check that
      * is in the Cost Optimizing category.</p>
      */
-    inline TrustedAdvisorCategorySpecificSummary& WithCostOptimizing(TrustedAdvisorCostOptimizingSummary&& value) { SetCostOptimizing(value); return *this;}
+    inline TrustedAdvisorCategorySpecificSummary& WithCostOptimizing(TrustedAdvisorCostOptimizingSummary&& value) { SetCostOptimizing(std::move(value)); return *this;}
 
   private:
     TrustedAdvisorCostOptimizingSummary m_costOptimizing;

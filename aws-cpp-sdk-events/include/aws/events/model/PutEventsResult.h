@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/events/model/PutEventsResultEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,9 +35,6 @@ namespace CloudWatchEvents
 {
 namespace Model
 {
-  /**
-   * <p>The result of the <a>PutEvents</a> operation.</p>
-   */
   class AWS_CLOUDWATCHEVENTS_API PutEventsResult
   {
   public:
@@ -44,75 +43,99 @@ namespace Model
     PutEventsResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>The number of failed entries.</p>
+     * <zonbook> <simpara>The number of failed entries.</simpara> </zonbook> <xhtml>
+     * <p>The number of failed entries.</p> </xhtml>
      */
     inline int GetFailedEntryCount() const{ return m_failedEntryCount; }
 
     /**
-     * <p>The number of failed entries.</p>
+     * <zonbook> <simpara>The number of failed entries.</simpara> </zonbook> <xhtml>
+     * <p>The number of failed entries.</p> </xhtml>
      */
     inline void SetFailedEntryCount(int value) { m_failedEntryCount = value; }
 
     /**
-     * <p>The number of failed entries.</p>
+     * <zonbook> <simpara>The number of failed entries.</simpara> </zonbook> <xhtml>
+     * <p>The number of failed entries.</p> </xhtml>
      */
     inline PutEventsResult& WithFailedEntryCount(int value) { SetFailedEntryCount(value); return *this;}
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
     inline const Aws::Vector<PutEventsResultEntry>& GetEntries() const{ return m_entries; }
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
     inline void SetEntries(const Aws::Vector<PutEventsResultEntry>& value) { m_entries = value; }
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
-    inline void SetEntries(Aws::Vector<PutEventsResultEntry>&& value) { m_entries = value; }
+    inline void SetEntries(Aws::Vector<PutEventsResultEntry>&& value) { m_entries = std::move(value); }
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
     inline PutEventsResult& WithEntries(const Aws::Vector<PutEventsResultEntry>& value) { SetEntries(value); return *this;}
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
-    inline PutEventsResult& WithEntries(Aws::Vector<PutEventsResultEntry>&& value) { SetEntries(value); return *this;}
+    inline PutEventsResult& WithEntries(Aws::Vector<PutEventsResultEntry>&& value) { SetEntries(std::move(value)); return *this;}
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
     inline PutEventsResult& AddEntries(const PutEventsResultEntry& value) { m_entries.push_back(value); return *this; }
 
     /**
-     * <p>A list of successfully and unsuccessfully ingested events results. If the
-     * ingestion was successful, the entry will have the event ID in it. If not, then
-     * the ErrorCode and ErrorMessage can be used to identify the problem with the
-     * entry.</p>
+     * <zonbook> <simpara>The successfully and unsuccessfully ingested events results.
+     * If the ingestion was successful, the entry has the event ID in it. Otherwise,
+     * you can use the error code and error message to identify the problem with the
+     * entry.</simpara> </zonbook> <xhtml> <p>The successfully and unsuccessfully
+     * ingested events results. If the ingestion was successful, the entry has the
+     * event ID in it. Otherwise, you can use the error code and error message to
+     * identify the problem with the entry.</p> </xhtml>
      */
-    inline PutEventsResult& AddEntries(PutEventsResultEntry&& value) { m_entries.push_back(value); return *this; }
+    inline PutEventsResult& AddEntries(PutEventsResultEntry&& value) { m_entries.push_back(std::move(value)); return *this; }
 
   private:
     int m_failedEntryCount;

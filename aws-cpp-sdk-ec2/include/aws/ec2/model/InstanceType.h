@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -26,6 +27,13 @@ namespace Model
   {
     NOT_SET,
     t1_micro,
+    t2_nano,
+    t2_micro,
+    t2_small,
+    t2_medium,
+    t2_large,
+    t2_xlarge,
+    t2_2xlarge,
     m1_small,
     m1_medium,
     m1_large,
@@ -39,23 +47,34 @@ namespace Model
     m4_2xlarge,
     m4_4xlarge,
     m4_10xlarge,
-    t2_nano,
-    t2_micro,
-    t2_small,
-    t2_medium,
-    t2_large,
+    m4_16xlarge,
     m2_xlarge,
     m2_2xlarge,
     m2_4xlarge,
     cr1_8xlarge,
-    x1_4xlarge,
-    x1_8xlarge,
+    r3_large,
+    r3_xlarge,
+    r3_2xlarge,
+    r3_4xlarge,
+    r3_8xlarge,
+    r4_large,
+    r4_xlarge,
+    r4_2xlarge,
+    r4_4xlarge,
+    r4_8xlarge,
+    r4_16xlarge,
     x1_16xlarge,
     x1_32xlarge,
     i2_xlarge,
     i2_2xlarge,
     i2_4xlarge,
     i2_8xlarge,
+    i3_large,
+    i3_xlarge,
+    i3_2xlarge,
+    i3_4xlarge,
+    i3_8xlarge,
+    i3_16xlarge,
     hi1_4xlarge,
     hs1_8xlarge,
     c1_medium,
@@ -75,15 +94,15 @@ namespace Model
     g2_2xlarge,
     g2_8xlarge,
     cg1_4xlarge,
-    r3_large,
-    r3_xlarge,
-    r3_2xlarge,
-    r3_4xlarge,
-    r3_8xlarge,
+    p2_xlarge,
+    p2_8xlarge,
+    p2_16xlarge,
     d2_xlarge,
     d2_2xlarge,
     d2_4xlarge,
-    d2_8xlarge
+    d2_8xlarge,
+    f1_2xlarge,
+    f1_16xlarge
   };
 
 namespace InstanceTypeMapper

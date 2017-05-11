@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The container instance ID or full Amazon Resource Name (ARN) of the container
@@ -65,7 +68,7 @@ namespace Model
      * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i>
      * </code>.</p>
      */
-    inline void SetContainerInstance(Aws::String&& value) { m_containerInstanceHasBeenSet = true; m_containerInstance = value; }
+    inline void SetContainerInstance(Aws::String&& value) { m_containerInstanceHasBeenSet = true; m_containerInstance = std::move(value); }
 
     /**
      * <p>The container instance ID or full Amazon Resource Name (ARN) of the container
@@ -98,7 +101,7 @@ namespace Model
      * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i>
      * </code>.</p>
      */
-    inline DiscoverPollEndpointRequest& WithContainerInstance(Aws::String&& value) { SetContainerInstance(value); return *this;}
+    inline DiscoverPollEndpointRequest& WithContainerInstance(Aws::String&& value) { SetContainerInstance(std::move(value)); return *this;}
 
     /**
      * <p>The container instance ID or full Amazon Resource Name (ARN) of the container
@@ -112,37 +115,44 @@ namespace Model
     inline DiscoverPollEndpointRequest& WithContainerInstance(const char* value) { SetContainerInstance(value); return *this;}
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
     inline const Aws::String& GetCluster() const{ return m_cluster; }
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
     inline void SetCluster(const Aws::String& value) { m_clusterHasBeenSet = true; m_cluster = value; }
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = value; }
+    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
     inline void SetCluster(const char* value) { m_clusterHasBeenSet = true; m_cluster.assign(value); }
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
     inline DiscoverPollEndpointRequest& WithCluster(const Aws::String& value) { SetCluster(value); return *this;}
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
-    inline DiscoverPollEndpointRequest& WithCluster(Aws::String&& value) { SetCluster(value); return *this;}
+    inline DiscoverPollEndpointRequest& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
 
     /**
-     * <p>The cluster that the container instance belongs to.</p>
+     * <p>The short name or full Amazon Resource Name (ARN) of the cluster that the
+     * container instance belongs to.</p>
      */
     inline DiscoverPollEndpointRequest& WithCluster(const char* value) { SetCluster(value); return *this;}
 

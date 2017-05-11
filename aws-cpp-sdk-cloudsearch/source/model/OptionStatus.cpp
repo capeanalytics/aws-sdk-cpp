@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudsearch/model/OptionStatus.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,6 +35,7 @@ OptionStatus::OptionStatus() :
     m_updateDateHasBeenSet(false),
     m_updateVersion(0),
     m_updateVersionHasBeenSet(false),
+    m_state(OptionState::NOT_SET),
     m_stateHasBeenSet(false),
     m_pendingDeletion(false),
     m_pendingDeletionHasBeenSet(false)
@@ -45,6 +47,7 @@ OptionStatus::OptionStatus(const XmlNode& xmlNode) :
     m_updateDateHasBeenSet(false),
     m_updateVersion(0),
     m_updateVersionHasBeenSet(false),
+    m_state(OptionState::NOT_SET),
     m_stateHasBeenSet(false),
     m_pendingDeletion(false),
     m_pendingDeletionHasBeenSet(false)
@@ -117,7 +120,7 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_pendingDeletionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PendingDeletion=" << m_pendingDeletion << "&";
+      oStream << location << index << locationValue << ".PendingDeletion=" << std::boolalpha << m_pendingDeletion << "&";
   }
 
 }
@@ -142,7 +145,7 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_pendingDeletionHasBeenSet)
   {
-      oStream << location << ".PendingDeletion=" << m_pendingDeletion << "&";
+      oStream << location << ".PendingDeletion=" << std::boolalpha << m_pendingDeletion << "&";
   }
 }
 

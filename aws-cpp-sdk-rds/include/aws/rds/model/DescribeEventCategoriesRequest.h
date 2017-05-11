@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeEventCategoriesMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeEventCategoriesRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeEventCategoriesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The type of source that will be generating the events.</p> <p>Valid values:
      * db-instance | db-parameter-group | db-security-group | db-snapshot</p>
@@ -51,7 +60,7 @@ namespace Model
      * <p>The type of source that will be generating the events.</p> <p>Valid values:
      * db-instance | db-parameter-group | db-security-group | db-snapshot</p>
      */
-    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
 
     /**
      * <p>The type of source that will be generating the events.</p> <p>Valid values:
@@ -69,7 +78,7 @@ namespace Model
      * <p>The type of source that will be generating the events.</p> <p>Valid values:
      * db-instance | db-parameter-group | db-security-group | db-snapshot</p>
      */
-    inline DescribeEventCategoriesRequest& WithSourceType(Aws::String&& value) { SetSourceType(value); return *this;}
+    inline DescribeEventCategoriesRequest& WithSourceType(Aws::String&& value) { SetSourceType(std::move(value)); return *this;}
 
     /**
      * <p>The type of source that will be generating the events.</p> <p>Valid values:
@@ -90,7 +99,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -100,7 +109,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeEventCategoriesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeEventCategoriesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -110,7 +119,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeEventCategoriesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeEventCategoriesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_sourceType;

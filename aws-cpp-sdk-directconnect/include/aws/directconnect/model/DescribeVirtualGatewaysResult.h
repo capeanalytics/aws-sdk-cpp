@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/directconnect/model/VirtualGateway.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace DirectConnect
 namespace Model
 {
   /**
-   * <p>A structure containing a list of virtual private gateways.</p>
+   * <p>A structure containing a list of virtual private gateways.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/VirtualGateways">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API DescribeVirtualGatewaysResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>A list of virtual private gateways.</p>
      */
-    inline void SetVirtualGateways(Aws::Vector<VirtualGateway>&& value) { m_virtualGateways = value; }
+    inline void SetVirtualGateways(Aws::Vector<VirtualGateway>&& value) { m_virtualGateways = std::move(value); }
 
     /**
      * <p>A list of virtual private gateways.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>A list of virtual private gateways.</p>
      */
-    inline DescribeVirtualGatewaysResult& WithVirtualGateways(Aws::Vector<VirtualGateway>&& value) { SetVirtualGateways(value); return *this;}
+    inline DescribeVirtualGatewaysResult& WithVirtualGateways(Aws::Vector<VirtualGateway>&& value) { SetVirtualGateways(std::move(value)); return *this;}
 
     /**
      * <p>A list of virtual private gateways.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>A list of virtual private gateways.</p>
      */
-    inline DescribeVirtualGatewaysResult& AddVirtualGateways(VirtualGateway&& value) { m_virtualGateways.push_back(value); return *this; }
+    inline DescribeVirtualGatewaysResult& AddVirtualGateways(VirtualGateway&& value) { m_virtualGateways.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<VirtualGateway> m_virtualGateways;

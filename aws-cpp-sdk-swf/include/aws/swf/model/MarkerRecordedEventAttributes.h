@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the <code>MarkerRecorded</code> event.</p>
+   * <p>Provides details of the <code>MarkerRecorded</code> event.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/MarkerRecordedEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API MarkerRecordedEventAttributes
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the marker.</p>
      */
-    inline void SetMarkerName(Aws::String&& value) { m_markerNameHasBeenSet = true; m_markerName = value; }
+    inline void SetMarkerName(Aws::String&& value) { m_markerNameHasBeenSet = true; m_markerName = std::move(value); }
 
     /**
      * <p>The name of the marker.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the marker.</p>
      */
-    inline MarkerRecordedEventAttributes& WithMarkerName(Aws::String&& value) { SetMarkerName(value); return *this;}
+    inline MarkerRecordedEventAttributes& WithMarkerName(Aws::String&& value) { SetMarkerName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the marker.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>Details of the marker (if any).</p>
      */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = value; }
+    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
 
     /**
      * <p>Details of the marker (if any).</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>Details of the marker (if any).</p>
      */
-    inline MarkerRecordedEventAttributes& WithDetails(Aws::String&& value) { SetDetails(value); return *this;}
+    inline MarkerRecordedEventAttributes& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
 
     /**
      * <p>Details of the marker (if any).</p>

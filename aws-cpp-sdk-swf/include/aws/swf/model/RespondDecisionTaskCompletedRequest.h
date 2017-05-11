@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/swf/model/Decision.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>taskToken</code> from the <a>DecisionTask</a>.</p>
@@ -61,7 +64,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = value; }
+    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = std::move(value); }
 
     /**
      * <p>The <code>taskToken</code> from the <a>DecisionTask</a>.</p>
@@ -88,7 +91,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline RespondDecisionTaskCompletedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(value); return *this;}
+    inline RespondDecisionTaskCompletedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>taskToken</code> from the <a>DecisionTask</a>.</p>
@@ -115,7 +118,7 @@ namespace Model
      * <p>The list of decisions (possibly empty) made by the decider while processing
      * this decision task. See the docs for the decision structure for details.</p>
      */
-    inline void SetDecisions(Aws::Vector<Decision>&& value) { m_decisionsHasBeenSet = true; m_decisions = value; }
+    inline void SetDecisions(Aws::Vector<Decision>&& value) { m_decisionsHasBeenSet = true; m_decisions = std::move(value); }
 
     /**
      * <p>The list of decisions (possibly empty) made by the decider while processing
@@ -127,7 +130,7 @@ namespace Model
      * <p>The list of decisions (possibly empty) made by the decider while processing
      * this decision task. See the docs for the decision structure for details.</p>
      */
-    inline RespondDecisionTaskCompletedRequest& WithDecisions(Aws::Vector<Decision>&& value) { SetDecisions(value); return *this;}
+    inline RespondDecisionTaskCompletedRequest& WithDecisions(Aws::Vector<Decision>&& value) { SetDecisions(std::move(value)); return *this;}
 
     /**
      * <p>The list of decisions (possibly empty) made by the decider while processing
@@ -139,7 +142,7 @@ namespace Model
      * <p>The list of decisions (possibly empty) made by the decider while processing
      * this decision task. See the docs for the decision structure for details.</p>
      */
-    inline RespondDecisionTaskCompletedRequest& AddDecisions(Decision&& value) { m_decisionsHasBeenSet = true; m_decisions.push_back(value); return *this; }
+    inline RespondDecisionTaskCompletedRequest& AddDecisions(Decision&& value) { m_decisionsHasBeenSet = true; m_decisions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>User defined context to add to workflow execution.</p>
@@ -154,7 +157,7 @@ namespace Model
     /**
      * <p>User defined context to add to workflow execution.</p>
      */
-    inline void SetExecutionContext(Aws::String&& value) { m_executionContextHasBeenSet = true; m_executionContext = value; }
+    inline void SetExecutionContext(Aws::String&& value) { m_executionContextHasBeenSet = true; m_executionContext = std::move(value); }
 
     /**
      * <p>User defined context to add to workflow execution.</p>
@@ -169,7 +172,7 @@ namespace Model
     /**
      * <p>User defined context to add to workflow execution.</p>
      */
-    inline RespondDecisionTaskCompletedRequest& WithExecutionContext(Aws::String&& value) { SetExecutionContext(value); return *this;}
+    inline RespondDecisionTaskCompletedRequest& WithExecutionContext(Aws::String&& value) { SetExecutionContext(std::move(value)); return *this;}
 
     /**
      * <p>User defined context to add to workflow execution.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * <p>Contains information about an IAM user entity.</p> <p>This data type is used
    * as a response element in the following actions:</p> <ul> <li> <p>
    * <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p>
-   * <a>ListUsers</a> </p> </li> </ul>
+   * <a>ListUsers</a> </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/User">AWS API
+   * Reference</a></p>
    */
   class AWS_IAM_API User
   {
@@ -67,7 +71,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = value; }
+    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
 
     /**
      * <p>The path to the user. For more information about paths, see <a
@@ -88,7 +92,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline User& WithPath(Aws::String&& value) { SetPath(value); return *this;}
+    inline User& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
 
     /**
      * <p>The path to the user. For more information about paths, see <a
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>The friendly name identifying the user.</p>
      */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = value; }
+    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
 
     /**
      * <p>The friendly name identifying the user.</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>The friendly name identifying the user.</p>
      */
-    inline User& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
+    inline User& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
      * <p>The friendly name identifying the user.</p>
@@ -154,7 +158,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = value; }
+    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
 
     /**
      * <p>The stable and unique string identifying the user. For more information about
@@ -178,7 +182,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline User& WithUserId(Aws::String&& value) { SetUserId(value); return *this;}
+    inline User& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
 
     /**
      * <p>The stable and unique string identifying the user. For more information about
@@ -210,7 +214,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the user. For more information
@@ -234,7 +238,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline User& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline User& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the user. For more information
@@ -260,7 +264,7 @@ namespace Model
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
      * date-time format</a>, when the user was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
@@ -272,7 +276,7 @@ namespace Model
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
      * date-time format</a>, when the user was created.</p>
      */
-    inline User& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline User& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
@@ -323,7 +327,7 @@ namespace Model
      * <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a>
      * actions. </p>
      */
-    inline void SetPasswordLastUsed(Aws::Utils::DateTime&& value) { m_passwordLastUsedHasBeenSet = true; m_passwordLastUsed = value; }
+    inline void SetPasswordLastUsed(Aws::Utils::DateTime&& value) { m_passwordLastUsedHasBeenSet = true; m_passwordLastUsed = std::move(value); }
 
     /**
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
@@ -357,7 +361,7 @@ namespace Model
      * <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a>
      * actions. </p>
      */
-    inline User& WithPasswordLastUsed(Aws::Utils::DateTime&& value) { SetPasswordLastUsed(value); return *this;}
+    inline User& WithPasswordLastUsed(Aws::Utils::DateTime&& value) { SetPasswordLastUsed(std::move(value)); return *this;}
 
   private:
     Aws::String m_path;

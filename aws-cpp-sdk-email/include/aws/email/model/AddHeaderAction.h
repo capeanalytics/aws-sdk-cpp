@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * email.</p> <p>For information about adding a header using a receipt rule, see
    * the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/AddHeaderAction">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API AddHeaderAction
   {
@@ -67,7 +71,7 @@ namespace Model
      * inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes
      * only.</p>
      */
-    inline void SetHeaderName(Aws::String&& value) { m_headerNameHasBeenSet = true; m_headerName = value; }
+    inline void SetHeaderName(Aws::String&& value) { m_headerNameHasBeenSet = true; m_headerName = std::move(value); }
 
     /**
      * <p>The name of the header to add. Must be between 1 and 50 characters,
@@ -88,7 +92,7 @@ namespace Model
      * inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes
      * only.</p>
      */
-    inline AddHeaderAction& WithHeaderName(Aws::String&& value) { SetHeaderName(value); return *this;}
+    inline AddHeaderAction& WithHeaderName(Aws::String&& value) { SetHeaderName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the header to add. Must be between 1 and 50 characters,
@@ -113,7 +117,7 @@ namespace Model
      * <p>Must be less than 2048 characters, and must not contain newline characters
      * ("\r" or "\n").</p>
      */
-    inline void SetHeaderValue(Aws::String&& value) { m_headerValueHasBeenSet = true; m_headerValue = value; }
+    inline void SetHeaderValue(Aws::String&& value) { m_headerValueHasBeenSet = true; m_headerValue = std::move(value); }
 
     /**
      * <p>Must be less than 2048 characters, and must not contain newline characters
@@ -131,7 +135,7 @@ namespace Model
      * <p>Must be less than 2048 characters, and must not contain newline characters
      * ("\r" or "\n").</p>
      */
-    inline AddHeaderAction& WithHeaderValue(Aws::String&& value) { SetHeaderValue(value); return *this;}
+    inline AddHeaderAction& WithHeaderValue(Aws::String&& value) { SetHeaderValue(std::move(value)); return *this;}
 
     /**
      * <p>Must be less than 2048 characters, and must not contain newline characters

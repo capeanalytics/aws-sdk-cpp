@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -33,13 +34,18 @@
 #include <aws/dynamodb/model/DeleteTableRequest.h>
 #include <aws/dynamodb/model/DescribeLimitsRequest.h>
 #include <aws/dynamodb/model/DescribeTableRequest.h>
+#include <aws/dynamodb/model/DescribeTimeToLiveRequest.h>
 #include <aws/dynamodb/model/GetItemRequest.h>
 #include <aws/dynamodb/model/ListTablesRequest.h>
+#include <aws/dynamodb/model/ListTagsOfResourceRequest.h>
 #include <aws/dynamodb/model/PutItemRequest.h>
 #include <aws/dynamodb/model/QueryRequest.h>
 #include <aws/dynamodb/model/ScanRequest.h>
+#include <aws/dynamodb/model/TagResourceRequest.h>
+#include <aws/dynamodb/model/UntagResourceRequest.h>
 #include <aws/dynamodb/model/UpdateItemRequest.h>
 #include <aws/dynamodb/model/UpdateTableRequest.h>
+#include <aws/dynamodb/model/UpdateTimeToLiveRequest.h>
 
 using namespace Aws;
 using namespace Aws::Auth;
@@ -123,7 +129,10 @@ BatchGetItemOutcome DynamoDBClient::BatchGetItem(const BatchGetItemRequest& requ
 
 BatchGetItemOutcomeCallable DynamoDBClient::BatchGetItemCallable(const BatchGetItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->BatchGetItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< BatchGetItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->BatchGetItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::BatchGetItemAsync(const BatchGetItemRequest& request, const BatchGetItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -154,7 +163,10 @@ BatchWriteItemOutcome DynamoDBClient::BatchWriteItem(const BatchWriteItemRequest
 
 BatchWriteItemOutcomeCallable DynamoDBClient::BatchWriteItemCallable(const BatchWriteItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->BatchWriteItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< BatchWriteItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->BatchWriteItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::BatchWriteItemAsync(const BatchWriteItemRequest& request, const BatchWriteItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -185,7 +197,10 @@ CreateTableOutcome DynamoDBClient::CreateTable(const CreateTableRequest& request
 
 CreateTableOutcomeCallable DynamoDBClient::CreateTableCallable(const CreateTableRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateTable(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateTableOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateTable(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::CreateTableAsync(const CreateTableRequest& request, const CreateTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -216,7 +231,10 @@ DeleteItemOutcome DynamoDBClient::DeleteItem(const DeleteItemRequest& request) c
 
 DeleteItemOutcomeCallable DynamoDBClient::DeleteItemCallable(const DeleteItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::DeleteItemAsync(const DeleteItemRequest& request, const DeleteItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -247,7 +265,10 @@ DeleteTableOutcome DynamoDBClient::DeleteTable(const DeleteTableRequest& request
 
 DeleteTableOutcomeCallable DynamoDBClient::DeleteTableCallable(const DeleteTableRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteTable(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteTableOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteTable(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::DeleteTableAsync(const DeleteTableRequest& request, const DeleteTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -278,7 +299,10 @@ DescribeLimitsOutcome DynamoDBClient::DescribeLimits(const DescribeLimitsRequest
 
 DescribeLimitsOutcomeCallable DynamoDBClient::DescribeLimitsCallable(const DescribeLimitsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeLimits(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeLimitsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeLimits(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::DescribeLimitsAsync(const DescribeLimitsRequest& request, const DescribeLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -309,7 +333,10 @@ DescribeTableOutcome DynamoDBClient::DescribeTable(const DescribeTableRequest& r
 
 DescribeTableOutcomeCallable DynamoDBClient::DescribeTableCallable(const DescribeTableRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeTable(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeTableOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeTable(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::DescribeTableAsync(const DescribeTableRequest& request, const DescribeTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -320,6 +347,40 @@ void DynamoDBClient::DescribeTableAsync(const DescribeTableRequest& request, con
 void DynamoDBClient::DescribeTableAsyncHelper(const DescribeTableRequest& request, const DescribeTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeTable(request), context);
+}
+
+DescribeTimeToLiveOutcome DynamoDBClient::DescribeTimeToLive(const DescribeTimeToLiveRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeTimeToLiveOutcome(DescribeTimeToLiveResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeTimeToLiveOutcome(outcome.GetError());
+  }
+}
+
+DescribeTimeToLiveOutcomeCallable DynamoDBClient::DescribeTimeToLiveCallable(const DescribeTimeToLiveRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< DescribeTimeToLiveOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeTimeToLive(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DynamoDBClient::DescribeTimeToLiveAsync(const DescribeTimeToLiveRequest& request, const DescribeTimeToLiveResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->DescribeTimeToLiveAsyncHelper( request, handler, context ); } );
+}
+
+void DynamoDBClient::DescribeTimeToLiveAsyncHelper(const DescribeTimeToLiveRequest& request, const DescribeTimeToLiveResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeTimeToLive(request), context);
 }
 
 GetItemOutcome DynamoDBClient::GetItem(const GetItemRequest& request) const
@@ -340,7 +401,10 @@ GetItemOutcome DynamoDBClient::GetItem(const GetItemRequest& request) const
 
 GetItemOutcomeCallable DynamoDBClient::GetItemCallable(const GetItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::GetItemAsync(const GetItemRequest& request, const GetItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -371,7 +435,10 @@ ListTablesOutcome DynamoDBClient::ListTables(const ListTablesRequest& request) c
 
 ListTablesOutcomeCallable DynamoDBClient::ListTablesCallable(const ListTablesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTables(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTablesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTables(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::ListTablesAsync(const ListTablesRequest& request, const ListTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -382,6 +449,40 @@ void DynamoDBClient::ListTablesAsync(const ListTablesRequest& request, const Lis
 void DynamoDBClient::ListTablesAsyncHelper(const ListTablesRequest& request, const ListTablesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, ListTables(request), context);
+}
+
+ListTagsOfResourceOutcome DynamoDBClient::ListTagsOfResource(const ListTagsOfResourceRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListTagsOfResourceOutcome(ListTagsOfResourceResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListTagsOfResourceOutcome(outcome.GetError());
+  }
+}
+
+ListTagsOfResourceOutcomeCallable DynamoDBClient::ListTagsOfResourceCallable(const ListTagsOfResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsOfResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTagsOfResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DynamoDBClient::ListTagsOfResourceAsync(const ListTagsOfResourceRequest& request, const ListTagsOfResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListTagsOfResourceAsyncHelper( request, handler, context ); } );
+}
+
+void DynamoDBClient::ListTagsOfResourceAsyncHelper(const ListTagsOfResourceRequest& request, const ListTagsOfResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListTagsOfResource(request), context);
 }
 
 PutItemOutcome DynamoDBClient::PutItem(const PutItemRequest& request) const
@@ -402,7 +503,10 @@ PutItemOutcome DynamoDBClient::PutItem(const PutItemRequest& request) const
 
 PutItemOutcomeCallable DynamoDBClient::PutItemCallable(const PutItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->PutItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< PutItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::PutItemAsync(const PutItemRequest& request, const PutItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -433,7 +537,10 @@ QueryOutcome DynamoDBClient::Query(const QueryRequest& request) const
 
 QueryOutcomeCallable DynamoDBClient::QueryCallable(const QueryRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->Query(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< QueryOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->Query(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::QueryAsync(const QueryRequest& request, const QueryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -464,7 +571,10 @@ ScanOutcome DynamoDBClient::Scan(const ScanRequest& request) const
 
 ScanOutcomeCallable DynamoDBClient::ScanCallable(const ScanRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->Scan(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ScanOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->Scan(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::ScanAsync(const ScanRequest& request, const ScanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -475,6 +585,74 @@ void DynamoDBClient::ScanAsync(const ScanRequest& request, const ScanResponseRec
 void DynamoDBClient::ScanAsyncHelper(const ScanRequest& request, const ScanResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, Scan(request), context);
+}
+
+TagResourceOutcome DynamoDBClient::TagResource(const TagResourceRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return TagResourceOutcome(NoResult());
+  }
+  else
+  {
+    return TagResourceOutcome(outcome.GetError());
+  }
+}
+
+TagResourceOutcomeCallable DynamoDBClient::TagResourceCallable(const TagResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< TagResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->TagResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DynamoDBClient::TagResourceAsync(const TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->TagResourceAsyncHelper( request, handler, context ); } );
+}
+
+void DynamoDBClient::TagResourceAsyncHelper(const TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, TagResource(request), context);
+}
+
+UntagResourceOutcome DynamoDBClient::UntagResource(const UntagResourceRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return UntagResourceOutcome(NoResult());
+  }
+  else
+  {
+    return UntagResourceOutcome(outcome.GetError());
+  }
+}
+
+UntagResourceOutcomeCallable DynamoDBClient::UntagResourceCallable(const UntagResourceRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UntagResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UntagResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DynamoDBClient::UntagResourceAsync(const UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UntagResourceAsyncHelper( request, handler, context ); } );
+}
+
+void DynamoDBClient::UntagResourceAsyncHelper(const UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UntagResource(request), context);
 }
 
 UpdateItemOutcome DynamoDBClient::UpdateItem(const UpdateItemRequest& request) const
@@ -495,7 +673,10 @@ UpdateItemOutcome DynamoDBClient::UpdateItem(const UpdateItemRequest& request) c
 
 UpdateItemOutcomeCallable DynamoDBClient::UpdateItemCallable(const UpdateItemRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateItem(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateItemOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateItem(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::UpdateItemAsync(const UpdateItemRequest& request, const UpdateItemResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -526,7 +707,10 @@ UpdateTableOutcome DynamoDBClient::UpdateTable(const UpdateTableRequest& request
 
 UpdateTableOutcomeCallable DynamoDBClient::UpdateTableCallable(const UpdateTableRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateTable(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateTableOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateTable(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DynamoDBClient::UpdateTableAsync(const UpdateTableRequest& request, const UpdateTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -537,5 +721,39 @@ void DynamoDBClient::UpdateTableAsync(const UpdateTableRequest& request, const U
 void DynamoDBClient::UpdateTableAsyncHelper(const UpdateTableRequest& request, const UpdateTableResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, UpdateTable(request), context);
+}
+
+UpdateTimeToLiveOutcome DynamoDBClient::UpdateTimeToLive(const UpdateTimeToLiveRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return UpdateTimeToLiveOutcome(UpdateTimeToLiveResult(outcome.GetResult()));
+  }
+  else
+  {
+    return UpdateTimeToLiveOutcome(outcome.GetError());
+  }
+}
+
+UpdateTimeToLiveOutcomeCallable DynamoDBClient::UpdateTimeToLiveCallable(const UpdateTimeToLiveRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateTimeToLiveOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateTimeToLive(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DynamoDBClient::UpdateTimeToLiveAsync(const UpdateTimeToLiveRequest& request, const UpdateTimeToLiveResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateTimeToLiveAsyncHelper( request, handler, context ); } );
+}
+
+void DynamoDBClient::UpdateTimeToLiveAsyncHelper(const UpdateTimeToLiveRequest& request, const UpdateTimeToLiveResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateTimeToLive(request), context);
 }
 

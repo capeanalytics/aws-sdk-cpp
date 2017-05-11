@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>The AccountLimit data type.</p>
+   * <p>The AccountLimit data type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/AccountLimit">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API AccountLimit
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The name of the account limit. Currently, the only account limit is
      * <code>StackLimit</code>.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the account limit. Currently, the only account limit is
@@ -78,7 +82,7 @@ namespace Model
      * <p>The name of the account limit. Currently, the only account limit is
      * <code>StackLimit</code>.</p>
      */
-    inline AccountLimit& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline AccountLimit& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the account limit. Currently, the only account limit is

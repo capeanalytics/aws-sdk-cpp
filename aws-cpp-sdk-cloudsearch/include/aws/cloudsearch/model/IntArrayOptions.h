@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
   /**
    * <p>Options for a field that contains an array of 64-bit signed integers. Present
    * if <code>IndexFieldType</code> specifies the field is of type
-   * <code>int-array</code>. All options are enabled by default.</p>
+   * <code>int-array</code>. All options are enabled by default.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/IntArrayOptions">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API IntArrayOptions
   {
@@ -74,7 +79,7 @@ namespace Model
     /**
      * <p>A list of source fields to map to the field. </p>
      */
-    inline void SetSourceFields(Aws::String&& value) { m_sourceFieldsHasBeenSet = true; m_sourceFields = value; }
+    inline void SetSourceFields(Aws::String&& value) { m_sourceFieldsHasBeenSet = true; m_sourceFields = std::move(value); }
 
     /**
      * <p>A list of source fields to map to the field. </p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>A list of source fields to map to the field. </p>
      */
-    inline IntArrayOptions& WithSourceFields(Aws::String&& value) { SetSourceFields(value); return *this;}
+    inline IntArrayOptions& WithSourceFields(Aws::String&& value) { SetSourceFields(std::move(value)); return *this;}
 
     /**
      * <p>A list of source fields to map to the field. </p>

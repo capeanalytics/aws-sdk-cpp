@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opsworks/model/WeeklyAutoScalingSchedule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The instance ID.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The instance ID.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The instance ID.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The instance ID.</p>
      */
-    inline SetTimeBasedAutoScalingRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline SetTimeBasedAutoScalingRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The instance ID.</p>
@@ -83,7 +86,7 @@ namespace Model
     /**
      * <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
      */
-    inline void SetAutoScalingSchedule(WeeklyAutoScalingSchedule&& value) { m_autoScalingScheduleHasBeenSet = true; m_autoScalingSchedule = value; }
+    inline void SetAutoScalingSchedule(WeeklyAutoScalingSchedule&& value) { m_autoScalingScheduleHasBeenSet = true; m_autoScalingSchedule = std::move(value); }
 
     /**
      * <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
@@ -93,7 +96,7 @@ namespace Model
     /**
      * <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
      */
-    inline SetTimeBasedAutoScalingRequest& WithAutoScalingSchedule(WeeklyAutoScalingSchedule&& value) { SetAutoScalingSchedule(value); return *this;}
+    inline SetTimeBasedAutoScalingRequest& WithAutoScalingSchedule(WeeklyAutoScalingSchedule&& value) { SetAutoScalingSchedule(std::move(value)); return *this;}
 
   private:
     Aws::String m_instanceId;

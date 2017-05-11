@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/VirtualInterface.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -41,10 +42,14 @@ VirtualInterface::VirtualInterface() :
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
     m_customerAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
+    m_virtualInterfaceState(VirtualInterfaceState::NOT_SET),
     m_virtualInterfaceStateHasBeenSet(false),
     m_customerRouterConfigHasBeenSet(false),
     m_virtualGatewayIdHasBeenSet(false),
-    m_routeFilterPrefixesHasBeenSet(false)
+    m_routeFilterPrefixesHasBeenSet(false),
+    m_bgpPeersHasBeenSet(false)
 {
 }
 
@@ -62,10 +67,14 @@ VirtualInterface::VirtualInterface(const JsonValue& jsonValue) :
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
     m_customerAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
+    m_virtualInterfaceState(VirtualInterfaceState::NOT_SET),
     m_virtualInterfaceStateHasBeenSet(false),
     m_customerRouterConfigHasBeenSet(false),
     m_virtualGatewayIdHasBeenSet(false),
-    m_routeFilterPrefixesHasBeenSet(false)
+    m_routeFilterPrefixesHasBeenSet(false),
+    m_bgpPeersHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -149,6 +158,13 @@ VirtualInterface& VirtualInterface::operator =(const JsonValue& jsonValue)
     m_customerAddressHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("addressFamily"))
+  {
+    m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(jsonValue.GetString("addressFamily"));
+
+    m_addressFamilyHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("virtualInterfaceState"))
   {
     m_virtualInterfaceState = VirtualInterfaceStateMapper::GetVirtualInterfaceStateForName(jsonValue.GetString("virtualInterfaceState"));
@@ -178,6 +194,16 @@ VirtualInterface& VirtualInterface::operator =(const JsonValue& jsonValue)
       m_routeFilterPrefixes.push_back(routeFilterPrefixesJsonList[routeFilterPrefixesIndex].AsObject());
     }
     m_routeFilterPrefixesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("bgpPeers"))
+  {
+    Array<JsonValue> bgpPeersJsonList = jsonValue.GetArray("bgpPeers");
+    for(unsigned bgpPeersIndex = 0; bgpPeersIndex < bgpPeersJsonList.GetLength(); ++bgpPeersIndex)
+    {
+      m_bgpPeers.push_back(bgpPeersJsonList[bgpPeersIndex].AsObject());
+    }
+    m_bgpPeersHasBeenSet = true;
   }
 
   return *this;
@@ -253,6 +279,11 @@ JsonValue VirtualInterface::Jsonize() const
 
   }
 
+  if(m_addressFamilyHasBeenSet)
+  {
+   payload.WithString("addressFamily", AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily));
+  }
+
   if(m_virtualInterfaceStateHasBeenSet)
   {
    payload.WithString("virtualInterfaceState", VirtualInterfaceStateMapper::GetNameForVirtualInterfaceState(m_virtualInterfaceState));
@@ -278,6 +309,17 @@ JsonValue VirtualInterface::Jsonize() const
      routeFilterPrefixesJsonList[routeFilterPrefixesIndex].AsObject(m_routeFilterPrefixes[routeFilterPrefixesIndex].Jsonize());
    }
    payload.WithArray("routeFilterPrefixes", std::move(routeFilterPrefixesJsonList));
+
+  }
+
+  if(m_bgpPeersHasBeenSet)
+  {
+   Array<JsonValue> bgpPeersJsonList(m_bgpPeers.size());
+   for(unsigned bgpPeersIndex = 0; bgpPeersIndex < bgpPeersJsonList.GetLength(); ++bgpPeersIndex)
+   {
+     bgpPeersJsonList[bgpPeersIndex].AsObject(m_bgpPeers[bgpPeersIndex].Jsonize());
+   }
+   payload.WithArray("bgpPeers", std::move(bgpPeersJsonList));
 
   }
 

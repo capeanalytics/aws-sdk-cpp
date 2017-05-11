@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/route53/model/RRType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 
   /**
    * <p>A complex type that contains the information about the request to list your
-   * traffic policy instances.</p>
+   * traffic policy instances.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTrafficPolicyInstancesByPolicyRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API ListTrafficPolicyInstancesByPolicyRequest : public Route53Request
   {
@@ -40,6 +44,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The ID of the traffic policy for which you want to list traffic policy
@@ -57,7 +62,7 @@ namespace Model
      * <p>The ID of the traffic policy for which you want to list traffic policy
      * instances.</p>
      */
-    inline void SetTrafficPolicyId(Aws::String&& value) { m_trafficPolicyIdHasBeenSet = true; m_trafficPolicyId = value; }
+    inline void SetTrafficPolicyId(Aws::String&& value) { m_trafficPolicyIdHasBeenSet = true; m_trafficPolicyId = std::move(value); }
 
     /**
      * <p>The ID of the traffic policy for which you want to list traffic policy
@@ -75,7 +80,7 @@ namespace Model
      * <p>The ID of the traffic policy for which you want to list traffic policy
      * instances.</p>
      */
-    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyId(Aws::String&& value) { SetTrafficPolicyId(value); return *this;}
+    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyId(Aws::String&& value) { SetTrafficPolicyId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the traffic policy for which you want to list traffic policy
@@ -105,241 +110,251 @@ namespace Model
     inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyVersion(int value) { SetTrafficPolicyVersion(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline const Aws::String& GetHostedZoneIdMarker() const{ return m_hostedZoneIdMarker; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline void SetHostedZoneIdMarker(const Aws::String& value) { m_hostedZoneIdMarkerHasBeenSet = true; m_hostedZoneIdMarker = value; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline void SetHostedZoneIdMarker(Aws::String&& value) { m_hostedZoneIdMarkerHasBeenSet = true; m_hostedZoneIdMarker = value; }
+    inline void SetHostedZoneIdMarker(Aws::String&& value) { m_hostedZoneIdMarkerHasBeenSet = true; m_hostedZoneIdMarker = std::move(value); }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline void SetHostedZoneIdMarker(const char* value) { m_hostedZoneIdMarkerHasBeenSet = true; m_hostedZoneIdMarker.assign(value); }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithHostedZoneIdMarker(const Aws::String& value) { SetHostedZoneIdMarker(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline ListTrafficPolicyInstancesByPolicyRequest& WithHostedZoneIdMarker(Aws::String&& value) { SetHostedZoneIdMarker(value); return *this;}
+    inline ListTrafficPolicyInstancesByPolicyRequest& WithHostedZoneIdMarker(Aws::String&& value) { SetHostedZoneIdMarker(std::move(value)); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the
-     * hosted zone for the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value
+     * of <code>HostedZoneIdMarker</code> from the previous response, which is the
+     * hosted zone ID of the first traffic policy instance that Amazon Route 53 will
+     * return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithHostedZoneIdMarker(const char* value) { SetHostedZoneIdMarker(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline const Aws::String& GetTrafficPolicyInstanceNameMarker() const{ return m_trafficPolicyInstanceNameMarker; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline void SetTrafficPolicyInstanceNameMarker(const Aws::String& value) { m_trafficPolicyInstanceNameMarkerHasBeenSet = true; m_trafficPolicyInstanceNameMarker = value; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline void SetTrafficPolicyInstanceNameMarker(Aws::String&& value) { m_trafficPolicyInstanceNameMarkerHasBeenSet = true; m_trafficPolicyInstanceNameMarker = value; }
+    inline void SetTrafficPolicyInstanceNameMarker(Aws::String&& value) { m_trafficPolicyInstanceNameMarkerHasBeenSet = true; m_trafficPolicyInstanceNameMarker = std::move(value); }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline void SetTrafficPolicyInstanceNameMarker(const char* value) { m_trafficPolicyInstanceNameMarkerHasBeenSet = true; m_trafficPolicyInstanceNameMarker.assign(value); }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceNameMarker(const Aws::String& value) { SetTrafficPolicyInstanceNameMarker(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceNameMarker(Aws::String&& value) { SetTrafficPolicyInstanceNameMarker(value); return *this;}
+    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceNameMarker(Aws::String&& value) { SetTrafficPolicyInstanceNameMarker(std::move(value)); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is
-     * the name of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify
+     * the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p> <p>If the
-     * value of <code>IsTruncated</code> in the previous response was
-     * <code>false</code>, omit this value.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceNameMarker(const char* value) { SetTrafficPolicyInstanceNameMarker(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is
-     * the DNS type of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify
+     * the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline const RRType& GetTrafficPolicyInstanceTypeMarker() const{ return m_trafficPolicyInstanceTypeMarker; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is
-     * the DNS type of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify
+     * the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline void SetTrafficPolicyInstanceTypeMarker(const RRType& value) { m_trafficPolicyInstanceTypeMarkerHasBeenSet = true; m_trafficPolicyInstanceTypeMarker = value; }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is
-     * the DNS type of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify
+     * the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline void SetTrafficPolicyInstanceTypeMarker(RRType&& value) { m_trafficPolicyInstanceTypeMarkerHasBeenSet = true; m_trafficPolicyInstanceTypeMarker = value; }
+    inline void SetTrafficPolicyInstanceTypeMarker(RRType&& value) { m_trafficPolicyInstanceTypeMarkerHasBeenSet = true; m_trafficPolicyInstanceTypeMarker = std::move(value); }
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is
-     * the DNS type of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify
+     * the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p>
+     * are no more traffic policy instances to get.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceTypeMarker(const RRType& value) { SetTrafficPolicyInstanceTypeMarker(value); return *this;}
 
     /**
-     * <p>For the first request to <code>ListTrafficPolicyInstancesByPolicy</code>,
-     * omit this value.</p> <p>If the value of <code>IsTruncated</code> in the previous
-     * response was <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is
-     * the DNS type of the first traffic policy instance in the next group of
-     * <code>MaxItems</code> traffic policy instances.</p> <p>If the value of
+     * <p>If the value of <code>IsTruncated</code> in the previous response was
+     * <code>true</code>, you have more traffic policy instances. To get more traffic
+     * policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code>
+     * request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify
+     * the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous
+     * response, which is the name of the first traffic policy instance that Amazon
+     * Route 53 will return if you submit another request.</p> <p>If the value of
      * <code>IsTruncated</code> in the previous response was <code>false</code>, there
-     * are no more traffic policy instances to get for this hosted zone.</p>
+     * are no more traffic policy instances to get.</p>
      */
-    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceTypeMarker(RRType&& value) { SetTrafficPolicyInstanceTypeMarker(value); return *this;}
+    inline ListTrafficPolicyInstancesByPolicyRequest& WithTrafficPolicyInstanceTypeMarker(RRType&& value) { SetTrafficPolicyInstanceTypeMarker(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of traffic policy instances to be included in the response
@@ -348,8 +363,8 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
     inline const Aws::String& GetMaxItems() const{ return m_maxItems; }
 
@@ -360,8 +375,8 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
     inline void SetMaxItems(const Aws::String& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
@@ -372,10 +387,10 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::move(value); }
 
     /**
      * <p>The maximum number of traffic policy instances to be included in the response
@@ -384,8 +399,8 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
     inline void SetMaxItems(const char* value) { m_maxItemsHasBeenSet = true; m_maxItems.assign(value); }
 
@@ -396,8 +411,8 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithMaxItems(const Aws::String& value) { SetMaxItems(value); return *this;}
 
@@ -408,10 +423,10 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
-    inline ListTrafficPolicyInstancesByPolicyRequest& WithMaxItems(Aws::String&& value) { SetMaxItems(value); return *this;}
+    inline ListTrafficPolicyInstancesByPolicyRequest& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of traffic policy instances to be included in the response
@@ -420,8 +435,8 @@ namespace Model
      * response is <code>true</code>, and the values of
      * <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>,
      * and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic
-     * policy instance in the next group of <code>MaxItems</code> traffic policy
-     * instances.</p>
+     * policy instance that Amazon Route 53 will return if you submit another
+     * request.</p>
      */
     inline ListTrafficPolicyInstancesByPolicyRequest& WithMaxItems(const char* value) { SetMaxItems(value); return *this;}
 

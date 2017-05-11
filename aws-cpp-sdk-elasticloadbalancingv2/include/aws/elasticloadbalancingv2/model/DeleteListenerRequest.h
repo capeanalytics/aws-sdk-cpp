@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DeleteListener.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API DeleteListenerRequest : public ElasticLoadBalancingv2Request
   {
@@ -33,6 +34,11 @@ namespace Model
     DeleteListenerRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
@@ -46,7 +52,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
-    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = value; }
+    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
@@ -61,7 +67,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
-    inline DeleteListenerRequest& WithListenerArn(Aws::String&& value) { SetListenerArn(value); return *this;}
+    inline DeleteListenerRequest& WithListenerArn(Aws::String&& value) { SetListenerArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>

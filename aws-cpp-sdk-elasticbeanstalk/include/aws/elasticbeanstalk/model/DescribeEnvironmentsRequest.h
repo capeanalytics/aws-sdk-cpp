@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Request to describe one or more environments.</p>
+   * <p>Request to describe one or more environments.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DescribeEnvironmentsRequest : public ElasticBeanstalkRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeEnvironmentsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that are associated with this application.</p>
@@ -51,7 +60,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that are associated with this application.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -69,7 +78,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that are associated with this application.</p>
      */
-    inline DescribeEnvironmentsRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline DescribeEnvironmentsRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -93,7 +102,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that are associated with this application version.</p>
      */
-    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = value; }
+    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::move(value); }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -111,7 +120,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that are associated with this application version.</p>
      */
-    inline DescribeEnvironmentsRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(value); return *this;}
+    inline DescribeEnvironmentsRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(std::move(value)); return *this;}
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -135,7 +144,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified IDs.</p>
      */
-    inline void SetEnvironmentIds(Aws::Vector<Aws::String>&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds = value; }
+    inline void SetEnvironmentIds(Aws::Vector<Aws::String>&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds = std::move(value); }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -147,7 +156,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified IDs.</p>
      */
-    inline DescribeEnvironmentsRequest& WithEnvironmentIds(Aws::Vector<Aws::String>&& value) { SetEnvironmentIds(value); return *this;}
+    inline DescribeEnvironmentsRequest& WithEnvironmentIds(Aws::Vector<Aws::String>&& value) { SetEnvironmentIds(std::move(value)); return *this;}
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -159,7 +168,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified IDs.</p>
      */
-    inline DescribeEnvironmentsRequest& AddEnvironmentIds(Aws::String&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds.push_back(value); return *this; }
+    inline DescribeEnvironmentsRequest& AddEnvironmentIds(Aws::String&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -183,7 +192,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified names.</p>
      */
-    inline void SetEnvironmentNames(Aws::Vector<Aws::String>&& value) { m_environmentNamesHasBeenSet = true; m_environmentNames = value; }
+    inline void SetEnvironmentNames(Aws::Vector<Aws::String>&& value) { m_environmentNamesHasBeenSet = true; m_environmentNames = std::move(value); }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -195,7 +204,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified names.</p>
      */
-    inline DescribeEnvironmentsRequest& WithEnvironmentNames(Aws::Vector<Aws::String>&& value) { SetEnvironmentNames(value); return *this;}
+    inline DescribeEnvironmentsRequest& WithEnvironmentNames(Aws::Vector<Aws::String>&& value) { SetEnvironmentNames(std::move(value)); return *this;}
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -207,7 +216,7 @@ namespace Model
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
      * include only those that have the specified names.</p>
      */
-    inline DescribeEnvironmentsRequest& AddEnvironmentNames(Aws::String&& value) { m_environmentNamesHasBeenSet = true; m_environmentNames.push_back(value); return *this; }
+    inline DescribeEnvironmentsRequest& AddEnvironmentNames(Aws::String&& value) { m_environmentNamesHasBeenSet = true; m_environmentNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to
@@ -252,7 +261,7 @@ namespace Model
      * <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>,
      * then environments deleted after this date are displayed. </p>
      */
-    inline void SetIncludedDeletedBackTo(Aws::Utils::DateTime&& value) { m_includedDeletedBackToHasBeenSet = true; m_includedDeletedBackTo = value; }
+    inline void SetIncludedDeletedBackTo(Aws::Utils::DateTime&& value) { m_includedDeletedBackToHasBeenSet = true; m_includedDeletedBackTo = std::move(value); }
 
     /**
      * <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>,
@@ -264,7 +273,7 @@ namespace Model
      * <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>,
      * then environments deleted after this date are displayed. </p>
      */
-    inline DescribeEnvironmentsRequest& WithIncludedDeletedBackTo(Aws::Utils::DateTime&& value) { SetIncludedDeletedBackTo(value); return *this;}
+    inline DescribeEnvironmentsRequest& WithIncludedDeletedBackTo(Aws::Utils::DateTime&& value) { SetIncludedDeletedBackTo(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;

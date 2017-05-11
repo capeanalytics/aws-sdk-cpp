@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/MachineLearningRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A unique identifier of the <code>MLModel</code>.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>A unique identifier of the <code>MLModel</code>.</p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
 
     /**
      * <p>A unique identifier of the <code>MLModel</code>.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>A unique identifier of the <code>MLModel</code>.</p>
      */
-    inline PredictRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline PredictRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier of the <code>MLModel</code>.</p>
@@ -77,34 +80,34 @@ namespace Model
     inline void SetRecord(const Aws::Map<Aws::String, Aws::String>& value) { m_recordHasBeenSet = true; m_record = value; }
 
     
-    inline void SetRecord(Aws::Map<Aws::String, Aws::String>&& value) { m_recordHasBeenSet = true; m_record = value; }
+    inline void SetRecord(Aws::Map<Aws::String, Aws::String>&& value) { m_recordHasBeenSet = true; m_record = std::move(value); }
 
     
     inline PredictRequest& WithRecord(const Aws::Map<Aws::String, Aws::String>& value) { SetRecord(value); return *this;}
 
     
-    inline PredictRequest& WithRecord(Aws::Map<Aws::String, Aws::String>&& value) { SetRecord(value); return *this;}
+    inline PredictRequest& WithRecord(Aws::Map<Aws::String, Aws::String>&& value) { SetRecord(std::move(value)); return *this;}
 
     
-    inline PredictRequest& AddRecord(const Aws::String& key, const Aws::String& value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(const Aws::String& key, const Aws::String& value) { m_recordHasBeenSet = true; m_record.emplace(key, value); return *this; }
 
     
-    inline PredictRequest& AddRecord(Aws::String&& key, const Aws::String& value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(Aws::String&& key, const Aws::String& value) { m_recordHasBeenSet = true; m_record.emplace(std::move(key), value); return *this; }
 
     
-    inline PredictRequest& AddRecord(const Aws::String& key, Aws::String&& value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(const Aws::String& key, Aws::String&& value) { m_recordHasBeenSet = true; m_record.emplace(key, std::move(value)); return *this; }
 
     
-    inline PredictRequest& AddRecord(Aws::String&& key, Aws::String&& value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(Aws::String&& key, Aws::String&& value) { m_recordHasBeenSet = true; m_record.emplace(std::move(key), std::move(value)); return *this; }
 
     
-    inline PredictRequest& AddRecord(const char* key, Aws::String&& value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(const char* key, Aws::String&& value) { m_recordHasBeenSet = true; m_record.emplace(key, std::move(value)); return *this; }
 
     
-    inline PredictRequest& AddRecord(Aws::String&& key, const char* value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(Aws::String&& key, const char* value) { m_recordHasBeenSet = true; m_record.emplace(std::move(key), value); return *this; }
 
     
-    inline PredictRequest& AddRecord(const char* key, const char* value) { m_recordHasBeenSet = true; m_record[key] = value; return *this; }
+    inline PredictRequest& AddRecord(const char* key, const char* value) { m_recordHasBeenSet = true; m_record.emplace(key, value); return *this; }
 
     
     inline const Aws::String& GetPredictEndpoint() const{ return m_predictEndpoint; }
@@ -113,7 +116,7 @@ namespace Model
     inline void SetPredictEndpoint(const Aws::String& value) { m_predictEndpointHasBeenSet = true; m_predictEndpoint = value; }
 
     
-    inline void SetPredictEndpoint(Aws::String&& value) { m_predictEndpointHasBeenSet = true; m_predictEndpoint = value; }
+    inline void SetPredictEndpoint(Aws::String&& value) { m_predictEndpointHasBeenSet = true; m_predictEndpoint = std::move(value); }
 
     
     inline void SetPredictEndpoint(const char* value) { m_predictEndpointHasBeenSet = true; m_predictEndpoint.assign(value); }
@@ -122,7 +125,7 @@ namespace Model
     inline PredictRequest& WithPredictEndpoint(const Aws::String& value) { SetPredictEndpoint(value); return *this;}
 
     
-    inline PredictRequest& WithPredictEndpoint(Aws::String&& value) { SetPredictEndpoint(value); return *this;}
+    inline PredictRequest& WithPredictEndpoint(Aws::String&& value) { SetPredictEndpoint(std::move(value)); return *this;}
 
     
     inline PredictRequest& WithPredictEndpoint(const char* value) { SetPredictEndpoint(value); return *this;}

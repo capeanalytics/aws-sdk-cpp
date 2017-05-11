@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sns/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>Response for ListEndpointsByPlatformApplication action.</p>
+   * <p>Response for ListEndpointsByPlatformApplication action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListEndpointsByPlatformApplicationResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API ListEndpointsByPlatformApplicationResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
      */
-    inline void SetEndpoints(Aws::Vector<Aws::String>&& value) { m_endpoints = value; }
+    inline void SetEndpoints(Aws::Vector<Aws::String>&& value) { m_endpoints = std::move(value); }
 
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
      */
-    inline ListEndpointsByPlatformApplicationResult& WithEndpoints(Aws::Vector<Aws::String>&& value) { SetEndpoints(value); return *this;}
+    inline ListEndpointsByPlatformApplicationResult& WithEndpoints(Aws::Vector<Aws::String>&& value) { SetEndpoints(std::move(value)); return *this;}
 
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
      */
-    inline ListEndpointsByPlatformApplicationResult& AddEndpoints(Aws::String&& value) { m_endpoints.push_back(value); return *this; }
+    inline ListEndpointsByPlatformApplicationResult& AddEndpoints(Aws::String&& value) { m_endpoints.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
@@ -100,7 +105,7 @@ namespace Model
      * <p>NextToken string is returned when calling ListEndpointsByPlatformApplication
      * action if additional records are available after the first page results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>NextToken string is returned when calling ListEndpointsByPlatformApplication
@@ -118,7 +123,7 @@ namespace Model
      * <p>NextToken string is returned when calling ListEndpointsByPlatformApplication
      * action if additional records are available after the first page results.</p>
      */
-    inline ListEndpointsByPlatformApplicationResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListEndpointsByPlatformApplicationResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>NextToken string is returned when calling ListEndpointsByPlatformApplication
@@ -133,13 +138,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ListEndpointsByPlatformApplicationResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ListEndpointsByPlatformApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ListEndpointsByPlatformApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_endpoints;

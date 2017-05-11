@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/Event.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 Event::Event() : 
     m_eventIdHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
+    m_eventCode(EventCode::NOT_SET),
     m_eventCodeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventTimeHasBeenSet(false)
@@ -39,6 +41,7 @@ Event::Event() :
 Event::Event(const JsonValue& jsonValue) : 
     m_eventIdHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
+    m_eventCode(EventCode::NOT_SET),
     m_eventCodeHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_eventTimeHasBeenSet(false)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/CloudFrontOriginAccessIdentityList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace CloudFront
 namespace Model
 {
   /**
-   * The returned result of the corresponding request.
+   * The returned result of the corresponding request.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/ListCloudFrontOriginAccessIdentitiesResult">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API ListCloudFrontOriginAccessIdentities2016_01_28Result
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * The CloudFrontOriginAccessIdentityList type.
      */
-    inline void SetCloudFrontOriginAccessIdentityList(CloudFrontOriginAccessIdentityList&& value) { m_cloudFrontOriginAccessIdentityList = value; }
+    inline void SetCloudFrontOriginAccessIdentityList(CloudFrontOriginAccessIdentityList&& value) { m_cloudFrontOriginAccessIdentityList = std::move(value); }
 
     /**
      * The CloudFrontOriginAccessIdentityList type.
@@ -65,7 +69,7 @@ namespace Model
     /**
      * The CloudFrontOriginAccessIdentityList type.
      */
-    inline ListCloudFrontOriginAccessIdentities2016_01_28Result& WithCloudFrontOriginAccessIdentityList(CloudFrontOriginAccessIdentityList&& value) { SetCloudFrontOriginAccessIdentityList(value); return *this;}
+    inline ListCloudFrontOriginAccessIdentities2016_01_28Result& WithCloudFrontOriginAccessIdentityList(CloudFrontOriginAccessIdentityList&& value) { SetCloudFrontOriginAccessIdentityList(std::move(value)); return *this;}
 
   private:
     CloudFrontOriginAccessIdentityList m_cloudFrontOriginAccessIdentityList;

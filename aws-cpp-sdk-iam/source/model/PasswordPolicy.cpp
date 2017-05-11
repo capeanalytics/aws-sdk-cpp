@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iam/model/PasswordPolicy.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -158,32 +159,32 @@ void PasswordPolicy::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_requireSymbolsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RequireSymbols=" << m_requireSymbols << "&";
+      oStream << location << index << locationValue << ".RequireSymbols=" << std::boolalpha << m_requireSymbols << "&";
   }
 
   if(m_requireNumbersHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RequireNumbers=" << m_requireNumbers << "&";
+      oStream << location << index << locationValue << ".RequireNumbers=" << std::boolalpha << m_requireNumbers << "&";
   }
 
   if(m_requireUppercaseCharactersHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RequireUppercaseCharacters=" << m_requireUppercaseCharacters << "&";
+      oStream << location << index << locationValue << ".RequireUppercaseCharacters=" << std::boolalpha << m_requireUppercaseCharacters << "&";
   }
 
   if(m_requireLowercaseCharactersHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RequireLowercaseCharacters=" << m_requireLowercaseCharacters << "&";
+      oStream << location << index << locationValue << ".RequireLowercaseCharacters=" << std::boolalpha << m_requireLowercaseCharacters << "&";
   }
 
   if(m_allowUsersToChangePasswordHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllowUsersToChangePassword=" << m_allowUsersToChangePassword << "&";
+      oStream << location << index << locationValue << ".AllowUsersToChangePassword=" << std::boolalpha << m_allowUsersToChangePassword << "&";
   }
 
   if(m_expirePasswordsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ExpirePasswords=" << m_expirePasswords << "&";
+      oStream << location << index << locationValue << ".ExpirePasswords=" << std::boolalpha << m_expirePasswords << "&";
   }
 
   if(m_maxPasswordAgeHasBeenSet)
@@ -198,7 +199,7 @@ void PasswordPolicy::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_hardExpiryHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HardExpiry=" << m_hardExpiry << "&";
+      oStream << location << index << locationValue << ".HardExpiry=" << std::boolalpha << m_hardExpiry << "&";
   }
 
 }
@@ -211,27 +212,27 @@ void PasswordPolicy::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_requireSymbolsHasBeenSet)
   {
-      oStream << location << ".RequireSymbols=" << m_requireSymbols << "&";
+      oStream << location << ".RequireSymbols=" << std::boolalpha << m_requireSymbols << "&";
   }
   if(m_requireNumbersHasBeenSet)
   {
-      oStream << location << ".RequireNumbers=" << m_requireNumbers << "&";
+      oStream << location << ".RequireNumbers=" << std::boolalpha << m_requireNumbers << "&";
   }
   if(m_requireUppercaseCharactersHasBeenSet)
   {
-      oStream << location << ".RequireUppercaseCharacters=" << m_requireUppercaseCharacters << "&";
+      oStream << location << ".RequireUppercaseCharacters=" << std::boolalpha << m_requireUppercaseCharacters << "&";
   }
   if(m_requireLowercaseCharactersHasBeenSet)
   {
-      oStream << location << ".RequireLowercaseCharacters=" << m_requireLowercaseCharacters << "&";
+      oStream << location << ".RequireLowercaseCharacters=" << std::boolalpha << m_requireLowercaseCharacters << "&";
   }
   if(m_allowUsersToChangePasswordHasBeenSet)
   {
-      oStream << location << ".AllowUsersToChangePassword=" << m_allowUsersToChangePassword << "&";
+      oStream << location << ".AllowUsersToChangePassword=" << std::boolalpha << m_allowUsersToChangePassword << "&";
   }
   if(m_expirePasswordsHasBeenSet)
   {
-      oStream << location << ".ExpirePasswords=" << m_expirePasswords << "&";
+      oStream << location << ".ExpirePasswords=" << std::boolalpha << m_expirePasswords << "&";
   }
   if(m_maxPasswordAgeHasBeenSet)
   {
@@ -243,7 +244,7 @@ void PasswordPolicy::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_hardExpiryHasBeenSet)
   {
-      oStream << location << ".HardExpiry=" << m_hardExpiry << "&";
+      oStream << location << ".HardExpiry=" << std::boolalpha << m_hardExpiry << "&";
   }
 }
 

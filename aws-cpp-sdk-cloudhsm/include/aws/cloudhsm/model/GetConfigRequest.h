@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/cloudhsm/CloudHSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudhsm/model/ClientVersion.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ARN of the client.</p>
      */
@@ -49,7 +52,7 @@ namespace Model
     /**
      * <p>The ARN of the client.</p>
      */
-    inline void SetClientArn(Aws::String&& value) { m_clientArnHasBeenSet = true; m_clientArn = value; }
+    inline void SetClientArn(Aws::String&& value) { m_clientArnHasBeenSet = true; m_clientArn = std::move(value); }
 
     /**
      * <p>The ARN of the client.</p>
@@ -64,7 +67,7 @@ namespace Model
     /**
      * <p>The ARN of the client.</p>
      */
-    inline GetConfigRequest& WithClientArn(Aws::String&& value) { SetClientArn(value); return *this;}
+    inline GetConfigRequest& WithClientArn(Aws::String&& value) { SetClientArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the client.</p>
@@ -84,7 +87,7 @@ namespace Model
     /**
      * <p>The client version.</p>
      */
-    inline void SetClientVersion(ClientVersion&& value) { m_clientVersionHasBeenSet = true; m_clientVersion = value; }
+    inline void SetClientVersion(ClientVersion&& value) { m_clientVersionHasBeenSet = true; m_clientVersion = std::move(value); }
 
     /**
      * <p>The client version.</p>
@@ -94,7 +97,7 @@ namespace Model
     /**
      * <p>The client version.</p>
      */
-    inline GetConfigRequest& WithClientVersion(ClientVersion&& value) { SetClientVersion(value); return *this;}
+    inline GetConfigRequest& WithClientVersion(ClientVersion&& value) { SetClientVersion(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs that identify the high-availability partition groups that are
@@ -112,7 +115,7 @@ namespace Model
      * <p>A list of ARNs that identify the high-availability partition groups that are
      * associated with the client.</p>
      */
-    inline void SetHapgList(Aws::Vector<Aws::String>&& value) { m_hapgListHasBeenSet = true; m_hapgList = value; }
+    inline void SetHapgList(Aws::Vector<Aws::String>&& value) { m_hapgListHasBeenSet = true; m_hapgList = std::move(value); }
 
     /**
      * <p>A list of ARNs that identify the high-availability partition groups that are
@@ -124,7 +127,7 @@ namespace Model
      * <p>A list of ARNs that identify the high-availability partition groups that are
      * associated with the client.</p>
      */
-    inline GetConfigRequest& WithHapgList(Aws::Vector<Aws::String>&& value) { SetHapgList(value); return *this;}
+    inline GetConfigRequest& WithHapgList(Aws::Vector<Aws::String>&& value) { SetHapgList(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs that identify the high-availability partition groups that are
@@ -136,7 +139,7 @@ namespace Model
      * <p>A list of ARNs that identify the high-availability partition groups that are
      * associated with the client.</p>
      */
-    inline GetConfigRequest& AddHapgList(Aws::String&& value) { m_hapgListHasBeenSet = true; m_hapgList.push_back(value); return *this; }
+    inline GetConfigRequest& AddHapgList(Aws::String&& value) { m_hapgListHasBeenSet = true; m_hapgList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of ARNs that identify the high-availability partition groups that are

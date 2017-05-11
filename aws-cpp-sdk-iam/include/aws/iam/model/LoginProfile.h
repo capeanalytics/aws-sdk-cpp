@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>Contains the user name and password create date for a user.</p> <p> This data
    * type is used as a response element in the <a>CreateLoginProfile</a> and
-   * <a>GetLoginProfile</a> actions. </p>
+   * <a>GetLoginProfile</a> actions. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/LoginProfile">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API LoginProfile
   {
@@ -63,7 +67,7 @@ namespace Model
      * <p>The name of the user, which can be used for signing in to the AWS Management
      * Console.</p>
      */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = value; }
+    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
 
     /**
      * <p>The name of the user, which can be used for signing in to the AWS Management
@@ -81,7 +85,7 @@ namespace Model
      * <p>The name of the user, which can be used for signing in to the AWS Management
      * Console.</p>
      */
-    inline LoginProfile& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
+    inline LoginProfile& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the user, which can be used for signing in to the AWS Management
@@ -102,7 +106,7 @@ namespace Model
     /**
      * <p>The date when the password for the user was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The date when the password for the user was created.</p>
@@ -112,7 +116,7 @@ namespace Model
     /**
      * <p>The date when the password for the user was created.</p>
      */
-    inline LoginProfile& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline LoginProfile& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>Specifies whether the user is required to set a new password on next

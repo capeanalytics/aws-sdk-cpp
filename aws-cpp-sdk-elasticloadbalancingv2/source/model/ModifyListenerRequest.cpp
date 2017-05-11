@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticloadbalancingv2/model/ModifyListenerRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -23,6 +24,7 @@ ModifyListenerRequest::ModifyListenerRequest() :
     m_listenerArnHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
+    m_protocol(ProtocolEnum::NOT_SET),
     m_protocolHasBeenSet(false),
     m_sslPolicyHasBeenSet(false),
     m_certificatesHasBeenSet(false),
@@ -78,3 +80,8 @@ Aws::String ModifyListenerRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  ModifyListenerRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

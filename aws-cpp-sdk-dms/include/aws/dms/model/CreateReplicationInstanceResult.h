@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/dms/model/ReplicationInstance.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DatabaseMigrationService
 namespace Model
 {
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstanceResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API CreateReplicationInstanceResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The replication instance that was created.</p>
      */
-    inline void SetReplicationInstance(ReplicationInstance&& value) { m_replicationInstance = value; }
+    inline void SetReplicationInstance(ReplicationInstance&& value) { m_replicationInstance = std::move(value); }
 
     /**
      * <p>The replication instance that was created.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>The replication instance that was created.</p>
      */
-    inline CreateReplicationInstanceResult& WithReplicationInstance(ReplicationInstance&& value) { SetReplicationInstance(value); return *this;}
+    inline CreateReplicationInstanceResult& WithReplicationInstance(ReplicationInstance&& value) { SetReplicationInstance(std::move(value)); return *this;}
 
   private:
     ReplicationInstance m_replicationInstance;

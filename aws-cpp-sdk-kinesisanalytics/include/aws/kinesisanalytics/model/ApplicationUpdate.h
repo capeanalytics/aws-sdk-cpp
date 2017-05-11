@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -19,6 +20,7 @@
 #include <aws/kinesisanalytics/model/InputUpdate.h>
 #include <aws/kinesisanalytics/model/OutputUpdate.h>
 #include <aws/kinesisanalytics/model/ReferenceDataSourceUpdate.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes updates to apply to an existing Kinesis Analytics application.</p>
+   * <p>Describes updates to apply to an existing Kinesis Analytics
+   * application.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ApplicationUpdate">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API ApplicationUpdate
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>Describes application input configuration updates.</p>
      */
-    inline void SetInputUpdates(Aws::Vector<InputUpdate>&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates = value; }
+    inline void SetInputUpdates(Aws::Vector<InputUpdate>&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates = std::move(value); }
 
     /**
      * <p>Describes application input configuration updates.</p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p>Describes application input configuration updates.</p>
      */
-    inline ApplicationUpdate& WithInputUpdates(Aws::Vector<InputUpdate>&& value) { SetInputUpdates(value); return *this;}
+    inline ApplicationUpdate& WithInputUpdates(Aws::Vector<InputUpdate>&& value) { SetInputUpdates(std::move(value)); return *this;}
 
     /**
      * <p>Describes application input configuration updates.</p>
@@ -78,7 +83,7 @@ namespace Model
     /**
      * <p>Describes application input configuration updates.</p>
      */
-    inline ApplicationUpdate& AddInputUpdates(InputUpdate&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates.push_back(value); return *this; }
+    inline ApplicationUpdate& AddInputUpdates(InputUpdate&& value) { m_inputUpdatesHasBeenSet = true; m_inputUpdates.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Describes application code updates.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>Describes application code updates.</p>
      */
-    inline void SetApplicationCodeUpdate(Aws::String&& value) { m_applicationCodeUpdateHasBeenSet = true; m_applicationCodeUpdate = value; }
+    inline void SetApplicationCodeUpdate(Aws::String&& value) { m_applicationCodeUpdateHasBeenSet = true; m_applicationCodeUpdate = std::move(value); }
 
     /**
      * <p>Describes application code updates.</p>
@@ -108,7 +113,7 @@ namespace Model
     /**
      * <p>Describes application code updates.</p>
      */
-    inline ApplicationUpdate& WithApplicationCodeUpdate(Aws::String&& value) { SetApplicationCodeUpdate(value); return *this;}
+    inline ApplicationUpdate& WithApplicationCodeUpdate(Aws::String&& value) { SetApplicationCodeUpdate(std::move(value)); return *this;}
 
     /**
      * <p>Describes application code updates.</p>
@@ -128,7 +133,7 @@ namespace Model
     /**
      * <p>Describes application output configuration updates.</p>
      */
-    inline void SetOutputUpdates(Aws::Vector<OutputUpdate>&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates = value; }
+    inline void SetOutputUpdates(Aws::Vector<OutputUpdate>&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates = std::move(value); }
 
     /**
      * <p>Describes application output configuration updates.</p>
@@ -138,7 +143,7 @@ namespace Model
     /**
      * <p>Describes application output configuration updates.</p>
      */
-    inline ApplicationUpdate& WithOutputUpdates(Aws::Vector<OutputUpdate>&& value) { SetOutputUpdates(value); return *this;}
+    inline ApplicationUpdate& WithOutputUpdates(Aws::Vector<OutputUpdate>&& value) { SetOutputUpdates(std::move(value)); return *this;}
 
     /**
      * <p>Describes application output configuration updates.</p>
@@ -148,7 +153,7 @@ namespace Model
     /**
      * <p>Describes application output configuration updates.</p>
      */
-    inline ApplicationUpdate& AddOutputUpdates(OutputUpdate&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates.push_back(value); return *this; }
+    inline ApplicationUpdate& AddOutputUpdates(OutputUpdate&& value) { m_outputUpdatesHasBeenSet = true; m_outputUpdates.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Describes application reference data source updates.</p>
@@ -163,7 +168,7 @@ namespace Model
     /**
      * <p>Describes application reference data source updates.</p>
      */
-    inline void SetReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates = value; }
+    inline void SetReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates = std::move(value); }
 
     /**
      * <p>Describes application reference data source updates.</p>
@@ -173,7 +178,7 @@ namespace Model
     /**
      * <p>Describes application reference data source updates.</p>
      */
-    inline ApplicationUpdate& WithReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { SetReferenceDataSourceUpdates(value); return *this;}
+    inline ApplicationUpdate& WithReferenceDataSourceUpdates(Aws::Vector<ReferenceDataSourceUpdate>&& value) { SetReferenceDataSourceUpdates(std::move(value)); return *this;}
 
     /**
      * <p>Describes application reference data source updates.</p>
@@ -183,7 +188,7 @@ namespace Model
     /**
      * <p>Describes application reference data source updates.</p>
      */
-    inline ApplicationUpdate& AddReferenceDataSourceUpdates(ReferenceDataSourceUpdate&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates.push_back(value); return *this; }
+    inline ApplicationUpdate& AddReferenceDataSourceUpdates(ReferenceDataSourceUpdate&& value) { m_referenceDataSourceUpdatesHasBeenSet = true; m_referenceDataSourceUpdates.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<InputUpdate> m_inputUpdates;

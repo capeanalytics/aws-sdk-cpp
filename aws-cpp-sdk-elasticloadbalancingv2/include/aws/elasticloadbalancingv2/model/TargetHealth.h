@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/elasticloadbalancingv2/model/TargetHealthStateEnum.h>
 #include <aws/elasticloadbalancingv2/model/TargetHealthReasonEnum.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about the current health of a target.</p>
+   * <p>Information about the current health of a target.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/TargetHealth">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API TargetHealth
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>The state of the target.</p>
      */
-    inline void SetState(TargetHealthStateEnum&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(TargetHealthStateEnum&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the target.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The state of the target.</p>
      */
-    inline TargetHealth& WithState(TargetHealthStateEnum&& value) { SetState(value); return *this;}
+    inline TargetHealth& WithState(TargetHealthStateEnum&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The reason code. If the target state is <code>healthy</code>, a reason code
@@ -165,7 +170,7 @@ namespace Model
      * being deregistered and the deregistration delay period has not expired.</p>
      * </li> </ul>
      */
-    inline void SetReason(TargetHealthReasonEnum&& value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline void SetReason(TargetHealthReasonEnum&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
 
     /**
      * <p>The reason code. If the target state is <code>healthy</code>, a reason code
@@ -229,7 +234,7 @@ namespace Model
      * being deregistered and the deregistration delay period has not expired.</p>
      * </li> </ul>
      */
-    inline TargetHealth& WithReason(TargetHealthReasonEnum&& value) { SetReason(value); return *this;}
+    inline TargetHealth& WithReason(TargetHealthReasonEnum&& value) { SetReason(std::move(value)); return *this;}
 
     /**
      * <p>A description of the target health that provides additional details. If the
@@ -247,7 +252,7 @@ namespace Model
      * <p>A description of the target health that provides additional details. If the
      * state is <code>healthy</code>, a description is not provided.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the target health that provides additional details. If the
@@ -265,7 +270,7 @@ namespace Model
      * <p>A description of the target health that provides additional details. If the
      * state is <code>healthy</code>, a description is not provided.</p>
      */
-    inline TargetHealth& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline TargetHealth& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the target health that provides additional details. If the

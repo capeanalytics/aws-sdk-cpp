@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to verify user attributes.</p>
+   * <p>Represents the request to verify user attributes.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/VerifyUserAttributeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API VerifyUserAttributeRequest : public CognitoIdentityProviderRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Represents the access token of the request to verify user attributes.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>Represents the access token of the request to verify user attributes.</p>
      */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
+    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
 
     /**
      * <p>Represents the access token of the request to verify user attributes.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>Represents the access token of the request to verify user attributes.</p>
      */
-    inline VerifyUserAttributeRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(value); return *this;}
+    inline VerifyUserAttributeRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
 
     /**
      * <p>Represents the access token of the request to verify user attributes.</p>
@@ -83,7 +89,7 @@ namespace Model
     /**
      * <p>The attribute name in the request to verify user attributes.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The attribute name in the request to verify user attributes.</p>
@@ -98,7 +104,7 @@ namespace Model
     /**
      * <p>The attribute name in the request to verify user attributes.</p>
      */
-    inline VerifyUserAttributeRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline VerifyUserAttributeRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The attribute name in the request to verify user attributes.</p>
@@ -118,7 +124,7 @@ namespace Model
     /**
      * <p>The verification code in the request to verify user attributes.</p>
      */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
      * <p>The verification code in the request to verify user attributes.</p>
@@ -133,7 +139,7 @@ namespace Model
     /**
      * <p>The verification code in the request to verify user attributes.</p>
      */
-    inline VerifyUserAttributeRequest& WithCode(Aws::String&& value) { SetCode(value); return *this;}
+    inline VerifyUserAttributeRequest& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>The verification code in the request to verify user attributes.</p>

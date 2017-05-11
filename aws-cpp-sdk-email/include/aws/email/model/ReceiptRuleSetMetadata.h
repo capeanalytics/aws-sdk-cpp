@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * on behalf of your account's verified domains.</p> <p>For information about
    * setting up receipt rule sets, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReceiptRuleSetMetadata">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ReceiptRuleSetMetadata
   {
@@ -72,7 +76,7 @@ namespace Model
      * dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li>
      * <li> <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain
@@ -96,7 +100,7 @@ namespace Model
      * dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li>
      * <li> <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline ReceiptRuleSetMetadata& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ReceiptRuleSetMetadata& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain
@@ -119,7 +123,7 @@ namespace Model
     /**
      * <p>The date and time the receipt rule set was created.</p>
      */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = value; }
+    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::move(value); }
 
     /**
      * <p>The date and time the receipt rule set was created.</p>
@@ -129,7 +133,7 @@ namespace Model
     /**
      * <p>The date and time the receipt rule set was created.</p>
      */
-    inline ReceiptRuleSetMetadata& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(value); return *this;}
+    inline ReceiptRuleSetMetadata& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/DescribeImageAttributeRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -23,6 +24,7 @@ DescribeImageAttributeRequest::DescribeImageAttributeRequest() :
     m_dryRun(false),
     m_dryRunHasBeenSet(false),
     m_imageIdHasBeenSet(false),
+    m_attribute(ImageAttributeName::NOT_SET),
     m_attributeHasBeenSet(false)
 {
 }
@@ -33,7 +35,7 @@ Aws::String DescribeImageAttributeRequest::SerializePayload() const
   ss << "Action=DescribeImageAttribute&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_imageIdHasBeenSet)
@@ -46,7 +48,12 @@ Aws::String DescribeImageAttributeRequest::SerializePayload() const
     ss << "Attribute=" << ImageAttributeNameMapper::GetNameForImageAttributeName(m_attribute) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  DescribeImageAttributeRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/model/HostedZone.h>
@@ -19,6 +20,7 @@
 #include <aws/route53/model/DelegationSet.h>
 #include <aws/route53/model/VPC.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace Route53
 namespace Model
 {
   /**
-   * <p>A complex type containing the response information for the hosted zone.</p>
+   * <p>A complex type containing the response information for the hosted
+   * zone.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateHostedZoneResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API CreateHostedZoneResult
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>A complex type that contains general information about the hosted zone.</p>
      */
-    inline void SetHostedZone(HostedZone&& value) { m_hostedZone = value; }
+    inline void SetHostedZone(HostedZone&& value) { m_hostedZone = std::move(value); }
 
     /**
      * <p>A complex type that contains general information about the hosted zone.</p>
@@ -69,32 +74,37 @@ namespace Model
     /**
      * <p>A complex type that contains general information about the hosted zone.</p>
      */
-    inline CreateHostedZoneResult& WithHostedZone(HostedZone&& value) { SetHostedZone(value); return *this;}
+    inline CreateHostedZoneResult& WithHostedZone(HostedZone&& value) { SetHostedZone(std::move(value)); return *this;}
 
     /**
-     * <p>A complex type that describes the changes made to your hosted zone.</p>
+     * <p>A complex type that contains information about the
+     * <code>CreateHostedZone</code> request.</p>
      */
     inline const ChangeInfo& GetChangeInfo() const{ return m_changeInfo; }
 
     /**
-     * <p>A complex type that describes the changes made to your hosted zone.</p>
+     * <p>A complex type that contains information about the
+     * <code>CreateHostedZone</code> request.</p>
      */
     inline void SetChangeInfo(const ChangeInfo& value) { m_changeInfo = value; }
 
     /**
-     * <p>A complex type that describes the changes made to your hosted zone.</p>
+     * <p>A complex type that contains information about the
+     * <code>CreateHostedZone</code> request.</p>
      */
-    inline void SetChangeInfo(ChangeInfo&& value) { m_changeInfo = value; }
+    inline void SetChangeInfo(ChangeInfo&& value) { m_changeInfo = std::move(value); }
 
     /**
-     * <p>A complex type that describes the changes made to your hosted zone.</p>
+     * <p>A complex type that contains information about the
+     * <code>CreateHostedZone</code> request.</p>
      */
     inline CreateHostedZoneResult& WithChangeInfo(const ChangeInfo& value) { SetChangeInfo(value); return *this;}
 
     /**
-     * <p>A complex type that describes the changes made to your hosted zone.</p>
+     * <p>A complex type that contains information about the
+     * <code>CreateHostedZone</code> request.</p>
      */
-    inline CreateHostedZoneResult& WithChangeInfo(ChangeInfo&& value) { SetChangeInfo(value); return *this;}
+    inline CreateHostedZoneResult& WithChangeInfo(ChangeInfo&& value) { SetChangeInfo(std::move(value)); return *this;}
 
     /**
      * <p>A complex type that describes the name servers for this hosted zone.</p>
@@ -109,7 +119,7 @@ namespace Model
     /**
      * <p>A complex type that describes the name servers for this hosted zone.</p>
      */
-    inline void SetDelegationSet(DelegationSet&& value) { m_delegationSet = value; }
+    inline void SetDelegationSet(DelegationSet&& value) { m_delegationSet = std::move(value); }
 
     /**
      * <p>A complex type that describes the name servers for this hosted zone.</p>
@@ -119,22 +129,37 @@ namespace Model
     /**
      * <p>A complex type that describes the name servers for this hosted zone.</p>
      */
-    inline CreateHostedZoneResult& WithDelegationSet(DelegationSet&& value) { SetDelegationSet(value); return *this;}
+    inline CreateHostedZoneResult& WithDelegationSet(DelegationSet&& value) { SetDelegationSet(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>A complex type that contains information about an Amazon VPC that you
+     * associated with this hosted zone.</p>
+     */
     inline const VPC& GetVPC() const{ return m_vPC; }
 
-    
+    /**
+     * <p>A complex type that contains information about an Amazon VPC that you
+     * associated with this hosted zone.</p>
+     */
     inline void SetVPC(const VPC& value) { m_vPC = value; }
 
-    
-    inline void SetVPC(VPC&& value) { m_vPC = value; }
+    /**
+     * <p>A complex type that contains information about an Amazon VPC that you
+     * associated with this hosted zone.</p>
+     */
+    inline void SetVPC(VPC&& value) { m_vPC = std::move(value); }
 
-    
+    /**
+     * <p>A complex type that contains information about an Amazon VPC that you
+     * associated with this hosted zone.</p>
+     */
     inline CreateHostedZoneResult& WithVPC(const VPC& value) { SetVPC(value); return *this;}
 
-    
-    inline CreateHostedZoneResult& WithVPC(VPC&& value) { SetVPC(value); return *this;}
+    /**
+     * <p>A complex type that contains information about an Amazon VPC that you
+     * associated with this hosted zone.</p>
+     */
+    inline CreateHostedZoneResult& WithVPC(VPC&& value) { SetVPC(std::move(value)); return *this;}
 
     /**
      * <p>The unique URL representing the new hosted zone.</p>
@@ -149,7 +174,7 @@ namespace Model
     /**
      * <p>The unique URL representing the new hosted zone.</p>
      */
-    inline void SetLocation(Aws::String&& value) { m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
 
     /**
      * <p>The unique URL representing the new hosted zone.</p>
@@ -164,7 +189,7 @@ namespace Model
     /**
      * <p>The unique URL representing the new hosted zone.</p>
      */
-    inline CreateHostedZoneResult& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline CreateHostedZoneResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * <p>The unique URL representing the new hosted zone.</p>

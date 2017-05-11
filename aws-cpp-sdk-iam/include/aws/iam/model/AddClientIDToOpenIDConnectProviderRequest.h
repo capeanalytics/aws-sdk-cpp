@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     AddClientIDToOpenIDConnectProviderRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider
      * resource to add the client ID to. You can get a list of OIDC provider ARNs by
@@ -51,7 +58,7 @@ namespace Model
      * resource to add the client ID to. You can get a list of OIDC provider ARNs by
      * using the <a>ListOpenIDConnectProviders</a> action.</p>
      */
-    inline void SetOpenIDConnectProviderArn(Aws::String&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = value; }
+    inline void SetOpenIDConnectProviderArn(Aws::String&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider
@@ -72,7 +79,7 @@ namespace Model
      * resource to add the client ID to. You can get a list of OIDC provider ARNs by
      * using the <a>ListOpenIDConnectProviders</a> action.</p>
      */
-    inline AddClientIDToOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(Aws::String&& value) { SetOpenIDConnectProviderArn(value); return *this;}
+    inline AddClientIDToOpenIDConnectProviderRequest& WithOpenIDConnectProviderArn(Aws::String&& value) { SetOpenIDConnectProviderArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider
@@ -97,7 +104,7 @@ namespace Model
      * <p>The client ID (also known as audience) to add to the IAM OpenID Connect
      * provider resource.</p>
      */
-    inline void SetClientID(Aws::String&& value) { m_clientIDHasBeenSet = true; m_clientID = value; }
+    inline void SetClientID(Aws::String&& value) { m_clientIDHasBeenSet = true; m_clientID = std::move(value); }
 
     /**
      * <p>The client ID (also known as audience) to add to the IAM OpenID Connect
@@ -115,7 +122,7 @@ namespace Model
      * <p>The client ID (also known as audience) to add to the IAM OpenID Connect
      * provider resource.</p>
      */
-    inline AddClientIDToOpenIDConnectProviderRequest& WithClientID(Aws::String&& value) { SetClientID(value); return *this;}
+    inline AddClientIDToOpenIDConnectProviderRequest& WithClientID(Aws::String&& value) { SetClientID(std::move(value)); return *this;}
 
     /**
      * <p>The client ID (also known as audience) to add to the IAM OpenID Connect

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output from the ListPolicyPrincipals operation.</p>
+   * <p>The output from the ListPolicyPrincipals operation.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyPrincipalsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ListPolicyPrincipalsResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The descriptions of the principals.</p>
      */
-    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principals = value; }
+    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principals = std::move(value); }
 
     /**
      * <p>The descriptions of the principals.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The descriptions of the principals.</p>
      */
-    inline ListPolicyPrincipalsResult& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(value); return *this;}
+    inline ListPolicyPrincipalsResult& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(std::move(value)); return *this;}
 
     /**
      * <p>The descriptions of the principals.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The descriptions of the principals.</p>
      */
-    inline ListPolicyPrincipalsResult& AddPrincipals(Aws::String&& value) { m_principals.push_back(value); return *this; }
+    inline ListPolicyPrincipalsResult& AddPrincipals(Aws::String&& value) { m_principals.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The descriptions of the principals.</p>
@@ -99,7 +104,7 @@ namespace Model
      * <p>The marker for the next set of results, or null if there are no additional
      * results.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results, or null if there are no additional
@@ -117,7 +122,7 @@ namespace Model
      * <p>The marker for the next set of results, or null if there are no additional
      * results.</p>
      */
-    inline ListPolicyPrincipalsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListPolicyPrincipalsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results, or null if there are no additional

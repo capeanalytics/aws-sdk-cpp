@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/MessageFormat.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes an action to publish to an Amazon SNS topic.</p>
+   * <p>Describes an action to publish to an Amazon SNS topic.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SnsAction">AWS API
+   * Reference</a></p>
    */
   class AWS_IOT_API SnsAction
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The ARN of the SNS topic.</p>
      */
-    inline void SetTargetArn(Aws::String&& value) { m_targetArnHasBeenSet = true; m_targetArn = value; }
+    inline void SetTargetArn(Aws::String&& value) { m_targetArnHasBeenSet = true; m_targetArn = std::move(value); }
 
     /**
      * <p>The ARN of the SNS topic.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The ARN of the SNS topic.</p>
      */
-    inline SnsAction& WithTargetArn(Aws::String&& value) { SetTargetArn(value); return *this;}
+    inline SnsAction& WithTargetArn(Aws::String&& value) { SetTargetArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the SNS topic.</p>
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The ARN of the IAM role that grants access.</p>
      */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
      * <p>The ARN of the IAM role that grants access.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The ARN of the IAM role that grants access.</p>
      */
-    inline SnsAction& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
+    inline SnsAction& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the IAM role that grants access.</p>
@@ -143,7 +148,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html"></a> refer to
      * their official documentation.</p>
      */
-    inline void SetMessageFormat(MessageFormat&& value) { m_messageFormatHasBeenSet = true; m_messageFormat = value; }
+    inline void SetMessageFormat(MessageFormat&& value) { m_messageFormatHasBeenSet = true; m_messageFormat = std::move(value); }
 
     /**
      * <p>The message format of the message to publish. Optional. Accepted values are
@@ -165,7 +170,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html"></a> refer to
      * their official documentation.</p>
      */
-    inline SnsAction& WithMessageFormat(MessageFormat&& value) { SetMessageFormat(value); return *this;}
+    inline SnsAction& WithMessageFormat(MessageFormat&& value) { SetMessageFormat(std::move(value)); return *this;}
 
   private:
     Aws::String m_targetArn;

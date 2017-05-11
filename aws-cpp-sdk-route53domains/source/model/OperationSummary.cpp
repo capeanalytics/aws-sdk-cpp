@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/route53domains/model/OperationSummary.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,7 +30,9 @@ namespace Model
 
 OperationSummary::OperationSummary() : 
     m_operationIdHasBeenSet(false),
+    m_status(OperationStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_type(OperationType::NOT_SET),
     m_typeHasBeenSet(false),
     m_submittedDateHasBeenSet(false)
 {
@@ -37,7 +40,9 @@ OperationSummary::OperationSummary() :
 
 OperationSummary::OperationSummary(const JsonValue& jsonValue) : 
     m_operationIdHasBeenSet(false),
+    m_status(OperationStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_type(OperationType::NOT_SET),
     m_typeHasBeenSet(false),
     m_submittedDateHasBeenSet(false)
 {

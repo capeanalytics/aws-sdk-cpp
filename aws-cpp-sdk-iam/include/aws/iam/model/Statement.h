@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/PolicySourceType.h>
 #include <aws/iam/model/Position.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * <p>Contains a reference to a <code>Statement</code> element in a policy document
    * that determines the result of the simulation.</p> <p>This data type is used by
    * the <code>MatchedStatements</code> member of the <code> <a>EvaluationResult</a>
-   * </code> type.</p>
+   * </code> type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/Statement">AWS API
+   * Reference</a></p>
    */
   class AWS_IAM_API Statement
   {
@@ -62,7 +66,7 @@ namespace Model
     /**
      * <p>The identifier of the policy that was provided as an input.</p>
      */
-    inline void SetSourcePolicyId(Aws::String&& value) { m_sourcePolicyIdHasBeenSet = true; m_sourcePolicyId = value; }
+    inline void SetSourcePolicyId(Aws::String&& value) { m_sourcePolicyIdHasBeenSet = true; m_sourcePolicyId = std::move(value); }
 
     /**
      * <p>The identifier of the policy that was provided as an input.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The identifier of the policy that was provided as an input.</p>
      */
-    inline Statement& WithSourcePolicyId(Aws::String&& value) { SetSourcePolicyId(value); return *this;}
+    inline Statement& WithSourcePolicyId(Aws::String&& value) { SetSourcePolicyId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the policy that was provided as an input.</p>
@@ -97,7 +101,7 @@ namespace Model
     /**
      * <p>The type of the policy.</p>
      */
-    inline void SetSourcePolicyType(PolicySourceType&& value) { m_sourcePolicyTypeHasBeenSet = true; m_sourcePolicyType = value; }
+    inline void SetSourcePolicyType(PolicySourceType&& value) { m_sourcePolicyTypeHasBeenSet = true; m_sourcePolicyType = std::move(value); }
 
     /**
      * <p>The type of the policy.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The type of the policy.</p>
      */
-    inline Statement& WithSourcePolicyType(PolicySourceType&& value) { SetSourcePolicyType(value); return *this;}
+    inline Statement& WithSourcePolicyType(PolicySourceType&& value) { SetSourcePolicyType(std::move(value)); return *this;}
 
     /**
      * <p>The row and column of the beginning of the <code>Statement</code> in an IAM
@@ -125,7 +129,7 @@ namespace Model
      * <p>The row and column of the beginning of the <code>Statement</code> in an IAM
      * policy.</p>
      */
-    inline void SetStartPosition(Position&& value) { m_startPositionHasBeenSet = true; m_startPosition = value; }
+    inline void SetStartPosition(Position&& value) { m_startPositionHasBeenSet = true; m_startPosition = std::move(value); }
 
     /**
      * <p>The row and column of the beginning of the <code>Statement</code> in an IAM
@@ -137,7 +141,7 @@ namespace Model
      * <p>The row and column of the beginning of the <code>Statement</code> in an IAM
      * policy.</p>
      */
-    inline Statement& WithStartPosition(Position&& value) { SetStartPosition(value); return *this;}
+    inline Statement& WithStartPosition(Position&& value) { SetStartPosition(std::move(value)); return *this;}
 
     /**
      * <p>The row and column of the end of a <code>Statement</code> in an IAM
@@ -155,7 +159,7 @@ namespace Model
      * <p>The row and column of the end of a <code>Statement</code> in an IAM
      * policy.</p>
      */
-    inline void SetEndPosition(Position&& value) { m_endPositionHasBeenSet = true; m_endPosition = value; }
+    inline void SetEndPosition(Position&& value) { m_endPositionHasBeenSet = true; m_endPosition = std::move(value); }
 
     /**
      * <p>The row and column of the end of a <code>Statement</code> in an IAM
@@ -167,7 +171,7 @@ namespace Model
      * <p>The row and column of the end of a <code>Statement</code> in an IAM
      * policy.</p>
      */
-    inline Statement& WithEndPosition(Position&& value) { SetEndPosition(value); return *this;}
+    inline Statement& WithEndPosition(Position&& value) { SetEndPosition(std::move(value)); return *this;}
 
   private:
     Aws::String m_sourcePolicyId;

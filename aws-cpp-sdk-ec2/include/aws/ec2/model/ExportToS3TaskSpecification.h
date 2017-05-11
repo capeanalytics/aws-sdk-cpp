@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/DiskImageFormat.h>
 #include <aws/ec2/model/ContainerFormat.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an instance export task.</p>
+   * <p>Describes an instance export task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ExportToS3TaskSpecification">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ExportToS3TaskSpecification
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The format for the exported image.</p>
      */
-    inline void SetDiskImageFormat(DiskImageFormat&& value) { m_diskImageFormatHasBeenSet = true; m_diskImageFormat = value; }
+    inline void SetDiskImageFormat(DiskImageFormat&& value) { m_diskImageFormatHasBeenSet = true; m_diskImageFormat = std::move(value); }
 
     /**
      * <p>The format for the exported image.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The format for the exported image.</p>
      */
-    inline ExportToS3TaskSpecification& WithDiskImageFormat(DiskImageFormat&& value) { SetDiskImageFormat(value); return *this;}
+    inline ExportToS3TaskSpecification& WithDiskImageFormat(DiskImageFormat&& value) { SetDiskImageFormat(std::move(value)); return *this;}
 
     /**
      * <p>The container format used to combine disk images with metadata (such as OVF).
@@ -87,7 +91,7 @@ namespace Model
      * <p>The container format used to combine disk images with metadata (such as OVF).
      * If absent, only the disk image is exported.</p>
      */
-    inline void SetContainerFormat(ContainerFormat&& value) { m_containerFormatHasBeenSet = true; m_containerFormat = value; }
+    inline void SetContainerFormat(ContainerFormat&& value) { m_containerFormatHasBeenSet = true; m_containerFormat = std::move(value); }
 
     /**
      * <p>The container format used to combine disk images with metadata (such as OVF).
@@ -99,7 +103,7 @@ namespace Model
      * <p>The container format used to combine disk images with metadata (such as OVF).
      * If absent, only the disk image is exported.</p>
      */
-    inline ExportToS3TaskSpecification& WithContainerFormat(ContainerFormat&& value) { SetContainerFormat(value); return *this;}
+    inline ExportToS3TaskSpecification& WithContainerFormat(ContainerFormat&& value) { SetContainerFormat(std::move(value)); return *this;}
 
     /**
      * <p>The S3 bucket for the destination image. The destination bucket must exist
@@ -120,7 +124,7 @@ namespace Model
      * and grant WRITE and READ_ACP permissions to the AWS account
      * <code>vm-import-export@amazon.com</code>.</p>
      */
-    inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = value; }
+    inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::move(value); }
 
     /**
      * <p>The S3 bucket for the destination image. The destination bucket must exist
@@ -141,7 +145,7 @@ namespace Model
      * and grant WRITE and READ_ACP permissions to the AWS account
      * <code>vm-import-export@amazon.com</code>.</p>
      */
-    inline ExportToS3TaskSpecification& WithS3Bucket(Aws::String&& value) { SetS3Bucket(value); return *this;}
+    inline ExportToS3TaskSpecification& WithS3Bucket(Aws::String&& value) { SetS3Bucket(std::move(value)); return *this;}
 
     /**
      * <p>The S3 bucket for the destination image. The destination bucket must exist
@@ -166,7 +170,7 @@ namespace Model
      * <p>The image is written to a single object in the S3 bucket at the S3 key
      * s3prefix + exportTaskId + '.' + diskImageFormat.</p>
      */
-    inline void SetS3Prefix(Aws::String&& value) { m_s3PrefixHasBeenSet = true; m_s3Prefix = value; }
+    inline void SetS3Prefix(Aws::String&& value) { m_s3PrefixHasBeenSet = true; m_s3Prefix = std::move(value); }
 
     /**
      * <p>The image is written to a single object in the S3 bucket at the S3 key
@@ -184,7 +188,7 @@ namespace Model
      * <p>The image is written to a single object in the S3 bucket at the S3 key
      * s3prefix + exportTaskId + '.' + diskImageFormat.</p>
      */
-    inline ExportToS3TaskSpecification& WithS3Prefix(Aws::String&& value) { SetS3Prefix(value); return *this;}
+    inline ExportToS3TaskSpecification& WithS3Prefix(Aws::String&& value) { SetS3Prefix(std::move(value)); return *this;}
 
     /**
      * <p>The image is written to a single object in the S3 bucket at the S3 key

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/GetDocumentResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -24,11 +25,13 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetDocumentResult::GetDocumentResult()
+GetDocumentResult::GetDocumentResult() : 
+    m_documentType(DocumentType::NOT_SET)
 {
 }
 
-GetDocumentResult::GetDocumentResult(const AmazonWebServiceResult<JsonValue>& result)
+GetDocumentResult::GetDocumentResult(const AmazonWebServiceResult<JsonValue>& result) : 
+    m_documentType(DocumentType::NOT_SET)
 {
   *this = result;
 }
@@ -42,9 +45,21 @@ GetDocumentResult& GetDocumentResult::operator =(const AmazonWebServiceResult<Js
 
   }
 
+  if(jsonValue.ValueExists("DocumentVersion"))
+  {
+    m_documentVersion = jsonValue.GetString("DocumentVersion");
+
+  }
+
   if(jsonValue.ValueExists("Content"))
   {
     m_content = jsonValue.GetString("Content");
+
+  }
+
+  if(jsonValue.ValueExists("DocumentType"))
+  {
+    m_documentType = DocumentTypeMapper::GetDocumentTypeForName(jsonValue.GetString("DocumentType"));
 
   }
 

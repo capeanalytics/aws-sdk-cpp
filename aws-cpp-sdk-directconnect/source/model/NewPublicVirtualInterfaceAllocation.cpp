@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/NewPublicVirtualInterfaceAllocation.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -36,6 +37,8 @@ NewPublicVirtualInterfaceAllocation::NewPublicVirtualInterfaceAllocation() :
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
     m_customerAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
     m_routeFilterPrefixesHasBeenSet(false)
 {
 }
@@ -49,6 +52,8 @@ NewPublicVirtualInterfaceAllocation::NewPublicVirtualInterfaceAllocation(const J
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
     m_customerAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
     m_routeFilterPrefixesHasBeenSet(false)
 {
   *this = jsonValue;
@@ -96,6 +101,13 @@ NewPublicVirtualInterfaceAllocation& NewPublicVirtualInterfaceAllocation::operat
     m_customerAddress = jsonValue.GetString("customerAddress");
 
     m_customerAddressHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("addressFamily"))
+  {
+    m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(jsonValue.GetString("addressFamily"));
+
+    m_addressFamilyHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("routeFilterPrefixes"))
@@ -149,6 +161,11 @@ JsonValue NewPublicVirtualInterfaceAllocation::Jsonize() const
   {
    payload.WithString("customerAddress", m_customerAddress);
 
+  }
+
+  if(m_addressFamilyHasBeenSet)
+  {
+   payload.WithString("addressFamily", AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily));
   }
 
   if(m_routeFilterPrefixesHasBeenSet)

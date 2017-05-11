@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticfilesystem/EFS_EXPORTS.h>
 #include <aws/elasticfilesystem/EFSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/DescribeMountTargetsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EFS_API DescribeMountTargetsRequest : public EFSRequest
   {
@@ -38,6 +42,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>(Optional) Maximum number of mount targets to return in the response. It must
@@ -76,7 +81,7 @@ namespace Model
      * <code>DescribeMountTargets</code> operation (String). If present, it specifies
      * to continue the list from where the previous returning call left off.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>(Optional) Opaque pagination token returned from a previous
@@ -97,7 +102,7 @@ namespace Model
      * <code>DescribeMountTargets</code> operation (String). If present, it specifies
      * to continue the list from where the previous returning call left off.</p>
      */
-    inline DescribeMountTargetsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeMountTargetsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>(Optional) Opaque pagination token returned from a previous
@@ -125,7 +130,7 @@ namespace Model
      * (String). It must be included in your request if <code>MountTargetId</code> is
      * not included.</p>
      */
-    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = value; }
+    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::move(value); }
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
@@ -146,7 +151,7 @@ namespace Model
      * (String). It must be included in your request if <code>MountTargetId</code> is
      * not included.</p>
      */
-    inline DescribeMountTargetsRequest& WithFileSystemId(Aws::String&& value) { SetFileSystemId(value); return *this;}
+    inline DescribeMountTargetsRequest& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
 
     /**
      * <p>(Optional) ID of the file system whose mount targets you want to list
@@ -174,7 +179,7 @@ namespace Model
      * It must be included in your request if <code>FileSystemId</code> is not
      * included.</p>
      */
-    inline void SetMountTargetId(Aws::String&& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = value; }
+    inline void SetMountTargetId(Aws::String&& value) { m_mountTargetIdHasBeenSet = true; m_mountTargetId = std::move(value); }
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).
@@ -195,7 +200,7 @@ namespace Model
      * It must be included in your request if <code>FileSystemId</code> is not
      * included.</p>
      */
-    inline DescribeMountTargetsRequest& WithMountTargetId(Aws::String&& value) { SetMountTargetId(value); return *this;}
+    inline DescribeMountTargetsRequest& WithMountTargetId(Aws::String&& value) { SetMountTargetId(std::move(value)); return *this;}
 
     /**
      * <p>(Optional) ID of the mount target that you want to have described (String).

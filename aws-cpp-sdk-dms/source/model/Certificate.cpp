@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,8 +12,10 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dms/model/Certificate.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/HashingUtils.h>
 
 #include <utility>
 
@@ -31,6 +33,7 @@ Certificate::Certificate() :
     m_certificateIdentifierHasBeenSet(false),
     m_certificateCreationDateHasBeenSet(false),
     m_certificatePemHasBeenSet(false),
+    m_certificateWalletHasBeenSet(false),
     m_certificateArnHasBeenSet(false),
     m_certificateOwnerHasBeenSet(false),
     m_validFromDateHasBeenSet(false),
@@ -45,6 +48,7 @@ Certificate::Certificate(const JsonValue& jsonValue) :
     m_certificateIdentifierHasBeenSet(false),
     m_certificateCreationDateHasBeenSet(false),
     m_certificatePemHasBeenSet(false),
+    m_certificateWalletHasBeenSet(false),
     m_certificateArnHasBeenSet(false),
     m_certificateOwnerHasBeenSet(false),
     m_validFromDateHasBeenSet(false),
@@ -77,6 +81,12 @@ Certificate& Certificate::operator =(const JsonValue& jsonValue)
     m_certificatePem = jsonValue.GetString("CertificatePem");
 
     m_certificatePemHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("CertificateWallet"))
+  {
+    m_certificateWallet = HashingUtils::Base64Decode(jsonValue.GetString("CertificateWallet"));
+    m_certificateWalletHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("CertificateArn"))
@@ -143,6 +153,11 @@ JsonValue Certificate::Jsonize() const
   {
    payload.WithString("CertificatePem", m_certificatePem);
 
+  }
+
+  if(m_certificateWalletHasBeenSet)
+  {
+   payload.WithString("CertificateWallet", HashingUtils::Base64Encode(m_certificateWallet));
   }
 
   if(m_certificateArnHasBeenSet)

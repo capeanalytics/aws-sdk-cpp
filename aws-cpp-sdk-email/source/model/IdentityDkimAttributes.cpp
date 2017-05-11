@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/email/model/IdentityDkimAttributes.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,6 +33,7 @@ namespace Model
 IdentityDkimAttributes::IdentityDkimAttributes() : 
     m_dkimEnabled(false),
     m_dkimEnabledHasBeenSet(false),
+    m_dkimVerificationStatus(VerificationStatus::NOT_SET),
     m_dkimVerificationStatusHasBeenSet(false),
     m_dkimTokensHasBeenSet(false)
 {
@@ -40,6 +42,7 @@ IdentityDkimAttributes::IdentityDkimAttributes() :
 IdentityDkimAttributes::IdentityDkimAttributes(const XmlNode& xmlNode) : 
     m_dkimEnabled(false),
     m_dkimEnabledHasBeenSet(false),
+    m_dkimVerificationStatus(VerificationStatus::NOT_SET),
     m_dkimVerificationStatusHasBeenSet(false),
     m_dkimTokensHasBeenSet(false)
 {
@@ -85,7 +88,7 @@ void IdentityDkimAttributes::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_dkimEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DkimEnabled=" << m_dkimEnabled << "&";
+      oStream << location << index << locationValue << ".DkimEnabled=" << std::boolalpha << m_dkimEnabled << "&";
   }
 
   if(m_dkimVerificationStatusHasBeenSet)
@@ -108,7 +111,7 @@ void IdentityDkimAttributes::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_dkimEnabledHasBeenSet)
   {
-      oStream << location << ".DkimEnabled=" << m_dkimEnabled << "&";
+      oStream << location << ".DkimEnabled=" << std::boolalpha << m_dkimEnabled << "&";
   }
   if(m_dkimVerificationStatusHasBeenSet)
   {

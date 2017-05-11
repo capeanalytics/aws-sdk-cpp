@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * <p>Options for literal field. Present if <code>IndexFieldType</code> specifies
    * the field is of type <code>literal</code>. All options are enabled by
-   * default.</p>
+   * default.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/LiteralOptions">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API LiteralOptions
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * A value to use for the field if the field isn't specified for a document.
      */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
+    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
 
     /**
      * A value to use for the field if the field isn't specified for a document.
@@ -74,7 +78,7 @@ namespace Model
     /**
      * A value to use for the field if the field isn't specified for a document.
      */
-    inline LiteralOptions& WithDefaultValue(Aws::String&& value) { SetDefaultValue(value); return *this;}
+    inline LiteralOptions& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
 
     /**
      * A value to use for the field if the field isn't specified for a document.
@@ -88,7 +92,7 @@ namespace Model
     inline void SetSourceField(const Aws::String& value) { m_sourceFieldHasBeenSet = true; m_sourceField = value; }
 
     
-    inline void SetSourceField(Aws::String&& value) { m_sourceFieldHasBeenSet = true; m_sourceField = value; }
+    inline void SetSourceField(Aws::String&& value) { m_sourceFieldHasBeenSet = true; m_sourceField = std::move(value); }
 
     
     inline void SetSourceField(const char* value) { m_sourceFieldHasBeenSet = true; m_sourceField.assign(value); }
@@ -97,7 +101,7 @@ namespace Model
     inline LiteralOptions& WithSourceField(const Aws::String& value) { SetSourceField(value); return *this;}
 
     
-    inline LiteralOptions& WithSourceField(Aws::String&& value) { SetSourceField(value); return *this;}
+    inline LiteralOptions& WithSourceField(Aws::String&& value) { SetSourceField(std::move(value)); return *this;}
 
     
     inline LiteralOptions& WithSourceField(const char* value) { SetSourceField(value); return *this;}

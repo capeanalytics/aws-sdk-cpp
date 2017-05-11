@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/CommandInvocationStatus.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -31,11 +32,12 @@ namespace Aws
 
         static const int Pending_HASH = HashingUtils::HashString("Pending");
         static const int InProgress_HASH = HashingUtils::HashString("InProgress");
-        static const int Cancelling_HASH = HashingUtils::HashString("Cancelling");
+        static const int Delayed_HASH = HashingUtils::HashString("Delayed");
         static const int Success_HASH = HashingUtils::HashString("Success");
-        static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
         static const int Cancelled_HASH = HashingUtils::HashString("Cancelled");
+        static const int TimedOut_HASH = HashingUtils::HashString("TimedOut");
         static const int Failed_HASH = HashingUtils::HashString("Failed");
+        static const int Cancelling_HASH = HashingUtils::HashString("Cancelling");
 
 
         CommandInvocationStatus GetCommandInvocationStatusForName(const Aws::String& name)
@@ -49,25 +51,29 @@ namespace Aws
           {
             return CommandInvocationStatus::InProgress;
           }
-          else if (hashCode == Cancelling_HASH)
+          else if (hashCode == Delayed_HASH)
           {
-            return CommandInvocationStatus::Cancelling;
+            return CommandInvocationStatus::Delayed;
           }
           else if (hashCode == Success_HASH)
           {
             return CommandInvocationStatus::Success;
           }
-          else if (hashCode == TimedOut_HASH)
-          {
-            return CommandInvocationStatus::TimedOut;
-          }
           else if (hashCode == Cancelled_HASH)
           {
             return CommandInvocationStatus::Cancelled;
           }
+          else if (hashCode == TimedOut_HASH)
+          {
+            return CommandInvocationStatus::TimedOut;
+          }
           else if (hashCode == Failed_HASH)
           {
             return CommandInvocationStatus::Failed;
+          }
+          else if (hashCode == Cancelling_HASH)
+          {
+            return CommandInvocationStatus::Cancelling;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -87,16 +93,18 @@ namespace Aws
             return "Pending";
           case CommandInvocationStatus::InProgress:
             return "InProgress";
-          case CommandInvocationStatus::Cancelling:
-            return "Cancelling";
+          case CommandInvocationStatus::Delayed:
+            return "Delayed";
           case CommandInvocationStatus::Success:
             return "Success";
-          case CommandInvocationStatus::TimedOut:
-            return "TimedOut";
           case CommandInvocationStatus::Cancelled:
             return "Cancelled";
+          case CommandInvocationStatus::TimedOut:
+            return "TimedOut";
           case CommandInvocationStatus::Failed:
             return "Failed";
+          case CommandInvocationStatus::Cancelling:
+            return "Cancelling";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

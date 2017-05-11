@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for AssignPrivateIpAddresses.</p>
+   * <p>Contains the parameters for AssignPrivateIpAddresses.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssignPrivateIpAddressesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AssignPrivateIpAddressesRequest : public EC2Request
   {
@@ -34,6 +39,11 @@ namespace Model
     AssignPrivateIpAddressesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the network interface.</p>
      */
@@ -47,7 +57,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
+    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
 
     /**
      * <p>The ID of the network interface.</p>
@@ -62,7 +72,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline AssignPrivateIpAddressesRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(value); return *this;}
+    inline AssignPrivateIpAddressesRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network interface.</p>
@@ -91,7 +101,7 @@ namespace Model
      * number of secondary IP addresses.</p> <p>If you don't specify an IP address,
      * Amazon EC2 automatically selects an IP address within the subnet range.</p>
      */
-    inline void SetPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses = value; }
+    inline void SetPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses = std::move(value); }
 
     /**
      * <p>One or more IP addresses to be assigned as a secondary private IP address to
@@ -107,7 +117,7 @@ namespace Model
      * number of secondary IP addresses.</p> <p>If you don't specify an IP address,
      * Amazon EC2 automatically selects an IP address within the subnet range.</p>
      */
-    inline AssignPrivateIpAddressesRequest& WithPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { SetPrivateIpAddresses(value); return *this;}
+    inline AssignPrivateIpAddressesRequest& WithPrivateIpAddresses(Aws::Vector<Aws::String>&& value) { SetPrivateIpAddresses(std::move(value)); return *this;}
 
     /**
      * <p>One or more IP addresses to be assigned as a secondary private IP address to
@@ -123,7 +133,7 @@ namespace Model
      * number of secondary IP addresses.</p> <p>If you don't specify an IP address,
      * Amazon EC2 automatically selects an IP address within the subnet range.</p>
      */
-    inline AssignPrivateIpAddressesRequest& AddPrivateIpAddresses(Aws::String&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.push_back(value); return *this; }
+    inline AssignPrivateIpAddressesRequest& AddPrivateIpAddresses(Aws::String&& value) { m_privateIpAddressesHasBeenSet = true; m_privateIpAddresses.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more IP addresses to be assigned as a secondary private IP address to

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/apigateway/model/AuthorizerType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
    * Gateway will activate the authorizer when a client calls the method.</p> <div
    * class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable
-   * custom authorization</a> </div>
+   * custom authorization</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/Authorizer">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API UpdateAuthorizerResult
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The identifier for the authorizer resource.</p>
      */
-    inline void SetId(Aws::String&& value) { m_id = value; }
+    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
 
     /**
      * <p>The identifier for the authorizer resource.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The identifier for the authorizer resource.</p>
      */
-    inline UpdateAuthorizerResult& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline UpdateAuthorizerResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier for the authorizer resource.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>[Required] The name of the authorizer.</p>
      */
-    inline void SetName(Aws::String&& value) { m_name = value; }
+    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
 
     /**
      * <p>[Required] The name of the authorizer.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>[Required] The name of the authorizer.</p>
      */
-    inline UpdateAuthorizerResult& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UpdateAuthorizerResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>[Required] The name of the authorizer.</p>
@@ -119,72 +123,117 @@ namespace Model
     inline UpdateAuthorizerResult& WithName(const char* value) { SetName(value); return *this;}
 
     /**
-     * <p>[Required] The type of the authorizer. Currently, the only valid type is
-     * TOKEN.</p>
+     * <p>[Required] The type of the authorizer. Currently, the valid type is
+     * <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for
+     * an Amazon Cognito user pool.</p>
      */
     inline const AuthorizerType& GetType() const{ return m_type; }
 
     /**
-     * <p>[Required] The type of the authorizer. Currently, the only valid type is
-     * TOKEN.</p>
+     * <p>[Required] The type of the authorizer. Currently, the valid type is
+     * <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for
+     * an Amazon Cognito user pool.</p>
      */
     inline void SetType(const AuthorizerType& value) { m_type = value; }
 
     /**
-     * <p>[Required] The type of the authorizer. Currently, the only valid type is
-     * TOKEN.</p>
+     * <p>[Required] The type of the authorizer. Currently, the valid type is
+     * <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for
+     * an Amazon Cognito user pool.</p>
      */
-    inline void SetType(AuthorizerType&& value) { m_type = value; }
+    inline void SetType(AuthorizerType&& value) { m_type = std::move(value); }
 
     /**
-     * <p>[Required] The type of the authorizer. Currently, the only valid type is
-     * TOKEN.</p>
+     * <p>[Required] The type of the authorizer. Currently, the valid type is
+     * <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for
+     * an Amazon Cognito user pool.</p>
      */
     inline UpdateAuthorizerResult& WithType(const AuthorizerType& value) { SetType(value); return *this;}
 
     /**
-     * <p>[Required] The type of the authorizer. Currently, the only valid type is
-     * TOKEN.</p>
+     * <p>[Required] The type of the authorizer. Currently, the valid type is
+     * <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for
+     * an Amazon Cognito user pool.</p>
      */
-    inline UpdateAuthorizerResult& WithType(AuthorizerType&& value) { SetType(value); return *this;}
+    inline UpdateAuthorizerResult& WithType(AuthorizerType&& value) { SetType(std::move(value)); return *this;}
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
     inline const Aws::Vector<Aws::String>& GetProviderARNs() const{ return m_providerARNs; }
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
     inline void SetProviderARNs(const Aws::Vector<Aws::String>& value) { m_providerARNs = value; }
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
-    inline void SetProviderARNs(Aws::Vector<Aws::String>&& value) { m_providerARNs = value; }
+    inline void SetProviderARNs(Aws::Vector<Aws::String>&& value) { m_providerARNs = std::move(value); }
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
     inline UpdateAuthorizerResult& WithProviderARNs(const Aws::Vector<Aws::String>& value) { SetProviderARNs(value); return *this;}
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
-    inline UpdateAuthorizerResult& WithProviderARNs(Aws::Vector<Aws::String>&& value) { SetProviderARNs(value); return *this;}
+    inline UpdateAuthorizerResult& WithProviderARNs(Aws::Vector<Aws::String>&& value) { SetProviderARNs(std::move(value)); return *this;}
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
     inline UpdateAuthorizerResult& AddProviderARNs(const Aws::String& value) { m_providerARNs.push_back(value); return *this; }
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
-    inline UpdateAuthorizerResult& AddProviderARNs(Aws::String&& value) { m_providerARNs.push_back(value); return *this; }
+    inline UpdateAuthorizerResult& AddProviderARNs(Aws::String&& value) { m_providerARNs.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>A list of the provider ARNs of the authorizer.</p>
+     * <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code>
+     * authorizer, this is not defined. For authorizers of the
+     * <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool
+     * ARN of this format:
+     * <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>.
+     * </p>
      */
     inline UpdateAuthorizerResult& AddProviderARNs(const char* value) { m_providerARNs.push_back(value); return *this; }
 
@@ -204,7 +253,7 @@ namespace Model
      * <p>Optional customer-defined field, used in Swagger imports/exports. Has no
      * functional impact.</p>
      */
-    inline void SetAuthType(Aws::String&& value) { m_authType = value; }
+    inline void SetAuthType(Aws::String&& value) { m_authType = std::move(value); }
 
     /**
      * <p>Optional customer-defined field, used in Swagger imports/exports. Has no
@@ -222,7 +271,7 @@ namespace Model
      * <p>Optional customer-defined field, used in Swagger imports/exports. Has no
      * functional impact.</p>
      */
-    inline UpdateAuthorizerResult& WithAuthType(Aws::String&& value) { SetAuthType(value); return *this;}
+    inline UpdateAuthorizerResult& WithAuthType(Aws::String&& value) { SetAuthType(std::move(value)); return *this;}
 
     /**
      * <p>Optional customer-defined field, used in Swagger imports/exports. Has no
@@ -232,92 +281,106 @@ namespace Model
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
     inline const Aws::String& GetAuthorizerUri() const{ return m_authorizerUri; }
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
     inline void SetAuthorizerUri(const Aws::String& value) { m_authorizerUri = value; }
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
-    inline void SetAuthorizerUri(Aws::String&& value) { m_authorizerUri = value; }
+    inline void SetAuthorizerUri(Aws::String&& value) { m_authorizerUri = std::move(value); }
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
     inline void SetAuthorizerUri(const char* value) { m_authorizerUri.assign(value); }
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
     inline UpdateAuthorizerResult& WithAuthorizerUri(const Aws::String& value) { SetAuthorizerUri(value); return *this;}
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
-    inline UpdateAuthorizerResult& WithAuthorizerUri(Aws::String&& value) { SetAuthorizerUri(value); return *this;}
+    inline UpdateAuthorizerResult& WithAuthorizerUri(Aws::String&& value) { SetAuthorizerUri(std::move(value)); return *this;}
 
     /**
      * <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For
-     * TOKEN authorizers, this must be a well-formed Lambda function URI. The URI
-     * should be of the form
-     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>.
-     * <code>Region</code> is used to determine the right endpoint. In this case,
-     * <code>path</code> is used to indicate that the remaining substring in the URI
-     * should be treated as the path to the resource, including the initial
-     * <code>/</code>. For Lambda functions, this is usually of the form
-     * /2015-03-31/functions/[FunctionARN]/invocations</p>
+     * <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI,
+     * for example,
+     * <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>.
+     * In general, the URI has this form
+     * <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where
+     * <code>{region}</code> is the same as the region hosting the Lambda function,
+     * <code>path</code> indicates that the remaining substring in the URI should be
+     * treated as the path to the resource, including the initial <code>/</code>. For
+     * Lambda functions, this is usually of the form
+     * /2015-03-31/functions/[FunctionARN]/invocations.</p>
      */
     inline UpdateAuthorizerResult& WithAuthorizerUri(const char* value) { SetAuthorizerUri(value); return *this;}
 
@@ -343,7 +406,7 @@ namespace Model
      * role's Amazon Resource Name (ARN). To use resource-based permissions on the
      * Lambda function, specify null.</p>
      */
-    inline void SetAuthorizerCredentials(Aws::String&& value) { m_authorizerCredentials = value; }
+    inline void SetAuthorizerCredentials(Aws::String&& value) { m_authorizerCredentials = std::move(value); }
 
     /**
      * <p>Specifies the credentials required for the authorizer, if any. Two options
@@ -367,7 +430,7 @@ namespace Model
      * role's Amazon Resource Name (ARN). To use resource-based permissions on the
      * Lambda function, specify null.</p>
      */
-    inline UpdateAuthorizerResult& WithAuthorizerCredentials(Aws::String&& value) { SetAuthorizerCredentials(value); return *this;}
+    inline UpdateAuthorizerResult& WithAuthorizerCredentials(Aws::String&& value) { SetAuthorizerCredentials(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the credentials required for the authorizer, if any. Two options
@@ -378,121 +441,142 @@ namespace Model
     inline UpdateAuthorizerResult& WithAuthorizerCredentials(const char* value) { SetAuthorizerCredentials(value); return *this;}
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
     inline const Aws::String& GetIdentitySource() const{ return m_identitySource; }
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
     inline void SetIdentitySource(const Aws::String& value) { m_identitySource = value; }
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
-    inline void SetIdentitySource(Aws::String&& value) { m_identitySource = value; }
+    inline void SetIdentitySource(Aws::String&& value) { m_identitySource = std::move(value); }
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
     inline void SetIdentitySource(const char* value) { m_identitySource.assign(value); }
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
     inline UpdateAuthorizerResult& WithIdentitySource(const Aws::String& value) { SetIdentitySource(value); return *this;}
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
-    inline UpdateAuthorizerResult& WithIdentitySource(Aws::String&& value) { SetIdentitySource(value); return *this;}
+    inline UpdateAuthorizerResult& WithIdentitySource(Aws::String&& value) { SetIdentitySource(std::move(value)); return *this;}
 
     /**
-     * <p>[Required] The source of the identity in an incoming request. For TOKEN
-     * authorizers, this value is a mapping expression with the same syntax as
-     * integration parameter mappings. The only valid source for tokens is 'header', so
-     * the expression should match 'method.request.header.[headerName]'. The value of
-     * the header '[headerName]' will be interpreted as the incoming token.</p>
+     * <p>[Required] The source of the identity in an incoming request. For a
+     * <code>TOKEN</code> authorizer, this value is a mapping expression with the same
+     * syntax as integration parameter mappings. The only valid source for tokens is
+     * 'header', so the expression should match 'method.request.header.[headerName]'.
+     * The value of the header '[headerName]' will be interpreted as the incoming
+     * token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is
+     * used.</p>
      */
     inline UpdateAuthorizerResult& WithIdentitySource(const char* value) { SetIdentitySource(value); return *this;}
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
     inline const Aws::String& GetIdentityValidationExpression() const{ return m_identityValidationExpression; }
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
     inline void SetIdentityValidationExpression(const Aws::String& value) { m_identityValidationExpression = value; }
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
-    inline void SetIdentityValidationExpression(Aws::String&& value) { m_identityValidationExpression = value; }
+    inline void SetIdentityValidationExpression(Aws::String&& value) { m_identityValidationExpression = std::move(value); }
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
     inline void SetIdentityValidationExpression(const char* value) { m_identityValidationExpression.assign(value); }
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
     inline UpdateAuthorizerResult& WithIdentityValidationExpression(const Aws::String& value) { SetIdentityValidationExpression(value); return *this;}
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
-    inline UpdateAuthorizerResult& WithIdentityValidationExpression(Aws::String&& value) { SetIdentityValidationExpression(value); return *this;}
+    inline UpdateAuthorizerResult& WithIdentityValidationExpression(Aws::String&& value) { SetIdentityValidationExpression(std::move(value)); return *this;}
 
     /**
-     * <p>A validation expression for the incoming identity. For TOKEN authorizers,
-     * this value should be a regular expression. The incoming token from the client is
-     * matched against this expression, and will proceed if the token matches. If the
-     * token doesn't match, the client receives a 401 Unauthorized response.</p>
+     * <p>A validation expression for the incoming identity. For <code>TOKEN</code>
+     * authorizers, this value should be a regular expression. The incoming token from
+     * the client is matched against this expression, and will proceed if the token
+     * matches. If the token doesn't match, the client receives a 401 Unauthorized
+     * response.</p>
      */
     inline UpdateAuthorizerResult& WithIdentityValidationExpression(const char* value) { SetIdentityValidationExpression(value); return *this;}
 

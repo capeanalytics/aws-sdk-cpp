@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an Amazon EBS volume.</p>
+   * <p>Describes an Amazon EBS volume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/Ebs">AWS API
+   * Reference</a></p>
    */
   class AWS_AUTOSCALING_API Ebs
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The ID of the snapshot.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline Ebs& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline Ebs& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the snapshot.</p>
@@ -134,7 +138,7 @@ namespace Model
      * <p>Valid values: <code>standard</code> | <code>io1</code> | <code>gp2</code>
      * </p> <p>Default: <code>standard</code> </p>
      */
-    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
 
     /**
      * <p>The volume type. For more information, see <a
@@ -161,7 +165,7 @@ namespace Model
      * <p>Valid values: <code>standard</code> | <code>io1</code> | <code>gp2</code>
      * </p> <p>Default: <code>standard</code> </p>
      */
-    inline Ebs& WithVolumeType(Aws::String&& value) { SetVolumeType(value); return *this;}
+    inline Ebs& WithVolumeType(Aws::String&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p>The volume type. For more information, see <a

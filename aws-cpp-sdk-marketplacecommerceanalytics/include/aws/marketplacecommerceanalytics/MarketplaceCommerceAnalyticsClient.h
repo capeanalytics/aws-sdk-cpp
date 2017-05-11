@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalytics_EXPORTS.h>
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalyticsErrors.h>
@@ -121,7 +122,10 @@ namespace Model
          * (e.g. if the same data set is requested twice), the original file will be
          * overwritten by the new file. Requires a Role with an attached permissions policy
          * providing Allow permissions for the following actions: s3:PutObject,
-         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet">AWS
+         * API Reference</a></p>
          */
         virtual Model::GenerateDataSetOutcome GenerateDataSet(const Model::GenerateDataSetRequest& request) const;
 
@@ -135,7 +139,10 @@ namespace Model
          * (e.g. if the same data set is requested twice), the original file will be
          * overwritten by the new file. Requires a Role with an attached permissions policy
          * providing Allow permissions for the following actions: s3:PutObject,
-         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -151,7 +158,10 @@ namespace Model
          * (e.g. if the same data set is requested twice), the original file will be
          * overwritten by the new file. Requires a Role with an attached permissions policy
          * providing Allow permissions for the following actions: s3:PutObject,
-         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+         * s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSet">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -168,7 +178,9 @@ namespace Model
          * will be overwritten by the new file. Requires a Role with an attached
          * permissions policy providing Allow permissions for the following actions:
          * s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
-         * iam:GetRolePolicy.
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport">AWS
+         * API Reference</a></p>
          */
         virtual Model::StartSupportDataExportOutcome StartSupportDataExport(const Model::StartSupportDataExportRequest& request) const;
 
@@ -183,7 +195,9 @@ namespace Model
          * will be overwritten by the new file. Requires a Role with an attached
          * permissions policy providing Allow permissions for the following actions:
          * s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
-         * iam:GetRolePolicy.
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -200,7 +214,9 @@ namespace Model
          * will be overwritten by the new file. Requires a Role with an attached
          * permissions policy providing Allow permissions for the following actions:
          * s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
-         * iam:GetRolePolicy.
+         * iam:GetRolePolicy.<p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExport">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -215,7 +231,7 @@ namespace Model
         void StartSupportDataExportAsyncHelper(const Model::StartSupportDataExportRequest& request, const StartSupportDataExportResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace MarketplaceCommerceAnalytics

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/email/model/StopScope.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * Notification Service (Amazon SNS).</p> <p>For information about setting a stop
    * action in a receipt rule, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/StopAction">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API StopAction
   {
@@ -66,7 +70,7 @@ namespace Model
      * <p>The scope to which the Stop action applies. That is, what is being
      * stopped.</p>
      */
-    inline void SetScope(StopScope&& value) { m_scopeHasBeenSet = true; m_scope = value; }
+    inline void SetScope(StopScope&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
 
     /**
      * <p>The scope to which the Stop action applies. That is, what is being
@@ -78,7 +82,7 @@ namespace Model
      * <p>The scope to which the Stop action applies. That is, what is being
      * stopped.</p>
      */
-    inline StopAction& WithScope(StopScope&& value) { SetScope(value); return *this;}
+    inline StopAction& WithScope(StopScope&& value) { SetScope(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
@@ -108,7 +112,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
@@ -138,7 +142,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline StopAction& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline StopAction& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the

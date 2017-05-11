@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -117,7 +118,8 @@ void CloudFrontClient::init(const ClientConfiguration& config)
 CreateCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::CreateCloudFrontOriginAccessIdentity2016_01_28(const CreateCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -131,7 +133,10 @@ CreateCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::CreateCl
 
 CreateCloudFrontOriginAccessIdentity2016_01_28OutcomeCallable CloudFrontClient::CreateCloudFrontOriginAccessIdentity2016_01_28Callable(const CreateCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateCloudFrontOriginAccessIdentity2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateCloudFrontOriginAccessIdentity2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateCloudFrontOriginAccessIdentity2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::CreateCloudFrontOriginAccessIdentity2016_01_28Async(const CreateCloudFrontOriginAccessIdentity2016_01_28Request& request, const CreateCloudFrontOriginAccessIdentity2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -147,7 +152,8 @@ void CloudFrontClient::CreateCloudFrontOriginAccessIdentity2016_01_28AsyncHelper
 CreateDistribution2016_01_28Outcome CloudFrontClient::CreateDistribution2016_01_28(const CreateDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -161,7 +167,10 @@ CreateDistribution2016_01_28Outcome CloudFrontClient::CreateDistribution2016_01_
 
 CreateDistribution2016_01_28OutcomeCallable CloudFrontClient::CreateDistribution2016_01_28Callable(const CreateDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::CreateDistribution2016_01_28Async(const CreateDistribution2016_01_28Request& request, const CreateDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -177,7 +186,8 @@ void CloudFrontClient::CreateDistribution2016_01_28AsyncHelper(const CreateDistr
 CreateInvalidation2016_01_28Outcome CloudFrontClient::CreateInvalidation2016_01_28(const CreateInvalidation2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetDistributionId();
   ss << "/invalidation";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
@@ -193,7 +203,10 @@ CreateInvalidation2016_01_28Outcome CloudFrontClient::CreateInvalidation2016_01_
 
 CreateInvalidation2016_01_28OutcomeCallable CloudFrontClient::CreateInvalidation2016_01_28Callable(const CreateInvalidation2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateInvalidation2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateInvalidation2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateInvalidation2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::CreateInvalidation2016_01_28Async(const CreateInvalidation2016_01_28Request& request, const CreateInvalidation2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -209,7 +222,8 @@ void CloudFrontClient::CreateInvalidation2016_01_28AsyncHelper(const CreateInval
 CreateStreamingDistribution2016_01_28Outcome CloudFrontClient::CreateStreamingDistribution2016_01_28(const CreateStreamingDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -223,7 +237,10 @@ CreateStreamingDistribution2016_01_28Outcome CloudFrontClient::CreateStreamingDi
 
 CreateStreamingDistribution2016_01_28OutcomeCallable CloudFrontClient::CreateStreamingDistribution2016_01_28Callable(const CreateStreamingDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateStreamingDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateStreamingDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateStreamingDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::CreateStreamingDistribution2016_01_28Async(const CreateStreamingDistribution2016_01_28Request& request, const CreateStreamingDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -239,7 +256,8 @@ void CloudFrontClient::CreateStreamingDistribution2016_01_28AsyncHelper(const Cr
 DeleteCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::DeleteCloudFrontOriginAccessIdentity2016_01_28(const DeleteCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront/";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_DELETE);
   if(outcome.IsSuccess())
@@ -254,7 +272,10 @@ DeleteCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::DeleteCl
 
 DeleteCloudFrontOriginAccessIdentity2016_01_28OutcomeCallable CloudFrontClient::DeleteCloudFrontOriginAccessIdentity2016_01_28Callable(const DeleteCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteCloudFrontOriginAccessIdentity2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteCloudFrontOriginAccessIdentity2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteCloudFrontOriginAccessIdentity2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::DeleteCloudFrontOriginAccessIdentity2016_01_28Async(const DeleteCloudFrontOriginAccessIdentity2016_01_28Request& request, const DeleteCloudFrontOriginAccessIdentity2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -270,7 +291,8 @@ void CloudFrontClient::DeleteCloudFrontOriginAccessIdentity2016_01_28AsyncHelper
 DeleteDistribution2016_01_28Outcome CloudFrontClient::DeleteDistribution2016_01_28(const DeleteDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_DELETE);
   if(outcome.IsSuccess())
@@ -285,7 +307,10 @@ DeleteDistribution2016_01_28Outcome CloudFrontClient::DeleteDistribution2016_01_
 
 DeleteDistribution2016_01_28OutcomeCallable CloudFrontClient::DeleteDistribution2016_01_28Callable(const DeleteDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::DeleteDistribution2016_01_28Async(const DeleteDistribution2016_01_28Request& request, const DeleteDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -301,7 +326,8 @@ void CloudFrontClient::DeleteDistribution2016_01_28AsyncHelper(const DeleteDistr
 DeleteStreamingDistribution2016_01_28Outcome CloudFrontClient::DeleteStreamingDistribution2016_01_28(const DeleteStreamingDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_DELETE);
   if(outcome.IsSuccess())
@@ -316,7 +342,10 @@ DeleteStreamingDistribution2016_01_28Outcome CloudFrontClient::DeleteStreamingDi
 
 DeleteStreamingDistribution2016_01_28OutcomeCallable CloudFrontClient::DeleteStreamingDistribution2016_01_28Callable(const DeleteStreamingDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteStreamingDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteStreamingDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteStreamingDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::DeleteStreamingDistribution2016_01_28Async(const DeleteStreamingDistribution2016_01_28Request& request, const DeleteStreamingDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -332,7 +361,8 @@ void CloudFrontClient::DeleteStreamingDistribution2016_01_28AsyncHelper(const De
 GetCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::GetCloudFrontOriginAccessIdentity2016_01_28(const GetCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront/";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -347,7 +377,10 @@ GetCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::GetCloudFro
 
 GetCloudFrontOriginAccessIdentity2016_01_28OutcomeCallable CloudFrontClient::GetCloudFrontOriginAccessIdentity2016_01_28Callable(const GetCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetCloudFrontOriginAccessIdentity2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetCloudFrontOriginAccessIdentity2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetCloudFrontOriginAccessIdentity2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetCloudFrontOriginAccessIdentity2016_01_28Async(const GetCloudFrontOriginAccessIdentity2016_01_28Request& request, const GetCloudFrontOriginAccessIdentity2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -363,7 +396,8 @@ void CloudFrontClient::GetCloudFrontOriginAccessIdentity2016_01_28AsyncHelper(co
 GetCloudFrontOriginAccessIdentityConfig2016_01_28Outcome CloudFrontClient::GetCloudFrontOriginAccessIdentityConfig2016_01_28(const GetCloudFrontOriginAccessIdentityConfig2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront/";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
@@ -379,7 +413,10 @@ GetCloudFrontOriginAccessIdentityConfig2016_01_28Outcome CloudFrontClient::GetCl
 
 GetCloudFrontOriginAccessIdentityConfig2016_01_28OutcomeCallable CloudFrontClient::GetCloudFrontOriginAccessIdentityConfig2016_01_28Callable(const GetCloudFrontOriginAccessIdentityConfig2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetCloudFrontOriginAccessIdentityConfig2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetCloudFrontOriginAccessIdentityConfig2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetCloudFrontOriginAccessIdentityConfig2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetCloudFrontOriginAccessIdentityConfig2016_01_28Async(const GetCloudFrontOriginAccessIdentityConfig2016_01_28Request& request, const GetCloudFrontOriginAccessIdentityConfig2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -395,7 +432,8 @@ void CloudFrontClient::GetCloudFrontOriginAccessIdentityConfig2016_01_28AsyncHel
 GetDistribution2016_01_28Outcome CloudFrontClient::GetDistribution2016_01_28(const GetDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -410,7 +448,10 @@ GetDistribution2016_01_28Outcome CloudFrontClient::GetDistribution2016_01_28(con
 
 GetDistribution2016_01_28OutcomeCallable CloudFrontClient::GetDistribution2016_01_28Callable(const GetDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetDistribution2016_01_28Async(const GetDistribution2016_01_28Request& request, const GetDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -426,7 +467,8 @@ void CloudFrontClient::GetDistribution2016_01_28AsyncHelper(const GetDistributio
 GetDistributionConfig2016_01_28Outcome CloudFrontClient::GetDistributionConfig2016_01_28(const GetDistributionConfig2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
@@ -442,7 +484,10 @@ GetDistributionConfig2016_01_28Outcome CloudFrontClient::GetDistributionConfig20
 
 GetDistributionConfig2016_01_28OutcomeCallable CloudFrontClient::GetDistributionConfig2016_01_28Callable(const GetDistributionConfig2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetDistributionConfig2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetDistributionConfig2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetDistributionConfig2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetDistributionConfig2016_01_28Async(const GetDistributionConfig2016_01_28Request& request, const GetDistributionConfig2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -458,7 +503,8 @@ void CloudFrontClient::GetDistributionConfig2016_01_28AsyncHelper(const GetDistr
 GetInvalidation2016_01_28Outcome CloudFrontClient::GetInvalidation2016_01_28(const GetInvalidation2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetDistributionId();
   ss << "/invalidation/";
   ss << request.GetId();
@@ -475,7 +521,10 @@ GetInvalidation2016_01_28Outcome CloudFrontClient::GetInvalidation2016_01_28(con
 
 GetInvalidation2016_01_28OutcomeCallable CloudFrontClient::GetInvalidation2016_01_28Callable(const GetInvalidation2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetInvalidation2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetInvalidation2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetInvalidation2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetInvalidation2016_01_28Async(const GetInvalidation2016_01_28Request& request, const GetInvalidation2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -491,7 +540,8 @@ void CloudFrontClient::GetInvalidation2016_01_28AsyncHelper(const GetInvalidatio
 GetStreamingDistribution2016_01_28Outcome CloudFrontClient::GetStreamingDistribution2016_01_28(const GetStreamingDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution/";
   ss << request.GetId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -506,7 +556,10 @@ GetStreamingDistribution2016_01_28Outcome CloudFrontClient::GetStreamingDistribu
 
 GetStreamingDistribution2016_01_28OutcomeCallable CloudFrontClient::GetStreamingDistribution2016_01_28Callable(const GetStreamingDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetStreamingDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetStreamingDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetStreamingDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetStreamingDistribution2016_01_28Async(const GetStreamingDistribution2016_01_28Request& request, const GetStreamingDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -522,7 +575,8 @@ void CloudFrontClient::GetStreamingDistribution2016_01_28AsyncHelper(const GetSt
 GetStreamingDistributionConfig2016_01_28Outcome CloudFrontClient::GetStreamingDistributionConfig2016_01_28(const GetStreamingDistributionConfig2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
@@ -538,7 +592,10 @@ GetStreamingDistributionConfig2016_01_28Outcome CloudFrontClient::GetStreamingDi
 
 GetStreamingDistributionConfig2016_01_28OutcomeCallable CloudFrontClient::GetStreamingDistributionConfig2016_01_28Callable(const GetStreamingDistributionConfig2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetStreamingDistributionConfig2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetStreamingDistributionConfig2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetStreamingDistributionConfig2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::GetStreamingDistributionConfig2016_01_28Async(const GetStreamingDistributionConfig2016_01_28Request& request, const GetStreamingDistributionConfig2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -554,7 +611,8 @@ void CloudFrontClient::GetStreamingDistributionConfig2016_01_28AsyncHelper(const
 ListCloudFrontOriginAccessIdentities2016_01_28Outcome CloudFrontClient::ListCloudFrontOriginAccessIdentities2016_01_28(const ListCloudFrontOriginAccessIdentities2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
   {
@@ -568,7 +626,10 @@ ListCloudFrontOriginAccessIdentities2016_01_28Outcome CloudFrontClient::ListClou
 
 ListCloudFrontOriginAccessIdentities2016_01_28OutcomeCallable CloudFrontClient::ListCloudFrontOriginAccessIdentities2016_01_28Callable(const ListCloudFrontOriginAccessIdentities2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListCloudFrontOriginAccessIdentities2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListCloudFrontOriginAccessIdentities2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListCloudFrontOriginAccessIdentities2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::ListCloudFrontOriginAccessIdentities2016_01_28Async(const ListCloudFrontOriginAccessIdentities2016_01_28Request& request, const ListCloudFrontOriginAccessIdentities2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -584,7 +645,8 @@ void CloudFrontClient::ListCloudFrontOriginAccessIdentities2016_01_28AsyncHelper
 ListDistributions2016_01_28Outcome CloudFrontClient::ListDistributions2016_01_28(const ListDistributions2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
   {
@@ -598,7 +660,10 @@ ListDistributions2016_01_28Outcome CloudFrontClient::ListDistributions2016_01_28
 
 ListDistributions2016_01_28OutcomeCallable CloudFrontClient::ListDistributions2016_01_28Callable(const ListDistributions2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListDistributions2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDistributions2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListDistributions2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::ListDistributions2016_01_28Async(const ListDistributions2016_01_28Request& request, const ListDistributions2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -614,7 +679,8 @@ void CloudFrontClient::ListDistributions2016_01_28AsyncHelper(const ListDistribu
 ListDistributionsByWebACLId2016_01_28Outcome CloudFrontClient::ListDistributionsByWebACLId2016_01_28(const ListDistributionsByWebACLId2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distributionsByWebACLId/";
+  ss << m_uri;
+  ss << "/2016-01-28/distributionsByWebACLId/";
   ss << request.GetWebACLId();
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
@@ -629,7 +695,10 @@ ListDistributionsByWebACLId2016_01_28Outcome CloudFrontClient::ListDistributions
 
 ListDistributionsByWebACLId2016_01_28OutcomeCallable CloudFrontClient::ListDistributionsByWebACLId2016_01_28Callable(const ListDistributionsByWebACLId2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListDistributionsByWebACLId2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDistributionsByWebACLId2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListDistributionsByWebACLId2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::ListDistributionsByWebACLId2016_01_28Async(const ListDistributionsByWebACLId2016_01_28Request& request, const ListDistributionsByWebACLId2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -645,7 +714,8 @@ void CloudFrontClient::ListDistributionsByWebACLId2016_01_28AsyncHelper(const Li
 ListInvalidations2016_01_28Outcome CloudFrontClient::ListInvalidations2016_01_28(const ListInvalidations2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetDistributionId();
   ss << "/invalidation";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
@@ -661,7 +731,10 @@ ListInvalidations2016_01_28Outcome CloudFrontClient::ListInvalidations2016_01_28
 
 ListInvalidations2016_01_28OutcomeCallable CloudFrontClient::ListInvalidations2016_01_28Callable(const ListInvalidations2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListInvalidations2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListInvalidations2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListInvalidations2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::ListInvalidations2016_01_28Async(const ListInvalidations2016_01_28Request& request, const ListInvalidations2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -677,7 +750,8 @@ void CloudFrontClient::ListInvalidations2016_01_28AsyncHelper(const ListInvalida
 ListStreamingDistributions2016_01_28Outcome CloudFrontClient::ListStreamingDistributions2016_01_28(const ListStreamingDistributions2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
   if(outcome.IsSuccess())
   {
@@ -691,7 +765,10 @@ ListStreamingDistributions2016_01_28Outcome CloudFrontClient::ListStreamingDistr
 
 ListStreamingDistributions2016_01_28OutcomeCallable CloudFrontClient::ListStreamingDistributions2016_01_28Callable(const ListStreamingDistributions2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListStreamingDistributions2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListStreamingDistributions2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListStreamingDistributions2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::ListStreamingDistributions2016_01_28Async(const ListStreamingDistributions2016_01_28Request& request, const ListStreamingDistributions2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -707,7 +784,8 @@ void CloudFrontClient::ListStreamingDistributions2016_01_28AsyncHelper(const Lis
 UpdateCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::UpdateCloudFrontOriginAccessIdentity2016_01_28(const UpdateCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/origin-access-identity/cloudfront/";
+  ss << m_uri;
+  ss << "/2016-01-28/origin-access-identity/cloudfront/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
@@ -723,7 +801,10 @@ UpdateCloudFrontOriginAccessIdentity2016_01_28Outcome CloudFrontClient::UpdateCl
 
 UpdateCloudFrontOriginAccessIdentity2016_01_28OutcomeCallable CloudFrontClient::UpdateCloudFrontOriginAccessIdentity2016_01_28Callable(const UpdateCloudFrontOriginAccessIdentity2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateCloudFrontOriginAccessIdentity2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateCloudFrontOriginAccessIdentity2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateCloudFrontOriginAccessIdentity2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::UpdateCloudFrontOriginAccessIdentity2016_01_28Async(const UpdateCloudFrontOriginAccessIdentity2016_01_28Request& request, const UpdateCloudFrontOriginAccessIdentity2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -739,7 +820,8 @@ void CloudFrontClient::UpdateCloudFrontOriginAccessIdentity2016_01_28AsyncHelper
 UpdateDistribution2016_01_28Outcome CloudFrontClient::UpdateDistribution2016_01_28(const UpdateDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/distribution/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
@@ -755,7 +837,10 @@ UpdateDistribution2016_01_28Outcome CloudFrontClient::UpdateDistribution2016_01_
 
 UpdateDistribution2016_01_28OutcomeCallable CloudFrontClient::UpdateDistribution2016_01_28Callable(const UpdateDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::UpdateDistribution2016_01_28Async(const UpdateDistribution2016_01_28Request& request, const UpdateDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -771,7 +856,8 @@ void CloudFrontClient::UpdateDistribution2016_01_28AsyncHelper(const UpdateDistr
 UpdateStreamingDistribution2016_01_28Outcome CloudFrontClient::UpdateStreamingDistribution2016_01_28(const UpdateStreamingDistribution2016_01_28Request& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/2016-01-28/streaming-distribution/";
+  ss << m_uri;
+  ss << "/2016-01-28/streaming-distribution/";
   ss << request.GetId();
   ss << "/config";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_PUT);
@@ -787,7 +873,10 @@ UpdateStreamingDistribution2016_01_28Outcome CloudFrontClient::UpdateStreamingDi
 
 UpdateStreamingDistribution2016_01_28OutcomeCallable CloudFrontClient::UpdateStreamingDistribution2016_01_28Callable(const UpdateStreamingDistribution2016_01_28Request& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateStreamingDistribution2016_01_28( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateStreamingDistribution2016_01_28Outcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateStreamingDistribution2016_01_28(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudFrontClient::UpdateStreamingDistribution2016_01_28Async(const UpdateStreamingDistribution2016_01_28Request& request, const UpdateStreamingDistribution2016_01_28ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -799,4 +888,6 @@ void CloudFrontClient::UpdateStreamingDistribution2016_01_28AsyncHelper(const Up
 {
   handler(this, request, UpdateStreamingDistribution2016_01_28(request), context);
 }
+
+
 

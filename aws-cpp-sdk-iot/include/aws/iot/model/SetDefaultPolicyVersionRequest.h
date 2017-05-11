@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>The input for the SetDefaultPolicyVersion operation.</p>
+   * <p>The input for the SetDefaultPolicyVersion operation.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetDefaultPolicyVersionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API SetDefaultPolicyVersionRequest : public IoTRequest
   {
   public:
     SetDefaultPolicyVersionRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The policy name.</p>
@@ -46,7 +52,7 @@ namespace Model
     /**
      * <p>The policy name.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The policy name.</p>
@@ -61,7 +67,7 @@ namespace Model
     /**
      * <p>The policy name.</p>
      */
-    inline SetDefaultPolicyVersionRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline SetDefaultPolicyVersionRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The policy name.</p>
@@ -81,7 +87,7 @@ namespace Model
     /**
      * <p>The policy version ID.</p>
      */
-    inline void SetPolicyVersionId(Aws::String&& value) { m_policyVersionIdHasBeenSet = true; m_policyVersionId = value; }
+    inline void SetPolicyVersionId(Aws::String&& value) { m_policyVersionIdHasBeenSet = true; m_policyVersionId = std::move(value); }
 
     /**
      * <p>The policy version ID.</p>
@@ -96,7 +102,7 @@ namespace Model
     /**
      * <p>The policy version ID.</p>
      */
-    inline SetDefaultPolicyVersionRequest& WithPolicyVersionId(Aws::String&& value) { SetPolicyVersionId(value); return *this;}
+    inline SetDefaultPolicyVersionRequest& WithPolicyVersionId(Aws::String&& value) { SetPolicyVersionId(std::move(value)); return *this;}
 
     /**
      * <p>The policy version ID.</p>

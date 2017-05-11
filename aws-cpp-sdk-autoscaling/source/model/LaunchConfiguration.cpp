@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/autoscaling/model/LaunchConfiguration.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -323,12 +324,12 @@ void LaunchConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << index << locationValue << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
 
   if(m_associatePublicIpAddressHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AssociatePublicIpAddress=" << m_associatePublicIpAddress << "&";
+      oStream << location << index << locationValue << ".AssociatePublicIpAddress=" << std::boolalpha << m_associatePublicIpAddress << "&";
   }
 
   if(m_placementTenancyHasBeenSet)
@@ -422,11 +423,11 @@ void LaunchConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
   if(m_associatePublicIpAddressHasBeenSet)
   {
-      oStream << location << ".AssociatePublicIpAddress=" << m_associatePublicIpAddress << "&";
+      oStream << location << ".AssociatePublicIpAddress=" << std::boolalpha << m_associatePublicIpAddress << "&";
   }
   if(m_placementTenancyHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/WAFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/waf/model/TimeWindow.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want
      * <code>GetSampledRequests</code> to return a sample of requests.</p>
@@ -51,7 +54,7 @@ namespace Model
      * <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want
      * <code>GetSampledRequests</code> to return a sample of requests.</p>
      */
-    inline void SetWebAclId(Aws::String&& value) { m_webAclIdHasBeenSet = true; m_webAclId = value; }
+    inline void SetWebAclId(Aws::String&& value) { m_webAclIdHasBeenSet = true; m_webAclId = std::move(value); }
 
     /**
      * <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want
@@ -69,7 +72,7 @@ namespace Model
      * <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want
      * <code>GetSampledRequests</code> to return a sample of requests.</p>
      */
-    inline GetSampledRequestsRequest& WithWebAclId(Aws::String&& value) { SetWebAclId(value); return *this;}
+    inline GetSampledRequestsRequest& WithWebAclId(Aws::String&& value) { SetWebAclId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want
@@ -78,114 +81,114 @@ namespace Model
     inline GetSampledRequestsRequest& WithWebAclId(const char* value) { SetWebAclId(value); return *this;}
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
     inline const Aws::String& GetRuleId() const{ return m_ruleId; }
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
     inline void SetRuleId(const Aws::String& value) { m_ruleIdHasBeenSet = true; m_ruleId = value; }
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
-    inline void SetRuleId(Aws::String&& value) { m_ruleIdHasBeenSet = true; m_ruleId = value; }
+    inline void SetRuleId(Aws::String&& value) { m_ruleIdHasBeenSet = true; m_ruleId = std::move(value); }
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
     inline void SetRuleId(const char* value) { m_ruleIdHasBeenSet = true; m_ruleId.assign(value); }
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
     inline GetSampledRequestsRequest& WithRuleId(const Aws::String& value) { SetRuleId(value); return *this;}
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
-    inline GetSampledRequestsRequest& WithRuleId(Aws::String&& value) { SetRuleId(value); return *this;}
+    inline GetSampledRequestsRequest& WithRuleId(Aws::String&& value) { SetRuleId(std::move(value)); return *this;}
 
     /**
-     * <p><code>RuleId</code> is one of two values:</p> <ul> <li>The
+     * <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The
      * <code>RuleId</code> of the <code>Rule</code> for which you want
-     * <code>GetSampledRequests</code> to return a sample of requests.</li>
-     * <li><code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
+     * <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li>
+     * <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to
      * return a sample of the requests that didn't match any of the rules in the
-     * specified <code>WebACL</code>.</li> </ul>
+     * specified <code>WebACL</code>.</p> </li> </ul>
      */
     inline GetSampledRequestsRequest& WithRuleId(const char* value) { SetRuleId(value); return *this;}
 
     /**
      * <p>The start date and time and the end date and time of the range for which you
      * want <code>GetSampledRequests</code> to return a sample of requests. Specify the
-     * date and time in Unix time format (in seconds). You can specify any time range
-     * in the previous three hours.</p>
+     * date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can
+     * specify any time range in the previous three hours.</p>
      */
     inline const TimeWindow& GetTimeWindow() const{ return m_timeWindow; }
 
     /**
      * <p>The start date and time and the end date and time of the range for which you
      * want <code>GetSampledRequests</code> to return a sample of requests. Specify the
-     * date and time in Unix time format (in seconds). You can specify any time range
-     * in the previous three hours.</p>
+     * date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can
+     * specify any time range in the previous three hours.</p>
      */
     inline void SetTimeWindow(const TimeWindow& value) { m_timeWindowHasBeenSet = true; m_timeWindow = value; }
 
     /**
      * <p>The start date and time and the end date and time of the range for which you
      * want <code>GetSampledRequests</code> to return a sample of requests. Specify the
-     * date and time in Unix time format (in seconds). You can specify any time range
-     * in the previous three hours.</p>
+     * date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can
+     * specify any time range in the previous three hours.</p>
      */
-    inline void SetTimeWindow(TimeWindow&& value) { m_timeWindowHasBeenSet = true; m_timeWindow = value; }
+    inline void SetTimeWindow(TimeWindow&& value) { m_timeWindowHasBeenSet = true; m_timeWindow = std::move(value); }
 
     /**
      * <p>The start date and time and the end date and time of the range for which you
      * want <code>GetSampledRequests</code> to return a sample of requests. Specify the
-     * date and time in Unix time format (in seconds). You can specify any time range
-     * in the previous three hours.</p>
+     * date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can
+     * specify any time range in the previous three hours.</p>
      */
     inline GetSampledRequestsRequest& WithTimeWindow(const TimeWindow& value) { SetTimeWindow(value); return *this;}
 
     /**
      * <p>The start date and time and the end date and time of the range for which you
      * want <code>GetSampledRequests</code> to return a sample of requests. Specify the
-     * date and time in Unix time format (in seconds). You can specify any time range
-     * in the previous three hours.</p>
+     * date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can
+     * specify any time range in the previous three hours.</p>
      */
-    inline GetSampledRequestsRequest& WithTimeWindow(TimeWindow&& value) { SetTimeWindow(value); return *this;}
+    inline GetSampledRequestsRequest& WithTimeWindow(TimeWindow&& value) { SetTimeWindow(std::move(value)); return *this;}
 
     /**
      * <p>The number of requests that you want AWS WAF to return from among the first

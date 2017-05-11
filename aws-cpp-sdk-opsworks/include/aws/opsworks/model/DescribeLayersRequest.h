@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The stack ID.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>The stack ID.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline DescribeLayersRequest& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline DescribeLayersRequest& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The stack ID.</p>
@@ -89,7 +92,7 @@ namespace Model
      * this parameter, <code>DescribeLayers</code> returns a description of every layer
      * in the specified stack.</p>
      */
-    inline void SetLayerIds(Aws::Vector<Aws::String>&& value) { m_layerIdsHasBeenSet = true; m_layerIds = value; }
+    inline void SetLayerIds(Aws::Vector<Aws::String>&& value) { m_layerIdsHasBeenSet = true; m_layerIds = std::move(value); }
 
     /**
      * <p>An array of layer IDs that specify the layers to be described. If you omit
@@ -103,7 +106,7 @@ namespace Model
      * this parameter, <code>DescribeLayers</code> returns a description of every layer
      * in the specified stack.</p>
      */
-    inline DescribeLayersRequest& WithLayerIds(Aws::Vector<Aws::String>&& value) { SetLayerIds(value); return *this;}
+    inline DescribeLayersRequest& WithLayerIds(Aws::Vector<Aws::String>&& value) { SetLayerIds(std::move(value)); return *this;}
 
     /**
      * <p>An array of layer IDs that specify the layers to be described. If you omit
@@ -117,7 +120,7 @@ namespace Model
      * this parameter, <code>DescribeLayers</code> returns a description of every layer
      * in the specified stack.</p>
      */
-    inline DescribeLayersRequest& AddLayerIds(Aws::String&& value) { m_layerIdsHasBeenSet = true; m_layerIds.push_back(value); return *this; }
+    inline DescribeLayersRequest& AddLayerIds(Aws::String&& value) { m_layerIdsHasBeenSet = true; m_layerIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of layer IDs that specify the layers to be described. If you omit

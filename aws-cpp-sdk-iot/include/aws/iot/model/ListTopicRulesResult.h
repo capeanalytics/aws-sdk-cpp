@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/TopicRuleListItem.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output from the ListTopicRules operation.</p>
+   * <p>The output from the ListTopicRules operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListTopicRulesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ListTopicRulesResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The rules.</p>
      */
-    inline void SetRules(Aws::Vector<TopicRuleListItem>&& value) { m_rules = value; }
+    inline void SetRules(Aws::Vector<TopicRuleListItem>&& value) { m_rules = std::move(value); }
 
     /**
      * <p>The rules.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The rules.</p>
      */
-    inline ListTopicRulesResult& WithRules(Aws::Vector<TopicRuleListItem>&& value) { SetRules(value); return *this;}
+    inline ListTopicRulesResult& WithRules(Aws::Vector<TopicRuleListItem>&& value) { SetRules(std::move(value)); return *this;}
 
     /**
      * <p>The rules.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The rules.</p>
      */
-    inline ListTopicRulesResult& AddRules(TopicRuleListItem&& value) { m_rules.push_back(value); return *this; }
+    inline ListTopicRulesResult& AddRules(TopicRuleListItem&& value) { m_rules.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A token used to retrieve the next value.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>A token used to retrieve the next value.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>A token used to retrieve the next value.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>A token used to retrieve the next value.</p>
      */
-    inline ListTopicRulesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListTopicRulesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>A token used to retrieve the next value.</p>

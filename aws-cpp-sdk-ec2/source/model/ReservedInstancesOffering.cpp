@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReservedInstancesOffering.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,6 +32,7 @@ namespace Model
 
 ReservedInstancesOffering::ReservedInstancesOffering() : 
     m_reservedInstancesOfferingIdHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_duration(0),
@@ -39,19 +41,28 @@ ReservedInstancesOffering::ReservedInstancesOffering() :
     m_usagePriceHasBeenSet(false),
     m_fixedPrice(0.0),
     m_fixedPriceHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
+    m_instanceTenancy(Tenancy::NOT_SET),
     m_instanceTenancyHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
+    m_offeringType(OfferingTypeValues::NOT_SET),
     m_offeringTypeHasBeenSet(false),
     m_recurringChargesHasBeenSet(false),
     m_marketplace(false),
     m_marketplaceHasBeenSet(false),
-    m_pricingDetailsHasBeenSet(false)
+    m_pricingDetailsHasBeenSet(false),
+    m_offeringClass(OfferingClassType::NOT_SET),
+    m_offeringClassHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
 }
 
 ReservedInstancesOffering::ReservedInstancesOffering(const XmlNode& xmlNode) : 
     m_reservedInstancesOfferingIdHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_duration(0),
@@ -60,14 +71,22 @@ ReservedInstancesOffering::ReservedInstancesOffering(const XmlNode& xmlNode) :
     m_usagePriceHasBeenSet(false),
     m_fixedPrice(0.0),
     m_fixedPriceHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
+    m_instanceTenancy(Tenancy::NOT_SET),
     m_instanceTenancyHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
+    m_offeringType(OfferingTypeValues::NOT_SET),
     m_offeringTypeHasBeenSet(false),
     m_recurringChargesHasBeenSet(false),
     m_marketplace(false),
     m_marketplaceHasBeenSet(false),
-    m_pricingDetailsHasBeenSet(false)
+    m_pricingDetailsHasBeenSet(false),
+    m_offeringClass(OfferingClassType::NOT_SET),
+    m_offeringClassHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -168,6 +187,18 @@ ReservedInstancesOffering& ReservedInstancesOffering::operator =(const XmlNode& 
 
       m_pricingDetailsHasBeenSet = true;
     }
+    XmlNode offeringClassNode = resultNode.FirstChild("offeringClass");
+    if(!offeringClassNode.IsNull())
+    {
+      m_offeringClass = OfferingClassTypeMapper::GetOfferingClassTypeForName(StringUtils::Trim(offeringClassNode.GetText().c_str()).c_str());
+      m_offeringClassHasBeenSet = true;
+    }
+    XmlNode scopeNode = resultNode.FirstChild("scope");
+    if(!scopeNode.IsNull())
+    {
+      m_scope = ScopeMapper::GetScopeForName(StringUtils::Trim(scopeNode.GetText().c_str()).c_str());
+      m_scopeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -238,7 +269,7 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
 
   if(m_marketplaceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Marketplace=" << m_marketplace << "&";
+      oStream << location << index << locationValue << ".Marketplace=" << std::boolalpha << m_marketplace << "&";
   }
 
   if(m_pricingDetailsHasBeenSet)
@@ -250,6 +281,16 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
         pricingDetailsSs << location << index << locationValue << ".PricingDetailsSet." << pricingDetailsIdx++;
         item.OutputToStream(oStream, pricingDetailsSs.str().c_str());
       }
+  }
+
+  if(m_offeringClassHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OfferingClass=" << OfferingClassTypeMapper::GetNameForOfferingClassType(m_offeringClass) << "&";
+  }
+
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
   }
 
 }
@@ -302,13 +343,13 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location <<  ".item." << recurringChargesIdx++;
+        recurringChargesSs << location <<  ".RecurringCharges." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
   if(m_marketplaceHasBeenSet)
   {
-      oStream << location << ".Marketplace=" << m_marketplace << "&";
+      oStream << location << ".Marketplace=" << std::boolalpha << m_marketplace << "&";
   }
   if(m_pricingDetailsHasBeenSet)
   {
@@ -316,9 +357,17 @@ void ReservedInstancesOffering::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_pricingDetails)
       {
         Aws::StringStream pricingDetailsSs;
-        pricingDetailsSs << location <<  ".item." << pricingDetailsIdx++;
+        pricingDetailsSs << location <<  ".PricingDetailsSet." << pricingDetailsIdx++;
         item.OutputToStream(oStream, pricingDetailsSs.str().c_str());
       }
+  }
+  if(m_offeringClassHasBeenSet)
+  {
+      oStream << location << ".OfferingClass=" << OfferingClassTypeMapper::GetNameForOfferingClassType(m_offeringClass) << "&";
+  }
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
   }
 }
 

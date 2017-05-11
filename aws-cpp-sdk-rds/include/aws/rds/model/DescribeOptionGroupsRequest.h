@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeOptionGroupsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeOptionGroupsRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeOptionGroupsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the option group to describe. Cannot be supplied together with
      * EngineName or MajorEngineVersion.</p>
@@ -51,7 +60,7 @@ namespace Model
      * <p>The name of the option group to describe. Cannot be supplied together with
      * EngineName or MajorEngineVersion.</p>
      */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
+    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
      * <p>The name of the option group to describe. Cannot be supplied together with
@@ -69,7 +78,7 @@ namespace Model
      * <p>The name of the option group to describe. Cannot be supplied together with
      * EngineName or MajorEngineVersion.</p>
      */
-    inline DescribeOptionGroupsRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(value); return *this;}
+    inline DescribeOptionGroupsRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the option group to describe. Cannot be supplied together with
@@ -90,7 +99,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -100,7 +109,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeOptionGroupsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeOptionGroupsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -110,7 +119,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeOptionGroupsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeOptionGroupsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p> An optional pagination token provided by a previous DescribeOptionGroups
@@ -131,7 +140,7 @@ namespace Model
      * request. If this parameter is specified, the response includes only records
      * beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous DescribeOptionGroups
@@ -152,7 +161,7 @@ namespace Model
      * request. If this parameter is specified, the response includes only records
      * beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline DescribeOptionGroupsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeOptionGroupsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous DescribeOptionGroups
@@ -201,7 +210,7 @@ namespace Model
      * <p>Filters the list of option groups to only include groups associated with a
      * specific database engine.</p>
      */
-    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
+    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = std::move(value); }
 
     /**
      * <p>Filters the list of option groups to only include groups associated with a
@@ -219,7 +228,7 @@ namespace Model
      * <p>Filters the list of option groups to only include groups associated with a
      * specific database engine.</p>
      */
-    inline DescribeOptionGroupsRequest& WithEngineName(Aws::String&& value) { SetEngineName(value); return *this;}
+    inline DescribeOptionGroupsRequest& WithEngineName(Aws::String&& value) { SetEngineName(std::move(value)); return *this;}
 
     /**
      * <p>Filters the list of option groups to only include groups associated with a
@@ -246,7 +255,7 @@ namespace Model
      * specific database engine version. If specified, then EngineName must also be
      * specified.</p>
      */
-    inline void SetMajorEngineVersion(Aws::String&& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = value; }
+    inline void SetMajorEngineVersion(Aws::String&& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = std::move(value); }
 
     /**
      * <p>Filters the list of option groups to only include groups associated with a
@@ -267,7 +276,7 @@ namespace Model
      * specific database engine version. If specified, then EngineName must also be
      * specified.</p>
      */
-    inline DescribeOptionGroupsRequest& WithMajorEngineVersion(Aws::String&& value) { SetMajorEngineVersion(value); return *this;}
+    inline DescribeOptionGroupsRequest& WithMajorEngineVersion(Aws::String&& value) { SetMajorEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>Filters the list of option groups to only include groups associated with a

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,16 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/directconnect/model/AddressFamily.h>
 #include <aws/directconnect/model/VirtualInterfaceState.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/directconnect/model/RouteFilterPrefix.h>
+#include <aws/directconnect/model/BGPPeer.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +39,9 @@ namespace Model
 
   /**
    * <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct
-   * Connect location and the customer.</p>
+   * Connect location and the customer.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/VirtualInterface">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API VirtualInterface
   {
@@ -58,7 +64,7 @@ namespace Model
     /**
      * <p>The AWS account that will own the new virtual interface.</p>
      */
-    inline void SetOwnerAccount(Aws::String&& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = value; }
+    inline void SetOwnerAccount(Aws::String&& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = std::move(value); }
 
     /**
      * <p>The AWS account that will own the new virtual interface.</p>
@@ -73,7 +79,7 @@ namespace Model
     /**
      * <p>The AWS account that will own the new virtual interface.</p>
      */
-    inline VirtualInterface& WithOwnerAccount(Aws::String&& value) { SetOwnerAccount(value); return *this;}
+    inline VirtualInterface& WithOwnerAccount(Aws::String&& value) { SetOwnerAccount(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account that will own the new virtual interface.</p>
@@ -87,7 +93,7 @@ namespace Model
     inline void SetVirtualInterfaceId(const Aws::String& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = value; }
 
     
-    inline void SetVirtualInterfaceId(Aws::String&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = value; }
+    inline void SetVirtualInterfaceId(Aws::String&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = std::move(value); }
 
     
     inline void SetVirtualInterfaceId(const char* value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId.assign(value); }
@@ -96,7 +102,7 @@ namespace Model
     inline VirtualInterface& WithVirtualInterfaceId(const Aws::String& value) { SetVirtualInterfaceId(value); return *this;}
 
     
-    inline VirtualInterface& WithVirtualInterfaceId(Aws::String&& value) { SetVirtualInterfaceId(value); return *this;}
+    inline VirtualInterface& WithVirtualInterfaceId(Aws::String&& value) { SetVirtualInterfaceId(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithVirtualInterfaceId(const char* value) { SetVirtualInterfaceId(value); return *this;}
@@ -108,7 +114,7 @@ namespace Model
     inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
 
     
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
 
     
     inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
@@ -117,7 +123,7 @@ namespace Model
     inline VirtualInterface& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
 
     
-    inline VirtualInterface& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline VirtualInterface& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithLocation(const char* value) { SetLocation(value); return *this;}
@@ -129,7 +135,7 @@ namespace Model
     inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
 
     
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
+    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
 
     
     inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
@@ -138,7 +144,7 @@ namespace Model
     inline VirtualInterface& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
 
     
-    inline VirtualInterface& WithConnectionId(Aws::String&& value) { SetConnectionId(value); return *this;}
+    inline VirtualInterface& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
@@ -150,7 +156,7 @@ namespace Model
     inline void SetVirtualInterfaceType(const Aws::String& value) { m_virtualInterfaceTypeHasBeenSet = true; m_virtualInterfaceType = value; }
 
     
-    inline void SetVirtualInterfaceType(Aws::String&& value) { m_virtualInterfaceTypeHasBeenSet = true; m_virtualInterfaceType = value; }
+    inline void SetVirtualInterfaceType(Aws::String&& value) { m_virtualInterfaceTypeHasBeenSet = true; m_virtualInterfaceType = std::move(value); }
 
     
     inline void SetVirtualInterfaceType(const char* value) { m_virtualInterfaceTypeHasBeenSet = true; m_virtualInterfaceType.assign(value); }
@@ -159,7 +165,7 @@ namespace Model
     inline VirtualInterface& WithVirtualInterfaceType(const Aws::String& value) { SetVirtualInterfaceType(value); return *this;}
 
     
-    inline VirtualInterface& WithVirtualInterfaceType(Aws::String&& value) { SetVirtualInterfaceType(value); return *this;}
+    inline VirtualInterface& WithVirtualInterfaceType(Aws::String&& value) { SetVirtualInterfaceType(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithVirtualInterfaceType(const char* value) { SetVirtualInterfaceType(value); return *this;}
@@ -171,7 +177,7 @@ namespace Model
     inline void SetVirtualInterfaceName(const Aws::String& value) { m_virtualInterfaceNameHasBeenSet = true; m_virtualInterfaceName = value; }
 
     
-    inline void SetVirtualInterfaceName(Aws::String&& value) { m_virtualInterfaceNameHasBeenSet = true; m_virtualInterfaceName = value; }
+    inline void SetVirtualInterfaceName(Aws::String&& value) { m_virtualInterfaceNameHasBeenSet = true; m_virtualInterfaceName = std::move(value); }
 
     
     inline void SetVirtualInterfaceName(const char* value) { m_virtualInterfaceNameHasBeenSet = true; m_virtualInterfaceName.assign(value); }
@@ -180,7 +186,7 @@ namespace Model
     inline VirtualInterface& WithVirtualInterfaceName(const Aws::String& value) { SetVirtualInterfaceName(value); return *this;}
 
     
-    inline VirtualInterface& WithVirtualInterfaceName(Aws::String&& value) { SetVirtualInterfaceName(value); return *this;}
+    inline VirtualInterface& WithVirtualInterfaceName(Aws::String&& value) { SetVirtualInterfaceName(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithVirtualInterfaceName(const char* value) { SetVirtualInterfaceName(value); return *this;}
@@ -210,7 +216,7 @@ namespace Model
     inline void SetAuthKey(const Aws::String& value) { m_authKeyHasBeenSet = true; m_authKey = value; }
 
     
-    inline void SetAuthKey(Aws::String&& value) { m_authKeyHasBeenSet = true; m_authKey = value; }
+    inline void SetAuthKey(Aws::String&& value) { m_authKeyHasBeenSet = true; m_authKey = std::move(value); }
 
     
     inline void SetAuthKey(const char* value) { m_authKeyHasBeenSet = true; m_authKey.assign(value); }
@@ -219,7 +225,7 @@ namespace Model
     inline VirtualInterface& WithAuthKey(const Aws::String& value) { SetAuthKey(value); return *this;}
 
     
-    inline VirtualInterface& WithAuthKey(Aws::String&& value) { SetAuthKey(value); return *this;}
+    inline VirtualInterface& WithAuthKey(Aws::String&& value) { SetAuthKey(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithAuthKey(const char* value) { SetAuthKey(value); return *this;}
@@ -231,7 +237,7 @@ namespace Model
     inline void SetAmazonAddress(const Aws::String& value) { m_amazonAddressHasBeenSet = true; m_amazonAddress = value; }
 
     
-    inline void SetAmazonAddress(Aws::String&& value) { m_amazonAddressHasBeenSet = true; m_amazonAddress = value; }
+    inline void SetAmazonAddress(Aws::String&& value) { m_amazonAddressHasBeenSet = true; m_amazonAddress = std::move(value); }
 
     
     inline void SetAmazonAddress(const char* value) { m_amazonAddressHasBeenSet = true; m_amazonAddress.assign(value); }
@@ -240,7 +246,7 @@ namespace Model
     inline VirtualInterface& WithAmazonAddress(const Aws::String& value) { SetAmazonAddress(value); return *this;}
 
     
-    inline VirtualInterface& WithAmazonAddress(Aws::String&& value) { SetAmazonAddress(value); return *this;}
+    inline VirtualInterface& WithAmazonAddress(Aws::String&& value) { SetAmazonAddress(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithAmazonAddress(const char* value) { SetAmazonAddress(value); return *this;}
@@ -252,7 +258,7 @@ namespace Model
     inline void SetCustomerAddress(const Aws::String& value) { m_customerAddressHasBeenSet = true; m_customerAddress = value; }
 
     
-    inline void SetCustomerAddress(Aws::String&& value) { m_customerAddressHasBeenSet = true; m_customerAddress = value; }
+    inline void SetCustomerAddress(Aws::String&& value) { m_customerAddressHasBeenSet = true; m_customerAddress = std::move(value); }
 
     
     inline void SetCustomerAddress(const char* value) { m_customerAddressHasBeenSet = true; m_customerAddress.assign(value); }
@@ -261,10 +267,25 @@ namespace Model
     inline VirtualInterface& WithCustomerAddress(const Aws::String& value) { SetCustomerAddress(value); return *this;}
 
     
-    inline VirtualInterface& WithCustomerAddress(Aws::String&& value) { SetCustomerAddress(value); return *this;}
+    inline VirtualInterface& WithCustomerAddress(Aws::String&& value) { SetCustomerAddress(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithCustomerAddress(const char* value) { SetCustomerAddress(value); return *this;}
+
+    
+    inline const AddressFamily& GetAddressFamily() const{ return m_addressFamily; }
+
+    
+    inline void SetAddressFamily(const AddressFamily& value) { m_addressFamilyHasBeenSet = true; m_addressFamily = value; }
+
+    
+    inline void SetAddressFamily(AddressFamily&& value) { m_addressFamilyHasBeenSet = true; m_addressFamily = std::move(value); }
+
+    
+    inline VirtualInterface& WithAddressFamily(const AddressFamily& value) { SetAddressFamily(value); return *this;}
+
+    
+    inline VirtualInterface& WithAddressFamily(AddressFamily&& value) { SetAddressFamily(std::move(value)); return *this;}
 
     
     inline const VirtualInterfaceState& GetVirtualInterfaceState() const{ return m_virtualInterfaceState; }
@@ -273,13 +294,13 @@ namespace Model
     inline void SetVirtualInterfaceState(const VirtualInterfaceState& value) { m_virtualInterfaceStateHasBeenSet = true; m_virtualInterfaceState = value; }
 
     
-    inline void SetVirtualInterfaceState(VirtualInterfaceState&& value) { m_virtualInterfaceStateHasBeenSet = true; m_virtualInterfaceState = value; }
+    inline void SetVirtualInterfaceState(VirtualInterfaceState&& value) { m_virtualInterfaceStateHasBeenSet = true; m_virtualInterfaceState = std::move(value); }
 
     
     inline VirtualInterface& WithVirtualInterfaceState(const VirtualInterfaceState& value) { SetVirtualInterfaceState(value); return *this;}
 
     
-    inline VirtualInterface& WithVirtualInterfaceState(VirtualInterfaceState&& value) { SetVirtualInterfaceState(value); return *this;}
+    inline VirtualInterface& WithVirtualInterfaceState(VirtualInterfaceState&& value) { SetVirtualInterfaceState(std::move(value)); return *this;}
 
     /**
      * <p>Information for generating the customer router configuration.</p>
@@ -294,7 +315,7 @@ namespace Model
     /**
      * <p>Information for generating the customer router configuration.</p>
      */
-    inline void SetCustomerRouterConfig(Aws::String&& value) { m_customerRouterConfigHasBeenSet = true; m_customerRouterConfig = value; }
+    inline void SetCustomerRouterConfig(Aws::String&& value) { m_customerRouterConfigHasBeenSet = true; m_customerRouterConfig = std::move(value); }
 
     /**
      * <p>Information for generating the customer router configuration.</p>
@@ -309,7 +330,7 @@ namespace Model
     /**
      * <p>Information for generating the customer router configuration.</p>
      */
-    inline VirtualInterface& WithCustomerRouterConfig(Aws::String&& value) { SetCustomerRouterConfig(value); return *this;}
+    inline VirtualInterface& WithCustomerRouterConfig(Aws::String&& value) { SetCustomerRouterConfig(std::move(value)); return *this;}
 
     /**
      * <p>Information for generating the customer router configuration.</p>
@@ -323,7 +344,7 @@ namespace Model
     inline void SetVirtualGatewayId(const Aws::String& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = value; }
 
     
-    inline void SetVirtualGatewayId(Aws::String&& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = value; }
+    inline void SetVirtualGatewayId(Aws::String&& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = std::move(value); }
 
     
     inline void SetVirtualGatewayId(const char* value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId.assign(value); }
@@ -332,7 +353,7 @@ namespace Model
     inline VirtualInterface& WithVirtualGatewayId(const Aws::String& value) { SetVirtualGatewayId(value); return *this;}
 
     
-    inline VirtualInterface& WithVirtualGatewayId(Aws::String&& value) { SetVirtualGatewayId(value); return *this;}
+    inline VirtualInterface& WithVirtualGatewayId(Aws::String&& value) { SetVirtualGatewayId(std::move(value)); return *this;}
 
     
     inline VirtualInterface& WithVirtualGatewayId(const char* value) { SetVirtualGatewayId(value); return *this;}
@@ -344,19 +365,40 @@ namespace Model
     inline void SetRouteFilterPrefixes(const Aws::Vector<RouteFilterPrefix>& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes = value; }
 
     
-    inline void SetRouteFilterPrefixes(Aws::Vector<RouteFilterPrefix>&& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes = value; }
+    inline void SetRouteFilterPrefixes(Aws::Vector<RouteFilterPrefix>&& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes = std::move(value); }
 
     
     inline VirtualInterface& WithRouteFilterPrefixes(const Aws::Vector<RouteFilterPrefix>& value) { SetRouteFilterPrefixes(value); return *this;}
 
     
-    inline VirtualInterface& WithRouteFilterPrefixes(Aws::Vector<RouteFilterPrefix>&& value) { SetRouteFilterPrefixes(value); return *this;}
+    inline VirtualInterface& WithRouteFilterPrefixes(Aws::Vector<RouteFilterPrefix>&& value) { SetRouteFilterPrefixes(std::move(value)); return *this;}
 
     
     inline VirtualInterface& AddRouteFilterPrefixes(const RouteFilterPrefix& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes.push_back(value); return *this; }
 
     
-    inline VirtualInterface& AddRouteFilterPrefixes(RouteFilterPrefix&& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes.push_back(value); return *this; }
+    inline VirtualInterface& AddRouteFilterPrefixes(RouteFilterPrefix&& value) { m_routeFilterPrefixesHasBeenSet = true; m_routeFilterPrefixes.push_back(std::move(value)); return *this; }
+
+    
+    inline const Aws::Vector<BGPPeer>& GetBgpPeers() const{ return m_bgpPeers; }
+
+    
+    inline void SetBgpPeers(const Aws::Vector<BGPPeer>& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers = value; }
+
+    
+    inline void SetBgpPeers(Aws::Vector<BGPPeer>&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers = std::move(value); }
+
+    
+    inline VirtualInterface& WithBgpPeers(const Aws::Vector<BGPPeer>& value) { SetBgpPeers(value); return *this;}
+
+    
+    inline VirtualInterface& WithBgpPeers(Aws::Vector<BGPPeer>&& value) { SetBgpPeers(std::move(value)); return *this;}
+
+    
+    inline VirtualInterface& AddBgpPeers(const BGPPeer& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.push_back(value); return *this; }
+
+    
+    inline VirtualInterface& AddBgpPeers(BGPPeer&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_ownerAccount;
@@ -381,6 +423,8 @@ namespace Model
     bool m_amazonAddressHasBeenSet;
     Aws::String m_customerAddress;
     bool m_customerAddressHasBeenSet;
+    AddressFamily m_addressFamily;
+    bool m_addressFamilyHasBeenSet;
     VirtualInterfaceState m_virtualInterfaceState;
     bool m_virtualInterfaceStateHasBeenSet;
     Aws::String m_customerRouterConfig;
@@ -389,6 +433,8 @@ namespace Model
     bool m_virtualGatewayIdHasBeenSet;
     Aws::Vector<RouteFilterPrefix> m_routeFilterPrefixes;
     bool m_routeFilterPrefixesHasBeenSet;
+    Aws::Vector<BGPPeer> m_bgpPeers;
+    bool m_bgpPeersHasBeenSet;
   };
 
 } // namespace Model

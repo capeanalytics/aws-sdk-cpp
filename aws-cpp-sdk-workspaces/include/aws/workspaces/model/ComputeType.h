@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/workspaces/model/Compute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about the compute type of a WorkSpace bundle.</p>
+   * <p>Contains information about the compute type of a WorkSpace
+   * bundle.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ComputeType">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API ComputeType
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the compute type for the bundle.</p>
      */
-    inline void SetName(Compute&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Compute&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the compute type for the bundle.</p>
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the compute type for the bundle.</p>
      */
-    inline ComputeType& WithName(Compute&& value) { SetName(value); return *this;}
+    inline ComputeType& WithName(Compute&& value) { SetName(std::move(value)); return *this;}
 
   private:
     Compute m_name;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of a list deployments operation.</p>
+   * <p>Represents the output of a list deployments operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListDeploymentsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API ListDeploymentsResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>A list of deployment IDs.</p>
      */
-    inline void SetDeployments(Aws::Vector<Aws::String>&& value) { m_deployments = value; }
+    inline void SetDeployments(Aws::Vector<Aws::String>&& value) { m_deployments = std::move(value); }
 
     /**
      * <p>A list of deployment IDs.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>A list of deployment IDs.</p>
      */
-    inline ListDeploymentsResult& WithDeployments(Aws::Vector<Aws::String>&& value) { SetDeployments(value); return *this;}
+    inline ListDeploymentsResult& WithDeployments(Aws::Vector<Aws::String>&& value) { SetDeployments(std::move(value)); return *this;}
 
     /**
      * <p>A list of deployment IDs.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>A list of deployment IDs.</p>
      */
-    inline ListDeploymentsResult& AddDeployments(Aws::String&& value) { m_deployments.push_back(value); return *this; }
+    inline ListDeploymentsResult& AddDeployments(Aws::String&& value) { m_deployments.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of deployment IDs.</p>
@@ -102,7 +107,7 @@ namespace Model
      * It can be used in a subsequent list deployments call to return the next set of
      * deployments in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If a large amount of information is returned, an identifier is also returned.
@@ -123,7 +128,7 @@ namespace Model
      * It can be used in a subsequent list deployments call to return the next set of
      * deployments in the list.</p>
      */
-    inline ListDeploymentsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListDeploymentsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If a large amount of information is returned, an identifier is also returned.

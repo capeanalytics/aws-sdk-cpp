@@ -20,10 +20,12 @@ import lombok.Data;
 @Data
 public class C2jShapeMember {
     String shape;
+    boolean idempotencyToken;
     boolean streaming;
     String documentation;
     String location;
     String locationName;
+    String queryName;
     C2jXmlNamespace xmlNamespace;
     boolean deprecated;
     boolean flattened;

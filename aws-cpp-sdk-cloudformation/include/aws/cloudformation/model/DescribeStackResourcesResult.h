@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudformation/model/ResponseMetadata.h>
 #include <aws/cloudformation/model/StackResource.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CloudFormation
 namespace Model
 {
   /**
-   * <p>The output for a <a>DescribeStackResources</a> action.</p>
+   * <p>The output for a <a>DescribeStackResources</a> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResourcesOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API DescribeStackResourcesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
      */
-    inline void SetStackResources(Aws::Vector<StackResource>&& value) { m_stackResources = value; }
+    inline void SetStackResources(Aws::Vector<StackResource>&& value) { m_stackResources = std::move(value); }
 
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
      */
-    inline DescribeStackResourcesResult& WithStackResources(Aws::Vector<StackResource>&& value) { SetStackResources(value); return *this;}
+    inline DescribeStackResourcesResult& WithStackResources(Aws::Vector<StackResource>&& value) { SetStackResources(std::move(value)); return *this;}
 
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>A list of <code>StackResource</code> structures.</p>
      */
-    inline DescribeStackResourcesResult& AddStackResources(StackResource&& value) { m_stackResources.push_back(value); return *this; }
+    inline DescribeStackResourcesResult& AddStackResources(StackResource&& value) { m_stackResources.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -86,13 +91,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeStackResourcesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeStackResourcesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeStackResourcesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<StackResource> m_stackResources;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/sqs/model/SendMessageRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -24,7 +25,9 @@ SendMessageRequest::SendMessageRequest() :
     m_messageBodyHasBeenSet(false),
     m_delaySeconds(0),
     m_delaySecondsHasBeenSet(false),
-    m_messageAttributesHasBeenSet(false)
+    m_messageAttributesHasBeenSet(false),
+    m_messageDeduplicationIdHasBeenSet(false),
+    m_messageGroupIdHasBeenSet(false)
 {
 }
 
@@ -59,7 +62,22 @@ Aws::String SendMessageRequest::SerializePayload() const
     }
   }
 
+  if(m_messageDeduplicationIdHasBeenSet)
+  {
+    ss << "MessageDeduplicationId=" << StringUtils::URLEncode(m_messageDeduplicationId.c_str()) << "&";
+  }
+
+  if(m_messageGroupIdHasBeenSet)
+  {
+    ss << "MessageGroupId=" << StringUtils::URLEncode(m_messageGroupId.c_str()) << "&";
+  }
+
   ss << "Version=2012-11-05";
   return ss.str();
 }
 
+
+void  SendMessageRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/acm/ACM_EXPORTS.h>
 #include <aws/acm/ACMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/acm/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>String that contains the ARN of the ACM Certificate with one or more tags
@@ -64,7 +67,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
      * Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
      */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
+    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
 
     /**
      * <p>String that contains the ARN of the ACM Certificate with one or more tags
@@ -94,7 +97,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
      * Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
      */
-    inline RemoveTagsFromCertificateRequest& WithCertificateArn(Aws::String&& value) { SetCertificateArn(value); return *this;}
+    inline RemoveTagsFromCertificateRequest& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
 
     /**
      * <p>String that contains the ARN of the ACM Certificate with one or more tags
@@ -119,7 +122,7 @@ namespace Model
     /**
      * <p>The key-value pair that defines the tag to remove.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The key-value pair that defines the tag to remove.</p>
@@ -129,7 +132,7 @@ namespace Model
     /**
      * <p>The key-value pair that defines the tag to remove.</p>
      */
-    inline RemoveTagsFromCertificateRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline RemoveTagsFromCertificateRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The key-value pair that defines the tag to remove.</p>
@@ -139,7 +142,7 @@ namespace Model
     /**
      * <p>The key-value pair that defines the tag to remove.</p>
      */
-    inline RemoveTagsFromCertificateRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline RemoveTagsFromCertificateRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_certificateArn;

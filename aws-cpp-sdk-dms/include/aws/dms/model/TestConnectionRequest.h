@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/dms/DatabaseMigrationServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/TestConnectionMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API TestConnectionRequest : public DatabaseMigrationServiceRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Amazon Resource Name (ARN) of the replication instance.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the replication instance.</p>
      */
-    inline void SetReplicationInstanceArn(Aws::String&& value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn = value; }
+    inline void SetReplicationInstanceArn(Aws::String&& value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the replication instance.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the replication instance.</p>
      */
-    inline TestConnectionRequest& WithReplicationInstanceArn(Aws::String&& value) { SetReplicationInstanceArn(value); return *this;}
+    inline TestConnectionRequest& WithReplicationInstanceArn(Aws::String&& value) { SetReplicationInstanceArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the replication instance.</p>
@@ -86,7 +91,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
      * endpoint.</p>
      */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
+    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -104,7 +109,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
      * endpoint.</p>
      */
-    inline TestConnectionRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(value); return *this;}
+    inline TestConnectionRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the

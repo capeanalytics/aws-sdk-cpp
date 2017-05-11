@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/DocumentParameter.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,6 +30,7 @@ namespace Model
 
 DocumentParameter::DocumentParameter() : 
     m_nameHasBeenSet(false),
+    m_type(DocumentParameterType::NOT_SET),
     m_typeHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_defaultValueHasBeenSet(false)
@@ -37,6 +39,7 @@ DocumentParameter::DocumentParameter() :
 
 DocumentParameter::DocumentParameter(const JsonValue& jsonValue) : 
     m_nameHasBeenSet(false),
+    m_type(DocumentParameterType::NOT_SET),
     m_typeHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_defaultValueHasBeenSet(false)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/ThingTypeProperties.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,13 +28,16 @@ namespace Model
 {
 
   /**
-   * <p>The input for the CreateThingType operation.</p>
+   * <p>The input for the CreateThingType operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingTypeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API CreateThingTypeRequest : public IoTRequest
   {
   public:
     CreateThingTypeRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The name of the thing type.</p>
@@ -47,7 +52,7 @@ namespace Model
     /**
      * <p>The name of the thing type.</p>
      */
-    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = value; }
+    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeNameHasBeenSet = true; m_thingTypeName = std::move(value); }
 
     /**
      * <p>The name of the thing type.</p>
@@ -62,7 +67,7 @@ namespace Model
     /**
      * <p>The name of the thing type.</p>
      */
-    inline CreateThingTypeRequest& WithThingTypeName(Aws::String&& value) { SetThingTypeName(value); return *this;}
+    inline CreateThingTypeRequest& WithThingTypeName(Aws::String&& value) { SetThingTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the thing type.</p>
@@ -88,7 +93,7 @@ namespace Model
      * about the new thing type including a description, and a list of searchable thing
      * attribute names.</p>
      */
-    inline void SetThingTypeProperties(ThingTypeProperties&& value) { m_thingTypePropertiesHasBeenSet = true; m_thingTypeProperties = value; }
+    inline void SetThingTypeProperties(ThingTypeProperties&& value) { m_thingTypePropertiesHasBeenSet = true; m_thingTypeProperties = std::move(value); }
 
     /**
      * <p>The ThingTypeProperties for the thing type to create. It contains information
@@ -102,7 +107,7 @@ namespace Model
      * about the new thing type including a description, and a list of searchable thing
      * attribute names.</p>
      */
-    inline CreateThingTypeRequest& WithThingTypeProperties(ThingTypeProperties&& value) { SetThingTypeProperties(value); return *this;}
+    inline CreateThingTypeRequest& WithThingTypeProperties(ThingTypeProperties&& value) { SetThingTypeProperties(std::move(value)); return *this;}
 
   private:
     Aws::String m_thingTypeName;

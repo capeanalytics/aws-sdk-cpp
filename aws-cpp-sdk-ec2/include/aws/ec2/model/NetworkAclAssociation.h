@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes an association between a network ACL and a subnet.</p>
+   * <p>Describes an association between a network ACL and a subnet.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/NetworkAclAssociation">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API NetworkAclAssociation
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The ID of the association between a network ACL and a subnet.</p>
      */
-    inline void SetNetworkAclAssociationId(Aws::String&& value) { m_networkAclAssociationIdHasBeenSet = true; m_networkAclAssociationId = value; }
+    inline void SetNetworkAclAssociationId(Aws::String&& value) { m_networkAclAssociationIdHasBeenSet = true; m_networkAclAssociationId = std::move(value); }
 
     /**
      * <p>The ID of the association between a network ACL and a subnet.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The ID of the association between a network ACL and a subnet.</p>
      */
-    inline NetworkAclAssociation& WithNetworkAclAssociationId(Aws::String&& value) { SetNetworkAclAssociationId(value); return *this;}
+    inline NetworkAclAssociation& WithNetworkAclAssociationId(Aws::String&& value) { SetNetworkAclAssociationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the association between a network ACL and a subnet.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The ID of the network ACL.</p>
      */
-    inline void SetNetworkAclId(Aws::String&& value) { m_networkAclIdHasBeenSet = true; m_networkAclId = value; }
+    inline void SetNetworkAclId(Aws::String&& value) { m_networkAclIdHasBeenSet = true; m_networkAclId = std::move(value); }
 
     /**
      * <p>The ID of the network ACL.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The ID of the network ACL.</p>
      */
-    inline NetworkAclAssociation& WithNetworkAclId(Aws::String&& value) { SetNetworkAclId(value); return *this;}
+    inline NetworkAclAssociation& WithNetworkAclId(Aws::String&& value) { SetNetworkAclId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network ACL.</p>
@@ -127,7 +132,7 @@ namespace Model
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>The ID of the subnet.</p>
@@ -142,7 +147,7 @@ namespace Model
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline NetworkAclAssociation& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline NetworkAclAssociation& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the subnet.</p>

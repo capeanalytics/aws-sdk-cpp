@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,8 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/Tenancy.h>
 #include <aws/ec2/model/Tag.h>
+#include <aws/ec2/model/VpcIpv6CidrBlockAssociation.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +39,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a VPC.</p>
+   * <p>Describes a VPC.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Vpc">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Vpc
   {
@@ -61,7 +66,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The ID of the VPC.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline Vpc& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline Vpc& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the VPC.</p>
@@ -96,7 +101,7 @@ namespace Model
     /**
      * <p>The current state of the VPC.</p>
      */
-    inline void SetState(VpcState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(VpcState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the VPC.</p>
@@ -106,40 +111,40 @@ namespace Model
     /**
      * <p>The current state of the VPC.</p>
      */
-    inline Vpc& WithState(VpcState&& value) { SetState(value); return *this;}
+    inline Vpc& WithState(VpcState&& value) { SetState(std::move(value)); return *this;}
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
     inline const Aws::String& GetCidrBlock() const{ return m_cidrBlock; }
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
     inline void SetCidrBlock(const Aws::String& value) { m_cidrBlockHasBeenSet = true; m_cidrBlock = value; }
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
-    inline void SetCidrBlock(Aws::String&& value) { m_cidrBlockHasBeenSet = true; m_cidrBlock = value; }
+    inline void SetCidrBlock(Aws::String&& value) { m_cidrBlockHasBeenSet = true; m_cidrBlock = std::move(value); }
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
     inline void SetCidrBlock(const char* value) { m_cidrBlockHasBeenSet = true; m_cidrBlock.assign(value); }
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
     inline Vpc& WithCidrBlock(const Aws::String& value) { SetCidrBlock(value); return *this;}
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
-    inline Vpc& WithCidrBlock(Aws::String&& value) { SetCidrBlock(value); return *this;}
+    inline Vpc& WithCidrBlock(Aws::String&& value) { SetCidrBlock(std::move(value)); return *this;}
 
     /**
-     * <p>The CIDR block for the VPC.</p>
+     * <p>The IPv4 CIDR block for the VPC.</p>
      */
     inline Vpc& WithCidrBlock(const char* value) { SetCidrBlock(value); return *this;}
 
@@ -159,7 +164,7 @@ namespace Model
      * <p>The ID of the set of DHCP options you've associated with the VPC (or
      * <code>default</code> if the default options are associated with the VPC).</p>
      */
-    inline void SetDhcpOptionsId(Aws::String&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = value; }
+    inline void SetDhcpOptionsId(Aws::String&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = std::move(value); }
 
     /**
      * <p>The ID of the set of DHCP options you've associated with the VPC (or
@@ -177,7 +182,7 @@ namespace Model
      * <p>The ID of the set of DHCP options you've associated with the VPC (or
      * <code>default</code> if the default options are associated with the VPC).</p>
      */
-    inline Vpc& WithDhcpOptionsId(Aws::String&& value) { SetDhcpOptionsId(value); return *this;}
+    inline Vpc& WithDhcpOptionsId(Aws::String&& value) { SetDhcpOptionsId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the set of DHCP options you've associated with the VPC (or
@@ -198,7 +203,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPC.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the VPC.</p>
@@ -208,7 +213,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPC.</p>
      */
-    inline Vpc& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline Vpc& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the VPC.</p>
@@ -218,7 +223,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPC.</p>
      */
-    inline Vpc& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline Vpc& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The allowed tenancy of instances launched into the VPC.</p>
@@ -233,7 +238,7 @@ namespace Model
     /**
      * <p>The allowed tenancy of instances launched into the VPC.</p>
      */
-    inline void SetInstanceTenancy(Tenancy&& value) { m_instanceTenancyHasBeenSet = true; m_instanceTenancy = value; }
+    inline void SetInstanceTenancy(Tenancy&& value) { m_instanceTenancyHasBeenSet = true; m_instanceTenancy = std::move(value); }
 
     /**
      * <p>The allowed tenancy of instances launched into the VPC.</p>
@@ -243,7 +248,7 @@ namespace Model
     /**
      * <p>The allowed tenancy of instances launched into the VPC.</p>
      */
-    inline Vpc& WithInstanceTenancy(Tenancy&& value) { SetInstanceTenancy(value); return *this;}
+    inline Vpc& WithInstanceTenancy(Tenancy&& value) { SetInstanceTenancy(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the VPC is the default VPC.</p>
@@ -260,6 +265,41 @@ namespace Model
      */
     inline Vpc& WithIsDefault(bool value) { SetIsDefault(value); return *this;}
 
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline const Aws::Vector<VpcIpv6CidrBlockAssociation>& GetIpv6CidrBlockAssociationSet() const{ return m_ipv6CidrBlockAssociationSet; }
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline void SetIpv6CidrBlockAssociationSet(const Aws::Vector<VpcIpv6CidrBlockAssociation>& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet = value; }
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline void SetIpv6CidrBlockAssociationSet(Aws::Vector<VpcIpv6CidrBlockAssociation>&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet = std::move(value); }
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline Vpc& WithIpv6CidrBlockAssociationSet(const Aws::Vector<VpcIpv6CidrBlockAssociation>& value) { SetIpv6CidrBlockAssociationSet(value); return *this;}
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline Vpc& WithIpv6CidrBlockAssociationSet(Aws::Vector<VpcIpv6CidrBlockAssociation>&& value) { SetIpv6CidrBlockAssociationSet(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline Vpc& AddIpv6CidrBlockAssociationSet(const VpcIpv6CidrBlockAssociation& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet.push_back(value); return *this; }
+
+    /**
+     * <p>Information about the IPv6 CIDR blocks associated with the VPC.</p>
+     */
+    inline Vpc& AddIpv6CidrBlockAssociationSet(VpcIpv6CidrBlockAssociation&& value) { m_ipv6CidrBlockAssociationSetHasBeenSet = true; m_ipv6CidrBlockAssociationSet.push_back(std::move(value)); return *this; }
+
   private:
     Aws::String m_vpcId;
     bool m_vpcIdHasBeenSet;
@@ -275,6 +315,8 @@ namespace Model
     bool m_instanceTenancyHasBeenSet;
     bool m_isDefault;
     bool m_isDefaultHasBeenSet;
+    Aws::Vector<VpcIpv6CidrBlockAssociation> m_ipv6CidrBlockAssociationSet;
+    bool m_ipv6CidrBlockAssociationSetHasBeenSet;
   };
 
 } // namespace Model

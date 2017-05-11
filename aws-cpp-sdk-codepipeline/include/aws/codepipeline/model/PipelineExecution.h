@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/PipelineExecutionStatus.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codepipeline/model/ArtifactRevision.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about an execution of a pipeline.</p>
+   * <p>Represents information about an execution of a pipeline.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PipelineExecution">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API PipelineExecution
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the pipeline that was executed.</p>
      */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
+    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
 
     /**
      * <p>The name of the pipeline that was executed.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the pipeline that was executed.</p>
      */
-    inline PipelineExecution& WithPipelineName(Aws::String&& value) { SetPipelineName(value); return *this;}
+    inline PipelineExecution& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the pipeline that was executed.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline execution.</p>
      */
-    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = value; }
+    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = std::move(value); }
 
     /**
      * <p>The ID of the pipeline execution.</p>
@@ -122,7 +127,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline execution.</p>
      */
-    inline PipelineExecution& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(value); return *this;}
+    inline PipelineExecution& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the pipeline execution.</p>
@@ -160,7 +165,7 @@ namespace Model
      * </li> <li> <p>Failed: The pipeline did not complete successfully.</p> </li>
      * </ul>
      */
-    inline void SetStatus(PipelineExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(PipelineExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The
@@ -182,7 +187,7 @@ namespace Model
      * </li> <li> <p>Failed: The pipeline did not complete successfully.</p> </li>
      * </ul>
      */
-    inline PipelineExecution& WithStatus(PipelineExecutionStatus&& value) { SetStatus(value); return *this;}
+    inline PipelineExecution& WithStatus(PipelineExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
@@ -197,7 +202,7 @@ namespace Model
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
      */
-    inline void SetArtifactRevisions(Aws::Vector<ArtifactRevision>&& value) { m_artifactRevisionsHasBeenSet = true; m_artifactRevisions = value; }
+    inline void SetArtifactRevisions(Aws::Vector<ArtifactRevision>&& value) { m_artifactRevisionsHasBeenSet = true; m_artifactRevisions = std::move(value); }
 
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
@@ -207,7 +212,7 @@ namespace Model
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
      */
-    inline PipelineExecution& WithArtifactRevisions(Aws::Vector<ArtifactRevision>&& value) { SetArtifactRevisions(value); return *this;}
+    inline PipelineExecution& WithArtifactRevisions(Aws::Vector<ArtifactRevision>&& value) { SetArtifactRevisions(std::move(value)); return *this;}
 
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
@@ -217,7 +222,7 @@ namespace Model
     /**
      * <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
      */
-    inline PipelineExecution& AddArtifactRevisions(ArtifactRevision&& value) { m_artifactRevisionsHasBeenSet = true; m_artifactRevisions.push_back(value); return *this; }
+    inline PipelineExecution& AddArtifactRevisions(ArtifactRevision&& value) { m_artifactRevisionsHasBeenSet = true; m_artifactRevisions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_pipelineName;

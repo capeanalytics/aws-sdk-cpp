@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/ec2/EC2Errors.h>
@@ -35,6 +36,7 @@ static const int OPERATION_NOT_PERMITTED_HASH = HashingUtils::HashString("Operat
 static const int SECURITY_GROUP_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("SecurityGroupLimitExceeded");
 static const int ATTACHMENT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("AttachmentLimitExceeded");
 static const int INVALID_STATE_HASH = HashingUtils::HashString("InvalidState");
+static const int DRY_RUN_OPERATION_HASH = HashingUtils::HashString("DryRunOperation");
 static const int RESERVED_INSTANCES_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ReservedInstancesLimitExceeded");
 static const int INVALID_EXPORT_TASK_I_D__NOT_FOUND_HASH = HashingUtils::HashString("InvalidExportTaskID.NotFound");
 static const int INVALID_KEY_PAIR__FORMAT_HASH = HashingUtils::HashString("InvalidKeyPair.Format");
@@ -46,7 +48,6 @@ static const int INVALID_MANIFEST_HASH = HashingUtils::HashString("InvalidManife
 static const int INVALID_SECURITY_GROUP_I_D__NOT_FOUND_HASH = HashingUtils::HashString("InvalidSecurityGroupID.NotFound");
 static const int VPN_CONNECTION_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("VpnConnectionLimitExceeded");
 static const int INVALID_INSTANCE_I_D__NOT_LINKABLE_HASH = HashingUtils::HashString("InvalidInstanceID.NotLinkable");
-static const int SIGNATURE_DOES_NOT_MATCH_HASH = HashingUtils::HashString("SignatureDoesNotMatch");
 static const int INVALID_VPC_I_D__NOT_FOUND_HASH = HashingUtils::HashString("InvalidVpcID.NotFound");
 static const int INVALID_PERMISSION__DUPLICATE_HASH = HashingUtils::HashString("InvalidPermission.Duplicate");
 static const int INVALID_ATTACHMENT_I_D__NOT_FOUND_HASH = HashingUtils::HashString("InvalidAttachmentID.NotFound");
@@ -86,6 +87,7 @@ static const int INVALID_POLICY_DOCUMENT_HASH = HashingUtils::HashString("Invali
 static const int VPC_ENDPOINT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("VpcEndpointLimitExceeded");
 static const int MAX_SPOT_INSTANCE_COUNT_EXCEEDED_HASH = HashingUtils::HashString("MaxSpotInstanceCountExceeded");
 static const int VPN_GATEWAY_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("VpnGatewayLimitExceeded");
+static const int INVALID_VPC__RANGE_HASH = HashingUtils::HashString("InvalidVpc.Range");
 static const int INVALID_INSTANCE_I_D_HASH = HashingUtils::HashString("InvalidInstanceID");
 static const int INVALID_OPTION__CONFLICT_HASH = HashingUtils::HashString("InvalidOption.Conflict");
 static const int CUSTOMER_GATEWAY_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("CustomerGatewayLimitExceeded");
@@ -105,7 +107,6 @@ static const int INVALID_SUBNET_I_D__NOT_FOUND_HASH = HashingUtils::HashString("
 static const int INVALID_VOLUME_I_D__MALFORMED_HASH = HashingUtils::HashString("InvalidVolumeID.Malformed");
 static const int INVALID_REQUEST_HASH = HashingUtils::HashString("InvalidRequest");
 static const int INVALID_ROUTE__MALFORMED_HASH = HashingUtils::HashString("InvalidRoute.Malformed");
-static const int INVALID_VPC_RANGE_HASH = HashingUtils::HashString("InvalidVpcRange");
 static const int SECURITY_GROUPS_PER_INTERFACE_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("SecurityGroupsPerInterfaceLimitExceeded");
 static const int INVALID_SECURITY__REQUEST_HAS_EXPIRED_HASH = HashingUtils::HashString("InvalidSecurity.RequestHasExpired");
 static const int INVALID_VPC_ENDPOINT_ID__MALFORMED_HASH = HashingUtils::HashString("InvalidVpcEndpointId.Malformed");
@@ -250,6 +251,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_STATE), false);
     return true;
   }
+  else if (hashCode == DRY_RUN_OPERATION_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::DRY_RUN_OPERATION), false);
+    return true;
+  }
   else if (hashCode == RESERVED_INSTANCES_LIMIT_EXCEEDED_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::RESERVED_INSTANCES_LIMIT_EXCEEDED), false);
@@ -303,11 +309,6 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == INVALID_INSTANCE_I_D__NOT_LINKABLE_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_INSTANCE_I_D__NOT_LINKABLE), false);
-    return true;
-  }
-  else if (hashCode == SIGNATURE_DOES_NOT_MATCH_HASH)
-  {
-    error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::SIGNATURE_DOES_NOT_MATCH), false);
     return true;
   }
   else if (hashCode == INVALID_VPC_I_D__NOT_FOUND_HASH)
@@ -505,6 +506,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::VPN_GATEWAY_LIMIT_EXCEEDED), false);
     return true;
   }
+  else if (hashCode == INVALID_VPC__RANGE_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_VPC__RANGE), false);
+    return true;
+  }
   else if (hashCode == INVALID_INSTANCE_I_D_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_INSTANCE_I_D), false);
@@ -598,11 +604,6 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == INVALID_ROUTE__MALFORMED_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_ROUTE__MALFORMED), false);
-    return true;
-  }
-  else if (hashCode == INVALID_VPC_RANGE_HASH)
-  {
-    error = AWSError<CoreErrors>(static_cast<CoreErrors>(EC2Errors::INVALID_VPC_RANGE), false);
     return true;
   }
   else if (hashCode == SECURITY_GROUPS_PER_INTERFACE_LIMIT_EXCEEDED_HASH)

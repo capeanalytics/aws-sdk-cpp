@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudfront/model/CacheBehavior.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,6 +35,7 @@ CacheBehavior::CacheBehavior() :
     m_targetOriginIdHasBeenSet(false),
     m_forwardedValuesHasBeenSet(false),
     m_trustedSignersHasBeenSet(false),
+    m_viewerProtocolPolicy(ViewerProtocolPolicy::NOT_SET),
     m_viewerProtocolPolicyHasBeenSet(false),
     m_minTTL(0),
     m_minTTLHasBeenSet(false),
@@ -54,6 +56,7 @@ CacheBehavior::CacheBehavior(const XmlNode& xmlNode) :
     m_targetOriginIdHasBeenSet(false),
     m_forwardedValuesHasBeenSet(false),
     m_trustedSignersHasBeenSet(false),
+    m_viewerProtocolPolicy(ViewerProtocolPolicy::NOT_SET),
     m_viewerProtocolPolicyHasBeenSet(false),
     m_minTTL(0),
     m_minTTLHasBeenSet(false),

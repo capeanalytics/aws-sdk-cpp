@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Glacier
 namespace Model
 {
   /**
-   * <p>Contains the Amazon Glacier response to your request.</p>
+   * <p>Contains the Amazon Glacier response to your request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/InitiateJobOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API InitiateJobResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The relative URI path of the job.</p>
      */
-    inline void SetLocation(Aws::String&& value) { m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
 
     /**
      * <p>The relative URI path of the job.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The relative URI path of the job.</p>
      */
-    inline InitiateJobResult& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline InitiateJobResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * <p>The relative URI path of the job.</p>
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The ID of the job.</p>
      */
-    inline void SetJobId(Aws::String&& value) { m_jobId = value; }
+    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
 
     /**
      * <p>The ID of the job.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The ID of the job.</p>
      */
-    inline InitiateJobResult& WithJobId(Aws::String&& value) { SetJobId(value); return *this;}
+    inline InitiateJobResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the job.</p>

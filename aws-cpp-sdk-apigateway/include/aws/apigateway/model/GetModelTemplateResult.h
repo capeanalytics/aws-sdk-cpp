@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * <p>Represents a mapping template used to transform a payload.</p> <div
    * class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping
-   * Templates</a> </div>
+   * Templates</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/Template">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetModelTemplateResult
   {
@@ -67,7 +71,7 @@ namespace Model
      * target="_blank">Velocity Template Language (VTL)</a> template content used for
      * the template resource.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_value = std::move(value); }
 
     /**
      * <p>The Apache <a
@@ -91,7 +95,7 @@ namespace Model
      * target="_blank">Velocity Template Language (VTL)</a> template content used for
      * the template resource.</p>
      */
-    inline GetModelTemplateResult& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline GetModelTemplateResult& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The Apache <a

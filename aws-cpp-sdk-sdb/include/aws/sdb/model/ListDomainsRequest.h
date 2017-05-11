@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/sdb/SimpleDBRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     ListDomainsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * The maximum number of domain names you want returned. The range is 1 to 100. The
      * default setting is 100.
@@ -63,7 +70,7 @@ namespace Model
     /**
      * A string informing Amazon SimpleDB where to start the next list of domain names.
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * A string informing Amazon SimpleDB where to start the next list of domain names.
@@ -78,7 +85,7 @@ namespace Model
     /**
      * A string informing Amazon SimpleDB where to start the next list of domain names.
      */
-    inline ListDomainsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListDomainsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * A string informing Amazon SimpleDB where to start the next list of domain names.

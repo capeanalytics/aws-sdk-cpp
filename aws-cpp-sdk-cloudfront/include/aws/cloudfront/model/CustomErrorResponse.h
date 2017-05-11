@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,7 +42,10 @@ namespace Model
    * existing distribution, update the distribution configuration and include only an
    * empty CustomErrorResponses element. To add, change, or remove one or more custom
    * error responses, update the distribution configuration and specify all of the
-   * custom error responses that you want to include in the updated distribution.
+   * custom error responses that you want to include in the updated
+   * distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CustomErrorResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CustomErrorResponse
   {
@@ -97,7 +102,7 @@ namespace Model
      * encode any other characters in the path, or CloudFront will not return the
      * custom error page to the viewer.
      */
-    inline void SetResponsePagePath(Aws::String&& value) { m_responsePagePathHasBeenSet = true; m_responsePagePath = value; }
+    inline void SetResponsePagePath(Aws::String&& value) { m_responsePagePathHasBeenSet = true; m_responsePagePath = std::move(value); }
 
     /**
      * The path of the custom error page (for example, /custom_404.html). The path is
@@ -127,7 +132,7 @@ namespace Model
      * encode any other characters in the path, or CloudFront will not return the
      * custom error page to the viewer.
      */
-    inline CustomErrorResponse& WithResponsePagePath(Aws::String&& value) { SetResponsePagePath(value); return *this;}
+    inline CustomErrorResponse& WithResponsePagePath(Aws::String&& value) { SetResponsePagePath(std::move(value)); return *this;}
 
     /**
      * The path of the custom error page (for example, /custom_404.html). The path is
@@ -158,7 +163,7 @@ namespace Model
      * page to the viewer. For a list of HTTP status codes that you can replace, see
      * CloudFront Documentation.
      */
-    inline void SetResponseCode(Aws::String&& value) { m_responseCodeHasBeenSet = true; m_responseCode = value; }
+    inline void SetResponseCode(Aws::String&& value) { m_responseCodeHasBeenSet = true; m_responseCode = std::move(value); }
 
     /**
      * The HTTP status code that you want CloudFront to return with the custom error
@@ -179,7 +184,7 @@ namespace Model
      * page to the viewer. For a list of HTTP status codes that you can replace, see
      * CloudFront Documentation.
      */
-    inline CustomErrorResponse& WithResponseCode(Aws::String&& value) { SetResponseCode(value); return *this;}
+    inline CustomErrorResponse& WithResponseCode(Aws::String&& value) { SetResponseCode(std::move(value)); return *this;}
 
     /**
      * The HTTP status code that you want CloudFront to return with the custom error

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/InstanceNetworkInterfaceAttachment.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,6 +34,7 @@ InstanceNetworkInterfaceAttachment::InstanceNetworkInterfaceAttachment() :
     m_attachmentIdHasBeenSet(false),
     m_deviceIndex(0),
     m_deviceIndexHasBeenSet(false),
+    m_status(AttachmentStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_attachTimeHasBeenSet(false),
     m_deleteOnTermination(false),
@@ -44,6 +46,7 @@ InstanceNetworkInterfaceAttachment::InstanceNetworkInterfaceAttachment(const Xml
     m_attachmentIdHasBeenSet(false),
     m_deviceIndex(0),
     m_deviceIndexHasBeenSet(false),
+    m_status(AttachmentStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_attachTimeHasBeenSet(false),
     m_deleteOnTermination(false),
@@ -117,7 +120,7 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
 
   if(m_deleteOnTerminationHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
+      oStream << location << index << locationValue << ".DeleteOnTermination=" << std::boolalpha << m_deleteOnTermination << "&";
   }
 
 }
@@ -142,7 +145,7 @@ void InstanceNetworkInterfaceAttachment::OutputToStream(Aws::OStream& oStream, c
   }
   if(m_deleteOnTerminationHasBeenSet)
   {
-      oStream << location << ".DeleteOnTermination=" << m_deleteOnTermination << "&";
+      oStream << location << ".DeleteOnTermination=" << std::boolalpha << m_deleteOnTermination << "&";
   }
 }
 

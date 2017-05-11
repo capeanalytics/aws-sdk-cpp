@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an Amazon EBS volume configuration.</p>
+   * <p>Describes an Amazon EBS volume configuration.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/VolumeConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API VolumeConfiguration
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The volume mount point. For example "/dev/sdh".</p>
      */
-    inline void SetMountPoint(Aws::String&& value) { m_mountPointHasBeenSet = true; m_mountPoint = value; }
+    inline void SetMountPoint(Aws::String&& value) { m_mountPointHasBeenSet = true; m_mountPoint = std::move(value); }
 
     /**
      * <p>The volume mount point. For example "/dev/sdh".</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The volume mount point. For example "/dev/sdh".</p>
      */
-    inline VolumeConfiguration& WithMountPoint(Aws::String&& value) { SetMountPoint(value); return *this;}
+    inline VolumeConfiguration& WithMountPoint(Aws::String&& value) { SetMountPoint(std::move(value)); return *this;}
 
     /**
      * <p>The volume mount point. For example "/dev/sdh".</p>
@@ -143,7 +147,7 @@ namespace Model
      * <li> <p> <code>io1</code> - Provisioned IOPS (SSD)</p> </li> <li> <p>
      * <code>gp2</code> - General Purpose (SSD)</p> </li> </ul>
      */
-    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
 
     /**
      * <p>The volume type:</p> <ul> <li> <p> <code>standard</code> - Magnetic</p> </li>
@@ -164,7 +168,7 @@ namespace Model
      * <li> <p> <code>io1</code> - Provisioned IOPS (SSD)</p> </li> <li> <p>
      * <code>gp2</code> - General Purpose (SSD)</p> </li> </ul>
      */
-    inline VolumeConfiguration& WithVolumeType(Aws::String&& value) { SetVolumeType(value); return *this;}
+    inline VolumeConfiguration& WithVolumeType(Aws::String&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p>The volume type:</p> <ul> <li> <p> <code>standard</code> - Magnetic</p> </li>

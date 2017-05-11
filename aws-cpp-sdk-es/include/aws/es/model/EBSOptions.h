@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/es/model/VolumeType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
    * <p>Options to enable, disable, and specify the properties of EBS storage
    * volumes. For more information, see <a
    * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs"
-   * target="_blank"> Configuring EBS-based Storage</a>.</p>
+   * target="_blank"> Configuring EBS-based Storage</a>.</p><p><h3>See Also:</h3>  
+   * <a href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/EBSOptions">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API EBSOptions
   {
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p> Specifies the volume type for EBS-based storage.</p>
      */
-    inline void SetVolumeType(VolumeType&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline void SetVolumeType(VolumeType&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
 
     /**
      * <p> Specifies the volume type for EBS-based storage.</p>
@@ -82,7 +86,7 @@ namespace Model
     /**
      * <p> Specifies the volume type for EBS-based storage.</p>
      */
-    inline EBSOptions& WithVolumeType(VolumeType&& value) { SetVolumeType(value); return *this;}
+    inline EBSOptions& WithVolumeType(VolumeType&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p> Integer to specify the size of an EBS volume.</p>

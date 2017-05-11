@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/model/ServerSideEncryption.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/s3/model/RequestCharged.h>
+#include <utility>
 
 namespace Aws
 {
@@ -57,7 +59,7 @@ namespace Model
      * The Server-side encryption algorithm used when storing this object in S3 (e.g.,
      * AES256, aws:kms).
      */
-    inline void SetServerSideEncryption(ServerSideEncryption&& value) { m_serverSideEncryption = value; }
+    inline void SetServerSideEncryption(ServerSideEncryption&& value) { m_serverSideEncryption = std::move(value); }
 
     /**
      * The Server-side encryption algorithm used when storing this object in S3 (e.g.,
@@ -69,7 +71,7 @@ namespace Model
      * The Server-side encryption algorithm used when storing this object in S3 (e.g.,
      * AES256, aws:kms).
      */
-    inline UploadPartResult& WithServerSideEncryption(ServerSideEncryption&& value) { SetServerSideEncryption(value); return *this;}
+    inline UploadPartResult& WithServerSideEncryption(ServerSideEncryption&& value) { SetServerSideEncryption(std::move(value)); return *this;}
 
     /**
      * Entity tag for the uploaded object.
@@ -84,7 +86,7 @@ namespace Model
     /**
      * Entity tag for the uploaded object.
      */
-    inline void SetETag(Aws::String&& value) { m_eTag = value; }
+    inline void SetETag(Aws::String&& value) { m_eTag = std::move(value); }
 
     /**
      * Entity tag for the uploaded object.
@@ -99,7 +101,7 @@ namespace Model
     /**
      * Entity tag for the uploaded object.
      */
-    inline UploadPartResult& WithETag(Aws::String&& value) { SetETag(value); return *this;}
+    inline UploadPartResult& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
 
     /**
      * Entity tag for the uploaded object.
@@ -122,7 +124,7 @@ namespace Model
      * If server-side encryption with a customer-provided encryption key was requested,
      * the response will include this header confirming the encryption algorithm used.
      */
-    inline void SetSSECustomerAlgorithm(Aws::String&& value) { m_sSECustomerAlgorithm = value; }
+    inline void SetSSECustomerAlgorithm(Aws::String&& value) { m_sSECustomerAlgorithm = std::move(value); }
 
     /**
      * If server-side encryption with a customer-provided encryption key was requested,
@@ -140,7 +142,7 @@ namespace Model
      * If server-side encryption with a customer-provided encryption key was requested,
      * the response will include this header confirming the encryption algorithm used.
      */
-    inline UploadPartResult& WithSSECustomerAlgorithm(Aws::String&& value) { SetSSECustomerAlgorithm(value); return *this;}
+    inline UploadPartResult& WithSSECustomerAlgorithm(Aws::String&& value) { SetSSECustomerAlgorithm(std::move(value)); return *this;}
 
     /**
      * If server-side encryption with a customer-provided encryption key was requested,
@@ -167,7 +169,7 @@ namespace Model
      * the response will include this header to provide round trip message integrity
      * verification of the customer-provided encryption key.
      */
-    inline void SetSSECustomerKeyMD5(Aws::String&& value) { m_sSECustomerKeyMD5 = value; }
+    inline void SetSSECustomerKeyMD5(Aws::String&& value) { m_sSECustomerKeyMD5 = std::move(value); }
 
     /**
      * If server-side encryption with a customer-provided encryption key was requested,
@@ -188,7 +190,7 @@ namespace Model
      * the response will include this header to provide round trip message integrity
      * verification of the customer-provided encryption key.
      */
-    inline UploadPartResult& WithSSECustomerKeyMD5(Aws::String&& value) { SetSSECustomerKeyMD5(value); return *this;}
+    inline UploadPartResult& WithSSECustomerKeyMD5(Aws::String&& value) { SetSSECustomerKeyMD5(std::move(value)); return *this;}
 
     /**
      * If server-side encryption with a customer-provided encryption key was requested,
@@ -213,7 +215,7 @@ namespace Model
      * If present, specifies the ID of the AWS Key Management Service (KMS) master
      * encryption key that was used for the object.
      */
-    inline void SetSSEKMSKeyId(Aws::String&& value) { m_sSEKMSKeyId = value; }
+    inline void SetSSEKMSKeyId(Aws::String&& value) { m_sSEKMSKeyId = std::move(value); }
 
     /**
      * If present, specifies the ID of the AWS Key Management Service (KMS) master
@@ -231,7 +233,7 @@ namespace Model
      * If present, specifies the ID of the AWS Key Management Service (KMS) master
      * encryption key that was used for the object.
      */
-    inline UploadPartResult& WithSSEKMSKeyId(Aws::String&& value) { SetSSEKMSKeyId(value); return *this;}
+    inline UploadPartResult& WithSSEKMSKeyId(Aws::String&& value) { SetSSEKMSKeyId(std::move(value)); return *this;}
 
     /**
      * If present, specifies the ID of the AWS Key Management Service (KMS) master
@@ -246,13 +248,13 @@ namespace Model
     inline void SetRequestCharged(const RequestCharged& value) { m_requestCharged = value; }
 
     
-    inline void SetRequestCharged(RequestCharged&& value) { m_requestCharged = value; }
+    inline void SetRequestCharged(RequestCharged&& value) { m_requestCharged = std::move(value); }
 
     
     inline UploadPartResult& WithRequestCharged(const RequestCharged& value) { SetRequestCharged(value); return *this;}
 
     
-    inline UploadPartResult& WithRequestCharged(RequestCharged&& value) { SetRequestCharged(value); return *this;}
+    inline UploadPartResult& WithRequestCharged(RequestCharged&& value) { SetRequestCharged(std::move(value)); return *this;}
 
   private:
     ServerSideEncryption m_serverSideEncryption;

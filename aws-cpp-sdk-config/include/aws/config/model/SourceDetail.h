@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/model/EventSource.h>
 #include <aws/config/model/MessageType.h>
 #include <aws/config/model/MaximumExecutionFrequency.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * your AWS resources against a rule. It also provides the frequency with which you
    * want AWS Config to run evaluations for the rule if the trigger type is periodic.
    * You can specify the parameter values for <code>SourceDetail</code> only for
-   * custom rules. </p>
+   * custom rules. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SourceDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API SourceDetail
   {
@@ -48,134 +52,184 @@ namespace Model
     Aws::Utils::Json::JsonValue Jsonize() const;
 
     /**
-     * <p> </p> <p>The source of the event, such as an AWS service, that triggers AWS
-     * Config to evaluate your AWS resources.</p>
+     * <p>The source of the event, such as an AWS service, that triggers AWS Config to
+     * evaluate your AWS resources.</p>
      */
     inline const EventSource& GetEventSource() const{ return m_eventSource; }
 
     /**
-     * <p> </p> <p>The source of the event, such as an AWS service, that triggers AWS
-     * Config to evaluate your AWS resources.</p>
+     * <p>The source of the event, such as an AWS service, that triggers AWS Config to
+     * evaluate your AWS resources.</p>
      */
     inline void SetEventSource(const EventSource& value) { m_eventSourceHasBeenSet = true; m_eventSource = value; }
 
     /**
-     * <p> </p> <p>The source of the event, such as an AWS service, that triggers AWS
-     * Config to evaluate your AWS resources.</p>
+     * <p>The source of the event, such as an AWS service, that triggers AWS Config to
+     * evaluate your AWS resources.</p>
      */
-    inline void SetEventSource(EventSource&& value) { m_eventSourceHasBeenSet = true; m_eventSource = value; }
+    inline void SetEventSource(EventSource&& value) { m_eventSourceHasBeenSet = true; m_eventSource = std::move(value); }
 
     /**
-     * <p> </p> <p>The source of the event, such as an AWS service, that triggers AWS
-     * Config to evaluate your AWS resources.</p>
+     * <p>The source of the event, such as an AWS service, that triggers AWS Config to
+     * evaluate your AWS resources.</p>
      */
     inline SourceDetail& WithEventSource(const EventSource& value) { SetEventSource(value); return *this;}
 
     /**
-     * <p> </p> <p>The source of the event, such as an AWS service, that triggers AWS
-     * Config to evaluate your AWS resources.</p>
+     * <p>The source of the event, such as an AWS service, that triggers AWS Config to
+     * evaluate your AWS resources.</p>
      */
-    inline SourceDetail& WithEventSource(EventSource&& value) { SetEventSource(value); return *this;}
+    inline SourceDetail& WithEventSource(EventSource&& value) { SetEventSource(std::move(value)); return *this;}
 
     /**
-     * <p>The type of notification that triggers AWS Config to run an evaluation. You
-     * can specify the following notification types:</p>
-     * <p><code>ConfigurationItemChangeNotification</code> - Triggers an evaluation
-     * when AWS Config delivers a configuration item change notification.</p>
-     * <p><code>ScheduledNotification</code> - Triggers a periodic evaluation at the
-     * frequency specified for <code>MaximumExecutionFrequency</code>.</p>
-     * <p><code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
-     * evaluation when AWS Config delivers a configuration snapshot.</p>
+     * <p>The type of notification that triggers AWS Config to run an evaluation for a
+     * rule. You can specify the following notification types:</p> <ul> <li> <p>
+     * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when
+     * AWS Config delivers a configuration item as a result of a resource change.</p>
+     * </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> -
+     * Triggers an evaluation when AWS Config delivers an oversized configuration item.
+     * AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p>
+     * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the
+     * frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li>
+     * <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
+     * evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul>
+     * <p>If you want your custom rule to be triggered by configuration changes,
+     * specify both <code>ConfigurationItemChangeNotification</code> and
+     * <code>OversizedConfigurationItemChangeNotification</code>. </p>
      */
     inline const MessageType& GetMessageType() const{ return m_messageType; }
 
     /**
-     * <p>The type of notification that triggers AWS Config to run an evaluation. You
-     * can specify the following notification types:</p>
-     * <p><code>ConfigurationItemChangeNotification</code> - Triggers an evaluation
-     * when AWS Config delivers a configuration item change notification.</p>
-     * <p><code>ScheduledNotification</code> - Triggers a periodic evaluation at the
-     * frequency specified for <code>MaximumExecutionFrequency</code>.</p>
-     * <p><code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
-     * evaluation when AWS Config delivers a configuration snapshot.</p>
+     * <p>The type of notification that triggers AWS Config to run an evaluation for a
+     * rule. You can specify the following notification types:</p> <ul> <li> <p>
+     * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when
+     * AWS Config delivers a configuration item as a result of a resource change.</p>
+     * </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> -
+     * Triggers an evaluation when AWS Config delivers an oversized configuration item.
+     * AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p>
+     * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the
+     * frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li>
+     * <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
+     * evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul>
+     * <p>If you want your custom rule to be triggered by configuration changes,
+     * specify both <code>ConfigurationItemChangeNotification</code> and
+     * <code>OversizedConfigurationItemChangeNotification</code>. </p>
      */
     inline void SetMessageType(const MessageType& value) { m_messageTypeHasBeenSet = true; m_messageType = value; }
 
     /**
-     * <p>The type of notification that triggers AWS Config to run an evaluation. You
-     * can specify the following notification types:</p>
-     * <p><code>ConfigurationItemChangeNotification</code> - Triggers an evaluation
-     * when AWS Config delivers a configuration item change notification.</p>
-     * <p><code>ScheduledNotification</code> - Triggers a periodic evaluation at the
-     * frequency specified for <code>MaximumExecutionFrequency</code>.</p>
-     * <p><code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
-     * evaluation when AWS Config delivers a configuration snapshot.</p>
+     * <p>The type of notification that triggers AWS Config to run an evaluation for a
+     * rule. You can specify the following notification types:</p> <ul> <li> <p>
+     * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when
+     * AWS Config delivers a configuration item as a result of a resource change.</p>
+     * </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> -
+     * Triggers an evaluation when AWS Config delivers an oversized configuration item.
+     * AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p>
+     * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the
+     * frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li>
+     * <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
+     * evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul>
+     * <p>If you want your custom rule to be triggered by configuration changes,
+     * specify both <code>ConfigurationItemChangeNotification</code> and
+     * <code>OversizedConfigurationItemChangeNotification</code>. </p>
      */
-    inline void SetMessageType(MessageType&& value) { m_messageTypeHasBeenSet = true; m_messageType = value; }
+    inline void SetMessageType(MessageType&& value) { m_messageTypeHasBeenSet = true; m_messageType = std::move(value); }
 
     /**
-     * <p>The type of notification that triggers AWS Config to run an evaluation. You
-     * can specify the following notification types:</p>
-     * <p><code>ConfigurationItemChangeNotification</code> - Triggers an evaluation
-     * when AWS Config delivers a configuration item change notification.</p>
-     * <p><code>ScheduledNotification</code> - Triggers a periodic evaluation at the
-     * frequency specified for <code>MaximumExecutionFrequency</code>.</p>
-     * <p><code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
-     * evaluation when AWS Config delivers a configuration snapshot.</p>
+     * <p>The type of notification that triggers AWS Config to run an evaluation for a
+     * rule. You can specify the following notification types:</p> <ul> <li> <p>
+     * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when
+     * AWS Config delivers a configuration item as a result of a resource change.</p>
+     * </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> -
+     * Triggers an evaluation when AWS Config delivers an oversized configuration item.
+     * AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p>
+     * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the
+     * frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li>
+     * <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
+     * evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul>
+     * <p>If you want your custom rule to be triggered by configuration changes,
+     * specify both <code>ConfigurationItemChangeNotification</code> and
+     * <code>OversizedConfigurationItemChangeNotification</code>. </p>
      */
     inline SourceDetail& WithMessageType(const MessageType& value) { SetMessageType(value); return *this;}
 
     /**
-     * <p>The type of notification that triggers AWS Config to run an evaluation. You
-     * can specify the following notification types:</p>
-     * <p><code>ConfigurationItemChangeNotification</code> - Triggers an evaluation
-     * when AWS Config delivers a configuration item change notification.</p>
-     * <p><code>ScheduledNotification</code> - Triggers a periodic evaluation at the
-     * frequency specified for <code>MaximumExecutionFrequency</code>.</p>
-     * <p><code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
-     * evaluation when AWS Config delivers a configuration snapshot.</p>
+     * <p>The type of notification that triggers AWS Config to run an evaluation for a
+     * rule. You can specify the following notification types:</p> <ul> <li> <p>
+     * <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when
+     * AWS Config delivers a configuration item as a result of a resource change.</p>
+     * </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> -
+     * Triggers an evaluation when AWS Config delivers an oversized configuration item.
+     * AWS Config may generate this notification type when a resource changes and the
+     * notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p>
+     * <code>ScheduledNotification</code> - Triggers a periodic evaluation at the
+     * frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li>
+     * <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic
+     * evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul>
+     * <p>If you want your custom rule to be triggered by configuration changes,
+     * specify both <code>ConfigurationItemChangeNotification</code> and
+     * <code>OversizedConfigurationItemChangeNotification</code>. </p>
      */
-    inline SourceDetail& WithMessageType(MessageType&& value) { SetMessageType(value); return *this;}
+    inline SourceDetail& WithMessageType(MessageType&& value) { SetMessageType(std::move(value)); return *this;}
 
     /**
-     * <p>The frequency that you want AWS Config to run evaluations for a rule that is
-     * triggered periodically. If you specify a value for
+     * <p>The frequency that you want AWS Config to run evaluations for a custom rule
+     * with a periodic trigger. If you specify a value for
      * <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     * the <code>ScheduledNotification</code> value.</p>
+     * the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules
+     * with a periodic trigger are evaluated every 24 hours. To change the frequency,
+     * specify a valid value for the <code>MaximumExecutionFrequency</code>
+     * parameter.</p> </note>
      */
     inline const MaximumExecutionFrequency& GetMaximumExecutionFrequency() const{ return m_maximumExecutionFrequency; }
 
     /**
-     * <p>The frequency that you want AWS Config to run evaluations for a rule that is
-     * triggered periodically. If you specify a value for
+     * <p>The frequency that you want AWS Config to run evaluations for a custom rule
+     * with a periodic trigger. If you specify a value for
      * <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     * the <code>ScheduledNotification</code> value.</p>
+     * the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules
+     * with a periodic trigger are evaluated every 24 hours. To change the frequency,
+     * specify a valid value for the <code>MaximumExecutionFrequency</code>
+     * parameter.</p> </note>
      */
     inline void SetMaximumExecutionFrequency(const MaximumExecutionFrequency& value) { m_maximumExecutionFrequencyHasBeenSet = true; m_maximumExecutionFrequency = value; }
 
     /**
-     * <p>The frequency that you want AWS Config to run evaluations for a rule that is
-     * triggered periodically. If you specify a value for
+     * <p>The frequency that you want AWS Config to run evaluations for a custom rule
+     * with a periodic trigger. If you specify a value for
      * <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     * the <code>ScheduledNotification</code> value.</p>
+     * the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules
+     * with a periodic trigger are evaluated every 24 hours. To change the frequency,
+     * specify a valid value for the <code>MaximumExecutionFrequency</code>
+     * parameter.</p> </note>
      */
-    inline void SetMaximumExecutionFrequency(MaximumExecutionFrequency&& value) { m_maximumExecutionFrequencyHasBeenSet = true; m_maximumExecutionFrequency = value; }
+    inline void SetMaximumExecutionFrequency(MaximumExecutionFrequency&& value) { m_maximumExecutionFrequencyHasBeenSet = true; m_maximumExecutionFrequency = std::move(value); }
 
     /**
-     * <p>The frequency that you want AWS Config to run evaluations for a rule that is
-     * triggered periodically. If you specify a value for
+     * <p>The frequency that you want AWS Config to run evaluations for a custom rule
+     * with a periodic trigger. If you specify a value for
      * <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     * the <code>ScheduledNotification</code> value.</p>
+     * the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules
+     * with a periodic trigger are evaluated every 24 hours. To change the frequency,
+     * specify a valid value for the <code>MaximumExecutionFrequency</code>
+     * parameter.</p> </note>
      */
     inline SourceDetail& WithMaximumExecutionFrequency(const MaximumExecutionFrequency& value) { SetMaximumExecutionFrequency(value); return *this;}
 
     /**
-     * <p>The frequency that you want AWS Config to run evaluations for a rule that is
-     * triggered periodically. If you specify a value for
+     * <p>The frequency that you want AWS Config to run evaluations for a custom rule
+     * with a periodic trigger. If you specify a value for
      * <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use
-     * the <code>ScheduledNotification</code> value.</p>
+     * the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules
+     * with a periodic trigger are evaluated every 24 hours. To change the frequency,
+     * specify a valid value for the <code>MaximumExecutionFrequency</code>
+     * parameter.</p> </note>
      */
-    inline SourceDetail& WithMaximumExecutionFrequency(MaximumExecutionFrequency&& value) { SetMaximumExecutionFrequency(value); return *this;}
+    inline SourceDetail& WithMaximumExecutionFrequency(MaximumExecutionFrequency&& value) { SetMaximumExecutionFrequency(std::move(value)); return *this;}
 
   private:
     EventSource m_eventSource;

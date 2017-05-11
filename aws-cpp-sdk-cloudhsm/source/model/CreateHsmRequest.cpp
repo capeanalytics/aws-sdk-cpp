@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudhsm/model/CreateHsmRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -27,6 +28,7 @@ CreateHsmRequest::CreateHsmRequest() :
     m_eniIpHasBeenSet(false),
     m_iamRoleArnHasBeenSet(false),
     m_externalIdHasBeenSet(false),
+    m_subscriptionType(SubscriptionType::NOT_SET),
     m_subscriptionTypeHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
     m_syslogIpHasBeenSet(false)
@@ -94,6 +96,7 @@ Aws::Http::HeaderValueCollection CreateHsmRequest::GetRequestSpecificHeaders() c
   return headers;
 
 }
+
 
 
 

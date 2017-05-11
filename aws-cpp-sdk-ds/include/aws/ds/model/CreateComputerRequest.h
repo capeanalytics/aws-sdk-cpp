@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ds/model/Attribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the inputs for the <a>CreateComputer</a> operation.</p>
+   * <p>Contains the inputs for the <a>CreateComputer</a> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateComputerRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API CreateComputerRequest : public DirectoryServiceRequest
   {
@@ -36,6 +41,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The identifier of the directory in which to create the computer account.</p>
@@ -50,7 +56,7 @@ namespace Model
     /**
      * <p>The identifier of the directory in which to create the computer account.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The identifier of the directory in which to create the computer account.</p>
@@ -65,7 +71,7 @@ namespace Model
     /**
      * <p>The identifier of the directory in which to create the computer account.</p>
      */
-    inline CreateComputerRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline CreateComputerRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the directory in which to create the computer account.</p>
@@ -85,7 +91,7 @@ namespace Model
     /**
      * <p>The name of the computer account.</p>
      */
-    inline void SetComputerName(Aws::String&& value) { m_computerNameHasBeenSet = true; m_computerName = value; }
+    inline void SetComputerName(Aws::String&& value) { m_computerNameHasBeenSet = true; m_computerName = std::move(value); }
 
     /**
      * <p>The name of the computer account.</p>
@@ -100,7 +106,7 @@ namespace Model
     /**
      * <p>The name of the computer account.</p>
      */
-    inline CreateComputerRequest& WithComputerName(Aws::String&& value) { SetComputerName(value); return *this;}
+    inline CreateComputerRequest& WithComputerName(Aws::String&& value) { SetComputerName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the computer account.</p>
@@ -123,7 +129,7 @@ namespace Model
      * <p>A one-time password that is used to join the computer to the directory. You
      * should generate a random, strong password to use for this parameter.</p>
      */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = value; }
+    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
 
     /**
      * <p>A one-time password that is used to join the computer to the directory. You
@@ -141,7 +147,7 @@ namespace Model
      * <p>A one-time password that is used to join the computer to the directory. You
      * should generate a random, strong password to use for this parameter.</p>
      */
-    inline CreateComputerRequest& WithPassword(Aws::String&& value) { SetPassword(value); return *this;}
+    inline CreateComputerRequest& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
 
     /**
      * <p>A one-time password that is used to join the computer to the directory. You
@@ -165,7 +171,7 @@ namespace Model
      * <p>The fully-qualified distinguished name of the organizational unit to place
      * the computer account in.</p>
      */
-    inline void SetOrganizationalUnitDistinguishedName(Aws::String&& value) { m_organizationalUnitDistinguishedNameHasBeenSet = true; m_organizationalUnitDistinguishedName = value; }
+    inline void SetOrganizationalUnitDistinguishedName(Aws::String&& value) { m_organizationalUnitDistinguishedNameHasBeenSet = true; m_organizationalUnitDistinguishedName = std::move(value); }
 
     /**
      * <p>The fully-qualified distinguished name of the organizational unit to place
@@ -183,7 +189,7 @@ namespace Model
      * <p>The fully-qualified distinguished name of the organizational unit to place
      * the computer account in.</p>
      */
-    inline CreateComputerRequest& WithOrganizationalUnitDistinguishedName(Aws::String&& value) { SetOrganizationalUnitDistinguishedName(value); return *this;}
+    inline CreateComputerRequest& WithOrganizationalUnitDistinguishedName(Aws::String&& value) { SetOrganizationalUnitDistinguishedName(std::move(value)); return *this;}
 
     /**
      * <p>The fully-qualified distinguished name of the organizational unit to place
@@ -207,7 +213,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to
      * apply to the computer account.</p>
      */
-    inline void SetComputerAttributes(Aws::Vector<Attribute>&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes = value; }
+    inline void SetComputerAttributes(Aws::Vector<Attribute>&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes = std::move(value); }
 
     /**
      * <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to
@@ -219,7 +225,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to
      * apply to the computer account.</p>
      */
-    inline CreateComputerRequest& WithComputerAttributes(Aws::Vector<Attribute>&& value) { SetComputerAttributes(value); return *this;}
+    inline CreateComputerRequest& WithComputerAttributes(Aws::Vector<Attribute>&& value) { SetComputerAttributes(std::move(value)); return *this;}
 
     /**
      * <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to
@@ -231,7 +237,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to
      * apply to the computer account.</p>
      */
-    inline CreateComputerRequest& AddComputerAttributes(Attribute&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes.push_back(value); return *this; }
+    inline CreateComputerRequest& AddComputerAttributes(Attribute&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_directoryId;

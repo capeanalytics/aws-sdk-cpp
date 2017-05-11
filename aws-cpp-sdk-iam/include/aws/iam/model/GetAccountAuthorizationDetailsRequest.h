@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/EntityType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,11 @@ namespace Model
     GetAccountAuthorizationDetailsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A list of entity types used to filter the results. Only the entities that
      * match the types you specify are included in the output. Use the value
@@ -62,7 +69,7 @@ namespace Model
      * strings. Each string value in the list must be one of the valid values listed
      * below.</p>
      */
-    inline void SetFilter(Aws::Vector<EntityType>&& value) { m_filterHasBeenSet = true; m_filter = value; }
+    inline void SetFilter(Aws::Vector<EntityType>&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
 
     /**
      * <p>A list of entity types used to filter the results. Only the entities that
@@ -82,7 +89,7 @@ namespace Model
      * strings. Each string value in the list must be one of the valid values listed
      * below.</p>
      */
-    inline GetAccountAuthorizationDetailsRequest& WithFilter(Aws::Vector<EntityType>&& value) { SetFilter(value); return *this;}
+    inline GetAccountAuthorizationDetailsRequest& WithFilter(Aws::Vector<EntityType>&& value) { SetFilter(std::move(value)); return *this;}
 
     /**
      * <p>A list of entity types used to filter the results. Only the entities that
@@ -102,14 +109,14 @@ namespace Model
      * strings. Each string value in the list must be one of the valid values listed
      * below.</p>
      */
-    inline GetAccountAuthorizationDetailsRequest& AddFilter(EntityType&& value) { m_filterHasBeenSet = true; m_filter.push_back(value); return *this; }
+    inline GetAccountAuthorizationDetailsRequest& AddFilter(EntityType&& value) { m_filterHasBeenSet = true; m_filter.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -117,11 +124,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -129,11 +136,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -162,7 +169,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -186,7 +193,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline GetAccountAuthorizationDetailsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline GetAccountAuthorizationDetailsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a

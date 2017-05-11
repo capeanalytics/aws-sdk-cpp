@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
      */
-    inline void SetRulesPackageArnList(Aws::Vector<Aws::String>&& value) { m_rulesPackageArnList = value; }
+    inline void SetRulesPackageArnList(Aws::Vector<Aws::String>&& value) { m_rulesPackageArnList = std::move(value); }
 
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
@@ -63,7 +65,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
      */
-    inline ListAttachedRulesPackagesResult& WithRulesPackageArnList(Aws::Vector<Aws::String>&& value) { SetRulesPackageArnList(value); return *this;}
+    inline ListAttachedRulesPackagesResult& WithRulesPackageArnList(Aws::Vector<Aws::String>&& value) { SetRulesPackageArnList(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
      */
-    inline ListAttachedRulesPackagesResult& AddRulesPackageArnList(Aws::String&& value) { m_rulesPackageArnList.push_back(value); return *this; }
+    inline ListAttachedRulesPackagesResult& AddRulesPackageArnList(Aws::String&& value) { m_rulesPackageArnList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of ARNs specifying the rules packages returned by the action.</p>
@@ -102,7 +104,7 @@ namespace Model
      * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
      * more data to be listed, this parameter is set to 'null'.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p> When a response is generated, if there is more data to be listed, this
@@ -126,7 +128,7 @@ namespace Model
      * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
      * more data to be listed, this parameter is set to 'null'.</p>
      */
-    inline ListAttachedRulesPackagesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListAttachedRulesPackagesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p> When a response is generated, if there is more data to be listed, this

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cognito-idp/model/ChallengeNameType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -35,6 +36,7 @@ namespace Aws
         static const int DEVICE_SRP_AUTH_HASH = HashingUtils::HashString("DEVICE_SRP_AUTH");
         static const int DEVICE_PASSWORD_VERIFIER_HASH = HashingUtils::HashString("DEVICE_PASSWORD_VERIFIER");
         static const int ADMIN_NO_SRP_AUTH_HASH = HashingUtils::HashString("ADMIN_NO_SRP_AUTH");
+        static const int NEW_PASSWORD_REQUIRED_HASH = HashingUtils::HashString("NEW_PASSWORD_REQUIRED");
 
 
         ChallengeNameType GetChallengeNameTypeForName(const Aws::String& name)
@@ -64,6 +66,10 @@ namespace Aws
           {
             return ChallengeNameType::ADMIN_NO_SRP_AUTH;
           }
+          else if (hashCode == NEW_PASSWORD_REQUIRED_HASH)
+          {
+            return ChallengeNameType::NEW_PASSWORD_REQUIRED;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -90,6 +96,8 @@ namespace Aws
             return "DEVICE_PASSWORD_VERIFIER";
           case ChallengeNameType::ADMIN_NO_SRP_AUTH:
             return "ADMIN_NO_SRP_AUTH";
+          case ChallengeNameType::NEW_PASSWORD_REQUIRED:
+            return "NEW_PASSWORD_REQUIRED";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

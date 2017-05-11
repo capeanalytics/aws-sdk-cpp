@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/lambda/model/CreateFunctionRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,6 +24,7 @@ using namespace Aws::Utils;
 
 CreateFunctionRequest::CreateFunctionRequest() : 
     m_functionNameHasBeenSet(false),
+    m_runtime(Runtime::NOT_SET),
     m_runtimeHasBeenSet(false),
     m_roleHasBeenSet(false),
     m_handlerHasBeenSet(false),
@@ -34,7 +36,12 @@ CreateFunctionRequest::CreateFunctionRequest() :
     m_memorySizeHasBeenSet(false),
     m_publish(false),
     m_publishHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false)
+    m_vpcConfigHasBeenSet(false),
+    m_deadLetterConfigHasBeenSet(false),
+    m_environmentHasBeenSet(false),
+    m_kMSKeyArnHasBeenSet(false),
+    m_tracingConfigHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -101,8 +108,44 @@ Aws::String CreateFunctionRequest::SerializePayload() const
 
   }
 
+  if(m_deadLetterConfigHasBeenSet)
+  {
+   payload.WithObject("DeadLetterConfig", m_deadLetterConfig.Jsonize());
+
+  }
+
+  if(m_environmentHasBeenSet)
+  {
+   payload.WithObject("Environment", m_environment.Jsonize());
+
+  }
+
+  if(m_kMSKeyArnHasBeenSet)
+  {
+   payload.WithString("KMSKeyArn", m_kMSKeyArn);
+
+  }
+
+  if(m_tracingConfigHasBeenSet)
+  {
+   payload.WithObject("TracingConfig", m_tracingConfig.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
+
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

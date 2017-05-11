@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/EventCode.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -47,6 +48,14 @@ namespace Aws
         static const int FLEET_ACTIVATION_FAILED_HASH = HashingUtils::HashString("FLEET_ACTIVATION_FAILED");
         static const int FLEET_ACTIVATION_FAILED_NO_INSTANCES_HASH = HashingUtils::HashString("FLEET_ACTIVATION_FAILED_NO_INSTANCES");
         static const int FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED_HASH = HashingUtils::HashString("FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED");
+        static const int SERVER_PROCESS_INVALID_PATH_HASH = HashingUtils::HashString("SERVER_PROCESS_INVALID_PATH");
+        static const int SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT_HASH = HashingUtils::HashString("SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT");
+        static const int SERVER_PROCESS_PROCESS_READY_TIMEOUT_HASH = HashingUtils::HashString("SERVER_PROCESS_PROCESS_READY_TIMEOUT");
+        static const int SERVER_PROCESS_CRASHED_HASH = HashingUtils::HashString("SERVER_PROCESS_CRASHED");
+        static const int SERVER_PROCESS_TERMINATED_UNHEALTHY_HASH = HashingUtils::HashString("SERVER_PROCESS_TERMINATED_UNHEALTHY");
+        static const int SERVER_PROCESS_FORCE_TERMINATED_HASH = HashingUtils::HashString("SERVER_PROCESS_FORCE_TERMINATED");
+        static const int SERVER_PROCESS_PROCESS_EXIT_TIMEOUT_HASH = HashingUtils::HashString("SERVER_PROCESS_PROCESS_EXIT_TIMEOUT");
+        static const int GAME_SESSION_ACTIVATION_TIMEOUT_HASH = HashingUtils::HashString("GAME_SESSION_ACTIVATION_TIMEOUT");
 
 
         EventCode GetEventCodeForName(const Aws::String& name)
@@ -124,6 +133,38 @@ namespace Aws
           {
             return EventCode::FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED;
           }
+          else if (hashCode == SERVER_PROCESS_INVALID_PATH_HASH)
+          {
+            return EventCode::SERVER_PROCESS_INVALID_PATH;
+          }
+          else if (hashCode == SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT_HASH)
+          {
+            return EventCode::SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT;
+          }
+          else if (hashCode == SERVER_PROCESS_PROCESS_READY_TIMEOUT_HASH)
+          {
+            return EventCode::SERVER_PROCESS_PROCESS_READY_TIMEOUT;
+          }
+          else if (hashCode == SERVER_PROCESS_CRASHED_HASH)
+          {
+            return EventCode::SERVER_PROCESS_CRASHED;
+          }
+          else if (hashCode == SERVER_PROCESS_TERMINATED_UNHEALTHY_HASH)
+          {
+            return EventCode::SERVER_PROCESS_TERMINATED_UNHEALTHY;
+          }
+          else if (hashCode == SERVER_PROCESS_FORCE_TERMINATED_HASH)
+          {
+            return EventCode::SERVER_PROCESS_FORCE_TERMINATED;
+          }
+          else if (hashCode == SERVER_PROCESS_PROCESS_EXIT_TIMEOUT_HASH)
+          {
+            return EventCode::SERVER_PROCESS_PROCESS_EXIT_TIMEOUT;
+          }
+          else if (hashCode == GAME_SESSION_ACTIVATION_TIMEOUT_HASH)
+          {
+            return EventCode::GAME_SESSION_ACTIVATION_TIMEOUT;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -174,6 +215,22 @@ namespace Aws
             return "FLEET_ACTIVATION_FAILED_NO_INSTANCES";
           case EventCode::FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED:
             return "FLEET_NEW_GAME_SESSION_PROTECTION_POLICY_UPDATED";
+          case EventCode::SERVER_PROCESS_INVALID_PATH:
+            return "SERVER_PROCESS_INVALID_PATH";
+          case EventCode::SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT:
+            return "SERVER_PROCESS_SDK_INITIALIZATION_TIMEOUT";
+          case EventCode::SERVER_PROCESS_PROCESS_READY_TIMEOUT:
+            return "SERVER_PROCESS_PROCESS_READY_TIMEOUT";
+          case EventCode::SERVER_PROCESS_CRASHED:
+            return "SERVER_PROCESS_CRASHED";
+          case EventCode::SERVER_PROCESS_TERMINATED_UNHEALTHY:
+            return "SERVER_PROCESS_TERMINATED_UNHEALTHY";
+          case EventCode::SERVER_PROCESS_FORCE_TERMINATED:
+            return "SERVER_PROCESS_FORCE_TERMINATED";
+          case EventCode::SERVER_PROCESS_PROCESS_EXIT_TIMEOUT:
+            return "SERVER_PROCESS_PROCESS_EXIT_TIMEOUT";
+          case EventCode::GAME_SESSION_ACTIVATION_TIMEOUT:
+            return "GAME_SESSION_ACTIVATION_TIMEOUT";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

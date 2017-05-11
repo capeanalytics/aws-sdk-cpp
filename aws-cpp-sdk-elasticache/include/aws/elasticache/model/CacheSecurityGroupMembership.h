@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Represents a cache cluster's status within a particular cache security
-   * group.</p>
+   * group.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheSecurityGroupMembership">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheSecurityGroupMembership
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the cache security group.</p>
      */
-    inline void SetCacheSecurityGroupName(Aws::String&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = value; }
+    inline void SetCacheSecurityGroupName(Aws::String&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache security group.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the cache security group.</p>
      */
-    inline CacheSecurityGroupMembership& WithCacheSecurityGroupName(Aws::String&& value) { SetCacheSecurityGroupName(value); return *this;}
+    inline CacheSecurityGroupMembership& WithCacheSecurityGroupName(Aws::String&& value) { SetCacheSecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache security group.</p>
@@ -99,7 +103,7 @@ namespace Model
      * cache security group is modified, or when the cache security groups assigned to
      * a cache cluster are modified.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The membership status in the cache security group. The status changes when a
@@ -120,7 +124,7 @@ namespace Model
      * cache security group is modified, or when the cache security groups assigned to
      * a cache cluster are modified.</p>
      */
-    inline CacheSecurityGroupMembership& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline CacheSecurityGroupMembership& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The membership status in the cache security group. The status changes when a

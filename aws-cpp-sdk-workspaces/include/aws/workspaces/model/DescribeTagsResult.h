@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/workspaces/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace WorkSpaces
 namespace Model
 {
   /**
-   * <p>The result of the <a>DescribeTags</a> operation.</p>
+   * <p>The result of the <a>DescribeTags</a> operation.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTagsResult">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API DescribeTagsResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The list of tags.</p>
      */
-    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagList = value; }
+    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagList = std::move(value); }
 
     /**
      * <p>The list of tags.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The list of tags.</p>
      */
-    inline DescribeTagsResult& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(value); return *this;}
+    inline DescribeTagsResult& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(std::move(value)); return *this;}
 
     /**
      * <p>The list of tags.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The list of tags.</p>
      */
-    inline DescribeTagsResult& AddTagList(Tag&& value) { m_tagList.push_back(value); return *this; }
+    inline DescribeTagsResult& AddTagList(Tag&& value) { m_tagList.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Tag> m_tagList;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
@@ -19,6 +20,7 @@
 #include <aws/ec2/model/SlotStartTimeRangeRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeScheduledInstances.</p>
+   * <p>Contains the parameters for DescribeScheduledInstances.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeScheduledInstancesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeScheduledInstancesRequest : public EC2Request
   {
@@ -36,6 +41,11 @@ namespace Model
     DescribeScheduledInstancesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -73,7 +83,7 @@ namespace Model
     /**
      * <p>One or more Scheduled Instance IDs.</p>
      */
-    inline void SetScheduledInstanceIds(Aws::Vector<Aws::String>&& value) { m_scheduledInstanceIdsHasBeenSet = true; m_scheduledInstanceIds = value; }
+    inline void SetScheduledInstanceIds(Aws::Vector<Aws::String>&& value) { m_scheduledInstanceIdsHasBeenSet = true; m_scheduledInstanceIds = std::move(value); }
 
     /**
      * <p>One or more Scheduled Instance IDs.</p>
@@ -83,7 +93,7 @@ namespace Model
     /**
      * <p>One or more Scheduled Instance IDs.</p>
      */
-    inline DescribeScheduledInstancesRequest& WithScheduledInstanceIds(Aws::Vector<Aws::String>&& value) { SetScheduledInstanceIds(value); return *this;}
+    inline DescribeScheduledInstancesRequest& WithScheduledInstanceIds(Aws::Vector<Aws::String>&& value) { SetScheduledInstanceIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more Scheduled Instance IDs.</p>
@@ -93,7 +103,7 @@ namespace Model
     /**
      * <p>One or more Scheduled Instance IDs.</p>
      */
-    inline DescribeScheduledInstancesRequest& AddScheduledInstanceIds(Aws::String&& value) { m_scheduledInstanceIdsHasBeenSet = true; m_scheduledInstanceIds.push_back(value); return *this; }
+    inline DescribeScheduledInstancesRequest& AddScheduledInstanceIds(Aws::String&& value) { m_scheduledInstanceIdsHasBeenSet = true; m_scheduledInstanceIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more Scheduled Instance IDs.</p>
@@ -113,7 +123,7 @@ namespace Model
     /**
      * <p>The time period for the first schedule to start.</p>
      */
-    inline void SetSlotStartTimeRange(SlotStartTimeRangeRequest&& value) { m_slotStartTimeRangeHasBeenSet = true; m_slotStartTimeRange = value; }
+    inline void SetSlotStartTimeRange(SlotStartTimeRangeRequest&& value) { m_slotStartTimeRangeHasBeenSet = true; m_slotStartTimeRange = std::move(value); }
 
     /**
      * <p>The time period for the first schedule to start.</p>
@@ -123,7 +133,7 @@ namespace Model
     /**
      * <p>The time period for the first schedule to start.</p>
      */
-    inline DescribeScheduledInstancesRequest& WithSlotStartTimeRange(SlotStartTimeRangeRequest&& value) { SetSlotStartTimeRange(value); return *this;}
+    inline DescribeScheduledInstancesRequest& WithSlotStartTimeRange(SlotStartTimeRangeRequest&& value) { SetSlotStartTimeRange(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of results.</p>
@@ -138,7 +148,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of results.</p>
@@ -153,7 +163,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline DescribeScheduledInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeScheduledInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of results.</p>
@@ -182,81 +192,81 @@ namespace Model
     inline DescribeScheduledInstancesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
     inline DescribeScheduledInstancesRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
-    inline DescribeScheduledInstancesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeScheduledInstancesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
     inline DescribeScheduledInstancesRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li>
-     * <p><code>instance-type</code> - The instance type (for example,
-     * <code>c4.large</code>).</p> </li> <li> <p><code>network-platform</code> - The
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone (for example, <code>us-west-2a</code>).</p> </li> <li> <p>
+     * <code>instance-type</code> - The instance type (for example,
+     * <code>c4.large</code>).</p> </li> <li> <p> <code>network-platform</code> - The
      * network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p> </li>
-     * <li> <p><code>platform</code> - The platform (<code>Linux/UNIX</code> or
+     * <li> <p> <code>platform</code> - The platform (<code>Linux/UNIX</code> or
      * <code>Windows</code>).</p> </li> </ul>
      */
-    inline DescribeScheduledInstancesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeScheduledInstancesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
   private:
     bool m_dryRun;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/autoscaling/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace AutoScaling
 namespace Model
 {
   /**
-   * <p>Contains the output of PutScalingPolicy.</p>
+   * <p>Contains the output of PutScalingPolicy.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PolicyARNType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API PutScalingPolicyResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the policy.</p>
      */
-    inline void SetPolicyARN(Aws::String&& value) { m_policyARN = value; }
+    inline void SetPolicyARN(Aws::String&& value) { m_policyARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the policy.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the policy.</p>
      */
-    inline PutScalingPolicyResult& WithPolicyARN(Aws::String&& value) { SetPolicyARN(value); return *this;}
+    inline PutScalingPolicyResult& WithPolicyARN(Aws::String&& value) { SetPolicyARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the policy.</p>
@@ -85,13 +89,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline PutScalingPolicyResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline PutScalingPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline PutScalingPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_policyARN;

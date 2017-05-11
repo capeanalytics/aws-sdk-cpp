@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -31,9 +32,10 @@ namespace Model
 {
 
   /**
-   * <p> The <code>StatisticSet</code> data type describes the
-   * <code>StatisticValues</code> component of <a>MetricDatum</a>, and represents a
-   * set of statistics that describes a specific metric. </p>
+   * <p>Represents a set of statistics that describes a specific metric.
+   * </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/StatisticSet">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDWATCH_API StatisticSet
   {

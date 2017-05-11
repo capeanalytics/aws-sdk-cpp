@@ -17,6 +17,7 @@
 
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/memory/stl/AWSSet.h>
 
 #include <stdlib.h>
 #include <cctype>
@@ -132,6 +133,23 @@ void URI::SetPath(const Aws::String& value)
    m_path = value;
 }
 
+//ugh, this isn't even part of the canonicalization spec. It is part of how our services have implemented their signers though....
+//it doesn't really hurt anything to reorder it though, so go ahead and sort the values for parameters with the same key 
+void InsertValueOrderedParameter(QueryStringParameterCollection& queryParams, const Aws::String& key, const Aws::String& value)
+{
+    auto entriesAtKey = queryParams.equal_range(key);
+    for (auto& entry = entriesAtKey.first; entry != entriesAtKey.second; ++entry)
+    {
+        if (entry->second > value)
+        {
+            queryParams.emplace_hint(entry, key, value);            
+            return;
+        }
+    }
+
+    queryParams.emplace(key, value);
+}
+
 QueryStringParameterCollection URI::GetQueryStringParameters(bool decode) const
 {
     Aws::String queryString = GetQueryString();
@@ -169,12 +187,13 @@ QueryStringParameterCollection URI::GetQueryStringParameters(bool decode) const
 
             if(decode)
             {
-                parameterCollection[StringUtils::URLDecode(key.c_str())] = StringUtils::URLDecode(value.c_str());
+                InsertValueOrderedParameter(parameterCollection, StringUtils::URLDecode(key.c_str()), StringUtils::URLDecode(value.c_str()));
             }
             else
             {
-                parameterCollection[key] = value;
+                InsertValueOrderedParameter(parameterCollection, key, value);
             }
+
             currentPos += keyValuePair.size() + 1;
         }
     }
@@ -205,7 +224,7 @@ void URI::CanonicalizeQueryString()
             }
 
             first = false;
-            queryStringStream << iter->first << "=" << iter->second;
+            queryStringStream << iter->first.c_str() << "=" << iter->second.c_str();
         }
 
         m_queryString = queryStringStream.str();
@@ -224,6 +243,22 @@ void URI::AddQueryStringParameter(const char* key, const Aws::String& value)
     }
 
     m_queryString.append(StringUtils::URLEncode(key) + "=" + StringUtils::URLEncode(value.c_str()));
+}
+
+void URI::SetQueryString(const Aws::String& str)
+{
+    m_queryString = "";
+
+    if (str.empty()) return;
+    
+    if (str.front() != '?')
+    {
+        m_queryString.append("?").append(str);
+    }
+    else
+    {
+       m_queryString = str;
+    }    
 }
 
 Aws::String URI::GetURIString(bool includeQueryString) const

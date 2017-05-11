@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/marketplacecommerceanalytics/model/DataSetType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -41,12 +42,15 @@ namespace Aws
         static const int monthly_revenue_annual_subscriptions_HASH = HashingUtils::HashString("monthly_revenue_annual_subscriptions");
         static const int disbursed_amount_by_product_HASH = HashingUtils::HashString("disbursed_amount_by_product");
         static const int disbursed_amount_by_product_with_uncollected_funds_HASH = HashingUtils::HashString("disbursed_amount_by_product_with_uncollected_funds");
+        static const int disbursed_amount_by_instance_hours_HASH = HashingUtils::HashString("disbursed_amount_by_instance_hours");
         static const int disbursed_amount_by_customer_geo_HASH = HashingUtils::HashString("disbursed_amount_by_customer_geo");
         static const int disbursed_amount_by_age_of_uncollected_funds_HASH = HashingUtils::HashString("disbursed_amount_by_age_of_uncollected_funds");
         static const int disbursed_amount_by_age_of_disbursed_funds_HASH = HashingUtils::HashString("disbursed_amount_by_age_of_disbursed_funds");
         static const int customer_profile_by_industry_HASH = HashingUtils::HashString("customer_profile_by_industry");
         static const int customer_profile_by_revenue_HASH = HashingUtils::HashString("customer_profile_by_revenue");
         static const int customer_profile_by_geography_HASH = HashingUtils::HashString("customer_profile_by_geography");
+        static const int sales_compensation_billed_revenue_HASH = HashingUtils::HashString("sales_compensation_billed_revenue");
+        static const int us_sales_and_use_tax_records_HASH = HashingUtils::HashString("us_sales_and_use_tax_records");
 
 
         DataSetType GetDataSetTypeForName(const Aws::String& name)
@@ -100,6 +104,10 @@ namespace Aws
           {
             return DataSetType::disbursed_amount_by_product_with_uncollected_funds;
           }
+          else if (hashCode == disbursed_amount_by_instance_hours_HASH)
+          {
+            return DataSetType::disbursed_amount_by_instance_hours;
+          }
           else if (hashCode == disbursed_amount_by_customer_geo_HASH)
           {
             return DataSetType::disbursed_amount_by_customer_geo;
@@ -123,6 +131,14 @@ namespace Aws
           else if (hashCode == customer_profile_by_geography_HASH)
           {
             return DataSetType::customer_profile_by_geography;
+          }
+          else if (hashCode == sales_compensation_billed_revenue_HASH)
+          {
+            return DataSetType::sales_compensation_billed_revenue;
+          }
+          else if (hashCode == us_sales_and_use_tax_records_HASH)
+          {
+            return DataSetType::us_sales_and_use_tax_records;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -162,6 +178,8 @@ namespace Aws
             return "disbursed_amount_by_product";
           case DataSetType::disbursed_amount_by_product_with_uncollected_funds:
             return "disbursed_amount_by_product_with_uncollected_funds";
+          case DataSetType::disbursed_amount_by_instance_hours:
+            return "disbursed_amount_by_instance_hours";
           case DataSetType::disbursed_amount_by_customer_geo:
             return "disbursed_amount_by_customer_geo";
           case DataSetType::disbursed_amount_by_age_of_uncollected_funds:
@@ -174,6 +192,10 @@ namespace Aws
             return "customer_profile_by_revenue";
           case DataSetType::customer_profile_by_geography:
             return "customer_profile_by_geography";
+          case DataSetType::sales_compensation_billed_revenue:
+            return "sales_compensation_billed_revenue";
+          case DataSetType::us_sales_and_use_tax_records:
+            return "us_sales_and_use_tax_records";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

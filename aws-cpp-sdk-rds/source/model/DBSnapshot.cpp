@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBSnapshot.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -58,7 +59,10 @@ DBSnapshot::DBSnapshot() :
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
-    m_dBSnapshotArnHasBeenSet(false)
+    m_dBSnapshotArnHasBeenSet(false),
+    m_timezoneHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false)
 {
 }
 
@@ -91,7 +95,10 @@ DBSnapshot::DBSnapshot(const XmlNode& xmlNode) :
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
-    m_dBSnapshotArnHasBeenSet(false)
+    m_dBSnapshotArnHasBeenSet(false),
+    m_timezoneHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -246,6 +253,18 @@ DBSnapshot& DBSnapshot::operator =(const XmlNode& xmlNode)
       m_dBSnapshotArn = StringUtils::Trim(dBSnapshotArnNode.GetText().c_str());
       m_dBSnapshotArnHasBeenSet = true;
     }
+    XmlNode timezoneNode = resultNode.FirstChild("Timezone");
+    if(!timezoneNode.IsNull())
+    {
+      m_timezone = StringUtils::Trim(timezoneNode.GetText().c_str());
+      m_timezoneHasBeenSet = true;
+    }
+    XmlNode iAMDatabaseAuthenticationEnabledNode = resultNode.FirstChild("IAMDatabaseAuthenticationEnabled");
+    if(!iAMDatabaseAuthenticationEnabledNode.IsNull())
+    {
+      m_iAMDatabaseAuthenticationEnabled = StringUtils::ConvertToBool(StringUtils::Trim(iAMDatabaseAuthenticationEnabledNode.GetText().c_str()).c_str());
+      m_iAMDatabaseAuthenticationEnabledHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -360,7 +379,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -371,6 +390,16 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, uns
   if(m_dBSnapshotArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBSnapshotArn=" << StringUtils::URLEncode(m_dBSnapshotArn.c_str()) << "&";
+  }
+
+  if(m_timezoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Timezone=" << StringUtils::URLEncode(m_timezone.c_str()) << "&";
+  }
+
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
   }
 
 }
@@ -463,7 +492,7 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {
@@ -472,6 +501,14 @@ void DBSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) con
   if(m_dBSnapshotArnHasBeenSet)
   {
       oStream << location << ".DBSnapshotArn=" << StringUtils::URLEncode(m_dBSnapshotArn.c_str()) << "&";
+  }
+  if(m_timezoneHasBeenSet)
+  {
+      oStream << location << ".Timezone=" << StringUtils::URLEncode(m_timezone.c_str()) << "&";
+  }
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
   }
 }
 

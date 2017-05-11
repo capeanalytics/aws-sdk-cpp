@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBInstanceMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ModifyDBInstanceRequest : public RDSRequest
   {
@@ -34,6 +38,11 @@ namespace Model
     ModifyDBInstanceRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
      * <p>Constraints:</p> <ul> <li> <p>Must be the identifier for an existing DB
@@ -59,7 +68,7 @@ namespace Model
      * hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li>
      * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = value; }
+    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::move(value); }
 
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
@@ -86,7 +95,7 @@ namespace Model
      * hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li>
      * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline ModifyDBInstanceRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
@@ -211,120 +220,127 @@ namespace Model
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
     inline const Aws::String& GetDBInstanceClass() const{ return m_dBInstanceClass; }
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
     inline void SetDBInstanceClass(const Aws::String& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = value; }
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
-    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = value; }
+    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = std::move(value); }
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
     inline void SetDBInstanceClass(const char* value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass.assign(value); }
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
     inline ModifyDBInstanceRequest& WithDBInstanceClass(const Aws::String& value) { SetDBInstanceClass(value); return *this;}
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
-    inline ModifyDBInstanceRequest& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(std::move(value)); return *this;}
 
     /**
      * <p> The new compute and memory capacity of the DB instance. To determine the
      * instance classes that are available for a particular DB engine, use the
-     * <a>DescribeOrderableDBInstanceOptions</a> action. </p> <p> Passing a value for
-     * this setting causes an outage during the change and is applied during the next
-     * maintenance window, unless <code>ApplyImmediately</code> is specified as
-     * <code>true</code> for this request. </p> <p>Default: Uses existing setting</p>
-     * <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large |
-     * db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-     * db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge |
-     * db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge |
-     * db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small |
-     * db.t2.medium | db.t2.large</code> </p>
+     * <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance
+     * classes are available in all regions for all DB engines. </p> <p> Passing a
+     * value for this setting causes an outage during the change and is applied during
+     * the next maintenance window, unless <code>ApplyImmediately</code> is specified
+     * as <code>true</code> for this request. </p> <p>Default: Uses existing
+     * setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium |
+     * db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
+     * db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large |
+     * db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+     * db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
+     * db.t2.small | db.t2.medium | db.t2.large</code> </p>
      */
     inline ModifyDBInstanceRequest& WithDBInstanceClass(const char* value) { SetDBInstanceClass(value); return *this;}
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -337,9 +353,9 @@ namespace Model
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -352,9 +368,9 @@ namespace Model
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -363,13 +379,13 @@ namespace Model
      * more than 255 alphanumeric characters, periods, underscores, spaces, or
      * hyphens.</p> <p>Example: <code>mySubnetGroup</code> </p>
      */
-    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
+    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = std::move(value); }
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -382,9 +398,9 @@ namespace Model
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -397,9 +413,9 @@ namespace Model
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -408,13 +424,13 @@ namespace Model
      * more than 255 alphanumeric characters, periods, underscores, spaces, or
      * hyphens.</p> <p>Example: <code>mySubnetGroup</code> </p>
      */
-    inline ModifyDBInstanceRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The new DB subnet group for the DB instance. You can use this parameter to
-     * move your DB instance to a different VPC, or to a different subnet group in the
-     * same VPC. If your DB instance is not in a VPC, you can also use this parameter
-     * to move your DB instance into a VPC. For more information, see <a
+     * move your DB instance to a different VPC. If your DB instance is not in a VPC,
+     * you can also use this parameter to move your DB instance into a VPC. For more
+     * information, see <a
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating
      * the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an
      * outage during the change. The change is applied during the next maintenance
@@ -453,7 +469,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline void SetDBSecurityGroups(Aws::Vector<Aws::String>&& value) { m_dBSecurityGroupsHasBeenSet = true; m_dBSecurityGroups = value; }
+    inline void SetDBSecurityGroups(Aws::Vector<Aws::String>&& value) { m_dBSecurityGroupsHasBeenSet = true; m_dBSecurityGroups = std::move(value); }
 
     /**
      * <p>A list of DB security groups to authorize on this DB instance. Changing this
@@ -473,7 +489,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline ModifyDBInstanceRequest& WithDBSecurityGroups(Aws::Vector<Aws::String>&& value) { SetDBSecurityGroups(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDBSecurityGroups(Aws::Vector<Aws::String>&& value) { SetDBSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>A list of DB security groups to authorize on this DB instance. Changing this
@@ -493,7 +509,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline ModifyDBInstanceRequest& AddDBSecurityGroups(Aws::String&& value) { m_dBSecurityGroupsHasBeenSet = true; m_dBSecurityGroups.push_back(value); return *this; }
+    inline ModifyDBInstanceRequest& AddDBSecurityGroups(Aws::String&& value) { m_dBSecurityGroupsHasBeenSet = true; m_dBSecurityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of DB security groups to authorize on this DB instance. Changing this
@@ -530,7 +546,7 @@ namespace Model
      * character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain
      * two consecutive hyphens</p> </li> </ul>
      */
-    inline void SetVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = value; }
+    inline void SetVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = std::move(value); }
 
     /**
      * <p>A list of EC2 VPC security groups to authorize on this DB instance. This
@@ -548,7 +564,7 @@ namespace Model
      * character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain
      * two consecutive hyphens</p> </li> </ul>
      */
-    inline ModifyDBInstanceRequest& WithVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupIds(value); return *this;}
+    inline ModifyDBInstanceRequest& WithVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of EC2 VPC security groups to authorize on this DB instance. This
@@ -566,7 +582,7 @@ namespace Model
      * character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain
      * two consecutive hyphens</p> </li> </ul>
      */
-    inline ModifyDBInstanceRequest& AddVpcSecurityGroupIds(Aws::String&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(value); return *this; }
+    inline ModifyDBInstanceRequest& AddVpcSecurityGroupIds(Aws::String&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of EC2 VPC security groups to authorize on this DB instance. This
@@ -674,7 +690,7 @@ namespace Model
      * password is lost. This includes restoring privileges that might have been
      * accidentally revoked.</p> </note>
      */
-    inline void SetMasterUserPassword(Aws::String&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = value; }
+    inline void SetMasterUserPassword(Aws::String&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::move(value); }
 
     /**
      * <p>The new password for the DB instance master user. Can be any printable ASCII
@@ -725,7 +741,7 @@ namespace Model
      * password is lost. This includes restoring privileges that might have been
      * accidentally revoked.</p> </note>
      */
-    inline ModifyDBInstanceRequest& WithMasterUserPassword(Aws::String&& value) { SetMasterUserPassword(value); return *this;}
+    inline ModifyDBInstanceRequest& WithMasterUserPassword(Aws::String&& value) { SetMasterUserPassword(std::move(value)); return *this;}
 
     /**
      * <p>The new password for the DB instance master user. Can be any printable ASCII
@@ -778,7 +794,7 @@ namespace Model
      * The DB parameter group must be in the same DB parameter group family as this DB
      * instance.</p>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB parameter group to apply to the DB instance. Changing this
@@ -814,7 +830,7 @@ namespace Model
      * The DB parameter group must be in the same DB parameter group family as this DB
      * instance.</p>
      */
-    inline ModifyDBInstanceRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB parameter group to apply to the DB instance. Changing this
@@ -916,7 +932,7 @@ namespace Model
      * preferred maintenance window</p> </li> <li> <p>Must be at least 30 minutes</p>
      * </li> </ul>
      */
-    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = value; }
+    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = std::move(value); }
 
     /**
      * <p> The daily time range during which automated backups are created if automated
@@ -952,7 +968,7 @@ namespace Model
      * preferred maintenance window</p> </li> <li> <p>Must be at least 30 minutes</p>
      * </li> </ul>
      */
-    inline ModifyDBInstanceRequest& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(value); return *this;}
+    inline ModifyDBInstanceRequest& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(std::move(value)); return *this;}
 
     /**
      * <p> The daily time range during which automated backups are created if automated
@@ -1009,7 +1025,7 @@ namespace Model
      * Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30
      * minutes</p>
      */
-    inline void SetPreferredMaintenanceWindow(Aws::String&& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = value; }
+    inline void SetPreferredMaintenanceWindow(Aws::String&& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = std::move(value); }
 
     /**
      * <p>The weekly time range (in UTC) during which system maintenance can occur,
@@ -1054,7 +1070,7 @@ namespace Model
      * Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30
      * minutes</p>
      */
-    inline ModifyDBInstanceRequest& WithPreferredMaintenanceWindow(Aws::String&& value) { SetPreferredMaintenanceWindow(value); return *this;}
+    inline ModifyDBInstanceRequest& WithPreferredMaintenanceWindow(Aws::String&& value) { SetPreferredMaintenanceWindow(std::move(value)); return *this;}
 
     /**
      * <p>The weekly time range (in UTC) during which system maintenance can occur,
@@ -1135,7 +1151,7 @@ namespace Model
      * family.</p> <p>For a list of valid engine versions, see
      * <a>CreateDBInstance</a>.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p> The version number of the database engine to upgrade to. Changing this
@@ -1174,7 +1190,7 @@ namespace Model
      * family.</p> <p>For a list of valid engine versions, see
      * <a>CreateDBInstance</a>.</p>
      */
-    inline ModifyDBInstanceRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline ModifyDBInstanceRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p> The version number of the database engine to upgrade to. Changing this
@@ -1268,7 +1284,7 @@ namespace Model
      * <code>license-included</code> | <code>bring-your-own-license</code> |
      * <code>general-public-license</code> </p>
      */
-    inline void SetLicenseModel(Aws::String&& value) { m_licenseModelHasBeenSet = true; m_licenseModel = value; }
+    inline void SetLicenseModel(Aws::String&& value) { m_licenseModelHasBeenSet = true; m_licenseModel = std::move(value); }
 
     /**
      * <p>The license model for the DB instance.</p> <p>Valid values:
@@ -1289,7 +1305,7 @@ namespace Model
      * <code>license-included</code> | <code>bring-your-own-license</code> |
      * <code>general-public-license</code> </p>
      */
-    inline ModifyDBInstanceRequest& WithLicenseModel(Aws::String&& value) { SetLicenseModel(value); return *this;}
+    inline ModifyDBInstanceRequest& WithLicenseModel(Aws::String&& value) { SetLicenseModel(std::move(value)); return *this;}
 
     /**
      * <p>The license model for the DB instance.</p> <p>Valid values:
@@ -1422,7 +1438,7 @@ namespace Model
      * cannot be removed from an option group, and that option group cannot be removed
      * from a DB instance once it is associated with a DB instance</p>
      */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
+    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
      * <p> Indicates that the DB instance should be associated with the specified
@@ -1464,7 +1480,7 @@ namespace Model
      * cannot be removed from an option group, and that option group cannot be removed
      * from a DB instance once it is associated with a DB instance</p>
      */
-    inline ModifyDBInstanceRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(value); return *this;}
+    inline ModifyDBInstanceRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p> Indicates that the DB instance should be associated with the specified
@@ -1514,7 +1530,7 @@ namespace Model
      * <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a
      * hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline void SetNewDBInstanceIdentifier(Aws::String&& value) { m_newDBInstanceIdentifierHasBeenSet = true; m_newDBInstanceIdentifier = value; }
+    inline void SetNewDBInstanceIdentifier(Aws::String&& value) { m_newDBInstanceIdentifierHasBeenSet = true; m_newDBInstanceIdentifier = std::move(value); }
 
     /**
      * <p> The new DB instance identifier for the DB instance when renaming a DB
@@ -1550,7 +1566,7 @@ namespace Model
      * <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a
      * hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline ModifyDBInstanceRequest& WithNewDBInstanceIdentifier(Aws::String&& value) { SetNewDBInstanceIdentifier(value); return *this;}
+    inline ModifyDBInstanceRequest& WithNewDBInstanceIdentifier(Aws::String&& value) { SetNewDBInstanceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p> The new DB instance identifier for the DB instance when renaming a DB
@@ -1589,7 +1605,7 @@ namespace Model
      * parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter
      * is specified; otherwise <code>standard</code> </p>
      */
-    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = value; }
+    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = std::move(value); }
 
     /**
      * <p>Specifies the storage type to be associated with the DB instance.</p> <p>
@@ -1616,7 +1632,7 @@ namespace Model
      * parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter
      * is specified; otherwise <code>standard</code> </p>
      */
-    inline ModifyDBInstanceRequest& WithStorageType(Aws::String&& value) { SetStorageType(value); return *this;}
+    inline ModifyDBInstanceRequest& WithStorageType(Aws::String&& value) { SetStorageType(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the storage type to be associated with the DB instance.</p> <p>
@@ -1643,7 +1659,7 @@ namespace Model
      * <p>The ARN from the Key Store with which to associate the instance for TDE
      * encryption.</p>
      */
-    inline void SetTdeCredentialArn(Aws::String&& value) { m_tdeCredentialArnHasBeenSet = true; m_tdeCredentialArn = value; }
+    inline void SetTdeCredentialArn(Aws::String&& value) { m_tdeCredentialArnHasBeenSet = true; m_tdeCredentialArn = std::move(value); }
 
     /**
      * <p>The ARN from the Key Store with which to associate the instance for TDE
@@ -1661,7 +1677,7 @@ namespace Model
      * <p>The ARN from the Key Store with which to associate the instance for TDE
      * encryption.</p>
      */
-    inline ModifyDBInstanceRequest& WithTdeCredentialArn(Aws::String&& value) { SetTdeCredentialArn(value); return *this;}
+    inline ModifyDBInstanceRequest& WithTdeCredentialArn(Aws::String&& value) { SetTdeCredentialArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN from the Key Store with which to associate the instance for TDE
@@ -1685,7 +1701,7 @@ namespace Model
      * <p>The password for the given ARN from the Key Store in order to access the
      * device.</p>
      */
-    inline void SetTdeCredentialPassword(Aws::String&& value) { m_tdeCredentialPasswordHasBeenSet = true; m_tdeCredentialPassword = value; }
+    inline void SetTdeCredentialPassword(Aws::String&& value) { m_tdeCredentialPasswordHasBeenSet = true; m_tdeCredentialPassword = std::move(value); }
 
     /**
      * <p>The password for the given ARN from the Key Store in order to access the
@@ -1703,7 +1719,7 @@ namespace Model
      * <p>The password for the given ARN from the Key Store in order to access the
      * device.</p>
      */
-    inline ModifyDBInstanceRequest& WithTdeCredentialPassword(Aws::String&& value) { SetTdeCredentialPassword(value); return *this;}
+    inline ModifyDBInstanceRequest& WithTdeCredentialPassword(Aws::String&& value) { SetTdeCredentialPassword(std::move(value)); return *this;}
 
     /**
      * <p>The password for the given ARN from the Key Store in order to access the
@@ -1724,7 +1740,7 @@ namespace Model
     /**
      * <p>Indicates the certificate that needs to be associated with the instance.</p>
      */
-    inline void SetCACertificateIdentifier(Aws::String&& value) { m_cACertificateIdentifierHasBeenSet = true; m_cACertificateIdentifier = value; }
+    inline void SetCACertificateIdentifier(Aws::String&& value) { m_cACertificateIdentifierHasBeenSet = true; m_cACertificateIdentifier = std::move(value); }
 
     /**
      * <p>Indicates the certificate that needs to be associated with the instance.</p>
@@ -1739,7 +1755,7 @@ namespace Model
     /**
      * <p>Indicates the certificate that needs to be associated with the instance.</p>
      */
-    inline ModifyDBInstanceRequest& WithCACertificateIdentifier(Aws::String&& value) { SetCACertificateIdentifier(value); return *this;}
+    inline ModifyDBInstanceRequest& WithCACertificateIdentifier(Aws::String&& value) { SetCACertificateIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>Indicates the certificate that needs to be associated with the instance.</p>
@@ -1768,7 +1784,7 @@ namespace Model
      * must be created prior to this operation. Currently only a Microsoft SQL Server
      * instance can be created in a Active Directory Domain. </p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The Active Directory Domain to move the instance to. Specify
@@ -1792,7 +1808,7 @@ namespace Model
      * must be created prior to this operation. Currently only a Microsoft SQL Server
      * instance can be created in a Active Directory Domain. </p>
      */
-    inline ModifyDBInstanceRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The Active Directory Domain to move the instance to. Specify
@@ -1983,7 +1999,7 @@ namespace Model
      * <code>MonitoringInterval</code> is set to a value other than 0, then you must
      * supply a <code>MonitoringRoleArn</code> value.</p>
      */
-    inline void SetMonitoringRoleArn(Aws::String&& value) { m_monitoringRoleArnHasBeenSet = true; m_monitoringRoleArn = value; }
+    inline void SetMonitoringRoleArn(Aws::String&& value) { m_monitoringRoleArnHasBeenSet = true; m_monitoringRoleArn = std::move(value); }
 
     /**
      * <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics
@@ -2019,7 +2035,7 @@ namespace Model
      * <code>MonitoringInterval</code> is set to a value other than 0, then you must
      * supply a <code>MonitoringRoleArn</code> value.</p>
      */
-    inline ModifyDBInstanceRequest& WithMonitoringRoleArn(Aws::String&& value) { SetMonitoringRoleArn(value); return *this;}
+    inline ModifyDBInstanceRequest& WithMonitoringRoleArn(Aws::String&& value) { SetMonitoringRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics
@@ -2049,7 +2065,7 @@ namespace Model
      * <p>The name of the IAM role to use when making API calls to the Directory
      * Service.</p>
      */
-    inline void SetDomainIAMRoleName(Aws::String&& value) { m_domainIAMRoleNameHasBeenSet = true; m_domainIAMRoleName = value; }
+    inline void SetDomainIAMRoleName(Aws::String&& value) { m_domainIAMRoleNameHasBeenSet = true; m_domainIAMRoleName = std::move(value); }
 
     /**
      * <p>The name of the IAM role to use when making API calls to the Directory
@@ -2067,7 +2083,7 @@ namespace Model
      * <p>The name of the IAM role to use when making API calls to the Directory
      * Service.</p>
      */
-    inline ModifyDBInstanceRequest& WithDomainIAMRoleName(Aws::String&& value) { SetDomainIAMRoleName(value); return *this;}
+    inline ModifyDBInstanceRequest& WithDomainIAMRoleName(Aws::String&& value) { SetDomainIAMRoleName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the IAM role to use when making API calls to the Directory
@@ -2104,6 +2120,33 @@ namespace Model
      * Values: 0 - 15</p>
      */
     inline ModifyDBInstanceRequest& WithPromotionTier(int value) { SetPromotionTier(value); return *this;}
+
+    /**
+     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
+     * to database accounts; otherwise false.</p> <p> You can enable IAM database
+     * authentication for the following database engines</p> <ul> <li> <p>For MySQL
+     * 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor
+     * version 5.7.16 or higher</p> </li> </ul> <p>Default: <code>false</code> </p>
+     */
+    inline bool GetEnableIAMDatabaseAuthentication() const{ return m_enableIAMDatabaseAuthentication; }
+
+    /**
+     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
+     * to database accounts; otherwise false.</p> <p> You can enable IAM database
+     * authentication for the following database engines</p> <ul> <li> <p>For MySQL
+     * 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor
+     * version 5.7.16 or higher</p> </li> </ul> <p>Default: <code>false</code> </p>
+     */
+    inline void SetEnableIAMDatabaseAuthentication(bool value) { m_enableIAMDatabaseAuthenticationHasBeenSet = true; m_enableIAMDatabaseAuthentication = value; }
+
+    /**
+     * <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts
+     * to database accounts; otherwise false.</p> <p> You can enable IAM database
+     * authentication for the following database engines</p> <ul> <li> <p>For MySQL
+     * 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor
+     * version 5.7.16 or higher</p> </li> </ul> <p>Default: <code>false</code> </p>
+     */
+    inline ModifyDBInstanceRequest& WithEnableIAMDatabaseAuthentication(bool value) { SetEnableIAMDatabaseAuthentication(value); return *this;}
 
   private:
     Aws::String m_dBInstanceIdentifier;
@@ -2170,6 +2213,8 @@ namespace Model
     bool m_domainIAMRoleNameHasBeenSet;
     int m_promotionTier;
     bool m_promotionTierHasBeenSet;
+    bool m_enableIAMDatabaseAuthentication;
+    bool m_enableIAMDatabaseAuthenticationHasBeenSet;
   };
 
 } // namespace Model

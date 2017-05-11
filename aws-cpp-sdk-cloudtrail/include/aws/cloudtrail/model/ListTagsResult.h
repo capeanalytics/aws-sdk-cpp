@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudtrail/model/ResourceTag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>Returns the objects or data listed below if successful. Otherwise, returns an
-   * error.</p>
+   * error.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListTagsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API ListTagsResult
   {
@@ -45,26 +49,40 @@ namespace Model
     ListTagsResult(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     ListTagsResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
-    
+    /**
+     * <p>A list of resource tags.</p>
+     */
     inline const Aws::Vector<ResourceTag>& GetResourceTagList() const{ return m_resourceTagList; }
 
-    
+    /**
+     * <p>A list of resource tags.</p>
+     */
     inline void SetResourceTagList(const Aws::Vector<ResourceTag>& value) { m_resourceTagList = value; }
 
-    
-    inline void SetResourceTagList(Aws::Vector<ResourceTag>&& value) { m_resourceTagList = value; }
+    /**
+     * <p>A list of resource tags.</p>
+     */
+    inline void SetResourceTagList(Aws::Vector<ResourceTag>&& value) { m_resourceTagList = std::move(value); }
 
-    
+    /**
+     * <p>A list of resource tags.</p>
+     */
     inline ListTagsResult& WithResourceTagList(const Aws::Vector<ResourceTag>& value) { SetResourceTagList(value); return *this;}
 
-    
-    inline ListTagsResult& WithResourceTagList(Aws::Vector<ResourceTag>&& value) { SetResourceTagList(value); return *this;}
+    /**
+     * <p>A list of resource tags.</p>
+     */
+    inline ListTagsResult& WithResourceTagList(Aws::Vector<ResourceTag>&& value) { SetResourceTagList(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>A list of resource tags.</p>
+     */
     inline ListTagsResult& AddResourceTagList(const ResourceTag& value) { m_resourceTagList.push_back(value); return *this; }
 
-    
-    inline ListTagsResult& AddResourceTagList(ResourceTag&& value) { m_resourceTagList.push_back(value); return *this; }
+    /**
+     * <p>A list of resource tags.</p>
+     */
+    inline ListTagsResult& AddResourceTagList(ResourceTag&& value) { m_resourceTagList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Reserved for future use.</p>
@@ -79,7 +97,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>Reserved for future use.</p>
@@ -94,7 +112,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline ListTagsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListTagsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/GlobalSecondaryIndexDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,6 +32,7 @@ GlobalSecondaryIndexDescription::GlobalSecondaryIndexDescription() :
     m_indexNameHasBeenSet(false),
     m_keySchemaHasBeenSet(false),
     m_projectionHasBeenSet(false),
+    m_indexStatus(IndexStatus::NOT_SET),
     m_indexStatusHasBeenSet(false),
     m_backfilling(false),
     m_backfillingHasBeenSet(false),
@@ -47,6 +49,7 @@ GlobalSecondaryIndexDescription::GlobalSecondaryIndexDescription(const JsonValue
     m_indexNameHasBeenSet(false),
     m_keySchemaHasBeenSet(false),
     m_projectionHasBeenSet(false),
+    m_indexStatus(IndexStatus::NOT_SET),
     m_indexStatusHasBeenSet(false),
     m_backfilling(false),
     m_backfillingHasBeenSet(false),

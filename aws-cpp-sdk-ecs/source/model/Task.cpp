@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/Task.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -37,10 +38,13 @@ Task::Task() :
     m_desiredStatusHasBeenSet(false),
     m_containersHasBeenSet(false),
     m_startedByHasBeenSet(false),
+    m_version(0),
+    m_versionHasBeenSet(false),
     m_stoppedReasonHasBeenSet(false),
     m_createdAtHasBeenSet(false),
     m_startedAtHasBeenSet(false),
-    m_stoppedAtHasBeenSet(false)
+    m_stoppedAtHasBeenSet(false),
+    m_groupHasBeenSet(false)
 {
 }
 
@@ -54,10 +58,13 @@ Task::Task(const JsonValue& jsonValue) :
     m_desiredStatusHasBeenSet(false),
     m_containersHasBeenSet(false),
     m_startedByHasBeenSet(false),
+    m_version(0),
+    m_versionHasBeenSet(false),
     m_stoppedReasonHasBeenSet(false),
     m_createdAtHasBeenSet(false),
     m_startedAtHasBeenSet(false),
-    m_stoppedAtHasBeenSet(false)
+    m_stoppedAtHasBeenSet(false),
+    m_groupHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -130,6 +137,13 @@ Task& Task::operator =(const JsonValue& jsonValue)
     m_startedByHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("version"))
+  {
+    m_version = jsonValue.GetInt64("version");
+
+    m_versionHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("stoppedReason"))
   {
     m_stoppedReason = jsonValue.GetString("stoppedReason");
@@ -156,6 +170,13 @@ Task& Task::operator =(const JsonValue& jsonValue)
     m_stoppedAt = jsonValue.GetDouble("stoppedAt");
 
     m_stoppedAtHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("group"))
+  {
+    m_group = jsonValue.GetString("group");
+
+    m_groupHasBeenSet = true;
   }
 
   return *this;
@@ -224,6 +245,12 @@ JsonValue Task::Jsonize() const
 
   }
 
+  if(m_versionHasBeenSet)
+  {
+   payload.WithInt64("version", m_version);
+
+  }
+
   if(m_stoppedReasonHasBeenSet)
   {
    payload.WithString("stoppedReason", m_stoppedReason);
@@ -243,6 +270,12 @@ JsonValue Task::Jsonize() const
   if(m_stoppedAtHasBeenSet)
   {
    payload.WithDouble("stoppedAt", m_stoppedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_groupHasBeenSet)
+  {
+   payload.WithString("group", m_group);
+
   }
 
   return payload;

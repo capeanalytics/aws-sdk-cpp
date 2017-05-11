@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/AllocatePublicVirtualInterfaceResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -26,13 +27,17 @@ using namespace Aws;
 
 AllocatePublicVirtualInterfaceResult::AllocatePublicVirtualInterfaceResult() : 
     m_vlan(0),
-    m_asn(0)
+    m_asn(0),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_virtualInterfaceState(VirtualInterfaceState::NOT_SET)
 {
 }
 
 AllocatePublicVirtualInterfaceResult::AllocatePublicVirtualInterfaceResult(const AmazonWebServiceResult<JsonValue>& result) : 
     m_vlan(0),
-    m_asn(0)
+    m_asn(0),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_virtualInterfaceState(VirtualInterfaceState::NOT_SET)
 {
   *this = result;
 }
@@ -106,6 +111,12 @@ AllocatePublicVirtualInterfaceResult& AllocatePublicVirtualInterfaceResult::oper
 
   }
 
+  if(jsonValue.ValueExists("addressFamily"))
+  {
+    m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(jsonValue.GetString("addressFamily"));
+
+  }
+
   if(jsonValue.ValueExists("virtualInterfaceState"))
   {
     m_virtualInterfaceState = VirtualInterfaceStateMapper::GetVirtualInterfaceStateForName(jsonValue.GetString("virtualInterfaceState"));
@@ -130,6 +141,15 @@ AllocatePublicVirtualInterfaceResult& AllocatePublicVirtualInterfaceResult::oper
     for(unsigned routeFilterPrefixesIndex = 0; routeFilterPrefixesIndex < routeFilterPrefixesJsonList.GetLength(); ++routeFilterPrefixesIndex)
     {
       m_routeFilterPrefixes.push_back(routeFilterPrefixesJsonList[routeFilterPrefixesIndex].AsObject());
+    }
+  }
+
+  if(jsonValue.ValueExists("bgpPeers"))
+  {
+    Array<JsonValue> bgpPeersJsonList = jsonValue.GetArray("bgpPeers");
+    for(unsigned bgpPeersIndex = 0; bgpPeersIndex < bgpPeersJsonList.GetLength(); ++bgpPeersIndex)
+    {
+      m_bgpPeers.push_back(bgpPeersJsonList[bgpPeersIndex].AsObject());
     }
   }
 

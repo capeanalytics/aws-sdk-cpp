@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/storagegateway/model/CachediSCSIVolume.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -37,7 +38,8 @@ CachediSCSIVolume::CachediSCSIVolume() :
     m_volumeProgress(0.0),
     m_volumeProgressHasBeenSet(false),
     m_sourceSnapshotIdHasBeenSet(false),
-    m_volumeiSCSIAttributesHasBeenSet(false)
+    m_volumeiSCSIAttributesHasBeenSet(false),
+    m_createdDateHasBeenSet(false)
 {
 }
 
@@ -51,7 +53,8 @@ CachediSCSIVolume::CachediSCSIVolume(const JsonValue& jsonValue) :
     m_volumeProgress(0.0),
     m_volumeProgressHasBeenSet(false),
     m_sourceSnapshotIdHasBeenSet(false),
-    m_volumeiSCSIAttributesHasBeenSet(false)
+    m_volumeiSCSIAttributesHasBeenSet(false),
+    m_createdDateHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -114,6 +117,13 @@ CachediSCSIVolume& CachediSCSIVolume::operator =(const JsonValue& jsonValue)
     m_volumeiSCSIAttributesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CreatedDate"))
+  {
+    m_createdDate = jsonValue.GetDouble("CreatedDate");
+
+    m_createdDateHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -167,6 +177,11 @@ JsonValue CachediSCSIVolume::Jsonize() const
   {
    payload.WithObject("VolumeiSCSIAttributes", m_volumeiSCSIAttributes.Jsonize());
 
+  }
+
+  if(m_createdDateHasBeenSet)
+  {
+   payload.WithDouble("CreatedDate", m_createdDate.SecondsWithMSPrecision());
   }
 
   return payload;

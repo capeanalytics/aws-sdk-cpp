@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/dms/DatabaseMigrationServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dms/model/ReplicationEndpointTypeValue.h>
 #include <aws/dms/model/DmsSslModeValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEndpointMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API ModifyEndpointRequest : public DatabaseMigrationServiceRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -53,7 +58,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
      * endpoint.</p>
      */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
+    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -71,7 +76,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
      * endpoint.</p>
      */
-    inline ModifyEndpointRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(value); return *this;}
+    inline ModifyEndpointRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) string that uniquely identifies the
@@ -98,7 +103,7 @@ namespace Model
      * contain only ASCII letters, digits, and hyphens; and must not end with a hyphen
      * or contain two consecutive hyphens.</p>
      */
-    inline void SetEndpointIdentifier(Aws::String&& value) { m_endpointIdentifierHasBeenSet = true; m_endpointIdentifier = value; }
+    inline void SetEndpointIdentifier(Aws::String&& value) { m_endpointIdentifierHasBeenSet = true; m_endpointIdentifier = std::move(value); }
 
     /**
      * <p>The database endpoint identifier. Identifiers must begin with a letter; must
@@ -119,7 +124,7 @@ namespace Model
      * contain only ASCII letters, digits, and hyphens; and must not end with a hyphen
      * or contain two consecutive hyphens.</p>
      */
-    inline ModifyEndpointRequest& WithEndpointIdentifier(Aws::String&& value) { SetEndpointIdentifier(value); return *this;}
+    inline ModifyEndpointRequest& WithEndpointIdentifier(Aws::String&& value) { SetEndpointIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The database endpoint identifier. Identifiers must begin with a letter; must
@@ -141,7 +146,7 @@ namespace Model
     /**
      * <p>The type of endpoint.</p>
      */
-    inline void SetEndpointType(ReplicationEndpointTypeValue&& value) { m_endpointTypeHasBeenSet = true; m_endpointType = value; }
+    inline void SetEndpointType(ReplicationEndpointTypeValue&& value) { m_endpointTypeHasBeenSet = true; m_endpointType = std::move(value); }
 
     /**
      * <p>The type of endpoint.</p>
@@ -151,47 +156,47 @@ namespace Model
     /**
      * <p>The type of endpoint.</p>
      */
-    inline ModifyEndpointRequest& WithEndpointType(ReplicationEndpointTypeValue&& value) { SetEndpointType(value); return *this;}
+    inline ModifyEndpointRequest& WithEndpointType(ReplicationEndpointTypeValue&& value) { SetEndpointType(std::move(value)); return *this;}
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline const Aws::String& GetEngineName() const{ return m_engineName; }
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline void SetEngineName(const Aws::String& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
-    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
+    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = std::move(value); }
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline void SetEngineName(const char* value) { m_engineNameHasBeenSet = true; m_engineName.assign(value); }
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline ModifyEndpointRequest& WithEngineName(const Aws::String& value) { SetEngineName(value); return *this;}
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
-    inline ModifyEndpointRequest& WithEngineName(Aws::String&& value) { SetEngineName(value); return *this;}
+    inline ModifyEndpointRequest& WithEngineName(Aws::String&& value) { SetEngineName(std::move(value)); return *this;}
 
     /**
      * <p>The type of engine for the endpoint. Valid values include MYSQL, ORACLE,
-     * POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.</p>
+     * POSTGRES, MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline ModifyEndpointRequest& WithEngineName(const char* value) { SetEngineName(value); return *this;}
 
@@ -208,7 +213,7 @@ namespace Model
     /**
      * <p>The user name to be used to login to the endpoint database.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
 
     /**
      * <p>The user name to be used to login to the endpoint database.</p>
@@ -223,7 +228,7 @@ namespace Model
     /**
      * <p>The user name to be used to login to the endpoint database.</p>
      */
-    inline ModifyEndpointRequest& WithUsername(Aws::String&& value) { SetUsername(value); return *this;}
+    inline ModifyEndpointRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
 
     /**
      * <p>The user name to be used to login to the endpoint database.</p>
@@ -243,7 +248,7 @@ namespace Model
     /**
      * <p>The password to be used to login to the endpoint database.</p>
      */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = value; }
+    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
 
     /**
      * <p>The password to be used to login to the endpoint database.</p>
@@ -258,7 +263,7 @@ namespace Model
     /**
      * <p>The password to be used to login to the endpoint database.</p>
      */
-    inline ModifyEndpointRequest& WithPassword(Aws::String&& value) { SetPassword(value); return *this;}
+    inline ModifyEndpointRequest& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
 
     /**
      * <p>The password to be used to login to the endpoint database.</p>
@@ -278,7 +283,7 @@ namespace Model
     /**
      * <p>The name of the server where the endpoint database resides.</p>
      */
-    inline void SetServerName(Aws::String&& value) { m_serverNameHasBeenSet = true; m_serverName = value; }
+    inline void SetServerName(Aws::String&& value) { m_serverNameHasBeenSet = true; m_serverName = std::move(value); }
 
     /**
      * <p>The name of the server where the endpoint database resides.</p>
@@ -293,7 +298,7 @@ namespace Model
     /**
      * <p>The name of the server where the endpoint database resides.</p>
      */
-    inline ModifyEndpointRequest& WithServerName(Aws::String&& value) { SetServerName(value); return *this;}
+    inline ModifyEndpointRequest& WithServerName(Aws::String&& value) { SetServerName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the server where the endpoint database resides.</p>
@@ -328,7 +333,7 @@ namespace Model
     /**
      * <p>The name of the endpoint database.</p>
      */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
+    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
 
     /**
      * <p>The name of the endpoint database.</p>
@@ -343,7 +348,7 @@ namespace Model
     /**
      * <p>The name of the endpoint database.</p>
      */
-    inline ModifyEndpointRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(value); return *this;}
+    inline ModifyEndpointRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the endpoint database.</p>
@@ -363,7 +368,7 @@ namespace Model
     /**
      * <p>Additional attributes associated with the connection.</p>
      */
-    inline void SetExtraConnectionAttributes(Aws::String&& value) { m_extraConnectionAttributesHasBeenSet = true; m_extraConnectionAttributes = value; }
+    inline void SetExtraConnectionAttributes(Aws::String&& value) { m_extraConnectionAttributesHasBeenSet = true; m_extraConnectionAttributes = std::move(value); }
 
     /**
      * <p>Additional attributes associated with the connection.</p>
@@ -378,7 +383,7 @@ namespace Model
     /**
      * <p>Additional attributes associated with the connection.</p>
      */
-    inline ModifyEndpointRequest& WithExtraConnectionAttributes(Aws::String&& value) { SetExtraConnectionAttributes(value); return *this;}
+    inline ModifyEndpointRequest& WithExtraConnectionAttributes(Aws::String&& value) { SetExtraConnectionAttributes(std::move(value)); return *this;}
 
     /**
      * <p>Additional attributes associated with the connection.</p>
@@ -401,7 +406,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the certificate used for SSL
      * connection.</p>
      */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
+    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the certificate used for SSL
@@ -419,7 +424,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the certificate used for SSL
      * connection.</p>
      */
-    inline ModifyEndpointRequest& WithCertificateArn(Aws::String&& value) { SetCertificateArn(value); return *this;}
+    inline ModifyEndpointRequest& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the certificate used for SSL
@@ -443,7 +448,7 @@ namespace Model
      * <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none,
      * require, verify-ca, verify-full. </p> <p>The default value is none.</p>
      */
-    inline void SetSslMode(DmsSslModeValue&& value) { m_sslModeHasBeenSet = true; m_sslMode = value; }
+    inline void SetSslMode(DmsSslModeValue&& value) { m_sslModeHasBeenSet = true; m_sslMode = std::move(value); }
 
     /**
      * <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none,
@@ -455,7 +460,7 @@ namespace Model
      * <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none,
      * require, verify-ca, verify-full. </p> <p>The default value is none.</p>
      */
-    inline ModifyEndpointRequest& WithSslMode(DmsSslModeValue&& value) { SetSslMode(value); return *this;}
+    inline ModifyEndpointRequest& WithSslMode(DmsSslModeValue&& value) { SetSslMode(std::move(value)); return *this;}
 
   private:
     Aws::String m_endpointArn;

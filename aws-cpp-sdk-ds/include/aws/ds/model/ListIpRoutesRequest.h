@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
      * addresses.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
      * addresses.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
@@ -68,7 +71,7 @@ namespace Model
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
      * addresses.</p>
      */
-    inline ListIpRoutesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline ListIpRoutesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>Identifier (ID) of the directory for which you want to retrieve the IP
@@ -92,7 +95,7 @@ namespace Model
      * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
      * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
@@ -110,7 +113,7 @@ namespace Model
      * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to
      * <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
      */
-    inline ListIpRoutesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListIpRoutesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to

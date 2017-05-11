@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/EMRRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>The input to the SetVisibleToAllUsers action.</p>
+   * <p>The input to the SetVisibleToAllUsers action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetVisibleToAllUsersInput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API SetVisibleToAllUsersRequest : public EMRRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
@@ -49,7 +54,7 @@ namespace Model
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
      */
-    inline void SetJobFlowIds(Aws::Vector<Aws::String>&& value) { m_jobFlowIdsHasBeenSet = true; m_jobFlowIds = value; }
+    inline void SetJobFlowIds(Aws::Vector<Aws::String>&& value) { m_jobFlowIdsHasBeenSet = true; m_jobFlowIds = std::move(value); }
 
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
      */
-    inline SetVisibleToAllUsersRequest& WithJobFlowIds(Aws::Vector<Aws::String>&& value) { SetJobFlowIds(value); return *this;}
+    inline SetVisibleToAllUsersRequest& WithJobFlowIds(Aws::Vector<Aws::String>&& value) { SetJobFlowIds(std::move(value)); return *this;}
 
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
      */
-    inline SetVisibleToAllUsersRequest& AddJobFlowIds(Aws::String&& value) { m_jobFlowIdsHasBeenSet = true; m_jobFlowIds.push_back(value); return *this; }
+    inline SetVisibleToAllUsersRequest& AddJobFlowIds(Aws::String&& value) { m_jobFlowIdsHasBeenSet = true; m_jobFlowIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Identifiers of the job flows to receive the new visibility setting.</p>
@@ -77,29 +82,29 @@ namespace Model
     inline SetVisibleToAllUsersRequest& AddJobFlowIds(const char* value) { m_jobFlowIdsHasBeenSet = true; m_jobFlowIds.push_back(value); return *this; }
 
     /**
-     * <p>Whether the specified job flows are visible to all IAM users of the AWS
-     * account associated with the job flow. If this value is set to True, all IAM
-     * users of that AWS account can view and, if they have the proper IAM policy
-     * permissions set, manage the job flows. If it is set to False, only the IAM user
-     * that created a job flow can view and manage it.</p>
+     * <p>Whether the specified clusters are visible to all IAM users of the AWS
+     * account associated with the cluster. If this value is set to True, all IAM users
+     * of that AWS account can view and, if they have the proper IAM policy permissions
+     * set, manage the clusters. If it is set to False, only the IAM user that created
+     * a cluster can view and manage it.</p>
      */
     inline bool GetVisibleToAllUsers() const{ return m_visibleToAllUsers; }
 
     /**
-     * <p>Whether the specified job flows are visible to all IAM users of the AWS
-     * account associated with the job flow. If this value is set to True, all IAM
-     * users of that AWS account can view and, if they have the proper IAM policy
-     * permissions set, manage the job flows. If it is set to False, only the IAM user
-     * that created a job flow can view and manage it.</p>
+     * <p>Whether the specified clusters are visible to all IAM users of the AWS
+     * account associated with the cluster. If this value is set to True, all IAM users
+     * of that AWS account can view and, if they have the proper IAM policy permissions
+     * set, manage the clusters. If it is set to False, only the IAM user that created
+     * a cluster can view and manage it.</p>
      */
     inline void SetVisibleToAllUsers(bool value) { m_visibleToAllUsersHasBeenSet = true; m_visibleToAllUsers = value; }
 
     /**
-     * <p>Whether the specified job flows are visible to all IAM users of the AWS
-     * account associated with the job flow. If this value is set to True, all IAM
-     * users of that AWS account can view and, if they have the proper IAM policy
-     * permissions set, manage the job flows. If it is set to False, only the IAM user
-     * that created a job flow can view and manage it.</p>
+     * <p>Whether the specified clusters are visible to all IAM users of the AWS
+     * account associated with the cluster. If this value is set to True, all IAM users
+     * of that AWS account can view and, if they have the proper IAM policy permissions
+     * set, manage the clusters. If it is set to False, only the IAM user that created
+     * a cluster can view and manage it.</p>
      */
     inline SetVisibleToAllUsersRequest& WithVisibleToAllUsers(bool value) { SetVisibleToAllUsers(value); return *this;}
 

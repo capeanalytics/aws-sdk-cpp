@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/model/CommandFilterKey.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a command filter.</p>
+   * <p>Describes a command filter.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/CommandFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_SSM_API CommandFilter
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the filter. For example, requested date and time.</p>
      */
-    inline void SetKey(CommandFilterKey&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(CommandFilterKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>The name of the filter. For example, requested date and time.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the filter. For example, requested date and time.</p>
      */
-    inline CommandFilter& WithKey(CommandFilterKey&& value) { SetKey(value); return *this;}
+    inline CommandFilter& WithKey(CommandFilterKey&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>The filter value. For example: June 30, 2015.</p>
@@ -80,7 +84,7 @@ namespace Model
     /**
      * <p>The filter value. For example: June 30, 2015.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The filter value. For example: June 30, 2015.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The filter value. For example: June 30, 2015.</p>
      */
-    inline CommandFilter& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline CommandFilter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The filter value. For example: June 30, 2015.</p>

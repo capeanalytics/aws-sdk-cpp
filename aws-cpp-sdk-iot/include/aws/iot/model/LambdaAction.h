@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an action to invoke a Lambda function.</p>
+   * <p>Describes an action to invoke a Lambda function.</p><p><h3>See Also:</h3>  
+   * <a href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/LambdaAction">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API LambdaAction
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The ARN of the Lambda function.</p>
      */
-    inline void SetFunctionArn(Aws::String&& value) { m_functionArnHasBeenSet = true; m_functionArn = value; }
+    inline void SetFunctionArn(Aws::String&& value) { m_functionArnHasBeenSet = true; m_functionArn = std::move(value); }
 
     /**
      * <p>The ARN of the Lambda function.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The ARN of the Lambda function.</p>
      */
-    inline LambdaAction& WithFunctionArn(Aws::String&& value) { SetFunctionArn(value); return *this;}
+    inline LambdaAction& WithFunctionArn(Aws::String&& value) { SetFunctionArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the Lambda function.</p>

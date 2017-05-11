@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/IpPermission.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for AuthorizeSecurityGroupIngress.</p>
+   * <p>Contains the parameters for AuthorizeSecurityGroupIngress.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AuthorizeSecurityGroupIngressRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AuthorizeSecurityGroupIngressRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     AuthorizeSecurityGroupIngressRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +82,7 @@ namespace Model
     /**
      * <p>[EC2-Classic, default VPC] The name of the security group.</p>
      */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
+    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
 
     /**
      * <p>[EC2-Classic, default VPC] The name of the security group.</p>
@@ -87,7 +97,7 @@ namespace Model
     /**
      * <p>[EC2-Classic, default VPC] The name of the security group.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithGroupName(Aws::String&& value) { SetGroupName(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-Classic, default VPC] The name of the security group.</p>
@@ -107,7 +117,7 @@ namespace Model
     /**
      * <p>The ID of the security group. Required for a nondefault VPC.</p>
      */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
+    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
 
     /**
      * <p>The ID of the security group. Required for a nondefault VPC.</p>
@@ -122,7 +132,7 @@ namespace Model
     /**
      * <p>The ID of the security group. Required for a nondefault VPC.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithGroupId(Aws::String&& value) { SetGroupId(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the security group. Required for a nondefault VPC.</p>
@@ -157,7 +167,7 @@ namespace Model
      * rule with a specific IP protocol and port range, use a set of IP permissions
      * instead. For EC2-VPC, the source security group must be in the same VPC.</p>
      */
-    inline void SetSourceSecurityGroupName(Aws::String&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = value; }
+    inline void SetSourceSecurityGroupName(Aws::String&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = std::move(value); }
 
     /**
      * <p>[EC2-Classic, default VPC] The name of the source security group. You can't
@@ -187,7 +197,7 @@ namespace Model
      * rule with a specific IP protocol and port range, use a set of IP permissions
      * instead. For EC2-VPC, the source security group must be in the same VPC.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithSourceSecurityGroupName(Aws::String&& value) { SetSourceSecurityGroupName(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithSourceSecurityGroupName(Aws::String&& value) { SetSourceSecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-Classic, default VPC] The name of the source security group. You can't
@@ -230,7 +240,7 @@ namespace Model
      * with a specific IP protocol and port range, use a set of IP permissions
      * instead.</p>
      */
-    inline void SetSourceSecurityGroupOwnerId(Aws::String&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = value; }
+    inline void SetSourceSecurityGroupOwnerId(Aws::String&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = std::move(value); }
 
     /**
      * <p>[EC2-Classic] The AWS account number for the source security group, if the
@@ -263,7 +273,7 @@ namespace Model
      * with a specific IP protocol and port range, use a set of IP permissions
      * instead.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithSourceSecurityGroupOwnerId(Aws::String&& value) { SetSourceSecurityGroupOwnerId(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithSourceSecurityGroupOwnerId(Aws::String&& value) { SetSourceSecurityGroupOwnerId(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-Classic] The AWS account number for the source security group, if the
@@ -280,7 +290,13 @@ namespace Model
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
     inline const Aws::String& GetIpProtocol() const{ return m_ipProtocol; }
 
@@ -288,7 +304,13 @@ namespace Model
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
     inline void SetIpProtocol(const Aws::String& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = value; }
 
@@ -296,15 +318,27 @@ namespace Model
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
-    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = value; }
+    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::move(value); }
 
     /**
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
     inline void SetIpProtocol(const char* value) { m_ipProtocolHasBeenSet = true; m_ipProtocol.assign(value); }
 
@@ -312,7 +346,13 @@ namespace Model
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithIpProtocol(const Aws::String& value) { SetIpProtocol(value); return *this;}
 
@@ -320,143 +360,155 @@ namespace Model
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithIpProtocol(Aws::String&& value) { SetIpProtocol(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithIpProtocol(Aws::String&& value) { SetIpProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>)
      * or number (see <a
      * href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol
-     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all.</p>
+     * Numbers</a>). (VPC only) Use <code>-1</code> to specify all protocols. If you
+     * specify <code>-1</code>, or a protocol number other than <code>tcp</code>,
+     * <code>udp</code>, <code>icmp</code>, or <code>58</code> (ICMPv6), traffic on all
+     * ports is allowed, regardless of any ports you specify. For <code>tcp</code>,
+     * <code>udp</code>, and <code>icmp</code>, you must specify a port range. For
+     * protocol <code>58</code> (ICMPv6), you can optionally specify a port range; if
+     * you don't, traffic for all types and codes is allowed.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithIpProtocol(const char* value) { SetIpProtocol(value); return *this;}
 
     /**
-     * <p>The start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. For the ICMP type number, use <code>-1</code> to specify all ICMP
+     * <p>The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type
+     * number. For the ICMP/ICMPv6 type number, use <code>-1</code> to specify all
      * types.</p>
      */
     inline int GetFromPort() const{ return m_fromPort; }
 
     /**
-     * <p>The start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. For the ICMP type number, use <code>-1</code> to specify all ICMP
+     * <p>The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type
+     * number. For the ICMP/ICMPv6 type number, use <code>-1</code> to specify all
      * types.</p>
      */
     inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
 
     /**
-     * <p>The start of port range for the TCP and UDP protocols, or an ICMP type
-     * number. For the ICMP type number, use <code>-1</code> to specify all ICMP
+     * <p>The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type
+     * number. For the ICMP/ICMPv6 type number, use <code>-1</code> to specify all
      * types.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithFromPort(int value) { SetFromPort(value); return *this;}
 
     /**
-     * <p>The end of port range for the TCP and UDP protocols, or an ICMP code number.
-     * For the ICMP code number, use <code>-1</code> to specify all ICMP codes for the
-     * ICMP type.</p>
+     * <p>The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code
+     * number. For the ICMP/ICMPv6 code number, use <code>-1</code> to specify all
+     * codes.</p>
      */
     inline int GetToPort() const{ return m_toPort; }
 
     /**
-     * <p>The end of port range for the TCP and UDP protocols, or an ICMP code number.
-     * For the ICMP code number, use <code>-1</code> to specify all ICMP codes for the
-     * ICMP type.</p>
+     * <p>The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code
+     * number. For the ICMP/ICMPv6 code number, use <code>-1</code> to specify all
+     * codes.</p>
      */
     inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
 
     /**
-     * <p>The end of port range for the TCP and UDP protocols, or an ICMP code number.
-     * For the ICMP code number, use <code>-1</code> to specify all ICMP codes for the
-     * ICMP type.</p>
+     * <p>The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code
+     * number. For the ICMP/ICMPv6 code number, use <code>-1</code> to specify all
+     * codes.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithToPort(int value) { SetToPort(value); return *this;}
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
     inline const Aws::String& GetCidrIp() const{ return m_cidrIp; }
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
     inline void SetCidrIp(const Aws::String& value) { m_cidrIpHasBeenSet = true; m_cidrIp = value; }
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
-    inline void SetCidrIp(Aws::String&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = value; }
+    inline void SetCidrIp(Aws::String&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = std::move(value); }
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
     inline void SetCidrIp(const char* value) { m_cidrIpHasBeenSet = true; m_cidrIp.assign(value); }
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithCidrIp(const Aws::String& value) { SetCidrIp(value); return *this;}
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithCidrIp(Aws::String&& value) { SetCidrIp(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithCidrIp(Aws::String&& value) { SetCidrIp(std::move(value)); return *this;}
 
     /**
-     * <p>The CIDR IP address range. You can't specify this parameter when specifying a
-     * source security group.</p>
+     * <p>The CIDR IPv4 address range. You can't specify this parameter when specifying
+     * a source security group.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithCidrIp(const char* value) { SetCidrIp(value); return *this;}
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
     inline const Aws::Vector<IpPermission>& GetIpPermissions() const{ return m_ipPermissions; }
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
     inline void SetIpPermissions(const Aws::Vector<IpPermission>& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = value; }
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
-    inline void SetIpPermissions(Aws::Vector<IpPermission>&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = value; }
+    inline void SetIpPermissions(Aws::Vector<IpPermission>&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = std::move(value); }
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& WithIpPermissions(const Aws::Vector<IpPermission>& value) { SetIpPermissions(value); return *this;}
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& WithIpPermissions(Aws::Vector<IpPermission>&& value) { SetIpPermissions(value); return *this;}
+    inline AuthorizeSecurityGroupIngressRequest& WithIpPermissions(Aws::Vector<IpPermission>&& value) { SetIpPermissions(std::move(value)); return *this;}
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
     inline AuthorizeSecurityGroupIngressRequest& AddIpPermissions(const IpPermission& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(value); return *this; }
 
     /**
      * <p>A set of IP permissions. Can be used to specify multiple rules in a single
-     * command. </p>
+     * command.</p>
      */
-    inline AuthorizeSecurityGroupIngressRequest& AddIpPermissions(IpPermission&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(value); return *this; }
+    inline AuthorizeSecurityGroupIngressRequest& AddIpPermissions(IpPermission&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(std::move(value)); return *this; }
 
   private:
     bool m_dryRun;

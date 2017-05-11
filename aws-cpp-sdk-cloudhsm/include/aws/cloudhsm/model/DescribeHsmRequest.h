@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/cloudhsm/CloudHSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p>
+   * <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DescribeHsmRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDHSM_API DescribeHsmRequest : public CloudHSMRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i>
@@ -51,7 +57,7 @@ namespace Model
      * <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i>
      * parameter must be specified.</p>
      */
-    inline void SetHsmArn(Aws::String&& value) { m_hsmArnHasBeenSet = true; m_hsmArn = value; }
+    inline void SetHsmArn(Aws::String&& value) { m_hsmArnHasBeenSet = true; m_hsmArn = std::move(value); }
 
     /**
      * <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i>
@@ -69,7 +75,7 @@ namespace Model
      * <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i>
      * parameter must be specified.</p>
      */
-    inline DescribeHsmRequest& WithHsmArn(Aws::String&& value) { SetHsmArn(value); return *this;}
+    inline DescribeHsmRequest& WithHsmArn(Aws::String&& value) { SetHsmArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i>
@@ -93,7 +99,7 @@ namespace Model
      * <p>The serial number of the HSM. Either the <i>HsmArn</i> or the
      * <i>HsmSerialNumber</i> parameter must be specified.</p>
      */
-    inline void SetHsmSerialNumber(Aws::String&& value) { m_hsmSerialNumberHasBeenSet = true; m_hsmSerialNumber = value; }
+    inline void SetHsmSerialNumber(Aws::String&& value) { m_hsmSerialNumberHasBeenSet = true; m_hsmSerialNumber = std::move(value); }
 
     /**
      * <p>The serial number of the HSM. Either the <i>HsmArn</i> or the
@@ -111,7 +117,7 @@ namespace Model
      * <p>The serial number of the HSM. Either the <i>HsmArn</i> or the
      * <i>HsmSerialNumber</i> parameter must be specified.</p>
      */
-    inline DescribeHsmRequest& WithHsmSerialNumber(Aws::String&& value) { SetHsmSerialNumber(value); return *this;}
+    inline DescribeHsmRequest& WithHsmSerialNumber(Aws::String&& value) { SetHsmSerialNumber(std::move(value)); return *this;}
 
     /**
      * <p>The serial number of the HSM. Either the <i>HsmArn</i> or the

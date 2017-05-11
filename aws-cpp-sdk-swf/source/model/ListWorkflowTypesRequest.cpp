@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/swf/model/ListWorkflowTypesRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -24,6 +25,7 @@ using namespace Aws::Utils;
 ListWorkflowTypesRequest::ListWorkflowTypesRequest() : 
     m_domainHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_registrationStatus(RegistrationStatus::NOT_SET),
     m_registrationStatusHasBeenSet(false),
     m_nextPageTokenHasBeenSet(false),
     m_maximumPageSize(0),
@@ -82,6 +84,7 @@ Aws::Http::HeaderValueCollection ListWorkflowTypesRequest::GetRequestSpecificHea
   return headers;
 
 }
+
 
 
 

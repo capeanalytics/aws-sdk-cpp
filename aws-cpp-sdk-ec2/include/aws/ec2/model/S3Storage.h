@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 
   /**
    * <p>Describes the storage parameters for S3 and S3 buckets for an instance
-   * store-backed AMI.</p>
+   * store-backed AMI.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/S3Storage">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API S3Storage
   {
@@ -65,7 +69,7 @@ namespace Model
      * already own or a new bucket that Amazon EC2 creates on your behalf. If you
      * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
      */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     /**
      * <p>The bucket in which to store the AMI. You can specify a bucket that you
@@ -86,7 +90,7 @@ namespace Model
      * already own or a new bucket that Amazon EC2 creates on your behalf. If you
      * specify a bucket that belongs to someone else, Amazon EC2 returns an error.</p>
      */
-    inline S3Storage& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline S3Storage& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     /**
      * <p>The bucket in which to store the AMI. You can specify a bucket that you
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The beginning of the file name of the AMI.</p>
      */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = value; }
+    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
 
     /**
      * <p>The beginning of the file name of the AMI.</p>
@@ -123,7 +127,7 @@ namespace Model
     /**
      * <p>The beginning of the file name of the AMI.</p>
      */
-    inline S3Storage& WithPrefix(Aws::String&& value) { SetPrefix(value); return *this;}
+    inline S3Storage& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The beginning of the file name of the AMI.</p>
@@ -152,7 +156,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html">Best
      * Practices for Managing AWS Access Keys</a>.</p>
      */
-    inline void SetAWSAccessKeyId(Aws::String&& value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId = value; }
+    inline void SetAWSAccessKeyId(Aws::String&& value) { m_aWSAccessKeyIdHasBeenSet = true; m_aWSAccessKeyId = std::move(value); }
 
     /**
      * <p>The access key ID of the owner of the bucket. Before you specify a value for
@@ -176,7 +180,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html">Best
      * Practices for Managing AWS Access Keys</a>.</p>
      */
-    inline S3Storage& WithAWSAccessKeyId(Aws::String&& value) { SetAWSAccessKeyId(value); return *this;}
+    inline S3Storage& WithAWSAccessKeyId(Aws::String&& value) { SetAWSAccessKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The access key ID of the owner of the bucket. Before you specify a value for
@@ -187,72 +191,67 @@ namespace Model
     inline S3Storage& WithAWSAccessKeyId(const char* value) { SetAWSAccessKeyId(value); return *this;}
 
     /**
-     * <p>A base64-encoded Amazon S3 upload policy that gives Amazon EC2 permission to
-     * upload items into Amazon S3 on your behalf. For command line tools, base64
-     * encoding is performed for you.</p>
+     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
+     * into Amazon S3 on your behalf.</p>
      */
     inline const Aws::Utils::ByteBuffer& GetUploadPolicy() const{ return m_uploadPolicy; }
 
     /**
-     * <p>A base64-encoded Amazon S3 upload policy that gives Amazon EC2 permission to
-     * upload items into Amazon S3 on your behalf. For command line tools, base64
-     * encoding is performed for you.</p>
+     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
+     * into Amazon S3 on your behalf.</p>
      */
     inline void SetUploadPolicy(const Aws::Utils::ByteBuffer& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = value; }
 
     /**
-     * <p>A base64-encoded Amazon S3 upload policy that gives Amazon EC2 permission to
-     * upload items into Amazon S3 on your behalf. For command line tools, base64
-     * encoding is performed for you.</p>
+     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
+     * into Amazon S3 on your behalf.</p>
      */
-    inline void SetUploadPolicy(Aws::Utils::ByteBuffer&& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = value; }
+    inline void SetUploadPolicy(Aws::Utils::ByteBuffer&& value) { m_uploadPolicyHasBeenSet = true; m_uploadPolicy = std::move(value); }
 
     /**
-     * <p>A base64-encoded Amazon S3 upload policy that gives Amazon EC2 permission to
-     * upload items into Amazon S3 on your behalf. For command line tools, base64
-     * encoding is performed for you.</p>
+     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
+     * into Amazon S3 on your behalf.</p>
      */
     inline S3Storage& WithUploadPolicy(const Aws::Utils::ByteBuffer& value) { SetUploadPolicy(value); return *this;}
 
     /**
-     * <p>A base64-encoded Amazon S3 upload policy that gives Amazon EC2 permission to
-     * upload items into Amazon S3 on your behalf. For command line tools, base64
-     * encoding is performed for you.</p>
+     * <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items
+     * into Amazon S3 on your behalf.</p>
      */
-    inline S3Storage& WithUploadPolicy(Aws::Utils::ByteBuffer&& value) { SetUploadPolicy(value); return *this;}
+    inline S3Storage& WithUploadPolicy(Aws::Utils::ByteBuffer&& value) { SetUploadPolicy(std::move(value)); return *this;}
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
     inline const Aws::String& GetUploadPolicySignature() const{ return m_uploadPolicySignature; }
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
     inline void SetUploadPolicySignature(const Aws::String& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = value; }
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
-    inline void SetUploadPolicySignature(Aws::String&& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = value; }
+    inline void SetUploadPolicySignature(Aws::String&& value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature = std::move(value); }
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
     inline void SetUploadPolicySignature(const char* value) { m_uploadPolicySignatureHasBeenSet = true; m_uploadPolicySignature.assign(value); }
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
     inline S3Storage& WithUploadPolicySignature(const Aws::String& value) { SetUploadPolicySignature(value); return *this;}
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
-    inline S3Storage& WithUploadPolicySignature(Aws::String&& value) { SetUploadPolicySignature(value); return *this;}
+    inline S3Storage& WithUploadPolicySignature(Aws::String&& value) { SetUploadPolicySignature(std::move(value)); return *this;}
 
     /**
-     * <p>The signature of the Base64 encoded JSON document.</p>
+     * <p>The signature of the JSON document.</p>
      */
     inline S3Storage& WithUploadPolicySignature(const char* value) { SetUploadPolicySignature(value); return *this;}
 

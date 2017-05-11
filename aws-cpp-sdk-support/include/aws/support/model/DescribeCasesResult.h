@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/support/model/CaseDetails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,10 @@ namespace Model
 {
   /**
    * <p>Returns an array of <a>CaseDetails</a> objects and a <code>nextToken</code>
-   * that defines a point for pagination in the result set.</p>
+   * that defines a point for pagination in the result set.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCasesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API DescribeCasesResult
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The details for the cases that match the request.</p>
      */
-    inline void SetCases(Aws::Vector<CaseDetails>&& value) { m_cases = value; }
+    inline void SetCases(Aws::Vector<CaseDetails>&& value) { m_cases = std::move(value); }
 
     /**
      * <p>The details for the cases that match the request.</p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p>The details for the cases that match the request.</p>
      */
-    inline DescribeCasesResult& WithCases(Aws::Vector<CaseDetails>&& value) { SetCases(value); return *this;}
+    inline DescribeCasesResult& WithCases(Aws::Vector<CaseDetails>&& value) { SetCases(std::move(value)); return *this;}
 
     /**
      * <p>The details for the cases that match the request.</p>
@@ -78,7 +83,7 @@ namespace Model
     /**
      * <p>The details for the cases that match the request.</p>
      */
-    inline DescribeCasesResult& AddCases(CaseDetails&& value) { m_cases.push_back(value); return *this; }
+    inline DescribeCasesResult& AddCases(CaseDetails&& value) { m_cases.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A resumption point for pagination.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>A resumption point for pagination.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>A resumption point for pagination.</p>
@@ -108,7 +113,7 @@ namespace Model
     /**
      * <p>A resumption point for pagination.</p>
      */
-    inline DescribeCasesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeCasesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>A resumption point for pagination.</p>

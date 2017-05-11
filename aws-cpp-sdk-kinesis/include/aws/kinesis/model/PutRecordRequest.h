@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/kinesis/KinesisRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input for <code>PutRecord</code>.</p>
+   * <p>Represents the input for <code>PutRecord</code>.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecordInput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API PutRecordRequest : public KinesisRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the stream to put the data record into.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The name of the stream to put the data record into.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
 
     /**
      * <p>The name of the stream to put the data record into.</p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>The name of the stream to put the data record into.</p>
      */
-    inline PutRecordRequest& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline PutRecordRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stream to put the data record into.</p>
@@ -75,7 +81,7 @@ namespace Model
      * <p>The data blob to put into the record, which is base64-encoded when the blob
      * is serialized. When the data blob (the payload before base64-encoding) is added
      * to the partition key size, the total size must not exceed the maximum record
-     * size (1 MB). </p>
+     * size (1 MB).</p>
      */
     inline const Aws::Utils::ByteBuffer& GetData() const{ return m_data; }
 
@@ -83,7 +89,7 @@ namespace Model
      * <p>The data blob to put into the record, which is base64-encoded when the blob
      * is serialized. When the data blob (the payload before base64-encoding) is added
      * to the partition key size, the total size must not exceed the maximum record
-     * size (1 MB). </p>
+     * size (1 MB).</p>
      */
     inline void SetData(const Aws::Utils::ByteBuffer& value) { m_dataHasBeenSet = true; m_data = value; }
 
@@ -91,15 +97,15 @@ namespace Model
      * <p>The data blob to put into the record, which is base64-encoded when the blob
      * is serialized. When the data blob (the payload before base64-encoding) is added
      * to the partition key size, the total size must not exceed the maximum record
-     * size (1 MB). </p>
+     * size (1 MB).</p>
      */
-    inline void SetData(Aws::Utils::ByteBuffer&& value) { m_dataHasBeenSet = true; m_data = value; }
+    inline void SetData(Aws::Utils::ByteBuffer&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
 
     /**
      * <p>The data blob to put into the record, which is base64-encoded when the blob
      * is serialized. When the data blob (the payload before base64-encoding) is added
      * to the partition key size, the total size must not exceed the maximum record
-     * size (1 MB). </p>
+     * size (1 MB).</p>
      */
     inline PutRecordRequest& WithData(const Aws::Utils::ByteBuffer& value) { SetData(value); return *this;}
 
@@ -107,9 +113,9 @@ namespace Model
      * <p>The data blob to put into the record, which is base64-encoded when the blob
      * is serialized. When the data blob (the payload before base64-encoding) is added
      * to the partition key size, the total size must not exceed the maximum record
-     * size (1 MB). </p>
+     * size (1 MB).</p>
      */
-    inline PutRecordRequest& WithData(Aws::Utils::ByteBuffer&& value) { SetData(value); return *this;}
+    inline PutRecordRequest& WithData(Aws::Utils::ByteBuffer&& value) { SetData(std::move(value)); return *this;}
 
     /**
      * <p>Determines which shard in the stream the data record is assigned to.
@@ -145,7 +151,7 @@ namespace Model
      * hashing mechanism, all data records with the same partition key map to the same
      * shard within the stream.</p>
      */
-    inline void SetPartitionKey(Aws::String&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = value; }
+    inline void SetPartitionKey(Aws::String&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = std::move(value); }
 
     /**
      * <p>Determines which shard in the stream the data record is assigned to.
@@ -181,7 +187,7 @@ namespace Model
      * hashing mechanism, all data records with the same partition key map to the same
      * shard within the stream.</p>
      */
-    inline PutRecordRequest& WithPartitionKey(Aws::String&& value) { SetPartitionKey(value); return *this;}
+    inline PutRecordRequest& WithPartitionKey(Aws::String&& value) { SetPartitionKey(std::move(value)); return *this;}
 
     /**
      * <p>Determines which shard in the stream the data record is assigned to.
@@ -211,7 +217,7 @@ namespace Model
      * <p>The hash value used to explicitly determine the shard the data record is
      * assigned to by overriding the partition key hash.</p>
      */
-    inline void SetExplicitHashKey(Aws::String&& value) { m_explicitHashKeyHasBeenSet = true; m_explicitHashKey = value; }
+    inline void SetExplicitHashKey(Aws::String&& value) { m_explicitHashKeyHasBeenSet = true; m_explicitHashKey = std::move(value); }
 
     /**
      * <p>The hash value used to explicitly determine the shard the data record is
@@ -229,7 +235,7 @@ namespace Model
      * <p>The hash value used to explicitly determine the shard the data record is
      * assigned to by overriding the partition key hash.</p>
      */
-    inline PutRecordRequest& WithExplicitHashKey(Aws::String&& value) { SetExplicitHashKey(value); return *this;}
+    inline PutRecordRequest& WithExplicitHashKey(Aws::String&& value) { SetExplicitHashKey(std::move(value)); return *this;}
 
     /**
      * <p>The hash value used to explicitly determine the shard the data record is
@@ -265,7 +271,7 @@ namespace Model
      * If this parameter is not set, records will be coarsely ordered based on arrival
      * time.</p>
      */
-    inline void SetSequenceNumberForOrdering(Aws::String&& value) { m_sequenceNumberForOrderingHasBeenSet = true; m_sequenceNumberForOrdering = value; }
+    inline void SetSequenceNumberForOrdering(Aws::String&& value) { m_sequenceNumberForOrderingHasBeenSet = true; m_sequenceNumberForOrdering = std::move(value); }
 
     /**
      * <p>Guarantees strictly increasing sequence numbers, for puts from the same
@@ -295,7 +301,7 @@ namespace Model
      * If this parameter is not set, records will be coarsely ordered based on arrival
      * time.</p>
      */
-    inline PutRecordRequest& WithSequenceNumberForOrdering(Aws::String&& value) { SetSequenceNumberForOrdering(value); return *this;}
+    inline PutRecordRequest& WithSequenceNumberForOrdering(Aws::String&& value) { SetSequenceNumberForOrdering(std::move(value)); return *this;}
 
     /**
      * <p>Guarantees strictly increasing sequence numbers, for puts from the same

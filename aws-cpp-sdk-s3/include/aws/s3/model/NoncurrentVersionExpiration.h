@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 
@@ -34,7 +35,9 @@ namespace Model
    * permanently deletes the noncurrent object versions. You set this lifecycle
    * configuration action on a bucket that has versioning enabled (or suspended) to
    * request that Amazon S3 delete noncurrent object versions at a specific period in
-   * the object's lifetime.
+   * the object's lifetime.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/NoncurrentVersionExpiration">AWS
+   * API Reference</a></p>
    */
   class AWS_S3_API NoncurrentVersionExpiration
   {

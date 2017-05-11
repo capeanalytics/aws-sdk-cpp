@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ssm/model/CreateAssociationBatchRequestEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>One or more associations.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>One or more associations.</p>
      */
-    inline void SetEntries(Aws::Vector<CreateAssociationBatchRequestEntry>&& value) { m_entriesHasBeenSet = true; m_entries = value; }
+    inline void SetEntries(Aws::Vector<CreateAssociationBatchRequestEntry>&& value) { m_entriesHasBeenSet = true; m_entries = std::move(value); }
 
     /**
      * <p>One or more associations.</p>
@@ -58,7 +61,7 @@ namespace Model
     /**
      * <p>One or more associations.</p>
      */
-    inline CreateAssociationBatchRequest& WithEntries(Aws::Vector<CreateAssociationBatchRequestEntry>&& value) { SetEntries(value); return *this;}
+    inline CreateAssociationBatchRequest& WithEntries(Aws::Vector<CreateAssociationBatchRequestEntry>&& value) { SetEntries(std::move(value)); return *this;}
 
     /**
      * <p>One or more associations.</p>
@@ -68,7 +71,7 @@ namespace Model
     /**
      * <p>One or more associations.</p>
      */
-    inline CreateAssociationBatchRequest& AddEntries(CreateAssociationBatchRequestEntry&& value) { m_entriesHasBeenSet = true; m_entries.push_back(value); return *this; }
+    inline CreateAssociationBatchRequest& AddEntries(CreateAssociationBatchRequestEntry&& value) { m_entriesHasBeenSet = true; m_entries.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<CreateAssociationBatchRequestEntry> m_entries;

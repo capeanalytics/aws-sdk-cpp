@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>The refresh status of a Trusted Advisor check.</p>
+   * <p>The refresh status of a Trusted Advisor check.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/TrustedAdvisorCheckRefreshStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API TrustedAdvisorCheckRefreshStatus
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
      */
-    inline void SetCheckId(Aws::String&& value) { m_checkIdHasBeenSet = true; m_checkId = value; }
+    inline void SetCheckId(Aws::String&& value) { m_checkIdHasBeenSet = true; m_checkId = std::move(value); }
 
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
      */
-    inline TrustedAdvisorCheckRefreshStatus& WithCheckId(Aws::String&& value) { SetCheckId(value); return *this;}
+    inline TrustedAdvisorCheckRefreshStatus& WithCheckId(Aws::String&& value) { SetCheckId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
@@ -92,7 +96,7 @@ namespace Model
      * <p>The status of the Trusted Advisor check for which a refresh has been
      * requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the Trusted Advisor check for which a refresh has been
@@ -110,7 +114,7 @@ namespace Model
      * <p>The status of the Trusted Advisor check for which a refresh has been
      * requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
      */
-    inline TrustedAdvisorCheckRefreshStatus& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline TrustedAdvisorCheckRefreshStatus& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the Trusted Advisor check for which a refresh has been

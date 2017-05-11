@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the SSM document.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the SSM document.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline DescribeAssociationRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline DescribeAssociationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the SSM document.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>The instance ID.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The instance ID.</p>
@@ -97,18 +100,55 @@ namespace Model
     /**
      * <p>The instance ID.</p>
      */
-    inline DescribeAssociationRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline DescribeAssociationRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The instance ID.</p>
      */
     inline DescribeAssociationRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
 
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline const Aws::String& GetAssociationId() const{ return m_associationId; }
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline void SetAssociationId(const Aws::String& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline void SetAssociationId(const char* value) { m_associationIdHasBeenSet = true; m_associationId.assign(value); }
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline DescribeAssociationRequest& WithAssociationId(const Aws::String& value) { SetAssociationId(value); return *this;}
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline DescribeAssociationRequest& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
+
+    /**
+     * <p>The association ID for which you want information.</p>
+     */
+    inline DescribeAssociationRequest& WithAssociationId(const char* value) { SetAssociationId(value); return *this;}
+
   private:
     Aws::String m_name;
     bool m_nameHasBeenSet;
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet;
+    Aws::String m_associationId;
+    bool m_associationIdHasBeenSet;
   };
 
 } // namespace Model

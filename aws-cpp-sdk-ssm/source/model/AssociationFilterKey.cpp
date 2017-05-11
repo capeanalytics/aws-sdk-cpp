@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/AssociationFilterKey.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -31,6 +32,10 @@ namespace Aws
 
         static const int InstanceId_HASH = HashingUtils::HashString("InstanceId");
         static const int Name_HASH = HashingUtils::HashString("Name");
+        static const int AssociationId_HASH = HashingUtils::HashString("AssociationId");
+        static const int AssociationStatusName_HASH = HashingUtils::HashString("AssociationStatusName");
+        static const int LastExecutedBefore_HASH = HashingUtils::HashString("LastExecutedBefore");
+        static const int LastExecutedAfter_HASH = HashingUtils::HashString("LastExecutedAfter");
 
 
         AssociationFilterKey GetAssociationFilterKeyForName(const Aws::String& name)
@@ -43,6 +48,22 @@ namespace Aws
           else if (hashCode == Name_HASH)
           {
             return AssociationFilterKey::Name;
+          }
+          else if (hashCode == AssociationId_HASH)
+          {
+            return AssociationFilterKey::AssociationId;
+          }
+          else if (hashCode == AssociationStatusName_HASH)
+          {
+            return AssociationFilterKey::AssociationStatusName;
+          }
+          else if (hashCode == LastExecutedBefore_HASH)
+          {
+            return AssociationFilterKey::LastExecutedBefore;
+          }
+          else if (hashCode == LastExecutedAfter_HASH)
+          {
+            return AssociationFilterKey::LastExecutedAfter;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -62,6 +83,14 @@ namespace Aws
             return "InstanceId";
           case AssociationFilterKey::Name:
             return "Name";
+          case AssociationFilterKey::AssociationId:
+            return "AssociationId";
+          case AssociationFilterKey::AssociationStatusName:
+            return "AssociationStatusName";
+          case AssociationFilterKey::LastExecutedBefore:
+            return "LastExecutedBefore";
+          case AssociationFilterKey::LastExecutedAfter:
+            return "LastExecutedAfter";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

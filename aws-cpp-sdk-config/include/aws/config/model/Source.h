@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/model/Owner.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/config/model/SourceDetail.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 
   /**
    * <p>Provides the AWS Config rule owner (AWS or customer), the rule identifier,
-   * and the events that trigger the evaluation of your AWS resources.</p>
+   * and the events that trigger the evaluation of your AWS resources.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/Source">AWS API
+   * Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API Source
   {
@@ -61,7 +66,7 @@ namespace Model
      * <p>Indicates whether AWS or the customer owns and manages the AWS Config
      * rule.</p>
      */
-    inline void SetOwner(Owner&& value) { m_ownerHasBeenSet = true; m_owner = value; }
+    inline void SetOwner(Owner&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
 
     /**
      * <p>Indicates whether AWS or the customer owns and manages the AWS Config
@@ -73,68 +78,82 @@ namespace Model
      * <p>Indicates whether AWS or the customer owns and manages the AWS Config
      * rule.</p>
      */
-    inline Source& WithOwner(Owner&& value) { SetOwner(value); return *this;}
+    inline Source& WithOwner(Owner&& value) { SetOwner(std::move(value)); return *this;}
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
     inline const Aws::String& GetSourceIdentifier() const{ return m_sourceIdentifier; }
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
     inline void SetSourceIdentifier(const Aws::String& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = value; }
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
-    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = value; }
+    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::move(value); }
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
     inline void SetSourceIdentifier(const char* value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier.assign(value); }
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
     inline Source& WithSourceIdentifier(const Aws::String& value) { SetSourceIdentifier(value); return *this;}
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
-    inline Source& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(value); return *this;}
+    inline Source& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(std::move(value)); return *this;}
 
     /**
-     * <p>For AWS managed Config rules, a pre-defined identifier from a list. To
-     * reference the list, see <a
+     * <p>For AWS Config managed rules, a predefined identifier from a list. For
+     * example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a
+     * managed rule, see <a
      * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using
-     * AWS Managed Config Rules</a>.</p> <p>For custom Config rules, the identifier is
-     * the Amazon Resource Name (ARN) of the rule's AWS Lambda function.</p>
+     * AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the
+     * Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as
+     * <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
      */
     inline Source& WithSourceIdentifier(const char* value) { SetSourceIdentifier(value); return *this;}
 
@@ -154,7 +173,7 @@ namespace Model
      * <p>Provides the source and type of the event that causes AWS Config to evaluate
      * your AWS resources.</p>
      */
-    inline void SetSourceDetails(Aws::Vector<SourceDetail>&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = value; }
+    inline void SetSourceDetails(Aws::Vector<SourceDetail>&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = std::move(value); }
 
     /**
      * <p>Provides the source and type of the event that causes AWS Config to evaluate
@@ -166,7 +185,7 @@ namespace Model
      * <p>Provides the source and type of the event that causes AWS Config to evaluate
      * your AWS resources.</p>
      */
-    inline Source& WithSourceDetails(Aws::Vector<SourceDetail>&& value) { SetSourceDetails(value); return *this;}
+    inline Source& WithSourceDetails(Aws::Vector<SourceDetail>&& value) { SetSourceDetails(std::move(value)); return *this;}
 
     /**
      * <p>Provides the source and type of the event that causes AWS Config to evaluate
@@ -178,7 +197,7 @@ namespace Model
      * <p>Provides the source and type of the event that causes AWS Config to evaluate
      * your AWS resources.</p>
      */
-    inline Source& AddSourceDetails(SourceDetail&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails.push_back(value); return *this; }
+    inline Source& AddSourceDetails(SourceDetail&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails.push_back(std::move(value)); return *this; }
 
   private:
     Owner m_owner;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-idp/model/LambdaConfigType.h>
 #include <aws/cognito-idp/model/StatusType.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>A user pool description.</p>
+   * <p>A user pool description.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UserPoolDescriptionType">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API UserPoolDescriptionType
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ID in a user pool description.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The ID in a user pool description.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ID in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline UserPoolDescriptionType& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID in a user pool description.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The name in a user pool description.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name in a user pool description.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The name in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UserPoolDescriptionType& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name in a user pool description.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The AWS Lambda configuration information in a user pool description.</p>
      */
-    inline void SetLambdaConfig(LambdaConfigType&& value) { m_lambdaConfigHasBeenSet = true; m_lambdaConfig = value; }
+    inline void SetLambdaConfig(LambdaConfigType&& value) { m_lambdaConfigHasBeenSet = true; m_lambdaConfig = std::move(value); }
 
     /**
      * <p>The AWS Lambda configuration information in a user pool description.</p>
@@ -137,7 +141,7 @@ namespace Model
     /**
      * <p>The AWS Lambda configuration information in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithLambdaConfig(LambdaConfigType&& value) { SetLambdaConfig(value); return *this;}
+    inline UserPoolDescriptionType& WithLambdaConfig(LambdaConfigType&& value) { SetLambdaConfig(std::move(value)); return *this;}
 
     /**
      * <p>The user pool status in a user pool description.</p>
@@ -152,7 +156,7 @@ namespace Model
     /**
      * <p>The user pool status in a user pool description.</p>
      */
-    inline void SetStatus(StatusType&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(StatusType&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The user pool status in a user pool description.</p>
@@ -162,7 +166,7 @@ namespace Model
     /**
      * <p>The user pool status in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithStatus(StatusType&& value) { SetStatus(value); return *this;}
+    inline UserPoolDescriptionType& WithStatus(StatusType&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The last modified date in a user pool description.</p>
@@ -177,7 +181,7 @@ namespace Model
     /**
      * <p>The last modified date in a user pool description.</p>
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * <p>The last modified date in a user pool description.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The last modified date in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline UserPoolDescriptionType& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * <p>The creation date in a user pool description.</p>
@@ -202,7 +206,7 @@ namespace Model
     /**
      * <p>The creation date in a user pool description.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The creation date in a user pool description.</p>
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>The creation date in a user pool description.</p>
      */
-    inline UserPoolDescriptionType& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline UserPoolDescriptionType& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
   private:
     Aws::String m_id;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/elastictranscoder/ElasticTranscoderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
 {
 
   /**
-   * <p>The <code>ListPipelineRequest</code> structure.</p>
+   * <p>The <code>ListPipelineRequest</code> structure.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListPipelinesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API ListPipelinesRequest : public ElasticTranscoderRequest
   {
@@ -38,6 +42,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>To list pipelines in chronological order by the date and time that they were
@@ -58,7 +63,7 @@ namespace Model
      * created, enter <code>true</code>. To list pipelines in reverse chronological
      * order, enter <code>false</code>.</p>
      */
-    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = value; }
+    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = std::move(value); }
 
     /**
      * <p>To list pipelines in chronological order by the date and time that they were
@@ -79,7 +84,7 @@ namespace Model
      * created, enter <code>true</code>. To list pipelines in reverse chronological
      * order, enter <code>false</code>.</p>
      */
-    inline ListPipelinesRequest& WithAscending(Aws::String&& value) { SetAscending(value); return *this;}
+    inline ListPipelinesRequest& WithAscending(Aws::String&& value) { SetAscending(std::move(value)); return *this;}
 
     /**
      * <p>To list pipelines in chronological order by the date and time that they were
@@ -107,7 +112,7 @@ namespace Model
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
+    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
 
     /**
      * <p>When Elastic Transcoder returns more than one page of results, use
@@ -128,7 +133,7 @@ namespace Model
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline ListPipelinesRequest& WithPageToken(Aws::String&& value) { SetPageToken(value); return *this;}
+    inline ListPipelinesRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
 
     /**
      * <p>When Elastic Transcoder returns more than one page of results, use

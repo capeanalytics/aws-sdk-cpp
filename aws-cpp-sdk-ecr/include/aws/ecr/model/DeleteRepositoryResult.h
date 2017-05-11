@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/ecr/model/Repository.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,20 +41,30 @@ namespace Model
     DeleteRepositoryResult(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     DeleteRepositoryResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
-    
+    /**
+     * <p>The repository that was deleted.</p>
+     */
     inline const Repository& GetRepository() const{ return m_repository; }
 
-    
+    /**
+     * <p>The repository that was deleted.</p>
+     */
     inline void SetRepository(const Repository& value) { m_repository = value; }
 
-    
-    inline void SetRepository(Repository&& value) { m_repository = value; }
+    /**
+     * <p>The repository that was deleted.</p>
+     */
+    inline void SetRepository(Repository&& value) { m_repository = std::move(value); }
 
-    
+    /**
+     * <p>The repository that was deleted.</p>
+     */
     inline DeleteRepositoryResult& WithRepository(const Repository& value) { SetRepository(value); return *this;}
 
-    
-    inline DeleteRepositoryResult& WithRepository(Repository&& value) { SetRepository(value); return *this;}
+    /**
+     * <p>The repository that was deleted.</p>
+     */
+    inline DeleteRepositoryResult& WithRepository(Repository&& value) { SetRepository(std::move(value)); return *this;}
 
   private:
     Repository m_repository;

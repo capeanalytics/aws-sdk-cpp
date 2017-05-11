@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codedeploy/model/StopDeploymentRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -22,7 +23,9 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 StopDeploymentRequest::StopDeploymentRequest() : 
-    m_deploymentIdHasBeenSet(false)
+    m_deploymentIdHasBeenSet(false),
+    m_autoRollbackEnabled(false),
+    m_autoRollbackEnabledHasBeenSet(false)
 {
 }
 
@@ -36,6 +39,12 @@ Aws::String StopDeploymentRequest::SerializePayload() const
 
   }
 
+  if(m_autoRollbackEnabledHasBeenSet)
+  {
+   payload.WithBool("autoRollbackEnabled", m_autoRollbackEnabled);
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -46,6 +55,7 @@ Aws::Http::HeaderValueCollection StopDeploymentRequest::GetRequestSpecificHeader
   return headers;
 
 }
+
 
 
 

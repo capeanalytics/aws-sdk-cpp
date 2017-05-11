@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,8 +40,11 @@ namespace Model
    * instance after it launches, but before it is put into service</p> </li> <li>
    * <p>Pause the instance as it terminates, but before it is fully terminated</p>
    * </li> </ul> <p>For more information, see <a
-   * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-   * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+   * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+   * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/LifecycleHook">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API LifecycleHook
   {
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the lifecycle hook.</p>
      */
-    inline void SetLifecycleHookName(Aws::String&& value) { m_lifecycleHookNameHasBeenSet = true; m_lifecycleHookName = value; }
+    inline void SetLifecycleHookName(Aws::String&& value) { m_lifecycleHookNameHasBeenSet = true; m_lifecycleHookName = std::move(value); }
 
     /**
      * <p>The name of the lifecycle hook.</p>
@@ -79,7 +84,7 @@ namespace Model
     /**
      * <p>The name of the lifecycle hook.</p>
      */
-    inline LifecycleHook& WithLifecycleHookName(Aws::String&& value) { SetLifecycleHookName(value); return *this;}
+    inline LifecycleHook& WithLifecycleHookName(Aws::String&& value) { SetLifecycleHookName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the lifecycle hook.</p>
@@ -99,7 +104,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group for the lifecycle hook.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the Auto Scaling group for the lifecycle hook.</p>
@@ -114,7 +119,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group for the lifecycle hook.</p>
      */
-    inline LifecycleHook& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline LifecycleHook& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Auto Scaling group for the lifecycle hook.</p>
@@ -137,7 +142,7 @@ namespace Model
      * <p>The state of the EC2 instance to which you want to attach the lifecycle hook.
      * For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
      */
-    inline void SetLifecycleTransition(Aws::String&& value) { m_lifecycleTransitionHasBeenSet = true; m_lifecycleTransition = value; }
+    inline void SetLifecycleTransition(Aws::String&& value) { m_lifecycleTransitionHasBeenSet = true; m_lifecycleTransition = std::move(value); }
 
     /**
      * <p>The state of the EC2 instance to which you want to attach the lifecycle hook.
@@ -155,7 +160,7 @@ namespace Model
      * <p>The state of the EC2 instance to which you want to attach the lifecycle hook.
      * For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
      */
-    inline LifecycleHook& WithLifecycleTransition(Aws::String&& value) { SetLifecycleTransition(value); return *this;}
+    inline LifecycleHook& WithLifecycleTransition(Aws::String&& value) { SetLifecycleTransition(std::move(value)); return *this;}
 
     /**
      * <p>The state of the EC2 instance to which you want to attach the lifecycle hook.
@@ -197,7 +202,7 @@ namespace Model
      * <li> <p>Lifecycle transition</p> </li> <li> <p>Notification metadata</p> </li>
      * </ul>
      */
-    inline void SetNotificationTargetARN(Aws::String&& value) { m_notificationTargetARNHasBeenSet = true; m_notificationTargetARN = value; }
+    inline void SetNotificationTargetARN(Aws::String&& value) { m_notificationTargetARNHasBeenSet = true; m_notificationTargetARN = std::move(value); }
 
     /**
      * <p>The ARN of the notification target that Auto Scaling uses to notify you when
@@ -233,7 +238,7 @@ namespace Model
      * <li> <p>Lifecycle transition</p> </li> <li> <p>Notification metadata</p> </li>
      * </ul>
      */
-    inline LifecycleHook& WithNotificationTargetARN(Aws::String&& value) { SetNotificationTargetARN(value); return *this;}
+    inline LifecycleHook& WithNotificationTargetARN(Aws::String&& value) { SetNotificationTargetARN(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the notification target that Auto Scaling uses to notify you when
@@ -263,7 +268,7 @@ namespace Model
      * <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the
      * specified notification target.</p>
      */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
 
     /**
      * <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the
@@ -281,7 +286,7 @@ namespace Model
      * <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the
      * specified notification target.</p>
      */
-    inline LifecycleHook& WithRoleARN(Aws::String&& value) { SetRoleARN(value); return *this;}
+    inline LifecycleHook& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the
@@ -305,7 +310,7 @@ namespace Model
      * <p>Additional information that you want to include any time Auto Scaling sends a
      * message to the notification target.</p>
      */
-    inline void SetNotificationMetadata(Aws::String&& value) { m_notificationMetadataHasBeenSet = true; m_notificationMetadata = value; }
+    inline void SetNotificationMetadata(Aws::String&& value) { m_notificationMetadataHasBeenSet = true; m_notificationMetadata = std::move(value); }
 
     /**
      * <p>Additional information that you want to include any time Auto Scaling sends a
@@ -323,7 +328,7 @@ namespace Model
      * <p>Additional information that you want to include any time Auto Scaling sends a
      * message to the notification target.</p>
      */
-    inline LifecycleHook& WithNotificationMetadata(Aws::String&& value) { SetNotificationMetadata(value); return *this;}
+    inline LifecycleHook& WithNotificationMetadata(Aws::String&& value) { SetNotificationMetadata(std::move(value)); return *this;}
 
     /**
      * <p>Additional information that you want to include any time Auto Scaling sends a
@@ -357,22 +362,25 @@ namespace Model
 
     /**
      * <p>The maximum time, in seconds, that an instance can remain in a
-     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The default is
-     * 172800 seconds (48 hours).</p>
+     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is
+     * 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever
+     * is smaller.</p>
      */
     inline int GetGlobalTimeout() const{ return m_globalTimeout; }
 
     /**
      * <p>The maximum time, in seconds, that an instance can remain in a
-     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The default is
-     * 172800 seconds (48 hours).</p>
+     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is
+     * 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever
+     * is smaller.</p>
      */
     inline void SetGlobalTimeout(int value) { m_globalTimeoutHasBeenSet = true; m_globalTimeout = value; }
 
     /**
      * <p>The maximum time, in seconds, that an instance can remain in a
-     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The default is
-     * 172800 seconds (48 hours).</p>
+     * <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is
+     * 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever
+     * is smaller.</p>
      */
     inline LifecycleHook& WithGlobalTimeout(int value) { SetGlobalTimeout(value); return *this;}
 
@@ -398,7 +406,7 @@ namespace Model
      * <code>CONTINUE</code> and <code>ABANDON</code>. The default value is
      * <code>CONTINUE</code>.</p>
      */
-    inline void SetDefaultResult(Aws::String&& value) { m_defaultResultHasBeenSet = true; m_defaultResult = value; }
+    inline void SetDefaultResult(Aws::String&& value) { m_defaultResultHasBeenSet = true; m_defaultResult = std::move(value); }
 
     /**
      * <p>Defines the action the Auto Scaling group should take when the lifecycle hook
@@ -422,7 +430,7 @@ namespace Model
      * <code>CONTINUE</code> and <code>ABANDON</code>. The default value is
      * <code>CONTINUE</code>.</p>
      */
-    inline LifecycleHook& WithDefaultResult(Aws::String&& value) { SetDefaultResult(value); return *this;}
+    inline LifecycleHook& WithDefaultResult(Aws::String&& value) { SetDefaultResult(std::move(value)); return *this;}
 
     /**
      * <p>Defines the action the Auto Scaling group should take when the lifecycle hook

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/dynamodb/model/TableDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace DynamoDB
 namespace Model
 {
   /**
-   * <p>Represents the output of a <i>DeleteTable</i> operation.</p>
+   * <p>Represents the output of a <code>DeleteTable</code> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DeleteTableOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API DeleteTableResult
   {
@@ -42,20 +47,30 @@ namespace Model
     DeleteTableResult(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     DeleteTableResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
-    
+    /**
+     * <p>Represents the properties of a table.</p>
+     */
     inline const TableDescription& GetTableDescription() const{ return m_tableDescription; }
 
-    
+    /**
+     * <p>Represents the properties of a table.</p>
+     */
     inline void SetTableDescription(const TableDescription& value) { m_tableDescription = value; }
 
-    
-    inline void SetTableDescription(TableDescription&& value) { m_tableDescription = value; }
+    /**
+     * <p>Represents the properties of a table.</p>
+     */
+    inline void SetTableDescription(TableDescription&& value) { m_tableDescription = std::move(value); }
 
-    
+    /**
+     * <p>Represents the properties of a table.</p>
+     */
     inline DeleteTableResult& WithTableDescription(const TableDescription& value) { SetTableDescription(value); return *this;}
 
-    
-    inline DeleteTableResult& WithTableDescription(TableDescription&& value) { SetTableDescription(value); return *this;}
+    /**
+     * <p>Represents the properties of a table.</p>
+     */
+    inline DeleteTableResult& WithTableDescription(TableDescription&& value) { SetTableDescription(std::move(value)); return *this;}
 
   private:
     TableDescription m_tableDescription;

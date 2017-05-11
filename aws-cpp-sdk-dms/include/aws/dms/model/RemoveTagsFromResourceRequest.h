@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/dms/DatabaseMigrationServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResourceMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API RemoveTagsFromResourceRequest : public DatabaseMigrationServiceRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
@@ -52,7 +57,7 @@ namespace Model
      * <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
      * removed from.</p>
      */
-    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = value; }
+    inline void SetResourceArn(Aws::String&& value) { m_resourceArnHasBeenSet = true; m_resourceArn = std::move(value); }
 
     /**
      * <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
@@ -70,7 +75,7 @@ namespace Model
      * <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
      * removed from.</p>
      */
-    inline RemoveTagsFromResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(value); return *this;}
+    inline RemoveTagsFromResourceRequest& WithResourceArn(Aws::String&& value) { SetResourceArn(std::move(value)); return *this;}
 
     /**
      * <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The tag key (name) of the tag to be removed.</p>
      */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
+    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
 
     /**
      * <p>The tag key (name) of the tag to be removed.</p>
@@ -101,7 +106,7 @@ namespace Model
     /**
      * <p>The tag key (name) of the tag to be removed.</p>
      */
-    inline RemoveTagsFromResourceRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(value); return *this;}
+    inline RemoveTagsFromResourceRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
 
     /**
      * <p>The tag key (name) of the tag to be removed.</p>
@@ -111,7 +116,7 @@ namespace Model
     /**
      * <p>The tag key (name) of the tag to be removed.</p>
      */
-    inline RemoveTagsFromResourceRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
+    inline RemoveTagsFromResourceRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The tag key (name) of the tag to be removed.</p>

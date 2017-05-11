@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/importexport/ImportExport_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * A discrete item that contains the description and URL of an artifact (such as a
-   * PDF).
+   * PDF).<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/importexport-2010-06-01/Artifact">AWS
+   * API Reference</a></p>
    */
   class AWS_IMPORTEXPORT_API Artifact
   {
@@ -52,7 +56,7 @@ namespace Model
     inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
 
     
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     
     inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
@@ -61,7 +65,7 @@ namespace Model
     inline Artifact& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
 
     
-    inline Artifact& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline Artifact& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     
     inline Artifact& WithDescription(const char* value) { SetDescription(value); return *this;}
@@ -73,7 +77,7 @@ namespace Model
     inline void SetURL(const Aws::String& value) { m_uRLHasBeenSet = true; m_uRL = value; }
 
     
-    inline void SetURL(Aws::String&& value) { m_uRLHasBeenSet = true; m_uRL = value; }
+    inline void SetURL(Aws::String&& value) { m_uRLHasBeenSet = true; m_uRL = std::move(value); }
 
     
     inline void SetURL(const char* value) { m_uRLHasBeenSet = true; m_uRL.assign(value); }
@@ -82,7 +86,7 @@ namespace Model
     inline Artifact& WithURL(const Aws::String& value) { SetURL(value); return *this;}
 
     
-    inline Artifact& WithURL(Aws::String&& value) { SetURL(value); return *this;}
+    inline Artifact& WithURL(Aws::String&& value) { SetURL(std::move(value)); return *this;}
 
     
     inline Artifact& WithURL(const char* value) { SetURL(value); return *this;}

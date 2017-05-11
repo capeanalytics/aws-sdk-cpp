@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/WorkflowTypeInfo.h>
 #include <aws/swf/model/WorkflowTypeConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace SWF
 namespace Model
 {
   /**
-   * <p>Contains details about a workflow type.</p>
+   * <p>Contains details about a workflow type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowTypeDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API DescribeWorkflowTypeResult
   {
@@ -74,7 +78,7 @@ namespace Model
      * but is still in use. You should keep workers supporting this type running. You
      * cannot create new workflow executions of this type.</li> </ul>
      */
-    inline void SetTypeInfo(WorkflowTypeInfo&& value) { m_typeInfo = value; }
+    inline void SetTypeInfo(WorkflowTypeInfo&& value) { m_typeInfo = std::move(value); }
 
     /**
      * <p>General information about the workflow type.</p> <p>The status of the
@@ -96,7 +100,7 @@ namespace Model
      * but is still in use. You should keep workers supporting this type running. You
      * cannot create new workflow executions of this type.</li> </ul>
      */
-    inline DescribeWorkflowTypeResult& WithTypeInfo(WorkflowTypeInfo&& value) { SetTypeInfo(value); return *this;}
+    inline DescribeWorkflowTypeResult& WithTypeInfo(WorkflowTypeInfo&& value) { SetTypeInfo(std::move(value)); return *this;}
 
     /**
      * <p>Configuration settings of the workflow type registered through
@@ -114,7 +118,7 @@ namespace Model
      * <p>Configuration settings of the workflow type registered through
      * <a>RegisterWorkflowType</a></p>
      */
-    inline void SetConfiguration(WorkflowTypeConfiguration&& value) { m_configuration = value; }
+    inline void SetConfiguration(WorkflowTypeConfiguration&& value) { m_configuration = std::move(value); }
 
     /**
      * <p>Configuration settings of the workflow type registered through
@@ -126,7 +130,7 @@ namespace Model
      * <p>Configuration settings of the workflow type registered through
      * <a>RegisterWorkflowType</a></p>
      */
-    inline DescribeWorkflowTypeResult& WithConfiguration(WorkflowTypeConfiguration&& value) { SetConfiguration(value); return *this;}
+    inline DescribeWorkflowTypeResult& WithConfiguration(WorkflowTypeConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
 
   private:
     WorkflowTypeInfo m_typeInfo;

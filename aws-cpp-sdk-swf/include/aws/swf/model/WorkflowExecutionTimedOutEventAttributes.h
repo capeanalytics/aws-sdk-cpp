@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/WorkflowExecutionTimeoutType.h>
 #include <aws/swf/model/ChildPolicy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the <code>WorkflowExecutionTimedOut</code> event.</p>
+   * <p>Provides details of the <code>WorkflowExecutionTimedOut</code>
+   * event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionTimedOutEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API WorkflowExecutionTimedOutEventAttributes
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The type of timeout that caused this event.</p>
      */
-    inline void SetTimeoutType(WorkflowExecutionTimeoutType&& value) { m_timeoutTypeHasBeenSet = true; m_timeoutType = value; }
+    inline void SetTimeoutType(WorkflowExecutionTimeoutType&& value) { m_timeoutTypeHasBeenSet = true; m_timeoutType = std::move(value); }
 
     /**
      * <p>The type of timeout that caused this event.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The type of timeout that caused this event.</p>
      */
-    inline WorkflowExecutionTimedOutEventAttributes& WithTimeoutType(WorkflowExecutionTimeoutType&& value) { SetTimeoutType(value); return *this;}
+    inline WorkflowExecutionTimedOutEventAttributes& WithTimeoutType(WorkflowExecutionTimeoutType&& value) { SetTimeoutType(std::move(value)); return *this;}
 
     /**
      * <p>The policy used for the child workflow executions of this workflow
@@ -101,7 +106,7 @@ namespace Model
      * receives an execution history with this event.</li> <li><b>ABANDON:</b> no
      * action will be taken. The child executions will continue to run.</li> </ul>
      */
-    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = value; }
+    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = std::move(value); }
 
     /**
      * <p>The policy used for the child workflow executions of this workflow
@@ -125,7 +130,7 @@ namespace Model
      * receives an execution history with this event.</li> <li><b>ABANDON:</b> no
      * action will be taken. The child executions will continue to run.</li> </ul>
      */
-    inline WorkflowExecutionTimedOutEventAttributes& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(value); return *this;}
+    inline WorkflowExecutionTimedOutEventAttributes& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(std::move(value)); return *this;}
 
   private:
     WorkflowExecutionTimeoutType m_timeoutType;

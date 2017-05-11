@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/ec2/model/NetworkAclEntry.h>
 #include <aws/ec2/model/NetworkAclAssociation.h>
 #include <aws/ec2/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a network ACL.</p>
+   * <p>Describes a network ACL.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/NetworkAcl">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API NetworkAcl
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the network ACL.</p>
      */
-    inline void SetNetworkAclId(Aws::String&& value) { m_networkAclIdHasBeenSet = true; m_networkAclId = value; }
+    inline void SetNetworkAclId(Aws::String&& value) { m_networkAclIdHasBeenSet = true; m_networkAclId = std::move(value); }
 
     /**
      * <p>The ID of the network ACL.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the network ACL.</p>
      */
-    inline NetworkAcl& WithNetworkAclId(Aws::String&& value) { SetNetworkAclId(value); return *this;}
+    inline NetworkAcl& WithNetworkAclId(Aws::String&& value) { SetNetworkAclId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network ACL.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The ID of the VPC for the network ACL.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The ID of the VPC for the network ACL.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The ID of the VPC for the network ACL.</p>
      */
-    inline NetworkAcl& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline NetworkAcl& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the VPC for the network ACL.</p>
@@ -146,7 +150,7 @@ namespace Model
     /**
      * <p>One or more entries (rules) in the network ACL.</p>
      */
-    inline void SetEntries(Aws::Vector<NetworkAclEntry>&& value) { m_entriesHasBeenSet = true; m_entries = value; }
+    inline void SetEntries(Aws::Vector<NetworkAclEntry>&& value) { m_entriesHasBeenSet = true; m_entries = std::move(value); }
 
     /**
      * <p>One or more entries (rules) in the network ACL.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>One or more entries (rules) in the network ACL.</p>
      */
-    inline NetworkAcl& WithEntries(Aws::Vector<NetworkAclEntry>&& value) { SetEntries(value); return *this;}
+    inline NetworkAcl& WithEntries(Aws::Vector<NetworkAclEntry>&& value) { SetEntries(std::move(value)); return *this;}
 
     /**
      * <p>One or more entries (rules) in the network ACL.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>One or more entries (rules) in the network ACL.</p>
      */
-    inline NetworkAcl& AddEntries(NetworkAclEntry&& value) { m_entriesHasBeenSet = true; m_entries.push_back(value); return *this; }
+    inline NetworkAcl& AddEntries(NetworkAclEntry&& value) { m_entriesHasBeenSet = true; m_entries.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
      */
-    inline void SetAssociations(Aws::Vector<NetworkAclAssociation>&& value) { m_associationsHasBeenSet = true; m_associations = value; }
+    inline void SetAssociations(Aws::Vector<NetworkAclAssociation>&& value) { m_associationsHasBeenSet = true; m_associations = std::move(value); }
 
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
@@ -191,7 +195,7 @@ namespace Model
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
      */
-    inline NetworkAcl& WithAssociations(Aws::Vector<NetworkAclAssociation>&& value) { SetAssociations(value); return *this;}
+    inline NetworkAcl& WithAssociations(Aws::Vector<NetworkAclAssociation>&& value) { SetAssociations(std::move(value)); return *this;}
 
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
@@ -201,7 +205,7 @@ namespace Model
     /**
      * <p>Any associations between the network ACL and one or more subnets</p>
      */
-    inline NetworkAcl& AddAssociations(NetworkAclAssociation&& value) { m_associationsHasBeenSet = true; m_associations.push_back(value); return *this; }
+    inline NetworkAcl& AddAssociations(NetworkAclAssociation&& value) { m_associationsHasBeenSet = true; m_associations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any tags assigned to the network ACL.</p>
@@ -216,7 +220,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the network ACL.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the network ACL.</p>
@@ -226,7 +230,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the network ACL.</p>
      */
-    inline NetworkAcl& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline NetworkAcl& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the network ACL.</p>
@@ -236,7 +240,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the network ACL.</p>
      */
-    inline NetworkAcl& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline NetworkAcl& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_networkAclId;

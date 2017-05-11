@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * acknowledgement that Amazon ML received the request.</p> <p>The
    * <code>CreateMLModel</code> operation is asynchronous. You can poll for status
    * updates by using the <code>GetMLModel</code> operation and checking the
-   * <code>Status</code> parameter. </p>
+   * <code>Status</code> parameter. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateMLModelOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API CreateMLModelResult
   {
@@ -65,7 +69,7 @@ namespace Model
      * value should be identical to the value of the <code>MLModelId</code> in the
      * request. </p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelId = std::move(value); }
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This
@@ -86,7 +90,7 @@ namespace Model
      * value should be identical to the value of the <code>MLModelId</code> in the
      * request. </p>
      */
-    inline CreateMLModelResult& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline CreateMLModelResult& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 
   /**
    * <p>Describes Challenge-Handshake Authentication Protocol (CHAP) information that
-   * supports authentication between your gateway and iSCSI initiators.</p>
+   * supports authentication between your gateway and iSCSI initiators.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ChapInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API ChapInfo
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500
      * lowercase letters, numbers, periods (.), and hyphens (-).</p>
      */
-    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = value; }
+    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500
@@ -76,7 +81,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500
      * lowercase letters, numbers, periods (.), and hyphens (-).</p>
      */
-    inline ChapInfo& WithTargetARN(Aws::String&& value) { SetTargetARN(value); return *this;}
+    inline ChapInfo& WithTargetARN(Aws::String&& value) { SetTargetARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500
@@ -100,7 +105,7 @@ namespace Model
      * <p>The secret key that the initiator (for example, the Windows client) must
      * provide to participate in mutual CHAP with the target.</p>
      */
-    inline void SetSecretToAuthenticateInitiator(Aws::String&& value) { m_secretToAuthenticateInitiatorHasBeenSet = true; m_secretToAuthenticateInitiator = value; }
+    inline void SetSecretToAuthenticateInitiator(Aws::String&& value) { m_secretToAuthenticateInitiatorHasBeenSet = true; m_secretToAuthenticateInitiator = std::move(value); }
 
     /**
      * <p>The secret key that the initiator (for example, the Windows client) must
@@ -118,7 +123,7 @@ namespace Model
      * <p>The secret key that the initiator (for example, the Windows client) must
      * provide to participate in mutual CHAP with the target.</p>
      */
-    inline ChapInfo& WithSecretToAuthenticateInitiator(Aws::String&& value) { SetSecretToAuthenticateInitiator(value); return *this;}
+    inline ChapInfo& WithSecretToAuthenticateInitiator(Aws::String&& value) { SetSecretToAuthenticateInitiator(std::move(value)); return *this;}
 
     /**
      * <p>The secret key that the initiator (for example, the Windows client) must
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>The iSCSI initiator that connects to the target.</p>
      */
-    inline void SetInitiatorName(Aws::String&& value) { m_initiatorNameHasBeenSet = true; m_initiatorName = value; }
+    inline void SetInitiatorName(Aws::String&& value) { m_initiatorNameHasBeenSet = true; m_initiatorName = std::move(value); }
 
     /**
      * <p>The iSCSI initiator that connects to the target.</p>
@@ -154,7 +159,7 @@ namespace Model
     /**
      * <p>The iSCSI initiator that connects to the target.</p>
      */
-    inline ChapInfo& WithInitiatorName(Aws::String&& value) { SetInitiatorName(value); return *this;}
+    inline ChapInfo& WithInitiatorName(Aws::String&& value) { SetInitiatorName(std::move(value)); return *this;}
 
     /**
      * <p>The iSCSI initiator that connects to the target.</p>
@@ -177,7 +182,7 @@ namespace Model
      * <p>The secret key that the target must provide to participate in mutual CHAP
      * with the initiator (e.g. Windows client).</p>
      */
-    inline void SetSecretToAuthenticateTarget(Aws::String&& value) { m_secretToAuthenticateTargetHasBeenSet = true; m_secretToAuthenticateTarget = value; }
+    inline void SetSecretToAuthenticateTarget(Aws::String&& value) { m_secretToAuthenticateTargetHasBeenSet = true; m_secretToAuthenticateTarget = std::move(value); }
 
     /**
      * <p>The secret key that the target must provide to participate in mutual CHAP
@@ -195,7 +200,7 @@ namespace Model
      * <p>The secret key that the target must provide to participate in mutual CHAP
      * with the initiator (e.g. Windows client).</p>
      */
-    inline ChapInfo& WithSecretToAuthenticateTarget(Aws::String&& value) { SetSecretToAuthenticateTarget(value); return *this;}
+    inline ChapInfo& WithSecretToAuthenticateTarget(Aws::String&& value) { SetSecretToAuthenticateTarget(std::move(value)); return *this;}
 
     /**
      * <p>The secret key that the target must provide to participate in mutual CHAP

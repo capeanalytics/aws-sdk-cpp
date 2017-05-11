@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of EvaluateExpression.</p>
+   * <p>Contains the output of EvaluateExpression.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpressionOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API EvaluateExpressionResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The evaluated expression.</p>
      */
-    inline void SetEvaluatedExpression(Aws::String&& value) { m_evaluatedExpression = value; }
+    inline void SetEvaluatedExpression(Aws::String&& value) { m_evaluatedExpression = std::move(value); }
 
     /**
      * <p>The evaluated expression.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The evaluated expression.</p>
      */
-    inline EvaluateExpressionResult& WithEvaluatedExpression(Aws::String&& value) { SetEvaluatedExpression(value); return *this;}
+    inline EvaluateExpressionResult& WithEvaluatedExpression(Aws::String&& value) { SetEvaluatedExpression(std::move(value)); return *this;}
 
     /**
      * <p>The evaluated expression.</p>

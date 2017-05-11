@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/S3Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/s3/model/RequestPayer.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,6 +44,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetBucket() const{ return m_bucket; }
 
@@ -49,7 +52,7 @@ namespace Model
     inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
 
     
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     
     inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
@@ -58,7 +61,7 @@ namespace Model
     inline UploadPartCopyRequest& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
 
     
-    inline UploadPartCopyRequest& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline UploadPartCopyRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     
     inline UploadPartCopyRequest& WithBucket(const char* value) { SetBucket(value); return *this;}
@@ -79,7 +82,7 @@ namespace Model
      * The name of the source bucket and key name of the source object, separated by a
      * slash (/). Must be URL-encoded.
      */
-    inline void SetCopySource(Aws::String&& value) { m_copySourceHasBeenSet = true; m_copySource = value; }
+    inline void SetCopySource(Aws::String&& value) { m_copySourceHasBeenSet = true; m_copySource = std::move(value); }
 
     /**
      * The name of the source bucket and key name of the source object, separated by a
@@ -97,7 +100,7 @@ namespace Model
      * The name of the source bucket and key name of the source object, separated by a
      * slash (/). Must be URL-encoded.
      */
-    inline UploadPartCopyRequest& WithCopySource(Aws::String&& value) { SetCopySource(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySource(Aws::String&& value) { SetCopySource(std::move(value)); return *this;}
 
     /**
      * The name of the source bucket and key name of the source object, separated by a
@@ -118,7 +121,7 @@ namespace Model
     /**
      * Copies the object if its entity tag (ETag) matches the specified tag.
      */
-    inline void SetCopySourceIfMatch(Aws::String&& value) { m_copySourceIfMatchHasBeenSet = true; m_copySourceIfMatch = value; }
+    inline void SetCopySourceIfMatch(Aws::String&& value) { m_copySourceIfMatchHasBeenSet = true; m_copySourceIfMatch = std::move(value); }
 
     /**
      * Copies the object if its entity tag (ETag) matches the specified tag.
@@ -133,7 +136,7 @@ namespace Model
     /**
      * Copies the object if its entity tag (ETag) matches the specified tag.
      */
-    inline UploadPartCopyRequest& WithCopySourceIfMatch(Aws::String&& value) { SetCopySourceIfMatch(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceIfMatch(Aws::String&& value) { SetCopySourceIfMatch(std::move(value)); return *this;}
 
     /**
      * Copies the object if its entity tag (ETag) matches the specified tag.
@@ -153,7 +156,7 @@ namespace Model
     /**
      * Copies the object if it has been modified since the specified time.
      */
-    inline void SetCopySourceIfModifiedSince(Aws::Utils::DateTime&& value) { m_copySourceIfModifiedSinceHasBeenSet = true; m_copySourceIfModifiedSince = value; }
+    inline void SetCopySourceIfModifiedSince(Aws::Utils::DateTime&& value) { m_copySourceIfModifiedSinceHasBeenSet = true; m_copySourceIfModifiedSince = std::move(value); }
 
     /**
      * Copies the object if it has been modified since the specified time.
@@ -163,7 +166,7 @@ namespace Model
     /**
      * Copies the object if it has been modified since the specified time.
      */
-    inline UploadPartCopyRequest& WithCopySourceIfModifiedSince(Aws::Utils::DateTime&& value) { SetCopySourceIfModifiedSince(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceIfModifiedSince(Aws::Utils::DateTime&& value) { SetCopySourceIfModifiedSince(std::move(value)); return *this;}
 
     /**
      * Copies the object if its entity tag (ETag) is different than the specified ETag.
@@ -178,7 +181,7 @@ namespace Model
     /**
      * Copies the object if its entity tag (ETag) is different than the specified ETag.
      */
-    inline void SetCopySourceIfNoneMatch(Aws::String&& value) { m_copySourceIfNoneMatchHasBeenSet = true; m_copySourceIfNoneMatch = value; }
+    inline void SetCopySourceIfNoneMatch(Aws::String&& value) { m_copySourceIfNoneMatchHasBeenSet = true; m_copySourceIfNoneMatch = std::move(value); }
 
     /**
      * Copies the object if its entity tag (ETag) is different than the specified ETag.
@@ -193,7 +196,7 @@ namespace Model
     /**
      * Copies the object if its entity tag (ETag) is different than the specified ETag.
      */
-    inline UploadPartCopyRequest& WithCopySourceIfNoneMatch(Aws::String&& value) { SetCopySourceIfNoneMatch(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceIfNoneMatch(Aws::String&& value) { SetCopySourceIfNoneMatch(std::move(value)); return *this;}
 
     /**
      * Copies the object if its entity tag (ETag) is different than the specified ETag.
@@ -213,7 +216,7 @@ namespace Model
     /**
      * Copies the object if it hasn't been modified since the specified time.
      */
-    inline void SetCopySourceIfUnmodifiedSince(Aws::Utils::DateTime&& value) { m_copySourceIfUnmodifiedSinceHasBeenSet = true; m_copySourceIfUnmodifiedSince = value; }
+    inline void SetCopySourceIfUnmodifiedSince(Aws::Utils::DateTime&& value) { m_copySourceIfUnmodifiedSinceHasBeenSet = true; m_copySourceIfUnmodifiedSince = std::move(value); }
 
     /**
      * Copies the object if it hasn't been modified since the specified time.
@@ -223,7 +226,7 @@ namespace Model
     /**
      * Copies the object if it hasn't been modified since the specified time.
      */
-    inline UploadPartCopyRequest& WithCopySourceIfUnmodifiedSince(Aws::Utils::DateTime&& value) { SetCopySourceIfUnmodifiedSince(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceIfUnmodifiedSince(Aws::Utils::DateTime&& value) { SetCopySourceIfUnmodifiedSince(std::move(value)); return *this;}
 
     /**
      * The range of bytes to copy from the source object. The range value must use the
@@ -250,7 +253,7 @@ namespace Model
      * bytes of the source. You can copy a range only if the source object is greater
      * than 5 GB.
      */
-    inline void SetCopySourceRange(Aws::String&& value) { m_copySourceRangeHasBeenSet = true; m_copySourceRange = value; }
+    inline void SetCopySourceRange(Aws::String&& value) { m_copySourceRangeHasBeenSet = true; m_copySourceRange = std::move(value); }
 
     /**
      * The range of bytes to copy from the source object. The range value must use the
@@ -277,7 +280,7 @@ namespace Model
      * bytes of the source. You can copy a range only if the source object is greater
      * than 5 GB.
      */
-    inline UploadPartCopyRequest& WithCopySourceRange(Aws::String&& value) { SetCopySourceRange(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceRange(Aws::String&& value) { SetCopySourceRange(std::move(value)); return *this;}
 
     /**
      * The range of bytes to copy from the source object. The range value must use the
@@ -295,7 +298,7 @@ namespace Model
     inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
 
     
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     
     inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
@@ -304,7 +307,7 @@ namespace Model
     inline UploadPartCopyRequest& WithKey(const Aws::String& value) { SetKey(value); return *this;}
 
     
-    inline UploadPartCopyRequest& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline UploadPartCopyRequest& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     
     inline UploadPartCopyRequest& WithKey(const char* value) { SetKey(value); return *this;}
@@ -340,7 +343,7 @@ namespace Model
     /**
      * Upload ID identifying the multipart upload whose part is being copied.
      */
-    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = value; }
+    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::move(value); }
 
     /**
      * Upload ID identifying the multipart upload whose part is being copied.
@@ -355,7 +358,7 @@ namespace Model
     /**
      * Upload ID identifying the multipart upload whose part is being copied.
      */
-    inline UploadPartCopyRequest& WithUploadId(Aws::String&& value) { SetUploadId(value); return *this;}
+    inline UploadPartCopyRequest& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
 
     /**
      * Upload ID identifying the multipart upload whose part is being copied.
@@ -375,7 +378,7 @@ namespace Model
     /**
      * Specifies the algorithm to use to when encrypting the object (e.g., AES256).
      */
-    inline void SetSSECustomerAlgorithm(Aws::String&& value) { m_sSECustomerAlgorithmHasBeenSet = true; m_sSECustomerAlgorithm = value; }
+    inline void SetSSECustomerAlgorithm(Aws::String&& value) { m_sSECustomerAlgorithmHasBeenSet = true; m_sSECustomerAlgorithm = std::move(value); }
 
     /**
      * Specifies the algorithm to use to when encrypting the object (e.g., AES256).
@@ -390,7 +393,7 @@ namespace Model
     /**
      * Specifies the algorithm to use to when encrypting the object (e.g., AES256).
      */
-    inline UploadPartCopyRequest& WithSSECustomerAlgorithm(Aws::String&& value) { SetSSECustomerAlgorithm(value); return *this;}
+    inline UploadPartCopyRequest& WithSSECustomerAlgorithm(Aws::String&& value) { SetSSECustomerAlgorithm(std::move(value)); return *this;}
 
     /**
      * Specifies the algorithm to use to when encrypting the object (e.g., AES256).
@@ -425,7 +428,7 @@ namespace Model
      * x-amz-server-side​-encryption​-customer-algorithm header. This must be the same
      * encryption key specified in the initiate multipart upload request.
      */
-    inline void SetSSECustomerKey(Aws::String&& value) { m_sSECustomerKeyHasBeenSet = true; m_sSECustomerKey = value; }
+    inline void SetSSECustomerKey(Aws::String&& value) { m_sSECustomerKeyHasBeenSet = true; m_sSECustomerKey = std::move(value); }
 
     /**
      * Specifies the customer-provided encryption key for Amazon S3 to use in
@@ -455,7 +458,7 @@ namespace Model
      * x-amz-server-side​-encryption​-customer-algorithm header. This must be the same
      * encryption key specified in the initiate multipart upload request.
      */
-    inline UploadPartCopyRequest& WithSSECustomerKey(Aws::String&& value) { SetSSECustomerKey(value); return *this;}
+    inline UploadPartCopyRequest& WithSSECustomerKey(Aws::String&& value) { SetSSECustomerKey(std::move(value)); return *this;}
 
     /**
      * Specifies the customer-provided encryption key for Amazon S3 to use in
@@ -486,7 +489,7 @@ namespace Model
      * Amazon S3 uses this header for a message integrity check to ensure the
      * encryption key was transmitted without error.
      */
-    inline void SetSSECustomerKeyMD5(Aws::String&& value) { m_sSECustomerKeyMD5HasBeenSet = true; m_sSECustomerKeyMD5 = value; }
+    inline void SetSSECustomerKeyMD5(Aws::String&& value) { m_sSECustomerKeyMD5HasBeenSet = true; m_sSECustomerKeyMD5 = std::move(value); }
 
     /**
      * Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321.
@@ -507,7 +510,7 @@ namespace Model
      * Amazon S3 uses this header for a message integrity check to ensure the
      * encryption key was transmitted without error.
      */
-    inline UploadPartCopyRequest& WithSSECustomerKeyMD5(Aws::String&& value) { SetSSECustomerKeyMD5(value); return *this;}
+    inline UploadPartCopyRequest& WithSSECustomerKeyMD5(Aws::String&& value) { SetSSECustomerKeyMD5(std::move(value)); return *this;}
 
     /**
      * Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321.
@@ -529,7 +532,7 @@ namespace Model
     /**
      * Specifies the algorithm to use when decrypting the source object (e.g., AES256).
      */
-    inline void SetCopySourceSSECustomerAlgorithm(Aws::String&& value) { m_copySourceSSECustomerAlgorithmHasBeenSet = true; m_copySourceSSECustomerAlgorithm = value; }
+    inline void SetCopySourceSSECustomerAlgorithm(Aws::String&& value) { m_copySourceSSECustomerAlgorithmHasBeenSet = true; m_copySourceSSECustomerAlgorithm = std::move(value); }
 
     /**
      * Specifies the algorithm to use when decrypting the source object (e.g., AES256).
@@ -544,7 +547,7 @@ namespace Model
     /**
      * Specifies the algorithm to use when decrypting the source object (e.g., AES256).
      */
-    inline UploadPartCopyRequest& WithCopySourceSSECustomerAlgorithm(Aws::String&& value) { SetCopySourceSSECustomerAlgorithm(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceSSECustomerAlgorithm(Aws::String&& value) { SetCopySourceSSECustomerAlgorithm(std::move(value)); return *this;}
 
     /**
      * Specifies the algorithm to use when decrypting the source object (e.g., AES256).
@@ -570,7 +573,7 @@ namespace Model
      * the source object. The encryption key provided in this header must be one that
      * was used when the source object was created.
      */
-    inline void SetCopySourceSSECustomerKey(Aws::String&& value) { m_copySourceSSECustomerKeyHasBeenSet = true; m_copySourceSSECustomerKey = value; }
+    inline void SetCopySourceSSECustomerKey(Aws::String&& value) { m_copySourceSSECustomerKeyHasBeenSet = true; m_copySourceSSECustomerKey = std::move(value); }
 
     /**
      * Specifies the customer-provided encryption key for Amazon S3 to use to decrypt
@@ -591,7 +594,7 @@ namespace Model
      * the source object. The encryption key provided in this header must be one that
      * was used when the source object was created.
      */
-    inline UploadPartCopyRequest& WithCopySourceSSECustomerKey(Aws::String&& value) { SetCopySourceSSECustomerKey(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceSSECustomerKey(Aws::String&& value) { SetCopySourceSSECustomerKey(std::move(value)); return *this;}
 
     /**
      * Specifies the customer-provided encryption key for Amazon S3 to use to decrypt
@@ -619,7 +622,7 @@ namespace Model
      * Amazon S3 uses this header for a message integrity check to ensure the
      * encryption key was transmitted without error.
      */
-    inline void SetCopySourceSSECustomerKeyMD5(Aws::String&& value) { m_copySourceSSECustomerKeyMD5HasBeenSet = true; m_copySourceSSECustomerKeyMD5 = value; }
+    inline void SetCopySourceSSECustomerKeyMD5(Aws::String&& value) { m_copySourceSSECustomerKeyMD5HasBeenSet = true; m_copySourceSSECustomerKeyMD5 = std::move(value); }
 
     /**
      * Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321.
@@ -640,7 +643,7 @@ namespace Model
      * Amazon S3 uses this header for a message integrity check to ensure the
      * encryption key was transmitted without error.
      */
-    inline UploadPartCopyRequest& WithCopySourceSSECustomerKeyMD5(Aws::String&& value) { SetCopySourceSSECustomerKeyMD5(value); return *this;}
+    inline UploadPartCopyRequest& WithCopySourceSSECustomerKeyMD5(Aws::String&& value) { SetCopySourceSSECustomerKeyMD5(std::move(value)); return *this;}
 
     /**
      * Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321.
@@ -656,13 +659,13 @@ namespace Model
     inline void SetRequestPayer(const RequestPayer& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
 
     
-    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
+    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = std::move(value); }
 
     
     inline UploadPartCopyRequest& WithRequestPayer(const RequestPayer& value) { SetRequestPayer(value); return *this;}
 
     
-    inline UploadPartCopyRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(value); return *this;}
+    inline UploadPartCopyRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(std::move(value)); return *this;}
 
   private:
     Aws::String m_bucket;

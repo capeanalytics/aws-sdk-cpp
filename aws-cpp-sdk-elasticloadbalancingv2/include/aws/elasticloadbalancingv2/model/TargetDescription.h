@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a target.</p>
+   * <p>Information about a target.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/TargetDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API TargetDescription
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ID of the target.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The ID of the target.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ID of the target.</p>
      */
-    inline TargetDescription& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline TargetDescription& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the target.</p>

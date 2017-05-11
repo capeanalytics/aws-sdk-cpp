@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/UpdateUsageResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -66,11 +67,13 @@ UpdateUsageResult& UpdateUsageResult::operator =(const AmazonWebServiceResult<Js
     for(auto& itemsItem : itemsJsonMap)
     {
       Array<JsonValue> listOfUsageJsonList = itemsItem.second.AsArray();
-      Aws::Vector<Aws::Vector<long long>> listOfUsageList((size_t)listOfUsageJsonList.GetLength());
+      Aws::Vector<Aws::Vector<long long>> listOfUsageList;
+      listOfUsageList.reserve((size_t)listOfUsageJsonList.GetLength());
       for(unsigned listOfUsageIndex = 0; listOfUsageIndex < listOfUsageJsonList.GetLength(); ++listOfUsageIndex)
       {
         Array<JsonValue> listOfLongJsonList = listOfUsageJsonList[listOfUsageIndex].AsArray();
-        Aws::Vector<long long> listOfLongList((size_t)listOfLongJsonList.GetLength());
+        Aws::Vector<long long> listOfLongList;
+        listOfLongList.reserve((size_t)listOfLongJsonList.GetLength());
         for(unsigned listOfLongIndex = 0; listOfLongIndex < listOfLongJsonList.GetLength(); ++listOfLongIndex)
         {
           listOfLongList.push_back(listOfLongJsonList[listOfLongIndex].AsInt64());

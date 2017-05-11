@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/ecr/model/TagStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>An object representing a filter on a <a>ListImages</a> operation.</p>
+   * <p>An object representing a filter on a <a>ListImages</a>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/ListImagesFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_ECR_API ListImagesFilter
   {
@@ -60,7 +65,7 @@ namespace Model
      * filter results based on whether they are <code>TAGGED</code> or
      * <code>UNTAGGED</code>.</p>
      */
-    inline void SetTagStatus(TagStatus&& value) { m_tagStatusHasBeenSet = true; m_tagStatus = value; }
+    inline void SetTagStatus(TagStatus&& value) { m_tagStatusHasBeenSet = true; m_tagStatus = std::move(value); }
 
     /**
      * <p>The tag status with which to filter your <a>ListImages</a> results. You can
@@ -74,7 +79,7 @@ namespace Model
      * filter results based on whether they are <code>TAGGED</code> or
      * <code>UNTAGGED</code>.</p>
      */
-    inline ListImagesFilter& WithTagStatus(TagStatus&& value) { SetTagStatus(value); return *this;}
+    inline ListImagesFilter& WithTagStatus(TagStatus&& value) { SetTagStatus(std::move(value)); return *this;}
 
   private:
     TagStatus m_tagStatus;

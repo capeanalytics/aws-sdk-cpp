@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,7 +44,9 @@ namespace Model
    * false for Enabled and 0 for Quantity. Omit Items. To add, change, or remove one
    * or more trusted signers, change Enabled to true (if it's currently false),
    * change Quantity as applicable, and specify all of the trusted signers that you
-   * want to include in the updated distribution.
+   * want to include in the updated distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/TrustedSigners">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API TrustedSigners
   {
@@ -102,7 +106,7 @@ namespace Model
      * Optional: A complex type that contains trusted signers for this cache behavior.
      * If Quantity is 0, you can omit Items.
      */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * Optional: A complex type that contains trusted signers for this cache behavior.
@@ -114,7 +118,7 @@ namespace Model
      * Optional: A complex type that contains trusted signers for this cache behavior.
      * If Quantity is 0, you can omit Items.
      */
-    inline TrustedSigners& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(value); return *this;}
+    inline TrustedSigners& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * Optional: A complex type that contains trusted signers for this cache behavior.
@@ -126,7 +130,7 @@ namespace Model
      * Optional: A complex type that contains trusted signers for this cache behavior.
      * If Quantity is 0, you can omit Items.
      */
-    inline TrustedSigners& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline TrustedSigners& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
     /**
      * Optional: A complex type that contains trusted signers for this cache behavior.

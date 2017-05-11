@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,10 +33,12 @@ namespace Model
 {
 
   /**
-   * <p>AWS access credentials required to upload game build files to Amazon
-   * GameLift. These credentials are generated with <a>CreateBuild</a>, and are valid
-   * for a limited time. If they expire before you upload your game build, get a new
-   * set by calling <a>RequestUploadCredentials</a>.</p>
+   * <p>AWS access credentials sometimes used for uploading game build files to
+   * Amazon GameLift. They are valid for a limited time. If they expire before you
+   * upload your game build, get a new set by calling
+   * <a>RequestUploadCredentials</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/AwsCredentials">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API AwsCredentials
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Access key for an AWS account.</p>
      */
-    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = value; }
+    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::move(value); }
 
     /**
      * <p>Access key for an AWS account.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>Access key for an AWS account.</p>
      */
-    inline AwsCredentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(value); return *this;}
+    inline AwsCredentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(std::move(value)); return *this;}
 
     /**
      * <p>Access key for an AWS account.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>Secret key for an AWS account.</p>
      */
-    inline void SetSecretAccessKey(Aws::String&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = value; }
+    inline void SetSecretAccessKey(Aws::String&& value) { m_secretAccessKeyHasBeenSet = true; m_secretAccessKey = std::move(value); }
 
     /**
      * <p>Secret key for an AWS account.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>Secret key for an AWS account.</p>
      */
-    inline AwsCredentials& WithSecretAccessKey(Aws::String&& value) { SetSecretAccessKey(value); return *this;}
+    inline AwsCredentials& WithSecretAccessKey(Aws::String&& value) { SetSecretAccessKey(std::move(value)); return *this;}
 
     /**
      * <p>Secret key for an AWS account.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>Token specific to a build ID.</p>
      */
-    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = value; }
+    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::move(value); }
 
     /**
      * <p>Token specific to a build ID.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>Token specific to a build ID.</p>
      */
-    inline AwsCredentials& WithSessionToken(Aws::String&& value) { SetSessionToken(value); return *this;}
+    inline AwsCredentials& WithSessionToken(Aws::String&& value) { SetSessionToken(std::move(value)); return *this;}
 
     /**
      * <p>Token specific to a build ID.</p>

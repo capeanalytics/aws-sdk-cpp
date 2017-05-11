@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/TimestampRange.h>
 #include <aws/inspector/model/DurationRange.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -64,7 +66,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>assessmentName</b> property of the <a>Assessment</a> data type.</p>
      */
-    inline void SetAssessmentNamePatterns(Aws::Vector<Aws::String>&& value) { m_assessmentNamePatternsHasBeenSet = true; m_assessmentNamePatterns = value; }
+    inline void SetAssessmentNamePatterns(Aws::Vector<Aws::String>&& value) { m_assessmentNamePatternsHasBeenSet = true; m_assessmentNamePatterns = std::move(value); }
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a
@@ -78,7 +80,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>assessmentName</b> property of the <a>Assessment</a> data type.</p>
      */
-    inline AssessmentsFilter& WithAssessmentNamePatterns(Aws::Vector<Aws::String>&& value) { SetAssessmentNamePatterns(value); return *this;}
+    inline AssessmentsFilter& WithAssessmentNamePatterns(Aws::Vector<Aws::String>&& value) { SetAssessmentNamePatterns(std::move(value)); return *this;}
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a
@@ -92,7 +94,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>assessmentName</b> property of the <a>Assessment</a> data type.</p>
      */
-    inline AssessmentsFilter& AddAssessmentNamePatterns(Aws::String&& value) { m_assessmentNamePatternsHasBeenSet = true; m_assessmentNamePatterns.push_back(value); return *this; }
+    inline AssessmentsFilter& AddAssessmentNamePatterns(Aws::String&& value) { m_assessmentNamePatternsHasBeenSet = true; m_assessmentNamePatterns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a
@@ -120,7 +122,7 @@ namespace Model
      * property must be the exact match of the value of the <b>assessmentState</b>
      * property of the <a>Assessment</a> data type.</p>
      */
-    inline void SetAssessmentStates(Aws::Vector<Aws::String>&& value) { m_assessmentStatesHasBeenSet = true; m_assessmentStates = value; }
+    inline void SetAssessmentStates(Aws::Vector<Aws::String>&& value) { m_assessmentStatesHasBeenSet = true; m_assessmentStates = std::move(value); }
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -134,7 +136,7 @@ namespace Model
      * property must be the exact match of the value of the <b>assessmentState</b>
      * property of the <a>Assessment</a> data type.</p>
      */
-    inline AssessmentsFilter& WithAssessmentStates(Aws::Vector<Aws::String>&& value) { SetAssessmentStates(value); return *this;}
+    inline AssessmentsFilter& WithAssessmentStates(Aws::Vector<Aws::String>&& value) { SetAssessmentStates(std::move(value)); return *this;}
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -148,7 +150,7 @@ namespace Model
      * property must be the exact match of the value of the <b>assessmentState</b>
      * property of the <a>Assessment</a> data type.</p>
      */
-    inline AssessmentsFilter& AddAssessmentStates(Aws::String&& value) { m_assessmentStatesHasBeenSet = true; m_assessmentStates.push_back(value); return *this; }
+    inline AssessmentsFilter& AddAssessmentStates(Aws::String&& value) { m_assessmentStatesHasBeenSet = true; m_assessmentStates.push_back(std::move(value)); return *this; }
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -200,7 +202,7 @@ namespace Model
      * maximum values of the <b>startTime</b> property of the <a>Assessment</a> data
      * type.</p>
      */
-    inline void SetStartTimeRange(TimestampRange&& value) { m_startTimeRangeHasBeenSet = true; m_startTimeRange = value; }
+    inline void SetStartTimeRange(TimestampRange&& value) { m_startTimeRangeHasBeenSet = true; m_startTimeRange = std::move(value); }
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -216,7 +218,7 @@ namespace Model
      * maximum values of the <b>startTime</b> property of the <a>Assessment</a> data
      * type.</p>
      */
-    inline AssessmentsFilter& WithStartTimeRange(TimestampRange&& value) { SetStartTimeRange(value); return *this;}
+    inline AssessmentsFilter& WithStartTimeRange(TimestampRange&& value) { SetStartTimeRange(std::move(value)); return *this;}
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -240,7 +242,7 @@ namespace Model
      * maximum values of the <b>endTime</b> property of the <a>Assessment</a> data
      * type.</p>
      */
-    inline void SetEndTimeRange(TimestampRange&& value) { m_endTimeRangeHasBeenSet = true; m_endTimeRange = value; }
+    inline void SetEndTimeRange(TimestampRange&& value) { m_endTimeRangeHasBeenSet = true; m_endTimeRange = std::move(value); }
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -256,7 +258,7 @@ namespace Model
      * maximum values of the <b>endTime</b> property of the <a>Assessment</a> data
      * type.</p>
      */
-    inline AssessmentsFilter& WithEndTimeRange(TimestampRange&& value) { SetEndTimeRange(value); return *this;}
+    inline AssessmentsFilter& WithEndTimeRange(TimestampRange&& value) { SetEndTimeRange(std::move(value)); return *this;}
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -280,7 +282,7 @@ namespace Model
      * maximum values of the <b>durationInSeconds</b> property of the <a>Assessment</a>
      * data type.</p>
      */
-    inline void SetDurationRange(DurationRange&& value) { m_durationRangeHasBeenSet = true; m_durationRange = value; }
+    inline void SetDurationRange(DurationRange&& value) { m_durationRangeHasBeenSet = true; m_durationRange = std::move(value); }
 
     /**
      * <p>For a record to match a filter, the value specified for this data type
@@ -296,7 +298,7 @@ namespace Model
      * maximum values of the <b>durationInSeconds</b> property of the <a>Assessment</a>
      * data type.</p>
      */
-    inline AssessmentsFilter& WithDurationRange(DurationRange&& value) { SetDurationRange(value); return *this;}
+    inline AssessmentsFilter& WithDurationRange(DurationRange&& value) { SetDurationRange(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_assessmentNamePatterns;

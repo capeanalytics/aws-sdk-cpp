@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/waf/model/FieldToMatch.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,12 +29,14 @@ namespace Model
 {
 
 FieldToMatch::FieldToMatch() : 
+    m_type(MatchFieldType::NOT_SET),
     m_typeHasBeenSet(false),
     m_dataHasBeenSet(false)
 {
 }
 
 FieldToMatch::FieldToMatch(const JsonValue& jsonValue) : 
+    m_type(MatchFieldType::NOT_SET),
     m_typeHasBeenSet(false),
     m_dataHasBeenSet(false)
 {

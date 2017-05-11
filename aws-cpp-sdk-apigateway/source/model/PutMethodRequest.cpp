@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/PutMethodRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,8 +30,10 @@ PutMethodRequest::PutMethodRequest() :
     m_authorizerIdHasBeenSet(false),
     m_apiKeyRequired(false),
     m_apiKeyRequiredHasBeenSet(false),
+    m_operationNameHasBeenSet(false),
     m_requestParametersHasBeenSet(false),
-    m_requestModelsHasBeenSet(false)
+    m_requestModelsHasBeenSet(false),
+    m_requestValidatorIdHasBeenSet(false)
 {
 }
 
@@ -56,6 +59,12 @@ Aws::String PutMethodRequest::SerializePayload() const
 
   }
 
+  if(m_operationNameHasBeenSet)
+  {
+   payload.WithString("operationName", m_operationName);
+
+  }
+
   if(m_requestParametersHasBeenSet)
   {
    JsonValue requestParametersJsonMap;
@@ -78,8 +87,15 @@ Aws::String PutMethodRequest::SerializePayload() const
 
   }
 
+  if(m_requestValidatorIdHasBeenSet)
+  {
+   payload.WithString("requestValidatorId", m_requestValidatorId);
+
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

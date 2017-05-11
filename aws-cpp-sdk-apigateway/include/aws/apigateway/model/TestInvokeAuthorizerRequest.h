@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,13 +28,17 @@ namespace Model
 {
 
   /**
-   * <p>Make a request to simulate the execution of an <a>Authorizer</a>.</p>
+   * <p>Make a request to simulate the execution of an
+   * <a>Authorizer</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/TestInvokeAuthorizerRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API TestInvokeAuthorizerRequest : public APIGatewayRequest
   {
   public:
     TestInvokeAuthorizerRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
@@ -47,7 +53,7 @@ namespace Model
     /**
      * <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
@@ -62,7 +68,7 @@ namespace Model
     /**
      * <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
@@ -82,7 +88,7 @@ namespace Model
     /**
      * <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
      */
-    inline void SetAuthorizerId(Aws::String&& value) { m_authorizerIdHasBeenSet = true; m_authorizerId = value; }
+    inline void SetAuthorizerId(Aws::String&& value) { m_authorizerIdHasBeenSet = true; m_authorizerId = std::move(value); }
 
     /**
      * <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
@@ -97,7 +103,7 @@ namespace Model
     /**
      * <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithAuthorizerId(Aws::String&& value) { SetAuthorizerId(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithAuthorizerId(Aws::String&& value) { SetAuthorizerId(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
@@ -120,7 +126,7 @@ namespace Model
      * <p>[Optional] The URI path, including query string, of the simulated invocation
      * request. Use this to specify path parameters and query string parameters.</p>
      */
-    inline void SetPathWithQueryString(Aws::String&& value) { m_pathWithQueryStringHasBeenSet = true; m_pathWithQueryString = value; }
+    inline void SetPathWithQueryString(Aws::String&& value) { m_pathWithQueryStringHasBeenSet = true; m_pathWithQueryString = std::move(value); }
 
     /**
      * <p>[Optional] The URI path, including query string, of the simulated invocation
@@ -138,7 +144,7 @@ namespace Model
      * <p>[Optional] The URI path, including query string, of the simulated invocation
      * request. Use this to specify path parameters and query string parameters.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithPathWithQueryString(Aws::String&& value) { SetPathWithQueryString(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithPathWithQueryString(Aws::String&& value) { SetPathWithQueryString(std::move(value)); return *this;}
 
     /**
      * <p>[Optional] The URI path, including query string, of the simulated invocation
@@ -162,7 +168,7 @@ namespace Model
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline void SetStageVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables = value; }
+    inline void SetStageVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables = std::move(value); }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
@@ -174,49 +180,49 @@ namespace Model
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithStageVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetStageVariables(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithStageVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetStageVariables(std::move(value)); return *this;}
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(const Aws::String& key, const Aws::String& value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(const Aws::String& key, const Aws::String& value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(key, value); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, const Aws::String& value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, const Aws::String& value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(const Aws::String& key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(const Aws::String& key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(const char* key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(const char* key, Aws::String&& value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, const char* value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(Aws::String&& key, const char* value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A key-value map of stage variables to simulate an invocation on a deployed
      * <a>Stage</a>.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddStageVariables(const char* key, const char* value) { m_stageVariablesHasBeenSet = true; m_stageVariables[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddStageVariables(const char* key, const char* value) { m_stageVariablesHasBeenSet = true; m_stageVariables.emplace(key, value); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
@@ -231,7 +237,7 @@ namespace Model
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline void SetAdditionalContext(Aws::Map<Aws::String, Aws::String>&& value) { m_additionalContextHasBeenSet = true; m_additionalContext = value; }
+    inline void SetAdditionalContext(Aws::Map<Aws::String, Aws::String>&& value) { m_additionalContextHasBeenSet = true; m_additionalContext = std::move(value); }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
@@ -241,42 +247,42 @@ namespace Model
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithAdditionalContext(Aws::Map<Aws::String, Aws::String>&& value) { SetAdditionalContext(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithAdditionalContext(Aws::Map<Aws::String, Aws::String>&& value) { SetAdditionalContext(std::move(value)); return *this;}
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const Aws::String& key, const Aws::String& value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const Aws::String& key, const Aws::String& value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(key, value); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, const Aws::String& value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, const Aws::String& value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const Aws::String& key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const Aws::String& key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const char* key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const char* key, Aws::String&& value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, const char* value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(Aws::String&& key, const char* value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>[Optional] A key-value map of additional context variables.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const char* key, const char* value) { m_additionalContextHasBeenSet = true; m_additionalContext[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddAdditionalContext(const char* key, const char* value) { m_additionalContextHasBeenSet = true; m_additionalContext.emplace(key, value); return *this; }
 
     /**
      * <p>[Optional] The simulated request body of an incoming invocation request.</p>
@@ -291,7 +297,7 @@ namespace Model
     /**
      * <p>[Optional] The simulated request body of an incoming invocation request.</p>
      */
-    inline void SetRequestBody(Aws::String&& value) { m_requestBodyHasBeenSet = true; m_requestBody = value; }
+    inline void SetRequestBody(Aws::String&& value) { m_requestBodyHasBeenSet = true; m_requestBody = std::move(value); }
 
     /**
      * <p>[Optional] The simulated request body of an incoming invocation request.</p>
@@ -306,7 +312,7 @@ namespace Model
     /**
      * <p>[Optional] The simulated request body of an incoming invocation request.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithRequestBody(Aws::String&& value) { SetRequestBody(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithRequestBody(Aws::String&& value) { SetRequestBody(std::move(value)); return *this;}
 
     /**
      * <p>[Optional] The simulated request body of an incoming invocation request.</p>
@@ -332,7 +338,7 @@ namespace Model
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline void SetRequestHeaders(Aws::Map<Aws::String, Aws::String>&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders = value; }
+    inline void SetRequestHeaders(Aws::Map<Aws::String, Aws::String>&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders = std::move(value); }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
@@ -346,56 +352,56 @@ namespace Model
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& WithRequestHeaders(Aws::Map<Aws::String, Aws::String>&& value) { SetRequestHeaders(value); return *this;}
+    inline TestInvokeAuthorizerRequest& WithRequestHeaders(Aws::Map<Aws::String, Aws::String>&& value) { SetRequestHeaders(std::move(value)); return *this;}
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const Aws::String& key, const Aws::String& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const Aws::String& key, const Aws::String& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(key, value); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, const Aws::String& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, const Aws::String& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const Aws::String& key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const Aws::String& key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const char* key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const char* key, Aws::String&& value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, const char* value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(Aws::String&& key, const char* value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>[Required] A key-value map of headers to simulate an incoming invocation
      * request. This is where the incoming authorization token, or identity source,
      * should be specified.</p>
      */
-    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const char* key, const char* value) { m_requestHeadersHasBeenSet = true; m_requestHeaders[key] = value; return *this; }
+    inline TestInvokeAuthorizerRequest& AddRequestHeaders(const char* key, const char* value) { m_requestHeadersHasBeenSet = true; m_requestHeaders.emplace(key, value); return *this; }
 
   private:
     Aws::String m_restApiId;

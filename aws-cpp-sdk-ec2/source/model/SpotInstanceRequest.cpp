@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/SpotInstanceRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,7 +33,9 @@ namespace Model
 SpotInstanceRequest::SpotInstanceRequest() : 
     m_spotInstanceRequestIdHasBeenSet(false),
     m_spotPriceHasBeenSet(false),
+    m_type(SpotInstanceType::NOT_SET),
     m_typeHasBeenSet(false),
+    m_state(SpotInstanceState::NOT_SET),
     m_stateHasBeenSet(false),
     m_faultHasBeenSet(false),
     m_statusHasBeenSet(false),
@@ -43,6 +46,7 @@ SpotInstanceRequest::SpotInstanceRequest() :
     m_launchSpecificationHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_createTimeHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
     m_blockDurationMinutes(0),
     m_blockDurationMinutesHasBeenSet(false),
@@ -55,7 +59,9 @@ SpotInstanceRequest::SpotInstanceRequest() :
 SpotInstanceRequest::SpotInstanceRequest(const XmlNode& xmlNode) : 
     m_spotInstanceRequestIdHasBeenSet(false),
     m_spotPriceHasBeenSet(false),
+    m_type(SpotInstanceType::NOT_SET),
     m_typeHasBeenSet(false),
+    m_state(SpotInstanceState::NOT_SET),
     m_stateHasBeenSet(false),
     m_faultHasBeenSet(false),
     m_statusHasBeenSet(false),
@@ -66,6 +72,7 @@ SpotInstanceRequest::SpotInstanceRequest(const XmlNode& xmlNode) :
     m_launchSpecificationHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_createTimeHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
     m_blockDurationMinutes(0),
     m_blockDurationMinutesHasBeenSet(false),
@@ -385,7 +392,7 @@ void SpotInstanceRequest::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

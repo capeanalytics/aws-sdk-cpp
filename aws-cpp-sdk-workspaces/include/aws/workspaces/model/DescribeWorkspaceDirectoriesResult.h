@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/workspaces/model/WorkspaceDirectory.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>Contains the results of the <a>DescribeWorkspaceDirectories</a>
-   * operation.</p>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectoriesResult">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API DescribeWorkspaceDirectoriesResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>An array of structures that contain information about the directories.</p>
      */
-    inline void SetDirectories(Aws::Vector<WorkspaceDirectory>&& value) { m_directories = value; }
+    inline void SetDirectories(Aws::Vector<WorkspaceDirectory>&& value) { m_directories = std::move(value); }
 
     /**
      * <p>An array of structures that contain information about the directories.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>An array of structures that contain information about the directories.</p>
      */
-    inline DescribeWorkspaceDirectoriesResult& WithDirectories(Aws::Vector<WorkspaceDirectory>&& value) { SetDirectories(value); return *this;}
+    inline DescribeWorkspaceDirectoriesResult& WithDirectories(Aws::Vector<WorkspaceDirectory>&& value) { SetDirectories(std::move(value)); return *this;}
 
     /**
      * <p>An array of structures that contain information about the directories.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>An array of structures that contain information about the directories.</p>
      */
-    inline DescribeWorkspaceDirectoriesResult& AddDirectories(WorkspaceDirectory&& value) { m_directories.push_back(value); return *this; }
+    inline DescribeWorkspaceDirectoriesResult& AddDirectories(WorkspaceDirectory&& value) { m_directories.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If not null, more results are available. Pass this value for the
@@ -102,7 +106,7 @@ namespace Model
      * retrieve the next set of items. This token is valid for one day and must be used
      * within that time frame.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If not null, more results are available. Pass this value for the
@@ -126,7 +130,7 @@ namespace Model
      * retrieve the next set of items. This token is valid for one day and must be used
      * within that time frame.</p>
      */
-    inline DescribeWorkspaceDirectoriesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeWorkspaceDirectoriesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If not null, more results are available. Pass this value for the

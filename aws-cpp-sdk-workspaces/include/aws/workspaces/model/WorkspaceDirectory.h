@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/workspaces/model/WorkspaceDirectoryType.h>
 #include <aws/workspaces/model/WorkspaceDirectoryState.h>
 #include <aws/workspaces/model/DefaultWorkspaceCreationProperties.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 
   /**
    * <p>Contains information about an AWS Directory Service directory for use with
-   * Amazon WorkSpaces.</p>
+   * Amazon WorkSpaces.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/WorkspaceDirectory">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API WorkspaceDirectory
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The directory identifier.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline WorkspaceDirectory& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline WorkspaceDirectory& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The directory identifier.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The directory alias.</p>
      */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = value; }
+    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
 
     /**
      * <p>The directory alias.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The directory alias.</p>
      */
-    inline WorkspaceDirectory& WithAlias(Aws::String&& value) { SetAlias(value); return *this;}
+    inline WorkspaceDirectory& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
 
     /**
      * <p>The directory alias.</p>
@@ -129,7 +133,7 @@ namespace Model
     /**
      * <p>The name of the directory.</p>
      */
-    inline void SetDirectoryName(Aws::String&& value) { m_directoryNameHasBeenSet = true; m_directoryName = value; }
+    inline void SetDirectoryName(Aws::String&& value) { m_directoryNameHasBeenSet = true; m_directoryName = std::move(value); }
 
     /**
      * <p>The name of the directory.</p>
@@ -144,7 +148,7 @@ namespace Model
     /**
      * <p>The name of the directory.</p>
      */
-    inline WorkspaceDirectory& WithDirectoryName(Aws::String&& value) { SetDirectoryName(value); return *this;}
+    inline WorkspaceDirectory& WithDirectoryName(Aws::String&& value) { SetDirectoryName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the directory.</p>
@@ -167,7 +171,7 @@ namespace Model
      * <p>The registration code for the directory. This is the code that users enter in
      * their Amazon WorkSpaces client application to connect to the directory.</p>
      */
-    inline void SetRegistrationCode(Aws::String&& value) { m_registrationCodeHasBeenSet = true; m_registrationCode = value; }
+    inline void SetRegistrationCode(Aws::String&& value) { m_registrationCodeHasBeenSet = true; m_registrationCode = std::move(value); }
 
     /**
      * <p>The registration code for the directory. This is the code that users enter in
@@ -185,7 +189,7 @@ namespace Model
      * <p>The registration code for the directory. This is the code that users enter in
      * their Amazon WorkSpaces client application to connect to the directory.</p>
      */
-    inline WorkspaceDirectory& WithRegistrationCode(Aws::String&& value) { SetRegistrationCode(value); return *this;}
+    inline WorkspaceDirectory& WithRegistrationCode(Aws::String&& value) { SetRegistrationCode(std::move(value)); return *this;}
 
     /**
      * <p>The registration code for the directory. This is the code that users enter in
@@ -209,7 +213,7 @@ namespace Model
      * <p>An array of strings that contains the identifiers of the subnets used with
      * the directory.</p>
      */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
      * <p>An array of strings that contains the identifiers of the subnets used with
@@ -221,7 +225,7 @@ namespace Model
      * <p>An array of strings that contains the identifiers of the subnets used with
      * the directory.</p>
      */
-    inline WorkspaceDirectory& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(value); return *this;}
+    inline WorkspaceDirectory& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
      * <p>An array of strings that contains the identifiers of the subnets used with
@@ -233,7 +237,7 @@ namespace Model
      * <p>An array of strings that contains the identifiers of the subnets used with
      * the directory.</p>
      */
-    inline WorkspaceDirectory& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
+    inline WorkspaceDirectory& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of strings that contains the identifiers of the subnets used with
@@ -257,7 +261,7 @@ namespace Model
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
      * directory.</p>
      */
-    inline void SetDnsIpAddresses(Aws::Vector<Aws::String>&& value) { m_dnsIpAddressesHasBeenSet = true; m_dnsIpAddresses = value; }
+    inline void SetDnsIpAddresses(Aws::Vector<Aws::String>&& value) { m_dnsIpAddressesHasBeenSet = true; m_dnsIpAddresses = std::move(value); }
 
     /**
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
@@ -269,7 +273,7 @@ namespace Model
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
      * directory.</p>
      */
-    inline WorkspaceDirectory& WithDnsIpAddresses(Aws::Vector<Aws::String>&& value) { SetDnsIpAddresses(value); return *this;}
+    inline WorkspaceDirectory& WithDnsIpAddresses(Aws::Vector<Aws::String>&& value) { SetDnsIpAddresses(std::move(value)); return *this;}
 
     /**
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
@@ -281,7 +285,7 @@ namespace Model
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
      * directory.</p>
      */
-    inline WorkspaceDirectory& AddDnsIpAddresses(Aws::String&& value) { m_dnsIpAddressesHasBeenSet = true; m_dnsIpAddresses.push_back(value); return *this; }
+    inline WorkspaceDirectory& AddDnsIpAddresses(Aws::String&& value) { m_dnsIpAddressesHasBeenSet = true; m_dnsIpAddresses.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of strings that contains the IP addresses of the DNS servers for the
@@ -302,7 +306,7 @@ namespace Model
     /**
      * <p>The user name for the service account.</p>
      */
-    inline void SetCustomerUserName(Aws::String&& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = value; }
+    inline void SetCustomerUserName(Aws::String&& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = std::move(value); }
 
     /**
      * <p>The user name for the service account.</p>
@@ -317,7 +321,7 @@ namespace Model
     /**
      * <p>The user name for the service account.</p>
      */
-    inline WorkspaceDirectory& WithCustomerUserName(Aws::String&& value) { SetCustomerUserName(value); return *this;}
+    inline WorkspaceDirectory& WithCustomerUserName(Aws::String&& value) { SetCustomerUserName(std::move(value)); return *this;}
 
     /**
      * <p>The user name for the service account.</p>
@@ -343,7 +347,7 @@ namespace Model
      * WorkSpaces to make calls to other services, such as Amazon EC2, on your
      * behalf.</p>
      */
-    inline void SetIamRoleId(Aws::String&& value) { m_iamRoleIdHasBeenSet = true; m_iamRoleId = value; }
+    inline void SetIamRoleId(Aws::String&& value) { m_iamRoleIdHasBeenSet = true; m_iamRoleId = std::move(value); }
 
     /**
      * <p>The identifier of the IAM role. This is the role that allows Amazon
@@ -364,7 +368,7 @@ namespace Model
      * WorkSpaces to make calls to other services, such as Amazon EC2, on your
      * behalf.</p>
      */
-    inline WorkspaceDirectory& WithIamRoleId(Aws::String&& value) { SetIamRoleId(value); return *this;}
+    inline WorkspaceDirectory& WithIamRoleId(Aws::String&& value) { SetIamRoleId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the IAM role. This is the role that allows Amazon
@@ -386,7 +390,7 @@ namespace Model
     /**
      * <p>The directory type.</p>
      */
-    inline void SetDirectoryType(WorkspaceDirectoryType&& value) { m_directoryTypeHasBeenSet = true; m_directoryType = value; }
+    inline void SetDirectoryType(WorkspaceDirectoryType&& value) { m_directoryTypeHasBeenSet = true; m_directoryType = std::move(value); }
 
     /**
      * <p>The directory type.</p>
@@ -396,7 +400,7 @@ namespace Model
     /**
      * <p>The directory type.</p>
      */
-    inline WorkspaceDirectory& WithDirectoryType(WorkspaceDirectoryType&& value) { SetDirectoryType(value); return *this;}
+    inline WorkspaceDirectory& WithDirectoryType(WorkspaceDirectoryType&& value) { SetDirectoryType(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
@@ -411,7 +415,7 @@ namespace Model
     /**
      * <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
      */
-    inline void SetWorkspaceSecurityGroupId(Aws::String&& value) { m_workspaceSecurityGroupIdHasBeenSet = true; m_workspaceSecurityGroupId = value; }
+    inline void SetWorkspaceSecurityGroupId(Aws::String&& value) { m_workspaceSecurityGroupIdHasBeenSet = true; m_workspaceSecurityGroupId = std::move(value); }
 
     /**
      * <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
@@ -426,7 +430,7 @@ namespace Model
     /**
      * <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
      */
-    inline WorkspaceDirectory& WithWorkspaceSecurityGroupId(Aws::String&& value) { SetWorkspaceSecurityGroupId(value); return *this;}
+    inline WorkspaceDirectory& WithWorkspaceSecurityGroupId(Aws::String&& value) { SetWorkspaceSecurityGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
@@ -446,7 +450,7 @@ namespace Model
     /**
      * <p>The state of the directory's registration with Amazon WorkSpaces</p>
      */
-    inline void SetState(WorkspaceDirectoryState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(WorkspaceDirectoryState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the directory's registration with Amazon WorkSpaces</p>
@@ -456,7 +460,7 @@ namespace Model
     /**
      * <p>The state of the directory's registration with Amazon WorkSpaces</p>
      */
-    inline WorkspaceDirectory& WithState(WorkspaceDirectoryState&& value) { SetState(value); return *this;}
+    inline WorkspaceDirectory& WithState(WorkspaceDirectoryState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>A structure that specifies the default creation properties for all WorkSpaces
@@ -474,7 +478,7 @@ namespace Model
      * <p>A structure that specifies the default creation properties for all WorkSpaces
      * in the directory.</p>
      */
-    inline void SetWorkspaceCreationProperties(DefaultWorkspaceCreationProperties&& value) { m_workspaceCreationPropertiesHasBeenSet = true; m_workspaceCreationProperties = value; }
+    inline void SetWorkspaceCreationProperties(DefaultWorkspaceCreationProperties&& value) { m_workspaceCreationPropertiesHasBeenSet = true; m_workspaceCreationProperties = std::move(value); }
 
     /**
      * <p>A structure that specifies the default creation properties for all WorkSpaces
@@ -486,7 +490,7 @@ namespace Model
      * <p>A structure that specifies the default creation properties for all WorkSpaces
      * in the directory.</p>
      */
-    inline WorkspaceDirectory& WithWorkspaceCreationProperties(DefaultWorkspaceCreationProperties&& value) { SetWorkspaceCreationProperties(value); return *this;}
+    inline WorkspaceDirectory& WithWorkspaceCreationProperties(DefaultWorkspaceCreationProperties&& value) { SetWorkspaceCreationProperties(std::move(value)); return *this;}
 
   private:
     Aws::String m_directoryId;

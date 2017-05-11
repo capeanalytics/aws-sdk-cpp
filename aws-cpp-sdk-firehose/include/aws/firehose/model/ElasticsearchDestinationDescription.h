@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -20,7 +21,9 @@
 #include <aws/firehose/model/ElasticsearchRetryOptions.h>
 #include <aws/firehose/model/ElasticsearchS3BackupMode.h>
 #include <aws/firehose/model/S3DestinationDescription.h>
+#include <aws/firehose/model/ProcessingConfiguration.h>
 #include <aws/firehose/model/CloudWatchLoggingOptions.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +40,9 @@ namespace Model
 {
 
   /**
-   * <p>The destination description in Amazon ES.</p>
+   * <p>The destination description in Amazon ES.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/ElasticsearchDestinationDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_FIREHOSE_API ElasticsearchDestinationDescription
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The ARN of the AWS credentials.</p>
      */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
 
     /**
      * <p>The ARN of the AWS credentials.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>The ARN of the AWS credentials.</p>
      */
-    inline ElasticsearchDestinationDescription& WithRoleARN(Aws::String&& value) { SetRoleARN(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the AWS credentials.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The ARN of the Amazon ES domain.</p>
      */
-    inline void SetDomainARN(Aws::String&& value) { m_domainARNHasBeenSet = true; m_domainARN = value; }
+    inline void SetDomainARN(Aws::String&& value) { m_domainARNHasBeenSet = true; m_domainARN = std::move(value); }
 
     /**
      * <p>The ARN of the Amazon ES domain.</p>
@@ -110,7 +115,7 @@ namespace Model
     /**
      * <p>The ARN of the Amazon ES domain.</p>
      */
-    inline ElasticsearchDestinationDescription& WithDomainARN(Aws::String&& value) { SetDomainARN(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithDomainARN(Aws::String&& value) { SetDomainARN(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the Amazon ES domain.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The Elasticsearch index name.</p>
      */
-    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = value; }
+    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = std::move(value); }
 
     /**
      * <p>The Elasticsearch index name.</p>
@@ -145,7 +150,7 @@ namespace Model
     /**
      * <p>The Elasticsearch index name.</p>
      */
-    inline ElasticsearchDestinationDescription& WithIndexName(Aws::String&& value) { SetIndexName(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithIndexName(Aws::String&& value) { SetIndexName(std::move(value)); return *this;}
 
     /**
      * <p>The Elasticsearch index name.</p>
@@ -165,7 +170,7 @@ namespace Model
     /**
      * <p>The Elasticsearch type name.</p>
      */
-    inline void SetTypeName(Aws::String&& value) { m_typeNameHasBeenSet = true; m_typeName = value; }
+    inline void SetTypeName(Aws::String&& value) { m_typeNameHasBeenSet = true; m_typeName = std::move(value); }
 
     /**
      * <p>The Elasticsearch type name.</p>
@@ -180,7 +185,7 @@ namespace Model
     /**
      * <p>The Elasticsearch type name.</p>
      */
-    inline ElasticsearchDestinationDescription& WithTypeName(Aws::String&& value) { SetTypeName(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithTypeName(Aws::String&& value) { SetTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The Elasticsearch type name.</p>
@@ -200,7 +205,7 @@ namespace Model
     /**
      * <p>The Elasticsearch index rotation period</p>
      */
-    inline void SetIndexRotationPeriod(ElasticsearchIndexRotationPeriod&& value) { m_indexRotationPeriodHasBeenSet = true; m_indexRotationPeriod = value; }
+    inline void SetIndexRotationPeriod(ElasticsearchIndexRotationPeriod&& value) { m_indexRotationPeriodHasBeenSet = true; m_indexRotationPeriod = std::move(value); }
 
     /**
      * <p>The Elasticsearch index rotation period</p>
@@ -210,122 +215,157 @@ namespace Model
     /**
      * <p>The Elasticsearch index rotation period</p>
      */
-    inline ElasticsearchDestinationDescription& WithIndexRotationPeriod(ElasticsearchIndexRotationPeriod&& value) { SetIndexRotationPeriod(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithIndexRotationPeriod(ElasticsearchIndexRotationPeriod&& value) { SetIndexRotationPeriod(std::move(value)); return *this;}
 
     /**
-     * <p>Buffering options.</p>
+     * <p>The buffering options.</p>
      */
     inline const ElasticsearchBufferingHints& GetBufferingHints() const{ return m_bufferingHints; }
 
     /**
-     * <p>Buffering options.</p>
+     * <p>The buffering options.</p>
      */
     inline void SetBufferingHints(const ElasticsearchBufferingHints& value) { m_bufferingHintsHasBeenSet = true; m_bufferingHints = value; }
 
     /**
-     * <p>Buffering options.</p>
+     * <p>The buffering options.</p>
      */
-    inline void SetBufferingHints(ElasticsearchBufferingHints&& value) { m_bufferingHintsHasBeenSet = true; m_bufferingHints = value; }
+    inline void SetBufferingHints(ElasticsearchBufferingHints&& value) { m_bufferingHintsHasBeenSet = true; m_bufferingHints = std::move(value); }
 
     /**
-     * <p>Buffering options.</p>
+     * <p>The buffering options.</p>
      */
     inline ElasticsearchDestinationDescription& WithBufferingHints(const ElasticsearchBufferingHints& value) { SetBufferingHints(value); return *this;}
 
     /**
-     * <p>Buffering options.</p>
+     * <p>The buffering options.</p>
      */
-    inline ElasticsearchDestinationDescription& WithBufferingHints(ElasticsearchBufferingHints&& value) { SetBufferingHints(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithBufferingHints(ElasticsearchBufferingHints&& value) { SetBufferingHints(std::move(value)); return *this;}
 
     /**
-     * <p>Elasticsearch retry options.</p>
+     * <p>The Amazon ES retry options.</p>
      */
     inline const ElasticsearchRetryOptions& GetRetryOptions() const{ return m_retryOptions; }
 
     /**
-     * <p>Elasticsearch retry options.</p>
+     * <p>The Amazon ES retry options.</p>
      */
     inline void SetRetryOptions(const ElasticsearchRetryOptions& value) { m_retryOptionsHasBeenSet = true; m_retryOptions = value; }
 
     /**
-     * <p>Elasticsearch retry options.</p>
+     * <p>The Amazon ES retry options.</p>
      */
-    inline void SetRetryOptions(ElasticsearchRetryOptions&& value) { m_retryOptionsHasBeenSet = true; m_retryOptions = value; }
+    inline void SetRetryOptions(ElasticsearchRetryOptions&& value) { m_retryOptionsHasBeenSet = true; m_retryOptions = std::move(value); }
 
     /**
-     * <p>Elasticsearch retry options.</p>
+     * <p>The Amazon ES retry options.</p>
      */
     inline ElasticsearchDestinationDescription& WithRetryOptions(const ElasticsearchRetryOptions& value) { SetRetryOptions(value); return *this;}
 
     /**
-     * <p>Elasticsearch retry options.</p>
+     * <p>The Amazon ES retry options.</p>
      */
-    inline ElasticsearchDestinationDescription& WithRetryOptions(ElasticsearchRetryOptions&& value) { SetRetryOptions(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithRetryOptions(ElasticsearchRetryOptions&& value) { SetRetryOptions(std::move(value)); return *this;}
 
     /**
-     * <p>Amazon S3 backup mode.</p>
+     * <p>The Amazon S3 backup mode.</p>
      */
     inline const ElasticsearchS3BackupMode& GetS3BackupMode() const{ return m_s3BackupMode; }
 
     /**
-     * <p>Amazon S3 backup mode.</p>
+     * <p>The Amazon S3 backup mode.</p>
      */
     inline void SetS3BackupMode(const ElasticsearchS3BackupMode& value) { m_s3BackupModeHasBeenSet = true; m_s3BackupMode = value; }
 
     /**
-     * <p>Amazon S3 backup mode.</p>
+     * <p>The Amazon S3 backup mode.</p>
      */
-    inline void SetS3BackupMode(ElasticsearchS3BackupMode&& value) { m_s3BackupModeHasBeenSet = true; m_s3BackupMode = value; }
+    inline void SetS3BackupMode(ElasticsearchS3BackupMode&& value) { m_s3BackupModeHasBeenSet = true; m_s3BackupMode = std::move(value); }
 
     /**
-     * <p>Amazon S3 backup mode.</p>
+     * <p>The Amazon S3 backup mode.</p>
      */
     inline ElasticsearchDestinationDescription& WithS3BackupMode(const ElasticsearchS3BackupMode& value) { SetS3BackupMode(value); return *this;}
 
     /**
-     * <p>Amazon S3 backup mode.</p>
+     * <p>The Amazon S3 backup mode.</p>
      */
-    inline ElasticsearchDestinationDescription& WithS3BackupMode(ElasticsearchS3BackupMode&& value) { SetS3BackupMode(value); return *this;}
-
-    
-    inline const S3DestinationDescription& GetS3DestinationDescription() const{ return m_s3DestinationDescription; }
-
-    
-    inline void SetS3DestinationDescription(const S3DestinationDescription& value) { m_s3DestinationDescriptionHasBeenSet = true; m_s3DestinationDescription = value; }
-
-    
-    inline void SetS3DestinationDescription(S3DestinationDescription&& value) { m_s3DestinationDescriptionHasBeenSet = true; m_s3DestinationDescription = value; }
-
-    
-    inline ElasticsearchDestinationDescription& WithS3DestinationDescription(const S3DestinationDescription& value) { SetS3DestinationDescription(value); return *this;}
-
-    
-    inline ElasticsearchDestinationDescription& WithS3DestinationDescription(S3DestinationDescription&& value) { SetS3DestinationDescription(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithS3BackupMode(ElasticsearchS3BackupMode&& value) { SetS3BackupMode(std::move(value)); return *this;}
 
     /**
-     * <p>CloudWatch logging options.</p>
+     * <p>The Amazon S3 destination.</p>
+     */
+    inline const S3DestinationDescription& GetS3DestinationDescription() const{ return m_s3DestinationDescription; }
+
+    /**
+     * <p>The Amazon S3 destination.</p>
+     */
+    inline void SetS3DestinationDescription(const S3DestinationDescription& value) { m_s3DestinationDescriptionHasBeenSet = true; m_s3DestinationDescription = value; }
+
+    /**
+     * <p>The Amazon S3 destination.</p>
+     */
+    inline void SetS3DestinationDescription(S3DestinationDescription&& value) { m_s3DestinationDescriptionHasBeenSet = true; m_s3DestinationDescription = std::move(value); }
+
+    /**
+     * <p>The Amazon S3 destination.</p>
+     */
+    inline ElasticsearchDestinationDescription& WithS3DestinationDescription(const S3DestinationDescription& value) { SetS3DestinationDescription(value); return *this;}
+
+    /**
+     * <p>The Amazon S3 destination.</p>
+     */
+    inline ElasticsearchDestinationDescription& WithS3DestinationDescription(S3DestinationDescription&& value) { SetS3DestinationDescription(std::move(value)); return *this;}
+
+    /**
+     * <p>The data processing configuration.</p>
+     */
+    inline const ProcessingConfiguration& GetProcessingConfiguration() const{ return m_processingConfiguration; }
+
+    /**
+     * <p>The data processing configuration.</p>
+     */
+    inline void SetProcessingConfiguration(const ProcessingConfiguration& value) { m_processingConfigurationHasBeenSet = true; m_processingConfiguration = value; }
+
+    /**
+     * <p>The data processing configuration.</p>
+     */
+    inline void SetProcessingConfiguration(ProcessingConfiguration&& value) { m_processingConfigurationHasBeenSet = true; m_processingConfiguration = std::move(value); }
+
+    /**
+     * <p>The data processing configuration.</p>
+     */
+    inline ElasticsearchDestinationDescription& WithProcessingConfiguration(const ProcessingConfiguration& value) { SetProcessingConfiguration(value); return *this;}
+
+    /**
+     * <p>The data processing configuration.</p>
+     */
+    inline ElasticsearchDestinationDescription& WithProcessingConfiguration(ProcessingConfiguration&& value) { SetProcessingConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>The CloudWatch logging options.</p>
      */
     inline const CloudWatchLoggingOptions& GetCloudWatchLoggingOptions() const{ return m_cloudWatchLoggingOptions; }
 
     /**
-     * <p>CloudWatch logging options.</p>
+     * <p>The CloudWatch logging options.</p>
      */
     inline void SetCloudWatchLoggingOptions(const CloudWatchLoggingOptions& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = value; }
 
     /**
-     * <p>CloudWatch logging options.</p>
+     * <p>The CloudWatch logging options.</p>
      */
-    inline void SetCloudWatchLoggingOptions(CloudWatchLoggingOptions&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = value; }
+    inline void SetCloudWatchLoggingOptions(CloudWatchLoggingOptions&& value) { m_cloudWatchLoggingOptionsHasBeenSet = true; m_cloudWatchLoggingOptions = std::move(value); }
 
     /**
-     * <p>CloudWatch logging options.</p>
+     * <p>The CloudWatch logging options.</p>
      */
     inline ElasticsearchDestinationDescription& WithCloudWatchLoggingOptions(const CloudWatchLoggingOptions& value) { SetCloudWatchLoggingOptions(value); return *this;}
 
     /**
-     * <p>CloudWatch logging options.</p>
+     * <p>The CloudWatch logging options.</p>
      */
-    inline ElasticsearchDestinationDescription& WithCloudWatchLoggingOptions(CloudWatchLoggingOptions&& value) { SetCloudWatchLoggingOptions(value); return *this;}
+    inline ElasticsearchDestinationDescription& WithCloudWatchLoggingOptions(CloudWatchLoggingOptions&& value) { SetCloudWatchLoggingOptions(std::move(value)); return *this;}
 
   private:
     Aws::String m_roleARN;
@@ -346,6 +386,8 @@ namespace Model
     bool m_s3BackupModeHasBeenSet;
     S3DestinationDescription m_s3DestinationDescription;
     bool m_s3DestinationDescriptionHasBeenSet;
+    ProcessingConfiguration m_processingConfiguration;
+    bool m_processingConfigurationHasBeenSet;
     CloudWatchLoggingOptions m_cloudWatchLoggingOptions;
     bool m_cloudWatchLoggingOptionsHasBeenSet;
   };

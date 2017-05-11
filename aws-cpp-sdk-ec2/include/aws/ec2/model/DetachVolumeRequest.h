@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DetachVolume.</p>
+   * <p>Contains the parameters for DetachVolume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolumeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DetachVolumeRequest : public EC2Request
   {
@@ -33,6 +37,11 @@ namespace Model
     DetachVolumeRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
+    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
 
     /**
      * <p>The ID of the volume.</p>
@@ -85,7 +94,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline DetachVolumeRequest& WithVolumeId(Aws::String&& value) { SetVolumeId(value); return *this;}
+    inline DetachVolumeRequest& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the volume.</p>
@@ -105,7 +114,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -120,7 +129,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline DetachVolumeRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline DetachVolumeRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -140,7 +149,7 @@ namespace Model
     /**
      * <p>The device name.</p>
      */
-    inline void SetDevice(Aws::String&& value) { m_deviceHasBeenSet = true; m_device = value; }
+    inline void SetDevice(Aws::String&& value) { m_deviceHasBeenSet = true; m_device = std::move(value); }
 
     /**
      * <p>The device name.</p>
@@ -155,7 +164,7 @@ namespace Model
     /**
      * <p>The device name.</p>
      */
-    inline DetachVolumeRequest& WithDevice(Aws::String&& value) { SetDevice(value); return *this;}
+    inline DetachVolumeRequest& WithDevice(Aws::String&& value) { SetDevice(std::move(value)); return *this;}
 
     /**
      * <p>The device name.</p>

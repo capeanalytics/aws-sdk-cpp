@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>Identifier (ID) of the directory from which you want to remove the IP
      * addresses.</p>
@@ -51,7 +54,7 @@ namespace Model
      * <p>Identifier (ID) of the directory from which you want to remove the IP
      * addresses.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>Identifier (ID) of the directory from which you want to remove the IP
@@ -69,7 +72,7 @@ namespace Model
      * <p>Identifier (ID) of the directory from which you want to remove the IP
      * addresses.</p>
      */
-    inline RemoveIpRoutesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline RemoveIpRoutesRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>Identifier (ID) of the directory from which you want to remove the IP
@@ -90,7 +93,7 @@ namespace Model
     /**
      * <p>IP address blocks that you want to remove.</p>
      */
-    inline void SetCidrIps(Aws::Vector<Aws::String>&& value) { m_cidrIpsHasBeenSet = true; m_cidrIps = value; }
+    inline void SetCidrIps(Aws::Vector<Aws::String>&& value) { m_cidrIpsHasBeenSet = true; m_cidrIps = std::move(value); }
 
     /**
      * <p>IP address blocks that you want to remove.</p>
@@ -100,7 +103,7 @@ namespace Model
     /**
      * <p>IP address blocks that you want to remove.</p>
      */
-    inline RemoveIpRoutesRequest& WithCidrIps(Aws::Vector<Aws::String>&& value) { SetCidrIps(value); return *this;}
+    inline RemoveIpRoutesRequest& WithCidrIps(Aws::Vector<Aws::String>&& value) { SetCidrIps(std::move(value)); return *this;}
 
     /**
      * <p>IP address blocks that you want to remove.</p>
@@ -110,7 +113,7 @@ namespace Model
     /**
      * <p>IP address blocks that you want to remove.</p>
      */
-    inline RemoveIpRoutesRequest& AddCidrIps(Aws::String&& value) { m_cidrIpsHasBeenSet = true; m_cidrIps.push_back(value); return *this; }
+    inline RemoveIpRoutesRequest& AddCidrIps(Aws::String&& value) { m_cidrIpsHasBeenSet = true; m_cidrIps.push_back(std::move(value)); return *this; }
 
     /**
      * <p>IP address blocks that you want to remove.</p>

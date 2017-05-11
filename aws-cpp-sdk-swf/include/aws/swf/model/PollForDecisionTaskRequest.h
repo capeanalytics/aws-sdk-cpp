@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/TaskList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain containing the task lists to poll.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the task lists to poll.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain containing the task lists to poll.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the task lists to poll.</p>
      */
-    inline PollForDecisionTaskRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline PollForDecisionTaskRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain containing the task lists to poll.</p>
@@ -95,7 +98,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = value; }
+    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
 
     /**
      * <p>Specifies the task list to poll for decision tasks.</p> <p>The specified
@@ -113,7 +116,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline PollForDecisionTaskRequest& WithTaskList(TaskList&& value) { SetTaskList(value); return *this;}
+    inline PollForDecisionTaskRequest& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
 
     /**
      * <p>Identity of the decider making the request, which is recorded in the
@@ -134,7 +137,7 @@ namespace Model
      * DecisionTaskStarted event in the workflow history. This enables diagnostic
      * tracing when problems arise. The form of this identity is user defined.</p>
      */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = value; }
+    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
 
     /**
      * <p>Identity of the decider making the request, which is recorded in the
@@ -155,7 +158,7 @@ namespace Model
      * DecisionTaskStarted event in the workflow history. This enables diagnostic
      * tracing when problems arise. The form of this identity is user defined.</p>
      */
-    inline PollForDecisionTaskRequest& WithIdentity(Aws::String&& value) { SetIdentity(value); return *this;}
+    inline PollForDecisionTaskRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
 
     /**
      * <p>Identity of the decider making the request, which is recorded in the
@@ -204,7 +207,7 @@ namespace Model
      * retrieve the next page of history records. Calling <a>PollForDecisionTask</a>
      * with a <code>nextPageToken</code> will not return a new decision task.</note>.
      */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = value; }
+    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::move(value); }
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -246,7 +249,7 @@ namespace Model
      * retrieve the next page of history records. Calling <a>PollForDecisionTask</a>
      * with a <code>nextPageToken</code> will not return a new decision task.</note>.
      */
-    inline PollForDecisionTaskRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(value); return *this;}
+    inline PollForDecisionTaskRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are

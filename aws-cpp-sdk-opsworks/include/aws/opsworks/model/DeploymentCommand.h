@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/model/DeploymentCommandName.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Used to specify a stack or deployment command.</p>
+   * <p>Used to specify a stack or deployment command.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DeploymentCommand">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API DeploymentCommand
   {
@@ -63,9 +67,9 @@ namespace Model
      * <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to
      * {"migrate":["true"]} to migrate the database. The default setting is
      * {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app
-     * back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to
-     * roll an app back as many as four versions.</p> </li> <li> <p>
+     * back to the previous version. When you update an app, AWS OpsWorks Stacks stores
+     * the previous version, up to a maximum of five versions. You can use this command
+     * to roll an app back as many as four versions.</p> </li> <li> <p>
      * <code>start</code>: Start the app's web or application server.</p> </li> <li>
      * <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li>
      * <p> <code>restart</code>: Restart the app's web or application server.</p> </li>
@@ -92,9 +96,9 @@ namespace Model
      * <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to
      * {"migrate":["true"]} to migrate the database. The default setting is
      * {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app
-     * back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to
-     * roll an app back as many as four versions.</p> </li> <li> <p>
+     * back to the previous version. When you update an app, AWS OpsWorks Stacks stores
+     * the previous version, up to a maximum of five versions. You can use this command
+     * to roll an app back as many as four versions.</p> </li> <li> <p>
      * <code>start</code>: Start the app's web or application server.</p> </li> <li>
      * <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li>
      * <p> <code>restart</code>: Restart the app's web or application server.</p> </li>
@@ -121,15 +125,15 @@ namespace Model
      * <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to
      * {"migrate":["true"]} to migrate the database. The default setting is
      * {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app
-     * back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to
-     * roll an app back as many as four versions.</p> </li> <li> <p>
+     * back to the previous version. When you update an app, AWS OpsWorks Stacks stores
+     * the previous version, up to a maximum of five versions. You can use this command
+     * to roll an app back as many as four versions.</p> </li> <li> <p>
      * <code>start</code>: Start the app's web or application server.</p> </li> <li>
      * <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li>
      * <p> <code>restart</code>: Restart the app's web or application server.</p> </li>
      * <li> <p> <code>undeploy</code>: Undeploy the app.</p> </li> </ul>
      */
-    inline void SetName(DeploymentCommandName&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(DeploymentCommandName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>Specifies the operation. You can specify only one command.</p> <p>For stacks,
@@ -150,9 +154,9 @@ namespace Model
      * <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to
      * {"migrate":["true"]} to migrate the database. The default setting is
      * {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app
-     * back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to
-     * roll an app back as many as four versions.</p> </li> <li> <p>
+     * back to the previous version. When you update an app, AWS OpsWorks Stacks stores
+     * the previous version, up to a maximum of five versions. You can use this command
+     * to roll an app back as many as four versions.</p> </li> <li> <p>
      * <code>start</code>: Start the app's web or application server.</p> </li> <li>
      * <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li>
      * <p> <code>restart</code>: Restart the app's web or application server.</p> </li>
@@ -179,15 +183,15 @@ namespace Model
      * <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to
      * {"migrate":["true"]} to migrate the database. The default setting is
      * {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app
-     * back to the previous version. When you update an app, AWS OpsWorks stores the
-     * previous version, up to a maximum of five versions. You can use this command to
-     * roll an app back as many as four versions.</p> </li> <li> <p>
+     * back to the previous version. When you update an app, AWS OpsWorks Stacks stores
+     * the previous version, up to a maximum of five versions. You can use this command
+     * to roll an app back as many as four versions.</p> </li> <li> <p>
      * <code>start</code>: Start the app's web or application server.</p> </li> <li>
      * <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li>
      * <p> <code>restart</code>: Restart the app's web or application server.</p> </li>
      * <li> <p> <code>undeploy</code>: Undeploy the app.</p> </li> </ul>
      */
-    inline DeploymentCommand& WithName(DeploymentCommandName&& value) { SetName(value); return *this;}
+    inline DeploymentCommand& WithName(DeploymentCommandName&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -198,12 +202,12 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
     inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetArgs() const{ return m_args; }
 
@@ -216,12 +220,12 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
     inline void SetArgs(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { m_argsHasBeenSet = true; m_args = value; }
 
@@ -234,14 +238,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline void SetArgs(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_argsHasBeenSet = true; m_args = value; }
+    inline void SetArgs(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_argsHasBeenSet = true; m_args = std::move(value); }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -252,12 +256,12 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
     inline DeploymentCommand& WithArgs(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { SetArgs(value); return *this;}
 
@@ -270,14 +274,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& WithArgs(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetArgs(value); return *this;}
+    inline DeploymentCommand& WithArgs(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetArgs(std::move(value)); return *this;}
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -288,14 +292,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args.emplace(key, value); return *this; }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -306,14 +310,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -324,14 +328,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -342,14 +346,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -360,14 +364,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(const char* key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(const char* key, Aws::Vector<Aws::String>&& value) { m_argsHasBeenSet = true; m_args.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The arguments of those commands that take arguments. It should be set to a
@@ -378,14 +382,14 @@ namespace Model
      * instances whose OS you want to upgrade, such as <code>Amazon Linux
      * 2014.09</code>. You must also set the <code>allow_reboot</code> argument to
      * true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow
-     * AWS OpsWorks to reboot the instances if necessary, after installing the updates.
-     * This argument can be set to either <code>true</code> or <code>false</code>. The
-     * default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade
-     * an instance to Amazon Linux 2014.09, set <code>Args</code> to the following.</p>
-     * <p> <code> { "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"] }
-     * </code> </p>
+     * AWS OpsWorks Stacks to reboot the instances if necessary, after installing the
+     * updates. This argument can be set to either <code>true</code> or
+     * <code>false</code>. The default value is <code>false</code>.</p> </li> </ul>
+     * <p>For example, to upgrade an instance to Amazon Linux 2014.09, set
+     * <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon
+     * Linux 2014.09"], "allow_reboot":["true"] } </code> </p>
      */
-    inline DeploymentCommand& AddArgs(const char* key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args[key] = value; return *this; }
+    inline DeploymentCommand& AddArgs(const char* key, const Aws::Vector<Aws::String>& value) { m_argsHasBeenSet = true; m_args.emplace(key, value); return *this; }
 
   private:
     DeploymentCommandName m_name;

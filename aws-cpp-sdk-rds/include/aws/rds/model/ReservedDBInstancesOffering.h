@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/RecurringCharge.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 
   /**
    * <p> This data type is used as a response element in the
-   * <a>DescribeReservedDBInstancesOfferings</a> action. </p>
+   * <a>DescribeReservedDBInstancesOfferings</a> action. </p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ReservedDBInstancesOffering">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ReservedDBInstancesOffering
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The offering identifier.</p>
      */
-    inline void SetReservedDBInstancesOfferingId(Aws::String&& value) { m_reservedDBInstancesOfferingIdHasBeenSet = true; m_reservedDBInstancesOfferingId = value; }
+    inline void SetReservedDBInstancesOfferingId(Aws::String&& value) { m_reservedDBInstancesOfferingIdHasBeenSet = true; m_reservedDBInstancesOfferingId = std::move(value); }
 
     /**
      * <p>The offering identifier.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>The offering identifier.</p>
      */
-    inline ReservedDBInstancesOffering& WithReservedDBInstancesOfferingId(Aws::String&& value) { SetReservedDBInstancesOfferingId(value); return *this;}
+    inline ReservedDBInstancesOffering& WithReservedDBInstancesOfferingId(Aws::String&& value) { SetReservedDBInstancesOfferingId(std::move(value)); return *this;}
 
     /**
      * <p>The offering identifier.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The DB instance class for the reserved DB instance.</p>
      */
-    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = value; }
+    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = std::move(value); }
 
     /**
      * <p>The DB instance class for the reserved DB instance.</p>
@@ -110,7 +115,7 @@ namespace Model
     /**
      * <p>The DB instance class for the reserved DB instance.</p>
      */
-    inline ReservedDBInstancesOffering& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(value); return *this;}
+    inline ReservedDBInstancesOffering& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(std::move(value)); return *this;}
 
     /**
      * <p>The DB instance class for the reserved DB instance.</p>
@@ -175,7 +180,7 @@ namespace Model
     /**
      * <p>The currency code for the reserved DB instance offering.</p>
      */
-    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = value; }
+    inline void SetCurrencyCode(Aws::String&& value) { m_currencyCodeHasBeenSet = true; m_currencyCode = std::move(value); }
 
     /**
      * <p>The currency code for the reserved DB instance offering.</p>
@@ -190,7 +195,7 @@ namespace Model
     /**
      * <p>The currency code for the reserved DB instance offering.</p>
      */
-    inline ReservedDBInstancesOffering& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(value); return *this;}
+    inline ReservedDBInstancesOffering& WithCurrencyCode(Aws::String&& value) { SetCurrencyCode(std::move(value)); return *this;}
 
     /**
      * <p>The currency code for the reserved DB instance offering.</p>
@@ -210,7 +215,7 @@ namespace Model
     /**
      * <p>The database engine used by the offering.</p>
      */
-    inline void SetProductDescription(Aws::String&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = value; }
+    inline void SetProductDescription(Aws::String&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = std::move(value); }
 
     /**
      * <p>The database engine used by the offering.</p>
@@ -225,7 +230,7 @@ namespace Model
     /**
      * <p>The database engine used by the offering.</p>
      */
-    inline ReservedDBInstancesOffering& WithProductDescription(Aws::String&& value) { SetProductDescription(value); return *this;}
+    inline ReservedDBInstancesOffering& WithProductDescription(Aws::String&& value) { SetProductDescription(std::move(value)); return *this;}
 
     /**
      * <p>The database engine used by the offering.</p>
@@ -245,7 +250,7 @@ namespace Model
     /**
      * <p>The offering type.</p>
      */
-    inline void SetOfferingType(Aws::String&& value) { m_offeringTypeHasBeenSet = true; m_offeringType = value; }
+    inline void SetOfferingType(Aws::String&& value) { m_offeringTypeHasBeenSet = true; m_offeringType = std::move(value); }
 
     /**
      * <p>The offering type.</p>
@@ -260,7 +265,7 @@ namespace Model
     /**
      * <p>The offering type.</p>
      */
-    inline ReservedDBInstancesOffering& WithOfferingType(Aws::String&& value) { SetOfferingType(value); return *this;}
+    inline ReservedDBInstancesOffering& WithOfferingType(Aws::String&& value) { SetOfferingType(std::move(value)); return *this;}
 
     /**
      * <p>The offering type.</p>
@@ -295,7 +300,7 @@ namespace Model
     /**
      * <p>The recurring price charged to run this reserved DB instance.</p>
      */
-    inline void SetRecurringCharges(Aws::Vector<RecurringCharge>&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges = value; }
+    inline void SetRecurringCharges(Aws::Vector<RecurringCharge>&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges = std::move(value); }
 
     /**
      * <p>The recurring price charged to run this reserved DB instance.</p>
@@ -305,7 +310,7 @@ namespace Model
     /**
      * <p>The recurring price charged to run this reserved DB instance.</p>
      */
-    inline ReservedDBInstancesOffering& WithRecurringCharges(Aws::Vector<RecurringCharge>&& value) { SetRecurringCharges(value); return *this;}
+    inline ReservedDBInstancesOffering& WithRecurringCharges(Aws::Vector<RecurringCharge>&& value) { SetRecurringCharges(std::move(value)); return *this;}
 
     /**
      * <p>The recurring price charged to run this reserved DB instance.</p>
@@ -315,7 +320,7 @@ namespace Model
     /**
      * <p>The recurring price charged to run this reserved DB instance.</p>
      */
-    inline ReservedDBInstancesOffering& AddRecurringCharges(RecurringCharge&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges.push_back(value); return *this; }
+    inline ReservedDBInstancesOffering& AddRecurringCharges(RecurringCharge&& value) { m_recurringChargesHasBeenSet = true; m_recurringCharges.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_reservedDBInstancesOfferingId;

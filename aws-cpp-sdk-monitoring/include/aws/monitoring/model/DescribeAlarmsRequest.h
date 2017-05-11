@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/monitoring/CloudWatchRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/monitoring/model/StateValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,6 @@ namespace Model
 {
 
   /**
-   * <p>Describes the inputs for DescribeAlarms.</p>
    */
   class AWS_CLOUDWATCH_API DescribeAlarmsRequest : public CloudWatchRequest
   {
@@ -35,84 +36,89 @@ namespace Model
     DescribeAlarmsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
     inline const Aws::Vector<Aws::String>& GetAlarmNames() const{ return m_alarmNames; }
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
     inline void SetAlarmNames(const Aws::Vector<Aws::String>& value) { m_alarmNamesHasBeenSet = true; m_alarmNames = value; }
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
-    inline void SetAlarmNames(Aws::Vector<Aws::String>&& value) { m_alarmNamesHasBeenSet = true; m_alarmNames = value; }
+    inline void SetAlarmNames(Aws::Vector<Aws::String>&& value) { m_alarmNamesHasBeenSet = true; m_alarmNames = std::move(value); }
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
     inline DescribeAlarmsRequest& WithAlarmNames(const Aws::Vector<Aws::String>& value) { SetAlarmNames(value); return *this;}
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
-    inline DescribeAlarmsRequest& WithAlarmNames(Aws::Vector<Aws::String>&& value) { SetAlarmNames(value); return *this;}
+    inline DescribeAlarmsRequest& WithAlarmNames(Aws::Vector<Aws::String>&& value) { SetAlarmNames(std::move(value)); return *this;}
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
     inline DescribeAlarmsRequest& AddAlarmNames(const Aws::String& value) { m_alarmNamesHasBeenSet = true; m_alarmNames.push_back(value); return *this; }
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
-    inline DescribeAlarmsRequest& AddAlarmNames(Aws::String&& value) { m_alarmNamesHasBeenSet = true; m_alarmNames.push_back(value); return *this; }
+    inline DescribeAlarmsRequest& AddAlarmNames(Aws::String&& value) { m_alarmNamesHasBeenSet = true; m_alarmNames.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>A list of alarm names to retrieve information for.</p>
+     * <p>The names of the alarms.</p>
      */
     inline DescribeAlarmsRequest& AddAlarmNames(const char* value) { m_alarmNamesHasBeenSet = true; m_alarmNames.push_back(value); return *this; }
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
     inline const Aws::String& GetAlarmNamePrefix() const{ return m_alarmNamePrefix; }
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
     inline void SetAlarmNamePrefix(const Aws::String& value) { m_alarmNamePrefixHasBeenSet = true; m_alarmNamePrefix = value; }
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
-    inline void SetAlarmNamePrefix(Aws::String&& value) { m_alarmNamePrefixHasBeenSet = true; m_alarmNamePrefix = value; }
+    inline void SetAlarmNamePrefix(Aws::String&& value) { m_alarmNamePrefixHasBeenSet = true; m_alarmNamePrefix = std::move(value); }
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
     inline void SetAlarmNamePrefix(const char* value) { m_alarmNamePrefixHasBeenSet = true; m_alarmNamePrefix.assign(value); }
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
     inline DescribeAlarmsRequest& WithAlarmNamePrefix(const Aws::String& value) { SetAlarmNamePrefix(value); return *this;}
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
-    inline DescribeAlarmsRequest& WithAlarmNamePrefix(Aws::String&& value) { SetAlarmNamePrefix(value); return *this;}
+    inline DescribeAlarmsRequest& WithAlarmNamePrefix(Aws::String&& value) { SetAlarmNamePrefix(std::move(value)); return *this;}
 
     /**
-     * <p>The alarm name prefix. <code>AlarmNames</code> cannot be specified if this
+     * <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this
      * parameter is specified.</p>
      */
     inline DescribeAlarmsRequest& WithAlarmNamePrefix(const char* value) { SetAlarmNamePrefix(value); return *this;}
@@ -130,7 +136,7 @@ namespace Model
     /**
      * <p>The state value to be used in matching alarms.</p>
      */
-    inline void SetStateValue(StateValue&& value) { m_stateValueHasBeenSet = true; m_stateValue = value; }
+    inline void SetStateValue(StateValue&& value) { m_stateValueHasBeenSet = true; m_stateValue = std::move(value); }
 
     /**
      * <p>The state value to be used in matching alarms.</p>
@@ -140,7 +146,7 @@ namespace Model
     /**
      * <p>The state value to be used in matching alarms.</p>
      */
-    inline DescribeAlarmsRequest& WithStateValue(StateValue&& value) { SetStateValue(value); return *this;}
+    inline DescribeAlarmsRequest& WithStateValue(StateValue&& value) { SetStateValue(std::move(value)); return *this;}
 
     /**
      * <p>The action name prefix.</p>
@@ -155,7 +161,7 @@ namespace Model
     /**
      * <p>The action name prefix.</p>
      */
-    inline void SetActionPrefix(Aws::String&& value) { m_actionPrefixHasBeenSet = true; m_actionPrefix = value; }
+    inline void SetActionPrefix(Aws::String&& value) { m_actionPrefixHasBeenSet = true; m_actionPrefix = std::move(value); }
 
     /**
      * <p>The action name prefix.</p>
@@ -170,7 +176,7 @@ namespace Model
     /**
      * <p>The action name prefix.</p>
      */
-    inline DescribeAlarmsRequest& WithActionPrefix(Aws::String&& value) { SetActionPrefix(value); return *this;}
+    inline DescribeAlarmsRequest& WithActionPrefix(Aws::String&& value) { SetActionPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The action name prefix.</p>
@@ -208,7 +214,7 @@ namespace Model
      * <p>The token returned by a previous call to indicate that there is more data
      * available.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token returned by a previous call to indicate that there is more data
@@ -226,7 +232,7 @@ namespace Model
      * <p>The token returned by a previous call to indicate that there is more data
      * available.</p>
      */
-    inline DescribeAlarmsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeAlarmsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token returned by a previous call to indicate that there is more data

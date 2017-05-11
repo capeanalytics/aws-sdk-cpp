@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/redshift/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Redshift
 namespace Model
 {
   /**
-   * <p>Describes the result of a cluster resize operation.</p>
+   * <p>Describes the result of a cluster resize operation.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ResizeProgressMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API DescribeResizeResult
   {
@@ -60,7 +65,7 @@ namespace Model
      * <p>The node type that the cluster will have after the resize operation is
      * complete.</p>
      */
-    inline void SetTargetNodeType(Aws::String&& value) { m_targetNodeType = value; }
+    inline void SetTargetNodeType(Aws::String&& value) { m_targetNodeType = std::move(value); }
 
     /**
      * <p>The node type that the cluster will have after the resize operation is
@@ -78,7 +83,7 @@ namespace Model
      * <p>The node type that the cluster will have after the resize operation is
      * complete.</p>
      */
-    inline DescribeResizeResult& WithTargetNodeType(Aws::String&& value) { SetTargetNodeType(value); return *this;}
+    inline DescribeResizeResult& WithTargetNodeType(Aws::String&& value) { SetTargetNodeType(std::move(value)); return *this;}
 
     /**
      * <p>The node type that the cluster will have after the resize operation is
@@ -106,85 +111,85 @@ namespace Model
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
     inline const Aws::String& GetTargetClusterType() const{ return m_targetClusterType; }
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
     inline void SetTargetClusterType(const Aws::String& value) { m_targetClusterType = value; }
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
-    inline void SetTargetClusterType(Aws::String&& value) { m_targetClusterType = value; }
+    inline void SetTargetClusterType(Aws::String&& value) { m_targetClusterType = std::move(value); }
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
     inline void SetTargetClusterType(const char* value) { m_targetClusterType.assign(value); }
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
     inline DescribeResizeResult& WithTargetClusterType(const Aws::String& value) { SetTargetClusterType(value); return *this;}
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
-    inline DescribeResizeResult& WithTargetClusterType(Aws::String&& value) { SetTargetClusterType(value); return *this;}
+    inline DescribeResizeResult& WithTargetClusterType(Aws::String&& value) { SetTargetClusterType(std::move(value)); return *this;}
 
     /**
      * <p>The cluster type after the resize operation is complete.</p> <p>Valid Values:
-     * <code>multi-node</code> | <code>single-node</code></p>
+     * <code>multi-node</code> | <code>single-node</code> </p>
      */
     inline DescribeResizeResult& WithTargetClusterType(const char* value) { SetTargetClusterType(value); return *this;}
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
     inline const Aws::String& GetStatus() const{ return m_status; }
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
     inline void SetStatus(const Aws::String& value) { m_status = value; }
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
-    inline void SetStatus(Aws::String&& value) { m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
     inline void SetStatus(const char* value) { m_status.assign(value); }
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
     inline DescribeResizeResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
-    inline DescribeResizeResult& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline DescribeResizeResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> |
-     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code></p>
+     * <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
      */
     inline DescribeResizeResult& WithStatus(const char* value) { SetStatus(value); return *this;}
 
@@ -204,7 +209,7 @@ namespace Model
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline void SetImportTablesCompleted(Aws::Vector<Aws::String>&& value) { m_importTablesCompleted = value; }
+    inline void SetImportTablesCompleted(Aws::Vector<Aws::String>&& value) { m_importTablesCompleted = std::move(value); }
 
     /**
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
@@ -216,7 +221,7 @@ namespace Model
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline DescribeResizeResult& WithImportTablesCompleted(Aws::Vector<Aws::String>&& value) { SetImportTablesCompleted(value); return *this;}
+    inline DescribeResizeResult& WithImportTablesCompleted(Aws::Vector<Aws::String>&& value) { SetImportTablesCompleted(std::move(value)); return *this;}
 
     /**
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
@@ -228,7 +233,7 @@ namespace Model
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline DescribeResizeResult& AddImportTablesCompleted(Aws::String&& value) { m_importTablesCompleted.push_back(value); return *this; }
+    inline DescribeResizeResult& AddImportTablesCompleted(Aws::String&& value) { m_importTablesCompleted.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of tables that have been completely imported .</p> <p>Valid Values:
@@ -252,7 +257,7 @@ namespace Model
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline void SetImportTablesInProgress(Aws::Vector<Aws::String>&& value) { m_importTablesInProgress = value; }
+    inline void SetImportTablesInProgress(Aws::Vector<Aws::String>&& value) { m_importTablesInProgress = std::move(value); }
 
     /**
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
@@ -264,7 +269,7 @@ namespace Model
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline DescribeResizeResult& WithImportTablesInProgress(Aws::Vector<Aws::String>&& value) { SetImportTablesInProgress(value); return *this;}
+    inline DescribeResizeResult& WithImportTablesInProgress(Aws::Vector<Aws::String>&& value) { SetImportTablesInProgress(std::move(value)); return *this;}
 
     /**
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
@@ -276,7 +281,7 @@ namespace Model
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
      * List of table names.</p>
      */
-    inline DescribeResizeResult& AddImportTablesInProgress(Aws::String&& value) { m_importTablesInProgress.push_back(value); return *this; }
+    inline DescribeResizeResult& AddImportTablesInProgress(Aws::String&& value) { m_importTablesInProgress.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of tables that are being currently imported.</p> <p>Valid Values:
@@ -300,7 +305,7 @@ namespace Model
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
      * List of table names</p>
      */
-    inline void SetImportTablesNotStarted(Aws::Vector<Aws::String>&& value) { m_importTablesNotStarted = value; }
+    inline void SetImportTablesNotStarted(Aws::Vector<Aws::String>&& value) { m_importTablesNotStarted = std::move(value); }
 
     /**
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
@@ -312,7 +317,7 @@ namespace Model
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
      * List of table names</p>
      */
-    inline DescribeResizeResult& WithImportTablesNotStarted(Aws::Vector<Aws::String>&& value) { SetImportTablesNotStarted(value); return *this;}
+    inline DescribeResizeResult& WithImportTablesNotStarted(Aws::Vector<Aws::String>&& value) { SetImportTablesNotStarted(std::move(value)); return *this;}
 
     /**
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
@@ -324,7 +329,7 @@ namespace Model
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
      * List of table names</p>
      */
-    inline DescribeResizeResult& AddImportTablesNotStarted(Aws::String&& value) { m_importTablesNotStarted.push_back(value); return *this; }
+    inline DescribeResizeResult& AddImportTablesNotStarted(Aws::String&& value) { m_importTablesNotStarted.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of tables that have not been yet imported.</p> <p>Valid Values:
@@ -376,7 +381,7 @@ namespace Model
      * amount of data, in megabytes, that has been processed so far. When the resize
      * operation is complete, this value shows the total amount of data, in megabytes,
      * on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the
-     * estimated total amount of data before resize). </p>
+     * estimated total amount of data before resize).</p>
      */
     inline long long GetProgressInMegaBytes() const{ return m_progressInMegaBytes; }
 
@@ -385,7 +390,7 @@ namespace Model
      * amount of data, in megabytes, that has been processed so far. When the resize
      * operation is complete, this value shows the total amount of data, in megabytes,
      * on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the
-     * estimated total amount of data before resize). </p>
+     * estimated total amount of data before resize).</p>
      */
     inline void SetProgressInMegaBytes(long long value) { m_progressInMegaBytes = value; }
 
@@ -394,28 +399,28 @@ namespace Model
      * amount of data, in megabytes, that has been processed so far. When the resize
      * operation is complete, this value shows the total amount of data, in megabytes,
      * on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the
-     * estimated total amount of data before resize). </p>
+     * estimated total amount of data before resize).</p>
      */
     inline DescribeResizeResult& WithProgressInMegaBytes(long long value) { SetProgressInMegaBytes(value); return *this;}
 
     /**
      * <p>The amount of seconds that have elapsed since the resize operation began.
      * After the resize operation completes, this value shows the total actual time, in
-     * seconds, for the resize operation. </p>
+     * seconds, for the resize operation.</p>
      */
     inline long long GetElapsedTimeInSeconds() const{ return m_elapsedTimeInSeconds; }
 
     /**
      * <p>The amount of seconds that have elapsed since the resize operation began.
      * After the resize operation completes, this value shows the total actual time, in
-     * seconds, for the resize operation. </p>
+     * seconds, for the resize operation.</p>
      */
     inline void SetElapsedTimeInSeconds(long long value) { m_elapsedTimeInSeconds = value; }
 
     /**
      * <p>The amount of seconds that have elapsed since the resize operation began.
      * After the resize operation completes, this value shows the total actual time, in
-     * seconds, for the resize operation. </p>
+     * seconds, for the resize operation.</p>
      */
     inline DescribeResizeResult& WithElapsedTimeInSeconds(long long value) { SetElapsedTimeInSeconds(value); return *this;}
 
@@ -423,7 +428,7 @@ namespace Model
      * <p>The estimated time remaining, in seconds, until the resize operation is
      * complete. This value is calculated based on the average resize rate and the
      * estimated amount of data remaining to be processed. Once the resize operation is
-     * complete, this value will be 0. </p>
+     * complete, this value will be 0.</p>
      */
     inline long long GetEstimatedTimeToCompletionInSeconds() const{ return m_estimatedTimeToCompletionInSeconds; }
 
@@ -431,7 +436,7 @@ namespace Model
      * <p>The estimated time remaining, in seconds, until the resize operation is
      * complete. This value is calculated based on the average resize rate and the
      * estimated amount of data remaining to be processed. Once the resize operation is
-     * complete, this value will be 0. </p>
+     * complete, this value will be 0.</p>
      */
     inline void SetEstimatedTimeToCompletionInSeconds(long long value) { m_estimatedTimeToCompletionInSeconds = value; }
 
@@ -439,7 +444,7 @@ namespace Model
      * <p>The estimated time remaining, in seconds, until the resize operation is
      * complete. This value is calculated based on the average resize rate and the
      * estimated amount of data remaining to be processed. Once the resize operation is
-     * complete, this value will be 0. </p>
+     * complete, this value will be 0.</p>
      */
     inline DescribeResizeResult& WithEstimatedTimeToCompletionInSeconds(long long value) { SetEstimatedTimeToCompletionInSeconds(value); return *this;}
 
@@ -450,13 +455,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeResizeResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeResizeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeResizeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_targetNodeType;

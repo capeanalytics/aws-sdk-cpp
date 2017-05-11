@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dms/model/ReplicationInstance.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -49,7 +50,8 @@ ReplicationInstance::ReplicationInstance() :
     m_replicationInstancePublicIpAddressesHasBeenSet(false),
     m_replicationInstancePrivateIpAddressesHasBeenSet(false),
     m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false)
+    m_publiclyAccessibleHasBeenSet(false),
+    m_secondaryAvailabilityZoneHasBeenSet(false)
 {
 }
 
@@ -75,7 +77,8 @@ ReplicationInstance::ReplicationInstance(const JsonValue& jsonValue) :
     m_replicationInstancePublicIpAddressesHasBeenSet(false),
     m_replicationInstancePrivateIpAddressesHasBeenSet(false),
     m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false)
+    m_publiclyAccessibleHasBeenSet(false),
+    m_secondaryAvailabilityZoneHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -217,6 +220,13 @@ ReplicationInstance& ReplicationInstance::operator =(const JsonValue& jsonValue)
     m_publiclyAccessibleHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("SecondaryAvailabilityZone"))
+  {
+    m_secondaryAvailabilityZone = jsonValue.GetString("SecondaryAvailabilityZone");
+
+    m_secondaryAvailabilityZoneHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -343,6 +353,12 @@ JsonValue ReplicationInstance::Jsonize() const
   if(m_publiclyAccessibleHasBeenSet)
   {
    payload.WithBool("PubliclyAccessible", m_publiclyAccessible);
+
+  }
+
+  if(m_secondaryAvailabilityZoneHasBeenSet)
+  {
+   payload.WithString("SecondaryAvailabilityZone", m_secondaryAvailabilityZone);
 
   }
 

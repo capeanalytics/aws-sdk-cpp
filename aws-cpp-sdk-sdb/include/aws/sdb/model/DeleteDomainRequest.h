@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/sdb/SimpleDBRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     DeleteDomainRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * The name of the domain to delete.
      */
@@ -45,7 +52,7 @@ namespace Model
     /**
      * The name of the domain to delete.
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * The name of the domain to delete.
@@ -60,7 +67,7 @@ namespace Model
     /**
      * The name of the domain to delete.
      */
-    inline DeleteDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline DeleteDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * The name of the domain to delete.

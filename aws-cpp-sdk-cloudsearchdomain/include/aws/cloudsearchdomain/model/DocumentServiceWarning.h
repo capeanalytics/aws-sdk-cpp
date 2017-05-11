@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>A warning returned by the document service when an issue is discovered while
-   * processing an upload request.</p>
+   * processing an upload request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/DocumentServiceWarning">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API DocumentServiceWarning
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The description for a warning returned by the document service.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>The description for a warning returned by the document service.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The description for a warning returned by the document service.</p>
      */
-    inline DocumentServiceWarning& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline DocumentServiceWarning& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>The description for a warning returned by the document service.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * A complex type that contains information about CNAMEs (alternate domain names),
-   * if any, for this distribution.
+   * if any, for this distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/Aliases">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API Aliases
   {
@@ -75,7 +79,7 @@ namespace Model
      * Optional: A complex type that contains CNAME elements, if any, for this
      * distribution. If Quantity is 0, you can omit Items.
      */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * Optional: A complex type that contains CNAME elements, if any, for this
@@ -87,7 +91,7 @@ namespace Model
      * Optional: A complex type that contains CNAME elements, if any, for this
      * distribution. If Quantity is 0, you can omit Items.
      */
-    inline Aliases& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(value); return *this;}
+    inline Aliases& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * Optional: A complex type that contains CNAME elements, if any, for this
@@ -99,7 +103,7 @@ namespace Model
      * Optional: A complex type that contains CNAME elements, if any, for this
      * distribution. If Quantity is 0, you can omit Items.
      */
-    inline Aliases& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline Aliases& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
     /**
      * Optional: A complex type that contains CNAME elements, if any, for this

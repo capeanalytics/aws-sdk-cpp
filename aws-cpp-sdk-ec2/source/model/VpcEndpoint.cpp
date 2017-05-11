@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/VpcEndpoint.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,6 +34,7 @@ VpcEndpoint::VpcEndpoint() :
     m_vpcEndpointIdHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_serviceNameHasBeenSet(false),
+    m_state(State::NOT_SET),
     m_stateHasBeenSet(false),
     m_policyDocumentHasBeenSet(false),
     m_routeTableIdsHasBeenSet(false),
@@ -44,6 +46,7 @@ VpcEndpoint::VpcEndpoint(const XmlNode& xmlNode) :
     m_vpcEndpointIdHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_serviceNameHasBeenSet(false),
+    m_state(State::NOT_SET),
     m_stateHasBeenSet(false),
     m_policyDocumentHasBeenSet(false),
     m_routeTableIdsHasBeenSet(false),
@@ -181,7 +184,7 @@ void VpcEndpoint::OutputToStream(Aws::OStream& oStream, const char* location) co
       unsigned routeTableIdsIdx = 1;
       for(auto& item : m_routeTableIds)
       {
-        oStream << location << ".item." << routeTableIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".RouteTableIdSet." << routeTableIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_creationTimestampHasBeenSet)

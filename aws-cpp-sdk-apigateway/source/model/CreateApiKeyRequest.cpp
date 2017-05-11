@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/CreateApiKeyRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,7 +30,8 @@ CreateApiKeyRequest::CreateApiKeyRequest() :
     m_generateDistinctId(false),
     m_generateDistinctIdHasBeenSet(false),
     m_valueHasBeenSet(false),
-    m_stageKeysHasBeenSet(false)
+    m_stageKeysHasBeenSet(false),
+    m_customerIdHasBeenSet(false)
 {
 }
 
@@ -78,8 +80,15 @@ Aws::String CreateApiKeyRequest::SerializePayload() const
 
   }
 
+  if(m_customerIdHasBeenSet)
+  {
+   payload.WithString("customerId", m_customerId);
+
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

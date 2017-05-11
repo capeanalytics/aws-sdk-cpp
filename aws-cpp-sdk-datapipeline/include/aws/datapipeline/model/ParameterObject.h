@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datapipeline/model/ParameterAttribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about a parameter object.</p>
+   * <p>Contains information about a parameter object.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ParameterObject">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API ParameterObject
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The ID of the parameter object. </p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The ID of the parameter object. </p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The ID of the parameter object. </p>
      */
-    inline ParameterObject& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline ParameterObject& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the parameter object. </p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The attributes of the parameter object.</p>
      */
-    inline void SetAttributes(Aws::Vector<ParameterAttribute>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Vector<ParameterAttribute>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>The attributes of the parameter object.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The attributes of the parameter object.</p>
      */
-    inline ParameterObject& WithAttributes(Aws::Vector<ParameterAttribute>&& value) { SetAttributes(value); return *this;}
+    inline ParameterObject& WithAttributes(Aws::Vector<ParameterAttribute>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The attributes of the parameter object.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The attributes of the parameter object.</p>
      */
-    inline ParameterObject& AddAttributes(ParameterAttribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
+    inline ParameterObject& AddAttributes(ParameterAttribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_id;

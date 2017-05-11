@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/Monitoring.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the monitoring information of the instance.</p>
+   * <p>Describes the monitoring of an instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/InstanceMonitoring">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API InstanceMonitoring
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline InstanceMonitoring& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline InstanceMonitoring& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -81,29 +85,29 @@ namespace Model
     inline InstanceMonitoring& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
 
     /**
-     * <p>The monitoring information.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline const Monitoring& GetMonitoring() const{ return m_monitoring; }
 
     /**
-     * <p>The monitoring information.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline void SetMonitoring(const Monitoring& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
 
     /**
-     * <p>The monitoring information.</p>
+     * <p>The monitoring for the instance.</p>
      */
-    inline void SetMonitoring(Monitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
+    inline void SetMonitoring(Monitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::move(value); }
 
     /**
-     * <p>The monitoring information.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline InstanceMonitoring& WithMonitoring(const Monitoring& value) { SetMonitoring(value); return *this;}
 
     /**
-     * <p>The monitoring information.</p>
+     * <p>The monitoring for the instance.</p>
      */
-    inline InstanceMonitoring& WithMonitoring(Monitoring&& value) { SetMonitoring(value); return *this;}
+    inline InstanceMonitoring& WithMonitoring(Monitoring&& value) { SetMonitoring(std::move(value)); return *this;}
 
   private:
     Aws::String m_instanceId;

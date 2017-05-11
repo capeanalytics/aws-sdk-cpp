@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/apigateway/model/MethodSnapshot.h>
+#include <utility>
 
 namespace Aws
 {
@@ -44,7 +46,10 @@ namespace Model
    * (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div
    * class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a
    * href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS
-   * CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+   * CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/Deployment">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API Deployment
   {
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>The identifier for the deployment resource.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The identifier for the deployment resource.</p>
@@ -82,7 +87,7 @@ namespace Model
     /**
      * <p>The identifier for the deployment resource.</p>
      */
-    inline Deployment& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Deployment& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier for the deployment resource.</p>
@@ -102,7 +107,7 @@ namespace Model
     /**
      * <p>The description for the deployment resource.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description for the deployment resource.</p>
@@ -117,7 +122,7 @@ namespace Model
     /**
      * <p>The description for the deployment resource.</p>
      */
-    inline Deployment& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline Deployment& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description for the deployment resource.</p>
@@ -137,7 +142,7 @@ namespace Model
     /**
      * <p>The date and time that the deployment resource was created.</p>
      */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = value; }
+    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDateHasBeenSet = true; m_createdDate = std::move(value); }
 
     /**
      * <p>The date and time that the deployment resource was created.</p>
@@ -147,7 +152,7 @@ namespace Model
     /**
      * <p>The date and time that the deployment resource was created.</p>
      */
-    inline Deployment& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(value); return *this;}
+    inline Deployment& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
@@ -165,7 +170,7 @@ namespace Model
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline void SetApiSummary(Aws::Map<Aws::String, Aws::Map<Aws::String, MethodSnapshot>>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary = value; }
+    inline void SetApiSummary(Aws::Map<Aws::String, Aws::Map<Aws::String, MethodSnapshot>>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary = std::move(value); }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
@@ -177,43 +182,43 @@ namespace Model
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& WithApiSummary(Aws::Map<Aws::String, Aws::Map<Aws::String, MethodSnapshot>>&& value) { SetApiSummary(value); return *this;}
+    inline Deployment& WithApiSummary(Aws::Map<Aws::String, Aws::Map<Aws::String, MethodSnapshot>>&& value) { SetApiSummary(std::move(value)); return *this;}
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(const Aws::String& key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(const Aws::String& key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(key, value); return *this; }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(Aws::String&& key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(Aws::String&& key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(const Aws::String& key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(const Aws::String& key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(Aws::String&& key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(Aws::String&& key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(const char* key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(const char* key, Aws::Map<Aws::String, MethodSnapshot>&& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A summary of the <a>RestApi</a> at the date and time that the deployment
      * resource was created.</p>
      */
-    inline Deployment& AddApiSummary(const char* key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary[key] = value; return *this; }
+    inline Deployment& AddApiSummary(const char* key, const Aws::Map<Aws::String, MethodSnapshot>& value) { m_apiSummaryHasBeenSet = true; m_apiSummary.emplace(key, value); return *this; }
 
   private:
     Aws::String m_id;

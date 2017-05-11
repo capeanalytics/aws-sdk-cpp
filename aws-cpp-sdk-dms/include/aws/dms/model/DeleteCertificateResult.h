@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/dms/model/Certificate.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,29 +42,29 @@ namespace Model
     DeleteCertificateResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>The SSL certificate.</p>
+     * <p>The Secure Sockets Layer (SSL) certificate.</p>
      */
     inline const Certificate& GetCertificate() const{ return m_certificate; }
 
     /**
-     * <p>The SSL certificate.</p>
+     * <p>The Secure Sockets Layer (SSL) certificate.</p>
      */
     inline void SetCertificate(const Certificate& value) { m_certificate = value; }
 
     /**
-     * <p>The SSL certificate.</p>
+     * <p>The Secure Sockets Layer (SSL) certificate.</p>
      */
-    inline void SetCertificate(Certificate&& value) { m_certificate = value; }
+    inline void SetCertificate(Certificate&& value) { m_certificate = std::move(value); }
 
     /**
-     * <p>The SSL certificate.</p>
+     * <p>The Secure Sockets Layer (SSL) certificate.</p>
      */
     inline DeleteCertificateResult& WithCertificate(const Certificate& value) { SetCertificate(value); return *this;}
 
     /**
-     * <p>The SSL certificate.</p>
+     * <p>The Secure Sockets Layer (SSL) certificate.</p>
      */
-    inline DeleteCertificateResult& WithCertificate(Certificate&& value) { SetCertificate(value); return *this;}
+    inline DeleteCertificateResult& WithCertificate(Certificate&& value) { SetCertificate(std::move(value)); return *this;}
 
   private:
     Certificate m_certificate;

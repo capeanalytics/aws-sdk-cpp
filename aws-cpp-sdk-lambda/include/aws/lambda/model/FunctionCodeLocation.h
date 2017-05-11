@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>The object for the Lambda function location.</p>
+   * <p>The object for the Lambda function location.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/FunctionCodeLocation">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API FunctionCodeLocation
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The repository from which you can download the function.</p>
      */
-    inline void SetRepositoryType(Aws::String&& value) { m_repositoryTypeHasBeenSet = true; m_repositoryType = value; }
+    inline void SetRepositoryType(Aws::String&& value) { m_repositoryTypeHasBeenSet = true; m_repositoryType = std::move(value); }
 
     /**
      * <p>The repository from which you can download the function.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The repository from which you can download the function.</p>
      */
-    inline FunctionCodeLocation& WithRepositoryType(Aws::String&& value) { SetRepositoryType(value); return *this;}
+    inline FunctionCodeLocation& WithRepositoryType(Aws::String&& value) { SetRepositoryType(std::move(value)); return *this;}
 
     /**
      * <p>The repository from which you can download the function.</p>
@@ -92,7 +96,7 @@ namespace Model
      * <p>The presigned URL you can use to download the function's .zip file that you
      * previously uploaded. The URL is valid for up to 10 minutes.</p>
      */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
 
     /**
      * <p>The presigned URL you can use to download the function's .zip file that you
@@ -110,7 +114,7 @@ namespace Model
      * <p>The presigned URL you can use to download the function's .zip file that you
      * previously uploaded. The URL is valid for up to 10 minutes.</p>
      */
-    inline FunctionCodeLocation& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline FunctionCodeLocation& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * <p>The presigned URL you can use to download the function's .zip file that you

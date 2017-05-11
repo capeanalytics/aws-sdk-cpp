@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output from the DescribeThing operation.</p>
+   * <p>The output from the DescribeThing operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThingResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API DescribeThingResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The default client ID.</p>
      */
-    inline void SetDefaultClientId(Aws::String&& value) { m_defaultClientId = value; }
+    inline void SetDefaultClientId(Aws::String&& value) { m_defaultClientId = std::move(value); }
 
     /**
      * <p>The default client ID.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The default client ID.</p>
      */
-    inline DescribeThingResult& WithDefaultClientId(Aws::String&& value) { SetDefaultClientId(value); return *this;}
+    inline DescribeThingResult& WithDefaultClientId(Aws::String&& value) { SetDefaultClientId(std::move(value)); return *this;}
 
     /**
      * <p>The default client ID.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The name of the thing.</p>
      */
-    inline void SetThingName(Aws::String&& value) { m_thingName = value; }
+    inline void SetThingName(Aws::String&& value) { m_thingName = std::move(value); }
 
     /**
      * <p>The name of the thing.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The name of the thing.</p>
      */
-    inline DescribeThingResult& WithThingName(Aws::String&& value) { SetThingName(value); return *this;}
+    inline DescribeThingResult& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the thing.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The thing type name.</p>
      */
-    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeName = value; }
+    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeName = std::move(value); }
 
     /**
      * <p>The thing type name.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The thing type name.</p>
      */
-    inline DescribeThingResult& WithThingTypeName(Aws::String&& value) { SetThingTypeName(value); return *this;}
+    inline DescribeThingResult& WithThingTypeName(Aws::String&& value) { SetThingTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The thing type name.</p>
@@ -161,7 +165,7 @@ namespace Model
     /**
      * <p>The thing attributes.</p>
      */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributes = value; }
+    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributes = std::move(value); }
 
     /**
      * <p>The thing attributes.</p>
@@ -171,42 +175,42 @@ namespace Model
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline DescribeThingResult& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributes.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(const char* key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(const char* key, Aws::String&& value) { m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(Aws::String&& key, const char* value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(Aws::String&& key, const char* value) { m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The thing attributes.</p>
      */
-    inline DescribeThingResult& AddAttributes(const char* key, const char* value) { m_attributes[key] = value; return *this; }
+    inline DescribeThingResult& AddAttributes(const char* key, const char* value) { m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>The current version of the thing record in the registry.</p> <note> <p>To

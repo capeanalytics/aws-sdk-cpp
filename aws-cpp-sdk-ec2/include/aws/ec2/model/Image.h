@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -28,6 +29,7 @@
 #include <aws/ec2/model/ProductCode.h>
 #include <aws/ec2/model/BlockDeviceMapping.h>
 #include <aws/ec2/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -44,7 +46,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an image.</p>
+   * <p>Describes an image.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Image">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Image
   {
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the AMI.</p>
@@ -84,7 +88,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline Image& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline Image& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AMI.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The location of the AMI.</p>
      */
-    inline void SetImageLocation(Aws::String&& value) { m_imageLocationHasBeenSet = true; m_imageLocation = value; }
+    inline void SetImageLocation(Aws::String&& value) { m_imageLocationHasBeenSet = true; m_imageLocation = std::move(value); }
 
     /**
      * <p>The location of the AMI.</p>
@@ -119,7 +123,7 @@ namespace Model
     /**
      * <p>The location of the AMI.</p>
      */
-    inline Image& WithImageLocation(Aws::String&& value) { SetImageLocation(value); return *this;}
+    inline Image& WithImageLocation(Aws::String&& value) { SetImageLocation(std::move(value)); return *this;}
 
     /**
      * <p>The location of the AMI.</p>
@@ -142,7 +146,7 @@ namespace Model
      * <p>The current state of the AMI. If the state is <code>available</code>, the
      * image is successfully registered and can be used to launch an instance.</p>
      */
-    inline void SetState(ImageState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(ImageState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the AMI. If the state is <code>available</code>, the
@@ -154,7 +158,7 @@ namespace Model
      * <p>The current state of the AMI. If the state is <code>available</code>, the
      * image is successfully registered and can be used to launch an instance.</p>
      */
-    inline Image& WithState(ImageState&& value) { SetState(value); return *this;}
+    inline Image& WithState(ImageState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account ID of the image owner.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The AWS account ID of the image owner.</p>
      */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
+    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
 
     /**
      * <p>The AWS account ID of the image owner.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The AWS account ID of the image owner.</p>
      */
-    inline Image& WithOwnerId(Aws::String&& value) { SetOwnerId(value); return *this;}
+    inline Image& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account ID of the image owner.</p>
@@ -204,7 +208,7 @@ namespace Model
     /**
      * <p>The date and time the image was created.</p>
      */
-    inline void SetCreationDate(Aws::String&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::String&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The date and time the image was created.</p>
@@ -219,7 +223,7 @@ namespace Model
     /**
      * <p>The date and time the image was created.</p>
      */
-    inline Image& WithCreationDate(Aws::String&& value) { SetCreationDate(value); return *this;}
+    inline Image& WithCreationDate(Aws::String&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>The date and time the image was created.</p>
@@ -260,7 +264,7 @@ namespace Model
     /**
      * <p>Any product codes associated with the AMI.</p>
      */
-    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodesHasBeenSet = true; m_productCodes = value; }
+    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodesHasBeenSet = true; m_productCodes = std::move(value); }
 
     /**
      * <p>Any product codes associated with the AMI.</p>
@@ -270,7 +274,7 @@ namespace Model
     /**
      * <p>Any product codes associated with the AMI.</p>
      */
-    inline Image& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(value); return *this;}
+    inline Image& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(std::move(value)); return *this;}
 
     /**
      * <p>Any product codes associated with the AMI.</p>
@@ -280,7 +284,7 @@ namespace Model
     /**
      * <p>Any product codes associated with the AMI.</p>
      */
-    inline Image& AddProductCodes(ProductCode&& value) { m_productCodesHasBeenSet = true; m_productCodes.push_back(value); return *this; }
+    inline Image& AddProductCodes(ProductCode&& value) { m_productCodesHasBeenSet = true; m_productCodes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The architecture of the image.</p>
@@ -295,7 +299,7 @@ namespace Model
     /**
      * <p>The architecture of the image.</p>
      */
-    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The architecture of the image.</p>
@@ -305,7 +309,7 @@ namespace Model
     /**
      * <p>The architecture of the image.</p>
      */
-    inline Image& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(value); return *this;}
+    inline Image& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The type of image.</p>
@@ -320,7 +324,7 @@ namespace Model
     /**
      * <p>The type of image.</p>
      */
-    inline void SetImageType(ImageTypeValues&& value) { m_imageTypeHasBeenSet = true; m_imageType = value; }
+    inline void SetImageType(ImageTypeValues&& value) { m_imageTypeHasBeenSet = true; m_imageType = std::move(value); }
 
     /**
      * <p>The type of image.</p>
@@ -330,7 +334,7 @@ namespace Model
     /**
      * <p>The type of image.</p>
      */
-    inline Image& WithImageType(ImageTypeValues&& value) { SetImageType(value); return *this;}
+    inline Image& WithImageType(ImageTypeValues&& value) { SetImageType(std::move(value)); return *this;}
 
     /**
      * <p>The kernel associated with the image, if any. Only applicable for machine
@@ -348,7 +352,7 @@ namespace Model
      * <p>The kernel associated with the image, if any. Only applicable for machine
      * images.</p>
      */
-    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = value; }
+    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::move(value); }
 
     /**
      * <p>The kernel associated with the image, if any. Only applicable for machine
@@ -366,7 +370,7 @@ namespace Model
      * <p>The kernel associated with the image, if any. Only applicable for machine
      * images.</p>
      */
-    inline Image& WithKernelId(Aws::String&& value) { SetKernelId(value); return *this;}
+    inline Image& WithKernelId(Aws::String&& value) { SetKernelId(std::move(value)); return *this;}
 
     /**
      * <p>The kernel associated with the image, if any. Only applicable for machine
@@ -390,7 +394,7 @@ namespace Model
      * <p>The RAM disk associated with the image, if any. Only applicable for machine
      * images.</p>
      */
-    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = value; }
+    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::move(value); }
 
     /**
      * <p>The RAM disk associated with the image, if any. Only applicable for machine
@@ -408,7 +412,7 @@ namespace Model
      * <p>The RAM disk associated with the image, if any. Only applicable for machine
      * images.</p>
      */
-    inline Image& WithRamdiskId(Aws::String&& value) { SetRamdiskId(value); return *this;}
+    inline Image& WithRamdiskId(Aws::String&& value) { SetRamdiskId(std::move(value)); return *this;}
 
     /**
      * <p>The RAM disk associated with the image, if any. Only applicable for machine
@@ -429,7 +433,7 @@ namespace Model
     /**
      * <p>The value is <code>Windows</code> for Windows AMIs; otherwise blank.</p>
      */
-    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
 
     /**
      * <p>The value is <code>Windows</code> for Windows AMIs; otherwise blank.</p>
@@ -439,42 +443,64 @@ namespace Model
     /**
      * <p>The value is <code>Windows</code> for Windows AMIs; otherwise blank.</p>
      */
-    inline Image& WithPlatform(PlatformValues&& value) { SetPlatform(value); return *this;}
+    inline Image& WithPlatform(PlatformValues&& value) { SetPlatform(std::move(value)); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline const Aws::String& GetSriovNetSupport() const{ return m_sriovNetSupport; }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline void SetSriovNetSupport(const Aws::String& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = value; }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
-    inline void SetSriovNetSupport(Aws::String&& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = value; }
+    inline void SetSriovNetSupport(Aws::String&& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = std::move(value); }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline void SetSriovNetSupport(const char* value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport.assign(value); }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline Image& WithSriovNetSupport(const Aws::String& value) { SetSriovNetSupport(value); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
-    inline Image& WithSriovNetSupport(Aws::String&& value) { SetSriovNetSupport(value); return *this;}
+    inline Image& WithSriovNetSupport(Aws::String&& value) { SetSriovNetSupport(std::move(value)); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled.</p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline Image& WithSriovNetSupport(const char* value) { SetSriovNetSupport(value); return *this;}
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline bool GetEnaSupport() const{ return m_enaSupport; }
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline void SetEnaSupport(bool value) { m_enaSupportHasBeenSet = true; m_enaSupport = value; }
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline Image& WithEnaSupport(bool value) { SetEnaSupport(value); return *this;}
 
     /**
      * <p>The reason for the state change.</p>
@@ -489,7 +515,7 @@ namespace Model
     /**
      * <p>The reason for the state change.</p>
      */
-    inline void SetStateReason(StateReason&& value) { m_stateReasonHasBeenSet = true; m_stateReason = value; }
+    inline void SetStateReason(StateReason&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::move(value); }
 
     /**
      * <p>The reason for the state change.</p>
@@ -499,7 +525,7 @@ namespace Model
     /**
      * <p>The reason for the state change.</p>
      */
-    inline Image& WithStateReason(StateReason&& value) { SetStateReason(value); return *this;}
+    inline Image& WithStateReason(StateReason&& value) { SetStateReason(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account alias (for example, <code>amazon</code>, <code>self</code>)
@@ -517,7 +543,7 @@ namespace Model
      * <p>The AWS account alias (for example, <code>amazon</code>, <code>self</code>)
      * or the AWS account ID of the AMI owner.</p>
      */
-    inline void SetImageOwnerAlias(Aws::String&& value) { m_imageOwnerAliasHasBeenSet = true; m_imageOwnerAlias = value; }
+    inline void SetImageOwnerAlias(Aws::String&& value) { m_imageOwnerAliasHasBeenSet = true; m_imageOwnerAlias = std::move(value); }
 
     /**
      * <p>The AWS account alias (for example, <code>amazon</code>, <code>self</code>)
@@ -535,7 +561,7 @@ namespace Model
      * <p>The AWS account alias (for example, <code>amazon</code>, <code>self</code>)
      * or the AWS account ID of the AMI owner.</p>
      */
-    inline Image& WithImageOwnerAlias(Aws::String&& value) { SetImageOwnerAlias(value); return *this;}
+    inline Image& WithImageOwnerAlias(Aws::String&& value) { SetImageOwnerAlias(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account alias (for example, <code>amazon</code>, <code>self</code>)
@@ -556,7 +582,7 @@ namespace Model
     /**
      * <p>The name of the AMI that was provided during image creation.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the AMI that was provided during image creation.</p>
@@ -571,7 +597,7 @@ namespace Model
     /**
      * <p>The name of the AMI that was provided during image creation.</p>
      */
-    inline Image& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Image& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the AMI that was provided during image creation.</p>
@@ -591,7 +617,7 @@ namespace Model
     /**
      * <p>The description of the AMI that was provided during image creation.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the AMI that was provided during image creation.</p>
@@ -606,7 +632,7 @@ namespace Model
     /**
      * <p>The description of the AMI that was provided during image creation.</p>
      */
-    inline Image& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline Image& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the AMI that was provided during image creation.</p>
@@ -629,7 +655,7 @@ namespace Model
      * <p>The type of root device used by the AMI. The AMI can use an EBS volume or an
      * instance store volume.</p>
      */
-    inline void SetRootDeviceType(DeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = value; }
+    inline void SetRootDeviceType(DeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = std::move(value); }
 
     /**
      * <p>The type of root device used by the AMI. The AMI can use an EBS volume or an
@@ -641,7 +667,7 @@ namespace Model
      * <p>The type of root device used by the AMI. The AMI can use an EBS volume or an
      * instance store volume.</p>
      */
-    inline Image& WithRootDeviceType(DeviceType&& value) { SetRootDeviceType(value); return *this;}
+    inline Image& WithRootDeviceType(DeviceType&& value) { SetRootDeviceType(std::move(value)); return *this;}
 
     /**
      * <p>The device name of the root device (for example, <code>/dev/sda1</code> or
@@ -659,7 +685,7 @@ namespace Model
      * <p>The device name of the root device (for example, <code>/dev/sda1</code> or
      * <code>/dev/xvda</code>).</p>
      */
-    inline void SetRootDeviceName(Aws::String&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = value; }
+    inline void SetRootDeviceName(Aws::String&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = std::move(value); }
 
     /**
      * <p>The device name of the root device (for example, <code>/dev/sda1</code> or
@@ -677,7 +703,7 @@ namespace Model
      * <p>The device name of the root device (for example, <code>/dev/sda1</code> or
      * <code>/dev/xvda</code>).</p>
      */
-    inline Image& WithRootDeviceName(Aws::String&& value) { SetRootDeviceName(value); return *this;}
+    inline Image& WithRootDeviceName(Aws::String&& value) { SetRootDeviceName(std::move(value)); return *this;}
 
     /**
      * <p>The device name of the root device (for example, <code>/dev/sda1</code> or
@@ -698,7 +724,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>Any block device mapping entries.</p>
@@ -708,7 +734,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries.</p>
      */
-    inline Image& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline Image& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>Any block device mapping entries.</p>
@@ -718,7 +744,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries.</p>
      */
-    inline Image& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
+    inline Image& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The type of virtualization of the AMI.</p>
@@ -733,7 +759,7 @@ namespace Model
     /**
      * <p>The type of virtualization of the AMI.</p>
      */
-    inline void SetVirtualizationType(VirtualizationType&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = value; }
+    inline void SetVirtualizationType(VirtualizationType&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = std::move(value); }
 
     /**
      * <p>The type of virtualization of the AMI.</p>
@@ -743,7 +769,7 @@ namespace Model
     /**
      * <p>The type of virtualization of the AMI.</p>
      */
-    inline Image& WithVirtualizationType(VirtualizationType&& value) { SetVirtualizationType(value); return *this;}
+    inline Image& WithVirtualizationType(VirtualizationType&& value) { SetVirtualizationType(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the image.</p>
@@ -758,7 +784,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the image.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the image.</p>
@@ -768,7 +794,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the image.</p>
      */
-    inline Image& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline Image& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the image.</p>
@@ -778,7 +804,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the image.</p>
      */
-    inline Image& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline Image& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The hypervisor type of the image.</p>
@@ -793,7 +819,7 @@ namespace Model
     /**
      * <p>The hypervisor type of the image.</p>
      */
-    inline void SetHypervisor(HypervisorType&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
+    inline void SetHypervisor(HypervisorType&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = std::move(value); }
 
     /**
      * <p>The hypervisor type of the image.</p>
@@ -803,7 +829,7 @@ namespace Model
     /**
      * <p>The hypervisor type of the image.</p>
      */
-    inline Image& WithHypervisor(HypervisorType&& value) { SetHypervisor(value); return *this;}
+    inline Image& WithHypervisor(HypervisorType&& value) { SetHypervisor(std::move(value)); return *this;}
 
   private:
     Aws::String m_imageId;
@@ -832,6 +858,8 @@ namespace Model
     bool m_platformHasBeenSet;
     Aws::String m_sriovNetSupport;
     bool m_sriovNetSupportHasBeenSet;
+    bool m_enaSupport;
+    bool m_enaSupportHasBeenSet;
     StateReason m_stateReason;
     bool m_stateReasonHasBeenSet;
     Aws::String m_imageOwnerAlias;

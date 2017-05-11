@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a key pair.</p>
+   * <p>Describes a key pair.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/KeyPairInfo">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API KeyPairInfo
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the key pair.</p>
      */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
+    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
 
     /**
      * <p>The name of the key pair.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the key pair.</p>
      */
-    inline KeyPairInfo& WithKeyName(Aws::String&& value) { SetKeyName(value); return *this;}
+    inline KeyPairInfo& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the key pair.</p>
@@ -101,7 +105,7 @@ namespace Model
      * provide AWS the public key, this is the MD5 public key fingerprint as specified
      * in section 4 of RFC4716.</p>
      */
-    inline void SetKeyFingerprint(Aws::String&& value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint = value; }
+    inline void SetKeyFingerprint(Aws::String&& value) { m_keyFingerprintHasBeenSet = true; m_keyFingerprint = std::move(value); }
 
     /**
      * <p>If you used <a>CreateKeyPair</a> to create the key pair, this is the SHA-1
@@ -125,7 +129,7 @@ namespace Model
      * provide AWS the public key, this is the MD5 public key fingerprint as specified
      * in section 4 of RFC4716.</p>
      */
-    inline KeyPairInfo& WithKeyFingerprint(Aws::String&& value) { SetKeyFingerprint(value); return *this;}
+    inline KeyPairInfo& WithKeyFingerprint(Aws::String&& value) { SetKeyFingerprint(std::move(value)); return *this;}
 
     /**
      * <p>If you used <a>CreateKeyPair</a> to create the key pair, this is the SHA-1

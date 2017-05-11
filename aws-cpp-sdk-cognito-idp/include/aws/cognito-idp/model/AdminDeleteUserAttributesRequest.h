@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to delete user attributes as an administrator.</p>
+   * <p>Represents the request to delete user attributes as an
+   * administrator.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminDeleteUserAttributesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API AdminDeleteUserAttributesRequest : public CognitoIdentityProviderRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The user pool ID for the user pool where you want to delete user
@@ -52,7 +58,7 @@ namespace Model
      * <p>The user pool ID for the user pool where you want to delete user
      * attributes.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
 
     /**
      * <p>The user pool ID for the user pool where you want to delete user
@@ -70,7 +76,7 @@ namespace Model
      * <p>The user pool ID for the user pool where you want to delete user
      * attributes.</p>
      */
-    inline AdminDeleteUserAttributesRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(value); return *this;}
+    inline AdminDeleteUserAttributesRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
 
     /**
      * <p>The user pool ID for the user pool where you want to delete user
@@ -91,7 +97,7 @@ namespace Model
     /**
      * <p>The user name of the user from which you would like to delete attributes.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
 
     /**
      * <p>The user name of the user from which you would like to delete attributes.</p>
@@ -106,7 +112,7 @@ namespace Model
     /**
      * <p>The user name of the user from which you would like to delete attributes.</p>
      */
-    inline AdminDeleteUserAttributesRequest& WithUsername(Aws::String&& value) { SetUsername(value); return *this;}
+    inline AdminDeleteUserAttributesRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
 
     /**
      * <p>The user name of the user from which you would like to delete attributes.</p>
@@ -129,7 +135,7 @@ namespace Model
      * <p>An array of strings representing the user attribute names you wish to
      * delete.</p>
      */
-    inline void SetUserAttributeNames(Aws::Vector<Aws::String>&& value) { m_userAttributeNamesHasBeenSet = true; m_userAttributeNames = value; }
+    inline void SetUserAttributeNames(Aws::Vector<Aws::String>&& value) { m_userAttributeNamesHasBeenSet = true; m_userAttributeNames = std::move(value); }
 
     /**
      * <p>An array of strings representing the user attribute names you wish to
@@ -141,7 +147,7 @@ namespace Model
      * <p>An array of strings representing the user attribute names you wish to
      * delete.</p>
      */
-    inline AdminDeleteUserAttributesRequest& WithUserAttributeNames(Aws::Vector<Aws::String>&& value) { SetUserAttributeNames(value); return *this;}
+    inline AdminDeleteUserAttributesRequest& WithUserAttributeNames(Aws::Vector<Aws::String>&& value) { SetUserAttributeNames(std::move(value)); return *this;}
 
     /**
      * <p>An array of strings representing the user attribute names you wish to
@@ -153,7 +159,7 @@ namespace Model
      * <p>An array of strings representing the user attribute names you wish to
      * delete.</p>
      */
-    inline AdminDeleteUserAttributesRequest& AddUserAttributeNames(Aws::String&& value) { m_userAttributeNamesHasBeenSet = true; m_userAttributeNames.push_back(value); return *this; }
+    inline AdminDeleteUserAttributesRequest& AddUserAttributeNames(Aws::String&& value) { m_userAttributeNamesHasBeenSet = true; m_userAttributeNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of strings representing the user attribute names you wish to

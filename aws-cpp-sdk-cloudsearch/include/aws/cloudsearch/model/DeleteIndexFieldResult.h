@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/cloudsearch/model/IndexFieldStatus.h>
 #include <aws/cloudsearch/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CloudSearch
 namespace Model
 {
   /**
-   * <p>The result of a <code><a>DeleteIndexField</a></code> request.</p>
+   * <p>The result of a <code><a>DeleteIndexField</a></code> request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteIndexFieldResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API DeleteIndexFieldResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The status of the index field being deleted.</p>
      */
-    inline void SetIndexField(IndexFieldStatus&& value) { m_indexField = value; }
+    inline void SetIndexField(IndexFieldStatus&& value) { m_indexField = std::move(value); }
 
     /**
      * <p>The status of the index field being deleted.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The status of the index field being deleted.</p>
      */
-    inline DeleteIndexFieldResult& WithIndexField(IndexFieldStatus&& value) { SetIndexField(value); return *this;}
+    inline DeleteIndexFieldResult& WithIndexField(IndexFieldStatus&& value) { SetIndexField(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -75,13 +80,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DeleteIndexFieldResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DeleteIndexFieldResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DeleteIndexFieldResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     IndexFieldStatus m_indexField;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/model/RemoteAccessSession.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
   /**
    * <p>Represents the response from the server that lists detailed information about
-   * the remote access session.</p>
+   * the remote access session.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetRemoteAccessSessionResult">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API GetRemoteAccessSessionResult
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>A container that lists detailed information about the remote access
      * session.</p>
      */
-    inline void SetRemoteAccessSession(RemoteAccessSession&& value) { m_remoteAccessSession = value; }
+    inline void SetRemoteAccessSession(RemoteAccessSession&& value) { m_remoteAccessSession = std::move(value); }
 
     /**
      * <p>A container that lists detailed information about the remote access
@@ -71,7 +75,7 @@ namespace Model
      * <p>A container that lists detailed information about the remote access
      * session.</p>
      */
-    inline GetRemoteAccessSessionResult& WithRemoteAccessSession(RemoteAccessSession&& value) { SetRemoteAccessSession(value); return *this;}
+    inline GetRemoteAccessSessionResult& WithRemoteAccessSession(RemoteAccessSession&& value) { SetRemoteAccessSession(std::move(value)); return *this;}
 
   private:
     RemoteAccessSession m_remoteAccessSession;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Details on a container instance host volume.</p>
+   * <p>Details on a container instance host volume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/HostVolumeProperties">AWS
+   * API Reference</a></p>
    */
   class AWS_ECS_API HostVolumeProperties
   {
@@ -75,7 +79,7 @@ namespace Model
      * it. If the location does exist, the contents of the source path folder are
      * exported.</p>
      */
-    inline void SetSourcePath(Aws::String&& value) { m_sourcePathHasBeenSet = true; m_sourcePath = value; }
+    inline void SetSourcePath(Aws::String&& value) { m_sourcePathHasBeenSet = true; m_sourcePath = std::move(value); }
 
     /**
      * <p>The path on the host container instance that is presented to the container.
@@ -111,7 +115,7 @@ namespace Model
      * it. If the location does exist, the contents of the source path folder are
      * exported.</p>
      */
-    inline HostVolumeProperties& WithSourcePath(Aws::String&& value) { SetSourcePath(value); return *this;}
+    inline HostVolumeProperties& WithSourcePath(Aws::String&& value) { SetSourcePath(std::move(value)); return *this;}
 
     /**
      * <p>The path on the host container instance that is presented to the container.

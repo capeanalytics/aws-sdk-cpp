@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/ResponseMetadata.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace RDS
 namespace Model
 {
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/TagListMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ListTagsForResourceResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>List of tags returned by the ListTagsForResource operation.</p>
      */
-    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagList = value; }
+    inline void SetTagList(Aws::Vector<Tag>&& value) { m_tagList = std::move(value); }
 
     /**
      * <p>List of tags returned by the ListTagsForResource operation.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>List of tags returned by the ListTagsForResource operation.</p>
      */
-    inline ListTagsForResourceResult& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(value); return *this;}
+    inline ListTagsForResourceResult& WithTagList(Aws::Vector<Tag>&& value) { SetTagList(std::move(value)); return *this;}
 
     /**
      * <p>List of tags returned by the ListTagsForResource operation.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>List of tags returned by the ListTagsForResource operation.</p>
      */
-    inline ListTagsForResourceResult& AddTagList(Tag&& value) { m_tagList.push_back(value); return *this; }
+    inline ListTagsForResourceResult& AddTagList(Tag&& value) { m_tagList.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -86,13 +90,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ListTagsForResourceResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ListTagsForResourceResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ListTagsForResourceResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Tag> m_tagList;

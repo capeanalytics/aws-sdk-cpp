@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ecr/model/LayerFailureCode.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>An object representing an Amazon ECR image layer failure.</p>
+   * <p>An object representing an Amazon ECR image layer failure.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/LayerFailure">AWS
+   * API Reference</a></p>
    */
   class AWS_ECR_API LayerFailure
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The layer digest associated with the failure.</p>
      */
-    inline void SetLayerDigest(Aws::String&& value) { m_layerDigestHasBeenSet = true; m_layerDigest = value; }
+    inline void SetLayerDigest(Aws::String&& value) { m_layerDigestHasBeenSet = true; m_layerDigest = std::move(value); }
 
     /**
      * <p>The layer digest associated with the failure.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The layer digest associated with the failure.</p>
      */
-    inline LayerFailure& WithLayerDigest(Aws::String&& value) { SetLayerDigest(value); return *this;}
+    inline LayerFailure& WithLayerDigest(Aws::String&& value) { SetLayerDigest(std::move(value)); return *this;}
 
     /**
      * <p>The layer digest associated with the failure.</p>
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The failure code associated with the failure.</p>
      */
-    inline void SetFailureCode(LayerFailureCode&& value) { m_failureCodeHasBeenSet = true; m_failureCode = value; }
+    inline void SetFailureCode(LayerFailureCode&& value) { m_failureCodeHasBeenSet = true; m_failureCode = std::move(value); }
 
     /**
      * <p>The failure code associated with the failure.</p>
@@ -100,7 +105,7 @@ namespace Model
     /**
      * <p>The failure code associated with the failure.</p>
      */
-    inline LayerFailure& WithFailureCode(LayerFailureCode&& value) { SetFailureCode(value); return *this;}
+    inline LayerFailure& WithFailureCode(LayerFailureCode&& value) { SetFailureCode(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the failure.</p>
@@ -115,7 +120,7 @@ namespace Model
     /**
      * <p>The reason for the failure.</p>
      */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
+    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
 
     /**
      * <p>The reason for the failure.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The reason for the failure.</p>
      */
-    inline LayerFailure& WithFailureReason(Aws::String&& value) { SetFailureReason(value); return *this;}
+    inline LayerFailure& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the failure.</p>

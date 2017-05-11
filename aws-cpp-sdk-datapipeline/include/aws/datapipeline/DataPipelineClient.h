@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineErrors.h>
@@ -217,7 +218,10 @@ namespace Model
          * pipeline does not pass validation, activation fails.</p> <p>If you need to pause
          * the pipeline to investigate an issue with a component, such as a data source or
          * script, call <a>DeactivatePipeline</a>.</p> <p>To activate a finished pipeline,
-         * modify the end date for the pipeline and then activate it.</p>
+         * modify the end date for the pipeline and then activate it.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline">AWS
+         * API Reference</a></p>
          */
         virtual Model::ActivatePipelineOutcome ActivatePipeline(const Model::ActivatePipelineRequest& request) const;
 
@@ -226,7 +230,10 @@ namespace Model
          * pipeline does not pass validation, activation fails.</p> <p>If you need to pause
          * the pipeline to investigate an issue with a component, such as a data source or
          * script, call <a>DeactivatePipeline</a>.</p> <p>To activate a finished pipeline,
-         * modify the end date for the pipeline and then activate it.</p>
+         * modify the end date for the pipeline and then activate it.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -237,26 +244,38 @@ namespace Model
          * pipeline does not pass validation, activation fails.</p> <p>If you need to pause
          * the pipeline to investigate an issue with a component, such as a data source or
          * script, call <a>DeactivatePipeline</a>.</p> <p>To activate a finished pipeline,
-         * modify the end date for the pipeline and then activate it.</p>
+         * modify the end date for the pipeline and then activate it.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ActivatePipeline">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ActivatePipelineAsync(const Model::ActivatePipelineRequest& request, const ActivatePipelineResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Adds or modifies tags for the specified pipeline.</p>
+         * <p>Adds or modifies tags for the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::AddTagsOutcome AddTags(const Model::AddTagsRequest& request) const;
 
         /**
-         * <p>Adds or modifies tags for the specified pipeline.</p>
+         * <p>Adds or modifies tags for the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::AddTagsOutcomeCallable AddTagsCallable(const Model::AddTagsRequest& request) const;
 
         /**
-         * <p>Adds or modifies tags for the specified pipeline.</p>
+         * <p>Adds or modifies tags for the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -264,13 +283,17 @@ namespace Model
 
         /**
          * <p>Creates a new, empty pipeline. Use <a>PutPipelineDefinition</a> to populate
-         * the pipeline.</p>
+         * the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreatePipelineOutcome CreatePipeline(const Model::CreatePipelineRequest& request) const;
 
         /**
          * <p>Creates a new, empty pipeline. Use <a>PutPipelineDefinition</a> to populate
-         * the pipeline.</p>
+         * the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -278,7 +301,9 @@ namespace Model
 
         /**
          * <p>Creates a new, empty pipeline. Use <a>PutPipelineDefinition</a> to populate
-         * the pipeline.</p>
+         * the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipeline">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -289,7 +314,9 @@ namespace Model
          * <code>DEACTIVATING</code> state until the deactivation process completes.</p>
          * <p>To resume a deactivated pipeline, use <a>ActivatePipeline</a>. By default,
          * the pipeline resumes from the last completed execution. Optionally, you can
-         * specify the date and time to resume the pipeline.</p>
+         * specify the date and time to resume the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeactivatePipelineOutcome DeactivatePipeline(const Model::DeactivatePipelineRequest& request) const;
 
@@ -298,7 +325,9 @@ namespace Model
          * <code>DEACTIVATING</code> state until the deactivation process completes.</p>
          * <p>To resume a deactivated pipeline, use <a>ActivatePipeline</a>. By default,
          * the pipeline resumes from the last completed execution. Optionally, you can
-         * specify the date and time to resume the pipeline.</p>
+         * specify the date and time to resume the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -309,7 +338,9 @@ namespace Model
          * <code>DEACTIVATING</code> state until the deactivation process completes.</p>
          * <p>To resume a deactivated pipeline, use <a>ActivatePipeline</a>. By default,
          * the pipeline resumes from the last completed execution. Optionally, you can
-         * specify the date and time to resume the pipeline.</p>
+         * specify the date and time to resume the pipeline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeactivatePipeline">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -322,7 +353,9 @@ namespace Model
          * undone. You cannot query or restore a deleted pipeline. To temporarily pause a
          * pipeline instead of deleting it, call <a>SetStatus</a> with the status set to
          * <code>PAUSE</code> on individual components. Components that are paused by
-         * <a>SetStatus</a> can be resumed.</p>
+         * <a>SetStatus</a> can be resumed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeletePipelineOutcome DeletePipeline(const Model::DeletePipelineRequest& request) const;
 
@@ -333,7 +366,9 @@ namespace Model
          * undone. You cannot query or restore a deleted pipeline. To temporarily pause a
          * pipeline instead of deleting it, call <a>SetStatus</a> with the status set to
          * <code>PAUSE</code> on individual components. Components that are paused by
-         * <a>SetStatus</a> can be resumed.</p>
+         * <a>SetStatus</a> can be resumed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -346,7 +381,9 @@ namespace Model
          * undone. You cannot query or restore a deleted pipeline. To temporarily pause a
          * pipeline instead of deleting it, call <a>SetStatus</a> with the status set to
          * <code>PAUSE</code> on individual components. Components that are paused by
-         * <a>SetStatus</a> can be resumed.</p>
+         * <a>SetStatus</a> can be resumed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DeletePipeline">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -355,14 +392,18 @@ namespace Model
         /**
          * <p>Gets the object definitions for a set of objects associated with the
          * pipeline. Object definitions are composed of a set of fields that define the
-         * properties of the object.</p>
+         * properties of the object.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeObjectsOutcome DescribeObjects(const Model::DescribeObjectsRequest& request) const;
 
         /**
          * <p>Gets the object definitions for a set of objects associated with the
          * pipeline. Object definitions are composed of a set of fields that define the
-         * properties of the object.</p>
+         * properties of the object.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -371,7 +412,9 @@ namespace Model
         /**
          * <p>Gets the object definitions for a set of objects associated with the
          * pipeline. Object definitions are composed of a set of fields that define the
-         * properties of the object.</p>
+         * properties of the object.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribeObjects">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -385,7 +428,9 @@ namespace Model
          * you are using an IAM user account, you can retrieve metadata about only those
          * pipelines for which you have read permissions.</p> <p>To retrieve the full
          * pipeline definition instead of metadata about the pipeline, call
-         * <a>GetPipelineDefinition</a>.</p>
+         * <a>GetPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribePipelinesOutcome DescribePipelines(const Model::DescribePipelinesRequest& request) const;
 
@@ -397,7 +442,9 @@ namespace Model
          * you are using an IAM user account, you can retrieve metadata about only those
          * pipelines for which you have read permissions.</p> <p>To retrieve the full
          * pipeline definition instead of metadata about the pipeline, call
-         * <a>GetPipelineDefinition</a>.</p>
+         * <a>GetPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -411,7 +458,9 @@ namespace Model
          * you are using an IAM user account, you can retrieve metadata about only those
          * pipelines for which you have read permissions.</p> <p>To retrieve the full
          * pipeline definition instead of metadata about the pipeline, call
-         * <a>GetPipelineDefinition</a>.</p>
+         * <a>GetPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/DescribePipelines">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -420,14 +469,18 @@ namespace Model
         /**
          * <p>Task runners call <code>EvaluateExpression</code> to evaluate a string in the
          * context of the specified object. For example, a task runner can evaluate SQL
-         * queries stored in Amazon S3.</p>
+         * queries stored in Amazon S3.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression">AWS
+         * API Reference</a></p>
          */
         virtual Model::EvaluateExpressionOutcome EvaluateExpression(const Model::EvaluateExpressionRequest& request) const;
 
         /**
          * <p>Task runners call <code>EvaluateExpression</code> to evaluate a string in the
          * context of the specified object. For example, a task runner can evaluate SQL
-         * queries stored in Amazon S3.</p>
+         * queries stored in Amazon S3.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -436,7 +489,9 @@ namespace Model
         /**
          * <p>Task runners call <code>EvaluateExpression</code> to evaluate a string in the
          * context of the specified object. For example, a task runner can evaluate SQL
-         * queries stored in Amazon S3.</p>
+         * queries stored in Amazon S3.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/EvaluateExpression">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -445,14 +500,18 @@ namespace Model
         /**
          * <p>Gets the definition of the specified pipeline. You can call
          * <code>GetPipelineDefinition</code> to retrieve the pipeline definition that you
-         * provided using <a>PutPipelineDefinition</a>.</p>
+         * provided using <a>PutPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetPipelineDefinitionOutcome GetPipelineDefinition(const Model::GetPipelineDefinitionRequest& request) const;
 
         /**
          * <p>Gets the definition of the specified pipeline. You can call
          * <code>GetPipelineDefinition</code> to retrieve the pipeline definition that you
-         * provided using <a>PutPipelineDefinition</a>.</p>
+         * provided using <a>PutPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -461,7 +520,9 @@ namespace Model
         /**
          * <p>Gets the definition of the specified pipeline. You can call
          * <code>GetPipelineDefinition</code> to retrieve the pipeline definition that you
-         * provided using <a>PutPipelineDefinition</a>.</p>
+         * provided using <a>PutPipelineDefinition</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/GetPipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -469,13 +530,17 @@ namespace Model
 
         /**
          * <p>Lists the pipeline identifiers for all active pipelines that you have
-         * permission to access.</p>
+         * permission to access.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPipelinesOutcome ListPipelines(const Model::ListPipelinesRequest& request) const;
 
         /**
          * <p>Lists the pipeline identifiers for all active pipelines that you have
-         * permission to access.</p>
+         * permission to access.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -483,7 +548,9 @@ namespace Model
 
         /**
          * <p>Lists the pipeline identifiers for all active pipelines that you have
-         * permission to access.</p>
+         * permission to access.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelines">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -502,7 +569,10 @@ namespace Model
          * scheduled task is handed to the task runner. To accomodate this, set the socket
          * timeout in your task runner to 90 seconds. The task runner should not call
          * <code>PollForTask</code> again on the same <code>workerGroup</code> until it
-         * receives a response, and this can take up to 90 seconds. </p>
+         * receives a response, and this can take up to 90 seconds. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask">AWS
+         * API Reference</a></p>
          */
         virtual Model::PollForTaskOutcome PollForTask(const Model::PollForTaskRequest& request) const;
 
@@ -519,7 +589,10 @@ namespace Model
          * scheduled task is handed to the task runner. To accomodate this, set the socket
          * timeout in your task runner to 90 seconds. The task runner should not call
          * <code>PollForTask</code> again on the same <code>workerGroup</code> until it
-         * receives a response, and this can take up to 90 seconds. </p>
+         * receives a response, and this can take up to 90 seconds. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -538,7 +611,10 @@ namespace Model
          * scheduled task is handed to the task runner. To accomodate this, set the socket
          * timeout in your task runner to 90 seconds. The task runner should not call
          * <code>PollForTask</code> again on the same <code>workerGroup</code> until it
-         * receives a response, and this can take up to 90 seconds. </p>
+         * receives a response, and this can take up to 90 seconds. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTask">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -555,7 +631,9 @@ namespace Model
          * maximum allowed objects.</li> <li>The pipeline is in a FINISHED state.</li>
          * </ol> <p> Pipeline object definitions are passed to the
          * <code>PutPipelineDefinition</code> action and returned by the
-         * <a>GetPipelineDefinition</a> action. </p>
+         * <a>GetPipelineDefinition</a> action. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutPipelineDefinitionOutcome PutPipelineDefinition(const Model::PutPipelineDefinitionRequest& request) const;
 
@@ -570,7 +648,9 @@ namespace Model
          * maximum allowed objects.</li> <li>The pipeline is in a FINISHED state.</li>
          * </ol> <p> Pipeline object definitions are passed to the
          * <code>PutPipelineDefinition</code> action and returned by the
-         * <a>GetPipelineDefinition</a> action. </p>
+         * <a>GetPipelineDefinition</a> action. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -587,7 +667,9 @@ namespace Model
          * maximum allowed objects.</li> <li>The pipeline is in a FINISHED state.</li>
          * </ol> <p> Pipeline object definitions are passed to the
          * <code>PutPipelineDefinition</code> action and returned by the
-         * <a>GetPipelineDefinition</a> action. </p>
+         * <a>GetPipelineDefinition</a> action. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -595,13 +677,17 @@ namespace Model
 
         /**
          * <p>Queries the specified pipeline for the names of objects that match the
-         * specified set of conditions.</p>
+         * specified set of conditions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects">AWS
+         * API Reference</a></p>
          */
         virtual Model::QueryObjectsOutcome QueryObjects(const Model::QueryObjectsRequest& request) const;
 
         /**
          * <p>Queries the specified pipeline for the names of objects that match the
-         * specified set of conditions.</p>
+         * specified set of conditions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -609,26 +695,37 @@ namespace Model
 
         /**
          * <p>Queries the specified pipeline for the names of objects that match the
-         * specified set of conditions.</p>
+         * specified set of conditions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjects">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void QueryObjectsAsync(const Model::QueryObjectsRequest& request, const QueryObjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Removes existing tags from the specified pipeline.</p>
+         * <p>Removes existing tags from the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::RemoveTagsOutcome RemoveTags(const Model::RemoveTagsRequest& request) const;
 
         /**
-         * <p>Removes existing tags from the specified pipeline.</p>
+         * <p>Removes existing tags from the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::RemoveTagsOutcomeCallable RemoveTagsCallable(const Model::RemoveTagsRequest& request) const;
 
         /**
-         * <p>Removes existing tags from the specified pipeline.</p>
+         * <p>Removes existing tags from the specified pipeline.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/RemoveTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -645,7 +742,9 @@ namespace Model
          * runner does not report its status after 5 minutes, AWS Data Pipeline assumes
          * that the task runner is unable to process the task and reassigns the task in a
          * subsequent response to <a>PollForTask</a>. Task runners should call
-         * <code>ReportTaskProgress</code> every 60 seconds.</p>
+         * <code>ReportTaskProgress</code> every 60 seconds.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress">AWS
+         * API Reference</a></p>
          */
         virtual Model::ReportTaskProgressOutcome ReportTaskProgress(const Model::ReportTaskProgressRequest& request) const;
 
@@ -660,7 +759,9 @@ namespace Model
          * runner does not report its status after 5 minutes, AWS Data Pipeline assumes
          * that the task runner is unable to process the task and reassigns the task in a
          * subsequent response to <a>PollForTask</a>. Task runners should call
-         * <code>ReportTaskProgress</code> every 60 seconds.</p>
+         * <code>ReportTaskProgress</code> every 60 seconds.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -677,7 +778,9 @@ namespace Model
          * runner does not report its status after 5 minutes, AWS Data Pipeline assumes
          * that the task runner is unable to process the task and reassigns the task in a
          * subsequent response to <a>PollForTask</a>. Task runners should call
-         * <code>ReportTaskProgress</code> every 60 seconds.</p>
+         * <code>ReportTaskProgress</code> every 60 seconds.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskProgress">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -688,7 +791,9 @@ namespace Model
          * indicate that they are operational. If the AWS Data Pipeline Task Runner is
          * launched on a resource managed by AWS Data Pipeline, the web service can use
          * this call to detect when the task runner application has failed and restart a
-         * new instance.</p>
+         * new instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat">AWS
+         * API Reference</a></p>
          */
         virtual Model::ReportTaskRunnerHeartbeatOutcome ReportTaskRunnerHeartbeat(const Model::ReportTaskRunnerHeartbeatRequest& request) const;
 
@@ -697,7 +802,9 @@ namespace Model
          * indicate that they are operational. If the AWS Data Pipeline Task Runner is
          * launched on a resource managed by AWS Data Pipeline, the web service can use
          * this call to detect when the task runner application has failed and restart a
-         * new instance.</p>
+         * new instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -708,7 +815,9 @@ namespace Model
          * indicate that they are operational. If the AWS Data Pipeline Task Runner is
          * launched on a resource managed by AWS Data Pipeline, the web service can use
          * this call to detect when the task runner application has failed and restart a
-         * new instance.</p>
+         * new instance.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeat">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -720,7 +829,9 @@ namespace Model
          * immediately, but is eventually consistent. The status that can be set depends on
          * the type of object (for example, DataNode or Activity). You cannot perform this
          * operation on <code>FINISHED</code> pipelines and attempting to do so returns
-         * <code>InvalidRequestException</code>.</p>
+         * <code>InvalidRequestException</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetStatusOutcome SetStatus(const Model::SetStatusRequest& request) const;
 
@@ -730,7 +841,9 @@ namespace Model
          * immediately, but is eventually consistent. The status that can be set depends on
          * the type of object (for example, DataNode or Activity). You cannot perform this
          * operation on <code>FINISHED</code> pipelines and attempting to do so returns
-         * <code>InvalidRequestException</code>.</p>
+         * <code>InvalidRequestException</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -742,7 +855,9 @@ namespace Model
          * immediately, but is eventually consistent. The status that can be set depends on
          * the type of object (for example, DataNode or Activity). You cannot perform this
          * operation on <code>FINISHED</code> pipelines and attempting to do so returns
-         * <code>InvalidRequestException</code>.</p>
+         * <code>InvalidRequestException</code>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatus">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -753,7 +868,10 @@ namespace Model
          * a task is completed and provide information about the final status. A task
          * runner makes this call regardless of whether the task was sucessful. A task
          * runner does not need to call <code>SetTaskStatus</code> for tasks that are
-         * canceled by the web service during a call to <a>ReportTaskProgress</a>.</p>
+         * canceled by the web service during a call to
+         * <a>ReportTaskProgress</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetTaskStatusOutcome SetTaskStatus(const Model::SetTaskStatusRequest& request) const;
 
@@ -762,7 +880,10 @@ namespace Model
          * a task is completed and provide information about the final status. A task
          * runner makes this call regardless of whether the task was sucessful. A task
          * runner does not need to call <code>SetTaskStatus</code> for tasks that are
-         * canceled by the web service during a call to <a>ReportTaskProgress</a>.</p>
+         * canceled by the web service during a call to
+         * <a>ReportTaskProgress</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -773,7 +894,10 @@ namespace Model
          * a task is completed and provide information about the final status. A task
          * runner makes this call regardless of whether the task was sucessful. A task
          * runner does not need to call <code>SetTaskStatus</code> for tasks that are
-         * canceled by the web service during a call to <a>ReportTaskProgress</a>.</p>
+         * canceled by the web service during a call to
+         * <a>ReportTaskProgress</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetTaskStatus">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -781,13 +905,17 @@ namespace Model
 
         /**
          * <p>Validates the specified pipeline definition to ensure that it is well formed
-         * and can be run without error.</p>
+         * and can be run without error.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition">AWS
+         * API Reference</a></p>
          */
         virtual Model::ValidatePipelineDefinitionOutcome ValidatePipelineDefinition(const Model::ValidatePipelineDefinitionRequest& request) const;
 
         /**
          * <p>Validates the specified pipeline definition to ensure that it is well formed
-         * and can be run without error.</p>
+         * and can be run without error.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -795,7 +923,9 @@ namespace Model
 
         /**
          * <p>Validates the specified pipeline definition to ensure that it is well formed
-         * and can be run without error.</p>
+         * and can be run without error.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ValidatePipelineDefinition">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -827,7 +957,7 @@ namespace Model
         void ValidatePipelineDefinitionAsyncHelper(const Model::ValidatePipelineDefinitionRequest& request, const ValidatePipelineDefinitionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace DataPipeline

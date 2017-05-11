@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rds/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 {
   /**
    * <p> Contains the result of a successful invocation of the
-   * <a>ModifyDBParameterGroup</a> or <a>ResetDBParameterGroup</a> action. </p>
+   * <a>ModifyDBParameterGroup</a> or <a>ResetDBParameterGroup</a> action.
+   * </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBParameterGroupNameMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ResetDBParameterGroupResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Provides the name of the DB parameter group.</p>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>Provides the name of the DB parameter group.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>Provides the name of the DB parameter group.</p>
      */
-    inline ResetDBParameterGroupResult& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline ResetDBParameterGroupResult& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>Provides the name of the DB parameter group.</p>
@@ -86,13 +91,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ResetDBParameterGroupResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ResetDBParameterGroupResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ResetDBParameterGroupResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_dBParameterGroupName;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of CreatePipeline.</p>
+   * <p>Contains the output of CreatePipeline.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipelineOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API CreatePipelineResult
   {
@@ -58,7 +62,7 @@ namespace Model
      * <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For
      * example, <code>df-06372391ZG65EXAMPLE</code>.</p>
      */
-    inline void SetPipelineId(Aws::String&& value) { m_pipelineId = value; }
+    inline void SetPipelineId(Aws::String&& value) { m_pipelineId = std::move(value); }
 
     /**
      * <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For
@@ -76,7 +80,7 @@ namespace Model
      * <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For
      * example, <code>df-06372391ZG65EXAMPLE</code>.</p>
      */
-    inline CreatePipelineResult& WithPipelineId(Aws::String&& value) { SetPipelineId(value); return *this;}
+    inline CreatePipelineResult& WithPipelineId(Aws::String&& value) { SetPipelineId(std::move(value)); return *this;}
 
     /**
      * <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For

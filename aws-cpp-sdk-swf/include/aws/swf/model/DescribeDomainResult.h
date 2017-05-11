@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/DomainInfo.h>
 #include <aws/swf/model/DomainConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace SWF
 namespace Model
 {
   /**
-   * <p>Contains details of a domain.</p>
+   * <p>Contains details of a domain.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DomainDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API DescribeDomainResult
   {
@@ -50,13 +54,13 @@ namespace Model
     inline void SetDomainInfo(const DomainInfo& value) { m_domainInfo = value; }
 
     
-    inline void SetDomainInfo(DomainInfo&& value) { m_domainInfo = value; }
+    inline void SetDomainInfo(DomainInfo&& value) { m_domainInfo = std::move(value); }
 
     
     inline DescribeDomainResult& WithDomainInfo(const DomainInfo& value) { SetDomainInfo(value); return *this;}
 
     
-    inline DescribeDomainResult& WithDomainInfo(DomainInfo&& value) { SetDomainInfo(value); return *this;}
+    inline DescribeDomainResult& WithDomainInfo(DomainInfo&& value) { SetDomainInfo(std::move(value)); return *this;}
 
     
     inline const DomainConfiguration& GetConfiguration() const{ return m_configuration; }
@@ -65,13 +69,13 @@ namespace Model
     inline void SetConfiguration(const DomainConfiguration& value) { m_configuration = value; }
 
     
-    inline void SetConfiguration(DomainConfiguration&& value) { m_configuration = value; }
+    inline void SetConfiguration(DomainConfiguration&& value) { m_configuration = std::move(value); }
 
     
     inline DescribeDomainResult& WithConfiguration(const DomainConfiguration& value) { SetConfiguration(value); return *this;}
 
     
-    inline DescribeDomainResult& WithConfiguration(DomainConfiguration&& value) { SetConfiguration(value); return *this;}
+    inline DescribeDomainResult& WithConfiguration(DomainConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
 
   private:
     DomainInfo m_domainInfo;

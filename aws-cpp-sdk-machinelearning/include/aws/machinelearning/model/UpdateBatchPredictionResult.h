@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>Represents the output of an <code>UpdateBatchPrediction</code> operation.</p>
    * <p>You can see the updated content by using the <code>GetBatchPrediction</code>
-   * operation.</p>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateBatchPredictionOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API UpdateBatchPredictionResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * value should be identical to the value of the <code>BatchPredictionId</code> in
      * the request.</p>
      */
-    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionId = value; }
+    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionId = std::move(value); }
 
     /**
      * <p>The ID assigned to the <code>BatchPrediction</code> during creation. This
@@ -84,7 +88,7 @@ namespace Model
      * value should be identical to the value of the <code>BatchPredictionId</code> in
      * the request.</p>
      */
-    inline UpdateBatchPredictionResult& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(value); return *this;}
+    inline UpdateBatchPredictionResult& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(std::move(value)); return *this;}
 
     /**
      * <p>The ID assigned to the <code>BatchPrediction</code> during creation. This

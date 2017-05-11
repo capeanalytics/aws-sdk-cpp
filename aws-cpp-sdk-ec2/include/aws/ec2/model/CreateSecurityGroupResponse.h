@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of CreateSecurityGroup.</p>
+   * <p>Contains the output of CreateSecurityGroup.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSecurityGroupResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CreateSecurityGroupResponse
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The ID of the security group.</p>
      */
-    inline void SetGroupId(Aws::String&& value) { m_groupId = value; }
+    inline void SetGroupId(Aws::String&& value) { m_groupId = std::move(value); }
 
     /**
      * <p>The ID of the security group.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The ID of the security group.</p>
      */
-    inline CreateSecurityGroupResponse& WithGroupId(Aws::String&& value) { SetGroupId(value); return *this;}
+    inline CreateSecurityGroupResponse& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the security group.</p>
@@ -85,13 +89,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreateSecurityGroupResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreateSecurityGroupResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreateSecurityGroupResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_groupId;

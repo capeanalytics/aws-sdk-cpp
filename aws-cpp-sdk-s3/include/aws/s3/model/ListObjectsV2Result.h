@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -19,6 +20,7 @@
 #include <aws/s3/model/EncodingType.h>
 #include <aws/s3/model/Object.h>
 #include <aws/s3/model/CommonPrefix.h>
+#include <utility>
 
 namespace Aws
 {
@@ -74,7 +76,7 @@ namespace Model
     /**
      * Metadata about each object returned.
      */
-    inline void SetContents(Aws::Vector<Object>&& value) { m_contents = value; }
+    inline void SetContents(Aws::Vector<Object>&& value) { m_contents = std::move(value); }
 
     /**
      * Metadata about each object returned.
@@ -84,7 +86,7 @@ namespace Model
     /**
      * Metadata about each object returned.
      */
-    inline ListObjectsV2Result& WithContents(Aws::Vector<Object>&& value) { SetContents(value); return *this;}
+    inline ListObjectsV2Result& WithContents(Aws::Vector<Object>&& value) { SetContents(std::move(value)); return *this;}
 
     /**
      * Metadata about each object returned.
@@ -94,7 +96,7 @@ namespace Model
     /**
      * Metadata about each object returned.
      */
-    inline ListObjectsV2Result& AddContents(Object&& value) { m_contents.push_back(value); return *this; }
+    inline ListObjectsV2Result& AddContents(Object&& value) { m_contents.push_back(std::move(value)); return *this; }
 
     /**
      * Name of the bucket to list.
@@ -109,7 +111,7 @@ namespace Model
     /**
      * Name of the bucket to list.
      */
-    inline void SetName(Aws::String&& value) { m_name = value; }
+    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
 
     /**
      * Name of the bucket to list.
@@ -124,7 +126,7 @@ namespace Model
     /**
      * Name of the bucket to list.
      */
-    inline ListObjectsV2Result& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ListObjectsV2Result& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * Name of the bucket to list.
@@ -144,7 +146,7 @@ namespace Model
     /**
      * Limits the response to keys that begin with the specified prefix.
      */
-    inline void SetPrefix(Aws::String&& value) { m_prefix = value; }
+    inline void SetPrefix(Aws::String&& value) { m_prefix = std::move(value); }
 
     /**
      * Limits the response to keys that begin with the specified prefix.
@@ -159,7 +161,7 @@ namespace Model
     /**
      * Limits the response to keys that begin with the specified prefix.
      */
-    inline ListObjectsV2Result& WithPrefix(Aws::String&& value) { SetPrefix(value); return *this;}
+    inline ListObjectsV2Result& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
 
     /**
      * Limits the response to keys that begin with the specified prefix.
@@ -179,7 +181,7 @@ namespace Model
     /**
      * A delimiter is a character you use to group keys.
      */
-    inline void SetDelimiter(Aws::String&& value) { m_delimiter = value; }
+    inline void SetDelimiter(Aws::String&& value) { m_delimiter = std::move(value); }
 
     /**
      * A delimiter is a character you use to group keys.
@@ -194,7 +196,7 @@ namespace Model
     /**
      * A delimiter is a character you use to group keys.
      */
-    inline ListObjectsV2Result& WithDelimiter(Aws::String&& value) { SetDelimiter(value); return *this;}
+    inline ListObjectsV2Result& WithDelimiter(Aws::String&& value) { SetDelimiter(std::move(value)); return *this;}
 
     /**
      * A delimiter is a character you use to group keys.
@@ -235,7 +237,7 @@ namespace Model
      * CommonPrefixes contains all (if there are any) keys between Prefix and the next
      * occurrence of the string specified by delimiter
      */
-    inline void SetCommonPrefixes(Aws::Vector<CommonPrefix>&& value) { m_commonPrefixes = value; }
+    inline void SetCommonPrefixes(Aws::Vector<CommonPrefix>&& value) { m_commonPrefixes = std::move(value); }
 
     /**
      * CommonPrefixes contains all (if there are any) keys between Prefix and the next
@@ -247,7 +249,7 @@ namespace Model
      * CommonPrefixes contains all (if there are any) keys between Prefix and the next
      * occurrence of the string specified by delimiter
      */
-    inline ListObjectsV2Result& WithCommonPrefixes(Aws::Vector<CommonPrefix>&& value) { SetCommonPrefixes(value); return *this;}
+    inline ListObjectsV2Result& WithCommonPrefixes(Aws::Vector<CommonPrefix>&& value) { SetCommonPrefixes(std::move(value)); return *this;}
 
     /**
      * CommonPrefixes contains all (if there are any) keys between Prefix and the next
@@ -259,7 +261,7 @@ namespace Model
      * CommonPrefixes contains all (if there are any) keys between Prefix and the next
      * occurrence of the string specified by delimiter
      */
-    inline ListObjectsV2Result& AddCommonPrefixes(CommonPrefix&& value) { m_commonPrefixes.push_back(value); return *this; }
+    inline ListObjectsV2Result& AddCommonPrefixes(CommonPrefix&& value) { m_commonPrefixes.push_back(std::move(value)); return *this; }
 
     /**
      * Encoding type used by Amazon S3 to encode object keys in the response.
@@ -274,7 +276,7 @@ namespace Model
     /**
      * Encoding type used by Amazon S3 to encode object keys in the response.
      */
-    inline void SetEncodingType(EncodingType&& value) { m_encodingType = value; }
+    inline void SetEncodingType(EncodingType&& value) { m_encodingType = std::move(value); }
 
     /**
      * Encoding type used by Amazon S3 to encode object keys in the response.
@@ -284,7 +286,7 @@ namespace Model
     /**
      * Encoding type used by Amazon S3 to encode object keys in the response.
      */
-    inline ListObjectsV2Result& WithEncodingType(EncodingType&& value) { SetEncodingType(value); return *this;}
+    inline ListObjectsV2Result& WithEncodingType(EncodingType&& value) { SetEncodingType(std::move(value)); return *this;}
 
     /**
      * KeyCount is the number of keys returned with this request. KeyCount will always
@@ -323,7 +325,7 @@ namespace Model
      * ContinuationToken indicates Amazon S3 that the list is being continued on this
      * bucket with a token. ContinuationToken is obfuscated and is not a real key
      */
-    inline void SetContinuationToken(Aws::String&& value) { m_continuationToken = value; }
+    inline void SetContinuationToken(Aws::String&& value) { m_continuationToken = std::move(value); }
 
     /**
      * ContinuationToken indicates Amazon S3 that the list is being continued on this
@@ -341,7 +343,7 @@ namespace Model
      * ContinuationToken indicates Amazon S3 that the list is being continued on this
      * bucket with a token. ContinuationToken is obfuscated and is not a real key
      */
-    inline ListObjectsV2Result& WithContinuationToken(Aws::String&& value) { SetContinuationToken(value); return *this;}
+    inline ListObjectsV2Result& WithContinuationToken(Aws::String&& value) { SetContinuationToken(std::move(value)); return *this;}
 
     /**
      * ContinuationToken indicates Amazon S3 that the list is being continued on this
@@ -371,7 +373,7 @@ namespace Model
      * can be continued with this NextContinuationToken. NextContinuationToken is
      * obfuscated and is not a real key
      */
-    inline void SetNextContinuationToken(Aws::String&& value) { m_nextContinuationToken = value; }
+    inline void SetNextContinuationToken(Aws::String&& value) { m_nextContinuationToken = std::move(value); }
 
     /**
      * NextContinuationToken is sent when isTruncated is true which means there are
@@ -395,7 +397,7 @@ namespace Model
      * can be continued with this NextContinuationToken. NextContinuationToken is
      * obfuscated and is not a real key
      */
-    inline ListObjectsV2Result& WithNextContinuationToken(Aws::String&& value) { SetNextContinuationToken(value); return *this;}
+    inline ListObjectsV2Result& WithNextContinuationToken(Aws::String&& value) { SetNextContinuationToken(std::move(value)); return *this;}
 
     /**
      * NextContinuationToken is sent when isTruncated is true which means there are
@@ -421,7 +423,7 @@ namespace Model
      * StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts
      * listing after this specified key. StartAfter can be any key in the bucket
      */
-    inline void SetStartAfter(Aws::String&& value) { m_startAfter = value; }
+    inline void SetStartAfter(Aws::String&& value) { m_startAfter = std::move(value); }
 
     /**
      * StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts
@@ -439,7 +441,7 @@ namespace Model
      * StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts
      * listing after this specified key. StartAfter can be any key in the bucket
      */
-    inline ListObjectsV2Result& WithStartAfter(Aws::String&& value) { SetStartAfter(value); return *this;}
+    inline ListObjectsV2Result& WithStartAfter(Aws::String&& value) { SetStartAfter(std::move(value)); return *this;}
 
     /**
      * StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts

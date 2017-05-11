@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>Application ARN that you want to update.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>Application ARN that you want to update.</p>
      */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
+    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
 
     /**
      * <p>Application ARN that you want to update.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>Application ARN that you want to update.</p>
      */
-    inline UpdateApplicationRequest& WithApplicationArn(Aws::String&& value) { SetApplicationArn(value); return *this;}
+    inline UpdateApplicationRequest& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
 
     /**
      * <p>Application ARN that you want to update.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>Application name that you want to update.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>Application name that you want to update.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>Application name that you want to update.</p>
      */
-    inline UpdateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline UpdateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Application name that you want to update.</p>
@@ -117,7 +120,7 @@ namespace Model
     /**
      * <p>The resource group ARN that you want to update.</p>
      */
-    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = value; }
+    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = std::move(value); }
 
     /**
      * <p>The resource group ARN that you want to update.</p>
@@ -132,7 +135,7 @@ namespace Model
     /**
      * <p>The resource group ARN that you want to update.</p>
      */
-    inline UpdateApplicationRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(value); return *this;}
+    inline UpdateApplicationRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The resource group ARN that you want to update.</p>

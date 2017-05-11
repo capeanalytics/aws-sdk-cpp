@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/model/RulesPackage.h>
+#include <utility>
 
 namespace Aws
 {
@@ -52,7 +54,7 @@ namespace Model
     /**
      * <p>Information about the rules package.</p>
      */
-    inline void SetRulesPackage(RulesPackage&& value) { m_rulesPackage = value; }
+    inline void SetRulesPackage(RulesPackage&& value) { m_rulesPackage = std::move(value); }
 
     /**
      * <p>Information about the rules package.</p>
@@ -62,7 +64,7 @@ namespace Model
     /**
      * <p>Information about the rules package.</p>
      */
-    inline DescribeRulesPackageResult& WithRulesPackage(RulesPackage&& value) { SetRulesPackage(value); return *this;}
+    inline DescribeRulesPackageResult& WithRulesPackage(RulesPackage&& value) { SetRulesPackage(std::move(value)); return *this;}
 
   private:
     RulesPackage m_rulesPackage;

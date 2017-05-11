@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * registered with the target group. If ELB health checks are enabled, the state
    * transitions to <code>InService</code> after at least one Auto Scaling instance
    * passes the health check. If EC2 health checks are enabled instead, the target
-   * group remains in the <code>Added</code> state.</p>
+   * group remains in the <code>Added</code> state.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/LoadBalancerTargetGroupState">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API LoadBalancerTargetGroupState
   {
@@ -63,7 +67,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline void SetLoadBalancerTargetGroupARN(Aws::String&& value) { m_loadBalancerTargetGroupARNHasBeenSet = true; m_loadBalancerTargetGroupARN = value; }
+    inline void SetLoadBalancerTargetGroupARN(Aws::String&& value) { m_loadBalancerTargetGroupARNHasBeenSet = true; m_loadBalancerTargetGroupARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline LoadBalancerTargetGroupState& WithLoadBalancerTargetGroupARN(Aws::String&& value) { SetLoadBalancerTargetGroupARN(value); return *this;}
+    inline LoadBalancerTargetGroupState& WithLoadBalancerTargetGroupARN(Aws::String&& value) { SetLoadBalancerTargetGroupARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -125,7 +129,7 @@ namespace Model
      * </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are
      * deregistered from the target group.</p> </li> </ul>
      */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The
@@ -167,7 +171,7 @@ namespace Model
      * </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are
      * deregistered from the target group.</p> </li> </ul>
      */
-    inline LoadBalancerTargetGroupState& WithState(Aws::String&& value) { SetState(value); return *this;}
+    inline LoadBalancerTargetGroupState& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The

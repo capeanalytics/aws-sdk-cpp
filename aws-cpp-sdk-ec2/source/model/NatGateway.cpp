@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/NatGateway.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -36,6 +37,7 @@ NatGateway::NatGateway() :
     m_createTimeHasBeenSet(false),
     m_deleteTimeHasBeenSet(false),
     m_natGatewayAddressesHasBeenSet(false),
+    m_state(NatGatewayState::NOT_SET),
     m_stateHasBeenSet(false),
     m_failureCodeHasBeenSet(false),
     m_failureMessageHasBeenSet(false),
@@ -50,6 +52,7 @@ NatGateway::NatGateway(const XmlNode& xmlNode) :
     m_createTimeHasBeenSet(false),
     m_deleteTimeHasBeenSet(false),
     m_natGatewayAddressesHasBeenSet(false),
+    m_state(NatGatewayState::NOT_SET),
     m_stateHasBeenSet(false),
     m_failureCodeHasBeenSet(false),
     m_failureMessageHasBeenSet(false),
@@ -225,7 +228,7 @@ void NatGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_natGatewayAddresses)
       {
         Aws::StringStream natGatewayAddressesSs;
-        natGatewayAddressesSs << location <<  ".item." << natGatewayAddressesIdx++;
+        natGatewayAddressesSs << location <<  ".NatGatewayAddressSet." << natGatewayAddressesIdx++;
         item.OutputToStream(oStream, natGatewayAddressesSs.str().c_str());
       }
   }

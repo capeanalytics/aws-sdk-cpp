@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -59,7 +62,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = value; }
+    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = std::move(value); }
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -86,7 +89,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline RespondActivityTaskCompletedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(value); return *this;}
+    inline RespondActivityTaskCompletedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -113,7 +116,7 @@ namespace Model
      * <p>The result of the activity task. It is a free form string that is
      * implementation specific.</p>
      */
-    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = value; }
+    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
 
     /**
      * <p>The result of the activity task. It is a free form string that is
@@ -131,7 +134,7 @@ namespace Model
      * <p>The result of the activity task. It is a free form string that is
      * implementation specific.</p>
      */
-    inline RespondActivityTaskCompletedRequest& WithResult(Aws::String&& value) { SetResult(value); return *this;}
+    inline RespondActivityTaskCompletedRequest& WithResult(Aws::String&& value) { SetResult(std::move(value)); return *this;}
 
     /**
      * <p>The result of the activity task. It is a free form string that is

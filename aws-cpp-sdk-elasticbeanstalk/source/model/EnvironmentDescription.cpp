@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/EnvironmentDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -35,16 +36,20 @@ EnvironmentDescription::EnvironmentDescription() :
     m_applicationNameHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
     m_solutionStackNameHasBeenSet(false),
+    m_platformArnHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_endpointURLHasBeenSet(false),
     m_cNAMEHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
+    m_status(EnvironmentStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_abortableOperationInProgress(false),
     m_abortableOperationInProgressHasBeenSet(false),
+    m_health(EnvironmentHealth::NOT_SET),
     m_healthHasBeenSet(false),
+    m_healthStatus(EnvironmentHealthStatus::NOT_SET),
     m_healthStatusHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_tierHasBeenSet(false),
@@ -59,16 +64,20 @@ EnvironmentDescription::EnvironmentDescription(const XmlNode& xmlNode) :
     m_applicationNameHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
     m_solutionStackNameHasBeenSet(false),
+    m_platformArnHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_endpointURLHasBeenSet(false),
     m_cNAMEHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
+    m_status(EnvironmentStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_abortableOperationInProgress(false),
     m_abortableOperationInProgressHasBeenSet(false),
+    m_health(EnvironmentHealth::NOT_SET),
     m_healthHasBeenSet(false),
+    m_healthStatus(EnvironmentHealthStatus::NOT_SET),
     m_healthStatusHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_tierHasBeenSet(false),
@@ -113,6 +122,12 @@ EnvironmentDescription& EnvironmentDescription::operator =(const XmlNode& xmlNod
     {
       m_solutionStackName = StringUtils::Trim(solutionStackNameNode.GetText().c_str());
       m_solutionStackNameHasBeenSet = true;
+    }
+    XmlNode platformArnNode = resultNode.FirstChild("PlatformArn");
+    if(!platformArnNode.IsNull())
+    {
+      m_platformArn = StringUtils::Trim(platformArnNode.GetText().c_str());
+      m_platformArnHasBeenSet = true;
     }
     XmlNode templateNameNode = resultNode.FirstChild("TemplateName");
     if(!templateNameNode.IsNull())
@@ -230,6 +245,11 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
       oStream << location << index << locationValue << ".SolutionStackName=" << StringUtils::URLEncode(m_solutionStackName.c_str()) << "&";
   }
 
+  if(m_platformArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PlatformArn=" << StringUtils::URLEncode(m_platformArn.c_str()) << "&";
+  }
+
   if(m_templateNameHasBeenSet)
   {
       oStream << location << index << locationValue << ".TemplateName=" << StringUtils::URLEncode(m_templateName.c_str()) << "&";
@@ -267,7 +287,7 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_abortableOperationInProgressHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AbortableOperationInProgress=" << m_abortableOperationInProgress << "&";
+      oStream << location << index << locationValue << ".AbortableOperationInProgress=" << std::boolalpha << m_abortableOperationInProgress << "&";
   }
 
   if(m_healthHasBeenSet)
@@ -336,6 +356,10 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
   {
       oStream << location << ".SolutionStackName=" << StringUtils::URLEncode(m_solutionStackName.c_str()) << "&";
   }
+  if(m_platformArnHasBeenSet)
+  {
+      oStream << location << ".PlatformArn=" << StringUtils::URLEncode(m_platformArn.c_str()) << "&";
+  }
   if(m_templateNameHasBeenSet)
   {
       oStream << location << ".TemplateName=" << StringUtils::URLEncode(m_templateName.c_str()) << "&";
@@ -366,7 +390,7 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_abortableOperationInProgressHasBeenSet)
   {
-      oStream << location << ".AbortableOperationInProgress=" << m_abortableOperationInProgress << "&";
+      oStream << location << ".AbortableOperationInProgress=" << std::boolalpha << m_abortableOperationInProgress << "&";
   }
   if(m_healthHasBeenSet)
   {

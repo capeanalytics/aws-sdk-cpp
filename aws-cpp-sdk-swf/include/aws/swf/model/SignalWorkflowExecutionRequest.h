@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain containing the workflow execution to signal.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow execution to signal.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain containing the workflow execution to signal.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow execution to signal.</p>
      */
-    inline SignalWorkflowExecutionRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline SignalWorkflowExecutionRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain containing the workflow execution to signal.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>The workflowId of the workflow execution to signal.</p>
      */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
+    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
 
     /**
      * <p>The workflowId of the workflow execution to signal.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>The workflowId of the workflow execution to signal.</p>
      */
-    inline SignalWorkflowExecutionRequest& WithWorkflowId(Aws::String&& value) { SetWorkflowId(value); return *this;}
+    inline SignalWorkflowExecutionRequest& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
 
     /**
      * <p>The workflowId of the workflow execution to signal.</p>
@@ -117,7 +120,7 @@ namespace Model
     /**
      * <p>The runId of the workflow execution to signal.</p>
      */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = value; }
+    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
 
     /**
      * <p>The runId of the workflow execution to signal.</p>
@@ -132,7 +135,7 @@ namespace Model
     /**
      * <p>The runId of the workflow execution to signal.</p>
      */
-    inline SignalWorkflowExecutionRequest& WithRunId(Aws::String&& value) { SetRunId(value); return *this;}
+    inline SignalWorkflowExecutionRequest& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
 
     /**
      * <p>The runId of the workflow execution to signal.</p>
@@ -155,7 +158,7 @@ namespace Model
      * <p>The name of the signal. This name must be meaningful to the target
      * workflow.</p>
      */
-    inline void SetSignalName(Aws::String&& value) { m_signalNameHasBeenSet = true; m_signalName = value; }
+    inline void SetSignalName(Aws::String&& value) { m_signalNameHasBeenSet = true; m_signalName = std::move(value); }
 
     /**
      * <p>The name of the signal. This name must be meaningful to the target
@@ -173,7 +176,7 @@ namespace Model
      * <p>The name of the signal. This name must be meaningful to the target
      * workflow.</p>
      */
-    inline SignalWorkflowExecutionRequest& WithSignalName(Aws::String&& value) { SetSignalName(value); return *this;}
+    inline SignalWorkflowExecutionRequest& WithSignalName(Aws::String&& value) { SetSignalName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the signal. This name must be meaningful to the target
@@ -197,7 +200,7 @@ namespace Model
      * <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the
      * target workflow execution's history.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the
@@ -215,7 +218,7 @@ namespace Model
      * <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the
      * target workflow execution's history.</p>
      */
-    inline SignalWorkflowExecutionRequest& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline SignalWorkflowExecutionRequest& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the

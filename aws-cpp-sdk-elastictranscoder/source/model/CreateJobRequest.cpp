@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elastictranscoder/model/CreateJobRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -24,6 +25,7 @@ using namespace Aws::Utils;
 CreateJobRequest::CreateJobRequest() : 
     m_pipelineIdHasBeenSet(false),
     m_inputHasBeenSet(false),
+    m_inputsHasBeenSet(false),
     m_outputHasBeenSet(false),
     m_outputsHasBeenSet(false),
     m_outputKeyPrefixHasBeenSet(false),
@@ -45,6 +47,17 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_inputHasBeenSet)
   {
    payload.WithObject("Input", m_input.Jsonize());
+
+  }
+
+  if(m_inputsHasBeenSet)
+  {
+   Array<JsonValue> inputsJsonList(m_inputs.size());
+   for(unsigned inputsIndex = 0; inputsIndex < inputsJsonList.GetLength(); ++inputsIndex)
+   {
+     inputsJsonList[inputsIndex].AsObject(m_inputs[inputsIndex].Jsonize());
+   }
+   payload.WithArray("Inputs", std::move(inputsJsonList));
 
   }
 
@@ -95,6 +108,7 @@ Aws::String CreateJobRequest::SerializePayload() const
 
   return payload.WriteReadable();
 }
+
 
 
 

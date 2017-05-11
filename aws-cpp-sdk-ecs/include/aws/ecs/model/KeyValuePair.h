@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>A key and value pair object.</p>
+   * <p>A key and value pair object.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/KeyValuePair">AWS
+   * API Reference</a></p>
    */
   class AWS_ECS_API KeyValuePair
   {
@@ -57,7 +61,7 @@ namespace Model
      * <p>The name of the key value pair. For environment variables, this is the name
      * of the environment variable.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the key value pair. For environment variables, this is the name
@@ -75,7 +79,7 @@ namespace Model
      * <p>The name of the key value pair. For environment variables, this is the name
      * of the environment variable.</p>
      */
-    inline KeyValuePair& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline KeyValuePair& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the key value pair. For environment variables, this is the name
@@ -99,7 +103,7 @@ namespace Model
      * <p>The value of the key value pair. For environment variables, this is the value
      * of the environment variable.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The value of the key value pair. For environment variables, this is the value
@@ -117,7 +121,7 @@ namespace Model
      * <p>The value of the key value pair. For environment variables, this is the value
      * of the environment variable.</p>
      */
-    inline KeyValuePair& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline KeyValuePair& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The value of the key value pair. For environment variables, this is the value

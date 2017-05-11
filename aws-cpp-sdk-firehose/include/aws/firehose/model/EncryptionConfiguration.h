@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
 #include <aws/firehose/model/NoEncryptionConfig.h>
 #include <aws/firehose/model/KMSEncryptionConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the encryption for a destination in Amazon S3.</p>
+   * <p>Describes the encryption for a destination in Amazon S3.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/EncryptionConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_FIREHOSE_API EncryptionConfiguration
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>Specifically override existing encryption information to ensure no encryption
      * is used.</p>
      */
-    inline void SetNoEncryptionConfig(NoEncryptionConfig&& value) { m_noEncryptionConfigHasBeenSet = true; m_noEncryptionConfig = value; }
+    inline void SetNoEncryptionConfig(NoEncryptionConfig&& value) { m_noEncryptionConfigHasBeenSet = true; m_noEncryptionConfig = std::move(value); }
 
     /**
      * <p>Specifically override existing encryption information to ensure no encryption
@@ -70,7 +75,7 @@ namespace Model
      * <p>Specifically override existing encryption information to ensure no encryption
      * is used.</p>
      */
-    inline EncryptionConfiguration& WithNoEncryptionConfig(NoEncryptionConfig&& value) { SetNoEncryptionConfig(value); return *this;}
+    inline EncryptionConfiguration& WithNoEncryptionConfig(NoEncryptionConfig&& value) { SetNoEncryptionConfig(std::move(value)); return *this;}
 
     /**
      * <p>The encryption key.</p>
@@ -85,7 +90,7 @@ namespace Model
     /**
      * <p>The encryption key.</p>
      */
-    inline void SetKMSEncryptionConfig(KMSEncryptionConfig&& value) { m_kMSEncryptionConfigHasBeenSet = true; m_kMSEncryptionConfig = value; }
+    inline void SetKMSEncryptionConfig(KMSEncryptionConfig&& value) { m_kMSEncryptionConfigHasBeenSet = true; m_kMSEncryptionConfig = std::move(value); }
 
     /**
      * <p>The encryption key.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The encryption key.</p>
      */
-    inline EncryptionConfiguration& WithKMSEncryptionConfig(KMSEncryptionConfig&& value) { SetKMSEncryptionConfig(value); return *this;}
+    inline EncryptionConfiguration& WithKMSEncryptionConfig(KMSEncryptionConfig&& value) { SetKMSEncryptionConfig(std::move(value)); return *this;}
 
   private:
     NoEncryptionConfig m_noEncryptionConfig;

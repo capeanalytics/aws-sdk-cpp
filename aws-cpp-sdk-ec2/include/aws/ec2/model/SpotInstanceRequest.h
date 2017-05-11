@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -25,6 +26,7 @@
 #include <aws/ec2/model/RIProductDescription.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -41,7 +43,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a Spot instance request.</p>
+   * <p>Describes a Spot instance request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotInstanceRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API SpotInstanceRequest
   {
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The ID of the Spot instance request.</p>
      */
-    inline void SetSpotInstanceRequestId(Aws::String&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = value; }
+    inline void SetSpotInstanceRequestId(Aws::String&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = std::move(value); }
 
     /**
      * <p>The ID of the Spot instance request.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>The ID of the Spot instance request.</p>
      */
-    inline SpotInstanceRequest& WithSpotInstanceRequestId(Aws::String&& value) { SetSpotInstanceRequestId(value); return *this;}
+    inline SpotInstanceRequest& WithSpotInstanceRequestId(Aws::String&& value) { SetSpotInstanceRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Spot instance request.</p>
@@ -104,7 +108,7 @@ namespace Model
      * <p>The maximum hourly price (bid) for the Spot instance launched to fulfill the
      * request.</p>
      */
-    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = value; }
+    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = std::move(value); }
 
     /**
      * <p>The maximum hourly price (bid) for the Spot instance launched to fulfill the
@@ -122,7 +126,7 @@ namespace Model
      * <p>The maximum hourly price (bid) for the Spot instance launched to fulfill the
      * request.</p>
      */
-    inline SpotInstanceRequest& WithSpotPrice(Aws::String&& value) { SetSpotPrice(value); return *this;}
+    inline SpotInstanceRequest& WithSpotPrice(Aws::String&& value) { SetSpotPrice(std::move(value)); return *this;}
 
     /**
      * <p>The maximum hourly price (bid) for the Spot instance launched to fulfill the
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The Spot instance request type.</p>
      */
-    inline void SetType(SpotInstanceType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(SpotInstanceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The Spot instance request type.</p>
@@ -153,7 +157,7 @@ namespace Model
     /**
      * <p>The Spot instance request type.</p>
      */
-    inline SpotInstanceRequest& WithType(SpotInstanceType&& value) { SetType(value); return *this;}
+    inline SpotInstanceRequest& WithType(SpotInstanceType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The state of the Spot instance request. Spot bid status information can help
@@ -177,7 +181,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot
      * Bid Status</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetState(SpotInstanceState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(SpotInstanceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the Spot instance request. Spot bid status information can help
@@ -193,7 +197,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot
      * Bid Status</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline SpotInstanceRequest& WithState(SpotInstanceState&& value) { SetState(value); return *this;}
+    inline SpotInstanceRequest& WithState(SpotInstanceState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The fault codes for the Spot instance request, if any.</p>
@@ -208,7 +212,7 @@ namespace Model
     /**
      * <p>The fault codes for the Spot instance request, if any.</p>
      */
-    inline void SetFault(SpotInstanceStateFault&& value) { m_faultHasBeenSet = true; m_fault = value; }
+    inline void SetFault(SpotInstanceStateFault&& value) { m_faultHasBeenSet = true; m_fault = std::move(value); }
 
     /**
      * <p>The fault codes for the Spot instance request, if any.</p>
@@ -218,7 +222,7 @@ namespace Model
     /**
      * <p>The fault codes for the Spot instance request, if any.</p>
      */
-    inline SpotInstanceRequest& WithFault(SpotInstanceStateFault&& value) { SetFault(value); return *this;}
+    inline SpotInstanceRequest& WithFault(SpotInstanceStateFault&& value) { SetFault(std::move(value)); return *this;}
 
     /**
      * <p>The status code and status message describing the Spot instance request.</p>
@@ -233,7 +237,7 @@ namespace Model
     /**
      * <p>The status code and status message describing the Spot instance request.</p>
      */
-    inline void SetStatus(SpotInstanceStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(SpotInstanceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status code and status message describing the Spot instance request.</p>
@@ -243,7 +247,7 @@ namespace Model
     /**
      * <p>The status code and status message describing the Spot instance request.</p>
      */
-    inline SpotInstanceRequest& WithStatus(SpotInstanceStatus&& value) { SetStatus(value); return *this;}
+    inline SpotInstanceRequest& WithStatus(SpotInstanceStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The start date of the request, in UTC format (for example,
@@ -264,7 +268,7 @@ namespace Model
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). The request
      * becomes active at this date and time.</p>
      */
-    inline void SetValidFrom(Aws::Utils::DateTime&& value) { m_validFromHasBeenSet = true; m_validFrom = value; }
+    inline void SetValidFrom(Aws::Utils::DateTime&& value) { m_validFromHasBeenSet = true; m_validFrom = std::move(value); }
 
     /**
      * <p>The start date of the request, in UTC format (for example,
@@ -278,7 +282,7 @@ namespace Model
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). The request
      * becomes active at this date and time.</p>
      */
-    inline SpotInstanceRequest& WithValidFrom(Aws::Utils::DateTime&& value) { SetValidFrom(value); return *this;}
+    inline SpotInstanceRequest& WithValidFrom(Aws::Utils::DateTime&& value) { SetValidFrom(std::move(value)); return *this;}
 
     /**
      * <p>The end date of the request, in UTC format (for example,
@@ -305,7 +309,7 @@ namespace Model
      * canceled, or this date is reached. If the request is persistent, it remains
      * active until it is canceled or this date is reached.</p>
      */
-    inline void SetValidUntil(Aws::Utils::DateTime&& value) { m_validUntilHasBeenSet = true; m_validUntil = value; }
+    inline void SetValidUntil(Aws::Utils::DateTime&& value) { m_validUntilHasBeenSet = true; m_validUntil = std::move(value); }
 
     /**
      * <p>The end date of the request, in UTC format (for example,
@@ -323,7 +327,7 @@ namespace Model
      * canceled, or this date is reached. If the request is persistent, it remains
      * active until it is canceled or this date is reached.</p>
      */
-    inline SpotInstanceRequest& WithValidUntil(Aws::Utils::DateTime&& value) { SetValidUntil(value); return *this;}
+    inline SpotInstanceRequest& WithValidUntil(Aws::Utils::DateTime&& value) { SetValidUntil(std::move(value)); return *this;}
 
     /**
      * <p>The instance launch group. Launch groups are Spot instances that launch
@@ -341,7 +345,7 @@ namespace Model
      * <p>The instance launch group. Launch groups are Spot instances that launch
      * together and terminate together.</p>
      */
-    inline void SetLaunchGroup(Aws::String&& value) { m_launchGroupHasBeenSet = true; m_launchGroup = value; }
+    inline void SetLaunchGroup(Aws::String&& value) { m_launchGroupHasBeenSet = true; m_launchGroup = std::move(value); }
 
     /**
      * <p>The instance launch group. Launch groups are Spot instances that launch
@@ -359,7 +363,7 @@ namespace Model
      * <p>The instance launch group. Launch groups are Spot instances that launch
      * together and terminate together.</p>
      */
-    inline SpotInstanceRequest& WithLaunchGroup(Aws::String&& value) { SetLaunchGroup(value); return *this;}
+    inline SpotInstanceRequest& WithLaunchGroup(Aws::String&& value) { SetLaunchGroup(std::move(value)); return *this;}
 
     /**
      * <p>The instance launch group. Launch groups are Spot instances that launch
@@ -386,7 +390,7 @@ namespace Model
      * for all Spot instance requests, all Spot instances are launched in the same
      * Availability Zone.</p>
      */
-    inline void SetAvailabilityZoneGroup(Aws::String&& value) { m_availabilityZoneGroupHasBeenSet = true; m_availabilityZoneGroup = value; }
+    inline void SetAvailabilityZoneGroup(Aws::String&& value) { m_availabilityZoneGroupHasBeenSet = true; m_availabilityZoneGroup = std::move(value); }
 
     /**
      * <p>The Availability Zone group. If you specify the same Availability Zone group
@@ -407,7 +411,7 @@ namespace Model
      * for all Spot instance requests, all Spot instances are launched in the same
      * Availability Zone.</p>
      */
-    inline SpotInstanceRequest& WithAvailabilityZoneGroup(Aws::String&& value) { SetAvailabilityZoneGroup(value); return *this;}
+    inline SpotInstanceRequest& WithAvailabilityZoneGroup(Aws::String&& value) { SetAvailabilityZoneGroup(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone group. If you specify the same Availability Zone group
@@ -429,7 +433,7 @@ namespace Model
     /**
      * <p>Additional information for launching instances.</p>
      */
-    inline void SetLaunchSpecification(LaunchSpecification&& value) { m_launchSpecificationHasBeenSet = true; m_launchSpecification = value; }
+    inline void SetLaunchSpecification(LaunchSpecification&& value) { m_launchSpecificationHasBeenSet = true; m_launchSpecification = std::move(value); }
 
     /**
      * <p>Additional information for launching instances.</p>
@@ -439,7 +443,7 @@ namespace Model
     /**
      * <p>Additional information for launching instances.</p>
      */
-    inline SpotInstanceRequest& WithLaunchSpecification(LaunchSpecification&& value) { SetLaunchSpecification(value); return *this;}
+    inline SpotInstanceRequest& WithLaunchSpecification(LaunchSpecification&& value) { SetLaunchSpecification(std::move(value)); return *this;}
 
     /**
      * <p>The instance ID, if an instance has been launched to fulfill the Spot
@@ -457,7 +461,7 @@ namespace Model
      * <p>The instance ID, if an instance has been launched to fulfill the Spot
      * instance request.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The instance ID, if an instance has been launched to fulfill the Spot
@@ -475,7 +479,7 @@ namespace Model
      * <p>The instance ID, if an instance has been launched to fulfill the Spot
      * instance request.</p>
      */
-    inline SpotInstanceRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline SpotInstanceRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The instance ID, if an instance has been launched to fulfill the Spot
@@ -502,7 +506,7 @@ namespace Model
      * (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
+    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
 
     /**
      * <p>The date and time when the Spot instance request was created, in UTC format
@@ -516,7 +520,7 @@ namespace Model
      * (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline SpotInstanceRequest& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(value); return *this;}
+    inline SpotInstanceRequest& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
 
     /**
      * <p>The product description associated with the Spot instance.</p>
@@ -531,7 +535,7 @@ namespace Model
     /**
      * <p>The product description associated with the Spot instance.</p>
      */
-    inline void SetProductDescription(RIProductDescription&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = value; }
+    inline void SetProductDescription(RIProductDescription&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = std::move(value); }
 
     /**
      * <p>The product description associated with the Spot instance.</p>
@@ -541,7 +545,7 @@ namespace Model
     /**
      * <p>The product description associated with the Spot instance.</p>
      */
-    inline SpotInstanceRequest& WithProductDescription(RIProductDescription&& value) { SetProductDescription(value); return *this;}
+    inline SpotInstanceRequest& WithProductDescription(RIProductDescription&& value) { SetProductDescription(std::move(value)); return *this;}
 
     /**
      * <p>The duration for the Spot instance, in minutes.</p>
@@ -577,7 +581,7 @@ namespace Model
      * this is the fixed hourly price in effect for the Spot instance while it
      * runs.</p>
      */
-    inline void SetActualBlockHourlyPrice(Aws::String&& value) { m_actualBlockHourlyPriceHasBeenSet = true; m_actualBlockHourlyPrice = value; }
+    inline void SetActualBlockHourlyPrice(Aws::String&& value) { m_actualBlockHourlyPriceHasBeenSet = true; m_actualBlockHourlyPrice = std::move(value); }
 
     /**
      * <p>If you specified a duration and your Spot instance request was fulfilled,
@@ -598,7 +602,7 @@ namespace Model
      * this is the fixed hourly price in effect for the Spot instance while it
      * runs.</p>
      */
-    inline SpotInstanceRequest& WithActualBlockHourlyPrice(Aws::String&& value) { SetActualBlockHourlyPrice(value); return *this;}
+    inline SpotInstanceRequest& WithActualBlockHourlyPrice(Aws::String&& value) { SetActualBlockHourlyPrice(std::move(value)); return *this;}
 
     /**
      * <p>If you specified a duration and your Spot instance request was fulfilled,
@@ -620,7 +624,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the resource.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the resource.</p>
@@ -630,7 +634,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the resource.</p>
      */
-    inline SpotInstanceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline SpotInstanceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the resource.</p>
@@ -640,7 +644,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the resource.</p>
      */
-    inline SpotInstanceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline SpotInstanceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Availability Zone in which the bid is launched.</p>
@@ -655,7 +659,7 @@ namespace Model
     /**
      * <p>The Availability Zone in which the bid is launched.</p>
      */
-    inline void SetLaunchedAvailabilityZone(Aws::String&& value) { m_launchedAvailabilityZoneHasBeenSet = true; m_launchedAvailabilityZone = value; }
+    inline void SetLaunchedAvailabilityZone(Aws::String&& value) { m_launchedAvailabilityZoneHasBeenSet = true; m_launchedAvailabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone in which the bid is launched.</p>
@@ -670,7 +674,7 @@ namespace Model
     /**
      * <p>The Availability Zone in which the bid is launched.</p>
      */
-    inline SpotInstanceRequest& WithLaunchedAvailabilityZone(Aws::String&& value) { SetLaunchedAvailabilityZone(value); return *this;}
+    inline SpotInstanceRequest& WithLaunchedAvailabilityZone(Aws::String&& value) { SetLaunchedAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone in which the bid is launched.</p>

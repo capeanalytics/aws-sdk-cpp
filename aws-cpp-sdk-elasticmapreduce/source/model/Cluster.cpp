@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticmapreduce/model/Cluster.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,6 +33,8 @@ Cluster::Cluster() :
     m_nameHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_ec2InstanceAttributesHasBeenSet(false),
+    m_instanceCollectionType(InstanceCollectionType::NOT_SET),
+    m_instanceCollectionTypeHasBeenSet(false),
     m_logUriHasBeenSet(false),
     m_requestedAmiVersionHasBeenSet(false),
     m_runningAmiVersionHasBeenSet(false),
@@ -48,7 +51,11 @@ Cluster::Cluster() :
     m_normalizedInstanceHours(0),
     m_normalizedInstanceHoursHasBeenSet(false),
     m_masterPublicDnsNameHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_securityConfigurationHasBeenSet(false),
+    m_autoScalingRoleHasBeenSet(false),
+    m_scaleDownBehavior(ScaleDownBehavior::NOT_SET),
+    m_scaleDownBehaviorHasBeenSet(false)
 {
 }
 
@@ -57,6 +64,8 @@ Cluster::Cluster(const JsonValue& jsonValue) :
     m_nameHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_ec2InstanceAttributesHasBeenSet(false),
+    m_instanceCollectionType(InstanceCollectionType::NOT_SET),
+    m_instanceCollectionTypeHasBeenSet(false),
     m_logUriHasBeenSet(false),
     m_requestedAmiVersionHasBeenSet(false),
     m_runningAmiVersionHasBeenSet(false),
@@ -73,7 +82,11 @@ Cluster::Cluster(const JsonValue& jsonValue) :
     m_normalizedInstanceHours(0),
     m_normalizedInstanceHoursHasBeenSet(false),
     m_masterPublicDnsNameHasBeenSet(false),
-    m_configurationsHasBeenSet(false)
+    m_configurationsHasBeenSet(false),
+    m_securityConfigurationHasBeenSet(false),
+    m_autoScalingRoleHasBeenSet(false),
+    m_scaleDownBehavior(ScaleDownBehavior::NOT_SET),
+    m_scaleDownBehaviorHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -106,6 +119,13 @@ Cluster& Cluster::operator =(const JsonValue& jsonValue)
     m_ec2InstanceAttributes = jsonValue.GetObject("Ec2InstanceAttributes");
 
     m_ec2InstanceAttributesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("InstanceCollectionType"))
+  {
+    m_instanceCollectionType = InstanceCollectionTypeMapper::GetInstanceCollectionTypeForName(jsonValue.GetString("InstanceCollectionType"));
+
+    m_instanceCollectionTypeHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("LogUri"))
@@ -208,6 +228,27 @@ Cluster& Cluster::operator =(const JsonValue& jsonValue)
     m_configurationsHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("SecurityConfiguration"))
+  {
+    m_securityConfiguration = jsonValue.GetString("SecurityConfiguration");
+
+    m_securityConfigurationHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AutoScalingRole"))
+  {
+    m_autoScalingRole = jsonValue.GetString("AutoScalingRole");
+
+    m_autoScalingRoleHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ScaleDownBehavior"))
+  {
+    m_scaleDownBehavior = ScaleDownBehaviorMapper::GetScaleDownBehaviorForName(jsonValue.GetString("ScaleDownBehavior"));
+
+    m_scaleDownBehaviorHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -237,6 +278,11 @@ JsonValue Cluster::Jsonize() const
   {
    payload.WithObject("Ec2InstanceAttributes", m_ec2InstanceAttributes.Jsonize());
 
+  }
+
+  if(m_instanceCollectionTypeHasBeenSet)
+  {
+   payload.WithString("InstanceCollectionType", InstanceCollectionTypeMapper::GetNameForInstanceCollectionType(m_instanceCollectionType));
   }
 
   if(m_logUriHasBeenSet)
@@ -330,6 +376,23 @@ JsonValue Cluster::Jsonize() const
    }
    payload.WithArray("Configurations", std::move(configurationsJsonList));
 
+  }
+
+  if(m_securityConfigurationHasBeenSet)
+  {
+   payload.WithString("SecurityConfiguration", m_securityConfiguration);
+
+  }
+
+  if(m_autoScalingRoleHasBeenSet)
+  {
+   payload.WithString("AutoScalingRole", m_autoScalingRole);
+
+  }
+
+  if(m_scaleDownBehaviorHasBeenSet)
+  {
+   payload.WithString("ScaleDownBehavior", ScaleDownBehaviorMapper::GetNameForScaleDownBehavior(m_scaleDownBehavior));
   }
 
   return payload;

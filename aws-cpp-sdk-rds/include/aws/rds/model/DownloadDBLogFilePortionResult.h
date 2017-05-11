@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rds/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>This data type is used as a response element to
-   * <a>DownloadDBLogFilePortion</a>.</p>
+   * <a>DownloadDBLogFilePortion</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DownloadDBLogFilePortionDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DownloadDBLogFilePortionResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Entries from the specified log file.</p>
      */
-    inline void SetLogFileData(Aws::String&& value) { m_logFileData = value; }
+    inline void SetLogFileData(Aws::String&& value) { m_logFileData = std::move(value); }
 
     /**
      * <p>Entries from the specified log file.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>Entries from the specified log file.</p>
      */
-    inline DownloadDBLogFilePortionResult& WithLogFileData(Aws::String&& value) { SetLogFileData(value); return *this;}
+    inline DownloadDBLogFilePortionResult& WithLogFileData(Aws::String&& value) { SetLogFileData(std::move(value)); return *this;}
 
     /**
      * <p>Entries from the specified log file.</p>
@@ -95,7 +99,7 @@ namespace Model
      * <p>A pagination token that can be used in a subsequent DownloadDBLogFilePortion
      * request.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>A pagination token that can be used in a subsequent DownloadDBLogFilePortion
@@ -113,7 +117,7 @@ namespace Model
      * <p>A pagination token that can be used in a subsequent DownloadDBLogFilePortion
      * request.</p>
      */
-    inline DownloadDBLogFilePortionResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DownloadDBLogFilePortionResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>A pagination token that can be used in a subsequent DownloadDBLogFilePortion
@@ -146,13 +150,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DownloadDBLogFilePortionResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DownloadDBLogFilePortionResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DownloadDBLogFilePortionResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_logFileData;

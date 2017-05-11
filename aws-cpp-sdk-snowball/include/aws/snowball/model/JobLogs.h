@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/snowball/Snowball_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -46,7 +48,9 @@ namespace Model
    * the status of your transferred objects, you can look at the two associated logs:
    * a success log and a failure log. The logs are saved in comma-separated value
    * (CSV) format, and the name of each log includes the ID of the job or job part
-   * that the log describes.</p>
+   * that the log describes.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/JobLogs">AWS
+   * API Reference</a></p>
    */
   class AWS_SNOWBALL_API JobLogs
   {
@@ -72,7 +76,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job completion report is
      * located.</p>
      */
-    inline void SetJobCompletionReportURI(Aws::String&& value) { m_jobCompletionReportURIHasBeenSet = true; m_jobCompletionReportURI = value; }
+    inline void SetJobCompletionReportURI(Aws::String&& value) { m_jobCompletionReportURIHasBeenSet = true; m_jobCompletionReportURI = std::move(value); }
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job completion report is
@@ -90,7 +94,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job completion report is
      * located.</p>
      */
-    inline JobLogs& WithJobCompletionReportURI(Aws::String&& value) { SetJobCompletionReportURI(value); return *this;}
+    inline JobLogs& WithJobCompletionReportURI(Aws::String&& value) { SetJobCompletionReportURI(std::move(value)); return *this;}
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job completion report is
@@ -114,7 +118,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job success log is
      * located.</p>
      */
-    inline void SetJobSuccessLogURI(Aws::String&& value) { m_jobSuccessLogURIHasBeenSet = true; m_jobSuccessLogURI = value; }
+    inline void SetJobSuccessLogURI(Aws::String&& value) { m_jobSuccessLogURIHasBeenSet = true; m_jobSuccessLogURI = std::move(value); }
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job success log is
@@ -132,7 +136,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job success log is
      * located.</p>
      */
-    inline JobLogs& WithJobSuccessLogURI(Aws::String&& value) { SetJobSuccessLogURI(value); return *this;}
+    inline JobLogs& WithJobSuccessLogURI(Aws::String&& value) { SetJobSuccessLogURI(std::move(value)); return *this;}
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job success log is
@@ -156,7 +160,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job failure log is
      * located.</p>
      */
-    inline void SetJobFailureLogURI(Aws::String&& value) { m_jobFailureLogURIHasBeenSet = true; m_jobFailureLogURI = value; }
+    inline void SetJobFailureLogURI(Aws::String&& value) { m_jobFailureLogURIHasBeenSet = true; m_jobFailureLogURI = std::move(value); }
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job failure log is
@@ -174,7 +178,7 @@ namespace Model
      * <p>A link to an Amazon S3 presigned URL where the job failure log is
      * located.</p>
      */
-    inline JobLogs& WithJobFailureLogURI(Aws::String&& value) { SetJobFailureLogURI(value); return *this;}
+    inline JobLogs& WithJobFailureLogURI(Aws::String&& value) { SetJobFailureLogURI(std::move(value)); return *this;}
 
     /**
      * <p>A link to an Amazon S3 presigned URL where the job failure log is

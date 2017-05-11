@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudfront/model/SslProtocol.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 
   /**
    * A complex type that contains the list of SSL/TLS protocols that you want
-   * CloudFront to use when communicating with your origin over HTTPS.
+   * CloudFront to use when communicating with your origin over HTTPS.<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/OriginSslProtocols">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API OriginSslProtocols
   {
@@ -81,7 +86,7 @@ namespace Model
      * that you want to allow CloudFront to use when establishing an HTTPS connection
      * with this origin.
      */
-    inline void SetItems(Aws::Vector<SslProtocol>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<SslProtocol>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * A complex type that contains one SslProtocol element for each SSL/TLS protocol
@@ -95,7 +100,7 @@ namespace Model
      * that you want to allow CloudFront to use when establishing an HTTPS connection
      * with this origin.
      */
-    inline OriginSslProtocols& WithItems(Aws::Vector<SslProtocol>&& value) { SetItems(value); return *this;}
+    inline OriginSslProtocols& WithItems(Aws::Vector<SslProtocol>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * A complex type that contains one SslProtocol element for each SSL/TLS protocol
@@ -109,7 +114,7 @@ namespace Model
      * that you want to allow CloudFront to use when establishing an HTTPS connection
      * with this origin.
      */
-    inline OriginSslProtocols& AddItems(SslProtocol&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline OriginSslProtocols& AddItems(SslProtocol&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
   private:
     int m_quantity;

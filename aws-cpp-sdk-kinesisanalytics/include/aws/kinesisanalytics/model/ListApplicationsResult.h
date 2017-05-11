@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/kinesisanalytics/model/ApplicationSummary.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace KinesisAnalytics
 namespace Model
 {
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ListApplicationsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API ListApplicationsResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
      */
-    inline void SetApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { m_applicationSummaries = value; }
+    inline void SetApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { m_applicationSummaries = std::move(value); }
 
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
      */
-    inline ListApplicationsResult& WithApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { SetApplicationSummaries(value); return *this;}
+    inline ListApplicationsResult& WithApplicationSummaries(Aws::Vector<ApplicationSummary>&& value) { SetApplicationSummaries(std::move(value)); return *this;}
 
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>List of <code>ApplicationSummary</code> objects. </p>
      */
-    inline ListApplicationsResult& AddApplicationSummaries(ApplicationSummary&& value) { m_applicationSummaries.push_back(value); return *this; }
+    inline ListApplicationsResult& AddApplicationSummaries(ApplicationSummary&& value) { m_applicationSummaries.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Returns true if there are more applications to retrieve.</p>

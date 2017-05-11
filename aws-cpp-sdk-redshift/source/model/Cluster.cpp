@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/Cluster.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -66,6 +67,8 @@ Cluster::Cluster() :
     m_clusterRevisionNumberHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false),
     m_iamRolesHasBeenSet(false)
 {
 }
@@ -107,6 +110,8 @@ Cluster::Cluster(const XmlNode& xmlNode) :
     m_clusterRevisionNumberHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false),
     m_iamRolesHasBeenSet(false)
 {
   *this = xmlNode;
@@ -334,6 +339,12 @@ Cluster& Cluster::operator =(const XmlNode& xmlNode)
       m_kmsKeyId = StringUtils::Trim(kmsKeyIdNode.GetText().c_str());
       m_kmsKeyIdHasBeenSet = true;
     }
+    XmlNode enhancedVpcRoutingNode = resultNode.FirstChild("EnhancedVpcRouting");
+    if(!enhancedVpcRoutingNode.IsNull())
+    {
+      m_enhancedVpcRouting = StringUtils::ConvertToBool(StringUtils::Trim(enhancedVpcRoutingNode.GetText().c_str()).c_str());
+      m_enhancedVpcRoutingHasBeenSet = true;
+    }
     XmlNode iamRolesNode = resultNode.FirstChild("IamRoles");
     if(!iamRolesNode.IsNull())
     {
@@ -467,7 +478,7 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location, unsign
 
   if(m_allowVersionUpgradeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllowVersionUpgrade=" << m_allowVersionUpgrade << "&";
+      oStream << location << index << locationValue << ".AllowVersionUpgrade=" << std::boolalpha << m_allowVersionUpgrade << "&";
   }
 
   if(m_numberOfNodesHasBeenSet)
@@ -477,12 +488,12 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location, unsign
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << index << locationValue << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_restoreStatusHasBeenSet)
@@ -548,6 +559,11 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location, unsign
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
   }
 
   if(m_iamRolesHasBeenSet)
@@ -661,7 +677,7 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_allowVersionUpgradeHasBeenSet)
   {
-      oStream << location << ".AllowVersionUpgrade=" << m_allowVersionUpgrade << "&";
+      oStream << location << ".AllowVersionUpgrade=" << std::boolalpha << m_allowVersionUpgrade << "&";
   }
   if(m_numberOfNodesHasBeenSet)
   {
@@ -669,11 +685,11 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
   if(m_restoreStatusHasBeenSet)
   {
@@ -730,6 +746,10 @@ void Cluster::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_kmsKeyIdHasBeenSet)
   {
       oStream << location << ".KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
   }
   if(m_iamRolesHasBeenSet)
   {

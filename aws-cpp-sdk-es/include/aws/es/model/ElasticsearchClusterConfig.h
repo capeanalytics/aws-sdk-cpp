@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/es/model/ESPartitionInstanceType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>Specifies the configuration for the domain cluster, such as the type and
-   * number of instances.</p>
+   * number of instances.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ElasticsearchClusterConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API ElasticsearchClusterConfig
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The instance type for an Elasticsearch cluster.</p>
      */
-    inline void SetInstanceType(ESPartitionInstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(ESPartitionInstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type for an Elasticsearch cluster.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>The instance type for an Elasticsearch cluster.</p>
      */
-    inline ElasticsearchClusterConfig& WithInstanceType(ESPartitionInstanceType&& value) { SetInstanceType(value); return *this;}
+    inline ElasticsearchClusterConfig& WithInstanceType(ESPartitionInstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The number of instances in the specified domain cluster.</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The instance type for a dedicated master node.</p>
      */
-    inline void SetDedicatedMasterType(ESPartitionInstanceType&& value) { m_dedicatedMasterTypeHasBeenSet = true; m_dedicatedMasterType = value; }
+    inline void SetDedicatedMasterType(ESPartitionInstanceType&& value) { m_dedicatedMasterTypeHasBeenSet = true; m_dedicatedMasterType = std::move(value); }
 
     /**
      * <p>The instance type for a dedicated master node.</p>
@@ -150,7 +154,7 @@ namespace Model
     /**
      * <p>The instance type for a dedicated master node.</p>
      */
-    inline ElasticsearchClusterConfig& WithDedicatedMasterType(ESPartitionInstanceType&& value) { SetDedicatedMasterType(value); return *this;}
+    inline ElasticsearchClusterConfig& WithDedicatedMasterType(ESPartitionInstanceType&& value) { SetDedicatedMasterType(std::move(value)); return *this;}
 
     /**
      * <p>Total number of dedicated master nodes, active and on standby, for the

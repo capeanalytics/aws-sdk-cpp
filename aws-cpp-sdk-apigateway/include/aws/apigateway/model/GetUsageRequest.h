@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,9 @@ namespace Model
 
   /**
    * <p>The GET request to get the usage data of a usage plan in a specified time
-   * interval.</p>
+   * interval.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsageRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetUsageRequest : public APIGatewayRequest
   {
@@ -39,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The Id of the usage plan associated with the usage data.</p>
@@ -53,7 +58,7 @@ namespace Model
     /**
      * <p>The Id of the usage plan associated with the usage data.</p>
      */
-    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = value; }
+    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = std::move(value); }
 
     /**
      * <p>The Id of the usage plan associated with the usage data.</p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p>The Id of the usage plan associated with the usage data.</p>
      */
-    inline GetUsageRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(value); return *this;}
+    inline GetUsageRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(std::move(value)); return *this;}
 
     /**
      * <p>The Id of the usage plan associated with the usage data.</p>
@@ -88,7 +93,7 @@ namespace Model
     /**
      * <p>The Id of the API key associated with the resultant usage data.</p>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
 
     /**
      * <p>The Id of the API key associated with the resultant usage data.</p>
@@ -103,7 +108,7 @@ namespace Model
     /**
      * <p>The Id of the API key associated with the resultant usage data.</p>
      */
-    inline GetUsageRequest& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline GetUsageRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The Id of the API key associated with the resultant usage data.</p>
@@ -123,7 +128,7 @@ namespace Model
     /**
      * <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
      */
-    inline void SetStartDate(Aws::String&& value) { m_startDateHasBeenSet = true; m_startDate = value; }
+    inline void SetStartDate(Aws::String&& value) { m_startDateHasBeenSet = true; m_startDate = std::move(value); }
 
     /**
      * <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
@@ -138,7 +143,7 @@ namespace Model
     /**
      * <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
      */
-    inline GetUsageRequest& WithStartDate(Aws::String&& value) { SetStartDate(value); return *this;}
+    inline GetUsageRequest& WithStartDate(Aws::String&& value) { SetStartDate(std::move(value)); return *this;}
 
     /**
      * <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
@@ -158,7 +163,7 @@ namespace Model
     /**
      * <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
      */
-    inline void SetEndDate(Aws::String&& value) { m_endDateHasBeenSet = true; m_endDate = value; }
+    inline void SetEndDate(Aws::String&& value) { m_endDateHasBeenSet = true; m_endDate = std::move(value); }
 
     /**
      * <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
@@ -173,7 +178,7 @@ namespace Model
     /**
      * <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
      */
-    inline GetUsageRequest& WithEndDate(Aws::String&& value) { SetEndDate(value); return *this;}
+    inline GetUsageRequest& WithEndDate(Aws::String&& value) { SetEndDate(std::move(value)); return *this;}
 
     /**
      * <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
@@ -181,52 +186,52 @@ namespace Model
     inline GetUsageRequest& WithEndDate(const char* value) { SetEndDate(value); return *this;}
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline const Aws::String& GetPosition() const{ return m_position; }
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline void SetPosition(const Aws::String& value) { m_positionHasBeenSet = true; m_position = value; }
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
-    inline void SetPosition(Aws::String&& value) { m_positionHasBeenSet = true; m_position = value; }
+    inline void SetPosition(Aws::String&& value) { m_positionHasBeenSet = true; m_position = std::move(value); }
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline void SetPosition(const char* value) { m_positionHasBeenSet = true; m_position.assign(value); }
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline GetUsageRequest& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
-    inline GetUsageRequest& WithPosition(Aws::String&& value) { SetPosition(value); return *this;}
+    inline GetUsageRequest& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
 
     /**
-     * <p>Position</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline GetUsageRequest& WithPosition(const char* value) { SetPosition(value); return *this;}
 
     /**
-     * <p>The maximum number of results to be returned.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline int GetLimit() const{ return m_limit; }
 
     /**
-     * <p>The maximum number of results to be returned.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
-     * <p>The maximum number of results to be returned.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline GetUsageRequest& WithLimit(int value) { SetLimit(value); return *this;}
 

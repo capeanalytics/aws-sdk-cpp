@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/OptionSetting.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -164,12 +165,12 @@ void OptionSetting::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_isModifiableHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsModifiable=" << m_isModifiable << "&";
+      oStream << location << index << locationValue << ".IsModifiable=" << std::boolalpha << m_isModifiable << "&";
   }
 
   if(m_isCollectionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsCollection=" << m_isCollection << "&";
+      oStream << location << index << locationValue << ".IsCollection=" << std::boolalpha << m_isCollection << "&";
   }
 
 }
@@ -206,11 +207,11 @@ void OptionSetting::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_isModifiableHasBeenSet)
   {
-      oStream << location << ".IsModifiable=" << m_isModifiable << "&";
+      oStream << location << ".IsModifiable=" << std::boolalpha << m_isModifiable << "&";
   }
   if(m_isCollectionHasBeenSet)
   {
-      oStream << location << ".IsCollection=" << m_isCollection << "&";
+      oStream << location << ".IsCollection=" << std::boolalpha << m_isCollection << "&";
   }
 }
 

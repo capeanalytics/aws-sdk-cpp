@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/monitoring/CloudWatchRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/monitoring/model/MetricDatum.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,6 @@ namespace Model
 {
 
   /**
-   * <p>Describes the inputs for PutMetricData.</p>
    */
   class AWS_CLOUDWATCH_API PutMetricDataRequest : public CloudWatchRequest
   {
@@ -35,96 +36,94 @@ namespace Model
     PutMetricDataRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
     inline const Aws::String& GetNamespace() const{ return m_namespace; }
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
     inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
+    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
     inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
     inline PutMetricDataRequest& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
-    inline PutMetricDataRequest& WithNamespace(Aws::String&& value) { SetNamespace(value); return *this;}
+    inline PutMetricDataRequest& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
 
     /**
-     * <p>The namespace for the metric data.</p> <note> <p>You cannot specify a
-     * namespace that begins with "AWS/". Namespaces that begin with "AWS/" are
-     * reserved for other Amazon Web Services products that send metrics to Amazon
-     * CloudWatch.</p> </note>
+     * <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that
+     * begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by
+     * Amazon Web Services products.</p>
      */
     inline PutMetricDataRequest& WithNamespace(const char* value) { SetNamespace(value); return *this;}
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
     inline const Aws::Vector<MetricDatum>& GetMetricData() const{ return m_metricData; }
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
     inline void SetMetricData(const Aws::Vector<MetricDatum>& value) { m_metricDataHasBeenSet = true; m_metricData = value; }
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
-    inline void SetMetricData(Aws::Vector<MetricDatum>&& value) { m_metricDataHasBeenSet = true; m_metricData = value; }
+    inline void SetMetricData(Aws::Vector<MetricDatum>&& value) { m_metricDataHasBeenSet = true; m_metricData = std::move(value); }
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
     inline PutMetricDataRequest& WithMetricData(const Aws::Vector<MetricDatum>& value) { SetMetricData(value); return *this;}
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
-    inline PutMetricDataRequest& WithMetricData(Aws::Vector<MetricDatum>&& value) { SetMetricData(value); return *this;}
+    inline PutMetricDataRequest& WithMetricData(Aws::Vector<MetricDatum>&& value) { SetMetricData(std::move(value)); return *this;}
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
     inline PutMetricDataRequest& AddMetricData(const MetricDatum& value) { m_metricDataHasBeenSet = true; m_metricData.push_back(value); return *this; }
 
     /**
-     * <p>A list of data describing the metric.</p>
+     * <p>The data for the metric.</p>
      */
-    inline PutMetricDataRequest& AddMetricData(MetricDatum&& value) { m_metricDataHasBeenSet = true; m_metricData.push_back(value); return *this; }
+    inline PutMetricDataRequest& AddMetricData(MetricDatum&& value) { m_metricDataHasBeenSet = true; m_metricData.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_namespace;

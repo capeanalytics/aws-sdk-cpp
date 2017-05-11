@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticache/model/AvailabilityZone.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>Represents the subnet associated with a cache cluster. This parameter refers
    * to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with
-   * ElastiCache.</p>
+   * ElastiCache.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/Subnet">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API Subnet
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The unique identifier for the subnet.</p>
      */
-    inline void SetSubnetIdentifier(Aws::String&& value) { m_subnetIdentifierHasBeenSet = true; m_subnetIdentifier = value; }
+    inline void SetSubnetIdentifier(Aws::String&& value) { m_subnetIdentifierHasBeenSet = true; m_subnetIdentifier = std::move(value); }
 
     /**
      * <p>The unique identifier for the subnet.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The unique identifier for the subnet.</p>
      */
-    inline Subnet& WithSubnetIdentifier(Aws::String&& value) { SetSubnetIdentifier(value); return *this;}
+    inline Subnet& WithSubnetIdentifier(Aws::String&& value) { SetSubnetIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the subnet.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The Availability Zone associated with the subnet.</p>
      */
-    inline void SetSubnetAvailabilityZone(AvailabilityZone&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = value; }
+    inline void SetSubnetAvailabilityZone(AvailabilityZone&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone associated with the subnet.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The Availability Zone associated with the subnet.</p>
      */
-    inline Subnet& WithSubnetAvailabilityZone(AvailabilityZone&& value) { SetSubnetAvailabilityZone(value); return *this;}
+    inline Subnet& WithSubnetAvailabilityZone(AvailabilityZone&& value) { SetSubnetAvailabilityZone(std::move(value)); return *this;}
 
   private:
     Aws::String m_subnetIdentifier;

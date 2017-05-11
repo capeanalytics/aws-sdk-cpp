@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>CreateCacheSubnetGroup</i> action.</p>
+   * <p>Represents the input of a <code>CreateCacheSubnetGroup</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CreateCacheSubnetGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CreateCacheSubnetGroupRequest : public ElastiCacheRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     CreateCacheSubnetGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A name for the cache subnet group. This value is stored as a lowercase
      * string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
@@ -53,7 +63,7 @@ namespace Model
      * string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens.</p> <p>Example: <code>mysubnetgroup</code> </p>
      */
-    inline void SetCacheSubnetGroupName(Aws::String&& value) { m_cacheSubnetGroupNameHasBeenSet = true; m_cacheSubnetGroupName = value; }
+    inline void SetCacheSubnetGroupName(Aws::String&& value) { m_cacheSubnetGroupNameHasBeenSet = true; m_cacheSubnetGroupName = std::move(value); }
 
     /**
      * <p>A name for the cache subnet group. This value is stored as a lowercase
@@ -74,7 +84,7 @@ namespace Model
      * string.</p> <p>Constraints: Must contain no more than 255 alphanumeric
      * characters or hyphens.</p> <p>Example: <code>mysubnetgroup</code> </p>
      */
-    inline CreateCacheSubnetGroupRequest& WithCacheSubnetGroupName(Aws::String&& value) { SetCacheSubnetGroupName(value); return *this;}
+    inline CreateCacheSubnetGroupRequest& WithCacheSubnetGroupName(Aws::String&& value) { SetCacheSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>A name for the cache subnet group. This value is stored as a lowercase
@@ -96,7 +106,7 @@ namespace Model
     /**
      * <p>A description for the cache subnet group.</p>
      */
-    inline void SetCacheSubnetGroupDescription(Aws::String&& value) { m_cacheSubnetGroupDescriptionHasBeenSet = true; m_cacheSubnetGroupDescription = value; }
+    inline void SetCacheSubnetGroupDescription(Aws::String&& value) { m_cacheSubnetGroupDescriptionHasBeenSet = true; m_cacheSubnetGroupDescription = std::move(value); }
 
     /**
      * <p>A description for the cache subnet group.</p>
@@ -111,7 +121,7 @@ namespace Model
     /**
      * <p>A description for the cache subnet group.</p>
      */
-    inline CreateCacheSubnetGroupRequest& WithCacheSubnetGroupDescription(Aws::String&& value) { SetCacheSubnetGroupDescription(value); return *this;}
+    inline CreateCacheSubnetGroupRequest& WithCacheSubnetGroupDescription(Aws::String&& value) { SetCacheSubnetGroupDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description for the cache subnet group.</p>
@@ -131,7 +141,7 @@ namespace Model
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>
      */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>
@@ -141,7 +151,7 @@ namespace Model
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>
      */
-    inline CreateCacheSubnetGroupRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(value); return *this;}
+    inline CreateCacheSubnetGroupRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>
@@ -151,7 +161,7 @@ namespace Model
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>
      */
-    inline CreateCacheSubnetGroupRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
+    inline CreateCacheSubnetGroupRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of VPC subnet IDs for the cache subnet group.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,15 +12,18 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/PolicyEvaluationDecisionType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/iam/model/OrganizationsDecisionDetail.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/iam/model/Statement.h>
 #include <aws/iam/model/ResourceSpecificResult.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +42,9 @@ namespace Model
   /**
    * <p>Contains the results of a simulation.</p> <p>This data type is used by the
    * return parameter of <code> <a>SimulateCustomPolicy</a> </code> and <code>
-   * <a>SimulatePrincipalPolicy</a> </code>.</p>
+   * <a>SimulatePrincipalPolicy</a> </code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/EvaluationResult">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API EvaluationResult
   {
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the API action tested on the indicated resource.</p>
      */
-    inline void SetEvalActionName(Aws::String&& value) { m_evalActionNameHasBeenSet = true; m_evalActionName = value; }
+    inline void SetEvalActionName(Aws::String&& value) { m_evalActionNameHasBeenSet = true; m_evalActionName = std::move(value); }
 
     /**
      * <p>The name of the API action tested on the indicated resource.</p>
@@ -79,7 +84,7 @@ namespace Model
     /**
      * <p>The name of the API action tested on the indicated resource.</p>
      */
-    inline EvaluationResult& WithEvalActionName(Aws::String&& value) { SetEvalActionName(value); return *this;}
+    inline EvaluationResult& WithEvalActionName(Aws::String&& value) { SetEvalActionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the API action tested on the indicated resource.</p>
@@ -99,7 +104,7 @@ namespace Model
     /**
      * <p>The ARN of the resource that the indicated API action was tested on.</p>
      */
-    inline void SetEvalResourceName(Aws::String&& value) { m_evalResourceNameHasBeenSet = true; m_evalResourceName = value; }
+    inline void SetEvalResourceName(Aws::String&& value) { m_evalResourceNameHasBeenSet = true; m_evalResourceName = std::move(value); }
 
     /**
      * <p>The ARN of the resource that the indicated API action was tested on.</p>
@@ -114,7 +119,7 @@ namespace Model
     /**
      * <p>The ARN of the resource that the indicated API action was tested on.</p>
      */
-    inline EvaluationResult& WithEvalResourceName(Aws::String&& value) { SetEvalResourceName(value); return *this;}
+    inline EvaluationResult& WithEvalResourceName(Aws::String&& value) { SetEvalResourceName(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the resource that the indicated API action was tested on.</p>
@@ -134,7 +139,7 @@ namespace Model
     /**
      * <p>The result of the simulation.</p>
      */
-    inline void SetEvalDecision(PolicyEvaluationDecisionType&& value) { m_evalDecisionHasBeenSet = true; m_evalDecision = value; }
+    inline void SetEvalDecision(PolicyEvaluationDecisionType&& value) { m_evalDecisionHasBeenSet = true; m_evalDecision = std::move(value); }
 
     /**
      * <p>The result of the simulation.</p>
@@ -144,7 +149,7 @@ namespace Model
     /**
      * <p>The result of the simulation.</p>
      */
-    inline EvaluationResult& WithEvalDecision(PolicyEvaluationDecisionType&& value) { SetEvalDecision(value); return *this;}
+    inline EvaluationResult& WithEvalDecision(PolicyEvaluationDecisionType&& value) { SetEvalDecision(std::move(value)); return *this;}
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -171,7 +176,7 @@ namespace Model
      * overrides any allow, and the deny statement is the only entry included in the
      * result.</p>
      */
-    inline void SetMatchedStatements(Aws::Vector<Statement>&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements = value; }
+    inline void SetMatchedStatements(Aws::Vector<Statement>&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements = std::move(value); }
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -189,7 +194,7 @@ namespace Model
      * overrides any allow, and the deny statement is the only entry included in the
      * result.</p>
      */
-    inline EvaluationResult& WithMatchedStatements(Aws::Vector<Statement>&& value) { SetMatchedStatements(value); return *this;}
+    inline EvaluationResult& WithMatchedStatements(Aws::Vector<Statement>&& value) { SetMatchedStatements(std::move(value)); return *this;}
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -207,7 +212,7 @@ namespace Model
      * overrides any allow, and the deny statement is the only entry included in the
      * result.</p>
      */
-    inline EvaluationResult& AddMatchedStatements(Statement&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements.push_back(value); return *this; }
+    inline EvaluationResult& AddMatchedStatements(Statement&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -243,7 +248,7 @@ namespace Model
      * by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline void SetMissingContextValues(Aws::Vector<Aws::String>&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues = value; }
+    inline void SetMissingContextValues(Aws::Vector<Aws::String>&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues = std::move(value); }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -267,7 +272,7 @@ namespace Model
      * by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline EvaluationResult& WithMissingContextValues(Aws::Vector<Aws::String>&& value) { SetMissingContextValues(value); return *this;}
+    inline EvaluationResult& WithMissingContextValues(Aws::Vector<Aws::String>&& value) { SetMissingContextValues(std::move(value)); return *this;}
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -291,7 +296,7 @@ namespace Model
      * by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline EvaluationResult& AddMissingContextValues(Aws::String&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues.push_back(value); return *this; }
+    inline EvaluationResult& AddMissingContextValues(Aws::String&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -304,6 +309,41 @@ namespace Model
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
     inline EvaluationResult& AddMissingContextValues(const char* value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues.push_back(value); return *this; }
+
+    /**
+     * <p>A structure that details how AWS Organizations and its service control
+     * policies affect the results of the simulation. Only applies if the simulated
+     * user's account is part of an organization.</p>
+     */
+    inline const OrganizationsDecisionDetail& GetOrganizationsDecisionDetail() const{ return m_organizationsDecisionDetail; }
+
+    /**
+     * <p>A structure that details how AWS Organizations and its service control
+     * policies affect the results of the simulation. Only applies if the simulated
+     * user's account is part of an organization.</p>
+     */
+    inline void SetOrganizationsDecisionDetail(const OrganizationsDecisionDetail& value) { m_organizationsDecisionDetailHasBeenSet = true; m_organizationsDecisionDetail = value; }
+
+    /**
+     * <p>A structure that details how AWS Organizations and its service control
+     * policies affect the results of the simulation. Only applies if the simulated
+     * user's account is part of an organization.</p>
+     */
+    inline void SetOrganizationsDecisionDetail(OrganizationsDecisionDetail&& value) { m_organizationsDecisionDetailHasBeenSet = true; m_organizationsDecisionDetail = std::move(value); }
+
+    /**
+     * <p>A structure that details how AWS Organizations and its service control
+     * policies affect the results of the simulation. Only applies if the simulated
+     * user's account is part of an organization.</p>
+     */
+    inline EvaluationResult& WithOrganizationsDecisionDetail(const OrganizationsDecisionDetail& value) { SetOrganizationsDecisionDetail(value); return *this;}
+
+    /**
+     * <p>A structure that details how AWS Organizations and its service control
+     * policies affect the results of the simulation. Only applies if the simulated
+     * user's account is part of an organization.</p>
+     */
+    inline EvaluationResult& WithOrganizationsDecisionDetail(OrganizationsDecisionDetail&& value) { SetOrganizationsDecisionDetail(std::move(value)); return *this;}
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -336,7 +376,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline void SetEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails = value; }
+    inline void SetEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails = std::move(value); }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -358,7 +398,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& WithEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { SetEvalDecisionDetails(value); return *this;}
+    inline EvaluationResult& WithEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { SetEvalDecisionDetails(std::move(value)); return *this;}
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -369,7 +409,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(const Aws::String& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(const Aws::String& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, value); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -380,7 +420,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(Aws::String&& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(Aws::String&& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -391,7 +431,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(const Aws::String& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(const Aws::String& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -402,7 +442,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(Aws::String&& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(Aws::String&& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -413,7 +453,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(const char* key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(const char* key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -424,7 +464,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How
      * IAM Roles Differ from Resource-based Policies</a> </p>
      */
-    inline EvaluationResult& AddEvalDecisionDetails(const char* key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline EvaluationResult& AddEvalDecisionDetails(const char* key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, value); return *this; }
 
     /**
      * <p>The individual results of the simulation of the API action specified in
@@ -442,7 +482,7 @@ namespace Model
      * <p>The individual results of the simulation of the API action specified in
      * EvalActionName on each resource.</p>
      */
-    inline void SetResourceSpecificResults(Aws::Vector<ResourceSpecificResult>&& value) { m_resourceSpecificResultsHasBeenSet = true; m_resourceSpecificResults = value; }
+    inline void SetResourceSpecificResults(Aws::Vector<ResourceSpecificResult>&& value) { m_resourceSpecificResultsHasBeenSet = true; m_resourceSpecificResults = std::move(value); }
 
     /**
      * <p>The individual results of the simulation of the API action specified in
@@ -454,7 +494,7 @@ namespace Model
      * <p>The individual results of the simulation of the API action specified in
      * EvalActionName on each resource.</p>
      */
-    inline EvaluationResult& WithResourceSpecificResults(Aws::Vector<ResourceSpecificResult>&& value) { SetResourceSpecificResults(value); return *this;}
+    inline EvaluationResult& WithResourceSpecificResults(Aws::Vector<ResourceSpecificResult>&& value) { SetResourceSpecificResults(std::move(value)); return *this;}
 
     /**
      * <p>The individual results of the simulation of the API action specified in
@@ -466,7 +506,7 @@ namespace Model
      * <p>The individual results of the simulation of the API action specified in
      * EvalActionName on each resource.</p>
      */
-    inline EvaluationResult& AddResourceSpecificResults(ResourceSpecificResult&& value) { m_resourceSpecificResultsHasBeenSet = true; m_resourceSpecificResults.push_back(value); return *this; }
+    inline EvaluationResult& AddResourceSpecificResults(ResourceSpecificResult&& value) { m_resourceSpecificResultsHasBeenSet = true; m_resourceSpecificResults.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_evalActionName;
@@ -479,6 +519,8 @@ namespace Model
     bool m_matchedStatementsHasBeenSet;
     Aws::Vector<Aws::String> m_missingContextValues;
     bool m_missingContextValuesHasBeenSet;
+    OrganizationsDecisionDetail m_organizationsDecisionDetail;
+    bool m_organizationsDecisionDetailHasBeenSet;
     Aws::Map<Aws::String, PolicyEvaluationDecisionType> m_evalDecisionDetails;
     bool m_evalDecisionDetailsHasBeenSet;
     Aws::Vector<ResourceSpecificResult> m_resourceSpecificResults;

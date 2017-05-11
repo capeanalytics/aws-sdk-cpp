@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/model/QuotaPeriodType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Quotas configured for a usage plan.</p>
+   * <p>Quotas configured for a usage plan.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/QuotaSettings">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API QuotaSettings
   {
@@ -90,7 +94,7 @@ namespace Model
      * <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or
      * "MONTH".</p>
      */
-    inline void SetPeriod(QuotaPeriodType&& value) { m_periodHasBeenSet = true; m_period = value; }
+    inline void SetPeriod(QuotaPeriodType&& value) { m_periodHasBeenSet = true; m_period = std::move(value); }
 
     /**
      * <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or
@@ -102,7 +106,7 @@ namespace Model
      * <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or
      * "MONTH".</p>
      */
-    inline QuotaSettings& WithPeriod(QuotaPeriodType&& value) { SetPeriod(value); return *this;}
+    inline QuotaSettings& WithPeriod(QuotaPeriodType&& value) { SetPeriod(std::move(value)); return *this;}
 
   private:
     int m_limit;

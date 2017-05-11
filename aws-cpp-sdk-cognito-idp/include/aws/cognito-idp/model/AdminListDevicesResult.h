@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-idp/model/DeviceType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CognitoIdentityProvider
 namespace Model
 {
   /**
-   * <p>Lists the device's response, as an administrator.</p>
+   * <p>Lists the device's response, as an administrator.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminListDevicesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API AdminListDevicesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The devices in the list of devices response.</p>
      */
-    inline void SetDevices(Aws::Vector<DeviceType>&& value) { m_devices = value; }
+    inline void SetDevices(Aws::Vector<DeviceType>&& value) { m_devices = std::move(value); }
 
     /**
      * <p>The devices in the list of devices response.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>The devices in the list of devices response.</p>
      */
-    inline AdminListDevicesResult& WithDevices(Aws::Vector<DeviceType>&& value) { SetDevices(value); return *this;}
+    inline AdminListDevicesResult& WithDevices(Aws::Vector<DeviceType>&& value) { SetDevices(std::move(value)); return *this;}
 
     /**
      * <p>The devices in the list of devices response.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The devices in the list of devices response.</p>
      */
-    inline AdminListDevicesResult& AddDevices(DeviceType&& value) { m_devices.push_back(value); return *this; }
+    inline AdminListDevicesResult& AddDevices(DeviceType&& value) { m_devices.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The pagination token.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The pagination token.</p>
      */
-    inline void SetPaginationToken(Aws::String&& value) { m_paginationToken = value; }
+    inline void SetPaginationToken(Aws::String&& value) { m_paginationToken = std::move(value); }
 
     /**
      * <p>The pagination token.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The pagination token.</p>
      */
-    inline AdminListDevicesResult& WithPaginationToken(Aws::String&& value) { SetPaginationToken(value); return *this;}
+    inline AdminListDevicesResult& WithPaginationToken(Aws::String&& value) { SetPaginationToken(std::move(value)); return *this;}
 
     /**
      * <p>The pagination token.</p>

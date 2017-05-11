@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalytics_EXPORTS.h>
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalyticsRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,10 @@ namespace Model
 {
 
   /**
-   * Container for the parameters to the StartSupportDataExport operation.
+   * Container for the parameters to the StartSupportDataExport operation.<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/StartSupportDataExportRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_MARKETPLACECOMMERCEANALYTICS_API StartSupportDataExportRequest : public MarketplaceCommerceAnalyticsRequest
   {
@@ -38,14 +43,14 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p> Specifies the data set type to be written to the output csv file. The data
      * set types customer_support_contacts_data and test_customer_support_contacts_data
-     * both result in a csv file containing the following fields: Product Id, Customer
-     * Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id,
-     * Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     * Operation Type, and Operation Time. Currently, only the
-     * test_customer_support_contacts_data value is supported </p> <p> <ul>
+     * both result in a csv file containing the following fields: Product Id, Product
+     * Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization,
+     * AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     * Code, ZIP Code, Operation Type, and Operation Time. </p> <p> <ul>
      * <li><i>customer_support_contacts_data</i> Customer support contact data. The
      * data set will contain all changes (Creates, Updates, and Deletes) to customer
      * support contact data from the date specified in the from_date parameter.</li>
@@ -58,11 +63,10 @@ namespace Model
     /**
      * <p> Specifies the data set type to be written to the output csv file. The data
      * set types customer_support_contacts_data and test_customer_support_contacts_data
-     * both result in a csv file containing the following fields: Product Id, Customer
-     * Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id,
-     * Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     * Operation Type, and Operation Time. Currently, only the
-     * test_customer_support_contacts_data value is supported </p> <p> <ul>
+     * both result in a csv file containing the following fields: Product Id, Product
+     * Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization,
+     * AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     * Code, ZIP Code, Operation Type, and Operation Time. </p> <p> <ul>
      * <li><i>customer_support_contacts_data</i> Customer support contact data. The
      * data set will contain all changes (Creates, Updates, and Deletes) to customer
      * support contact data from the date specified in the from_date parameter.</li>
@@ -75,11 +79,10 @@ namespace Model
     /**
      * <p> Specifies the data set type to be written to the output csv file. The data
      * set types customer_support_contacts_data and test_customer_support_contacts_data
-     * both result in a csv file containing the following fields: Product Id, Customer
-     * Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id,
-     * Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     * Operation Type, and Operation Time. Currently, only the
-     * test_customer_support_contacts_data value is supported </p> <p> <ul>
+     * both result in a csv file containing the following fields: Product Id, Product
+     * Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization,
+     * AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     * Code, ZIP Code, Operation Type, and Operation Time. </p> <p> <ul>
      * <li><i>customer_support_contacts_data</i> Customer support contact data. The
      * data set will contain all changes (Creates, Updates, and Deletes) to customer
      * support contact data from the date specified in the from_date parameter.</li>
@@ -87,16 +90,15 @@ namespace Model
      * static test data in the same format as customer_support_contacts_data</li> </ul>
      * </p>
      */
-    inline void SetDataSetType(SupportDataSetType&& value) { m_dataSetTypeHasBeenSet = true; m_dataSetType = value; }
+    inline void SetDataSetType(SupportDataSetType&& value) { m_dataSetTypeHasBeenSet = true; m_dataSetType = std::move(value); }
 
     /**
      * <p> Specifies the data set type to be written to the output csv file. The data
      * set types customer_support_contacts_data and test_customer_support_contacts_data
-     * both result in a csv file containing the following fields: Product Id, Customer
-     * Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id,
-     * Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     * Operation Type, and Operation Time. Currently, only the
-     * test_customer_support_contacts_data value is supported </p> <p> <ul>
+     * both result in a csv file containing the following fields: Product Id, Product
+     * Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization,
+     * AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     * Code, ZIP Code, Operation Type, and Operation Time. </p> <p> <ul>
      * <li><i>customer_support_contacts_data</i> Customer support contact data. The
      * data set will contain all changes (Creates, Updates, and Deletes) to customer
      * support contact data from the date specified in the from_date parameter.</li>
@@ -109,11 +111,10 @@ namespace Model
     /**
      * <p> Specifies the data set type to be written to the output csv file. The data
      * set types customer_support_contacts_data and test_customer_support_contacts_data
-     * both result in a csv file containing the following fields: Product Id, Customer
-     * Guid, Subscription Guid, Subscription Start Date, Organization, AWS Account Id,
-     * Given Name, Surname, Telephone Number, Email, Title, Country Code, ZIP Code,
-     * Operation Type, and Operation Time. Currently, only the
-     * test_customer_support_contacts_data value is supported </p> <p> <ul>
+     * both result in a csv file containing the following fields: Product Id, Product
+     * Code, Customer Guid, Subscription Guid, Subscription Start Date, Organization,
+     * AWS Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
+     * Code, ZIP Code, Operation Type, and Operation Time. </p> <p> <ul>
      * <li><i>customer_support_contacts_data</i> Customer support contact data. The
      * data set will contain all changes (Creates, Updates, and Deletes) to customer
      * support contact data from the date specified in the from_date parameter.</li>
@@ -121,37 +122,37 @@ namespace Model
      * static test data in the same format as customer_support_contacts_data</li> </ul>
      * </p>
      */
-    inline StartSupportDataExportRequest& WithDataSetType(SupportDataSetType&& value) { SetDataSetType(value); return *this;}
+    inline StartSupportDataExportRequest& WithDataSetType(SupportDataSetType&& value) { SetDataSetType(std::move(value)); return *this;}
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects
-     * the customer_support_contacts_data data set type.
+     * The start date from which to retrieve the data set in UTC. This parameter only
+     * affects the customer_support_contacts_data data set type.
      */
     inline const Aws::Utils::DateTime& GetFromDate() const{ return m_fromDate; }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects
-     * the customer_support_contacts_data data set type.
+     * The start date from which to retrieve the data set in UTC. This parameter only
+     * affects the customer_support_contacts_data data set type.
      */
     inline void SetFromDate(const Aws::Utils::DateTime& value) { m_fromDateHasBeenSet = true; m_fromDate = value; }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects
-     * the customer_support_contacts_data data set type.
+     * The start date from which to retrieve the data set in UTC. This parameter only
+     * affects the customer_support_contacts_data data set type.
      */
-    inline void SetFromDate(Aws::Utils::DateTime&& value) { m_fromDateHasBeenSet = true; m_fromDate = value; }
+    inline void SetFromDate(Aws::Utils::DateTime&& value) { m_fromDateHasBeenSet = true; m_fromDate = std::move(value); }
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects
-     * the customer_support_contacts_data data set type.
+     * The start date from which to retrieve the data set in UTC. This parameter only
+     * affects the customer_support_contacts_data data set type.
      */
     inline StartSupportDataExportRequest& WithFromDate(const Aws::Utils::DateTime& value) { SetFromDate(value); return *this;}
 
     /**
-     * The start date from which to retrieve the data set. This parameter only affects
-     * the customer_support_contacts_data data set type.
+     * The start date from which to retrieve the data set in UTC. This parameter only
+     * affects the customer_support_contacts_data data set type.
      */
-    inline StartSupportDataExportRequest& WithFromDate(Aws::Utils::DateTime&& value) { SetFromDate(value); return *this;}
+    inline StartSupportDataExportRequest& WithFromDate(Aws::Utils::DateTime&& value) { SetFromDate(std::move(value)); return *this;}
 
     /**
      * The Amazon Resource Name (ARN) of the Role with an attached permissions policy
@@ -169,7 +170,7 @@ namespace Model
      * The Amazon Resource Name (ARN) of the Role with an attached permissions policy
      * to interact with the provided AWS services.
      */
-    inline void SetRoleNameArn(Aws::String&& value) { m_roleNameArnHasBeenSet = true; m_roleNameArn = value; }
+    inline void SetRoleNameArn(Aws::String&& value) { m_roleNameArnHasBeenSet = true; m_roleNameArn = std::move(value); }
 
     /**
      * The Amazon Resource Name (ARN) of the Role with an attached permissions policy
@@ -187,7 +188,7 @@ namespace Model
      * The Amazon Resource Name (ARN) of the Role with an attached permissions policy
      * to interact with the provided AWS services.
      */
-    inline StartSupportDataExportRequest& WithRoleNameArn(Aws::String&& value) { SetRoleNameArn(value); return *this;}
+    inline StartSupportDataExportRequest& WithRoleNameArn(Aws::String&& value) { SetRoleNameArn(std::move(value)); return *this;}
 
     /**
      * The Amazon Resource Name (ARN) of the Role with an attached permissions policy
@@ -208,7 +209,7 @@ namespace Model
     /**
      * The name (friendly name, not ARN) of the destination S3 bucket.
      */
-    inline void SetDestinationS3BucketName(Aws::String&& value) { m_destinationS3BucketNameHasBeenSet = true; m_destinationS3BucketName = value; }
+    inline void SetDestinationS3BucketName(Aws::String&& value) { m_destinationS3BucketNameHasBeenSet = true; m_destinationS3BucketName = std::move(value); }
 
     /**
      * The name (friendly name, not ARN) of the destination S3 bucket.
@@ -223,7 +224,7 @@ namespace Model
     /**
      * The name (friendly name, not ARN) of the destination S3 bucket.
      */
-    inline StartSupportDataExportRequest& WithDestinationS3BucketName(Aws::String&& value) { SetDestinationS3BucketName(value); return *this;}
+    inline StartSupportDataExportRequest& WithDestinationS3BucketName(Aws::String&& value) { SetDestinationS3BucketName(std::move(value)); return *this;}
 
     /**
      * The name (friendly name, not ARN) of the destination S3 bucket.
@@ -258,7 +259,7 @@ namespace Model
      * prefix directory structure does not exist, it will be created. If no prefix is
      * provided, the data set will be published to the S3 bucket root.
      */
-    inline void SetDestinationS3Prefix(Aws::String&& value) { m_destinationS3PrefixHasBeenSet = true; m_destinationS3Prefix = value; }
+    inline void SetDestinationS3Prefix(Aws::String&& value) { m_destinationS3PrefixHasBeenSet = true; m_destinationS3Prefix = std::move(value); }
 
     /**
      * (Optional) The desired S3 prefix for the published data set, similar to a
@@ -288,7 +289,7 @@ namespace Model
      * prefix directory structure does not exist, it will be created. If no prefix is
      * provided, the data set will be published to the S3 bucket root.
      */
-    inline StartSupportDataExportRequest& WithDestinationS3Prefix(Aws::String&& value) { SetDestinationS3Prefix(value); return *this;}
+    inline StartSupportDataExportRequest& WithDestinationS3Prefix(Aws::String&& value) { SetDestinationS3Prefix(std::move(value)); return *this;}
 
     /**
      * (Optional) The desired S3 prefix for the published data set, similar to a
@@ -316,7 +317,7 @@ namespace Model
      * Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
      * set has been published or if an error has occurred.
      */
-    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = value; }
+    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::move(value); }
 
     /**
      * Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
@@ -334,7 +335,7 @@ namespace Model
      * Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
      * set has been published or if an error has occurred.
      */
-    inline StartSupportDataExportRequest& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(value); return *this;}
+    inline StartSupportDataExportRequest& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(std::move(value)); return *this;}
 
     /**
      * Amazon Resource Name (ARN) for the SNS Topic that will be notified when the data
@@ -358,7 +359,7 @@ namespace Model
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline void SetCustomerDefinedValues(Aws::Map<Aws::String, Aws::String>&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues = value; }
+    inline void SetCustomerDefinedValues(Aws::Map<Aws::String, Aws::String>&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues = std::move(value); }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
@@ -370,49 +371,49 @@ namespace Model
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& WithCustomerDefinedValues(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomerDefinedValues(value); return *this;}
+    inline StartSupportDataExportRequest& WithCustomerDefinedValues(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomerDefinedValues(std::move(value)); return *this;}
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const Aws::String& key, const Aws::String& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const Aws::String& key, const Aws::String& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(key, value); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, const Aws::String& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, const Aws::String& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(std::move(key), value); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const Aws::String& key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const Aws::String& key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(key, std::move(value)); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const char* key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const char* key, Aws::String&& value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(key, std::move(value)); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, const char* value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(Aws::String&& key, const char* value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(std::move(key), value); return *this; }
 
     /**
      * (Optional) Key-value pairs which will be returned, unmodified, in the Amazon SNS
      * notification message and the data set metadata file.
      */
-    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const char* key, const char* value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues[key] = value; return *this; }
+    inline StartSupportDataExportRequest& AddCustomerDefinedValues(const char* key, const char* value) { m_customerDefinedValuesHasBeenSet = true; m_customerDefinedValues.emplace(key, value); return *this; }
 
   private:
     SupportDataSetType m_dataSetType;

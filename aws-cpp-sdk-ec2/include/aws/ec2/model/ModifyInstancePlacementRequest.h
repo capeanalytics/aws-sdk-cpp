@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/HostTenancy.h>
 #include <aws/ec2/model/Affinity.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ModifyInstancePlacement.</p>
+   * <p>Contains the parameters for ModifyInstancePlacement.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstancePlacementRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ModifyInstancePlacementRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     ModifyInstancePlacementRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the instance that you are modifying.</p>
      */
@@ -48,7 +58,7 @@ namespace Model
     /**
      * <p>The ID of the instance that you are modifying.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance that you are modifying.</p>
@@ -63,7 +73,7 @@ namespace Model
     /**
      * <p>The ID of the instance that you are modifying.</p>
      */
-    inline ModifyInstancePlacementRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline ModifyInstancePlacementRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance that you are modifying.</p>
@@ -83,7 +93,7 @@ namespace Model
     /**
      * <p>The tenancy of the instance that you are modifying.</p>
      */
-    inline void SetTenancy(HostTenancy&& value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
+    inline void SetTenancy(HostTenancy&& value) { m_tenancyHasBeenSet = true; m_tenancy = std::move(value); }
 
     /**
      * <p>The tenancy of the instance that you are modifying.</p>
@@ -93,7 +103,7 @@ namespace Model
     /**
      * <p>The tenancy of the instance that you are modifying.</p>
      */
-    inline ModifyInstancePlacementRequest& WithTenancy(HostTenancy&& value) { SetTenancy(value); return *this;}
+    inline ModifyInstancePlacementRequest& WithTenancy(HostTenancy&& value) { SetTenancy(std::move(value)); return *this;}
 
     /**
      * <p>The new affinity setting for the instance.</p>
@@ -108,7 +118,7 @@ namespace Model
     /**
      * <p>The new affinity setting for the instance.</p>
      */
-    inline void SetAffinity(Affinity&& value) { m_affinityHasBeenSet = true; m_affinity = value; }
+    inline void SetAffinity(Affinity&& value) { m_affinityHasBeenSet = true; m_affinity = std::move(value); }
 
     /**
      * <p>The new affinity setting for the instance.</p>
@@ -118,40 +128,40 @@ namespace Model
     /**
      * <p>The new affinity setting for the instance.</p>
      */
-    inline ModifyInstancePlacementRequest& WithAffinity(Affinity&& value) { SetAffinity(value); return *this;}
+    inline ModifyInstancePlacementRequest& WithAffinity(Affinity&& value) { SetAffinity(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
     inline const Aws::String& GetHostId() const{ return m_hostId; }
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
     inline void SetHostId(const Aws::String& value) { m_hostIdHasBeenSet = true; m_hostId = value; }
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
-    inline void SetHostId(Aws::String&& value) { m_hostIdHasBeenSet = true; m_hostId = value; }
+    inline void SetHostId(Aws::String&& value) { m_hostIdHasBeenSet = true; m_hostId = std::move(value); }
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
     inline void SetHostId(const char* value) { m_hostIdHasBeenSet = true; m_hostId.assign(value); }
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
     inline ModifyInstancePlacementRequest& WithHostId(const Aws::String& value) { SetHostId(value); return *this;}
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
-    inline ModifyInstancePlacementRequest& WithHostId(Aws::String&& value) { SetHostId(value); return *this;}
+    inline ModifyInstancePlacementRequest& WithHostId(Aws::String&& value) { SetHostId(std::move(value)); return *this;}
 
     /**
-     * <p>The ID of the Dedicated host that the instance will have affinity with.</p>
+     * <p>The ID of the Dedicated Host that the instance will have affinity with.</p>
      */
     inline ModifyInstancePlacementRequest& WithHostId(const char* value) { SetHostId(value); return *this;}
 

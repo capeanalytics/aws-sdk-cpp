@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/logs/CloudWatchLogs_EXPORTS.h>
 #include <aws/logs/CloudWatchLogsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,38 +36,39 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
     inline const Aws::String& GetTaskId() const{ return m_taskId; }
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
     inline void SetTaskId(const Aws::String& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
-    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
+    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = std::move(value); }
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
     inline void SetTaskId(const char* value) { m_taskIdHasBeenSet = true; m_taskId.assign(value); }
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
     inline CancelExportTaskRequest& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
-    inline CancelExportTaskRequest& WithTaskId(Aws::String&& value) { SetTaskId(value); return *this;}
+    inline CancelExportTaskRequest& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
 
     /**
-     * <p>Id of the export task to cancel.</p>
+     * <p>The ID of the export task.</p>
      */
     inline CancelExportTaskRequest& WithTaskId(const char* value) { SetTaskId(value); return *this;}
 

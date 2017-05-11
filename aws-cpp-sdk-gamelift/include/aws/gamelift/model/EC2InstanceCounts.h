@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 
@@ -34,7 +35,9 @@ namespace Model
    * or be in the process of matching the number of desired instances. Pending and
    * terminating counts are non-zero only if fleet capacity is adjusting to an
    * <a>UpdateFleetCapacity</a> request, or if access to resources is temporarily
-   * affected.</p>
+   * affected.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/EC2InstanceCounts">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API EC2InstanceCounts
   {
@@ -139,19 +142,19 @@ namespace Model
 
     /**
      * <p>Number of instances in the fleet that are no longer active but haven't yet
-     * been terminated. </p>
+     * been terminated.</p>
      */
     inline int GetTERMINATING() const{ return m_tERMINATING; }
 
     /**
      * <p>Number of instances in the fleet that are no longer active but haven't yet
-     * been terminated. </p>
+     * been terminated.</p>
      */
     inline void SetTERMINATING(int value) { m_tERMINATINGHasBeenSet = true; m_tERMINATING = value; }
 
     /**
      * <p>Number of instances in the fleet that are no longer active but haven't yet
-     * been terminated. </p>
+     * been terminated.</p>
      */
     inline EC2InstanceCounts& WithTERMINATING(int value) { SetTERMINATING(value); return *this;}
 

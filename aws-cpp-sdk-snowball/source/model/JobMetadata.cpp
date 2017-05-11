@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/snowball/model/JobMetadata.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,8 +30,12 @@ namespace Model
 
 JobMetadata::JobMetadata() : 
     m_jobIdHasBeenSet(false),
+    m_jobState(JobState::NOT_SET),
     m_jobStateHasBeenSet(false),
+    m_jobType(JobType::NOT_SET),
     m_jobTypeHasBeenSet(false),
+    m_snowballType(SnowballType::NOT_SET),
+    m_snowballTypeHasBeenSet(false),
     m_creationDateHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_descriptionHasBeenSet(false),
@@ -38,17 +43,24 @@ JobMetadata::JobMetadata() :
     m_roleARNHasBeenSet(false),
     m_addressIdHasBeenSet(false),
     m_shippingDetailsHasBeenSet(false),
+    m_snowballCapacityPreference(SnowballCapacity::NOT_SET),
     m_snowballCapacityPreferenceHasBeenSet(false),
     m_notificationHasBeenSet(false),
     m_dataTransferProgressHasBeenSet(false),
-    m_jobLogInfoHasBeenSet(false)
+    m_jobLogInfoHasBeenSet(false),
+    m_clusterIdHasBeenSet(false),
+    m_forwardingAddressIdHasBeenSet(false)
 {
 }
 
 JobMetadata::JobMetadata(const JsonValue& jsonValue) : 
     m_jobIdHasBeenSet(false),
+    m_jobState(JobState::NOT_SET),
     m_jobStateHasBeenSet(false),
+    m_jobType(JobType::NOT_SET),
     m_jobTypeHasBeenSet(false),
+    m_snowballType(SnowballType::NOT_SET),
+    m_snowballTypeHasBeenSet(false),
     m_creationDateHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_descriptionHasBeenSet(false),
@@ -56,10 +68,13 @@ JobMetadata::JobMetadata(const JsonValue& jsonValue) :
     m_roleARNHasBeenSet(false),
     m_addressIdHasBeenSet(false),
     m_shippingDetailsHasBeenSet(false),
+    m_snowballCapacityPreference(SnowballCapacity::NOT_SET),
     m_snowballCapacityPreferenceHasBeenSet(false),
     m_notificationHasBeenSet(false),
     m_dataTransferProgressHasBeenSet(false),
-    m_jobLogInfoHasBeenSet(false)
+    m_jobLogInfoHasBeenSet(false),
+    m_clusterIdHasBeenSet(false),
+    m_forwardingAddressIdHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -85,6 +100,13 @@ JobMetadata& JobMetadata::operator =(const JsonValue& jsonValue)
     m_jobType = JobTypeMapper::GetJobTypeForName(jsonValue.GetString("JobType"));
 
     m_jobTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("SnowballType"))
+  {
+    m_snowballType = SnowballTypeMapper::GetSnowballTypeForName(jsonValue.GetString("SnowballType"));
+
+    m_snowballTypeHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("CreationDate"))
@@ -164,6 +186,20 @@ JobMetadata& JobMetadata::operator =(const JsonValue& jsonValue)
     m_jobLogInfoHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ClusterId"))
+  {
+    m_clusterId = jsonValue.GetString("ClusterId");
+
+    m_clusterIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ForwardingAddressId"))
+  {
+    m_forwardingAddressId = jsonValue.GetString("ForwardingAddressId");
+
+    m_forwardingAddressIdHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -185,6 +221,11 @@ JsonValue JobMetadata::Jsonize() const
   if(m_jobTypeHasBeenSet)
   {
    payload.WithString("JobType", JobTypeMapper::GetNameForJobType(m_jobType));
+  }
+
+  if(m_snowballTypeHasBeenSet)
+  {
+   payload.WithString("SnowballType", SnowballTypeMapper::GetNameForSnowballType(m_snowballType));
   }
 
   if(m_creationDateHasBeenSet)
@@ -248,6 +289,18 @@ JsonValue JobMetadata::Jsonize() const
   if(m_jobLogInfoHasBeenSet)
   {
    payload.WithObject("JobLogInfo", m_jobLogInfo.Jsonize());
+
+  }
+
+  if(m_clusterIdHasBeenSet)
+  {
+   payload.WithString("ClusterId", m_clusterId);
+
+  }
+
+  if(m_forwardingAddressIdHasBeenSet)
+  {
+   payload.WithString("ForwardingAddressId", m_forwardingAddressId);
 
   }
 

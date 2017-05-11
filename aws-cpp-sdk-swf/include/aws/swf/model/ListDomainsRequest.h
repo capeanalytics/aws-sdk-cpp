@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/RegistrationStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -60,7 +63,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = value; }
+    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::move(value); }
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -87,7 +90,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline ListDomainsRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(value); return *this;}
+    inline ListDomainsRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -111,7 +114,7 @@ namespace Model
     /**
      * <p>Specifies the registration status of the domains to list.</p>
      */
-    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = value; }
+    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = std::move(value); }
 
     /**
      * <p>Specifies the registration status of the domains to list.</p>
@@ -121,7 +124,7 @@ namespace Model
     /**
      * <p>Specifies the registration status of the domains to list.</p>
      */
-    inline ListDomainsRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(value); return *this;}
+    inline ListDomainsRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of results that will be returned per call.

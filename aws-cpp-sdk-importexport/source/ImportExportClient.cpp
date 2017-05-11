@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -98,10 +99,21 @@ void ImportExportClient::init(const ClientConfiguration& config)
   m_uri = ss.str();
 }
 
+Aws::String ImportExportClient::ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const
+{
+  Aws::StringStream ss;
+  ss << "https://" << ImportExportEndpoint::ForRegion(region);
+  ss << "?" << requestToConvert.SerializePayload();
+
+  URI uri(ss.str());
+  return GeneratePresignedUrl(uri, HttpMethod::HTTP_GET, region, 3600);
+}
+
 CancelJobOutcome ImportExportClient::CancelJob(const CancelJobRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=CancelJob";
+  ss << m_uri;
+  ss << "/?Operation=CancelJob";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -115,7 +127,10 @@ CancelJobOutcome ImportExportClient::CancelJob(const CancelJobRequest& request) 
 
 CancelJobOutcomeCallable ImportExportClient::CancelJobCallable(const CancelJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CancelJob( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CancelJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CancelJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::CancelJobAsync(const CancelJobRequest& request, const CancelJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -131,7 +146,8 @@ void ImportExportClient::CancelJobAsyncHelper(const CancelJobRequest& request, c
 CreateJobOutcome ImportExportClient::CreateJob(const CreateJobRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=CreateJob";
+  ss << m_uri;
+  ss << "/?Operation=CreateJob";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -145,7 +161,10 @@ CreateJobOutcome ImportExportClient::CreateJob(const CreateJobRequest& request) 
 
 CreateJobOutcomeCallable ImportExportClient::CreateJobCallable(const CreateJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateJob( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::CreateJobAsync(const CreateJobRequest& request, const CreateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -161,7 +180,8 @@ void ImportExportClient::CreateJobAsyncHelper(const CreateJobRequest& request, c
 GetShippingLabelOutcome ImportExportClient::GetShippingLabel(const GetShippingLabelRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=GetShippingLabel";
+  ss << m_uri;
+  ss << "/?Operation=GetShippingLabel";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -175,7 +195,10 @@ GetShippingLabelOutcome ImportExportClient::GetShippingLabel(const GetShippingLa
 
 GetShippingLabelOutcomeCallable ImportExportClient::GetShippingLabelCallable(const GetShippingLabelRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetShippingLabel( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetShippingLabelOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetShippingLabel(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::GetShippingLabelAsync(const GetShippingLabelRequest& request, const GetShippingLabelResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -191,7 +214,8 @@ void ImportExportClient::GetShippingLabelAsyncHelper(const GetShippingLabelReque
 GetStatusOutcome ImportExportClient::GetStatus(const GetStatusRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=GetStatus";
+  ss << m_uri;
+  ss << "/?Operation=GetStatus";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -205,7 +229,10 @@ GetStatusOutcome ImportExportClient::GetStatus(const GetStatusRequest& request) 
 
 GetStatusOutcomeCallable ImportExportClient::GetStatusCallable(const GetStatusRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetStatus( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetStatusOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetStatus(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::GetStatusAsync(const GetStatusRequest& request, const GetStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -221,7 +248,8 @@ void ImportExportClient::GetStatusAsyncHelper(const GetStatusRequest& request, c
 ListJobsOutcome ImportExportClient::ListJobs(const ListJobsRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=ListJobs";
+  ss << m_uri;
+  ss << "/?Operation=ListJobs";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -235,7 +263,10 @@ ListJobsOutcome ImportExportClient::ListJobs(const ListJobsRequest& request) con
 
 ListJobsOutcomeCallable ImportExportClient::ListJobsCallable(const ListJobsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListJobs( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListJobsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListJobs(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::ListJobsAsync(const ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -251,7 +282,8 @@ void ImportExportClient::ListJobsAsyncHelper(const ListJobsRequest& request, con
 UpdateJobOutcome ImportExportClient::UpdateJob(const UpdateJobRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/?Operation=UpdateJob";
+  ss << m_uri;
+  ss << "/?Operation=UpdateJob";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -265,7 +297,10 @@ UpdateJobOutcome ImportExportClient::UpdateJob(const UpdateJobRequest& request) 
 
 UpdateJobOutcomeCallable ImportExportClient::UpdateJobCallable(const UpdateJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateJob( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ImportExportClient::UpdateJobAsync(const UpdateJobRequest& request, const UpdateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -277,4 +312,6 @@ void ImportExportClient::UpdateJobAsyncHelper(const UpdateJobRequest& request, c
 {
   handler(this, request, UpdateJob(request), context);
 }
+
+
 

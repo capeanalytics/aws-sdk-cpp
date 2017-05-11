@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -21,6 +22,7 @@
 #include <aws/ec2/model/LaunchPermission.h>
 #include <aws/ec2/model/ProductCode.h>
 #include <aws/ec2/model/BlockDeviceMapping.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Describes an image attribute.</p>
+   * <p>Describes an image attribute.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImageAttribute">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeImageAttributeResponse
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the AMI.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline DescribeImageAttributeResponse& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline DescribeImageAttributeResponse& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AMI.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>One or more launch permissions.</p>
      */
-    inline void SetLaunchPermissions(Aws::Vector<LaunchPermission>&& value) { m_launchPermissions = value; }
+    inline void SetLaunchPermissions(Aws::Vector<LaunchPermission>&& value) { m_launchPermissions = std::move(value); }
 
     /**
      * <p>One or more launch permissions.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>One or more launch permissions.</p>
      */
-    inline DescribeImageAttributeResponse& WithLaunchPermissions(Aws::Vector<LaunchPermission>&& value) { SetLaunchPermissions(value); return *this;}
+    inline DescribeImageAttributeResponse& WithLaunchPermissions(Aws::Vector<LaunchPermission>&& value) { SetLaunchPermissions(std::move(value)); return *this;}
 
     /**
      * <p>One or more launch permissions.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>One or more launch permissions.</p>
      */
-    inline DescribeImageAttributeResponse& AddLaunchPermissions(LaunchPermission&& value) { m_launchPermissions.push_back(value); return *this; }
+    inline DescribeImageAttributeResponse& AddLaunchPermissions(LaunchPermission&& value) { m_launchPermissions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more product codes.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>One or more product codes.</p>
      */
-    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodes = value; }
+    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodes = std::move(value); }
 
     /**
      * <p>One or more product codes.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>One or more product codes.</p>
      */
-    inline DescribeImageAttributeResponse& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(value); return *this;}
+    inline DescribeImageAttributeResponse& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(std::move(value)); return *this;}
 
     /**
      * <p>One or more product codes.</p>
@@ -151,7 +155,7 @@ namespace Model
     /**
      * <p>One or more product codes.</p>
      */
-    inline DescribeImageAttributeResponse& AddProductCodes(ProductCode&& value) { m_productCodes.push_back(value); return *this; }
+    inline DescribeImageAttributeResponse& AddProductCodes(ProductCode&& value) { m_productCodes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The kernel ID.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>The kernel ID.</p>
      */
-    inline void SetKernelId(AttributeValue&& value) { m_kernelId = value; }
+    inline void SetKernelId(AttributeValue&& value) { m_kernelId = std::move(value); }
 
     /**
      * <p>The kernel ID.</p>
@@ -176,7 +180,7 @@ namespace Model
     /**
      * <p>The kernel ID.</p>
      */
-    inline DescribeImageAttributeResponse& WithKernelId(AttributeValue&& value) { SetKernelId(value); return *this;}
+    inline DescribeImageAttributeResponse& WithKernelId(AttributeValue&& value) { SetKernelId(std::move(value)); return *this;}
 
     /**
      * <p>The RAM disk ID.</p>
@@ -191,7 +195,7 @@ namespace Model
     /**
      * <p>The RAM disk ID.</p>
      */
-    inline void SetRamdiskId(AttributeValue&& value) { m_ramdiskId = value; }
+    inline void SetRamdiskId(AttributeValue&& value) { m_ramdiskId = std::move(value); }
 
     /**
      * <p>The RAM disk ID.</p>
@@ -201,7 +205,7 @@ namespace Model
     /**
      * <p>The RAM disk ID.</p>
      */
-    inline DescribeImageAttributeResponse& WithRamdiskId(AttributeValue&& value) { SetRamdiskId(value); return *this;}
+    inline DescribeImageAttributeResponse& WithRamdiskId(AttributeValue&& value) { SetRamdiskId(std::move(value)); return *this;}
 
     /**
      * <p>A description for the AMI.</p>
@@ -216,7 +220,7 @@ namespace Model
     /**
      * <p>A description for the AMI.</p>
      */
-    inline void SetDescription(AttributeValue&& value) { m_description = value; }
+    inline void SetDescription(AttributeValue&& value) { m_description = std::move(value); }
 
     /**
      * <p>A description for the AMI.</p>
@@ -226,22 +230,37 @@ namespace Model
     /**
      * <p>A description for the AMI.</p>
      */
-    inline DescribeImageAttributeResponse& WithDescription(AttributeValue&& value) { SetDescription(value); return *this;}
+    inline DescribeImageAttributeResponse& WithDescription(AttributeValue&& value) { SetDescription(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>Indicates whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
+     */
     inline const AttributeValue& GetSriovNetSupport() const{ return m_sriovNetSupport; }
 
-    
+    /**
+     * <p>Indicates whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
+     */
     inline void SetSriovNetSupport(const AttributeValue& value) { m_sriovNetSupport = value; }
 
-    
-    inline void SetSriovNetSupport(AttributeValue&& value) { m_sriovNetSupport = value; }
+    /**
+     * <p>Indicates whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
+     */
+    inline void SetSriovNetSupport(AttributeValue&& value) { m_sriovNetSupport = std::move(value); }
 
-    
+    /**
+     * <p>Indicates whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
+     */
     inline DescribeImageAttributeResponse& WithSriovNetSupport(const AttributeValue& value) { SetSriovNetSupport(value); return *this;}
 
-    
-    inline DescribeImageAttributeResponse& WithSriovNetSupport(AttributeValue&& value) { SetSriovNetSupport(value); return *this;}
+    /**
+     * <p>Indicates whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
+     */
+    inline DescribeImageAttributeResponse& WithSriovNetSupport(AttributeValue&& value) { SetSriovNetSupport(std::move(value)); return *this;}
 
     /**
      * <p>One or more block device mapping entries.</p>
@@ -256,7 +275,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>One or more block device mapping entries.</p>
@@ -266,7 +285,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline DescribeImageAttributeResponse& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline DescribeImageAttributeResponse& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>One or more block device mapping entries.</p>
@@ -276,7 +295,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline DescribeImageAttributeResponse& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappings.push_back(value); return *this; }
+    inline DescribeImageAttributeResponse& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -285,13 +304,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeImageAttributeResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeImageAttributeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeImageAttributeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_imageId;

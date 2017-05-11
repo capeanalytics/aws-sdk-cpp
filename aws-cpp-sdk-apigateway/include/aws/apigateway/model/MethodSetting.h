@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/apigateway/model/UnauthorizedCacheControlHeaderStrategy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the method setting properties.</p>
+   * <p>Specifies the method setting properties.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/MethodSetting">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API MethodSetting
   {
@@ -88,7 +92,7 @@ namespace Model
      * <code>/{method_setting_key}/logging/loglevel</code>, and the available levels
      * are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
      */
-    inline void SetLoggingLevel(Aws::String&& value) { m_loggingLevelHasBeenSet = true; m_loggingLevel = value; }
+    inline void SetLoggingLevel(Aws::String&& value) { m_loggingLevelHasBeenSet = true; m_loggingLevel = std::move(value); }
 
     /**
      * <p>Specifies the logging level for this method, which effects the log entries
@@ -112,7 +116,7 @@ namespace Model
      * <code>/{method_setting_key}/logging/loglevel</code>, and the available levels
      * are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
      */
-    inline MethodSetting& WithLoggingLevel(Aws::String&& value) { SetLoggingLevel(value); return *this;}
+    inline MethodSetting& WithLoggingLevel(Aws::String&& value) { SetLoggingLevel(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the logging level for this method, which effects the log entries
@@ -309,7 +313,7 @@ namespace Model
      * <code>SUCCEED_WITH_RESPONSE_HEADER</code>,
      * <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
      */
-    inline void SetUnauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy&& value) { m_unauthorizedCacheControlHeaderStrategyHasBeenSet = true; m_unauthorizedCacheControlHeaderStrategy = value; }
+    inline void SetUnauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy&& value) { m_unauthorizedCacheControlHeaderStrategyHasBeenSet = true; m_unauthorizedCacheControlHeaderStrategy = std::move(value); }
 
     /**
      * <p>Specifies how to handle unauthorized requests for cache invalidation. The
@@ -329,7 +333,7 @@ namespace Model
      * <code>SUCCEED_WITH_RESPONSE_HEADER</code>,
      * <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
      */
-    inline MethodSetting& WithUnauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy&& value) { SetUnauthorizedCacheControlHeaderStrategy(value); return *this;}
+    inline MethodSetting& WithUnauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy&& value) { SetUnauthorizedCacheControlHeaderStrategy(std::move(value)); return *this;}
 
   private:
     bool m_metricsEnabled;

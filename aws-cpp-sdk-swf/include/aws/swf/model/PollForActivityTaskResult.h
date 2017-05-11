@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/WorkflowExecution.h>
 #include <aws/swf/model/ActivityType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace SWF
 namespace Model
 {
   /**
-   * <p>Unit of work sent to an activity worker.</p>
+   * <p>Unit of work sent to an activity worker.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTask">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API PollForActivityTaskResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * to communicate progress and response information back to the system about the
      * task.</p>
      */
-    inline void SetTaskToken(Aws::String&& value) { m_taskToken = value; }
+    inline void SetTaskToken(Aws::String&& value) { m_taskToken = std::move(value); }
 
     /**
      * <p>The opaque string used as a handle on the task. This token is used by workers
@@ -84,7 +88,7 @@ namespace Model
      * to communicate progress and response information back to the system about the
      * task.</p>
      */
-    inline PollForActivityTaskResult& WithTaskToken(Aws::String&& value) { SetTaskToken(value); return *this;}
+    inline PollForActivityTaskResult& WithTaskToken(Aws::String&& value) { SetTaskToken(std::move(value)); return *this;}
 
     /**
      * <p>The opaque string used as a handle on the task. This token is used by workers
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The unique ID of the task.</p>
      */
-    inline void SetActivityId(Aws::String&& value) { m_activityId = value; }
+    inline void SetActivityId(Aws::String&& value) { m_activityId = std::move(value); }
 
     /**
      * <p>The unique ID of the task.</p>
@@ -121,7 +125,7 @@ namespace Model
     /**
      * <p>The unique ID of the task.</p>
      */
-    inline PollForActivityTaskResult& WithActivityId(Aws::String&& value) { SetActivityId(value); return *this;}
+    inline PollForActivityTaskResult& WithActivityId(Aws::String&& value) { SetActivityId(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID of the task.</p>
@@ -159,7 +163,7 @@ namespace Model
     /**
      * <p>The workflow execution that started this activity task.</p>
      */
-    inline void SetWorkflowExecution(WorkflowExecution&& value) { m_workflowExecution = value; }
+    inline void SetWorkflowExecution(WorkflowExecution&& value) { m_workflowExecution = std::move(value); }
 
     /**
      * <p>The workflow execution that started this activity task.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The workflow execution that started this activity task.</p>
      */
-    inline PollForActivityTaskResult& WithWorkflowExecution(WorkflowExecution&& value) { SetWorkflowExecution(value); return *this;}
+    inline PollForActivityTaskResult& WithWorkflowExecution(WorkflowExecution&& value) { SetWorkflowExecution(std::move(value)); return *this;}
 
     /**
      * <p>The type of this activity task.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The type of this activity task.</p>
      */
-    inline void SetActivityType(ActivityType&& value) { m_activityType = value; }
+    inline void SetActivityType(ActivityType&& value) { m_activityType = std::move(value); }
 
     /**
      * <p>The type of this activity task.</p>
@@ -194,7 +198,7 @@ namespace Model
     /**
      * <p>The type of this activity task.</p>
      */
-    inline PollForActivityTaskResult& WithActivityType(ActivityType&& value) { SetActivityType(value); return *this;}
+    inline PollForActivityTaskResult& WithActivityType(ActivityType&& value) { SetActivityType(std::move(value)); return *this;}
 
     /**
      * <p>The inputs provided when the activity task was scheduled. The form of the
@@ -215,7 +219,7 @@ namespace Model
      * input is user defined and should be meaningful to the activity
      * implementation.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_input = std::move(value); }
 
     /**
      * <p>The inputs provided when the activity task was scheduled. The form of the
@@ -236,7 +240,7 @@ namespace Model
      * input is user defined and should be meaningful to the activity
      * implementation.</p>
      */
-    inline PollForActivityTaskResult& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline PollForActivityTaskResult& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>The inputs provided when the activity task was scheduled. The form of the

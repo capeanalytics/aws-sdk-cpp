@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBClusterMember.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -94,7 +95,7 @@ void DBClusterMember::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_isClusterWriterHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsClusterWriter=" << m_isClusterWriter << "&";
+      oStream << location << index << locationValue << ".IsClusterWriter=" << std::boolalpha << m_isClusterWriter << "&";
   }
 
   if(m_dBClusterParameterGroupStatusHasBeenSet)
@@ -117,7 +118,7 @@ void DBClusterMember::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_isClusterWriterHasBeenSet)
   {
-      oStream << location << ".IsClusterWriter=" << m_isClusterWriter << "&";
+      oStream << location << ".IsClusterWriter=" << std::boolalpha << m_isClusterWriter << "&";
   }
   if(m_dBClusterParameterGroupStatusHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/ConfigServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/config/model/ComplianceType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,6 +29,9 @@ namespace Model
 {
 
   /**
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetComplianceDetailsByConfigRuleRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API GetComplianceDetailsByConfigRuleRequest : public ConfigServiceRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the AWS Config rule for which you want compliance
@@ -52,7 +58,7 @@ namespace Model
      * <p>The name of the AWS Config rule for which you want compliance
      * information.</p>
      */
-    inline void SetConfigRuleName(Aws::String&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = value; }
+    inline void SetConfigRuleName(Aws::String&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::move(value); }
 
     /**
      * <p>The name of the AWS Config rule for which you want compliance
@@ -70,7 +76,7 @@ namespace Model
      * <p>The name of the AWS Config rule for which you want compliance
      * information.</p>
      */
-    inline GetComplianceDetailsByConfigRuleRequest& WithConfigRuleName(Aws::String&& value) { SetConfigRuleName(value); return *this;}
+    inline GetComplianceDetailsByConfigRuleRequest& WithConfigRuleName(Aws::String&& value) { SetConfigRuleName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the AWS Config rule for which you want compliance
@@ -97,7 +103,7 @@ namespace Model
      * <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and
      * <code>NOT_APPLICABLE</code>.</p>
      */
-    inline void SetComplianceTypes(Aws::Vector<ComplianceType>&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes = value; }
+    inline void SetComplianceTypes(Aws::Vector<ComplianceType>&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes = std::move(value); }
 
     /**
      * <p>Filters the results by compliance.</p> <p>The allowed values are
@@ -111,7 +117,7 @@ namespace Model
      * <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and
      * <code>NOT_APPLICABLE</code>.</p>
      */
-    inline GetComplianceDetailsByConfigRuleRequest& WithComplianceTypes(Aws::Vector<ComplianceType>&& value) { SetComplianceTypes(value); return *this;}
+    inline GetComplianceDetailsByConfigRuleRequest& WithComplianceTypes(Aws::Vector<ComplianceType>&& value) { SetComplianceTypes(std::move(value)); return *this;}
 
     /**
      * <p>Filters the results by compliance.</p> <p>The allowed values are
@@ -125,7 +131,7 @@ namespace Model
      * <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and
      * <code>NOT_APPLICABLE</code>.</p>
      */
-    inline GetComplianceDetailsByConfigRuleRequest& AddComplianceTypes(ComplianceType&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes.push_back(value); return *this; }
+    inline GetComplianceDetailsByConfigRuleRequest& AddComplianceTypes(ComplianceType&& value) { m_complianceTypesHasBeenSet = true; m_complianceTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of evaluation results returned on each page. The default
@@ -149,43 +155,43 @@ namespace Model
     inline GetComplianceDetailsByConfigRuleRequest& WithLimit(int value) { SetLimit(value); return *this;}
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
     inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
     inline GetComplianceDetailsByConfigRuleRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
-    inline GetComplianceDetailsByConfigRuleRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline GetComplianceDetailsByConfigRuleRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>The <code>nextToken</code> string returned on a previous page that you use to
+     * <p>The <code>NextToken</code> string returned on a previous page that you use to
      * get the next page of results in a paginated response.</p>
      */
     inline GetComplianceDetailsByConfigRuleRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/config/model/ConfigurationRecorderStatus.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,6 +34,7 @@ ConfigurationRecorderStatus::ConfigurationRecorderStatus() :
     m_lastStopTimeHasBeenSet(false),
     m_recording(false),
     m_recordingHasBeenSet(false),
+    m_lastStatus(RecorderStatus::NOT_SET),
     m_lastStatusHasBeenSet(false),
     m_lastErrorCodeHasBeenSet(false),
     m_lastErrorMessageHasBeenSet(false),
@@ -46,6 +48,7 @@ ConfigurationRecorderStatus::ConfigurationRecorderStatus(const JsonValue& jsonVa
     m_lastStopTimeHasBeenSet(false),
     m_recording(false),
     m_recordingHasBeenSet(false),
+    m_lastStatus(RecorderStatus::NOT_SET),
     m_lastStatusHasBeenSet(false),
     m_lastErrorCodeHasBeenSet(false),
     m_lastErrorMessageHasBeenSet(false),

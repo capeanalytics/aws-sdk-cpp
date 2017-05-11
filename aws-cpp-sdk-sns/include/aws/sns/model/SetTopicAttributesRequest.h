@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/sns/SNSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Input for SetTopicAttributes action.</p>
+   * <p>Input for SetTopicAttributes action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetTopicAttributesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API SetTopicAttributesRequest : public SNSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     SetTopicAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ARN of the topic to modify.</p>
      */
@@ -46,7 +55,7 @@ namespace Model
     /**
      * <p>The ARN of the topic to modify.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The ARN of the topic to modify.</p>
@@ -61,7 +70,7 @@ namespace Model
     /**
      * <p>The ARN of the topic to modify.</p>
      */
-    inline SetTopicAttributesRequest& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline SetTopicAttributesRequest& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the topic to modify.</p>
@@ -87,7 +96,7 @@ namespace Model
      * attributes are mutable.</p> <p>Valid values: <code>Policy</code> |
      * <code>DisplayName</code> | <code>DeliveryPolicy</code> </p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the attribute you want to set. Only a subset of the topic's
@@ -108,7 +117,7 @@ namespace Model
      * attributes are mutable.</p> <p>Valid values: <code>Policy</code> |
      * <code>DisplayName</code> | <code>DeliveryPolicy</code> </p>
      */
-    inline SetTopicAttributesRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline SetTopicAttributesRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attribute you want to set. Only a subset of the topic's
@@ -130,7 +139,7 @@ namespace Model
     /**
      * <p>The new value for the attribute.</p>
      */
-    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
+    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
 
     /**
      * <p>The new value for the attribute.</p>
@@ -145,7 +154,7 @@ namespace Model
     /**
      * <p>The new value for the attribute.</p>
      */
-    inline SetTopicAttributesRequest& WithAttributeValue(Aws::String&& value) { SetAttributeValue(value); return *this;}
+    inline SetTopicAttributesRequest& WithAttributeValue(Aws::String&& value) { SetAttributeValue(std::move(value)); return *this;}
 
     /**
      * <p>The new value for the attribute.</p>

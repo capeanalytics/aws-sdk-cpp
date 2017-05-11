@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/firehose/model/UpdateDestinationRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -25,7 +26,7 @@ UpdateDestinationRequest::UpdateDestinationRequest() :
     m_deliveryStreamNameHasBeenSet(false),
     m_currentDeliveryStreamVersionIdHasBeenSet(false),
     m_destinationIdHasBeenSet(false),
-    m_s3DestinationUpdateHasBeenSet(false),
+    m_extendedS3DestinationUpdateHasBeenSet(false),
     m_redshiftDestinationUpdateHasBeenSet(false),
     m_elasticsearchDestinationUpdateHasBeenSet(false)
 {
@@ -53,9 +54,9 @@ Aws::String UpdateDestinationRequest::SerializePayload() const
 
   }
 
-  if(m_s3DestinationUpdateHasBeenSet)
+  if(m_extendedS3DestinationUpdateHasBeenSet)
   {
-   payload.WithObject("S3DestinationUpdate", m_s3DestinationUpdate.Jsonize());
+   payload.WithObject("ExtendedS3DestinationUpdate", m_extendedS3DestinationUpdate.Jsonize());
 
   }
 
@@ -81,6 +82,7 @@ Aws::Http::HeaderValueCollection UpdateDestinationRequest::GetRequestSpecificHea
   return headers;
 
 }
+
 
 
 

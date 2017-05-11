@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sns/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>Response from CreatePlatformApplication action.</p>
+   * <p>Response from CreatePlatformApplication action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreatePlatformApplicationResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API CreatePlatformApplicationResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>PlatformApplicationArn is returned.</p>
      */
-    inline void SetPlatformApplicationArn(Aws::String&& value) { m_platformApplicationArn = value; }
+    inline void SetPlatformApplicationArn(Aws::String&& value) { m_platformApplicationArn = std::move(value); }
 
     /**
      * <p>PlatformApplicationArn is returned.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>PlatformApplicationArn is returned.</p>
      */
-    inline CreatePlatformApplicationResult& WithPlatformApplicationArn(Aws::String&& value) { SetPlatformApplicationArn(value); return *this;}
+    inline CreatePlatformApplicationResult& WithPlatformApplicationArn(Aws::String&& value) { SetPlatformApplicationArn(std::move(value)); return *this;}
 
     /**
      * <p>PlatformApplicationArn is returned.</p>
@@ -85,13 +89,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreatePlatformApplicationResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreatePlatformApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreatePlatformApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_platformApplicationArn;

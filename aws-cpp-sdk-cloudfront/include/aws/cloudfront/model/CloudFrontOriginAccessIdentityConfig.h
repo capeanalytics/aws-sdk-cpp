@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * Origin access identity configuration.
+   * Origin access identity configuration.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CloudFrontOriginAccessIdentityConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CloudFrontOriginAccessIdentityConfig
   {
@@ -85,7 +89,7 @@ namespace Model
      * CloudFrontOriginAccessIdentityConfig is different from the original request,
      * CloudFront returns a CloudFrontOriginAccessIdentityAlreadyExists error.
      */
-    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = value; }
+    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = std::move(value); }
 
     /**
      * A unique number that ensures the request can't be replayed. If the
@@ -130,7 +134,7 @@ namespace Model
      * CloudFrontOriginAccessIdentityConfig is different from the original request,
      * CloudFront returns a CloudFrontOriginAccessIdentityAlreadyExists error.
      */
-    inline CloudFrontOriginAccessIdentityConfig& WithCallerReference(Aws::String&& value) { SetCallerReference(value); return *this;}
+    inline CloudFrontOriginAccessIdentityConfig& WithCallerReference(Aws::String&& value) { SetCallerReference(std::move(value)); return *this;}
 
     /**
      * A unique number that ensures the request can't be replayed. If the
@@ -160,7 +164,7 @@ namespace Model
     /**
      * Any comments you want to include about the origin access identity.
      */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = value; }
+    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
 
     /**
      * Any comments you want to include about the origin access identity.
@@ -175,7 +179,7 @@ namespace Model
     /**
      * Any comments you want to include about the origin access identity.
      */
-    inline CloudFrontOriginAccessIdentityConfig& WithComment(Aws::String&& value) { SetComment(value); return *this;}
+    inline CloudFrontOriginAccessIdentityConfig& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
 
     /**
      * Any comments you want to include about the origin access identity.

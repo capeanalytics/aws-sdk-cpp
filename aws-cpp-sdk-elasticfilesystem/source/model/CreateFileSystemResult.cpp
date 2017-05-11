@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticfilesystem/model/CreateFileSystemResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -25,12 +26,16 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 CreateFileSystemResult::CreateFileSystemResult() : 
-    m_numberOfMountTargets(0)
+    m_lifeCycleState(LifeCycleState::NOT_SET),
+    m_numberOfMountTargets(0),
+    m_performanceMode(PerformanceMode::NOT_SET)
 {
 }
 
 CreateFileSystemResult::CreateFileSystemResult(const AmazonWebServiceResult<JsonValue>& result) : 
-    m_numberOfMountTargets(0)
+    m_lifeCycleState(LifeCycleState::NOT_SET),
+    m_numberOfMountTargets(0),
+    m_performanceMode(PerformanceMode::NOT_SET)
 {
   *this = result;
 }

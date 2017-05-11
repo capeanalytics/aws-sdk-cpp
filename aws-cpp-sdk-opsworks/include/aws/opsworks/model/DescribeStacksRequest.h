@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>An array of stack IDs that specify the stacks to be described. If you omit
@@ -54,7 +57,7 @@ namespace Model
      * this parameter, <code>DescribeStacks</code> returns a description of every
      * stack.</p>
      */
-    inline void SetStackIds(Aws::Vector<Aws::String>&& value) { m_stackIdsHasBeenSet = true; m_stackIds = value; }
+    inline void SetStackIds(Aws::Vector<Aws::String>&& value) { m_stackIdsHasBeenSet = true; m_stackIds = std::move(value); }
 
     /**
      * <p>An array of stack IDs that specify the stacks to be described. If you omit
@@ -68,7 +71,7 @@ namespace Model
      * this parameter, <code>DescribeStacks</code> returns a description of every
      * stack.</p>
      */
-    inline DescribeStacksRequest& WithStackIds(Aws::Vector<Aws::String>&& value) { SetStackIds(value); return *this;}
+    inline DescribeStacksRequest& WithStackIds(Aws::Vector<Aws::String>&& value) { SetStackIds(std::move(value)); return *this;}
 
     /**
      * <p>An array of stack IDs that specify the stacks to be described. If you omit
@@ -82,7 +85,7 @@ namespace Model
      * this parameter, <code>DescribeStacks</code> returns a description of every
      * stack.</p>
      */
-    inline DescribeStacksRequest& AddStackIds(Aws::String&& value) { m_stackIdsHasBeenSet = true; m_stackIds.push_back(value); return *this; }
+    inline DescribeStacksRequest& AddStackIds(Aws::String&& value) { m_stackIdsHasBeenSet = true; m_stackIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of stack IDs that specify the stacks to be described. If you omit

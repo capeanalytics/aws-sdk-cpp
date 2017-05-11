@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/workspaces/model/WorkspaceConnectionStatus.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,6 +30,7 @@ namespace Model
 
 WorkspaceConnectionStatus::WorkspaceConnectionStatus() : 
     m_workspaceIdHasBeenSet(false),
+    m_connectionState(ConnectionState::NOT_SET),
     m_connectionStateHasBeenSet(false),
     m_connectionStateCheckTimestampHasBeenSet(false),
     m_lastKnownUserConnectionTimestampHasBeenSet(false)
@@ -37,6 +39,7 @@ WorkspaceConnectionStatus::WorkspaceConnectionStatus() :
 
 WorkspaceConnectionStatus::WorkspaceConnectionStatus(const JsonValue& jsonValue) : 
     m_workspaceIdHasBeenSet(false),
+    m_connectionState(ConnectionState::NOT_SET),
     m_connectionStateHasBeenSet(false),
     m_connectionStateCheckTimestampHasBeenSet(false),
     m_lastKnownUserConnectionTimestampHasBeenSet(false)

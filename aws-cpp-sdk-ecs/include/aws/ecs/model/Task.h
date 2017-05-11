@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/ecs/model/Container.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>Details on a task in a cluster.</p>
+   * <p>Details on a task in a cluster.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Task">AWS API
+   * Reference</a></p>
    */
   class AWS_ECS_API Task
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
      */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
+    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
      */
-    inline Task& WithTaskArn(Aws::String&& value) { SetTaskArn(value); return *this;}
+    inline Task& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
      */
-    inline void SetClusterArn(Aws::String&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = value; }
+    inline void SetClusterArn(Aws::String&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
      */
-    inline Task& WithClusterArn(Aws::String&& value) { SetClusterArn(value); return *this;}
+    inline Task& WithClusterArn(Aws::String&& value) { SetClusterArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
@@ -131,7 +135,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the task definition that creates the
      * task.</p>
      */
-    inline void SetTaskDefinitionArn(Aws::String&& value) { m_taskDefinitionArnHasBeenSet = true; m_taskDefinitionArn = value; }
+    inline void SetTaskDefinitionArn(Aws::String&& value) { m_taskDefinitionArnHasBeenSet = true; m_taskDefinitionArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task definition that creates the
@@ -149,7 +153,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the task definition that creates the
      * task.</p>
      */
-    inline Task& WithTaskDefinitionArn(Aws::String&& value) { SetTaskDefinitionArn(value); return *this;}
+    inline Task& WithTaskDefinitionArn(Aws::String&& value) { SetTaskDefinitionArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task definition that creates the
@@ -173,7 +177,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the container instances that host the
      * task.</p>
      */
-    inline void SetContainerInstanceArn(Aws::String&& value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn = value; }
+    inline void SetContainerInstanceArn(Aws::String&& value) { m_containerInstanceArnHasBeenSet = true; m_containerInstanceArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the container instances that host the
@@ -191,7 +195,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the container instances that host the
      * task.</p>
      */
-    inline Task& WithContainerInstanceArn(Aws::String&& value) { SetContainerInstanceArn(value); return *this;}
+    inline Task& WithContainerInstanceArn(Aws::String&& value) { SetContainerInstanceArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the container instances that host the
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>One or more container overrides.</p>
      */
-    inline void SetOverrides(TaskOverride&& value) { m_overridesHasBeenSet = true; m_overrides = value; }
+    inline void SetOverrides(TaskOverride&& value) { m_overridesHasBeenSet = true; m_overrides = std::move(value); }
 
     /**
      * <p>One or more container overrides.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>One or more container overrides.</p>
      */
-    inline Task& WithOverrides(TaskOverride&& value) { SetOverrides(value); return *this;}
+    inline Task& WithOverrides(TaskOverride&& value) { SetOverrides(std::move(value)); return *this;}
 
     /**
      * <p>The last known status of the task.</p>
@@ -237,7 +241,7 @@ namespace Model
     /**
      * <p>The last known status of the task.</p>
      */
-    inline void SetLastStatus(Aws::String&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
+    inline void SetLastStatus(Aws::String&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
 
     /**
      * <p>The last known status of the task.</p>
@@ -252,7 +256,7 @@ namespace Model
     /**
      * <p>The last known status of the task.</p>
      */
-    inline Task& WithLastStatus(Aws::String&& value) { SetLastStatus(value); return *this;}
+    inline Task& WithLastStatus(Aws::String&& value) { SetLastStatus(std::move(value)); return *this;}
 
     /**
      * <p>The last known status of the task.</p>
@@ -272,7 +276,7 @@ namespace Model
     /**
      * <p>The desired status of the task.</p>
      */
-    inline void SetDesiredStatus(Aws::String&& value) { m_desiredStatusHasBeenSet = true; m_desiredStatus = value; }
+    inline void SetDesiredStatus(Aws::String&& value) { m_desiredStatusHasBeenSet = true; m_desiredStatus = std::move(value); }
 
     /**
      * <p>The desired status of the task.</p>
@@ -287,7 +291,7 @@ namespace Model
     /**
      * <p>The desired status of the task.</p>
      */
-    inline Task& WithDesiredStatus(Aws::String&& value) { SetDesiredStatus(value); return *this;}
+    inline Task& WithDesiredStatus(Aws::String&& value) { SetDesiredStatus(std::move(value)); return *this;}
 
     /**
      * <p>The desired status of the task.</p>
@@ -307,7 +311,7 @@ namespace Model
     /**
      * <p>The containers associated with the task.</p>
      */
-    inline void SetContainers(Aws::Vector<Container>&& value) { m_containersHasBeenSet = true; m_containers = value; }
+    inline void SetContainers(Aws::Vector<Container>&& value) { m_containersHasBeenSet = true; m_containers = std::move(value); }
 
     /**
      * <p>The containers associated with the task.</p>
@@ -317,7 +321,7 @@ namespace Model
     /**
      * <p>The containers associated with the task.</p>
      */
-    inline Task& WithContainers(Aws::Vector<Container>&& value) { SetContainers(value); return *this;}
+    inline Task& WithContainers(Aws::Vector<Container>&& value) { SetContainers(std::move(value)); return *this;}
 
     /**
      * <p>The containers associated with the task.</p>
@@ -327,7 +331,7 @@ namespace Model
     /**
      * <p>The containers associated with the task.</p>
      */
-    inline Task& AddContainers(Container&& value) { m_containersHasBeenSet = true; m_containers.push_back(value); return *this; }
+    inline Task& AddContainers(Container&& value) { m_containersHasBeenSet = true; m_containers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The tag specified when a task is started. If the task is started by an Amazon
@@ -348,7 +352,7 @@ namespace Model
      * ECS service, then the <code>startedBy</code> parameter contains the deployment
      * ID of the service that starts it.</p>
      */
-    inline void SetStartedBy(Aws::String&& value) { m_startedByHasBeenSet = true; m_startedBy = value; }
+    inline void SetStartedBy(Aws::String&& value) { m_startedByHasBeenSet = true; m_startedBy = std::move(value); }
 
     /**
      * <p>The tag specified when a task is started. If the task is started by an Amazon
@@ -369,7 +373,7 @@ namespace Model
      * ECS service, then the <code>startedBy</code> parameter contains the deployment
      * ID of the service that starts it.</p>
      */
-    inline Task& WithStartedBy(Aws::String&& value) { SetStartedBy(value); return *this;}
+    inline Task& WithStartedBy(Aws::String&& value) { SetStartedBy(std::move(value)); return *this;}
 
     /**
      * <p>The tag specified when a task is started. If the task is started by an Amazon
@@ -377,6 +381,36 @@ namespace Model
      * ID of the service that starts it.</p>
      */
     inline Task& WithStartedBy(const char* value) { SetStartedBy(value); return *this;}
+
+    /**
+     * <p>The version counter for the task. Every time a task experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are
+     * replicating your Amazon ECS task state with CloudWatch events, you can compare
+     * the version of a task reported by the Amazon ECS APIs with the version reported
+     * in CloudWatch events for the task (inside the <code>detail</code> object) to
+     * verify that the version in your event stream is current.</p>
+     */
+    inline long long GetVersion() const{ return m_version; }
+
+    /**
+     * <p>The version counter for the task. Every time a task experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are
+     * replicating your Amazon ECS task state with CloudWatch events, you can compare
+     * the version of a task reported by the Amazon ECS APIs with the version reported
+     * in CloudWatch events for the task (inside the <code>detail</code> object) to
+     * verify that the version in your event stream is current.</p>
+     */
+    inline void SetVersion(long long value) { m_versionHasBeenSet = true; m_version = value; }
+
+    /**
+     * <p>The version counter for the task. Every time a task experiences a change that
+     * triggers a CloudWatch event, the version counter is incremented. If you are
+     * replicating your Amazon ECS task state with CloudWatch events, you can compare
+     * the version of a task reported by the Amazon ECS APIs with the version reported
+     * in CloudWatch events for the task (inside the <code>detail</code> object) to
+     * verify that the version in your event stream is current.</p>
+     */
+    inline Task& WithVersion(long long value) { SetVersion(value); return *this;}
 
     /**
      * <p>The reason the task was stopped.</p>
@@ -391,7 +425,7 @@ namespace Model
     /**
      * <p>The reason the task was stopped.</p>
      */
-    inline void SetStoppedReason(Aws::String&& value) { m_stoppedReasonHasBeenSet = true; m_stoppedReason = value; }
+    inline void SetStoppedReason(Aws::String&& value) { m_stoppedReasonHasBeenSet = true; m_stoppedReason = std::move(value); }
 
     /**
      * <p>The reason the task was stopped.</p>
@@ -406,7 +440,7 @@ namespace Model
     /**
      * <p>The reason the task was stopped.</p>
      */
-    inline Task& WithStoppedReason(Aws::String&& value) { SetStoppedReason(value); return *this;}
+    inline Task& WithStoppedReason(Aws::String&& value) { SetStoppedReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason the task was stopped.</p>
@@ -429,7 +463,7 @@ namespace Model
      * <p>The Unix timestamp for when the task was created (the task entered the
      * <code>PENDING</code> state).</p>
      */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
 
     /**
      * <p>The Unix timestamp for when the task was created (the task entered the
@@ -441,7 +475,7 @@ namespace Model
      * <p>The Unix timestamp for when the task was created (the task entered the
      * <code>PENDING</code> state).</p>
      */
-    inline Task& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(value); return *this;}
+    inline Task& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
 
     /**
      * <p>The Unix timestamp for when the task was started (the task transitioned from
@@ -459,7 +493,7 @@ namespace Model
      * <p>The Unix timestamp for when the task was started (the task transitioned from
      * the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
      */
-    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::move(value); }
 
     /**
      * <p>The Unix timestamp for when the task was started (the task transitioned from
@@ -471,7 +505,7 @@ namespace Model
      * <p>The Unix timestamp for when the task was started (the task transitioned from
      * the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
      */
-    inline Task& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+    inline Task& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(std::move(value)); return *this;}
 
     /**
      * <p>The Unix timestamp for when the task was stopped (the task transitioned from
@@ -489,7 +523,7 @@ namespace Model
      * <p>The Unix timestamp for when the task was stopped (the task transitioned from
      * the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
      */
-    inline void SetStoppedAt(Aws::Utils::DateTime&& value) { m_stoppedAtHasBeenSet = true; m_stoppedAt = value; }
+    inline void SetStoppedAt(Aws::Utils::DateTime&& value) { m_stoppedAtHasBeenSet = true; m_stoppedAt = std::move(value); }
 
     /**
      * <p>The Unix timestamp for when the task was stopped (the task transitioned from
@@ -501,7 +535,42 @@ namespace Model
      * <p>The Unix timestamp for when the task was stopped (the task transitioned from
      * the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
      */
-    inline Task& WithStoppedAt(Aws::Utils::DateTime&& value) { SetStoppedAt(value); return *this;}
+    inline Task& WithStoppedAt(Aws::Utils::DateTime&& value) { SetStoppedAt(std::move(value)); return *this;}
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline const Aws::String& GetGroup() const{ return m_group; }
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline void SetGroup(const Aws::String& value) { m_groupHasBeenSet = true; m_group = value; }
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline void SetGroup(Aws::String&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline void SetGroup(const char* value) { m_groupHasBeenSet = true; m_group.assign(value); }
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline Task& WithGroup(const Aws::String& value) { SetGroup(value); return *this;}
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline Task& WithGroup(Aws::String&& value) { SetGroup(std::move(value)); return *this;}
+
+    /**
+     * <p>The name of the task group associated with the task.</p>
+     */
+    inline Task& WithGroup(const char* value) { SetGroup(value); return *this;}
 
   private:
     Aws::String m_taskArn;
@@ -522,6 +591,8 @@ namespace Model
     bool m_containersHasBeenSet;
     Aws::String m_startedBy;
     bool m_startedByHasBeenSet;
+    long long m_version;
+    bool m_versionHasBeenSet;
     Aws::String m_stoppedReason;
     bool m_stoppedReasonHasBeenSet;
     Aws::Utils::DateTime m_createdAt;
@@ -530,6 +601,8 @@ namespace Model
     bool m_startedAtHasBeenSet;
     Aws::Utils::DateTime m_stoppedAt;
     bool m_stoppedAtHasBeenSet;
+    Aws::String m_group;
+    bool m_groupHasBeenSet;
   };
 
 } // namespace Model

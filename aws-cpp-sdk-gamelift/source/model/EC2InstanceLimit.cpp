@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/EC2InstanceLimit.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,6 +29,7 @@ namespace Model
 {
 
 EC2InstanceLimit::EC2InstanceLimit() : 
+    m_eC2InstanceType(EC2InstanceType::NOT_SET),
     m_eC2InstanceTypeHasBeenSet(false),
     m_currentInstances(0),
     m_currentInstancesHasBeenSet(false),
@@ -37,6 +39,7 @@ EC2InstanceLimit::EC2InstanceLimit() :
 }
 
 EC2InstanceLimit::EC2InstanceLimit(const JsonValue& jsonValue) : 
+    m_eC2InstanceType(EC2InstanceType::NOT_SET),
     m_eC2InstanceTypeHasBeenSet(false),
     m_currentInstances(0),
     m_currentInstancesHasBeenSet(false),

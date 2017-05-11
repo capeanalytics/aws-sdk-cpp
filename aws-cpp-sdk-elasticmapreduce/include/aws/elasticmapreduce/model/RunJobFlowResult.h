@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace EMR
 namespace Model
 {
   /**
-   * <p> The result of the <a>RunJobFlow</a> operation. </p>
+   * <p> The result of the <a>RunJobFlow</a> operation. </p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RunJobFlowOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API RunJobFlowResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>An unique identifier for the job flow.</p>
      */
-    inline void SetJobFlowId(Aws::String&& value) { m_jobFlowId = value; }
+    inline void SetJobFlowId(Aws::String&& value) { m_jobFlowId = std::move(value); }
 
     /**
      * <p>An unique identifier for the job flow.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>An unique identifier for the job flow.</p>
      */
-    inline RunJobFlowResult& WithJobFlowId(Aws::String&& value) { SetJobFlowId(value); return *this;}
+    inline RunJobFlowResult& WithJobFlowId(Aws::String&& value) { SetJobFlowId(std::move(value)); return *this;}
 
     /**
      * <p>An unique identifier for the job flow.</p>

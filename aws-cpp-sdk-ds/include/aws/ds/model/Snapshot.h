@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ds/model/SnapshotType.h>
 #include <aws/ds/model/SnapshotStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a directory snapshot.</p>
+   * <p>Describes a directory snapshot.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/Snapshot">AWS API
+   * Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API Snapshot
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The directory identifier.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline Snapshot& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline Snapshot& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The directory identifier.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The snapshot identifier.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The snapshot identifier.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The snapshot identifier.</p>
      */
-    inline Snapshot& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline Snapshot& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The snapshot identifier.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The snapshot type.</p>
      */
-    inline void SetType(SnapshotType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(SnapshotType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The snapshot type.</p>
@@ -137,7 +141,7 @@ namespace Model
     /**
      * <p>The snapshot type.</p>
      */
-    inline Snapshot& WithType(SnapshotType&& value) { SetType(value); return *this;}
+    inline Snapshot& WithType(SnapshotType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The descriptive name of the snapshot.</p>
@@ -152,7 +156,7 @@ namespace Model
     /**
      * <p>The descriptive name of the snapshot.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The descriptive name of the snapshot.</p>
@@ -167,7 +171,7 @@ namespace Model
     /**
      * <p>The descriptive name of the snapshot.</p>
      */
-    inline Snapshot& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Snapshot& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The descriptive name of the snapshot.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The snapshot status.</p>
      */
-    inline void SetStatus(SnapshotStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(SnapshotStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The snapshot status.</p>
@@ -197,7 +201,7 @@ namespace Model
     /**
      * <p>The snapshot status.</p>
      */
-    inline Snapshot& WithStatus(SnapshotStatus&& value) { SetStatus(value); return *this;}
+    inline Snapshot& WithStatus(SnapshotStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the snapshot was taken.</p>
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>The date and time that the snapshot was taken.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The date and time that the snapshot was taken.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>The date and time that the snapshot was taken.</p>
      */
-    inline Snapshot& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline Snapshot& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_directoryId;

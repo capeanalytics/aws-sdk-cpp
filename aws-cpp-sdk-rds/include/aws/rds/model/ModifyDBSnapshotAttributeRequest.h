@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBSnapshotAttributeMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ModifyDBSnapshotAttributeRequest : public RDSRequest
   {
@@ -34,6 +38,11 @@ namespace Model
     ModifyDBSnapshotAttributeRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The identifier for the DB snapshot to modify the attributes for.</p>
      */
@@ -47,7 +56,7 @@ namespace Model
     /**
      * <p>The identifier for the DB snapshot to modify the attributes for.</p>
      */
-    inline void SetDBSnapshotIdentifier(Aws::String&& value) { m_dBSnapshotIdentifierHasBeenSet = true; m_dBSnapshotIdentifier = value; }
+    inline void SetDBSnapshotIdentifier(Aws::String&& value) { m_dBSnapshotIdentifierHasBeenSet = true; m_dBSnapshotIdentifier = std::move(value); }
 
     /**
      * <p>The identifier for the DB snapshot to modify the attributes for.</p>
@@ -62,7 +71,7 @@ namespace Model
     /**
      * <p>The identifier for the DB snapshot to modify the attributes for.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& WithDBSnapshotIdentifier(Aws::String&& value) { SetDBSnapshotIdentifier(value); return *this;}
+    inline ModifyDBSnapshotAttributeRequest& WithDBSnapshotIdentifier(Aws::String&& value) { SetDBSnapshotIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier for the DB snapshot to modify the attributes for.</p>
@@ -88,7 +97,7 @@ namespace Model
      * authorization for other AWS accounts to copy or restore a manual DB snapshot,
      * set this value to <code>restore</code>.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the DB snapshot attribute to modify.</p> <p>To manage
@@ -109,7 +118,7 @@ namespace Model
      * authorization for other AWS accounts to copy or restore a manual DB snapshot,
      * set this value to <code>restore</code>.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline ModifyDBSnapshotAttributeRequest& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB snapshot attribute to modify.</p> <p>To manage
@@ -149,7 +158,7 @@ namespace Model
      * contain private information that you don't want available to all AWS
      * accounts.</p>
      */
-    inline void SetValuesToAdd(Aws::Vector<Aws::String>&& value) { m_valuesToAddHasBeenSet = true; m_valuesToAdd = value; }
+    inline void SetValuesToAdd(Aws::Vector<Aws::String>&& value) { m_valuesToAddHasBeenSet = true; m_valuesToAdd = std::move(value); }
 
     /**
      * <p>A list of DB snapshot attributes to add to the attribute specified by
@@ -171,7 +180,7 @@ namespace Model
      * contain private information that you don't want available to all AWS
      * accounts.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& WithValuesToAdd(Aws::Vector<Aws::String>&& value) { SetValuesToAdd(value); return *this;}
+    inline ModifyDBSnapshotAttributeRequest& WithValuesToAdd(Aws::Vector<Aws::String>&& value) { SetValuesToAdd(std::move(value)); return *this;}
 
     /**
      * <p>A list of DB snapshot attributes to add to the attribute specified by
@@ -193,7 +202,7 @@ namespace Model
      * contain private information that you don't want available to all AWS
      * accounts.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& AddValuesToAdd(Aws::String&& value) { m_valuesToAddHasBeenSet = true; m_valuesToAdd.push_back(value); return *this; }
+    inline ModifyDBSnapshotAttributeRequest& AddValuesToAdd(Aws::String&& value) { m_valuesToAddHasBeenSet = true; m_valuesToAdd.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of DB snapshot attributes to add to the attribute specified by
@@ -240,7 +249,7 @@ namespace Model
      * <code>restore</code> attribute can still copy or restore the manual DB
      * snapshot.</p>
      */
-    inline void SetValuesToRemove(Aws::Vector<Aws::String>&& value) { m_valuesToRemoveHasBeenSet = true; m_valuesToRemove = value; }
+    inline void SetValuesToRemove(Aws::Vector<Aws::String>&& value) { m_valuesToRemoveHasBeenSet = true; m_valuesToRemove = std::move(value); }
 
     /**
      * <p>A list of DB snapshot attributes to remove from the attribute specified by
@@ -264,7 +273,7 @@ namespace Model
      * <code>restore</code> attribute can still copy or restore the manual DB
      * snapshot.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& WithValuesToRemove(Aws::Vector<Aws::String>&& value) { SetValuesToRemove(value); return *this;}
+    inline ModifyDBSnapshotAttributeRequest& WithValuesToRemove(Aws::Vector<Aws::String>&& value) { SetValuesToRemove(std::move(value)); return *this;}
 
     /**
      * <p>A list of DB snapshot attributes to remove from the attribute specified by
@@ -288,7 +297,7 @@ namespace Model
      * <code>restore</code> attribute can still copy or restore the manual DB
      * snapshot.</p>
      */
-    inline ModifyDBSnapshotAttributeRequest& AddValuesToRemove(Aws::String&& value) { m_valuesToRemoveHasBeenSet = true; m_valuesToRemove.push_back(value); return *this; }
+    inline ModifyDBSnapshotAttributeRequest& AddValuesToRemove(Aws::String&& value) { m_valuesToRemoveHasBeenSet = true; m_valuesToRemove.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of DB snapshot attributes to remove from the attribute specified by

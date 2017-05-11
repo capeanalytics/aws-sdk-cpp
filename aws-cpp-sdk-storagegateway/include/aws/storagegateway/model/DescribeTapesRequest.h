@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/storagegateway/StorageGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>DescribeTapesInput</p>
+   * <p>DescribeTapesInput</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API DescribeTapesRequest : public StorageGatewayRequest
   {
@@ -36,6 +40,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetGatewayARN() const{ return m_gatewayARN; }
 
@@ -43,7 +48,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARNHasBeenSet = true; m_gatewayARN.assign(value); }
@@ -52,7 +57,7 @@ namespace Model
     inline DescribeTapesRequest& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline DescribeTapesRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline DescribeTapesRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline DescribeTapesRequest& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
@@ -79,7 +84,7 @@ namespace Model
      * Storage Gateway returns a description of all virtual tapes associated with the
      * specified gateway.</p>
      */
-    inline void SetTapeARNs(Aws::Vector<Aws::String>&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = value; }
+    inline void SetTapeARNs(Aws::Vector<Aws::String>&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs = std::move(value); }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
@@ -95,7 +100,7 @@ namespace Model
      * Storage Gateway returns a description of all virtual tapes associated with the
      * specified gateway.</p>
      */
-    inline DescribeTapesRequest& WithTapeARNs(Aws::Vector<Aws::String>&& value) { SetTapeARNs(value); return *this;}
+    inline DescribeTapesRequest& WithTapeARNs(Aws::Vector<Aws::String>&& value) { SetTapeARNs(std::move(value)); return *this;}
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
@@ -111,7 +116,7 @@ namespace Model
      * Storage Gateway returns a description of all virtual tapes associated with the
      * specified gateway.</p>
      */
-    inline DescribeTapesRequest& AddTapeARNs(Aws::String&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(value); return *this; }
+    inline DescribeTapesRequest& AddTapeARNs(Aws::String&& value) { m_tapeARNsHasBeenSet = true; m_tapeARNs.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the
@@ -140,7 +145,7 @@ namespace Model
      * This marker indicates which page of results to retrieve. </p> <p>If not
      * specified, the first page of results is retrieved.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>.
@@ -161,7 +166,7 @@ namespace Model
      * This marker indicates which page of results to retrieve. </p> <p>If not
      * specified, the first page of results is retrieved.</p>
      */
-    inline DescribeTapesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeTapesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>.
@@ -172,21 +177,21 @@ namespace Model
 
     /**
      * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p> <note><p>Amazon Web Services may impose its own limit, if
+     * specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if
      * this field is not set.</p> </note>
      */
     inline int GetLimit() const{ return m_limit; }
 
     /**
      * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p> <note><p>Amazon Web Services may impose its own limit, if
+     * specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if
      * this field is not set.</p> </note>
      */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
      * <p>Specifies that the number of virtual tapes described be limited to the
-     * specified number.</p> <note><p>Amazon Web Services may impose its own limit, if
+     * specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if
      * this field is not set.</p> </note>
      */
     inline DescribeTapesRequest& WithLimit(int value) { SetLimit(value); return *this;}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/ssm/model/AssociationStatusName.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an association status.</p>
+   * <p>Describes an association status.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/AssociationStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_SSM_API AssociationStatus
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The date when the status changed.</p>
      */
-    inline void SetDate(Aws::Utils::DateTime&& value) { m_dateHasBeenSet = true; m_date = value; }
+    inline void SetDate(Aws::Utils::DateTime&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
 
     /**
      * <p>The date when the status changed.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The date when the status changed.</p>
      */
-    inline AssociationStatus& WithDate(Aws::Utils::DateTime&& value) { SetDate(value); return *this;}
+    inline AssociationStatus& WithDate(Aws::Utils::DateTime&& value) { SetDate(std::move(value)); return *this;}
 
     /**
      * <p>The status.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>The status.</p>
      */
-    inline void SetName(AssociationStatusName&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(AssociationStatusName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The status.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The status.</p>
      */
-    inline AssociationStatus& WithName(AssociationStatusName&& value) { SetName(value); return *this;}
+    inline AssociationStatus& WithName(AssociationStatusName&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the status.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The reason for the status.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>The reason for the status.</p>
@@ -121,7 +125,7 @@ namespace Model
     /**
      * <p>The reason for the status.</p>
      */
-    inline AssociationStatus& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline AssociationStatus& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the status.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>A user-defined string.</p>
      */
-    inline void SetAdditionalInfo(Aws::String&& value) { m_additionalInfoHasBeenSet = true; m_additionalInfo = value; }
+    inline void SetAdditionalInfo(Aws::String&& value) { m_additionalInfoHasBeenSet = true; m_additionalInfo = std::move(value); }
 
     /**
      * <p>A user-defined string.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>A user-defined string.</p>
      */
-    inline AssociationStatus& WithAdditionalInfo(Aws::String&& value) { SetAdditionalInfo(value); return *this;}
+    inline AssociationStatus& WithAdditionalInfo(Aws::String&& value) { SetAdditionalInfo(std::move(value)); return *this;}
 
     /**
      * <p>A user-defined string.</p>

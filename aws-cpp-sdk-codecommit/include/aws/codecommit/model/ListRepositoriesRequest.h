@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/codecommit/CodeCommitRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codecommit/model/SortByEnum.h>
 #include <aws/codecommit/model/OrderEnum.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a list repositories operation.</p>
+   * <p>Represents the input of a list repositories operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositoriesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API ListRepositoriesRequest : public CodeCommitRequest
   {
@@ -36,6 +41,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>An enumeration token that allows the operation to batch the results of the
@@ -59,7 +65,7 @@ namespace Model
      * sends the token back to AWS CodeCommit, another page of 1,000 records is
      * retrieved.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An enumeration token that allows the operation to batch the results of the
@@ -83,7 +89,7 @@ namespace Model
      * sends the token back to AWS CodeCommit, another page of 1,000 records is
      * retrieved.</p>
      */
-    inline ListRepositoriesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListRepositoriesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An enumeration token that allows the operation to batch the results of the
@@ -106,7 +112,7 @@ namespace Model
     /**
      * <p>The criteria used to sort the results of a list repositories operation.</p>
      */
-    inline void SetSortBy(SortByEnum&& value) { m_sortByHasBeenSet = true; m_sortBy = value; }
+    inline void SetSortBy(SortByEnum&& value) { m_sortByHasBeenSet = true; m_sortBy = std::move(value); }
 
     /**
      * <p>The criteria used to sort the results of a list repositories operation.</p>
@@ -116,7 +122,7 @@ namespace Model
     /**
      * <p>The criteria used to sort the results of a list repositories operation.</p>
      */
-    inline ListRepositoriesRequest& WithSortBy(SortByEnum&& value) { SetSortBy(value); return *this;}
+    inline ListRepositoriesRequest& WithSortBy(SortByEnum&& value) { SetSortBy(std::move(value)); return *this;}
 
     /**
      * <p>The order in which to sort the results of a list repositories operation.</p>
@@ -131,7 +137,7 @@ namespace Model
     /**
      * <p>The order in which to sort the results of a list repositories operation.</p>
      */
-    inline void SetOrder(OrderEnum&& value) { m_orderHasBeenSet = true; m_order = value; }
+    inline void SetOrder(OrderEnum&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
 
     /**
      * <p>The order in which to sort the results of a list repositories operation.</p>
@@ -141,7 +147,7 @@ namespace Model
     /**
      * <p>The order in which to sort the results of a list repositories operation.</p>
      */
-    inline ListRepositoriesRequest& WithOrder(OrderEnum&& value) { SetOrder(value); return *this;}
+    inline ListRepositoriesRequest& WithOrder(OrderEnum&& value) { SetOrder(std::move(value)); return *this;}
 
   private:
     Aws::String m_nextToken;

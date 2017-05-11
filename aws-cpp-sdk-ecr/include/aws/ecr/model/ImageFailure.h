@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/ecr/model/ImageIdentifier.h>
 #include <aws/ecr/model/ImageFailureCode.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>An object representing an Amazon ECR image failure.</p>
+   * <p>An object representing an Amazon ECR image failure.</p><p><h3>See Also:</h3> 
+   * <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/ImageFailure">AWS
+   * API Reference</a></p>
    */
   class AWS_ECR_API ImageFailure
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The image ID associated with the failure.</p>
      */
-    inline void SetImageId(ImageIdentifier&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(ImageIdentifier&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The image ID associated with the failure.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The image ID associated with the failure.</p>
      */
-    inline ImageFailure& WithImageId(ImageIdentifier&& value) { SetImageId(value); return *this;}
+    inline ImageFailure& WithImageId(ImageIdentifier&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The code associated with the failure.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>The code associated with the failure.</p>
      */
-    inline void SetFailureCode(ImageFailureCode&& value) { m_failureCodeHasBeenSet = true; m_failureCode = value; }
+    inline void SetFailureCode(ImageFailureCode&& value) { m_failureCodeHasBeenSet = true; m_failureCode = std::move(value); }
 
     /**
      * <p>The code associated with the failure.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The code associated with the failure.</p>
      */
-    inline ImageFailure& WithFailureCode(ImageFailureCode&& value) { SetFailureCode(value); return *this;}
+    inline ImageFailure& WithFailureCode(ImageFailureCode&& value) { SetFailureCode(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the failure.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The reason for the failure.</p>
      */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
+    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
 
     /**
      * <p>The reason for the failure.</p>
@@ -121,7 +125,7 @@ namespace Model
     /**
      * <p>The reason for the failure.</p>
      */
-    inline ImageFailure& WithFailureReason(Aws::String&& value) { SetFailureReason(value); return *this;}
+    inline ImageFailure& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the failure.</p>

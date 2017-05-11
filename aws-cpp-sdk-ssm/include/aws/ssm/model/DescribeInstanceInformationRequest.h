@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,15 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ssm/model/InstanceInformationFilter.h>
+#include <aws/ssm/model/InstanceInformationStringFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +39,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
      * instances.</p>
@@ -52,7 +56,7 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * instances.</p>
      */
-    inline void SetInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList = value; }
+    inline void SetInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList = std::move(value); }
 
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
@@ -64,7 +68,7 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * instances.</p>
      */
-    inline DescribeInstanceInformationRequest& WithInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { SetInstanceInformationFilterList(value); return *this;}
+    inline DescribeInstanceInformationRequest& WithInstanceInformationFilterList(Aws::Vector<InstanceInformationFilter>&& value) { SetInstanceInformationFilterList(std::move(value)); return *this;}
 
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
@@ -76,7 +80,49 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * instances.</p>
      */
-    inline DescribeInstanceInformationRequest& AddInstanceInformationFilterList(InstanceInformationFilter&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList.push_back(value); return *this; }
+    inline DescribeInstanceInformationRequest& AddInstanceInformationFilterList(InstanceInformationFilter&& value) { m_instanceInformationFilterListHasBeenSet = true; m_instanceInformationFilterList.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline const Aws::Vector<InstanceInformationStringFilter>& GetFilters() const{ return m_filters; }
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline void SetFilters(const Aws::Vector<InstanceInformationStringFilter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline void SetFilters(Aws::Vector<InstanceInformationStringFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline DescribeInstanceInformationRequest& WithFilters(const Aws::Vector<InstanceInformationStringFilter>& value) { SetFilters(value); return *this;}
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline DescribeInstanceInformationRequest& WithFilters(Aws::Vector<InstanceInformationStringFilter>&& value) { SetFilters(std::move(value)); return *this;}
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline DescribeInstanceInformationRequest& AddFilters(const InstanceInformationStringFilter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+
+    /**
+     * <p>One or more filters. Use a filter to return a more specific list of
+     * instances.</p>
+     */
+    inline DescribeInstanceInformationRequest& AddFilters(InstanceInformationStringFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
@@ -115,7 +161,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -133,7 +179,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline DescribeInstanceInformationRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeInstanceInformationRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -144,6 +190,8 @@ namespace Model
   private:
     Aws::Vector<InstanceInformationFilter> m_instanceInformationFilterList;
     bool m_instanceInformationFilterListHasBeenSet;
+    Aws::Vector<InstanceInformationStringFilter> m_filters;
+    bool m_filtersHasBeenSet;
     int m_maxResults;
     bool m_maxResultsHasBeenSet;
     Aws::String m_nextToken;

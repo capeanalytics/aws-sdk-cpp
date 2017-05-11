@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ExportEnvironment.h>
 #include <aws/ec2/model/ExportToS3TaskSpecification.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateInstanceExportTask.</p>
+   * <p>Contains the parameters for CreateInstanceExportTask.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInstanceExportTaskRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CreateInstanceExportTaskRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     CreateInstanceExportTaskRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A description for the conversion task or the resource being exported. The
      * maximum length is 255 bytes.</p>
@@ -51,7 +61,7 @@ namespace Model
      * <p>A description for the conversion task or the resource being exported. The
      * maximum length is 255 bytes.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description for the conversion task or the resource being exported. The
@@ -69,7 +79,7 @@ namespace Model
      * <p>A description for the conversion task or the resource being exported. The
      * maximum length is 255 bytes.</p>
      */
-    inline CreateInstanceExportTaskRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreateInstanceExportTaskRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description for the conversion task or the resource being exported. The
@@ -90,7 +100,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -105,7 +115,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline CreateInstanceExportTaskRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline CreateInstanceExportTaskRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -125,7 +135,7 @@ namespace Model
     /**
      * <p>The target virtualization environment.</p>
      */
-    inline void SetTargetEnvironment(ExportEnvironment&& value) { m_targetEnvironmentHasBeenSet = true; m_targetEnvironment = value; }
+    inline void SetTargetEnvironment(ExportEnvironment&& value) { m_targetEnvironmentHasBeenSet = true; m_targetEnvironment = std::move(value); }
 
     /**
      * <p>The target virtualization environment.</p>
@@ -135,7 +145,7 @@ namespace Model
     /**
      * <p>The target virtualization environment.</p>
      */
-    inline CreateInstanceExportTaskRequest& WithTargetEnvironment(ExportEnvironment&& value) { SetTargetEnvironment(value); return *this;}
+    inline CreateInstanceExportTaskRequest& WithTargetEnvironment(ExportEnvironment&& value) { SetTargetEnvironment(std::move(value)); return *this;}
 
     /**
      * <p>The format and location for an instance export task.</p>
@@ -150,7 +160,7 @@ namespace Model
     /**
      * <p>The format and location for an instance export task.</p>
      */
-    inline void SetExportToS3Task(ExportToS3TaskSpecification&& value) { m_exportToS3TaskHasBeenSet = true; m_exportToS3Task = value; }
+    inline void SetExportToS3Task(ExportToS3TaskSpecification&& value) { m_exportToS3TaskHasBeenSet = true; m_exportToS3Task = std::move(value); }
 
     /**
      * <p>The format and location for an instance export task.</p>
@@ -160,7 +170,7 @@ namespace Model
     /**
      * <p>The format and location for an instance export task.</p>
      */
-    inline CreateInstanceExportTaskRequest& WithExportToS3Task(ExportToS3TaskSpecification&& value) { SetExportToS3Task(value); return *this;}
+    inline CreateInstanceExportTaskRequest& WithExportToS3Task(ExportToS3TaskSpecification&& value) { SetExportToS3Task(std::move(value)); return *this;}
 
   private:
     Aws::String m_description;

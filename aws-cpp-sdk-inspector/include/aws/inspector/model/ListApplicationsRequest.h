@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/inspector/model/ApplicationsFilter.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>You can use this parameter to specify a subset of data to be included in the
@@ -57,7 +60,7 @@ namespace Model
      * attributes must match. When multiple values are specified for a filter
      * attribute, any of the values can match.</p>
      */
-    inline void SetFilter(ApplicationsFilter&& value) { m_filterHasBeenSet = true; m_filter = value; }
+    inline void SetFilter(ApplicationsFilter&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
 
     /**
      * <p>You can use this parameter to specify a subset of data to be included in the
@@ -73,7 +76,7 @@ namespace Model
      * attributes must match. When multiple values are specified for a filter
      * attribute, any of the values can match.</p>
      */
-    inline ListApplicationsRequest& WithFilter(ApplicationsFilter&& value) { SetFilter(value); return *this;}
+    inline ListApplicationsRequest& WithFilter(ApplicationsFilter&& value) { SetFilter(std::move(value)); return *this;}
 
     /**
      * <p>You can use this parameter when paginating results. Set the value of this
@@ -97,7 +100,7 @@ namespace Model
      * Subsequent calls to the action fill <b>nextToken</b> in the request with the
      * value of <b>NextToken</b> from previous response to continue listing data.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>You can use this parameter when paginating results. Set the value of this
@@ -121,7 +124,7 @@ namespace Model
      * Subsequent calls to the action fill <b>nextToken</b> in the request with the
      * value of <b>NextToken</b> from previous response to continue listing data.</p>
      */
-    inline ListApplicationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListApplicationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>You can use this parameter when paginating results. Set the value of this

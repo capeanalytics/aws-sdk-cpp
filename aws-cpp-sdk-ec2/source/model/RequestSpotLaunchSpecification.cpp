@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/RequestSpotLaunchSpecification.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -35,6 +36,7 @@ RequestSpotLaunchSpecification::RequestSpotLaunchSpecification() :
     m_securityGroupsHasBeenSet(false),
     m_userDataHasBeenSet(false),
     m_addressingTypeHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -56,6 +58,7 @@ RequestSpotLaunchSpecification::RequestSpotLaunchSpecification(const XmlNode& xm
     m_securityGroupsHasBeenSet(false),
     m_userDataHasBeenSet(false),
     m_addressingTypeHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -292,7 +295,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
 
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << index << locationValue << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
 
   if(m_monitoringHasBeenSet)
@@ -328,7 +331,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
       unsigned securityGroupsIdx = 1;
       for(auto& item : m_securityGroups)
       {
-        oStream << location << ".item." << securityGroupsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SecurityGroup." << securityGroupsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_userDataHasBeenSet)
@@ -363,7 +366,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".item." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -377,7 +380,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".item." << networkInterfacesIdx++;
+        networkInterfacesSs << location <<  ".NetworkInterface." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -389,7 +392,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
   if(m_monitoringHasBeenSet)
   {
@@ -402,7 +405,7 @@ void RequestSpotLaunchSpecification::OutputToStream(Aws::OStream& oStream, const
       unsigned securityGroupIdsIdx = 1;
       for(auto& item : m_securityGroupIds)
       {
-        oStream << location << ".item." << securityGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".SecurityGroupId." << securityGroupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

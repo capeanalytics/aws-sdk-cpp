@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/CreateVolumeRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -26,12 +27,14 @@ CreateVolumeRequest::CreateVolumeRequest() :
     m_sizeHasBeenSet(false),
     m_snapshotIdHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
+    m_volumeType(VolumeType::NOT_SET),
     m_volumeTypeHasBeenSet(false),
     m_iops(0),
     m_iopsHasBeenSet(false),
     m_encrypted(false),
     m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_tagSpecificationsHasBeenSet(false)
 {
 }
 
@@ -41,7 +44,7 @@ Aws::String CreateVolumeRequest::SerializePayload() const
   ss << "Action=CreateVolume&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_sizeHasBeenSet)
@@ -71,7 +74,7 @@ Aws::String CreateVolumeRequest::SerializePayload() const
 
   if(m_encryptedHasBeenSet)
   {
-    ss << "Encrypted=" << m_encrypted << "&";
+    ss << "Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -79,7 +82,22 @@ Aws::String CreateVolumeRequest::SerializePayload() const
     ss << "KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  CreateVolumeRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

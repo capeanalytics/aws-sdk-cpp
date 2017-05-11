@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/lambda/model/AliasConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -54,7 +56,7 @@ namespace Model
     /**
      * <p>A string, present if there are more aliases.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
      * <p>A string, present if there are more aliases.</p>
@@ -69,7 +71,7 @@ namespace Model
     /**
      * <p>A string, present if there are more aliases.</p>
      */
-    inline ListAliasesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListAliasesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>A string, present if there are more aliases.</p>
@@ -89,7 +91,7 @@ namespace Model
     /**
      * <p>A list of aliases.</p>
      */
-    inline void SetAliases(Aws::Vector<AliasConfiguration>&& value) { m_aliases = value; }
+    inline void SetAliases(Aws::Vector<AliasConfiguration>&& value) { m_aliases = std::move(value); }
 
     /**
      * <p>A list of aliases.</p>
@@ -99,7 +101,7 @@ namespace Model
     /**
      * <p>A list of aliases.</p>
      */
-    inline ListAliasesResult& WithAliases(Aws::Vector<AliasConfiguration>&& value) { SetAliases(value); return *this;}
+    inline ListAliasesResult& WithAliases(Aws::Vector<AliasConfiguration>&& value) { SetAliases(std::move(value)); return *this;}
 
     /**
      * <p>A list of aliases.</p>
@@ -109,7 +111,7 @@ namespace Model
     /**
      * <p>A list of aliases.</p>
      */
-    inline ListAliasesResult& AddAliases(AliasConfiguration&& value) { m_aliases.push_back(value); return *this; }
+    inline ListAliasesResult& AddAliases(AliasConfiguration&& value) { m_aliases.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_nextMarker;

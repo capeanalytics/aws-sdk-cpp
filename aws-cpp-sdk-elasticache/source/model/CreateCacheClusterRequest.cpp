@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/CreateCacheClusterRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -22,6 +23,7 @@ using namespace Aws::Utils;
 CreateCacheClusterRequest::CreateCacheClusterRequest() : 
     m_cacheClusterIdHasBeenSet(false),
     m_replicationGroupIdHasBeenSet(false),
+    m_aZMode(AZMode::NOT_SET),
     m_aZModeHasBeenSet(false),
     m_preferredAvailabilityZoneHasBeenSet(false),
     m_preferredAvailabilityZonesHasBeenSet(false),
@@ -45,7 +47,8 @@ CreateCacheClusterRequest::CreateCacheClusterRequest() :
     m_autoMinorVersionUpgradeHasBeenSet(false),
     m_snapshotRetentionLimit(0),
     m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false)
+    m_snapshotWindowHasBeenSet(false),
+    m_authTokenHasBeenSet(false)
 {
 }
 
@@ -179,7 +182,7 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
 
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-    ss << "AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+    ss << "AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
 
   if(m_snapshotRetentionLimitHasBeenSet)
@@ -192,7 +195,17 @@ Aws::String CreateCacheClusterRequest::SerializePayload() const
     ss << "SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
   }
 
+  if(m_authTokenHasBeenSet)
+  {
+    ss << "AuthToken=" << StringUtils::URLEncode(m_authToken.c_str()) << "&";
+  }
+
   ss << "Version=2015-02-02";
   return ss.str();
 }
 
+
+void  CreateCacheClusterRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

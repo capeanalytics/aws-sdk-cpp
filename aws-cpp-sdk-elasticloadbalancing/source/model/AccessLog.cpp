@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticloadbalancing/model/AccessLog.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -89,7 +90,7 @@ void AccessLog::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 {
   if(m_enabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Enabled=" << m_enabled << "&";
+      oStream << location << index << locationValue << ".Enabled=" << std::boolalpha << m_enabled << "&";
   }
 
   if(m_s3BucketNameHasBeenSet)
@@ -113,7 +114,7 @@ void AccessLog::OutputToStream(Aws::OStream& oStream, const char* location) cons
 {
   if(m_enabledHasBeenSet)
   {
-      oStream << location << ".Enabled=" << m_enabled << "&";
+      oStream << location << ".Enabled=" << std::boolalpha << m_enabled << "&";
   }
   if(m_s3BucketNameHasBeenSet)
   {

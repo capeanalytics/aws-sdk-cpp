@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/KinesisStreamsOutputUpdate.h>
 #include <aws/kinesisanalytics/model/KinesisFirehoseOutputUpdate.h>
 #include <aws/kinesisanalytics/model/DestinationSchema.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 
   /**
    * <p> Describes updates to the output configuration identified by the
-   * <code>OutputId</code>. </p>
+   * <code>OutputId</code>. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/OutputUpdate">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API OutputUpdate
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>Identifies the specific output configuration that you want to update.</p>
      */
-    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = value; }
+    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = std::move(value); }
 
     /**
      * <p>Identifies the specific output configuration that you want to update.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>Identifies the specific output configuration that you want to update.</p>
      */
-    inline OutputUpdate& WithOutputId(Aws::String&& value) { SetOutputId(value); return *this;}
+    inline OutputUpdate& WithOutputId(Aws::String&& value) { SetOutputId(std::move(value)); return *this;}
 
     /**
      * <p>Identifies the specific output configuration that you want to update.</p>
@@ -96,7 +100,7 @@ namespace Model
      * <p>If you want to specify a different in-application stream for this output
      * configuration, use this field to specify the new in-application stream name.</p>
      */
-    inline void SetNameUpdate(Aws::String&& value) { m_nameUpdateHasBeenSet = true; m_nameUpdate = value; }
+    inline void SetNameUpdate(Aws::String&& value) { m_nameUpdateHasBeenSet = true; m_nameUpdate = std::move(value); }
 
     /**
      * <p>If you want to specify a different in-application stream for this output
@@ -114,7 +118,7 @@ namespace Model
      * <p>If you want to specify a different in-application stream for this output
      * configuration, use this field to specify the new in-application stream name.</p>
      */
-    inline OutputUpdate& WithNameUpdate(Aws::String&& value) { SetNameUpdate(value); return *this;}
+    inline OutputUpdate& WithNameUpdate(Aws::String&& value) { SetNameUpdate(std::move(value)); return *this;}
 
     /**
      * <p>If you want to specify a different in-application stream for this output
@@ -135,7 +139,7 @@ namespace Model
     /**
      * <p>Describes an Amazon Kinesis stream as the destination for the output.</p>
      */
-    inline void SetKinesisStreamsOutputUpdate(KinesisStreamsOutputUpdate&& value) { m_kinesisStreamsOutputUpdateHasBeenSet = true; m_kinesisStreamsOutputUpdate = value; }
+    inline void SetKinesisStreamsOutputUpdate(KinesisStreamsOutputUpdate&& value) { m_kinesisStreamsOutputUpdateHasBeenSet = true; m_kinesisStreamsOutputUpdate = std::move(value); }
 
     /**
      * <p>Describes an Amazon Kinesis stream as the destination for the output.</p>
@@ -145,7 +149,7 @@ namespace Model
     /**
      * <p>Describes an Amazon Kinesis stream as the destination for the output.</p>
      */
-    inline OutputUpdate& WithKinesisStreamsOutputUpdate(KinesisStreamsOutputUpdate&& value) { SetKinesisStreamsOutputUpdate(value); return *this;}
+    inline OutputUpdate& WithKinesisStreamsOutputUpdate(KinesisStreamsOutputUpdate&& value) { SetKinesisStreamsOutputUpdate(std::move(value)); return *this;}
 
     /**
      * <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for
@@ -163,7 +167,7 @@ namespace Model
      * <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for
      * the output.</p>
      */
-    inline void SetKinesisFirehoseOutputUpdate(KinesisFirehoseOutputUpdate&& value) { m_kinesisFirehoseOutputUpdateHasBeenSet = true; m_kinesisFirehoseOutputUpdate = value; }
+    inline void SetKinesisFirehoseOutputUpdate(KinesisFirehoseOutputUpdate&& value) { m_kinesisFirehoseOutputUpdateHasBeenSet = true; m_kinesisFirehoseOutputUpdate = std::move(value); }
 
     /**
      * <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for
@@ -175,7 +179,7 @@ namespace Model
      * <p>Describes a Amazon Kinesis Firehose delivery stream as the destination for
      * the output.</p>
      */
-    inline OutputUpdate& WithKinesisFirehoseOutputUpdate(KinesisFirehoseOutputUpdate&& value) { SetKinesisFirehoseOutputUpdate(value); return *this;}
+    inline OutputUpdate& WithKinesisFirehoseOutputUpdate(KinesisFirehoseOutputUpdate&& value) { SetKinesisFirehoseOutputUpdate(std::move(value)); return *this;}
 
     
     inline const DestinationSchema& GetDestinationSchemaUpdate() const{ return m_destinationSchemaUpdate; }
@@ -184,13 +188,13 @@ namespace Model
     inline void SetDestinationSchemaUpdate(const DestinationSchema& value) { m_destinationSchemaUpdateHasBeenSet = true; m_destinationSchemaUpdate = value; }
 
     
-    inline void SetDestinationSchemaUpdate(DestinationSchema&& value) { m_destinationSchemaUpdateHasBeenSet = true; m_destinationSchemaUpdate = value; }
+    inline void SetDestinationSchemaUpdate(DestinationSchema&& value) { m_destinationSchemaUpdateHasBeenSet = true; m_destinationSchemaUpdate = std::move(value); }
 
     
     inline OutputUpdate& WithDestinationSchemaUpdate(const DestinationSchema& value) { SetDestinationSchemaUpdate(value); return *this;}
 
     
-    inline OutputUpdate& WithDestinationSchemaUpdate(DestinationSchema&& value) { SetDestinationSchemaUpdate(value); return *this;}
+    inline OutputUpdate& WithDestinationSchemaUpdate(DestinationSchema&& value) { SetDestinationSchemaUpdate(std::move(value)); return *this;}
 
   private:
     Aws::String m_outputId;

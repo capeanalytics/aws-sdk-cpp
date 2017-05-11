@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/autoscaling/model/ResponseMetadata.h>
 #include <aws/autoscaling/model/LaunchConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,10 @@ namespace AutoScaling
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeLaunchConfigurations.</p>
+   * <p>Contains the output of DescribeLaunchConfigurations.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/LaunchConfigurationsType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeLaunchConfigurationsResult
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The launch configurations.</p>
      */
-    inline void SetLaunchConfigurations(Aws::Vector<LaunchConfiguration>&& value) { m_launchConfigurations = value; }
+    inline void SetLaunchConfigurations(Aws::Vector<LaunchConfiguration>&& value) { m_launchConfigurations = std::move(value); }
 
     /**
      * <p>The launch configurations.</p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p>The launch configurations.</p>
      */
-    inline DescribeLaunchConfigurationsResult& WithLaunchConfigurations(Aws::Vector<LaunchConfiguration>&& value) { SetLaunchConfigurations(value); return *this;}
+    inline DescribeLaunchConfigurationsResult& WithLaunchConfigurations(Aws::Vector<LaunchConfiguration>&& value) { SetLaunchConfigurations(std::move(value)); return *this;}
 
     /**
      * <p>The launch configurations.</p>
@@ -78,7 +83,7 @@ namespace Model
     /**
      * <p>The launch configurations.</p>
      */
-    inline DescribeLaunchConfigurationsResult& AddLaunchConfigurations(LaunchConfiguration&& value) { m_launchConfigurations.push_back(value); return *this; }
+    inline DescribeLaunchConfigurationsResult& AddLaunchConfigurations(LaunchConfiguration&& value) { m_launchConfigurations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -96,7 +101,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -114,7 +119,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline DescribeLaunchConfigurationsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeLaunchConfigurationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -129,13 +134,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeLaunchConfigurationsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeLaunchConfigurationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeLaunchConfigurationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<LaunchConfiguration> m_launchConfigurations;

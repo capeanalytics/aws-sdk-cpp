@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/config/model/RecorderStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>The current status of the configuration recorder.</p>
+   * <p>The current status of the configuration recorder.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigurationRecorderStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API ConfigurationRecorderStatus
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the configuration recorder.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the configuration recorder.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the configuration recorder.</p>
      */
-    inline ConfigurationRecorderStatus& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ConfigurationRecorderStatus& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the configuration recorder.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The time the recorder was last started.</p>
      */
-    inline void SetLastStartTime(Aws::Utils::DateTime&& value) { m_lastStartTimeHasBeenSet = true; m_lastStartTime = value; }
+    inline void SetLastStartTime(Aws::Utils::DateTime&& value) { m_lastStartTimeHasBeenSet = true; m_lastStartTime = std::move(value); }
 
     /**
      * <p>The time the recorder was last started.</p>
@@ -101,7 +106,7 @@ namespace Model
     /**
      * <p>The time the recorder was last started.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastStartTime(Aws::Utils::DateTime&& value) { SetLastStartTime(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastStartTime(Aws::Utils::DateTime&& value) { SetLastStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The time the recorder was last stopped.</p>
@@ -116,7 +121,7 @@ namespace Model
     /**
      * <p>The time the recorder was last stopped.</p>
      */
-    inline void SetLastStopTime(Aws::Utils::DateTime&& value) { m_lastStopTimeHasBeenSet = true; m_lastStopTime = value; }
+    inline void SetLastStopTime(Aws::Utils::DateTime&& value) { m_lastStopTimeHasBeenSet = true; m_lastStopTime = std::move(value); }
 
     /**
      * <p>The time the recorder was last stopped.</p>
@@ -126,7 +131,7 @@ namespace Model
     /**
      * <p>The time the recorder was last stopped.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastStopTime(Aws::Utils::DateTime&& value) { SetLastStopTime(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastStopTime(Aws::Utils::DateTime&& value) { SetLastStopTime(std::move(value)); return *this;}
 
     /**
      * <p>Specifies whether the recorder is currently recording or not.</p>
@@ -156,7 +161,7 @@ namespace Model
     /**
      * <p>The last (previous) status of the recorder.</p>
      */
-    inline void SetLastStatus(RecorderStatus&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
+    inline void SetLastStatus(RecorderStatus&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
 
     /**
      * <p>The last (previous) status of the recorder.</p>
@@ -166,7 +171,7 @@ namespace Model
     /**
      * <p>The last (previous) status of the recorder.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastStatus(RecorderStatus&& value) { SetLastStatus(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastStatus(RecorderStatus&& value) { SetLastStatus(std::move(value)); return *this;}
 
     /**
      * <p>The error code indicating that the recording failed.</p>
@@ -181,7 +186,7 @@ namespace Model
     /**
      * <p>The error code indicating that the recording failed.</p>
      */
-    inline void SetLastErrorCode(Aws::String&& value) { m_lastErrorCodeHasBeenSet = true; m_lastErrorCode = value; }
+    inline void SetLastErrorCode(Aws::String&& value) { m_lastErrorCodeHasBeenSet = true; m_lastErrorCode = std::move(value); }
 
     /**
      * <p>The error code indicating that the recording failed.</p>
@@ -196,7 +201,7 @@ namespace Model
     /**
      * <p>The error code indicating that the recording failed.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastErrorCode(Aws::String&& value) { SetLastErrorCode(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastErrorCode(Aws::String&& value) { SetLastErrorCode(std::move(value)); return *this;}
 
     /**
      * <p>The error code indicating that the recording failed.</p>
@@ -216,7 +221,7 @@ namespace Model
     /**
      * <p>The message indicating that the recording failed due to an error.</p>
      */
-    inline void SetLastErrorMessage(Aws::String&& value) { m_lastErrorMessageHasBeenSet = true; m_lastErrorMessage = value; }
+    inline void SetLastErrorMessage(Aws::String&& value) { m_lastErrorMessageHasBeenSet = true; m_lastErrorMessage = std::move(value); }
 
     /**
      * <p>The message indicating that the recording failed due to an error.</p>
@@ -231,7 +236,7 @@ namespace Model
     /**
      * <p>The message indicating that the recording failed due to an error.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastErrorMessage(Aws::String&& value) { SetLastErrorMessage(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastErrorMessage(Aws::String&& value) { SetLastErrorMessage(std::move(value)); return *this;}
 
     /**
      * <p>The message indicating that the recording failed due to an error.</p>
@@ -251,7 +256,7 @@ namespace Model
     /**
      * <p>The time when the status was last changed.</p>
      */
-    inline void SetLastStatusChangeTime(Aws::Utils::DateTime&& value) { m_lastStatusChangeTimeHasBeenSet = true; m_lastStatusChangeTime = value; }
+    inline void SetLastStatusChangeTime(Aws::Utils::DateTime&& value) { m_lastStatusChangeTimeHasBeenSet = true; m_lastStatusChangeTime = std::move(value); }
 
     /**
      * <p>The time when the status was last changed.</p>
@@ -261,7 +266,7 @@ namespace Model
     /**
      * <p>The time when the status was last changed.</p>
      */
-    inline ConfigurationRecorderStatus& WithLastStatusChangeTime(Aws::Utils::DateTime&& value) { SetLastStatusChangeTime(value); return *this;}
+    inline ConfigurationRecorderStatus& WithLastStatusChangeTime(Aws::Utils::DateTime&& value) { SetLastStatusChangeTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/ds/model/TrustDirection.h>
 #include <aws/ds/model/TrustState.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 
   /**
    * <p>Describes a trust relationship between an Microsoft AD in the AWS cloud and
-   * an external domain.</p>
+   * an external domain.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/Trust">AWS API
+   * Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API Trust
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
      */
-    inline Trust& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline Trust& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The unique ID of the trust relationship.</p>
      */
-    inline void SetTrustId(Aws::String&& value) { m_trustIdHasBeenSet = true; m_trustId = value; }
+    inline void SetTrustId(Aws::String&& value) { m_trustIdHasBeenSet = true; m_trustId = std::move(value); }
 
     /**
      * <p>The unique ID of the trust relationship.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The unique ID of the trust relationship.</p>
      */
-    inline Trust& WithTrustId(Aws::String&& value) { SetTrustId(value); return *this;}
+    inline Trust& WithTrustId(Aws::String&& value) { SetTrustId(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID of the trust relationship.</p>
@@ -132,7 +136,7 @@ namespace Model
      * <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the
      * trust relationship.</p>
      */
-    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = value; }
+    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = std::move(value); }
 
     /**
      * <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the
@@ -150,7 +154,7 @@ namespace Model
      * <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the
      * trust relationship.</p>
      */
-    inline Trust& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(value); return *this;}
+    inline Trust& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the
@@ -171,7 +175,7 @@ namespace Model
     /**
      * <p>The trust relationship type.</p>
      */
-    inline void SetTrustType(TrustType&& value) { m_trustTypeHasBeenSet = true; m_trustType = value; }
+    inline void SetTrustType(TrustType&& value) { m_trustTypeHasBeenSet = true; m_trustType = std::move(value); }
 
     /**
      * <p>The trust relationship type.</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>The trust relationship type.</p>
      */
-    inline Trust& WithTrustType(TrustType&& value) { SetTrustType(value); return *this;}
+    inline Trust& WithTrustType(TrustType&& value) { SetTrustType(std::move(value)); return *this;}
 
     /**
      * <p>The trust relationship direction.</p>
@@ -196,7 +200,7 @@ namespace Model
     /**
      * <p>The trust relationship direction.</p>
      */
-    inline void SetTrustDirection(TrustDirection&& value) { m_trustDirectionHasBeenSet = true; m_trustDirection = value; }
+    inline void SetTrustDirection(TrustDirection&& value) { m_trustDirectionHasBeenSet = true; m_trustDirection = std::move(value); }
 
     /**
      * <p>The trust relationship direction.</p>
@@ -206,7 +210,7 @@ namespace Model
     /**
      * <p>The trust relationship direction.</p>
      */
-    inline Trust& WithTrustDirection(TrustDirection&& value) { SetTrustDirection(value); return *this;}
+    inline Trust& WithTrustDirection(TrustDirection&& value) { SetTrustDirection(std::move(value)); return *this;}
 
     /**
      * <p>The trust relationship state.</p>
@@ -221,7 +225,7 @@ namespace Model
     /**
      * <p>The trust relationship state.</p>
      */
-    inline void SetTrustState(TrustState&& value) { m_trustStateHasBeenSet = true; m_trustState = value; }
+    inline void SetTrustState(TrustState&& value) { m_trustStateHasBeenSet = true; m_trustState = std::move(value); }
 
     /**
      * <p>The trust relationship state.</p>
@@ -231,7 +235,7 @@ namespace Model
     /**
      * <p>The trust relationship state.</p>
      */
-    inline Trust& WithTrustState(TrustState&& value) { SetTrustState(value); return *this;}
+    inline Trust& WithTrustState(TrustState&& value) { SetTrustState(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the trust relationship was created.</p>
@@ -246,7 +250,7 @@ namespace Model
     /**
      * <p>The date and time that the trust relationship was created.</p>
      */
-    inline void SetCreatedDateTime(Aws::Utils::DateTime&& value) { m_createdDateTimeHasBeenSet = true; m_createdDateTime = value; }
+    inline void SetCreatedDateTime(Aws::Utils::DateTime&& value) { m_createdDateTimeHasBeenSet = true; m_createdDateTime = std::move(value); }
 
     /**
      * <p>The date and time that the trust relationship was created.</p>
@@ -256,7 +260,7 @@ namespace Model
     /**
      * <p>The date and time that the trust relationship was created.</p>
      */
-    inline Trust& WithCreatedDateTime(Aws::Utils::DateTime&& value) { SetCreatedDateTime(value); return *this;}
+    inline Trust& WithCreatedDateTime(Aws::Utils::DateTime&& value) { SetCreatedDateTime(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the trust relationship was last updated.</p>
@@ -271,7 +275,7 @@ namespace Model
     /**
      * <p>The date and time that the trust relationship was last updated.</p>
      */
-    inline void SetLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = value; }
+    inline void SetLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = std::move(value); }
 
     /**
      * <p>The date and time that the trust relationship was last updated.</p>
@@ -281,7 +285,7 @@ namespace Model
     /**
      * <p>The date and time that the trust relationship was last updated.</p>
      */
-    inline Trust& WithLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetLastUpdatedDateTime(value); return *this;}
+    inline Trust& WithLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetLastUpdatedDateTime(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the TrustState was last updated.</p>
@@ -296,7 +300,7 @@ namespace Model
     /**
      * <p>The date and time that the TrustState was last updated.</p>
      */
-    inline void SetStateLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_stateLastUpdatedDateTimeHasBeenSet = true; m_stateLastUpdatedDateTime = value; }
+    inline void SetStateLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_stateLastUpdatedDateTimeHasBeenSet = true; m_stateLastUpdatedDateTime = std::move(value); }
 
     /**
      * <p>The date and time that the TrustState was last updated.</p>
@@ -306,7 +310,7 @@ namespace Model
     /**
      * <p>The date and time that the TrustState was last updated.</p>
      */
-    inline Trust& WithStateLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetStateLastUpdatedDateTime(value); return *this;}
+    inline Trust& WithStateLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetStateLastUpdatedDateTime(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the TrustState.</p>
@@ -321,7 +325,7 @@ namespace Model
     /**
      * <p>The reason for the TrustState.</p>
      */
-    inline void SetTrustStateReason(Aws::String&& value) { m_trustStateReasonHasBeenSet = true; m_trustStateReason = value; }
+    inline void SetTrustStateReason(Aws::String&& value) { m_trustStateReasonHasBeenSet = true; m_trustStateReason = std::move(value); }
 
     /**
      * <p>The reason for the TrustState.</p>
@@ -336,7 +340,7 @@ namespace Model
     /**
      * <p>The reason for the TrustState.</p>
      */
-    inline Trust& WithTrustStateReason(Aws::String&& value) { SetTrustStateReason(value); return *this;}
+    inline Trust& WithTrustStateReason(Aws::String&& value) { SetTrustStateReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the TrustState.</p>

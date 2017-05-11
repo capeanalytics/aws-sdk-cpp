@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector/model/LocalizedText.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A list of textual identifiers.</p>
      */
@@ -49,7 +52,7 @@ namespace Model
     /**
      * <p>A list of textual identifiers.</p>
      */
-    inline void SetLocalizedTexts(Aws::Vector<LocalizedText>&& value) { m_localizedTextsHasBeenSet = true; m_localizedTexts = value; }
+    inline void SetLocalizedTexts(Aws::Vector<LocalizedText>&& value) { m_localizedTextsHasBeenSet = true; m_localizedTexts = std::move(value); }
 
     /**
      * <p>A list of textual identifiers.</p>
@@ -59,7 +62,7 @@ namespace Model
     /**
      * <p>A list of textual identifiers.</p>
      */
-    inline LocalizeTextRequest& WithLocalizedTexts(Aws::Vector<LocalizedText>&& value) { SetLocalizedTexts(value); return *this;}
+    inline LocalizeTextRequest& WithLocalizedTexts(Aws::Vector<LocalizedText>&& value) { SetLocalizedTexts(std::move(value)); return *this;}
 
     /**
      * <p>A list of textual identifiers.</p>
@@ -69,7 +72,7 @@ namespace Model
     /**
      * <p>A list of textual identifiers.</p>
      */
-    inline LocalizeTextRequest& AddLocalizedTexts(LocalizedText&& value) { m_localizedTextsHasBeenSet = true; m_localizedTexts.push_back(value); return *this; }
+    inline LocalizeTextRequest& AddLocalizedTexts(LocalizedText&& value) { m_localizedTextsHasBeenSet = true; m_localizedTexts.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The locale that you want to translate a textual identifier into.</p>
@@ -84,7 +87,7 @@ namespace Model
     /**
      * <p>The locale that you want to translate a textual identifier into.</p>
      */
-    inline void SetLocale(Aws::String&& value) { m_localeHasBeenSet = true; m_locale = value; }
+    inline void SetLocale(Aws::String&& value) { m_localeHasBeenSet = true; m_locale = std::move(value); }
 
     /**
      * <p>The locale that you want to translate a textual identifier into.</p>
@@ -99,7 +102,7 @@ namespace Model
     /**
      * <p>The locale that you want to translate a textual identifier into.</p>
      */
-    inline LocalizeTextRequest& WithLocale(Aws::String&& value) { SetLocale(value); return *this;}
+    inline LocalizeTextRequest& WithLocale(Aws::String&& value) { SetLocale(std::move(value)); return *this;}
 
     /**
      * <p>The locale that you want to translate a textual identifier into.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticbeanstalk/model/ResponseMetadata.h>
 #include <aws/elasticbeanstalk/model/EventDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,10 @@ namespace ElasticBeanstalk
 namespace Model
 {
   /**
-   * <p>Result message wrapping a list of event descriptions.</p>
+   * <p>Result message wrapping a list of event descriptions.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/EventDescriptionsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DescribeEventsResult
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p> A list of <a>EventDescription</a>. </p>
      */
-    inline void SetEvents(Aws::Vector<EventDescription>&& value) { m_events = value; }
+    inline void SetEvents(Aws::Vector<EventDescription>&& value) { m_events = std::move(value); }
 
     /**
      * <p> A list of <a>EventDescription</a>. </p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p> A list of <a>EventDescription</a>. </p>
      */
-    inline DescribeEventsResult& WithEvents(Aws::Vector<EventDescription>&& value) { SetEvents(value); return *this;}
+    inline DescribeEventsResult& WithEvents(Aws::Vector<EventDescription>&& value) { SetEvents(std::move(value)); return *this;}
 
     /**
      * <p> A list of <a>EventDescription</a>. </p>
@@ -78,7 +83,7 @@ namespace Model
     /**
      * <p> A list of <a>EventDescription</a>. </p>
      */
-    inline DescribeEventsResult& AddEvents(EventDescription&& value) { m_events.push_back(value); return *this; }
+    inline DescribeEventsResult& AddEvents(EventDescription&& value) { m_events.push_back(std::move(value)); return *this; }
 
     /**
      * <p> If returned, this indicates that there are more results to obtain. Use this
@@ -99,7 +104,7 @@ namespace Model
      * token in the next <a>DescribeEvents</a> call to get the next batch of events.
      * </p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p> If returned, this indicates that there are more results to obtain. Use this
@@ -120,7 +125,7 @@ namespace Model
      * token in the next <a>DescribeEvents</a> call to get the next batch of events.
      * </p>
      */
-    inline DescribeEventsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeEventsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p> If returned, this indicates that there are more results to obtain. Use this
@@ -136,13 +141,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeEventsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeEventsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeEventsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<EventDescription> m_events;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,52 +36,53 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
     inline const Aws::String& GetCluster() const{ return m_cluster; }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
     inline void SetCluster(const Aws::String& value) { m_clusterHasBeenSet = true; m_cluster = value; }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = value; }
+    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
     inline void SetCluster(const char* value) { m_clusterHasBeenSet = true; m_cluster.assign(value); }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
     inline ListServicesRequest& WithCluster(const Aws::String& value) { SetCluster(value); return *this;}
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
-    inline ListServicesRequest& WithCluster(Aws::String&& value) { SetCluster(value); return *this;}
+    inline ListServicesRequest& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts
      * the services to list. If you do not specify a cluster, the default cluster is
-     * assumed..</p>
+     * assumed.</p>
      */
     inline ListServicesRequest& WithCluster(const char* value) { SetCluster(value); return *this;}
 
@@ -117,7 +120,7 @@ namespace Model
      * retrieve the next items in a list and not for other programmatic purposes.</p>
      * </note>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated
@@ -153,7 +156,7 @@ namespace Model
      * retrieve the next items in a list and not for other programmatic purposes.</p>
      * </note>
      */
-    inline ListServicesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListServicesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated

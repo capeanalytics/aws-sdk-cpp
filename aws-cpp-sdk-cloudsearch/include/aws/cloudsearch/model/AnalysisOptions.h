@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudsearch/model/AlgorithmicStemming.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 
   /**
    * <p>Synonyms, stopwords, and stemming options for an analysis scheme. Includes
-   * tokenization dictionary for Japanese.</p>
+   * tokenization dictionary for Japanese.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/AnalysisOptions">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API AnalysisOptions
   {
@@ -86,7 +90,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a>
      * in the <i>Amazon CloudSearch Developer Guide</i>.</p>
      */
-    inline void SetSynonyms(Aws::String&& value) { m_synonymsHasBeenSet = true; m_synonyms = value; }
+    inline void SetSynonyms(Aws::String&& value) { m_synonymsHasBeenSet = true; m_synonyms = std::move(value); }
 
     /**
      * <p>A JSON object that defines synonym groups and aliases. A synonym group is an
@@ -128,7 +132,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a>
      * in the <i>Amazon CloudSearch Developer Guide</i>.</p>
      */
-    inline AnalysisOptions& WithSynonyms(Aws::String&& value) { SetSynonyms(value); return *this;}
+    inline AnalysisOptions& WithSynonyms(Aws::String&& value) { SetSynonyms(std::move(value)); return *this;}
 
     /**
      * <p>A JSON object that defines synonym groups and aliases. A synonym group is an
@@ -166,7 +170,7 @@ namespace Model
      * list each word you want to ignore. Wildcards and regular expressions are not
      * supported. </p>
      */
-    inline void SetStopwords(Aws::String&& value) { m_stopwordsHasBeenSet = true; m_stopwords = value; }
+    inline void SetStopwords(Aws::String&& value) { m_stopwordsHasBeenSet = true; m_stopwords = std::move(value); }
 
     /**
      * <p>A JSON array of terms to ignore during indexing and searching. For example,
@@ -190,7 +194,7 @@ namespace Model
      * list each word you want to ignore. Wildcards and regular expressions are not
      * supported. </p>
      */
-    inline AnalysisOptions& WithStopwords(Aws::String&& value) { SetStopwords(value); return *this;}
+    inline AnalysisOptions& WithStopwords(Aws::String&& value) { SetStopwords(std::move(value)); return *this;}
 
     /**
      * <p>A JSON array of terms to ignore during indexing and searching. For example,
@@ -228,7 +232,7 @@ namespace Model
      * algorithmic stemming to correct specific cases of overstemming or understemming.
      * The maximum size of a stemming dictionary is 500 KB.</p>
      */
-    inline void SetStemmingDictionary(Aws::String&& value) { m_stemmingDictionaryHasBeenSet = true; m_stemmingDictionary = value; }
+    inline void SetStemmingDictionary(Aws::String&& value) { m_stemmingDictionaryHasBeenSet = true; m_stemmingDictionary = std::move(value); }
 
     /**
      * <p>A JSON object that contains a collection of string:value pairs that each map
@@ -258,7 +262,7 @@ namespace Model
      * algorithmic stemming to correct specific cases of overstemming or understemming.
      * The maximum size of a stemming dictionary is 500 KB.</p>
      */
-    inline AnalysisOptions& WithStemmingDictionary(Aws::String&& value) { SetStemmingDictionary(value); return *this;}
+    inline AnalysisOptions& WithStemmingDictionary(Aws::String&& value) { SetStemmingDictionary(std::move(value)); return *this;}
 
     /**
      * <p>A JSON object that contains a collection of string:value pairs that each map
@@ -292,7 +296,7 @@ namespace Model
      * enables you to override the default tokenization for selected terms. This is
      * only valid for Japanese language fields.</p>
      */
-    inline void SetJapaneseTokenizationDictionary(Aws::String&& value) { m_japaneseTokenizationDictionaryHasBeenSet = true; m_japaneseTokenizationDictionary = value; }
+    inline void SetJapaneseTokenizationDictionary(Aws::String&& value) { m_japaneseTokenizationDictionaryHasBeenSet = true; m_japaneseTokenizationDictionary = std::move(value); }
 
     /**
      * <p>A JSON array that contains a collection of terms, tokens, readings and part
@@ -316,7 +320,7 @@ namespace Model
      * enables you to override the default tokenization for selected terms. This is
      * only valid for Japanese language fields.</p>
      */
-    inline AnalysisOptions& WithJapaneseTokenizationDictionary(Aws::String&& value) { SetJapaneseTokenizationDictionary(value); return *this;}
+    inline AnalysisOptions& WithJapaneseTokenizationDictionary(Aws::String&& value) { SetJapaneseTokenizationDictionary(std::move(value)); return *this;}
 
     /**
      * <p>A JSON array that contains a collection of terms, tokens, readings and part
@@ -354,7 +358,7 @@ namespace Model
      * target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon
      * CloudSearch Developer Guide</i> </p>
      */
-    inline void SetAlgorithmicStemming(AlgorithmicStemming&& value) { m_algorithmicStemmingHasBeenSet = true; m_algorithmicStemming = value; }
+    inline void SetAlgorithmicStemming(AlgorithmicStemming&& value) { m_algorithmicStemmingHasBeenSet = true; m_algorithmicStemming = std::move(value); }
 
     /**
      * <p>The level of algorithmic stemming to perform: <code>none</code>,
@@ -374,7 +378,7 @@ namespace Model
      * target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon
      * CloudSearch Developer Guide</i> </p>
      */
-    inline AnalysisOptions& WithAlgorithmicStemming(AlgorithmicStemming&& value) { SetAlgorithmicStemming(value); return *this;}
+    inline AnalysisOptions& WithAlgorithmicStemming(AlgorithmicStemming&& value) { SetAlgorithmicStemming(std::move(value)); return *this;}
 
   private:
     Aws::String m_synonyms;

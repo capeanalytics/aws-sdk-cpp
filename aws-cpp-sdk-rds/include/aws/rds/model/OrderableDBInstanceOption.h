@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/AvailabilityZone.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
   /**
    * <p>Contains a list of available options for a DB instance</p> <p> This data type
    * is used as a response element in the <a>DescribeOrderableDBInstanceOptions</a>
-   * action. </p>
+   * action. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OrderableDBInstanceOption">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API OrderableDBInstanceOption
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The engine type of the orderable DB instance.</p>
      */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = value; }
+    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
 
     /**
      * <p>The engine type of the orderable DB instance.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The engine type of the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithEngine(Aws::String&& value) { SetEngine(value); return *this;}
+    inline OrderableDBInstanceOption& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
 
     /**
      * <p>The engine type of the orderable DB instance.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The engine version of the orderable DB instance.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>The engine version of the orderable DB instance.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The engine version of the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline OrderableDBInstanceOption& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>The engine version of the orderable DB instance.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The DB instance class for the orderable DB instance.</p>
      */
-    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = value; }
+    inline void SetDBInstanceClass(Aws::String&& value) { m_dBInstanceClassHasBeenSet = true; m_dBInstanceClass = std::move(value); }
 
     /**
      * <p>The DB instance class for the orderable DB instance.</p>
@@ -146,7 +150,7 @@ namespace Model
     /**
      * <p>The DB instance class for the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(value); return *this;}
+    inline OrderableDBInstanceOption& WithDBInstanceClass(Aws::String&& value) { SetDBInstanceClass(std::move(value)); return *this;}
 
     /**
      * <p>The DB instance class for the orderable DB instance.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>The license model for the orderable DB instance.</p>
      */
-    inline void SetLicenseModel(Aws::String&& value) { m_licenseModelHasBeenSet = true; m_licenseModel = value; }
+    inline void SetLicenseModel(Aws::String&& value) { m_licenseModelHasBeenSet = true; m_licenseModel = std::move(value); }
 
     /**
      * <p>The license model for the orderable DB instance.</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>The license model for the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithLicenseModel(Aws::String&& value) { SetLicenseModel(value); return *this;}
+    inline OrderableDBInstanceOption& WithLicenseModel(Aws::String&& value) { SetLicenseModel(std::move(value)); return *this;}
 
     /**
      * <p>The license model for the orderable DB instance.</p>
@@ -201,7 +205,7 @@ namespace Model
     /**
      * <p>A list of Availability Zones for the orderable DB instance.</p>
      */
-    inline void SetAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
+    inline void SetAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
 
     /**
      * <p>A list of Availability Zones for the orderable DB instance.</p>
@@ -211,7 +215,7 @@ namespace Model
     /**
      * <p>A list of Availability Zones for the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { SetAvailabilityZones(value); return *this;}
+    inline OrderableDBInstanceOption& WithAvailabilityZones(Aws::Vector<AvailabilityZone>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
 
     /**
      * <p>A list of Availability Zones for the orderable DB instance.</p>
@@ -221,7 +225,7 @@ namespace Model
     /**
      * <p>A list of Availability Zones for the orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& AddAvailabilityZones(AvailabilityZone&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
+    inline OrderableDBInstanceOption& AddAvailabilityZones(AvailabilityZone&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Indicates whether this orderable DB instance is multi-AZ capable.</p>
@@ -296,7 +300,7 @@ namespace Model
     /**
      * <p>Indicates the storage type for this orderable DB instance.</p>
      */
-    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = value; }
+    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = std::move(value); }
 
     /**
      * <p>Indicates the storage type for this orderable DB instance.</p>
@@ -311,7 +315,7 @@ namespace Model
     /**
      * <p>Indicates the storage type for this orderable DB instance.</p>
      */
-    inline OrderableDBInstanceOption& WithStorageType(Aws::String&& value) { SetStorageType(value); return *this;}
+    inline OrderableDBInstanceOption& WithStorageType(Aws::String&& value) { SetStorageType(std::move(value)); return *this;}
 
     /**
      * <p>Indicates the storage type for this orderable DB instance.</p>
@@ -351,6 +355,24 @@ namespace Model
      */
     inline OrderableDBInstanceOption& WithSupportsEnhancedMonitoring(bool value) { SetSupportsEnhancedMonitoring(value); return *this;}
 
+    /**
+     * <p>Indicates whether this orderable DB instance supports IAM database
+     * authentication.</p>
+     */
+    inline bool GetSupportsIAMDatabaseAuthentication() const{ return m_supportsIAMDatabaseAuthentication; }
+
+    /**
+     * <p>Indicates whether this orderable DB instance supports IAM database
+     * authentication.</p>
+     */
+    inline void SetSupportsIAMDatabaseAuthentication(bool value) { m_supportsIAMDatabaseAuthenticationHasBeenSet = true; m_supportsIAMDatabaseAuthentication = value; }
+
+    /**
+     * <p>Indicates whether this orderable DB instance supports IAM database
+     * authentication.</p>
+     */
+    inline OrderableDBInstanceOption& WithSupportsIAMDatabaseAuthentication(bool value) { SetSupportsIAMDatabaseAuthentication(value); return *this;}
+
   private:
     Aws::String m_engine;
     bool m_engineHasBeenSet;
@@ -376,6 +398,8 @@ namespace Model
     bool m_supportsIopsHasBeenSet;
     bool m_supportsEnhancedMonitoring;
     bool m_supportsEnhancedMonitoringHasBeenSet;
+    bool m_supportsIAMDatabaseAuthentication;
+    bool m_supportsIAMDatabaseAuthenticationHasBeenSet;
   };
 
 } // namespace Model

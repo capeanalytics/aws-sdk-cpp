@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/GetTemplateRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -20,7 +21,10 @@ using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
 GetTemplateRequest::GetTemplateRequest() : 
-    m_stackNameHasBeenSet(false)
+    m_stackNameHasBeenSet(false),
+    m_changeSetNameHasBeenSet(false),
+    m_templateStage(TemplateStage::NOT_SET),
+    m_templateStageHasBeenSet(false)
 {
 }
 
@@ -33,7 +37,22 @@ Aws::String GetTemplateRequest::SerializePayload() const
     ss << "StackName=" << StringUtils::URLEncode(m_stackName.c_str()) << "&";
   }
 
+  if(m_changeSetNameHasBeenSet)
+  {
+    ss << "ChangeSetName=" << StringUtils::URLEncode(m_changeSetName.c_str()) << "&";
+  }
+
+  if(m_templateStageHasBeenSet)
+  {
+    ss << "TemplateStage=" << TemplateStageMapper::GetNameForTemplateStage(m_templateStage) << "&";
+  }
+
   ss << "Version=2010-05-15";
   return ss.str();
 }
 
+
+void  GetTemplateRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

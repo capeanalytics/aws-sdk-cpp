@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * <p>If your Lambda function accesses resources in a VPC, you provide this
    * parameter identifying the list of security group IDs and subnet IDs. These must
    * belong to the same VPC. You must provide at least one security group and one
-   * subnet ID.</p>
+   * subnet ID.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/VpcConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API VpcConfig
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
      */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
      */
-    inline VpcConfig& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(value); return *this;}
+    inline VpcConfig& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
      */
-    inline VpcConfig& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
+    inline VpcConfig& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of one or more subnet IDs in your VPC.</p>
@@ -98,7 +102,7 @@ namespace Model
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>
      */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
+    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
 
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>
      */
-    inline VpcConfig& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(value); return *this;}
+    inline VpcConfig& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>
@@ -118,7 +122,7 @@ namespace Model
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>
      */
-    inline VpcConfig& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
+    inline VpcConfig& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of one or more security groups IDs in your VPC.</p>

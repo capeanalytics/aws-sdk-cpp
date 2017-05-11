@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancingv2/model/Certificate.h>
 #include <aws/elasticloadbalancingv2/model/Action.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateListener.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API CreateListenerRequest : public ElasticLoadBalancingv2Request
   {
@@ -37,6 +38,11 @@ namespace Model
     CreateListenerRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
@@ -50,7 +56,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = value; }
+    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
@@ -65,7 +71,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline CreateListenerRequest& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(value); return *this;}
+    inline CreateListenerRequest& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
@@ -85,7 +91,7 @@ namespace Model
     /**
      * <p>The protocol for connections from clients to the load balancer.</p>
      */
-    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
 
     /**
      * <p>The protocol for connections from clients to the load balancer.</p>
@@ -95,7 +101,7 @@ namespace Model
     /**
      * <p>The protocol for connections from clients to the load balancer.</p>
      */
-    inline CreateListenerRequest& WithProtocol(ProtocolEnum&& value) { SetProtocol(value); return *this;}
+    inline CreateListenerRequest& WithProtocol(ProtocolEnum&& value) { SetProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The port on which the load balancer is listening.</p>
@@ -128,7 +134,7 @@ namespace Model
      * <p>The security policy that defines which ciphers and protocols are supported.
      * The default is the current predefined security policy.</p>
      */
-    inline void SetSslPolicy(Aws::String&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = value; }
+    inline void SetSslPolicy(Aws::String&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = std::move(value); }
 
     /**
      * <p>The security policy that defines which ciphers and protocols are supported.
@@ -146,7 +152,7 @@ namespace Model
      * <p>The security policy that defines which ciphers and protocols are supported.
      * The default is the current predefined security policy.</p>
      */
-    inline CreateListenerRequest& WithSslPolicy(Aws::String&& value) { SetSslPolicy(value); return *this;}
+    inline CreateListenerRequest& WithSslPolicy(Aws::String&& value) { SetSslPolicy(std::move(value)); return *this;}
 
     /**
      * <p>The security policy that defines which ciphers and protocols are supported.
@@ -170,7 +176,7 @@ namespace Model
      * <p>The SSL server certificate. You must provide exactly one certificate if the
      * protocol is HTTPS.</p>
      */
-    inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificatesHasBeenSet = true; m_certificates = value; }
+    inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificatesHasBeenSet = true; m_certificates = std::move(value); }
 
     /**
      * <p>The SSL server certificate. You must provide exactly one certificate if the
@@ -182,7 +188,7 @@ namespace Model
      * <p>The SSL server certificate. You must provide exactly one certificate if the
      * protocol is HTTPS.</p>
      */
-    inline CreateListenerRequest& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(value); return *this;}
+    inline CreateListenerRequest& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(std::move(value)); return *this;}
 
     /**
      * <p>The SSL server certificate. You must provide exactly one certificate if the
@@ -194,42 +200,42 @@ namespace Model
      * <p>The SSL server certificate. You must provide exactly one certificate if the
      * protocol is HTTPS.</p>
      */
-    inline CreateListenerRequest& AddCertificates(Certificate&& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(value); return *this; }
+    inline CreateListenerRequest& AddCertificates(Certificate&& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
     inline const Aws::Vector<Action>& GetDefaultActions() const{ return m_defaultActions; }
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
     inline void SetDefaultActions(const Aws::Vector<Action>& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = value; }
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
-    inline void SetDefaultActions(Aws::Vector<Action>&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = value; }
+    inline void SetDefaultActions(Aws::Vector<Action>&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = std::move(value); }
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
     inline CreateListenerRequest& WithDefaultActions(const Aws::Vector<Action>& value) { SetDefaultActions(value); return *this;}
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
-    inline CreateListenerRequest& WithDefaultActions(Aws::Vector<Action>&& value) { SetDefaultActions(value); return *this;}
+    inline CreateListenerRequest& WithDefaultActions(Aws::Vector<Action>&& value) { SetDefaultActions(std::move(value)); return *this;}
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
     inline CreateListenerRequest& AddDefaultActions(const Action& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(value); return *this; }
 
     /**
-     * <p>The default actions for the listener.</p>
+     * <p>The default action for the listener.</p>
      */
-    inline CreateListenerRequest& AddDefaultActions(Action&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(value); return *this; }
+    inline CreateListenerRequest& AddDefaultActions(Action&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_loadBalancerArn;

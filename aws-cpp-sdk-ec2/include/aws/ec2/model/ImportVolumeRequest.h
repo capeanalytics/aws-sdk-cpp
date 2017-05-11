@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/DiskImageDetail.h>
 #include <aws/ec2/model/VolumeDetail.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ImportVolume.</p>
+   * <p>Contains the parameters for ImportVolume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportVolumeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportVolumeRequest : public EC2Request
   {
@@ -35,6 +39,11 @@ namespace Model
     ImportVolumeRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +81,7 @@ namespace Model
     /**
      * <p>The Availability Zone for the resulting EBS volume.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone for the resulting EBS volume.</p>
@@ -87,7 +96,7 @@ namespace Model
     /**
      * <p>The Availability Zone for the resulting EBS volume.</p>
      */
-    inline ImportVolumeRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline ImportVolumeRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone for the resulting EBS volume.</p>
@@ -107,7 +116,7 @@ namespace Model
     /**
      * <p>The disk image.</p>
      */
-    inline void SetImage(DiskImageDetail&& value) { m_imageHasBeenSet = true; m_image = value; }
+    inline void SetImage(DiskImageDetail&& value) { m_imageHasBeenSet = true; m_image = std::move(value); }
 
     /**
      * <p>The disk image.</p>
@@ -117,7 +126,7 @@ namespace Model
     /**
      * <p>The disk image.</p>
      */
-    inline ImportVolumeRequest& WithImage(DiskImageDetail&& value) { SetImage(value); return *this;}
+    inline ImportVolumeRequest& WithImage(DiskImageDetail&& value) { SetImage(std::move(value)); return *this;}
 
     /**
      * <p>A description of the volume.</p>
@@ -132,7 +141,7 @@ namespace Model
     /**
      * <p>A description of the volume.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the volume.</p>
@@ -147,7 +156,7 @@ namespace Model
     /**
      * <p>A description of the volume.</p>
      */
-    inline ImportVolumeRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ImportVolumeRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the volume.</p>
@@ -167,7 +176,7 @@ namespace Model
     /**
      * <p>The volume size.</p>
      */
-    inline void SetVolume(VolumeDetail&& value) { m_volumeHasBeenSet = true; m_volume = value; }
+    inline void SetVolume(VolumeDetail&& value) { m_volumeHasBeenSet = true; m_volume = std::move(value); }
 
     /**
      * <p>The volume size.</p>
@@ -177,7 +186,7 @@ namespace Model
     /**
      * <p>The volume size.</p>
      */
-    inline ImportVolumeRequest& WithVolume(VolumeDetail&& value) { SetVolume(value); return *this;}
+    inline ImportVolumeRequest& WithVolume(VolumeDetail&& value) { SetVolume(std::move(value)); return *this;}
 
   private:
     bool m_dryRun;

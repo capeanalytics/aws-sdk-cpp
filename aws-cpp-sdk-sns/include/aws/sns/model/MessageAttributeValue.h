@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,7 +44,9 @@ namespace Model
    * name, type, and value, are included in the message size restriction, which is
    * currently 256 KB (262,144 bytes). For more information, see <a
    * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html">Using
-   * Amazon SNS Message Attributes</a>.</p>
+   * Amazon SNS Message Attributes</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/MessageAttributeValue">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API MessageAttributeValue
   {
@@ -76,7 +80,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes">Message
      * Attribute Data Types</a>.</p>
      */
-    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
+    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
 
     /**
      * <p>Amazon SNS supports the following logical data types: String, Number, and
@@ -100,7 +104,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes">Message
      * Attribute Data Types</a>.</p>
      */
-    inline MessageAttributeValue& WithDataType(Aws::String&& value) { SetDataType(value); return *this;}
+    inline MessageAttributeValue& WithDataType(Aws::String&& value) { SetDataType(std::move(value)); return *this;}
 
     /**
      * <p>Amazon SNS supports the following logical data types: String, Number, and
@@ -129,7 +133,7 @@ namespace Model
      * <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p>
      */
-    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = value; }
+    inline void SetStringValue(Aws::String&& value) { m_stringValueHasBeenSet = true; m_stringValue = std::move(value); }
 
     /**
      * <p>Strings are Unicode with UTF8 binary encoding. For a list of code values, see
@@ -150,7 +154,7 @@ namespace Model
      * <a
      * href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p>
      */
-    inline MessageAttributeValue& WithStringValue(Aws::String&& value) { SetStringValue(value); return *this;}
+    inline MessageAttributeValue& WithStringValue(Aws::String&& value) { SetStringValue(std::move(value)); return *this;}
 
     /**
      * <p>Strings are Unicode with UTF8 binary encoding. For a list of code values, see
@@ -175,7 +179,7 @@ namespace Model
      * <p>Binary type attributes can store any binary data, for example, compressed
      * data, encrypted data, or images.</p>
      */
-    inline void SetBinaryValue(Aws::Utils::ByteBuffer&& value) { m_binaryValueHasBeenSet = true; m_binaryValue = value; }
+    inline void SetBinaryValue(Aws::Utils::ByteBuffer&& value) { m_binaryValueHasBeenSet = true; m_binaryValue = std::move(value); }
 
     /**
      * <p>Binary type attributes can store any binary data, for example, compressed
@@ -187,7 +191,7 @@ namespace Model
      * <p>Binary type attributes can store any binary data, for example, compressed
      * data, encrypted data, or images.</p>
      */
-    inline MessageAttributeValue& WithBinaryValue(Aws::Utils::ByteBuffer&& value) { SetBinaryValue(value); return *this;}
+    inline MessageAttributeValue& WithBinaryValue(Aws::Utils::ByteBuffer&& value) { SetBinaryValue(std::move(value)); return *this;}
 
   private:
     Aws::String m_dataType;

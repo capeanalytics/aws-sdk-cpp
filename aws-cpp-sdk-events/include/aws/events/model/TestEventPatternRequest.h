@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
 #include <aws/events/CloudWatchEventsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,6 @@ namespace Model
 {
 
   /**
-   * <p>Container for the parameters to the <a>TestEventPattern</a> operation.</p>
    */
   class AWS_CLOUDWATCHEVENTS_API TestEventPatternRequest : public CloudWatchEventsRequest
   {
@@ -35,73 +36,95 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
     inline const Aws::String& GetEventPattern() const{ return m_eventPattern; }
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
     inline void SetEventPattern(const Aws::String& value) { m_eventPatternHasBeenSet = true; m_eventPattern = value; }
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
-    inline void SetEventPattern(Aws::String&& value) { m_eventPatternHasBeenSet = true; m_eventPattern = value; }
+    inline void SetEventPattern(Aws::String&& value) { m_eventPatternHasBeenSet = true; m_eventPattern = std::move(value); }
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
     inline void SetEventPattern(const char* value) { m_eventPatternHasBeenSet = true; m_eventPattern.assign(value); }
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
     inline TestEventPatternRequest& WithEventPattern(const Aws::String& value) { SetEventPattern(value); return *this;}
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
-    inline TestEventPatternRequest& WithEventPattern(Aws::String&& value) { SetEventPattern(value); return *this;}
+    inline TestEventPatternRequest& WithEventPattern(Aws::String&& value) { SetEventPattern(std::move(value)); return *this;}
 
     /**
-     * <p>The event pattern you want to test.</p>
+     * <zonbook> <simpara>The event pattern.</simpara> </zonbook> <xhtml> <p>The event
+     * pattern.</p> </xhtml>
      */
     inline TestEventPatternRequest& WithEventPattern(const char* value) { SetEventPattern(value); return *this;}
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
     inline const Aws::String& GetEvent() const{ return m_event; }
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
     inline void SetEvent(const Aws::String& value) { m_eventHasBeenSet = true; m_event = value; }
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
-    inline void SetEvent(Aws::String&& value) { m_eventHasBeenSet = true; m_event = value; }
+    inline void SetEvent(Aws::String&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
     inline void SetEvent(const char* value) { m_eventHasBeenSet = true; m_event.assign(value); }
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
     inline TestEventPatternRequest& WithEvent(const Aws::String& value) { SetEvent(value); return *this;}
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
-    inline TestEventPatternRequest& WithEvent(Aws::String&& value) { SetEvent(value); return *this;}
+    inline TestEventPatternRequest& WithEvent(Aws::String&& value) { SetEvent(std::move(value)); return *this;}
 
     /**
-     * <p>The event in the JSON format to test against the event pattern.</p>
+     * <zonbook> <simpara>The event, in JSON format, to test against the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>The event, in JSON format, to test
+     * against the event pattern.</p> </xhtml>
      */
     inline TestEventPatternRequest& WithEvent(const char* value) { SetEvent(value); return *this;}
 

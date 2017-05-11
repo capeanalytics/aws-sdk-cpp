@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace DatabaseMigrationService
 namespace Model
 {
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeSchemasResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API DescribeSchemasResult
   {
@@ -62,7 +66,7 @@ namespace Model
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous request. If this
@@ -83,7 +87,7 @@ namespace Model
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>. </p>
      */
-    inline DescribeSchemasResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeSchemasResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous request. If this
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The described schema.</p>
      */
-    inline void SetSchemas(Aws::Vector<Aws::String>&& value) { m_schemas = value; }
+    inline void SetSchemas(Aws::Vector<Aws::String>&& value) { m_schemas = std::move(value); }
 
     /**
      * <p>The described schema.</p>
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>The described schema.</p>
      */
-    inline DescribeSchemasResult& WithSchemas(Aws::Vector<Aws::String>&& value) { SetSchemas(value); return *this;}
+    inline DescribeSchemasResult& WithSchemas(Aws::Vector<Aws::String>&& value) { SetSchemas(std::move(value)); return *this;}
 
     /**
      * <p>The described schema.</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>The described schema.</p>
      */
-    inline DescribeSchemasResult& AddSchemas(Aws::String&& value) { m_schemas.push_back(value); return *this; }
+    inline DescribeSchemasResult& AddSchemas(Aws::String&& value) { m_schemas.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The described schema.</p>

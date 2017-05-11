@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesis/model/Record.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Kinesis
 namespace Model
 {
   /**
-   * <p>Represents the output for <a>GetRecords</a>.</p>
+   * <p>Represents the output for <a>GetRecords</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/GetRecordsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API GetRecordsResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The data records retrieved from the shard.</p>
      */
-    inline void SetRecords(Aws::Vector<Record>&& value) { m_records = value; }
+    inline void SetRecords(Aws::Vector<Record>&& value) { m_records = std::move(value); }
 
     /**
      * <p>The data records retrieved from the shard.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The data records retrieved from the shard.</p>
      */
-    inline GetRecordsResult& WithRecords(Aws::Vector<Record>&& value) { SetRecords(value); return *this;}
+    inline GetRecordsResult& WithRecords(Aws::Vector<Record>&& value) { SetRecords(std::move(value)); return *this;}
 
     /**
      * <p>The data records retrieved from the shard.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The data records retrieved from the shard.</p>
      */
-    inline GetRecordsResult& AddRecords(Record&& value) { m_records.push_back(value); return *this; }
+    inline GetRecordsResult& AddRecords(Record&& value) { m_records.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The next position in the shard from which to start sequentially reading data
@@ -98,7 +102,7 @@ namespace Model
      * records. If set to <code>null</code>, the shard has been closed and the
      * requested iterator will not return any more data. </p>
      */
-    inline void SetNextShardIterator(Aws::String&& value) { m_nextShardIterator = value; }
+    inline void SetNextShardIterator(Aws::String&& value) { m_nextShardIterator = std::move(value); }
 
     /**
      * <p>The next position in the shard from which to start sequentially reading data
@@ -119,7 +123,7 @@ namespace Model
      * records. If set to <code>null</code>, the shard has been closed and the
      * requested iterator will not return any more data. </p>
      */
-    inline GetRecordsResult& WithNextShardIterator(Aws::String&& value) { SetNextShardIterator(value); return *this;}
+    inline GetRecordsResult& WithNextShardIterator(Aws::String&& value) { SetNextShardIterator(std::move(value)); return *this;}
 
     /**
      * <p>The next position in the shard from which to start sequentially reading data

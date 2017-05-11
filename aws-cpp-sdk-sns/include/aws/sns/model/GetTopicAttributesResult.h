@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/sns/model/ResponseMetadata.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>Response for GetTopicAttributes action.</p>
+   * <p>Response for GetTopicAttributes action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetTopicAttributesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API GetTopicAttributesResult
   {
@@ -99,7 +103,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributes = value; }
+    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributes = std::move(value); }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -137,7 +141,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline GetTopicAttributesResult& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -156,7 +160,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -175,7 +179,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -194,7 +198,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -213,7 +217,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributes.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -232,7 +236,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(const char* key, Aws::String&& value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(const char* key, Aws::String&& value) { m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -251,7 +255,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, const char* value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(Aws::String&& key, const char* value) { m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A map of the topic's attributes. Attributes in this map include the
@@ -270,7 +274,7 @@ namespace Model
      * serialization of the effective delivery policy that takes into account system
      * defaults</p> </li> </ul>
      */
-    inline GetTopicAttributesResult& AddAttributes(const char* key, const char* value) { m_attributes[key] = value; return *this; }
+    inline GetTopicAttributesResult& AddAttributes(const char* key, const char* value) { m_attributes.emplace(key, value); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -279,13 +283,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetTopicAttributesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetTopicAttributesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetTopicAttributesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Map<Aws::String, Aws::String> m_attributes;

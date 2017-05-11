@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/model/UserImportJobType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
   /**
    * <p>Represents the response from the server to the request to stop the user
-   * import job.</p>
+   * import job.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StopUserImportJobResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API StopUserImportJobResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The job object that represents the user import job.</p>
      */
-    inline void SetUserImportJob(UserImportJobType&& value) { m_userImportJob = value; }
+    inline void SetUserImportJob(UserImportJobType&& value) { m_userImportJob = std::move(value); }
 
     /**
      * <p>The job object that represents the user import job.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The job object that represents the user import job.</p>
      */
-    inline StopUserImportJobResult& WithUserImportJob(UserImportJobType&& value) { SetUserImportJob(value); return *this;}
+    inline StopUserImportJobResult& WithUserImportJob(UserImportJobType&& value) { SetUserImportJob(std::move(value)); return *this;}
 
   private:
     UserImportJobType m_userImportJob;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/ModifyClusterRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -40,7 +41,9 @@ ModifyClusterRequest::ModifyClusterRequest() :
     m_newClusterIdentifierHasBeenSet(false),
     m_publiclyAccessible(false),
     m_publiclyAccessibleHasBeenSet(false),
-    m_elasticIpHasBeenSet(false)
+    m_elasticIpHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false)
 {
 }
 
@@ -117,7 +120,7 @@ Aws::String ModifyClusterRequest::SerializePayload() const
 
   if(m_allowVersionUpgradeHasBeenSet)
   {
-    ss << "AllowVersionUpgrade=" << m_allowVersionUpgrade << "&";
+    ss << "AllowVersionUpgrade=" << std::boolalpha << m_allowVersionUpgrade << "&";
   }
 
   if(m_hsmClientCertificateIdentifierHasBeenSet)
@@ -137,7 +140,7 @@ Aws::String ModifyClusterRequest::SerializePayload() const
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-    ss << "PubliclyAccessible=" << m_publiclyAccessible << "&";
+    ss << "PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_elasticIpHasBeenSet)
@@ -145,7 +148,17 @@ Aws::String ModifyClusterRequest::SerializePayload() const
     ss << "ElasticIp=" << StringUtils::URLEncode(m_elasticIp.c_str()) << "&";
   }
 
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+    ss << "EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
+  }
+
   ss << "Version=2012-12-01";
   return ss.str();
 }
 
+
+void  ModifyClusterRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

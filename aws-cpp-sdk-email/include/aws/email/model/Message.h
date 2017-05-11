@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/email/model/Content.h>
 #include <aws/email/model/Body.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the message to be sent, composed of a subject and a body.</p>
+   * <p>Represents the message to be sent, composed of a subject and a
+   * body.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/Message">AWS API
+   * Reference</a></p>
    */
   class AWS_SES_API Message
   {
@@ -61,7 +66,7 @@ namespace Model
      * <p>The subject of the message: A short summary of the content, which will appear
      * in the recipient's inbox.</p>
      */
-    inline void SetSubject(Content&& value) { m_subjectHasBeenSet = true; m_subject = value; }
+    inline void SetSubject(Content&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
 
     /**
      * <p>The subject of the message: A short summary of the content, which will appear
@@ -73,7 +78,7 @@ namespace Model
      * <p>The subject of the message: A short summary of the content, which will appear
      * in the recipient's inbox.</p>
      */
-    inline Message& WithSubject(Content&& value) { SetSubject(value); return *this;}
+    inline Message& WithSubject(Content&& value) { SetSubject(std::move(value)); return *this;}
 
     /**
      * <p>The message body.</p>
@@ -88,7 +93,7 @@ namespace Model
     /**
      * <p>The message body.</p>
      */
-    inline void SetBody(Body&& value) { m_bodyHasBeenSet = true; m_body = value; }
+    inline void SetBody(Body&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
 
     /**
      * <p>The message body.</p>
@@ -98,7 +103,7 @@ namespace Model
     /**
      * <p>The message body.</p>
      */
-    inline Message& WithBody(Body&& value) { SetBody(value); return *this;}
+    inline Message& WithBody(Body&& value) { SetBody(std::move(value)); return *this;}
 
   private:
     Content m_subject;

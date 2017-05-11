@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,16 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>Gets information about a specified traffic policy instance.</p> <p>To get
-   * information about a traffic policy instance, send a <code>GET</code> request to
-   * the <code>/<i>Amazon Route 53 API version</i>/trafficpolicyinstance/<i>Id</i>
-   * </code> resource.</p>
+   * <p>Gets information about a specified traffic policy instance.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetTrafficPolicyInstanceRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API GetTrafficPolicyInstanceRequest : public Route53Request
   {
   public:
     GetTrafficPolicyInstanceRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The ID of the traffic policy instance that you want to get information
@@ -52,7 +55,7 @@ namespace Model
      * <p>The ID of the traffic policy instance that you want to get information
      * about.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The ID of the traffic policy instance that you want to get information
@@ -70,7 +73,7 @@ namespace Model
      * <p>The ID of the traffic policy instance that you want to get information
      * about.</p>
      */
-    inline GetTrafficPolicyInstanceRequest& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline GetTrafficPolicyInstanceRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the traffic policy instance that you want to get information

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/glacier/GlacierRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
    * Amazon Glacier that all the archive parts have been uploaded and Amazon Glacier
    * can now assemble the archive from the uploaded parts. After assembling and
    * saving the archive to the vault, Amazon Glacier returns the URI path of the
-   * newly created archive resource.</p>
+   * newly created archive resource.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/CompleteMultipartUploadInput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API CompleteMultipartUploadRequest : public GlacierRequest
   {
@@ -39,66 +43,67 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
     inline const Aws::String& GetAccountId() const{ return m_accountId; }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
     inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
+    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
     inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
     inline CompleteMultipartUploadRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
-    inline CompleteMultipartUploadRequest& WithAccountId(Aws::String&& value) { SetAccountId(value); return *this;}
+    inline CompleteMultipartUploadRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you use
-     * an account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID
+     * associated with the credentials used to sign the request. If you use an account
+     * ID, do not include any hyphens ('-') in the ID.</p>
      */
     inline CompleteMultipartUploadRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
 
@@ -115,7 +120,7 @@ namespace Model
     /**
      * <p>The name of the vault.</p>
      */
-    inline void SetVaultName(Aws::String&& value) { m_vaultNameHasBeenSet = true; m_vaultName = value; }
+    inline void SetVaultName(Aws::String&& value) { m_vaultNameHasBeenSet = true; m_vaultName = std::move(value); }
 
     /**
      * <p>The name of the vault.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The name of the vault.</p>
      */
-    inline CompleteMultipartUploadRequest& WithVaultName(Aws::String&& value) { SetVaultName(value); return *this;}
+    inline CompleteMultipartUploadRequest& WithVaultName(Aws::String&& value) { SetVaultName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the vault.</p>
@@ -150,7 +155,7 @@ namespace Model
     /**
      * <p>The upload ID of the multipart upload.</p>
      */
-    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = value; }
+    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::move(value); }
 
     /**
      * <p>The upload ID of the multipart upload.</p>
@@ -165,7 +170,7 @@ namespace Model
     /**
      * <p>The upload ID of the multipart upload.</p>
      */
-    inline CompleteMultipartUploadRequest& WithUploadId(Aws::String&& value) { SetUploadId(value); return *this;}
+    inline CompleteMultipartUploadRequest& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
 
     /**
      * <p>The upload ID of the multipart upload.</p>
@@ -188,7 +193,7 @@ namespace Model
      * <p>The total size, in bytes, of the entire archive. This value should be the sum
      * of all the sizes of the individual parts that you uploaded.</p>
      */
-    inline void SetArchiveSize(Aws::String&& value) { m_archiveSizeHasBeenSet = true; m_archiveSize = value; }
+    inline void SetArchiveSize(Aws::String&& value) { m_archiveSizeHasBeenSet = true; m_archiveSize = std::move(value); }
 
     /**
      * <p>The total size, in bytes, of the entire archive. This value should be the sum
@@ -206,7 +211,7 @@ namespace Model
      * <p>The total size, in bytes, of the entire archive. This value should be the sum
      * of all the sizes of the individual parts that you uploaded.</p>
      */
-    inline CompleteMultipartUploadRequest& WithArchiveSize(Aws::String&& value) { SetArchiveSize(value); return *this;}
+    inline CompleteMultipartUploadRequest& WithArchiveSize(Aws::String&& value) { SetArchiveSize(std::move(value)); return *this;}
 
     /**
      * <p>The total size, in bytes, of the entire archive. This value should be the sum
@@ -236,7 +241,7 @@ namespace Model
      * not match the SHA256 tree hash of the final assembled archive as computed by
      * Amazon Glacier, Amazon Glacier returns an error and the request fails.</p>
      */
-    inline void SetChecksum(Aws::String&& value) { m_checksumHasBeenSet = true; m_checksum = value; }
+    inline void SetChecksum(Aws::String&& value) { m_checksumHasBeenSet = true; m_checksum = std::move(value); }
 
     /**
      * <p>The SHA256 tree hash of the entire archive. It is the tree hash of SHA256
@@ -260,7 +265,7 @@ namespace Model
      * not match the SHA256 tree hash of the final assembled archive as computed by
      * Amazon Glacier, Amazon Glacier returns an error and the request fails.</p>
      */
-    inline CompleteMultipartUploadRequest& WithChecksum(Aws::String&& value) { SetChecksum(value); return *this;}
+    inline CompleteMultipartUploadRequest& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
 
     /**
      * <p>The SHA256 tree hash of the entire archive. It is the tree hash of SHA256

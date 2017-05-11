@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/model/Step.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace EMR
 namespace Model
 {
   /**
-   * <p>This output contains the description of the cluster step.</p>
+   * <p>This output contains the description of the cluster step.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeStepOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API DescribeStepResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The step details for the requested step identifier.</p>
      */
-    inline void SetStep(Step&& value) { m_step = value; }
+    inline void SetStep(Step&& value) { m_step = std::move(value); }
 
     /**
      * <p>The step details for the requested step identifier.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The step details for the requested step identifier.</p>
      */
-    inline DescribeStepResult& WithStep(Step&& value) { SetStep(value); return *this;}
+    inline DescribeStepResult& WithStep(Step&& value) { SetStep(std::move(value)); return *this;}
 
   private:
     Step m_step;

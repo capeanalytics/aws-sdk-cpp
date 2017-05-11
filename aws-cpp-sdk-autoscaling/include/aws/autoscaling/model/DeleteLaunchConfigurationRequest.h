@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DeleteLaunchConfiguration.</p>
+   * <p>Contains the parameters for DeleteLaunchConfiguration.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/LaunchConfigurationNameType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DeleteLaunchConfigurationRequest : public AutoScalingRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DeleteLaunchConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the launch configuration.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the launch configuration.</p>
      */
-    inline void SetLaunchConfigurationName(Aws::String&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = value; }
+    inline void SetLaunchConfigurationName(Aws::String&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = std::move(value); }
 
     /**
      * <p>The name of the launch configuration.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the launch configuration.</p>
      */
-    inline DeleteLaunchConfigurationRequest& WithLaunchConfigurationName(Aws::String&& value) { SetLaunchConfigurationName(value); return *this;}
+    inline DeleteLaunchConfigurationRequest& WithLaunchConfigurationName(Aws::String&& value) { SetLaunchConfigurationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the launch configuration.</p>

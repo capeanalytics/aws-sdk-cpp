@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/OrderableReplicationInstance">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API OrderableReplicationInstance
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The version of the replication engine.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>The version of the replication engine.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The version of the replication engine.</p>
      */
-    inline OrderableReplicationInstance& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline OrderableReplicationInstance& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version of the replication engine.</p>
@@ -95,7 +99,7 @@ namespace Model
      * Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large |
      * dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
      */
-    inline void SetReplicationInstanceClass(Aws::String&& value) { m_replicationInstanceClassHasBeenSet = true; m_replicationInstanceClass = value; }
+    inline void SetReplicationInstanceClass(Aws::String&& value) { m_replicationInstanceClassHasBeenSet = true; m_replicationInstanceClass = std::move(value); }
 
     /**
      * <p>The compute and memory capacity of the replication instance.</p> <p> Valid
@@ -116,7 +120,7 @@ namespace Model
      * Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large |
      * dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
      */
-    inline OrderableReplicationInstance& WithReplicationInstanceClass(Aws::String&& value) { SetReplicationInstanceClass(value); return *this;}
+    inline OrderableReplicationInstance& WithReplicationInstanceClass(Aws::String&& value) { SetReplicationInstanceClass(std::move(value)); return *this;}
 
     /**
      * <p>The compute and memory capacity of the replication instance.</p> <p> Valid
@@ -138,7 +142,7 @@ namespace Model
     /**
      * <p>The type of storage used by the replication instance.</p>
      */
-    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = value; }
+    inline void SetStorageType(Aws::String&& value) { m_storageTypeHasBeenSet = true; m_storageType = std::move(value); }
 
     /**
      * <p>The type of storage used by the replication instance.</p>
@@ -153,7 +157,7 @@ namespace Model
     /**
      * <p>The type of storage used by the replication instance.</p>
      */
-    inline OrderableReplicationInstance& WithStorageType(Aws::String&& value) { SetStorageType(value); return *this;}
+    inline OrderableReplicationInstance& WithStorageType(Aws::String&& value) { SetStorageType(std::move(value)); return *this;}
 
     /**
      * <p>The type of storage used by the replication instance.</p>

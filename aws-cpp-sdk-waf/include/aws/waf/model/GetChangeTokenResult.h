@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -58,7 +60,7 @@ namespace Model
      * a <code>GetChangeTokenStatus</code> request to get the current status of the
      * request. </p>
      */
-    inline void SetChangeToken(Aws::String&& value) { m_changeToken = value; }
+    inline void SetChangeToken(Aws::String&& value) { m_changeToken = std::move(value); }
 
     /**
      * <p>The <code>ChangeToken</code> that you used in the request. Use this value in
@@ -79,7 +81,7 @@ namespace Model
      * a <code>GetChangeTokenStatus</code> request to get the current status of the
      * request. </p>
      */
-    inline GetChangeTokenResult& WithChangeToken(Aws::String&& value) { SetChangeToken(value); return *this;}
+    inline GetChangeTokenResult& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>ChangeToken</code> that you used in the request. Use this value in

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudtrail/model/Trail.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -42,7 +43,9 @@ Trail::Trail() :
     m_logFileValidationEnabledHasBeenSet(false),
     m_cloudWatchLogsLogGroupArnHasBeenSet(false),
     m_cloudWatchLogsRoleArnHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_hasCustomEventSelectors(false),
+    m_hasCustomEventSelectorsHasBeenSet(false)
 {
 }
 
@@ -61,7 +64,9 @@ Trail::Trail(const JsonValue& jsonValue) :
     m_logFileValidationEnabledHasBeenSet(false),
     m_cloudWatchLogsLogGroupArnHasBeenSet(false),
     m_cloudWatchLogsRoleArnHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false)
+    m_kmsKeyIdHasBeenSet(false),
+    m_hasCustomEventSelectors(false),
+    m_hasCustomEventSelectorsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -152,6 +157,13 @@ Trail& Trail::operator =(const JsonValue& jsonValue)
     m_kmsKeyIdHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("HasCustomEventSelectors"))
+  {
+    m_hasCustomEventSelectors = jsonValue.GetBool("HasCustomEventSelectors");
+
+    m_hasCustomEventSelectorsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -228,6 +240,12 @@ JsonValue Trail::Jsonize() const
   if(m_kmsKeyIdHasBeenSet)
   {
    payload.WithString("KmsKeyId", m_kmsKeyId);
+
+  }
+
+  if(m_hasCustomEventSelectorsHasBeenSet)
+  {
+   payload.WithBool("HasCustomEventSelectors", m_hasCustomEventSelectors);
 
   }
 

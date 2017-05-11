@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/IPSet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,57 +44,57 @@ namespace Model
     /**
      * <p>Information about the <a>IPSet</a> that you specified in the
      * <code>GetIPSet</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
-     * <code>IPSetId</code>, and <code>Name</code></li>
-     * <li><code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
+     * topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
+     * <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p>
+     * <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
      * objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and
-     * <code>Value</code></li> </ul>
+     * <code>Value</code> </p> </li> </ul>
      */
     inline const IPSet& GetIPSet() const{ return m_iPSet; }
 
     /**
      * <p>Information about the <a>IPSet</a> that you specified in the
      * <code>GetIPSet</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
-     * <code>IPSetId</code>, and <code>Name</code></li>
-     * <li><code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
+     * topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
+     * <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p>
+     * <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
      * objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and
-     * <code>Value</code></li> </ul>
+     * <code>Value</code> </p> </li> </ul>
      */
     inline void SetIPSet(const IPSet& value) { m_iPSet = value; }
 
     /**
      * <p>Information about the <a>IPSet</a> that you specified in the
      * <code>GetIPSet</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
-     * <code>IPSetId</code>, and <code>Name</code></li>
-     * <li><code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
+     * topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
+     * <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p>
+     * <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
      * objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and
-     * <code>Value</code></li> </ul>
+     * <code>Value</code> </p> </li> </ul>
      */
-    inline void SetIPSet(IPSet&& value) { m_iPSet = value; }
+    inline void SetIPSet(IPSet&& value) { m_iPSet = std::move(value); }
 
     /**
      * <p>Information about the <a>IPSet</a> that you specified in the
      * <code>GetIPSet</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
-     * <code>IPSetId</code>, and <code>Name</code></li>
-     * <li><code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
+     * topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
+     * <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p>
+     * <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
      * objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and
-     * <code>Value</code></li> </ul>
+     * <code>Value</code> </p> </li> </ul>
      */
     inline GetIPSetResult& WithIPSet(const IPSet& value) { SetIPSet(value); return *this;}
 
     /**
      * <p>Information about the <a>IPSet</a> that you specified in the
      * <code>GetIPSet</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
-     * <code>IPSetId</code>, and <code>Name</code></li>
-     * <li><code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
+     * topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>,
+     * <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p>
+     * <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a>
      * objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and
-     * <code>Value</code></li> </ul>
+     * <code>Value</code> </p> </li> </ul>
      */
-    inline GetIPSetResult& WithIPSet(IPSet&& value) { SetIPSet(value); return *this;}
+    inline GetIPSetResult& WithIPSet(IPSet&& value) { SetIPSet(std::move(value)); return *this;}
 
   private:
     IPSet m_iPSet;

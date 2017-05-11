@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/VpnGateway.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,7 +32,9 @@ namespace Model
 
 VpnGateway::VpnGateway() : 
     m_vpnGatewayIdHasBeenSet(false),
+    m_state(VpnState::NOT_SET),
     m_stateHasBeenSet(false),
+    m_type(GatewayType::NOT_SET),
     m_typeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_vpcAttachmentsHasBeenSet(false),
@@ -41,7 +44,9 @@ VpnGateway::VpnGateway() :
 
 VpnGateway::VpnGateway(const XmlNode& xmlNode) : 
     m_vpnGatewayIdHasBeenSet(false),
+    m_state(VpnState::NOT_SET),
     m_stateHasBeenSet(false),
+    m_type(GatewayType::NOT_SET),
     m_typeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_vpcAttachmentsHasBeenSet(false),
@@ -179,7 +184,7 @@ void VpnGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_vpcAttachments)
       {
         Aws::StringStream vpcAttachmentsSs;
-        vpcAttachmentsSs << location <<  ".item." << vpcAttachmentsIdx++;
+        vpcAttachmentsSs << location <<  ".Attachments." << vpcAttachmentsIdx++;
         item.OutputToStream(oStream, vpcAttachmentsSs.str().c_str());
       }
   }
@@ -189,7 +194,7 @@ void VpnGateway::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

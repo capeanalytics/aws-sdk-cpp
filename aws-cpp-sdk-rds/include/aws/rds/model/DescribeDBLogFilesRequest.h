@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBLogFilesMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeDBLogFilesRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeDBLogFilesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The customer-assigned name of the DB instance that contains the log files you
      * want to list.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63
@@ -60,7 +69,7 @@ namespace Model
      * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
      * hyphens</p> </li> </ul>
      */
-    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = value; }
+    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::move(value); }
 
     /**
      * <p>The customer-assigned name of the DB instance that contains the log files you
@@ -87,7 +96,7 @@ namespace Model
      * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
      * hyphens</p> </li> </ul>
      */
-    inline DescribeDBLogFilesRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(value); return *this;}
+    inline DescribeDBLogFilesRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The customer-assigned name of the DB instance that contains the log files you
@@ -114,7 +123,7 @@ namespace Model
      * <p>Filters the available log files for log file names that contain the specified
      * string.</p>
      */
-    inline void SetFilenameContains(Aws::String&& value) { m_filenameContainsHasBeenSet = true; m_filenameContains = value; }
+    inline void SetFilenameContains(Aws::String&& value) { m_filenameContainsHasBeenSet = true; m_filenameContains = std::move(value); }
 
     /**
      * <p>Filters the available log files for log file names that contain the specified
@@ -132,7 +141,7 @@ namespace Model
      * <p>Filters the available log files for log file names that contain the specified
      * string.</p>
      */
-    inline DescribeDBLogFilesRequest& WithFilenameContains(Aws::String&& value) { SetFilenameContains(value); return *this;}
+    inline DescribeDBLogFilesRequest& WithFilenameContains(Aws::String&& value) { SetFilenameContains(std::move(value)); return *this;}
 
     /**
      * <p>Filters the available log files for log file names that contain the specified
@@ -186,7 +195,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -196,7 +205,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeDBLogFilesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeDBLogFilesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -206,7 +215,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeDBLogFilesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeDBLogFilesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of records to include in the response. If more records
@@ -248,7 +257,7 @@ namespace Model
      * specified the response includes only records beyond the marker, up to
      * MaxRecords.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The pagination token provided in the previous request. If this parameter is
@@ -269,7 +278,7 @@ namespace Model
      * specified the response includes only records beyond the marker, up to
      * MaxRecords.</p>
      */
-    inline DescribeDBLogFilesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeDBLogFilesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The pagination token provided in the previous request. If this parameter is

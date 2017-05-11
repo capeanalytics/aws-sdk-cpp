@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to list the devices.</p>
+   * <p>Represents the request to list the devices.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListDevicesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API ListDevicesRequest : public CognitoIdentityProviderRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The access tokens for the request to list devices.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The access tokens for the request to list devices.</p>
      */
-    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = value; }
+    inline void SetAccessToken(Aws::String&& value) { m_accessTokenHasBeenSet = true; m_accessToken = std::move(value); }
 
     /**
      * <p>The access tokens for the request to list devices.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The access tokens for the request to list devices.</p>
      */
-    inline ListDevicesRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(value); return *this;}
+    inline ListDevicesRequest& WithAccessToken(Aws::String&& value) { SetAccessToken(std::move(value)); return *this;}
 
     /**
      * <p>The access tokens for the request to list devices.</p>
@@ -98,7 +103,7 @@ namespace Model
     /**
      * <p>The pagination token for the list request.</p>
      */
-    inline void SetPaginationToken(Aws::String&& value) { m_paginationTokenHasBeenSet = true; m_paginationToken = value; }
+    inline void SetPaginationToken(Aws::String&& value) { m_paginationTokenHasBeenSet = true; m_paginationToken = std::move(value); }
 
     /**
      * <p>The pagination token for the list request.</p>
@@ -113,7 +118,7 @@ namespace Model
     /**
      * <p>The pagination token for the list request.</p>
      */
-    inline ListDevicesRequest& WithPaginationToken(Aws::String&& value) { SetPaginationToken(value); return *this;}
+    inline ListDevicesRequest& WithPaginationToken(Aws::String&& value) { SetPaginationToken(std::move(value)); return *this;}
 
     /**
      * <p>The pagination token for the list request.</p>

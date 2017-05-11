@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cognito-idp/model/CreateUserPoolRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,10 +32,14 @@ CreateUserPoolRequest::CreateUserPoolRequest() :
     m_emailVerificationMessageHasBeenSet(false),
     m_emailVerificationSubjectHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
     m_emailConfigurationHasBeenSet(false),
-    m_smsConfigurationHasBeenSet(false)
+    m_smsConfigurationHasBeenSet(false),
+    m_userPoolTagsHasBeenSet(false),
+    m_adminCreateUserConfigHasBeenSet(false),
+    m_schemaHasBeenSet(false)
 {
 }
 
@@ -129,6 +134,34 @@ Aws::String CreateUserPoolRequest::SerializePayload() const
 
   }
 
+  if(m_userPoolTagsHasBeenSet)
+  {
+   JsonValue userPoolTagsJsonMap;
+   for(auto& userPoolTagsItem : m_userPoolTags)
+   {
+     userPoolTagsJsonMap.WithString(userPoolTagsItem.first, userPoolTagsItem.second);
+   }
+   payload.WithObject("UserPoolTags", std::move(userPoolTagsJsonMap));
+
+  }
+
+  if(m_adminCreateUserConfigHasBeenSet)
+  {
+   payload.WithObject("AdminCreateUserConfig", m_adminCreateUserConfig.Jsonize());
+
+  }
+
+  if(m_schemaHasBeenSet)
+  {
+   Array<JsonValue> schemaJsonList(m_schema.size());
+   for(unsigned schemaIndex = 0; schemaIndex < schemaJsonList.GetLength(); ++schemaIndex)
+   {
+     schemaJsonList[schemaIndex].AsObject(m_schema[schemaIndex].Jsonize());
+   }
+   payload.WithArray("Schema", std::move(schemaJsonList));
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -139,6 +172,7 @@ Aws::Http::HeaderValueCollection CreateUserPoolRequest::GetRequestSpecificHeader
   return headers;
 
 }
+
 
 
 

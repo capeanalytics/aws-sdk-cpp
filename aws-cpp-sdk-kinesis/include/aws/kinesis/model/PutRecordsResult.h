@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/kinesis/model/PutRecordsResultEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Kinesis
 namespace Model
 {
   /**
-   * <p><code>PutRecords</code> results.</p>
+   * <p> <code>PutRecords</code> results.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecordsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API PutRecordsResult
   {
@@ -86,7 +90,7 @@ namespace Model
      * in the result. A record that fails to be added to a stream includes
      * <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
      */
-    inline void SetRecords(Aws::Vector<PutRecordsResultEntry>&& value) { m_records = value; }
+    inline void SetRecords(Aws::Vector<PutRecordsResultEntry>&& value) { m_records = std::move(value); }
 
     /**
      * <p>An array of successfully and unsuccessfully processed record results,
@@ -104,7 +108,7 @@ namespace Model
      * in the result. A record that fails to be added to a stream includes
      * <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
      */
-    inline PutRecordsResult& WithRecords(Aws::Vector<PutRecordsResultEntry>&& value) { SetRecords(value); return *this;}
+    inline PutRecordsResult& WithRecords(Aws::Vector<PutRecordsResultEntry>&& value) { SetRecords(std::move(value)); return *this;}
 
     /**
      * <p>An array of successfully and unsuccessfully processed record results,
@@ -122,7 +126,7 @@ namespace Model
      * in the result. A record that fails to be added to a stream includes
      * <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
      */
-    inline PutRecordsResult& AddRecords(PutRecordsResultEntry&& value) { m_records.push_back(value); return *this; }
+    inline PutRecordsResult& AddRecords(PutRecordsResultEntry&& value) { m_records.push_back(std::move(value)); return *this; }
 
   private:
     int m_failedRecordCount;

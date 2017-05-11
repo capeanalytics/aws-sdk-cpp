@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * <p>This data type is used as a response element in the following actions:</p>
    * <ul> <li> <p> <a>CreateDBInstance</a> </p> </li> <li> <p>
    * <a>DescribeDBInstances</a> </p> </li> <li> <p> <a>DeleteDBInstance</a> </p>
-   * </li> </ul>
+   * </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/Endpoint">AWS API
+   * Reference</a></p>
    */
   class AWS_RDS_API Endpoint
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>Specifies the DNS address of the DB instance.</p>
      */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = value; }
+    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
 
     /**
      * <p>Specifies the DNS address of the DB instance.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>Specifies the DNS address of the DB instance.</p>
      */
-    inline Endpoint& WithAddress(Aws::String&& value) { SetAddress(value); return *this;}
+    inline Endpoint& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the DNS address of the DB instance.</p>
@@ -113,7 +117,7 @@ namespace Model
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
      * zone.</p>
      */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
+    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
 
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
@@ -131,7 +135,7 @@ namespace Model
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
      * zone.</p>
      */
-    inline Endpoint& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(value); return *this;}
+    inline Endpoint& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted

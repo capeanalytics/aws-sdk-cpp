@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/gamelift/model/RuntimeConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace GameLift
 namespace Model
 {
   /**
-   * <p>Represents the returned data in response to a request action.</p>
+   * <p>Represents the returned data in response to a request action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateRuntimeConfigurationOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API UpdateRuntimeConfigurationResult
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The runtime configuration currently in force. If the update was successful,
      * this object matches the one in the request.</p>
      */
-    inline void SetRuntimeConfiguration(RuntimeConfiguration&& value) { m_runtimeConfiguration = value; }
+    inline void SetRuntimeConfiguration(RuntimeConfiguration&& value) { m_runtimeConfiguration = std::move(value); }
 
     /**
      * <p>The runtime configuration currently in force. If the update was successful,
@@ -70,7 +75,7 @@ namespace Model
      * <p>The runtime configuration currently in force. If the update was successful,
      * this object matches the one in the request.</p>
      */
-    inline UpdateRuntimeConfigurationResult& WithRuntimeConfiguration(RuntimeConfiguration&& value) { SetRuntimeConfiguration(value); return *this;}
+    inline UpdateRuntimeConfigurationResult& WithRuntimeConfiguration(RuntimeConfiguration&& value) { SetRuntimeConfiguration(std::move(value)); return *this;}
 
   private:
     RuntimeConfiguration m_runtimeConfiguration;

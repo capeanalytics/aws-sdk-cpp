@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>Contains the data needed by RDP clients such as the Microsoft Remote Desktop
-   * Connection to log in to the instance.</p>
+   * Connection to log in to the instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/TemporaryCredential">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API TemporaryCredential
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The user name.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
 
     /**
      * <p>The user name.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The user name.</p>
      */
-    inline TemporaryCredential& WithUsername(Aws::String&& value) { SetUsername(value); return *this;}
+    inline TemporaryCredential& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
 
     /**
      * <p>The user name.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The password.</p>
      */
-    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = value; }
+    inline void SetPassword(Aws::String&& value) { m_passwordHasBeenSet = true; m_password = std::move(value); }
 
     /**
      * <p>The password.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The password.</p>
      */
-    inline TemporaryCredential& WithPassword(Aws::String&& value) { SetPassword(value); return *this;}
+    inline TemporaryCredential& WithPassword(Aws::String&& value) { SetPassword(std::move(value)); return *this;}
 
     /**
      * <p>The password.</p>
@@ -137,37 +141,37 @@ namespace Model
     inline TemporaryCredential& WithValidForInMinutes(int value) { SetValidForInMinutes(value); return *this;}
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
     inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
     inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
     inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
     inline TemporaryCredential& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
-    inline TemporaryCredential& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline TemporaryCredential& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
-     * <p>The instance's AWS OpsWorks ID.</p>
+     * <p>The instance's AWS OpsWorks Stacks ID.</p>
      */
     inline TemporaryCredential& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
 

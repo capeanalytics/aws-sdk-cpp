@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to confirm user registration.</p>
+   * <p>Represents the request to confirm user registration.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminConfirmSignUpRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API AdminConfirmSignUpRequest : public CognitoIdentityProviderRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The user pool ID for which you want to confirm user registration.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The user pool ID for which you want to confirm user registration.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
 
     /**
      * <p>The user pool ID for which you want to confirm user registration.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The user pool ID for which you want to confirm user registration.</p>
      */
-    inline AdminConfirmSignUpRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(value); return *this;}
+    inline AdminConfirmSignUpRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
 
     /**
      * <p>The user pool ID for which you want to confirm user registration.</p>
@@ -83,7 +89,7 @@ namespace Model
     /**
      * <p>The user name for which you want to confirm user registration.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
 
     /**
      * <p>The user name for which you want to confirm user registration.</p>
@@ -98,7 +104,7 @@ namespace Model
     /**
      * <p>The user name for which you want to confirm user registration.</p>
      */
-    inline AdminConfirmSignUpRequest& WithUsername(Aws::String&& value) { SetUsername(value); return *this;}
+    inline AdminConfirmSignUpRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
 
     /**
      * <p>The user name for which you want to confirm user registration.</p>

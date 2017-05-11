@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>The type of constraints associated with an attribute of the string type.</p>
+   * <p>The type of constraints associated with an attribute of the string
+   * type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/StringAttributeConstraintsType">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API StringAttributeConstraintsType
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The minimum length of an attribute value of the string type.</p>
      */
-    inline void SetMinLength(Aws::String&& value) { m_minLengthHasBeenSet = true; m_minLength = value; }
+    inline void SetMinLength(Aws::String&& value) { m_minLengthHasBeenSet = true; m_minLength = std::move(value); }
 
     /**
      * <p>The minimum length of an attribute value of the string type.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The minimum length of an attribute value of the string type.</p>
      */
-    inline StringAttributeConstraintsType& WithMinLength(Aws::String&& value) { SetMinLength(value); return *this;}
+    inline StringAttributeConstraintsType& WithMinLength(Aws::String&& value) { SetMinLength(std::move(value)); return *this;}
 
     /**
      * <p>The minimum length of an attribute value of the string type.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The maximum length of an attribute value of the string type.</p>
      */
-    inline void SetMaxLength(Aws::String&& value) { m_maxLengthHasBeenSet = true; m_maxLength = value; }
+    inline void SetMaxLength(Aws::String&& value) { m_maxLengthHasBeenSet = true; m_maxLength = std::move(value); }
 
     /**
      * <p>The maximum length of an attribute value of the string type.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The maximum length of an attribute value of the string type.</p>
      */
-    inline StringAttributeConstraintsType& WithMaxLength(Aws::String&& value) { SetMaxLength(value); return *this;}
+    inline StringAttributeConstraintsType& WithMaxLength(Aws::String&& value) { SetMaxLength(std::move(value)); return *this;}
 
     /**
      * <p>The maximum length of an attribute value of the string type.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/directconnect/DirectConnectRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Container for the parameters to the DescribeConnections operation.</p>
+   * <p>Container for the parameters to the DescribeConnections
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeConnectionsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API DescribeConnectionsRequest : public DirectConnectRequest
   {
@@ -35,6 +40,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
 
@@ -42,7 +48,7 @@ namespace Model
     inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
 
     
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
+    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
 
     
     inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
@@ -51,7 +57,7 @@ namespace Model
     inline DescribeConnectionsRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
 
     
-    inline DescribeConnectionsRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(value); return *this;}
+    inline DescribeConnectionsRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
 
     
     inline DescribeConnectionsRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}

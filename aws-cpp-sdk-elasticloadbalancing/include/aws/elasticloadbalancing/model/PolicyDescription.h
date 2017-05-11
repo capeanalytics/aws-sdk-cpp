@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancing/model/PolicyAttributeDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a policy.</p>
+   * <p>Information about a policy.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/PolicyDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API PolicyDescription
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline PolicyDescription& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline PolicyDescription& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The name of the policy type.</p>
      */
-    inline void SetPolicyTypeName(Aws::String&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = value; }
+    inline void SetPolicyTypeName(Aws::String&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = std::move(value); }
 
     /**
      * <p>The name of the policy type.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The name of the policy type.</p>
      */
-    inline PolicyDescription& WithPolicyTypeName(Aws::String&& value) { SetPolicyTypeName(value); return *this;}
+    inline PolicyDescription& WithPolicyTypeName(Aws::String&& value) { SetPolicyTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy type.</p>
@@ -129,7 +133,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline void SetPolicyAttributeDescriptions(Aws::Vector<PolicyAttributeDescription>&& value) { m_policyAttributeDescriptionsHasBeenSet = true; m_policyAttributeDescriptions = value; }
+    inline void SetPolicyAttributeDescriptions(Aws::Vector<PolicyAttributeDescription>&& value) { m_policyAttributeDescriptionsHasBeenSet = true; m_policyAttributeDescriptions = std::move(value); }
 
     /**
      * <p>The policy attributes.</p>
@@ -139,7 +143,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline PolicyDescription& WithPolicyAttributeDescriptions(Aws::Vector<PolicyAttributeDescription>&& value) { SetPolicyAttributeDescriptions(value); return *this;}
+    inline PolicyDescription& WithPolicyAttributeDescriptions(Aws::Vector<PolicyAttributeDescription>&& value) { SetPolicyAttributeDescriptions(std::move(value)); return *this;}
 
     /**
      * <p>The policy attributes.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline PolicyDescription& AddPolicyAttributeDescriptions(PolicyAttributeDescription&& value) { m_policyAttributeDescriptionsHasBeenSet = true; m_policyAttributeDescriptions.push_back(value); return *this; }
+    inline PolicyDescription& AddPolicyAttributeDescriptions(PolicyAttributeDescription&& value) { m_policyAttributeDescriptionsHasBeenSet = true; m_policyAttributeDescriptions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_policyName;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * <p>Contains the result of a successful invocation of the
    * <a>CreateDBParameterGroup</a> action. </p> <p>This data type is used as a
    * request parameter in the <a>DeleteDBParameterGroup</a> action, and as a response
-   * element in the <a>DescribeDBParameterGroups</a> action. </p>
+   * element in the <a>DescribeDBParameterGroups</a> action. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBParameterGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DBParameterGroup
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>Provides the name of the DB parameter group.</p>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>Provides the name of the DB parameter group.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>Provides the name of the DB parameter group.</p>
      */
-    inline DBParameterGroup& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline DBParameterGroup& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>Provides the name of the DB parameter group.</p>
@@ -98,7 +103,7 @@ namespace Model
      * <p>Provides the name of the DB parameter group family that this DB parameter
      * group is compatible with.</p>
      */
-    inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = value; }
+    inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = std::move(value); }
 
     /**
      * <p>Provides the name of the DB parameter group family that this DB parameter
@@ -116,7 +121,7 @@ namespace Model
      * <p>Provides the name of the DB parameter group family that this DB parameter
      * group is compatible with.</p>
      */
-    inline DBParameterGroup& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(value); return *this;}
+    inline DBParameterGroup& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(std::move(value)); return *this;}
 
     /**
      * <p>Provides the name of the DB parameter group family that this DB parameter
@@ -137,7 +142,7 @@ namespace Model
     /**
      * <p>Provides the customer-specified description for this DB parameter group.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>Provides the customer-specified description for this DB parameter group.</p>
@@ -152,7 +157,7 @@ namespace Model
     /**
      * <p>Provides the customer-specified description for this DB parameter group.</p>
      */
-    inline DBParameterGroup& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline DBParameterGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>Provides the customer-specified description for this DB parameter group.</p>
@@ -172,7 +177,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
      */
-    inline void SetDBParameterGroupArn(Aws::String&& value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn = value; }
+    inline void SetDBParameterGroupArn(Aws::String&& value) { m_dBParameterGroupArnHasBeenSet = true; m_dBParameterGroupArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
@@ -187,7 +192,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
      */
-    inline DBParameterGroup& WithDBParameterGroupArn(Aws::String&& value) { SetDBParameterGroupArn(value); return *this;}
+    inline DBParameterGroup& WithDBParameterGroupArn(Aws::String&& value) { SetDBParameterGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>

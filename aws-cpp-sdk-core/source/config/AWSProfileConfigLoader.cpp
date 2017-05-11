@@ -14,7 +14,7 @@
   */
 
 #include <aws/core/config/AWSProfileConfigLoader.h>
-#include <aws/core/internal/EC2MetadataClient.h>
+#include <aws/core/internal/AWSHttpResourceClient.h>
 #include <aws/core/utils/memory/stl/AWSList.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/StringUtils.h>
@@ -37,11 +37,12 @@ namespace Aws
             {
                 AWS_LOGSTREAM_INFO(CONFIG_LOADER_TAG, "Successfully reloaded configuration.");
                 m_lastLoadTime = DateTime::Now();
-                AWS_LOGSTREAM_TRACE(CONFIG_LOADER_TAG, "reloaded config at " << m_lastLoadTime.ToGmtString(DateFormat::ISO_8601));
+                AWS_LOGSTREAM_TRACE(CONFIG_LOADER_TAG, "reloaded config at " 
+                        << m_lastLoadTime.ToGmtString(DateFormat::ISO_8601));
                 return true;
             }
-            AWS_LOGSTREAM_INFO(CONFIG_LOADER_TAG, "Failed to reload configuration.");
 
+            AWS_LOGSTREAM_INFO(CONFIG_LOADER_TAG, "Failed to reload configuration.");
             return false;
         }
 
@@ -52,7 +53,8 @@ namespace Aws
                 AWS_LOGSTREAM_INFO(CONFIG_LOADER_TAG, "Successfully persisted configuration.");
                 m_profiles = profiles;
                 m_lastLoadTime = DateTime::Now();
-                AWS_LOGSTREAM_TRACE(CONFIG_LOADER_TAG, "persisted config at " << m_lastLoadTime.ToGmtString(DateFormat::ISO_8601));
+                AWS_LOGSTREAM_TRACE(CONFIG_LOADER_TAG, "persisted config at " 
+                        << m_lastLoadTime.ToGmtString(DateFormat::ISO_8601));
                 return true;
             }
 
@@ -296,47 +298,44 @@ namespace Aws
         static const char* const EC2_INSTANCE_PROFILE_LOG_TAG = "Aws::Config::EC2InstanceProfileConfigLoader";
 
         EC2InstanceProfileConfigLoader::EC2InstanceProfileConfigLoader(const std::shared_ptr<Aws::Internal::EC2MetadataClient>& client)
-            : m_metadataClient(client == nullptr ? Aws::MakeShared<Aws::Internal::EC2MetadataClient>(EC2_INSTANCE_PROFILE_LOG_TAG) : client)
+            : m_ec2metadataClient(client == nullptr ? Aws::MakeShared<Aws::Internal::EC2MetadataClient>(EC2_INSTANCE_PROFILE_LOG_TAG) : client)
         {
         }
 
         bool EC2InstanceProfileConfigLoader::LoadInternal()
         {
-            auto credentialsStr = m_metadataClient->GetDefaultCredentials();
-            if(credentialsStr.length() > 0)
+            auto credentialsStr = m_ec2metadataClient->GetDefaultCredentials();
+            if(credentialsStr.empty()) return false;
+
+            Json::JsonValue credentialsDoc(credentialsStr);
+            if (!credentialsDoc.WasParseSuccessful()) 
             {
-                Json::JsonValue credentialsDoc(credentialsStr);
-
-                const char* accessKeyId = "AccessKeyId";
-                const char* secretAccessKey = "SecretAccessKey";
-                Aws::String accessKey, secretKey, token;
-
-                if (credentialsDoc.WasParseSuccessful())
-                {
-                    accessKey = credentialsDoc.GetString(accessKeyId);
-                    AWS_LOGSTREAM_INFO(EC2_INSTANCE_PROFILE_LOG_TAG, "Successfully pulled credentials from metadata service with access key " << accessKey);
-
-                    secretKey = credentialsDoc.GetString(secretAccessKey);
-                    token = credentialsDoc.GetString("Token");
-
-                    auto region = m_metadataClient->GetCurrentRegion();
-
-                    Profile profile;
-                    profile.SetCredentials(AWSCredentials(accessKey, secretKey, token));
-                    profile.SetRegion(region);
-                    profile.SetName(INSTANCE_PROFILE_KEY);
-
-                    m_profiles[INSTANCE_PROFILE_KEY] = profile;
-
-                    return true;
-                }
-                else
-                {
-                    AWS_LOGSTREAM_ERROR(EC2_INSTANCE_PROFILE_LOG_TAG, "Failed to parse output from EC2MetadataService with error " << credentialsDoc.GetErrorMessage());
-                }
+                AWS_LOGSTREAM_ERROR(EC2_INSTANCE_PROFILE_LOG_TAG, 
+                        "Failed to parse output from EC2MetadataService with error " << credentialsDoc.GetErrorMessage());
+                return false;
             }
+            const char* accessKeyId = "AccessKeyId";
+            const char* secretAccessKey = "SecretAccessKey";
+            Aws::String accessKey, secretKey, token;
 
-            return false;
+            accessKey = credentialsDoc.GetString(accessKeyId);
+            AWS_LOGSTREAM_INFO(EC2_INSTANCE_PROFILE_LOG_TAG, 
+                    "Successfully pulled credentials from metadata service with access key " << accessKey);
+
+            secretKey = credentialsDoc.GetString(secretAccessKey);
+            token = credentialsDoc.GetString("Token");
+
+            auto region = m_ec2metadataClient->GetCurrentRegion();
+
+            Profile profile;
+            profile.SetCredentials(AWSCredentials(accessKey, secretKey, token));
+            profile.SetRegion(region);
+            profile.SetName(INSTANCE_PROFILE_KEY);
+
+            m_profiles[INSTANCE_PROFILE_KEY] = profile;
+
+            return true;
         }
-    }
-}
+
+    } // Config namespace
+} // Aws namespace

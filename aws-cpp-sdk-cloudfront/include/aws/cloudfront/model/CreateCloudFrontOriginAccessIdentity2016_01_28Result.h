@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/CloudFrontOriginAccessIdentity.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace CloudFront
 namespace Model
 {
   /**
-   * The returned result of the corresponding request.
+   * The returned result of the corresponding request.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CreateCloudFrontOriginAccessIdentityResult">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CreateCloudFrontOriginAccessIdentity2016_01_28Result
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * The origin access identity's information.
      */
-    inline void SetCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentity&& value) { m_cloudFrontOriginAccessIdentity = value; }
+    inline void SetCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentity&& value) { m_cloudFrontOriginAccessIdentity = std::move(value); }
 
     /**
      * The origin access identity's information.
@@ -66,7 +70,7 @@ namespace Model
     /**
      * The origin access identity's information.
      */
-    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentity&& value) { SetCloudFrontOriginAccessIdentity(value); return *this;}
+    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentity&& value) { SetCloudFrontOriginAccessIdentity(std::move(value)); return *this;}
 
     /**
      * The fully qualified URI of the new origin access identity just created. For
@@ -87,7 +91,7 @@ namespace Model
      * example:
      * https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.
      */
-    inline void SetLocation(Aws::String&& value) { m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
 
     /**
      * The fully qualified URI of the new origin access identity just created. For
@@ -108,7 +112,7 @@ namespace Model
      * example:
      * https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.
      */
-    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * The fully qualified URI of the new origin access identity just created. For
@@ -130,7 +134,7 @@ namespace Model
     /**
      * The current version of the origin access identity created.
      */
-    inline void SetETag(Aws::String&& value) { m_eTag = value; }
+    inline void SetETag(Aws::String&& value) { m_eTag = std::move(value); }
 
     /**
      * The current version of the origin access identity created.
@@ -145,7 +149,7 @@ namespace Model
     /**
      * The current version of the origin access identity created.
      */
-    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithETag(Aws::String&& value) { SetETag(value); return *this;}
+    inline CreateCloudFrontOriginAccessIdentity2016_01_28Result& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
 
     /**
      * The current version of the origin access identity created.

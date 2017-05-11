@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudsearch/model/AvailabilityOptionsStatus.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -71,7 +72,7 @@ void AvailabilityOptionsStatus::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_optionsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Options=" << m_options << "&";
+      oStream << location << index << locationValue << ".Options=" << std::boolalpha << m_options << "&";
   }
 
   if(m_statusHasBeenSet)
@@ -87,7 +88,7 @@ void AvailabilityOptionsStatus::OutputToStream(Aws::OStream& oStream, const char
 {
   if(m_optionsHasBeenSet)
   {
-      oStream << location << ".Options=" << m_options << "&";
+      oStream << location << ".Options=" << std::boolalpha << m_options << "&";
   }
   if(m_statusHasBeenSet)
   {

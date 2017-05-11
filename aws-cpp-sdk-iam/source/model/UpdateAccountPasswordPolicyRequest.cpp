@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iam/model/UpdateAccountPasswordPolicyRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -52,27 +53,27 @@ Aws::String UpdateAccountPasswordPolicyRequest::SerializePayload() const
 
   if(m_requireSymbolsHasBeenSet)
   {
-    ss << "RequireSymbols=" << m_requireSymbols << "&";
+    ss << "RequireSymbols=" << std::boolalpha << m_requireSymbols << "&";
   }
 
   if(m_requireNumbersHasBeenSet)
   {
-    ss << "RequireNumbers=" << m_requireNumbers << "&";
+    ss << "RequireNumbers=" << std::boolalpha << m_requireNumbers << "&";
   }
 
   if(m_requireUppercaseCharactersHasBeenSet)
   {
-    ss << "RequireUppercaseCharacters=" << m_requireUppercaseCharacters << "&";
+    ss << "RequireUppercaseCharacters=" << std::boolalpha << m_requireUppercaseCharacters << "&";
   }
 
   if(m_requireLowercaseCharactersHasBeenSet)
   {
-    ss << "RequireLowercaseCharacters=" << m_requireLowercaseCharacters << "&";
+    ss << "RequireLowercaseCharacters=" << std::boolalpha << m_requireLowercaseCharacters << "&";
   }
 
   if(m_allowUsersToChangePasswordHasBeenSet)
   {
-    ss << "AllowUsersToChangePassword=" << m_allowUsersToChangePassword << "&";
+    ss << "AllowUsersToChangePassword=" << std::boolalpha << m_allowUsersToChangePassword << "&";
   }
 
   if(m_maxPasswordAgeHasBeenSet)
@@ -87,10 +88,15 @@ Aws::String UpdateAccountPasswordPolicyRequest::SerializePayload() const
 
   if(m_hardExpiryHasBeenSet)
   {
-    ss << "HardExpiry=" << m_hardExpiry << "&";
+    ss << "HardExpiry=" << std::boolalpha << m_hardExpiry << "&";
   }
 
   ss << "Version=2010-05-08";
   return ss.str();
 }
 
+
+void  UpdateAccountPasswordPolicyRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

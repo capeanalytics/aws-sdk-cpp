@@ -17,6 +17,8 @@
 
 #include <aws/core/Core_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/http/HttpResponse.h>
+#include <aws/core/utils/StringUtils.h>
 
 namespace Aws
 {
@@ -48,8 +50,10 @@ namespace Aws
 
             //by policy we enforce all clients to contain a CoreErrors alignment for their Errors.
             AWSError(const AWSError<CoreErrors>& rhs) :
-                m_errorType(static_cast<ERROR_TYPE>(rhs.GetErrorType())), m_exceptionName(rhs.GetExceptionName()), m_message(rhs.GetMessage()), m_isRetryable(rhs.ShouldRetry())
-            {}
+                m_errorType(static_cast<ERROR_TYPE>(rhs.GetErrorType())), m_exceptionName(rhs.GetExceptionName()), 
+                m_message(rhs.GetMessage()), m_responseHeaders(rhs.GetResponseHeaders()), 
+                m_responseCode(rhs.GetResponseCode()), m_isRetryable(rhs.ShouldRetry())
+            {}          
 
             /**
              * Gets underlying errorType.
@@ -72,14 +76,36 @@ namespace Aws
              */
             inline void SetMessage(const Aws::String& message) { m_message = message; }
             /**
-             * returns whether or not this error is eligible for retry.
+             * Returns whether or not this error is eligible for retry.
              */
             inline bool ShouldRetry() const { return m_isRetryable; }
+            /**
+             * Gets the response headers from the http response.
+             */
+            inline const Aws::Http::HeaderValueCollection& GetResponseHeaders() const { return m_responseHeaders; }
+            /**
+             * Sets the response headers from the http response.
+             */
+            inline void SetResponseHeaders(const Aws::Http::HeaderValueCollection& headers) { m_responseHeaders = headers; }
+            /**
+             * Tests whether or not a header exists.
+             */
+            inline bool ResponseHeaderExists(const Aws::String& headerName) const { return m_responseHeaders.find(Aws::Utils::StringUtils::ToLower(headerName.c_str())) != m_responseHeaders.end(); }
+            /**
+             * Gets the response code from the http response
+             */
+            inline Aws::Http::HttpResponseCode GetResponseCode() const { return m_responseCode; }
+            /**
+             * Sets the response code from the http response
+             */
+            inline void SetResponseCode(Aws::Http::HttpResponseCode responseCode) { m_responseCode = responseCode; }
 
         private:
             ERROR_TYPE m_errorType;
             Aws::String m_exceptionName;
             Aws::String m_message;
+            Aws::Http::HeaderValueCollection m_responseHeaders;
+            Aws::Http::HttpResponseCode m_responseCode;
             bool m_isRetryable;
         };
 

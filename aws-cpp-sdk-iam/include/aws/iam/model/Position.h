@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -33,7 +34,9 @@ namespace Model
   /**
    * <p>Contains the row and column of a location of a <code>Statement</code> element
    * in a policy document.</p> <p>This data type is used as a member of the <code>
-   * <a>Statement</a> </code> type.</p>
+   * <a>Statement</a> </code> type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/Position">AWS API
+   * Reference</a></p>
    */
   class AWS_IAM_API Position
   {

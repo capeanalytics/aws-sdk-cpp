@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -31,7 +32,10 @@ namespace Model
 {
 
   /**
-   * <p>The value to use when a resource attribute accepts a Boolean value.</p>
+   * <p>Describes a value for a resource attribute that is a Boolean
+   * value.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttributeBooleanValue">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AttributeBooleanValue
   {
@@ -44,17 +48,20 @@ namespace Model
     void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
     /**
-     * <p>Valid values are <code>true</code> or <code>false</code>.</p>
+     * <p>The attribute value. The valid values are <code>true</code> or
+     * <code>false</code>.</p>
      */
     inline bool GetValue() const{ return m_value; }
 
     /**
-     * <p>Valid values are <code>true</code> or <code>false</code>.</p>
+     * <p>The attribute value. The valid values are <code>true</code> or
+     * <code>false</code>.</p>
      */
     inline void SetValue(bool value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>Valid values are <code>true</code> or <code>false</code>.</p>
+     * <p>The attribute value. The valid values are <code>true</code> or
+     * <code>false</code>.</p>
      */
     inline AttributeBooleanValue& WithValue(bool value) { SetValue(value); return *this;}
 

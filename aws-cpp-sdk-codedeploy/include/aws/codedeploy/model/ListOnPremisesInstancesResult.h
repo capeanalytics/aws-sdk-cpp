@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of list on-premises instances operation.</p>
+   * <p>Represents the output of list on-premises instances operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListOnPremisesInstancesOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API ListOnPremisesInstancesResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The list of matching on-premises instance names.</p>
      */
-    inline void SetInstanceNames(Aws::Vector<Aws::String>&& value) { m_instanceNames = value; }
+    inline void SetInstanceNames(Aws::Vector<Aws::String>&& value) { m_instanceNames = std::move(value); }
 
     /**
      * <p>The list of matching on-premises instance names.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The list of matching on-premises instance names.</p>
      */
-    inline ListOnPremisesInstancesResult& WithInstanceNames(Aws::Vector<Aws::String>&& value) { SetInstanceNames(value); return *this;}
+    inline ListOnPremisesInstancesResult& WithInstanceNames(Aws::Vector<Aws::String>&& value) { SetInstanceNames(std::move(value)); return *this;}
 
     /**
      * <p>The list of matching on-premises instance names.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The list of matching on-premises instance names.</p>
      */
-    inline ListOnPremisesInstancesResult& AddInstanceNames(Aws::String&& value) { m_instanceNames.push_back(value); return *this; }
+    inline ListOnPremisesInstancesResult& AddInstanceNames(Aws::String&& value) { m_instanceNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The list of matching on-premises instance names.</p>
@@ -102,7 +107,7 @@ namespace Model
      * It can be used in a subsequent list on-premises instances call to return the
      * next set of on-premises instances in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If a large amount of information is returned, an identifier is also returned.
@@ -123,7 +128,7 @@ namespace Model
      * It can be used in a subsequent list on-premises instances call to return the
      * next set of on-premises instances in the list.</p>
      */
-    inline ListOnPremisesInstancesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListOnPremisesInstancesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If a large amount of information is returned, an identifier is also returned.

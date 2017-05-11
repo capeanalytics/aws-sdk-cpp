@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/directconnect/model/InterconnectState.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace DirectConnect
 namespace Model
 {
   /**
-   * <p>The response received when DeleteInterconnect is called.</p>
+   * <p>The response received when DeleteInterconnect is called.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DeleteInterconnectResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API DeleteInterconnectResult
   {
@@ -49,13 +54,13 @@ namespace Model
     inline void SetInterconnectState(const InterconnectState& value) { m_interconnectState = value; }
 
     
-    inline void SetInterconnectState(InterconnectState&& value) { m_interconnectState = value; }
+    inline void SetInterconnectState(InterconnectState&& value) { m_interconnectState = std::move(value); }
 
     
     inline DeleteInterconnectResult& WithInterconnectState(const InterconnectState& value) { SetInterconnectState(value); return *this;}
 
     
-    inline DeleteInterconnectResult& WithInterconnectState(InterconnectState&& value) { SetInterconnectState(value); return *this;}
+    inline DeleteInterconnectResult& WithInterconnectState(InterconnectState&& value) { SetInterconnectState(std::move(value)); return *this;}
 
   private:
     InterconnectState m_interconnectState;

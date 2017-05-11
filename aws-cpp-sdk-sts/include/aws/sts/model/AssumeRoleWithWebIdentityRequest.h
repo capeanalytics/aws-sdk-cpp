@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sts/STS_EXPORTS.h>
 #include <aws/sts/STSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     AssumeRoleWithWebIdentityRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
      */
@@ -45,7 +52,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
      */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
@@ -60,7 +67,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
      */
-    inline AssumeRoleWithWebIdentityRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
+    inline AssumeRoleWithWebIdentityRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
@@ -73,10 +80,9 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetRoleSessionName() const{ return m_roleSessionName; }
 
@@ -86,10 +92,9 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
     inline void SetRoleSessionName(const Aws::String& value) { m_roleSessionNameHasBeenSet = true; m_roleSessionName = value; }
 
@@ -99,12 +104,11 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
-    inline void SetRoleSessionName(Aws::String&& value) { m_roleSessionNameHasBeenSet = true; m_roleSessionName = value; }
+    inline void SetRoleSessionName(Aws::String&& value) { m_roleSessionNameHasBeenSet = true; m_roleSessionName = std::move(value); }
 
     /**
      * <p>An identifier for the assumed role session. Typically, you pass the name or
@@ -112,10 +116,9 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
     inline void SetRoleSessionName(const char* value) { m_roleSessionNameHasBeenSet = true; m_roleSessionName.assign(value); }
 
@@ -125,10 +128,9 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
     inline AssumeRoleWithWebIdentityRequest& WithRoleSessionName(const Aws::String& value) { SetRoleSessionName(value); return *this;}
 
@@ -138,12 +140,11 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
-    inline AssumeRoleWithWebIdentityRequest& WithRoleSessionName(Aws::String&& value) { SetRoleSessionName(value); return *this;}
+    inline AssumeRoleWithWebIdentityRequest& WithRoleSessionName(Aws::String&& value) { SetRoleSessionName(std::move(value)); return *this;}
 
     /**
      * <p>An identifier for the assumed role session. Typically, you pass the name or
@@ -151,10 +152,9 @@ namespace Model
      * way, the temporary security credentials that your application will use are
      * associated with that user. This session name is included as part of the ARN and
      * assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The
-     * format for this parameter, as described by its regex pattern, is a string of
-     * characters consisting of upper- and lower-case alphanumeric characters with no
-     * spaces. You can also include underscores or any of the following characters:
-     * =,.@-</p>
+     * regex used to validate this parameter is a string of characters consisting of
+     * upper- and lower-case alphanumeric characters with no spaces. You can also
+     * include underscores or any of the following characters: =,.@-</p>
      */
     inline AssumeRoleWithWebIdentityRequest& WithRoleSessionName(const char* value) { SetRoleSessionName(value); return *this;}
 
@@ -180,7 +180,7 @@ namespace Model
      * user who is using your application with a web identity provider before the
      * application makes an <code>AssumeRoleWithWebIdentity</code> call. </p>
      */
-    inline void SetWebIdentityToken(Aws::String&& value) { m_webIdentityTokenHasBeenSet = true; m_webIdentityToken = value; }
+    inline void SetWebIdentityToken(Aws::String&& value) { m_webIdentityTokenHasBeenSet = true; m_webIdentityToken = std::move(value); }
 
     /**
      * <p>The OAuth 2.0 access token or OpenID Connect ID token that is provided by the
@@ -204,7 +204,7 @@ namespace Model
      * user who is using your application with a web identity provider before the
      * application makes an <code>AssumeRoleWithWebIdentity</code> call. </p>
      */
-    inline AssumeRoleWithWebIdentityRequest& WithWebIdentityToken(Aws::String&& value) { SetWebIdentityToken(value); return *this;}
+    inline AssumeRoleWithWebIdentityRequest& WithWebIdentityToken(Aws::String&& value) { SetWebIdentityToken(std::move(value)); return *this;}
 
     /**
      * <p>The OAuth 2.0 access token or OpenID Connect ID token that is provided by the
@@ -242,7 +242,7 @@ namespace Model
      * schemes and port numbers.</p> <p>Do not specify this value for OpenID Connect ID
      * tokens.</p>
      */
-    inline void SetProviderId(Aws::String&& value) { m_providerIdHasBeenSet = true; m_providerId = value; }
+    inline void SetProviderId(Aws::String&& value) { m_providerIdHasBeenSet = true; m_providerId = std::move(value); }
 
     /**
      * <p>The fully qualified host component of the domain name of the identity
@@ -272,7 +272,7 @@ namespace Model
      * schemes and port numbers.</p> <p>Do not specify this value for OpenID Connect ID
      * tokens.</p>
      */
-    inline AssumeRoleWithWebIdentityRequest& WithProviderId(Aws::String&& value) { SetProviderId(value); return *this;}
+    inline AssumeRoleWithWebIdentityRequest& WithProviderId(Aws::String&& value) { SetProviderId(std::move(value)); return *this;}
 
     /**
      * <p>The fully qualified host component of the domain name of the identity
@@ -351,7 +351,7 @@ namespace Model
      * element indicates by percentage how close to the upper size limit the policy is,
      * with 100% equaling the maximum allowed size.</p> </note>
      */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = value; }
+    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
 
     /**
      * <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you
@@ -420,7 +420,7 @@ namespace Model
      * element indicates by percentage how close to the upper size limit the policy is,
      * with 100% equaling the maximum allowed size.</p> </note>
      */
-    inline AssumeRoleWithWebIdentityRequest& WithPolicy(Aws::String&& value) { SetPolicy(value); return *this;}
+    inline AssumeRoleWithWebIdentityRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
 
     /**
      * <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you

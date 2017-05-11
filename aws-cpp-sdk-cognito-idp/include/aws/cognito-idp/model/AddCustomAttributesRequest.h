@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cognito-idp/model/SchemaAttributeType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to add custom attributes.</p>
+   * <p>Represents the request to add custom attributes.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AddCustomAttributesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API AddCustomAttributesRequest : public CognitoIdentityProviderRequest
   {
@@ -36,6 +41,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The user pool ID for the user pool where you want to add custom
@@ -53,7 +59,7 @@ namespace Model
      * <p>The user pool ID for the user pool where you want to add custom
      * attributes.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
 
     /**
      * <p>The user pool ID for the user pool where you want to add custom
@@ -71,7 +77,7 @@ namespace Model
      * <p>The user pool ID for the user pool where you want to add custom
      * attributes.</p>
      */
-    inline AddCustomAttributesRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(value); return *this;}
+    inline AddCustomAttributesRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
 
     /**
      * <p>The user pool ID for the user pool where you want to add custom
@@ -92,7 +98,7 @@ namespace Model
     /**
      * <p>An array of custom attributes, such as Mutable and Name.</p>
      */
-    inline void SetCustomAttributes(Aws::Vector<SchemaAttributeType>&& value) { m_customAttributesHasBeenSet = true; m_customAttributes = value; }
+    inline void SetCustomAttributes(Aws::Vector<SchemaAttributeType>&& value) { m_customAttributesHasBeenSet = true; m_customAttributes = std::move(value); }
 
     /**
      * <p>An array of custom attributes, such as Mutable and Name.</p>
@@ -102,7 +108,7 @@ namespace Model
     /**
      * <p>An array of custom attributes, such as Mutable and Name.</p>
      */
-    inline AddCustomAttributesRequest& WithCustomAttributes(Aws::Vector<SchemaAttributeType>&& value) { SetCustomAttributes(value); return *this;}
+    inline AddCustomAttributesRequest& WithCustomAttributes(Aws::Vector<SchemaAttributeType>&& value) { SetCustomAttributes(std::move(value)); return *this;}
 
     /**
      * <p>An array of custom attributes, such as Mutable and Name.</p>
@@ -112,7 +118,7 @@ namespace Model
     /**
      * <p>An array of custom attributes, such as Mutable and Name.</p>
      */
-    inline AddCustomAttributesRequest& AddCustomAttributes(SchemaAttributeType&& value) { m_customAttributesHasBeenSet = true; m_customAttributes.push_back(value); return *this; }
+    inline AddCustomAttributesRequest& AddCustomAttributes(SchemaAttributeType&& value) { m_customAttributesHasBeenSet = true; m_customAttributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_userPoolId;

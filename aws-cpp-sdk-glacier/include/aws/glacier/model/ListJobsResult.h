@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/glacier/model/GlacierJobDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Glacier
 namespace Model
 {
   /**
-   * <p>Contains the Amazon Glacier response to your request.</p>
+   * <p>Contains the Amazon Glacier response to your request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListJobsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API ListJobsResult
   {
@@ -45,93 +50,107 @@ namespace Model
     ListJobsResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
     inline const Aws::Vector<GlacierJobDescription>& GetJobList() const{ return m_jobList; }
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
     inline void SetJobList(const Aws::Vector<GlacierJobDescription>& value) { m_jobList = value; }
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
-    inline void SetJobList(Aws::Vector<GlacierJobDescription>&& value) { m_jobList = value; }
+    inline void SetJobList(Aws::Vector<GlacierJobDescription>&& value) { m_jobList = std::move(value); }
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
     inline ListJobsResult& WithJobList(const Aws::Vector<GlacierJobDescription>& value) { SetJobList(value); return *this;}
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
-    inline ListJobsResult& WithJobList(Aws::Vector<GlacierJobDescription>&& value) { SetJobList(value); return *this;}
+    inline ListJobsResult& WithJobList(Aws::Vector<GlacierJobDescription>&& value) { SetJobList(std::move(value)); return *this;}
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
     inline ListJobsResult& AddJobList(const GlacierJobDescription& value) { m_jobList.push_back(value); return *this; }
 
     /**
-     * <p>A list of job objects. Each job object contains metadata describing the job.
-     * </p>
+     * <p>A list of job objects. Each job object contains metadata describing the
+     * job.</p>
      */
-    inline ListJobsResult& AddJobList(GlacierJobDescription&& value) { m_jobList.push_back(value); return *this; }
+    inline ListJobsResult& AddJobList(GlacierJobDescription&& value) { m_jobList.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
     inline void SetMarker(const char* value) { m_marker.assign(value); }
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
     inline ListJobsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
-    inline ListJobsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListJobsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
-     * <p>An opaque string that represents where to continue pagination of the results.
-     * You use this value in a new List Jobs request to obtain more jobs in the list.
-     * If there are no more jobs, this value is <code>null</code>. </p>
+     * <p> An opaque string used for pagination that specifies the job at which the
+     * listing of jobs should begin. You get the <code>marker</code> value from a
+     * previous List Jobs response. You only need to include the marker if you are
+     * continuing the pagination of the results started in a previous List Jobs
+     * request. </p>
      */
     inline ListJobsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
 

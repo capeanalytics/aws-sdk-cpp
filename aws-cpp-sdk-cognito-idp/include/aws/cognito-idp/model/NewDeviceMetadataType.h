@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>The new device metadata type.</p>
+   * <p>The new device metadata type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/NewDeviceMetadataType">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API NewDeviceMetadataType
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The device key.</p>
      */
-    inline void SetDeviceKey(Aws::String&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = value; }
+    inline void SetDeviceKey(Aws::String&& value) { m_deviceKeyHasBeenSet = true; m_deviceKey = std::move(value); }
 
     /**
      * <p>The device key.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The device key.</p>
      */
-    inline NewDeviceMetadataType& WithDeviceKey(Aws::String&& value) { SetDeviceKey(value); return *this;}
+    inline NewDeviceMetadataType& WithDeviceKey(Aws::String&& value) { SetDeviceKey(std::move(value)); return *this;}
 
     /**
      * <p>The device key.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The device group key.</p>
      */
-    inline void SetDeviceGroupKey(Aws::String&& value) { m_deviceGroupKeyHasBeenSet = true; m_deviceGroupKey = value; }
+    inline void SetDeviceGroupKey(Aws::String&& value) { m_deviceGroupKeyHasBeenSet = true; m_deviceGroupKey = std::move(value); }
 
     /**
      * <p>The device group key.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The device group key.</p>
      */
-    inline NewDeviceMetadataType& WithDeviceGroupKey(Aws::String&& value) { SetDeviceGroupKey(value); return *this;}
+    inline NewDeviceMetadataType& WithDeviceGroupKey(Aws::String&& value) { SetDeviceGroupKey(std::move(value)); return *this;}
 
     /**
      * <p>The device group key.</p>

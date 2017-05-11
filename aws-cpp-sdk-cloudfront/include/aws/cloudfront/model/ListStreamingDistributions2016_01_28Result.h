@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/StreamingDistributionList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace CloudFront
 namespace Model
 {
   /**
-   * The returned result of the corresponding request.
+   * The returned result of the corresponding request.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/ListStreamingDistributionsResult">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API ListStreamingDistributions2016_01_28Result
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * The StreamingDistributionList type.
      */
-    inline void SetStreamingDistributionList(StreamingDistributionList&& value) { m_streamingDistributionList = value; }
+    inline void SetStreamingDistributionList(StreamingDistributionList&& value) { m_streamingDistributionList = std::move(value); }
 
     /**
      * The StreamingDistributionList type.
@@ -65,7 +69,7 @@ namespace Model
     /**
      * The StreamingDistributionList type.
      */
-    inline ListStreamingDistributions2016_01_28Result& WithStreamingDistributionList(StreamingDistributionList&& value) { SetStreamingDistributionList(value); return *this;}
+    inline ListStreamingDistributions2016_01_28Result& WithStreamingDistributionList(StreamingDistributionList&& value) { SetStreamingDistributionList(std::move(value)); return *this;}
 
   private:
     StreamingDistributionList m_streamingDistributionList;

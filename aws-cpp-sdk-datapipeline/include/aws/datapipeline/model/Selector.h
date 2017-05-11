@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/datapipeline/model/Operator.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>A comparision that is used to determine whether a query should return this
-   * object.</p>
+   * object.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/Selector">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API Selector
   {
@@ -65,7 +69,7 @@ namespace Model
      * is used by the AWS Data Pipeline API. If the field is not set on the object, the
      * condition fails.</p>
      */
-    inline void SetFieldName(Aws::String&& value) { m_fieldNameHasBeenSet = true; m_fieldName = value; }
+    inline void SetFieldName(Aws::String&& value) { m_fieldNameHasBeenSet = true; m_fieldName = std::move(value); }
 
     /**
      * <p>The name of the field that the operator will be applied to. The field name is
@@ -89,7 +93,7 @@ namespace Model
      * is used by the AWS Data Pipeline API. If the field is not set on the object, the
      * condition fails.</p>
      */
-    inline Selector& WithFieldName(Aws::String&& value) { SetFieldName(value); return *this;}
+    inline Selector& WithFieldName(Aws::String&& value) { SetFieldName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the field that the operator will be applied to. The field name is
@@ -106,13 +110,13 @@ namespace Model
     inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
 
     
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
 
     
     inline Selector& WithOperator(const Operator& value) { SetOperator(value); return *this;}
 
     
-    inline Selector& WithOperator(Operator&& value) { SetOperator(value); return *this;}
+    inline Selector& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
 
   private:
     Aws::String m_fieldName;

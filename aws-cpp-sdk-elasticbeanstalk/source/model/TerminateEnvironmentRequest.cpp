@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/TerminateEnvironmentRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -45,15 +46,20 @@ Aws::String TerminateEnvironmentRequest::SerializePayload() const
 
   if(m_terminateResourcesHasBeenSet)
   {
-    ss << "TerminateResources=" << m_terminateResources << "&";
+    ss << "TerminateResources=" << std::boolalpha << m_terminateResources << "&";
   }
 
   if(m_forceTerminateHasBeenSet)
   {
-    ss << "ForceTerminate=" << m_forceTerminate << "&";
+    ss << "ForceTerminate=" << std::boolalpha << m_forceTerminate << "&";
   }
 
   ss << "Version=2010-12-01";
   return ss.str();
 }
 
+
+void  TerminateEnvironmentRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

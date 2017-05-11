@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddTagsToResourceMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API AddTagsToResourceRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     AddTagsToResourceRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon RDS resource the tags will be added to. This value is an Amazon
      * Resource Name (ARN). For information about creating an ARN, see <a
@@ -57,7 +66,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
      */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
+    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
 
     /**
      * <p>The Amazon RDS resource the tags will be added to. This value is an Amazon
@@ -81,7 +90,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
      * Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
      */
-    inline AddTagsToResourceRequest& WithResourceName(Aws::String&& value) { SetResourceName(value); return *this;}
+    inline AddTagsToResourceRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon RDS resource the tags will be added to. This value is an Amazon
@@ -104,7 +113,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the Amazon RDS resource.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The tags to be assigned to the Amazon RDS resource.</p>
@@ -114,7 +123,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the Amazon RDS resource.</p>
      */
-    inline AddTagsToResourceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline AddTagsToResourceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The tags to be assigned to the Amazon RDS resource.</p>
@@ -124,7 +133,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the Amazon RDS resource.</p>
      */
-    inline AddTagsToResourceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline AddTagsToResourceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_resourceName;

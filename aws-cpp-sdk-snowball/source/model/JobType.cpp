@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/snowball/model/JobType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -31,6 +32,7 @@ namespace Aws
 
         static const int IMPORT_HASH = HashingUtils::HashString("IMPORT");
         static const int EXPORT_HASH = HashingUtils::HashString("EXPORT");
+        static const int LOCAL_USE_HASH = HashingUtils::HashString("LOCAL_USE");
 
 
         JobType GetJobTypeForName(const Aws::String& name)
@@ -43,6 +45,10 @@ namespace Aws
           else if (hashCode == EXPORT_HASH)
           {
             return JobType::EXPORT;
+          }
+          else if (hashCode == LOCAL_USE_HASH)
+          {
+            return JobType::LOCAL_USE;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -62,6 +68,8 @@ namespace Aws
             return "IMPORT";
           case JobType::EXPORT:
             return "EXPORT";
+          case JobType::LOCAL_USE:
+            return "LOCAL_USE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

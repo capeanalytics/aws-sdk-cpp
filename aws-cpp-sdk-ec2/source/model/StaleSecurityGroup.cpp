@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/StaleSecurityGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -179,7 +180,7 @@ void StaleSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_staleIpPermissions)
       {
         Aws::StringStream staleIpPermissionsSs;
-        staleIpPermissionsSs << location <<  ".item." << staleIpPermissionsIdx++;
+        staleIpPermissionsSs << location <<  ".StaleIpPermissions." << staleIpPermissionsIdx++;
         item.OutputToStream(oStream, staleIpPermissionsSs.str().c_str());
       }
   }
@@ -189,7 +190,7 @@ void StaleSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_staleIpPermissionsEgress)
       {
         Aws::StringStream staleIpPermissionsEgressSs;
-        staleIpPermissionsEgressSs << location <<  ".item." << staleIpPermissionsEgressIdx++;
+        staleIpPermissionsEgressSs << location <<  ".StaleIpPermissionsEgress." << staleIpPermissionsEgressIdx++;
         item.OutputToStream(oStream, staleIpPermissionsEgressSs.str().c_str());
       }
   }

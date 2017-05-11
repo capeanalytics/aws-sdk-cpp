@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a policy attribute.</p>
+   * <p>Information about a policy attribute.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/PolicyAttributeDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API PolicyAttributeDescription
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the attribute.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline PolicyAttributeDescription& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline PolicyAttributeDescription& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attribute.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The value of the attribute.</p>
      */
-    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
+    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
 
     /**
      * <p>The value of the attribute.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The value of the attribute.</p>
      */
-    inline PolicyAttributeDescription& WithAttributeValue(Aws::String&& value) { SetAttributeValue(value); return *this;}
+    inline PolicyAttributeDescription& WithAttributeValue(Aws::String&& value) { SetAttributeValue(std::move(value)); return *this;}
 
     /**
      * <p>The value of the attribute.</p>

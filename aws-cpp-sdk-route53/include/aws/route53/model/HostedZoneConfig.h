@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
   /**
    * <p>A complex type that contains an optional comment about your hosted zone. If
    * you don't want to specify a comment, omit both the <code>HostedZoneConfig</code>
-   * and <code>Comment</code> elements.</p>
+   * and <code>Comment</code> elements.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/HostedZoneConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API HostedZoneConfig
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Any comments that you want to include about the hosted zone.</p>
      */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = value; }
+    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
 
     /**
      * <p>Any comments that you want to include about the hosted zone.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>Any comments that you want to include about the hosted zone.</p>
      */
-    inline HostedZoneConfig& WithComment(Aws::String&& value) { SetComment(value); return *this;}
+    inline HostedZoneConfig& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
 
     /**
      * <p>Any comments that you want to include about the hosted zone.</p>

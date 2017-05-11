@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 
 #include <aws/core/client/CoreErrors.h>
@@ -44,7 +45,13 @@ enum class LambdaErrors
   RESOURCE_NOT_FOUND = 16,
   UNRECOGNIZED_CLIENT = 17,
   MALFORMED_QUERY_STRING = 18,
+  SLOW_DOWN = 19,
+  REQUEST_TIME_TOO_SKEWED = 20,
+  INVALID_SIGNATURE = 21,
+  SIGNATURE_DOES_NOT_MATCH = 22,
+  INVALID_ACCESS_KEY_ID = 23,
   NETWORK_CONNECTION = 99,
+  
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,6 +64,10 @@ enum class LambdaErrors
   INVALID_SECURITY_GROUP_I_D,
   INVALID_SUBNET_I_D,
   INVALID_ZIP_FILE,
+  K_M_S_ACCESS_DENIED,
+  K_M_S_DISABLED,
+  K_M_S_INVALID_STATE,
+  K_M_S_NOT_FOUND,
   POLICY_LENGTH_EXCEEDED,
   REQUEST_TOO_LARGE,
   RESOURCE_CONFLICT,

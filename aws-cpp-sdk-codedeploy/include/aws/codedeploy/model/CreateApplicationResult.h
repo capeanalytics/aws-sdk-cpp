@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of a create application operation.</p>
+   * <p>Represents the output of a create application operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateApplicationOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API CreateApplicationResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>A unique application ID.</p>
      */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationId = value; }
+    inline void SetApplicationId(Aws::String&& value) { m_applicationId = std::move(value); }
 
     /**
      * <p>A unique application ID.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>A unique application ID.</p>
      */
-    inline CreateApplicationResult& WithApplicationId(Aws::String&& value) { SetApplicationId(value); return *this;}
+    inline CreateApplicationResult& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
 
     /**
      * <p>A unique application ID.</p>

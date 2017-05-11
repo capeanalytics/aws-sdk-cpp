@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/MethodSetting.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -45,6 +46,7 @@ MethodSetting::MethodSetting() :
     m_cacheDataEncryptedHasBeenSet(false),
     m_requireAuthorizationForCacheControl(false),
     m_requireAuthorizationForCacheControlHasBeenSet(false),
+    m_unauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy::NOT_SET),
     m_unauthorizedCacheControlHeaderStrategyHasBeenSet(false)
 {
 }
@@ -67,6 +69,7 @@ MethodSetting::MethodSetting(const JsonValue& jsonValue) :
     m_cacheDataEncryptedHasBeenSet(false),
     m_requireAuthorizationForCacheControl(false),
     m_requireAuthorizationForCacheControlHasBeenSet(false),
+    m_unauthorizedCacheControlHeaderStrategy(UnauthorizedCacheControlHeaderStrategy::NOT_SET),
     m_unauthorizedCacheControlHeaderStrategyHasBeenSet(false)
 {
   *this = jsonValue;

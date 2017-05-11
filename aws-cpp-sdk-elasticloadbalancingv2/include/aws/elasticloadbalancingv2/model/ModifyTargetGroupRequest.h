@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticloadbalancingv2/model/ProtocolEnum.h>
 #include <aws/elasticloadbalancingv2/model/Matcher.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ModifyTargetGroup.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API ModifyTargetGroupRequest : public ElasticLoadBalancingv2Request
   {
@@ -35,6 +36,11 @@ namespace Model
     ModifyTargetGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline void SetTargetGroupArn(Aws::String&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = value; }
+    inline void SetTargetGroupArn(Aws::String&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline ModifyTargetGroupRequest& WithTargetGroupArn(Aws::String&& value) { SetTargetGroupArn(value); return *this;}
+    inline ModifyTargetGroupRequest& WithTargetGroupArn(Aws::String&& value) { SetTargetGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -83,7 +89,7 @@ namespace Model
     /**
      * <p>The protocol to use to connect with the target.</p>
      */
-    inline void SetHealthCheckProtocol(ProtocolEnum&& value) { m_healthCheckProtocolHasBeenSet = true; m_healthCheckProtocol = value; }
+    inline void SetHealthCheckProtocol(ProtocolEnum&& value) { m_healthCheckProtocolHasBeenSet = true; m_healthCheckProtocol = std::move(value); }
 
     /**
      * <p>The protocol to use to connect with the target.</p>
@@ -93,7 +99,7 @@ namespace Model
     /**
      * <p>The protocol to use to connect with the target.</p>
      */
-    inline ModifyTargetGroupRequest& WithHealthCheckProtocol(ProtocolEnum&& value) { SetHealthCheckProtocol(value); return *this;}
+    inline ModifyTargetGroupRequest& WithHealthCheckProtocol(ProtocolEnum&& value) { SetHealthCheckProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The port to use to connect with the target.</p>
@@ -108,7 +114,7 @@ namespace Model
     /**
      * <p>The port to use to connect with the target.</p>
      */
-    inline void SetHealthCheckPort(Aws::String&& value) { m_healthCheckPortHasBeenSet = true; m_healthCheckPort = value; }
+    inline void SetHealthCheckPort(Aws::String&& value) { m_healthCheckPortHasBeenSet = true; m_healthCheckPort = std::move(value); }
 
     /**
      * <p>The port to use to connect with the target.</p>
@@ -123,7 +129,7 @@ namespace Model
     /**
      * <p>The port to use to connect with the target.</p>
      */
-    inline ModifyTargetGroupRequest& WithHealthCheckPort(Aws::String&& value) { SetHealthCheckPort(value); return *this;}
+    inline ModifyTargetGroupRequest& WithHealthCheckPort(Aws::String&& value) { SetHealthCheckPort(std::move(value)); return *this;}
 
     /**
      * <p>The port to use to connect with the target.</p>
@@ -143,7 +149,7 @@ namespace Model
     /**
      * <p>The ping path that is the destination for the health check request.</p>
      */
-    inline void SetHealthCheckPath(Aws::String&& value) { m_healthCheckPathHasBeenSet = true; m_healthCheckPath = value; }
+    inline void SetHealthCheckPath(Aws::String&& value) { m_healthCheckPathHasBeenSet = true; m_healthCheckPath = std::move(value); }
 
     /**
      * <p>The ping path that is the destination for the health check request.</p>
@@ -158,7 +164,7 @@ namespace Model
     /**
      * <p>The ping path that is the destination for the health check request.</p>
      */
-    inline ModifyTargetGroupRequest& WithHealthCheckPath(Aws::String&& value) { SetHealthCheckPath(value); return *this;}
+    inline ModifyTargetGroupRequest& WithHealthCheckPath(Aws::String&& value) { SetHealthCheckPath(std::move(value)); return *this;}
 
     /**
      * <p>The ping path that is the destination for the health check request.</p>
@@ -253,7 +259,7 @@ namespace Model
      * <p>The HTTP codes to use when checking for a successful response from a
      * target.</p>
      */
-    inline void SetMatcher(Matcher&& value) { m_matcherHasBeenSet = true; m_matcher = value; }
+    inline void SetMatcher(Matcher&& value) { m_matcherHasBeenSet = true; m_matcher = std::move(value); }
 
     /**
      * <p>The HTTP codes to use when checking for a successful response from a
@@ -265,7 +271,7 @@ namespace Model
      * <p>The HTTP codes to use when checking for a successful response from a
      * target.</p>
      */
-    inline ModifyTargetGroupRequest& WithMatcher(Matcher&& value) { SetMatcher(value); return *this;}
+    inline ModifyTargetGroupRequest& WithMatcher(Matcher&& value) { SetMatcher(std::move(value)); return *this;}
 
   private:
     Aws::String m_targetGroupArn;

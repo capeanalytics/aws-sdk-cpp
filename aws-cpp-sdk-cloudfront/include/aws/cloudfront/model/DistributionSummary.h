@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -24,6 +25,7 @@
 #include <aws/cloudfront/model/PriceClass.h>
 #include <aws/cloudfront/model/ViewerCertificate.h>
 #include <aws/cloudfront/model/Restrictions.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,7 +42,10 @@ namespace Model
 {
 
   /**
-   * A summary of the information for an Amazon CloudFront distribution.
+   * A summary of the information for an Amazon CloudFront distribution.<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/DistributionSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API DistributionSummary
   {
@@ -64,7 +69,7 @@ namespace Model
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
@@ -79,7 +84,7 @@ namespace Model
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
      */
-    inline DistributionSummary& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline DistributionSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * The identifier for the distribution. For example: EDFDVBD632BHDS5.
@@ -105,7 +110,7 @@ namespace Model
      * status is Deployed, the distribution's information is fully propagated
      * throughout the Amazon CloudFront system.
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * This response element indicates the current status of the distribution. When the
@@ -126,7 +131,7 @@ namespace Model
      * status is Deployed, the distribution's information is fully propagated
      * throughout the Amazon CloudFront system.
      */
-    inline DistributionSummary& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline DistributionSummary& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * This response element indicates the current status of the distribution. When the
@@ -148,7 +153,7 @@ namespace Model
     /**
      * The date and time the distribution was last modified.
      */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = value; }
+    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::move(value); }
 
     /**
      * The date and time the distribution was last modified.
@@ -158,7 +163,7 @@ namespace Model
     /**
      * The date and time the distribution was last modified.
      */
-    inline DistributionSummary& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(value); return *this;}
+    inline DistributionSummary& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
 
     /**
      * The domain name corresponding to the distribution. For example:
@@ -176,7 +181,7 @@ namespace Model
      * The domain name corresponding to the distribution. For example:
      * d604721fxaaqy9.cloudfront.net.
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * The domain name corresponding to the distribution. For example:
@@ -194,7 +199,7 @@ namespace Model
      * The domain name corresponding to the distribution. For example:
      * d604721fxaaqy9.cloudfront.net.
      */
-    inline DistributionSummary& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline DistributionSummary& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * The domain name corresponding to the distribution. For example:
@@ -218,7 +223,7 @@ namespace Model
      * A complex type that contains information about CNAMEs (alternate domain names),
      * if any, for this distribution.
      */
-    inline void SetAliases(Aliases&& value) { m_aliasesHasBeenSet = true; m_aliases = value; }
+    inline void SetAliases(Aliases&& value) { m_aliasesHasBeenSet = true; m_aliases = std::move(value); }
 
     /**
      * A complex type that contains information about CNAMEs (alternate domain names),
@@ -230,7 +235,7 @@ namespace Model
      * A complex type that contains information about CNAMEs (alternate domain names),
      * if any, for this distribution.
      */
-    inline DistributionSummary& WithAliases(Aliases&& value) { SetAliases(value); return *this;}
+    inline DistributionSummary& WithAliases(Aliases&& value) { SetAliases(std::move(value)); return *this;}
 
     /**
      * A complex type that contains information about origins for this distribution.
@@ -245,7 +250,7 @@ namespace Model
     /**
      * A complex type that contains information about origins for this distribution.
      */
-    inline void SetOrigins(Origins&& value) { m_originsHasBeenSet = true; m_origins = value; }
+    inline void SetOrigins(Origins&& value) { m_originsHasBeenSet = true; m_origins = std::move(value); }
 
     /**
      * A complex type that contains information about origins for this distribution.
@@ -255,7 +260,7 @@ namespace Model
     /**
      * A complex type that contains information about origins for this distribution.
      */
-    inline DistributionSummary& WithOrigins(Origins&& value) { SetOrigins(value); return *this;}
+    inline DistributionSummary& WithOrigins(Origins&& value) { SetOrigins(std::move(value)); return *this;}
 
     /**
      * A complex type that describes the default cache behavior if you do not specify a
@@ -276,7 +281,7 @@ namespace Model
      * CacheBehavior element or if files don't match any of the values of PathPattern
      * in CacheBehavior elements.You must create exactly one default cache behavior.
      */
-    inline void SetDefaultCacheBehavior(DefaultCacheBehavior&& value) { m_defaultCacheBehaviorHasBeenSet = true; m_defaultCacheBehavior = value; }
+    inline void SetDefaultCacheBehavior(DefaultCacheBehavior&& value) { m_defaultCacheBehaviorHasBeenSet = true; m_defaultCacheBehavior = std::move(value); }
 
     /**
      * A complex type that describes the default cache behavior if you do not specify a
@@ -290,7 +295,7 @@ namespace Model
      * CacheBehavior element or if files don't match any of the values of PathPattern
      * in CacheBehavior elements.You must create exactly one default cache behavior.
      */
-    inline DistributionSummary& WithDefaultCacheBehavior(DefaultCacheBehavior&& value) { SetDefaultCacheBehavior(value); return *this;}
+    inline DistributionSummary& WithDefaultCacheBehavior(DefaultCacheBehavior&& value) { SetDefaultCacheBehavior(std::move(value)); return *this;}
 
     /**
      * A complex type that contains zero or more CacheBehavior elements.
@@ -305,7 +310,7 @@ namespace Model
     /**
      * A complex type that contains zero or more CacheBehavior elements.
      */
-    inline void SetCacheBehaviors(CacheBehaviors&& value) { m_cacheBehaviorsHasBeenSet = true; m_cacheBehaviors = value; }
+    inline void SetCacheBehaviors(CacheBehaviors&& value) { m_cacheBehaviorsHasBeenSet = true; m_cacheBehaviors = std::move(value); }
 
     /**
      * A complex type that contains zero or more CacheBehavior elements.
@@ -315,7 +320,7 @@ namespace Model
     /**
      * A complex type that contains zero or more CacheBehavior elements.
      */
-    inline DistributionSummary& WithCacheBehaviors(CacheBehaviors&& value) { SetCacheBehaviors(value); return *this;}
+    inline DistributionSummary& WithCacheBehaviors(CacheBehaviors&& value) { SetCacheBehaviors(std::move(value)); return *this;}
 
     /**
      * A complex type that contains zero or more CustomErrorResponses elements.
@@ -330,7 +335,7 @@ namespace Model
     /**
      * A complex type that contains zero or more CustomErrorResponses elements.
      */
-    inline void SetCustomErrorResponses(CustomErrorResponses&& value) { m_customErrorResponsesHasBeenSet = true; m_customErrorResponses = value; }
+    inline void SetCustomErrorResponses(CustomErrorResponses&& value) { m_customErrorResponsesHasBeenSet = true; m_customErrorResponses = std::move(value); }
 
     /**
      * A complex type that contains zero or more CustomErrorResponses elements.
@@ -340,7 +345,7 @@ namespace Model
     /**
      * A complex type that contains zero or more CustomErrorResponses elements.
      */
-    inline DistributionSummary& WithCustomErrorResponses(CustomErrorResponses&& value) { SetCustomErrorResponses(value); return *this;}
+    inline DistributionSummary& WithCustomErrorResponses(CustomErrorResponses&& value) { SetCustomErrorResponses(std::move(value)); return *this;}
 
     /**
      * The comment originally specified when this distribution was created.
@@ -355,7 +360,7 @@ namespace Model
     /**
      * The comment originally specified when this distribution was created.
      */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = value; }
+    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
 
     /**
      * The comment originally specified when this distribution was created.
@@ -370,7 +375,7 @@ namespace Model
     /**
      * The comment originally specified when this distribution was created.
      */
-    inline DistributionSummary& WithComment(Aws::String&& value) { SetComment(value); return *this;}
+    inline DistributionSummary& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
 
     /**
      * The comment originally specified when this distribution was created.
@@ -384,13 +389,13 @@ namespace Model
     inline void SetPriceClass(const PriceClass& value) { m_priceClassHasBeenSet = true; m_priceClass = value; }
 
     
-    inline void SetPriceClass(PriceClass&& value) { m_priceClassHasBeenSet = true; m_priceClass = value; }
+    inline void SetPriceClass(PriceClass&& value) { m_priceClassHasBeenSet = true; m_priceClass = std::move(value); }
 
     
     inline DistributionSummary& WithPriceClass(const PriceClass& value) { SetPriceClass(value); return *this;}
 
     
-    inline DistributionSummary& WithPriceClass(PriceClass&& value) { SetPriceClass(value); return *this;}
+    inline DistributionSummary& WithPriceClass(PriceClass&& value) { SetPriceClass(std::move(value)); return *this;}
 
     /**
      * Whether the distribution is enabled to accept end user requests for content.
@@ -414,13 +419,13 @@ namespace Model
     inline void SetViewerCertificate(const ViewerCertificate& value) { m_viewerCertificateHasBeenSet = true; m_viewerCertificate = value; }
 
     
-    inline void SetViewerCertificate(ViewerCertificate&& value) { m_viewerCertificateHasBeenSet = true; m_viewerCertificate = value; }
+    inline void SetViewerCertificate(ViewerCertificate&& value) { m_viewerCertificateHasBeenSet = true; m_viewerCertificate = std::move(value); }
 
     
     inline DistributionSummary& WithViewerCertificate(const ViewerCertificate& value) { SetViewerCertificate(value); return *this;}
 
     
-    inline DistributionSummary& WithViewerCertificate(ViewerCertificate&& value) { SetViewerCertificate(value); return *this;}
+    inline DistributionSummary& WithViewerCertificate(ViewerCertificate&& value) { SetViewerCertificate(std::move(value)); return *this;}
 
     
     inline const Restrictions& GetRestrictions() const{ return m_restrictions; }
@@ -429,13 +434,13 @@ namespace Model
     inline void SetRestrictions(const Restrictions& value) { m_restrictionsHasBeenSet = true; m_restrictions = value; }
 
     
-    inline void SetRestrictions(Restrictions&& value) { m_restrictionsHasBeenSet = true; m_restrictions = value; }
+    inline void SetRestrictions(Restrictions&& value) { m_restrictionsHasBeenSet = true; m_restrictions = std::move(value); }
 
     
     inline DistributionSummary& WithRestrictions(const Restrictions& value) { SetRestrictions(value); return *this;}
 
     
-    inline DistributionSummary& WithRestrictions(Restrictions&& value) { SetRestrictions(value); return *this;}
+    inline DistributionSummary& WithRestrictions(Restrictions&& value) { SetRestrictions(std::move(value)); return *this;}
 
     /**
      * The Web ACL Id (if any) associated with the distribution.
@@ -450,7 +455,7 @@ namespace Model
     /**
      * The Web ACL Id (if any) associated with the distribution.
      */
-    inline void SetWebACLId(Aws::String&& value) { m_webACLIdHasBeenSet = true; m_webACLId = value; }
+    inline void SetWebACLId(Aws::String&& value) { m_webACLIdHasBeenSet = true; m_webACLId = std::move(value); }
 
     /**
      * The Web ACL Id (if any) associated with the distribution.
@@ -465,7 +470,7 @@ namespace Model
     /**
      * The Web ACL Id (if any) associated with the distribution.
      */
-    inline DistributionSummary& WithWebACLId(Aws::String&& value) { SetWebACLId(value); return *this;}
+    inline DistributionSummary& WithWebACLId(Aws::String&& value) { SetWebACLId(std::move(value)); return *this;}
 
     /**
      * The Web ACL Id (if any) associated with the distribution.

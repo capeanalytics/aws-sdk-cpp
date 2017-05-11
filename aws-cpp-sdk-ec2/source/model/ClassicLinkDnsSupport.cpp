@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ClassicLinkDnsSupport.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -76,7 +77,7 @@ void ClassicLinkDnsSupport::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_classicLinkDnsSupportedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ClassicLinkDnsSupported=" << m_classicLinkDnsSupported << "&";
+      oStream << location << index << locationValue << ".ClassicLinkDnsSupported=" << std::boolalpha << m_classicLinkDnsSupported << "&";
   }
 
 }
@@ -89,7 +90,7 @@ void ClassicLinkDnsSupport::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_classicLinkDnsSupportedHasBeenSet)
   {
-      oStream << location << ".ClassicLinkDnsSupported=" << m_classicLinkDnsSupported << "&";
+      oStream << location << ".ClassicLinkDnsSupported=" << std::boolalpha << m_classicLinkDnsSupported << "&";
   }
 }
 

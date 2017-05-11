@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/Address.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeAddresses.</p>
+   * <p>Contains the output of DescribeAddresses.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddressesResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeAddressesResponse
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Information about one or more Elastic IP addresses.</p>
      */
-    inline void SetAddresses(Aws::Vector<Address>&& value) { m_addresses = value; }
+    inline void SetAddresses(Aws::Vector<Address>&& value) { m_addresses = std::move(value); }
 
     /**
      * <p>Information about one or more Elastic IP addresses.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>Information about one or more Elastic IP addresses.</p>
      */
-    inline DescribeAddressesResponse& WithAddresses(Aws::Vector<Address>&& value) { SetAddresses(value); return *this;}
+    inline DescribeAddressesResponse& WithAddresses(Aws::Vector<Address>&& value) { SetAddresses(std::move(value)); return *this;}
 
     /**
      * <p>Information about one or more Elastic IP addresses.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>Information about one or more Elastic IP addresses.</p>
      */
-    inline DescribeAddressesResponse& AddAddresses(Address&& value) { m_addresses.push_back(value); return *this; }
+    inline DescribeAddressesResponse& AddAddresses(Address&& value) { m_addresses.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -86,13 +90,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeAddressesResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeAddressesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeAddressesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Address> m_addresses;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/snowball/model/SnowballCapacity.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -31,6 +32,7 @@ namespace Aws
 
         static const int T50_HASH = HashingUtils::HashString("T50");
         static const int T80_HASH = HashingUtils::HashString("T80");
+        static const int T100_HASH = HashingUtils::HashString("T100");
         static const int NoPreference_HASH = HashingUtils::HashString("NoPreference");
 
 
@@ -44,6 +46,10 @@ namespace Aws
           else if (hashCode == T80_HASH)
           {
             return SnowballCapacity::T80;
+          }
+          else if (hashCode == T100_HASH)
+          {
+            return SnowballCapacity::T100;
           }
           else if (hashCode == NoPreference_HASH)
           {
@@ -67,6 +73,8 @@ namespace Aws
             return "T50";
           case SnowballCapacity::T80:
             return "T80";
+          case SnowballCapacity::T100:
+            return "T100";
           case SnowballCapacity::NoPreference:
             return "NoPreference";
           default:

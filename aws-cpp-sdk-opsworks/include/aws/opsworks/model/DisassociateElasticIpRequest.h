@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The Elastic IP address.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The Elastic IP address.</p>
      */
-    inline void SetElasticIp(Aws::String&& value) { m_elasticIpHasBeenSet = true; m_elasticIp = value; }
+    inline void SetElasticIp(Aws::String&& value) { m_elasticIpHasBeenSet = true; m_elasticIp = std::move(value); }
 
     /**
      * <p>The Elastic IP address.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The Elastic IP address.</p>
      */
-    inline DisassociateElasticIpRequest& WithElasticIp(Aws::String&& value) { SetElasticIp(value); return *this;}
+    inline DisassociateElasticIpRequest& WithElasticIp(Aws::String&& value) { SetElasticIp(std::move(value)); return *this;}
 
     /**
      * <p>The Elastic IP address.</p>

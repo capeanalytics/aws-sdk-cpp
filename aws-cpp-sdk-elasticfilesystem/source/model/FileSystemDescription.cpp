@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticfilesystem/model/FileSystemDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,11 +33,13 @@ FileSystemDescription::FileSystemDescription() :
     m_creationTokenHasBeenSet(false),
     m_fileSystemIdHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
+    m_lifeCycleState(LifeCycleState::NOT_SET),
     m_lifeCycleStateHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_numberOfMountTargets(0),
     m_numberOfMountTargetsHasBeenSet(false),
     m_sizeInBytesHasBeenSet(false),
+    m_performanceMode(PerformanceMode::NOT_SET),
     m_performanceModeHasBeenSet(false)
 {
 }
@@ -46,11 +49,13 @@ FileSystemDescription::FileSystemDescription(const JsonValue& jsonValue) :
     m_creationTokenHasBeenSet(false),
     m_fileSystemIdHasBeenSet(false),
     m_creationTimeHasBeenSet(false),
+    m_lifeCycleState(LifeCycleState::NOT_SET),
     m_lifeCycleStateHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_numberOfMountTargets(0),
     m_numberOfMountTargetsHasBeenSet(false),
     m_sizeInBytesHasBeenSet(false),
+    m_performanceMode(PerformanceMode::NOT_SET),
     m_performanceModeHasBeenSet(false)
 {
   *this = jsonValue;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/machinelearning/model/RealtimeEndpointInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,6 +33,7 @@ RealtimeEndpointInfo::RealtimeEndpointInfo() :
     m_peakRequestsPerSecondHasBeenSet(false),
     m_createdAtHasBeenSet(false),
     m_endpointUrlHasBeenSet(false),
+    m_endpointStatus(RealtimeEndpointStatus::NOT_SET),
     m_endpointStatusHasBeenSet(false)
 {
 }
@@ -41,6 +43,7 @@ RealtimeEndpointInfo::RealtimeEndpointInfo(const JsonValue& jsonValue) :
     m_peakRequestsPerSecondHasBeenSet(false),
     m_createdAtHasBeenSet(false),
     m_endpointUrlHasBeenSet(false),
+    m_endpointStatus(RealtimeEndpointStatus::NOT_SET),
     m_endpointStatusHasBeenSet(false)
 {
   *this = jsonValue;

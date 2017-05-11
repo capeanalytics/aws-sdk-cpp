@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/ConfigServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,6 +28,9 @@ namespace Model
 {
 
   /**
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetComplianceSummaryByResourceTypeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API GetComplianceSummaryByResourceTypeRequest : public ConfigServiceRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Specify one or more resource types to get the number of resources that are
@@ -60,7 +66,7 @@ namespace Model
      * <code>AWS::EC2::Instance</code>, and you can specify that the resource type is
      * an AWS account by specifying <code>AWS::::Account</code>.</p>
      */
-    inline void SetResourceTypes(Aws::Vector<Aws::String>&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = value; }
+    inline void SetResourceTypes(Aws::Vector<Aws::String>&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = std::move(value); }
 
     /**
      * <p>Specify one or more resource types to get the number of resources that are
@@ -78,7 +84,7 @@ namespace Model
      * <code>AWS::EC2::Instance</code>, and you can specify that the resource type is
      * an AWS account by specifying <code>AWS::::Account</code>.</p>
      */
-    inline GetComplianceSummaryByResourceTypeRequest& WithResourceTypes(Aws::Vector<Aws::String>&& value) { SetResourceTypes(value); return *this;}
+    inline GetComplianceSummaryByResourceTypeRequest& WithResourceTypes(Aws::Vector<Aws::String>&& value) { SetResourceTypes(std::move(value)); return *this;}
 
     /**
      * <p>Specify one or more resource types to get the number of resources that are
@@ -96,7 +102,7 @@ namespace Model
      * <code>AWS::EC2::Instance</code>, and you can specify that the resource type is
      * an AWS account by specifying <code>AWS::::Account</code>.</p>
      */
-    inline GetComplianceSummaryByResourceTypeRequest& AddResourceTypes(Aws::String&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(value); return *this; }
+    inline GetComplianceSummaryByResourceTypeRequest& AddResourceTypes(Aws::String&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specify one or more resource types to get the number of resources that are

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/model/TrafficPolicy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains the response information for the traffic
-   * policy.</p>
+   * policy.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateTrafficPolicyCommentResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API UpdateTrafficPolicyCommentResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>A complex type that contains settings for the specified traffic policy.</p>
      */
-    inline void SetTrafficPolicy(TrafficPolicy&& value) { m_trafficPolicy = value; }
+    inline void SetTrafficPolicy(TrafficPolicy&& value) { m_trafficPolicy = std::move(value); }
 
     /**
      * <p>A complex type that contains settings for the specified traffic policy.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>A complex type that contains settings for the specified traffic policy.</p>
      */
-    inline UpdateTrafficPolicyCommentResult& WithTrafficPolicy(TrafficPolicy&& value) { SetTrafficPolicy(value); return *this;}
+    inline UpdateTrafficPolicyCommentResult& WithTrafficPolicy(TrafficPolicy&& value) { SetTrafficPolicy(std::move(value)); return *this;}
 
   private:
     TrafficPolicy m_trafficPolicy;

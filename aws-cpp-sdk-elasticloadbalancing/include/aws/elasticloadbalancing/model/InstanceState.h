@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about the state of an EC2 instance.</p>
+   * <p>Information about the state of an EC2 instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/InstanceState">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API InstanceState
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline InstanceState& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline InstanceState& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -95,7 +99,7 @@ namespace Model
      * <p>The current state of the instance.</p> <p>Valid values:
      * <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code> </p>
      */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the instance.</p> <p>Valid values:
@@ -113,7 +117,7 @@ namespace Model
      * <p>The current state of the instance.</p> <p>Valid values:
      * <code>InService</code> | <code>OutOfService</code> | <code>Unknown</code> </p>
      */
-    inline InstanceState& WithState(Aws::String&& value) { SetState(value); return *this;}
+    inline InstanceState& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The current state of the instance.</p> <p>Valid values:
@@ -143,7 +147,7 @@ namespace Model
      * <p>Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      * </p>
      */
-    inline void SetReasonCode(Aws::String&& value) { m_reasonCodeHasBeenSet = true; m_reasonCode = value; }
+    inline void SetReasonCode(Aws::String&& value) { m_reasonCodeHasBeenSet = true; m_reasonCode = std::move(value); }
 
     /**
      * <p>Information about the cause of <code>OutOfService</code> instances.
@@ -167,7 +171,7 @@ namespace Model
      * <p>Valid values: <code>ELB</code> | <code>Instance</code> | <code>N/A</code>
      * </p>
      */
-    inline InstanceState& WithReasonCode(Aws::String&& value) { SetReasonCode(value); return *this;}
+    inline InstanceState& WithReasonCode(Aws::String&& value) { SetReasonCode(std::move(value)); return *this;}
 
     /**
      * <p>Information about the cause of <code>OutOfService</code> instances.
@@ -232,7 +236,7 @@ namespace Model
      * <p> <code>Instance is in stopped state.</code> </p> </li> <li> <p>
      * <code>Instance is in terminated state.</code> </p> </li> </ul>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the instance state. This string can contain one or more of
@@ -289,7 +293,7 @@ namespace Model
      * <p> <code>Instance is in stopped state.</code> </p> </li> <li> <p>
      * <code>Instance is in terminated state.</code> </p> </li> </ul>
      */
-    inline InstanceState& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline InstanceState& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the instance state. This string can contain one or more of

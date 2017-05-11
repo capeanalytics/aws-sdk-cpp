@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/NodeSnapshot.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -30,7 +31,10 @@ namespace Model
 {
 
 NodeSnapshot::NodeSnapshot() : 
+    m_cacheClusterIdHasBeenSet(false),
+    m_nodeGroupIdHasBeenSet(false),
     m_cacheNodeIdHasBeenSet(false),
+    m_nodeGroupConfigurationHasBeenSet(false),
     m_cacheSizeHasBeenSet(false),
     m_cacheNodeCreateTimeHasBeenSet(false),
     m_snapshotCreateTimeHasBeenSet(false)
@@ -38,7 +42,10 @@ NodeSnapshot::NodeSnapshot() :
 }
 
 NodeSnapshot::NodeSnapshot(const XmlNode& xmlNode) : 
+    m_cacheClusterIdHasBeenSet(false),
+    m_nodeGroupIdHasBeenSet(false),
     m_cacheNodeIdHasBeenSet(false),
+    m_nodeGroupConfigurationHasBeenSet(false),
     m_cacheSizeHasBeenSet(false),
     m_cacheNodeCreateTimeHasBeenSet(false),
     m_snapshotCreateTimeHasBeenSet(false)
@@ -52,11 +59,29 @@ NodeSnapshot& NodeSnapshot::operator =(const XmlNode& xmlNode)
 
   if(!resultNode.IsNull())
   {
+    XmlNode cacheClusterIdNode = resultNode.FirstChild("CacheClusterId");
+    if(!cacheClusterIdNode.IsNull())
+    {
+      m_cacheClusterId = StringUtils::Trim(cacheClusterIdNode.GetText().c_str());
+      m_cacheClusterIdHasBeenSet = true;
+    }
+    XmlNode nodeGroupIdNode = resultNode.FirstChild("NodeGroupId");
+    if(!nodeGroupIdNode.IsNull())
+    {
+      m_nodeGroupId = StringUtils::Trim(nodeGroupIdNode.GetText().c_str());
+      m_nodeGroupIdHasBeenSet = true;
+    }
     XmlNode cacheNodeIdNode = resultNode.FirstChild("CacheNodeId");
     if(!cacheNodeIdNode.IsNull())
     {
       m_cacheNodeId = StringUtils::Trim(cacheNodeIdNode.GetText().c_str());
       m_cacheNodeIdHasBeenSet = true;
+    }
+    XmlNode nodeGroupConfigurationNode = resultNode.FirstChild("NodeGroupConfiguration");
+    if(!nodeGroupConfigurationNode.IsNull())
+    {
+      m_nodeGroupConfiguration = nodeGroupConfigurationNode;
+      m_nodeGroupConfigurationHasBeenSet = true;
     }
     XmlNode cacheSizeNode = resultNode.FirstChild("CacheSize");
     if(!cacheSizeNode.IsNull())
@@ -83,9 +108,26 @@ NodeSnapshot& NodeSnapshot::operator =(const XmlNode& xmlNode)
 
 void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsigned index, const char* locationValue) const
 {
+  if(m_cacheClusterIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CacheClusterId=" << StringUtils::URLEncode(m_cacheClusterId.c_str()) << "&";
+  }
+
+  if(m_nodeGroupIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".NodeGroupId=" << StringUtils::URLEncode(m_nodeGroupId.c_str()) << "&";
+  }
+
   if(m_cacheNodeIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".CacheNodeId=" << StringUtils::URLEncode(m_cacheNodeId.c_str()) << "&";
+  }
+
+  if(m_nodeGroupConfigurationHasBeenSet)
+  {
+      Aws::StringStream nodeGroupConfigurationLocationAndMemberSs;
+      nodeGroupConfigurationLocationAndMemberSs << location << index << locationValue << ".NodeGroupConfiguration";
+      m_nodeGroupConfiguration.OutputToStream(oStream, nodeGroupConfigurationLocationAndMemberSs.str().c_str());
   }
 
   if(m_cacheSizeHasBeenSet)
@@ -107,9 +149,23 @@ void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location, u
 
 void NodeSnapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
+  if(m_cacheClusterIdHasBeenSet)
+  {
+      oStream << location << ".CacheClusterId=" << StringUtils::URLEncode(m_cacheClusterId.c_str()) << "&";
+  }
+  if(m_nodeGroupIdHasBeenSet)
+  {
+      oStream << location << ".NodeGroupId=" << StringUtils::URLEncode(m_nodeGroupId.c_str()) << "&";
+  }
   if(m_cacheNodeIdHasBeenSet)
   {
       oStream << location << ".CacheNodeId=" << StringUtils::URLEncode(m_cacheNodeId.c_str()) << "&";
+  }
+  if(m_nodeGroupConfigurationHasBeenSet)
+  {
+      Aws::String nodeGroupConfigurationLocationAndMember(location);
+      nodeGroupConfigurationLocationAndMember += ".NodeGroupConfiguration";
+      m_nodeGroupConfiguration.OutputToStream(oStream, nodeGroupConfigurationLocationAndMember.c_str());
   }
   if(m_cacheSizeHasBeenSet)
   {

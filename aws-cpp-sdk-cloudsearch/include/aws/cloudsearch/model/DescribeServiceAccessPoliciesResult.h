@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/cloudsearch/model/AccessPoliciesStatus.h>
 #include <aws/cloudsearch/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CloudSearch
 namespace Model
 {
   /**
-   * <p>The result of a <code>DescribeServiceAccessPolicies</code> request.</p>
+   * <p>The result of a <code>DescribeServiceAccessPolicies</code>
+   * request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeServiceAccessPoliciesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API DescribeServiceAccessPoliciesResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The access rules configured for the domain specified in the request.</p>
      */
-    inline void SetAccessPolicies(AccessPoliciesStatus&& value) { m_accessPolicies = value; }
+    inline void SetAccessPolicies(AccessPoliciesStatus&& value) { m_accessPolicies = std::move(value); }
 
     /**
      * <p>The access rules configured for the domain specified in the request.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The access rules configured for the domain specified in the request.</p>
      */
-    inline DescribeServiceAccessPoliciesResult& WithAccessPolicies(AccessPoliciesStatus&& value) { SetAccessPolicies(value); return *this;}
+    inline DescribeServiceAccessPoliciesResult& WithAccessPolicies(AccessPoliciesStatus&& value) { SetAccessPolicies(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -75,13 +80,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeServiceAccessPoliciesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeServiceAccessPoliciesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeServiceAccessPoliciesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     AccessPoliciesStatus m_accessPolicies;

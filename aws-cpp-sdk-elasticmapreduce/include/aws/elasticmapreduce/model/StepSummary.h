@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticmapreduce/model/HadoopStepConfig.h>
 #include <aws/elasticmapreduce/model/ActionOnFailure.h>
 #include <aws/elasticmapreduce/model/StepStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>The summary of the cluster step.</p>
+   * <p>The summary of the cluster step.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/StepSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API StepSummary
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster step.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The identifier of the cluster step.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster step.</p>
      */
-    inline StepSummary& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline StepSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the cluster step.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The name of the cluster step.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the cluster step.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The name of the cluster step.</p>
      */
-    inline StepSummary& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline StepSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cluster step.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The Hadoop job configuration of the cluster step.</p>
      */
-    inline void SetConfig(HadoopStepConfig&& value) { m_configHasBeenSet = true; m_config = value; }
+    inline void SetConfig(HadoopStepConfig&& value) { m_configHasBeenSet = true; m_config = std::move(value); }
 
     /**
      * <p>The Hadoop job configuration of the cluster step.</p>
@@ -137,7 +141,7 @@ namespace Model
     /**
      * <p>The Hadoop job configuration of the cluster step.</p>
      */
-    inline StepSummary& WithConfig(HadoopStepConfig&& value) { SetConfig(value); return *this;}
+    inline StepSummary& WithConfig(HadoopStepConfig&& value) { SetConfig(std::move(value)); return *this;}
 
     /**
      * <p>This specifies what action to take when the cluster step fails. Possible
@@ -155,7 +159,7 @@ namespace Model
      * <p>This specifies what action to take when the cluster step fails. Possible
      * values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
      */
-    inline void SetActionOnFailure(ActionOnFailure&& value) { m_actionOnFailureHasBeenSet = true; m_actionOnFailure = value; }
+    inline void SetActionOnFailure(ActionOnFailure&& value) { m_actionOnFailureHasBeenSet = true; m_actionOnFailure = std::move(value); }
 
     /**
      * <p>This specifies what action to take when the cluster step fails. Possible
@@ -167,7 +171,7 @@ namespace Model
      * <p>This specifies what action to take when the cluster step fails. Possible
      * values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
      */
-    inline StepSummary& WithActionOnFailure(ActionOnFailure&& value) { SetActionOnFailure(value); return *this;}
+    inline StepSummary& WithActionOnFailure(ActionOnFailure&& value) { SetActionOnFailure(std::move(value)); return *this;}
 
     /**
      * <p>The current execution status details of the cluster step.</p>
@@ -182,7 +186,7 @@ namespace Model
     /**
      * <p>The current execution status details of the cluster step.</p>
      */
-    inline void SetStatus(StepStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(StepStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The current execution status details of the cluster step.</p>
@@ -192,7 +196,7 @@ namespace Model
     /**
      * <p>The current execution status details of the cluster step.</p>
      */
-    inline StepSummary& WithStatus(StepStatus&& value) { SetStatus(value); return *this;}
+    inline StepSummary& WithStatus(StepStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     Aws::String m_id;

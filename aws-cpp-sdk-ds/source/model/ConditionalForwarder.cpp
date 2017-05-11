@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ds/model/ConditionalForwarder.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 ConditionalForwarder::ConditionalForwarder() : 
     m_remoteDomainNameHasBeenSet(false),
     m_dnsIpAddrsHasBeenSet(false),
+    m_replicationScope(ReplicationScope::NOT_SET),
     m_replicationScopeHasBeenSet(false)
 {
 }
@@ -37,6 +39,7 @@ ConditionalForwarder::ConditionalForwarder() :
 ConditionalForwarder::ConditionalForwarder(const JsonValue& jsonValue) : 
     m_remoteDomainNameHasBeenSet(false),
     m_dnsIpAddrsHasBeenSet(false),
+    m_replicationScope(ReplicationScope::NOT_SET),
     m_replicationScopeHasBeenSet(false)
 {
   *this = jsonValue;

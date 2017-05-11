@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -102,10 +103,21 @@ void SimpleDBClient::init(const ClientConfiguration& config)
   m_uri = ss.str();
 }
 
+Aws::String SimpleDBClient::ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const
+{
+  Aws::StringStream ss;
+  ss << "https://" << SimpleDBEndpoint::ForRegion(region);
+  ss << "?" << requestToConvert.SerializePayload();
+
+  URI uri(ss.str());
+  return GeneratePresignedUrl(uri, HttpMethod::HTTP_GET, region, 3600);
+}
+
 BatchDeleteAttributesOutcome SimpleDBClient::BatchDeleteAttributes(const BatchDeleteAttributesRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -119,7 +131,10 @@ BatchDeleteAttributesOutcome SimpleDBClient::BatchDeleteAttributes(const BatchDe
 
 BatchDeleteAttributesOutcomeCallable SimpleDBClient::BatchDeleteAttributesCallable(const BatchDeleteAttributesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->BatchDeleteAttributes( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< BatchDeleteAttributesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->BatchDeleteAttributes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::BatchDeleteAttributesAsync(const BatchDeleteAttributesRequest& request, const BatchDeleteAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -135,7 +150,8 @@ void SimpleDBClient::BatchDeleteAttributesAsyncHelper(const BatchDeleteAttribute
 BatchPutAttributesOutcome SimpleDBClient::BatchPutAttributes(const BatchPutAttributesRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -149,7 +165,10 @@ BatchPutAttributesOutcome SimpleDBClient::BatchPutAttributes(const BatchPutAttri
 
 BatchPutAttributesOutcomeCallable SimpleDBClient::BatchPutAttributesCallable(const BatchPutAttributesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->BatchPutAttributes( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< BatchPutAttributesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->BatchPutAttributes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::BatchPutAttributesAsync(const BatchPutAttributesRequest& request, const BatchPutAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -165,7 +184,8 @@ void SimpleDBClient::BatchPutAttributesAsyncHelper(const BatchPutAttributesReque
 CreateDomainOutcome SimpleDBClient::CreateDomain(const CreateDomainRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -179,7 +199,10 @@ CreateDomainOutcome SimpleDBClient::CreateDomain(const CreateDomainRequest& requ
 
 CreateDomainOutcomeCallable SimpleDBClient::CreateDomainCallable(const CreateDomainRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateDomain( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateDomainOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateDomain(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::CreateDomainAsync(const CreateDomainRequest& request, const CreateDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -195,7 +218,8 @@ void SimpleDBClient::CreateDomainAsyncHelper(const CreateDomainRequest& request,
 DeleteAttributesOutcome SimpleDBClient::DeleteAttributes(const DeleteAttributesRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -209,7 +233,10 @@ DeleteAttributesOutcome SimpleDBClient::DeleteAttributes(const DeleteAttributesR
 
 DeleteAttributesOutcomeCallable SimpleDBClient::DeleteAttributesCallable(const DeleteAttributesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteAttributes( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteAttributesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteAttributes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::DeleteAttributesAsync(const DeleteAttributesRequest& request, const DeleteAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -225,7 +252,8 @@ void SimpleDBClient::DeleteAttributesAsyncHelper(const DeleteAttributesRequest& 
 DeleteDomainOutcome SimpleDBClient::DeleteDomain(const DeleteDomainRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -239,7 +267,10 @@ DeleteDomainOutcome SimpleDBClient::DeleteDomain(const DeleteDomainRequest& requ
 
 DeleteDomainOutcomeCallable SimpleDBClient::DeleteDomainCallable(const DeleteDomainRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteDomain( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteDomainOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteDomain(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::DeleteDomainAsync(const DeleteDomainRequest& request, const DeleteDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -255,7 +286,8 @@ void SimpleDBClient::DeleteDomainAsyncHelper(const DeleteDomainRequest& request,
 DomainMetadataOutcome SimpleDBClient::DomainMetadata(const DomainMetadataRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -269,7 +301,10 @@ DomainMetadataOutcome SimpleDBClient::DomainMetadata(const DomainMetadataRequest
 
 DomainMetadataOutcomeCallable SimpleDBClient::DomainMetadataCallable(const DomainMetadataRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DomainMetadata( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DomainMetadataOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DomainMetadata(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::DomainMetadataAsync(const DomainMetadataRequest& request, const DomainMetadataResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -285,7 +320,8 @@ void SimpleDBClient::DomainMetadataAsyncHelper(const DomainMetadataRequest& requ
 GetAttributesOutcome SimpleDBClient::GetAttributes(const GetAttributesRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -299,7 +335,10 @@ GetAttributesOutcome SimpleDBClient::GetAttributes(const GetAttributesRequest& r
 
 GetAttributesOutcomeCallable SimpleDBClient::GetAttributesCallable(const GetAttributesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetAttributes( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetAttributesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetAttributes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::GetAttributesAsync(const GetAttributesRequest& request, const GetAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -315,7 +354,8 @@ void SimpleDBClient::GetAttributesAsyncHelper(const GetAttributesRequest& reques
 ListDomainsOutcome SimpleDBClient::ListDomains(const ListDomainsRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -329,7 +369,10 @@ ListDomainsOutcome SimpleDBClient::ListDomains(const ListDomainsRequest& request
 
 ListDomainsOutcomeCallable SimpleDBClient::ListDomainsCallable(const ListDomainsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListDomains( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDomainsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListDomains(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::ListDomainsAsync(const ListDomainsRequest& request, const ListDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -345,7 +388,8 @@ void SimpleDBClient::ListDomainsAsyncHelper(const ListDomainsRequest& request, c
 PutAttributesOutcome SimpleDBClient::PutAttributes(const PutAttributesRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -359,7 +403,10 @@ PutAttributesOutcome SimpleDBClient::PutAttributes(const PutAttributesRequest& r
 
 PutAttributesOutcomeCallable SimpleDBClient::PutAttributesCallable(const PutAttributesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->PutAttributes( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< PutAttributesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PutAttributes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::PutAttributesAsync(const PutAttributesRequest& request, const PutAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -375,7 +422,8 @@ void SimpleDBClient::PutAttributesAsyncHelper(const PutAttributesRequest& reques
 SelectOutcome SimpleDBClient::Select(const SelectRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -389,7 +437,10 @@ SelectOutcome SimpleDBClient::Select(const SelectRequest& request) const
 
 SelectOutcomeCallable SimpleDBClient::SelectCallable(const SelectRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->Select( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< SelectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->Select(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SimpleDBClient::SelectAsync(const SelectRequest& request, const SelectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -401,4 +452,6 @@ void SimpleDBClient::SelectAsyncHelper(const SelectRequest& request, const Selec
 {
   handler(this, request, Select(request), context);
 }
+
+
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/machinelearning/model/DescribeBatchPredictionsRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -22,6 +23,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 DescribeBatchPredictionsRequest::DescribeBatchPredictionsRequest() : 
+    m_filterVariable(BatchPredictionFilterVariable::NOT_SET),
     m_filterVariableHasBeenSet(false),
     m_eQHasBeenSet(false),
     m_gTHasBeenSet(false),
@@ -30,6 +32,7 @@ DescribeBatchPredictionsRequest::DescribeBatchPredictionsRequest() :
     m_lEHasBeenSet(false),
     m_nEHasBeenSet(false),
     m_prefixHasBeenSet(false),
+    m_sortOrder(SortOrder::NOT_SET),
     m_sortOrderHasBeenSet(false),
     m_nextTokenHasBeenSet(false),
     m_limit(0),
@@ -115,6 +118,7 @@ Aws::Http::HeaderValueCollection DescribeBatchPredictionsRequest::GetRequestSpec
   return headers;
 
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iot/model/DynamoDBAction.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,9 +34,11 @@ DynamoDBAction::DynamoDBAction() :
     m_operationHasBeenSet(false),
     m_hashKeyFieldHasBeenSet(false),
     m_hashKeyValueHasBeenSet(false),
+    m_hashKeyType(DynamoKeyType::NOT_SET),
     m_hashKeyTypeHasBeenSet(false),
     m_rangeKeyFieldHasBeenSet(false),
     m_rangeKeyValueHasBeenSet(false),
+    m_rangeKeyType(DynamoKeyType::NOT_SET),
     m_rangeKeyTypeHasBeenSet(false),
     m_payloadFieldHasBeenSet(false)
 {
@@ -47,9 +50,11 @@ DynamoDBAction::DynamoDBAction(const JsonValue& jsonValue) :
     m_operationHasBeenSet(false),
     m_hashKeyFieldHasBeenSet(false),
     m_hashKeyValueHasBeenSet(false),
+    m_hashKeyType(DynamoKeyType::NOT_SET),
     m_hashKeyTypeHasBeenSet(false),
     m_rangeKeyFieldHasBeenSet(false),
     m_rangeKeyValueHasBeenSet(false),
+    m_rangeKeyType(DynamoKeyType::NOT_SET),
     m_rangeKeyTypeHasBeenSet(false),
     m_payloadFieldHasBeenSet(false)
 {

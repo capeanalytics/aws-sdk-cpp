@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/apigateway/model/BasePathMapping.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div
    * class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use
-   * Custom Domain Names</a> </div>
+   * Custom Domain Names</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/BasePathMappings">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetBasePathMappingsResult
   {
@@ -54,7 +58,7 @@ namespace Model
     inline void SetPosition(const Aws::String& value) { m_position = value; }
 
     
-    inline void SetPosition(Aws::String&& value) { m_position = value; }
+    inline void SetPosition(Aws::String&& value) { m_position = std::move(value); }
 
     
     inline void SetPosition(const char* value) { m_position.assign(value); }
@@ -63,7 +67,7 @@ namespace Model
     inline GetBasePathMappingsResult& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
 
     
-    inline GetBasePathMappingsResult& WithPosition(Aws::String&& value) { SetPosition(value); return *this;}
+    inline GetBasePathMappingsResult& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
 
     
     inline GetBasePathMappingsResult& WithPosition(const char* value) { SetPosition(value); return *this;}
@@ -84,7 +88,7 @@ namespace Model
      * <p>The current page of any <a>BasePathMapping</a> resources in the collection of
      * base path mapping resources.</p>
      */
-    inline void SetItems(Aws::Vector<BasePathMapping>&& value) { m_items = value; }
+    inline void SetItems(Aws::Vector<BasePathMapping>&& value) { m_items = std::move(value); }
 
     /**
      * <p>The current page of any <a>BasePathMapping</a> resources in the collection of
@@ -96,7 +100,7 @@ namespace Model
      * <p>The current page of any <a>BasePathMapping</a> resources in the collection of
      * base path mapping resources.</p>
      */
-    inline GetBasePathMappingsResult& WithItems(Aws::Vector<BasePathMapping>&& value) { SetItems(value); return *this;}
+    inline GetBasePathMappingsResult& WithItems(Aws::Vector<BasePathMapping>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * <p>The current page of any <a>BasePathMapping</a> resources in the collection of
@@ -108,7 +112,7 @@ namespace Model
      * <p>The current page of any <a>BasePathMapping</a> resources in the collection of
      * base path mapping resources.</p>
      */
-    inline GetBasePathMappingsResult& AddItems(BasePathMapping&& value) { m_items.push_back(value); return *this; }
+    inline GetBasePathMappingsResult& AddItems(BasePathMapping&& value) { m_items.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_position;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iam/model/Role.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
    * as a response element in the following actions:</p> <ul> <li> <p>
    * <a>CreateInstanceProfile</a> </p> </li> <li> <p> <a>GetInstanceProfile</a> </p>
    * </li> <li> <p> <a>ListInstanceProfiles</a> </p> </li> <li> <p>
-   * <a>ListInstanceProfilesForRole</a> </p> </li> </ul>
+   * <a>ListInstanceProfilesForRole</a> </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/InstanceProfile">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API InstanceProfile
   {
@@ -70,7 +74,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = value; }
+    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
 
     /**
      * <p> The path to the instance profile. For more information about paths, see <a
@@ -91,7 +95,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline InstanceProfile& WithPath(Aws::String&& value) { SetPath(value); return *this;}
+    inline InstanceProfile& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
 
     /**
      * <p> The path to the instance profile. For more information about paths, see <a
@@ -113,7 +117,7 @@ namespace Model
     /**
      * <p>The name identifying the instance profile.</p>
      */
-    inline void SetInstanceProfileName(Aws::String&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = value; }
+    inline void SetInstanceProfileName(Aws::String&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = std::move(value); }
 
     /**
      * <p>The name identifying the instance profile.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The name identifying the instance profile.</p>
      */
-    inline InstanceProfile& WithInstanceProfileName(Aws::String&& value) { SetInstanceProfileName(value); return *this;}
+    inline InstanceProfile& WithInstanceProfileName(Aws::String&& value) { SetInstanceProfileName(std::move(value)); return *this;}
 
     /**
      * <p>The name identifying the instance profile.</p>
@@ -157,7 +161,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline void SetInstanceProfileId(Aws::String&& value) { m_instanceProfileIdHasBeenSet = true; m_instanceProfileId = value; }
+    inline void SetInstanceProfileId(Aws::String&& value) { m_instanceProfileIdHasBeenSet = true; m_instanceProfileId = std::move(value); }
 
     /**
      * <p> The stable and unique string identifying the instance profile. For more
@@ -181,7 +185,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline InstanceProfile& WithInstanceProfileId(Aws::String&& value) { SetInstanceProfileId(value); return *this;}
+    inline InstanceProfile& WithInstanceProfileId(Aws::String&& value) { SetInstanceProfileId(std::move(value)); return *this;}
 
     /**
      * <p> The stable and unique string identifying the instance profile. For more
@@ -213,7 +217,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p> The Amazon Resource Name (ARN) specifying the instance profile. For more
@@ -237,7 +241,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide. </p>
      */
-    inline InstanceProfile& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline InstanceProfile& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p> The Amazon Resource Name (ARN) specifying the instance profile. For more
@@ -260,7 +264,7 @@ namespace Model
     /**
      * <p>The date when the instance profile was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The date when the instance profile was created.</p>
@@ -270,7 +274,7 @@ namespace Model
     /**
      * <p>The date when the instance profile was created.</p>
      */
-    inline InstanceProfile& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline InstanceProfile& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>The role associated with the instance profile.</p>
@@ -285,7 +289,7 @@ namespace Model
     /**
      * <p>The role associated with the instance profile.</p>
      */
-    inline void SetRoles(Aws::Vector<Role>&& value) { m_rolesHasBeenSet = true; m_roles = value; }
+    inline void SetRoles(Aws::Vector<Role>&& value) { m_rolesHasBeenSet = true; m_roles = std::move(value); }
 
     /**
      * <p>The role associated with the instance profile.</p>
@@ -295,7 +299,7 @@ namespace Model
     /**
      * <p>The role associated with the instance profile.</p>
      */
-    inline InstanceProfile& WithRoles(Aws::Vector<Role>&& value) { SetRoles(value); return *this;}
+    inline InstanceProfile& WithRoles(Aws::Vector<Role>&& value) { SetRoles(std::move(value)); return *this;}
 
     /**
      * <p>The role associated with the instance profile.</p>
@@ -305,7 +309,7 @@ namespace Model
     /**
      * <p>The role associated with the instance profile.</p>
      */
-    inline InstanceProfile& AddRoles(Role&& value) { m_rolesHasBeenSet = true; m_roles.push_back(value); return *this; }
+    inline InstanceProfile& AddRoles(Role&& value) { m_rolesHasBeenSet = true; m_roles.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_path;

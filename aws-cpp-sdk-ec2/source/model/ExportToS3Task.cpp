@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ExportToS3Task.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -30,7 +31,9 @@ namespace Model
 {
 
 ExportToS3Task::ExportToS3Task() : 
+    m_diskImageFormat(DiskImageFormat::NOT_SET),
     m_diskImageFormatHasBeenSet(false),
+    m_containerFormat(ContainerFormat::NOT_SET),
     m_containerFormatHasBeenSet(false),
     m_s3BucketHasBeenSet(false),
     m_s3KeyHasBeenSet(false)
@@ -38,7 +41,9 @@ ExportToS3Task::ExportToS3Task() :
 }
 
 ExportToS3Task::ExportToS3Task(const XmlNode& xmlNode) : 
+    m_diskImageFormat(DiskImageFormat::NOT_SET),
     m_diskImageFormatHasBeenSet(false),
+    m_containerFormat(ContainerFormat::NOT_SET),
     m_containerFormatHasBeenSet(false),
     m_s3BucketHasBeenSet(false),
     m_s3KeyHasBeenSet(false)

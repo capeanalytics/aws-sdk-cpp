@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about an application version deployment.</p>
+   * <p>Information about an application version deployment.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/Deployment">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API Deployment
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The version label of the application version in the deployment.</p>
      */
-    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = value; }
+    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::move(value); }
 
     /**
      * <p>The version label of the application version in the deployment.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The version label of the application version in the deployment.</p>
      */
-    inline Deployment& WithVersionLabel(Aws::String&& value) { SetVersionLabel(value); return *this;}
+    inline Deployment& WithVersionLabel(Aws::String&& value) { SetVersionLabel(std::move(value)); return *this;}
 
     /**
      * <p>The version label of the application version in the deployment.</p>
@@ -99,51 +104,58 @@ namespace Model
     inline Deployment& WithDeploymentId(long long value) { SetDeploymentId(value); return *this;}
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
     inline const Aws::String& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
     inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
     inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
     inline Deployment& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
-    inline Deployment& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline Deployment& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
-     * <p>The status of the deployment:</p> <ul> <li> <code>In Progress</code> : The
-     * deployment is in progress.</li> <li> <code>Deployed</code> : The deployment
-     * succeeded.</li> <li> <code>Failed</code> : The deployment failed.</li> </ul>
+     * <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> :
+     * The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The
+     * deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment
+     * failed.</p> </li> </ul>
      */
     inline Deployment& WithStatus(const char* value) { SetStatus(value); return *this;}
 
@@ -163,7 +175,7 @@ namespace Model
      * <p>For in-progress deployments, the time that the deloyment started.</p> <p>For
      * completed deployments, the time that the deployment ended.</p>
      */
-    inline void SetDeploymentTime(Aws::Utils::DateTime&& value) { m_deploymentTimeHasBeenSet = true; m_deploymentTime = value; }
+    inline void SetDeploymentTime(Aws::Utils::DateTime&& value) { m_deploymentTimeHasBeenSet = true; m_deploymentTime = std::move(value); }
 
     /**
      * <p>For in-progress deployments, the time that the deloyment started.</p> <p>For
@@ -175,7 +187,7 @@ namespace Model
      * <p>For in-progress deployments, the time that the deloyment started.</p> <p>For
      * completed deployments, the time that the deployment ended.</p>
      */
-    inline Deployment& WithDeploymentTime(Aws::Utils::DateTime&& value) { SetDeploymentTime(value); return *this;}
+    inline Deployment& WithDeploymentTime(Aws::Utils::DateTime&& value) { SetDeploymentTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_versionLabel;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,10 @@ namespace Model
 {
 
   /**
-   * <p>Request a new generated client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
+   * <p>Request a new generated client SDK for a <a>RestApi</a> and
+   * <a>Stage</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetSdkRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetSdkRequest : public APIGatewayRequest
   {
@@ -39,6 +44,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
@@ -53,7 +59,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
@@ -68,7 +74,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
      */
-    inline GetSdkRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline GetSdkRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
@@ -88,7 +94,7 @@ namespace Model
     /**
      * <p>The name of the <a>Stage</a> that the SDK will use.</p>
      */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
+    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
 
     /**
      * <p>The name of the <a>Stage</a> that the SDK will use.</p>
@@ -103,7 +109,7 @@ namespace Model
     /**
      * <p>The name of the <a>Stage</a> that the SDK will use.</p>
      */
-    inline GetSdkRequest& WithStageName(Aws::String&& value) { SetStageName(value); return *this;}
+    inline GetSdkRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the <a>Stage</a> that the SDK will use.</p>
@@ -126,7 +132,7 @@ namespace Model
      * <p>The language for the generated SDK. Currently <code>javascript</code>,
      * <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
      */
-    inline void SetSdkType(Aws::String&& value) { m_sdkTypeHasBeenSet = true; m_sdkType = value; }
+    inline void SetSdkType(Aws::String&& value) { m_sdkTypeHasBeenSet = true; m_sdkType = std::move(value); }
 
     /**
      * <p>The language for the generated SDK. Currently <code>javascript</code>,
@@ -144,7 +150,7 @@ namespace Model
      * <p>The language for the generated SDK. Currently <code>javascript</code>,
      * <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
      */
-    inline GetSdkRequest& WithSdkType(Aws::String&& value) { SetSdkType(value); return *this;}
+    inline GetSdkRequest& WithSdkType(Aws::String&& value) { SetSdkType(std::move(value)); return *this;}
 
     /**
      * <p>The language for the generated SDK. Currently <code>javascript</code>,
@@ -180,7 +186,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = value; }
+    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -200,7 +206,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(value); return *this;}
+    inline GetSdkRequest& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -210,7 +216,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -220,7 +226,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -230,7 +236,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -240,7 +246,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -250,7 +256,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -260,7 +266,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A key-value map of query string parameters that specify properties of the
@@ -270,7 +276,7 @@ namespace Model
      * <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and
      * <code>invokerPackage</code> are required.</p>
      */
-    inline GetSdkRequest& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters[key] = value; return *this; }
+    inline GetSdkRequest& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
 
   private:
     Aws::String m_restApiId;

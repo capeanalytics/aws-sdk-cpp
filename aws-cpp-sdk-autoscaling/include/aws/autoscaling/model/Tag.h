@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a tag for an Auto Scaling group.</p>
+   * <p>Describes a tag for an Auto Scaling group.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/Tag">AWS API
+   * Reference</a></p>
    */
   class AWS_AUTOSCALING_API Tag
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
 
     /**
      * <p>The name of the group.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline Tag& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline Tag& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The name of the group.</p>
@@ -95,7 +99,7 @@ namespace Model
      * <p>The type of resource. The only supported value is
      * <code>auto-scaling-group</code>.</p>
      */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
      * <p>The type of resource. The only supported value is
@@ -113,7 +117,7 @@ namespace Model
      * <p>The type of resource. The only supported value is
      * <code>auto-scaling-group</code>.</p>
      */
-    inline Tag& WithResourceType(Aws::String&& value) { SetResourceType(value); return *this;}
+    inline Tag& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
 
     /**
      * <p>The type of resource. The only supported value is
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>The tag key.</p>
      */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>The tag key.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>The tag key.</p>
      */
-    inline Tag& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>The tag key.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The tag value.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The tag value.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The tag value.</p>
      */
-    inline Tag& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline Tag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The tag value.</p>

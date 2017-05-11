@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>Request to describe an existing <a>Authorizers</a> resource.</p>
+   * <p>Request to describe an existing <a>Authorizers</a> resource.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetAuthorizersRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetAuthorizersRequest : public APIGatewayRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
@@ -52,7 +58,7 @@ namespace Model
     /**
      * <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
      */
-    inline GetAuthorizersRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline GetAuthorizersRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
@@ -75,59 +81,52 @@ namespace Model
     inline GetAuthorizersRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline const Aws::String& GetPosition() const{ return m_position; }
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline void SetPosition(const Aws::String& value) { m_positionHasBeenSet = true; m_position = value; }
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
-    inline void SetPosition(Aws::String&& value) { m_positionHasBeenSet = true; m_position = value; }
+    inline void SetPosition(Aws::String&& value) { m_positionHasBeenSet = true; m_position = std::move(value); }
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline void SetPosition(const char* value) { m_positionHasBeenSet = true; m_position.assign(value); }
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline GetAuthorizersRequest& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
-    inline GetAuthorizersRequest& WithPosition(Aws::String&& value) { SetPosition(value); return *this;}
+    inline GetAuthorizersRequest& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
 
     /**
-     * <p>If not all <a>Authorizer</a> resources in the response were present, the
-     * position will specify where to start the next page of results.</p>
+     * <p>The current pagination position in the paged result set.</p>
      */
     inline GetAuthorizersRequest& WithPosition(const char* value) { SetPosition(value); return *this;}
 
     /**
-     * <p>Limit the number of <a>Authorizer</a> resources in the response.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline int GetLimit() const{ return m_limit; }
 
     /**
-     * <p>Limit the number of <a>Authorizer</a> resources in the response.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
-     * <p>Limit the number of <a>Authorizer</a> resources in the response.</p>
+     * <p>The maximum number of returned results per page.</p>
      */
     inline GetAuthorizersRequest& WithLimit(int value) { SetLimit(value); return *this;}
 

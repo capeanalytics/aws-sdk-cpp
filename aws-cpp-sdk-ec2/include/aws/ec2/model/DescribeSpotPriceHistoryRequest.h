@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/InstanceType.h>
 #include <aws/ec2/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeSpotPriceHistory.</p>
+   * <p>Contains the parameters for DescribeSpotPriceHistory.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotPriceHistoryRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeSpotPriceHistoryRequest : public EC2Request
   {
@@ -37,6 +42,11 @@ namespace Model
     DescribeSpotPriceHistoryRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -80,7 +90,7 @@ namespace Model
      * price history data, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The date and time, up to the past 90 days, from which to start retrieving the
@@ -94,7 +104,7 @@ namespace Model
      * price history data, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The date and time, up to the current date, from which to stop retrieving the
@@ -115,7 +125,7 @@ namespace Model
      * price history data, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>The date and time, up to the current date, from which to stop retrieving the
@@ -129,42 +139,49 @@ namespace Model
      * price history data, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
     inline const Aws::Vector<InstanceType>& GetInstanceTypes() const{ return m_instanceTypes; }
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
     inline void SetInstanceTypes(const Aws::Vector<InstanceType>& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes = value; }
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
-    inline void SetInstanceTypes(Aws::Vector<InstanceType>&& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes = value; }
+    inline void SetInstanceTypes(Aws::Vector<InstanceType>&& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes = std::move(value); }
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
     inline DescribeSpotPriceHistoryRequest& WithInstanceTypes(const Aws::Vector<InstanceType>& value) { SetInstanceTypes(value); return *this;}
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithInstanceTypes(Aws::Vector<InstanceType>&& value) { SetInstanceTypes(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithInstanceTypes(Aws::Vector<InstanceType>&& value) { SetInstanceTypes(std::move(value)); return *this;}
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
     inline DescribeSpotPriceHistoryRequest& AddInstanceTypes(const InstanceType& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes.push_back(value); return *this; }
 
     /**
-     * <p>Filters the results by the specified instance types.</p>
+     * <p>Filters the results by the specified instance types. Note that T2 and HS1
+     * instance types are not supported.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& AddInstanceTypes(InstanceType&& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes.push_back(value); return *this; }
+    inline DescribeSpotPriceHistoryRequest& AddInstanceTypes(InstanceType&& value) { m_instanceTypesHasBeenSet = true; m_instanceTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
@@ -179,7 +196,7 @@ namespace Model
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
      */
-    inline void SetProductDescriptions(Aws::Vector<Aws::String>&& value) { m_productDescriptionsHasBeenSet = true; m_productDescriptions = value; }
+    inline void SetProductDescriptions(Aws::Vector<Aws::String>&& value) { m_productDescriptionsHasBeenSet = true; m_productDescriptions = std::move(value); }
 
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
@@ -189,7 +206,7 @@ namespace Model
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithProductDescriptions(Aws::Vector<Aws::String>&& value) { SetProductDescriptions(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithProductDescriptions(Aws::Vector<Aws::String>&& value) { SetProductDescriptions(std::move(value)); return *this;}
 
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
@@ -199,7 +216,7 @@ namespace Model
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& AddProductDescriptions(Aws::String&& value) { m_productDescriptionsHasBeenSet = true; m_productDescriptions.push_back(value); return *this; }
+    inline DescribeSpotPriceHistoryRequest& AddProductDescriptions(Aws::String&& value) { m_productDescriptionsHasBeenSet = true; m_productDescriptions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Filters the results by the specified basic product descriptions.</p>
@@ -207,17 +224,17 @@ namespace Model
     inline DescribeSpotPriceHistoryRequest& AddProductDescriptions(const char* value) { m_productDescriptionsHasBeenSet = true; m_productDescriptions.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
@@ -225,17 +242,17 @@ namespace Model
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
@@ -243,35 +260,35 @@ namespace Model
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
@@ -279,35 +296,35 @@ namespace Model
     inline DescribeSpotPriceHistoryRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
      */
-    inline DescribeSpotPriceHistoryRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
@@ -315,22 +332,22 @@ namespace Model
     inline DescribeSpotPriceHistoryRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>availability-zone</code> - The
-     * Availability Zone for which prices should be returned.</p> </li> <li>
-     * <p><code>instance-type</code> - The type of instance (for example,
-     * <code>m3.medium</code>).</p> </li> <li> <p><code>product-description</code> -
+     * <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The
+     * Availability Zone for which prices should be returned.</p> </li> <li> <p>
+     * <code>instance-type</code> - The type of instance (for example,
+     * <code>m3.medium</code>).</p> </li> <li> <p> <code>product-description</code> -
      * The product description for the Spot price (<code>Linux/UNIX</code> | <code>SUSE
      * Linux</code> | <code>Windows</code> | <code>Linux/UNIX (Amazon VPC)</code> |
      * <code>SUSE Linux (Amazon VPC)</code> | <code>Windows (Amazon VPC)</code>).</p>
-     * </li> <li> <p><code>spot-price</code> - The Spot price. The value must match
+     * </li> <li> <p> <code>spot-price</code> - The Spot price. The value must match
      * exactly (or use wildcards; greater than or less than comparison is not
-     * supported).</p> </li> <li> <p><code>timestamp</code> - The timestamp of the Spot
-     * price history, in UTC format (for example,
+     * supported).</p> </li> <li> <p> <code>timestamp</code> - The timestamp of the
+     * Spot price history, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z). You can use
      * wildcards (* and ?). Greater than or less than comparison is not supported.</p>
      * </li> </ul>
      */
-    inline DescribeSpotPriceHistoryRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeSpotPriceHistoryRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Filters the results by the specified Availability Zone.</p>
@@ -345,7 +362,7 @@ namespace Model
     /**
      * <p>Filters the results by the specified Availability Zone.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>Filters the results by the specified Availability Zone.</p>
@@ -360,7 +377,7 @@ namespace Model
     /**
      * <p>Filters the results by the specified Availability Zone.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>Filters the results by the specified Availability Zone.</p>
@@ -401,7 +418,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of results.</p>
@@ -416,7 +433,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline DescribeSpotPriceHistoryRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeSpotPriceHistoryRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of results.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticloadbalancingv2/model/ProtocolEnum.h>
 #include <aws/elasticloadbalancingv2/model/Matcher.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateTargetGroup.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API CreateTargetGroupRequest : public ElasticLoadBalancingv2Request
   {
@@ -35,38 +36,57 @@ namespace Model
     CreateTargetGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
     inline CreateTargetGroupRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
-    inline CreateTargetGroupRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreateTargetGroupRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the target group.</p>
+     * <p>The name of the target group.</p> <p>This name must be unique per region per
+     * account, can have a maximum of 32 characters, must contain only alphanumeric
+     * characters or hyphens, and must not begin or end with a hyphen.</p>
      */
     inline CreateTargetGroupRequest& WithName(const char* value) { SetName(value); return *this;}
 
@@ -83,7 +103,7 @@ namespace Model
     /**
      * <p>The protocol to use for routing traffic to the targets.</p>
      */
-    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
 
     /**
      * <p>The protocol to use for routing traffic to the targets.</p>
@@ -93,7 +113,7 @@ namespace Model
     /**
      * <p>The protocol to use for routing traffic to the targets.</p>
      */
-    inline CreateTargetGroupRequest& WithProtocol(ProtocolEnum&& value) { SetProtocol(value); return *this;}
+    inline CreateTargetGroupRequest& WithProtocol(ProtocolEnum&& value) { SetProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The port on which the targets receive traffic. This port is used unless you
@@ -126,7 +146,7 @@ namespace Model
     /**
      * <p>The identifier of the virtual private cloud (VPC).</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The identifier of the virtual private cloud (VPC).</p>
@@ -141,7 +161,7 @@ namespace Model
     /**
      * <p>The identifier of the virtual private cloud (VPC).</p>
      */
-    inline CreateTargetGroupRequest& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline CreateTargetGroupRequest& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the virtual private cloud (VPC).</p>
@@ -164,7 +184,7 @@ namespace Model
      * <p>The protocol the load balancer uses when performing health checks on targets.
      * The default is the HTTP protocol.</p>
      */
-    inline void SetHealthCheckProtocol(ProtocolEnum&& value) { m_healthCheckProtocolHasBeenSet = true; m_healthCheckProtocol = value; }
+    inline void SetHealthCheckProtocol(ProtocolEnum&& value) { m_healthCheckProtocolHasBeenSet = true; m_healthCheckProtocol = std::move(value); }
 
     /**
      * <p>The protocol the load balancer uses when performing health checks on targets.
@@ -176,7 +196,7 @@ namespace Model
      * <p>The protocol the load balancer uses when performing health checks on targets.
      * The default is the HTTP protocol.</p>
      */
-    inline CreateTargetGroupRequest& WithHealthCheckProtocol(ProtocolEnum&& value) { SetHealthCheckProtocol(value); return *this;}
+    inline CreateTargetGroupRequest& WithHealthCheckProtocol(ProtocolEnum&& value) { SetHealthCheckProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The port the load balancer uses when performing health checks on targets. The
@@ -197,7 +217,7 @@ namespace Model
      * default is <code>traffic-port</code>, which indicates the port on which each
      * target receives traffic from the load balancer.</p>
      */
-    inline void SetHealthCheckPort(Aws::String&& value) { m_healthCheckPortHasBeenSet = true; m_healthCheckPort = value; }
+    inline void SetHealthCheckPort(Aws::String&& value) { m_healthCheckPortHasBeenSet = true; m_healthCheckPort = std::move(value); }
 
     /**
      * <p>The port the load balancer uses when performing health checks on targets. The
@@ -218,7 +238,7 @@ namespace Model
      * default is <code>traffic-port</code>, which indicates the port on which each
      * target receives traffic from the load balancer.</p>
      */
-    inline CreateTargetGroupRequest& WithHealthCheckPort(Aws::String&& value) { SetHealthCheckPort(value); return *this;}
+    inline CreateTargetGroupRequest& WithHealthCheckPort(Aws::String&& value) { SetHealthCheckPort(std::move(value)); return *this;}
 
     /**
      * <p>The port the load balancer uses when performing health checks on targets. The
@@ -243,7 +263,7 @@ namespace Model
      * <p>The ping path that is the destination on the targets for health checks. The
      * default is /.</p>
      */
-    inline void SetHealthCheckPath(Aws::String&& value) { m_healthCheckPathHasBeenSet = true; m_healthCheckPath = value; }
+    inline void SetHealthCheckPath(Aws::String&& value) { m_healthCheckPathHasBeenSet = true; m_healthCheckPath = std::move(value); }
 
     /**
      * <p>The ping path that is the destination on the targets for health checks. The
@@ -261,7 +281,7 @@ namespace Model
      * <p>The ping path that is the destination on the targets for health checks. The
      * default is /.</p>
      */
-    inline CreateTargetGroupRequest& WithHealthCheckPath(Aws::String&& value) { SetHealthCheckPath(value); return *this;}
+    inline CreateTargetGroupRequest& WithHealthCheckPath(Aws::String&& value) { SetHealthCheckPath(std::move(value)); return *this;}
 
     /**
      * <p>The ping path that is the destination on the targets for health checks. The
@@ -357,7 +377,7 @@ namespace Model
      * <p>The HTTP codes to use when checking for a successful response from a target.
      * The default is 200.</p>
      */
-    inline void SetMatcher(Matcher&& value) { m_matcherHasBeenSet = true; m_matcher = value; }
+    inline void SetMatcher(Matcher&& value) { m_matcherHasBeenSet = true; m_matcher = std::move(value); }
 
     /**
      * <p>The HTTP codes to use when checking for a successful response from a target.
@@ -369,7 +389,7 @@ namespace Model
      * <p>The HTTP codes to use when checking for a successful response from a target.
      * The default is 200.</p>
      */
-    inline CreateTargetGroupRequest& WithMatcher(Matcher&& value) { SetMatcher(value); return *this;}
+    inline CreateTargetGroupRequest& WithMatcher(Matcher&& value) { SetMatcher(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

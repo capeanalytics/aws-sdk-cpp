@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudsearch/model/DescribeSuggestersRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -49,10 +50,15 @@ Aws::String DescribeSuggestersRequest::SerializePayload() const
 
   if(m_deployedHasBeenSet)
   {
-    ss << "Deployed=" << m_deployed << "&";
+    ss << "Deployed=" << std::boolalpha << m_deployed << "&";
   }
 
   ss << "Version=2013-01-01";
   return ss.str();
 }
 
+
+void  DescribeSuggestersRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

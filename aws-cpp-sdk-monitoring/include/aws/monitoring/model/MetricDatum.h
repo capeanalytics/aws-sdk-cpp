@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -21,6 +22,7 @@
 #include <aws/monitoring/model/StatisticSet.h>
 #include <aws/monitoring/model/StandardUnit.h>
 #include <aws/monitoring/model/Dimension.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,9 +39,10 @@ namespace Model
 {
 
   /**
-   * <p> The <code>MetricDatum</code> data type encapsulates the information sent
-   * with <a>PutMetricData</a> to either create a new metric or add new values to be
-   * aggregated into an existing metric. </p>
+   * <p>Encapsulates the information sent to either create a metric or add new values
+   * to be aggregated into an existing metric.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/MetricDatum">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDWATCH_API MetricDatum
   {
@@ -64,7 +67,7 @@ namespace Model
     /**
      * <p>The name of the metric.</p>
      */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
+    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
 
     /**
      * <p>The name of the metric.</p>
@@ -79,7 +82,7 @@ namespace Model
     /**
      * <p>The name of the metric.</p>
      */
-    inline MetricDatum& WithMetricName(Aws::String&& value) { SetMetricName(value); return *this;}
+    inline MetricDatum& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the metric.</p>
@@ -87,143 +90,121 @@ namespace Model
     inline MetricDatum& WithMetricName(const char* value) { SetMetricName(value); return *this;}
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
     inline const Aws::Vector<Dimension>& GetDimensions() const{ return m_dimensions; }
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
     inline void SetDimensions(const Aws::Vector<Dimension>& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
-    inline void SetDimensions(Aws::Vector<Dimension>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
+    inline void SetDimensions(Aws::Vector<Dimension>&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
     inline MetricDatum& WithDimensions(const Aws::Vector<Dimension>& value) { SetDimensions(value); return *this;}
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
-    inline MetricDatum& WithDimensions(Aws::Vector<Dimension>&& value) { SetDimensions(value); return *this;}
+    inline MetricDatum& WithDimensions(Aws::Vector<Dimension>&& value) { SetDimensions(std::move(value)); return *this;}
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
     inline MetricDatum& AddDimensions(const Dimension& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
 
     /**
-     * <p>A list of dimensions associated with the metric. Note, when using the
-     * Dimensions value in a query, you need to append .member.N to it (e.g.,
-     * Dimensions.member.N).</p>
+     * <p>The dimensions associated with the metric.</p>
      */
-    inline MetricDatum& AddDimensions(Dimension&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(value); return *this; }
+    inline MetricDatum& AddDimensions(Dimension&& value) { m_dimensionsHasBeenSet = true; m_dimensions.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time
-     * (UTC) format. If not specified, the default value is set to the time the metric
-     * data was received.</p>
+     * <p>The time the metric data was received, expressed as the number of
+     * milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
      */
     inline const Aws::Utils::DateTime& GetTimestamp() const{ return m_timestamp; }
 
     /**
-     * <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time
-     * (UTC) format. If not specified, the default value is set to the time the metric
-     * data was received.</p>
+     * <p>The time the metric data was received, expressed as the number of
+     * milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
      */
     inline void SetTimestamp(const Aws::Utils::DateTime& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
 
     /**
-     * <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time
-     * (UTC) format. If not specified, the default value is set to the time the metric
-     * data was received.</p>
+     * <p>The time the metric data was received, expressed as the number of
+     * milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
      */
-    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
+    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
 
     /**
-     * <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time
-     * (UTC) format. If not specified, the default value is set to the time the metric
-     * data was received.</p>
+     * <p>The time the metric data was received, expressed as the number of
+     * milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
      */
     inline MetricDatum& WithTimestamp(const Aws::Utils::DateTime& value) { SetTimestamp(value); return *this;}
 
     /**
-     * <p>The time stamp used for the metric in ISO 8601 Universal Coordinated Time
-     * (UTC) format. If not specified, the default value is set to the time the metric
-     * data was received.</p>
+     * <p>The time the metric data was received, expressed as the number of
+     * milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
      */
-    inline MetricDatum& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(value); return *this;}
+    inline MetricDatum& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(std::move(value)); return *this;}
 
     /**
-     * <p>The value for the metric.</p> <important> <p>Although the <code>Value</code>
-     * parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects
-     * values that are either too small or too large. Values must be in the range of
-     * 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
-     * addition, special values (e.g., NaN, +Infinity, -Infinity) are not
-     * supported.</p> </important>
+     * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
+     * type Double, Amazon CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     * +Infinity, -Infinity) are not supported.</p>
      */
     inline double GetValue() const{ return m_value; }
 
     /**
-     * <p>The value for the metric.</p> <important> <p>Although the <code>Value</code>
-     * parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects
-     * values that are either too small or too large. Values must be in the range of
-     * 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
-     * addition, special values (e.g., NaN, +Infinity, -Infinity) are not
-     * supported.</p> </important>
+     * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
+     * type Double, Amazon CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     * +Infinity, -Infinity) are not supported.</p>
      */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>The value for the metric.</p> <important> <p>Although the <code>Value</code>
-     * parameter accepts numbers of type <code>Double</code>, Amazon CloudWatch rejects
-     * values that are either too small or too large. Values must be in the range of
-     * 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In
-     * addition, special values (e.g., NaN, +Infinity, -Infinity) are not
-     * supported.</p> </important>
+     * <p>The value for the metric.</p> <p>Although the parameter accepts numbers of
+     * type Double, Amazon CloudWatch rejects values that are either too small or too
+     * large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
+     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+     * +Infinity, -Infinity) are not supported.</p>
      */
     inline MetricDatum& WithValue(double value) { SetValue(value); return *this;}
 
     /**
-     * <p>A set of statistical values describing the metric.</p>
+     * <p>The statistical values for the metric.</p>
      */
     inline const StatisticSet& GetStatisticValues() const{ return m_statisticValues; }
 
     /**
-     * <p>A set of statistical values describing the metric.</p>
+     * <p>The statistical values for the metric.</p>
      */
     inline void SetStatisticValues(const StatisticSet& value) { m_statisticValuesHasBeenSet = true; m_statisticValues = value; }
 
     /**
-     * <p>A set of statistical values describing the metric.</p>
+     * <p>The statistical values for the metric.</p>
      */
-    inline void SetStatisticValues(StatisticSet&& value) { m_statisticValuesHasBeenSet = true; m_statisticValues = value; }
+    inline void SetStatisticValues(StatisticSet&& value) { m_statisticValuesHasBeenSet = true; m_statisticValues = std::move(value); }
 
     /**
-     * <p>A set of statistical values describing the metric.</p>
+     * <p>The statistical values for the metric.</p>
      */
     inline MetricDatum& WithStatisticValues(const StatisticSet& value) { SetStatisticValues(value); return *this;}
 
     /**
-     * <p>A set of statistical values describing the metric.</p>
+     * <p>The statistical values for the metric.</p>
      */
-    inline MetricDatum& WithStatisticValues(StatisticSet&& value) { SetStatisticValues(value); return *this;}
+    inline MetricDatum& WithStatisticValues(StatisticSet&& value) { SetStatisticValues(std::move(value)); return *this;}
 
     /**
      * <p>The unit of the metric.</p>
@@ -238,7 +219,7 @@ namespace Model
     /**
      * <p>The unit of the metric.</p>
      */
-    inline void SetUnit(StandardUnit&& value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline void SetUnit(StandardUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
 
     /**
      * <p>The unit of the metric.</p>
@@ -248,7 +229,7 @@ namespace Model
     /**
      * <p>The unit of the metric.</p>
      */
-    inline MetricDatum& WithUnit(StandardUnit&& value) { SetUnit(value); return *this;}
+    inline MetricDatum& WithUnit(StandardUnit&& value) { SetUnit(std::move(value)); return *this;}
 
   private:
     Aws::String m_metricName;

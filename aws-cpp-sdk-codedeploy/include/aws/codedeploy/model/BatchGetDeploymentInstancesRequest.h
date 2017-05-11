@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a batch get deployment instances operation.</p>
+   * <p>Represents the input of a batch get deployment instances
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeploymentInstancesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API BatchGetDeploymentInstancesRequest : public CodeDeployRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The unique ID of a deployment.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The unique ID of a deployment.</p>
      */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = value; }
+    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::move(value); }
 
     /**
      * <p>The unique ID of a deployment.</p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>The unique ID of a deployment.</p>
      */
-    inline BatchGetDeploymentInstancesRequest& WithDeploymentId(Aws::String&& value) { SetDeploymentId(value); return *this;}
+    inline BatchGetDeploymentInstancesRequest& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID of a deployment.</p>
@@ -84,7 +90,7 @@ namespace Model
     /**
      * <p>The unique IDs of instances in the deployment group.</p>
      */
-    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = value; }
+    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::move(value); }
 
     /**
      * <p>The unique IDs of instances in the deployment group.</p>
@@ -94,7 +100,7 @@ namespace Model
     /**
      * <p>The unique IDs of instances in the deployment group.</p>
      */
-    inline BatchGetDeploymentInstancesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(value); return *this;}
+    inline BatchGetDeploymentInstancesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(std::move(value)); return *this;}
 
     /**
      * <p>The unique IDs of instances in the deployment group.</p>
@@ -104,7 +110,7 @@ namespace Model
     /**
      * <p>The unique IDs of instances in the deployment group.</p>
      */
-    inline BatchGetDeploymentInstancesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
+    inline BatchGetDeploymentInstancesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The unique IDs of instances in the deployment group.</p>

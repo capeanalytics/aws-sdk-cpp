@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/ec2/model/AvailabilityZoneState.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/AvailabilityZoneMessage.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an Availability Zone.</p>
+   * <p>Describes an Availability Zone.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AvailabilityZone">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AvailabilityZone
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The name of the Availability Zone.</p>
      */
-    inline void SetZoneName(Aws::String&& value) { m_zoneNameHasBeenSet = true; m_zoneName = value; }
+    inline void SetZoneName(Aws::String&& value) { m_zoneNameHasBeenSet = true; m_zoneName = std::move(value); }
 
     /**
      * <p>The name of the Availability Zone.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The name of the Availability Zone.</p>
      */
-    inline AvailabilityZone& WithZoneName(Aws::String&& value) { SetZoneName(value); return *this;}
+    inline AvailabilityZone& WithZoneName(Aws::String&& value) { SetZoneName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Availability Zone.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The state of the Availability Zone.</p>
      */
-    inline void SetState(AvailabilityZoneState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(AvailabilityZoneState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the Availability Zone.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The state of the Availability Zone.</p>
      */
-    inline AvailabilityZone& WithState(AvailabilityZoneState&& value) { SetState(value); return *this;}
+    inline AvailabilityZone& WithState(AvailabilityZoneState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The name of the region.</p>
@@ -120,7 +124,7 @@ namespace Model
     /**
      * <p>The name of the region.</p>
      */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
+    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
 
     /**
      * <p>The name of the region.</p>
@@ -135,7 +139,7 @@ namespace Model
     /**
      * <p>The name of the region.</p>
      */
-    inline AvailabilityZone& WithRegionName(Aws::String&& value) { SetRegionName(value); return *this;}
+    inline AvailabilityZone& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the region.</p>
@@ -155,7 +159,7 @@ namespace Model
     /**
      * <p>Any messages about the Availability Zone.</p>
      */
-    inline void SetMessages(Aws::Vector<AvailabilityZoneMessage>&& value) { m_messagesHasBeenSet = true; m_messages = value; }
+    inline void SetMessages(Aws::Vector<AvailabilityZoneMessage>&& value) { m_messagesHasBeenSet = true; m_messages = std::move(value); }
 
     /**
      * <p>Any messages about the Availability Zone.</p>
@@ -165,7 +169,7 @@ namespace Model
     /**
      * <p>Any messages about the Availability Zone.</p>
      */
-    inline AvailabilityZone& WithMessages(Aws::Vector<AvailabilityZoneMessage>&& value) { SetMessages(value); return *this;}
+    inline AvailabilityZone& WithMessages(Aws::Vector<AvailabilityZoneMessage>&& value) { SetMessages(std::move(value)); return *this;}
 
     /**
      * <p>Any messages about the Availability Zone.</p>
@@ -175,7 +179,7 @@ namespace Model
     /**
      * <p>Any messages about the Availability Zone.</p>
      */
-    inline AvailabilityZone& AddMessages(AvailabilityZoneMessage&& value) { m_messagesHasBeenSet = true; m_messages.push_back(value); return *this; }
+    inline AvailabilityZone& AddMessages(AvailabilityZoneMessage&& value) { m_messagesHasBeenSet = true; m_messages.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_zoneName;

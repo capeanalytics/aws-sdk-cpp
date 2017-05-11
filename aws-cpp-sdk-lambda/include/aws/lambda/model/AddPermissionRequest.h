@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/lambda/LambdaRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/AddPermissionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API AddPermissionRequest : public LambdaRequest
   {
@@ -39,6 +43,7 @@ namespace Model
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
+
     /**
      * <p>Name of the Lambda function whose resource policy you are updating by adding
      * a new permission.</p> <p> You can specify a function name (for example,
@@ -47,8 +52,8 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
@@ -60,8 +65,8 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
@@ -73,10 +78,10 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
-    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
+    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
      * <p>Name of the Lambda function whose resource policy you are updating by adding
@@ -86,8 +91,8 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
@@ -99,8 +104,8 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
     inline AddPermissionRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
@@ -112,10 +117,10 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
-    inline AddPermissionRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(value); return *this;}
+    inline AddPermissionRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the Lambda function whose resource policy you are updating by adding
@@ -125,8 +130,8 @@ namespace Model
      * <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda
      * also allows you to specify partial ARN (for example,
      * <code>account-id:Thumbnail</code>). Note that the length constraint applies only
-     * to the ARN. If you specify only the function name, it is limited to 64 character
-     * in length. </p>
+     * to the ARN. If you specify only the function name, it is limited to 64
+     * characters in length. </p>
      */
     inline AddPermissionRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
@@ -143,7 +148,7 @@ namespace Model
     /**
      * <p>A unique statement identifier.</p>
      */
-    inline void SetStatementId(Aws::String&& value) { m_statementIdHasBeenSet = true; m_statementId = value; }
+    inline void SetStatementId(Aws::String&& value) { m_statementIdHasBeenSet = true; m_statementId = std::move(value); }
 
     /**
      * <p>A unique statement identifier.</p>
@@ -158,7 +163,7 @@ namespace Model
     /**
      * <p>A unique statement identifier.</p>
      */
-    inline AddPermissionRequest& WithStatementId(Aws::String&& value) { SetStatementId(value); return *this;}
+    inline AddPermissionRequest& WithStatementId(Aws::String&& value) { SetStatementId(std::move(value)); return *this;}
 
     /**
      * <p>A unique statement identifier.</p>
@@ -187,7 +192,7 @@ namespace Model
      * example, <code>lambda:CreateFunction</code>. You can use wildcard
      * (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
      */
-    inline void SetAction(Aws::String&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(Aws::String&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>The AWS Lambda action you want to allow in this statement. Each Lambda action
@@ -211,7 +216,7 @@ namespace Model
      * example, <code>lambda:CreateFunction</code>. You can use wildcard
      * (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
      */
-    inline AddPermissionRequest& WithAction(Aws::String&& value) { SetAction(value); return *this;}
+    inline AddPermissionRequest& WithAction(Aws::String&& value) { SetAction(std::move(value)); return *this;}
 
     /**
      * <p>The AWS Lambda action you want to allow in this statement. Each Lambda action
@@ -249,7 +254,7 @@ namespace Model
      * you might want to allow a custom application in another AWS account to push
      * events to AWS Lambda by invoking your function. </p>
      */
-    inline void SetPrincipal(Aws::String&& value) { m_principalHasBeenSet = true; m_principal = value; }
+    inline void SetPrincipal(Aws::String&& value) { m_principalHasBeenSet = true; m_principal = std::move(value); }
 
     /**
      * <p>The principal who is getting this permission. It can be Amazon S3 service
@@ -279,7 +284,7 @@ namespace Model
      * you might want to allow a custom application in another AWS account to push
      * events to AWS Lambda by invoking your function. </p>
      */
-    inline AddPermissionRequest& WithPrincipal(Aws::String&& value) { SetPrincipal(value); return *this;}
+    inline AddPermissionRequest& WithPrincipal(Aws::String&& value) { SetPrincipal(std::move(value)); return *this;}
 
     /**
      * <p>The principal who is getting this permission. It can be Amazon S3 service
@@ -292,163 +297,149 @@ namespace Model
     inline AddPermissionRequest& WithPrincipal(const char* value) { SetPrincipal(value); return *this;}
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
     inline const Aws::String& GetSourceArn() const{ return m_sourceArn; }
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
     inline void SetSourceArn(const Aws::String& value) { m_sourceArnHasBeenSet = true; m_sourceArn = value; }
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
-    inline void SetSourceArn(Aws::String&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = value; }
+    inline void SetSourceArn(Aws::String&& value) { m_sourceArnHasBeenSet = true; m_sourceArn = std::move(value); }
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
     inline void SetSourceArn(const char* value) { m_sourceArnHasBeenSet = true; m_sourceArn.assign(value); }
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
     inline AddPermissionRequest& WithSourceArn(const Aws::String& value) { SetSourceArn(value); return *this;}
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
-    inline AddPermissionRequest& WithSourceArn(Aws::String&& value) { SetSourceArn(value); return *this;}
+    inline AddPermissionRequest& WithSourceArn(Aws::String&& value) { SetSourceArn(std::move(value)); return *this;}
 
     /**
-     * <p>This is optional; however, when granting Amazon S3 permission to invoke your
-     * function, you should specify this field with the Amazon Resource Name (ARN) as
-     * its value. This ensures that only events generated from the specified source can
-     * invoke the function.</p> <important><p>If you add a permission for the Amazon S3
-     * principal without providing the source ARN, any AWS account that creates a
-     * mapping to your function ARN can send events to invoke your Lambda function from
-     * Amazon S3.</p> </important>
+     * <p>This is optional; however, when granting permission to invoke your function,
+     * you should specify this field with the Amazon Resource Name (ARN) as its value.
+     * This ensures that only events generated from the specified source can invoke the
+     * function.</p> <important> <p>If you add a permission without providing the
+     * source ARN, any AWS account that creates a mapping to your function ARN can send
+     * events to invoke your Lambda function.</p> </important>
      */
     inline AddPermissionRequest& WithSourceArn(const char* value) { SetSourceArn(value); return *this;}
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
     inline const Aws::String& GetSourceAccount() const{ return m_sourceAccount; }
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
     inline void SetSourceAccount(const Aws::String& value) { m_sourceAccountHasBeenSet = true; m_sourceAccount = value; }
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
-    inline void SetSourceAccount(Aws::String&& value) { m_sourceAccountHasBeenSet = true; m_sourceAccount = value; }
+    inline void SetSourceAccount(Aws::String&& value) { m_sourceAccountHasBeenSet = true; m_sourceAccount = std::move(value); }
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
     inline void SetSourceAccount(const char* value) { m_sourceAccountHasBeenSet = true; m_sourceAccount.assign(value); }
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
     inline AddPermissionRequest& WithSourceAccount(const Aws::String& value) { SetSourceAccount(value); return *this;}
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
-    inline AddPermissionRequest& WithSourceAccount(Aws::String&& value) { SetSourceAccount(value); return *this;}
+    inline AddPermissionRequest& WithSourceAccount(Aws::String&& value) { SetSourceAccount(std::move(value)); return *this;}
 
     /**
-     * <p>This parameter is used for S3 and SES only. The AWS account ID (without a
-     * hyphen) of the source owner. For example, if the <code>SourceArn</code>
-     * identifies a bucket, then this is the bucket owner's account ID. You can use
-     * this additional condition to ensure the bucket you specify is owned by a
-     * specific account (it is possible the bucket owner deleted the bucket and some
-     * other AWS account created the bucket). You can also use this condition to
-     * specify all sources (that is, you don't specify the <code>SourceArn</code>)
-     * owned by a specific account. </p>
+     * <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen)
+     * of the source owner. For example, if the <code>SourceArn</code> identifies a
+     * bucket, then this is the bucket owner's account ID. You can use this additional
+     * condition to ensure the bucket you specify is owned by a specific account (it is
+     * possible the bucket owner deleted the bucket and some other AWS account created
+     * the bucket). You can also use this condition to specify all sources (that is,
+     * you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
      */
     inline AddPermissionRequest& WithSourceAccount(const char* value) { SetSourceAccount(value); return *this;}
 
@@ -468,7 +459,7 @@ namespace Model
      * <p>A unique token that must be supplied by the principal invoking the function.
      * This is currently only used for Alexa Smart Home functions.</p>
      */
-    inline void SetEventSourceToken(Aws::String&& value) { m_eventSourceTokenHasBeenSet = true; m_eventSourceToken = value; }
+    inline void SetEventSourceToken(Aws::String&& value) { m_eventSourceTokenHasBeenSet = true; m_eventSourceToken = std::move(value); }
 
     /**
      * <p>A unique token that must be supplied by the principal invoking the function.
@@ -486,7 +477,7 @@ namespace Model
      * <p>A unique token that must be supplied by the principal invoking the function.
      * This is currently only used for Alexa Smart Home functions.</p>
      */
-    inline AddPermissionRequest& WithEventSourceToken(Aws::String&& value) { SetEventSourceToken(value); return *this;}
+    inline AddPermissionRequest& WithEventSourceToken(Aws::String&& value) { SetEventSourceToken(std::move(value)); return *this;}
 
     /**
      * <p>A unique token that must be supplied by the principal invoking the function.
@@ -540,7 +531,7 @@ namespace Model
      * is made using unqualified function ARN.</p> <p>
      * <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
      */
-    inline void SetQualifier(Aws::String&& value) { m_qualifierHasBeenSet = true; m_qualifier = value; }
+    inline void SetQualifier(Aws::String&& value) { m_qualifierHasBeenSet = true; m_qualifier = std::move(value); }
 
     /**
      * <p>You can use this optional query parameter to describe a qualified ARN using a
@@ -588,7 +579,7 @@ namespace Model
      * is made using unqualified function ARN.</p> <p>
      * <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
      */
-    inline AddPermissionRequest& WithQualifier(Aws::String&& value) { SetQualifier(value); return *this;}
+    inline AddPermissionRequest& WithQualifier(Aws::String&& value) { SetQualifier(std::move(value)); return *this;}
 
     /**
      * <p>You can use this optional query parameter to describe a qualified ARN using a

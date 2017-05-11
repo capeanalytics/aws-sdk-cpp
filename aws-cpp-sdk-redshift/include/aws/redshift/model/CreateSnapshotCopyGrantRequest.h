@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/redshift/RedshiftRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/redshift/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>The result of the <code>CreateSnapshotCopyGrant</code> action.</p>
+   * <p>The result of the <code>CreateSnapshotCopyGrant</code> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateSnapshotCopyGrantMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API CreateSnapshotCopyGrantRequest : public RedshiftRequest
   {
@@ -35,73 +40,78 @@ namespace Model
     CreateSnapshotCopyGrantRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
     inline const Aws::String& GetSnapshotCopyGrantName() const{ return m_snapshotCopyGrantName; }
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
     inline void SetSnapshotCopyGrantName(const Aws::String& value) { m_snapshotCopyGrantNameHasBeenSet = true; m_snapshotCopyGrantName = value; }
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
-    inline void SetSnapshotCopyGrantName(Aws::String&& value) { m_snapshotCopyGrantNameHasBeenSet = true; m_snapshotCopyGrantName = value; }
+    inline void SetSnapshotCopyGrantName(Aws::String&& value) { m_snapshotCopyGrantNameHasBeenSet = true; m_snapshotCopyGrantName = std::move(value); }
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
     inline void SetSnapshotCopyGrantName(const char* value) { m_snapshotCopyGrantNameHasBeenSet = true; m_snapshotCopyGrantName.assign(value); }
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
     inline CreateSnapshotCopyGrantRequest& WithSnapshotCopyGrantName(const Aws::String& value) { SetSnapshotCopyGrantName(value); return *this;}
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
-    inline CreateSnapshotCopyGrantRequest& WithSnapshotCopyGrantName(Aws::String&& value) { SetSnapshotCopyGrantName(value); return *this;}
+    inline CreateSnapshotCopyGrantRequest& WithSnapshotCopyGrantName(Aws::String&& value) { SetSnapshotCopyGrantName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the snapshot copy grant. This name must be unique in the region
-     * for the AWS account.</p> <p> <p>Constraints:</p> <ul> <li>Must contain from 1 to
-     * 63 alphanumeric characters or hyphens.</li> <li>Alphabetic characters must be
-     * lowercase.</li> <li>First character must be a letter.</li> <li>Cannot end with a
-     * hyphen or contain two consecutive hyphens.</li> <li>Must be unique for all
-     * clusters within an AWS account.</li> </ul> </p>
+     * for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to
+     * 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters
+     * must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li>
+     * <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li>
+     * <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
      */
     inline CreateSnapshotCopyGrantRequest& WithSnapshotCopyGrantName(const char* value) { SetSnapshotCopyGrantName(value); return *this;}
 
@@ -121,7 +131,7 @@ namespace Model
      * <p>The unique identifier of the customer master key (CMK) to which to grant
      * Amazon Redshift permission. If no key is specified, the default key is used.</p>
      */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
+    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
 
     /**
      * <p>The unique identifier of the customer master key (CMK) to which to grant
@@ -139,7 +149,7 @@ namespace Model
      * <p>The unique identifier of the customer master key (CMK) to which to grant
      * Amazon Redshift permission. If no key is specified, the default key is used.</p>
      */
-    inline CreateSnapshotCopyGrantRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(value); return *this;}
+    inline CreateSnapshotCopyGrantRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier of the customer master key (CMK) to which to grant
@@ -160,7 +170,7 @@ namespace Model
     /**
      * <p>A list of tag instances.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>A list of tag instances.</p>
@@ -170,7 +180,7 @@ namespace Model
     /**
      * <p>A list of tag instances.</p>
      */
-    inline CreateSnapshotCopyGrantRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateSnapshotCopyGrantRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>A list of tag instances.</p>
@@ -180,7 +190,7 @@ namespace Model
     /**
      * <p>A list of tag instances.</p>
      */
-    inline CreateSnapshotCopyGrantRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreateSnapshotCopyGrantRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_snapshotCopyGrantName;

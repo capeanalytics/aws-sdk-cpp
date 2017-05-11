@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/GetIntegrationResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -24,11 +25,15 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetIntegrationResult::GetIntegrationResult()
+GetIntegrationResult::GetIntegrationResult() : 
+    m_type(IntegrationType::NOT_SET),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET)
 {
 }
 
-GetIntegrationResult::GetIntegrationResult(const AmazonWebServiceResult<JsonValue>& result)
+GetIntegrationResult::GetIntegrationResult(const AmazonWebServiceResult<JsonValue>& result) : 
+    m_type(IntegrationType::NOT_SET),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET)
 {
   *this = result;
 }
@@ -81,6 +86,12 @@ GetIntegrationResult& GetIntegrationResult::operator =(const AmazonWebServiceRes
   if(jsonValue.ValueExists("passthroughBehavior"))
   {
     m_passthroughBehavior = jsonValue.GetString("passthroughBehavior");
+
+  }
+
+  if(jsonValue.ValueExists("contentHandling"))
+  {
+    m_contentHandling = ContentHandlingStrategyMapper::GetContentHandlingStrategyForName(jsonValue.GetString("contentHandling"));
 
   }
 

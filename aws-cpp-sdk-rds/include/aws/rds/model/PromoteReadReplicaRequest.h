@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PromoteReadReplicaMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API PromoteReadReplicaRequest : public RDSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     PromoteReadReplicaRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
      * <p>Constraints:</p> <ul> <li> <p>Must be the identifier for an existing Read
@@ -61,7 +70,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul> <p>Example: <code>mydbinstance</code> </p>
      */
-    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = value; }
+    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::move(value); }
 
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
@@ -91,7 +100,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul> <p>Example: <code>mydbinstance</code> </p>
      */
-    inline PromoteReadReplicaRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(value); return *this;}
+    inline PromoteReadReplicaRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The DB instance identifier. This value is stored as a lowercase string.</p>
@@ -170,7 +179,7 @@ namespace Model
      * maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li>
      * </ul>
      */
-    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = value; }
+    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = std::move(value); }
 
     /**
      * <p> The daily time range during which automated backups are created if automated
@@ -215,7 +224,7 @@ namespace Model
      * maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li>
      * </ul>
      */
-    inline PromoteReadReplicaRequest& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(value); return *this;}
+    inline PromoteReadReplicaRequest& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(std::move(value)); return *this;}
 
     /**
      * <p> The daily time range during which automated backups are created if automated

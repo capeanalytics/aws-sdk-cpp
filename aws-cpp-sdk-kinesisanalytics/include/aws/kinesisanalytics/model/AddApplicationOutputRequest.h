@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/KinesisAnalyticsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/Output.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationOutputRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API AddApplicationOutputRequest : public KinesisAnalyticsRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Name of the application to which you want to add the output
@@ -52,7 +57,7 @@ namespace Model
      * <p>Name of the application to which you want to add the output
      * configuration.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>Name of the application to which you want to add the output
@@ -70,7 +75,7 @@ namespace Model
      * <p>Name of the application to which you want to add the output
      * configuration.</p>
      */
-    inline AddApplicationOutputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline AddApplicationOutputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the application to which you want to add the output
@@ -124,7 +129,7 @@ namespace Model
      * (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery
      * stream), and record the formation to use when writing to the destination.</p>
      */
-    inline void SetOutput(Output&& value) { m_outputHasBeenSet = true; m_output = value; }
+    inline void SetOutput(Output&& value) { m_outputHasBeenSet = true; m_output = std::move(value); }
 
     /**
      * <p>An array of objects, each describing one output configuration. In the output
@@ -140,7 +145,7 @@ namespace Model
      * (that is, an Amazon Kinesis stream or an Amazon Kinesis Firehose delivery
      * stream), and record the formation to use when writing to the destination.</p>
      */
-    inline AddApplicationOutputRequest& WithOutput(Output&& value) { SetOutput(value); return *this;}
+    inline AddApplicationOutputRequest& WithOutput(Output&& value) { SetOutput(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;

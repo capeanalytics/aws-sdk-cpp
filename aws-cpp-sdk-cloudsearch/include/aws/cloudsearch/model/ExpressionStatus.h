@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/cloudsearch/model/Expression.h>
 #include <aws/cloudsearch/model/OptionStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>The value of an <code>Expression</code> and its current status.</p>
+   * <p>The value of an <code>Expression</code> and its current status.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/ExpressionStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API ExpressionStatus
   {
@@ -61,7 +66,7 @@ namespace Model
      * <p>The expression that is evaluated for sorting while processing a search
      * request.</p>
      */
-    inline void SetOptions(Expression&& value) { m_optionsHasBeenSet = true; m_options = value; }
+    inline void SetOptions(Expression&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
 
     /**
      * <p>The expression that is evaluated for sorting while processing a search
@@ -73,7 +78,7 @@ namespace Model
      * <p>The expression that is evaluated for sorting while processing a search
      * request.</p>
      */
-    inline ExpressionStatus& WithOptions(Expression&& value) { SetOptions(value); return *this;}
+    inline ExpressionStatus& WithOptions(Expression&& value) { SetOptions(std::move(value)); return *this;}
 
     
     inline const OptionStatus& GetStatus() const{ return m_status; }
@@ -82,13 +87,13 @@ namespace Model
     inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     
     inline ExpressionStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
 
     
-    inline ExpressionStatus& WithStatus(OptionStatus&& value) { SetStatus(value); return *this;}
+    inline ExpressionStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     Expression m_options;

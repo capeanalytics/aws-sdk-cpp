@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/DeviceFarmRequest.h>
@@ -24,7 +25,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request sent to retrieve the account settings.</p>
+   * <p>Represents the request sent to retrieve the account settings.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetAccountSettingsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API GetAccountSettingsRequest : public DeviceFarmRequest
   {
@@ -33,6 +37,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
   };
 

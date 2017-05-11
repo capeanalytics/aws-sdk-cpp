@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/AttachmentStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 
   /**
    * <p>Describes a parameter used to set up an EBS volume in a block device
-   * mapping.</p>
+   * mapping.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EbsInstanceBlockDevice">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API EbsInstanceBlockDevice
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The ID of the EBS volume.</p>
      */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
+    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
 
     /**
      * <p>The ID of the EBS volume.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the EBS volume.</p>
      */
-    inline EbsInstanceBlockDevice& WithVolumeId(Aws::String&& value) { SetVolumeId(value); return *this;}
+    inline EbsInstanceBlockDevice& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the EBS volume.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The attachment state.</p>
      */
-    inline void SetStatus(AttachmentStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(AttachmentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The attachment state.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The attachment state.</p>
      */
-    inline EbsInstanceBlockDevice& WithStatus(AttachmentStatus&& value) { SetStatus(value); return *this;}
+    inline EbsInstanceBlockDevice& WithStatus(AttachmentStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The time stamp when the attachment initiated.</p>
@@ -120,7 +124,7 @@ namespace Model
     /**
      * <p>The time stamp when the attachment initiated.</p>
      */
-    inline void SetAttachTime(Aws::Utils::DateTime&& value) { m_attachTimeHasBeenSet = true; m_attachTime = value; }
+    inline void SetAttachTime(Aws::Utils::DateTime&& value) { m_attachTimeHasBeenSet = true; m_attachTime = std::move(value); }
 
     /**
      * <p>The time stamp when the attachment initiated.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>The time stamp when the attachment initiated.</p>
      */
-    inline EbsInstanceBlockDevice& WithAttachTime(Aws::Utils::DateTime&& value) { SetAttachTime(value); return *this;}
+    inline EbsInstanceBlockDevice& WithAttachTime(Aws::Utils::DateTime&& value) { SetAttachTime(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the volume is deleted on instance termination.</p>

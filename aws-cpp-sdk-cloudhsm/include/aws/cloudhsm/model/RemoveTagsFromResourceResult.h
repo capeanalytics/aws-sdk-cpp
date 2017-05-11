@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -52,7 +54,7 @@ namespace Model
     /**
      * <p>The status of the operation.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
 
     /**
      * <p>The status of the operation.</p>
@@ -67,7 +69,7 @@ namespace Model
     /**
      * <p>The status of the operation.</p>
      */
-    inline RemoveTagsFromResourceResult& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline RemoveTagsFromResourceResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the operation.</p>

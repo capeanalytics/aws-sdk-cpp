@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/model/CodeDeliveryDetailsType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CognitoIdentityProvider
 namespace Model
 {
   /**
-   * <p>The response from the server for a registration request.</p>
+   * <p>The response from the server for a registration request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SignUpResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API SignUpResult
   {
@@ -60,20 +65,35 @@ namespace Model
      */
     inline SignUpResult& WithUserConfirmed(bool value) { SetUserConfirmed(value); return *this;}
 
-    
+    /**
+     * <p>The code delivery details returned by the server response to the user
+     * registration request.</p>
+     */
     inline const CodeDeliveryDetailsType& GetCodeDeliveryDetails() const{ return m_codeDeliveryDetails; }
 
-    
+    /**
+     * <p>The code delivery details returned by the server response to the user
+     * registration request.</p>
+     */
     inline void SetCodeDeliveryDetails(const CodeDeliveryDetailsType& value) { m_codeDeliveryDetails = value; }
 
-    
-    inline void SetCodeDeliveryDetails(CodeDeliveryDetailsType&& value) { m_codeDeliveryDetails = value; }
+    /**
+     * <p>The code delivery details returned by the server response to the user
+     * registration request.</p>
+     */
+    inline void SetCodeDeliveryDetails(CodeDeliveryDetailsType&& value) { m_codeDeliveryDetails = std::move(value); }
 
-    
+    /**
+     * <p>The code delivery details returned by the server response to the user
+     * registration request.</p>
+     */
     inline SignUpResult& WithCodeDeliveryDetails(const CodeDeliveryDetailsType& value) { SetCodeDeliveryDetails(value); return *this;}
 
-    
-    inline SignUpResult& WithCodeDeliveryDetails(CodeDeliveryDetailsType&& value) { SetCodeDeliveryDetails(value); return *this;}
+    /**
+     * <p>The code delivery details returned by the server response to the user
+     * registration request.</p>
+     */
+    inline SignUpResult& WithCodeDeliveryDetails(CodeDeliveryDetailsType&& value) { SetCodeDeliveryDetails(std::move(value)); return *this;}
 
   private:
     bool m_userConfirmed;

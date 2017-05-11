@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticloadbalancingv2/model/Cipher.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about a policy used for SSL negotiation.</p>
+   * <p>Information about a policy used for SSL negotiation.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/SslPolicy">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API SslPolicy
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>The protocols.</p>
      */
-    inline void SetSslProtocols(Aws::Vector<Aws::String>&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols = value; }
+    inline void SetSslProtocols(Aws::Vector<Aws::String>&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols = std::move(value); }
 
     /**
      * <p>The protocols.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The protocols.</p>
      */
-    inline SslPolicy& WithSslProtocols(Aws::Vector<Aws::String>&& value) { SetSslProtocols(value); return *this;}
+    inline SslPolicy& WithSslProtocols(Aws::Vector<Aws::String>&& value) { SetSslProtocols(std::move(value)); return *this;}
 
     /**
      * <p>The protocols.</p>
@@ -79,7 +84,7 @@ namespace Model
     /**
      * <p>The protocols.</p>
      */
-    inline SslPolicy& AddSslProtocols(Aws::String&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.push_back(value); return *this; }
+    inline SslPolicy& AddSslProtocols(Aws::String&& value) { m_sslProtocolsHasBeenSet = true; m_sslProtocols.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The protocols.</p>
@@ -99,7 +104,7 @@ namespace Model
     /**
      * <p>The ciphers.</p>
      */
-    inline void SetCiphers(Aws::Vector<Cipher>&& value) { m_ciphersHasBeenSet = true; m_ciphers = value; }
+    inline void SetCiphers(Aws::Vector<Cipher>&& value) { m_ciphersHasBeenSet = true; m_ciphers = std::move(value); }
 
     /**
      * <p>The ciphers.</p>
@@ -109,7 +114,7 @@ namespace Model
     /**
      * <p>The ciphers.</p>
      */
-    inline SslPolicy& WithCiphers(Aws::Vector<Cipher>&& value) { SetCiphers(value); return *this;}
+    inline SslPolicy& WithCiphers(Aws::Vector<Cipher>&& value) { SetCiphers(std::move(value)); return *this;}
 
     /**
      * <p>The ciphers.</p>
@@ -119,7 +124,7 @@ namespace Model
     /**
      * <p>The ciphers.</p>
      */
-    inline SslPolicy& AddCiphers(Cipher&& value) { m_ciphersHasBeenSet = true; m_ciphers.push_back(value); return *this; }
+    inline SslPolicy& AddCiphers(Cipher&& value) { m_ciphersHasBeenSet = true; m_ciphers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The name of the policy.</p>
@@ -134,7 +139,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the policy.</p>
@@ -149,7 +154,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline SslPolicy& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline SslPolicy& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains default WorkSpace creation information.</p>
+   * <p>Contains default WorkSpace creation information.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DefaultWorkspaceCreationProperties">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API DefaultWorkspaceCreationProperties
   {
@@ -90,7 +95,7 @@ namespace Model
      * <p>The organizational unit (OU) in the directory that the WorkSpace machine
      * accounts are placed in.</p>
      */
-    inline void SetDefaultOu(Aws::String&& value) { m_defaultOuHasBeenSet = true; m_defaultOu = value; }
+    inline void SetDefaultOu(Aws::String&& value) { m_defaultOuHasBeenSet = true; m_defaultOu = std::move(value); }
 
     /**
      * <p>The organizational unit (OU) in the directory that the WorkSpace machine
@@ -108,7 +113,7 @@ namespace Model
      * <p>The organizational unit (OU) in the directory that the WorkSpace machine
      * accounts are placed in.</p>
      */
-    inline DefaultWorkspaceCreationProperties& WithDefaultOu(Aws::String&& value) { SetDefaultOu(value); return *this;}
+    inline DefaultWorkspaceCreationProperties& WithDefaultOu(Aws::String&& value) { SetDefaultOu(std::move(value)); return *this;}
 
     /**
      * <p>The organizational unit (OU) in the directory that the WorkSpace machine
@@ -132,7 +137,7 @@ namespace Model
      * <p>The identifier of any custom security groups that are applied to the
      * WorkSpaces when they are created.</p>
      */
-    inline void SetCustomSecurityGroupId(Aws::String&& value) { m_customSecurityGroupIdHasBeenSet = true; m_customSecurityGroupId = value; }
+    inline void SetCustomSecurityGroupId(Aws::String&& value) { m_customSecurityGroupIdHasBeenSet = true; m_customSecurityGroupId = std::move(value); }
 
     /**
      * <p>The identifier of any custom security groups that are applied to the
@@ -150,7 +155,7 @@ namespace Model
      * <p>The identifier of any custom security groups that are applied to the
      * WorkSpaces when they are created.</p>
      */
-    inline DefaultWorkspaceCreationProperties& WithCustomSecurityGroupId(Aws::String&& value) { SetCustomSecurityGroupId(value); return *this;}
+    inline DefaultWorkspaceCreationProperties& WithCustomSecurityGroupId(Aws::String&& value) { SetCustomSecurityGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of any custom security groups that are applied to the

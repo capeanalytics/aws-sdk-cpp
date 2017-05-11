@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,8 +33,11 @@ namespace Model
 {
 
   /**
-   * <p>EBS volume specifications such as volume type, IOPS, and size(GiB) that will
-   * be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+   * <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will
+   * be requested for the EBS volume attached to an EC2 instance in the
+   * cluster.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/VolumeSpecification">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API VolumeSpecification
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The volume type. Volume types supported are gp2, io1, standard.</p>
      */
-    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline void SetVolumeType(Aws::String&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
 
     /**
      * <p>The volume type. Volume types supported are gp2, io1, standard.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The volume type. Volume types supported are gp2, io1, standard.</p>
      */
-    inline VolumeSpecification& WithVolumeType(Aws::String&& value) { SetVolumeType(value); return *this;}
+    inline VolumeSpecification& WithVolumeType(Aws::String&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p>The volume type. Volume types supported are gp2, io1, standard.</p>

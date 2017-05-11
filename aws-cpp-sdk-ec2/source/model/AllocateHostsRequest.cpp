@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/AllocateHostsRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -20,6 +21,7 @@ using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
 AllocateHostsRequest::AllocateHostsRequest() : 
+    m_autoPlacement(AutoPlacement::NOT_SET),
     m_autoPlacementHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
@@ -58,7 +60,12 @@ Aws::String AllocateHostsRequest::SerializePayload() const
     ss << "AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  AllocateHostsRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

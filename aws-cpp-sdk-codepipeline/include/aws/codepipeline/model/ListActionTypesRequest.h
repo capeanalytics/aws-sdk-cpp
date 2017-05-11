@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/CodePipelineRequest.h>
 #include <aws/codepipeline/model/ActionOwner.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a list action types action.</p>
+   * <p>Represents the input of a list action types action.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ListActionTypesRequest : public CodePipelineRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Filters the list of action types to those created by a specified entity.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>Filters the list of action types to those created by a specified entity.</p>
      */
-    inline void SetActionOwnerFilter(ActionOwner&& value) { m_actionOwnerFilterHasBeenSet = true; m_actionOwnerFilter = value; }
+    inline void SetActionOwnerFilter(ActionOwner&& value) { m_actionOwnerFilterHasBeenSet = true; m_actionOwnerFilter = std::move(value); }
 
     /**
      * <p>Filters the list of action types to those created by a specified entity.</p>
@@ -59,7 +65,7 @@ namespace Model
     /**
      * <p>Filters the list of action types to those created by a specified entity.</p>
      */
-    inline ListActionTypesRequest& WithActionOwnerFilter(ActionOwner&& value) { SetActionOwnerFilter(value); return *this;}
+    inline ListActionTypesRequest& WithActionOwnerFilter(ActionOwner&& value) { SetActionOwnerFilter(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous list action types call,
@@ -77,7 +83,7 @@ namespace Model
      * <p>An identifier that was returned from the previous list action types call,
      * which can be used to return the next set of action types in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier that was returned from the previous list action types call,
@@ -95,7 +101,7 @@ namespace Model
      * <p>An identifier that was returned from the previous list action types call,
      * which can be used to return the next set of action types in the list.</p>
      */
-    inline ListActionTypesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListActionTypesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous list action types call,

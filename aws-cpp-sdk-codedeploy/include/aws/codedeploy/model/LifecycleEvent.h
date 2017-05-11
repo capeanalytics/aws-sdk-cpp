@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codedeploy/model/Diagnostics.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/codedeploy/model/LifecycleEventStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a deployment lifecycle event.</p>
+   * <p>Information about a deployment lifecycle event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/LifecycleEvent">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API LifecycleEvent
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall,
      * AfterInstall, ApplicationStart, or ValidateService.</p>
      */
-    inline void SetLifecycleEventName(Aws::String&& value) { m_lifecycleEventNameHasBeenSet = true; m_lifecycleEventName = value; }
+    inline void SetLifecycleEventName(Aws::String&& value) { m_lifecycleEventNameHasBeenSet = true; m_lifecycleEventName = std::move(value); }
 
     /**
      * <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall,
@@ -78,7 +82,7 @@ namespace Model
      * <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall,
      * AfterInstall, ApplicationStart, or ValidateService.</p>
      */
-    inline LifecycleEvent& WithLifecycleEventName(Aws::String&& value) { SetLifecycleEventName(value); return *this;}
+    inline LifecycleEvent& WithLifecycleEventName(Aws::String&& value) { SetLifecycleEventName(std::move(value)); return *this;}
 
     /**
      * <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall,
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>Diagnostic information about the deployment lifecycle event.</p>
      */
-    inline void SetDiagnostics(Diagnostics&& value) { m_diagnosticsHasBeenSet = true; m_diagnostics = value; }
+    inline void SetDiagnostics(Diagnostics&& value) { m_diagnosticsHasBeenSet = true; m_diagnostics = std::move(value); }
 
     /**
      * <p>Diagnostic information about the deployment lifecycle event.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>Diagnostic information about the deployment lifecycle event.</p>
      */
-    inline LifecycleEvent& WithDiagnostics(Diagnostics&& value) { SetDiagnostics(value); return *this;}
+    inline LifecycleEvent& WithDiagnostics(Diagnostics&& value) { SetDiagnostics(std::move(value)); return *this;}
 
     /**
      * <p>A timestamp indicating when the deployment lifecycle event started.</p>
@@ -124,7 +128,7 @@ namespace Model
     /**
      * <p>A timestamp indicating when the deployment lifecycle event started.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>A timestamp indicating when the deployment lifecycle event started.</p>
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>A timestamp indicating when the deployment lifecycle event started.</p>
      */
-    inline LifecycleEvent& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline LifecycleEvent& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>A timestamp indicating when the deployment lifecycle event ended.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>A timestamp indicating when the deployment lifecycle event ended.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>A timestamp indicating when the deployment lifecycle event ended.</p>
@@ -159,57 +163,62 @@ namespace Model
     /**
      * <p>A timestamp indicating when the deployment lifecycle event ended.</p>
      */
-    inline LifecycleEvent& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline LifecycleEvent& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
-     * <p>The deployment lifecycle event status:</p> <ul> <li>Pending: The deployment
-     * lifecycle event is pending.</li> <li>InProgress: The deployment lifecycle event
-     * is in progress.</li> <li>Succeeded: The deployment lifecycle event ran
-     * successfully.</li> <li>Failed: The deployment lifecycle event has failed.</li>
-     * <li>Skipped: The deployment lifecycle event has been skipped.</li> <li>Unknown:
-     * The deployment lifecycle event is unknown.</li> </ul>
+     * <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The
+     * deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The
+     * deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The
+     * deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The
+     * deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment
+     * lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment
+     * lifecycle event is unknown.</p> </li> </ul>
      */
     inline const LifecycleEventStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The deployment lifecycle event status:</p> <ul> <li>Pending: The deployment
-     * lifecycle event is pending.</li> <li>InProgress: The deployment lifecycle event
-     * is in progress.</li> <li>Succeeded: The deployment lifecycle event ran
-     * successfully.</li> <li>Failed: The deployment lifecycle event has failed.</li>
-     * <li>Skipped: The deployment lifecycle event has been skipped.</li> <li>Unknown:
-     * The deployment lifecycle event is unknown.</li> </ul>
+     * <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The
+     * deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The
+     * deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The
+     * deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The
+     * deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment
+     * lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment
+     * lifecycle event is unknown.</p> </li> </ul>
      */
     inline void SetStatus(const LifecycleEventStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     /**
-     * <p>The deployment lifecycle event status:</p> <ul> <li>Pending: The deployment
-     * lifecycle event is pending.</li> <li>InProgress: The deployment lifecycle event
-     * is in progress.</li> <li>Succeeded: The deployment lifecycle event ran
-     * successfully.</li> <li>Failed: The deployment lifecycle event has failed.</li>
-     * <li>Skipped: The deployment lifecycle event has been skipped.</li> <li>Unknown:
-     * The deployment lifecycle event is unknown.</li> </ul>
+     * <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The
+     * deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The
+     * deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The
+     * deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The
+     * deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment
+     * lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment
+     * lifecycle event is unknown.</p> </li> </ul>
      */
-    inline void SetStatus(LifecycleEventStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(LifecycleEventStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
-     * <p>The deployment lifecycle event status:</p> <ul> <li>Pending: The deployment
-     * lifecycle event is pending.</li> <li>InProgress: The deployment lifecycle event
-     * is in progress.</li> <li>Succeeded: The deployment lifecycle event ran
-     * successfully.</li> <li>Failed: The deployment lifecycle event has failed.</li>
-     * <li>Skipped: The deployment lifecycle event has been skipped.</li> <li>Unknown:
-     * The deployment lifecycle event is unknown.</li> </ul>
+     * <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The
+     * deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The
+     * deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The
+     * deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The
+     * deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment
+     * lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment
+     * lifecycle event is unknown.</p> </li> </ul>
      */
     inline LifecycleEvent& WithStatus(const LifecycleEventStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The deployment lifecycle event status:</p> <ul> <li>Pending: The deployment
-     * lifecycle event is pending.</li> <li>InProgress: The deployment lifecycle event
-     * is in progress.</li> <li>Succeeded: The deployment lifecycle event ran
-     * successfully.</li> <li>Failed: The deployment lifecycle event has failed.</li>
-     * <li>Skipped: The deployment lifecycle event has been skipped.</li> <li>Unknown:
-     * The deployment lifecycle event is unknown.</li> </ul>
+     * <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The
+     * deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The
+     * deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The
+     * deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The
+     * deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment
+     * lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment
+     * lifecycle event is unknown.</p> </li> </ul>
      */
-    inline LifecycleEvent& WithStatus(LifecycleEventStatus&& value) { SetStatus(value); return *this;}
+    inline LifecycleEvent& WithStatus(LifecycleEventStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     Aws::String m_lifecycleEventName;

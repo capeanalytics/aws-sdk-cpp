@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * <p>Represents the response of the test invoke request in the HTTP method.</p>
    * <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test
-   * API using the API Gateway console</a> </div>
+   * API using the API Gateway console</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/TestInvokeMethodResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API TestInvokeMethodResult
   {
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The body of the HTTP response.</p>
      */
-    inline void SetBody(Aws::String&& value) { m_body = value; }
+    inline void SetBody(Aws::String&& value) { m_body = std::move(value); }
 
     /**
      * <p>The body of the HTTP response.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The body of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& WithBody(Aws::String&& value) { SetBody(value); return *this;}
+    inline TestInvokeMethodResult& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
 
     /**
      * <p>The body of the HTTP response.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline void SetHeaders(Aws::Map<Aws::String, Aws::String>&& value) { m_headers = value; }
+    inline void SetHeaders(Aws::Map<Aws::String, Aws::String>&& value) { m_headers = std::move(value); }
 
     /**
      * <p>The headers of the HTTP response.</p>
@@ -119,42 +123,42 @@ namespace Model
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& WithHeaders(Aws::Map<Aws::String, Aws::String>&& value) { SetHeaders(value); return *this;}
+    inline TestInvokeMethodResult& WithHeaders(Aws::Map<Aws::String, Aws::String>&& value) { SetHeaders(std::move(value)); return *this;}
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(const Aws::String& key, const Aws::String& value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(const Aws::String& key, const Aws::String& value) { m_headers.emplace(key, value); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, const Aws::String& value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, const Aws::String& value) { m_headers.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(const Aws::String& key, Aws::String&& value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(const Aws::String& key, Aws::String&& value) { m_headers.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, Aws::String&& value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, Aws::String&& value) { m_headers.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(const char* key, Aws::String&& value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(const char* key, Aws::String&& value) { m_headers.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, const char* value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(Aws::String&& key, const char* value) { m_headers.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The headers of the HTTP response.</p>
      */
-    inline TestInvokeMethodResult& AddHeaders(const char* key, const char* value) { m_headers[key] = value; return *this; }
+    inline TestInvokeMethodResult& AddHeaders(const char* key, const char* value) { m_headers.emplace(key, value); return *this; }
 
     /**
      * <p>The Amazon API Gateway execution log for the test invoke request.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The Amazon API Gateway execution log for the test invoke request.</p>
      */
-    inline void SetLog(Aws::String&& value) { m_log = value; }
+    inline void SetLog(Aws::String&& value) { m_log = std::move(value); }
 
     /**
      * <p>The Amazon API Gateway execution log for the test invoke request.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The Amazon API Gateway execution log for the test invoke request.</p>
      */
-    inline TestInvokeMethodResult& WithLog(Aws::String&& value) { SetLog(value); return *this;}
+    inline TestInvokeMethodResult& WithLog(Aws::String&& value) { SetLog(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon API Gateway execution log for the test invoke request.</p>

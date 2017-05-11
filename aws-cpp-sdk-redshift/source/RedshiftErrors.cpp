@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/redshift/RedshiftErrors.h>
@@ -33,6 +34,7 @@ static const int CLUSTER_PARAMETER_GROUP_QUOTA_EXCEEDED_FAULT_HASH = HashingUtil
 static const int RESERVED_NODE_QUOTA_EXCEEDED_FAULT_HASH = HashingUtils::HashString("ReservedNodeQuotaExceeded");
 static const int SNAPSHOT_COPY_ALREADY_DISABLED_FAULT_HASH = HashingUtils::HashString("SnapshotCopyAlreadyDisabledFault");
 static const int INCOMPATIBLE_ORDERABLE_OPTIONS_HASH = HashingUtils::HashString("IncompatibleOrderableOptions");
+static const int DEPENDENT_SERVICE_UNAVAILABLE_FAULT_HASH = HashingUtils::HashString("DependentServiceUnavailableFault");
 static const int IN_PROGRESS_TABLE_RESTORE_QUOTA_EXCEEDED_FAULT_HASH = HashingUtils::HashString("InProgressTableRestoreQuotaExceededFault");
 static const int CLUSTER_PARAMETER_GROUP_ALREADY_EXISTS_FAULT_HASH = HashingUtils::HashString("ClusterParameterGroupAlreadyExists");
 static const int DEPENDENT_SERVICE_REQUEST_THROTTLING_FAULT_HASH = HashingUtils::HashString("DependentServiceRequestThrottlingFault");
@@ -139,6 +141,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INCOMPATIBLE_ORDERABLE_OPTIONS_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(RedshiftErrors::INCOMPATIBLE_ORDERABLE_OPTIONS), false);
+  }
+  else if (hashCode == DEPENDENT_SERVICE_UNAVAILABLE_FAULT_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(RedshiftErrors::DEPENDENT_SERVICE_UNAVAILABLE_FAULT), false);
   }
   else if (hashCode == IN_PROGRESS_TABLE_RESTORE_QUOTA_EXCEEDED_FAULT_HASH)
   {

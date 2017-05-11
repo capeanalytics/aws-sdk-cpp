@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,14 +12,21 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/codedeploy/model/AlarmConfiguration.h>
+#include <aws/codedeploy/model/AutoRollbackConfiguration.h>
+#include <aws/codedeploy/model/DeploymentStyle.h>
+#include <aws/codedeploy/model/BlueGreenDeploymentConfiguration.h>
+#include <aws/codedeploy/model/LoadBalancerInfo.h>
 #include <aws/codedeploy/model/EC2TagFilter.h>
 #include <aws/codedeploy/model/TagFilter.h>
 #include <aws/codedeploy/model/TriggerConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a create deployment group operation.</p>
+   * <p>Represents the input of a create deployment group operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeploymentGroupInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API CreateDeploymentGroupRequest : public CodeDeployRequest
   {
@@ -38,6 +48,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -55,7 +66,7 @@ namespace Model
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
      * user or AWS account.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -73,7 +84,7 @@ namespace Model
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
      * user or AWS account.</p>
      */
-    inline CreateDeploymentGroupRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -94,7 +105,7 @@ namespace Model
     /**
      * <p>The name of a new deployment group for the specified application.</p>
      */
-    inline void SetDeploymentGroupName(Aws::String&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = value; }
+    inline void SetDeploymentGroupName(Aws::String&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = std::move(value); }
 
     /**
      * <p>The name of a new deployment group for the specified application.</p>
@@ -109,7 +120,7 @@ namespace Model
     /**
      * <p>The name of a new deployment group for the specified application.</p>
      */
-    inline CreateDeploymentGroupRequest& WithDeploymentGroupName(Aws::String&& value) { SetDeploymentGroupName(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithDeploymentGroupName(Aws::String&& value) { SetDeploymentGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of a new deployment group for the specified application.</p>
@@ -120,43 +131,13 @@ namespace Model
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline const Aws::String& GetDeploymentConfigName() const{ return m_deploymentConfigName; }
 
@@ -164,43 +145,13 @@ namespace Model
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline void SetDeploymentConfigName(const Aws::String& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = value; }
 
@@ -208,87 +159,27 @@ namespace Model
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
-    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = value; }
+    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = std::move(value); }
 
     /**
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline void SetDeploymentConfigName(const char* value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName.assign(value); }
 
@@ -296,43 +187,13 @@ namespace Model
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline CreateDeploymentGroupRequest& WithDeploymentConfigName(const Aws::String& value) { SetDeploymentConfigName(value); return *this;}
 
@@ -340,87 +201,27 @@ namespace Model
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
-    inline CreateDeploymentGroupRequest& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(std::move(value)); return *this;}
 
     /**
      * <p>If specified, the deployment configuration name can be either one of the
      * predefined configurations provided with AWS CodeDeploy or a custom deployment
      * configuration that you create by calling the create deployment configuration
-     * operation.</p> <note> <p>CodeDeployDefault.OneAtATime is the default deployment
+     * operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment
      * configuration. It is used if a configuration isn't specified for the deployment
-     * or the deployment group.</p> </note> <p>The predefined deployment configurations
-     * include the following:</p> <ul> <li> <p><b>CodeDeployDefault.AllAtOnce</b>
-     * attempts to deploy an application revision to as many instance as possible at
-     * once. The status of the overall deployment will be displayed as <b>Succeeded</b>
-     * if the application revision is deployed to one or more of the instances. The
-     * status of the overall deployment will be displayed as <b>Failed</b> if the
-     * application revision is not deployed to any of the instances. Using an example
-     * of nine instance, CodeDeployDefault.AllAtOnce will attempt to deploy to all nine
-     * instance at once. The overall deployment will succeed if deployment to even a
-     * single instance is successful; it will fail only if deployments to all nine
-     * instance fail. </p> </li> <li> <p><b>CodeDeployDefault.HalfAtATime</b> deploys
-     * to up to half of the instances at a time (with fractions rounded down). The
-     * overall deployment succeeds if the application revision is deployed to at least
-     * half of the instances (with fractions rounded up); otherwise, the deployment
-     * fails. In the example of nine instances, it will deploy to up to four instance
-     * at a time. The overall deployment succeeds if deployment to five or more
-     * instances succeed; otherwise, the deployment fails. The deployment may be
-     * successfully deployed to some instances even if the overall deployment
-     * fails.</p> </li> <li> <p><b>CodeDeployDefault.OneAtATime</b> deploys the
-     * application revision to only one instance at a time.</p> <p>For deployment
-     * groups that contain more than one instance:</p> <ul> <li> <p>The overall
-     * deployment succeeds if the application revision is deployed to all of the
-     * instances. The exception to this rule is if deployment to the last instance
-     * fails, the overall deployment still succeeds. This is because AWS CodeDeploy
-     * allows only one instance at a time to be taken offline with the
-     * CodeDeployDefault.OneAtATime configuration.</p> </li> <li> <p>The overall
-     * deployment fails as soon as the application revision fails to be deployed to any
-     * but the last instance. The deployment may be successfully deployed to some
-     * instances even if the overall deployment fails.</p> </li> <li> <p>In an example
-     * using nine instance, it will deploy to one instance at a time. The overall
-     * deployment succeeds if deployment to the first eight instance is successful; the
-     * overall deployment fails if deployment to any of the first eight instance
-     * fails.</p> </li> </ul> <p>For deployment groups that contain only one instance,
-     * the overall deployment is successful only if deployment to the single instance
-     * is successful</p> </li> </ul>
+     * or the deployment group.</p> <p>For more information about the predefined
+     * deployment configurations in AWS CodeDeploy, see see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working
+     * with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline CreateDeploymentGroupRequest& WithDeploymentConfigName(const char* value) { SetDeploymentConfigName(value); return *this;}
 
@@ -437,7 +238,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = value; }
+    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = std::move(value); }
 
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
@@ -447,7 +248,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline CreateDeploymentGroupRequest& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
@@ -457,7 +258,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline CreateDeploymentGroupRequest& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(value); return *this; }
+    inline CreateDeploymentGroupRequest& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -472,7 +273,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = value; }
+    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = std::move(value); }
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -482,7 +283,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline CreateDeploymentGroupRequest& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -492,7 +293,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline CreateDeploymentGroupRequest& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(value); return *this; }
+    inline CreateDeploymentGroupRequest& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -507,7 +308,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline void SetAutoScalingGroups(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = value; }
+    inline void SetAutoScalingGroups(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = std::move(value); }
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -517,7 +318,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline CreateDeploymentGroupRequest& WithAutoScalingGroups(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroups(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithAutoScalingGroups(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroups(std::move(value)); return *this;}
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -527,7 +328,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline CreateDeploymentGroupRequest& AddAutoScalingGroups(Aws::String&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(value); return *this; }
+    inline CreateDeploymentGroupRequest& AddAutoScalingGroups(Aws::String&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -550,7 +351,7 @@ namespace Model
      * <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf
      * when interacting with AWS services.</p>
      */
-    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = value; }
+    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = std::move(value); }
 
     /**
      * <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf
@@ -568,7 +369,7 @@ namespace Model
      * <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf
      * when interacting with AWS services.</p>
      */
-    inline CreateDeploymentGroupRequest& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf
@@ -577,46 +378,200 @@ namespace Model
     inline CreateDeploymentGroupRequest& WithServiceRoleArn(const char* value) { SetServiceRoleArn(value); return *this;}
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
     inline const Aws::Vector<TriggerConfig>& GetTriggerConfigurations() const{ return m_triggerConfigurations; }
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
     inline void SetTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
-    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
+    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = std::move(value); }
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
     inline CreateDeploymentGroupRequest& WithTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { SetTriggerConfigurations(value); return *this;}
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
-    inline CreateDeploymentGroupRequest& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(value); return *this;}
+    inline CreateDeploymentGroupRequest& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(std::move(value)); return *this;}
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
     inline CreateDeploymentGroupRequest& AddTriggerConfigurations(const TriggerConfig& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
 
     /**
-     * <p>Information about triggers to create when the deployment group is
-     * created.</p>
+     * <p>Information about triggers to create when the deployment group is created.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create
+     * a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
      */
-    inline CreateDeploymentGroupRequest& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
+    inline CreateDeploymentGroupRequest& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>Information to add about Amazon CloudWatch alarms when the deployment group
+     * is created. </p>
+     */
+    inline const AlarmConfiguration& GetAlarmConfiguration() const{ return m_alarmConfiguration; }
+
+    /**
+     * <p>Information to add about Amazon CloudWatch alarms when the deployment group
+     * is created. </p>
+     */
+    inline void SetAlarmConfiguration(const AlarmConfiguration& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = value; }
+
+    /**
+     * <p>Information to add about Amazon CloudWatch alarms when the deployment group
+     * is created. </p>
+     */
+    inline void SetAlarmConfiguration(AlarmConfiguration&& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = std::move(value); }
+
+    /**
+     * <p>Information to add about Amazon CloudWatch alarms when the deployment group
+     * is created. </p>
+     */
+    inline CreateDeploymentGroupRequest& WithAlarmConfiguration(const AlarmConfiguration& value) { SetAlarmConfiguration(value); return *this;}
+
+    /**
+     * <p>Information to add about Amazon CloudWatch alarms when the deployment group
+     * is created. </p>
+     */
+    inline CreateDeploymentGroupRequest& WithAlarmConfiguration(AlarmConfiguration&& value) { SetAlarmConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Configuration information for an automatic rollback that is added when a
+     * deployment group is created.</p>
+     */
+    inline const AutoRollbackConfiguration& GetAutoRollbackConfiguration() const{ return m_autoRollbackConfiguration; }
+
+    /**
+     * <p>Configuration information for an automatic rollback that is added when a
+     * deployment group is created.</p>
+     */
+    inline void SetAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = value; }
+
+    /**
+     * <p>Configuration information for an automatic rollback that is added when a
+     * deployment group is created.</p>
+     */
+    inline void SetAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = std::move(value); }
+
+    /**
+     * <p>Configuration information for an automatic rollback that is added when a
+     * deployment group is created.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { SetAutoRollbackConfiguration(value); return *this;}
+
+    /**
+     * <p>Configuration information for an automatic rollback that is added when a
+     * deployment group is created.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { SetAutoRollbackConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, standard or blue/green, that you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline const DeploymentStyle& GetDeploymentStyle() const{ return m_deploymentStyle; }
+
+    /**
+     * <p>Information about the type of deployment, standard or blue/green, that you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(const DeploymentStyle& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = value; }
+
+    /**
+     * <p>Information about the type of deployment, standard or blue/green, that you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(DeploymentStyle&& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = std::move(value); }
+
+    /**
+     * <p>Information about the type of deployment, standard or blue/green, that you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithDeploymentStyle(const DeploymentStyle& value) { SetDeploymentStyle(value); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, standard or blue/green, that you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithDeploymentStyle(DeploymentStyle&& value) { SetDeploymentStyle(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline const BlueGreenDeploymentConfiguration& GetBlueGreenDeploymentConfiguration() const{ return m_blueGreenDeploymentConfiguration; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = value; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = std::move(value); }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { SetBlueGreenDeploymentConfiguration(value); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { SetBlueGreenDeploymentConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline const LoadBalancerInfo& GetLoadBalancerInfo() const{ return m_loadBalancerInfo; }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(const LoadBalancerInfo& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = value; }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(LoadBalancerInfo&& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = std::move(value); }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithLoadBalancerInfo(const LoadBalancerInfo& value) { SetLoadBalancerInfo(value); return *this;}
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline CreateDeploymentGroupRequest& WithLoadBalancerInfo(LoadBalancerInfo&& value) { SetLoadBalancerInfo(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;
@@ -635,6 +590,16 @@ namespace Model
     bool m_serviceRoleArnHasBeenSet;
     Aws::Vector<TriggerConfig> m_triggerConfigurations;
     bool m_triggerConfigurationsHasBeenSet;
+    AlarmConfiguration m_alarmConfiguration;
+    bool m_alarmConfigurationHasBeenSet;
+    AutoRollbackConfiguration m_autoRollbackConfiguration;
+    bool m_autoRollbackConfigurationHasBeenSet;
+    DeploymentStyle m_deploymentStyle;
+    bool m_deploymentStyleHasBeenSet;
+    BlueGreenDeploymentConfiguration m_blueGreenDeploymentConfiguration;
+    bool m_blueGreenDeploymentConfigurationHasBeenSet;
+    LoadBalancerInfo m_loadBalancerInfo;
+    bool m_loadBalancerInfoHasBeenSet;
   };
 
 } // namespace Model

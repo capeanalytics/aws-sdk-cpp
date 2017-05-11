@@ -42,6 +42,7 @@ public class Shape {
     private boolean isReferenced;
     private boolean flattened;
     private boolean computeContentMd5;
+    private boolean supportsPresigning;
 
     public boolean isMap() {
         return "map".equals(type.toLowerCase());
@@ -71,6 +72,10 @@ public class Shape {
 
     public boolean isBlob() {
         return "blob".equals(type.toLowerCase());
+    }
+
+    public boolean isBoolean() {
+        return "boolean".equals(type.toLowerCase());
     }
 
     public boolean isPrimitive() {

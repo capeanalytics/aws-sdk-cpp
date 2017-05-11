@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/model/MaximumExecutionFrequency.h>
+#include <utility>
 
 namespace Aws
 {
@@ -49,10 +51,10 @@ namespace Model
    * <code>MaximumExecutionFrequency</code> value for a rule, AWS Config invokes the
    * rule only as often as the <code>deliveryFrequency</code> value.</p> <ol> <li>
    * <p>For example, you want your rule to run evaluations when AWS Config delivers
-   * the configuration snapshot. </p> </li> <li> <p>You specify the
+   * the configuration snapshot.</p> </li> <li> <p>You specify the
    * <code>MaximumExecutionFrequency</code> value for <code>Six_Hours</code>. </p>
    * </li> <li> <p>You then specify the delivery channel
-   * <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>. </p>
+   * <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>.</p>
    * </li> <li> <p>Because the value for <code>deliveryFrequency</code> is less
    * frequent than <code>MaximumExecutionFrequency</code>, AWS Config invokes
    * evaluations for the rule every 24 hours. </p> </li> </ol> <p>You should set the
@@ -61,7 +63,10 @@ namespace Model
    * <code>deliveryFrequency</code> value by using the
    * <code>DescribeDeliveryChannnels</code> action.</p> <p>To update the
    * <code>deliveryFrequency</code> with which AWS Config delivers your configuration
-   * snapshots, use the <code>PutDeliveryChannel</code> action.</p>
+   * snapshots, use the <code>PutDeliveryChannel</code> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigSnapshotDeliveryProperties">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API ConfigSnapshotDeliveryProperties
   {
@@ -84,7 +89,7 @@ namespace Model
     /**
      * <p>The frequency with which AWS Config delivers configuration snapshots.</p>
      */
-    inline void SetDeliveryFrequency(MaximumExecutionFrequency&& value) { m_deliveryFrequencyHasBeenSet = true; m_deliveryFrequency = value; }
+    inline void SetDeliveryFrequency(MaximumExecutionFrequency&& value) { m_deliveryFrequencyHasBeenSet = true; m_deliveryFrequency = std::move(value); }
 
     /**
      * <p>The frequency with which AWS Config delivers configuration snapshots.</p>
@@ -94,7 +99,7 @@ namespace Model
     /**
      * <p>The frequency with which AWS Config delivers configuration snapshots.</p>
      */
-    inline ConfigSnapshotDeliveryProperties& WithDeliveryFrequency(MaximumExecutionFrequency&& value) { SetDeliveryFrequency(value); return *this;}
+    inline ConfigSnapshotDeliveryProperties& WithDeliveryFrequency(MaximumExecutionFrequency&& value) { SetDeliveryFrequency(std::move(value)); return *this;}
 
   private:
     MaximumExecutionFrequency m_deliveryFrequency;

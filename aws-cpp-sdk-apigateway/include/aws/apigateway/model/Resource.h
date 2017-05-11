@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/apigateway/model/Method.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>Represents an API resource.</p> <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create
-   * an API</a> </div>
+   * an API</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/Resource">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API Resource
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The resource's identifier.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The resource's identifier.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The resource's identifier.</p>
      */
-    inline Resource& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Resource& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The resource's identifier.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The parent resource's identifier.</p>
      */
-    inline void SetParentId(Aws::String&& value) { m_parentIdHasBeenSet = true; m_parentId = value; }
+    inline void SetParentId(Aws::String&& value) { m_parentIdHasBeenSet = true; m_parentId = std::move(value); }
 
     /**
      * <p>The parent resource's identifier.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The parent resource's identifier.</p>
      */
-    inline Resource& WithParentId(Aws::String&& value) { SetParentId(value); return *this;}
+    inline Resource& WithParentId(Aws::String&& value) { SetParentId(std::move(value)); return *this;}
 
     /**
      * <p>The parent resource's identifier.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The last path segment for this resource.</p>
      */
-    inline void SetPathPart(Aws::String&& value) { m_pathPartHasBeenSet = true; m_pathPart = value; }
+    inline void SetPathPart(Aws::String&& value) { m_pathPartHasBeenSet = true; m_pathPart = std::move(value); }
 
     /**
      * <p>The last path segment for this resource.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The last path segment for this resource.</p>
      */
-    inline Resource& WithPathPart(Aws::String&& value) { SetPathPart(value); return *this;}
+    inline Resource& WithPathPart(Aws::String&& value) { SetPathPart(std::move(value)); return *this;}
 
     /**
      * <p>The last path segment for this resource.</p>
@@ -163,7 +167,7 @@ namespace Model
     /**
      * <p>The full path for this resource.</p>
      */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = value; }
+    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
 
     /**
      * <p>The full path for this resource.</p>
@@ -178,7 +182,7 @@ namespace Model
     /**
      * <p>The full path for this resource.</p>
      */
-    inline Resource& WithPath(Aws::String&& value) { SetPath(value); return *this;}
+    inline Resource& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
 
     /**
      * <p>The full path for this resource.</p>
@@ -195,8 +199,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -271,8 +275,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -347,8 +351,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -411,7 +415,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline void SetResourceMethods(Aws::Map<Aws::String, Method>&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods = value; }
+    inline void SetResourceMethods(Aws::Map<Aws::String, Method>&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods = std::move(value); }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -423,8 +427,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -499,8 +503,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -563,7 +567,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& WithResourceMethods(Aws::Map<Aws::String, Method>&& value) { SetResourceMethods(value); return *this;}
+    inline Resource& WithResourceMethods(Aws::Map<Aws::String, Method>&& value) { SetResourceMethods(std::move(value)); return *this;}
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -575,8 +579,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -639,7 +643,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(const Aws::String& key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(const Aws::String& key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(key, value); return *this; }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -651,8 +655,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -715,7 +719,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(Aws::String&& key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(Aws::String&& key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -727,8 +731,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -791,7 +795,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(const Aws::String& key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(const Aws::String& key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -803,8 +807,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -867,7 +871,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(Aws::String&& key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(Aws::String&& key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -879,8 +883,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -943,7 +947,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(const char* key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(const char* key, Method&& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks">
@@ -955,8 +959,8 @@ namespace Model
      * <h5>Request</h5> <pre><code>GET
      * /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type:
      * application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date:
-     * 20160608T031827Z Authorization: AWS4-HMAC-SHA256
-     * Credential={access_key_ID}/20160608/us-east-1/apigateway/aws4_request,
+     * 20170223T031827Z Authorization: AWS4-HMAC-SHA256
+     * Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request,
      * SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre>
      * <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href":
      * "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html",
@@ -1019,7 +1023,7 @@ namespace Model
      * <code>GET</code> of the last path segment in the request URL with
      * <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
      */
-    inline Resource& AddResourceMethods(const char* key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods[key] = value; return *this; }
+    inline Resource& AddResourceMethods(const char* key, const Method& value) { m_resourceMethodsHasBeenSet = true; m_resourceMethods.emplace(key, value); return *this; }
 
   private:
     Aws::String m_id;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkErrors.h>
@@ -28,15 +29,18 @@ namespace ElasticBeanstalkErrorMapper
 {
 
 static const int TOO_MANY_APPLICATION_VERSIONS_HASH = HashingUtils::HashString("TooManyApplicationVersionsException");
+static const int PLATFORM_VERSION_STILL_REFERENCED_HASH = HashingUtils::HashString("PlatformVersionStillReferencedException");
 static const int TOO_MANY_APPLICATIONS_HASH = HashingUtils::HashString("TooManyApplicationsException");
 static const int TOO_MANY_BUCKETS_HASH = HashingUtils::HashString("TooManyBucketsException");
 static const int ELASTIC_BEANSTALK_SERVICE_HASH = HashingUtils::HashString("ElasticBeanstalkServiceException");
 static const int TOO_MANY_ENVIRONMENTS_HASH = HashingUtils::HashString("TooManyEnvironmentsException");
+static const int TOO_MANY_PLATFORMS_HASH = HashingUtils::HashString("TooManyPlatformsException");
 static const int MANAGED_ACTION_INVALID_STATE_HASH = HashingUtils::HashString("ManagedActionInvalidStateException");
 static const int SOURCE_BUNDLE_DELETION_HASH = HashingUtils::HashString("SourceBundleDeletionFailure");
 static const int INSUFFICIENT_PRIVILEGES_HASH = HashingUtils::HashString("InsufficientPrivilegesException");
 static const int S3_LOCATION_NOT_IN_SERVICE_REGION_HASH = HashingUtils::HashString("S3LocationNotInServiceRegionException");
 static const int TOO_MANY_CONFIGURATION_TEMPLATES_HASH = HashingUtils::HashString("TooManyConfigurationTemplatesException");
+static const int CODE_BUILD_NOT_IN_SERVICE_REGION_HASH = HashingUtils::HashString("CodeBuildNotInServiceRegionException");
 static const int OPERATION_IN_PROGRESS_HASH = HashingUtils::HashString("OperationInProgressFailure");
 static const int INVALID_REQUEST_HASH = HashingUtils::HashString("InvalidRequestException");
 static const int S3_SUBSCRIPTION_REQUIRED_HASH = HashingUtils::HashString("S3SubscriptionRequiredException");
@@ -49,6 +53,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   if (hashCode == TOO_MANY_APPLICATION_VERSIONS_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::TOO_MANY_APPLICATION_VERSIONS), false);
+  }
+  else if (hashCode == PLATFORM_VERSION_STILL_REFERENCED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::PLATFORM_VERSION_STILL_REFERENCED), false);
   }
   else if (hashCode == TOO_MANY_APPLICATIONS_HASH)
   {
@@ -65,6 +73,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == TOO_MANY_ENVIRONMENTS_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::TOO_MANY_ENVIRONMENTS), false);
+  }
+  else if (hashCode == TOO_MANY_PLATFORMS_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::TOO_MANY_PLATFORMS), false);
   }
   else if (hashCode == MANAGED_ACTION_INVALID_STATE_HASH)
   {
@@ -85,6 +97,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == TOO_MANY_CONFIGURATION_TEMPLATES_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::TOO_MANY_CONFIGURATION_TEMPLATES), false);
+  }
+  else if (hashCode == CODE_BUILD_NOT_IN_SERVICE_REGION_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(ElasticBeanstalkErrors::CODE_BUILD_NOT_IN_SERVICE_REGION), false);
   }
   else if (hashCode == OPERATION_IN_PROGRESS_HASH)
   {

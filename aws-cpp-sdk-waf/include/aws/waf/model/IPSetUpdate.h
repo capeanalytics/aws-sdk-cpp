@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/ChangeAction.h>
 #include <aws/waf/model/IPSetDescriptor.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Specifies the type of update to perform to an <a>IPSet</a> with
-   * <a>UpdateIPSet</a>.</p>
+   * <a>UpdateIPSet</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/IPSetUpdate">AWS API
+   * Reference</a></p>
    */
   class AWS_WAF_API IPSetUpdate
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>Specifies whether to insert or delete an IP address with
      * <a>UpdateIPSet</a>.</p>
      */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>Specifies whether to insert or delete an IP address with
@@ -71,37 +75,37 @@ namespace Model
      * <p>Specifies whether to insert or delete an IP address with
      * <a>UpdateIPSet</a>.</p>
      */
-    inline IPSetUpdate& WithAction(ChangeAction&& value) { SetAction(value); return *this;}
+    inline IPSetUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
 
     /**
-     * <p>The IP address type (<code>IPV4</code>) and the IP address range (in CIDR
-     * notation) that web requests originate from.</p>
+     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
+     * address range (in CIDR notation) that web requests originate from.</p>
      */
     inline const IPSetDescriptor& GetIPSetDescriptor() const{ return m_iPSetDescriptor; }
 
     /**
-     * <p>The IP address type (<code>IPV4</code>) and the IP address range (in CIDR
-     * notation) that web requests originate from.</p>
+     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
+     * address range (in CIDR notation) that web requests originate from.</p>
      */
     inline void SetIPSetDescriptor(const IPSetDescriptor& value) { m_iPSetDescriptorHasBeenSet = true; m_iPSetDescriptor = value; }
 
     /**
-     * <p>The IP address type (<code>IPV4</code>) and the IP address range (in CIDR
-     * notation) that web requests originate from.</p>
+     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
+     * address range (in CIDR notation) that web requests originate from.</p>
      */
-    inline void SetIPSetDescriptor(IPSetDescriptor&& value) { m_iPSetDescriptorHasBeenSet = true; m_iPSetDescriptor = value; }
+    inline void SetIPSetDescriptor(IPSetDescriptor&& value) { m_iPSetDescriptorHasBeenSet = true; m_iPSetDescriptor = std::move(value); }
 
     /**
-     * <p>The IP address type (<code>IPV4</code>) and the IP address range (in CIDR
-     * notation) that web requests originate from.</p>
+     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
+     * address range (in CIDR notation) that web requests originate from.</p>
      */
     inline IPSetUpdate& WithIPSetDescriptor(const IPSetDescriptor& value) { SetIPSetDescriptor(value); return *this;}
 
     /**
-     * <p>The IP address type (<code>IPV4</code>) and the IP address range (in CIDR
-     * notation) that web requests originate from.</p>
+     * <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP
+     * address range (in CIDR notation) that web requests originate from.</p>
      */
-    inline IPSetUpdate& WithIPSetDescriptor(IPSetDescriptor&& value) { SetIPSetDescriptor(value); return *this;}
+    inline IPSetUpdate& WithIPSetDescriptor(IPSetDescriptor&& value) { SetIPSetDescriptor(std::move(value)); return *this;}
 
   private:
     ChangeAction m_action;

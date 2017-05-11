@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * <p>Option settings are the actual settings being applied or configured for that
    * option. It is used when you modify an option group or describe option groups.
    * For example, the NATIVE_NETWORK_ENCRYPTION option has a setting called
-   * SQLNET.ENCRYPTION_SERVER that can have several different values.</p>
+   * SQLNET.ENCRYPTION_SERVER that can have several different values.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionSetting">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API OptionSetting
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the option that has settings that you can set.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the option that has settings that you can set.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>The name of the option that has settings that you can set.</p>
      */
-    inline OptionSetting& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline OptionSetting& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the option that has settings that you can set.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The current value of the option setting.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The current value of the option setting.</p>
@@ -110,7 +115,7 @@ namespace Model
     /**
      * <p>The current value of the option setting.</p>
      */
-    inline OptionSetting& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline OptionSetting& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The current value of the option setting.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The default value of the option setting.</p>
      */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
+    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
 
     /**
      * <p>The default value of the option setting.</p>
@@ -145,7 +150,7 @@ namespace Model
     /**
      * <p>The default value of the option setting.</p>
      */
-    inline OptionSetting& WithDefaultValue(Aws::String&& value) { SetDefaultValue(value); return *this;}
+    inline OptionSetting& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
 
     /**
      * <p>The default value of the option setting.</p>
@@ -165,7 +170,7 @@ namespace Model
     /**
      * <p>The description of the option setting.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the option setting.</p>
@@ -180,7 +185,7 @@ namespace Model
     /**
      * <p>The description of the option setting.</p>
      */
-    inline OptionSetting& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline OptionSetting& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the option setting.</p>
@@ -200,7 +205,7 @@ namespace Model
     /**
      * <p>The DB engine specific parameter type.</p>
      */
-    inline void SetApplyType(Aws::String&& value) { m_applyTypeHasBeenSet = true; m_applyType = value; }
+    inline void SetApplyType(Aws::String&& value) { m_applyTypeHasBeenSet = true; m_applyType = std::move(value); }
 
     /**
      * <p>The DB engine specific parameter type.</p>
@@ -215,7 +220,7 @@ namespace Model
     /**
      * <p>The DB engine specific parameter type.</p>
      */
-    inline OptionSetting& WithApplyType(Aws::String&& value) { SetApplyType(value); return *this;}
+    inline OptionSetting& WithApplyType(Aws::String&& value) { SetApplyType(std::move(value)); return *this;}
 
     /**
      * <p>The DB engine specific parameter type.</p>
@@ -235,7 +240,7 @@ namespace Model
     /**
      * <p>The data type of the option setting.</p>
      */
-    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
+    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
 
     /**
      * <p>The data type of the option setting.</p>
@@ -250,7 +255,7 @@ namespace Model
     /**
      * <p>The data type of the option setting.</p>
      */
-    inline OptionSetting& WithDataType(Aws::String&& value) { SetDataType(value); return *this;}
+    inline OptionSetting& WithDataType(Aws::String&& value) { SetDataType(std::move(value)); return *this;}
 
     /**
      * <p>The data type of the option setting.</p>
@@ -270,7 +275,7 @@ namespace Model
     /**
      * <p>The allowed values of the option setting.</p>
      */
-    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
+    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
 
     /**
      * <p>The allowed values of the option setting.</p>
@@ -285,7 +290,7 @@ namespace Model
     /**
      * <p>The allowed values of the option setting.</p>
      */
-    inline OptionSetting& WithAllowedValues(Aws::String&& value) { SetAllowedValues(value); return *this;}
+    inline OptionSetting& WithAllowedValues(Aws::String&& value) { SetAllowedValues(std::move(value)); return *this;}
 
     /**
      * <p>The allowed values of the option setting.</p>

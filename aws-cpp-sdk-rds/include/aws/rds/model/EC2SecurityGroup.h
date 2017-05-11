@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * <p>This data type is used as a response element in the following actions:</p>
    * <ul> <li> <p> <a>AuthorizeDBSecurityGroupIngress</a> </p> </li> <li> <p>
    * <a>DescribeDBSecurityGroups</a> </p> </li> <li> <p>
-   * <a>RevokeDBSecurityGroupIngress</a> </p> </li> </ul>
+   * <a>RevokeDBSecurityGroupIngress</a> </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/EC2SecurityGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API EC2SecurityGroup
   {
@@ -63,7 +67,7 @@ namespace Model
      * <p>Provides the status of the EC2 security group. Status can be "authorizing",
      * "authorized", "revoking", and "revoked".</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>Provides the status of the EC2 security group. Status can be "authorizing",
@@ -81,7 +85,7 @@ namespace Model
      * <p>Provides the status of the EC2 security group. Status can be "authorizing",
      * "authorized", "revoking", and "revoked".</p>
      */
-    inline EC2SecurityGroup& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline EC2SecurityGroup& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Provides the status of the EC2 security group. Status can be "authorizing",
@@ -102,7 +106,7 @@ namespace Model
     /**
      * <p>Specifies the name of the EC2 security group.</p>
      */
-    inline void SetEC2SecurityGroupName(Aws::String&& value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName = value; }
+    inline void SetEC2SecurityGroupName(Aws::String&& value) { m_eC2SecurityGroupNameHasBeenSet = true; m_eC2SecurityGroupName = std::move(value); }
 
     /**
      * <p>Specifies the name of the EC2 security group.</p>
@@ -117,7 +121,7 @@ namespace Model
     /**
      * <p>Specifies the name of the EC2 security group.</p>
      */
-    inline EC2SecurityGroup& WithEC2SecurityGroupName(Aws::String&& value) { SetEC2SecurityGroupName(value); return *this;}
+    inline EC2SecurityGroup& WithEC2SecurityGroupName(Aws::String&& value) { SetEC2SecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the EC2 security group.</p>
@@ -137,7 +141,7 @@ namespace Model
     /**
      * <p>Specifies the id of the EC2 security group.</p>
      */
-    inline void SetEC2SecurityGroupId(Aws::String&& value) { m_eC2SecurityGroupIdHasBeenSet = true; m_eC2SecurityGroupId = value; }
+    inline void SetEC2SecurityGroupId(Aws::String&& value) { m_eC2SecurityGroupIdHasBeenSet = true; m_eC2SecurityGroupId = std::move(value); }
 
     /**
      * <p>Specifies the id of the EC2 security group.</p>
@@ -152,7 +156,7 @@ namespace Model
     /**
      * <p>Specifies the id of the EC2 security group.</p>
      */
-    inline EC2SecurityGroup& WithEC2SecurityGroupId(Aws::String&& value) { SetEC2SecurityGroupId(value); return *this;}
+    inline EC2SecurityGroup& WithEC2SecurityGroupId(Aws::String&& value) { SetEC2SecurityGroupId(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the id of the EC2 security group.</p>
@@ -175,7 +179,7 @@ namespace Model
      * <p> Specifies the AWS ID of the owner of the EC2 security group specified in the
      * <code>EC2SecurityGroupName</code> field. </p>
      */
-    inline void SetEC2SecurityGroupOwnerId(Aws::String&& value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId = value; }
+    inline void SetEC2SecurityGroupOwnerId(Aws::String&& value) { m_eC2SecurityGroupOwnerIdHasBeenSet = true; m_eC2SecurityGroupOwnerId = std::move(value); }
 
     /**
      * <p> Specifies the AWS ID of the owner of the EC2 security group specified in the
@@ -193,7 +197,7 @@ namespace Model
      * <p> Specifies the AWS ID of the owner of the EC2 security group specified in the
      * <code>EC2SecurityGroupName</code> field. </p>
      */
-    inline EC2SecurityGroup& WithEC2SecurityGroupOwnerId(Aws::String&& value) { SetEC2SecurityGroupOwnerId(value); return *this;}
+    inline EC2SecurityGroup& WithEC2SecurityGroupOwnerId(Aws::String&& value) { SetEC2SecurityGroupOwnerId(std::move(value)); return *this;}
 
     /**
      * <p> Specifies the AWS ID of the owner of the EC2 security group specified in the

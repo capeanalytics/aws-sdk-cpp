@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -21,6 +22,8 @@
 #include <aws/rds/model/DBClusterOptionGroupStatus.h>
 #include <aws/rds/model/DBClusterMember.h>
 #include <aws/rds/model/VpcSecurityGroupMembership.h>
+#include <aws/rds/model/DBClusterRole.h>
+#include <utility>
 
 namespace Aws
 {
@@ -43,7 +46,9 @@ namespace Model
    * <a>ModifyDBCluster</a> </p> </li> <li> <p> <a>RestoreDBClusterFromSnapshot</a>
    * </p> </li> <li> <p> <a>RestoreDBClusterToPointInTime</a> </p> </li> </ul>
    * <p>This data type is used as a response element in the <a>DescribeDBClusters</a>
-   * action.</p>
+   * action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBCluster">AWS API
+   * Reference</a></p>
    */
   class AWS_RDS_API DBCluster
   {
@@ -56,17 +61,26 @@ namespace Model
     void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
     /**
-     * <p>Specifies the allocated storage size in gigabytes (GB).</p>
+     * <p>For all database engines except Amazon Aurora, <code>AllocatedStorage</code>
+     * specifies the allocated storage size in gigabytes (GB). For Aurora,
+     * <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster
+     * storage size is not fixed, but instead automatically adjusts as needed.</p>
      */
     inline int GetAllocatedStorage() const{ return m_allocatedStorage; }
 
     /**
-     * <p>Specifies the allocated storage size in gigabytes (GB).</p>
+     * <p>For all database engines except Amazon Aurora, <code>AllocatedStorage</code>
+     * specifies the allocated storage size in gigabytes (GB). For Aurora,
+     * <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster
+     * storage size is not fixed, but instead automatically adjusts as needed.</p>
      */
     inline void SetAllocatedStorage(int value) { m_allocatedStorageHasBeenSet = true; m_allocatedStorage = value; }
 
     /**
-     * <p>Specifies the allocated storage size in gigabytes (GB).</p>
+     * <p>For all database engines except Amazon Aurora, <code>AllocatedStorage</code>
+     * specifies the allocated storage size in gigabytes (GB). For Aurora,
+     * <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster
+     * storage size is not fixed, but instead automatically adjusts as needed.</p>
      */
     inline DBCluster& WithAllocatedStorage(int value) { SetAllocatedStorage(value); return *this;}
 
@@ -86,7 +100,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
      * can be created in.</p>
      */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
+    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
@@ -98,7 +112,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
      * can be created in.</p>
      */
-    inline DBCluster& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(value); return *this;}
+    inline DBCluster& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
@@ -110,7 +124,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
      * can be created in.</p>
      */
-    inline DBCluster& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
+    inline DBCluster& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the DB cluster
@@ -152,7 +166,7 @@ namespace Model
      * <p>If present, specifies the name of the character set that this cluster is
      * associated with.</p>
      */
-    inline void SetCharacterSetName(Aws::String&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = value; }
+    inline void SetCharacterSetName(Aws::String&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = std::move(value); }
 
     /**
      * <p>If present, specifies the name of the character set that this cluster is
@@ -170,7 +184,7 @@ namespace Model
      * <p>If present, specifies the name of the character set that this cluster is
      * associated with.</p>
      */
-    inline DBCluster& WithCharacterSetName(Aws::String&& value) { SetCharacterSetName(value); return *this;}
+    inline DBCluster& WithCharacterSetName(Aws::String&& value) { SetCharacterSetName(std::move(value)); return *this;}
 
     /**
      * <p>If present, specifies the name of the character set that this cluster is
@@ -197,7 +211,7 @@ namespace Model
      * provided at create time, if one was specified when the DB cluster was created.
      * This same name is returned for the life of the DB cluster.</p>
      */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
+    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
 
     /**
      * <p>Contains the name of the initial database of this DB cluster that was
@@ -218,7 +232,7 @@ namespace Model
      * provided at create time, if one was specified when the DB cluster was created.
      * This same name is returned for the life of the DB cluster.</p>
      */
-    inline DBCluster& WithDatabaseName(Aws::String&& value) { SetDatabaseName(value); return *this;}
+    inline DBCluster& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
 
     /**
      * <p>Contains the name of the initial database of this DB cluster that was
@@ -243,7 +257,7 @@ namespace Model
      * <p>Contains a user-supplied DB cluster identifier. This identifier is the unique
      * key that identifies a DB cluster.</p>
      */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
+    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
 
     /**
      * <p>Contains a user-supplied DB cluster identifier. This identifier is the unique
@@ -261,7 +275,7 @@ namespace Model
      * <p>Contains a user-supplied DB cluster identifier. This identifier is the unique
      * key that identifies a DB cluster.</p>
      */
-    inline DBCluster& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(value); return *this;}
+    inline DBCluster& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>Contains a user-supplied DB cluster identifier. This identifier is the unique
@@ -282,7 +296,7 @@ namespace Model
     /**
      * <p>Specifies the name of the DB cluster parameter group for the DB cluster.</p>
      */
-    inline void SetDBClusterParameterGroup(Aws::String&& value) { m_dBClusterParameterGroupHasBeenSet = true; m_dBClusterParameterGroup = value; }
+    inline void SetDBClusterParameterGroup(Aws::String&& value) { m_dBClusterParameterGroupHasBeenSet = true; m_dBClusterParameterGroup = std::move(value); }
 
     /**
      * <p>Specifies the name of the DB cluster parameter group for the DB cluster.</p>
@@ -297,7 +311,7 @@ namespace Model
     /**
      * <p>Specifies the name of the DB cluster parameter group for the DB cluster.</p>
      */
-    inline DBCluster& WithDBClusterParameterGroup(Aws::String&& value) { SetDBClusterParameterGroup(value); return *this;}
+    inline DBCluster& WithDBClusterParameterGroup(Aws::String&& value) { SetDBClusterParameterGroup(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the DB cluster parameter group for the DB cluster.</p>
@@ -320,7 +334,7 @@ namespace Model
      * <p>Specifies information on the subnet group associated with the DB cluster,
      * including the name, description, and subnets in the subnet group.</p>
      */
-    inline void SetDBSubnetGroup(Aws::String&& value) { m_dBSubnetGroupHasBeenSet = true; m_dBSubnetGroup = value; }
+    inline void SetDBSubnetGroup(Aws::String&& value) { m_dBSubnetGroupHasBeenSet = true; m_dBSubnetGroup = std::move(value); }
 
     /**
      * <p>Specifies information on the subnet group associated with the DB cluster,
@@ -338,7 +352,7 @@ namespace Model
      * <p>Specifies information on the subnet group associated with the DB cluster,
      * including the name, description, and subnets in the subnet group.</p>
      */
-    inline DBCluster& WithDBSubnetGroup(Aws::String&& value) { SetDBSubnetGroup(value); return *this;}
+    inline DBCluster& WithDBSubnetGroup(Aws::String&& value) { SetDBSubnetGroup(std::move(value)); return *this;}
 
     /**
      * <p>Specifies information on the subnet group associated with the DB cluster,
@@ -359,7 +373,7 @@ namespace Model
     /**
      * <p>Specifies the current state of this DB cluster.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>Specifies the current state of this DB cluster.</p>
@@ -374,7 +388,7 @@ namespace Model
     /**
      * <p>Specifies the current state of this DB cluster.</p>
      */
-    inline DBCluster& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline DBCluster& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the current state of this DB cluster.</p>
@@ -394,7 +408,7 @@ namespace Model
     /**
      * <p>Specifies the progress of the operation as a percentage.</p>
      */
-    inline void SetPercentProgress(Aws::String&& value) { m_percentProgressHasBeenSet = true; m_percentProgress = value; }
+    inline void SetPercentProgress(Aws::String&& value) { m_percentProgressHasBeenSet = true; m_percentProgress = std::move(value); }
 
     /**
      * <p>Specifies the progress of the operation as a percentage.</p>
@@ -409,7 +423,7 @@ namespace Model
     /**
      * <p>Specifies the progress of the operation as a percentage.</p>
      */
-    inline DBCluster& WithPercentProgress(Aws::String&& value) { SetPercentProgress(value); return *this;}
+    inline DBCluster& WithPercentProgress(Aws::String&& value) { SetPercentProgress(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the progress of the operation as a percentage.</p>
@@ -432,7 +446,7 @@ namespace Model
      * <p>Specifies the earliest time to which a database can be restored with
      * point-in-time restore.</p>
      */
-    inline void SetEarliestRestorableTime(Aws::Utils::DateTime&& value) { m_earliestRestorableTimeHasBeenSet = true; m_earliestRestorableTime = value; }
+    inline void SetEarliestRestorableTime(Aws::Utils::DateTime&& value) { m_earliestRestorableTimeHasBeenSet = true; m_earliestRestorableTime = std::move(value); }
 
     /**
      * <p>Specifies the earliest time to which a database can be restored with
@@ -444,7 +458,7 @@ namespace Model
      * <p>Specifies the earliest time to which a database can be restored with
      * point-in-time restore.</p>
      */
-    inline DBCluster& WithEarliestRestorableTime(Aws::Utils::DateTime&& value) { SetEarliestRestorableTime(value); return *this;}
+    inline DBCluster& WithEarliestRestorableTime(Aws::Utils::DateTime&& value) { SetEarliestRestorableTime(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the connection endpoint for the primary instance of the DB
@@ -462,7 +476,7 @@ namespace Model
      * <p>Specifies the connection endpoint for the primary instance of the DB
      * cluster.</p>
      */
-    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
+    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
 
     /**
      * <p>Specifies the connection endpoint for the primary instance of the DB
@@ -480,7 +494,7 @@ namespace Model
      * <p>Specifies the connection endpoint for the primary instance of the DB
      * cluster.</p>
      */
-    inline DBCluster& WithEndpoint(Aws::String&& value) { SetEndpoint(value); return *this;}
+    inline DBCluster& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the connection endpoint for the primary instance of the DB
@@ -497,7 +511,7 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
     inline const Aws::String& GetReaderEndpoint() const{ return m_readerEndpoint; }
@@ -511,7 +525,7 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
     inline void SetReaderEndpoint(const Aws::String& value) { m_readerEndpointHasBeenSet = true; m_readerEndpoint = value; }
@@ -525,10 +539,10 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
-    inline void SetReaderEndpoint(Aws::String&& value) { m_readerEndpointHasBeenSet = true; m_readerEndpoint = value; }
+    inline void SetReaderEndpoint(Aws::String&& value) { m_readerEndpointHasBeenSet = true; m_readerEndpoint = std::move(value); }
 
     /**
      * <p>The reader endpoint for the DB cluster. The reader endpoint for a DB cluster
@@ -539,7 +553,7 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
     inline void SetReaderEndpoint(const char* value) { m_readerEndpointHasBeenSet = true; m_readerEndpoint.assign(value); }
@@ -553,7 +567,7 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
     inline DBCluster& WithReaderEndpoint(const Aws::String& value) { SetReaderEndpoint(value); return *this;}
@@ -567,10 +581,10 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
-    inline DBCluster& WithReaderEndpoint(Aws::String&& value) { SetReaderEndpoint(value); return *this;}
+    inline DBCluster& WithReaderEndpoint(Aws::String&& value) { SetReaderEndpoint(std::move(value)); return *this;}
 
     /**
      * <p>The reader endpoint for the DB cluster. The reader endpoint for a DB cluster
@@ -581,10 +595,28 @@ namespace Model
      * Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora
      * Replica that you are connected to is promoted to be the primary instance, your
      * connection will be dropped. To continue sending your read workload to other
-     * Aurora Replicas in the cluster, you can then recoonect to the reader
+     * Aurora Replicas in the cluster, you can then reconnect to the reader
      * endpoint.</p>
      */
     inline DBCluster& WithReaderEndpoint(const char* value) { SetReaderEndpoint(value); return *this;}
+
+    /**
+     * <p>Specifies whether the DB cluster has instances in multiple Availability
+     * Zones.</p>
+     */
+    inline bool GetMultiAZ() const{ return m_multiAZ; }
+
+    /**
+     * <p>Specifies whether the DB cluster has instances in multiple Availability
+     * Zones.</p>
+     */
+    inline void SetMultiAZ(bool value) { m_multiAZHasBeenSet = true; m_multiAZ = value; }
+
+    /**
+     * <p>Specifies whether the DB cluster has instances in multiple Availability
+     * Zones.</p>
+     */
+    inline DBCluster& WithMultiAZ(bool value) { SetMultiAZ(value); return *this;}
 
     /**
      * <p>Provides the name of the database engine to be used for this DB cluster.</p>
@@ -599,7 +631,7 @@ namespace Model
     /**
      * <p>Provides the name of the database engine to be used for this DB cluster.</p>
      */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = value; }
+    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
 
     /**
      * <p>Provides the name of the database engine to be used for this DB cluster.</p>
@@ -614,7 +646,7 @@ namespace Model
     /**
      * <p>Provides the name of the database engine to be used for this DB cluster.</p>
      */
-    inline DBCluster& WithEngine(Aws::String&& value) { SetEngine(value); return *this;}
+    inline DBCluster& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
 
     /**
      * <p>Provides the name of the database engine to be used for this DB cluster.</p>
@@ -634,7 +666,7 @@ namespace Model
     /**
      * <p>Indicates the database engine version.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>Indicates the database engine version.</p>
@@ -649,7 +681,7 @@ namespace Model
     /**
      * <p>Indicates the database engine version.</p>
      */
-    inline DBCluster& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline DBCluster& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>Indicates the database engine version.</p>
@@ -672,7 +704,7 @@ namespace Model
      * <p>Specifies the latest time to which a database can be restored with
      * point-in-time restore.</p>
      */
-    inline void SetLatestRestorableTime(Aws::Utils::DateTime&& value) { m_latestRestorableTimeHasBeenSet = true; m_latestRestorableTime = value; }
+    inline void SetLatestRestorableTime(Aws::Utils::DateTime&& value) { m_latestRestorableTimeHasBeenSet = true; m_latestRestorableTime = std::move(value); }
 
     /**
      * <p>Specifies the latest time to which a database can be restored with
@@ -684,7 +716,7 @@ namespace Model
      * <p>Specifies the latest time to which a database can be restored with
      * point-in-time restore.</p>
      */
-    inline DBCluster& WithLatestRestorableTime(Aws::Utils::DateTime&& value) { SetLatestRestorableTime(value); return *this;}
+    inline DBCluster& WithLatestRestorableTime(Aws::Utils::DateTime&& value) { SetLatestRestorableTime(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the port that the database engine is listening on.</p>
@@ -714,7 +746,7 @@ namespace Model
     /**
      * <p>Contains the master username for the DB cluster.</p>
      */
-    inline void SetMasterUsername(Aws::String&& value) { m_masterUsernameHasBeenSet = true; m_masterUsername = value; }
+    inline void SetMasterUsername(Aws::String&& value) { m_masterUsernameHasBeenSet = true; m_masterUsername = std::move(value); }
 
     /**
      * <p>Contains the master username for the DB cluster.</p>
@@ -729,7 +761,7 @@ namespace Model
     /**
      * <p>Contains the master username for the DB cluster.</p>
      */
-    inline DBCluster& WithMasterUsername(Aws::String&& value) { SetMasterUsername(value); return *this;}
+    inline DBCluster& WithMasterUsername(Aws::String&& value) { SetMasterUsername(std::move(value)); return *this;}
 
     /**
      * <p>Contains the master username for the DB cluster.</p>
@@ -749,7 +781,7 @@ namespace Model
     /**
      * <p>Provides the list of option group memberships for this DB cluster.</p>
      */
-    inline void SetDBClusterOptionGroupMemberships(Aws::Vector<DBClusterOptionGroupStatus>&& value) { m_dBClusterOptionGroupMembershipsHasBeenSet = true; m_dBClusterOptionGroupMemberships = value; }
+    inline void SetDBClusterOptionGroupMemberships(Aws::Vector<DBClusterOptionGroupStatus>&& value) { m_dBClusterOptionGroupMembershipsHasBeenSet = true; m_dBClusterOptionGroupMemberships = std::move(value); }
 
     /**
      * <p>Provides the list of option group memberships for this DB cluster.</p>
@@ -759,7 +791,7 @@ namespace Model
     /**
      * <p>Provides the list of option group memberships for this DB cluster.</p>
      */
-    inline DBCluster& WithDBClusterOptionGroupMemberships(Aws::Vector<DBClusterOptionGroupStatus>&& value) { SetDBClusterOptionGroupMemberships(value); return *this;}
+    inline DBCluster& WithDBClusterOptionGroupMemberships(Aws::Vector<DBClusterOptionGroupStatus>&& value) { SetDBClusterOptionGroupMemberships(std::move(value)); return *this;}
 
     /**
      * <p>Provides the list of option group memberships for this DB cluster.</p>
@@ -769,7 +801,7 @@ namespace Model
     /**
      * <p>Provides the list of option group memberships for this DB cluster.</p>
      */
-    inline DBCluster& AddDBClusterOptionGroupMemberships(DBClusterOptionGroupStatus&& value) { m_dBClusterOptionGroupMembershipsHasBeenSet = true; m_dBClusterOptionGroupMemberships.push_back(value); return *this; }
+    inline DBCluster& AddDBClusterOptionGroupMemberships(DBClusterOptionGroupStatus&& value) { m_dBClusterOptionGroupMembershipsHasBeenSet = true; m_dBClusterOptionGroupMemberships.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies the daily time range during which automated backups are created if
@@ -790,7 +822,7 @@ namespace Model
      * automated backups are enabled, as determined by the
      * <code>BackupRetentionPeriod</code>. </p>
      */
-    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = value; }
+    inline void SetPreferredBackupWindow(Aws::String&& value) { m_preferredBackupWindowHasBeenSet = true; m_preferredBackupWindow = std::move(value); }
 
     /**
      * <p>Specifies the daily time range during which automated backups are created if
@@ -811,7 +843,7 @@ namespace Model
      * automated backups are enabled, as determined by the
      * <code>BackupRetentionPeriod</code>. </p>
      */
-    inline DBCluster& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(value); return *this;}
+    inline DBCluster& WithPreferredBackupWindow(Aws::String&& value) { SetPreferredBackupWindow(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the daily time range during which automated backups are created if
@@ -836,7 +868,7 @@ namespace Model
      * <p>Specifies the weekly time range during which system maintenance can occur, in
      * Universal Coordinated Time (UTC).</p>
      */
-    inline void SetPreferredMaintenanceWindow(Aws::String&& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = value; }
+    inline void SetPreferredMaintenanceWindow(Aws::String&& value) { m_preferredMaintenanceWindowHasBeenSet = true; m_preferredMaintenanceWindow = std::move(value); }
 
     /**
      * <p>Specifies the weekly time range during which system maintenance can occur, in
@@ -854,7 +886,7 @@ namespace Model
      * <p>Specifies the weekly time range during which system maintenance can occur, in
      * Universal Coordinated Time (UTC).</p>
      */
-    inline DBCluster& WithPreferredMaintenanceWindow(Aws::String&& value) { SetPreferredMaintenanceWindow(value); return *this;}
+    inline DBCluster& WithPreferredMaintenanceWindow(Aws::String&& value) { SetPreferredMaintenanceWindow(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the weekly time range during which system maintenance can occur, in
@@ -878,7 +910,7 @@ namespace Model
      * <p>Contains the identifier of the source DB cluster if this DB cluster is a Read
      * Replica.</p>
      */
-    inline void SetReplicationSourceIdentifier(Aws::String&& value) { m_replicationSourceIdentifierHasBeenSet = true; m_replicationSourceIdentifier = value; }
+    inline void SetReplicationSourceIdentifier(Aws::String&& value) { m_replicationSourceIdentifierHasBeenSet = true; m_replicationSourceIdentifier = std::move(value); }
 
     /**
      * <p>Contains the identifier of the source DB cluster if this DB cluster is a Read
@@ -896,7 +928,7 @@ namespace Model
      * <p>Contains the identifier of the source DB cluster if this DB cluster is a Read
      * Replica.</p>
      */
-    inline DBCluster& WithReplicationSourceIdentifier(Aws::String&& value) { SetReplicationSourceIdentifier(value); return *this;}
+    inline DBCluster& WithReplicationSourceIdentifier(Aws::String&& value) { SetReplicationSourceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>Contains the identifier of the source DB cluster if this DB cluster is a Read
@@ -920,7 +952,7 @@ namespace Model
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
      * cluster.</p>
      */
-    inline void SetReadReplicaIdentifiers(Aws::Vector<Aws::String>&& value) { m_readReplicaIdentifiersHasBeenSet = true; m_readReplicaIdentifiers = value; }
+    inline void SetReadReplicaIdentifiers(Aws::Vector<Aws::String>&& value) { m_readReplicaIdentifiersHasBeenSet = true; m_readReplicaIdentifiers = std::move(value); }
 
     /**
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
@@ -932,7 +964,7 @@ namespace Model
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
      * cluster.</p>
      */
-    inline DBCluster& WithReadReplicaIdentifiers(Aws::Vector<Aws::String>&& value) { SetReadReplicaIdentifiers(value); return *this;}
+    inline DBCluster& WithReadReplicaIdentifiers(Aws::Vector<Aws::String>&& value) { SetReadReplicaIdentifiers(std::move(value)); return *this;}
 
     /**
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
@@ -944,7 +976,7 @@ namespace Model
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
      * cluster.</p>
      */
-    inline DBCluster& AddReadReplicaIdentifiers(Aws::String&& value) { m_readReplicaIdentifiersHasBeenSet = true; m_readReplicaIdentifiers.push_back(value); return *this; }
+    inline DBCluster& AddReadReplicaIdentifiers(Aws::String&& value) { m_readReplicaIdentifiersHasBeenSet = true; m_readReplicaIdentifiers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Contains one or more identifiers of the Read Replicas associated with this DB
@@ -965,7 +997,7 @@ namespace Model
     /**
      * <p>Provides the list of instances that make up the DB cluster.</p>
      */
-    inline void SetDBClusterMembers(Aws::Vector<DBClusterMember>&& value) { m_dBClusterMembersHasBeenSet = true; m_dBClusterMembers = value; }
+    inline void SetDBClusterMembers(Aws::Vector<DBClusterMember>&& value) { m_dBClusterMembersHasBeenSet = true; m_dBClusterMembers = std::move(value); }
 
     /**
      * <p>Provides the list of instances that make up the DB cluster.</p>
@@ -975,7 +1007,7 @@ namespace Model
     /**
      * <p>Provides the list of instances that make up the DB cluster.</p>
      */
-    inline DBCluster& WithDBClusterMembers(Aws::Vector<DBClusterMember>&& value) { SetDBClusterMembers(value); return *this;}
+    inline DBCluster& WithDBClusterMembers(Aws::Vector<DBClusterMember>&& value) { SetDBClusterMembers(std::move(value)); return *this;}
 
     /**
      * <p>Provides the list of instances that make up the DB cluster.</p>
@@ -985,7 +1017,7 @@ namespace Model
     /**
      * <p>Provides the list of instances that make up the DB cluster.</p>
      */
-    inline DBCluster& AddDBClusterMembers(DBClusterMember&& value) { m_dBClusterMembersHasBeenSet = true; m_dBClusterMembers.push_back(value); return *this; }
+    inline DBCluster& AddDBClusterMembers(DBClusterMember&& value) { m_dBClusterMembersHasBeenSet = true; m_dBClusterMembers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
@@ -1000,7 +1032,7 @@ namespace Model
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
      */
-    inline void SetVpcSecurityGroups(Aws::Vector<VpcSecurityGroupMembership>&& value) { m_vpcSecurityGroupsHasBeenSet = true; m_vpcSecurityGroups = value; }
+    inline void SetVpcSecurityGroups(Aws::Vector<VpcSecurityGroupMembership>&& value) { m_vpcSecurityGroupsHasBeenSet = true; m_vpcSecurityGroups = std::move(value); }
 
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
@@ -1010,7 +1042,7 @@ namespace Model
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
      */
-    inline DBCluster& WithVpcSecurityGroups(Aws::Vector<VpcSecurityGroupMembership>&& value) { SetVpcSecurityGroups(value); return *this;}
+    inline DBCluster& WithVpcSecurityGroups(Aws::Vector<VpcSecurityGroupMembership>&& value) { SetVpcSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
@@ -1020,7 +1052,7 @@ namespace Model
     /**
      * <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
      */
-    inline DBCluster& AddVpcSecurityGroups(VpcSecurityGroupMembership&& value) { m_vpcSecurityGroupsHasBeenSet = true; m_vpcSecurityGroups.push_back(value); return *this; }
+    inline DBCluster& AddVpcSecurityGroups(VpcSecurityGroupMembership&& value) { m_vpcSecurityGroupsHasBeenSet = true; m_vpcSecurityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
@@ -1038,7 +1070,7 @@ namespace Model
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
      * zone.</p>
      */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
+    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
 
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
@@ -1056,7 +1088,7 @@ namespace Model
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
      * zone.</p>
      */
-    inline DBCluster& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(value); return *this;}
+    inline DBCluster& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted
@@ -1095,7 +1127,7 @@ namespace Model
      * <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the
      * encrypted DB cluster.</p>
      */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
+    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
 
     /**
      * <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the
@@ -1113,7 +1145,7 @@ namespace Model
      * <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the
      * encrypted DB cluster.</p>
      */
-    inline DBCluster& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(value); return *this;}
+    inline DBCluster& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
      * <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the
@@ -1140,7 +1172,7 @@ namespace Model
      * is found in AWS CloudTrail log entries whenever the KMS key for the DB cluster
      * is accessed.</p>
      */
-    inline void SetDbClusterResourceId(Aws::String&& value) { m_dbClusterResourceIdHasBeenSet = true; m_dbClusterResourceId = value; }
+    inline void SetDbClusterResourceId(Aws::String&& value) { m_dbClusterResourceIdHasBeenSet = true; m_dbClusterResourceId = std::move(value); }
 
     /**
      * <p>The region-unique, immutable identifier for the DB cluster. This identifier
@@ -1161,7 +1193,7 @@ namespace Model
      * is found in AWS CloudTrail log entries whenever the KMS key for the DB cluster
      * is accessed.</p>
      */
-    inline DBCluster& WithDbClusterResourceId(Aws::String&& value) { SetDbClusterResourceId(value); return *this;}
+    inline DBCluster& WithDbClusterResourceId(Aws::String&& value) { SetDbClusterResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The region-unique, immutable identifier for the DB cluster. This identifier
@@ -1183,7 +1215,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB cluster.</p>
      */
-    inline void SetDBClusterArn(Aws::String&& value) { m_dBClusterArnHasBeenSet = true; m_dBClusterArn = value; }
+    inline void SetDBClusterArn(Aws::String&& value) { m_dBClusterArnHasBeenSet = true; m_dBClusterArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB cluster.</p>
@@ -1198,12 +1230,116 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB cluster.</p>
      */
-    inline DBCluster& WithDBClusterArn(Aws::String&& value) { SetDBClusterArn(value); return *this;}
+    inline DBCluster& WithDBClusterArn(Aws::String&& value) { SetDBClusterArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB cluster.</p>
      */
     inline DBCluster& WithDBClusterArn(const char* value) { SetDBClusterArn(value); return *this;}
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline const Aws::Vector<DBClusterRole>& GetAssociatedRoles() const{ return m_associatedRoles; }
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline void SetAssociatedRoles(const Aws::Vector<DBClusterRole>& value) { m_associatedRolesHasBeenSet = true; m_associatedRoles = value; }
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline void SetAssociatedRoles(Aws::Vector<DBClusterRole>&& value) { m_associatedRolesHasBeenSet = true; m_associatedRoles = std::move(value); }
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline DBCluster& WithAssociatedRoles(const Aws::Vector<DBClusterRole>& value) { SetAssociatedRoles(value); return *this;}
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline DBCluster& WithAssociatedRoles(Aws::Vector<DBClusterRole>&& value) { SetAssociatedRoles(std::move(value)); return *this;}
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline DBCluster& AddAssociatedRoles(const DBClusterRole& value) { m_associatedRolesHasBeenSet = true; m_associatedRoles.push_back(value); return *this; }
+
+    /**
+     * <p>Provides a list of the AWS Identity and Access Management (IAM) roles that
+     * are associated with the DB cluster. IAM roles that are associated with a DB
+     * cluster grant permission for the DB cluster to access other AWS services on your
+     * behalf.</p>
+     */
+    inline DBCluster& AddAssociatedRoles(DBClusterRole&& value) { m_associatedRolesHasBeenSet = true; m_associatedRoles.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>True if mapping of AWS Identity and Access Management (IAM) accounts to
+     * database accounts is enabled; otherwise false.</p>
+     */
+    inline bool GetIAMDatabaseAuthenticationEnabled() const{ return m_iAMDatabaseAuthenticationEnabled; }
+
+    /**
+     * <p>True if mapping of AWS Identity and Access Management (IAM) accounts to
+     * database accounts is enabled; otherwise false.</p>
+     */
+    inline void SetIAMDatabaseAuthenticationEnabled(bool value) { m_iAMDatabaseAuthenticationEnabledHasBeenSet = true; m_iAMDatabaseAuthenticationEnabled = value; }
+
+    /**
+     * <p>True if mapping of AWS Identity and Access Management (IAM) accounts to
+     * database accounts is enabled; otherwise false.</p>
+     */
+    inline DBCluster& WithIAMDatabaseAuthenticationEnabled(bool value) { SetIAMDatabaseAuthenticationEnabled(value); return *this;}
+
+    /**
+     * <p>Specifies the time when the DB cluster was created, in Universal Coordinated
+     * Time (UTC).</p>
+     */
+    inline const Aws::Utils::DateTime& GetClusterCreateTime() const{ return m_clusterCreateTime; }
+
+    /**
+     * <p>Specifies the time when the DB cluster was created, in Universal Coordinated
+     * Time (UTC).</p>
+     */
+    inline void SetClusterCreateTime(const Aws::Utils::DateTime& value) { m_clusterCreateTimeHasBeenSet = true; m_clusterCreateTime = value; }
+
+    /**
+     * <p>Specifies the time when the DB cluster was created, in Universal Coordinated
+     * Time (UTC).</p>
+     */
+    inline void SetClusterCreateTime(Aws::Utils::DateTime&& value) { m_clusterCreateTimeHasBeenSet = true; m_clusterCreateTime = std::move(value); }
+
+    /**
+     * <p>Specifies the time when the DB cluster was created, in Universal Coordinated
+     * Time (UTC).</p>
+     */
+    inline DBCluster& WithClusterCreateTime(const Aws::Utils::DateTime& value) { SetClusterCreateTime(value); return *this;}
+
+    /**
+     * <p>Specifies the time when the DB cluster was created, in Universal Coordinated
+     * Time (UTC).</p>
+     */
+    inline DBCluster& WithClusterCreateTime(Aws::Utils::DateTime&& value) { SetClusterCreateTime(std::move(value)); return *this;}
 
   private:
     int m_allocatedStorage;
@@ -1232,6 +1368,8 @@ namespace Model
     bool m_endpointHasBeenSet;
     Aws::String m_readerEndpoint;
     bool m_readerEndpointHasBeenSet;
+    bool m_multiAZ;
+    bool m_multiAZHasBeenSet;
     Aws::String m_engine;
     bool m_engineHasBeenSet;
     Aws::String m_engineVersion;
@@ -1266,6 +1404,12 @@ namespace Model
     bool m_dbClusterResourceIdHasBeenSet;
     Aws::String m_dBClusterArn;
     bool m_dBClusterArnHasBeenSet;
+    Aws::Vector<DBClusterRole> m_associatedRoles;
+    bool m_associatedRolesHasBeenSet;
+    bool m_iAMDatabaseAuthenticationEnabled;
+    bool m_iAMDatabaseAuthenticationEnabledHasBeenSet;
+    Aws::Utils::DateTime m_clusterCreateTime;
+    bool m_clusterCreateTimeHasBeenSet;
   };
 
 } // namespace Model

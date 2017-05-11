@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a volume status operation code.</p>
+   * <p>Describes a volume status operation code.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VolumeStatusAction">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API VolumeStatusAction
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The code identifying the operation, for example,
      * <code>enable-volume-io</code>.</p>
      */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
      * <p>The code identifying the operation, for example,
@@ -78,7 +82,7 @@ namespace Model
      * <p>The code identifying the operation, for example,
      * <code>enable-volume-io</code>.</p>
      */
-    inline VolumeStatusAction& WithCode(Aws::String&& value) { SetCode(value); return *this;}
+    inline VolumeStatusAction& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>The code identifying the operation, for example,
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>A description of the operation.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the operation.</p>
@@ -114,7 +118,7 @@ namespace Model
     /**
      * <p>A description of the operation.</p>
      */
-    inline VolumeStatusAction& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline VolumeStatusAction& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the operation.</p>
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>The event type associated with this operation.</p>
      */
-    inline void SetEventType(Aws::String&& value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
+    inline void SetEventType(Aws::String&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::move(value); }
 
     /**
      * <p>The event type associated with this operation.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>The event type associated with this operation.</p>
      */
-    inline VolumeStatusAction& WithEventType(Aws::String&& value) { SetEventType(value); return *this;}
+    inline VolumeStatusAction& WithEventType(Aws::String&& value) { SetEventType(std::move(value)); return *this;}
 
     /**
      * <p>The event type associated with this operation.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The ID of the event associated with this operation.</p>
      */
-    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = value; }
+    inline void SetEventId(Aws::String&& value) { m_eventIdHasBeenSet = true; m_eventId = std::move(value); }
 
     /**
      * <p>The ID of the event associated with this operation.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The ID of the event associated with this operation.</p>
      */
-    inline VolumeStatusAction& WithEventId(Aws::String&& value) { SetEventId(value); return *this;}
+    inline VolumeStatusAction& WithEventId(Aws::String&& value) { SetEventId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the event associated with this operation.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iam/model/ResponseMetadata.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>Contains the response to a successful <a>GetContextKeysForPrincipalPolicy</a>
-   * or <a>GetContextKeysForCustomPolicy</a> request. </p>
+   * or <a>GetContextKeysForCustomPolicy</a> request. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetContextKeysForPolicyResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API GetContextKeysForCustomPolicyResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
      */
-    inline void SetContextKeyNames(Aws::Vector<Aws::String>&& value) { m_contextKeyNames = value; }
+    inline void SetContextKeyNames(Aws::Vector<Aws::String>&& value) { m_contextKeyNames = std::move(value); }
 
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
      */
-    inline GetContextKeysForCustomPolicyResult& WithContextKeyNames(Aws::Vector<Aws::String>&& value) { SetContextKeyNames(value); return *this;}
+    inline GetContextKeysForCustomPolicyResult& WithContextKeyNames(Aws::Vector<Aws::String>&& value) { SetContextKeyNames(std::move(value)); return *this;}
 
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
      */
-    inline GetContextKeysForCustomPolicyResult& AddContextKeyNames(Aws::String&& value) { m_contextKeyNames.push_back(value); return *this; }
+    inline GetContextKeysForCustomPolicyResult& AddContextKeyNames(Aws::String&& value) { m_contextKeyNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The list of context keys that are referenced in the input policies.</p>
@@ -92,13 +96,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetContextKeysForCustomPolicyResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetContextKeysForCustomPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetContextKeysForCustomPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_contextKeyNames;

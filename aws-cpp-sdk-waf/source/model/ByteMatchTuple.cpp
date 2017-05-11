@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/waf/model/ByteMatchTuple.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -31,7 +32,9 @@ namespace Model
 ByteMatchTuple::ByteMatchTuple() : 
     m_fieldToMatchHasBeenSet(false),
     m_targetStringHasBeenSet(false),
+    m_textTransformation(TextTransformation::NOT_SET),
     m_textTransformationHasBeenSet(false),
+    m_positionalConstraint(PositionalConstraint::NOT_SET),
     m_positionalConstraintHasBeenSet(false)
 {
 }
@@ -39,7 +42,9 @@ ByteMatchTuple::ByteMatchTuple() :
 ByteMatchTuple::ByteMatchTuple(const JsonValue& jsonValue) : 
     m_fieldToMatchHasBeenSet(false),
     m_targetStringHasBeenSet(false),
+    m_textTransformation(TextTransformation::NOT_SET),
     m_textTransformationHasBeenSet(false),
+    m_positionalConstraint(PositionalConstraint::NOT_SET),
     m_positionalConstraintHasBeenSet(false)
 {
   *this = jsonValue;

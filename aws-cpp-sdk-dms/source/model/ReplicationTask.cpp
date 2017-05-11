@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dms/model/ReplicationTask.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,11 +33,13 @@ ReplicationTask::ReplicationTask() :
     m_sourceEndpointArnHasBeenSet(false),
     m_targetEndpointArnHasBeenSet(false),
     m_replicationInstanceArnHasBeenSet(false),
+    m_migrationType(MigrationTypeValue::NOT_SET),
     m_migrationTypeHasBeenSet(false),
     m_tableMappingsHasBeenSet(false),
     m_replicationTaskSettingsHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_lastFailureMessageHasBeenSet(false),
+    m_stopReasonHasBeenSet(false),
     m_replicationTaskCreationDateHasBeenSet(false),
     m_replicationTaskStartDateHasBeenSet(false),
     m_replicationTaskArnHasBeenSet(false),
@@ -49,11 +52,13 @@ ReplicationTask::ReplicationTask(const JsonValue& jsonValue) :
     m_sourceEndpointArnHasBeenSet(false),
     m_targetEndpointArnHasBeenSet(false),
     m_replicationInstanceArnHasBeenSet(false),
+    m_migrationType(MigrationTypeValue::NOT_SET),
     m_migrationTypeHasBeenSet(false),
     m_tableMappingsHasBeenSet(false),
     m_replicationTaskSettingsHasBeenSet(false),
     m_statusHasBeenSet(false),
     m_lastFailureMessageHasBeenSet(false),
+    m_stopReasonHasBeenSet(false),
     m_replicationTaskCreationDateHasBeenSet(false),
     m_replicationTaskStartDateHasBeenSet(false),
     m_replicationTaskArnHasBeenSet(false),
@@ -125,6 +130,13 @@ ReplicationTask& ReplicationTask::operator =(const JsonValue& jsonValue)
     m_lastFailureMessage = jsonValue.GetString("LastFailureMessage");
 
     m_lastFailureMessageHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StopReason"))
+  {
+    m_stopReason = jsonValue.GetString("StopReason");
+
+    m_stopReasonHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ReplicationTaskCreationDate"))
@@ -212,6 +224,12 @@ JsonValue ReplicationTask::Jsonize() const
   if(m_lastFailureMessageHasBeenSet)
   {
    payload.WithString("LastFailureMessage", m_lastFailureMessage);
+
+  }
+
+  if(m_stopReasonHasBeenSet)
+  {
+   payload.WithString("StopReason", m_stopReason);
 
   }
 

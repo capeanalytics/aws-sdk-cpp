@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/config/model/ComplianceSummary.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 
   /**
    * <p>The number of AWS resources of a specific type that are compliant or
-   * noncompliant, up to a maximum of 100 for each compliance.</p>
+   * noncompliant, up to a maximum of 100 for each compliance.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ComplianceSummaryByResourceType">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API ComplianceSummaryByResourceType
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The type of AWS resource.</p>
      */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
      * <p>The type of AWS resource.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The type of AWS resource.</p>
      */
-    inline ComplianceSummaryByResourceType& WithResourceType(Aws::String&& value) { SetResourceType(value); return *this;}
+    inline ComplianceSummaryByResourceType& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
 
     /**
      * <p>The type of AWS resource.</p>
@@ -94,7 +99,7 @@ namespace Model
      * <p>The number of AWS resources that are compliant or noncompliant, up to a
      * maximum of 100 for each compliance.</p>
      */
-    inline void SetComplianceSummary(ComplianceSummary&& value) { m_complianceSummaryHasBeenSet = true; m_complianceSummary = value; }
+    inline void SetComplianceSummary(ComplianceSummary&& value) { m_complianceSummaryHasBeenSet = true; m_complianceSummary = std::move(value); }
 
     /**
      * <p>The number of AWS resources that are compliant or noncompliant, up to a
@@ -106,7 +111,7 @@ namespace Model
      * <p>The number of AWS resources that are compliant or noncompliant, up to a
      * maximum of 100 for each compliance.</p>
      */
-    inline ComplianceSummaryByResourceType& WithComplianceSummary(ComplianceSummary&& value) { SetComplianceSummary(value); return *this;}
+    inline ComplianceSummaryByResourceType& WithComplianceSummary(ComplianceSummary&& value) { SetComplianceSummary(std::move(value)); return *this;}
 
   private:
     Aws::String m_resourceType;

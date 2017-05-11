@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/directconnect/DirectConnectRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/directconnect/model/NewPublicVirtualInterface.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 
   /**
    * <p>Container for the parameters to the CreatePublicVirtualInterface
-   * operation.</p>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/CreatePublicVirtualInterfaceRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API CreatePublicVirtualInterfaceRequest : public DirectConnectRequest
   {
@@ -37,6 +41,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
 
@@ -44,7 +49,7 @@ namespace Model
     inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
 
     
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
+    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
 
     
     inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
@@ -53,7 +58,7 @@ namespace Model
     inline CreatePublicVirtualInterfaceRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
 
     
-    inline CreatePublicVirtualInterfaceRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(value); return *this;}
+    inline CreatePublicVirtualInterfaceRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
 
     
     inline CreatePublicVirtualInterfaceRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
@@ -74,7 +79,7 @@ namespace Model
      * <p>Detailed information for the public virtual interface to be created.</p>
      * <p>Default: None</p>
      */
-    inline void SetNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { m_newPublicVirtualInterfaceHasBeenSet = true; m_newPublicVirtualInterface = value; }
+    inline void SetNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { m_newPublicVirtualInterfaceHasBeenSet = true; m_newPublicVirtualInterface = std::move(value); }
 
     /**
      * <p>Detailed information for the public virtual interface to be created.</p>
@@ -86,7 +91,7 @@ namespace Model
      * <p>Detailed information for the public virtual interface to be created.</p>
      * <p>Default: None</p>
      */
-    inline CreatePublicVirtualInterfaceRequest& WithNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { SetNewPublicVirtualInterface(value); return *this;}
+    inline CreatePublicVirtualInterfaceRequest& WithNewPublicVirtualInterface(NewPublicVirtualInterface&& value) { SetNewPublicVirtualInterface(std::move(value)); return *this;}
 
   private:
     Aws::String m_connectionId;

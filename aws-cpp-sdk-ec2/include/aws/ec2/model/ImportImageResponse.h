@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/SnapshotDetail.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output for ImportImage.</p>
+   * <p>Contains the output for ImportImage.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImageResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportImageResponse
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The task ID of the import image task.</p>
      */
-    inline void SetImportTaskId(Aws::String&& value) { m_importTaskId = value; }
+    inline void SetImportTaskId(Aws::String&& value) { m_importTaskId = std::move(value); }
 
     /**
      * <p>The task ID of the import image task.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The task ID of the import image task.</p>
      */
-    inline ImportImageResponse& WithImportTaskId(Aws::String&& value) { SetImportTaskId(value); return *this;}
+    inline ImportImageResponse& WithImportTaskId(Aws::String&& value) { SetImportTaskId(std::move(value)); return *this;}
 
     /**
      * <p>The task ID of the import image task.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The architecture of the virtual machine.</p>
      */
-    inline void SetArchitecture(Aws::String&& value) { m_architecture = value; }
+    inline void SetArchitecture(Aws::String&& value) { m_architecture = std::move(value); }
 
     /**
      * <p>The architecture of the virtual machine.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The architecture of the virtual machine.</p>
      */
-    inline ImportImageResponse& WithArchitecture(Aws::String&& value) { SetArchitecture(value); return *this;}
+    inline ImportImageResponse& WithArchitecture(Aws::String&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The architecture of the virtual machine.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The license type of the virtual machine.</p>
      */
-    inline void SetLicenseType(Aws::String&& value) { m_licenseType = value; }
+    inline void SetLicenseType(Aws::String&& value) { m_licenseType = std::move(value); }
 
     /**
      * <p>The license type of the virtual machine.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The license type of the virtual machine.</p>
      */
-    inline ImportImageResponse& WithLicenseType(Aws::String&& value) { SetLicenseType(value); return *this;}
+    inline ImportImageResponse& WithLicenseType(Aws::String&& value) { SetLicenseType(std::move(value)); return *this;}
 
     /**
      * <p>The license type of the virtual machine.</p>
@@ -163,7 +167,7 @@ namespace Model
     /**
      * <p>The operating system of the virtual machine.</p>
      */
-    inline void SetPlatform(Aws::String&& value) { m_platform = value; }
+    inline void SetPlatform(Aws::String&& value) { m_platform = std::move(value); }
 
     /**
      * <p>The operating system of the virtual machine.</p>
@@ -178,7 +182,7 @@ namespace Model
     /**
      * <p>The operating system of the virtual machine.</p>
      */
-    inline ImportImageResponse& WithPlatform(Aws::String&& value) { SetPlatform(value); return *this;}
+    inline ImportImageResponse& WithPlatform(Aws::String&& value) { SetPlatform(std::move(value)); return *this;}
 
     /**
      * <p>The operating system of the virtual machine.</p>
@@ -198,7 +202,7 @@ namespace Model
     /**
      * <p>The target hypervisor of the import task.</p>
      */
-    inline void SetHypervisor(Aws::String&& value) { m_hypervisor = value; }
+    inline void SetHypervisor(Aws::String&& value) { m_hypervisor = std::move(value); }
 
     /**
      * <p>The target hypervisor of the import task.</p>
@@ -213,7 +217,7 @@ namespace Model
     /**
      * <p>The target hypervisor of the import task.</p>
      */
-    inline ImportImageResponse& WithHypervisor(Aws::String&& value) { SetHypervisor(value); return *this;}
+    inline ImportImageResponse& WithHypervisor(Aws::String&& value) { SetHypervisor(std::move(value)); return *this;}
 
     /**
      * <p>The target hypervisor of the import task.</p>
@@ -233,7 +237,7 @@ namespace Model
     /**
      * <p>A description of the import task.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
 
     /**
      * <p>A description of the import task.</p>
@@ -248,7 +252,7 @@ namespace Model
     /**
      * <p>A description of the import task.</p>
      */
-    inline ImportImageResponse& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ImportImageResponse& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the import task.</p>
@@ -268,7 +272,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline void SetSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { m_snapshotDetails = value; }
+    inline void SetSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { m_snapshotDetails = std::move(value); }
 
     /**
      * <p>Information about the snapshots.</p>
@@ -278,7 +282,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline ImportImageResponse& WithSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { SetSnapshotDetails(value); return *this;}
+    inline ImportImageResponse& WithSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { SetSnapshotDetails(std::move(value)); return *this;}
 
     /**
      * <p>Information about the snapshots.</p>
@@ -288,7 +292,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline ImportImageResponse& AddSnapshotDetails(SnapshotDetail&& value) { m_snapshotDetails.push_back(value); return *this; }
+    inline ImportImageResponse& AddSnapshotDetails(SnapshotDetail&& value) { m_snapshotDetails.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) created by the import task.</p>
@@ -303,7 +307,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon Machine Image (AMI) created by the import task.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) created by the import task.</p>
@@ -318,7 +322,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon Machine Image (AMI) created by the import task.</p>
      */
-    inline ImportImageResponse& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline ImportImageResponse& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) created by the import task.</p>
@@ -338,7 +342,7 @@ namespace Model
     /**
      * <p>The progress of the task.</p>
      */
-    inline void SetProgress(Aws::String&& value) { m_progress = value; }
+    inline void SetProgress(Aws::String&& value) { m_progress = std::move(value); }
 
     /**
      * <p>The progress of the task.</p>
@@ -353,7 +357,7 @@ namespace Model
     /**
      * <p>The progress of the task.</p>
      */
-    inline ImportImageResponse& WithProgress(Aws::String&& value) { SetProgress(value); return *this;}
+    inline ImportImageResponse& WithProgress(Aws::String&& value) { SetProgress(std::move(value)); return *this;}
 
     /**
      * <p>The progress of the task.</p>
@@ -373,7 +377,7 @@ namespace Model
     /**
      * <p>A detailed status message of the import task.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = std::move(value); }
 
     /**
      * <p>A detailed status message of the import task.</p>
@@ -388,7 +392,7 @@ namespace Model
     /**
      * <p>A detailed status message of the import task.</p>
      */
-    inline ImportImageResponse& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline ImportImageResponse& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>A detailed status message of the import task.</p>
@@ -408,7 +412,7 @@ namespace Model
     /**
      * <p>A brief status of the task.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
 
     /**
      * <p>A brief status of the task.</p>
@@ -423,7 +427,7 @@ namespace Model
     /**
      * <p>A brief status of the task.</p>
      */
-    inline ImportImageResponse& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline ImportImageResponse& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>A brief status of the task.</p>
@@ -437,13 +441,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ImportImageResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ImportImageResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ImportImageResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_importTaskId;

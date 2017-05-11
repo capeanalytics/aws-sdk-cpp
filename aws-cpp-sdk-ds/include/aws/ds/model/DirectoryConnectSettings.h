@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Contains information for the <a>ConnectDirectory</a> operation when an AD
-   * Connector directory is being created.</p>
+   * Connector directory is being created.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DirectoryConnectSettings">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API DirectoryConnectSettings
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The identifier of the VPC in which the AD Connector is created.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The identifier of the VPC in which the AD Connector is created.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The identifier of the VPC in which the AD Connector is created.</p>
      */
-    inline DirectoryConnectSettings& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline DirectoryConnectSettings& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the VPC in which the AD Connector is created.</p>
@@ -94,7 +98,7 @@ namespace Model
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
      * created.</p>
      */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
@@ -106,7 +110,7 @@ namespace Model
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
      * created.</p>
      */
-    inline DirectoryConnectSettings& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(value); return *this;}
+    inline DirectoryConnectSettings& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
@@ -118,7 +122,7 @@ namespace Model
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
      * created.</p>
      */
-    inline DirectoryConnectSettings& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
+    inline DirectoryConnectSettings& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of subnet identifiers in the VPC in which the AD Connector is
@@ -142,7 +146,7 @@ namespace Model
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
      * the on-premises directory.</p>
      */
-    inline void SetCustomerDnsIps(Aws::Vector<Aws::String>&& value) { m_customerDnsIpsHasBeenSet = true; m_customerDnsIps = value; }
+    inline void SetCustomerDnsIps(Aws::Vector<Aws::String>&& value) { m_customerDnsIpsHasBeenSet = true; m_customerDnsIps = std::move(value); }
 
     /**
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
@@ -154,7 +158,7 @@ namespace Model
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
      * the on-premises directory.</p>
      */
-    inline DirectoryConnectSettings& WithCustomerDnsIps(Aws::Vector<Aws::String>&& value) { SetCustomerDnsIps(value); return *this;}
+    inline DirectoryConnectSettings& WithCustomerDnsIps(Aws::Vector<Aws::String>&& value) { SetCustomerDnsIps(std::move(value)); return *this;}
 
     /**
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
@@ -166,7 +170,7 @@ namespace Model
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
      * the on-premises directory.</p>
      */
-    inline DirectoryConnectSettings& AddCustomerDnsIps(Aws::String&& value) { m_customerDnsIpsHasBeenSet = true; m_customerDnsIps.push_back(value); return *this; }
+    inline DirectoryConnectSettings& AddCustomerDnsIps(Aws::String&& value) { m_customerDnsIpsHasBeenSet = true; m_customerDnsIps.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of one or more IP addresses of DNS servers or domain controllers in
@@ -196,7 +200,7 @@ namespace Model
      * <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p>
      * </li> <li> <p>Join computers to the domain</p> </li> </ul>
      */
-    inline void SetCustomerUserName(Aws::String&& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = value; }
+    inline void SetCustomerUserName(Aws::String&& value) { m_customerUserNameHasBeenSet = true; m_customerUserName = std::move(value); }
 
     /**
      * <p>The username of an account in the on-premises directory that is used to
@@ -220,7 +224,7 @@ namespace Model
      * <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p>
      * </li> <li> <p>Join computers to the domain</p> </li> </ul>
      */
-    inline DirectoryConnectSettings& WithCustomerUserName(Aws::String&& value) { SetCustomerUserName(value); return *this;}
+    inline DirectoryConnectSettings& WithCustomerUserName(Aws::String&& value) { SetCustomerUserName(std::move(value)); return *this;}
 
     /**
      * <p>The username of an account in the on-premises directory that is used to

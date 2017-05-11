@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/UpdateFleetAttributesRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -25,7 +26,9 @@ UpdateFleetAttributesRequest::UpdateFleetAttributesRequest() :
     m_fleetIdHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
-    m_newGameSessionProtectionPolicyHasBeenSet(false)
+    m_newGameSessionProtectionPolicy(ProtectionPolicy::NOT_SET),
+    m_newGameSessionProtectionPolicyHasBeenSet(false),
+    m_resourceCreationLimitPolicyHasBeenSet(false)
 {
 }
 
@@ -56,6 +59,12 @@ Aws::String UpdateFleetAttributesRequest::SerializePayload() const
    payload.WithString("NewGameSessionProtectionPolicy", ProtectionPolicyMapper::GetNameForProtectionPolicy(m_newGameSessionProtectionPolicy));
   }
 
+  if(m_resourceCreationLimitPolicyHasBeenSet)
+  {
+   payload.WithObject("ResourceCreationLimitPolicy", m_resourceCreationLimitPolicy.Jsonize());
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -66,6 +75,7 @@ Aws::Http::HeaderValueCollection UpdateFleetAttributesRequest::GetRequestSpecifi
   return headers;
 
 }
+
 
 
 

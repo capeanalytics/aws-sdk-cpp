@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/kms/KMSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -69,7 +72,7 @@ namespace Model
      * Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li>
      * <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -105,7 +108,7 @@ namespace Model
      * Unique Key ID Example - 12345678-1234-1234-1234-123456789012</p> </li> <li>
      * <p>Alias Name Example - alias/MyAliasName</p> </li> </ul>
      */
-    inline DescribeKeyRequest& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline DescribeKeyRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -138,7 +141,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant
      * Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
      */
-    inline void SetGrantTokens(Aws::Vector<Aws::String>&& value) { m_grantTokensHasBeenSet = true; m_grantTokens = value; }
+    inline void SetGrantTokens(Aws::Vector<Aws::String>&& value) { m_grantTokensHasBeenSet = true; m_grantTokens = std::move(value); }
 
     /**
      * <p>A list of grant tokens.</p> <p>For more information, see <a
@@ -152,7 +155,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant
      * Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
      */
-    inline DescribeKeyRequest& WithGrantTokens(Aws::Vector<Aws::String>&& value) { SetGrantTokens(value); return *this;}
+    inline DescribeKeyRequest& WithGrantTokens(Aws::Vector<Aws::String>&& value) { SetGrantTokens(std::move(value)); return *this;}
 
     /**
      * <p>A list of grant tokens.</p> <p>For more information, see <a
@@ -166,7 +169,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token">Grant
      * Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
      */
-    inline DescribeKeyRequest& AddGrantTokens(Aws::String&& value) { m_grantTokensHasBeenSet = true; m_grantTokens.push_back(value); return *this; }
+    inline DescribeKeyRequest& AddGrantTokens(Aws::String&& value) { m_grantTokensHasBeenSet = true; m_grantTokens.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of grant tokens.</p> <p>For more information, see <a

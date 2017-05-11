@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/codecommit/model/RepositoryMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CodeCommit
 namespace Model
 {
   /**
-   * <p>Represents the output of a get repository operation.</p>
+   * <p>Represents the output of a get repository operation.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetRepositoryOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API GetRepositoryResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>Information about the repository.</p>
      */
-    inline void SetRepositoryMetadata(RepositoryMetadata&& value) { m_repositoryMetadata = value; }
+    inline void SetRepositoryMetadata(RepositoryMetadata&& value) { m_repositoryMetadata = std::move(value); }
 
     /**
      * <p>Information about the repository.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>Information about the repository.</p>
      */
-    inline GetRepositoryResult& WithRepositoryMetadata(RepositoryMetadata&& value) { SetRepositoryMetadata(value); return *this;}
+    inline GetRepositoryResult& WithRepositoryMetadata(RepositoryMetadata&& value) { SetRepositoryMetadata(std::move(value)); return *this;}
 
   private:
     RepositoryMetadata m_repositoryMetadata;

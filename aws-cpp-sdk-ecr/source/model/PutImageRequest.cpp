@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecr/model/PutImageRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -24,7 +25,8 @@ using namespace Aws::Utils;
 PutImageRequest::PutImageRequest() : 
     m_registryIdHasBeenSet(false),
     m_repositoryNameHasBeenSet(false),
-    m_imageManifestHasBeenSet(false)
+    m_imageManifestHasBeenSet(false),
+    m_imageTagHasBeenSet(false)
 {
 }
 
@@ -50,6 +52,12 @@ Aws::String PutImageRequest::SerializePayload() const
 
   }
 
+  if(m_imageTagHasBeenSet)
+  {
+   payload.WithString("imageTag", m_imageTag);
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -60,6 +68,7 @@ Aws::Http::HeaderValueCollection PutImageRequest::GetRequestSpecificHeaders() co
   return headers;
 
 }
+
 
 
 

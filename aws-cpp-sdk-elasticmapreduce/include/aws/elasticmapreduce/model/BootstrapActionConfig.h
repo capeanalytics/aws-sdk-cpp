@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticmapreduce/model/ScriptBootstrapActionConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Configuration of a bootstrap action.</p>
+   * <p>Configuration of a bootstrap action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/BootstrapActionConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API BootstrapActionConfig
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the bootstrap action.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the bootstrap action.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the bootstrap action.</p>
      */
-    inline BootstrapActionConfig& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline BootstrapActionConfig& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the bootstrap action.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The script run by the bootstrap action.</p>
      */
-    inline void SetScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { m_scriptBootstrapActionHasBeenSet = true; m_scriptBootstrapAction = value; }
+    inline void SetScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { m_scriptBootstrapActionHasBeenSet = true; m_scriptBootstrapAction = std::move(value); }
 
     /**
      * <p>The script run by the bootstrap action.</p>
@@ -100,7 +104,7 @@ namespace Model
     /**
      * <p>The script run by the bootstrap action.</p>
      */
-    inline BootstrapActionConfig& WithScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { SetScriptBootstrapAction(value); return *this;}
+    inline BootstrapActionConfig& WithScriptBootstrapAction(ScriptBootstrapActionConfig&& value) { SetScriptBootstrapAction(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

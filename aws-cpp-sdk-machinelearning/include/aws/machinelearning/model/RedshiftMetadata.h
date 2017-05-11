@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/model/RedshiftDatabase.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Describes the <code>DataSource</code> details specific to Amazon
-   * Redshift.</p>
+   * Redshift.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/RedshiftMetadata">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API RedshiftMetadata
   {
@@ -50,13 +54,13 @@ namespace Model
     inline void SetRedshiftDatabase(const RedshiftDatabase& value) { m_redshiftDatabaseHasBeenSet = true; m_redshiftDatabase = value; }
 
     
-    inline void SetRedshiftDatabase(RedshiftDatabase&& value) { m_redshiftDatabaseHasBeenSet = true; m_redshiftDatabase = value; }
+    inline void SetRedshiftDatabase(RedshiftDatabase&& value) { m_redshiftDatabaseHasBeenSet = true; m_redshiftDatabase = std::move(value); }
 
     
     inline RedshiftMetadata& WithRedshiftDatabase(const RedshiftDatabase& value) { SetRedshiftDatabase(value); return *this;}
 
     
-    inline RedshiftMetadata& WithRedshiftDatabase(RedshiftDatabase&& value) { SetRedshiftDatabase(value); return *this;}
+    inline RedshiftMetadata& WithRedshiftDatabase(RedshiftDatabase&& value) { SetRedshiftDatabase(std::move(value)); return *this;}
 
     
     inline const Aws::String& GetDatabaseUserName() const{ return m_databaseUserName; }
@@ -65,7 +69,7 @@ namespace Model
     inline void SetDatabaseUserName(const Aws::String& value) { m_databaseUserNameHasBeenSet = true; m_databaseUserName = value; }
 
     
-    inline void SetDatabaseUserName(Aws::String&& value) { m_databaseUserNameHasBeenSet = true; m_databaseUserName = value; }
+    inline void SetDatabaseUserName(Aws::String&& value) { m_databaseUserNameHasBeenSet = true; m_databaseUserName = std::move(value); }
 
     
     inline void SetDatabaseUserName(const char* value) { m_databaseUserNameHasBeenSet = true; m_databaseUserName.assign(value); }
@@ -74,7 +78,7 @@ namespace Model
     inline RedshiftMetadata& WithDatabaseUserName(const Aws::String& value) { SetDatabaseUserName(value); return *this;}
 
     
-    inline RedshiftMetadata& WithDatabaseUserName(Aws::String&& value) { SetDatabaseUserName(value); return *this;}
+    inline RedshiftMetadata& WithDatabaseUserName(Aws::String&& value) { SetDatabaseUserName(std::move(value)); return *this;}
 
     
     inline RedshiftMetadata& WithDatabaseUserName(const char* value) { SetDatabaseUserName(value); return *this;}
@@ -95,7 +99,7 @@ namespace Model
      * <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>.
      * Returns only if <code>Verbose</code> is true in GetDataSourceInput. </p>
      */
-    inline void SetSelectSqlQuery(Aws::String&& value) { m_selectSqlQueryHasBeenSet = true; m_selectSqlQuery = value; }
+    inline void SetSelectSqlQuery(Aws::String&& value) { m_selectSqlQueryHasBeenSet = true; m_selectSqlQuery = std::move(value); }
 
     /**
      * <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>.
@@ -113,7 +117,7 @@ namespace Model
      * <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>.
      * Returns only if <code>Verbose</code> is true in GetDataSourceInput. </p>
      */
-    inline RedshiftMetadata& WithSelectSqlQuery(Aws::String&& value) { SetSelectSqlQuery(value); return *this;}
+    inline RedshiftMetadata& WithSelectSqlQuery(Aws::String&& value) { SetSelectSqlQuery(std::move(value)); return *this;}
 
     /**
      * <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>.

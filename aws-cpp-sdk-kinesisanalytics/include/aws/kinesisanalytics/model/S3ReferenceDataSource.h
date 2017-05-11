@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * identifies the IAM role Amazon Kinesis Analytics can assume to read this object
    * on your behalf.</p> <p>An Amazon Kinesis Analytics application loads reference
    * data only once. If the data changes, you call the <a>UpdateApplication</a>
-   * operation to trigger reloading of data into your application.</p>
+   * operation to trigger reloading of data into your application.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/S3ReferenceDataSource">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API S3ReferenceDataSource
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
      */
-    inline void SetBucketARN(Aws::String&& value) { m_bucketARNHasBeenSet = true; m_bucketARN = value; }
+    inline void SetBucketARN(Aws::String&& value) { m_bucketARNHasBeenSet = true; m_bucketARN = std::move(value); }
 
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
      */
-    inline S3ReferenceDataSource& WithBucketARN(Aws::String&& value) { SetBucketARN(value); return *this;}
+    inline S3ReferenceDataSource& WithBucketARN(Aws::String&& value) { SetBucketARN(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>Object key name containing reference data.</p>
      */
-    inline void SetFileKey(Aws::String&& value) { m_fileKeyHasBeenSet = true; m_fileKey = value; }
+    inline void SetFileKey(Aws::String&& value) { m_fileKeyHasBeenSet = true; m_fileKey = std::move(value); }
 
     /**
      * <p>Object key name containing reference data.</p>
@@ -108,7 +113,7 @@ namespace Model
     /**
      * <p>Object key name containing reference data.</p>
      */
-    inline S3ReferenceDataSource& WithFileKey(Aws::String&& value) { SetFileKey(value); return *this;}
+    inline S3ReferenceDataSource& WithFileKey(Aws::String&& value) { SetFileKey(std::move(value)); return *this;}
 
     /**
      * <p>Object key name containing reference data.</p>
@@ -137,7 +142,7 @@ namespace Model
      * object and trust policy that allows Amazon Kinesis Analytics service principal
      * to assume this role.</p>
      */
-    inline void SetReferenceRoleARN(Aws::String&& value) { m_referenceRoleARNHasBeenSet = true; m_referenceRoleARN = value; }
+    inline void SetReferenceRoleARN(Aws::String&& value) { m_referenceRoleARNHasBeenSet = true; m_referenceRoleARN = std::move(value); }
 
     /**
      * <p>ARN of the IAM role that the service can assume to read data on your behalf.
@@ -161,7 +166,7 @@ namespace Model
      * object and trust policy that allows Amazon Kinesis Analytics service principal
      * to assume this role.</p>
      */
-    inline S3ReferenceDataSource& WithReferenceRoleARN(Aws::String&& value) { SetReferenceRoleARN(value); return *this;}
+    inline S3ReferenceDataSource& WithReferenceRoleARN(Aws::String&& value) { SetReferenceRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the IAM role that the service can assume to read data on your behalf.

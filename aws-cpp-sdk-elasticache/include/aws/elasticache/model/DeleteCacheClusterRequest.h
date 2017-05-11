@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>DeleteCacheCluster</i> action.</p>
+   * <p>Represents the input of a <code>DeleteCacheCluster</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheClusterMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API DeleteCacheClusterRequest : public ElastiCacheRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DeleteCacheClusterRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The cache cluster identifier for the cluster to be deleted. This parameter is
      * not case sensitive.</p>
@@ -49,7 +59,7 @@ namespace Model
      * <p>The cache cluster identifier for the cluster to be deleted. This parameter is
      * not case sensitive.</p>
      */
-    inline void SetCacheClusterId(Aws::String&& value) { m_cacheClusterIdHasBeenSet = true; m_cacheClusterId = value; }
+    inline void SetCacheClusterId(Aws::String&& value) { m_cacheClusterIdHasBeenSet = true; m_cacheClusterId = std::move(value); }
 
     /**
      * <p>The cache cluster identifier for the cluster to be deleted. This parameter is
@@ -67,7 +77,7 @@ namespace Model
      * <p>The cache cluster identifier for the cluster to be deleted. This parameter is
      * not case sensitive.</p>
      */
-    inline DeleteCacheClusterRequest& WithCacheClusterId(Aws::String&& value) { SetCacheClusterId(value); return *this;}
+    inline DeleteCacheClusterRequest& WithCacheClusterId(Aws::String&& value) { SetCacheClusterId(std::move(value)); return *this;}
 
     /**
      * <p>The cache cluster identifier for the cluster to be deleted. This parameter is
@@ -94,7 +104,7 @@ namespace Model
      * name that identifies the snapshot. ElastiCache creates the snapshot, and then
      * deletes the cache cluster immediately afterward.</p>
      */
-    inline void SetFinalSnapshotIdentifier(Aws::String&& value) { m_finalSnapshotIdentifierHasBeenSet = true; m_finalSnapshotIdentifier = value; }
+    inline void SetFinalSnapshotIdentifier(Aws::String&& value) { m_finalSnapshotIdentifierHasBeenSet = true; m_finalSnapshotIdentifier = std::move(value); }
 
     /**
      * <p>The user-supplied name of a final cache cluster snapshot. This is the unique
@@ -115,7 +125,7 @@ namespace Model
      * name that identifies the snapshot. ElastiCache creates the snapshot, and then
      * deletes the cache cluster immediately afterward.</p>
      */
-    inline DeleteCacheClusterRequest& WithFinalSnapshotIdentifier(Aws::String&& value) { SetFinalSnapshotIdentifier(value); return *this;}
+    inline DeleteCacheClusterRequest& WithFinalSnapshotIdentifier(Aws::String&& value) { SetFinalSnapshotIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The user-supplied name of a final cache cluster snapshot. This is the unique

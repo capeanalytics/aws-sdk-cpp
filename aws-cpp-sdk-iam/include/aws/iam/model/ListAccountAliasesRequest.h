@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     ListAccountAliasesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
      * response indicating that the results are truncated. Set it to the value of the
@@ -54,7 +61,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -78,7 +85,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline ListAccountAliasesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListAccountAliasesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -89,11 +96,11 @@ namespace Model
     inline ListAccountAliasesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -101,11 +108,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -113,11 +120,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>

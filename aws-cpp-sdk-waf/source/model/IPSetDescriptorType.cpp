@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/waf/model/IPSetDescriptorType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -30,6 +31,7 @@ namespace Aws
       {
 
         static const int IPV4_HASH = HashingUtils::HashString("IPV4");
+        static const int IPV6_HASH = HashingUtils::HashString("IPV6");
 
 
         IPSetDescriptorType GetIPSetDescriptorTypeForName(const Aws::String& name)
@@ -38,6 +40,10 @@ namespace Aws
           if (hashCode == IPV4_HASH)
           {
             return IPSetDescriptorType::IPV4;
+          }
+          else if (hashCode == IPV6_HASH)
+          {
+            return IPSetDescriptorType::IPV6;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -55,6 +61,8 @@ namespace Aws
           {
           case IPSetDescriptorType::IPV4:
             return "IPV4";
+          case IPSetDescriptorType::IPV6:
+            return "IPV6";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

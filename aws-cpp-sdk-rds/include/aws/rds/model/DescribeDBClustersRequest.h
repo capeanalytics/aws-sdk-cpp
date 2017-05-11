@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBClustersMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeDBClustersRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeDBClustersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The user-supplied DB cluster identifier. If this parameter is specified,
      * information from only the specific DB cluster is returned. This parameter isn't
@@ -63,7 +72,7 @@ namespace Model
      * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
      * hyphens</p> </li> </ul>
      */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
+    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
 
     /**
      * <p>The user-supplied DB cluster identifier. If this parameter is specified,
@@ -93,7 +102,7 @@ namespace Model
      * letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive
      * hyphens</p> </li> </ul>
      */
-    inline DescribeDBClustersRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(value); return *this;}
+    inline DescribeDBClustersRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The user-supplied DB cluster identifier. If this parameter is specified,
@@ -106,39 +115,67 @@ namespace Model
     inline DescribeDBClustersRequest& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
     inline DescribeDBClustersRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
-    inline DescribeDBClustersRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeDBClustersRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
     inline DescribeDBClustersRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>This parameter is not currently supported.</p>
+     * <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported
+     * filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster
+     * identifiers and DB cluster Amazon Resource Names (ARNs). The results list will
+     * only include information about the DB clusters identified by these ARNs.</p>
+     * </li> </ul>
      */
-    inline DescribeDBClustersRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeDBClustersRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of records to include in the response. If more records
@@ -186,7 +223,7 @@ namespace Model
      * includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -210,7 +247,7 @@ namespace Model
      * includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>. </p>
      */
-    inline DescribeDBClustersRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeDBClustersRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous

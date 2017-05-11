@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ListPipelines.</p>
+   * <p>Contains the parameters for ListPipelines.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelinesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API ListPipelinesRequest : public DataPipelineRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The starting point for the results to be returned. For the first call, this
@@ -57,7 +62,7 @@ namespace Model
      * <code>ListPipelines</code> with the marker value from the previous call to
      * retrieve the next set of results.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The starting point for the results to be returned. For the first call, this
@@ -81,7 +86,7 @@ namespace Model
      * <code>ListPipelines</code> with the marker value from the previous call to
      * retrieve the next set of results.</p>
      */
-    inline ListPipelinesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListPipelinesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The starting point for the results to be returned. For the first call, this

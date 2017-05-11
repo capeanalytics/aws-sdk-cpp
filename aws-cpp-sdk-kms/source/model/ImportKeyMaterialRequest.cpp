@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/kms/model/ImportKeyMaterialRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/utils/HashingUtils.h>
@@ -27,6 +28,7 @@ ImportKeyMaterialRequest::ImportKeyMaterialRequest() :
     m_importTokenHasBeenSet(false),
     m_encryptedKeyMaterialHasBeenSet(false),
     m_validToHasBeenSet(false),
+    m_expirationModel(ExpirationModelType::NOT_SET),
     m_expirationModelHasBeenSet(false)
 {
 }
@@ -71,6 +73,7 @@ Aws::Http::HeaderValueCollection ImportKeyMaterialRequest::GetRequestSpecificHea
   return headers;
 
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeLoadBalancerTargetGroups.</p>
+   * <p>Contains the parameters for DescribeLoadBalancerTargetGroups.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroupsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeLoadBalancerTargetGroupsRequest : public AutoScalingRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeLoadBalancerTargetGroupsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline DescribeLoadBalancerTargetGroupsRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline DescribeLoadBalancerTargetGroupsRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -84,7 +94,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -102,7 +112,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline DescribeLoadBalancerTargetGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeLoadBalancerTargetGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

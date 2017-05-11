@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/model/CreateAssociationBatchRequestEntry.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ssm/model/Fault.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a failed association.</p>
+   * <p>Describes a failed association.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/FailedCreateAssociation">AWS
+   * API Reference</a></p>
    */
   class AWS_SSM_API FailedCreateAssociation
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The association.</p>
      */
-    inline void SetEntry(CreateAssociationBatchRequestEntry&& value) { m_entryHasBeenSet = true; m_entry = value; }
+    inline void SetEntry(CreateAssociationBatchRequestEntry&& value) { m_entryHasBeenSet = true; m_entry = std::move(value); }
 
     /**
      * <p>The association.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The association.</p>
      */
-    inline FailedCreateAssociation& WithEntry(CreateAssociationBatchRequestEntry&& value) { SetEntry(value); return *this;}
+    inline FailedCreateAssociation& WithEntry(CreateAssociationBatchRequestEntry&& value) { SetEntry(std::move(value)); return *this;}
 
     /**
      * <p>A description of the failure.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>A description of the failure.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>A description of the failure.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>A description of the failure.</p>
      */
-    inline FailedCreateAssociation& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline FailedCreateAssociation& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>A description of the failure.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>The source of the failure.</p>
      */
-    inline void SetFault(Fault&& value) { m_faultHasBeenSet = true; m_fault = value; }
+    inline void SetFault(Fault&& value) { m_faultHasBeenSet = true; m_fault = std::move(value); }
 
     /**
      * <p>The source of the failure.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The source of the failure.</p>
      */
-    inline FailedCreateAssociation& WithFault(Fault&& value) { SetFault(value); return *this;}
+    inline FailedCreateAssociation& WithFault(Fault&& value) { SetFault(std::move(value)); return *this;}
 
   private:
     CreateAssociationBatchRequestEntry m_entry;

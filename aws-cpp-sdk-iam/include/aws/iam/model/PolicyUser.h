@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace Model
    * <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed
    * policies, refer to <a
    * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed
-   * Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+   * Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PolicyUser">AWS API
+   * Reference</a></p>
    */
   class AWS_IAM_API PolicyUser
   {
@@ -62,7 +67,7 @@ namespace Model
     /**
      * <p>The name (friendly name, not ARN) identifying the user.</p>
      */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = value; }
+    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
 
     /**
      * <p>The name (friendly name, not ARN) identifying the user.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The name (friendly name, not ARN) identifying the user.</p>
      */
-    inline PolicyUser& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
+    inline PolicyUser& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
      * <p>The name (friendly name, not ARN) identifying the user.</p>
@@ -106,7 +111,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
      * Identifiers</a> in the <i>IAM User Guide</i>.</p>
      */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = value; }
+    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
 
     /**
      * <p>The stable and unique string identifying the user. For more information about
@@ -130,7 +135,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
      * Identifiers</a> in the <i>IAM User Guide</i>.</p>
      */
-    inline PolicyUser& WithUserId(Aws::String&& value) { SetUserId(value); return *this;}
+    inline PolicyUser& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
 
     /**
      * <p>The stable and unique string identifying the user. For more information about

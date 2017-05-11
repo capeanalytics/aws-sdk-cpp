@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Parameter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBParameterGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ModifyDBParameterGroupRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     ModifyDBParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
      * be the name of an existing DB parameter group</p> </li> <li> <p>Must be 1 to 255
@@ -60,7 +69,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
@@ -87,7 +96,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline ModifyDBParameterGroupRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline ModifyDBParameterGroupRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
@@ -132,7 +141,7 @@ namespace Model
      * both dynamic and static parameters, and changes are applied when you reboot the
      * DB instance without failover.</p> </note>
      */
-    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = value; }
+    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
 
     /**
      * <p>An array of parameter names, values, and the apply method for the parameter
@@ -156,7 +165,7 @@ namespace Model
      * both dynamic and static parameters, and changes are applied when you reboot the
      * DB instance without failover.</p> </note>
      */
-    inline ModifyDBParameterGroupRequest& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(value); return *this;}
+    inline ModifyDBParameterGroupRequest& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(std::move(value)); return *this;}
 
     /**
      * <p>An array of parameter names, values, and the apply method for the parameter
@@ -180,7 +189,7 @@ namespace Model
      * both dynamic and static parameters, and changes are applied when you reboot the
      * DB instance without failover.</p> </note>
      */
-    inline ModifyDBParameterGroupRequest& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
+    inline ModifyDBParameterGroupRequest& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_dBParameterGroupName;

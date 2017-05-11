@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/opsworks/model/Permission.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace OpsWorks
 namespace Model
 {
   /**
-   * <p>Contains the response to a <code>DescribePermissions</code> request.</p>
+   * <p>Contains the response to a <code>DescribePermissions</code>
+   * request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/DescribePermissionsResult">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API DescribePermissionsResult
   {
@@ -77,7 +82,7 @@ namespace Model
      * ID and an IAM ARN, the array contains a single <code>Permission</code> object
      * with permissions for the specified stack and IAM ARN.</p> </li> </ul>
      */
-    inline void SetPermissions(Aws::Vector<Permission>&& value) { m_permissions = value; }
+    inline void SetPermissions(Aws::Vector<Permission>&& value) { m_permissions = std::move(value); }
 
     /**
      * <p>An array of <code>Permission</code> objects that describe the stack
@@ -101,7 +106,7 @@ namespace Model
      * ID and an IAM ARN, the array contains a single <code>Permission</code> object
      * with permissions for the specified stack and IAM ARN.</p> </li> </ul>
      */
-    inline DescribePermissionsResult& WithPermissions(Aws::Vector<Permission>&& value) { SetPermissions(value); return *this;}
+    inline DescribePermissionsResult& WithPermissions(Aws::Vector<Permission>&& value) { SetPermissions(std::move(value)); return *this;}
 
     /**
      * <p>An array of <code>Permission</code> objects that describe the stack
@@ -125,7 +130,7 @@ namespace Model
      * ID and an IAM ARN, the array contains a single <code>Permission</code> object
      * with permissions for the specified stack and IAM ARN.</p> </li> </ul>
      */
-    inline DescribePermissionsResult& AddPermissions(Permission&& value) { m_permissions.push_back(value); return *this; }
+    inline DescribePermissionsResult& AddPermissions(Permission&& value) { m_permissions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Permission> m_permissions;

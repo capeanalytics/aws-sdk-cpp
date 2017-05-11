@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBInstanceStatusInfo.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -92,7 +93,7 @@ void DBInstanceStatusInfo::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_normalHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Normal=" << m_normal << "&";
+      oStream << location << index << locationValue << ".Normal=" << std::boolalpha << m_normal << "&";
   }
 
   if(m_statusHasBeenSet)
@@ -115,7 +116,7 @@ void DBInstanceStatusInfo::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_normalHasBeenSet)
   {
-      oStream << location << ".Normal=" << m_normal << "&";
+      oStream << location << ".Normal=" << std::boolalpha << m_normal << "&";
   }
   if(m_statusHasBeenSet)
   {

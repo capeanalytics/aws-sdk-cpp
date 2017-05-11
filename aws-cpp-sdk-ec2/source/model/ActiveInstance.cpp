@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ActiveInstance.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,14 +33,18 @@ namespace Model
 ActiveInstance::ActiveInstance() : 
     m_instanceTypeHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
-    m_spotInstanceRequestIdHasBeenSet(false)
+    m_spotInstanceRequestIdHasBeenSet(false),
+    m_instanceHealth(InstanceHealthStatus::NOT_SET),
+    m_instanceHealthHasBeenSet(false)
 {
 }
 
 ActiveInstance::ActiveInstance(const XmlNode& xmlNode) : 
     m_instanceTypeHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
-    m_spotInstanceRequestIdHasBeenSet(false)
+    m_spotInstanceRequestIdHasBeenSet(false),
+    m_instanceHealth(InstanceHealthStatus::NOT_SET),
+    m_instanceHealthHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -68,6 +73,12 @@ ActiveInstance& ActiveInstance::operator =(const XmlNode& xmlNode)
       m_spotInstanceRequestId = StringUtils::Trim(spotInstanceRequestIdNode.GetText().c_str());
       m_spotInstanceRequestIdHasBeenSet = true;
     }
+    XmlNode instanceHealthNode = resultNode.FirstChild("instanceHealth");
+    if(!instanceHealthNode.IsNull())
+    {
+      m_instanceHealth = InstanceHealthStatusMapper::GetInstanceHealthStatusForName(StringUtils::Trim(instanceHealthNode.GetText().c_str()).c_str());
+      m_instanceHealthHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -90,6 +101,11 @@ void ActiveInstance::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".SpotInstanceRequestId=" << StringUtils::URLEncode(m_spotInstanceRequestId.c_str()) << "&";
   }
 
+  if(m_instanceHealthHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".InstanceHealth=" << InstanceHealthStatusMapper::GetNameForInstanceHealthStatus(m_instanceHealth) << "&";
+  }
+
 }
 
 void ActiveInstance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -105,6 +121,10 @@ void ActiveInstance::OutputToStream(Aws::OStream& oStream, const char* location)
   if(m_spotInstanceRequestIdHasBeenSet)
   {
       oStream << location << ".SpotInstanceRequestId=" << StringUtils::URLEncode(m_spotInstanceRequestId.c_str()) << "&";
+  }
+  if(m_instanceHealthHasBeenSet)
+  {
+      oStream << location << ".InstanceHealth=" << InstanceHealthStatusMapper::GetNameForInstanceHealthStatus(m_instanceHealth) << "&";
   }
 }
 

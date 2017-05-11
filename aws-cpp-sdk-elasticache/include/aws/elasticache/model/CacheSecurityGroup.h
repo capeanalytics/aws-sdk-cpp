@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticache/model/EC2SecurityGroup.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,10 +36,13 @@ namespace Model
 {
 
   /**
-   * <p>Represents the output of one of the following actions:</p> <ul> <li> <p>
-   * <i>AuthorizeCacheSecurityGroupIngress</i> </p> </li> <li> <p>
-   * <i>CreateCacheSecurityGroup</i> </p> </li> <li> <p>
-   * <i>RevokeCacheSecurityGroupIngress</i> </p> </li> </ul>
+   * <p>Represents the output of one of the following operations:</p> <ul> <li> <p>
+   * <code>AuthorizeCacheSecurityGroupIngress</code> </p> </li> <li> <p>
+   * <code>CreateCacheSecurityGroup</code> </p> </li> <li> <p>
+   * <code>RevokeCacheSecurityGroupIngress</code> </p> </li> </ul><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheSecurityGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheSecurityGroup
   {
@@ -62,7 +67,7 @@ namespace Model
     /**
      * <p>The AWS account ID of the cache security group owner.</p>
      */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
+    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
 
     /**
      * <p>The AWS account ID of the cache security group owner.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The AWS account ID of the cache security group owner.</p>
      */
-    inline CacheSecurityGroup& WithOwnerId(Aws::String&& value) { SetOwnerId(value); return *this;}
+    inline CacheSecurityGroup& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account ID of the cache security group owner.</p>
@@ -97,7 +102,7 @@ namespace Model
     /**
      * <p>The name of the cache security group.</p>
      */
-    inline void SetCacheSecurityGroupName(Aws::String&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = value; }
+    inline void SetCacheSecurityGroupName(Aws::String&& value) { m_cacheSecurityGroupNameHasBeenSet = true; m_cacheSecurityGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache security group.</p>
@@ -112,7 +117,7 @@ namespace Model
     /**
      * <p>The name of the cache security group.</p>
      */
-    inline CacheSecurityGroup& WithCacheSecurityGroupName(Aws::String&& value) { SetCacheSecurityGroupName(value); return *this;}
+    inline CacheSecurityGroup& WithCacheSecurityGroupName(Aws::String&& value) { SetCacheSecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache security group.</p>
@@ -132,7 +137,7 @@ namespace Model
     /**
      * <p>The description of the cache security group.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the cache security group.</p>
@@ -147,7 +152,7 @@ namespace Model
     /**
      * <p>The description of the cache security group.</p>
      */
-    inline CacheSecurityGroup& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CacheSecurityGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the cache security group.</p>
@@ -170,7 +175,7 @@ namespace Model
      * <p>A list of Amazon EC2 security groups that are associated with this cache
      * security group.</p>
      */
-    inline void SetEC2SecurityGroups(Aws::Vector<EC2SecurityGroup>&& value) { m_eC2SecurityGroupsHasBeenSet = true; m_eC2SecurityGroups = value; }
+    inline void SetEC2SecurityGroups(Aws::Vector<EC2SecurityGroup>&& value) { m_eC2SecurityGroupsHasBeenSet = true; m_eC2SecurityGroups = std::move(value); }
 
     /**
      * <p>A list of Amazon EC2 security groups that are associated with this cache
@@ -182,7 +187,7 @@ namespace Model
      * <p>A list of Amazon EC2 security groups that are associated with this cache
      * security group.</p>
      */
-    inline CacheSecurityGroup& WithEC2SecurityGroups(Aws::Vector<EC2SecurityGroup>&& value) { SetEC2SecurityGroups(value); return *this;}
+    inline CacheSecurityGroup& WithEC2SecurityGroups(Aws::Vector<EC2SecurityGroup>&& value) { SetEC2SecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>A list of Amazon EC2 security groups that are associated with this cache
@@ -194,7 +199,7 @@ namespace Model
      * <p>A list of Amazon EC2 security groups that are associated with this cache
      * security group.</p>
      */
-    inline CacheSecurityGroup& AddEC2SecurityGroups(EC2SecurityGroup&& value) { m_eC2SecurityGroupsHasBeenSet = true; m_eC2SecurityGroups.push_back(value); return *this; }
+    inline CacheSecurityGroup& AddEC2SecurityGroups(EC2SecurityGroup&& value) { m_eC2SecurityGroupsHasBeenSet = true; m_eC2SecurityGroups.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_ownerId;

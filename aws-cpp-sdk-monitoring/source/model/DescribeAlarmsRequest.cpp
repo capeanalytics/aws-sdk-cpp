@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/monitoring/model/DescribeAlarmsRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -22,6 +23,7 @@ using namespace Aws::Utils;
 DescribeAlarmsRequest::DescribeAlarmsRequest() : 
     m_alarmNamesHasBeenSet(false),
     m_alarmNamePrefixHasBeenSet(false),
+    m_stateValue(StateValue::NOT_SET),
     m_stateValueHasBeenSet(false),
     m_actionPrefixHasBeenSet(false),
     m_maxRecords(0),
@@ -74,3 +76,8 @@ Aws::String DescribeAlarmsRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  DescribeAlarmsRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rds/model/ResponseMetadata.h>
 #include <aws/rds/model/OrderableDBInstanceOption.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
 {
   /**
    * <p> Contains the result of a successful invocation of the
-   * <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+   * <a>DescribeOrderableDBInstanceOptions</a> action. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OrderableDBInstanceOptionsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeOrderableDBInstanceOptionsResult
   {
@@ -62,7 +66,7 @@ namespace Model
      * <p>An <a>OrderableDBInstanceOption</a> structure containing information about
      * orderable options for the DB instance.</p>
      */
-    inline void SetOrderableDBInstanceOptions(Aws::Vector<OrderableDBInstanceOption>&& value) { m_orderableDBInstanceOptions = value; }
+    inline void SetOrderableDBInstanceOptions(Aws::Vector<OrderableDBInstanceOption>&& value) { m_orderableDBInstanceOptions = std::move(value); }
 
     /**
      * <p>An <a>OrderableDBInstanceOption</a> structure containing information about
@@ -74,7 +78,7 @@ namespace Model
      * <p>An <a>OrderableDBInstanceOption</a> structure containing information about
      * orderable options for the DB instance.</p>
      */
-    inline DescribeOrderableDBInstanceOptionsResult& WithOrderableDBInstanceOptions(Aws::Vector<OrderableDBInstanceOption>&& value) { SetOrderableDBInstanceOptions(value); return *this;}
+    inline DescribeOrderableDBInstanceOptionsResult& WithOrderableDBInstanceOptions(Aws::Vector<OrderableDBInstanceOption>&& value) { SetOrderableDBInstanceOptions(std::move(value)); return *this;}
 
     /**
      * <p>An <a>OrderableDBInstanceOption</a> structure containing information about
@@ -86,7 +90,7 @@ namespace Model
      * <p>An <a>OrderableDBInstanceOption</a> structure containing information about
      * orderable options for the DB instance.</p>
      */
-    inline DescribeOrderableDBInstanceOptionsResult& AddOrderableDBInstanceOptions(OrderableDBInstanceOption&& value) { m_orderableDBInstanceOptions.push_back(value); return *this; }
+    inline DescribeOrderableDBInstanceOptionsResult& AddOrderableDBInstanceOptions(OrderableDBInstanceOption&& value) { m_orderableDBInstanceOptions.push_back(std::move(value)); return *this; }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -110,7 +114,7 @@ namespace Model
      * includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code> . </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -134,7 +138,7 @@ namespace Model
      * includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code> . </p>
      */
-    inline DescribeOrderableDBInstanceOptionsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeOrderableDBInstanceOptionsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -151,13 +155,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeOrderableDBInstanceOptionsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeOrderableDBInstanceOptionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeOrderableDBInstanceOptionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<OrderableDBInstanceOption> m_orderableDBInstanceOptions;

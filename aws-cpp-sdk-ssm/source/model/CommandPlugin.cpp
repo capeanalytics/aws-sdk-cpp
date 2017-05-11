@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/CommandPlugin.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,12 +30,17 @@ namespace Model
 
 CommandPlugin::CommandPlugin() : 
     m_nameHasBeenSet(false),
+    m_status(CommandPluginStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_statusDetailsHasBeenSet(false),
     m_responseCode(0),
     m_responseCodeHasBeenSet(false),
     m_responseStartDateTimeHasBeenSet(false),
     m_responseFinishDateTimeHasBeenSet(false),
     m_outputHasBeenSet(false),
+    m_standardOutputUrlHasBeenSet(false),
+    m_standardErrorUrlHasBeenSet(false),
+    m_outputS3RegionHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
     m_outputS3KeyPrefixHasBeenSet(false)
 {
@@ -42,12 +48,17 @@ CommandPlugin::CommandPlugin() :
 
 CommandPlugin::CommandPlugin(const JsonValue& jsonValue) : 
     m_nameHasBeenSet(false),
+    m_status(CommandPluginStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_statusDetailsHasBeenSet(false),
     m_responseCode(0),
     m_responseCodeHasBeenSet(false),
     m_responseStartDateTimeHasBeenSet(false),
     m_responseFinishDateTimeHasBeenSet(false),
     m_outputHasBeenSet(false),
+    m_standardOutputUrlHasBeenSet(false),
+    m_standardErrorUrlHasBeenSet(false),
+    m_outputS3RegionHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
     m_outputS3KeyPrefixHasBeenSet(false)
 {
@@ -68,6 +79,13 @@ CommandPlugin& CommandPlugin::operator =(const JsonValue& jsonValue)
     m_status = CommandPluginStatusMapper::GetCommandPluginStatusForName(jsonValue.GetString("Status"));
 
     m_statusHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StatusDetails"))
+  {
+    m_statusDetails = jsonValue.GetString("StatusDetails");
+
+    m_statusDetailsHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("ResponseCode"))
@@ -96,6 +114,27 @@ CommandPlugin& CommandPlugin::operator =(const JsonValue& jsonValue)
     m_output = jsonValue.GetString("Output");
 
     m_outputHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StandardOutputUrl"))
+  {
+    m_standardOutputUrl = jsonValue.GetString("StandardOutputUrl");
+
+    m_standardOutputUrlHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StandardErrorUrl"))
+  {
+    m_standardErrorUrl = jsonValue.GetString("StandardErrorUrl");
+
+    m_standardErrorUrlHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("OutputS3Region"))
+  {
+    m_outputS3Region = jsonValue.GetString("OutputS3Region");
+
+    m_outputS3RegionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("OutputS3BucketName"))
@@ -130,6 +169,12 @@ JsonValue CommandPlugin::Jsonize() const
    payload.WithString("Status", CommandPluginStatusMapper::GetNameForCommandPluginStatus(m_status));
   }
 
+  if(m_statusDetailsHasBeenSet)
+  {
+   payload.WithString("StatusDetails", m_statusDetails);
+
+  }
+
   if(m_responseCodeHasBeenSet)
   {
    payload.WithInteger("ResponseCode", m_responseCode);
@@ -149,6 +194,24 @@ JsonValue CommandPlugin::Jsonize() const
   if(m_outputHasBeenSet)
   {
    payload.WithString("Output", m_output);
+
+  }
+
+  if(m_standardOutputUrlHasBeenSet)
+  {
+   payload.WithString("StandardOutputUrl", m_standardOutputUrl);
+
+  }
+
+  if(m_standardErrorUrlHasBeenSet)
+  {
+   payload.WithString("StandardErrorUrl", m_standardErrorUrl);
+
+  }
+
+  if(m_outputS3RegionHasBeenSet)
+  {
+   payload.WithString("OutputS3Region", m_outputS3Region);
 
   }
 

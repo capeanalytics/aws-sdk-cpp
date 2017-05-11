@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codedeploy/model/DeploymentGroupInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of a batch get deployment groups operation.</p>
+   * <p>Represents the output of a batch get deployment groups
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetDeploymentGroupsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API BatchGetDeploymentGroupsResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Information about the deployment groups.</p>
      */
-    inline void SetDeploymentGroupsInfo(Aws::Vector<DeploymentGroupInfo>&& value) { m_deploymentGroupsInfo = value; }
+    inline void SetDeploymentGroupsInfo(Aws::Vector<DeploymentGroupInfo>&& value) { m_deploymentGroupsInfo = std::move(value); }
 
     /**
      * <p>Information about the deployment groups.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>Information about the deployment groups.</p>
      */
-    inline BatchGetDeploymentGroupsResult& WithDeploymentGroupsInfo(Aws::Vector<DeploymentGroupInfo>&& value) { SetDeploymentGroupsInfo(value); return *this;}
+    inline BatchGetDeploymentGroupsResult& WithDeploymentGroupsInfo(Aws::Vector<DeploymentGroupInfo>&& value) { SetDeploymentGroupsInfo(std::move(value)); return *this;}
 
     /**
      * <p>Information about the deployment groups.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>Information about the deployment groups.</p>
      */
-    inline BatchGetDeploymentGroupsResult& AddDeploymentGroupsInfo(DeploymentGroupInfo&& value) { m_deploymentGroupsInfo.push_back(value); return *this; }
+    inline BatchGetDeploymentGroupsResult& AddDeploymentGroupsInfo(DeploymentGroupInfo&& value) { m_deploymentGroupsInfo.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Information about errors that may have occurred during the API call.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>Information about errors that may have occurred during the API call.</p>
      */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessage = value; }
+    inline void SetErrorMessage(Aws::String&& value) { m_errorMessage = std::move(value); }
 
     /**
      * <p>Information about errors that may have occurred during the API call.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>Information about errors that may have occurred during the API call.</p>
      */
-    inline BatchGetDeploymentGroupsResult& WithErrorMessage(Aws::String&& value) { SetErrorMessage(value); return *this;}
+    inline BatchGetDeploymentGroupsResult& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
 
     /**
      * <p>Information about errors that may have occurred during the API call.</p>

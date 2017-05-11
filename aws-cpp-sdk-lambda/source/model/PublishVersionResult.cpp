@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/lambda/model/PublishVersionResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -25,6 +26,7 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 PublishVersionResult::PublishVersionResult() : 
+    m_runtime(Runtime::NOT_SET),
     m_codeSize(0),
     m_timeout(0),
     m_memorySize(0)
@@ -32,6 +34,7 @@ PublishVersionResult::PublishVersionResult() :
 }
 
 PublishVersionResult::PublishVersionResult(const AmazonWebServiceResult<JsonValue>& result) : 
+    m_runtime(Runtime::NOT_SET),
     m_codeSize(0),
     m_timeout(0),
     m_memorySize(0)
@@ -117,6 +120,30 @@ PublishVersionResult& PublishVersionResult::operator =(const AmazonWebServiceRes
   if(jsonValue.ValueExists("VpcConfig"))
   {
     m_vpcConfig = jsonValue.GetObject("VpcConfig");
+
+  }
+
+  if(jsonValue.ValueExists("DeadLetterConfig"))
+  {
+    m_deadLetterConfig = jsonValue.GetObject("DeadLetterConfig");
+
+  }
+
+  if(jsonValue.ValueExists("Environment"))
+  {
+    m_environment = jsonValue.GetObject("Environment");
+
+  }
+
+  if(jsonValue.ValueExists("KMSKeyArn"))
+  {
+    m_kMSKeyArn = jsonValue.GetString("KMSKeyArn");
+
+  }
+
+  if(jsonValue.ValueExists("TracingConfig"))
+  {
+    m_tracingConfig = jsonValue.GetObject("TracingConfig");
 
   }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/cloudtrail/CloudTrailRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudtrail/model/LookupAttribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains a request for LookupEvents.</p>
+   * <p>Contains a request for LookupEvents.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/LookupEventsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API LookupEventsRequest : public CloudTrailRequest
   {
@@ -37,6 +41,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
@@ -54,7 +59,7 @@ namespace Model
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
      * item.</p>
      */
-    inline void SetLookupAttributes(Aws::Vector<LookupAttribute>&& value) { m_lookupAttributesHasBeenSet = true; m_lookupAttributes = value; }
+    inline void SetLookupAttributes(Aws::Vector<LookupAttribute>&& value) { m_lookupAttributesHasBeenSet = true; m_lookupAttributes = std::move(value); }
 
     /**
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
@@ -66,7 +71,7 @@ namespace Model
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
      * item.</p>
      */
-    inline LookupEventsRequest& WithLookupAttributes(Aws::Vector<LookupAttribute>&& value) { SetLookupAttributes(value); return *this;}
+    inline LookupEventsRequest& WithLookupAttributes(Aws::Vector<LookupAttribute>&& value) { SetLookupAttributes(std::move(value)); return *this;}
 
     /**
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
@@ -78,7 +83,7 @@ namespace Model
      * <p>Contains a list of lookup attributes. Currently the list can contain only one
      * item.</p>
      */
-    inline LookupEventsRequest& AddLookupAttributes(LookupAttribute&& value) { m_lookupAttributesHasBeenSet = true; m_lookupAttributes.push_back(value); return *this; }
+    inline LookupEventsRequest& AddLookupAttributes(LookupAttribute&& value) { m_lookupAttributesHasBeenSet = true; m_lookupAttributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies that only events that occur after or at the specified time are
@@ -99,7 +104,7 @@ namespace Model
      * returned. If the specified start time is after the specified end time, an error
      * is returned.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>Specifies that only events that occur after or at the specified time are
@@ -113,7 +118,7 @@ namespace Model
      * returned. If the specified start time is after the specified end time, an error
      * is returned.</p>
      */
-    inline LookupEventsRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline LookupEventsRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>Specifies that only events that occur before or at the specified time are
@@ -134,7 +139,7 @@ namespace Model
      * returned. If the specified end time is before the specified start time, an error
      * is returned.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>Specifies that only events that occur before or at the specified time are
@@ -148,7 +153,7 @@ namespace Model
      * returned. If the specified end time is before the specified start time, an error
      * is returned.</p>
      */
-    inline LookupEventsRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline LookupEventsRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
      * <p>The number of events to return. Possible values are 1 through 50. The default
@@ -193,7 +198,7 @@ namespace Model
      * of 'Username' with a value of 'root', the call with NextToken should include
      * those same parameters.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token to use to get the next page of results after a previous API call.
@@ -220,7 +225,7 @@ namespace Model
      * of 'Username' with a value of 'root', the call with NextToken should include
      * those same parameters.</p>
      */
-    inline LookupEventsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline LookupEventsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to use to get the next page of results after a previous API call.

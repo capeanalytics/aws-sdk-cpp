@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticfilesystem/model/CreateMountTargetResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -24,11 +25,13 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateMountTargetResult::CreateMountTargetResult()
+CreateMountTargetResult::CreateMountTargetResult() : 
+    m_lifeCycleState(LifeCycleState::NOT_SET)
 {
 }
 
-CreateMountTargetResult::CreateMountTargetResult(const AmazonWebServiceResult<JsonValue>& result)
+CreateMountTargetResult::CreateMountTargetResult(const AmazonWebServiceResult<JsonValue>& result) : 
+    m_lifeCycleState(LifeCycleState::NOT_SET)
 {
   *this = result;
 }

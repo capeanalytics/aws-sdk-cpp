@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/RegisterTaskDefinitionRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -24,9 +25,11 @@ using namespace Aws::Utils;
 RegisterTaskDefinitionRequest::RegisterTaskDefinitionRequest() : 
     m_familyHasBeenSet(false),
     m_taskRoleArnHasBeenSet(false),
+    m_networkMode(NetworkMode::NOT_SET),
     m_networkModeHasBeenSet(false),
     m_containerDefinitionsHasBeenSet(false),
-    m_volumesHasBeenSet(false)
+    m_volumesHasBeenSet(false),
+    m_placementConstraintsHasBeenSet(false)
 {
 }
 
@@ -73,6 +76,17 @@ Aws::String RegisterTaskDefinitionRequest::SerializePayload() const
 
   }
 
+  if(m_placementConstraintsHasBeenSet)
+  {
+   Array<JsonValue> placementConstraintsJsonList(m_placementConstraints.size());
+   for(unsigned placementConstraintsIndex = 0; placementConstraintsIndex < placementConstraintsJsonList.GetLength(); ++placementConstraintsIndex)
+   {
+     placementConstraintsJsonList[placementConstraintsIndex].AsObject(m_placementConstraints[placementConstraintsIndex].Jsonize());
+   }
+   payload.WithArray("placementConstraints", std::move(placementConstraintsJsonList));
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -83,6 +97,7 @@ Aws::Http::HeaderValueCollection RegisterTaskDefinitionRequest::GetRequestSpecif
   return headers;
 
 }
+
 
 
 

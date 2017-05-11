@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/firehose/model/PutRecordBatchResponseEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,9 +35,6 @@ namespace Firehose
 {
 namespace Model
 {
-  /**
-   * <p>Contains the output of <a>PutRecordBatch</a>.</p>
-   */
   class AWS_FIREHOSE_API PutRecordBatchResult
   {
   public:
@@ -44,61 +43,61 @@ namespace Model
     PutRecordBatchResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>The number of unsuccessfully written records.</p>
+     * <p>The number of records that might have failed processing.</p>
      */
     inline int GetFailedPutCount() const{ return m_failedPutCount; }
 
     /**
-     * <p>The number of unsuccessfully written records.</p>
+     * <p>The number of records that might have failed processing.</p>
      */
     inline void SetFailedPutCount(int value) { m_failedPutCount = value; }
 
     /**
-     * <p>The number of unsuccessfully written records.</p>
+     * <p>The number of records that might have failed processing.</p>
      */
     inline PutRecordBatchResult& WithFailedPutCount(int value) { SetFailedPutCount(value); return *this;}
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
     inline const Aws::Vector<PutRecordBatchResponseEntry>& GetRequestResponses() const{ return m_requestResponses; }
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
     inline void SetRequestResponses(const Aws::Vector<PutRecordBatchResponseEntry>& value) { m_requestResponses = value; }
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
-    inline void SetRequestResponses(Aws::Vector<PutRecordBatchResponseEntry>&& value) { m_requestResponses = value; }
+    inline void SetRequestResponses(Aws::Vector<PutRecordBatchResponseEntry>&& value) { m_requestResponses = std::move(value); }
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
     inline PutRecordBatchResult& WithRequestResponses(const Aws::Vector<PutRecordBatchResponseEntry>& value) { SetRequestResponses(value); return *this;}
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
-    inline PutRecordBatchResult& WithRequestResponses(Aws::Vector<PutRecordBatchResponseEntry>&& value) { SetRequestResponses(value); return *this;}
+    inline PutRecordBatchResult& WithRequestResponses(Aws::Vector<PutRecordBatchResponseEntry>&& value) { SetRequestResponses(std::move(value)); return *this;}
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
     inline PutRecordBatchResult& AddRequestResponses(const PutRecordBatchResponseEntry& value) { m_requestResponses.push_back(value); return *this; }
 
     /**
-     * <p>The results for the individual records. The index of each element matches the
-     * same index in which records were sent.</p>
+     * <p>The results array. For each record, the index of the response element is the
+     * same as the index used in the request array.</p>
      */
-    inline PutRecordBatchResult& AddRequestResponses(PutRecordBatchResponseEntry&& value) { m_requestResponses.push_back(value); return *this; }
+    inline PutRecordBatchResult& AddRequestResponses(PutRecordBatchResponseEntry&& value) { m_requestResponses.push_back(std::move(value)); return *this; }
 
   private:
     int m_failedPutCount;

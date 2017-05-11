@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/support/SupportErrors.h>
@@ -219,7 +220,9 @@ namespace Model
          * available for one hour after it is created; the <code>expiryTime</code> returned
          * in the response indicates when the set expires. The maximum number of
          * attachments in a set is 3, and the maximum size of any attachment in the set is
-         * 5 MB.</p>
+         * 5 MB.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet">AWS
+         * API Reference</a></p>
          */
         virtual Model::AddAttachmentsToSetOutcome AddAttachmentsToSet(const Model::AddAttachmentsToSetRequest& request) const;
 
@@ -233,7 +236,9 @@ namespace Model
          * available for one hour after it is created; the <code>expiryTime</code> returned
          * in the response indicates when the set expires. The maximum number of
          * attachments in a set is 3, and the maximum size of any attachment in the set is
-         * 5 MB.</p>
+         * 5 MB.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -249,7 +254,9 @@ namespace Model
          * available for one hour after it is created; the <code>expiryTime</code> returned
          * in the response indicates when the set expires. The maximum number of
          * attachments in a set is 3, and the maximum size of any attachment in the set is
-         * 5 MB.</p>
+         * 5 MB.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddAttachmentsToSet">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -262,7 +269,9 @@ namespace Model
          * <code>ccEmailAddresses</code> value. The <code>communicationBody</code> value
          * contains the text of the communication.</p> <p>The response indicates the
          * success or failure of the request.</p> <p>This operation implements a subset of
-         * the features of the AWS Support Center.</p>
+         * the features of the AWS Support Center.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase">AWS
+         * API Reference</a></p>
          */
         virtual Model::AddCommunicationToCaseOutcome AddCommunicationToCase(const Model::AddCommunicationToCaseRequest& request) const;
 
@@ -273,7 +282,9 @@ namespace Model
          * <code>ccEmailAddresses</code> value. The <code>communicationBody</code> value
          * contains the text of the communication.</p> <p>The response indicates the
          * success or failure of the request.</p> <p>This operation implements a subset of
-         * the features of the AWS Support Center.</p>
+         * the features of the AWS Support Center.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -286,7 +297,9 @@ namespace Model
          * <code>ccEmailAddresses</code> value. The <code>communicationBody</code> value
          * contains the text of the communication.</p> <p>The response indicates the
          * success or failure of the request.</p> <p>This operation implements a subset of
-         * the features of the AWS Support Center.</p>
+         * the features of the AWS Support Center.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/AddCommunicationToCase">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -328,7 +341,10 @@ namespace Model
          * add additional communication or attachments to an existing case, use
          * <a>AddCommunicationToCase</a>.</p> </note> <p>A successful <a>CreateCase</a>
          * request returns an AWS Support case number. Case numbers are used by the
-         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases. </p>
+         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateCaseOutcome CreateCase(const Model::CreateCaseRequest& request) const;
 
@@ -368,7 +384,10 @@ namespace Model
          * add additional communication or attachments to an existing case, use
          * <a>AddCommunicationToCase</a>.</p> </note> <p>A successful <a>CreateCase</a>
          * request returns an AWS Support case number. Case numbers are used by the
-         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases. </p>
+         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -410,7 +429,10 @@ namespace Model
          * add additional communication or attachments to an existing case, use
          * <a>AddCommunicationToCase</a>.</p> </note> <p>A successful <a>CreateCase</a>
          * request returns an AWS Support case number. Case numbers are used by the
-         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases. </p>
+         * <a>DescribeCases</a> operation to retrieve existing AWS Support cases.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CreateCase">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -420,7 +442,10 @@ namespace Model
          * <p>Returns the attachment that has the specified ID. Attachment IDs are
          * generated by the case management system when you add an attachment to a case or
          * case communication. Attachment IDs are returned in the <a>AttachmentDetails</a>
-         * objects that are returned by the <a>DescribeCommunications</a> operation.</p>
+         * objects that are returned by the <a>DescribeCommunications</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAttachmentOutcome DescribeAttachment(const Model::DescribeAttachmentRequest& request) const;
 
@@ -428,7 +453,10 @@ namespace Model
          * <p>Returns the attachment that has the specified ID. Attachment IDs are
          * generated by the case management system when you add an attachment to a case or
          * case communication. Attachment IDs are returned in the <a>AttachmentDetails</a>
-         * objects that are returned by the <a>DescribeCommunications</a> operation.</p>
+         * objects that are returned by the <a>DescribeCommunications</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -438,7 +466,10 @@ namespace Model
          * <p>Returns the attachment that has the specified ID. Attachment IDs are
          * generated by the case management system when you add an attachment to a case or
          * case communication. Attachment IDs are returned in the <a>AttachmentDetails</a>
-         * objects that are returned by the <a>DescribeCommunications</a> operation.</p>
+         * objects that are returned by the <a>DescribeCommunications</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeAttachment">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -456,7 +487,9 @@ namespace Model
          * format:</p> <ul> <li> <p>One or more <a>CaseDetails</a> data types. </p> </li>
          * <li> <p>One or more <code>nextToken</code> values, which specify where to
          * paginate the returned records represented by the <code>CaseDetails</code>
-         * objects.</p> </li> </ul>
+         * objects.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeCasesOutcome DescribeCases(const Model::DescribeCasesRequest& request) const;
 
@@ -472,7 +505,9 @@ namespace Model
          * format:</p> <ul> <li> <p>One or more <a>CaseDetails</a> data types. </p> </li>
          * <li> <p>One or more <code>nextToken</code> values, which specify where to
          * paginate the returned records represented by the <code>CaseDetails</code>
-         * objects.</p> </li> </ul>
+         * objects.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -490,7 +525,9 @@ namespace Model
          * format:</p> <ul> <li> <p>One or more <a>CaseDetails</a> data types. </p> </li>
          * <li> <p>One or more <code>nextToken</code> values, which specify where to
          * paginate the returned records represented by the <code>CaseDetails</code>
-         * objects.</p> </li> </ul>
+         * objects.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCases">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -506,7 +543,9 @@ namespace Model
          * <code>nextToken</code> parameters to control the pagination of the result set.
          * Set <code>maxResults</code> to the number of cases you want displayed on each
          * page, and use <code>nextToken</code> to specify the resumption of
-         * pagination.</p>
+         * pagination.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeCommunicationsOutcome DescribeCommunications(const Model::DescribeCommunicationsRequest& request) const;
 
@@ -520,7 +559,9 @@ namespace Model
          * <code>nextToken</code> parameters to control the pagination of the result set.
          * Set <code>maxResults</code> to the number of cases you want displayed on each
          * page, and use <code>nextToken</code> to specify the resumption of
-         * pagination.</p>
+         * pagination.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -536,7 +577,9 @@ namespace Model
          * <code>nextToken</code> parameters to control the pagination of the result set.
          * Set <code>maxResults</code> to the number of cases you want displayed on each
          * page, and use <code>nextToken</code> to specify the resumption of
-         * pagination.</p>
+         * pagination.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeCommunications">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -554,7 +597,9 @@ namespace Model
          * codes and categories returned by the <code>DescribeServices</code> request.
          * Always use the service codes and categories obtained programmatically. This
          * practice ensures that you always have the most recent set of service and
-         * category codes.</p>
+         * category codes.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeServicesOutcome DescribeServices(const Model::DescribeServicesRequest& request) const;
 
@@ -570,7 +615,9 @@ namespace Model
          * codes and categories returned by the <code>DescribeServices</code> request.
          * Always use the service codes and categories obtained programmatically. This
          * practice ensures that you always have the most recent set of service and
-         * category codes.</p>
+         * category codes.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -588,7 +635,9 @@ namespace Model
          * codes and categories returned by the <code>DescribeServices</code> request.
          * Always use the service codes and categories obtained programmatically. This
          * practice ensures that you always have the most recent set of service and
-         * category codes.</p>
+         * category codes.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServices">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -597,14 +646,20 @@ namespace Model
         /**
          * <p>Returns the list of severity levels that you can assign to an AWS Support
          * case. The severity level for a case is also a field in the <a>CaseDetails</a>
-         * data type included in any <a>CreateCase</a> request. </p>
+         * data type included in any <a>CreateCase</a> request. </p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeSeverityLevelsOutcome DescribeSeverityLevels(const Model::DescribeSeverityLevelsRequest& request) const;
 
         /**
          * <p>Returns the list of severity levels that you can assign to an AWS Support
          * case. The severity level for a case is also a field in the <a>CaseDetails</a>
-         * data type included in any <a>CreateCase</a> request. </p>
+         * data type included in any <a>CreateCase</a> request. </p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -613,7 +668,10 @@ namespace Model
         /**
          * <p>Returns the list of severity levels that you can assign to an AWS Support
          * case. The severity level for a case is also a field in the <a>CaseDetails</a>
-         * data type included in any <a>CreateCase</a> request. </p>
+         * data type included in any <a>CreateCase</a> request. </p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeSeverityLevels">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -626,7 +684,9 @@ namespace Model
          * automatically, and their refresh statuses cannot be retrieved by using this
          * operation. Use of the <code>DescribeTrustedAdvisorCheckRefreshStatuses</code>
          * operation for these checks causes an <code>InvalidParameterValue</code>
-         * error.</p> </note>
+         * error.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTrustedAdvisorCheckRefreshStatusesOutcome DescribeTrustedAdvisorCheckRefreshStatuses(const Model::DescribeTrustedAdvisorCheckRefreshStatusesRequest& request) const;
 
@@ -637,7 +697,9 @@ namespace Model
          * automatically, and their refresh statuses cannot be retrieved by using this
          * operation. Use of the <code>DescribeTrustedAdvisorCheckRefreshStatuses</code>
          * operation for these checks causes an <code>InvalidParameterValue</code>
-         * error.</p> </note>
+         * error.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -650,7 +712,9 @@ namespace Model
          * automatically, and their refresh statuses cannot be retrieved by using this
          * operation. Use of the <code>DescribeTrustedAdvisorCheckRefreshStatuses</code>
          * operation for these checks causes an <code>InvalidParameterValue</code>
-         * error.</p> </note>
+         * error.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckRefreshStatuses">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -668,7 +732,9 @@ namespace Model
          * status of the check: "ok" (green), "warning" (yellow), "error" (red), or
          * "not_available".</p> </li> <li> <p> <b>timestamp.</b> The time of the last
          * refresh of the check.</p> </li> <li> <p> <b>checkId.</b> The unique identifier
-         * for the check.</p> </li> </ul>
+         * for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTrustedAdvisorCheckResultOutcome DescribeTrustedAdvisorCheckResult(const Model::DescribeTrustedAdvisorCheckResultRequest& request) const;
 
@@ -684,7 +750,9 @@ namespace Model
          * status of the check: "ok" (green), "warning" (yellow), "error" (red), or
          * "not_available".</p> </li> <li> <p> <b>timestamp.</b> The time of the last
          * refresh of the check.</p> </li> <li> <p> <b>checkId.</b> The unique identifier
-         * for the check.</p> </li> </ul>
+         * for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -702,7 +770,9 @@ namespace Model
          * status of the check: "ok" (green), "warning" (yellow), "error" (red), or
          * "not_available".</p> </li> <li> <p> <b>timestamp.</b> The time of the last
          * refresh of the check.</p> </li> <li> <p> <b>checkId.</b> The unique identifier
-         * for the check.</p> </li> </ul>
+         * for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResult">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -712,7 +782,9 @@ namespace Model
          * <p>Returns the summaries of the results of the Trusted Advisor checks that have
          * the specified check IDs. Check IDs can be obtained by calling
          * <a>DescribeTrustedAdvisorChecks</a>.</p> <p>The response contains an array of
-         * <a>TrustedAdvisorCheckSummary</a> objects.</p>
+         * <a>TrustedAdvisorCheckSummary</a> objects.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTrustedAdvisorCheckSummariesOutcome DescribeTrustedAdvisorCheckSummaries(const Model::DescribeTrustedAdvisorCheckSummariesRequest& request) const;
 
@@ -720,7 +792,9 @@ namespace Model
          * <p>Returns the summaries of the results of the Trusted Advisor checks that have
          * the specified check IDs. Check IDs can be obtained by calling
          * <a>DescribeTrustedAdvisorChecks</a>.</p> <p>The response contains an array of
-         * <a>TrustedAdvisorCheckSummary</a> objects.</p>
+         * <a>TrustedAdvisorCheckSummary</a> objects.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -730,7 +804,9 @@ namespace Model
          * <p>Returns the summaries of the results of the Trusted Advisor checks that have
          * the specified check IDs. Check IDs can be obtained by calling
          * <a>DescribeTrustedAdvisorChecks</a>.</p> <p>The response contains an array of
-         * <a>TrustedAdvisorCheckSummary</a> objects.</p>
+         * <a>TrustedAdvisorCheckSummary</a> objects.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckSummaries">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -740,7 +816,10 @@ namespace Model
          * <p>Returns information about all available Trusted Advisor checks, including
          * name, ID, category, description, and metadata. You must specify a language code;
          * English ("en") and Japanese ("ja") are currently supported. The response
-         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p>
+         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTrustedAdvisorChecksOutcome DescribeTrustedAdvisorChecks(const Model::DescribeTrustedAdvisorChecksRequest& request) const;
 
@@ -748,7 +827,10 @@ namespace Model
          * <p>Returns information about all available Trusted Advisor checks, including
          * name, ID, category, description, and metadata. You must specify a language code;
          * English ("en") and Japanese ("ja") are currently supported. The response
-         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p>
+         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -758,7 +840,10 @@ namespace Model
          * <p>Returns information about all available Trusted Advisor checks, including
          * name, ID, category, description, and metadata. You must specify a language code;
          * English ("en") and Japanese ("ja") are currently supported. The response
-         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p>
+         * contains a <a>TrustedAdvisorCheckDescription</a> for each check.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecks">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -776,7 +861,9 @@ namespace Model
          * "enqueued", "processing", "success", or "abandoned".</p> </li> <li> <p>
          * <b>millisUntilNextRefreshable.</b> The amount of time, in milliseconds, until
          * the check is eligible for refresh.</p> </li> <li> <p> <b>checkId.</b> The unique
-         * identifier for the check.</p> </li> </ul>
+         * identifier for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck">AWS
+         * API Reference</a></p>
          */
         virtual Model::RefreshTrustedAdvisorCheckOutcome RefreshTrustedAdvisorCheck(const Model::RefreshTrustedAdvisorCheckRequest& request) const;
 
@@ -792,7 +879,9 @@ namespace Model
          * "enqueued", "processing", "success", or "abandoned".</p> </li> <li> <p>
          * <b>millisUntilNextRefreshable.</b> The amount of time, in milliseconds, until
          * the check is eligible for refresh.</p> </li> <li> <p> <b>checkId.</b> The unique
-         * identifier for the check.</p> </li> </ul>
+         * identifier for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -810,7 +899,9 @@ namespace Model
          * "enqueued", "processing", "success", or "abandoned".</p> </li> <li> <p>
          * <b>millisUntilNextRefreshable.</b> The amount of time, in milliseconds, until
          * the check is eligible for refresh.</p> </li> <li> <p> <b>checkId.</b> The unique
-         * identifier for the check.</p> </li> </ul>
+         * identifier for the check.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheck">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -818,13 +909,19 @@ namespace Model
 
         /**
          * <p>Takes a <code>caseId</code> and returns the initial state of the case along
-         * with the state of the case after the call to <a>ResolveCase</a> completed.</p>
+         * with the state of the case after the call to <a>ResolveCase</a>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase">AWS
+         * API Reference</a></p>
          */
         virtual Model::ResolveCaseOutcome ResolveCase(const Model::ResolveCaseRequest& request) const;
 
         /**
          * <p>Takes a <code>caseId</code> and returns the initial state of the case along
-         * with the state of the case after the call to <a>ResolveCase</a> completed.</p>
+         * with the state of the case after the call to <a>ResolveCase</a>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -832,7 +929,10 @@ namespace Model
 
         /**
          * <p>Takes a <code>caseId</code> and returns the initial state of the case along
-         * with the state of the case after the call to <a>ResolveCase</a> completed.</p>
+         * with the state of the case after the call to <a>ResolveCase</a>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCase">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -859,7 +959,7 @@ namespace Model
         void ResolveCaseAsyncHelper(const Model::ResolveCaseRequest& request, const ResolveCaseResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace Support

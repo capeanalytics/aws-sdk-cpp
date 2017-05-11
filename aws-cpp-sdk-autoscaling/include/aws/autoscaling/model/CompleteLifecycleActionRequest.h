@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CompleteLifecycleAction.</p>
+   * <p>Contains the parameters for CompleteLifecycleAction.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleActionType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API CompleteLifecycleActionRequest : public AutoScalingRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     CompleteLifecycleActionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the lifecycle hook.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the lifecycle hook.</p>
      */
-    inline void SetLifecycleHookName(Aws::String&& value) { m_lifecycleHookNameHasBeenSet = true; m_lifecycleHookName = value; }
+    inline void SetLifecycleHookName(Aws::String&& value) { m_lifecycleHookNameHasBeenSet = true; m_lifecycleHookName = std::move(value); }
 
     /**
      * <p>The name of the lifecycle hook.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the lifecycle hook.</p>
      */
-    inline CompleteLifecycleActionRequest& WithLifecycleHookName(Aws::String&& value) { SetLifecycleHookName(value); return *this;}
+    inline CompleteLifecycleActionRequest& WithLifecycleHookName(Aws::String&& value) { SetLifecycleHookName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the lifecycle hook.</p>
@@ -81,7 +91,7 @@ namespace Model
     /**
      * <p>The name of the group for the lifecycle hook.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the group for the lifecycle hook.</p>
@@ -96,7 +106,7 @@ namespace Model
     /**
      * <p>The name of the group for the lifecycle hook.</p>
      */
-    inline CompleteLifecycleActionRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline CompleteLifecycleActionRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the group for the lifecycle hook.</p>
@@ -122,7 +132,7 @@ namespace Model
      * action associated with an instance. Auto Scaling sends this token to the
      * notification target you specified when you created the lifecycle hook.</p>
      */
-    inline void SetLifecycleActionToken(Aws::String&& value) { m_lifecycleActionTokenHasBeenSet = true; m_lifecycleActionToken = value; }
+    inline void SetLifecycleActionToken(Aws::String&& value) { m_lifecycleActionTokenHasBeenSet = true; m_lifecycleActionToken = std::move(value); }
 
     /**
      * <p>A universally unique identifier (UUID) that identifies a specific lifecycle
@@ -143,7 +153,7 @@ namespace Model
      * action associated with an instance. Auto Scaling sends this token to the
      * notification target you specified when you created the lifecycle hook.</p>
      */
-    inline CompleteLifecycleActionRequest& WithLifecycleActionToken(Aws::String&& value) { SetLifecycleActionToken(value); return *this;}
+    inline CompleteLifecycleActionRequest& WithLifecycleActionToken(Aws::String&& value) { SetLifecycleActionToken(std::move(value)); return *this;}
 
     /**
      * <p>A universally unique identifier (UUID) that identifies a specific lifecycle
@@ -168,7 +178,7 @@ namespace Model
      * <p>The action for the group to take. This parameter can be either
      * <code>CONTINUE</code> or <code>ABANDON</code>.</p>
      */
-    inline void SetLifecycleActionResult(Aws::String&& value) { m_lifecycleActionResultHasBeenSet = true; m_lifecycleActionResult = value; }
+    inline void SetLifecycleActionResult(Aws::String&& value) { m_lifecycleActionResultHasBeenSet = true; m_lifecycleActionResult = std::move(value); }
 
     /**
      * <p>The action for the group to take. This parameter can be either
@@ -186,7 +196,7 @@ namespace Model
      * <p>The action for the group to take. This parameter can be either
      * <code>CONTINUE</code> or <code>ABANDON</code>.</p>
      */
-    inline CompleteLifecycleActionRequest& WithLifecycleActionResult(Aws::String&& value) { SetLifecycleActionResult(value); return *this;}
+    inline CompleteLifecycleActionRequest& WithLifecycleActionResult(Aws::String&& value) { SetLifecycleActionResult(std::move(value)); return *this;}
 
     /**
      * <p>The action for the group to take. This parameter can be either
@@ -207,7 +217,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -222,7 +232,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline CompleteLifecycleActionRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline CompleteLifecycleActionRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>

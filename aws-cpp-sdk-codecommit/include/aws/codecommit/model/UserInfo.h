@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about the user who made a specified commit.</p>
+   * <p>Information about the user who made a specified commit.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/UserInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API UserInfo
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the user who made the specified commit.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the user who made the specified commit.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the user who made the specified commit.</p>
      */
-    inline UserInfo& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UserInfo& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the user who made the specified commit.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The email address associated with the user who made the commit, if any.</p>
      */
-    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = value; }
+    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = std::move(value); }
 
     /**
      * <p>The email address associated with the user who made the commit, if any.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The email address associated with the user who made the commit, if any.</p>
      */
-    inline UserInfo& WithEmail(Aws::String&& value) { SetEmail(value); return *this;}
+    inline UserInfo& WithEmail(Aws::String&& value) { SetEmail(std::move(value)); return *this;}
 
     /**
      * <p>The email address associated with the user who made the commit, if any.</p>
@@ -124,7 +129,7 @@ namespace Model
     /**
      * <p>The date when the specified commit was pushed to the repository.</p>
      */
-    inline void SetDate(Aws::String&& value) { m_dateHasBeenSet = true; m_date = value; }
+    inline void SetDate(Aws::String&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
 
     /**
      * <p>The date when the specified commit was pushed to the repository.</p>
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>The date when the specified commit was pushed to the repository.</p>
      */
-    inline UserInfo& WithDate(Aws::String&& value) { SetDate(value); return *this;}
+    inline UserInfo& WithDate(Aws::String&& value) { SetDate(std::move(value)); return *this;}
 
     /**
      * <p>The date when the specified commit was pushed to the repository.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/ApplicationVersionDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,9 +34,12 @@ ApplicationVersionDescription::ApplicationVersionDescription() :
     m_applicationNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
+    m_sourceBuildInformationHasBeenSet(false),
+    m_buildArnHasBeenSet(false),
     m_sourceBundleHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
+    m_status(ApplicationVersionStatus::NOT_SET),
     m_statusHasBeenSet(false)
 {
 }
@@ -44,9 +48,12 @@ ApplicationVersionDescription::ApplicationVersionDescription(const XmlNode& xmlN
     m_applicationNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
+    m_sourceBuildInformationHasBeenSet(false),
+    m_buildArnHasBeenSet(false),
     m_sourceBundleHasBeenSet(false),
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
+    m_status(ApplicationVersionStatus::NOT_SET),
     m_statusHasBeenSet(false)
 {
   *this = xmlNode;
@@ -75,6 +82,18 @@ ApplicationVersionDescription& ApplicationVersionDescription::operator =(const X
     {
       m_versionLabel = StringUtils::Trim(versionLabelNode.GetText().c_str());
       m_versionLabelHasBeenSet = true;
+    }
+    XmlNode sourceBuildInformationNode = resultNode.FirstChild("SourceBuildInformation");
+    if(!sourceBuildInformationNode.IsNull())
+    {
+      m_sourceBuildInformation = sourceBuildInformationNode;
+      m_sourceBuildInformationHasBeenSet = true;
+    }
+    XmlNode buildArnNode = resultNode.FirstChild("BuildArn");
+    if(!buildArnNode.IsNull())
+    {
+      m_buildArn = StringUtils::Trim(buildArnNode.GetText().c_str());
+      m_buildArnHasBeenSet = true;
     }
     XmlNode sourceBundleNode = resultNode.FirstChild("SourceBundle");
     if(!sourceBundleNode.IsNull())
@@ -122,6 +141,18 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
       oStream << location << index << locationValue << ".VersionLabel=" << StringUtils::URLEncode(m_versionLabel.c_str()) << "&";
   }
 
+  if(m_sourceBuildInformationHasBeenSet)
+  {
+      Aws::StringStream sourceBuildInformationLocationAndMemberSs;
+      sourceBuildInformationLocationAndMemberSs << location << index << locationValue << ".SourceBuildInformation";
+      m_sourceBuildInformation.OutputToStream(oStream, sourceBuildInformationLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_buildArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".BuildArn=" << StringUtils::URLEncode(m_buildArn.c_str()) << "&";
+  }
+
   if(m_sourceBundleHasBeenSet)
   {
       Aws::StringStream sourceBundleLocationAndMemberSs;
@@ -159,6 +190,16 @@ void ApplicationVersionDescription::OutputToStream(Aws::OStream& oStream, const 
   if(m_versionLabelHasBeenSet)
   {
       oStream << location << ".VersionLabel=" << StringUtils::URLEncode(m_versionLabel.c_str()) << "&";
+  }
+  if(m_sourceBuildInformationHasBeenSet)
+  {
+      Aws::String sourceBuildInformationLocationAndMember(location);
+      sourceBuildInformationLocationAndMember += ".SourceBuildInformation";
+      m_sourceBuildInformation.OutputToStream(oStream, sourceBuildInformationLocationAndMember.c_str());
+  }
+  if(m_buildArnHasBeenSet)
+  {
+      oStream << location << ".BuildArn=" << StringUtils::URLEncode(m_buildArn.c_str()) << "&";
   }
   if(m_sourceBundleHasBeenSet)
   {

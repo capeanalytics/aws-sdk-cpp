@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/logs/CloudWatchLogs_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,10 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>A log event is a record of some activity that was recorded by the application
-   * or resource being monitored. The log event record that CloudWatch Logs
-   * understands contains two properties: the timestamp of when the event occurred,
-   * and the raw event message.</p>
+   * <p>Represents a log event, which is a record of activity that was recorded by
+   * the application or resource being monitored.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/logs-2014-03-28/InputLogEvent">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDWATCHLOGS_API InputLogEvent
   {
@@ -44,34 +46,57 @@ namespace Model
     InputLogEvent& operator=(const Aws::Utils::Json::JsonValue& jsonValue);
     Aws::Utils::Json::JsonValue Jsonize() const;
 
-    
+    /**
+     * <p>The time the event occurred, expressed as the number of milliseconds since
+     * Jan 1, 1970 00:00:00 UTC.</p>
+     */
     inline long long GetTimestamp() const{ return m_timestamp; }
 
-    
+    /**
+     * <p>The time the event occurred, expressed as the number of milliseconds since
+     * Jan 1, 1970 00:00:00 UTC.</p>
+     */
     inline void SetTimestamp(long long value) { m_timestampHasBeenSet = true; m_timestamp = value; }
 
-    
+    /**
+     * <p>The time the event occurred, expressed as the number of milliseconds since
+     * Jan 1, 1970 00:00:00 UTC.</p>
+     */
     inline InputLogEvent& WithTimestamp(long long value) { SetTimestamp(value); return *this;}
 
-    
+    /**
+     * <p>The raw event message.</p>
+     */
     inline const Aws::String& GetMessage() const{ return m_message; }
 
-    
+    /**
+     * <p>The raw event message.</p>
+     */
     inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
 
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    /**
+     * <p>The raw event message.</p>
+     */
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
-    
+    /**
+     * <p>The raw event message.</p>
+     */
     inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
 
-    
+    /**
+     * <p>The raw event message.</p>
+     */
     inline InputLogEvent& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
 
-    
-    inline InputLogEvent& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    /**
+     * <p>The raw event message.</p>
+     */
+    inline InputLogEvent& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>The raw event message.</p>
+     */
     inline InputLogEvent& WithMessage(const char* value) { SetMessage(value); return *this;}
 
   private:

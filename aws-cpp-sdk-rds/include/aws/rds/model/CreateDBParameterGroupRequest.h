@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBParameterGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API CreateDBParameterGroupRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     CreateDBParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
      * be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a
@@ -60,7 +69,7 @@ namespace Model
      * hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase
      * string.</p> </note>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
@@ -87,7 +96,7 @@ namespace Model
      * hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase
      * string.</p> </note>
      */
-    inline CreateDBParameterGroupRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline CreateDBParameterGroupRequest& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must
@@ -120,7 +129,7 @@ namespace Model
      * instance running a database engine and engine version compatible with that DB
      * parameter group family.</p>
      */
-    inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = value; }
+    inline void SetDBParameterGroupFamily(Aws::String&& value) { m_dBParameterGroupFamilyHasBeenSet = true; m_dBParameterGroupFamily = std::move(value); }
 
     /**
      * <p>The DB parameter group family name. A DB parameter group can be associated
@@ -144,7 +153,7 @@ namespace Model
      * instance running a database engine and engine version compatible with that DB
      * parameter group family.</p>
      */
-    inline CreateDBParameterGroupRequest& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(value); return *this;}
+    inline CreateDBParameterGroupRequest& WithDBParameterGroupFamily(Aws::String&& value) { SetDBParameterGroupFamily(std::move(value)); return *this;}
 
     /**
      * <p>The DB parameter group family name. A DB parameter group can be associated
@@ -167,7 +176,7 @@ namespace Model
     /**
      * <p>The description for the DB parameter group.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description for the DB parameter group.</p>
@@ -182,7 +191,7 @@ namespace Model
     /**
      * <p>The description for the DB parameter group.</p>
      */
-    inline CreateDBParameterGroupRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreateDBParameterGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description for the DB parameter group.</p>
@@ -196,19 +205,19 @@ namespace Model
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     
     inline CreateDBParameterGroupRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     
-    inline CreateDBParameterGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateDBParameterGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     
     inline CreateDBParameterGroupRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     
-    inline CreateDBParameterGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreateDBParameterGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_dBParameterGroupName;

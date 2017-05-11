@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sns/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>Response for Subscribe action.</p>
+   * <p>Response for Subscribe action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SubscribeResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API SubscribeResult
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>The ARN of the subscription, if the service was able to create a subscription
      * immediately (without requiring endpoint owner confirmation).</p>
      */
-    inline void SetSubscriptionArn(Aws::String&& value) { m_subscriptionArn = value; }
+    inline void SetSubscriptionArn(Aws::String&& value) { m_subscriptionArn = std::move(value); }
 
     /**
      * <p>The ARN of the subscription, if the service was able to create a subscription
@@ -77,7 +81,7 @@ namespace Model
      * <p>The ARN of the subscription, if the service was able to create a subscription
      * immediately (without requiring endpoint owner confirmation).</p>
      */
-    inline SubscribeResult& WithSubscriptionArn(Aws::String&& value) { SetSubscriptionArn(value); return *this;}
+    inline SubscribeResult& WithSubscriptionArn(Aws::String&& value) { SetSubscriptionArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the subscription, if the service was able to create a subscription
@@ -92,13 +96,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline SubscribeResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline SubscribeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline SubscribeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_subscriptionArn;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 
@@ -31,7 +32,10 @@ namespace Model
 
   /**
    * <p>Optional deployment parameters that control how many tasks run during the
-   * deployment and the ordering of stopping and starting tasks.</p>
+   * deployment and the ordering of stopping and starting tasks.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/DeploymentConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_ECS_API DeploymentConfiguration
   {
@@ -43,36 +47,36 @@ namespace Model
 
     /**
      * <p>The upper limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that can be running in a service during a
-     * deployment. The maximum number of tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the <code>maximumPercent</code>/100,
-     * rounded down to the nearest integer value.</p>
+     * of the number of tasks that are allowed in the <code>RUNNING</code> or
+     * <code>PENDING</code> state in a service during a deployment. The maximum number
+     * of tasks during a deployment is the <code>desiredCount</code> multiplied by
+     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.</p>
      */
     inline int GetMaximumPercent() const{ return m_maximumPercent; }
 
     /**
      * <p>The upper limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that can be running in a service during a
-     * deployment. The maximum number of tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the <code>maximumPercent</code>/100,
-     * rounded down to the nearest integer value.</p>
+     * of the number of tasks that are allowed in the <code>RUNNING</code> or
+     * <code>PENDING</code> state in a service during a deployment. The maximum number
+     * of tasks during a deployment is the <code>desiredCount</code> multiplied by
+     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.</p>
      */
     inline void SetMaximumPercent(int value) { m_maximumPercentHasBeenSet = true; m_maximumPercent = value; }
 
     /**
      * <p>The upper limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that can be running in a service during a
-     * deployment. The maximum number of tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the <code>maximumPercent</code>/100,
-     * rounded down to the nearest integer value.</p>
+     * of the number of tasks that are allowed in the <code>RUNNING</code> or
+     * <code>PENDING</code> state in a service during a deployment. The maximum number
+     * of tasks during a deployment is the <code>desiredCount</code> multiplied by
+     * <code>maximumPercent</code>/100, rounded down to the nearest integer value.</p>
      */
     inline DeploymentConfiguration& WithMaximumPercent(int value) { SetMaximumPercent(value); return *this;}
 
     /**
      * <p>The lower limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that must remain running and healthy in a service
-     * during a deployment. The minimum healthy tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the
+     * of the number of running tasks that must remain in the <code>RUNNING</code>
+     * state in a service during a deployment. The minimum healthy tasks during a
+     * deployment is the <code>desiredCount</code> multiplied by
      * <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer
      * value.</p>
      */
@@ -80,9 +84,9 @@ namespace Model
 
     /**
      * <p>The lower limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that must remain running and healthy in a service
-     * during a deployment. The minimum healthy tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the
+     * of the number of running tasks that must remain in the <code>RUNNING</code>
+     * state in a service during a deployment. The minimum healthy tasks during a
+     * deployment is the <code>desiredCount</code> multiplied by
      * <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer
      * value.</p>
      */
@@ -90,9 +94,9 @@ namespace Model
 
     /**
      * <p>The lower limit (as a percentage of the service's <code>desiredCount</code>)
-     * of the number of running tasks that must remain running and healthy in a service
-     * during a deployment. The minimum healthy tasks during a deployment is the
-     * <code>desiredCount</code> multiplied by the
+     * of the number of running tasks that must remain in the <code>RUNNING</code>
+     * state in a service during a deployment. The minimum healthy tasks during a
+     * deployment is the <code>desiredCount</code> multiplied by
      * <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer
      * value.</p>
      */

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/UserBucket.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the disk container object for an import image task.</p>
+   * <p>Describes the disk container object for an import image task.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImageDiskContainer">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImageDiskContainer
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The description of the disk image.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the disk image.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The description of the disk image.</p>
      */
-    inline ImageDiskContainer& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ImageDiskContainer& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the disk image.</p>
@@ -82,43 +87,43 @@ namespace Model
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
     inline const Aws::String& GetFormat() const{ return m_format; }
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
     inline void SetFormat(const Aws::String& value) { m_formatHasBeenSet = true; m_format = value; }
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
-    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = value; }
+    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
     inline void SetFormat(const char* value) { m_formatHasBeenSet = true; m_format.assign(value); }
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
     inline ImageDiskContainer& WithFormat(const Aws::String& value) { SetFormat(value); return *this;}
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
-    inline ImageDiskContainer& WithFormat(Aws::String&& value) { SetFormat(value); return *this;}
+    inline ImageDiskContainer& WithFormat(Aws::String&& value) { SetFormat(std::move(value)); return *this;}
 
     /**
      * <p>The format of the disk image being imported.</p> <p>Valid values:
-     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code></p>
+     * <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
      */
     inline ImageDiskContainer& WithFormat(const char* value) { SetFormat(value); return *this;}
 
@@ -138,7 +143,7 @@ namespace Model
      * <p>The URL to the Amazon S3-based disk image being imported. The URL can either
      * be a https URL (https://..) or an Amazon S3 URL (s3://..)</p>
      */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = value; }
+    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
 
     /**
      * <p>The URL to the Amazon S3-based disk image being imported. The URL can either
@@ -156,7 +161,7 @@ namespace Model
      * <p>The URL to the Amazon S3-based disk image being imported. The URL can either
      * be a https URL (https://..) or an Amazon S3 URL (s3://..)</p>
      */
-    inline ImageDiskContainer& WithUrl(Aws::String&& value) { SetUrl(value); return *this;}
+    inline ImageDiskContainer& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
 
     /**
      * <p>The URL to the Amazon S3-based disk image being imported. The URL can either
@@ -177,7 +182,7 @@ namespace Model
     /**
      * <p>The S3 bucket for the disk image.</p>
      */
-    inline void SetUserBucket(UserBucket&& value) { m_userBucketHasBeenSet = true; m_userBucket = value; }
+    inline void SetUserBucket(UserBucket&& value) { m_userBucketHasBeenSet = true; m_userBucket = std::move(value); }
 
     /**
      * <p>The S3 bucket for the disk image.</p>
@@ -187,7 +192,7 @@ namespace Model
     /**
      * <p>The S3 bucket for the disk image.</p>
      */
-    inline ImageDiskContainer& WithUserBucket(UserBucket&& value) { SetUserBucket(value); return *this;}
+    inline ImageDiskContainer& WithUserBucket(UserBucket&& value) { SetUserBucket(std::move(value)); return *this;}
 
     /**
      * <p>The block device mapping for the disk.</p>
@@ -202,7 +207,7 @@ namespace Model
     /**
      * <p>The block device mapping for the disk.</p>
      */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
+    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
 
     /**
      * <p>The block device mapping for the disk.</p>
@@ -217,7 +222,7 @@ namespace Model
     /**
      * <p>The block device mapping for the disk.</p>
      */
-    inline ImageDiskContainer& WithDeviceName(Aws::String&& value) { SetDeviceName(value); return *this;}
+    inline ImageDiskContainer& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
 
     /**
      * <p>The block device mapping for the disk.</p>
@@ -237,7 +242,7 @@ namespace Model
     /**
      * <p>The ID of the EBS snapshot to be used for importing the snapshot.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The ID of the EBS snapshot to be used for importing the snapshot.</p>
@@ -252,7 +257,7 @@ namespace Model
     /**
      * <p>The ID of the EBS snapshot to be used for importing the snapshot.</p>
      */
-    inline ImageDiskContainer& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline ImageDiskContainer& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the EBS snapshot to be used for importing the snapshot.</p>

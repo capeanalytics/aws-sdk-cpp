@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/CloudFrontRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
 {
 
   /**
-   * The request to list invalidations.
+   * The request to list invalidations.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/ListInvalidationsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API ListInvalidations2016_01_28Request : public CloudFrontRequest
   {
@@ -38,6 +42,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * The distribution's id.
@@ -52,7 +57,7 @@ namespace Model
     /**
      * The distribution's id.
      */
-    inline void SetDistributionId(Aws::String&& value) { m_distributionIdHasBeenSet = true; m_distributionId = value; }
+    inline void SetDistributionId(Aws::String&& value) { m_distributionIdHasBeenSet = true; m_distributionId = std::move(value); }
 
     /**
      * The distribution's id.
@@ -67,7 +72,7 @@ namespace Model
     /**
      * The distribution's id.
      */
-    inline ListInvalidations2016_01_28Request& WithDistributionId(Aws::String&& value) { SetDistributionId(value); return *this;}
+    inline ListInvalidations2016_01_28Request& WithDistributionId(Aws::String&& value) { SetDistributionId(std::move(value)); return *this;}
 
     /**
      * The distribution's id.
@@ -105,7 +110,7 @@ namespace Model
      * response. This value is the same as the ID of the last invalidation batch on
      * that page.
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * Use this parameter when paginating results to indicate where to begin in your
@@ -138,7 +143,7 @@ namespace Model
      * response. This value is the same as the ID of the last invalidation batch on
      * that page.
      */
-    inline ListInvalidations2016_01_28Request& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListInvalidations2016_01_28Request& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * Use this parameter when paginating results to indicate where to begin in your
@@ -164,7 +169,7 @@ namespace Model
     /**
      * The maximum number of invalidation batches you want in the response body.
      */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::move(value); }
 
     /**
      * The maximum number of invalidation batches you want in the response body.
@@ -179,7 +184,7 @@ namespace Model
     /**
      * The maximum number of invalidation batches you want in the response body.
      */
-    inline ListInvalidations2016_01_28Request& WithMaxItems(Aws::String&& value) { SetMaxItems(value); return *this;}
+    inline ListInvalidations2016_01_28Request& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
 
     /**
      * The maximum number of invalidation batches you want in the response body.

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/directconnect/model/Connection.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace DirectConnect
 namespace Model
 {
   /**
-   * <p>A structure containing a list of connections.</p>
+   * <p>A structure containing a list of connections.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/Connections">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API DescribeConnectionsResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>A list of connections.</p>
      */
-    inline void SetConnections(Aws::Vector<Connection>&& value) { m_connections = value; }
+    inline void SetConnections(Aws::Vector<Connection>&& value) { m_connections = std::move(value); }
 
     /**
      * <p>A list of connections.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>A list of connections.</p>
      */
-    inline DescribeConnectionsResult& WithConnections(Aws::Vector<Connection>&& value) { SetConnections(value); return *this;}
+    inline DescribeConnectionsResult& WithConnections(Aws::Vector<Connection>&& value) { SetConnections(std::move(value)); return *this;}
 
     /**
      * <p>A list of connections.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>A list of connections.</p>
      */
-    inline DescribeConnectionsResult& AddConnections(Connection&& value) { m_connections.push_back(value); return *this; }
+    inline DescribeConnectionsResult& AddConnections(Connection&& value) { m_connections.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Connection> m_connections;

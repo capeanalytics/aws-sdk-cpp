@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,11 @@ namespace Model
     CopyDBClusterParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The identifier or Amazon Resource Name (ARN) for the source DB cluster
      * parameter group. For information about creating an ARN, see <a
@@ -80,7 +87,7 @@ namespace Model
      * <code>arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1</code>.</p>
      * </li> </ul>
      */
-    inline void SetSourceDBClusterParameterGroupIdentifier(Aws::String&& value) { m_sourceDBClusterParameterGroupIdentifierHasBeenSet = true; m_sourceDBClusterParameterGroupIdentifier = value; }
+    inline void SetSourceDBClusterParameterGroupIdentifier(Aws::String&& value) { m_sourceDBClusterParameterGroupIdentifierHasBeenSet = true; m_sourceDBClusterParameterGroupIdentifier = std::move(value); }
 
     /**
      * <p>The identifier or Amazon Resource Name (ARN) for the source DB cluster
@@ -128,7 +135,7 @@ namespace Model
      * <code>arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1</code>.</p>
      * </li> </ul>
      */
-    inline CopyDBClusterParameterGroupRequest& WithSourceDBClusterParameterGroupIdentifier(Aws::String&& value) { SetSourceDBClusterParameterGroupIdentifier(value); return *this;}
+    inline CopyDBClusterParameterGroupRequest& WithSourceDBClusterParameterGroupIdentifier(Aws::String&& value) { SetSourceDBClusterParameterGroupIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier or Amazon Resource Name (ARN) for the source DB cluster
@@ -174,7 +181,7 @@ namespace Model
      * or contain two consecutive hyphens</p> </li> </ul> <p>Example:
      * <code>my-cluster-param-group1</code> </p>
      */
-    inline void SetTargetDBClusterParameterGroupIdentifier(Aws::String&& value) { m_targetDBClusterParameterGroupIdentifierHasBeenSet = true; m_targetDBClusterParameterGroupIdentifier = value; }
+    inline void SetTargetDBClusterParameterGroupIdentifier(Aws::String&& value) { m_targetDBClusterParameterGroupIdentifierHasBeenSet = true; m_targetDBClusterParameterGroupIdentifier = std::move(value); }
 
     /**
      * <p>The identifier for the copied DB cluster parameter group.</p>
@@ -204,7 +211,7 @@ namespace Model
      * or contain two consecutive hyphens</p> </li> </ul> <p>Example:
      * <code>my-cluster-param-group1</code> </p>
      */
-    inline CopyDBClusterParameterGroupRequest& WithTargetDBClusterParameterGroupIdentifier(Aws::String&& value) { SetTargetDBClusterParameterGroupIdentifier(value); return *this;}
+    inline CopyDBClusterParameterGroupRequest& WithTargetDBClusterParameterGroupIdentifier(Aws::String&& value) { SetTargetDBClusterParameterGroupIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier for the copied DB cluster parameter group.</p>
@@ -229,7 +236,7 @@ namespace Model
     /**
      * <p>A description for the copied DB cluster parameter group.</p>
      */
-    inline void SetTargetDBClusterParameterGroupDescription(Aws::String&& value) { m_targetDBClusterParameterGroupDescriptionHasBeenSet = true; m_targetDBClusterParameterGroupDescription = value; }
+    inline void SetTargetDBClusterParameterGroupDescription(Aws::String&& value) { m_targetDBClusterParameterGroupDescriptionHasBeenSet = true; m_targetDBClusterParameterGroupDescription = std::move(value); }
 
     /**
      * <p>A description for the copied DB cluster parameter group.</p>
@@ -244,7 +251,7 @@ namespace Model
     /**
      * <p>A description for the copied DB cluster parameter group.</p>
      */
-    inline CopyDBClusterParameterGroupRequest& WithTargetDBClusterParameterGroupDescription(Aws::String&& value) { SetTargetDBClusterParameterGroupDescription(value); return *this;}
+    inline CopyDBClusterParameterGroupRequest& WithTargetDBClusterParameterGroupDescription(Aws::String&& value) { SetTargetDBClusterParameterGroupDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description for the copied DB cluster parameter group.</p>
@@ -258,19 +265,19 @@ namespace Model
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     
     inline CopyDBClusterParameterGroupRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     
-    inline CopyDBClusterParameterGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CopyDBClusterParameterGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     
     inline CopyDBClusterParameterGroupRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     
-    inline CopyDBClusterParameterGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CopyDBClusterParameterGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_sourceDBClusterParameterGroupIdentifier;

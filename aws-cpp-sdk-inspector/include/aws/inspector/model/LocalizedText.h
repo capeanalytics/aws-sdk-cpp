@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/model/LocalizedTextKey.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/Parameter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -57,7 +59,7 @@ namespace Model
     /**
      * <p>The facility and id properties of the <a>LocalizedTextKey</a> data type.</p>
      */
-    inline void SetKey(LocalizedTextKey&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(LocalizedTextKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>The facility and id properties of the <a>LocalizedTextKey</a> data type.</p>
@@ -67,7 +69,7 @@ namespace Model
     /**
      * <p>The facility and id properties of the <a>LocalizedTextKey</a> data type.</p>
      */
-    inline LocalizedText& WithKey(LocalizedTextKey&& value) { SetKey(value); return *this;}
+    inline LocalizedText& WithKey(LocalizedTextKey&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>Values for the dynamic elements of the string specified by the textual
@@ -85,7 +87,7 @@ namespace Model
      * <p>Values for the dynamic elements of the string specified by the textual
      * identifier.</p>
      */
-    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = value; }
+    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
 
     /**
      * <p>Values for the dynamic elements of the string specified by the textual
@@ -97,7 +99,7 @@ namespace Model
      * <p>Values for the dynamic elements of the string specified by the textual
      * identifier.</p>
      */
-    inline LocalizedText& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(value); return *this;}
+    inline LocalizedText& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(std::move(value)); return *this;}
 
     /**
      * <p>Values for the dynamic elements of the string specified by the textual
@@ -109,7 +111,7 @@ namespace Model
      * <p>Values for the dynamic elements of the string specified by the textual
      * identifier.</p>
      */
-    inline LocalizedText& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
+    inline LocalizedText& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
 
   private:
     LocalizedTextKey m_key;

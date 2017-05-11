@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/datapipeline/model/PipelineIdName.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of ListPipelines.</p>
+   * <p>Contains the output of ListPipelines.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ListPipelinesOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API ListPipelinesResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * pipelines, you can use these identifiers to call <a>DescribePipelines</a> and
      * <a>GetPipelineDefinition</a>.</p>
      */
-    inline void SetPipelineIdList(Aws::Vector<PipelineIdName>&& value) { m_pipelineIdList = value; }
+    inline void SetPipelineIdList(Aws::Vector<PipelineIdName>&& value) { m_pipelineIdList = std::move(value); }
 
     /**
      * <p>The pipeline identifiers. If you require additional information about the
@@ -77,7 +81,7 @@ namespace Model
      * pipelines, you can use these identifiers to call <a>DescribePipelines</a> and
      * <a>GetPipelineDefinition</a>.</p>
      */
-    inline ListPipelinesResult& WithPipelineIdList(Aws::Vector<PipelineIdName>&& value) { SetPipelineIdList(value); return *this;}
+    inline ListPipelinesResult& WithPipelineIdList(Aws::Vector<PipelineIdName>&& value) { SetPipelineIdList(std::move(value)); return *this;}
 
     /**
      * <p>The pipeline identifiers. If you require additional information about the
@@ -91,7 +95,7 @@ namespace Model
      * pipelines, you can use these identifiers to call <a>DescribePipelines</a> and
      * <a>GetPipelineDefinition</a>.</p>
      */
-    inline ListPipelinesResult& AddPipelineIdList(PipelineIdName&& value) { m_pipelineIdList.push_back(value); return *this; }
+    inline ListPipelinesResult& AddPipelineIdList(PipelineIdName&& value) { m_pipelineIdList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The starting point for the next page of results. To view the next page of
@@ -112,7 +116,7 @@ namespace Model
      * results, call <code>ListPipelinesOutput</code> again with this marker value. If
      * the value is null, there are no more results.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>The starting point for the next page of results. To view the next page of
@@ -133,7 +137,7 @@ namespace Model
      * results, call <code>ListPipelinesOutput</code> again with this marker value. If
      * the value is null, there are no more results.</p>
      */
-    inline ListPipelinesResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListPipelinesResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The starting point for the next page of results. To view the next page of

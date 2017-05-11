@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/sns/SNSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     DeleteTopicRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ARN of the topic you want to delete.</p>
      */
@@ -45,7 +52,7 @@ namespace Model
     /**
      * <p>The ARN of the topic you want to delete.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The ARN of the topic you want to delete.</p>
@@ -60,7 +67,7 @@ namespace Model
     /**
      * <p>The ARN of the topic you want to delete.</p>
      */
-    inline DeleteTopicRequest& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline DeleteTopicRequest& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the topic you want to delete.</p>

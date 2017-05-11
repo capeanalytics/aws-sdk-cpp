@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/CloudFrontRequest.h>
 #include <aws/cloudfront/model/CloudFrontOriginAccessIdentityConfig.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * The request to update an origin access identity.
+   * The request to update an origin access identity.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/UpdateCloudFrontOriginAccessIdentityRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API UpdateCloudFrontOriginAccessIdentity2016_01_28Request : public CloudFrontRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * The identity's configuration information.
@@ -49,7 +54,7 @@ namespace Model
     /**
      * The identity's configuration information.
      */
-    inline void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = value; }
+    inline void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = std::move(value); }
 
     /**
      * The identity's configuration information.
@@ -59,7 +64,7 @@ namespace Model
     /**
      * The identity's configuration information.
      */
-    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { SetCloudFrontOriginAccessIdentityConfig(value); return *this;}
+    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { SetCloudFrontOriginAccessIdentityConfig(std::move(value)); return *this;}
 
     /**
      * The identity's id.
@@ -74,7 +79,7 @@ namespace Model
     /**
      * The identity's id.
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * The identity's id.
@@ -89,7 +94,7 @@ namespace Model
     /**
      * The identity's id.
      */
-    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * The identity's id.
@@ -112,7 +117,7 @@ namespace Model
      * The value of the ETag header you received when retrieving the identity's
      * configuration. For example: E2QWRUHAPOMQZL.
      */
-    inline void SetIfMatch(Aws::String&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = value; }
+    inline void SetIfMatch(Aws::String&& value) { m_ifMatchHasBeenSet = true; m_ifMatch = std::move(value); }
 
     /**
      * The value of the ETag header you received when retrieving the identity's
@@ -130,7 +135,7 @@ namespace Model
      * The value of the ETag header you received when retrieving the identity's
      * configuration. For example: E2QWRUHAPOMQZL.
      */
-    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithIfMatch(Aws::String&& value) { SetIfMatch(value); return *this;}
+    inline UpdateCloudFrontOriginAccessIdentity2016_01_28Request& WithIfMatch(Aws::String&& value) { SetIfMatch(std::move(value)); return *this;}
 
     /**
      * The value of the ETag header you received when retrieving the identity's

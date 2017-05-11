@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/snowball/Snowball_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
    * <p>Contains a key range. For export jobs, a <code>S3Resource</code> object can
    * have an optional <code>KeyRange</code> value. The length of the range is defined
    * at job creation, and has either an inclusive <code>BeginMarker</code>, an
-   * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
+   * inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary
+   * sorted.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/KeyRange">AWS
+   * API Reference</a></p>
    */
   class AWS_SNOWBALL_API KeyRange
   {
@@ -60,7 +65,7 @@ namespace Model
      * <p>The key that starts an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline void SetBeginMarker(Aws::String&& value) { m_beginMarkerHasBeenSet = true; m_beginMarker = value; }
+    inline void SetBeginMarker(Aws::String&& value) { m_beginMarkerHasBeenSet = true; m_beginMarker = std::move(value); }
 
     /**
      * <p>The key that starts an optional key range for an export job. Ranges are
@@ -78,7 +83,7 @@ namespace Model
      * <p>The key that starts an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline KeyRange& WithBeginMarker(Aws::String&& value) { SetBeginMarker(value); return *this;}
+    inline KeyRange& WithBeginMarker(Aws::String&& value) { SetBeginMarker(std::move(value)); return *this;}
 
     /**
      * <p>The key that starts an optional key range for an export job. Ranges are
@@ -102,7 +107,7 @@ namespace Model
      * <p>The key that ends an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline void SetEndMarker(Aws::String&& value) { m_endMarkerHasBeenSet = true; m_endMarker = value; }
+    inline void SetEndMarker(Aws::String&& value) { m_endMarkerHasBeenSet = true; m_endMarker = std::move(value); }
 
     /**
      * <p>The key that ends an optional key range for an export job. Ranges are
@@ -120,7 +125,7 @@ namespace Model
      * <p>The key that ends an optional key range for an export job. Ranges are
      * inclusive and UTF-8 binary sorted.</p>
      */
-    inline KeyRange& WithEndMarker(Aws::String&& value) { SetEndMarker(value); return *this;}
+    inline KeyRange& WithEndMarker(Aws::String&& value) { SetEndMarker(std::move(value)); return *this;}
 
     /**
      * <p>The key that ends an optional key range for an export job. Ranges are

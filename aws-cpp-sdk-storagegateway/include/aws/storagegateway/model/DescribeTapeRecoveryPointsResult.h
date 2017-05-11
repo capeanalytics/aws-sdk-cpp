@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/storagegateway/model/TapeRecoveryPointInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace StorageGateway
 namespace Model
 {
   /**
-   * <p>DescribeTapeRecoveryPointsOutput</p>
+   * <p>DescribeTapeRecoveryPointsOutput</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DescribeTapeRecoveryPointsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API DescribeTapeRecoveryPointsResult
   {
@@ -51,7 +55,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARN.assign(value); }
@@ -60,7 +64,7 @@ namespace Model
     inline DescribeTapeRecoveryPointsResult& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline DescribeTapeRecoveryPointsResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline DescribeTapeRecoveryPointsResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline DescribeTapeRecoveryPointsResult& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
@@ -81,7 +85,7 @@ namespace Model
      * <p>An array of TapeRecoveryPointInfos that are available for the specified
      * gateway.</p>
      */
-    inline void SetTapeRecoveryPointInfos(Aws::Vector<TapeRecoveryPointInfo>&& value) { m_tapeRecoveryPointInfos = value; }
+    inline void SetTapeRecoveryPointInfos(Aws::Vector<TapeRecoveryPointInfo>&& value) { m_tapeRecoveryPointInfos = std::move(value); }
 
     /**
      * <p>An array of TapeRecoveryPointInfos that are available for the specified
@@ -93,7 +97,7 @@ namespace Model
      * <p>An array of TapeRecoveryPointInfos that are available for the specified
      * gateway.</p>
      */
-    inline DescribeTapeRecoveryPointsResult& WithTapeRecoveryPointInfos(Aws::Vector<TapeRecoveryPointInfo>&& value) { SetTapeRecoveryPointInfos(value); return *this;}
+    inline DescribeTapeRecoveryPointsResult& WithTapeRecoveryPointInfos(Aws::Vector<TapeRecoveryPointInfo>&& value) { SetTapeRecoveryPointInfos(std::move(value)); return *this;}
 
     /**
      * <p>An array of TapeRecoveryPointInfos that are available for the specified
@@ -105,7 +109,7 @@ namespace Model
      * <p>An array of TapeRecoveryPointInfos that are available for the specified
      * gateway.</p>
      */
-    inline DescribeTapeRecoveryPointsResult& AddTapeRecoveryPointInfos(TapeRecoveryPointInfo&& value) { m_tapeRecoveryPointInfos.push_back(value); return *this; }
+    inline DescribeTapeRecoveryPointsResult& AddTapeRecoveryPointInfos(TapeRecoveryPointInfo&& value) { m_tapeRecoveryPointInfos.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An opaque string that indicates the position at which the virtual tape
@@ -132,7 +136,7 @@ namespace Model
      * list. If there are no more recovery points to describe, this field does not
      * appear in the response.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>An opaque string that indicates the position at which the virtual tape
@@ -159,7 +163,7 @@ namespace Model
      * list. If there are no more recovery points to describe, this field does not
      * appear in the response.</p>
      */
-    inline DescribeTapeRecoveryPointsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeTapeRecoveryPointsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>An opaque string that indicates the position at which the virtual tape

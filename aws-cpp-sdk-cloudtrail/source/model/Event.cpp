@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudtrail/model/Event.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,6 +32,7 @@ Event::Event() :
     m_eventIdHasBeenSet(false),
     m_eventNameHasBeenSet(false),
     m_eventTimeHasBeenSet(false),
+    m_eventSourceHasBeenSet(false),
     m_usernameHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_cloudTrailEventHasBeenSet(false)
@@ -41,6 +43,7 @@ Event::Event(const JsonValue& jsonValue) :
     m_eventIdHasBeenSet(false),
     m_eventNameHasBeenSet(false),
     m_eventTimeHasBeenSet(false),
+    m_eventSourceHasBeenSet(false),
     m_usernameHasBeenSet(false),
     m_resourcesHasBeenSet(false),
     m_cloudTrailEventHasBeenSet(false)
@@ -69,6 +72,13 @@ Event& Event::operator =(const JsonValue& jsonValue)
     m_eventTime = jsonValue.GetDouble("EventTime");
 
     m_eventTimeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("EventSource"))
+  {
+    m_eventSource = jsonValue.GetString("EventSource");
+
+    m_eventSourceHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("Username"))
@@ -117,6 +127,12 @@ JsonValue Event::Jsonize() const
   if(m_eventTimeHasBeenSet)
   {
    payload.WithDouble("EventTime", m_eventTime.SecondsWithMSPrecision());
+  }
+
+  if(m_eventSourceHasBeenSet)
+  {
+   payload.WithString("EventSource", m_eventSource);
+
   }
 
   if(m_usernameHasBeenSet)

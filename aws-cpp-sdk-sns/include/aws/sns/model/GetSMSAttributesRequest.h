@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/sns/SNSRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>The input for the <code>GetSMSAttributes</code> request.</p>
+   * <p>The input for the <code>GetSMSAttributes</code> request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetSMSAttributesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API GetSMSAttributesRequest : public SNSRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     GetSMSAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A list of the individual attribute names, such as
      * <code>MonthlySpendLimit</code>, for which you want values.</p> <p>For all
@@ -59,7 +69,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p>
      * <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
      */
-    inline void SetAttributes(Aws::Vector<Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Vector<Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>A list of the individual attribute names, such as
@@ -77,7 +87,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p>
      * <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
      */
-    inline GetSMSAttributesRequest& WithAttributes(Aws::Vector<Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline GetSMSAttributesRequest& WithAttributes(Aws::Vector<Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>A list of the individual attribute names, such as
@@ -95,7 +105,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p>
      * <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
      */
-    inline GetSMSAttributesRequest& AddAttributes(Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
+    inline GetSMSAttributesRequest& AddAttributes(Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of the individual attribute names, such as

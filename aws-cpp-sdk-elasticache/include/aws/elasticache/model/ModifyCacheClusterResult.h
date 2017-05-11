@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/model/CacheCluster.h>
 #include <aws/elasticache/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -47,13 +49,13 @@ namespace Model
     inline void SetCacheCluster(const CacheCluster& value) { m_cacheCluster = value; }
 
     
-    inline void SetCacheCluster(CacheCluster&& value) { m_cacheCluster = value; }
+    inline void SetCacheCluster(CacheCluster&& value) { m_cacheCluster = std::move(value); }
 
     
     inline ModifyCacheClusterResult& WithCacheCluster(const CacheCluster& value) { SetCacheCluster(value); return *this;}
 
     
-    inline ModifyCacheClusterResult& WithCacheCluster(CacheCluster&& value) { SetCacheCluster(value); return *this;}
+    inline ModifyCacheClusterResult& WithCacheCluster(CacheCluster&& value) { SetCacheCluster(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -62,13 +64,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ModifyCacheClusterResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ModifyCacheClusterResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ModifyCacheClusterResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     CacheCluster m_cacheCluster;

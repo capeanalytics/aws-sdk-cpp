@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/codecommit/CodeCommitRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a get branch operation.</p>
+   * <p>Represents the input of a get branch operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranchInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API GetBranchRequest : public CodeCommitRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the repository that contains the branch for which you want to
@@ -51,7 +56,7 @@ namespace Model
      * <p>The name of the repository that contains the branch for which you want to
      * retrieve information.</p>
      */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
+    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
 
     /**
      * <p>The name of the repository that contains the branch for which you want to
@@ -69,7 +74,7 @@ namespace Model
      * <p>The name of the repository that contains the branch for which you want to
      * retrieve information.</p>
      */
-    inline GetBranchRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(value); return *this;}
+    inline GetBranchRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the repository that contains the branch for which you want to
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The name of the branch for which you want to retrieve information.</p>
      */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
+    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
 
     /**
      * <p>The name of the branch for which you want to retrieve information.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The name of the branch for which you want to retrieve information.</p>
      */
-    inline GetBranchRequest& WithBranchName(Aws::String&& value) { SetBranchName(value); return *this;}
+    inline GetBranchRequest& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the branch for which you want to retrieve information.</p>

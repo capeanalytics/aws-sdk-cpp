@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/kms/KMSErrors.h>
@@ -39,6 +40,7 @@ static const int DISABLED_HASH = HashingUtils::HashString("DisabledException");
 static const int INVALID_CIPHERTEXT_HASH = HashingUtils::HashString("InvalidCiphertextException");
 static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
 static const int INVALID_GRANT_TOKEN_HASH = HashingUtils::HashString("InvalidGrantTokenException");
+static const int TAG_HASH = HashingUtils::HashString("TagException");
 static const int K_M_S_INVALID_STATE_HASH = HashingUtils::HashString("KMSInvalidStateException");
 static const int DEPENDENCY_TIMEOUT_HASH = HashingUtils::HashString("DependencyTimeoutException");
 static const int INVALID_ARN_HASH = HashingUtils::HashString("InvalidArnException");
@@ -100,6 +102,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_GRANT_TOKEN_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::INVALID_GRANT_TOKEN), false);
+  }
+  else if (hashCode == TAG_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(KMSErrors::TAG), false);
   }
   else if (hashCode == K_M_S_INVALID_STATE_HASH)
   {

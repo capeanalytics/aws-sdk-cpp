@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeVpcEndpointServices.</p>
+   * <p>Contains the parameters for DescribeVpcEndpointServices.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointServicesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeVpcEndpointServicesRequest : public EC2Request
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeVpcEndpointServicesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -97,7 +107,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a prior call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -115,7 +125,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a prior call.)</p>
      */
-    inline DescribeVpcEndpointServicesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeVpcEndpointServicesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

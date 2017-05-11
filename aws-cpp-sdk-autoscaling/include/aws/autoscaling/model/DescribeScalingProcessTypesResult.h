@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/autoscaling/model/ResponseMetadata.h>
 #include <aws/autoscaling/model/ProcessType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace AutoScaling
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeScalingProcessTypes.</p>
+   * <p>Contains the output of DescribeScalingProcessTypes.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ProcessesType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeScalingProcessTypesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The names of the process types.</p>
      */
-    inline void SetProcesses(Aws::Vector<ProcessType>&& value) { m_processes = value; }
+    inline void SetProcesses(Aws::Vector<ProcessType>&& value) { m_processes = std::move(value); }
 
     /**
      * <p>The names of the process types.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>The names of the process types.</p>
      */
-    inline DescribeScalingProcessTypesResult& WithProcesses(Aws::Vector<ProcessType>&& value) { SetProcesses(value); return *this;}
+    inline DescribeScalingProcessTypesResult& WithProcesses(Aws::Vector<ProcessType>&& value) { SetProcesses(std::move(value)); return *this;}
 
     /**
      * <p>The names of the process types.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The names of the process types.</p>
      */
-    inline DescribeScalingProcessTypesResult& AddProcesses(ProcessType&& value) { m_processes.push_back(value); return *this; }
+    inline DescribeScalingProcessTypesResult& AddProcesses(ProcessType&& value) { m_processes.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -86,13 +91,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeScalingProcessTypesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeScalingProcessTypesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeScalingProcessTypesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<ProcessType> m_processes;

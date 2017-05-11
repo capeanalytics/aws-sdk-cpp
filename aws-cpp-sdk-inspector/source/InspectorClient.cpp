@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -144,7 +145,10 @@ AddAttributesToFindingsOutcome InspectorClient::AddAttributesToFindings(const Ad
 
 AddAttributesToFindingsOutcomeCallable InspectorClient::AddAttributesToFindingsCallable(const AddAttributesToFindingsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AddAttributesToFindings(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< AddAttributesToFindingsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AddAttributesToFindings(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::AddAttributesToFindingsAsync(const AddAttributesToFindingsRequest& request, const AddAttributesToFindingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -175,7 +179,10 @@ AttachAssessmentAndRulesPackageOutcome InspectorClient::AttachAssessmentAndRules
 
 AttachAssessmentAndRulesPackageOutcomeCallable InspectorClient::AttachAssessmentAndRulesPackageCallable(const AttachAssessmentAndRulesPackageRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AttachAssessmentAndRulesPackage(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< AttachAssessmentAndRulesPackageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AttachAssessmentAndRulesPackage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::AttachAssessmentAndRulesPackageAsync(const AttachAssessmentAndRulesPackageRequest& request, const AttachAssessmentAndRulesPackageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -206,7 +213,10 @@ CreateApplicationOutcome InspectorClient::CreateApplication(const CreateApplicat
 
 CreateApplicationOutcomeCallable InspectorClient::CreateApplicationCallable(const CreateApplicationRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateApplication(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateApplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateApplication(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::CreateApplicationAsync(const CreateApplicationRequest& request, const CreateApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -237,7 +247,10 @@ CreateAssessmentOutcome InspectorClient::CreateAssessment(const CreateAssessment
 
 CreateAssessmentOutcomeCallable InspectorClient::CreateAssessmentCallable(const CreateAssessmentRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateAssessment(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateAssessmentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateAssessment(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::CreateAssessmentAsync(const CreateAssessmentRequest& request, const CreateAssessmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -268,7 +281,10 @@ CreateResourceGroupOutcome InspectorClient::CreateResourceGroup(const CreateReso
 
 CreateResourceGroupOutcomeCallable InspectorClient::CreateResourceGroupCallable(const CreateResourceGroupRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateResourceGroup(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateResourceGroupOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateResourceGroup(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::CreateResourceGroupAsync(const CreateResourceGroupRequest& request, const CreateResourceGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -299,7 +315,10 @@ DeleteApplicationOutcome InspectorClient::DeleteApplication(const DeleteApplicat
 
 DeleteApplicationOutcomeCallable InspectorClient::DeleteApplicationCallable(const DeleteApplicationRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteApplication(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteApplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteApplication(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DeleteApplicationAsync(const DeleteApplicationRequest& request, const DeleteApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -330,7 +349,10 @@ DeleteAssessmentOutcome InspectorClient::DeleteAssessment(const DeleteAssessment
 
 DeleteAssessmentOutcomeCallable InspectorClient::DeleteAssessmentCallable(const DeleteAssessmentRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteAssessment(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteAssessmentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteAssessment(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DeleteAssessmentAsync(const DeleteAssessmentRequest& request, const DeleteAssessmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -361,7 +383,10 @@ DeleteRunOutcome InspectorClient::DeleteRun(const DeleteRunRequest& request) con
 
 DeleteRunOutcomeCallable InspectorClient::DeleteRunCallable(const DeleteRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DeleteRunAsync(const DeleteRunRequest& request, const DeleteRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -392,7 +417,10 @@ DescribeApplicationOutcome InspectorClient::DescribeApplication(const DescribeAp
 
 DescribeApplicationOutcomeCallable InspectorClient::DescribeApplicationCallable(const DescribeApplicationRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeApplication(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeApplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeApplication(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeApplicationAsync(const DescribeApplicationRequest& request, const DescribeApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -423,7 +451,10 @@ DescribeAssessmentOutcome InspectorClient::DescribeAssessment(const DescribeAsse
 
 DescribeAssessmentOutcomeCallable InspectorClient::DescribeAssessmentCallable(const DescribeAssessmentRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeAssessment(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeAssessmentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeAssessment(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeAssessmentAsync(const DescribeAssessmentRequest& request, const DescribeAssessmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -454,7 +485,10 @@ DescribeCrossAccountAccessRoleOutcome InspectorClient::DescribeCrossAccountAcces
 
 DescribeCrossAccountAccessRoleOutcomeCallable InspectorClient::DescribeCrossAccountAccessRoleCallable() const
 {
-  return std::async(std::launch::async, [this](){ return this->DescribeCrossAccountAccessRole(); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeCrossAccountAccessRoleOutcome() > >(ALLOCATION_TAG, [this](){ return this->DescribeCrossAccountAccessRole(); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeCrossAccountAccessRoleAsync(const DescribeCrossAccountAccessRoleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -485,7 +519,10 @@ DescribeFindingOutcome InspectorClient::DescribeFinding(const DescribeFindingReq
 
 DescribeFindingOutcomeCallable InspectorClient::DescribeFindingCallable(const DescribeFindingRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeFinding(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeFindingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeFinding(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeFindingAsync(const DescribeFindingRequest& request, const DescribeFindingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -516,7 +553,10 @@ DescribeResourceGroupOutcome InspectorClient::DescribeResourceGroup(const Descri
 
 DescribeResourceGroupOutcomeCallable InspectorClient::DescribeResourceGroupCallable(const DescribeResourceGroupRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeResourceGroup(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeResourceGroupOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeResourceGroup(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeResourceGroupAsync(const DescribeResourceGroupRequest& request, const DescribeResourceGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -547,7 +587,10 @@ DescribeRulesPackageOutcome InspectorClient::DescribeRulesPackage(const Describe
 
 DescribeRulesPackageOutcomeCallable InspectorClient::DescribeRulesPackageCallable(const DescribeRulesPackageRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeRulesPackage(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeRulesPackageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeRulesPackage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeRulesPackageAsync(const DescribeRulesPackageRequest& request, const DescribeRulesPackageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -578,7 +621,10 @@ DescribeRunOutcome InspectorClient::DescribeRun(const DescribeRunRequest& reques
 
 DescribeRunOutcomeCallable InspectorClient::DescribeRunCallable(const DescribeRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DescribeRunAsync(const DescribeRunRequest& request, const DescribeRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -609,7 +655,10 @@ DetachAssessmentAndRulesPackageOutcome InspectorClient::DetachAssessmentAndRules
 
 DetachAssessmentAndRulesPackageOutcomeCallable InspectorClient::DetachAssessmentAndRulesPackageCallable(const DetachAssessmentAndRulesPackageRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DetachAssessmentAndRulesPackage(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DetachAssessmentAndRulesPackageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DetachAssessmentAndRulesPackage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::DetachAssessmentAndRulesPackageAsync(const DetachAssessmentAndRulesPackageRequest& request, const DetachAssessmentAndRulesPackageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -640,7 +689,10 @@ GetAssessmentTelemetryOutcome InspectorClient::GetAssessmentTelemetry(const GetA
 
 GetAssessmentTelemetryOutcomeCallable InspectorClient::GetAssessmentTelemetryCallable(const GetAssessmentTelemetryRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetAssessmentTelemetry(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetAssessmentTelemetryOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetAssessmentTelemetry(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::GetAssessmentTelemetryAsync(const GetAssessmentTelemetryRequest& request, const GetAssessmentTelemetryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -671,7 +723,10 @@ ListApplicationsOutcome InspectorClient::ListApplications(const ListApplications
 
 ListApplicationsOutcomeCallable InspectorClient::ListApplicationsCallable(const ListApplicationsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListApplications(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListApplicationsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListApplications(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListApplicationsAsync(const ListApplicationsRequest& request, const ListApplicationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -702,7 +757,10 @@ ListAssessmentAgentsOutcome InspectorClient::ListAssessmentAgents(const ListAsse
 
 ListAssessmentAgentsOutcomeCallable InspectorClient::ListAssessmentAgentsCallable(const ListAssessmentAgentsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListAssessmentAgents(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListAssessmentAgentsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListAssessmentAgents(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListAssessmentAgentsAsync(const ListAssessmentAgentsRequest& request, const ListAssessmentAgentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -733,7 +791,10 @@ ListAssessmentsOutcome InspectorClient::ListAssessments(const ListAssessmentsReq
 
 ListAssessmentsOutcomeCallable InspectorClient::ListAssessmentsCallable(const ListAssessmentsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListAssessments(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListAssessmentsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListAssessments(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListAssessmentsAsync(const ListAssessmentsRequest& request, const ListAssessmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -764,7 +825,10 @@ ListAttachedAssessmentsOutcome InspectorClient::ListAttachedAssessments(const Li
 
 ListAttachedAssessmentsOutcomeCallable InspectorClient::ListAttachedAssessmentsCallable(const ListAttachedAssessmentsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListAttachedAssessments(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListAttachedAssessmentsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListAttachedAssessments(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListAttachedAssessmentsAsync(const ListAttachedAssessmentsRequest& request, const ListAttachedAssessmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -795,7 +859,10 @@ ListAttachedRulesPackagesOutcome InspectorClient::ListAttachedRulesPackages(cons
 
 ListAttachedRulesPackagesOutcomeCallable InspectorClient::ListAttachedRulesPackagesCallable(const ListAttachedRulesPackagesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListAttachedRulesPackages(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListAttachedRulesPackagesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListAttachedRulesPackages(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListAttachedRulesPackagesAsync(const ListAttachedRulesPackagesRequest& request, const ListAttachedRulesPackagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -826,7 +893,10 @@ ListFindingsOutcome InspectorClient::ListFindings(const ListFindingsRequest& req
 
 ListFindingsOutcomeCallable InspectorClient::ListFindingsCallable(const ListFindingsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListFindings(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListFindingsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListFindings(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListFindingsAsync(const ListFindingsRequest& request, const ListFindingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -857,7 +927,10 @@ ListRulesPackagesOutcome InspectorClient::ListRulesPackages(const ListRulesPacka
 
 ListRulesPackagesOutcomeCallable InspectorClient::ListRulesPackagesCallable(const ListRulesPackagesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListRulesPackages(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListRulesPackagesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListRulesPackages(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListRulesPackagesAsync(const ListRulesPackagesRequest& request, const ListRulesPackagesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -888,7 +961,10 @@ ListRunsOutcome InspectorClient::ListRuns(const ListRunsRequest& request) const
 
 ListRunsOutcomeCallable InspectorClient::ListRunsCallable(const ListRunsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListRuns(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListRunsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListRuns(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListRunsAsync(const ListRunsRequest& request, const ListRunsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -919,7 +995,10 @@ ListTagsForResourceOutcome InspectorClient::ListTagsForResource(const ListTagsFo
 
 ListTagsForResourceOutcomeCallable InspectorClient::ListTagsForResourceCallable(const ListTagsForResourceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTagsForResource(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsForResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTagsForResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::ListTagsForResourceAsync(const ListTagsForResourceRequest& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -950,7 +1029,10 @@ LocalizeTextOutcome InspectorClient::LocalizeText(const LocalizeTextRequest& req
 
 LocalizeTextOutcomeCallable InspectorClient::LocalizeTextCallable(const LocalizeTextRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->LocalizeText(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< LocalizeTextOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->LocalizeText(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::LocalizeTextAsync(const LocalizeTextRequest& request, const LocalizeTextResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -981,7 +1063,10 @@ PreviewAgentsForResourceGroupOutcome InspectorClient::PreviewAgentsForResourceGr
 
 PreviewAgentsForResourceGroupOutcomeCallable InspectorClient::PreviewAgentsForResourceGroupCallable(const PreviewAgentsForResourceGroupRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->PreviewAgentsForResourceGroup(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< PreviewAgentsForResourceGroupOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PreviewAgentsForResourceGroup(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::PreviewAgentsForResourceGroupAsync(const PreviewAgentsForResourceGroupRequest& request, const PreviewAgentsForResourceGroupResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1012,7 +1097,10 @@ RegisterCrossAccountAccessRoleOutcome InspectorClient::RegisterCrossAccountAcces
 
 RegisterCrossAccountAccessRoleOutcomeCallable InspectorClient::RegisterCrossAccountAccessRoleCallable(const RegisterCrossAccountAccessRoleRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RegisterCrossAccountAccessRole(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RegisterCrossAccountAccessRoleOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RegisterCrossAccountAccessRole(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::RegisterCrossAccountAccessRoleAsync(const RegisterCrossAccountAccessRoleRequest& request, const RegisterCrossAccountAccessRoleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1043,7 +1131,10 @@ RemoveAttributesFromFindingsOutcome InspectorClient::RemoveAttributesFromFinding
 
 RemoveAttributesFromFindingsOutcomeCallable InspectorClient::RemoveAttributesFromFindingsCallable(const RemoveAttributesFromFindingsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RemoveAttributesFromFindings(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RemoveAttributesFromFindingsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RemoveAttributesFromFindings(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::RemoveAttributesFromFindingsAsync(const RemoveAttributesFromFindingsRequest& request, const RemoveAttributesFromFindingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1074,7 +1165,10 @@ RunAssessmentOutcome InspectorClient::RunAssessment(const RunAssessmentRequest& 
 
 RunAssessmentOutcomeCallable InspectorClient::RunAssessmentCallable(const RunAssessmentRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RunAssessment(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RunAssessmentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RunAssessment(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::RunAssessmentAsync(const RunAssessmentRequest& request, const RunAssessmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1105,7 +1199,10 @@ SetTagsForResourceOutcome InspectorClient::SetTagsForResource(const SetTagsForRe
 
 SetTagsForResourceOutcomeCallable InspectorClient::SetTagsForResourceCallable(const SetTagsForResourceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->SetTagsForResource(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< SetTagsForResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->SetTagsForResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::SetTagsForResourceAsync(const SetTagsForResourceRequest& request, const SetTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1136,7 +1233,10 @@ StartDataCollectionOutcome InspectorClient::StartDataCollection(const StartDataC
 
 StartDataCollectionOutcomeCallable InspectorClient::StartDataCollectionCallable(const StartDataCollectionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->StartDataCollection(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< StartDataCollectionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->StartDataCollection(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::StartDataCollectionAsync(const StartDataCollectionRequest& request, const StartDataCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1167,7 +1267,10 @@ StopDataCollectionOutcome InspectorClient::StopDataCollection(const StopDataColl
 
 StopDataCollectionOutcomeCallable InspectorClient::StopDataCollectionCallable(const StopDataCollectionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->StopDataCollection(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< StopDataCollectionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->StopDataCollection(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::StopDataCollectionAsync(const StopDataCollectionRequest& request, const StopDataCollectionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1198,7 +1301,10 @@ UpdateApplicationOutcome InspectorClient::UpdateApplication(const UpdateApplicat
 
 UpdateApplicationOutcomeCallable InspectorClient::UpdateApplicationCallable(const UpdateApplicationRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateApplication(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateApplicationOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateApplication(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::UpdateApplicationAsync(const UpdateApplicationRequest& request, const UpdateApplicationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1229,7 +1335,10 @@ UpdateAssessmentOutcome InspectorClient::UpdateAssessment(const UpdateAssessment
 
 UpdateAssessmentOutcomeCallable InspectorClient::UpdateAssessmentCallable(const UpdateAssessmentRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateAssessment(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateAssessmentOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateAssessment(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void InspectorClient::UpdateAssessmentAsync(const UpdateAssessmentRequest& request, const UpdateAssessmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

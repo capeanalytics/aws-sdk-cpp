@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>Asessment ARN that you want to update.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>Asessment ARN that you want to update.</p>
      */
-    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = value; }
+    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = std::move(value); }
 
     /**
      * <p>Asessment ARN that you want to update.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>Asessment ARN that you want to update.</p>
      */
-    inline UpdateAssessmentRequest& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(value); return *this;}
+    inline UpdateAssessmentRequest& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(std::move(value)); return *this;}
 
     /**
      * <p>Asessment ARN that you want to update.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>Assessment name that you want to update.</p>
      */
-    inline void SetAssessmentName(Aws::String&& value) { m_assessmentNameHasBeenSet = true; m_assessmentName = value; }
+    inline void SetAssessmentName(Aws::String&& value) { m_assessmentNameHasBeenSet = true; m_assessmentName = std::move(value); }
 
     /**
      * <p>Assessment name that you want to update.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>Assessment name that you want to update.</p>
      */
-    inline UpdateAssessmentRequest& WithAssessmentName(Aws::String&& value) { SetAssessmentName(value); return *this;}
+    inline UpdateAssessmentRequest& WithAssessmentName(Aws::String&& value) { SetAssessmentName(std::move(value)); return *this;}
 
     /**
      * <p>Assessment name that you want to update.</p>

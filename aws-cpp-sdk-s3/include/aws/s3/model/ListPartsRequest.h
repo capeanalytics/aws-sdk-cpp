@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/S3Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/s3/model/RequestPayer.h>
+#include <utility>
 
 namespace Aws
 {
@@ -41,6 +43,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetBucket() const{ return m_bucket; }
 
@@ -48,7 +51,7 @@ namespace Model
     inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
 
     
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     
     inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
@@ -57,7 +60,7 @@ namespace Model
     inline ListPartsRequest& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
 
     
-    inline ListPartsRequest& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline ListPartsRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     
     inline ListPartsRequest& WithBucket(const char* value) { SetBucket(value); return *this;}
@@ -69,7 +72,7 @@ namespace Model
     inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
 
     
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     
     inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
@@ -78,7 +81,7 @@ namespace Model
     inline ListPartsRequest& WithKey(const Aws::String& value) { SetKey(value); return *this;}
 
     
-    inline ListPartsRequest& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline ListPartsRequest& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     
     inline ListPartsRequest& WithKey(const char* value) { SetKey(value); return *this;}
@@ -129,7 +132,7 @@ namespace Model
     /**
      * Upload ID identifying the multipart upload whose parts are being listed.
      */
-    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = value; }
+    inline void SetUploadId(Aws::String&& value) { m_uploadIdHasBeenSet = true; m_uploadId = std::move(value); }
 
     /**
      * Upload ID identifying the multipart upload whose parts are being listed.
@@ -144,7 +147,7 @@ namespace Model
     /**
      * Upload ID identifying the multipart upload whose parts are being listed.
      */
-    inline ListPartsRequest& WithUploadId(Aws::String&& value) { SetUploadId(value); return *this;}
+    inline ListPartsRequest& WithUploadId(Aws::String&& value) { SetUploadId(std::move(value)); return *this;}
 
     /**
      * Upload ID identifying the multipart upload whose parts are being listed.
@@ -158,13 +161,13 @@ namespace Model
     inline void SetRequestPayer(const RequestPayer& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
 
     
-    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
+    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = std::move(value); }
 
     
     inline ListPartsRequest& WithRequestPayer(const RequestPayer& value) { SetRequestPayer(value); return *this;}
 
     
-    inline ListPartsRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(value); return *this;}
+    inline ListPartsRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(std::move(value)); return *this;}
 
   private:
     Aws::String m_bucket;

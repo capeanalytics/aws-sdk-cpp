@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/glacier/GlacierRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,10 @@ namespace Model
 
   /**
    * <p>Provides options to retrieve the vault list owned by the calling user's
-   * account. The list provides metadata information for each vault.</p>
+   * account. The list provides metadata information for each vault.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaultsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API ListVaultsRequest : public GlacierRequest
   {
@@ -40,73 +45,74 @@ namespace Model
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
+
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
     inline const Aws::String& GetAccountId() const{ return m_accountId; }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
     inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
+    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
     inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
     inline ListVaultsRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
-    inline ListVaultsRequest& WithAccountId(Aws::String&& value) { SetAccountId(value); return *this;}
+    inline ListVaultsRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID. This value must match
      * the AWS account ID associated with the credentials used to sign the request. You
-     * can either specify an AWS account ID or optionally a single
-     * apos<code>-</code>apos (hyphen), in which case Amazon Glacier uses the AWS
-     * account ID associated with the credentials used to sign the request. If you
-     * specify your account ID, do not include any hyphens (apos-apos) in the ID.</p>
+     * can either specify an AWS account ID or optionally a single '<code>-</code>'
+     * (hyphen), in which case Amazon Glacier uses the AWS account ID associated with
+     * the credentials used to sign the request. If you specify your account ID, do not
+     * include any hyphens ('-') in the ID.</p>
      */
     inline ListVaultsRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
 
@@ -126,7 +132,7 @@ namespace Model
      * <p>A string used for pagination. The marker specifies the vault ARN after which
      * the listing of vaults should begin.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>A string used for pagination. The marker specifies the vault ARN after which
@@ -144,7 +150,7 @@ namespace Model
      * <p>A string used for pagination. The marker specifies the vault ARN after which
      * the listing of vaults should begin.</p>
      */
-    inline ListVaultsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListVaultsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>A string used for pagination. The marker specifies the vault ARN after which
@@ -153,44 +159,51 @@ namespace Model
     inline ListVaultsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
     inline const Aws::String& GetLimit() const{ return m_limit; }
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
     inline void SetLimit(const Aws::String& value) { m_limitHasBeenSet = true; m_limit = value; }
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
-    inline void SetLimit(Aws::String&& value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(Aws::String&& value) { m_limitHasBeenSet = true; m_limit = std::move(value); }
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
     inline void SetLimit(const char* value) { m_limitHasBeenSet = true; m_limit.assign(value); }
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
     inline ListVaultsRequest& WithLimit(const Aws::String& value) { SetLimit(value); return *this;}
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
-    inline ListVaultsRequest& WithLimit(Aws::String&& value) { SetLimit(value); return *this;}
+    inline ListVaultsRequest& WithLimit(Aws::String&& value) { SetLimit(std::move(value)); return *this;}
 
     /**
-     * <p>The maximum number of items returned in the response. If you don't specify a
-     * value, the List Vaults operation returns up to 1,000 items.</p>
+     * <p>The maximum number of vaults to be returned. The default limit is 1000. The
+     * number of vaults returned might be fewer than the specified limit, but the
+     * number of returned vaults never exceeds the limit.</p>
      */
     inline ListVaultsRequest& WithLimit(const char* value) { SetLimit(value); return *this;}
 

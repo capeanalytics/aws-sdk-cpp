@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-sync/CognitoSync_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * The basic data structure of a dataset.
+   * The basic data structure of a dataset.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/Record">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOSYNC_API Record
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * The key for the record.
      */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * The key for the record.
@@ -70,7 +74,7 @@ namespace Model
     /**
      * The key for the record.
      */
-    inline Record& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline Record& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * The key for the record.
@@ -90,7 +94,7 @@ namespace Model
     /**
      * The value for the record.
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * The value for the record.
@@ -105,7 +109,7 @@ namespace Model
     /**
      * The value for the record.
      */
-    inline Record& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline Record& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * The value for the record.
@@ -140,7 +144,7 @@ namespace Model
     /**
      * The date on which the record was last modified.
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * The date on which the record was last modified.
@@ -150,7 +154,7 @@ namespace Model
     /**
      * The date on which the record was last modified.
      */
-    inline Record& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline Record& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * The user/device that made the last change to this record.
@@ -165,7 +169,7 @@ namespace Model
     /**
      * The user/device that made the last change to this record.
      */
-    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = value; }
+    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::move(value); }
 
     /**
      * The user/device that made the last change to this record.
@@ -180,7 +184,7 @@ namespace Model
     /**
      * The user/device that made the last change to this record.
      */
-    inline Record& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(value); return *this;}
+    inline Record& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(std::move(value)); return *this;}
 
     /**
      * The user/device that made the last change to this record.
@@ -200,7 +204,7 @@ namespace Model
     /**
      * The last modified date of the client device.
      */
-    inline void SetDeviceLastModifiedDate(Aws::Utils::DateTime&& value) { m_deviceLastModifiedDateHasBeenSet = true; m_deviceLastModifiedDate = value; }
+    inline void SetDeviceLastModifiedDate(Aws::Utils::DateTime&& value) { m_deviceLastModifiedDateHasBeenSet = true; m_deviceLastModifiedDate = std::move(value); }
 
     /**
      * The last modified date of the client device.
@@ -210,7 +214,7 @@ namespace Model
     /**
      * The last modified date of the client device.
      */
-    inline Record& WithDeviceLastModifiedDate(Aws::Utils::DateTime&& value) { SetDeviceLastModifiedDate(value); return *this;}
+    inline Record& WithDeviceLastModifiedDate(Aws::Utils::DateTime&& value) { SetDeviceLastModifiedDate(std::move(value)); return *this;}
 
   private:
     Aws::String m_key;

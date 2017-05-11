@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudfront/model/Method.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace Model
    * responses to GET and HEAD requests. - CloudFront caches responses to GET, HEAD,
    * and OPTIONS requests. If you pick the second choice for your S3 Origin, you may
    * need to forward Access-Control-Request-Method, Access-Control-Request-Headers
-   * and Origin headers for the responses to be cached correctly.
+   * and Origin headers for the responses to be cached correctly.<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CachedMethods">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CachedMethods
   {
@@ -85,7 +90,7 @@ namespace Model
      * A complex type that contains the HTTP methods that you want CloudFront to cache
      * responses to.
      */
-    inline void SetItems(Aws::Vector<Method>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<Method>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * A complex type that contains the HTTP methods that you want CloudFront to cache
@@ -97,7 +102,7 @@ namespace Model
      * A complex type that contains the HTTP methods that you want CloudFront to cache
      * responses to.
      */
-    inline CachedMethods& WithItems(Aws::Vector<Method>&& value) { SetItems(value); return *this;}
+    inline CachedMethods& WithItems(Aws::Vector<Method>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * A complex type that contains the HTTP methods that you want CloudFront to cache
@@ -109,7 +114,7 @@ namespace Model
      * A complex type that contains the HTTP methods that you want CloudFront to cache
      * responses to.
      */
-    inline CachedMethods& AddItems(Method&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline CachedMethods& AddItems(Method&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
   private:
     int m_quantity;

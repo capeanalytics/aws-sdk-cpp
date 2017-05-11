@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,15 +12,22 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codedeploy/model/RevisionLocation.h>
+#include <aws/codedeploy/model/AlarmConfiguration.h>
+#include <aws/codedeploy/model/AutoRollbackConfiguration.h>
+#include <aws/codedeploy/model/DeploymentStyle.h>
+#include <aws/codedeploy/model/BlueGreenDeploymentConfiguration.h>
+#include <aws/codedeploy/model/LoadBalancerInfo.h>
 #include <aws/codedeploy/model/EC2TagFilter.h>
 #include <aws/codedeploy/model/TagFilter.h>
 #include <aws/codedeploy/model/AutoScalingGroup.h>
 #include <aws/codedeploy/model/TriggerConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +44,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a deployment group.</p>
+   * <p>Information about a deployment group.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/DeploymentGroupInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API DeploymentGroupInfo
   {
@@ -60,7 +69,7 @@ namespace Model
     /**
      * <p>The application name.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The application name.</p>
@@ -75,7 +84,7 @@ namespace Model
     /**
      * <p>The application name.</p>
      */
-    inline DeploymentGroupInfo& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline DeploymentGroupInfo& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The application name.</p>
@@ -95,7 +104,7 @@ namespace Model
     /**
      * <p>The deployment group ID.</p>
      */
-    inline void SetDeploymentGroupId(Aws::String&& value) { m_deploymentGroupIdHasBeenSet = true; m_deploymentGroupId = value; }
+    inline void SetDeploymentGroupId(Aws::String&& value) { m_deploymentGroupIdHasBeenSet = true; m_deploymentGroupId = std::move(value); }
 
     /**
      * <p>The deployment group ID.</p>
@@ -110,7 +119,7 @@ namespace Model
     /**
      * <p>The deployment group ID.</p>
      */
-    inline DeploymentGroupInfo& WithDeploymentGroupId(Aws::String&& value) { SetDeploymentGroupId(value); return *this;}
+    inline DeploymentGroupInfo& WithDeploymentGroupId(Aws::String&& value) { SetDeploymentGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The deployment group ID.</p>
@@ -130,7 +139,7 @@ namespace Model
     /**
      * <p>The deployment group name.</p>
      */
-    inline void SetDeploymentGroupName(Aws::String&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = value; }
+    inline void SetDeploymentGroupName(Aws::String&& value) { m_deploymentGroupNameHasBeenSet = true; m_deploymentGroupName = std::move(value); }
 
     /**
      * <p>The deployment group name.</p>
@@ -145,7 +154,7 @@ namespace Model
     /**
      * <p>The deployment group name.</p>
      */
-    inline DeploymentGroupInfo& WithDeploymentGroupName(Aws::String&& value) { SetDeploymentGroupName(value); return *this;}
+    inline DeploymentGroupInfo& WithDeploymentGroupName(Aws::String&& value) { SetDeploymentGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The deployment group name.</p>
@@ -165,7 +174,7 @@ namespace Model
     /**
      * <p>The deployment configuration name.</p>
      */
-    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = value; }
+    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = std::move(value); }
 
     /**
      * <p>The deployment configuration name.</p>
@@ -180,7 +189,7 @@ namespace Model
     /**
      * <p>The deployment configuration name.</p>
      */
-    inline DeploymentGroupInfo& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(value); return *this;}
+    inline DeploymentGroupInfo& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(std::move(value)); return *this;}
 
     /**
      * <p>The deployment configuration name.</p>
@@ -200,7 +209,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = value; }
+    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = std::move(value); }
 
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
@@ -210,7 +219,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline DeploymentGroupInfo& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(value); return *this;}
+    inline DeploymentGroupInfo& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
@@ -220,7 +229,7 @@ namespace Model
     /**
      * <p>The Amazon EC2 tags on which to filter.</p>
      */
-    inline DeploymentGroupInfo& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(value); return *this; }
+    inline DeploymentGroupInfo& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -235,7 +244,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = value; }
+    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = std::move(value); }
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -245,7 +254,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline DeploymentGroupInfo& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(value); return *this;}
+    inline DeploymentGroupInfo& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The on-premises instance tags on which to filter.</p>
@@ -255,7 +264,7 @@ namespace Model
     /**
      * <p>The on-premises instance tags on which to filter.</p>
      */
-    inline DeploymentGroupInfo& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(value); return *this; }
+    inline DeploymentGroupInfo& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -270,7 +279,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline void SetAutoScalingGroups(Aws::Vector<AutoScalingGroup>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = value; }
+    inline void SetAutoScalingGroups(Aws::Vector<AutoScalingGroup>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = std::move(value); }
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -280,7 +289,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline DeploymentGroupInfo& WithAutoScalingGroups(Aws::Vector<AutoScalingGroup>&& value) { SetAutoScalingGroups(value); return *this;}
+    inline DeploymentGroupInfo& WithAutoScalingGroups(Aws::Vector<AutoScalingGroup>&& value) { SetAutoScalingGroups(std::move(value)); return *this;}
 
     /**
      * <p>A list of associated Auto Scaling groups.</p>
@@ -290,7 +299,7 @@ namespace Model
     /**
      * <p>A list of associated Auto Scaling groups.</p>
      */
-    inline DeploymentGroupInfo& AddAutoScalingGroups(AutoScalingGroup&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(value); return *this; }
+    inline DeploymentGroupInfo& AddAutoScalingGroups(AutoScalingGroup&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A service role ARN.</p>
@@ -305,7 +314,7 @@ namespace Model
     /**
      * <p>A service role ARN.</p>
      */
-    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = value; }
+    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = std::move(value); }
 
     /**
      * <p>A service role ARN.</p>
@@ -320,7 +329,7 @@ namespace Model
     /**
      * <p>A service role ARN.</p>
      */
-    inline DeploymentGroupInfo& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(value); return *this;}
+    inline DeploymentGroupInfo& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>A service role ARN.</p>
@@ -343,7 +352,7 @@ namespace Model
      * <p>Information about the deployment group's target revision, including type and
      * location.</p>
      */
-    inline void SetTargetRevision(RevisionLocation&& value) { m_targetRevisionHasBeenSet = true; m_targetRevision = value; }
+    inline void SetTargetRevision(RevisionLocation&& value) { m_targetRevisionHasBeenSet = true; m_targetRevision = std::move(value); }
 
     /**
      * <p>Information about the deployment group's target revision, including type and
@@ -355,42 +364,177 @@ namespace Model
      * <p>Information about the deployment group's target revision, including type and
      * location.</p>
      */
-    inline DeploymentGroupInfo& WithTargetRevision(RevisionLocation&& value) { SetTargetRevision(value); return *this;}
+    inline DeploymentGroupInfo& WithTargetRevision(RevisionLocation&& value) { SetTargetRevision(std::move(value)); return *this;}
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
     inline const Aws::Vector<TriggerConfig>& GetTriggerConfigurations() const{ return m_triggerConfigurations; }
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
     inline void SetTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
-    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
+    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = std::move(value); }
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
     inline DeploymentGroupInfo& WithTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { SetTriggerConfigurations(value); return *this;}
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
-    inline DeploymentGroupInfo& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(value); return *this;}
+    inline DeploymentGroupInfo& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(std::move(value)); return *this;}
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
     inline DeploymentGroupInfo& AddTriggerConfigurations(const TriggerConfig& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
 
     /**
-     * <p>A list of associated triggers. </p>
+     * <p>Information about triggers associated with the deployment group.</p>
      */
-    inline DeploymentGroupInfo& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
+    inline DeploymentGroupInfo& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>A list of alarms associated with the deployment group.</p>
+     */
+    inline const AlarmConfiguration& GetAlarmConfiguration() const{ return m_alarmConfiguration; }
+
+    /**
+     * <p>A list of alarms associated with the deployment group.</p>
+     */
+    inline void SetAlarmConfiguration(const AlarmConfiguration& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = value; }
+
+    /**
+     * <p>A list of alarms associated with the deployment group.</p>
+     */
+    inline void SetAlarmConfiguration(AlarmConfiguration&& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = std::move(value); }
+
+    /**
+     * <p>A list of alarms associated with the deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithAlarmConfiguration(const AlarmConfiguration& value) { SetAlarmConfiguration(value); return *this;}
+
+    /**
+     * <p>A list of alarms associated with the deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithAlarmConfiguration(AlarmConfiguration&& value) { SetAlarmConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the automatic rollback configuration associated with the
+     * deployment group.</p>
+     */
+    inline const AutoRollbackConfiguration& GetAutoRollbackConfiguration() const{ return m_autoRollbackConfiguration; }
+
+    /**
+     * <p>Information about the automatic rollback configuration associated with the
+     * deployment group.</p>
+     */
+    inline void SetAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = value; }
+
+    /**
+     * <p>Information about the automatic rollback configuration associated with the
+     * deployment group.</p>
+     */
+    inline void SetAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = std::move(value); }
+
+    /**
+     * <p>Information about the automatic rollback configuration associated with the
+     * deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { SetAutoRollbackConfiguration(value); return *this;}
+
+    /**
+     * <p>Information about the automatic rollback configuration associated with the
+     * deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { SetAutoRollbackConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline const DeploymentStyle& GetDeploymentStyle() const{ return m_deploymentStyle; }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(const DeploymentStyle& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = value; }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(DeploymentStyle&& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = std::move(value); }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline DeploymentGroupInfo& WithDeploymentStyle(const DeploymentStyle& value) { SetDeploymentStyle(value); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline DeploymentGroupInfo& WithDeploymentStyle(DeploymentStyle&& value) { SetDeploymentStyle(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline const BlueGreenDeploymentConfiguration& GetBlueGreenDeploymentConfiguration() const{ return m_blueGreenDeploymentConfiguration; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = value; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = std::move(value); }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { SetBlueGreenDeploymentConfiguration(value); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline DeploymentGroupInfo& WithBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { SetBlueGreenDeploymentConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the load balancer to use in a blue/green deployment.</p>
+     */
+    inline const LoadBalancerInfo& GetLoadBalancerInfo() const{ return m_loadBalancerInfo; }
+
+    /**
+     * <p>Information about the load balancer to use in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(const LoadBalancerInfo& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = value; }
+
+    /**
+     * <p>Information about the load balancer to use in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(LoadBalancerInfo&& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = std::move(value); }
+
+    /**
+     * <p>Information about the load balancer to use in a blue/green deployment.</p>
+     */
+    inline DeploymentGroupInfo& WithLoadBalancerInfo(const LoadBalancerInfo& value) { SetLoadBalancerInfo(value); return *this;}
+
+    /**
+     * <p>Information about the load balancer to use in a blue/green deployment.</p>
+     */
+    inline DeploymentGroupInfo& WithLoadBalancerInfo(LoadBalancerInfo&& value) { SetLoadBalancerInfo(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;
@@ -413,6 +557,16 @@ namespace Model
     bool m_targetRevisionHasBeenSet;
     Aws::Vector<TriggerConfig> m_triggerConfigurations;
     bool m_triggerConfigurationsHasBeenSet;
+    AlarmConfiguration m_alarmConfiguration;
+    bool m_alarmConfigurationHasBeenSet;
+    AutoRollbackConfiguration m_autoRollbackConfiguration;
+    bool m_autoRollbackConfigurationHasBeenSet;
+    DeploymentStyle m_deploymentStyle;
+    bool m_deploymentStyleHasBeenSet;
+    BlueGreenDeploymentConfiguration m_blueGreenDeploymentConfiguration;
+    bool m_blueGreenDeploymentConfigurationHasBeenSet;
+    LoadBalancerInfo m_loadBalancerInfo;
+    bool m_loadBalancerInfoHasBeenSet;
   };
 
 } // namespace Model

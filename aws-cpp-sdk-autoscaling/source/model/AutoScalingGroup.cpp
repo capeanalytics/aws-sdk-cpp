@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/autoscaling/model/AutoScalingGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -434,7 +435,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_newInstancesProtectedFromScaleInHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NewInstancesProtectedFromScaleIn=" << m_newInstancesProtectedFromScaleIn << "&";
+      oStream << location << index << locationValue << ".NewInstancesProtectedFromScaleIn=" << std::boolalpha << m_newInstancesProtectedFromScaleIn << "&";
   }
 
 }
@@ -567,7 +568,7 @@ void AutoScalingGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_newInstancesProtectedFromScaleInHasBeenSet)
   {
-      oStream << location << ".NewInstancesProtectedFromScaleIn=" << m_newInstancesProtectedFromScaleIn << "&";
+      oStream << location << ".NewInstancesProtectedFromScaleIn=" << std::boolalpha << m_newInstancesProtectedFromScaleIn << "&";
   }
 }
 

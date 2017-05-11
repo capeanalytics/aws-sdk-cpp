@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/storagegateway/StorageGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetGatewayARN() const{ return m_gatewayARN; }
 
@@ -41,7 +44,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARNHasBeenSet = true; m_gatewayARN.assign(value); }
@@ -50,7 +53,7 @@ namespace Model
     inline UpdateGatewayInformationRequest& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline UpdateGatewayInformationRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline UpdateGatewayInformationRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline UpdateGatewayInformationRequest& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
@@ -62,7 +65,7 @@ namespace Model
     inline void SetGatewayName(const Aws::String& value) { m_gatewayNameHasBeenSet = true; m_gatewayName = value; }
 
     
-    inline void SetGatewayName(Aws::String&& value) { m_gatewayNameHasBeenSet = true; m_gatewayName = value; }
+    inline void SetGatewayName(Aws::String&& value) { m_gatewayNameHasBeenSet = true; m_gatewayName = std::move(value); }
 
     
     inline void SetGatewayName(const char* value) { m_gatewayNameHasBeenSet = true; m_gatewayName.assign(value); }
@@ -71,7 +74,7 @@ namespace Model
     inline UpdateGatewayInformationRequest& WithGatewayName(const Aws::String& value) { SetGatewayName(value); return *this;}
 
     
-    inline UpdateGatewayInformationRequest& WithGatewayName(Aws::String&& value) { SetGatewayName(value); return *this;}
+    inline UpdateGatewayInformationRequest& WithGatewayName(Aws::String&& value) { SetGatewayName(std::move(value)); return *this;}
 
     
     inline UpdateGatewayInformationRequest& WithGatewayName(const char* value) { SetGatewayName(value); return *this;}
@@ -83,7 +86,7 @@ namespace Model
     inline void SetGatewayTimezone(const Aws::String& value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone = value; }
 
     
-    inline void SetGatewayTimezone(Aws::String&& value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone = value; }
+    inline void SetGatewayTimezone(Aws::String&& value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone = std::move(value); }
 
     
     inline void SetGatewayTimezone(const char* value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone.assign(value); }
@@ -92,7 +95,7 @@ namespace Model
     inline UpdateGatewayInformationRequest& WithGatewayTimezone(const Aws::String& value) { SetGatewayTimezone(value); return *this;}
 
     
-    inline UpdateGatewayInformationRequest& WithGatewayTimezone(Aws::String&& value) { SetGatewayTimezone(value); return *this;}
+    inline UpdateGatewayInformationRequest& WithGatewayTimezone(Aws::String&& value) { SetGatewayTimezone(std::move(value)); return *this;}
 
     
     inline UpdateGatewayInformationRequest& WithGatewayTimezone(const char* value) { SetGatewayTimezone(value); return *this;}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBSecurityGroupsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeDBSecurityGroupsRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeDBSecurityGroupsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the DB security group to return details for.</p>
      */
@@ -48,7 +57,7 @@ namespace Model
     /**
      * <p>The name of the DB security group to return details for.</p>
      */
-    inline void SetDBSecurityGroupName(Aws::String&& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = value; }
+    inline void SetDBSecurityGroupName(Aws::String&& value) { m_dBSecurityGroupNameHasBeenSet = true; m_dBSecurityGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB security group to return details for.</p>
@@ -63,7 +72,7 @@ namespace Model
     /**
      * <p>The name of the DB security group to return details for.</p>
      */
-    inline DescribeDBSecurityGroupsRequest& WithDBSecurityGroupName(Aws::String&& value) { SetDBSecurityGroupName(value); return *this;}
+    inline DescribeDBSecurityGroupsRequest& WithDBSecurityGroupName(Aws::String&& value) { SetDBSecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB security group to return details for.</p>
@@ -83,7 +92,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -93,7 +102,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeDBSecurityGroupsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeDBSecurityGroupsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -103,7 +112,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeDBSecurityGroupsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeDBSecurityGroupsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p> The maximum number of records to include in the response. If more records
@@ -151,7 +160,7 @@ namespace Model
      * the response includes only records beyond the marker, up to the value specified
      * by <code>MaxRecords</code>. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -175,7 +184,7 @@ namespace Model
      * the response includes only records beyond the marker, up to the value specified
      * by <code>MaxRecords</code>. </p>
      */
-    inline DescribeDBSecurityGroupsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeDBSecurityGroupsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous

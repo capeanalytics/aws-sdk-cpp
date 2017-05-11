@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Host.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,10 +32,12 @@ namespace Model
 
 Host::Host() : 
     m_hostIdHasBeenSet(false),
+    m_autoPlacement(AutoPlacement::NOT_SET),
     m_autoPlacementHasBeenSet(false),
     m_hostReservationIdHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
     m_hostPropertiesHasBeenSet(false),
+    m_state(AllocationState::NOT_SET),
     m_stateHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_instancesHasBeenSet(false),
@@ -44,10 +47,12 @@ Host::Host() :
 
 Host::Host(const XmlNode& xmlNode) : 
     m_hostIdHasBeenSet(false),
+    m_autoPlacement(AutoPlacement::NOT_SET),
     m_autoPlacementHasBeenSet(false),
     m_hostReservationIdHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
     m_hostPropertiesHasBeenSet(false),
+    m_state(AllocationState::NOT_SET),
     m_stateHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_instancesHasBeenSet(false),
@@ -224,7 +229,7 @@ void Host::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".item." << instancesIdx++;
+        instancesSs << location <<  ".Instances." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }

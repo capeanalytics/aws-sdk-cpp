@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/model/OfferingTransactionType.h>
 #include <aws/devicefarm/model/Offering.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>The status of the offering.</p>
+   * <p>The status of the offering.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/OfferingStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API OfferingStatus
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The type specified for the offering status.</p>
      */
-    inline void SetType(OfferingTransactionType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(OfferingTransactionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type specified for the offering status.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The type specified for the offering status.</p>
      */
-    inline OfferingStatus& WithType(OfferingTransactionType&& value) { SetType(value); return *this;}
+    inline OfferingStatus& WithType(OfferingTransactionType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>Represents the metadata of an offering status.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>Represents the metadata of an offering status.</p>
      */
-    inline void SetOffering(Offering&& value) { m_offeringHasBeenSet = true; m_offering = value; }
+    inline void SetOffering(Offering&& value) { m_offeringHasBeenSet = true; m_offering = std::move(value); }
 
     /**
      * <p>Represents the metadata of an offering status.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>Represents the metadata of an offering status.</p>
      */
-    inline OfferingStatus& WithOffering(Offering&& value) { SetOffering(value); return *this;}
+    inline OfferingStatus& WithOffering(Offering&& value) { SetOffering(std::move(value)); return *this;}
 
     /**
      * <p>The number of available devices in the offering.</p>
@@ -121,7 +125,7 @@ namespace Model
     /**
      * <p>The date on which the offering is effective.</p>
      */
-    inline void SetEffectiveOn(Aws::Utils::DateTime&& value) { m_effectiveOnHasBeenSet = true; m_effectiveOn = value; }
+    inline void SetEffectiveOn(Aws::Utils::DateTime&& value) { m_effectiveOnHasBeenSet = true; m_effectiveOn = std::move(value); }
 
     /**
      * <p>The date on which the offering is effective.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The date on which the offering is effective.</p>
      */
-    inline OfferingStatus& WithEffectiveOn(Aws::Utils::DateTime&& value) { SetEffectiveOn(value); return *this;}
+    inline OfferingStatus& WithEffectiveOn(Aws::Utils::DateTime&& value) { SetEffectiveOn(std::move(value)); return *this;}
 
   private:
     OfferingTransactionType m_type;

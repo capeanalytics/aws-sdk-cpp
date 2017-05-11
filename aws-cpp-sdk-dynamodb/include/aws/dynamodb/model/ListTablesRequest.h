@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/dynamodb/DynamoDBRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>ListTables</i> operation.</p>
+   * <p>Represents the input of a <code>ListTables</code> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListTablesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API ListTablesRequest : public DynamoDBRequest
   {
@@ -35,52 +40,53 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
     inline const Aws::String& GetExclusiveStartTableName() const{ return m_exclusiveStartTableName; }
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
     inline void SetExclusiveStartTableName(const Aws::String& value) { m_exclusiveStartTableNameHasBeenSet = true; m_exclusiveStartTableName = value; }
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
-    inline void SetExclusiveStartTableName(Aws::String&& value) { m_exclusiveStartTableNameHasBeenSet = true; m_exclusiveStartTableName = value; }
+    inline void SetExclusiveStartTableName(Aws::String&& value) { m_exclusiveStartTableNameHasBeenSet = true; m_exclusiveStartTableName = std::move(value); }
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
     inline void SetExclusiveStartTableName(const char* value) { m_exclusiveStartTableNameHasBeenSet = true; m_exclusiveStartTableName.assign(value); }
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
     inline ListTablesRequest& WithExclusiveStartTableName(const Aws::String& value) { SetExclusiveStartTableName(value); return *this;}
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
-    inline ListTablesRequest& WithExclusiveStartTableName(Aws::String&& value) { SetExclusiveStartTableName(value); return *this;}
+    inline ListTablesRequest& WithExclusiveStartTableName(Aws::String&& value) { SetExclusiveStartTableName(std::move(value)); return *this;}
 
     /**
      * <p>The first table name that this operation will evaluate. Use the value that
-     * was returned for <i>LastEvaluatedTableName</i> in a previous operation, so that
-     * you can obtain the next page of results.</p>
+     * was returned for <code>LastEvaluatedTableName</code> in a previous operation, so
+     * that you can obtain the next page of results.</p>
      */
     inline ListTablesRequest& WithExclusiveStartTableName(const char* value) { SetExclusiveStartTableName(value); return *this;}
 

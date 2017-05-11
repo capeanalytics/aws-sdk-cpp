@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sqs/SQS_EXPORTS.h>
 #include <aws/sqs/SQSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sqs-2012-11-05/ListQueuesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SQS_API ListQueuesRequest : public SQSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     ListQueuesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A string to use for filtering the list results. Only those queues whose name
      * begins with the specified string are returned.</p> <p>Queue names are
@@ -52,7 +61,7 @@ namespace Model
      * begins with the specified string are returned.</p> <p>Queue names are
      * case-sensitive.</p>
      */
-    inline void SetQueueNamePrefix(Aws::String&& value) { m_queueNamePrefixHasBeenSet = true; m_queueNamePrefix = value; }
+    inline void SetQueueNamePrefix(Aws::String&& value) { m_queueNamePrefixHasBeenSet = true; m_queueNamePrefix = std::move(value); }
 
     /**
      * <p>A string to use for filtering the list results. Only those queues whose name
@@ -73,7 +82,7 @@ namespace Model
      * begins with the specified string are returned.</p> <p>Queue names are
      * case-sensitive.</p>
      */
-    inline ListQueuesRequest& WithQueueNamePrefix(Aws::String&& value) { SetQueueNamePrefix(value); return *this;}
+    inline ListQueuesRequest& WithQueueNamePrefix(Aws::String&& value) { SetQueueNamePrefix(std::move(value)); return *this;}
 
     /**
      * <p>A string to use for filtering the list results. Only those queues whose name

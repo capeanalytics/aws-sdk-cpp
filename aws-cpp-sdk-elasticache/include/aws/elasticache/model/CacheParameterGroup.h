@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the output of a <i>CreateCacheParameterGroup</i> action.</p>
+   * <p>Represents the output of a <code>CreateCacheParameterGroup</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheParameterGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheParameterGroup
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the cache parameter group.</p>
      */
-    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = value; }
+    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache parameter group.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the cache parameter group.</p>
      */
-    inline CacheParameterGroup& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(value); return *this;}
+    inline CacheParameterGroup& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache parameter group.</p>
@@ -81,43 +86,50 @@ namespace Model
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline const Aws::String& GetCacheParameterGroupFamily() const{ return m_cacheParameterGroupFamily; }
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline void SetCacheParameterGroupFamily(const Aws::String& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = value; }
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
-    inline void SetCacheParameterGroupFamily(Aws::String&& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = value; }
+    inline void SetCacheParameterGroupFamily(Aws::String&& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = std::move(value); }
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline void SetCacheParameterGroupFamily(const char* value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily.assign(value); }
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline CacheParameterGroup& WithCacheParameterGroupFamily(const Aws::String& value) { SetCacheParameterGroupFamily(value); return *this;}
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
-    inline CacheParameterGroup& WithCacheParameterGroupFamily(Aws::String&& value) { SetCacheParameterGroupFamily(value); return *this;}
+    inline CacheParameterGroup& WithCacheParameterGroupFamily(Aws::String&& value) { SetCacheParameterGroupFamily(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache parameter group family that this cache parameter group
-     * is compatible with.</p>
+     * is compatible with.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline CacheParameterGroup& WithCacheParameterGroupFamily(const char* value) { SetCacheParameterGroupFamily(value); return *this;}
 
@@ -134,7 +146,7 @@ namespace Model
     /**
      * <p>The description for this cache parameter group.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description for this cache parameter group.</p>
@@ -149,7 +161,7 @@ namespace Model
     /**
      * <p>The description for this cache parameter group.</p>
      */
-    inline CacheParameterGroup& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CacheParameterGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description for this cache parameter group.</p>

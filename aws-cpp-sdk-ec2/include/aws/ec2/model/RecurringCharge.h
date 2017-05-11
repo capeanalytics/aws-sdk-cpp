@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/RecurringChargeFrequency.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a recurring charge.</p>
+   * <p>Describes a recurring charge.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RecurringCharge">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API RecurringCharge
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The frequency of the recurring charge.</p>
      */
-    inline void SetFrequency(RecurringChargeFrequency&& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
+    inline void SetFrequency(RecurringChargeFrequency&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
 
     /**
      * <p>The frequency of the recurring charge.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The frequency of the recurring charge.</p>
      */
-    inline RecurringCharge& WithFrequency(RecurringChargeFrequency&& value) { SetFrequency(value); return *this;}
+    inline RecurringCharge& WithFrequency(RecurringChargeFrequency&& value) { SetFrequency(std::move(value)); return *this;}
 
     /**
      * <p>The amount of the recurring charge.</p>

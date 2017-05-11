@@ -26,6 +26,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CppViewHelper {
     private static final Map<String, String> CORAL_TO_CPP_TYPE_MAPPING = new HashMap<>();
@@ -170,10 +171,8 @@ public class CppViewHelper {
     public static Set<String> computeHeaderIncludes(String projectName, Shape shape) {
         Set<String> headers = new LinkedHashSet<>();
         Set<String> visited = new LinkedHashSet<>();
-        Queue<Shape> toVisit = new LinkedList<>();
-        for (ShapeMember member : shape.getMembers().values()) {
-            toVisit.add(member.getShape());
-        }
+        Queue<Shape> toVisit = shape.getMembers().values().stream().map(ShapeMember::getShape).collect(Collectors.toCollection(() -> new LinkedList<>()));
+        boolean includeUtilityHeader = false;
 
         while(!toVisit.isEmpty()) {
             Shape next = toVisit.remove();
@@ -195,8 +194,15 @@ public class CppViewHelper {
             }
             if(!next.isPrimitive()) {
                 headers.add(formatModelIncludeName(projectName, next));
+                includeUtilityHeader = true;
             }
         }
+
+        if(includeUtilityHeader) {
+            headers.add("<utility>");
+        }
+
+        headers.addAll(shape.getMembers().values().stream().filter(member -> member.isIdempotencyToken()).map(member -> "<aws/core/utils/UUID.h>").collect(Collectors.toList()));
         return headers;
     }
 
@@ -241,7 +247,18 @@ public class CppViewHelper {
     }
 
     public static String computeOperationNameFromInputOutputShape(String shapeName) {
-        return shapeName.replace("Request", "").replace("Result", "");
+        String requestString = "Request";
+        String resultString = "Result";
+        int length = shapeName.length();
+        int suffixIndex = length;
+
+        if(shapeName.endsWith(requestString)) {
+            suffixIndex = length - requestString.length();
+        } else if (shapeName.endsWith(resultString)) {
+            suffixIndex = length - resultString.length();
+        }
+
+        return shapeName.substring(0, suffixIndex);
     }
 
     public static String capitalizeFirstChar(final String str) {

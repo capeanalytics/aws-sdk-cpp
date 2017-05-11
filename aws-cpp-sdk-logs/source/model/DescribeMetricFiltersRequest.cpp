@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/logs/model/DescribeMetricFiltersRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -26,7 +27,9 @@ DescribeMetricFiltersRequest::DescribeMetricFiltersRequest() :
     m_filterNamePrefixHasBeenSet(false),
     m_nextTokenHasBeenSet(false),
     m_limit(0),
-    m_limitHasBeenSet(false)
+    m_limitHasBeenSet(false),
+    m_metricNameHasBeenSet(false),
+    m_metricNamespaceHasBeenSet(false)
 {
 }
 
@@ -58,6 +61,18 @@ Aws::String DescribeMetricFiltersRequest::SerializePayload() const
 
   }
 
+  if(m_metricNameHasBeenSet)
+  {
+   payload.WithString("metricName", m_metricName);
+
+  }
+
+  if(m_metricNamespaceHasBeenSet)
+  {
+   payload.WithString("metricNamespace", m_metricNamespace);
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -68,6 +83,7 @@ Aws::Http::HeaderValueCollection DescribeMetricFiltersRequest::GetRequestSpecifi
   return headers;
 
 }
+
 
 
 

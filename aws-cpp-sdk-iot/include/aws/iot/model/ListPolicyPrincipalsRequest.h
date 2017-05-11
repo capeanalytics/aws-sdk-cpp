@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>The input for the ListPolicyPrincipals operation.</p>
+   * <p>The input for the ListPolicyPrincipals operation.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyPrincipalsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ListPolicyPrincipalsRequest : public IoTRequest
   {
@@ -40,6 +45,7 @@ namespace Model
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The policy name.</p>
@@ -54,7 +60,7 @@ namespace Model
     /**
      * <p>The policy name.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The policy name.</p>
@@ -69,7 +75,7 @@ namespace Model
     /**
      * <p>The policy name.</p>
      */
-    inline ListPolicyPrincipalsRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline ListPolicyPrincipalsRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The policy name.</p>
@@ -89,7 +95,7 @@ namespace Model
     /**
      * <p>The marker for the next set of results.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results.</p>
@@ -104,7 +110,7 @@ namespace Model
     /**
      * <p>The marker for the next set of results.</p>
      */
-    inline ListPolicyPrincipalsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListPolicyPrincipalsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results.</p>

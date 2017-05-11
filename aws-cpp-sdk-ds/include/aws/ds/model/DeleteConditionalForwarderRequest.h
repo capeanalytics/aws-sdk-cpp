@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Deletes a conditional forwarder.</p>
+   * <p>Deletes a conditional forwarder.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteConditionalForwarderRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API DeleteConditionalForwarderRequest : public DirectoryServiceRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The directory ID for which you are deleting the conditional forwarder.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The directory ID for which you are deleting the conditional forwarder.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The directory ID for which you are deleting the conditional forwarder.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The directory ID for which you are deleting the conditional forwarder.</p>
      */
-    inline DeleteConditionalForwarderRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline DeleteConditionalForwarderRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The directory ID for which you are deleting the conditional forwarder.</p>
@@ -86,7 +91,7 @@ namespace Model
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
      * are deleting the conditional forwarder.</p>
      */
-    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = value; }
+    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = std::move(value); }
 
     /**
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
@@ -104,7 +109,7 @@ namespace Model
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
      * are deleting the conditional forwarder.</p>
      */
-    inline DeleteConditionalForwarderRequest& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(value); return *this;}
+    inline DeleteConditionalForwarderRequest& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you

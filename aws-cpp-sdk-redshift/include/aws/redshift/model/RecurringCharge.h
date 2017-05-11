@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a recurring charge.</p>
+   * <p>Describes a recurring charge.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/RecurringCharge">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API RecurringCharge
   {
@@ -46,19 +50,19 @@ namespace Model
 
     /**
      * <p>The amount charged per the period of time specified by the recurring charge
-     * frequency. </p>
+     * frequency.</p>
      */
     inline double GetRecurringChargeAmount() const{ return m_recurringChargeAmount; }
 
     /**
      * <p>The amount charged per the period of time specified by the recurring charge
-     * frequency. </p>
+     * frequency.</p>
      */
     inline void SetRecurringChargeAmount(double value) { m_recurringChargeAmountHasBeenSet = true; m_recurringChargeAmount = value; }
 
     /**
      * <p>The amount charged per the period of time specified by the recurring charge
-     * frequency. </p>
+     * frequency.</p>
      */
     inline RecurringCharge& WithRecurringChargeAmount(double value) { SetRecurringChargeAmount(value); return *this;}
 
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The frequency at which the recurring charge amount is applied.</p>
      */
-    inline void SetRecurringChargeFrequency(Aws::String&& value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency = value; }
+    inline void SetRecurringChargeFrequency(Aws::String&& value) { m_recurringChargeFrequencyHasBeenSet = true; m_recurringChargeFrequency = std::move(value); }
 
     /**
      * <p>The frequency at which the recurring charge amount is applied.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The frequency at which the recurring charge amount is applied.</p>
      */
-    inline RecurringCharge& WithRecurringChargeFrequency(Aws::String&& value) { SetRecurringChargeFrequency(value); return *this;}
+    inline RecurringCharge& WithRecurringChargeFrequency(Aws::String&& value) { SetRecurringChargeFrequency(std::move(value)); return *this;}
 
     /**
      * <p>The frequency at which the recurring charge amount is applied.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/MessageTypeTelemetry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -61,7 +63,7 @@ namespace Model
      * <p>The category of the individual metrics that together constitute the telemetry
      * that Inspector received from the agent.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The category of the individual metrics that together constitute the telemetry
@@ -79,7 +81,7 @@ namespace Model
      * <p>The category of the individual metrics that together constitute the telemetry
      * that Inspector received from the agent.</p>
      */
-    inline Telemetry& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline Telemetry& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The category of the individual metrics that together constitute the telemetry
@@ -100,7 +102,7 @@ namespace Model
     /**
      * <p>Counts of individual metrics received by Inspector from the agent.</p>
      */
-    inline void SetMessageTypeTelemetries(Aws::Vector<MessageTypeTelemetry>&& value) { m_messageTypeTelemetriesHasBeenSet = true; m_messageTypeTelemetries = value; }
+    inline void SetMessageTypeTelemetries(Aws::Vector<MessageTypeTelemetry>&& value) { m_messageTypeTelemetriesHasBeenSet = true; m_messageTypeTelemetries = std::move(value); }
 
     /**
      * <p>Counts of individual metrics received by Inspector from the agent.</p>
@@ -110,7 +112,7 @@ namespace Model
     /**
      * <p>Counts of individual metrics received by Inspector from the agent.</p>
      */
-    inline Telemetry& WithMessageTypeTelemetries(Aws::Vector<MessageTypeTelemetry>&& value) { SetMessageTypeTelemetries(value); return *this;}
+    inline Telemetry& WithMessageTypeTelemetries(Aws::Vector<MessageTypeTelemetry>&& value) { SetMessageTypeTelemetries(std::move(value)); return *this;}
 
     /**
      * <p>Counts of individual metrics received by Inspector from the agent.</p>
@@ -120,7 +122,7 @@ namespace Model
     /**
      * <p>Counts of individual metrics received by Inspector from the agent.</p>
      */
-    inline Telemetry& AddMessageTypeTelemetries(MessageTypeTelemetry&& value) { m_messageTypeTelemetriesHasBeenSet = true; m_messageTypeTelemetries.push_back(value); return *this; }
+    inline Telemetry& AddMessageTypeTelemetries(MessageTypeTelemetry&& value) { m_messageTypeTelemetriesHasBeenSet = true; m_messageTypeTelemetries.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_status;

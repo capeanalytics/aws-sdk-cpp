@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/logs/model/CreateLogGroupRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -22,7 +23,8 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 CreateLogGroupRequest::CreateLogGroupRequest() : 
-    m_logGroupNameHasBeenSet(false)
+    m_logGroupNameHasBeenSet(false),
+    m_tagsHasBeenSet(false)
 {
 }
 
@@ -36,6 +38,17 @@ Aws::String CreateLogGroupRequest::SerializePayload() const
 
   }
 
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -46,6 +59,7 @@ Aws::Http::HeaderValueCollection CreateLogGroupRequest::GetRequestSpecificHeader
   return headers;
 
 }
+
 
 
 

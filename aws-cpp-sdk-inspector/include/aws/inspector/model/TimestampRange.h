@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -55,7 +57,7 @@ namespace Model
     /**
      * <p>The minimum value of the timestamp range.</p>
      */
-    inline void SetMinimum(Aws::Utils::DateTime&& value) { m_minimumHasBeenSet = true; m_minimum = value; }
+    inline void SetMinimum(Aws::Utils::DateTime&& value) { m_minimumHasBeenSet = true; m_minimum = std::move(value); }
 
     /**
      * <p>The minimum value of the timestamp range.</p>
@@ -65,7 +67,7 @@ namespace Model
     /**
      * <p>The minimum value of the timestamp range.</p>
      */
-    inline TimestampRange& WithMinimum(Aws::Utils::DateTime&& value) { SetMinimum(value); return *this;}
+    inline TimestampRange& WithMinimum(Aws::Utils::DateTime&& value) { SetMinimum(std::move(value)); return *this;}
 
     /**
      * <p>The maximum value of the timestamp range.</p>
@@ -80,7 +82,7 @@ namespace Model
     /**
      * <p>The maximum value of the timestamp range.</p>
      */
-    inline void SetMaximum(Aws::Utils::DateTime&& value) { m_maximumHasBeenSet = true; m_maximum = value; }
+    inline void SetMaximum(Aws::Utils::DateTime&& value) { m_maximumHasBeenSet = true; m_maximum = std::move(value); }
 
     /**
      * <p>The maximum value of the timestamp range.</p>
@@ -90,7 +92,7 @@ namespace Model
     /**
      * <p>The maximum value of the timestamp range.</p>
      */
-    inline TimestampRange& WithMaximum(Aws::Utils::DateTime&& value) { SetMaximum(value); return *this;}
+    inline TimestampRange& WithMaximum(Aws::Utils::DateTime&& value) { SetMaximum(std::move(value)); return *this;}
 
   private:
     Aws::Utils::DateTime m_minimum;

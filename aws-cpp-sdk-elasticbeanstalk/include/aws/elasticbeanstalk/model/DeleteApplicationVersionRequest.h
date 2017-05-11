@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Request to delete an application version.</p>
+   * <p>Request to delete an application version.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteApplicationVersionMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DeleteApplicationVersionRequest : public ElasticBeanstalkRequest
   {
@@ -33,38 +37,43 @@ namespace Model
     DeleteApplicationVersionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
     inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
     inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
     inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
     inline DeleteApplicationVersionRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
-    inline DeleteApplicationVersionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline DeleteApplicationVersionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the application to delete releases from.</p>
+     * <p>The name of the application to which the version belongs.</p>
      */
     inline DeleteApplicationVersionRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
 
@@ -81,7 +90,7 @@ namespace Model
     /**
      * <p>The label of the version to delete.</p>
      */
-    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = value; }
+    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::move(value); }
 
     /**
      * <p>The label of the version to delete.</p>
@@ -96,7 +105,7 @@ namespace Model
     /**
      * <p>The label of the version to delete.</p>
      */
-    inline DeleteApplicationVersionRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(value); return *this;}
+    inline DeleteApplicationVersionRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(std::move(value)); return *this;}
 
     /**
      * <p>The label of the version to delete.</p>
@@ -104,29 +113,23 @@ namespace Model
     inline DeleteApplicationVersionRequest& WithVersionLabel(const char* value) { SetVersionLabel(value); return *this;}
 
     /**
-     * <p>Indicates whether to delete the associated source bundle from Amazon S3: </p>
-     * <ul> <li> <code>true</code>: An attempt is made to delete the associated Amazon
-     * S3 source bundle specified at time of creation. </li> <li> <code>false</code>:
-     * No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </li> </ul> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+     * <p>Set to <code>true</code> to delete the source bundle from your storage
+     * bucket. Otherwise, the application version is deleted only from Elastic
+     * Beanstalk and the source bundle remains in Amazon S3.</p>
      */
     inline bool GetDeleteSourceBundle() const{ return m_deleteSourceBundle; }
 
     /**
-     * <p>Indicates whether to delete the associated source bundle from Amazon S3: </p>
-     * <ul> <li> <code>true</code>: An attempt is made to delete the associated Amazon
-     * S3 source bundle specified at time of creation. </li> <li> <code>false</code>:
-     * No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </li> </ul> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+     * <p>Set to <code>true</code> to delete the source bundle from your storage
+     * bucket. Otherwise, the application version is deleted only from Elastic
+     * Beanstalk and the source bundle remains in Amazon S3.</p>
      */
     inline void SetDeleteSourceBundle(bool value) { m_deleteSourceBundleHasBeenSet = true; m_deleteSourceBundle = value; }
 
     /**
-     * <p>Indicates whether to delete the associated source bundle from Amazon S3: </p>
-     * <ul> <li> <code>true</code>: An attempt is made to delete the associated Amazon
-     * S3 source bundle specified at time of creation. </li> <li> <code>false</code>:
-     * No action is taken on the Amazon S3 source bundle specified at time of creation.
-     * </li> </ul> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+     * <p>Set to <code>true</code> to delete the source bundle from your storage
+     * bucket. Otherwise, the application version is deleted only from Elastic
+     * Beanstalk and the source bundle remains in Amazon S3.</p>
      */
     inline DeleteApplicationVersionRequest& WithDeleteSourceBundle(bool value) { SetDeleteSourceBundle(value); return *this;}
 

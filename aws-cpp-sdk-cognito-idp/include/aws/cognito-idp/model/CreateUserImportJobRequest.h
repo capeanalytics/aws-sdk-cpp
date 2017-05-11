@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the request to create the user import job.</p>
+   * <p>Represents the request to create the user import job.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CreateUserImportJobRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API CreateUserImportJobRequest : public CognitoIdentityProviderRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The job name for the user import job.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The job name for the user import job.</p>
      */
-    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = value; }
+    inline void SetJobName(Aws::String&& value) { m_jobNameHasBeenSet = true; m_jobName = std::move(value); }
 
     /**
      * <p>The job name for the user import job.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The job name for the user import job.</p>
      */
-    inline CreateUserImportJobRequest& WithJobName(Aws::String&& value) { SetJobName(value); return *this;}
+    inline CreateUserImportJobRequest& WithJobName(Aws::String&& value) { SetJobName(std::move(value)); return *this;}
 
     /**
      * <p>The job name for the user import job.</p>
@@ -86,7 +92,7 @@ namespace Model
      * <p>The user pool ID for the user pool that the users are being imported
      * into.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
 
     /**
      * <p>The user pool ID for the user pool that the users are being imported
@@ -104,7 +110,7 @@ namespace Model
      * <p>The user pool ID for the user pool that the users are being imported
      * into.</p>
      */
-    inline CreateUserImportJobRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(value); return *this;}
+    inline CreateUserImportJobRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
 
     /**
      * <p>The user pool ID for the user pool that the users are being imported
@@ -128,7 +134,7 @@ namespace Model
      * <p>The role ARN for the Amazon CloudWatch Logging role for the user import
      * job.</p>
      */
-    inline void SetCloudWatchLogsRoleArn(Aws::String&& value) { m_cloudWatchLogsRoleArnHasBeenSet = true; m_cloudWatchLogsRoleArn = value; }
+    inline void SetCloudWatchLogsRoleArn(Aws::String&& value) { m_cloudWatchLogsRoleArnHasBeenSet = true; m_cloudWatchLogsRoleArn = std::move(value); }
 
     /**
      * <p>The role ARN for the Amazon CloudWatch Logging role for the user import
@@ -146,7 +152,7 @@ namespace Model
      * <p>The role ARN for the Amazon CloudWatch Logging role for the user import
      * job.</p>
      */
-    inline CreateUserImportJobRequest& WithCloudWatchLogsRoleArn(Aws::String&& value) { SetCloudWatchLogsRoleArn(value); return *this;}
+    inline CreateUserImportJobRequest& WithCloudWatchLogsRoleArn(Aws::String&& value) { SetCloudWatchLogsRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The role ARN for the Amazon CloudWatch Logging role for the user import

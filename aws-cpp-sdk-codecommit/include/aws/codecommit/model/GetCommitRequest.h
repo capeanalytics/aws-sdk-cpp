@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/codecommit/CodeCommitRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a get commit operation.</p>
+   * <p>Represents the input of a get commit operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetCommitInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API GetCommitRequest : public CodeCommitRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the repository to which the commit was made.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The name of the repository to which the commit was made.</p>
      */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
+    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
 
     /**
      * <p>The name of the repository to which the commit was made.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The name of the repository to which the commit was made.</p>
      */
-    inline GetCommitRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(value); return *this;}
+    inline GetCommitRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the repository to which the commit was made.</p>
@@ -83,7 +88,7 @@ namespace Model
     /**
      * <p>The commit ID.</p>
      */
-    inline void SetCommitId(Aws::String&& value) { m_commitIdHasBeenSet = true; m_commitId = value; }
+    inline void SetCommitId(Aws::String&& value) { m_commitIdHasBeenSet = true; m_commitId = std::move(value); }
 
     /**
      * <p>The commit ID.</p>
@@ -98,7 +103,7 @@ namespace Model
     /**
      * <p>The commit ID.</p>
      */
-    inline GetCommitRequest& WithCommitId(Aws::String&& value) { SetCommitId(value); return *this;}
+    inline GetCommitRequest& WithCommitId(Aws::String&& value) { SetCommitId(std::move(value)); return *this;}
 
     /**
      * <p>The commit ID.</p>

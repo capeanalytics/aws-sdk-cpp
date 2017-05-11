@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/IpPermission.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,6 +34,7 @@ IpPermission::IpPermission() :
     m_toPort(0),
     m_toPortHasBeenSet(false),
     m_ipRangeHasBeenSet(false),
+    m_protocol(IpProtocol::NOT_SET),
     m_protocolHasBeenSet(false)
 {
 }
@@ -43,6 +45,7 @@ IpPermission::IpPermission(const JsonValue& jsonValue) :
     m_toPort(0),
     m_toPortHasBeenSet(false),
     m_ipRangeHasBeenSet(false),
+    m_protocol(IpProtocol::NOT_SET),
     m_protocolHasBeenSet(false)
 {
   *this = jsonValue;

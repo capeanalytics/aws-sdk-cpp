@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,10 @@ namespace Model
    * <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information
    * about managed policies, refer to <a
    * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed
-   * Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
+   * Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/AttachedPolicy">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API AttachedPolicy
   {
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The friendly name of the attached policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The friendly name of the attached policy.</p>
@@ -79,7 +84,7 @@ namespace Model
     /**
      * <p>The friendly name of the attached policy.</p>
      */
-    inline AttachedPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline AttachedPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The friendly name of the attached policy.</p>
@@ -93,7 +98,7 @@ namespace Model
     inline void SetPolicyArn(const Aws::String& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
 
     
-    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
+    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::move(value); }
 
     
     inline void SetPolicyArn(const char* value) { m_policyArnHasBeenSet = true; m_policyArn.assign(value); }
@@ -102,7 +107,7 @@ namespace Model
     inline AttachedPolicy& WithPolicyArn(const Aws::String& value) { SetPolicyArn(value); return *this;}
 
     
-    inline AttachedPolicy& WithPolicyArn(Aws::String&& value) { SetPolicyArn(value); return *this;}
+    inline AttachedPolicy& WithPolicyArn(Aws::String&& value) { SetPolicyArn(std::move(value)); return *this;}
 
     
     inline AttachedPolicy& WithPolicyArn(const char* value) { SetPolicyArn(value); return *this;}

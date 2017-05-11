@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ImportKeyPair.</p>
+   * <p>Contains the parameters for ImportKeyPair.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportKeyPairRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportKeyPairRequest : public EC2Request
   {
@@ -34,6 +38,11 @@ namespace Model
     ImportKeyPairRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -71,7 +80,7 @@ namespace Model
     /**
      * <p>A unique name for the key pair.</p>
      */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
+    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
 
     /**
      * <p>A unique name for the key pair.</p>
@@ -86,7 +95,7 @@ namespace Model
     /**
      * <p>A unique name for the key pair.</p>
      */
-    inline ImportKeyPairRequest& WithKeyName(Aws::String&& value) { SetKeyName(value); return *this;}
+    inline ImportKeyPairRequest& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
 
     /**
      * <p>A unique name for the key pair.</p>
@@ -109,7 +118,7 @@ namespace Model
      * <p>The public key. For API calls, the text must be base64-encoded. For command
      * line tools, base64 encoding is performed for you.</p>
      */
-    inline void SetPublicKeyMaterial(Aws::Utils::ByteBuffer&& value) { m_publicKeyMaterialHasBeenSet = true; m_publicKeyMaterial = value; }
+    inline void SetPublicKeyMaterial(Aws::Utils::ByteBuffer&& value) { m_publicKeyMaterialHasBeenSet = true; m_publicKeyMaterial = std::move(value); }
 
     /**
      * <p>The public key. For API calls, the text must be base64-encoded. For command
@@ -121,7 +130,7 @@ namespace Model
      * <p>The public key. For API calls, the text must be base64-encoded. For command
      * line tools, base64 encoding is performed for you.</p>
      */
-    inline ImportKeyPairRequest& WithPublicKeyMaterial(Aws::Utils::ByteBuffer&& value) { SetPublicKeyMaterial(value); return *this;}
+    inline ImportKeyPairRequest& WithPublicKeyMaterial(Aws::Utils::ByteBuffer&& value) { SetPublicKeyMaterial(std::move(value)); return *this;}
 
   private:
     bool m_dryRun;

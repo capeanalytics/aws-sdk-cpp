@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ScheduledInstanceRecurrence.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -122,7 +123,7 @@ void ScheduledInstanceRecurrence::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_occurrenceRelativeToEndHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OccurrenceRelativeToEnd=" << m_occurrenceRelativeToEnd << "&";
+      oStream << location << index << locationValue << ".OccurrenceRelativeToEnd=" << std::boolalpha << m_occurrenceRelativeToEnd << "&";
   }
 
   if(m_occurrenceUnitHasBeenSet)
@@ -147,12 +148,12 @@ void ScheduledInstanceRecurrence::OutputToStream(Aws::OStream& oStream, const ch
       unsigned occurrenceDaySetIdx = 1;
       for(auto& item : m_occurrenceDaySet)
       {
-        oStream << location << ".item." << occurrenceDaySetIdx++ << "=" << item << "&";
+        oStream << location << ".OccurrenceDaySet." << occurrenceDaySetIdx++ << "=" << item << "&";
       }
   }
   if(m_occurrenceRelativeToEndHasBeenSet)
   {
-      oStream << location << ".OccurrenceRelativeToEnd=" << m_occurrenceRelativeToEnd << "&";
+      oStream << location << ".OccurrenceRelativeToEnd=" << std::boolalpha << m_occurrenceRelativeToEnd << "&";
   }
   if(m_occurrenceUnitHasBeenSet)
   {

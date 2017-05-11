@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/cloudformation/model/ExecutionStatus.h>
 #include <aws/cloudformation/model/ChangeSetStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 
   /**
    * <p>The <code>ChangeSetSummary</code> structure describes a change set, its
-   * status, and the stack with which it's associated.</p>
+   * status, and the stack with which it's associated.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ChangeSetSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API ChangeSetSummary
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the stack with which the change set is associated.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>The ID of the stack with which the change set is associated.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the stack with which the change set is associated.</p>
      */
-    inline ChangeSetSummary& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline ChangeSetSummary& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the stack with which the change set is associated.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The name of the stack with which the change set is associated.</p>
      */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
+    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
 
     /**
      * <p>The name of the stack with which the change set is associated.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The name of the stack with which the change set is associated.</p>
      */
-    inline ChangeSetSummary& WithStackName(Aws::String&& value) { SetStackName(value); return *this;}
+    inline ChangeSetSummary& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stack with which the change set is associated.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The ID of the change set.</p>
      */
-    inline void SetChangeSetId(Aws::String&& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = value; }
+    inline void SetChangeSetId(Aws::String&& value) { m_changeSetIdHasBeenSet = true; m_changeSetId = std::move(value); }
 
     /**
      * <p>The ID of the change set.</p>
@@ -146,7 +150,7 @@ namespace Model
     /**
      * <p>The ID of the change set.</p>
      */
-    inline ChangeSetSummary& WithChangeSetId(Aws::String&& value) { SetChangeSetId(value); return *this;}
+    inline ChangeSetSummary& WithChangeSetId(Aws::String&& value) { SetChangeSetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the change set.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>The name of the change set.</p>
      */
-    inline void SetChangeSetName(Aws::String&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = value; }
+    inline void SetChangeSetName(Aws::String&& value) { m_changeSetNameHasBeenSet = true; m_changeSetName = std::move(value); }
 
     /**
      * <p>The name of the change set.</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>The name of the change set.</p>
      */
-    inline ChangeSetSummary& WithChangeSetName(Aws::String&& value) { SetChangeSetName(value); return *this;}
+    inline ChangeSetSummary& WithChangeSetName(Aws::String&& value) { SetChangeSetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the change set.</p>
@@ -213,7 +217,7 @@ namespace Model
      * AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state
      * because the stack was already updated.</p>
      */
-    inline void SetExecutionStatus(ExecutionStatus&& value) { m_executionStatusHasBeenSet = true; m_executionStatus = value; }
+    inline void SetExecutionStatus(ExecutionStatus&& value) { m_executionStatusHasBeenSet = true; m_executionStatus = std::move(value); }
 
     /**
      * <p>If the change set execution status is <code>AVAILABLE</code>, you can execute
@@ -231,7 +235,7 @@ namespace Model
      * AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state
      * because the stack was already updated.</p>
      */
-    inline ChangeSetSummary& WithExecutionStatus(ExecutionStatus&& value) { SetExecutionStatus(value); return *this;}
+    inline ChangeSetSummary& WithExecutionStatus(ExecutionStatus&& value) { SetExecutionStatus(std::move(value)); return *this;}
 
     /**
      * <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
@@ -249,7 +253,7 @@ namespace Model
      * <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
      * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
      */
-    inline void SetStatus(ChangeSetStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(ChangeSetStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
@@ -261,7 +265,7 @@ namespace Model
      * <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>,
      * <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
      */
-    inline ChangeSetSummary& WithStatus(ChangeSetStatus&& value) { SetStatus(value); return *this;}
+    inline ChangeSetSummary& WithStatus(ChangeSetStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>A description of the change set's status. For example, if your change set is
@@ -282,7 +286,7 @@ namespace Model
      * in the <code>FAILED</code> state, AWS CloudFormation shows the error
      * message.</p>
      */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
+    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
 
     /**
      * <p>A description of the change set's status. For example, if your change set is
@@ -303,7 +307,7 @@ namespace Model
      * in the <code>FAILED</code> state, AWS CloudFormation shows the error
      * message.</p>
      */
-    inline ChangeSetSummary& WithStatusReason(Aws::String&& value) { SetStatusReason(value); return *this;}
+    inline ChangeSetSummary& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
 
     /**
      * <p>A description of the change set's status. For example, if your change set is
@@ -325,7 +329,7 @@ namespace Model
     /**
      * <p>The start time when the change set was created, in UTC.</p>
      */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
+    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
 
     /**
      * <p>The start time when the change set was created, in UTC.</p>
@@ -335,7 +339,7 @@ namespace Model
     /**
      * <p>The start time when the change set was created, in UTC.</p>
      */
-    inline ChangeSetSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(value); return *this;}
+    inline ChangeSetSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
 
     /**
      * <p>Descriptive information about the change set.</p>
@@ -350,7 +354,7 @@ namespace Model
     /**
      * <p>Descriptive information about the change set.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>Descriptive information about the change set.</p>
@@ -365,7 +369,7 @@ namespace Model
     /**
      * <p>Descriptive information about the change set.</p>
      */
-    inline ChangeSetSummary& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ChangeSetSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>Descriptive information about the change set.</p>

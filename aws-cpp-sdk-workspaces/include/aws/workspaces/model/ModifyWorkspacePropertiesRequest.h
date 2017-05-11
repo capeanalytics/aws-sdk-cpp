@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/workspaces/WorkSpacesRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/workspaces/model/WorkspaceProperties.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ID of the WorkSpace.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The ID of the WorkSpace.</p>
      */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
+    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
 
     /**
      * <p>The ID of the WorkSpace.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The ID of the WorkSpace.</p>
      */
-    inline ModifyWorkspacePropertiesRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(value); return *this;}
+    inline ModifyWorkspacePropertiesRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the WorkSpace.</p>
@@ -83,7 +86,7 @@ namespace Model
     /**
      * <p>The WorkSpace properties of the request.</p>
      */
-    inline void SetWorkspaceProperties(WorkspaceProperties&& value) { m_workspacePropertiesHasBeenSet = true; m_workspaceProperties = value; }
+    inline void SetWorkspaceProperties(WorkspaceProperties&& value) { m_workspacePropertiesHasBeenSet = true; m_workspaceProperties = std::move(value); }
 
     /**
      * <p>The WorkSpace properties of the request.</p>
@@ -93,7 +96,7 @@ namespace Model
     /**
      * <p>The WorkSpace properties of the request.</p>
      */
-    inline ModifyWorkspacePropertiesRequest& WithWorkspaceProperties(WorkspaceProperties&& value) { SetWorkspaceProperties(value); return *this;}
+    inline ModifyWorkspacePropertiesRequest& WithWorkspaceProperties(WorkspaceProperties&& value) { SetWorkspaceProperties(std::move(value)); return *this;}
 
   private:
     Aws::String m_workspaceId;

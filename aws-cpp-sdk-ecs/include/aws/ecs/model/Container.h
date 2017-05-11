@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ecs/model/NetworkBinding.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>A Docker container that is part of a task.</p>
+   * <p>A Docker container that is part of a task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/Container">AWS API
+   * Reference</a></p>
    */
   class AWS_ECS_API Container
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the container.</p>
      */
-    inline void SetContainerArn(Aws::String&& value) { m_containerArnHasBeenSet = true; m_containerArn = value; }
+    inline void SetContainerArn(Aws::String&& value) { m_containerArnHasBeenSet = true; m_containerArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the container.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the container.</p>
      */
-    inline Container& WithContainerArn(Aws::String&& value) { SetContainerArn(value); return *this;}
+    inline Container& WithContainerArn(Aws::String&& value) { SetContainerArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the container.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
      */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
+    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
      */
-    inline Container& WithTaskArn(Aws::String&& value) { SetTaskArn(value); return *this;}
+    inline Container& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the task.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The name of the container.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the container.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The name of the container.</p>
      */
-    inline Container& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Container& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the container.</p>
@@ -161,7 +165,7 @@ namespace Model
     /**
      * <p>The last known status of the container.</p>
      */
-    inline void SetLastStatus(Aws::String&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
+    inline void SetLastStatus(Aws::String&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
 
     /**
      * <p>The last known status of the container.</p>
@@ -176,7 +180,7 @@ namespace Model
     /**
      * <p>The last known status of the container.</p>
      */
-    inline Container& WithLastStatus(Aws::String&& value) { SetLastStatus(value); return *this;}
+    inline Container& WithLastStatus(Aws::String&& value) { SetLastStatus(std::move(value)); return *this;}
 
     /**
      * <p>The last known status of the container.</p>
@@ -200,43 +204,43 @@ namespace Model
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
     inline const Aws::String& GetReason() const{ return m_reason; }
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
     inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
     inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
     inline Container& WithReason(const Aws::String& value) { SetReason(value); return *this;}
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
-    inline Container& WithReason(Aws::String&& value) { SetReason(value); return *this;}
+    inline Container& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
 
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
-     * detail about a running or stopped container.</p>
+     * details about a running or stopped container.</p>
      */
     inline Container& WithReason(const char* value) { SetReason(value); return *this;}
 
@@ -253,7 +257,7 @@ namespace Model
     /**
      * <p>The network bindings associated with the container.</p>
      */
-    inline void SetNetworkBindings(Aws::Vector<NetworkBinding>&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings = value; }
+    inline void SetNetworkBindings(Aws::Vector<NetworkBinding>&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings = std::move(value); }
 
     /**
      * <p>The network bindings associated with the container.</p>
@@ -263,7 +267,7 @@ namespace Model
     /**
      * <p>The network bindings associated with the container.</p>
      */
-    inline Container& WithNetworkBindings(Aws::Vector<NetworkBinding>&& value) { SetNetworkBindings(value); return *this;}
+    inline Container& WithNetworkBindings(Aws::Vector<NetworkBinding>&& value) { SetNetworkBindings(std::move(value)); return *this;}
 
     /**
      * <p>The network bindings associated with the container.</p>
@@ -273,7 +277,7 @@ namespace Model
     /**
      * <p>The network bindings associated with the container.</p>
      */
-    inline Container& AddNetworkBindings(NetworkBinding&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings.push_back(value); return *this; }
+    inline Container& AddNetworkBindings(NetworkBinding&& value) { m_networkBindingsHasBeenSet = true; m_networkBindings.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_containerArn;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datapipeline/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreatePipeline.</p>
+   * <p>Contains the parameters for CreatePipeline.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/CreatePipelineInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API CreatePipelineRequest : public DataPipelineRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name for the pipeline. You can use the same name for multiple pipelines
@@ -56,7 +61,7 @@ namespace Model
      * associated with your AWS account, because AWS Data Pipeline assigns each
      * pipeline a unique pipeline identifier.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name for the pipeline. You can use the same name for multiple pipelines
@@ -77,7 +82,7 @@ namespace Model
      * associated with your AWS account, because AWS Data Pipeline assigns each
      * pipeline a unique pipeline identifier.</p>
      */
-    inline CreatePipelineRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreatePipelineRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name for the pipeline. You can use the same name for multiple pipelines
@@ -129,7 +134,7 @@ namespace Model
      * identifier from the previous attempt. The uniqueness of the name and unique
      * identifier combination is scoped to the AWS account or IAM user credentials.</p>
      */
-    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = value; }
+    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::move(value); }
 
     /**
      * <p>A unique identifier. This identifier is not the same as the pipeline
@@ -174,7 +179,7 @@ namespace Model
      * identifier from the previous attempt. The uniqueness of the name and unique
      * identifier combination is scoped to the AWS account or IAM user credentials.</p>
      */
-    inline CreatePipelineRequest& WithUniqueId(Aws::String&& value) { SetUniqueId(value); return *this;}
+    inline CreatePipelineRequest& WithUniqueId(Aws::String&& value) { SetUniqueId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier. This identifier is not the same as the pipeline
@@ -204,7 +209,7 @@ namespace Model
     /**
      * <p>The description for the pipeline.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description for the pipeline.</p>
@@ -219,7 +224,7 @@ namespace Model
     /**
      * <p>The description for the pipeline.</p>
      */
-    inline CreatePipelineRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreatePipelineRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description for the pipeline.</p>
@@ -251,7 +256,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>A list of tags to associate with the pipeline at creation. Tags let you
@@ -269,7 +274,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline CreatePipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreatePipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>A list of tags to associate with the pipeline at creation. Tags let you
@@ -287,7 +292,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline CreatePipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreatePipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_name;

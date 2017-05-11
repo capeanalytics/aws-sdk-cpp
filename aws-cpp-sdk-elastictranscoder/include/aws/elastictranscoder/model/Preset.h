@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elastictranscoder/model/AudioParameters.h>
 #include <aws/elastictranscoder/model/VideoParameters.h>
 #include <aws/elastictranscoder/model/Thumbnails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
    * presets for common formats, for example, several iPod and iPhone versions. You
    * can also create your own presets for formats that aren't included among the
    * default presets. You specify which preset you want to use when you create a
-   * job.</p>
+   * job.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/Preset">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API Preset
   {
@@ -65,7 +69,7 @@ namespace Model
      * <p>Identifier for the new preset. You use this value to get settings for the
      * preset or to delete it.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>Identifier for the new preset. You use this value to get settings for the
@@ -83,7 +87,7 @@ namespace Model
      * <p>Identifier for the new preset. You use this value to get settings for the
      * preset or to delete it.</p>
      */
-    inline Preset& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Preset& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>Identifier for the new preset. You use this value to get settings for the
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the preset.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the preset.</p>
@@ -119,7 +123,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the preset.</p>
      */
-    inline Preset& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline Preset& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the preset.</p>
@@ -139,7 +143,7 @@ namespace Model
     /**
      * <p>The name of the preset.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the preset.</p>
@@ -154,7 +158,7 @@ namespace Model
     /**
      * <p>The name of the preset.</p>
      */
-    inline Preset& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Preset& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the preset.</p>
@@ -174,7 +178,7 @@ namespace Model
     /**
      * <p>A description of the preset.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the preset.</p>
@@ -189,7 +193,7 @@ namespace Model
     /**
      * <p>A description of the preset.</p>
      */
-    inline Preset& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline Preset& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the preset.</p>
@@ -218,7 +222,7 @@ namespace Model
      * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
      * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.</p>
      */
-    inline void SetContainer(Aws::String&& value) { m_containerHasBeenSet = true; m_container = value; }
+    inline void SetContainer(Aws::String&& value) { m_containerHasBeenSet = true; m_container = std::move(value); }
 
     /**
      * <p>The container type for the output file. Valid values include
@@ -242,7 +246,7 @@ namespace Model
      * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
      * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.</p>
      */
-    inline Preset& WithContainer(Aws::String&& value) { SetContainer(value); return *this;}
+    inline Preset& WithContainer(Aws::String&& value) { SetContainer(std::move(value)); return *this;}
 
     /**
      * <p>The container type for the output file. Valid values include
@@ -268,7 +272,7 @@ namespace Model
      * <p>A section of the response body that provides information about the audio
      * preset values.</p>
      */
-    inline void SetAudio(AudioParameters&& value) { m_audioHasBeenSet = true; m_audio = value; }
+    inline void SetAudio(AudioParameters&& value) { m_audioHasBeenSet = true; m_audio = std::move(value); }
 
     /**
      * <p>A section of the response body that provides information about the audio
@@ -280,7 +284,7 @@ namespace Model
      * <p>A section of the response body that provides information about the audio
      * preset values.</p>
      */
-    inline Preset& WithAudio(AudioParameters&& value) { SetAudio(value); return *this;}
+    inline Preset& WithAudio(AudioParameters&& value) { SetAudio(std::move(value)); return *this;}
 
     /**
      * <p>A section of the response body that provides information about the video
@@ -298,7 +302,7 @@ namespace Model
      * <p>A section of the response body that provides information about the video
      * preset values.</p>
      */
-    inline void SetVideo(VideoParameters&& value) { m_videoHasBeenSet = true; m_video = value; }
+    inline void SetVideo(VideoParameters&& value) { m_videoHasBeenSet = true; m_video = std::move(value); }
 
     /**
      * <p>A section of the response body that provides information about the video
@@ -310,7 +314,7 @@ namespace Model
      * <p>A section of the response body that provides information about the video
      * preset values.</p>
      */
-    inline Preset& WithVideo(VideoParameters&& value) { SetVideo(value); return *this;}
+    inline Preset& WithVideo(VideoParameters&& value) { SetVideo(std::move(value)); return *this;}
 
     /**
      * <p>A section of the response body that provides information about the thumbnail
@@ -328,7 +332,7 @@ namespace Model
      * <p>A section of the response body that provides information about the thumbnail
      * preset values, if any.</p>
      */
-    inline void SetThumbnails(Thumbnails&& value) { m_thumbnailsHasBeenSet = true; m_thumbnails = value; }
+    inline void SetThumbnails(Thumbnails&& value) { m_thumbnailsHasBeenSet = true; m_thumbnails = std::move(value); }
 
     /**
      * <p>A section of the response body that provides information about the thumbnail
@@ -340,7 +344,7 @@ namespace Model
      * <p>A section of the response body that provides information about the thumbnail
      * preset values, if any.</p>
      */
-    inline Preset& WithThumbnails(Thumbnails&& value) { SetThumbnails(value); return *this;}
+    inline Preset& WithThumbnails(Thumbnails&& value) { SetThumbnails(std::move(value)); return *this;}
 
     /**
      * <p>Whether the preset is a default preset provided by Elastic Transcoder
@@ -361,7 +365,7 @@ namespace Model
      * (<code>System</code>) or a preset that you have defined
      * (<code>Custom</code>).</p>
      */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>Whether the preset is a default preset provided by Elastic Transcoder
@@ -382,7 +386,7 @@ namespace Model
      * (<code>System</code>) or a preset that you have defined
      * (<code>Custom</code>).</p>
      */
-    inline Preset& WithType(Aws::String&& value) { SetType(value); return *this;}
+    inline Preset& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>Whether the preset is a default preset provided by Elastic Transcoder

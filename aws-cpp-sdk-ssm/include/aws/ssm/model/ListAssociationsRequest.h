@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ssm/model/AssociationFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
      * results.</p>
@@ -52,7 +55,7 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * results.</p>
      */
-    inline void SetAssociationFilterList(Aws::Vector<AssociationFilter>&& value) { m_associationFilterListHasBeenSet = true; m_associationFilterList = value; }
+    inline void SetAssociationFilterList(Aws::Vector<AssociationFilter>&& value) { m_associationFilterListHasBeenSet = true; m_associationFilterList = std::move(value); }
 
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
@@ -64,7 +67,7 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * results.</p>
      */
-    inline ListAssociationsRequest& WithAssociationFilterList(Aws::Vector<AssociationFilter>&& value) { SetAssociationFilterList(value); return *this;}
+    inline ListAssociationsRequest& WithAssociationFilterList(Aws::Vector<AssociationFilter>&& value) { SetAssociationFilterList(std::move(value)); return *this;}
 
     /**
      * <p>One or more filters. Use a filter to return a more specific list of
@@ -76,7 +79,7 @@ namespace Model
      * <p>One or more filters. Use a filter to return a more specific list of
      * results.</p>
      */
-    inline ListAssociationsRequest& AddAssociationFilterList(AssociationFilter&& value) { m_associationFilterListHasBeenSet = true; m_associationFilterList.push_back(value); return *this; }
+    inline ListAssociationsRequest& AddAssociationFilterList(AssociationFilter&& value) { m_associationFilterListHasBeenSet = true; m_associationFilterList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
@@ -115,7 +118,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -133,7 +136,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline ListAssociationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListAssociationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

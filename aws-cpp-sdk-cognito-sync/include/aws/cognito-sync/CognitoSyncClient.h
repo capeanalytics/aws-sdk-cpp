@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-sync/CognitoSync_EXPORTS.h>
 #include <aws/cognito-sync/CognitoSyncErrors.h>
@@ -211,7 +212,9 @@ namespace Model
          * hours. Bulk publish is an asynchronous request, customers can see the status of
          * the request via the GetBulkPublishDetails operation.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/BulkPublish">AWS
+         * API Reference</a></p>
          */
         virtual Model::BulkPublishOutcome BulkPublish(const Model::BulkPublishRequest& request) const;
 
@@ -221,7 +224,9 @@ namespace Model
          * hours. Bulk publish is an asynchronous request, customers can see the status of
          * the request via the GetBulkPublishDetails operation.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/BulkPublish">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -233,7 +238,9 @@ namespace Model
          * hours. Bulk publish is an asynchronous request, customers can see the status of
          * the request via the GetBulkPublishDetails operation.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/BulkPublish">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -244,7 +251,10 @@ namespace Model
          * the action can't be undone. Datasets that this dataset was merged with will no
          * longer report the merge. Any subsequent operation on this dataset will result in
          * a ResourceNotFoundException.</p> <p>This API can be called with temporary user
-         * credentials provided by Cognito Identity or with developer credentials.</p>
+         * credentials provided by Cognito Identity or with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DeleteDataset">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteDatasetOutcome DeleteDataset(const Model::DeleteDatasetRequest& request) const;
 
@@ -253,7 +263,10 @@ namespace Model
          * the action can't be undone. Datasets that this dataset was merged with will no
          * longer report the merge. Any subsequent operation on this dataset will result in
          * a ResourceNotFoundException.</p> <p>This API can be called with temporary user
-         * credentials provided by Cognito Identity or with developer credentials.</p>
+         * credentials provided by Cognito Identity or with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DeleteDataset">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -264,7 +277,10 @@ namespace Model
          * the action can't be undone. Datasets that this dataset was merged with will no
          * longer report the merge. Any subsequent operation on this dataset will result in
          * a ResourceNotFoundException.</p> <p>This API can be called with temporary user
-         * credentials provided by Cognito Identity or with developer credentials.</p>
+         * credentials provided by Cognito Identity or with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DeleteDataset">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -276,7 +292,9 @@ namespace Model
          * credentials used to make this API call need to have access to the identity
          * data.</p> <p>This API can be called with temporary user credentials provided by
          * Cognito Identity or with developer credentials. You should use Cognito Identity
-         * credentials to make this API call.</p>
+         * credentials to make this API call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeDataset">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeDatasetOutcome DescribeDataset(const Model::DescribeDatasetRequest& request) const;
 
@@ -286,7 +304,9 @@ namespace Model
          * credentials used to make this API call need to have access to the identity
          * data.</p> <p>This API can be called with temporary user credentials provided by
          * Cognito Identity or with developer credentials. You should use Cognito Identity
-         * credentials to make this API call.</p>
+         * credentials to make this API call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeDataset">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -298,7 +318,9 @@ namespace Model
          * credentials used to make this API call need to have access to the identity
          * data.</p> <p>This API can be called with temporary user credentials provided by
          * Cognito Identity or with developer credentials. You should use Cognito Identity
-         * credentials to make this API call.</p>
+         * credentials to make this API call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeDataset">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -308,7 +330,9 @@ namespace Model
          * <p>Gets usage details (for example, data storage) about a particular identity
          * pool.</p> <p>This API can only be called with developer credentials. You cannot
          * call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityPoolUsage">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeIdentityPoolUsageOutcome DescribeIdentityPoolUsage(const Model::DescribeIdentityPoolUsageRequest& request) const;
 
@@ -316,7 +340,9 @@ namespace Model
          * <p>Gets usage details (for example, data storage) about a particular identity
          * pool.</p> <p>This API can only be called with developer credentials. You cannot
          * call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityPoolUsage">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -326,7 +352,9 @@ namespace Model
          * <p>Gets usage details (for example, data storage) about a particular identity
          * pool.</p> <p>This API can only be called with developer credentials. You cannot
          * call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityPoolUsage">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -335,14 +363,18 @@ namespace Model
         /**
          * <p>Gets usage information for an identity, including number of datasets and data
          * usage.</p> <p>This API can be called with temporary user credentials provided by
-         * Cognito Identity or with developer credentials.</p>
+         * Cognito Identity or with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeIdentityUsageOutcome DescribeIdentityUsage(const Model::DescribeIdentityUsageRequest& request) const;
 
         /**
          * <p>Gets usage information for an identity, including number of datasets and data
          * usage.</p> <p>This API can be called with temporary user credentials provided by
-         * Cognito Identity or with developer credentials.</p>
+         * Cognito Identity or with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -351,7 +383,9 @@ namespace Model
         /**
          * <p>Gets usage information for an identity, including number of datasets and data
          * usage.</p> <p>This API can be called with temporary user credentials provided by
-         * Cognito Identity or with developer credentials.</p>
+         * Cognito Identity or with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/DescribeIdentityUsage">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -360,14 +394,20 @@ namespace Model
         /**
          * <p>Get the status of the last BulkPublish operation for an identity pool.</p>
          * <p>This API can only be called with developer credentials. You cannot call this
-         * API with the temporary user credentials provided by Cognito Identity.</p>
+         * API with the temporary user credentials provided by Cognito
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetBulkPublishDetails">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetBulkPublishDetailsOutcome GetBulkPublishDetails(const Model::GetBulkPublishDetailsRequest& request) const;
 
         /**
          * <p>Get the status of the last BulkPublish operation for an identity pool.</p>
          * <p>This API can only be called with developer credentials. You cannot call this
-         * API with the temporary user credentials provided by Cognito Identity.</p>
+         * API with the temporary user credentials provided by Cognito
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetBulkPublishDetails">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -376,7 +416,10 @@ namespace Model
         /**
          * <p>Get the status of the last BulkPublish operation for an identity pool.</p>
          * <p>This API can only be called with developer credentials. You cannot call this
-         * API with the temporary user credentials provided by Cognito Identity.</p>
+         * API with the temporary user credentials provided by Cognito
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetBulkPublishDetails">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -386,7 +429,9 @@ namespace Model
          * <p>Gets the events and the corresponding Lambda functions associated with an
          * identity pool.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetCognitoEvents">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetCognitoEventsOutcome GetCognitoEvents(const Model::GetCognitoEventsRequest& request) const;
 
@@ -394,7 +439,9 @@ namespace Model
          * <p>Gets the events and the corresponding Lambda functions associated with an
          * identity pool.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetCognitoEvents">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -404,7 +451,9 @@ namespace Model
          * <p>Gets the events and the corresponding Lambda functions associated with an
          * identity pool.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetCognitoEvents">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -413,14 +462,20 @@ namespace Model
         /**
          * <p>Gets the configuration settings of an identity pool.</p> <p>This API can only
          * be called with developer credentials. You cannot call this API with the
-         * temporary user credentials provided by Cognito Identity.</p>
+         * temporary user credentials provided by Cognito Identity.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetIdentityPoolConfigurationOutcome GetIdentityPoolConfiguration(const Model::GetIdentityPoolConfigurationRequest& request) const;
 
         /**
          * <p>Gets the configuration settings of an identity pool.</p> <p>This API can only
          * be called with developer credentials. You cannot call this API with the
-         * temporary user credentials provided by Cognito Identity.</p>
+         * temporary user credentials provided by Cognito Identity.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -429,7 +484,10 @@ namespace Model
         /**
          * <p>Gets the configuration settings of an identity pool.</p> <p>This API can only
          * be called with developer credentials. You cannot call this API with the
-         * temporary user credentials provided by Cognito Identity.</p>
+         * temporary user credentials provided by Cognito Identity.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/GetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -441,7 +499,9 @@ namespace Model
          * need to have access to the identity data.</p> <p>ListDatasets can be called with
          * temporary user credentials provided by Cognito Identity or with developer
          * credentials. You should use the Cognito Identity credentials to make this API
-         * call.</p>
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListDatasets">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListDatasetsOutcome ListDatasets(const Model::ListDatasetsRequest& request) const;
 
@@ -451,7 +511,9 @@ namespace Model
          * need to have access to the identity data.</p> <p>ListDatasets can be called with
          * temporary user credentials provided by Cognito Identity or with developer
          * credentials. You should use the Cognito Identity credentials to make this API
-         * call.</p>
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListDatasets">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -463,7 +525,9 @@ namespace Model
          * need to have access to the identity data.</p> <p>ListDatasets can be called with
          * temporary user credentials provided by Cognito Identity or with developer
          * credentials. You should use the Cognito Identity credentials to make this API
-         * call.</p>
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListDatasets">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -473,7 +537,9 @@ namespace Model
          * <p>Gets a list of identity pools registered with Cognito.</p>
          * <p>ListIdentityPoolUsage can only be called with developer credentials. You
          * cannot make this API call with the temporary user credentials provided by
-         * Cognito Identity.</p>
+         * Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListIdentityPoolUsage">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListIdentityPoolUsageOutcome ListIdentityPoolUsage(const Model::ListIdentityPoolUsageRequest& request) const;
 
@@ -481,7 +547,9 @@ namespace Model
          * <p>Gets a list of identity pools registered with Cognito.</p>
          * <p>ListIdentityPoolUsage can only be called with developer credentials. You
          * cannot make this API call with the temporary user credentials provided by
-         * Cognito Identity.</p>
+         * Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListIdentityPoolUsage">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -491,7 +559,9 @@ namespace Model
          * <p>Gets a list of identity pools registered with Cognito.</p>
          * <p>ListIdentityPoolUsage can only be called with developer credentials. You
          * cannot make this API call with the temporary user credentials provided by
-         * Cognito Identity.</p>
+         * Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListIdentityPoolUsage">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -503,7 +573,10 @@ namespace Model
          * to its own data. Thus, the credentials used to make this API call need to have
          * access to the identity data.</p> <p>ListRecords can be called with temporary
          * user credentials provided by Cognito Identity or with developer credentials. You
-         * should use Cognito Identity credentials to make this API call.</p>
+         * should use Cognito Identity credentials to make this API call.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListRecordsOutcome ListRecords(const Model::ListRecordsRequest& request) const;
 
@@ -513,7 +586,10 @@ namespace Model
          * to its own data. Thus, the credentials used to make this API call need to have
          * access to the identity data.</p> <p>ListRecords can be called with temporary
          * user credentials provided by Cognito Identity or with developer credentials. You
-         * should use Cognito Identity credentials to make this API call.</p>
+         * should use Cognito Identity credentials to make this API call.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -525,7 +601,10 @@ namespace Model
          * to its own data. Thus, the credentials used to make this API call need to have
          * access to the identity data.</p> <p>ListRecords can be called with temporary
          * user credentials provided by Cognito Identity or with developer credentials. You
-         * should use Cognito Identity credentials to make this API call.</p>
+         * should use Cognito Identity credentials to make this API call.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/ListRecords">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -534,14 +613,18 @@ namespace Model
         /**
          * <p>Registers a device to receive push sync notifications.</p> <p>This API can
          * only be called with temporary credentials provided by Cognito Identity. You
-         * cannot call this API with developer credentials.</p>
+         * cannot call this API with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDevice">AWS
+         * API Reference</a></p>
          */
         virtual Model::RegisterDeviceOutcome RegisterDevice(const Model::RegisterDeviceRequest& request) const;
 
         /**
          * <p>Registers a device to receive push sync notifications.</p> <p>This API can
          * only be called with temporary credentials provided by Cognito Identity. You
-         * cannot call this API with developer credentials.</p>
+         * cannot call this API with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDevice">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -550,7 +633,9 @@ namespace Model
         /**
          * <p>Registers a device to receive push sync notifications.</p> <p>This API can
          * only be called with temporary credentials provided by Cognito Identity. You
-         * cannot call this API with developer credentials.</p>
+         * cannot call this API with developer credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDevice">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -562,7 +647,9 @@ namespace Model
          * are not updated. To remove a key value pair, pass a empty value for the
          * particular key.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetCognitoEvents">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetCognitoEventsOutcome SetCognitoEvents(const Model::SetCognitoEventsRequest& request) const;
 
@@ -572,7 +659,9 @@ namespace Model
          * are not updated. To remove a key value pair, pass a empty value for the
          * particular key.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetCognitoEvents">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -584,7 +673,9 @@ namespace Model
          * are not updated. To remove a key value pair, pass a empty value for the
          * particular key.</p> <p>This API can only be called with developer credentials.
          * You cannot call this API with the temporary user credentials provided by Cognito
-         * Identity.</p>
+         * Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetCognitoEvents">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -593,14 +684,18 @@ namespace Model
         /**
          * <p>Sets the necessary configuration for push sync.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetIdentityPoolConfigurationOutcome SetIdentityPoolConfiguration(const Model::SetIdentityPoolConfigurationRequest& request) const;
 
         /**
          * <p>Sets the necessary configuration for push sync.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -609,7 +704,9 @@ namespace Model
         /**
          * <p>Sets the necessary configuration for push sync.</p> <p>This API can only be
          * called with developer credentials. You cannot call this API with the temporary
-         * user credentials provided by Cognito Identity.</p>
+         * user credentials provided by Cognito Identity.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -618,14 +715,20 @@ namespace Model
         /**
          * <p>Subscribes to receive notifications when a dataset is modified by another
          * device.</p> <p>This API can only be called with temporary credentials provided
-         * by Cognito Identity. You cannot call this API with developer credentials.</p>
+         * by Cognito Identity. You cannot call this API with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SubscribeToDataset">AWS
+         * API Reference</a></p>
          */
         virtual Model::SubscribeToDatasetOutcome SubscribeToDataset(const Model::SubscribeToDatasetRequest& request) const;
 
         /**
          * <p>Subscribes to receive notifications when a dataset is modified by another
          * device.</p> <p>This API can only be called with temporary credentials provided
-         * by Cognito Identity. You cannot call this API with developer credentials.</p>
+         * by Cognito Identity. You cannot call this API with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SubscribeToDataset">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -634,7 +737,10 @@ namespace Model
         /**
          * <p>Subscribes to receive notifications when a dataset is modified by another
          * device.</p> <p>This API can only be called with temporary credentials provided
-         * by Cognito Identity. You cannot call this API with developer credentials.</p>
+         * by Cognito Identity. You cannot call this API with developer
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SubscribeToDataset">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -644,7 +750,9 @@ namespace Model
          * <p>Unsubscribes from receiving notifications when a dataset is modified by
          * another device.</p> <p>This API can only be called with temporary credentials
          * provided by Cognito Identity. You cannot call this API with developer
-         * credentials.</p>
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UnsubscribeFromDataset">AWS
+         * API Reference</a></p>
          */
         virtual Model::UnsubscribeFromDatasetOutcome UnsubscribeFromDataset(const Model::UnsubscribeFromDatasetRequest& request) const;
 
@@ -652,7 +760,9 @@ namespace Model
          * <p>Unsubscribes from receiving notifications when a dataset is modified by
          * another device.</p> <p>This API can only be called with temporary credentials
          * provided by Cognito Identity. You cannot call this API with developer
-         * credentials.</p>
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UnsubscribeFromDataset">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -662,7 +772,9 @@ namespace Model
          * <p>Unsubscribes from receiving notifications when a dataset is modified by
          * another device.</p> <p>This API can only be called with temporary credentials
          * provided by Cognito Identity. You cannot call this API with developer
-         * credentials.</p>
+         * credentials.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UnsubscribeFromDataset">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -680,7 +792,10 @@ namespace Model
          * new sync count for that record. You should present that sync count the next time
          * you try to update that same record. When the record does not exist, specify the
          * sync count as 0.</p> <p>This API can be called with temporary user credentials
-         * provided by Cognito Identity or with developer credentials.</p>
+         * provided by Cognito Identity or with developer credentials.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UpdateRecords">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateRecordsOutcome UpdateRecords(const Model::UpdateRecordsRequest& request) const;
 
@@ -696,7 +811,10 @@ namespace Model
          * new sync count for that record. You should present that sync count the next time
          * you try to update that same record. When the record does not exist, specify the
          * sync count as 0.</p> <p>This API can be called with temporary user credentials
-         * provided by Cognito Identity or with developer credentials.</p>
+         * provided by Cognito Identity or with developer credentials.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UpdateRecords">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -714,7 +832,10 @@ namespace Model
          * new sync count for that record. You should present that sync count the next time
          * you try to update that same record. When the record does not exist, specify the
          * sync count as 0.</p> <p>This API can be called with temporary user credentials
-         * provided by Cognito Identity or with developer credentials.</p>
+         * provided by Cognito Identity or with developer credentials.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/UpdateRecords">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -744,7 +865,7 @@ namespace Model
         void UpdateRecordsAsyncHelper(const Model::UpdateRecordsRequest& request, const UpdateRecordsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace CognitoSync

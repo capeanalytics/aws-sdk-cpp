@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/PendingModifiedValues.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -40,7 +41,9 @@ PendingModifiedValues::PendingModifiedValues() :
     m_automatedSnapshotRetentionPeriodHasBeenSet(false),
     m_clusterIdentifierHasBeenSet(false),
     m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false)
+    m_publiclyAccessibleHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false)
 {
 }
 
@@ -55,7 +58,9 @@ PendingModifiedValues::PendingModifiedValues(const XmlNode& xmlNode) :
     m_automatedSnapshotRetentionPeriodHasBeenSet(false),
     m_clusterIdentifierHasBeenSet(false),
     m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false)
+    m_publiclyAccessibleHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -114,6 +119,12 @@ PendingModifiedValues& PendingModifiedValues::operator =(const XmlNode& xmlNode)
       m_publiclyAccessible = StringUtils::ConvertToBool(StringUtils::Trim(publiclyAccessibleNode.GetText().c_str()).c_str());
       m_publiclyAccessibleHasBeenSet = true;
     }
+    XmlNode enhancedVpcRoutingNode = resultNode.FirstChild("EnhancedVpcRouting");
+    if(!enhancedVpcRoutingNode.IsNull())
+    {
+      m_enhancedVpcRouting = StringUtils::ConvertToBool(StringUtils::Trim(enhancedVpcRoutingNode.GetText().c_str()).c_str());
+      m_enhancedVpcRoutingHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -158,7 +169,12 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << index << locationValue << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
+  }
+
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
   }
 
 }
@@ -195,7 +211,11 @@ void PendingModifiedValues::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
+  }
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
   }
 }
 

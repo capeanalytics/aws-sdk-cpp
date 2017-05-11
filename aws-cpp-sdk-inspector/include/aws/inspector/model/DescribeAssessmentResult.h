@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/model/Assessment.h>
+#include <utility>
 
 namespace Aws
 {
@@ -52,7 +54,7 @@ namespace Model
     /**
      * <p>Information about the assessment.</p>
      */
-    inline void SetAssessment(Assessment&& value) { m_assessment = value; }
+    inline void SetAssessment(Assessment&& value) { m_assessment = std::move(value); }
 
     /**
      * <p>Information about the assessment.</p>
@@ -62,7 +64,7 @@ namespace Model
     /**
      * <p>Information about the assessment.</p>
      */
-    inline DescribeAssessmentResult& WithAssessment(Assessment&& value) { SetAssessment(value); return *this;}
+    inline DescribeAssessmentResult& WithAssessment(Assessment&& value) { SetAssessment(std::move(value)); return *this;}
 
   private:
     Assessment m_assessment;

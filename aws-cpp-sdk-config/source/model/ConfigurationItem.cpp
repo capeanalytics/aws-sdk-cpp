@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/config/model/ConfigurationItem.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,10 +32,12 @@ ConfigurationItem::ConfigurationItem() :
     m_versionHasBeenSet(false),
     m_accountIdHasBeenSet(false),
     m_configurationItemCaptureTimeHasBeenSet(false),
+    m_configurationItemStatus(ConfigurationItemStatus::NOT_SET),
     m_configurationItemStatusHasBeenSet(false),
     m_configurationStateIdHasBeenSet(false),
     m_configurationItemMD5HashHasBeenSet(false),
     m_arnHasBeenSet(false),
+    m_resourceType(ResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
     m_resourceNameHasBeenSet(false),
@@ -53,10 +56,12 @@ ConfigurationItem::ConfigurationItem(const JsonValue& jsonValue) :
     m_versionHasBeenSet(false),
     m_accountIdHasBeenSet(false),
     m_configurationItemCaptureTimeHasBeenSet(false),
+    m_configurationItemStatus(ConfigurationItemStatus::NOT_SET),
     m_configurationItemStatusHasBeenSet(false),
     m_configurationStateIdHasBeenSet(false),
     m_configurationItemMD5HashHasBeenSet(false),
     m_arnHasBeenSet(false),
+    m_resourceType(ResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
     m_resourceNameHasBeenSet(false),

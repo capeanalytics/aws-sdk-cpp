@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/model/TransitionStorageClass.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * transition to the STANDARD_IA or GLACIER storage class. If your bucket is
    * versioning-enabled (or versioning is suspended), you can set this action to
    * request that Amazon S3 transition noncurrent object versions to the STANDARD_IA
-   * or GLACIER storage class at a specific period in the object's lifetime.
+   * or GLACIER storage class at a specific period in the object's
+   * lifetime.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/NoncurrentVersionTransition">AWS
+   * API Reference</a></p>
    */
   class AWS_S3_API NoncurrentVersionTransition
   {
@@ -89,7 +94,7 @@ namespace Model
     /**
      * The class of storage used to store the object.
      */
-    inline void SetStorageClass(TransitionStorageClass&& value) { m_storageClassHasBeenSet = true; m_storageClass = value; }
+    inline void SetStorageClass(TransitionStorageClass&& value) { m_storageClassHasBeenSet = true; m_storageClass = std::move(value); }
 
     /**
      * The class of storage used to store the object.
@@ -99,7 +104,7 @@ namespace Model
     /**
      * The class of storage used to store the object.
      */
-    inline NoncurrentVersionTransition& WithStorageClass(TransitionStorageClass&& value) { SetStorageClass(value); return *this;}
+    inline NoncurrentVersionTransition& WithStorageClass(TransitionStorageClass&& value) { SetStorageClass(std::move(value)); return *this;}
 
   private:
     int m_noncurrentDays;

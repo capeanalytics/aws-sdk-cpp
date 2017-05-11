@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/KinesisStreamsOutputDescription.h>
 #include <aws/kinesisanalytics/model/KinesisFirehoseOutputDescription.h>
 #include <aws/kinesisanalytics/model/DestinationSchema.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * <p>Describes the application output configuration, which includes the
    * in-application stream name and the destination where the stream data is written.
    * The destination can be an Amazon Kinesis stream or an Amazon Kinesis Firehose
-   * delivery stream. </p>
+   * delivery stream. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/OutputDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API OutputDescription
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>A unique identifier for the output configuration.</p>
      */
-    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = value; }
+    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = std::move(value); }
 
     /**
      * <p>A unique identifier for the output configuration.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>A unique identifier for the output configuration.</p>
      */
-    inline OutputDescription& WithOutputId(Aws::String&& value) { SetOutputId(value); return *this;}
+    inline OutputDescription& WithOutputId(Aws::String&& value) { SetOutputId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for the output configuration.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>Name of the in-application stream configured as output.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>Name of the in-application stream configured as output.</p>
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>Name of the in-application stream configured as output.</p>
      */
-    inline OutputDescription& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline OutputDescription& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the in-application stream configured as output.</p>
@@ -133,7 +137,7 @@ namespace Model
      * <p>Describes Amazon Kinesis stream configured as the destination where output is
      * written.</p>
      */
-    inline void SetKinesisStreamsOutputDescription(KinesisStreamsOutputDescription&& value) { m_kinesisStreamsOutputDescriptionHasBeenSet = true; m_kinesisStreamsOutputDescription = value; }
+    inline void SetKinesisStreamsOutputDescription(KinesisStreamsOutputDescription&& value) { m_kinesisStreamsOutputDescriptionHasBeenSet = true; m_kinesisStreamsOutputDescription = std::move(value); }
 
     /**
      * <p>Describes Amazon Kinesis stream configured as the destination where output is
@@ -145,7 +149,7 @@ namespace Model
      * <p>Describes Amazon Kinesis stream configured as the destination where output is
      * written.</p>
      */
-    inline OutputDescription& WithKinesisStreamsOutputDescription(KinesisStreamsOutputDescription&& value) { SetKinesisStreamsOutputDescription(value); return *this;}
+    inline OutputDescription& WithKinesisStreamsOutputDescription(KinesisStreamsOutputDescription&& value) { SetKinesisStreamsOutputDescription(std::move(value)); return *this;}
 
     /**
      * <p>Describes the Amazon Kinesis Firehose delivery stream configured as the
@@ -163,7 +167,7 @@ namespace Model
      * <p>Describes the Amazon Kinesis Firehose delivery stream configured as the
      * destination where output is written.</p>
      */
-    inline void SetKinesisFirehoseOutputDescription(KinesisFirehoseOutputDescription&& value) { m_kinesisFirehoseOutputDescriptionHasBeenSet = true; m_kinesisFirehoseOutputDescription = value; }
+    inline void SetKinesisFirehoseOutputDescription(KinesisFirehoseOutputDescription&& value) { m_kinesisFirehoseOutputDescriptionHasBeenSet = true; m_kinesisFirehoseOutputDescription = std::move(value); }
 
     /**
      * <p>Describes the Amazon Kinesis Firehose delivery stream configured as the
@@ -175,7 +179,7 @@ namespace Model
      * <p>Describes the Amazon Kinesis Firehose delivery stream configured as the
      * destination where output is written.</p>
      */
-    inline OutputDescription& WithKinesisFirehoseOutputDescription(KinesisFirehoseOutputDescription&& value) { SetKinesisFirehoseOutputDescription(value); return *this;}
+    inline OutputDescription& WithKinesisFirehoseOutputDescription(KinesisFirehoseOutputDescription&& value) { SetKinesisFirehoseOutputDescription(std::move(value)); return *this;}
 
     /**
      * <p>Data format used for writing data to the destination.</p>
@@ -190,7 +194,7 @@ namespace Model
     /**
      * <p>Data format used for writing data to the destination.</p>
      */
-    inline void SetDestinationSchema(DestinationSchema&& value) { m_destinationSchemaHasBeenSet = true; m_destinationSchema = value; }
+    inline void SetDestinationSchema(DestinationSchema&& value) { m_destinationSchemaHasBeenSet = true; m_destinationSchema = std::move(value); }
 
     /**
      * <p>Data format used for writing data to the destination.</p>
@@ -200,7 +204,7 @@ namespace Model
     /**
      * <p>Data format used for writing data to the destination.</p>
      */
-    inline OutputDescription& WithDestinationSchema(DestinationSchema&& value) { SetDestinationSchema(value); return *this;}
+    inline OutputDescription& WithDestinationSchema(DestinationSchema&& value) { SetDestinationSchema(std::move(value)); return *this;}
 
   private:
     Aws::String m_outputId;

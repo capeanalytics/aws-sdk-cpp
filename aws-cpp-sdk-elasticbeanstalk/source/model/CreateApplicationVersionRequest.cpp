@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/CreateApplicationVersionRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -23,7 +24,9 @@ CreateApplicationVersionRequest::CreateApplicationVersionRequest() :
     m_applicationNameHasBeenSet(false),
     m_versionLabelHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_sourceBuildInformationHasBeenSet(false),
     m_sourceBundleHasBeenSet(false),
+    m_buildConfigurationHasBeenSet(false),
     m_autoCreateApplication(false),
     m_autoCreateApplicationHasBeenSet(false),
     m_process(false),
@@ -50,22 +53,37 @@ Aws::String CreateApplicationVersionRequest::SerializePayload() const
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
+  if(m_sourceBuildInformationHasBeenSet)
+  {
+    m_sourceBuildInformation.OutputToStream(ss, "SourceBuildInformation");
+  }
+
   if(m_sourceBundleHasBeenSet)
   {
     m_sourceBundle.OutputToStream(ss, "SourceBundle");
   }
 
+  if(m_buildConfigurationHasBeenSet)
+  {
+    m_buildConfiguration.OutputToStream(ss, "BuildConfiguration");
+  }
+
   if(m_autoCreateApplicationHasBeenSet)
   {
-    ss << "AutoCreateApplication=" << m_autoCreateApplication << "&";
+    ss << "AutoCreateApplication=" << std::boolalpha << m_autoCreateApplication << "&";
   }
 
   if(m_processHasBeenSet)
   {
-    ss << "Process=" << m_process << "&";
+    ss << "Process=" << std::boolalpha << m_process << "&";
   }
 
   ss << "Version=2010-12-01";
   return ss.str();
 }
 
+
+void  CreateApplicationVersionRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

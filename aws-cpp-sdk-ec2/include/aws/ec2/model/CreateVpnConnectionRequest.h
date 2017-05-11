@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/VpnConnectionOptionsSpecification.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateVpnConnection.</p>
+   * <p>Contains the parameters for CreateVpnConnection.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVpnConnectionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CreateVpnConnectionRequest : public EC2Request
   {
@@ -34,6 +39,11 @@ namespace Model
     CreateVpnConnectionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -71,7 +81,7 @@ namespace Model
     /**
      * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
      */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
@@ -86,7 +96,7 @@ namespace Model
     /**
      * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
      */
-    inline CreateVpnConnectionRequest& WithType(Aws::String&& value) { SetType(value); return *this;}
+    inline CreateVpnConnectionRequest& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The type of VPN connection (<code>ipsec.1</code>).</p>
@@ -106,7 +116,7 @@ namespace Model
     /**
      * <p>The ID of the customer gateway.</p>
      */
-    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = value; }
+    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::move(value); }
 
     /**
      * <p>The ID of the customer gateway.</p>
@@ -121,7 +131,7 @@ namespace Model
     /**
      * <p>The ID of the customer gateway.</p>
      */
-    inline CreateVpnConnectionRequest& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(value); return *this;}
+    inline CreateVpnConnectionRequest& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the customer gateway.</p>
@@ -141,7 +151,7 @@ namespace Model
     /**
      * <p>The ID of the virtual private gateway.</p>
      */
-    inline void SetVpnGatewayId(Aws::String&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = value; }
+    inline void SetVpnGatewayId(Aws::String&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = std::move(value); }
 
     /**
      * <p>The ID of the virtual private gateway.</p>
@@ -156,7 +166,7 @@ namespace Model
     /**
      * <p>The ID of the virtual private gateway.</p>
      */
-    inline CreateVpnConnectionRequest& WithVpnGatewayId(Aws::String&& value) { SetVpnGatewayId(value); return *this;}
+    inline CreateVpnConnectionRequest& WithVpnGatewayId(Aws::String&& value) { SetVpnGatewayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the virtual private gateway.</p>
@@ -166,37 +176,37 @@ namespace Model
     /**
      * <p>Indicates whether the VPN connection requires static routes. If you are
      * creating a VPN connection for a device that does not support BGP, you must
-     * specify <code>true</code>.</p> <p>Default: <code>false</code></p>
+     * specify <code>true</code>.</p> <p>Default: <code>false</code> </p>
      */
     inline const VpnConnectionOptionsSpecification& GetOptions() const{ return m_options; }
 
     /**
      * <p>Indicates whether the VPN connection requires static routes. If you are
      * creating a VPN connection for a device that does not support BGP, you must
-     * specify <code>true</code>.</p> <p>Default: <code>false</code></p>
+     * specify <code>true</code>.</p> <p>Default: <code>false</code> </p>
      */
     inline void SetOptions(const VpnConnectionOptionsSpecification& value) { m_optionsHasBeenSet = true; m_options = value; }
 
     /**
      * <p>Indicates whether the VPN connection requires static routes. If you are
      * creating a VPN connection for a device that does not support BGP, you must
-     * specify <code>true</code>.</p> <p>Default: <code>false</code></p>
+     * specify <code>true</code>.</p> <p>Default: <code>false</code> </p>
      */
-    inline void SetOptions(VpnConnectionOptionsSpecification&& value) { m_optionsHasBeenSet = true; m_options = value; }
+    inline void SetOptions(VpnConnectionOptionsSpecification&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
 
     /**
      * <p>Indicates whether the VPN connection requires static routes. If you are
      * creating a VPN connection for a device that does not support BGP, you must
-     * specify <code>true</code>.</p> <p>Default: <code>false</code></p>
+     * specify <code>true</code>.</p> <p>Default: <code>false</code> </p>
      */
     inline CreateVpnConnectionRequest& WithOptions(const VpnConnectionOptionsSpecification& value) { SetOptions(value); return *this;}
 
     /**
      * <p>Indicates whether the VPN connection requires static routes. If you are
      * creating a VPN connection for a device that does not support BGP, you must
-     * specify <code>true</code>.</p> <p>Default: <code>false</code></p>
+     * specify <code>true</code>.</p> <p>Default: <code>false</code> </p>
      */
-    inline CreateVpnConnectionRequest& WithOptions(VpnConnectionOptionsSpecification&& value) { SetOptions(value); return *this;}
+    inline CreateVpnConnectionRequest& WithOptions(VpnConnectionOptionsSpecification&& value) { SetOptions(std::move(value)); return *this;}
 
   private:
     bool m_dryRun;

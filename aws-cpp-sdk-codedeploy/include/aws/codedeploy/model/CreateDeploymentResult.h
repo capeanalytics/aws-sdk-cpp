@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of a create deployment operation.</p>
+   * <p>Represents the output of a create deployment operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/CreateDeploymentOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API CreateDeploymentResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>A unique deployment ID.</p>
      */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentId = value; }
+    inline void SetDeploymentId(Aws::String&& value) { m_deploymentId = std::move(value); }
 
     /**
      * <p>A unique deployment ID.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>A unique deployment ID.</p>
      */
-    inline CreateDeploymentResult& WithDeploymentId(Aws::String&& value) { SetDeploymentId(value); return *this;}
+    inline CreateDeploymentResult& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
 
     /**
      * <p>A unique deployment ID.</p>

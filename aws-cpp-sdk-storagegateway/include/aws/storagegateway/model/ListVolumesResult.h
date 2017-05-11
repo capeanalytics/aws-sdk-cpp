@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/storagegateway/model/VolumeInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -48,7 +50,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARN.assign(value); }
@@ -57,7 +59,7 @@ namespace Model
     inline ListVolumesResult& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline ListVolumesResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline ListVolumesResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline ListVolumesResult& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
@@ -69,7 +71,7 @@ namespace Model
     inline void SetMarker(const Aws::String& value) { m_marker = value; }
 
     
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     
     inline void SetMarker(const char* value) { m_marker.assign(value); }
@@ -78,7 +80,7 @@ namespace Model
     inline ListVolumesResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     
-    inline ListVolumesResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListVolumesResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     
     inline ListVolumesResult& WithMarker(const char* value) { SetMarker(value); return *this;}
@@ -90,19 +92,19 @@ namespace Model
     inline void SetVolumeInfos(const Aws::Vector<VolumeInfo>& value) { m_volumeInfos = value; }
 
     
-    inline void SetVolumeInfos(Aws::Vector<VolumeInfo>&& value) { m_volumeInfos = value; }
+    inline void SetVolumeInfos(Aws::Vector<VolumeInfo>&& value) { m_volumeInfos = std::move(value); }
 
     
     inline ListVolumesResult& WithVolumeInfos(const Aws::Vector<VolumeInfo>& value) { SetVolumeInfos(value); return *this;}
 
     
-    inline ListVolumesResult& WithVolumeInfos(Aws::Vector<VolumeInfo>&& value) { SetVolumeInfos(value); return *this;}
+    inline ListVolumesResult& WithVolumeInfos(Aws::Vector<VolumeInfo>&& value) { SetVolumeInfos(std::move(value)); return *this;}
 
     
     inline ListVolumesResult& AddVolumeInfos(const VolumeInfo& value) { m_volumeInfos.push_back(value); return *this; }
 
     
-    inline ListVolumesResult& AddVolumeInfos(VolumeInfo&& value) { m_volumeInfos.push_back(value); return *this; }
+    inline ListVolumesResult& AddVolumeInfos(VolumeInfo&& value) { m_volumeInfos.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_gatewayARN;

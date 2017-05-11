@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBSubnetGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DeleteDBSubnetGroupRequest : public RDSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     DeleteDBSubnetGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the database subnet group to delete.</p> <note> <p>You cannot
      * delete the default subnet group.</p> </note> <p>Constraints:</p> <p>Constraints:
@@ -58,7 +67,7 @@ namespace Model
      * spaces, or hyphens. Must not be default.</p> <p>Example:
      * <code>mySubnetgroup</code> </p>
      */
-    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
+    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = std::move(value); }
 
     /**
      * <p>The name of the database subnet group to delete.</p> <note> <p>You cannot
@@ -85,7 +94,7 @@ namespace Model
      * spaces, or hyphens. Must not be default.</p> <p>Example:
      * <code>mySubnetgroup</code> </p>
      */
-    inline DeleteDBSubnetGroupRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(value); return *this;}
+    inline DeleteDBSubnetGroupRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the database subnet group to delete.</p> <note> <p>You cannot

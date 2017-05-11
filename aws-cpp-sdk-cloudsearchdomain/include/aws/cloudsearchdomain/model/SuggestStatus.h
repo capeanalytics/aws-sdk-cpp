@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>Contains the resource id (<code>rid</code>) and the time it took to process
-   * the request (<code>timems</code>).</p>
+   * the request (<code>timems</code>).</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/SuggestStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API SuggestStatus
   {
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The encrypted resource ID for the request.</p>
      */
-    inline void SetRid(Aws::String&& value) { m_ridHasBeenSet = true; m_rid = value; }
+    inline void SetRid(Aws::String&& value) { m_ridHasBeenSet = true; m_rid = std::move(value); }
 
     /**
      * <p>The encrypted resource ID for the request.</p>
@@ -85,7 +89,7 @@ namespace Model
     /**
      * <p>The encrypted resource ID for the request.</p>
      */
-    inline SuggestStatus& WithRid(Aws::String&& value) { SetRid(value); return *this;}
+    inline SuggestStatus& WithRid(Aws::String&& value) { SetRid(std::move(value)); return *this;}
 
     /**
      * <p>The encrypted resource ID for the request.</p>

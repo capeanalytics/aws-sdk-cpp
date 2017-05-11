@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/CloudFrontRequest.h>
 #include <aws/cloudfront/model/CloudFrontOriginAccessIdentityConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,16 @@ namespace Model
 {
 
   /**
-   * The request to create a new origin access identity.
+   * The request to create a new origin access identity.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CreateCloudFrontOriginAccessIdentityRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CreateCloudFrontOriginAccessIdentity2016_01_28Request : public CloudFrontRequest
   {
   public:
     CreateCloudFrontOriginAccessIdentity2016_01_28Request();
     Aws::String SerializePayload() const override;
+
 
     /**
      * The origin access identity's configuration information.
@@ -46,7 +51,7 @@ namespace Model
     /**
      * The origin access identity's configuration information.
      */
-    inline void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = value; }
+    inline void SetCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { m_cloudFrontOriginAccessIdentityConfigHasBeenSet = true; m_cloudFrontOriginAccessIdentityConfig = std::move(value); }
 
     /**
      * The origin access identity's configuration information.
@@ -56,7 +61,7 @@ namespace Model
     /**
      * The origin access identity's configuration information.
      */
-    inline CreateCloudFrontOriginAccessIdentity2016_01_28Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { SetCloudFrontOriginAccessIdentityConfig(value); return *this;}
+    inline CreateCloudFrontOriginAccessIdentity2016_01_28Request& WithCloudFrontOriginAccessIdentityConfig(CloudFrontOriginAccessIdentityConfig&& value) { SetCloudFrontOriginAccessIdentityConfig(std::move(value)); return *this;}
 
   private:
     CloudFrontOriginAccessIdentityConfig m_cloudFrontOriginAccessIdentityConfig;

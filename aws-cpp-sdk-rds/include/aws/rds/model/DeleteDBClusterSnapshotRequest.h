@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterSnapshotMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DeleteDBClusterSnapshotRequest : public RDSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     DeleteDBClusterSnapshotRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The identifier of the DB cluster snapshot to delete.</p> <p>Constraints: Must
      * be the name of an existing DB cluster snapshot in the <code>available</code>
@@ -52,7 +61,7 @@ namespace Model
      * be the name of an existing DB cluster snapshot in the <code>available</code>
      * state.</p>
      */
-    inline void SetDBClusterSnapshotIdentifier(Aws::String&& value) { m_dBClusterSnapshotIdentifierHasBeenSet = true; m_dBClusterSnapshotIdentifier = value; }
+    inline void SetDBClusterSnapshotIdentifier(Aws::String&& value) { m_dBClusterSnapshotIdentifierHasBeenSet = true; m_dBClusterSnapshotIdentifier = std::move(value); }
 
     /**
      * <p>The identifier of the DB cluster snapshot to delete.</p> <p>Constraints: Must
@@ -73,7 +82,7 @@ namespace Model
      * be the name of an existing DB cluster snapshot in the <code>available</code>
      * state.</p>
      */
-    inline DeleteDBClusterSnapshotRequest& WithDBClusterSnapshotIdentifier(Aws::String&& value) { SetDBClusterSnapshotIdentifier(value); return *this;}
+    inline DeleteDBClusterSnapshotRequest& WithDBClusterSnapshotIdentifier(Aws::String&& value) { SetDBClusterSnapshotIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the DB cluster snapshot to delete.</p> <p>Constraints: Must

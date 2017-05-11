@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about the <code>AccessLog</code> attribute.</p>
+   * <p>Information about the <code>AccessLog</code> attribute.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/AccessLog">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API AccessLog
   {
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the Amazon S3 bucket where the access logs are stored.</p>
      */
-    inline void SetS3BucketName(Aws::String&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = value; }
+    inline void SetS3BucketName(Aws::String&& value) { m_s3BucketNameHasBeenSet = true; m_s3BucketName = std::move(value); }
 
     /**
      * <p>The name of the Amazon S3 bucket where the access logs are stored.</p>
@@ -87,7 +92,7 @@ namespace Model
     /**
      * <p>The name of the Amazon S3 bucket where the access logs are stored.</p>
      */
-    inline AccessLog& WithS3BucketName(Aws::String&& value) { SetS3BucketName(value); return *this;}
+    inline AccessLog& WithS3BucketName(Aws::String&& value) { SetS3BucketName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Amazon S3 bucket where the access logs are stored.</p>
@@ -131,7 +136,7 @@ namespace Model
      * <code>my-bucket-prefix/prod</code>. If the prefix is not provided, the log is
      * placed at the root level of the bucket.</p>
      */
-    inline void SetS3BucketPrefix(Aws::String&& value) { m_s3BucketPrefixHasBeenSet = true; m_s3BucketPrefix = value; }
+    inline void SetS3BucketPrefix(Aws::String&& value) { m_s3BucketPrefixHasBeenSet = true; m_s3BucketPrefix = std::move(value); }
 
     /**
      * <p>The logical hierarchy you created for your Amazon S3 bucket, for example
@@ -152,7 +157,7 @@ namespace Model
      * <code>my-bucket-prefix/prod</code>. If the prefix is not provided, the log is
      * placed at the root level of the bucket.</p>
      */
-    inline AccessLog& WithS3BucketPrefix(Aws::String&& value) { SetS3BucketPrefix(value); return *this;}
+    inline AccessLog& WithS3BucketPrefix(Aws::String&& value) { SetS3BucketPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The logical hierarchy you created for your Amazon S3 bucket, for example

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sts/STS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Identifiers for the federated user that is associated with the
-   * credentials.</p>
+   * credentials.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/FederatedUser">AWS
+   * API Reference</a></p>
    */
   class AWS_STS_API FederatedUser
   {
@@ -61,7 +65,7 @@ namespace Model
      * <p>The string that identifies the federated user associated with the
      * credentials, similar to the unique ID of an IAM user.</p>
      */
-    inline void SetFederatedUserId(Aws::String&& value) { m_federatedUserIdHasBeenSet = true; m_federatedUserId = value; }
+    inline void SetFederatedUserId(Aws::String&& value) { m_federatedUserIdHasBeenSet = true; m_federatedUserId = std::move(value); }
 
     /**
      * <p>The string that identifies the federated user associated with the
@@ -79,7 +83,7 @@ namespace Model
      * <p>The string that identifies the federated user associated with the
      * credentials, similar to the unique ID of an IAM user.</p>
      */
-    inline FederatedUser& WithFederatedUserId(Aws::String&& value) { SetFederatedUserId(value); return *this;}
+    inline FederatedUser& WithFederatedUserId(Aws::String&& value) { SetFederatedUserId(std::move(value)); return *this;}
 
     /**
      * <p>The string that identifies the federated user associated with the
@@ -112,7 +116,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
      * Identifiers</a> in <i>Using IAM</i>. </p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The ARN that specifies the federated user that is associated with the
@@ -139,7 +143,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
      * Identifiers</a> in <i>Using IAM</i>. </p>
      */
-    inline FederatedUser& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline FederatedUser& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN that specifies the federated user that is associated with the

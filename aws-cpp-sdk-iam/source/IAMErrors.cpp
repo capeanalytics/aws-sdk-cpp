@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/iam/IAMErrors.h>
@@ -27,6 +28,7 @@ namespace IAM
 namespace IAMErrorMapper
 {
 
+static const int SERVICE_NOT_SUPPORTED_HASH = HashingUtils::HashString("NotSupportedService");
 static const int CREDENTIAL_REPORT_NOT_PRESENT_HASH = HashingUtils::HashString("ReportNotPresent");
 static const int CREDENTIAL_REPORT_NOT_READY_HASH = HashingUtils::HashString("ReportInProgress");
 static const int INVALID_CERTIFICATE_HASH = HashingUtils::HashString("InvalidCertificate");
@@ -43,6 +45,7 @@ static const int MALFORMED_CERTIFICATE_HASH = HashingUtils::HashString("Malforme
 static const int POLICY_EVALUATION_HASH = HashingUtils::HashString("PolicyEvaluation");
 static const int DUPLICATE_S_S_H_PUBLIC_KEY_HASH = HashingUtils::HashString("DuplicateSSHPublicKey");
 static const int INVALID_AUTHENTICATION_CODE_HASH = HashingUtils::HashString("InvalidAuthenticationCode");
+static const int UNMODIFIABLE_ENTITY_HASH = HashingUtils::HashString("UnmodifiableEntity");
 static const int INVALID_PUBLIC_KEY_HASH = HashingUtils::HashString("InvalidPublicKey");
 static const int KEY_PAIR_MISMATCH_HASH = HashingUtils::HashString("KeyPairMismatch");
 static const int MALFORMED_POLICY_DOCUMENT_HASH = HashingUtils::HashString("MalformedPolicyDocument");
@@ -55,7 +58,11 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 {
   int hashCode = HashingUtils::HashString(errorName);
 
-  if (hashCode == CREDENTIAL_REPORT_NOT_PRESENT_HASH)
+  if (hashCode == SERVICE_NOT_SUPPORTED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IAMErrors::SERVICE_NOT_SUPPORTED), false);
+  }
+  else if (hashCode == CREDENTIAL_REPORT_NOT_PRESENT_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(IAMErrors::CREDENTIAL_REPORT_NOT_PRESENT), false);
   }
@@ -118,6 +125,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == INVALID_AUTHENTICATION_CODE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(IAMErrors::INVALID_AUTHENTICATION_CODE), false);
+  }
+  else if (hashCode == UNMODIFIABLE_ENTITY_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(IAMErrors::UNMODIFIABLE_ENTITY), false);
   }
   else if (hashCode == INVALID_PUBLIC_KEY_HASH)
   {

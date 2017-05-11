@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/DomainType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an Elastic IP address.</p>
+   * <p>Describes an Elastic IP address.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Address">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Address
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The ID of the instance that the address is associated with (if any).</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance that the address is associated with (if any).</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The ID of the instance that the address is associated with (if any).</p>
      */
-    inline Address& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline Address& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance that the address is associated with (if any).</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The Elastic IP address.</p>
      */
-    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = value; }
+    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::move(value); }
 
     /**
      * <p>The Elastic IP address.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The Elastic IP address.</p>
      */
-    inline Address& WithPublicIp(Aws::String&& value) { SetPublicIp(value); return *this;}
+    inline Address& WithPublicIp(Aws::String&& value) { SetPublicIp(std::move(value)); return *this;}
 
     /**
      * <p>The Elastic IP address.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The ID representing the allocation of the address for use with EC2-VPC.</p>
      */
-    inline void SetAllocationId(Aws::String&& value) { m_allocationIdHasBeenSet = true; m_allocationId = value; }
+    inline void SetAllocationId(Aws::String&& value) { m_allocationIdHasBeenSet = true; m_allocationId = std::move(value); }
 
     /**
      * <p>The ID representing the allocation of the address for use with EC2-VPC.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The ID representing the allocation of the address for use with EC2-VPC.</p>
      */
-    inline Address& WithAllocationId(Aws::String&& value) { SetAllocationId(value); return *this;}
+    inline Address& WithAllocationId(Aws::String&& value) { SetAllocationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID representing the allocation of the address for use with EC2-VPC.</p>
@@ -166,7 +170,7 @@ namespace Model
      * <p>The ID representing the association of the address with an instance in a
      * VPC.</p>
      */
-    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = value; }
+    inline void SetAssociationId(Aws::String&& value) { m_associationIdHasBeenSet = true; m_associationId = std::move(value); }
 
     /**
      * <p>The ID representing the association of the address with an instance in a
@@ -184,7 +188,7 @@ namespace Model
      * <p>The ID representing the association of the address with an instance in a
      * VPC.</p>
      */
-    inline Address& WithAssociationId(Aws::String&& value) { SetAssociationId(value); return *this;}
+    inline Address& WithAssociationId(Aws::String&& value) { SetAssociationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID representing the association of the address with an instance in a
@@ -211,7 +215,7 @@ namespace Model
      * EC2-Classic (<code>standard</code>) or instances in a VPC
      * (<code>vpc</code>).</p>
      */
-    inline void SetDomain(DomainType&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(DomainType&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>Indicates whether this Elastic IP address is for use with instances in
@@ -225,7 +229,7 @@ namespace Model
      * EC2-Classic (<code>standard</code>) or instances in a VPC
      * (<code>vpc</code>).</p>
      */
-    inline Address& WithDomain(DomainType&& value) { SetDomain(value); return *this;}
+    inline Address& WithDomain(DomainType&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network interface.</p>
@@ -240,7 +244,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
+    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
 
     /**
      * <p>The ID of the network interface.</p>
@@ -255,7 +259,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline Address& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(value); return *this;}
+    inline Address& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network interface.</p>
@@ -275,7 +279,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account that owns the network interface.</p>
      */
-    inline void SetNetworkInterfaceOwnerId(Aws::String&& value) { m_networkInterfaceOwnerIdHasBeenSet = true; m_networkInterfaceOwnerId = value; }
+    inline void SetNetworkInterfaceOwnerId(Aws::String&& value) { m_networkInterfaceOwnerIdHasBeenSet = true; m_networkInterfaceOwnerId = std::move(value); }
 
     /**
      * <p>The ID of the AWS account that owns the network interface.</p>
@@ -290,7 +294,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account that owns the network interface.</p>
      */
-    inline Address& WithNetworkInterfaceOwnerId(Aws::String&& value) { SetNetworkInterfaceOwnerId(value); return *this;}
+    inline Address& WithNetworkInterfaceOwnerId(Aws::String&& value) { SetNetworkInterfaceOwnerId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AWS account that owns the network interface.</p>
@@ -310,7 +314,7 @@ namespace Model
     /**
      * <p>The private IP address associated with the Elastic IP address.</p>
      */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
+    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
 
     /**
      * <p>The private IP address associated with the Elastic IP address.</p>
@@ -325,7 +329,7 @@ namespace Model
     /**
      * <p>The private IP address associated with the Elastic IP address.</p>
      */
-    inline Address& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(value); return *this;}
+    inline Address& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
 
     /**
      * <p>The private IP address associated with the Elastic IP address.</p>

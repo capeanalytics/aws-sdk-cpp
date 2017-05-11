@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReservedInstancesModification.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -206,7 +207,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_reservedInstancesIds)
       {
         Aws::StringStream reservedInstancesIdsSs;
-        reservedInstancesIdsSs << location <<  ".item." << reservedInstancesIdsIdx++;
+        reservedInstancesIdsSs << location <<  ".ReservedInstancesSet." << reservedInstancesIdsIdx++;
         item.OutputToStream(oStream, reservedInstancesIdsSs.str().c_str());
       }
   }
@@ -216,7 +217,7 @@ void ReservedInstancesModification::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_modificationResults)
       {
         Aws::StringStream modificationResultsSs;
-        modificationResultsSs << location <<  ".item." << modificationResultsIdx++;
+        modificationResultsSs << location <<  ".ModificationResultSet." << modificationResultsIdx++;
         item.OutputToStream(oStream, modificationResultsSs.str().c_str());
       }
   }

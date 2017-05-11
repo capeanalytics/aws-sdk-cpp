@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,11 +36,13 @@ namespace Model
 {
   /**
    * <p>Contains the Amazon Glacier response to your request.</p> <p>For information
-   * about the underlying REST API, go to <a
+   * about the underlying REST API, see <a
    * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload
-   * Archive</a>. For conceptual information, go to <a
+   * Archive</a>. For conceptual information, see <a
    * href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working
-   * with Archives in Amazon Glacier</a>.</p>
+   * with Archives in Amazon Glacier</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ArchiveCreationOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API UploadArchiveResult
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The relative URI path of the newly added archive resource.</p>
      */
-    inline void SetLocation(Aws::String&& value) { m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
 
     /**
      * <p>The relative URI path of the newly added archive resource.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The relative URI path of the newly added archive resource.</p>
      */
-    inline UploadArchiveResult& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline UploadArchiveResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * <p>The relative URI path of the newly added archive resource.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The checksum of the archive computed by Amazon Glacier.</p>
      */
-    inline void SetChecksum(Aws::String&& value) { m_checksum = value; }
+    inline void SetChecksum(Aws::String&& value) { m_checksum = std::move(value); }
 
     /**
      * <p>The checksum of the archive computed by Amazon Glacier.</p>
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>The checksum of the archive computed by Amazon Glacier.</p>
      */
-    inline UploadArchiveResult& WithChecksum(Aws::String&& value) { SetChecksum(value); return *this;}
+    inline UploadArchiveResult& WithChecksum(Aws::String&& value) { SetChecksum(std::move(value)); return *this;}
 
     /**
      * <p>The checksum of the archive computed by Amazon Glacier.</p>
@@ -133,7 +137,7 @@ namespace Model
      * <p>The ID of the archive. This value is also included as part of the
      * location.</p>
      */
-    inline void SetArchiveId(Aws::String&& value) { m_archiveId = value; }
+    inline void SetArchiveId(Aws::String&& value) { m_archiveId = std::move(value); }
 
     /**
      * <p>The ID of the archive. This value is also included as part of the
@@ -151,7 +155,7 @@ namespace Model
      * <p>The ID of the archive. This value is also included as part of the
      * location.</p>
      */
-    inline UploadArchiveResult& WithArchiveId(Aws::String&& value) { SetArchiveId(value); return *this;}
+    inline UploadArchiveResult& WithArchiveId(Aws::String&& value) { SetArchiveId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the archive. This value is also included as part of the

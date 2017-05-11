@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ds/model/IpRouteInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -54,7 +56,7 @@ namespace Model
     /**
      * <p>A list of <a>IpRoute</a>s.</p>
      */
-    inline void SetIpRoutesInfo(Aws::Vector<IpRouteInfo>&& value) { m_ipRoutesInfo = value; }
+    inline void SetIpRoutesInfo(Aws::Vector<IpRouteInfo>&& value) { m_ipRoutesInfo = std::move(value); }
 
     /**
      * <p>A list of <a>IpRoute</a>s.</p>
@@ -64,7 +66,7 @@ namespace Model
     /**
      * <p>A list of <a>IpRoute</a>s.</p>
      */
-    inline ListIpRoutesResult& WithIpRoutesInfo(Aws::Vector<IpRouteInfo>&& value) { SetIpRoutesInfo(value); return *this;}
+    inline ListIpRoutesResult& WithIpRoutesInfo(Aws::Vector<IpRouteInfo>&& value) { SetIpRoutesInfo(std::move(value)); return *this;}
 
     /**
      * <p>A list of <a>IpRoute</a>s.</p>
@@ -74,7 +76,7 @@ namespace Model
     /**
      * <p>A list of <a>IpRoute</a>s.</p>
      */
-    inline ListIpRoutesResult& AddIpRoutesInfo(IpRouteInfo&& value) { m_ipRoutesInfo.push_back(value); return *this; }
+    inline ListIpRoutesResult& AddIpRoutesInfo(IpRouteInfo&& value) { m_ipRoutesInfo.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If not null, more results are available. Pass this value for the
@@ -95,7 +97,7 @@ namespace Model
      * <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to
      * retrieve the next set of items.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If not null, more results are available. Pass this value for the
@@ -116,7 +118,7 @@ namespace Model
      * <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to
      * retrieve the next set of items.</p>
      */
-    inline ListIpRoutesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListIpRoutesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If not null, more results are available. Pass this value for the

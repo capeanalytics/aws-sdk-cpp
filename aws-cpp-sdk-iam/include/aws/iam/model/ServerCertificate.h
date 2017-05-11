@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/iam/model/ServerCertificateMetadata.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 
   /**
    * <p>Contains information about a server certificate.</p> <p> This data type is
-   * used as a response element in the <a>GetServerCertificate</a> action. </p>
+   * used as a response element in the <a>GetServerCertificate</a> action.
+   * </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ServerCertificate">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API ServerCertificate
   {
@@ -62,7 +67,7 @@ namespace Model
      * <p>The meta information of the server certificate, such as its name, path, ID,
      * and ARN.</p>
      */
-    inline void SetServerCertificateMetadata(ServerCertificateMetadata&& value) { m_serverCertificateMetadataHasBeenSet = true; m_serverCertificateMetadata = value; }
+    inline void SetServerCertificateMetadata(ServerCertificateMetadata&& value) { m_serverCertificateMetadataHasBeenSet = true; m_serverCertificateMetadata = std::move(value); }
 
     /**
      * <p>The meta information of the server certificate, such as its name, path, ID,
@@ -74,7 +79,7 @@ namespace Model
      * <p>The meta information of the server certificate, such as its name, path, ID,
      * and ARN.</p>
      */
-    inline ServerCertificate& WithServerCertificateMetadata(ServerCertificateMetadata&& value) { SetServerCertificateMetadata(value); return *this;}
+    inline ServerCertificate& WithServerCertificateMetadata(ServerCertificateMetadata&& value) { SetServerCertificateMetadata(std::move(value)); return *this;}
 
     /**
      * <p>The contents of the public key certificate.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The contents of the public key certificate.</p>
      */
-    inline void SetCertificateBody(Aws::String&& value) { m_certificateBodyHasBeenSet = true; m_certificateBody = value; }
+    inline void SetCertificateBody(Aws::String&& value) { m_certificateBodyHasBeenSet = true; m_certificateBody = std::move(value); }
 
     /**
      * <p>The contents of the public key certificate.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The contents of the public key certificate.</p>
      */
-    inline ServerCertificate& WithCertificateBody(Aws::String&& value) { SetCertificateBody(value); return *this;}
+    inline ServerCertificate& WithCertificateBody(Aws::String&& value) { SetCertificateBody(std::move(value)); return *this;}
 
     /**
      * <p>The contents of the public key certificate.</p>
@@ -124,7 +129,7 @@ namespace Model
     /**
      * <p>The contents of the public key certificate chain.</p>
      */
-    inline void SetCertificateChain(Aws::String&& value) { m_certificateChainHasBeenSet = true; m_certificateChain = value; }
+    inline void SetCertificateChain(Aws::String&& value) { m_certificateChainHasBeenSet = true; m_certificateChain = std::move(value); }
 
     /**
      * <p>The contents of the public key certificate chain.</p>
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>The contents of the public key certificate chain.</p>
      */
-    inline ServerCertificate& WithCertificateChain(Aws::String&& value) { SetCertificateChain(value); return *this;}
+    inline ServerCertificate& WithCertificateChain(Aws::String&& value) { SetCertificateChain(std::move(value)); return *this;}
 
     /**
      * <p>The contents of the public key certificate chain.</p>

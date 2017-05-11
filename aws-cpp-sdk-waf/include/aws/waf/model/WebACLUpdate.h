@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/ChangeAction.h>
 #include <aws/waf/model/ActivatedRule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Specifies whether to insert a <code>Rule</code> into or delete a
-   * <code>Rule</code> from a <code>WebACL</code>.</p>
+   * <code>Rule</code> from a <code>WebACL</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/WebACLUpdate">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API WebACLUpdate
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>Specifies whether to insert a <code>Rule</code> into or delete a
      * <code>Rule</code> from a <code>WebACL</code>.</p>
      */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>Specifies whether to insert a <code>Rule</code> into or delete a
@@ -71,22 +75,52 @@ namespace Model
      * <p>Specifies whether to insert a <code>Rule</code> into or delete a
      * <code>Rule</code> from a <code>WebACL</code>.</p>
      */
-    inline WebACLUpdate& WithAction(ChangeAction&& value) { SetAction(value); return *this;}
+    inline WebACLUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request
+     * specifies a <code>Rule</code> that you want to insert or delete, the priority of
+     * the <code>Rule</code> in the <code>WebACL</code>, and the action that you want
+     * AWS WAF to take when a web request matches the <code>Rule</code>
+     * (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+     */
     inline const ActivatedRule& GetActivatedRule() const{ return m_activatedRule; }
 
-    
+    /**
+     * <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request
+     * specifies a <code>Rule</code> that you want to insert or delete, the priority of
+     * the <code>Rule</code> in the <code>WebACL</code>, and the action that you want
+     * AWS WAF to take when a web request matches the <code>Rule</code>
+     * (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+     */
     inline void SetActivatedRule(const ActivatedRule& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = value; }
 
-    
-    inline void SetActivatedRule(ActivatedRule&& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = value; }
+    /**
+     * <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request
+     * specifies a <code>Rule</code> that you want to insert or delete, the priority of
+     * the <code>Rule</code> in the <code>WebACL</code>, and the action that you want
+     * AWS WAF to take when a web request matches the <code>Rule</code>
+     * (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+     */
+    inline void SetActivatedRule(ActivatedRule&& value) { m_activatedRuleHasBeenSet = true; m_activatedRule = std::move(value); }
 
-    
+    /**
+     * <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request
+     * specifies a <code>Rule</code> that you want to insert or delete, the priority of
+     * the <code>Rule</code> in the <code>WebACL</code>, and the action that you want
+     * AWS WAF to take when a web request matches the <code>Rule</code>
+     * (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+     */
     inline WebACLUpdate& WithActivatedRule(const ActivatedRule& value) { SetActivatedRule(value); return *this;}
 
-    
-    inline WebACLUpdate& WithActivatedRule(ActivatedRule&& value) { SetActivatedRule(value); return *this;}
+    /**
+     * <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request
+     * specifies a <code>Rule</code> that you want to insert or delete, the priority of
+     * the <code>Rule</code> in the <code>WebACL</code>, and the action that you want
+     * AWS WAF to take when a web request matches the <code>Rule</code>
+     * (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+     */
+    inline WebACLUpdate& WithActivatedRule(ActivatedRule&& value) { SetActivatedRule(std::move(value)); return *this;}
 
   private:
     ChangeAction m_action;

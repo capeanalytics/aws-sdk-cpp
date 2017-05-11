@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticbeanstalk/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace ElasticBeanstalk
 namespace Model
 {
   /**
-   * <p>Indicates if the specified CNAME is available.</p>
+   * <p>Indicates if the specified CNAME is available.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CheckDNSAvailabilityResultMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API CheckDNSAvailabilityResult
   {
@@ -44,23 +48,23 @@ namespace Model
     CheckDNSAvailabilityResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p> Indicates if the specified CNAME is available: </p> <ul> <li>
-     * <code>true</code> : The CNAME is available. </li> <li> <code>false</code> : The
-     * CNAME is not available. </li> </ul>
+     * <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p>
+     * <code>true</code> : The CNAME is available.</p> </li> <li> <p>
+     * <code>false</code> : The CNAME is not available.</p> </li> </ul>
      */
     inline bool GetAvailable() const{ return m_available; }
 
     /**
-     * <p> Indicates if the specified CNAME is available: </p> <ul> <li>
-     * <code>true</code> : The CNAME is available. </li> <li> <code>false</code> : The
-     * CNAME is not available. </li> </ul>
+     * <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p>
+     * <code>true</code> : The CNAME is available.</p> </li> <li> <p>
+     * <code>false</code> : The CNAME is not available.</p> </li> </ul>
      */
     inline void SetAvailable(bool value) { m_available = value; }
 
     /**
-     * <p> Indicates if the specified CNAME is available: </p> <ul> <li>
-     * <code>true</code> : The CNAME is available. </li> <li> <code>false</code> : The
-     * CNAME is not available. </li> </ul>
+     * <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p>
+     * <code>true</code> : The CNAME is available.</p> </li> <li> <p>
+     * <code>false</code> : The CNAME is not available.</p> </li> </ul>
      */
     inline CheckDNSAvailabilityResult& WithAvailable(bool value) { SetAvailable(value); return *this;}
 
@@ -80,7 +84,7 @@ namespace Model
      * <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called
      * with the provided prefix.</p>
      */
-    inline void SetFullyQualifiedCNAME(Aws::String&& value) { m_fullyQualifiedCNAME = value; }
+    inline void SetFullyQualifiedCNAME(Aws::String&& value) { m_fullyQualifiedCNAME = std::move(value); }
 
     /**
      * <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called
@@ -98,7 +102,7 @@ namespace Model
      * <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called
      * with the provided prefix.</p>
      */
-    inline CheckDNSAvailabilityResult& WithFullyQualifiedCNAME(Aws::String&& value) { SetFullyQualifiedCNAME(value); return *this;}
+    inline CheckDNSAvailabilityResult& WithFullyQualifiedCNAME(Aws::String&& value) { SetFullyQualifiedCNAME(std::move(value)); return *this;}
 
     /**
      * <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called
@@ -113,13 +117,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CheckDNSAvailabilityResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CheckDNSAvailabilityResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CheckDNSAvailabilityResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     bool m_available;

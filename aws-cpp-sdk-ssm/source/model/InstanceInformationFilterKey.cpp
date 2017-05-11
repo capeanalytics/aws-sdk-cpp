@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/InstanceInformationFilterKey.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -36,6 +37,7 @@ namespace Aws
         static const int ActivationIds_HASH = HashingUtils::HashString("ActivationIds");
         static const int IamRole_HASH = HashingUtils::HashString("IamRole");
         static const int ResourceType_HASH = HashingUtils::HashString("ResourceType");
+        static const int AssociationStatus_HASH = HashingUtils::HashString("AssociationStatus");
 
 
         InstanceInformationFilterKey GetInstanceInformationFilterKeyForName(const Aws::String& name)
@@ -69,6 +71,10 @@ namespace Aws
           {
             return InstanceInformationFilterKey::ResourceType;
           }
+          else if (hashCode == AssociationStatus_HASH)
+          {
+            return InstanceInformationFilterKey::AssociationStatus;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -97,6 +103,8 @@ namespace Aws
             return "IamRole";
           case InstanceInformationFilterKey::ResourceType:
             return "ResourceType";
+          case InstanceInformationFilterKey::AssociationStatus:
+            return "AssociationStatus";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/application-autoscaling/ApplicationAutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/application-autoscaling/model/ScalingActivity.h>
+#include <utility>
 
 namespace Aws
 {
@@ -54,7 +56,7 @@ namespace Model
     /**
      * <p>A list of scaling activity objects.</p>
      */
-    inline void SetScalingActivities(Aws::Vector<ScalingActivity>&& value) { m_scalingActivities = value; }
+    inline void SetScalingActivities(Aws::Vector<ScalingActivity>&& value) { m_scalingActivities = std::move(value); }
 
     /**
      * <p>A list of scaling activity objects.</p>
@@ -64,7 +66,7 @@ namespace Model
     /**
      * <p>A list of scaling activity objects.</p>
      */
-    inline DescribeScalingActivitiesResult& WithScalingActivities(Aws::Vector<ScalingActivity>&& value) { SetScalingActivities(value); return *this;}
+    inline DescribeScalingActivitiesResult& WithScalingActivities(Aws::Vector<ScalingActivity>&& value) { SetScalingActivities(std::move(value)); return *this;}
 
     /**
      * <p>A list of scaling activity objects.</p>
@@ -74,68 +76,47 @@ namespace Model
     /**
      * <p>A list of scaling activity objects.</p>
      */
-    inline DescribeScalingActivitiesResult& AddScalingActivities(ScalingActivity&& value) { m_scalingActivities.push_back(value); return *this; }
+    inline DescribeScalingActivitiesResult& AddScalingActivities(ScalingActivity&& value) { m_scalingActivities.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
     inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
     inline DescribeScalingActivitiesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
-    inline DescribeScalingActivitiesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeScalingActivitiesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>The <code>NextToken</code> value to include in a future
-     * <code>DescribeScalingActivities</code> request. When the results of a
-     * <code>DescribeScalingActivities</code> request exceed <code>MaxResults</code>,
-     * this value can be used to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
+     * <p>The token required to get the next set of results. This value is
+     * <code>null</code> if there are no more results to return.</p>
      */
     inline DescribeScalingActivitiesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 

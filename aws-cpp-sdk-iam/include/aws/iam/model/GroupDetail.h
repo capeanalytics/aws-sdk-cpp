@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iam/model/PolicyDetail.h>
 #include <aws/iam/model/AttachedPolicy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
   /**
    * <p>Contains information about an IAM group, including all of the group's
    * policies.</p> <p>This data type is used as a response element in the
-   * <a>GetAccountAuthorizationDetails</a> action.</p>
+   * <a>GetAccountAuthorizationDetails</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GroupDetail">AWS API
+   * Reference</a></p>
    */
   class AWS_IAM_API GroupDetail
   {
@@ -69,7 +73,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = value; }
+    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
 
     /**
      * <p>The path to the group. For more information about paths, see <a
@@ -90,7 +94,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline GroupDetail& WithPath(Aws::String&& value) { SetPath(value); return *this;}
+    inline GroupDetail& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
 
     /**
      * <p>The path to the group. For more information about paths, see <a
@@ -112,7 +116,7 @@ namespace Model
     /**
      * <p>The friendly name that identifies the group.</p>
      */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
+    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
 
     /**
      * <p>The friendly name that identifies the group.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The friendly name that identifies the group.</p>
      */
-    inline GroupDetail& WithGroupName(Aws::String&& value) { SetGroupName(value); return *this;}
+    inline GroupDetail& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The friendly name that identifies the group.</p>
@@ -156,7 +160,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
+    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
 
     /**
      * <p>The stable and unique string identifying the group. For more information
@@ -180,7 +184,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
      * Identifiers</a> in the <i>Using IAM</i> guide.</p>
      */
-    inline GroupDetail& WithGroupId(Aws::String&& value) { SetGroupId(value); return *this;}
+    inline GroupDetail& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The stable and unique string identifying the group. For more information
@@ -197,7 +201,7 @@ namespace Model
     inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
 
     
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     
     inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
@@ -206,7 +210,7 @@ namespace Model
     inline GroupDetail& WithArn(const Aws::String& value) { SetArn(value); return *this;}
 
     
-    inline GroupDetail& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline GroupDetail& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     
     inline GroupDetail& WithArn(const char* value) { SetArn(value); return *this;}
@@ -227,7 +231,7 @@ namespace Model
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
      * date-time format</a>, when the group was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
@@ -239,7 +243,7 @@ namespace Model
      * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601
      * date-time format</a>, when the group was created.</p>
      */
-    inline GroupDetail& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline GroupDetail& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>A list of the inline policies embedded in the group.</p>
@@ -254,7 +258,7 @@ namespace Model
     /**
      * <p>A list of the inline policies embedded in the group.</p>
      */
-    inline void SetGroupPolicyList(Aws::Vector<PolicyDetail>&& value) { m_groupPolicyListHasBeenSet = true; m_groupPolicyList = value; }
+    inline void SetGroupPolicyList(Aws::Vector<PolicyDetail>&& value) { m_groupPolicyListHasBeenSet = true; m_groupPolicyList = std::move(value); }
 
     /**
      * <p>A list of the inline policies embedded in the group.</p>
@@ -264,7 +268,7 @@ namespace Model
     /**
      * <p>A list of the inline policies embedded in the group.</p>
      */
-    inline GroupDetail& WithGroupPolicyList(Aws::Vector<PolicyDetail>&& value) { SetGroupPolicyList(value); return *this;}
+    inline GroupDetail& WithGroupPolicyList(Aws::Vector<PolicyDetail>&& value) { SetGroupPolicyList(std::move(value)); return *this;}
 
     /**
      * <p>A list of the inline policies embedded in the group.</p>
@@ -274,7 +278,7 @@ namespace Model
     /**
      * <p>A list of the inline policies embedded in the group.</p>
      */
-    inline GroupDetail& AddGroupPolicyList(PolicyDetail&& value) { m_groupPolicyListHasBeenSet = true; m_groupPolicyList.push_back(value); return *this; }
+    inline GroupDetail& AddGroupPolicyList(PolicyDetail&& value) { m_groupPolicyListHasBeenSet = true; m_groupPolicyList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of the managed policies attached to the group.</p>
@@ -289,7 +293,7 @@ namespace Model
     /**
      * <p>A list of the managed policies attached to the group.</p>
      */
-    inline void SetAttachedManagedPolicies(Aws::Vector<AttachedPolicy>&& value) { m_attachedManagedPoliciesHasBeenSet = true; m_attachedManagedPolicies = value; }
+    inline void SetAttachedManagedPolicies(Aws::Vector<AttachedPolicy>&& value) { m_attachedManagedPoliciesHasBeenSet = true; m_attachedManagedPolicies = std::move(value); }
 
     /**
      * <p>A list of the managed policies attached to the group.</p>
@@ -299,7 +303,7 @@ namespace Model
     /**
      * <p>A list of the managed policies attached to the group.</p>
      */
-    inline GroupDetail& WithAttachedManagedPolicies(Aws::Vector<AttachedPolicy>&& value) { SetAttachedManagedPolicies(value); return *this;}
+    inline GroupDetail& WithAttachedManagedPolicies(Aws::Vector<AttachedPolicy>&& value) { SetAttachedManagedPolicies(std::move(value)); return *this;}
 
     /**
      * <p>A list of the managed policies attached to the group.</p>
@@ -309,7 +313,7 @@ namespace Model
     /**
      * <p>A list of the managed policies attached to the group.</p>
      */
-    inline GroupDetail& AddAttachedManagedPolicies(AttachedPolicy&& value) { m_attachedManagedPoliciesHasBeenSet = true; m_attachedManagedPolicies.push_back(value); return *this; }
+    inline GroupDetail& AddAttachedManagedPolicies(AttachedPolicy&& value) { m_attachedManagedPoliciesHasBeenSet = true; m_attachedManagedPolicies.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_path;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/snowball/Snowball_EXPORTS.h>
 #include <aws/snowball/SnowballErrors.h>
@@ -20,16 +21,22 @@
 #include <aws/core/client/AWSClient.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/snowball/model/CancelClusterResult.h>
 #include <aws/snowball/model/CancelJobResult.h>
 #include <aws/snowball/model/CreateAddressResult.h>
+#include <aws/snowball/model/CreateClusterResult.h>
 #include <aws/snowball/model/CreateJobResult.h>
 #include <aws/snowball/model/DescribeAddressResult.h>
 #include <aws/snowball/model/DescribeAddressesResult.h>
+#include <aws/snowball/model/DescribeClusterResult.h>
 #include <aws/snowball/model/DescribeJobResult.h>
 #include <aws/snowball/model/GetJobManifestResult.h>
 #include <aws/snowball/model/GetJobUnlockCodeResult.h>
 #include <aws/snowball/model/GetSnowballUsageResult.h>
+#include <aws/snowball/model/ListClusterJobsResult.h>
+#include <aws/snowball/model/ListClustersResult.h>
 #include <aws/snowball/model/ListJobsResult.h>
+#include <aws/snowball/model/UpdateClusterResult.h>
 #include <aws/snowball/model/UpdateJobResult.h>
 #include <aws/core/client/AsyncCallerContext.h>
 #include <aws/core/http/HttpTypes.h>
@@ -76,59 +83,92 @@ namespace Snowball
 
 namespace Model
 {
+        class CancelClusterRequest;
         class CancelJobRequest;
         class CreateAddressRequest;
+        class CreateClusterRequest;
         class CreateJobRequest;
         class DescribeAddressRequest;
         class DescribeAddressesRequest;
+        class DescribeClusterRequest;
         class DescribeJobRequest;
         class GetJobManifestRequest;
         class GetJobUnlockCodeRequest;
         class GetSnowballUsageRequest;
+        class ListClusterJobsRequest;
+        class ListClustersRequest;
         class ListJobsRequest;
+        class UpdateClusterRequest;
         class UpdateJobRequest;
 
+        typedef Aws::Utils::Outcome<CancelClusterResult, Aws::Client::AWSError<SnowballErrors>> CancelClusterOutcome;
         typedef Aws::Utils::Outcome<CancelJobResult, Aws::Client::AWSError<SnowballErrors>> CancelJobOutcome;
         typedef Aws::Utils::Outcome<CreateAddressResult, Aws::Client::AWSError<SnowballErrors>> CreateAddressOutcome;
+        typedef Aws::Utils::Outcome<CreateClusterResult, Aws::Client::AWSError<SnowballErrors>> CreateClusterOutcome;
         typedef Aws::Utils::Outcome<CreateJobResult, Aws::Client::AWSError<SnowballErrors>> CreateJobOutcome;
         typedef Aws::Utils::Outcome<DescribeAddressResult, Aws::Client::AWSError<SnowballErrors>> DescribeAddressOutcome;
         typedef Aws::Utils::Outcome<DescribeAddressesResult, Aws::Client::AWSError<SnowballErrors>> DescribeAddressesOutcome;
+        typedef Aws::Utils::Outcome<DescribeClusterResult, Aws::Client::AWSError<SnowballErrors>> DescribeClusterOutcome;
         typedef Aws::Utils::Outcome<DescribeJobResult, Aws::Client::AWSError<SnowballErrors>> DescribeJobOutcome;
         typedef Aws::Utils::Outcome<GetJobManifestResult, Aws::Client::AWSError<SnowballErrors>> GetJobManifestOutcome;
         typedef Aws::Utils::Outcome<GetJobUnlockCodeResult, Aws::Client::AWSError<SnowballErrors>> GetJobUnlockCodeOutcome;
         typedef Aws::Utils::Outcome<GetSnowballUsageResult, Aws::Client::AWSError<SnowballErrors>> GetSnowballUsageOutcome;
+        typedef Aws::Utils::Outcome<ListClusterJobsResult, Aws::Client::AWSError<SnowballErrors>> ListClusterJobsOutcome;
+        typedef Aws::Utils::Outcome<ListClustersResult, Aws::Client::AWSError<SnowballErrors>> ListClustersOutcome;
         typedef Aws::Utils::Outcome<ListJobsResult, Aws::Client::AWSError<SnowballErrors>> ListJobsOutcome;
+        typedef Aws::Utils::Outcome<UpdateClusterResult, Aws::Client::AWSError<SnowballErrors>> UpdateClusterOutcome;
         typedef Aws::Utils::Outcome<UpdateJobResult, Aws::Client::AWSError<SnowballErrors>> UpdateJobOutcome;
 
+        typedef std::future<CancelClusterOutcome> CancelClusterOutcomeCallable;
         typedef std::future<CancelJobOutcome> CancelJobOutcomeCallable;
         typedef std::future<CreateAddressOutcome> CreateAddressOutcomeCallable;
+        typedef std::future<CreateClusterOutcome> CreateClusterOutcomeCallable;
         typedef std::future<CreateJobOutcome> CreateJobOutcomeCallable;
         typedef std::future<DescribeAddressOutcome> DescribeAddressOutcomeCallable;
         typedef std::future<DescribeAddressesOutcome> DescribeAddressesOutcomeCallable;
+        typedef std::future<DescribeClusterOutcome> DescribeClusterOutcomeCallable;
         typedef std::future<DescribeJobOutcome> DescribeJobOutcomeCallable;
         typedef std::future<GetJobManifestOutcome> GetJobManifestOutcomeCallable;
         typedef std::future<GetJobUnlockCodeOutcome> GetJobUnlockCodeOutcomeCallable;
         typedef std::future<GetSnowballUsageOutcome> GetSnowballUsageOutcomeCallable;
+        typedef std::future<ListClusterJobsOutcome> ListClusterJobsOutcomeCallable;
+        typedef std::future<ListClustersOutcome> ListClustersOutcomeCallable;
         typedef std::future<ListJobsOutcome> ListJobsOutcomeCallable;
+        typedef std::future<UpdateClusterOutcome> UpdateClusterOutcomeCallable;
         typedef std::future<UpdateJobOutcome> UpdateJobOutcomeCallable;
 } // namespace Model
 
   class SnowballClient;
 
+    typedef std::function<void(const SnowballClient*, const Model::CancelClusterRequest&, const Model::CancelClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelClusterResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::CancelJobRequest&, const Model::CancelJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelJobResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::CreateAddressRequest&, const Model::CreateAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateAddressResponseReceivedHandler;
+    typedef std::function<void(const SnowballClient*, const Model::CreateClusterRequest&, const Model::CreateClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateClusterResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::CreateJobRequest&, const Model::CreateJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateJobResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::DescribeAddressRequest&, const Model::DescribeAddressOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAddressResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::DescribeAddressesRequest&, const Model::DescribeAddressesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeAddressesResponseReceivedHandler;
+    typedef std::function<void(const SnowballClient*, const Model::DescribeClusterRequest&, const Model::DescribeClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeClusterResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::DescribeJobRequest&, const Model::DescribeJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > DescribeJobResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::GetJobManifestRequest&, const Model::GetJobManifestOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetJobManifestResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::GetJobUnlockCodeRequest&, const Model::GetJobUnlockCodeOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetJobUnlockCodeResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::GetSnowballUsageRequest&, const Model::GetSnowballUsageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetSnowballUsageResponseReceivedHandler;
+    typedef std::function<void(const SnowballClient*, const Model::ListClusterJobsRequest&, const Model::ListClusterJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListClusterJobsResponseReceivedHandler;
+    typedef std::function<void(const SnowballClient*, const Model::ListClustersRequest&, const Model::ListClustersOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListClustersResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::ListJobsRequest&, const Model::ListJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListJobsResponseReceivedHandler;
+    typedef std::function<void(const SnowballClient*, const Model::UpdateClusterRequest&, const Model::UpdateClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateClusterResponseReceivedHandler;
     typedef std::function<void(const SnowballClient*, const Model::UpdateJobRequest&, const Model::UpdateJobOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateJobResponseReceivedHandler;
 
   /**
-   * <p>This is a test of the welcome page front matter.</p>
+   * <p>AWS Snowball is a petabyte-scale data transport solution that uses secure
+   * appliances to transfer large amounts of data between your on-premises data
+   * centers and Amazon Simple Storage Service (Amazon S3). The Snowball commands
+   * described here provide access to the same functionality that is available in the
+   * AWS Snowball Management Console, which enables you to create and manage jobs for
+   * Snowball. To transfer data locally with a Snowball appliance, you'll need to use
+   * the Snowball client or the Amazon S3 API adapter for Snowball. For more
+   * information, see the <a
+   * href="http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html">User
+   * Guide</a>.</p>
    */
   class AWS_SNOWBALL_API SnowballClient : public Aws::Client::AWSJsonClient
   {
@@ -157,77 +197,160 @@ namespace Model
         virtual ~SnowballClient();
 
         /**
-         * <p>Cancels the specified job. Note that you can only cancel a job before its
+         * <p>Cancels a cluster job. You can only cancel a cluster job while it's in the
+         * <code>AwaitingQuorum</code> status. You'll have at least an hour after creating
+         * a cluster job to cancel it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CancelClusterOutcome CancelCluster(const Model::CancelClusterRequest& request) const;
+
+        /**
+         * <p>Cancels a cluster job. You can only cancel a cluster job while it's in the
+         * <code>AwaitingQuorum</code> status. You'll have at least an hour after creating
+         * a cluster job to cancel it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::CancelClusterOutcomeCallable CancelClusterCallable(const Model::CancelClusterRequest& request) const;
+
+        /**
+         * <p>Cancels a cluster job. You can only cancel a cluster job while it's in the
+         * <code>AwaitingQuorum</code> status. You'll have at least an hour after creating
+         * a cluster job to cancel it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelCluster">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void CancelClusterAsync(const Model::CancelClusterRequest& request, const CancelClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Cancels the specified job. You can only cancel a job before its
          * <code>JobState</code> value changes to <code>PreparingAppliance</code>.
          * Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
          * return a job's <code>JobState</code> as part of the response element data
-         * returned.</p>
+         * returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob">AWS
+         * API Reference</a></p>
          */
         virtual Model::CancelJobOutcome CancelJob(const Model::CancelJobRequest& request) const;
 
         /**
-         * <p>Cancels the specified job. Note that you can only cancel a job before its
+         * <p>Cancels the specified job. You can only cancel a job before its
          * <code>JobState</code> value changes to <code>PreparingAppliance</code>.
          * Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
          * return a job's <code>JobState</code> as part of the response element data
-         * returned.</p>
+         * returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CancelJobOutcomeCallable CancelJobCallable(const Model::CancelJobRequest& request) const;
 
         /**
-         * <p>Cancels the specified job. Note that you can only cancel a job before its
+         * <p>Cancels the specified job. You can only cancel a job before its
          * <code>JobState</code> value changes to <code>PreparingAppliance</code>.
          * Requesting the <code>ListJobs</code> or <code>DescribeJob</code> action will
          * return a job's <code>JobState</code> as part of the response element data
-         * returned.</p>
+         * returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CancelJob">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CancelJobAsync(const Model::CancelJobRequest& request, const CancelJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Creates an address for a Snowball to be shipped to. </p> <p>Addresses are
-         * validated at the time of creation. The address you provide must be located
-         * within the serviceable area of your region. If the address is invalid or
-         * unsupported, then an exception is thrown.</p>
+         * <p>Creates an address for a Snowball to be shipped to. In most regions,
+         * addresses are validated at the time of creation. The address you provide must be
+         * located within the serviceable area of your region. If the address is invalid or
+         * unsupported, then an exception is thrown.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateAddressOutcome CreateAddress(const Model::CreateAddressRequest& request) const;
 
         /**
-         * <p>Creates an address for a Snowball to be shipped to. </p> <p>Addresses are
-         * validated at the time of creation. The address you provide must be located
-         * within the serviceable area of your region. If the address is invalid or
-         * unsupported, then an exception is thrown.</p>
+         * <p>Creates an address for a Snowball to be shipped to. In most regions,
+         * addresses are validated at the time of creation. The address you provide must be
+         * located within the serviceable area of your region. If the address is invalid or
+         * unsupported, then an exception is thrown.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CreateAddressOutcomeCallable CreateAddressCallable(const Model::CreateAddressRequest& request) const;
 
         /**
-         * <p>Creates an address for a Snowball to be shipped to. </p> <p>Addresses are
-         * validated at the time of creation. The address you provide must be located
-         * within the serviceable area of your region. If the address is invalid or
-         * unsupported, then an exception is thrown.</p>
+         * <p>Creates an address for a Snowball to be shipped to. In most regions,
+         * addresses are validated at the time of creation. The address you provide must be
+         * located within the serviceable area of your region. If the address is invalid or
+         * unsupported, then an exception is thrown.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateAddress">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreateAddressAsync(const Model::CreateAddressRequest& request, const CreateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Creates an empty cluster. Each cluster supports five nodes. You use the
+         * <a>CreateJob</a> action separately to create the jobs for each of these nodes.
+         * The cluster does not ship until these five node jobs have been
+         * created.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateClusterOutcome CreateCluster(const Model::CreateClusterRequest& request) const;
+
+        /**
+         * <p>Creates an empty cluster. Each cluster supports five nodes. You use the
+         * <a>CreateJob</a> action separately to create the jobs for each of these nodes.
+         * The cluster does not ship until these five node jobs have been
+         * created.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::CreateClusterOutcomeCallable CreateClusterCallable(const Model::CreateClusterRequest& request) const;
+
+        /**
+         * <p>Creates an empty cluster. Each cluster supports five nodes. You use the
+         * <a>CreateJob</a> action separately to create the jobs for each of these nodes.
+         * The cluster does not ship until these five node jobs have been
+         * created.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateCluster">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void CreateClusterAsync(const Model::CreateClusterRequest& request, const CreateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Creates a job to import or export data between Amazon S3 and your on-premises
-         * data center. Note that your AWS account must have the right trust policies and
-         * permissions in place to create a job for Snowball. For more information, see
-         * <a>api-reference-policies</a>.</p>
+         * data center. Your AWS account must have the right trust policies and permissions
+         * in place to create a job for Snowball. If you're creating a job for a node in a
+         * cluster, you only need to provide the <code>clusterId</code> value; the other
+         * job attributes are inherited from the cluster. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateJobOutcome CreateJob(const Model::CreateJobRequest& request) const;
 
         /**
          * <p>Creates a job to import or export data between Amazon S3 and your on-premises
-         * data center. Note that your AWS account must have the right trust policies and
-         * permissions in place to create a job for Snowball. For more information, see
-         * <a>api-reference-policies</a>.</p>
+         * data center. Your AWS account must have the right trust policies and permissions
+         * in place to create a job for Snowball. If you're creating a job for a node in a
+         * cluster, you only need to provide the <code>clusterId</code> value; the other
+         * job attributes are inherited from the cluster. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -235,9 +358,12 @@ namespace Model
 
         /**
          * <p>Creates a job to import or export data between Amazon S3 and your on-premises
-         * data center. Note that your AWS account must have the right trust policies and
-         * permissions in place to create a job for Snowball. For more information, see
-         * <a>api-reference-policies</a>.</p>
+         * data center. Your AWS account must have the right trust policies and permissions
+         * in place to create a job for Snowball. If you're creating a job for a node in a
+         * cluster, you only need to provide the <code>clusterId</code> value; the other
+         * job attributes are inherited from the cluster. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/CreateJob">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -245,13 +371,19 @@ namespace Model
 
         /**
          * <p>Takes an <code>AddressId</code> and returns specific details about that
-         * address in the form of an <code>Address</code> object.</p>
+         * address in the form of an <code>Address</code> object.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAddressOutcome DescribeAddress(const Model::DescribeAddressRequest& request) const;
 
         /**
          * <p>Takes an <code>AddressId</code> and returns specific details about that
-         * address in the form of an <code>Address</code> object.</p>
+         * address in the form of an <code>Address</code> object.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -259,7 +391,10 @@ namespace Model
 
         /**
          * <p>Takes an <code>AddressId</code> and returns specific details about that
-         * address in the form of an <code>Address</code> object.</p>
+         * address in the form of an <code>Address</code> object.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddress">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -268,14 +403,18 @@ namespace Model
         /**
          * <p>Returns a specified number of <code>ADDRESS</code> objects. Calling this API
          * in one of the US regions will return addresses from the list of all addresses
-         * associated with this account in all US regions.</p>
+         * associated with this account in all US regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAddressesOutcome DescribeAddresses(const Model::DescribeAddressesRequest& request) const;
 
         /**
          * <p>Returns a specified number of <code>ADDRESS</code> objects. Calling this API
          * in one of the US regions will return addresses from the list of all addresses
-         * associated with this account in all US regions.</p>
+         * associated with this account in all US regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -284,21 +423,55 @@ namespace Model
         /**
          * <p>Returns a specified number of <code>ADDRESS</code> objects. Calling this API
          * in one of the US regions will return addresses from the list of all addresses
-         * associated with this account in all US regions.</p>
+         * associated with this account in all US regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeAddresses">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeAddressesAsync(const Model::DescribeAddressesRequest& request, const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Returns information about a specific cluster including shipping information,
+         * cluster status, and other important metadata.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeClusterOutcome DescribeCluster(const Model::DescribeClusterRequest& request) const;
+
+        /**
+         * <p>Returns information about a specific cluster including shipping information,
+         * cluster status, and other important metadata.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::DescribeClusterOutcomeCallable DescribeClusterCallable(const Model::DescribeClusterRequest& request) const;
+
+        /**
+         * <p>Returns information about a specific cluster including shipping information,
+         * cluster status, and other important metadata.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeCluster">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void DescribeClusterAsync(const Model::DescribeClusterRequest& request, const DescribeClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Returns information about a specific job including shipping information, job
-         * status, and other important metadata.</p>
+         * status, and other important metadata. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeJobOutcome DescribeJob(const Model::DescribeJobRequest& request) const;
 
         /**
          * <p>Returns information about a specific job including shipping information, job
-         * status, and other important metadata.</p>
+         * status, and other important metadata. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -306,7 +479,9 @@ namespace Model
 
         /**
          * <p>Returns information about a specific job including shipping information, job
-         * status, and other important metadata.</p>
+         * status, and other important metadata. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/DescribeJob">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -325,8 +500,11 @@ namespace Model
          * recommend that you don't save a copy of an <code>UnlockCode</code> value in the
          * same location as the manifest file for that job. Saving these separately helps
          * prevent unauthorized parties from gaining access to the Snowball associated with
-         * that job.</p> <p>Note that the credentials of a given job, including its
-         * manifest file and unlock code, expire 90 days after the job is created.</p>
+         * that job.</p> <p>The credentials of a given job, including its manifest file and
+         * unlock code, expire 90 days after the job is created.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetJobManifestOutcome GetJobManifest(const Model::GetJobManifestRequest& request) const;
 
@@ -343,8 +521,11 @@ namespace Model
          * recommend that you don't save a copy of an <code>UnlockCode</code> value in the
          * same location as the manifest file for that job. Saving these separately helps
          * prevent unauthorized parties from gaining access to the Snowball associated with
-         * that job.</p> <p>Note that the credentials of a given job, including its
-         * manifest file and unlock code, expire 90 days after the job is created.</p>
+         * that job.</p> <p>The credentials of a given job, including its manifest file and
+         * unlock code, expire 90 days after the job is created.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -363,8 +544,11 @@ namespace Model
          * recommend that you don't save a copy of an <code>UnlockCode</code> value in the
          * same location as the manifest file for that job. Saving these separately helps
          * prevent unauthorized parties from gaining access to the Snowball associated with
-         * that job.</p> <p>Note that the credentials of a given job, including its
-         * manifest file and unlock code, expire 90 days after the job is created.</p>
+         * that job.</p> <p>The credentials of a given job, including its manifest file and
+         * unlock code, expire 90 days after the job is created.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobManifest">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -380,7 +564,10 @@ namespace Model
          * first time.</p> <p>As a best practice, we recommend that you don't save a copy
          * of the <code>UnlockCode</code> in the same location as the manifest file for
          * that job. Saving these separately helps prevent unauthorized parties from
-         * gaining access to the Snowball associated with that job.</p>
+         * gaining access to the Snowball associated with that job.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetJobUnlockCodeOutcome GetJobUnlockCode(const Model::GetJobUnlockCodeRequest& request) const;
 
@@ -394,7 +581,10 @@ namespace Model
          * first time.</p> <p>As a best practice, we recommend that you don't save a copy
          * of the <code>UnlockCode</code> in the same location as the manifest file for
          * that job. Saving these separately helps prevent unauthorized parties from
-         * gaining access to the Snowball associated with that job.</p>
+         * gaining access to the Snowball associated with that job.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -410,7 +600,10 @@ namespace Model
          * first time.</p> <p>As a best practice, we recommend that you don't save a copy
          * of the <code>UnlockCode</code> in the same location as the manifest file for
          * that job. Saving these separately helps prevent unauthorized parties from
-         * gaining access to the Snowball associated with that job.</p>
+         * gaining access to the Snowball associated with that job.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetJobUnlockCode">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -418,17 +611,23 @@ namespace Model
 
         /**
          * <p>Returns information about the Snowball service limit for your account, and
-         * also the number of Snowballs your account has in use.</p> <p>Note that the
-         * default service limit for the number of Snowballs that you can have at one time
-         * is 1. If you want to increase your service limit, contact AWS Support.</p>
+         * also the number of Snowballs your account has in use.</p> <p>The default service
+         * limit for the number of Snowballs that you can have at one time is 1. If you
+         * want to increase your service limit, contact AWS Support.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetSnowballUsageOutcome GetSnowballUsage(const Model::GetSnowballUsageRequest& request) const;
 
         /**
          * <p>Returns information about the Snowball service limit for your account, and
-         * also the number of Snowballs your account has in use.</p> <p>Note that the
-         * default service limit for the number of Snowballs that you can have at one time
-         * is 1. If you want to increase your service limit, contact AWS Support.</p>
+         * also the number of Snowballs your account has in use.</p> <p>The default service
+         * limit for the number of Snowballs that you can have at one time is 1. If you
+         * want to increase your service limit, contact AWS Support.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -436,9 +635,12 @@ namespace Model
 
         /**
          * <p>Returns information about the Snowball service limit for your account, and
-         * also the number of Snowballs your account has in use.</p> <p>Note that the
-         * default service limit for the number of Snowballs that you can have at one time
-         * is 1. If you want to increase your service limit, contact AWS Support.</p>
+         * also the number of Snowballs your account has in use.</p> <p>The default service
+         * limit for the number of Snowballs that you can have at one time is 1. If you
+         * want to increase your service limit, contact AWS Support.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/GetSnowballUsage">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -446,10 +648,81 @@ namespace Model
 
         /**
          * <p>Returns an array of <code>JobListEntry</code> objects of the specified
+         * length. Each <code>JobListEntry</code> object is for a job in the specified
+         * cluster and contains a job's state, a job's ID, and other
+         * information.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListClusterJobsOutcome ListClusterJobs(const Model::ListClusterJobsRequest& request) const;
+
+        /**
+         * <p>Returns an array of <code>JobListEntry</code> objects of the specified
+         * length. Each <code>JobListEntry</code> object is for a job in the specified
+         * cluster and contains a job's state, a job's ID, and other
+         * information.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListClusterJobsOutcomeCallable ListClusterJobsCallable(const Model::ListClusterJobsRequest& request) const;
+
+        /**
+         * <p>Returns an array of <code>JobListEntry</code> objects of the specified
+         * length. Each <code>JobListEntry</code> object is for a job in the specified
+         * cluster and contains a job's state, a job's ID, and other
+         * information.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusterJobs">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListClusterJobsAsync(const Model::ListClusterJobsRequest& request, const ListClusterJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Returns an array of <code>ClusterListEntry</code> objects of the specified
+         * length. Each <code>ClusterListEntry</code> object contains a cluster's state, a
+         * cluster's ID, and other important status information.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListClustersOutcome ListClusters(const Model::ListClustersRequest& request) const;
+
+        /**
+         * <p>Returns an array of <code>ClusterListEntry</code> objects of the specified
+         * length. Each <code>ClusterListEntry</code> object contains a cluster's state, a
+         * cluster's ID, and other important status information.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListClustersOutcomeCallable ListClustersCallable(const Model::ListClustersRequest& request) const;
+
+        /**
+         * <p>Returns an array of <code>ClusterListEntry</code> objects of the specified
+         * length. Each <code>ClusterListEntry</code> object contains a cluster's state, a
+         * cluster's ID, and other important status information.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListClusters">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListClustersAsync(const Model::ListClustersRequest& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Returns an array of <code>JobListEntry</code> objects of the specified
          * length. Each <code>JobListEntry</code> object contains a job's state, a job's
          * ID, and a value that indicates whether the job is a job part, in the case of
          * export jobs. Calling this API action in one of the US regions will return jobs
-         * from the list of all jobs associated with this account in all US regions.</p>
+         * from the list of all jobs associated with this account in all US
+         * regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListJobsOutcome ListJobs(const Model::ListJobsRequest& request) const;
 
@@ -458,7 +731,10 @@ namespace Model
          * length. Each <code>JobListEntry</code> object contains a job's state, a job's
          * ID, and a value that indicates whether the job is a job part, in the case of
          * export jobs. Calling this API action in one of the US regions will return jobs
-         * from the list of all jobs associated with this account in all US regions.</p>
+         * from the list of all jobs associated with this account in all US
+         * regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -469,17 +745,59 @@ namespace Model
          * length. Each <code>JobListEntry</code> object contains a job's state, a job's
          * ID, and a value that indicates whether the job is a job part, in the case of
          * export jobs. Calling this API action in one of the US regions will return jobs
-         * from the list of all jobs associated with this account in all US regions.</p>
+         * from the list of all jobs associated with this account in all US
+         * regions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/ListJobs">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListJobsAsync(const Model::ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>While a cluster's <code>ClusterState</code> value is in the
+         * <code>AwaitingQuorum</code> state, you can update some of the information
+         * associated with a cluster. Once the cluster changes to a different job state,
+         * usually 60 minutes after the cluster being created, this action is no longer
+         * available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateClusterOutcome UpdateCluster(const Model::UpdateClusterRequest& request) const;
+
+        /**
+         * <p>While a cluster's <code>ClusterState</code> value is in the
+         * <code>AwaitingQuorum</code> state, you can update some of the information
+         * associated with a cluster. Once the cluster changes to a different job state,
+         * usually 60 minutes after the cluster being created, this action is no longer
+         * available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::UpdateClusterOutcomeCallable UpdateClusterCallable(const Model::UpdateClusterRequest& request) const;
+
+        /**
+         * <p>While a cluster's <code>ClusterState</code> value is in the
+         * <code>AwaitingQuorum</code> state, you can update some of the information
+         * associated with a cluster. Once the cluster changes to a different job state,
+         * usually 60 minutes after the cluster being created, this action is no longer
+         * available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateCluster">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void UpdateClusterAsync(const Model::UpdateClusterRequest& request, const UpdateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>While a job's <code>JobState</code> value is <code>New</code>, you can update
          * some of the information associated with a job. Once the job changes to a
          * different job state, usually within 60 minutes of the job being created, this
-         * action is no longer available.</p>
+         * action is no longer available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateJobOutcome UpdateJob(const Model::UpdateJobRequest& request) const;
 
@@ -487,7 +805,9 @@ namespace Model
          * <p>While a job's <code>JobState</code> value is <code>New</code>, you can update
          * some of the information associated with a job. Once the job changes to a
          * different job state, usually within 60 minutes of the job being created, this
-         * action is no longer available.</p>
+         * action is no longer available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -497,7 +817,9 @@ namespace Model
          * <p>While a job's <code>JobState</code> value is <code>New</code>, you can update
          * some of the information associated with a job. Once the job changes to a
          * different job state, usually within 60 minutes of the job being created, this
-         * action is no longer available.</p>
+         * action is no longer available.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30/UpdateJob">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -508,20 +830,26 @@ namespace Model
       void init(const Client::ClientConfiguration& clientConfiguration);
 
         /**Async helpers**/
+        void CancelClusterAsyncHelper(const Model::CancelClusterRequest& request, const CancelClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CancelJobAsyncHelper(const Model::CancelJobRequest& request, const CancelJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CreateAddressAsyncHelper(const Model::CreateAddressRequest& request, const CreateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void CreateClusterAsyncHelper(const Model::CreateClusterRequest& request, const CreateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void CreateJobAsyncHelper(const Model::CreateJobRequest& request, const CreateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeAddressAsyncHelper(const Model::DescribeAddressRequest& request, const DescribeAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeAddressesAsyncHelper(const Model::DescribeAddressesRequest& request, const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void DescribeClusterAsyncHelper(const Model::DescribeClusterRequest& request, const DescribeClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void DescribeJobAsyncHelper(const Model::DescribeJobRequest& request, const DescribeJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetJobManifestAsyncHelper(const Model::GetJobManifestRequest& request, const GetJobManifestResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetJobUnlockCodeAsyncHelper(const Model::GetJobUnlockCodeRequest& request, const GetJobUnlockCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void GetSnowballUsageAsyncHelper(const Model::GetSnowballUsageRequest& request, const GetSnowballUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListClusterJobsAsyncHelper(const Model::ListClusterJobsRequest& request, const ListClusterJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListClustersAsyncHelper(const Model::ListClustersRequest& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListJobsAsyncHelper(const Model::ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void UpdateClusterAsyncHelper(const Model::UpdateClusterRequest& request, const UpdateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void UpdateJobAsyncHelper(const Model::UpdateJobRequest& request, const UpdateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace Snowball

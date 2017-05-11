@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/dynamodb/DynamoDBRequest.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/dynamodb/model/ReturnConsumedCapacity.h>
 #include <aws/dynamodb/model/AttributeValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>GetItem</i> operation.</p>
+   * <p>Represents the input of a <code>GetItem</code> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/GetItemInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API GetItemRequest : public DynamoDBRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the table containing the requested item.</p>
@@ -52,7 +58,7 @@ namespace Model
     /**
      * <p>The name of the table containing the requested item.</p>
      */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
+    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
 
     /**
      * <p>The name of the table containing the requested item.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>The name of the table containing the requested item.</p>
      */
-    inline GetItemRequest& WithTableName(Aws::String&& value) { SetTableName(value); return *this;}
+    inline GetItemRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the table containing the requested item.</p>
@@ -75,8 +81,8 @@ namespace Model
     inline GetItemRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
@@ -84,8 +90,8 @@ namespace Model
     inline const Aws::Map<Aws::String, AttributeValue>& GetKey() const{ return m_key; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
@@ -93,17 +99,17 @@ namespace Model
     inline void SetKey(const Aws::Map<Aws::String, AttributeValue>& value) { m_keyHasBeenSet = true; m_key = value; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline void SetKey(Aws::Map<Aws::String, AttributeValue>&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::Map<Aws::String, AttributeValue>&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
@@ -111,193 +117,129 @@ namespace Model
     inline GetItemRequest& WithKey(const Aws::Map<Aws::String, AttributeValue>& value) { SetKey(value); return *this;}
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& WithKey(Aws::Map<Aws::String, AttributeValue>&& value) { SetKey(value); return *this;}
+    inline GetItemRequest& WithKey(Aws::Map<Aws::String, AttributeValue>&& value) { SetKey(std::move(value)); return *this;}
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(const Aws::String& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(const Aws::String& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(key, value); return *this; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(Aws::String&& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(Aws::String&& key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(std::move(key), value); return *this; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(const Aws::String& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(const Aws::String& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(Aws::String&& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(Aws::String&& key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(const char* key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(const char* key, AttributeValue&& value) { m_keyHasBeenSet = true; m_key.emplace(key, std::move(value)); return *this; }
 
     /**
-     * <p>A map of attribute names to <i>AttributeValue</i> objects, representing the
-     * primary key of the item to retrieve.</p> <p>For the primary key, you must
+     * <p>A map of attribute names to <code>AttributeValue</code> objects, representing
+     * the primary key of the item to retrieve.</p> <p>For the primary key, you must
      * provide all of the attributes. For example, with a simple primary key, you only
      * need to provide a value for the partition key. For a composite primary key, you
      * must provide values for both the partition key and the sort key.</p>
      */
-    inline GetItemRequest& AddKey(const char* key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key[key] = value; return *this; }
+    inline GetItemRequest& AddKey(const char* key, const AttributeValue& value) { m_keyHasBeenSet = true; m_key.emplace(key, value); return *this; }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline const Aws::Vector<Aws::String>& GetAttributesToGet() const{ return m_attributesToGet; }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline void SetAttributesToGet(const Aws::Vector<Aws::String>& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet = value; }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline void SetAttributesToGet(Aws::Vector<Aws::String>&& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet = value; }
+    inline void SetAttributesToGet(Aws::Vector<Aws::String>&& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet = std::move(value); }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline GetItemRequest& WithAttributesToGet(const Aws::Vector<Aws::String>& value) { SetAttributesToGet(value); return *this;}
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& WithAttributesToGet(Aws::Vector<Aws::String>&& value) { SetAttributesToGet(value); return *this;}
+    inline GetItemRequest& WithAttributesToGet(Aws::Vector<Aws::String>&& value) { SetAttributesToGet(std::move(value)); return *this;}
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline GetItemRequest& AddAttributesToGet(const Aws::String& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet.push_back(value); return *this; }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddAttributesToGet(Aws::String&& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet.push_back(value); return *this; }
+    inline GetItemRequest& AddAttributesToGet(Aws::String&& value) { m_attributesToGetHasBeenSet = true; m_attributesToGet.push_back(std::move(value)); return *this; }
 
     /**
-     * <important> <p>This is a legacy parameter, for backward compatibility. New
-     * applications should use <i>ProjectionExpression</i> instead. Do not combine
-     * legacy parameters and expression parameters in a single API call; otherwise,
-     * DynamoDB will return a <i>ValidationException</i> exception.</p> <p>This
-     * parameter allows you to retrieve attributes of type List or Map; however, it
-     * cannot retrieve individual elements within a List or a Map.</p> </important>
-     * <p>The names of one or more attributes to retrieve. If no attribute names are
-     * provided, then all attributes will be returned. If any of the requested
-     * attributes are not found, they will not appear in the result.</p> <p>Note that
-     * <i>AttributesToGet</i> has no effect on provisioned throughput consumption.
-     * DynamoDB determines capacity units consumed based on item size, not on the
-     * amount of data that is returned to an application.</p>
+     * <p>This is a legacy parameter. Use <code>ProjectionExpression</code> instead.
+     * For more information, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html">AttributesToGet</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline GetItemRequest& AddAttributesToGet(const char* value) { m_attributesToGetHasBeenSet = true; m_attributesToGet.push_back(value); return *this; }
 
@@ -329,13 +271,13 @@ namespace Model
     inline void SetReturnConsumedCapacity(const ReturnConsumedCapacity& value) { m_returnConsumedCapacityHasBeenSet = true; m_returnConsumedCapacity = value; }
 
     
-    inline void SetReturnConsumedCapacity(ReturnConsumedCapacity&& value) { m_returnConsumedCapacityHasBeenSet = true; m_returnConsumedCapacity = value; }
+    inline void SetReturnConsumedCapacity(ReturnConsumedCapacity&& value) { m_returnConsumedCapacityHasBeenSet = true; m_returnConsumedCapacity = std::move(value); }
 
     
     inline GetItemRequest& WithReturnConsumedCapacity(const ReturnConsumedCapacity& value) { SetReturnConsumedCapacity(value); return *this;}
 
     
-    inline GetItemRequest& WithReturnConsumedCapacity(ReturnConsumedCapacity&& value) { SetReturnConsumedCapacity(value); return *this;}
+    inline GetItemRequest& WithReturnConsumedCapacity(ReturnConsumedCapacity&& value) { SetReturnConsumedCapacity(std::move(value)); return *this;}
 
     /**
      * <p>A string that identifies one or more attributes to retrieve from the table.
@@ -345,9 +287,7 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline const Aws::String& GetProjectionExpression() const{ return m_projectionExpression; }
 
@@ -359,9 +299,7 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline void SetProjectionExpression(const Aws::String& value) { m_projectionExpressionHasBeenSet = true; m_projectionExpression = value; }
 
@@ -373,11 +311,9 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline void SetProjectionExpression(Aws::String&& value) { m_projectionExpressionHasBeenSet = true; m_projectionExpression = value; }
+    inline void SetProjectionExpression(Aws::String&& value) { m_projectionExpressionHasBeenSet = true; m_projectionExpression = std::move(value); }
 
     /**
      * <p>A string that identifies one or more attributes to retrieve from the table.
@@ -387,9 +323,7 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline void SetProjectionExpression(const char* value) { m_projectionExpressionHasBeenSet = true; m_projectionExpression.assign(value); }
 
@@ -401,9 +335,7 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline GetItemRequest& WithProjectionExpression(const Aws::String& value) { SetProjectionExpression(value); return *this;}
 
@@ -415,11 +347,9 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& WithProjectionExpression(Aws::String&& value) { SetProjectionExpression(value); return *this;}
+    inline GetItemRequest& WithProjectionExpression(Aws::String&& value) { SetProjectionExpression(std::move(value)); return *this;}
 
     /**
      * <p>A string that identifies one or more attributes to retrieve from the table.
@@ -429,30 +359,29 @@ namespace Model
      * requested attributes are not found, they will not appear in the result.</p>
      * <p>For more information, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
-     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p> <note>
-     * <p> <i>ProjectionExpression</i> replaces the legacy <i>AttributesToGet</i>
-     * parameter.</p> </note>
+     * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
     inline GetItemRequest& WithProjectionExpression(const char* value) { SetProjectionExpression(value); return *this;}
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
@@ -463,22 +392,23 @@ namespace Model
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
@@ -489,48 +419,50 @@ namespace Model
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline void SetExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames = value; }
+    inline void SetExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames = std::move(value); }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
@@ -541,211 +473,219 @@ namespace Model
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& WithExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { SetExpressionAttributeNames(value); return *this;}
+    inline GetItemRequest& WithExpressionAttributeNames(Aws::Map<Aws::String, Aws::String>&& value) { SetExpressionAttributeNames(std::move(value)); return *this;}
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(const Aws::String& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(const Aws::String& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, value); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, const Aws::String& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(const Aws::String& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(const Aws::String& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(const char* key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(const char* key, Aws::String&& value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(Aws::String&& key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>One or more substitution tokens for attribute names in an expression. The
-     * following are some use cases for using <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p>To access an attribute whose name conflicts with a DynamoDB reserved
-     * word.</p> </li> <li> <p>To create a placeholder for repeating occurrences of an
-     * attribute name in an expression.</p> </li> <li> <p>To prevent special characters
-     * in an attribute name from being misinterpreted in an expression.</p> </li> </ul>
-     * <p>Use the <b>#</b> character in an expression to dereference an attribute name.
-     * For example, consider the following attribute name:</p> <ul> <li> <p>
-     * <code>Percentile</code> </p> </li> </ul> <p>The name of this attribute conflicts
-     * with a reserved word, so it cannot be used directly in an expression. (For the
-     * complete list of reserved words, see <a
+     * following are some use cases for using
+     * <code>ExpressionAttributeNames</code>:</p> <ul> <li> <p>To access an attribute
+     * whose name conflicts with a DynamoDB reserved word.</p> </li> <li> <p>To create
+     * a placeholder for repeating occurrences of an attribute name in an
+     * expression.</p> </li> <li> <p>To prevent special characters in an attribute name
+     * from being misinterpreted in an expression.</p> </li> </ul> <p>Use the <b>#</b>
+     * character in an expression to dereference an attribute name. For example,
+     * consider the following attribute name:</p> <ul> <li> <p> <code>Percentile</code>
+     * </p> </li> </ul> <p>The name of this attribute conflicts with a reserved word,
+     * so it cannot be used directly in an expression. (For the complete list of
+     * reserved words, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html">Reserved
      * Words</a> in the <i>Amazon DynamoDB Developer Guide</i>). To work around this,
-     * you could specify the following for <i>ExpressionAttributeNames</i>:</p> <ul>
-     * <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could then use
-     * this substitution in an expression, as in this example:</p> <ul> <li> <p>
-     * <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
+     * you could specify the following for <code>ExpressionAttributeNames</code>:</p>
+     * <ul> <li> <p> <code>{"#P":"Percentile"}</code> </p> </li> </ul> <p>You could
+     * then use this substitution in an expression, as in this example:</p> <ul> <li>
+     * <p> <code>#P = :val</code> </p> </li> </ul> <note> <p>Tokens that begin with the
      * <b>:</b> character are <i>expression attribute values</i>, which are
      * placeholders for the actual value at runtime.</p> </note> <p>For more
      * information on expression attribute names, see <a
      * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html">Accessing
      * Item Attributes</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
      */
-    inline GetItemRequest& AddExpressionAttributeNames(const char* key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames[key] = value; return *this; }
+    inline GetItemRequest& AddExpressionAttributeNames(const char* key, const char* value) { m_expressionAttributeNamesHasBeenSet = true; m_expressionAttributeNames.emplace(key, value); return *this; }
 
   private:
     Aws::String m_tableName;

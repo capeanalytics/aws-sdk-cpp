@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/support/model/Service.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>The list of AWS services returned by the <a>DescribeServices</a>
-   * operation.</p>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeServicesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API DescribeServicesResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>A JSON-formatted list of AWS services.</p>
      */
-    inline void SetServices(Aws::Vector<Service>&& value) { m_services = value; }
+    inline void SetServices(Aws::Vector<Service>&& value) { m_services = std::move(value); }
 
     /**
      * <p>A JSON-formatted list of AWS services.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>A JSON-formatted list of AWS services.</p>
      */
-    inline DescribeServicesResult& WithServices(Aws::Vector<Service>&& value) { SetServices(value); return *this;}
+    inline DescribeServicesResult& WithServices(Aws::Vector<Service>&& value) { SetServices(std::move(value)); return *this;}
 
     /**
      * <p>A JSON-formatted list of AWS services.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>A JSON-formatted list of AWS services.</p>
      */
-    inline DescribeServicesResult& AddServices(Service&& value) { m_services.push_back(value); return *this; }
+    inline DescribeServicesResult& AddServices(Service&& value) { m_services.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Service> m_services;

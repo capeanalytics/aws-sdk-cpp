@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/EMRRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticmapreduce/model/StepState.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>This input determines which steps to list.</p>
+   * <p>This input determines which steps to list.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListStepsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API ListStepsRequest : public EMRRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The identifier of the cluster for which to list the steps.</p>
@@ -50,7 +55,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster for which to list the steps.</p>
      */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
+    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
 
     /**
      * <p>The identifier of the cluster for which to list the steps.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster for which to list the steps.</p>
      */
-    inline ListStepsRequest& WithClusterId(Aws::String&& value) { SetClusterId(value); return *this;}
+    inline ListStepsRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the cluster for which to list the steps.</p>
@@ -85,7 +90,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on certain states.</p>
      */
-    inline void SetStepStates(Aws::Vector<StepState>&& value) { m_stepStatesHasBeenSet = true; m_stepStates = value; }
+    inline void SetStepStates(Aws::Vector<StepState>&& value) { m_stepStatesHasBeenSet = true; m_stepStates = std::move(value); }
 
     /**
      * <p>The filter to limit the step list based on certain states.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on certain states.</p>
      */
-    inline ListStepsRequest& WithStepStates(Aws::Vector<StepState>&& value) { SetStepStates(value); return *this;}
+    inline ListStepsRequest& WithStepStates(Aws::Vector<StepState>&& value) { SetStepStates(std::move(value)); return *this;}
 
     /**
      * <p>The filter to limit the step list based on certain states.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on certain states.</p>
      */
-    inline ListStepsRequest& AddStepStates(StepState&& value) { m_stepStatesHasBeenSet = true; m_stepStates.push_back(value); return *this; }
+    inline ListStepsRequest& AddStepStates(StepState&& value) { m_stepStatesHasBeenSet = true; m_stepStates.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
@@ -120,7 +125,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
      */
-    inline void SetStepIds(Aws::Vector<Aws::String>&& value) { m_stepIdsHasBeenSet = true; m_stepIds = value; }
+    inline void SetStepIds(Aws::Vector<Aws::String>&& value) { m_stepIdsHasBeenSet = true; m_stepIds = std::move(value); }
 
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
      */
-    inline ListStepsRequest& WithStepIds(Aws::Vector<Aws::String>&& value) { SetStepIds(value); return *this;}
+    inline ListStepsRequest& WithStepIds(Aws::Vector<Aws::String>&& value) { SetStepIds(std::move(value)); return *this;}
 
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
@@ -140,7 +145,7 @@ namespace Model
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
      */
-    inline ListStepsRequest& AddStepIds(Aws::String&& value) { m_stepIdsHasBeenSet = true; m_stepIds.push_back(value); return *this; }
+    inline ListStepsRequest& AddStepIds(Aws::String&& value) { m_stepIdsHasBeenSet = true; m_stepIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The filter to limit the step list based on the identifier of the steps.</p>
@@ -160,7 +165,7 @@ namespace Model
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
@@ -175,7 +180,7 @@ namespace Model
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline ListStepsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListStepsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>

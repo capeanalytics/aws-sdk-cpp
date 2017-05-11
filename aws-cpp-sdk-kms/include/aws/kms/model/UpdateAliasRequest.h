@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/kms/KMSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>String that contains the name of the alias to be modified. The name must
@@ -53,7 +56,7 @@ namespace Model
      * start with the word "alias" followed by a forward slash (alias/). Aliases that
      * begin with "alias/aws" are reserved.</p>
      */
-    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = value; }
+    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::move(value); }
 
     /**
      * <p>String that contains the name of the alias to be modified. The name must
@@ -74,7 +77,7 @@ namespace Model
      * start with the word "alias" followed by a forward slash (alias/). Aliases that
      * begin with "alias/aws" are reserved.</p>
      */
-    inline UpdateAliasRequest& WithAliasName(Aws::String&& value) { SetAliasName(value); return *this;}
+    inline UpdateAliasRequest& WithAliasName(Aws::String&& value) { SetAliasName(std::move(value)); return *this;}
 
     /**
      * <p>String that contains the name of the alias to be modified. The name must
@@ -117,7 +120,7 @@ namespace Model
      * <a>ListAliases</a> to verify that the alias is mapped to the correct
      * <code>TargetKeyId</code>.</p>
      */
-    inline void SetTargetKeyId(Aws::String&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = value; }
+    inline void SetTargetKeyId(Aws::String&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = std::move(value); }
 
     /**
      * <p>Unique identifier of the customer master key to be mapped to the alias. This
@@ -153,7 +156,7 @@ namespace Model
      * <a>ListAliases</a> to verify that the alias is mapped to the correct
      * <code>TargetKeyId</code>.</p>
      */
-    inline UpdateAliasRequest& WithTargetKeyId(Aws::String&& value) { SetTargetKeyId(value); return *this;}
+    inline UpdateAliasRequest& WithTargetKeyId(Aws::String&& value) { SetTargetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>Unique identifier of the customer master key to be mapped to the alias. This

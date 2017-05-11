@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/swf/model/HistoryEvent.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,6 +30,7 @@ namespace Model
 
 HistoryEvent::HistoryEvent() : 
     m_eventTimestampHasBeenSet(false),
+    m_eventType(EventType::NOT_SET),
     m_eventTypeHasBeenSet(false),
     m_eventId(0),
     m_eventIdHasBeenSet(false),
@@ -91,6 +93,7 @@ HistoryEvent::HistoryEvent() :
 
 HistoryEvent::HistoryEvent(const JsonValue& jsonValue) : 
     m_eventTimestampHasBeenSet(false),
+    m_eventType(EventType::NOT_SET),
     m_eventTypeHasBeenSet(false),
     m_eventId(0),
     m_eventIdHasBeenSet(false),

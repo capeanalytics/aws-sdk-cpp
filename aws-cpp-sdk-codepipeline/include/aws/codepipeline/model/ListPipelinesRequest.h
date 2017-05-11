@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/CodePipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a list pipelines action.</p>
+   * <p>Represents the input of a list pipelines action.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelinesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ListPipelinesRequest : public CodePipelineRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>An identifier that was returned from the previous list pipelines call, which
@@ -51,7 +57,7 @@ namespace Model
      * <p>An identifier that was returned from the previous list pipelines call, which
      * can be used to return the next set of pipelines in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier that was returned from the previous list pipelines call, which
@@ -69,7 +75,7 @@ namespace Model
      * <p>An identifier that was returned from the previous list pipelines call, which
      * can be used to return the next set of pipelines in the list.</p>
      */
-    inline ListPipelinesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListPipelinesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous list pipelines call, which

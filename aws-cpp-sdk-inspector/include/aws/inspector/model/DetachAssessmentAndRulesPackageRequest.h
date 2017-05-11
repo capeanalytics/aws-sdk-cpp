@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ARN specifying the assessment from which you want to detach a rules
      * package.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>The ARN specifying the assessment from which you want to detach a rules
      * package.</p>
      */
-    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = value; }
+    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the assessment from which you want to detach a rules
@@ -68,7 +71,7 @@ namespace Model
      * <p>The ARN specifying the assessment from which you want to detach a rules
      * package.</p>
      */
-    inline DetachAssessmentAndRulesPackageRequest& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(value); return *this;}
+    inline DetachAssessmentAndRulesPackageRequest& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the assessment from which you want to detach a rules
@@ -92,7 +95,7 @@ namespace Model
      * <p>The ARN specifying the rules package that you want to detach from the
      * assessment.</p>
      */
-    inline void SetRulesPackageArn(Aws::String&& value) { m_rulesPackageArnHasBeenSet = true; m_rulesPackageArn = value; }
+    inline void SetRulesPackageArn(Aws::String&& value) { m_rulesPackageArnHasBeenSet = true; m_rulesPackageArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the rules package that you want to detach from the
@@ -110,7 +113,7 @@ namespace Model
      * <p>The ARN specifying the rules package that you want to detach from the
      * assessment.</p>
      */
-    inline DetachAssessmentAndRulesPackageRequest& WithRulesPackageArn(Aws::String&& value) { SetRulesPackageArn(value); return *this;}
+    inline DetachAssessmentAndRulesPackageRequest& WithRulesPackageArn(Aws::String&& value) { SetRulesPackageArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the rules package that you want to detach from the

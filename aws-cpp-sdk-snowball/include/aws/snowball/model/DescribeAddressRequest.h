@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/snowball/Snowball_EXPORTS.h>
 #include <aws/snowball/SnowballRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The automatically generated ID for a specific address.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The automatically generated ID for a specific address.</p>
      */
-    inline void SetAddressId(Aws::String&& value) { m_addressIdHasBeenSet = true; m_addressId = value; }
+    inline void SetAddressId(Aws::String&& value) { m_addressIdHasBeenSet = true; m_addressId = std::move(value); }
 
     /**
      * <p>The automatically generated ID for a specific address.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The automatically generated ID for a specific address.</p>
      */
-    inline DescribeAddressRequest& WithAddressId(Aws::String&& value) { SetAddressId(value); return *this;}
+    inline DescribeAddressRequest& WithAddressId(Aws::String&& value) { SetAddressId(std::move(value)); return *this;}
 
     /**
      * <p>The automatically generated ID for a specific address.</p>

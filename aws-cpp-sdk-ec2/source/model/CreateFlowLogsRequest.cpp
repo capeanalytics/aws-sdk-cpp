@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/CreateFlowLogsRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -21,7 +22,9 @@ using namespace Aws::Utils;
 
 CreateFlowLogsRequest::CreateFlowLogsRequest() : 
     m_resourceIdsHasBeenSet(false),
+    m_resourceType(FlowLogsResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
+    m_trafficType(TrafficType::NOT_SET),
     m_trafficTypeHasBeenSet(false),
     m_logGroupNameHasBeenSet(false),
     m_deliverLogsPermissionArnHasBeenSet(false),
@@ -69,7 +72,12 @@ Aws::String CreateFlowLogsRequest::SerializePayload() const
     ss << "ClientToken=" << StringUtils::URLEncode(m_clientToken.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  CreateFlowLogsRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

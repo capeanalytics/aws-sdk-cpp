@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/BatchWriteItemResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -42,7 +43,8 @@ BatchWriteItemResult& BatchWriteItemResult::operator =(const AmazonWebServiceRes
     for(auto& unprocessedItemsItem : unprocessedItemsJsonMap)
     {
       Array<JsonValue> writeRequestsJsonList = unprocessedItemsItem.second.AsArray();
-      Aws::Vector<WriteRequest> writeRequestsList((size_t)writeRequestsJsonList.GetLength());
+      Aws::Vector<WriteRequest> writeRequestsList;
+      writeRequestsList.reserve((size_t)writeRequestsJsonList.GetLength());
       for(unsigned writeRequestsIndex = 0; writeRequestsIndex < writeRequestsJsonList.GetLength(); ++writeRequestsIndex)
       {
         writeRequestsList.push_back(writeRequestsJsonList[writeRequestsIndex].AsObject());
@@ -57,7 +59,8 @@ BatchWriteItemResult& BatchWriteItemResult::operator =(const AmazonWebServiceRes
     for(auto& itemCollectionMetricsItem : itemCollectionMetricsJsonMap)
     {
       Array<JsonValue> itemCollectionMetricsMultipleJsonList = itemCollectionMetricsItem.second.AsArray();
-      Aws::Vector<ItemCollectionMetrics> itemCollectionMetricsMultipleList((size_t)itemCollectionMetricsMultipleJsonList.GetLength());
+      Aws::Vector<ItemCollectionMetrics> itemCollectionMetricsMultipleList;
+      itemCollectionMetricsMultipleList.reserve((size_t)itemCollectionMetricsMultipleJsonList.GetLength());
       for(unsigned itemCollectionMetricsMultipleIndex = 0; itemCollectionMetricsMultipleIndex < itemCollectionMetricsMultipleJsonList.GetLength(); ++itemCollectionMetricsMultipleIndex)
       {
         itemCollectionMetricsMultipleList.push_back(itemCollectionMetricsMultipleJsonList[itemCollectionMetricsMultipleIndex].AsObject());

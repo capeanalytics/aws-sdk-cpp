@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 
   /**
    * <p>Custom policy for requesting termination protection or termination of
-   * specific instances when shrinking an instance group.</p>
+   * specific instances when shrinking an instance group.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/InstanceResizePolicy">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API InstanceResizePolicy
   {
@@ -59,7 +64,7 @@ namespace Model
      * <p>Specific list of instances to be terminated when shrinking an instance
      * group.</p>
      */
-    inline void SetInstancesToTerminate(Aws::Vector<Aws::String>&& value) { m_instancesToTerminateHasBeenSet = true; m_instancesToTerminate = value; }
+    inline void SetInstancesToTerminate(Aws::Vector<Aws::String>&& value) { m_instancesToTerminateHasBeenSet = true; m_instancesToTerminate = std::move(value); }
 
     /**
      * <p>Specific list of instances to be terminated when shrinking an instance
@@ -71,7 +76,7 @@ namespace Model
      * <p>Specific list of instances to be terminated when shrinking an instance
      * group.</p>
      */
-    inline InstanceResizePolicy& WithInstancesToTerminate(Aws::Vector<Aws::String>&& value) { SetInstancesToTerminate(value); return *this;}
+    inline InstanceResizePolicy& WithInstancesToTerminate(Aws::Vector<Aws::String>&& value) { SetInstancesToTerminate(std::move(value)); return *this;}
 
     /**
      * <p>Specific list of instances to be terminated when shrinking an instance
@@ -83,7 +88,7 @@ namespace Model
      * <p>Specific list of instances to be terminated when shrinking an instance
      * group.</p>
      */
-    inline InstanceResizePolicy& AddInstancesToTerminate(Aws::String&& value) { m_instancesToTerminateHasBeenSet = true; m_instancesToTerminate.push_back(value); return *this; }
+    inline InstanceResizePolicy& AddInstancesToTerminate(Aws::String&& value) { m_instancesToTerminateHasBeenSet = true; m_instancesToTerminate.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specific list of instances to be terminated when shrinking an instance
@@ -107,7 +112,7 @@ namespace Model
      * <p>Specific list of instances to be protected when shrinking an instance
      * group.</p>
      */
-    inline void SetInstancesToProtect(Aws::Vector<Aws::String>&& value) { m_instancesToProtectHasBeenSet = true; m_instancesToProtect = value; }
+    inline void SetInstancesToProtect(Aws::Vector<Aws::String>&& value) { m_instancesToProtectHasBeenSet = true; m_instancesToProtect = std::move(value); }
 
     /**
      * <p>Specific list of instances to be protected when shrinking an instance
@@ -119,7 +124,7 @@ namespace Model
      * <p>Specific list of instances to be protected when shrinking an instance
      * group.</p>
      */
-    inline InstanceResizePolicy& WithInstancesToProtect(Aws::Vector<Aws::String>&& value) { SetInstancesToProtect(value); return *this;}
+    inline InstanceResizePolicy& WithInstancesToProtect(Aws::Vector<Aws::String>&& value) { SetInstancesToProtect(std::move(value)); return *this;}
 
     /**
      * <p>Specific list of instances to be protected when shrinking an instance
@@ -131,7 +136,7 @@ namespace Model
      * <p>Specific list of instances to be protected when shrinking an instance
      * group.</p>
      */
-    inline InstanceResizePolicy& AddInstancesToProtect(Aws::String&& value) { m_instancesToProtectHasBeenSet = true; m_instancesToProtect.push_back(value); return *this; }
+    inline InstanceResizePolicy& AddInstancesToProtect(Aws::String&& value) { m_instancesToProtectHasBeenSet = true; m_instancesToProtect.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specific list of instances to be protected when shrinking an instance

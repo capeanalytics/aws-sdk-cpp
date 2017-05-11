@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,20 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>This action gets information about a specified health check.</p> <p>Send a
-   * <code>GET</code> request to the <code>/<i>Amazon Route 53 API
-   * version</i>/gethealthcheckrequest</code> resource.</p> <p>For information about
-   * getting information about a health check using the Amazon Route 53 console, see
-   * <a
-   * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon
-   * Route 53 Health Checks and DNS Failover</a> in the <i>Amazon Route 53 Developer
-   * Guide</i>.</p>
+   * <p>A request to get information about a specified health check. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetHealthCheckRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API GetHealthCheckRequest : public Route53Request
   {
   public:
     GetHealthCheckRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The identifier that Amazon Route 53 assigned to the health check when you
@@ -62,7 +61,7 @@ namespace Model
      * specify which health check to use. The value can be up to 64 characters
      * long.</p>
      */
-    inline void SetHealthCheckId(Aws::String&& value) { m_healthCheckIdHasBeenSet = true; m_healthCheckId = value; }
+    inline void SetHealthCheckId(Aws::String&& value) { m_healthCheckIdHasBeenSet = true; m_healthCheckId = std::move(value); }
 
     /**
      * <p>The identifier that Amazon Route 53 assigned to the health check when you
@@ -86,7 +85,7 @@ namespace Model
      * specify which health check to use. The value can be up to 64 characters
      * long.</p>
      */
-    inline GetHealthCheckRequest& WithHealthCheckId(Aws::String&& value) { SetHealthCheckId(value); return *this;}
+    inline GetHealthCheckRequest& WithHealthCheckId(Aws::String&& value) { SetHealthCheckId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier that Amazon Route 53 assigned to the health check when you

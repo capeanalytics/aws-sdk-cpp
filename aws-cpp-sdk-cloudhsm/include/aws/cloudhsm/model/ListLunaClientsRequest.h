@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/cloudhsm/CloudHSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>.
      * Pass null if this is the first call.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>.
      * Pass null if this is the first call.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>.
@@ -68,7 +71,7 @@ namespace Model
      * <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>.
      * Pass null if this is the first call.</p>
      */
-    inline ListLunaClientsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListLunaClientsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>.

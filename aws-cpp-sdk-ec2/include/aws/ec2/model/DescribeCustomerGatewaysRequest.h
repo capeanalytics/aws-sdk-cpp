@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeCustomerGateways.</p>
+   * <p>Contains the parameters for DescribeCustomerGateways.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCustomerGatewaysRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeCustomerGatewaysRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     DescribeCustomerGatewaysRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -75,7 +85,7 @@ namespace Model
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
      * gateways.</p>
      */
-    inline void SetCustomerGatewayIds(Aws::Vector<Aws::String>&& value) { m_customerGatewayIdsHasBeenSet = true; m_customerGatewayIds = value; }
+    inline void SetCustomerGatewayIds(Aws::Vector<Aws::String>&& value) { m_customerGatewayIdsHasBeenSet = true; m_customerGatewayIds = std::move(value); }
 
     /**
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
@@ -87,7 +97,7 @@ namespace Model
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
      * gateways.</p>
      */
-    inline DescribeCustomerGatewaysRequest& WithCustomerGatewayIds(Aws::Vector<Aws::String>&& value) { SetCustomerGatewayIds(value); return *this;}
+    inline DescribeCustomerGatewaysRequest& WithCustomerGatewayIds(Aws::Vector<Aws::String>&& value) { SetCustomerGatewayIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
@@ -99,7 +109,7 @@ namespace Model
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
      * gateways.</p>
      */
-    inline DescribeCustomerGatewaysRequest& AddCustomerGatewayIds(Aws::String&& value) { m_customerGatewayIdsHasBeenSet = true; m_customerGatewayIds.push_back(value); return *this; }
+    inline DescribeCustomerGatewaysRequest& AddCustomerGatewayIds(Aws::String&& value) { m_customerGatewayIdsHasBeenSet = true; m_customerGatewayIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more customer gateway IDs.</p> <p>Default: Describes all your customer
@@ -108,172 +118,193 @@ namespace Model
     inline DescribeCustomerGatewaysRequest& AddCustomerGatewayIds(const char* value) { m_customerGatewayIdsHasBeenSet = true; m_customerGatewayIds.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
     inline DescribeCustomerGatewaysRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
-    inline DescribeCustomerGatewaysRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeCustomerGatewaysRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
     inline DescribeCustomerGatewaysRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>bgp-asn</code> - The customer
+     * <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer
      * gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p>
-     * </li> <li> <p><code>customer-gateway-id</code> - The ID of the customer
-     * gateway.</p> </li> <li> <p><code>ip-address</code> - The IP address of the
-     * customer gateway's Internet-routable external interface.</p> </li> <li>
-     * <p><code>state</code> - The state of the customer gateway (<code>pending</code>
-     * | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
-     * </li> <li> <p><code>type</code> - The type of customer gateway. Currently, the
-     * only supported type is <code>ipsec.1</code>.</p> </li> <li>
-     * <p><code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
-     * assigned to the resource.</p> </li> <li> <p><code>tag-key</code> - The key of a
-     * tag assigned to the resource. This filter is independent of the
+     * </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer
+     * gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the
+     * customer gateway's Internet-routable external interface.</p> </li> <li> <p>
+     * <code>state</code> - The state of the customer gateway (<code>pending</code> |
+     * <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p>
+     * </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the
+     * only supported type is <code>ipsec.1</code>.</p> </li> <li> <p>
+     * <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag
+     * assigned to the resource. Specify the key of the tag in the filter name and the
+     * value of the tag in the filter value. For example, for the tag Purpose=X,
+     * specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the
+     * filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag
+     * assigned to the resource. This filter is independent of the
      * <code>tag-value</code> filter. For example, if you use both the filter
      * "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned
      * both the tag key Purpose (regardless of what the tag's value is), and the tag
      * value X (regardless of what the tag's key is). If you want to list only
      * resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i>
-     * filter.</p> </li> <li> <p><code>tag-value</code> - The value of a tag assigned
+     * filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned
      * to the resource. This filter is independent of the <code>tag-key</code>
      * filter.</p> </li> </ul>
      */
-    inline DescribeCustomerGatewaysRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeCustomerGatewaysRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
   private:
     bool m_dryRun;

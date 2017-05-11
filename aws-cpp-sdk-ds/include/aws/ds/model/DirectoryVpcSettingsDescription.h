@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about the directory.</p>
+   * <p>Contains information about the directory.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DirectoryVpcSettingsDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API DirectoryVpcSettingsDescription
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The identifier of the VPC that the directory is in.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The identifier of the VPC that the directory is in.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The identifier of the VPC that the directory is in.</p>
      */
-    inline DirectoryVpcSettingsDescription& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline DirectoryVpcSettingsDescription& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the VPC that the directory is in.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
      */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
 
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
@@ -100,7 +104,7 @@ namespace Model
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
      */
-    inline DirectoryVpcSettingsDescription& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(value); return *this;}
+    inline DirectoryVpcSettingsDescription& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
 
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
      */
-    inline DirectoryVpcSettingsDescription& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
+    inline DirectoryVpcSettingsDescription& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The identifiers of the subnets for the directory servers.</p>
@@ -139,7 +143,7 @@ namespace Model
      * that was created when the directory was created. If the directory was created
      * after this date, this value is null.</p>
      */
-    inline void SetSecurityGroupId(Aws::String&& value) { m_securityGroupIdHasBeenSet = true; m_securityGroupId = value; }
+    inline void SetSecurityGroupId(Aws::String&& value) { m_securityGroupIdHasBeenSet = true; m_securityGroupId = std::move(value); }
 
     /**
      * <p>The security group identifier for the directory. If the directory was created
@@ -163,7 +167,7 @@ namespace Model
      * that was created when the directory was created. If the directory was created
      * after this date, this value is null.</p>
      */
-    inline DirectoryVpcSettingsDescription& WithSecurityGroupId(Aws::String&& value) { SetSecurityGroupId(value); return *this;}
+    inline DirectoryVpcSettingsDescription& WithSecurityGroupId(Aws::String&& value) { SetSecurityGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The security group identifier for the directory. If the directory was created
@@ -186,7 +190,7 @@ namespace Model
     /**
      * <p>The list of Availability Zones that the directory is in.</p>
      */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
+    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
 
     /**
      * <p>The list of Availability Zones that the directory is in.</p>
@@ -196,7 +200,7 @@ namespace Model
     /**
      * <p>The list of Availability Zones that the directory is in.</p>
      */
-    inline DirectoryVpcSettingsDescription& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(value); return *this;}
+    inline DirectoryVpcSettingsDescription& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
 
     /**
      * <p>The list of Availability Zones that the directory is in.</p>
@@ -206,7 +210,7 @@ namespace Model
     /**
      * <p>The list of Availability Zones that the directory is in.</p>
      */
-    inline DirectoryVpcSettingsDescription& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
+    inline DirectoryVpcSettingsDescription& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The list of Availability Zones that the directory is in.</p>

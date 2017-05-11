@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/GameSessionStatus.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -33,6 +34,7 @@ namespace Aws
         static const int ACTIVATING_HASH = HashingUtils::HashString("ACTIVATING");
         static const int TERMINATED_HASH = HashingUtils::HashString("TERMINATED");
         static const int TERMINATING_HASH = HashingUtils::HashString("TERMINATING");
+        static const int ERROR__HASH = HashingUtils::HashString("ERROR");
 
 
         GameSessionStatus GetGameSessionStatusForName(const Aws::String& name)
@@ -53,6 +55,10 @@ namespace Aws
           else if (hashCode == TERMINATING_HASH)
           {
             return GameSessionStatus::TERMINATING;
+          }
+          else if (hashCode == ERROR__HASH)
+          {
+            return GameSessionStatus::ERROR_;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -76,6 +82,8 @@ namespace Aws
             return "TERMINATED";
           case GameSessionStatus::TERMINATING:
             return "TERMINATING";
+          case GameSessionStatus::ERROR_:
+            return "ERROR";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

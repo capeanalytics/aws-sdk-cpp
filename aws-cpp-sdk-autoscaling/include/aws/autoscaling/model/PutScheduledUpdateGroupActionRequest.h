@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for PutScheduledUpdateGroupAction.</p>
+   * <p>Contains the parameters for PutScheduledUpdateGroupAction.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupActionType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API PutScheduledUpdateGroupActionRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     PutScheduledUpdateGroupActionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
      */
@@ -47,7 +57,7 @@ namespace Model
     /**
      * <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
@@ -62,7 +72,7 @@ namespace Model
     /**
      * <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
@@ -82,7 +92,7 @@ namespace Model
     /**
      * <p>The name of this scaling action.</p>
      */
-    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = value; }
+    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::move(value); }
 
     /**
      * <p>The name of this scaling action.</p>
@@ -97,7 +107,7 @@ namespace Model
     /**
      * <p>The name of this scaling action.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of this scaling action.</p>
@@ -117,7 +127,7 @@ namespace Model
     /**
      * <p>This parameter is deprecated.</p>
      */
-    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = value; }
+    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = std::move(value); }
 
     /**
      * <p>This parameter is deprecated.</p>
@@ -127,150 +137,134 @@ namespace Model
     /**
      * <p>This parameter is deprecated.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithTime(Aws::Utils::DateTime&& value) { SetTime(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithTime(Aws::Utils::DateTime&& value) { SetTime(std::move(value)); return *this;}
 
     /**
      * <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you try
-     * to schedule your action in the past, Auto Scaling returns an error message.</p>
-     * <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * starts and stops.</p>
+     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you
+     * specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling
+     * performs the action at this time, and then performs the action based on the
+     * specified recurrence.</p> <p>If you try to schedule your action in the past,
+     * Auto Scaling returns an error message.</p>
      */
     inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
 
     /**
      * <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you try
-     * to schedule your action in the past, Auto Scaling returns an error message.</p>
-     * <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * starts and stops.</p>
+     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you
+     * specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling
+     * performs the action at this time, and then performs the action based on the
+     * specified recurrence.</p> <p>If you try to schedule your action in the past,
+     * Auto Scaling returns an error message.</p>
      */
     inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
 
     /**
      * <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you try
-     * to schedule your action in the past, Auto Scaling returns an error message.</p>
-     * <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * starts and stops.</p>
+     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you
+     * specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling
+     * performs the action at this time, and then performs the action based on the
+     * specified recurrence.</p> <p>If you try to schedule your action in the past,
+     * Auto Scaling returns an error message.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you try
-     * to schedule your action in the past, Auto Scaling returns an error message.</p>
-     * <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * starts and stops.</p>
+     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you
+     * specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling
+     * performs the action at this time, and then performs the action based on the
+     * specified recurrence.</p> <p>If you try to schedule your action in the past,
+     * Auto Scaling returns an error message.</p>
      */
     inline PutScheduledUpdateGroupActionRequest& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
 
     /**
      * <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
-     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you try
-     * to schedule your action in the past, Auto Scaling returns an error message.</p>
-     * <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * starts and stops.</p>
+     * UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you
+     * specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling
+     * performs the action at this time, and then performs the action based on the
+     * specified recurrence.</p> <p>If you try to schedule your action in the past,
+     * Auto Scaling returns an error message.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
-     * <p>The time for this action to end.</p>
+     * <p>The time for the recurring schedule to end. Auto Scaling does not perform the
+     * action after this time.</p>
      */
     inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
 
     /**
-     * <p>The time for this action to end.</p>
+     * <p>The time for the recurring schedule to end. Auto Scaling does not perform the
+     * action after this time.</p>
      */
     inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
 
     /**
-     * <p>The time for this action to end.</p>
+     * <p>The time for the recurring schedule to end. Auto Scaling does not perform the
+     * action after this time.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
-     * <p>The time for this action to end.</p>
+     * <p>The time for the recurring schedule to end. Auto Scaling does not perform the
+     * action after this time.</p>
      */
     inline PutScheduledUpdateGroupActionRequest& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
 
     /**
-     * <p>The time for this action to end.</p>
+     * <p>The time for the recurring schedule to end. Auto Scaling does not perform the
+     * action after this time.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
     inline const Aws::String& GetRecurrence() const{ return m_recurrence; }
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
     inline void SetRecurrence(const Aws::String& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
-    inline void SetRecurrence(Aws::String&& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
+    inline void SetRecurrence(Aws::String&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::move(value); }
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
     inline void SetRecurrence(const char* value) { m_recurrenceHasBeenSet = true; m_recurrence.assign(value); }
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
     inline PutScheduledUpdateGroupActionRequest& WithRecurrence(const Aws::String& value) { SetRecurrence(value); return *this;}
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
-    inline PutScheduledUpdateGroupActionRequest& WithRecurrence(Aws::String&& value) { SetRecurrence(value); return *this;}
+    inline PutScheduledUpdateGroupActionRequest& WithRecurrence(Aws::String&& value) { SetRecurrence(std::move(value)); return *this;}
 
     /**
-     * <p>The time when recurring future actions will start. Start time is specified by
-     * the user following the Unix cron syntax format. For more information, see <a
-     * href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p> <p>When
-     * <code>StartTime</code> and <code>EndTime</code> are specified with
-     * <code>Recurrence</code>, they form the boundaries of when the recurring action
-     * will start and stop.</p>
+     * <p>The recurring schedule for this action, in Unix cron syntax format. For more
+     * information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in
+     * Wikipedia.</p>
      */
     inline PutScheduledUpdateGroupActionRequest& WithRecurrence(const char* value) { SetRecurrence(value); return *this;}
 

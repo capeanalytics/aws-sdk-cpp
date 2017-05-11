@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -22,6 +23,7 @@
 #include <aws/ec2/model/InstanceType.h>
 #include <aws/ec2/model/Placement.h>
 #include <aws/ec2/model/ShutdownBehavior.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the launch specification for VM import.</p>
+   * <p>Describes the launch specification for VM import.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportInstanceLaunchSpecification">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportInstanceLaunchSpecification
   {
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The architecture of the instance.</p>
      */
-    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The architecture of the instance.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The architecture of the instance.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>One or more security group names.</p>
@@ -88,7 +93,7 @@ namespace Model
     /**
      * <p>One or more security group names.</p>
      */
-    inline void SetGroupNames(Aws::Vector<Aws::String>&& value) { m_groupNamesHasBeenSet = true; m_groupNames = value; }
+    inline void SetGroupNames(Aws::Vector<Aws::String>&& value) { m_groupNamesHasBeenSet = true; m_groupNames = std::move(value); }
 
     /**
      * <p>One or more security group names.</p>
@@ -98,7 +103,7 @@ namespace Model
     /**
      * <p>One or more security group names.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithGroupNames(Aws::Vector<Aws::String>&& value) { SetGroupNames(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithGroupNames(Aws::Vector<Aws::String>&& value) { SetGroupNames(std::move(value)); return *this;}
 
     /**
      * <p>One or more security group names.</p>
@@ -108,7 +113,7 @@ namespace Model
     /**
      * <p>One or more security group names.</p>
      */
-    inline ImportInstanceLaunchSpecification& AddGroupNames(Aws::String&& value) { m_groupNamesHasBeenSet = true; m_groupNames.push_back(value); return *this; }
+    inline ImportInstanceLaunchSpecification& AddGroupNames(Aws::String&& value) { m_groupNamesHasBeenSet = true; m_groupNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more security group names.</p>
@@ -128,7 +133,7 @@ namespace Model
     /**
      * <p>One or more security group IDs.</p>
      */
-    inline void SetGroupIds(Aws::Vector<Aws::String>&& value) { m_groupIdsHasBeenSet = true; m_groupIds = value; }
+    inline void SetGroupIds(Aws::Vector<Aws::String>&& value) { m_groupIdsHasBeenSet = true; m_groupIds = std::move(value); }
 
     /**
      * <p>One or more security group IDs.</p>
@@ -138,7 +143,7 @@ namespace Model
     /**
      * <p>One or more security group IDs.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithGroupIds(Aws::Vector<Aws::String>&& value) { SetGroupIds(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithGroupIds(Aws::Vector<Aws::String>&& value) { SetGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more security group IDs.</p>
@@ -148,7 +153,7 @@ namespace Model
     /**
      * <p>One or more security group IDs.</p>
      */
-    inline ImportInstanceLaunchSpecification& AddGroupIds(Aws::String&& value) { m_groupIdsHasBeenSet = true; m_groupIds.push_back(value); return *this; }
+    inline ImportInstanceLaunchSpecification& AddGroupIds(Aws::String&& value) { m_groupIdsHasBeenSet = true; m_groupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more security group IDs.</p>
@@ -168,7 +173,7 @@ namespace Model
     /**
      * <p>Reserved.</p>
      */
-    inline void SetAdditionalInfo(Aws::String&& value) { m_additionalInfoHasBeenSet = true; m_additionalInfo = value; }
+    inline void SetAdditionalInfo(Aws::String&& value) { m_additionalInfoHasBeenSet = true; m_additionalInfo = std::move(value); }
 
     /**
      * <p>Reserved.</p>
@@ -183,7 +188,7 @@ namespace Model
     /**
      * <p>Reserved.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithAdditionalInfo(Aws::String&& value) { SetAdditionalInfo(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithAdditionalInfo(Aws::String&& value) { SetAdditionalInfo(std::move(value)); return *this;}
 
     /**
      * <p>Reserved.</p>
@@ -191,69 +196,79 @@ namespace Model
     inline ImportInstanceLaunchSpecification& WithAdditionalInfo(const char* value) { SetAdditionalInfo(value); return *this;}
 
     /**
-     * <p>The Base64-encoded MIME user data to be made available to the instance.</p>
+     * <p>The user data to make available to the instance. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline const UserData& GetUserData() const{ return m_userData; }
 
     /**
-     * <p>The Base64-encoded MIME user data to be made available to the instance.</p>
+     * <p>The user data to make available to the instance. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline void SetUserData(const UserData& value) { m_userDataHasBeenSet = true; m_userData = value; }
 
     /**
-     * <p>The Base64-encoded MIME user data to be made available to the instance.</p>
+     * <p>The user data to make available to the instance. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
-    inline void SetUserData(UserData&& value) { m_userDataHasBeenSet = true; m_userData = value; }
+    inline void SetUserData(UserData&& value) { m_userDataHasBeenSet = true; m_userData = std::move(value); }
 
     /**
-     * <p>The Base64-encoded MIME user data to be made available to the instance.</p>
+     * <p>The user data to make available to the instance. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline ImportInstanceLaunchSpecification& WithUserData(const UserData& value) { SetUserData(value); return *this;}
 
     /**
-     * <p>The Base64-encoded MIME user data to be made available to the instance.</p>
+     * <p>The user data to make available to the instance. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithUserData(UserData&& value) { SetUserData(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithUserData(UserData&& value) { SetUserData(std::move(value)); return *this;}
 
     /**
      * <p>The instance type. For more information about the instance types that you can
      * import, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/VMImportPrerequisites.html">Before
-     * You Get Started</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+     * href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types">Instance
+     * Types</a> in the VM Import/Export User Guide.</p>
      */
     inline const InstanceType& GetInstanceType() const{ return m_instanceType; }
 
     /**
      * <p>The instance type. For more information about the instance types that you can
      * import, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/VMImportPrerequisites.html">Before
-     * You Get Started</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+     * href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types">Instance
+     * Types</a> in the VM Import/Export User Guide.</p>
      */
     inline void SetInstanceType(const InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
 
     /**
      * <p>The instance type. For more information about the instance types that you can
      * import, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/VMImportPrerequisites.html">Before
-     * You Get Started</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+     * href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types">Instance
+     * Types</a> in the VM Import/Export User Guide.</p>
      */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type. For more information about the instance types that you can
      * import, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/VMImportPrerequisites.html">Before
-     * You Get Started</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+     * href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types">Instance
+     * Types</a> in the VM Import/Export User Guide.</p>
      */
     inline ImportInstanceLaunchSpecification& WithInstanceType(const InstanceType& value) { SetInstanceType(value); return *this;}
 
     /**
      * <p>The instance type. For more information about the instance types that you can
      * import, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/VMImportPrerequisites.html">Before
-     * You Get Started</a> in the Amazon Elastic Compute Cloud User Guide.</p>
+     * href="http://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#vmimport-instance-types">Instance
+     * Types</a> in the VM Import/Export User Guide.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithInstanceType(InstanceType&& value) { SetInstanceType(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The placement information for the instance.</p>
@@ -268,7 +283,7 @@ namespace Model
     /**
      * <p>The placement information for the instance.</p>
      */
-    inline void SetPlacement(Placement&& value) { m_placementHasBeenSet = true; m_placement = value; }
+    inline void SetPlacement(Placement&& value) { m_placementHasBeenSet = true; m_placement = std::move(value); }
 
     /**
      * <p>The placement information for the instance.</p>
@@ -278,7 +293,7 @@ namespace Model
     /**
      * <p>The placement information for the instance.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithPlacement(Placement&& value) { SetPlacement(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithPlacement(Placement&& value) { SetPlacement(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether monitoring is enabled.</p>
@@ -308,7 +323,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the subnet in which to launch the instance.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>[EC2-VPC] The ID of the subnet in which to launch the instance.</p>
@@ -323,7 +338,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the subnet in which to launch the instance.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] The ID of the subnet in which to launch the instance.</p>
@@ -346,7 +361,7 @@ namespace Model
      * <p>Indicates whether an instance stops or terminates when you initiate shutdown
      * from the instance (using the operating system command for system shutdown).</p>
      */
-    inline void SetInstanceInitiatedShutdownBehavior(ShutdownBehavior&& value) { m_instanceInitiatedShutdownBehaviorHasBeenSet = true; m_instanceInitiatedShutdownBehavior = value; }
+    inline void SetInstanceInitiatedShutdownBehavior(ShutdownBehavior&& value) { m_instanceInitiatedShutdownBehaviorHasBeenSet = true; m_instanceInitiatedShutdownBehavior = std::move(value); }
 
     /**
      * <p>Indicates whether an instance stops or terminates when you initiate shutdown
@@ -358,7 +373,7 @@ namespace Model
      * <p>Indicates whether an instance stops or terminates when you initiate shutdown
      * from the instance (using the operating system command for system shutdown).</p>
      */
-    inline ImportInstanceLaunchSpecification& WithInstanceInitiatedShutdownBehavior(ShutdownBehavior&& value) { SetInstanceInitiatedShutdownBehavior(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithInstanceInitiatedShutdownBehavior(ShutdownBehavior&& value) { SetInstanceInitiatedShutdownBehavior(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] An available IP address from the IP address range of the
@@ -376,7 +391,7 @@ namespace Model
      * <p>[EC2-VPC] An available IP address from the IP address range of the
      * subnet.</p>
      */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
+    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
 
     /**
      * <p>[EC2-VPC] An available IP address from the IP address range of the
@@ -394,7 +409,7 @@ namespace Model
      * <p>[EC2-VPC] An available IP address from the IP address range of the
      * subnet.</p>
      */
-    inline ImportInstanceLaunchSpecification& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(value); return *this;}
+    inline ImportInstanceLaunchSpecification& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] An available IP address from the IP address range of the

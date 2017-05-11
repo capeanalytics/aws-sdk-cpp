@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,8 @@
 #include <aws/ec2/model/BatchState.h>
 #include <aws/ec2/model/SpotFleetRequestConfigData.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/ec2/model/ActivityStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +38,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a Spot fleet request.</p>
+   * <p>Describes a Spot fleet request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotFleetRequestConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API SpotFleetRequestConfig
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = value; }
+    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = std::move(value); }
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline SpotFleetRequestConfig& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(value); return *this;}
+    inline SpotFleetRequestConfig& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The state of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestState(BatchState&& value) { m_spotFleetRequestStateHasBeenSet = true; m_spotFleetRequestState = value; }
+    inline void SetSpotFleetRequestState(BatchState&& value) { m_spotFleetRequestStateHasBeenSet = true; m_spotFleetRequestState = std::move(value); }
 
     /**
      * <p>The state of the Spot fleet request.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The state of the Spot fleet request.</p>
      */
-    inline SpotFleetRequestConfig& WithSpotFleetRequestState(BatchState&& value) { SetSpotFleetRequestState(value); return *this;}
+    inline SpotFleetRequestConfig& WithSpotFleetRequestState(BatchState&& value) { SetSpotFleetRequestState(std::move(value)); return *this;}
 
     /**
      * <p>Information about the configuration of the Spot fleet request.</p>
@@ -120,7 +125,7 @@ namespace Model
     /**
      * <p>Information about the configuration of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestConfig(SpotFleetRequestConfigData&& value) { m_spotFleetRequestConfigHasBeenSet = true; m_spotFleetRequestConfig = value; }
+    inline void SetSpotFleetRequestConfig(SpotFleetRequestConfigData&& value) { m_spotFleetRequestConfigHasBeenSet = true; m_spotFleetRequestConfig = std::move(value); }
 
     /**
      * <p>Information about the configuration of the Spot fleet request.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>Information about the configuration of the Spot fleet request.</p>
      */
-    inline SpotFleetRequestConfig& WithSpotFleetRequestConfig(SpotFleetRequestConfigData&& value) { SetSpotFleetRequestConfig(value); return *this;}
+    inline SpotFleetRequestConfig& WithSpotFleetRequestConfig(SpotFleetRequestConfigData&& value) { SetSpotFleetRequestConfig(std::move(value)); return *this;}
 
     /**
      * <p>The creation date and time of the request.</p>
@@ -145,7 +150,7 @@ namespace Model
     /**
      * <p>The creation date and time of the request.</p>
      */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
+    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
 
     /**
      * <p>The creation date and time of the request.</p>
@@ -155,7 +160,57 @@ namespace Model
     /**
      * <p>The creation date and time of the request.</p>
      */
-    inline SpotFleetRequestConfig& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(value); return *this;}
+    inline SpotFleetRequestConfig& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
+
+    /**
+     * <p>The progress of the Spot fleet request. If there is an error, the status is
+     * <code>error</code>. After all bids are placed, the status is
+     * <code>pending_fulfillment</code>. If the size of the fleet is equal to or
+     * greater than its target capacity, the status is <code>fulfilled</code>. If the
+     * size of the fleet is decreased, the status is <code>pending_termination</code>
+     * while Spot instances are terminating.</p>
+     */
+    inline const ActivityStatus& GetActivityStatus() const{ return m_activityStatus; }
+
+    /**
+     * <p>The progress of the Spot fleet request. If there is an error, the status is
+     * <code>error</code>. After all bids are placed, the status is
+     * <code>pending_fulfillment</code>. If the size of the fleet is equal to or
+     * greater than its target capacity, the status is <code>fulfilled</code>. If the
+     * size of the fleet is decreased, the status is <code>pending_termination</code>
+     * while Spot instances are terminating.</p>
+     */
+    inline void SetActivityStatus(const ActivityStatus& value) { m_activityStatusHasBeenSet = true; m_activityStatus = value; }
+
+    /**
+     * <p>The progress of the Spot fleet request. If there is an error, the status is
+     * <code>error</code>. After all bids are placed, the status is
+     * <code>pending_fulfillment</code>. If the size of the fleet is equal to or
+     * greater than its target capacity, the status is <code>fulfilled</code>. If the
+     * size of the fleet is decreased, the status is <code>pending_termination</code>
+     * while Spot instances are terminating.</p>
+     */
+    inline void SetActivityStatus(ActivityStatus&& value) { m_activityStatusHasBeenSet = true; m_activityStatus = std::move(value); }
+
+    /**
+     * <p>The progress of the Spot fleet request. If there is an error, the status is
+     * <code>error</code>. After all bids are placed, the status is
+     * <code>pending_fulfillment</code>. If the size of the fleet is equal to or
+     * greater than its target capacity, the status is <code>fulfilled</code>. If the
+     * size of the fleet is decreased, the status is <code>pending_termination</code>
+     * while Spot instances are terminating.</p>
+     */
+    inline SpotFleetRequestConfig& WithActivityStatus(const ActivityStatus& value) { SetActivityStatus(value); return *this;}
+
+    /**
+     * <p>The progress of the Spot fleet request. If there is an error, the status is
+     * <code>error</code>. After all bids are placed, the status is
+     * <code>pending_fulfillment</code>. If the size of the fleet is equal to or
+     * greater than its target capacity, the status is <code>fulfilled</code>. If the
+     * size of the fleet is decreased, the status is <code>pending_termination</code>
+     * while Spot instances are terminating.</p>
+     */
+    inline SpotFleetRequestConfig& WithActivityStatus(ActivityStatus&& value) { SetActivityStatus(std::move(value)); return *this;}
 
   private:
     Aws::String m_spotFleetRequestId;
@@ -166,6 +221,8 @@ namespace Model
     bool m_spotFleetRequestConfigHasBeenSet;
     Aws::Utils::DateTime m_createTime;
     bool m_createTimeHasBeenSet;
+    ActivityStatus m_activityStatus;
+    bool m_activityStatusHasBeenSet;
   };
 
 } // namespace Model

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/machinelearning/model/EntityStatus.h>
 #include <aws/machinelearning/model/PerformanceMetrics.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
   /**
    * <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The
    * content consists of the detailed metadata and data file information and the
-   * current status of the <code>Evaluation</code>.</p>
+   * current status of the <code>Evaluation</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/Evaluation">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API Evaluation
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The ID that is assigned to the <code>Evaluation</code> at creation.</p>
      */
-    inline void SetEvaluationId(Aws::String&& value) { m_evaluationIdHasBeenSet = true; m_evaluationId = value; }
+    inline void SetEvaluationId(Aws::String&& value) { m_evaluationIdHasBeenSet = true; m_evaluationId = std::move(value); }
 
     /**
      * <p>The ID that is assigned to the <code>Evaluation</code> at creation.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The ID that is assigned to the <code>Evaluation</code> at creation.</p>
      */
-    inline Evaluation& WithEvaluationId(Aws::String&& value) { SetEvaluationId(value); return *this;}
+    inline Evaluation& WithEvaluationId(Aws::String&& value) { SetEvaluationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID that is assigned to the <code>Evaluation</code> at creation.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The ID of the <code>MLModel</code> that is the focus of the evaluation.</p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
 
     /**
      * <p>The ID of the <code>MLModel</code> that is the focus of the evaluation.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The ID of the <code>MLModel</code> that is the focus of the evaluation.</p>
      */
-    inline Evaluation& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline Evaluation& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <code>MLModel</code> that is the focus of the evaluation.</p>
@@ -132,7 +136,7 @@ namespace Model
      * <p>The ID of the <code>DataSource</code> that is used to evaluate the
      * <code>MLModel</code>.</p>
      */
-    inline void SetEvaluationDataSourceId(Aws::String&& value) { m_evaluationDataSourceIdHasBeenSet = true; m_evaluationDataSourceId = value; }
+    inline void SetEvaluationDataSourceId(Aws::String&& value) { m_evaluationDataSourceIdHasBeenSet = true; m_evaluationDataSourceId = std::move(value); }
 
     /**
      * <p>The ID of the <code>DataSource</code> that is used to evaluate the
@@ -150,7 +154,7 @@ namespace Model
      * <p>The ID of the <code>DataSource</code> that is used to evaluate the
      * <code>MLModel</code>.</p>
      */
-    inline Evaluation& WithEvaluationDataSourceId(Aws::String&& value) { SetEvaluationDataSourceId(value); return *this;}
+    inline Evaluation& WithEvaluationDataSourceId(Aws::String&& value) { SetEvaluationDataSourceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <code>DataSource</code> that is used to evaluate the
@@ -174,7 +178,7 @@ namespace Model
      * <p>The location and name of the data in Amazon Simple Storage Server (Amazon S3)
      * that is used in the evaluation.</p>
      */
-    inline void SetInputDataLocationS3(Aws::String&& value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3 = value; }
+    inline void SetInputDataLocationS3(Aws::String&& value) { m_inputDataLocationS3HasBeenSet = true; m_inputDataLocationS3 = std::move(value); }
 
     /**
      * <p>The location and name of the data in Amazon Simple Storage Server (Amazon S3)
@@ -192,7 +196,7 @@ namespace Model
      * <p>The location and name of the data in Amazon Simple Storage Server (Amazon S3)
      * that is used in the evaluation.</p>
      */
-    inline Evaluation& WithInputDataLocationS3(Aws::String&& value) { SetInputDataLocationS3(value); return *this;}
+    inline Evaluation& WithInputDataLocationS3(Aws::String&& value) { SetInputDataLocationS3(std::move(value)); return *this;}
 
     /**
      * <p>The location and name of the data in Amazon Simple Storage Server (Amazon S3)
@@ -219,7 +223,7 @@ namespace Model
      * either an AWS root account or an AWS Identity and Access Management (IAM) user
      * account.</p>
      */
-    inline void SetCreatedByIamUser(Aws::String&& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = value; }
+    inline void SetCreatedByIamUser(Aws::String&& value) { m_createdByIamUserHasBeenSet = true; m_createdByIamUser = std::move(value); }
 
     /**
      * <p>The AWS user account that invoked the evaluation. The account type can be
@@ -240,7 +244,7 @@ namespace Model
      * either an AWS root account or an AWS Identity and Access Management (IAM) user
      * account.</p>
      */
-    inline Evaluation& WithCreatedByIamUser(Aws::String&& value) { SetCreatedByIamUser(value); return *this;}
+    inline Evaluation& WithCreatedByIamUser(Aws::String&& value) { SetCreatedByIamUser(std::move(value)); return *this;}
 
     /**
      * <p>The AWS user account that invoked the evaluation. The account type can be
@@ -265,7 +269,7 @@ namespace Model
      * <p>The time that the <code>Evaluation</code> was created. The time is expressed
      * in epoch time.</p>
      */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
 
     /**
      * <p>The time that the <code>Evaluation</code> was created. The time is expressed
@@ -277,7 +281,7 @@ namespace Model
      * <p>The time that the <code>Evaluation</code> was created. The time is expressed
      * in epoch time.</p>
      */
-    inline Evaluation& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(value); return *this;}
+    inline Evaluation& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
 
     /**
      * <p>The time of the most recent edit to the <code>Evaluation</code>. The time is
@@ -295,7 +299,7 @@ namespace Model
      * <p>The time of the most recent edit to the <code>Evaluation</code>. The time is
      * expressed in epoch time.</p>
      */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
+    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
 
     /**
      * <p>The time of the most recent edit to the <code>Evaluation</code>. The time is
@@ -307,7 +311,7 @@ namespace Model
      * <p>The time of the most recent edit to the <code>Evaluation</code>. The time is
      * expressed in epoch time.</p>
      */
-    inline Evaluation& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(value); return *this;}
+    inline Evaluation& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
@@ -322,7 +326,7 @@ namespace Model
     /**
      * <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
@@ -337,7 +341,7 @@ namespace Model
     /**
      * <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
      */
-    inline Evaluation& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Evaluation& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
@@ -378,7 +382,7 @@ namespace Model
      * evaluation process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>Evaluation</code> is marked as deleted. It is not usable.</li> </ul>
      */
-    inline void SetStatus(EntityStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(EntityStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the evaluation. This element can have one of the following
@@ -402,7 +406,7 @@ namespace Model
      * evaluation process completed successfully.</li> <li> <code>DELETED</code> - The
      * <code>Evaluation</code> is marked as deleted. It is not usable.</li> </ul>
      */
-    inline Evaluation& WithStatus(EntityStatus&& value) { SetStatus(value); return *this;}
+    inline Evaluation& WithStatus(EntityStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
@@ -453,7 +457,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine
      * Learning Developer Guide</a>. </p>
      */
-    inline void SetPerformanceMetrics(PerformanceMetrics&& value) { m_performanceMetricsHasBeenSet = true; m_performanceMetrics = value; }
+    inline void SetPerformanceMetrics(PerformanceMetrics&& value) { m_performanceMetricsHasBeenSet = true; m_performanceMetrics = std::move(value); }
 
     /**
      * <p>Measurements of how well the <code>MLModel</code> performed, using
@@ -487,7 +491,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine
      * Learning Developer Guide</a>. </p>
      */
-    inline Evaluation& WithPerformanceMetrics(PerformanceMetrics&& value) { SetPerformanceMetrics(value); return *this;}
+    inline Evaluation& WithPerformanceMetrics(PerformanceMetrics&& value) { SetPerformanceMetrics(std::move(value)); return *this;}
 
     /**
      * <p>A description of the most recent details about evaluating the
@@ -505,7 +509,7 @@ namespace Model
      * <p>A description of the most recent details about evaluating the
      * <code>MLModel</code>.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>A description of the most recent details about evaluating the
@@ -523,7 +527,7 @@ namespace Model
      * <p>A description of the most recent details about evaluating the
      * <code>MLModel</code>.</p>
      */
-    inline Evaluation& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline Evaluation& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>A description of the most recent details about evaluating the
@@ -547,13 +551,13 @@ namespace Model
     inline void SetFinishedAt(const Aws::Utils::DateTime& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
 
     
-    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = value; }
+    inline void SetFinishedAt(Aws::Utils::DateTime&& value) { m_finishedAtHasBeenSet = true; m_finishedAt = std::move(value); }
 
     
     inline Evaluation& WithFinishedAt(const Aws::Utils::DateTime& value) { SetFinishedAt(value); return *this;}
 
     
-    inline Evaluation& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(value); return *this;}
+    inline Evaluation& WithFinishedAt(Aws::Utils::DateTime&& value) { SetFinishedAt(std::move(value)); return *this;}
 
     
     inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
@@ -562,13 +566,13 @@ namespace Model
     inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
 
     
-    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = value; }
+    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::move(value); }
 
     
     inline Evaluation& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
 
     
-    inline Evaluation& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(value); return *this;}
+    inline Evaluation& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(std::move(value)); return *this;}
 
   private:
     Aws::String m_evaluationId;

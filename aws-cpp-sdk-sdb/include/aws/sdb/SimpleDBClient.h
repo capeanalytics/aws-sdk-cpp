@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/sdb/SimpleDBErrors.h>
 #include <aws/core/client/AWSError.h>
 #include <aws/core/client/ClientConfiguration.h>
+#include <aws/core/AmazonSerializableWebServiceRequest.h>
 #include <aws/core/client/AWSClient.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -159,12 +161,21 @@ namespace Model
 
         virtual ~SimpleDBClient();
 
+       /**
+        * Converts any request object to a presigned URL with the GET method, using region for the signer and a timeout of 15 minutes.
+        */
+        Aws::String ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const;
+
+
         /**
          * <p> Performs multiple DeleteAttributes operations in a single call, which
          * reduces round trips and latencies. This enables Amazon SimpleDB to optimize
          * requests, which generally yields better throughput. </p> <p> The following
          * limitations are enforced for this operation: <ul> <li>1 MB request size</li>
-         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p>
+         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchDeleteAttributes">AWS
+         * API Reference</a></p>
          */
         virtual Model::BatchDeleteAttributesOutcome BatchDeleteAttributes(const Model::BatchDeleteAttributesRequest& request) const;
 
@@ -173,7 +184,10 @@ namespace Model
          * reduces round trips and latencies. This enables Amazon SimpleDB to optimize
          * requests, which generally yields better throughput. </p> <p> The following
          * limitations are enforced for this operation: <ul> <li>1 MB request size</li>
-         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p>
+         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchDeleteAttributes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -184,7 +198,10 @@ namespace Model
          * reduces round trips and latencies. This enables Amazon SimpleDB to optimize
          * requests, which generally yields better throughput. </p> <p> The following
          * limitations are enforced for this operation: <ul> <li>1 MB request size</li>
-         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p>
+         * <li>25 item limit per BatchDeleteAttributes operation</li> </ul> </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchDeleteAttributes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -228,7 +245,9 @@ namespace Model
          * <ul> <li>256 attribute name-value pairs per item</li> <li>1 MB request size</li>
          * <li>1 billion attributes per domain</li> <li>10 GB of total user data storage
          * per domain</li> <li>25 item limit per <code>BatchPutAttributes</code>
-         * operation</li> </ul> </p>
+         * operation</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchPutAttributes">AWS
+         * API Reference</a></p>
          */
         virtual Model::BatchPutAttributesOutcome BatchPutAttributes(const Model::BatchPutAttributesRequest& request) const;
 
@@ -270,7 +289,9 @@ namespace Model
          * <ul> <li>256 attribute name-value pairs per item</li> <li>1 MB request size</li>
          * <li>1 billion attributes per domain</li> <li>10 GB of total user data storage
          * per domain</li> <li>25 item limit per <code>BatchPutAttributes</code>
-         * operation</li> </ul> </p>
+         * operation</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchPutAttributes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -314,7 +335,9 @@ namespace Model
          * <ul> <li>256 attribute name-value pairs per item</li> <li>1 MB request size</li>
          * <li>1 billion attributes per domain</li> <li>10 GB of total user data storage
          * per domain</li> <li>25 item limit per <code>BatchPutAttributes</code>
-         * operation</li> </ul> </p>
+         * operation</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/BatchPutAttributes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -327,7 +350,10 @@ namespace Model
          * more seconds to complete. </p> <p> The client can create up to 100 domains per
          * account. </p> <p> If the client requires additional domains, go to <a
          * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p>
+         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/CreateDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateDomainOutcome CreateDomain(const Model::CreateDomainRequest& request) const;
 
@@ -338,7 +364,10 @@ namespace Model
          * more seconds to complete. </p> <p> The client can create up to 100 domains per
          * account. </p> <p> If the client requires additional domains, go to <a
          * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p>
+         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/CreateDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -351,7 +380,10 @@ namespace Model
          * more seconds to complete. </p> <p> The client can create up to 100 domains per
          * account. </p> <p> If the client requires additional domains, go to <a
          * href="http://aws.amazon.com/contact-us/simpledb-limit-request/">
-         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p>
+         * http://aws.amazon.com/contact-us/simpledb-limit-request/</a>. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/CreateDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -366,7 +398,9 @@ namespace Model
          * eventual consistency update model, performing a <a>GetAttributes</a> or
          * <a>Select</a> operation (read) immediately after a <code>DeleteAttributes</code>
          * or <a>PutAttributes</a> operation (write) might not return updated item data.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteAttributes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteAttributesOutcome DeleteAttributes(const Model::DeleteAttributesRequest& request) const;
 
@@ -379,7 +413,9 @@ namespace Model
          * eventual consistency update model, performing a <a>GetAttributes</a> or
          * <a>Select</a> operation (read) immediately after a <code>DeleteAttributes</code>
          * or <a>PutAttributes</a> operation (write) might not return updated item data.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteAttributes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -394,7 +430,9 @@ namespace Model
          * eventual consistency update model, performing a <a>GetAttributes</a> or
          * <a>Select</a> operation (read) immediately after a <code>DeleteAttributes</code>
          * or <a>PutAttributes</a> operation (write) might not return updated item data.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteAttributes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -404,7 +442,9 @@ namespace Model
          * <p> The <code>DeleteDomain</code> operation deletes a domain. Any items (and
          * their attributes) in the domain are deleted as well. The
          * <code>DeleteDomain</code> operation might take 10 or more seconds to complete.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteDomainOutcome DeleteDomain(const Model::DeleteDomainRequest& request) const;
 
@@ -412,7 +452,9 @@ namespace Model
          * <p> The <code>DeleteDomain</code> operation deletes a domain. Any items (and
          * their attributes) in the domain are deleted as well. The
          * <code>DeleteDomain</code> operation might take 10 or more seconds to complete.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -422,7 +464,9 @@ namespace Model
          * <p> The <code>DeleteDomain</code> operation deletes a domain. Any items (and
          * their attributes) in the domain are deleted as well. The
          * <code>DeleteDomain</code> operation might take 10 or more seconds to complete.
-         * </p>
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DeleteDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -431,14 +475,18 @@ namespace Model
         /**
          * <p> Returns information about the domain, including when the domain was created,
          * the number of items and attributes in the domain, and the size of the attribute
-         * names and values. </p>
+         * names and values. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DomainMetadata">AWS
+         * API Reference</a></p>
          */
         virtual Model::DomainMetadataOutcome DomainMetadata(const Model::DomainMetadataRequest& request) const;
 
         /**
          * <p> Returns information about the domain, including when the domain was created,
          * the number of items and attributes in the domain, and the size of the attribute
-         * names and values. </p>
+         * names and values. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DomainMetadata">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -447,7 +495,9 @@ namespace Model
         /**
          * <p> Returns information about the domain, including when the domain was created,
          * the number of items and attributes in the domain, and the size of the attribute
-         * names and values. </p>
+         * names and values. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/DomainMetadata">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -459,7 +509,9 @@ namespace Model
          * specifying an attribute name parameter. </p> <p> If the item does not exist on
          * the replica that was accessed for this operation, an empty set is returned. The
          * system does not return an error as it cannot guarantee the item does not exist
-         * on other replicas. </p>
+         * on other replicas. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/GetAttributes">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetAttributesOutcome GetAttributes(const Model::GetAttributesRequest& request) const;
 
@@ -469,7 +521,9 @@ namespace Model
          * specifying an attribute name parameter. </p> <p> If the item does not exist on
          * the replica that was accessed for this operation, an empty set is returned. The
          * system does not return an error as it cannot guarantee the item does not exist
-         * on other replicas. </p>
+         * on other replicas. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/GetAttributes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -481,7 +535,9 @@ namespace Model
          * specifying an attribute name parameter. </p> <p> If the item does not exist on
          * the replica that was accessed for this operation, an empty set is returned. The
          * system does not return an error as it cannot guarantee the item does not exist
-         * on other replicas. </p>
+         * on other replicas. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/GetAttributes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -495,7 +551,9 @@ namespace Model
          * <code>MaxNumberOfDomains</code> domains. Calling <code>ListDomains</code>
          * successive times with the <code>NextToken</code> provided by the operation
          * returns up to <code>MaxNumberOfDomains</code> more domain names with each
-         * successive operation call. </p>
+         * successive operation call. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/ListDomains">AWS API
+         * Reference</a></p>
          */
         virtual Model::ListDomainsOutcome ListDomains(const Model::ListDomainsRequest& request) const;
 
@@ -507,7 +565,9 @@ namespace Model
          * <code>MaxNumberOfDomains</code> domains. Calling <code>ListDomains</code>
          * successive times with the <code>NextToken</code> provided by the operation
          * returns up to <code>MaxNumberOfDomains</code> more domain names with each
-         * successive operation call. </p>
+         * successive operation call. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/ListDomains">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -521,7 +581,9 @@ namespace Model
          * <code>MaxNumberOfDomains</code> domains. Calling <code>ListDomains</code>
          * successive times with the <code>NextToken</code> provided by the operation
          * returns up to <code>MaxNumberOfDomains</code> more domain names with each
-         * successive operation call. </p>
+         * successive operation call. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/ListDomains">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -556,7 +618,9 @@ namespace Model
          * not return the updated data. </p> <p> The following limitations are enforced for
          * this operation: <ul> <li>256 total attribute name-value pairs per item</li>
          * <li>One billion attributes per domain</li> <li>10 GB of total user data storage
-         * per domain</li> </ul> </p>
+         * per domain</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/PutAttributes">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutAttributesOutcome PutAttributes(const Model::PutAttributesRequest& request) const;
 
@@ -589,7 +653,9 @@ namespace Model
          * not return the updated data. </p> <p> The following limitations are enforced for
          * this operation: <ul> <li>256 total attribute name-value pairs per item</li>
          * <li>One billion attributes per domain</li> <li>10 GB of total user data storage
-         * per domain</li> </ul> </p>
+         * per domain</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/PutAttributes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -624,7 +690,9 @@ namespace Model
          * not return the updated data. </p> <p> The following limitations are enforced for
          * this operation: <ul> <li>256 total attribute name-value pairs per item</li>
          * <li>One billion attributes per domain</li> <li>10 GB of total user data storage
-         * per domain</li> </ul> </p>
+         * per domain</li> </ul> </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/PutAttributes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -640,7 +708,9 @@ namespace Model
          * the system returns 100 items and an appropriate <code>NextToken</code> so the
          * client can access the next page of results. </p> <p> For information on how to
          * construct select expressions, see Using Select to Create Amazon SimpleDB Queries
-         * in the Developer Guide. </p>
+         * in the Developer Guide. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/Select">AWS API
+         * Reference</a></p>
          */
         virtual Model::SelectOutcome Select(const Model::SelectRequest& request) const;
 
@@ -654,7 +724,9 @@ namespace Model
          * the system returns 100 items and an appropriate <code>NextToken</code> so the
          * client can access the next page of results. </p> <p> For information on how to
          * construct select expressions, see Using Select to Create Amazon SimpleDB Queries
-         * in the Developer Guide. </p>
+         * in the Developer Guide. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/Select">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -670,7 +742,9 @@ namespace Model
          * the system returns 100 items and an appropriate <code>NextToken</code> so the
          * client can access the next page of results. </p> <p> For information on how to
          * construct select expressions, see Using Select to Create Amazon SimpleDB Queries
-         * in the Developer Guide. </p>
+         * in the Developer Guide. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/Select">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */

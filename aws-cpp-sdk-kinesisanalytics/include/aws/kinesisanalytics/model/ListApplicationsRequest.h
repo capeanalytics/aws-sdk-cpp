@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/KinesisAnalyticsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ListApplicationsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API ListApplicationsRequest : public KinesisAnalyticsRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Maximum number of applications to list.</p>
@@ -72,7 +77,7 @@ namespace Model
      * request. However, in subsequent requests, you add the last application name from
      * the previous response to get the next page of applications.</p>
      */
-    inline void SetExclusiveStartApplicationName(Aws::String&& value) { m_exclusiveStartApplicationNameHasBeenSet = true; m_exclusiveStartApplicationName = value; }
+    inline void SetExclusiveStartApplicationName(Aws::String&& value) { m_exclusiveStartApplicationNameHasBeenSet = true; m_exclusiveStartApplicationName = std::move(value); }
 
     /**
      * <p>Name of the application to start the list with. When using pagination to
@@ -96,7 +101,7 @@ namespace Model
      * request. However, in subsequent requests, you add the last application name from
      * the previous response to get the next page of applications.</p>
      */
-    inline ListApplicationsRequest& WithExclusiveStartApplicationName(Aws::String&& value) { SetExclusiveStartApplicationName(value); return *this;}
+    inline ListApplicationsRequest& WithExclusiveStartApplicationName(Aws::String&& value) { SetExclusiveStartApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the application to start the list with. When using pagination to

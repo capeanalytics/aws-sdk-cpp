@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudhsm/model/CloudHsmObjectState.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CloudHSM
 namespace Model
 {
   /**
-   * <p>Contains the output of the <a>DescribeHapg</a> action.</p>
+   * <p>Contains the output of the <a>DescribeHapg</a> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/DescribeHapgResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDHSM_API DescribeHapgResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The ARN of the high-availability partition group.</p>
      */
-    inline void SetHapgArn(Aws::String&& value) { m_hapgArn = value; }
+    inline void SetHapgArn(Aws::String&& value) { m_hapgArn = std::move(value); }
 
     /**
      * <p>The ARN of the high-availability partition group.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The ARN of the high-availability partition group.</p>
      */
-    inline DescribeHapgResult& WithHapgArn(Aws::String&& value) { SetHapgArn(value); return *this;}
+    inline DescribeHapgResult& WithHapgArn(Aws::String&& value) { SetHapgArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the high-availability partition group.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The serial number of the high-availability partition group.</p>
      */
-    inline void SetHapgSerial(Aws::String&& value) { m_hapgSerial = value; }
+    inline void SetHapgSerial(Aws::String&& value) { m_hapgSerial = std::move(value); }
 
     /**
      * <p>The serial number of the high-availability partition group.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The serial number of the high-availability partition group.</p>
      */
-    inline DescribeHapgResult& WithHapgSerial(Aws::String&& value) { SetHapgSerial(value); return *this;}
+    inline DescribeHapgResult& WithHapgSerial(Aws::String&& value) { SetHapgSerial(std::move(value)); return *this;}
 
     /**
      * <p>The serial number of the high-availability partition group.</p>
@@ -121,19 +126,19 @@ namespace Model
     inline void SetHsmsLastActionFailed(const Aws::Vector<Aws::String>& value) { m_hsmsLastActionFailed = value; }
 
     
-    inline void SetHsmsLastActionFailed(Aws::Vector<Aws::String>&& value) { m_hsmsLastActionFailed = value; }
+    inline void SetHsmsLastActionFailed(Aws::Vector<Aws::String>&& value) { m_hsmsLastActionFailed = std::move(value); }
 
     
     inline DescribeHapgResult& WithHsmsLastActionFailed(const Aws::Vector<Aws::String>& value) { SetHsmsLastActionFailed(value); return *this;}
 
     
-    inline DescribeHapgResult& WithHsmsLastActionFailed(Aws::Vector<Aws::String>&& value) { SetHsmsLastActionFailed(value); return *this;}
+    inline DescribeHapgResult& WithHsmsLastActionFailed(Aws::Vector<Aws::String>&& value) { SetHsmsLastActionFailed(std::move(value)); return *this;}
 
     
     inline DescribeHapgResult& AddHsmsLastActionFailed(const Aws::String& value) { m_hsmsLastActionFailed.push_back(value); return *this; }
 
     
-    inline DescribeHapgResult& AddHsmsLastActionFailed(Aws::String&& value) { m_hsmsLastActionFailed.push_back(value); return *this; }
+    inline DescribeHapgResult& AddHsmsLastActionFailed(Aws::String&& value) { m_hsmsLastActionFailed.push_back(std::move(value)); return *this; }
 
     
     inline DescribeHapgResult& AddHsmsLastActionFailed(const char* value) { m_hsmsLastActionFailed.push_back(value); return *this; }
@@ -145,19 +150,19 @@ namespace Model
     inline void SetHsmsPendingDeletion(const Aws::Vector<Aws::String>& value) { m_hsmsPendingDeletion = value; }
 
     
-    inline void SetHsmsPendingDeletion(Aws::Vector<Aws::String>&& value) { m_hsmsPendingDeletion = value; }
+    inline void SetHsmsPendingDeletion(Aws::Vector<Aws::String>&& value) { m_hsmsPendingDeletion = std::move(value); }
 
     
     inline DescribeHapgResult& WithHsmsPendingDeletion(const Aws::Vector<Aws::String>& value) { SetHsmsPendingDeletion(value); return *this;}
 
     
-    inline DescribeHapgResult& WithHsmsPendingDeletion(Aws::Vector<Aws::String>&& value) { SetHsmsPendingDeletion(value); return *this;}
+    inline DescribeHapgResult& WithHsmsPendingDeletion(Aws::Vector<Aws::String>&& value) { SetHsmsPendingDeletion(std::move(value)); return *this;}
 
     
     inline DescribeHapgResult& AddHsmsPendingDeletion(const Aws::String& value) { m_hsmsPendingDeletion.push_back(value); return *this; }
 
     
-    inline DescribeHapgResult& AddHsmsPendingDeletion(Aws::String&& value) { m_hsmsPendingDeletion.push_back(value); return *this; }
+    inline DescribeHapgResult& AddHsmsPendingDeletion(Aws::String&& value) { m_hsmsPendingDeletion.push_back(std::move(value)); return *this; }
 
     
     inline DescribeHapgResult& AddHsmsPendingDeletion(const char* value) { m_hsmsPendingDeletion.push_back(value); return *this; }
@@ -169,19 +174,19 @@ namespace Model
     inline void SetHsmsPendingRegistration(const Aws::Vector<Aws::String>& value) { m_hsmsPendingRegistration = value; }
 
     
-    inline void SetHsmsPendingRegistration(Aws::Vector<Aws::String>&& value) { m_hsmsPendingRegistration = value; }
+    inline void SetHsmsPendingRegistration(Aws::Vector<Aws::String>&& value) { m_hsmsPendingRegistration = std::move(value); }
 
     
     inline DescribeHapgResult& WithHsmsPendingRegistration(const Aws::Vector<Aws::String>& value) { SetHsmsPendingRegistration(value); return *this;}
 
     
-    inline DescribeHapgResult& WithHsmsPendingRegistration(Aws::Vector<Aws::String>&& value) { SetHsmsPendingRegistration(value); return *this;}
+    inline DescribeHapgResult& WithHsmsPendingRegistration(Aws::Vector<Aws::String>&& value) { SetHsmsPendingRegistration(std::move(value)); return *this;}
 
     
     inline DescribeHapgResult& AddHsmsPendingRegistration(const Aws::String& value) { m_hsmsPendingRegistration.push_back(value); return *this; }
 
     
-    inline DescribeHapgResult& AddHsmsPendingRegistration(Aws::String&& value) { m_hsmsPendingRegistration.push_back(value); return *this; }
+    inline DescribeHapgResult& AddHsmsPendingRegistration(Aws::String&& value) { m_hsmsPendingRegistration.push_back(std::move(value)); return *this; }
 
     
     inline DescribeHapgResult& AddHsmsPendingRegistration(const char* value) { m_hsmsPendingRegistration.push_back(value); return *this; }
@@ -199,7 +204,7 @@ namespace Model
     /**
      * <p>The label for the high-availability partition group.</p>
      */
-    inline void SetLabel(Aws::String&& value) { m_label = value; }
+    inline void SetLabel(Aws::String&& value) { m_label = std::move(value); }
 
     /**
      * <p>The label for the high-availability partition group.</p>
@@ -214,7 +219,7 @@ namespace Model
     /**
      * <p>The label for the high-availability partition group.</p>
      */
-    inline DescribeHapgResult& WithLabel(Aws::String&& value) { SetLabel(value); return *this;}
+    inline DescribeHapgResult& WithLabel(Aws::String&& value) { SetLabel(std::move(value)); return *this;}
 
     /**
      * <p>The label for the high-availability partition group.</p>
@@ -237,7 +242,7 @@ namespace Model
      * <p>The date and time the high-availability partition group was last
      * modified.</p>
      */
-    inline void SetLastModifiedTimestamp(Aws::String&& value) { m_lastModifiedTimestamp = value; }
+    inline void SetLastModifiedTimestamp(Aws::String&& value) { m_lastModifiedTimestamp = std::move(value); }
 
     /**
      * <p>The date and time the high-availability partition group was last
@@ -255,7 +260,7 @@ namespace Model
      * <p>The date and time the high-availability partition group was last
      * modified.</p>
      */
-    inline DescribeHapgResult& WithLastModifiedTimestamp(Aws::String&& value) { SetLastModifiedTimestamp(value); return *this;}
+    inline DescribeHapgResult& WithLastModifiedTimestamp(Aws::String&& value) { SetLastModifiedTimestamp(std::move(value)); return *this;}
 
     /**
      * <p>The date and time the high-availability partition group was last
@@ -279,7 +284,7 @@ namespace Model
      * <p>The list of partition serial numbers that belong to the high-availability
      * partition group.</p>
      */
-    inline void SetPartitionSerialList(Aws::Vector<Aws::String>&& value) { m_partitionSerialList = value; }
+    inline void SetPartitionSerialList(Aws::Vector<Aws::String>&& value) { m_partitionSerialList = std::move(value); }
 
     /**
      * <p>The list of partition serial numbers that belong to the high-availability
@@ -291,7 +296,7 @@ namespace Model
      * <p>The list of partition serial numbers that belong to the high-availability
      * partition group.</p>
      */
-    inline DescribeHapgResult& WithPartitionSerialList(Aws::Vector<Aws::String>&& value) { SetPartitionSerialList(value); return *this;}
+    inline DescribeHapgResult& WithPartitionSerialList(Aws::Vector<Aws::String>&& value) { SetPartitionSerialList(std::move(value)); return *this;}
 
     /**
      * <p>The list of partition serial numbers that belong to the high-availability
@@ -303,7 +308,7 @@ namespace Model
      * <p>The list of partition serial numbers that belong to the high-availability
      * partition group.</p>
      */
-    inline DescribeHapgResult& AddPartitionSerialList(Aws::String&& value) { m_partitionSerialList.push_back(value); return *this; }
+    inline DescribeHapgResult& AddPartitionSerialList(Aws::String&& value) { m_partitionSerialList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The list of partition serial numbers that belong to the high-availability
@@ -324,7 +329,7 @@ namespace Model
     /**
      * <p>The state of the high-availability partition group.</p>
      */
-    inline void SetState(CloudHsmObjectState&& value) { m_state = value; }
+    inline void SetState(CloudHsmObjectState&& value) { m_state = std::move(value); }
 
     /**
      * <p>The state of the high-availability partition group.</p>
@@ -334,7 +339,7 @@ namespace Model
     /**
      * <p>The state of the high-availability partition group.</p>
      */
-    inline DescribeHapgResult& WithState(CloudHsmObjectState&& value) { SetState(value); return *this;}
+    inline DescribeHapgResult& WithState(CloudHsmObjectState&& value) { SetState(std::move(value)); return *this;}
 
   private:
     Aws::String m_hapgArn;

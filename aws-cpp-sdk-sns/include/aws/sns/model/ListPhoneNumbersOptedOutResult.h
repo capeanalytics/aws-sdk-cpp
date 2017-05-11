@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sns/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>The response from the <code>ListPhoneNumbersOptedOut</code> action.</p>
+   * <p>The response from the <code>ListPhoneNumbersOptedOut</code>
+   * action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPhoneNumbersOptedOutResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API ListPhoneNumbersOptedOutResult
   {
@@ -60,7 +65,7 @@ namespace Model
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
      * list is paginated, and each page can contain up to 100 phone numbers.</p>
      */
-    inline void SetPhoneNumbers(Aws::Vector<Aws::String>&& value) { m_phoneNumbers = value; }
+    inline void SetPhoneNumbers(Aws::Vector<Aws::String>&& value) { m_phoneNumbers = std::move(value); }
 
     /**
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
@@ -72,7 +77,7 @@ namespace Model
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
      * list is paginated, and each page can contain up to 100 phone numbers.</p>
      */
-    inline ListPhoneNumbersOptedOutResult& WithPhoneNumbers(Aws::Vector<Aws::String>&& value) { SetPhoneNumbers(value); return *this;}
+    inline ListPhoneNumbersOptedOutResult& WithPhoneNumbers(Aws::Vector<Aws::String>&& value) { SetPhoneNumbers(std::move(value)); return *this;}
 
     /**
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
@@ -84,7 +89,7 @@ namespace Model
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
      * list is paginated, and each page can contain up to 100 phone numbers.</p>
      */
-    inline ListPhoneNumbersOptedOutResult& AddPhoneNumbers(Aws::String&& value) { m_phoneNumbers.push_back(value); return *this; }
+    inline ListPhoneNumbersOptedOutResult& AddPhoneNumbers(Aws::String&& value) { m_phoneNumbers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of phone numbers that are opted out of receiving SMS messages. The
@@ -111,7 +116,7 @@ namespace Model
      * <code>ListPhoneNumbersOptedOut</code> action if additional records are available
      * after the first page of results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>A <code>NextToken</code> string is returned when you call the
@@ -132,7 +137,7 @@ namespace Model
      * <code>ListPhoneNumbersOptedOut</code> action if additional records are available
      * after the first page of results.</p>
      */
-    inline ListPhoneNumbersOptedOutResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListPhoneNumbersOptedOutResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>A <code>NextToken</code> string is returned when you call the
@@ -148,13 +153,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ListPhoneNumbersOptedOutResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ListPhoneNumbersOptedOutResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ListPhoneNumbersOptedOutResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_phoneNumbers;

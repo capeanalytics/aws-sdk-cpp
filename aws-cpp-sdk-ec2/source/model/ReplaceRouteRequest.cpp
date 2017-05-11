@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReplaceRouteRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -25,6 +26,8 @@ ReplaceRouteRequest::ReplaceRouteRequest() :
     m_routeTableIdHasBeenSet(false),
     m_destinationCidrBlockHasBeenSet(false),
     m_gatewayIdHasBeenSet(false),
+    m_destinationIpv6CidrBlockHasBeenSet(false),
+    m_egressOnlyInternetGatewayIdHasBeenSet(false),
     m_instanceIdHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
     m_vpcPeeringConnectionIdHasBeenSet(false),
@@ -38,7 +41,7 @@ Aws::String ReplaceRouteRequest::SerializePayload() const
   ss << "Action=ReplaceRoute&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_routeTableIdHasBeenSet)
@@ -54,6 +57,16 @@ Aws::String ReplaceRouteRequest::SerializePayload() const
   if(m_gatewayIdHasBeenSet)
   {
     ss << "GatewayId=" << StringUtils::URLEncode(m_gatewayId.c_str()) << "&";
+  }
+
+  if(m_destinationIpv6CidrBlockHasBeenSet)
+  {
+    ss << "DestinationIpv6CidrBlock=" << StringUtils::URLEncode(m_destinationIpv6CidrBlock.c_str()) << "&";
+  }
+
+  if(m_egressOnlyInternetGatewayIdHasBeenSet)
+  {
+    ss << "EgressOnlyInternetGatewayId=" << StringUtils::URLEncode(m_egressOnlyInternetGatewayId.c_str()) << "&";
   }
 
   if(m_instanceIdHasBeenSet)
@@ -76,7 +89,12 @@ Aws::String ReplaceRouteRequest::SerializePayload() const
     ss << "NatGatewayId=" << StringUtils::URLEncode(m_natGatewayId.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  ReplaceRouteRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

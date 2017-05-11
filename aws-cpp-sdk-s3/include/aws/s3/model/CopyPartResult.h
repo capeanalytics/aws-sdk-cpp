@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * Entity tag of the object.
      */
-    inline void SetETag(Aws::String&& value) { m_eTagHasBeenSet = true; m_eTag = value; }
+    inline void SetETag(Aws::String&& value) { m_eTagHasBeenSet = true; m_eTag = std::move(value); }
 
     /**
      * Entity tag of the object.
@@ -68,7 +70,7 @@ namespace Model
     /**
      * Entity tag of the object.
      */
-    inline CopyPartResult& WithETag(Aws::String&& value) { SetETag(value); return *this;}
+    inline CopyPartResult& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
 
     /**
      * Entity tag of the object.
@@ -88,7 +90,7 @@ namespace Model
     /**
      * Date and time at which the object was uploaded.
      */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = value; }
+    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::move(value); }
 
     /**
      * Date and time at which the object was uploaded.
@@ -98,7 +100,7 @@ namespace Model
     /**
      * Date and time at which the object was uploaded.
      */
-    inline CopyPartResult& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(value); return *this;}
+    inline CopyPartResult& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
 
   private:
     Aws::String m_eTag;

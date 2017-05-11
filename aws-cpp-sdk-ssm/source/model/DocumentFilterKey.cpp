@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/DocumentFilterKey.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -32,6 +33,7 @@ namespace Aws
         static const int Name_HASH = HashingUtils::HashString("Name");
         static const int Owner_HASH = HashingUtils::HashString("Owner");
         static const int PlatformTypes_HASH = HashingUtils::HashString("PlatformTypes");
+        static const int DocumentType_HASH = HashingUtils::HashString("DocumentType");
 
 
         DocumentFilterKey GetDocumentFilterKeyForName(const Aws::String& name)
@@ -48,6 +50,10 @@ namespace Aws
           else if (hashCode == PlatformTypes_HASH)
           {
             return DocumentFilterKey::PlatformTypes;
+          }
+          else if (hashCode == DocumentType_HASH)
+          {
+            return DocumentFilterKey::DocumentType;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -69,6 +75,8 @@ namespace Aws
             return "Owner";
           case DocumentFilterKey::PlatformTypes:
             return "PlatformTypes";
+          case DocumentFilterKey::DocumentType:
+            return "DocumentType";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

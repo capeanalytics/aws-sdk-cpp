@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/ActivityType.h>
 #include <aws/swf/model/RegistrationStatus.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Detailed information about an activity type.</p>
+   * <p>Detailed information about an activity type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTypeInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API ActivityTypeInfo
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The <a>ActivityType</a> type structure representing the activity type.</p>
      */
-    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = value; }
+    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = std::move(value); }
 
     /**
      * <p>The <a>ActivityType</a> type structure representing the activity type.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The <a>ActivityType</a> type structure representing the activity type.</p>
      */
-    inline ActivityTypeInfo& WithActivityType(ActivityType&& value) { SetActivityType(value); return *this;}
+    inline ActivityTypeInfo& WithActivityType(ActivityType&& value) { SetActivityType(std::move(value)); return *this;}
 
     /**
      * <p>The current status of the activity type.</p>
@@ -82,7 +86,7 @@ namespace Model
     /**
      * <p>The current status of the activity type.</p>
      */
-    inline void SetStatus(RegistrationStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(RegistrationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The current status of the activity type.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The current status of the activity type.</p>
      */
-    inline ActivityTypeInfo& WithStatus(RegistrationStatus&& value) { SetStatus(value); return *this;}
+    inline ActivityTypeInfo& WithStatus(RegistrationStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The description of the activity type provided in
@@ -110,7 +114,7 @@ namespace Model
      * <p>The description of the activity type provided in
      * <a>RegisterActivityType</a>.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the activity type provided in
@@ -128,7 +132,7 @@ namespace Model
      * <p>The description of the activity type provided in
      * <a>RegisterActivityType</a>.</p>
      */
-    inline ActivityTypeInfo& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ActivityTypeInfo& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the activity type provided in
@@ -152,7 +156,7 @@ namespace Model
      * <p>The date and time this activity type was created through
      * <a>RegisterActivityType</a>.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The date and time this activity type was created through
@@ -164,7 +168,7 @@ namespace Model
      * <p>The date and time this activity type was created through
      * <a>RegisterActivityType</a>.</p>
      */
-    inline ActivityTypeInfo& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline ActivityTypeInfo& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
@@ -179,7 +183,7 @@ namespace Model
     /**
      * <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
      */
-    inline void SetDeprecationDate(Aws::Utils::DateTime&& value) { m_deprecationDateHasBeenSet = true; m_deprecationDate = value; }
+    inline void SetDeprecationDate(Aws::Utils::DateTime&& value) { m_deprecationDateHasBeenSet = true; m_deprecationDate = std::move(value); }
 
     /**
      * <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
@@ -189,7 +193,7 @@ namespace Model
     /**
      * <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
      */
-    inline ActivityTypeInfo& WithDeprecationDate(Aws::Utils::DateTime&& value) { SetDeprecationDate(value); return *this;}
+    inline ActivityTypeInfo& WithDeprecationDate(Aws::Utils::DateTime&& value) { SetDeprecationDate(std::move(value)); return *this;}
 
   private:
     ActivityType m_activityType;

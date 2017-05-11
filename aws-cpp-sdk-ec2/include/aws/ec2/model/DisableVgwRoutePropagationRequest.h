@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DisableVgwRoutePropagation.</p>
+   * <p>Contains the parameters for DisableVgwRoutePropagation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableVgwRoutePropagationRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DisableVgwRoutePropagationRequest : public EC2Request
   {
@@ -33,6 +38,11 @@ namespace Model
     DisableVgwRoutePropagationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the route table.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The ID of the route table.</p>
      */
-    inline void SetRouteTableId(Aws::String&& value) { m_routeTableIdHasBeenSet = true; m_routeTableId = value; }
+    inline void SetRouteTableId(Aws::String&& value) { m_routeTableIdHasBeenSet = true; m_routeTableId = std::move(value); }
 
     /**
      * <p>The ID of the route table.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The ID of the route table.</p>
      */
-    inline DisableVgwRoutePropagationRequest& WithRouteTableId(Aws::String&& value) { SetRouteTableId(value); return *this;}
+    inline DisableVgwRoutePropagationRequest& WithRouteTableId(Aws::String&& value) { SetRouteTableId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the route table.</p>
@@ -81,7 +91,7 @@ namespace Model
     /**
      * <p>The ID of the virtual private gateway.</p>
      */
-    inline void SetGatewayId(Aws::String&& value) { m_gatewayIdHasBeenSet = true; m_gatewayId = value; }
+    inline void SetGatewayId(Aws::String&& value) { m_gatewayIdHasBeenSet = true; m_gatewayId = std::move(value); }
 
     /**
      * <p>The ID of the virtual private gateway.</p>
@@ -96,7 +106,7 @@ namespace Model
     /**
      * <p>The ID of the virtual private gateway.</p>
      */
-    inline DisableVgwRoutePropagationRequest& WithGatewayId(Aws::String&& value) { SetGatewayId(value); return *this;}
+    inline DisableVgwRoutePropagationRequest& WithGatewayId(Aws::String&& value) { SetGatewayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the virtual private gateway.</p>

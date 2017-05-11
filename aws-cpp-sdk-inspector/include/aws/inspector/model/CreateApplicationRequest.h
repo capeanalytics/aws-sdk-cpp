@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The user-defined name identifying the application that you want to create.
      * The name must be unique within the AWS account.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>The user-defined name identifying the application that you want to create.
      * The name must be unique within the AWS account.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The user-defined name identifying the application that you want to create.
@@ -68,7 +71,7 @@ namespace Model
      * <p>The user-defined name identifying the application that you want to create.
      * The name must be unique within the AWS account.</p>
      */
-    inline CreateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline CreateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The user-defined name identifying the application that you want to create.
@@ -92,7 +95,7 @@ namespace Model
      * <p>The ARN specifying the resource group that is used to create the
      * application.</p>
      */
-    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = value; }
+    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the resource group that is used to create the
@@ -110,7 +113,7 @@ namespace Model
      * <p>The ARN specifying the resource group that is used to create the
      * application.</p>
      */
-    inline CreateApplicationRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(value); return *this;}
+    inline CreateApplicationRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the resource group that is used to create the

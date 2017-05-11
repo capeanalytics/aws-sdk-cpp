@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudfront/model/OriginCustomHeader.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * A complex type that contains the list of Custom Headers for each origin.
+   * A complex type that contains the list of Custom Headers for each
+   * origin.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CustomHeaders">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CustomHeaders
   {
@@ -71,7 +76,7 @@ namespace Model
     /**
      * A complex type that contains the custom headers for this Origin.
      */
-    inline void SetItems(Aws::Vector<OriginCustomHeader>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<OriginCustomHeader>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * A complex type that contains the custom headers for this Origin.
@@ -81,7 +86,7 @@ namespace Model
     /**
      * A complex type that contains the custom headers for this Origin.
      */
-    inline CustomHeaders& WithItems(Aws::Vector<OriginCustomHeader>&& value) { SetItems(value); return *this;}
+    inline CustomHeaders& WithItems(Aws::Vector<OriginCustomHeader>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * A complex type that contains the custom headers for this Origin.
@@ -91,7 +96,7 @@ namespace Model
     /**
      * A complex type that contains the custom headers for this Origin.
      */
-    inline CustomHeaders& AddItems(OriginCustomHeader&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline CustomHeaders& AddItems(OriginCustomHeader&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
   private:
     int m_quantity;

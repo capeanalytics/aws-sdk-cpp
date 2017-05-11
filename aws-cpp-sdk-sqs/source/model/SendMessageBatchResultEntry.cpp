@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/sqs/model/SendMessageBatchResultEntry.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,7 +34,8 @@ SendMessageBatchResultEntry::SendMessageBatchResultEntry() :
     m_idHasBeenSet(false),
     m_messageIdHasBeenSet(false),
     m_mD5OfMessageBodyHasBeenSet(false),
-    m_mD5OfMessageAttributesHasBeenSet(false)
+    m_mD5OfMessageAttributesHasBeenSet(false),
+    m_sequenceNumberHasBeenSet(false)
 {
 }
 
@@ -41,7 +43,8 @@ SendMessageBatchResultEntry::SendMessageBatchResultEntry(const XmlNode& xmlNode)
     m_idHasBeenSet(false),
     m_messageIdHasBeenSet(false),
     m_mD5OfMessageBodyHasBeenSet(false),
-    m_mD5OfMessageAttributesHasBeenSet(false)
+    m_mD5OfMessageAttributesHasBeenSet(false),
+    m_sequenceNumberHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -76,6 +79,12 @@ SendMessageBatchResultEntry& SendMessageBatchResultEntry::operator =(const XmlNo
       m_mD5OfMessageAttributes = StringUtils::Trim(mD5OfMessageAttributesNode.GetText().c_str());
       m_mD5OfMessageAttributesHasBeenSet = true;
     }
+    XmlNode sequenceNumberNode = resultNode.FirstChild("SequenceNumber");
+    if(!sequenceNumberNode.IsNull())
+    {
+      m_sequenceNumber = StringUtils::Trim(sequenceNumberNode.GetText().c_str());
+      m_sequenceNumberHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -103,6 +112,11 @@ void SendMessageBatchResultEntry::OutputToStream(Aws::OStream& oStream, const ch
       oStream << location << index << locationValue << ".MD5OfMessageAttributes=" << StringUtils::URLEncode(m_mD5OfMessageAttributes.c_str()) << "&";
   }
 
+  if(m_sequenceNumberHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SequenceNumber=" << StringUtils::URLEncode(m_sequenceNumber.c_str()) << "&";
+  }
+
 }
 
 void SendMessageBatchResultEntry::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -122,6 +136,10 @@ void SendMessageBatchResultEntry::OutputToStream(Aws::OStream& oStream, const ch
   if(m_mD5OfMessageAttributesHasBeenSet)
   {
       oStream << location << ".MD5OfMessageAttributes=" << StringUtils::URLEncode(m_mD5OfMessageAttributes.c_str()) << "&";
+  }
+  if(m_sequenceNumberHasBeenSet)
+  {
+      oStream << location << ".SequenceNumber=" << StringUtils::URLEncode(m_sequenceNumber.c_str()) << "&";
   }
 }
 

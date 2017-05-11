@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -43,7 +45,9 @@ namespace Model
    * parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM
    * policies, see <a
    * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
-   * IAM to Manage Access to Amazon SWF Workflows</a>.</p>
+   * IAM to Manage Access to Amazon SWF Workflows</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/CancelTimerDecisionAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API CancelTimerDecisionAttributes
   {
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The unique ID of the timer to cancel.</p>
      */
-    inline void SetTimerId(Aws::String&& value) { m_timerIdHasBeenSet = true; m_timerId = value; }
+    inline void SetTimerId(Aws::String&& value) { m_timerIdHasBeenSet = true; m_timerId = std::move(value); }
 
     /**
      * <p><b>Required.</b> The unique ID of the timer to cancel.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The unique ID of the timer to cancel.</p>
      */
-    inline CancelTimerDecisionAttributes& WithTimerId(Aws::String&& value) { SetTimerId(value); return *this;}
+    inline CancelTimerDecisionAttributes& WithTimerId(Aws::String&& value) { SetTimerId(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The unique ID of the timer to cancel.</p>

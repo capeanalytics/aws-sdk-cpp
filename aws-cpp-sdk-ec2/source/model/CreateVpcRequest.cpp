@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/CreateVpcRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -23,7 +24,10 @@ CreateVpcRequest::CreateVpcRequest() :
     m_dryRun(false),
     m_dryRunHasBeenSet(false),
     m_cidrBlockHasBeenSet(false),
-    m_instanceTenancyHasBeenSet(false)
+    m_instanceTenancy(Tenancy::NOT_SET),
+    m_instanceTenancyHasBeenSet(false),
+    m_amazonProvidedIpv6CidrBlock(false),
+    m_amazonProvidedIpv6CidrBlockHasBeenSet(false)
 {
 }
 
@@ -33,7 +37,7 @@ Aws::String CreateVpcRequest::SerializePayload() const
   ss << "Action=CreateVpc&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_cidrBlockHasBeenSet)
@@ -46,7 +50,17 @@ Aws::String CreateVpcRequest::SerializePayload() const
     ss << "InstanceTenancy=" << TenancyMapper::GetNameForTenancy(m_instanceTenancy) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  if(m_amazonProvidedIpv6CidrBlockHasBeenSet)
+  {
+    ss << "AmazonProvidedIpv6CidrBlock=" << std::boolalpha << m_amazonProvidedIpv6CidrBlock << "&";
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  CreateVpcRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

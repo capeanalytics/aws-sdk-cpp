@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -59,7 +62,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = value; }
+    inline void SetTaskToken(Aws::String&& value) { m_taskTokenHasBeenSet = true; m_taskToken = std::move(value); }
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -86,7 +89,7 @@ namespace Model
      * <code>taskToken</code> must also be passed. This enables it to provide its
      * progress and respond with results.</important>
      */
-    inline RespondActivityTaskFailedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(value); return *this;}
+    inline RespondActivityTaskFailedRequest& WithTaskToken(Aws::String&& value) { SetTaskToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important>
@@ -110,7 +113,7 @@ namespace Model
     /**
      * <p>Description of the error that may assist in diagnostics.</p>
      */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
 
     /**
      * <p>Description of the error that may assist in diagnostics.</p>
@@ -125,7 +128,7 @@ namespace Model
     /**
      * <p>Description of the error that may assist in diagnostics.</p>
      */
-    inline RespondActivityTaskFailedRequest& WithReason(Aws::String&& value) { SetReason(value); return *this;}
+    inline RespondActivityTaskFailedRequest& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
 
     /**
      * <p>Description of the error that may assist in diagnostics.</p>
@@ -145,7 +148,7 @@ namespace Model
     /**
      * <p><i>Optional.</i> Detailed information about the failure.</p>
      */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = value; }
+    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Detailed information about the failure.</p>
@@ -160,7 +163,7 @@ namespace Model
     /**
      * <p><i>Optional.</i> Detailed information about the failure.</p>
      */
-    inline RespondActivityTaskFailedRequest& WithDetails(Aws::String&& value) { SetDetails(value); return *this;}
+    inline RespondActivityTaskFailedRequest& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Detailed information about the failure.</p>

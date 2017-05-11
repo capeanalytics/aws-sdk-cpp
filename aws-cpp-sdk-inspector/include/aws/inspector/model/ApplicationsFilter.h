@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -62,7 +64,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>applicationName</b> property of the <a>Application</a> data type.</p>
      */
-    inline void SetApplicationNamePatterns(Aws::Vector<Aws::String>&& value) { m_applicationNamePatternsHasBeenSet = true; m_applicationNamePatterns = value; }
+    inline void SetApplicationNamePatterns(Aws::Vector<Aws::String>&& value) { m_applicationNamePatternsHasBeenSet = true; m_applicationNamePatterns = std::move(value); }
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a
@@ -76,7 +78,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>applicationName</b> property of the <a>Application</a> data type.</p>
      */
-    inline ApplicationsFilter& WithApplicationNamePatterns(Aws::Vector<Aws::String>&& value) { SetApplicationNamePatterns(value); return *this;}
+    inline ApplicationsFilter& WithApplicationNamePatterns(Aws::Vector<Aws::String>&& value) { SetApplicationNamePatterns(std::move(value)); return *this;}
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a
@@ -90,7 +92,7 @@ namespace Model
      * wildcard specified for this data type property must match the value of the
      * <b>applicationName</b> property of the <a>Application</a> data type.</p>
      */
-    inline ApplicationsFilter& AddApplicationNamePatterns(Aws::String&& value) { m_applicationNamePatternsHasBeenSet = true; m_applicationNamePatterns.push_back(value); return *this; }
+    inline ApplicationsFilter& AddApplicationNamePatterns(Aws::String&& value) { m_applicationNamePatternsHasBeenSet = true; m_applicationNamePatterns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>For a record to match a filter, an explicit value or a string containing a

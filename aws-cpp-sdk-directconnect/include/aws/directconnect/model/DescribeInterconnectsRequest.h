@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/directconnect/DirectConnectRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Container for the parameters to the DescribeInterconnects operation.</p>
+   * <p>Container for the parameters to the DescribeInterconnects
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/DescribeInterconnectsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API DescribeInterconnectsRequest : public DirectConnectRequest
   {
@@ -35,6 +40,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetInterconnectId() const{ return m_interconnectId; }
 
@@ -42,7 +48,7 @@ namespace Model
     inline void SetInterconnectId(const Aws::String& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = value; }
 
     
-    inline void SetInterconnectId(Aws::String&& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = value; }
+    inline void SetInterconnectId(Aws::String&& value) { m_interconnectIdHasBeenSet = true; m_interconnectId = std::move(value); }
 
     
     inline void SetInterconnectId(const char* value) { m_interconnectIdHasBeenSet = true; m_interconnectId.assign(value); }
@@ -51,7 +57,7 @@ namespace Model
     inline DescribeInterconnectsRequest& WithInterconnectId(const Aws::String& value) { SetInterconnectId(value); return *this;}
 
     
-    inline DescribeInterconnectsRequest& WithInterconnectId(Aws::String&& value) { SetInterconnectId(value); return *this;}
+    inline DescribeInterconnectsRequest& WithInterconnectId(Aws::String&& value) { SetInterconnectId(std::move(value)); return *this;}
 
     
     inline DescribeInterconnectsRequest& WithInterconnectId(const char* value) { SetInterconnectId(value); return *this;}

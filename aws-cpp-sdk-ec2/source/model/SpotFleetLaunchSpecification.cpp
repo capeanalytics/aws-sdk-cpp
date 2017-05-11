@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/SpotFleetLaunchSpecification.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -35,6 +36,7 @@ SpotFleetLaunchSpecification::SpotFleetLaunchSpecification() :
     m_securityGroupsHasBeenSet(false),
     m_userDataHasBeenSet(false),
     m_addressingTypeHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -58,6 +60,7 @@ SpotFleetLaunchSpecification::SpotFleetLaunchSpecification(const XmlNode& xmlNod
     m_securityGroupsHasBeenSet(false),
     m_userDataHasBeenSet(false),
     m_addressingTypeHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -305,7 +308,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << index << locationValue << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
 
   if(m_weightedCapacityHasBeenSet)
@@ -336,7 +339,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_securityGroups)
       {
         Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".item." << securityGroupsIdx++;
+        securityGroupsSs << location <<  ".GroupSet." << securityGroupsIdx++;
         item.OutputToStream(oStream, securityGroupsSs.str().c_str());
       }
   }
@@ -372,7 +375,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".item." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -392,7 +395,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".item." << networkInterfacesIdx++;
+        networkInterfacesSs << location <<  ".NetworkInterfaceSet." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -404,7 +407,7 @@ void SpotFleetLaunchSpecification::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_ebsOptimizedHasBeenSet)
   {
-      oStream << location << ".EbsOptimized=" << m_ebsOptimized << "&";
+      oStream << location << ".EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
   if(m_weightedCapacityHasBeenSet)
   {

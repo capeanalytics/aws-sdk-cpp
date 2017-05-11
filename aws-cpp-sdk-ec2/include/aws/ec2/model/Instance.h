@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -35,6 +36,7 @@
 #include <aws/ec2/model/Tag.h>
 #include <aws/ec2/model/GroupIdentifier.h>
 #include <aws/ec2/model/InstanceNetworkInterface.h>
+#include <utility>
 
 namespace Aws
 {
@@ -51,7 +53,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an instance.</p>
+   * <p>Describes an instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Instance">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Instance
   {
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline Instance& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline Instance& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The ID of the AMI used to launch the instance.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the AMI used to launch the instance.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The ID of the AMI used to launch the instance.</p>
      */
-    inline Instance& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline Instance& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AMI used to launch the instance.</p>
@@ -146,7 +150,7 @@ namespace Model
     /**
      * <p>The current state of the instance.</p>
      */
-    inline void SetState(InstanceState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(InstanceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the instance.</p>
@@ -156,110 +160,131 @@ namespace Model
     /**
      * <p>The current state of the instance.</p>
      */
-    inline Instance& WithState(InstanceState&& value) { SetState(value); return *this;}
+    inline Instance& WithState(InstanceState&& value) { SetState(std::move(value)); return *this;}
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
     inline const Aws::String& GetPrivateDnsName() const{ return m_privateDnsName; }
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
     inline void SetPrivateDnsName(const Aws::String& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
-    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
+    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::move(value); }
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
     inline void SetPrivateDnsName(const char* value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName.assign(value); }
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
     inline Instance& WithPrivateDnsName(const Aws::String& value) { SetPrivateDnsName(value); return *this;}
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
-    inline Instance& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(value); return *this;}
+    inline Instance& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(std::move(value)); return *this;}
 
     /**
-     * <p>The private DNS name assigned to the instance. This DNS name can only be used
-     * inside the Amazon EC2 network. This name is not available until the instance
-     * enters the <code>running</code> state. For EC2-VPC, this name is only available
-     * if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The private DNS hostname name assigned to the instance. This DNS
+     * hostname can only be used inside the Amazon EC2 network. This name is not
+     * available until the instance enters the <code>running</code> state. </p>
+     * <p>[EC2-VPC] The Amazon-provided DNS server will resolve Amazon-provided private
+     * DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If
+     * you are not using the Amazon-provided DNS server in your VPC, your custom domain
+     * name servers must resolve the hostname as appropriate.</p>
      */
     inline Instance& WithPrivateDnsName(const char* value) { SetPrivateDnsName(value); return *this;}
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
     inline const Aws::String& GetPublicDnsName() const{ return m_publicDnsName; }
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
     inline void SetPublicDnsName(const Aws::String& value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName = value; }
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
-    inline void SetPublicDnsName(Aws::String&& value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName = value; }
+    inline void SetPublicDnsName(Aws::String&& value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName = std::move(value); }
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
     inline void SetPublicDnsName(const char* value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName.assign(value); }
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
     inline Instance& WithPublicDnsName(const Aws::String& value) { SetPublicDnsName(value); return *this;}
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
-    inline Instance& WithPublicDnsName(Aws::String&& value) { SetPublicDnsName(value); return *this;}
+    inline Instance& WithPublicDnsName(Aws::String&& value) { SetPublicDnsName(std::move(value)); return *this;}
 
     /**
-     * <p>The public DNS name assigned to the instance. This name is not available
-     * until the instance enters the <code>running</code> state. For EC2-VPC, this name
-     * is only available if you've enabled DNS hostnames for your VPC.</p>
+     * <p>(IPv4 only) The public DNS name assigned to the instance. This name is not
+     * available until the instance enters the <code>running</code> state. For EC2-VPC,
+     * this name is only available if you've enabled DNS hostnames for your VPC.</p>
      */
     inline Instance& WithPublicDnsName(const char* value) { SetPublicDnsName(value); return *this;}
 
@@ -279,7 +304,7 @@ namespace Model
      * <p>The reason for the most recent state transition. This might be an empty
      * string.</p>
      */
-    inline void SetStateTransitionReason(Aws::String&& value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason = value; }
+    inline void SetStateTransitionReason(Aws::String&& value) { m_stateTransitionReasonHasBeenSet = true; m_stateTransitionReason = std::move(value); }
 
     /**
      * <p>The reason for the most recent state transition. This might be an empty
@@ -297,7 +322,7 @@ namespace Model
      * <p>The reason for the most recent state transition. This might be an empty
      * string.</p>
      */
-    inline Instance& WithStateTransitionReason(Aws::String&& value) { SetStateTransitionReason(value); return *this;}
+    inline Instance& WithStateTransitionReason(Aws::String&& value) { SetStateTransitionReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the most recent state transition. This might be an empty
@@ -321,7 +346,7 @@ namespace Model
      * <p>The name of the key pair, if this instance was launched with an associated
      * key pair.</p>
      */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
+    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
 
     /**
      * <p>The name of the key pair, if this instance was launched with an associated
@@ -339,7 +364,7 @@ namespace Model
      * <p>The name of the key pair, if this instance was launched with an associated
      * key pair.</p>
      */
-    inline Instance& WithKeyName(Aws::String&& value) { SetKeyName(value); return *this;}
+    inline Instance& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the key pair, if this instance was launched with an associated
@@ -378,7 +403,7 @@ namespace Model
     /**
      * <p>The product codes attached to this instance, if applicable.</p>
      */
-    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodesHasBeenSet = true; m_productCodes = value; }
+    inline void SetProductCodes(Aws::Vector<ProductCode>&& value) { m_productCodesHasBeenSet = true; m_productCodes = std::move(value); }
 
     /**
      * <p>The product codes attached to this instance, if applicable.</p>
@@ -388,7 +413,7 @@ namespace Model
     /**
      * <p>The product codes attached to this instance, if applicable.</p>
      */
-    inline Instance& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(value); return *this;}
+    inline Instance& WithProductCodes(Aws::Vector<ProductCode>&& value) { SetProductCodes(std::move(value)); return *this;}
 
     /**
      * <p>The product codes attached to this instance, if applicable.</p>
@@ -398,7 +423,7 @@ namespace Model
     /**
      * <p>The product codes attached to this instance, if applicable.</p>
      */
-    inline Instance& AddProductCodes(ProductCode&& value) { m_productCodesHasBeenSet = true; m_productCodes.push_back(value); return *this; }
+    inline Instance& AddProductCodes(ProductCode&& value) { m_productCodesHasBeenSet = true; m_productCodes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The instance type.</p>
@@ -413,7 +438,7 @@ namespace Model
     /**
      * <p>The instance type.</p>
      */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type.</p>
@@ -423,7 +448,7 @@ namespace Model
     /**
      * <p>The instance type.</p>
      */
-    inline Instance& WithInstanceType(InstanceType&& value) { SetInstanceType(value); return *this;}
+    inline Instance& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The time the instance was launched.</p>
@@ -438,7 +463,7 @@ namespace Model
     /**
      * <p>The time the instance was launched.</p>
      */
-    inline void SetLaunchTime(Aws::Utils::DateTime&& value) { m_launchTimeHasBeenSet = true; m_launchTime = value; }
+    inline void SetLaunchTime(Aws::Utils::DateTime&& value) { m_launchTimeHasBeenSet = true; m_launchTime = std::move(value); }
 
     /**
      * <p>The time the instance was launched.</p>
@@ -448,7 +473,7 @@ namespace Model
     /**
      * <p>The time the instance was launched.</p>
      */
-    inline Instance& WithLaunchTime(Aws::Utils::DateTime&& value) { SetLaunchTime(value); return *this;}
+    inline Instance& WithLaunchTime(Aws::Utils::DateTime&& value) { SetLaunchTime(std::move(value)); return *this;}
 
     /**
      * <p>The location where the instance launched, if applicable.</p>
@@ -463,7 +488,7 @@ namespace Model
     /**
      * <p>The location where the instance launched, if applicable.</p>
      */
-    inline void SetPlacement(Placement&& value) { m_placementHasBeenSet = true; m_placement = value; }
+    inline void SetPlacement(Placement&& value) { m_placementHasBeenSet = true; m_placement = std::move(value); }
 
     /**
      * <p>The location where the instance launched, if applicable.</p>
@@ -473,7 +498,7 @@ namespace Model
     /**
      * <p>The location where the instance launched, if applicable.</p>
      */
-    inline Instance& WithPlacement(Placement&& value) { SetPlacement(value); return *this;}
+    inline Instance& WithPlacement(Placement&& value) { SetPlacement(std::move(value)); return *this;}
 
     /**
      * <p>The kernel associated with this instance, if applicable.</p>
@@ -488,7 +513,7 @@ namespace Model
     /**
      * <p>The kernel associated with this instance, if applicable.</p>
      */
-    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = value; }
+    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::move(value); }
 
     /**
      * <p>The kernel associated with this instance, if applicable.</p>
@@ -503,7 +528,7 @@ namespace Model
     /**
      * <p>The kernel associated with this instance, if applicable.</p>
      */
-    inline Instance& WithKernelId(Aws::String&& value) { SetKernelId(value); return *this;}
+    inline Instance& WithKernelId(Aws::String&& value) { SetKernelId(std::move(value)); return *this;}
 
     /**
      * <p>The kernel associated with this instance, if applicable.</p>
@@ -523,7 +548,7 @@ namespace Model
     /**
      * <p>The RAM disk associated with this instance, if applicable.</p>
      */
-    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = value; }
+    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::move(value); }
 
     /**
      * <p>The RAM disk associated with this instance, if applicable.</p>
@@ -538,7 +563,7 @@ namespace Model
     /**
      * <p>The RAM disk associated with this instance, if applicable.</p>
      */
-    inline Instance& WithRamdiskId(Aws::String&& value) { SetRamdiskId(value); return *this;}
+    inline Instance& WithRamdiskId(Aws::String&& value) { SetRamdiskId(std::move(value)); return *this;}
 
     /**
      * <p>The RAM disk associated with this instance, if applicable.</p>
@@ -558,7 +583,7 @@ namespace Model
     /**
      * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
      */
-    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
 
     /**
      * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
@@ -568,32 +593,32 @@ namespace Model
     /**
      * <p>The value is <code>Windows</code> for Windows instances; otherwise blank.</p>
      */
-    inline Instance& WithPlatform(PlatformValues&& value) { SetPlatform(value); return *this;}
+    inline Instance& WithPlatform(PlatformValues&& value) { SetPlatform(std::move(value)); return *this;}
 
     /**
-     * <p>The monitoring information for the instance.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline const Monitoring& GetMonitoring() const{ return m_monitoring; }
 
     /**
-     * <p>The monitoring information for the instance.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline void SetMonitoring(const Monitoring& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
 
     /**
-     * <p>The monitoring information for the instance.</p>
+     * <p>The monitoring for the instance.</p>
      */
-    inline void SetMonitoring(Monitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
+    inline void SetMonitoring(Monitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::move(value); }
 
     /**
-     * <p>The monitoring information for the instance.</p>
+     * <p>The monitoring for the instance.</p>
      */
     inline Instance& WithMonitoring(const Monitoring& value) { SetMonitoring(value); return *this;}
 
     /**
-     * <p>The monitoring information for the instance.</p>
+     * <p>The monitoring for the instance.</p>
      */
-    inline Instance& WithMonitoring(Monitoring&& value) { SetMonitoring(value); return *this;}
+    inline Instance& WithMonitoring(Monitoring&& value) { SetMonitoring(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] The ID of the subnet in which the instance is running.</p>
@@ -608,7 +633,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the subnet in which the instance is running.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>[EC2-VPC] The ID of the subnet in which the instance is running.</p>
@@ -623,7 +648,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the subnet in which the instance is running.</p>
      */
-    inline Instance& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline Instance& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] The ID of the subnet in which the instance is running.</p>
@@ -643,7 +668,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the VPC in which the instance is running.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>[EC2-VPC] The ID of the VPC in which the instance is running.</p>
@@ -658,7 +683,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The ID of the VPC in which the instance is running.</p>
      */
-    inline Instance& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline Instance& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] The ID of the VPC in which the instance is running.</p>
@@ -666,72 +691,72 @@ namespace Model
     inline Instance& WithVpcId(const char* value) { SetVpcId(value); return *this;}
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
     inline const Aws::String& GetPrivateIpAddress() const{ return m_privateIpAddress; }
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
     inline void SetPrivateIpAddress(const Aws::String& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
+    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
     inline void SetPrivateIpAddress(const char* value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress.assign(value); }
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
     inline Instance& WithPrivateIpAddress(const Aws::String& value) { SetPrivateIpAddress(value); return *this;}
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
-    inline Instance& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(value); return *this;}
+    inline Instance& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
 
     /**
-     * <p>The private IP address assigned to the instance.</p>
+     * <p>The private IPv4 address assigned to the instance.</p>
      */
     inline Instance& WithPrivateIpAddress(const char* value) { SetPrivateIpAddress(value); return *this;}
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
     inline const Aws::String& GetPublicIpAddress() const{ return m_publicIpAddress; }
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
     inline void SetPublicIpAddress(const Aws::String& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = value; }
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
-    inline void SetPublicIpAddress(Aws::String&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = value; }
+    inline void SetPublicIpAddress(Aws::String&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = std::move(value); }
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
     inline void SetPublicIpAddress(const char* value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress.assign(value); }
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
     inline Instance& WithPublicIpAddress(const Aws::String& value) { SetPublicIpAddress(value); return *this;}
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
-    inline Instance& WithPublicIpAddress(Aws::String&& value) { SetPublicIpAddress(value); return *this;}
+    inline Instance& WithPublicIpAddress(Aws::String&& value) { SetPublicIpAddress(std::move(value)); return *this;}
 
     /**
-     * <p>The public IP address assigned to the instance, if applicable.</p>
+     * <p>The public IPv4 address assigned to the instance, if applicable.</p>
      */
     inline Instance& WithPublicIpAddress(const char* value) { SetPublicIpAddress(value); return *this;}
 
@@ -748,7 +773,7 @@ namespace Model
     /**
      * <p>The reason for the most recent state transition.</p>
      */
-    inline void SetStateReason(StateReason&& value) { m_stateReasonHasBeenSet = true; m_stateReason = value; }
+    inline void SetStateReason(StateReason&& value) { m_stateReasonHasBeenSet = true; m_stateReason = std::move(value); }
 
     /**
      * <p>The reason for the most recent state transition.</p>
@@ -758,7 +783,7 @@ namespace Model
     /**
      * <p>The reason for the most recent state transition.</p>
      */
-    inline Instance& WithStateReason(StateReason&& value) { SetStateReason(value); return *this;}
+    inline Instance& WithStateReason(StateReason&& value) { SetStateReason(std::move(value)); return *this;}
 
     /**
      * <p>The architecture of the image.</p>
@@ -773,7 +798,7 @@ namespace Model
     /**
      * <p>The architecture of the image.</p>
      */
-    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(ArchitectureValues&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The architecture of the image.</p>
@@ -783,7 +808,7 @@ namespace Model
     /**
      * <p>The architecture of the image.</p>
      */
-    inline Instance& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(value); return *this;}
+    inline Instance& WithArchitecture(ArchitectureValues&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The root device type used by the AMI. The AMI can use an EBS volume or an
@@ -801,7 +826,7 @@ namespace Model
      * <p>The root device type used by the AMI. The AMI can use an EBS volume or an
      * instance store volume.</p>
      */
-    inline void SetRootDeviceType(DeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = value; }
+    inline void SetRootDeviceType(DeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = std::move(value); }
 
     /**
      * <p>The root device type used by the AMI. The AMI can use an EBS volume or an
@@ -813,7 +838,7 @@ namespace Model
      * <p>The root device type used by the AMI. The AMI can use an EBS volume or an
      * instance store volume.</p>
      */
-    inline Instance& WithRootDeviceType(DeviceType&& value) { SetRootDeviceType(value); return *this;}
+    inline Instance& WithRootDeviceType(DeviceType&& value) { SetRootDeviceType(std::move(value)); return *this;}
 
     /**
      * <p>The root device name (for example, <code>/dev/sda1</code> or
@@ -831,7 +856,7 @@ namespace Model
      * <p>The root device name (for example, <code>/dev/sda1</code> or
      * <code>/dev/xvda</code>).</p>
      */
-    inline void SetRootDeviceName(Aws::String&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = value; }
+    inline void SetRootDeviceName(Aws::String&& value) { m_rootDeviceNameHasBeenSet = true; m_rootDeviceName = std::move(value); }
 
     /**
      * <p>The root device name (for example, <code>/dev/sda1</code> or
@@ -849,7 +874,7 @@ namespace Model
      * <p>The root device name (for example, <code>/dev/sda1</code> or
      * <code>/dev/xvda</code>).</p>
      */
-    inline Instance& WithRootDeviceName(Aws::String&& value) { SetRootDeviceName(value); return *this;}
+    inline Instance& WithRootDeviceName(Aws::String&& value) { SetRootDeviceName(std::move(value)); return *this;}
 
     /**
      * <p>The root device name (for example, <code>/dev/sda1</code> or
@@ -870,7 +895,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries for the instance.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>Any block device mapping entries for the instance.</p>
@@ -880,7 +905,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries for the instance.</p>
      */
-    inline Instance& WithBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline Instance& WithBlockDeviceMappings(Aws::Vector<InstanceBlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>Any block device mapping entries for the instance.</p>
@@ -890,7 +915,7 @@ namespace Model
     /**
      * <p>Any block device mapping entries for the instance.</p>
      */
-    inline Instance& AddBlockDeviceMappings(InstanceBlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
+    inline Instance& AddBlockDeviceMappings(InstanceBlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The virtualization type of the instance.</p>
@@ -905,7 +930,7 @@ namespace Model
     /**
      * <p>The virtualization type of the instance.</p>
      */
-    inline void SetVirtualizationType(VirtualizationType&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = value; }
+    inline void SetVirtualizationType(VirtualizationType&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = std::move(value); }
 
     /**
      * <p>The virtualization type of the instance.</p>
@@ -915,7 +940,7 @@ namespace Model
     /**
      * <p>The virtualization type of the instance.</p>
      */
-    inline Instance& WithVirtualizationType(VirtualizationType&& value) { SetVirtualizationType(value); return *this;}
+    inline Instance& WithVirtualizationType(VirtualizationType&& value) { SetVirtualizationType(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether this is a Spot instance or a Scheduled Instance.</p>
@@ -930,7 +955,7 @@ namespace Model
     /**
      * <p>Indicates whether this is a Spot instance or a Scheduled Instance.</p>
      */
-    inline void SetInstanceLifecycle(InstanceLifecycleType&& value) { m_instanceLifecycleHasBeenSet = true; m_instanceLifecycle = value; }
+    inline void SetInstanceLifecycle(InstanceLifecycleType&& value) { m_instanceLifecycleHasBeenSet = true; m_instanceLifecycle = std::move(value); }
 
     /**
      * <p>Indicates whether this is a Spot instance or a Scheduled Instance.</p>
@@ -940,7 +965,7 @@ namespace Model
     /**
      * <p>Indicates whether this is a Spot instance or a Scheduled Instance.</p>
      */
-    inline Instance& WithInstanceLifecycle(InstanceLifecycleType&& value) { SetInstanceLifecycle(value); return *this;}
+    inline Instance& WithInstanceLifecycle(InstanceLifecycleType&& value) { SetInstanceLifecycle(std::move(value)); return *this;}
 
     /**
      * <p>If the request is a Spot instance request, the ID of the request.</p>
@@ -955,7 +980,7 @@ namespace Model
     /**
      * <p>If the request is a Spot instance request, the ID of the request.</p>
      */
-    inline void SetSpotInstanceRequestId(Aws::String&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = value; }
+    inline void SetSpotInstanceRequestId(Aws::String&& value) { m_spotInstanceRequestIdHasBeenSet = true; m_spotInstanceRequestId = std::move(value); }
 
     /**
      * <p>If the request is a Spot instance request, the ID of the request.</p>
@@ -970,7 +995,7 @@ namespace Model
     /**
      * <p>If the request is a Spot instance request, the ID of the request.</p>
      */
-    inline Instance& WithSpotInstanceRequestId(Aws::String&& value) { SetSpotInstanceRequestId(value); return *this;}
+    inline Instance& WithSpotInstanceRequestId(Aws::String&& value) { SetSpotInstanceRequestId(std::move(value)); return *this;}
 
     /**
      * <p>If the request is a Spot instance request, the ID of the request.</p>
@@ -993,7 +1018,7 @@ namespace Model
      * <p>The idempotency token you provided when you launched the instance, if
      * applicable.</p>
      */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
+    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
      * <p>The idempotency token you provided when you launched the instance, if
@@ -1011,7 +1036,7 @@ namespace Model
      * <p>The idempotency token you provided when you launched the instance, if
      * applicable.</p>
      */
-    inline Instance& WithClientToken(Aws::String&& value) { SetClientToken(value); return *this;}
+    inline Instance& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
      * <p>The idempotency token you provided when you launched the instance, if
@@ -1032,7 +1057,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the instance.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the instance.</p>
@@ -1042,7 +1067,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the instance.</p>
      */
-    inline Instance& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline Instance& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the instance.</p>
@@ -1052,7 +1077,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the instance.</p>
      */
-    inline Instance& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline Instance& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more security groups for the instance.</p>
@@ -1067,7 +1092,7 @@ namespace Model
     /**
      * <p>One or more security groups for the instance.</p>
      */
-    inline void SetSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
+    inline void SetSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
 
     /**
      * <p>One or more security groups for the instance.</p>
@@ -1077,7 +1102,7 @@ namespace Model
     /**
      * <p>One or more security groups for the instance.</p>
      */
-    inline Instance& WithSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { SetSecurityGroups(value); return *this;}
+    inline Instance& WithSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { SetSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>One or more security groups for the instance.</p>
@@ -1087,7 +1112,7 @@ namespace Model
     /**
      * <p>One or more security groups for the instance.</p>
      */
-    inline Instance& AddSecurityGroups(GroupIdentifier&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
+    inline Instance& AddSecurityGroups(GroupIdentifier&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies whether to enable an instance launched in a VPC to perform NAT.
@@ -1135,7 +1160,7 @@ namespace Model
     /**
      * <p>The hypervisor type of the instance.</p>
      */
-    inline void SetHypervisor(HypervisorType&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
+    inline void SetHypervisor(HypervisorType&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = std::move(value); }
 
     /**
      * <p>The hypervisor type of the instance.</p>
@@ -1145,7 +1170,7 @@ namespace Model
     /**
      * <p>The hypervisor type of the instance.</p>
      */
-    inline Instance& WithHypervisor(HypervisorType&& value) { SetHypervisor(value); return *this;}
+    inline Instance& WithHypervisor(HypervisorType&& value) { SetHypervisor(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
@@ -1160,7 +1185,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
      */
-    inline void SetNetworkInterfaces(Aws::Vector<InstanceNetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
+    inline void SetNetworkInterfaces(Aws::Vector<InstanceNetworkInterface>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
 
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
@@ -1170,7 +1195,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
      */
-    inline Instance& WithNetworkInterfaces(Aws::Vector<InstanceNetworkInterface>&& value) { SetNetworkInterfaces(value); return *this;}
+    inline Instance& WithNetworkInterfaces(Aws::Vector<InstanceNetworkInterface>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
@@ -1180,7 +1205,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] One or more network interfaces for the instance.</p>
      */
-    inline Instance& AddNetworkInterfaces(InstanceNetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
+    inline Instance& AddNetworkInterfaces(InstanceNetworkInterface&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IAM instance profile associated with the instance, if applicable.</p>
@@ -1195,7 +1220,7 @@ namespace Model
     /**
      * <p>The IAM instance profile associated with the instance, if applicable.</p>
      */
-    inline void SetIamInstanceProfile(IamInstanceProfile&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = value; }
+    inline void SetIamInstanceProfile(IamInstanceProfile&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::move(value); }
 
     /**
      * <p>The IAM instance profile associated with the instance, if applicable.</p>
@@ -1205,7 +1230,7 @@ namespace Model
     /**
      * <p>The IAM instance profile associated with the instance, if applicable.</p>
      */
-    inline Instance& WithIamInstanceProfile(IamInstanceProfile&& value) { SetIamInstanceProfile(value); return *this;}
+    inline Instance& WithIamInstanceProfile(IamInstanceProfile&& value) { SetIamInstanceProfile(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the instance is optimized for EBS I/O. This optimization
@@ -1235,39 +1260,61 @@ namespace Model
     inline Instance& WithEbsOptimized(bool value) { SetEbsOptimized(value); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline const Aws::String& GetSriovNetSupport() const{ return m_sriovNetSupport; }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline void SetSriovNetSupport(const Aws::String& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = value; }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
-    inline void SetSriovNetSupport(Aws::String&& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = value; }
+    inline void SetSriovNetSupport(Aws::String&& value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport = std::move(value); }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline void SetSriovNetSupport(const char* value) { m_sriovNetSupportHasBeenSet = true; m_sriovNetSupport.assign(value); }
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline Instance& WithSriovNetSupport(const Aws::String& value) { SetSriovNetSupport(value); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
-    inline Instance& WithSriovNetSupport(Aws::String&& value) { SetSriovNetSupport(value); return *this;}
+    inline Instance& WithSriovNetSupport(Aws::String&& value) { SetSriovNetSupport(std::move(value)); return *this;}
 
     /**
-     * <p>Specifies whether enhanced networking is enabled. </p>
+     * <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function
+     * interface is enabled.</p>
      */
     inline Instance& WithSriovNetSupport(const char* value) { SetSriovNetSupport(value); return *this;}
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline bool GetEnaSupport() const{ return m_enaSupport; }
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline void SetEnaSupport(bool value) { m_enaSupportHasBeenSet = true; m_enaSupport = value; }
+
+    /**
+     * <p>Specifies whether enhanced networking with ENA is enabled.</p>
+     */
+    inline Instance& WithEnaSupport(bool value) { SetEnaSupport(value); return *this;}
 
   private:
     Aws::String m_instanceId;
@@ -1344,6 +1391,8 @@ namespace Model
     bool m_ebsOptimizedHasBeenSet;
     Aws::String m_sriovNetSupport;
     bool m_sriovNetSupportHasBeenSet;
+    bool m_enaSupport;
+    bool m_enaSupportHasBeenSet;
   };
 
 } // namespace Model

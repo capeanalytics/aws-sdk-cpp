@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/InstanceState.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,6 +33,7 @@ namespace Model
 InstanceState::InstanceState() : 
     m_code(0),
     m_codeHasBeenSet(false),
+    m_name(InstanceStateName::NOT_SET),
     m_nameHasBeenSet(false)
 {
 }
@@ -39,6 +41,7 @@ InstanceState::InstanceState() :
 InstanceState::InstanceState(const XmlNode& xmlNode) : 
     m_code(0),
     m_codeHasBeenSet(false),
+    m_name(InstanceStateName::NOT_SET),
     m_nameHasBeenSet(false)
 {
   *this = xmlNode;

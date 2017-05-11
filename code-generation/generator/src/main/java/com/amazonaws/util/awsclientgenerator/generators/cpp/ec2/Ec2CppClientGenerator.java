@@ -49,6 +49,13 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
             shapes.put(key.replaceAll("Result$", "Response"), shape);
         }
 
+        //add "disabled" state to SpotInstanceState
+        List<String> spotInstanceStateEnumValues = shapes.get("SpotInstanceState").getEnumValues();
+
+        if(!spotInstanceStateEnumValues.contains("disabled")) {
+            spotInstanceStateEnumValues.add("disabled");
+        }
+
         final Collection<Error> serviceErrors = serviceModel.getServiceErrors();
         final Error activeVpcPeeringConnectionPerVpcLimitExceeded = new Error();
         activeVpcPeeringConnectionPerVpcLimitExceeded.setName("ActiveVpcPeeringConnectionPerVpcLimitExceeded");
@@ -90,6 +97,10 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
         diskImageSizeTooLarge.setName("DiskImageSizeTooLarge");
         diskImageSizeTooLarge.setText("DiskImageSizeTooLarge");
         serviceErrors.add(diskImageSizeTooLarge);
+        final Error dryRunOperation = new Error();
+        dryRunOperation.setName("DryRunOperation");
+        dryRunOperation.setText("DryRunOperation");
+        serviceErrors.add(dryRunOperation);
         final Error encryptedVolumesNotSupported = new Error();
         encryptedVolumesNotSupported.setName("EncryptedVolumesNotSupported");
         encryptedVolumesNotSupported.setText("EncryptedVolumesNotSupported");
@@ -539,8 +550,8 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
         invalidVpcPeeringConnectionIDNotFound.setText("InvalidVpcPeeringConnectionID.NotFound");
         serviceErrors.add(invalidVpcPeeringConnectionIDNotFound);
         final Error invalidVpcRange = new Error();
-        invalidVpcRange.setName("InvalidVpcRange");
-        invalidVpcRange.setText("InvalidVpcRange");
+        invalidVpcRange.setName("InvalidVpc.Range");
+        invalidVpcRange.setText("InvalidVpc.Range");
         serviceErrors.add(invalidVpcRange);
         final Error invalidVpcState = new Error();
         invalidVpcState.setName("InvalidVpcState");
@@ -665,11 +676,7 @@ public class Ec2CppClientGenerator extends QueryCppClientGenerator{
         final Error securityGroupsPerInterfaceLimitExceeded = new Error();
         securityGroupsPerInterfaceLimitExceeded.setName("SecurityGroupsPerInterfaceLimitExceeded");
         securityGroupsPerInterfaceLimitExceeded.setText("SecurityGroupsPerInterfaceLimitExceeded");
-        serviceErrors.add(securityGroupsPerInterfaceLimitExceeded);
-        final Error signatureDoesNotMatch = new Error();
-        signatureDoesNotMatch.setName("SignatureDoesNotMatch");
-        signatureDoesNotMatch.setText("SignatureDoesNotMatch");
-        serviceErrors.add(signatureDoesNotMatch);
+        serviceErrors.add(securityGroupsPerInterfaceLimitExceeded);        
         final Error snapshotLimitExceeded = new Error();
         snapshotLimitExceeded.setName("SnapshotLimitExceeded");
         snapshotLimitExceeded.setText("SnapshotLimitExceeded");

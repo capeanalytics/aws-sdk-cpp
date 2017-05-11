@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudtrail/model/LookupAttributeKey.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -34,6 +35,7 @@ namespace Aws
         static const int Username_HASH = HashingUtils::HashString("Username");
         static const int ResourceType_HASH = HashingUtils::HashString("ResourceType");
         static const int ResourceName_HASH = HashingUtils::HashString("ResourceName");
+        static const int EventSource_HASH = HashingUtils::HashString("EventSource");
 
 
         LookupAttributeKey GetLookupAttributeKeyForName(const Aws::String& name)
@@ -59,6 +61,10 @@ namespace Aws
           {
             return LookupAttributeKey::ResourceName;
           }
+          else if (hashCode == EventSource_HASH)
+          {
+            return LookupAttributeKey::EventSource;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -83,6 +89,8 @@ namespace Aws
             return "ResourceType";
           case LookupAttributeKey::ResourceName:
             return "ResourceName";
+          case LookupAttributeKey::EventSource:
+            return "EventSource";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

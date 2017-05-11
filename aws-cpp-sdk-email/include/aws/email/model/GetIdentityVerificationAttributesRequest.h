@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/email/SESRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,9 @@ namespace Model
    * of identities. For domain identities, this request also returns the verification
    * token. For information about verifying identities with Amazon SES, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/GetIdentityVerificationAttributesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API GetIdentityVerificationAttributesRequest : public SESRequest
   {
@@ -38,6 +42,11 @@ namespace Model
     GetIdentityVerificationAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>A list of identities.</p>
      */
@@ -51,7 +60,7 @@ namespace Model
     /**
      * <p>A list of identities.</p>
      */
-    inline void SetIdentities(Aws::Vector<Aws::String>&& value) { m_identitiesHasBeenSet = true; m_identities = value; }
+    inline void SetIdentities(Aws::Vector<Aws::String>&& value) { m_identitiesHasBeenSet = true; m_identities = std::move(value); }
 
     /**
      * <p>A list of identities.</p>
@@ -61,7 +70,7 @@ namespace Model
     /**
      * <p>A list of identities.</p>
      */
-    inline GetIdentityVerificationAttributesRequest& WithIdentities(Aws::Vector<Aws::String>&& value) { SetIdentities(value); return *this;}
+    inline GetIdentityVerificationAttributesRequest& WithIdentities(Aws::Vector<Aws::String>&& value) { SetIdentities(std::move(value)); return *this;}
 
     /**
      * <p>A list of identities.</p>
@@ -71,7 +80,7 @@ namespace Model
     /**
      * <p>A list of identities.</p>
      */
-    inline GetIdentityVerificationAttributesRequest& AddIdentities(Aws::String&& value) { m_identitiesHasBeenSet = true; m_identities.push_back(value); return *this; }
+    inline GetIdentityVerificationAttributesRequest& AddIdentities(Aws::String&& value) { m_identitiesHasBeenSet = true; m_identities.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of identities.</p>

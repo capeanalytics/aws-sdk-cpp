@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides information on the option groups the DB instance is a member of.</p>
+   * <p>Provides information on the option groups the DB instance is a member
+   * of.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionGroupMembership">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API OptionGroupMembership
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the option group that the instance belongs to.</p>
      */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
+    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
      * <p>The name of the option group that the instance belongs to.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the option group that the instance belongs to.</p>
      */
-    inline OptionGroupMembership& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(value); return *this;}
+    inline OptionGroupMembership& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the option group that the instance belongs to.</p>
@@ -104,7 +109,7 @@ namespace Model
      * <code>pending-maintenance-removal</code>, <code>applying</code>,
      * <code>removing</code>, and <code>failed</code>. </p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the DB instance's option group membership. Valid values are:
@@ -131,7 +136,7 @@ namespace Model
      * <code>pending-maintenance-removal</code>, <code>applying</code>,
      * <code>removing</code>, and <code>failed</code>. </p>
      */
-    inline OptionGroupMembership& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline OptionGroupMembership& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the DB instance's option group membership. Valid values are:

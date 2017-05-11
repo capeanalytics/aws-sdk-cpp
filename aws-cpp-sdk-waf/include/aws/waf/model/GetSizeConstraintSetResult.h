@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/SizeConstraintSet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,13 +44,13 @@ namespace Model
     /**
      * <p>Information about the <a>SizeConstraintSet</a> that you specified in the
      * <code>GetSizeConstraintSet</code> request. For more information, see the
-     * following topics:</p> <ul> <li><a>SizeConstraintSet</a>: Contains
+     * following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains
      * <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and
-     * <code>Name</code></li> <li><code>SizeConstraints</code>: Contains an array of
-     * <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains
-     * <a>FieldToMatch</a>, <code>TextTransformation</code>,
-     * <code>ComparisonOperator</code>, and <code>Size</code></li>
-     * <li><a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code></li>
+     * <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an
+     * array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object
+     * contains <a>FieldToMatch</a>, <code>TextTransformation</code>,
+     * <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p>
+     * <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li>
      * </ul>
      */
     inline const SizeConstraintSet& GetSizeConstraintSet() const{ return m_sizeConstraintSet; }
@@ -56,13 +58,13 @@ namespace Model
     /**
      * <p>Information about the <a>SizeConstraintSet</a> that you specified in the
      * <code>GetSizeConstraintSet</code> request. For more information, see the
-     * following topics:</p> <ul> <li><a>SizeConstraintSet</a>: Contains
+     * following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains
      * <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and
-     * <code>Name</code></li> <li><code>SizeConstraints</code>: Contains an array of
-     * <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains
-     * <a>FieldToMatch</a>, <code>TextTransformation</code>,
-     * <code>ComparisonOperator</code>, and <code>Size</code></li>
-     * <li><a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code></li>
+     * <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an
+     * array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object
+     * contains <a>FieldToMatch</a>, <code>TextTransformation</code>,
+     * <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p>
+     * <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li>
      * </ul>
      */
     inline void SetSizeConstraintSet(const SizeConstraintSet& value) { m_sizeConstraintSet = value; }
@@ -70,27 +72,27 @@ namespace Model
     /**
      * <p>Information about the <a>SizeConstraintSet</a> that you specified in the
      * <code>GetSizeConstraintSet</code> request. For more information, see the
-     * following topics:</p> <ul> <li><a>SizeConstraintSet</a>: Contains
+     * following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains
      * <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and
-     * <code>Name</code></li> <li><code>SizeConstraints</code>: Contains an array of
-     * <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains
-     * <a>FieldToMatch</a>, <code>TextTransformation</code>,
-     * <code>ComparisonOperator</code>, and <code>Size</code></li>
-     * <li><a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code></li>
+     * <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an
+     * array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object
+     * contains <a>FieldToMatch</a>, <code>TextTransformation</code>,
+     * <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p>
+     * <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li>
      * </ul>
      */
-    inline void SetSizeConstraintSet(SizeConstraintSet&& value) { m_sizeConstraintSet = value; }
+    inline void SetSizeConstraintSet(SizeConstraintSet&& value) { m_sizeConstraintSet = std::move(value); }
 
     /**
      * <p>Information about the <a>SizeConstraintSet</a> that you specified in the
      * <code>GetSizeConstraintSet</code> request. For more information, see the
-     * following topics:</p> <ul> <li><a>SizeConstraintSet</a>: Contains
+     * following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains
      * <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and
-     * <code>Name</code></li> <li><code>SizeConstraints</code>: Contains an array of
-     * <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains
-     * <a>FieldToMatch</a>, <code>TextTransformation</code>,
-     * <code>ComparisonOperator</code>, and <code>Size</code></li>
-     * <li><a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code></li>
+     * <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an
+     * array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object
+     * contains <a>FieldToMatch</a>, <code>TextTransformation</code>,
+     * <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p>
+     * <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li>
      * </ul>
      */
     inline GetSizeConstraintSetResult& WithSizeConstraintSet(const SizeConstraintSet& value) { SetSizeConstraintSet(value); return *this;}
@@ -98,16 +100,16 @@ namespace Model
     /**
      * <p>Information about the <a>SizeConstraintSet</a> that you specified in the
      * <code>GetSizeConstraintSet</code> request. For more information, see the
-     * following topics:</p> <ul> <li><a>SizeConstraintSet</a>: Contains
+     * following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains
      * <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and
-     * <code>Name</code></li> <li><code>SizeConstraints</code>: Contains an array of
-     * <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains
-     * <a>FieldToMatch</a>, <code>TextTransformation</code>,
-     * <code>ComparisonOperator</code>, and <code>Size</code></li>
-     * <li><a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code></li>
+     * <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an
+     * array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object
+     * contains <a>FieldToMatch</a>, <code>TextTransformation</code>,
+     * <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p>
+     * <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li>
      * </ul>
      */
-    inline GetSizeConstraintSetResult& WithSizeConstraintSet(SizeConstraintSet&& value) { SetSizeConstraintSet(value); return *this;}
+    inline GetSizeConstraintSetResult& WithSizeConstraintSet(SizeConstraintSet&& value) { SetSizeConstraintSet(std::move(value)); return *this;}
 
   private:
     SizeConstraintSet m_sizeConstraintSet;

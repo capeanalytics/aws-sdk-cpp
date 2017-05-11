@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/support/model/AttachmentDetails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
   /**
    * <p>A communication associated with an AWS Support case. The communication
    * consists of the case ID, the message body, attachment information, the account
-   * email address, and the date and time of the communication.</p>
+   * email address, and the date and time of the communication.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/Communication">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API Communication
   {
@@ -64,7 +69,7 @@ namespace Model
      * alphanumeric string formatted as shown in this example:
      * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
-    inline void SetCaseId(Aws::String&& value) { m_caseIdHasBeenSet = true; m_caseId = value; }
+    inline void SetCaseId(Aws::String&& value) { m_caseIdHasBeenSet = true; m_caseId = std::move(value); }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
@@ -85,7 +90,7 @@ namespace Model
      * alphanumeric string formatted as shown in this example:
      * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
-    inline Communication& WithCaseId(Aws::String&& value) { SetCaseId(value); return *this;}
+    inline Communication& WithCaseId(Aws::String&& value) { SetCaseId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The text of the communication between the customer and AWS Support.</p>
      */
-    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = value; }
+    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
 
     /**
      * <p>The text of the communication between the customer and AWS Support.</p>
@@ -122,7 +127,7 @@ namespace Model
     /**
      * <p>The text of the communication between the customer and AWS Support.</p>
      */
-    inline Communication& WithBody(Aws::String&& value) { SetBody(value); return *this;}
+    inline Communication& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
 
     /**
      * <p>The text of the communication between the customer and AWS Support.</p>
@@ -142,7 +147,7 @@ namespace Model
     /**
      * <p>The email address of the account that submitted the AWS Support case.</p>
      */
-    inline void SetSubmittedBy(Aws::String&& value) { m_submittedByHasBeenSet = true; m_submittedBy = value; }
+    inline void SetSubmittedBy(Aws::String&& value) { m_submittedByHasBeenSet = true; m_submittedBy = std::move(value); }
 
     /**
      * <p>The email address of the account that submitted the AWS Support case.</p>
@@ -157,7 +162,7 @@ namespace Model
     /**
      * <p>The email address of the account that submitted the AWS Support case.</p>
      */
-    inline Communication& WithSubmittedBy(Aws::String&& value) { SetSubmittedBy(value); return *this;}
+    inline Communication& WithSubmittedBy(Aws::String&& value) { SetSubmittedBy(std::move(value)); return *this;}
 
     /**
      * <p>The email address of the account that submitted the AWS Support case.</p>
@@ -177,7 +182,7 @@ namespace Model
     /**
      * <p>The time the communication was created.</p>
      */
-    inline void SetTimeCreated(Aws::String&& value) { m_timeCreatedHasBeenSet = true; m_timeCreated = value; }
+    inline void SetTimeCreated(Aws::String&& value) { m_timeCreatedHasBeenSet = true; m_timeCreated = std::move(value); }
 
     /**
      * <p>The time the communication was created.</p>
@@ -192,7 +197,7 @@ namespace Model
     /**
      * <p>The time the communication was created.</p>
      */
-    inline Communication& WithTimeCreated(Aws::String&& value) { SetTimeCreated(value); return *this;}
+    inline Communication& WithTimeCreated(Aws::String&& value) { SetTimeCreated(std::move(value)); return *this;}
 
     /**
      * <p>The time the communication was created.</p>
@@ -212,7 +217,7 @@ namespace Model
     /**
      * <p>Information about the attachments to the case communication.</p>
      */
-    inline void SetAttachmentSet(Aws::Vector<AttachmentDetails>&& value) { m_attachmentSetHasBeenSet = true; m_attachmentSet = value; }
+    inline void SetAttachmentSet(Aws::Vector<AttachmentDetails>&& value) { m_attachmentSetHasBeenSet = true; m_attachmentSet = std::move(value); }
 
     /**
      * <p>Information about the attachments to the case communication.</p>
@@ -222,7 +227,7 @@ namespace Model
     /**
      * <p>Information about the attachments to the case communication.</p>
      */
-    inline Communication& WithAttachmentSet(Aws::Vector<AttachmentDetails>&& value) { SetAttachmentSet(value); return *this;}
+    inline Communication& WithAttachmentSet(Aws::Vector<AttachmentDetails>&& value) { SetAttachmentSet(std::move(value)); return *this;}
 
     /**
      * <p>Information about the attachments to the case communication.</p>
@@ -232,7 +237,7 @@ namespace Model
     /**
      * <p>Information about the attachments to the case communication.</p>
      */
-    inline Communication& AddAttachmentSet(AttachmentDetails&& value) { m_attachmentSetHasBeenSet = true; m_attachmentSet.push_back(value); return *this; }
+    inline Communication& AddAttachmentSet(AttachmentDetails&& value) { m_attachmentSetHasBeenSet = true; m_attachmentSet.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_caseId;

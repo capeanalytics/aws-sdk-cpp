@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/DeviceFarmRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/devicefarm/model/DevicePoolType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the result of a list device pools request.</p>
+   * <p>Represents the result of a list device pools request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListDevicePoolsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API ListDevicePoolsRequest : public DeviceFarmRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The project ARN.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The project ARN.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The project ARN.</p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>The project ARN.</p>
      */
-    inline ListDevicePoolsRequest& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline ListDevicePoolsRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The project ARN.</p>
@@ -72,44 +78,44 @@ namespace Model
     inline ListDevicePoolsRequest& WithArn(const char* value) { SetArn(value); return *this;}
 
     /**
-     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline const DevicePoolType& GetType() const{ return m_type; }
 
     /**
-     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline void SetType(const DevicePoolType& value) { m_typeHasBeenSet = true; m_type = value; }
 
     /**
-     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
-    inline void SetType(DevicePoolType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(DevicePoolType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
-     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline ListDevicePoolsRequest& WithType(const DevicePoolType& value) { SetType(value); return *this;}
 
     /**
-     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pools' type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
-    inline ListDevicePoolsRequest& WithType(DevicePoolType&& value) { SetType(value); return *this;}
+    inline ListDevicePoolsRequest& WithType(DevicePoolType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,
@@ -127,7 +133,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,
@@ -145,7 +151,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline ListDevicePoolsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListDevicePoolsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,

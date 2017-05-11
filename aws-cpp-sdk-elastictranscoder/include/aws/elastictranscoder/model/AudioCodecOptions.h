@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Options associated with your audio codec.</p>
+   * <p>Options associated with your audio codec.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/AudioCodecOptions">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API AudioCodecOptions
   {
@@ -44,119 +48,126 @@ namespace Model
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
     inline const Aws::String& GetProfile() const{ return m_profile; }
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
     inline void SetProfile(const Aws::String& value) { m_profileHasBeenSet = true; m_profile = value; }
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
-    inline void SetProfile(Aws::String&& value) { m_profileHasBeenSet = true; m_profile = value; }
+    inline void SetProfile(Aws::String&& value) { m_profileHasBeenSet = true; m_profile = std::move(value); }
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
     inline void SetProfile(const char* value) { m_profileHasBeenSet = true; m_profile.assign(value); }
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
     inline AudioCodecOptions& WithProfile(const Aws::String& value) { SetProfile(value); return *this;}
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
-    inline AudioCodecOptions& WithProfile(Aws::String&& value) { SetProfile(value); return *this;}
+    inline AudioCodecOptions& WithProfile(Aws::String&& value) { SetProfile(std::move(value)); return *this;}
 
     /**
      * <p>You can only choose an audio profile when you specify AAC for the value of
      * Audio:Codec.</p> <p>Specify the AAC profile for the output file. Elastic
-     * Transcoder supports the following profiles:</p> <ul> <li><code>auto</code>: If
-     * you specify <code>auto</code>, Elastic Transcoder will select the profile based
-     * on the bit rate selected for the output file.</li> <li><code>AAC-LC</code>: The
-     * most common AAC profile. Use for bit rates larger than 64 kbps.</li>
-     * <li><code>HE-AAC</code>: Not supported on some older players and devices. Use
-     * for bit rates between 40 and 80 kbps.</li> <li><code>HE-AACv2</code>: Not
-     * supported on some players and devices. Use for bit rates less than 48 kbps.</li>
-     * </ul> <p>All outputs in a <code>Smooth</code> playlist must have the same value
-     * for <code>Profile</code>.</p> <note><p>If you created any presets before AAC
+     * Transcoder supports the following profiles:</p> <ul> <li> <p> <code>auto</code>:
+     * If you specify <code>auto</code>, Elastic Transcoder selects the profile based
+     * on the bit rate selected for the output file.</p> </li> <li> <p>
+     * <code>AAC-LC</code>: The most common AAC profile. Use for bit rates larger than
+     * 64 kbps.</p> </li> <li> <p> <code>HE-AAC</code>: Not supported on some older
+     * players and devices. Use for bit rates between 40 and 80 kbps.</p> </li> <li>
+     * <p> <code>HE-AACv2</code>: Not supported on some players and devices. Use for
+     * bit rates less than 48 kbps.</p> </li> </ul> <p>All outputs in a
+     * <code>Smooth</code> playlist must have the same value for
+     * <code>Profile</code>.</p> <note> <p>If you created any presets before AAC
      * profiles were added, Elastic Transcoder automatically updated your presets to
-     * use AAC-LC. You can change the value as required.</p></note>
+     * use AAC-LC. You can change the value as required.</p> </note>
      */
     inline AudioCodecOptions& WithProfile(const char* value) { SetProfile(value); return *this;}
 
@@ -188,7 +199,7 @@ namespace Model
      * values are <code>16</code> and <code>24</code>.</p> <p>The most common bit depth
      * is <code>24</code>.</p>
      */
-    inline void SetBitDepth(Aws::String&& value) { m_bitDepthHasBeenSet = true; m_bitDepth = value; }
+    inline void SetBitDepth(Aws::String&& value) { m_bitDepthHasBeenSet = true; m_bitDepth = std::move(value); }
 
     /**
      * <p>You can only choose an audio bit depth when you specify <code>flac</code> or
@@ -218,7 +229,7 @@ namespace Model
      * values are <code>16</code> and <code>24</code>.</p> <p>The most common bit depth
      * is <code>24</code>.</p>
      */
-    inline AudioCodecOptions& WithBitDepth(Aws::String&& value) { SetBitDepth(value); return *this;}
+    inline AudioCodecOptions& WithBitDepth(Aws::String&& value) { SetBitDepth(std::move(value)); return *this;}
 
     /**
      * <p>You can only choose an audio bit depth when you specify <code>flac</code> or
@@ -249,7 +260,7 @@ namespace Model
      * the value of Audio:Codec.</p> <p>The order the bits of a PCM sample are stored
      * in.</p> <p>The supported value is <code>LittleEndian</code>.</p>
      */
-    inline void SetBitOrder(Aws::String&& value) { m_bitOrderHasBeenSet = true; m_bitOrder = value; }
+    inline void SetBitOrder(Aws::String&& value) { m_bitOrderHasBeenSet = true; m_bitOrder = std::move(value); }
 
     /**
      * <p>You can only choose an audio bit order when you specify <code>pcm</code> for
@@ -270,7 +281,7 @@ namespace Model
      * the value of Audio:Codec.</p> <p>The order the bits of a PCM sample are stored
      * in.</p> <p>The supported value is <code>LittleEndian</code>.</p>
      */
-    inline AudioCodecOptions& WithBitOrder(Aws::String&& value) { SetBitOrder(value); return *this;}
+    inline AudioCodecOptions& WithBitOrder(Aws::String&& value) { SetBitOrder(std::move(value)); return *this;}
 
     /**
      * <p>You can only choose an audio bit order when you specify <code>pcm</code> for
@@ -301,7 +312,7 @@ namespace Model
      * represented with negative and positive numbers (signed) or only positive numbers
      * (unsigned).</p> <p>The supported value is <code>Signed</code>.</p>
      */
-    inline void SetSigned(Aws::String&& value) { m_signedHasBeenSet = true; m_signed = value; }
+    inline void SetSigned(Aws::String&& value) { m_signedHasBeenSet = true; m_signed = std::move(value); }
 
     /**
      * <p>You can only choose whether an audio sample is signed when you specify
@@ -325,7 +336,7 @@ namespace Model
      * represented with negative and positive numbers (signed) or only positive numbers
      * (unsigned).</p> <p>The supported value is <code>Signed</code>.</p>
      */
-    inline AudioCodecOptions& WithSigned(Aws::String&& value) { SetSigned(value); return *this;}
+    inline AudioCodecOptions& WithSigned(Aws::String&& value) { SetSigned(std::move(value)); return *this;}
 
     /**
      * <p>You can only choose whether an audio sample is signed when you specify

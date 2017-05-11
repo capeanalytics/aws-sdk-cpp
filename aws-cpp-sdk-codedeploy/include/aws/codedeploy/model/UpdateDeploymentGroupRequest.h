@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,14 +12,21 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/codedeploy/model/AlarmConfiguration.h>
+#include <aws/codedeploy/model/AutoRollbackConfiguration.h>
+#include <aws/codedeploy/model/DeploymentStyle.h>
+#include <aws/codedeploy/model/BlueGreenDeploymentConfiguration.h>
+#include <aws/codedeploy/model/LoadBalancerInfo.h>
 #include <aws/codedeploy/model/EC2TagFilter.h>
 #include <aws/codedeploy/model/TagFilter.h>
 #include <aws/codedeploy/model/TriggerConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of an update deployment group operation.</p>
+   * <p>Represents the input of an update deployment group operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/UpdateDeploymentGroupInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API UpdateDeploymentGroupRequest : public CodeDeployRequest
   {
@@ -38,6 +48,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The application name corresponding to the deployment group to update.</p>
@@ -52,7 +63,7 @@ namespace Model
     /**
      * <p>The application name corresponding to the deployment group to update.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The application name corresponding to the deployment group to update.</p>
@@ -67,7 +78,7 @@ namespace Model
     /**
      * <p>The application name corresponding to the deployment group to update.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The application name corresponding to the deployment group to update.</p>
@@ -87,7 +98,7 @@ namespace Model
     /**
      * <p>The current name of the deployment group.</p>
      */
-    inline void SetCurrentDeploymentGroupName(Aws::String&& value) { m_currentDeploymentGroupNameHasBeenSet = true; m_currentDeploymentGroupName = value; }
+    inline void SetCurrentDeploymentGroupName(Aws::String&& value) { m_currentDeploymentGroupNameHasBeenSet = true; m_currentDeploymentGroupName = std::move(value); }
 
     /**
      * <p>The current name of the deployment group.</p>
@@ -102,7 +113,7 @@ namespace Model
     /**
      * <p>The current name of the deployment group.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithCurrentDeploymentGroupName(Aws::String&& value) { SetCurrentDeploymentGroupName(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithCurrentDeploymentGroupName(Aws::String&& value) { SetCurrentDeploymentGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The current name of the deployment group.</p>
@@ -122,7 +133,7 @@ namespace Model
     /**
      * <p>The new name of the deployment group, if you want to change it.</p>
      */
-    inline void SetNewDeploymentGroupName(Aws::String&& value) { m_newDeploymentGroupNameHasBeenSet = true; m_newDeploymentGroupName = value; }
+    inline void SetNewDeploymentGroupName(Aws::String&& value) { m_newDeploymentGroupNameHasBeenSet = true; m_newDeploymentGroupName = std::move(value); }
 
     /**
      * <p>The new name of the deployment group, if you want to change it.</p>
@@ -137,7 +148,7 @@ namespace Model
     /**
      * <p>The new name of the deployment group, if you want to change it.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithNewDeploymentGroupName(Aws::String&& value) { SetNewDeploymentGroupName(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithNewDeploymentGroupName(Aws::String&& value) { SetNewDeploymentGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The new name of the deployment group, if you want to change it.</p>
@@ -160,7 +171,7 @@ namespace Model
      * <p>The replacement deployment configuration name to use, if you want to change
      * it.</p>
      */
-    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = value; }
+    inline void SetDeploymentConfigName(Aws::String&& value) { m_deploymentConfigNameHasBeenSet = true; m_deploymentConfigName = std::move(value); }
 
     /**
      * <p>The replacement deployment configuration name to use, if you want to change
@@ -178,7 +189,7 @@ namespace Model
      * <p>The replacement deployment configuration name to use, if you want to change
      * it.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithDeploymentConfigName(Aws::String&& value) { SetDeploymentConfigName(std::move(value)); return *this;}
 
     /**
      * <p>The replacement deployment configuration name to use, if you want to change
@@ -205,7 +216,7 @@ namespace Model
      * change them. To keep the existing tags, enter their names. To remove tags, do
      * not enter any tag names.</p>
      */
-    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = value; }
+    inline void SetEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters = std::move(value); }
 
     /**
      * <p>The replacement set of Amazon EC2 tags on which to filter, if you want to
@@ -219,7 +230,7 @@ namespace Model
      * change them. To keep the existing tags, enter their names. To remove tags, do
      * not enter any tag names.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithEc2TagFilters(Aws::Vector<EC2TagFilter>&& value) { SetEc2TagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The replacement set of Amazon EC2 tags on which to filter, if you want to
@@ -233,7 +244,7 @@ namespace Model
      * change them. To keep the existing tags, enter their names. To remove tags, do
      * not enter any tag names.</p>
      */
-    inline UpdateDeploymentGroupRequest& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(value); return *this; }
+    inline UpdateDeploymentGroupRequest& AddEc2TagFilters(EC2TagFilter&& value) { m_ec2TagFiltersHasBeenSet = true; m_ec2TagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The replacement set of on-premises instance tags on which to filter, if you
@@ -254,7 +265,7 @@ namespace Model
      * want to change them. To keep the existing tags, enter their names. To remove
      * tags, do not enter any tag names.</p>
      */
-    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = value; }
+    inline void SetOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters = std::move(value); }
 
     /**
      * <p>The replacement set of on-premises instance tags on which to filter, if you
@@ -268,7 +279,7 @@ namespace Model
      * want to change them. To keep the existing tags, enter their names. To remove
      * tags, do not enter any tag names.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithOnPremisesInstanceTagFilters(Aws::Vector<TagFilter>&& value) { SetOnPremisesInstanceTagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The replacement set of on-premises instance tags on which to filter, if you
@@ -282,7 +293,7 @@ namespace Model
      * want to change them. To keep the existing tags, enter their names. To remove
      * tags, do not enter any tag names.</p>
      */
-    inline UpdateDeploymentGroupRequest& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(value); return *this; }
+    inline UpdateDeploymentGroupRequest& AddOnPremisesInstanceTagFilters(TagFilter&& value) { m_onPremisesInstanceTagFiltersHasBeenSet = true; m_onPremisesInstanceTagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The replacement list of Auto Scaling groups to be included in the deployment
@@ -306,7 +317,7 @@ namespace Model
      * names. To remove Auto Scaling groups, do not enter any Auto Scaling group
      * names.</p>
      */
-    inline void SetAutoScalingGroups(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = value; }
+    inline void SetAutoScalingGroups(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups = std::move(value); }
 
     /**
      * <p>The replacement list of Auto Scaling groups to be included in the deployment
@@ -322,7 +333,7 @@ namespace Model
      * names. To remove Auto Scaling groups, do not enter any Auto Scaling group
      * names.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithAutoScalingGroups(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroups(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithAutoScalingGroups(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroups(std::move(value)); return *this;}
 
     /**
      * <p>The replacement list of Auto Scaling groups to be included in the deployment
@@ -338,7 +349,7 @@ namespace Model
      * names. To remove Auto Scaling groups, do not enter any Auto Scaling group
      * names.</p>
      */
-    inline UpdateDeploymentGroupRequest& AddAutoScalingGroups(Aws::String&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(value); return *this; }
+    inline UpdateDeploymentGroupRequest& AddAutoScalingGroups(Aws::String&& value) { m_autoScalingGroupsHasBeenSet = true; m_autoScalingGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The replacement list of Auto Scaling groups to be included in the deployment
@@ -361,7 +372,7 @@ namespace Model
     /**
      * <p>A replacement ARN for the service role, if you want to change it.</p>
      */
-    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = value; }
+    inline void SetServiceRoleArn(Aws::String&& value) { m_serviceRoleArnHasBeenSet = true; m_serviceRoleArn = std::move(value); }
 
     /**
      * <p>A replacement ARN for the service role, if you want to change it.</p>
@@ -376,7 +387,7 @@ namespace Model
     /**
      * <p>A replacement ARN for the service role, if you want to change it.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithServiceRoleArn(Aws::String&& value) { SetServiceRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>A replacement ARN for the service role, if you want to change it.</p>
@@ -384,46 +395,207 @@ namespace Model
     inline UpdateDeploymentGroupRequest& WithServiceRoleArn(const char* value) { SetServiceRoleArn(value); return *this;}
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline const Aws::Vector<TriggerConfig>& GetTriggerConfigurations() const{ return m_triggerConfigurations; }
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline void SetTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
-    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = value; }
+    inline void SetTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations = std::move(value); }
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline UpdateDeploymentGroupRequest& WithTriggerConfigurations(const Aws::Vector<TriggerConfig>& value) { SetTriggerConfigurations(value); return *this;}
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
-    inline UpdateDeploymentGroupRequest& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(value); return *this;}
+    inline UpdateDeploymentGroupRequest& WithTriggerConfigurations(Aws::Vector<TriggerConfig>&& value) { SetTriggerConfigurations(std::move(value)); return *this;}
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
     inline UpdateDeploymentGroupRequest& AddTriggerConfigurations(const TriggerConfig& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
 
     /**
-     * <p>Information about triggers to change when the deployment group is
-     * updated.</p>
+     * <p>Information about triggers to change when the deployment group is updated.
+     * For examples, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify
+     * Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User
+     * Guide.</p>
      */
-    inline UpdateDeploymentGroupRequest& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(value); return *this; }
+    inline UpdateDeploymentGroupRequest& AddTriggerConfigurations(TriggerConfig&& value) { m_triggerConfigurationsHasBeenSet = true; m_triggerConfigurations.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>Information to add or change about Amazon CloudWatch alarms when the
+     * deployment group is updated. </p>
+     */
+    inline const AlarmConfiguration& GetAlarmConfiguration() const{ return m_alarmConfiguration; }
+
+    /**
+     * <p>Information to add or change about Amazon CloudWatch alarms when the
+     * deployment group is updated. </p>
+     */
+    inline void SetAlarmConfiguration(const AlarmConfiguration& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = value; }
+
+    /**
+     * <p>Information to add or change about Amazon CloudWatch alarms when the
+     * deployment group is updated. </p>
+     */
+    inline void SetAlarmConfiguration(AlarmConfiguration&& value) { m_alarmConfigurationHasBeenSet = true; m_alarmConfiguration = std::move(value); }
+
+    /**
+     * <p>Information to add or change about Amazon CloudWatch alarms when the
+     * deployment group is updated. </p>
+     */
+    inline UpdateDeploymentGroupRequest& WithAlarmConfiguration(const AlarmConfiguration& value) { SetAlarmConfiguration(value); return *this;}
+
+    /**
+     * <p>Information to add or change about Amazon CloudWatch alarms when the
+     * deployment group is updated. </p>
+     */
+    inline UpdateDeploymentGroupRequest& WithAlarmConfiguration(AlarmConfiguration&& value) { SetAlarmConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information for an automatic rollback configuration that is added or changed
+     * when a deployment group is updated.</p>
+     */
+    inline const AutoRollbackConfiguration& GetAutoRollbackConfiguration() const{ return m_autoRollbackConfiguration; }
+
+    /**
+     * <p>Information for an automatic rollback configuration that is added or changed
+     * when a deployment group is updated.</p>
+     */
+    inline void SetAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = value; }
+
+    /**
+     * <p>Information for an automatic rollback configuration that is added or changed
+     * when a deployment group is updated.</p>
+     */
+    inline void SetAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { m_autoRollbackConfigurationHasBeenSet = true; m_autoRollbackConfiguration = std::move(value); }
+
+    /**
+     * <p>Information for an automatic rollback configuration that is added or changed
+     * when a deployment group is updated.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithAutoRollbackConfiguration(const AutoRollbackConfiguration& value) { SetAutoRollbackConfiguration(value); return *this;}
+
+    /**
+     * <p>Information for an automatic rollback configuration that is added or changed
+     * when a deployment group is updated.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithAutoRollbackConfiguration(AutoRollbackConfiguration&& value) { SetAutoRollbackConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline const DeploymentStyle& GetDeploymentStyle() const{ return m_deploymentStyle; }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(const DeploymentStyle& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = value; }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline void SetDeploymentStyle(DeploymentStyle&& value) { m_deploymentStyleHasBeenSet = true; m_deploymentStyle = std::move(value); }
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithDeploymentStyle(const DeploymentStyle& value) { SetDeploymentStyle(value); return *this;}
+
+    /**
+     * <p>Information about the type of deployment, either standard or blue/green, you
+     * want to run and whether to route deployment traffic behind a load balancer.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithDeploymentStyle(DeploymentStyle&& value) { SetDeploymentStyle(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline const BlueGreenDeploymentConfiguration& GetBlueGreenDeploymentConfiguration() const{ return m_blueGreenDeploymentConfiguration; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = value; }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline void SetBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { m_blueGreenDeploymentConfigurationHasBeenSet = true; m_blueGreenDeploymentConfiguration = std::move(value); }
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithBlueGreenDeploymentConfiguration(const BlueGreenDeploymentConfiguration& value) { SetBlueGreenDeploymentConfiguration(value); return *this;}
+
+    /**
+     * <p>Information about blue/green deployment options for a deployment group.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithBlueGreenDeploymentConfiguration(BlueGreenDeploymentConfiguration&& value) { SetBlueGreenDeploymentConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline const LoadBalancerInfo& GetLoadBalancerInfo() const{ return m_loadBalancerInfo; }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(const LoadBalancerInfo& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = value; }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline void SetLoadBalancerInfo(LoadBalancerInfo&& value) { m_loadBalancerInfoHasBeenSet = true; m_loadBalancerInfo = std::move(value); }
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithLoadBalancerInfo(const LoadBalancerInfo& value) { SetLoadBalancerInfo(value); return *this;}
+
+    /**
+     * <p>Information about the load balancer used in a blue/green deployment.</p>
+     */
+    inline UpdateDeploymentGroupRequest& WithLoadBalancerInfo(LoadBalancerInfo&& value) { SetLoadBalancerInfo(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;
@@ -444,6 +616,16 @@ namespace Model
     bool m_serviceRoleArnHasBeenSet;
     Aws::Vector<TriggerConfig> m_triggerConfigurations;
     bool m_triggerConfigurationsHasBeenSet;
+    AlarmConfiguration m_alarmConfiguration;
+    bool m_alarmConfigurationHasBeenSet;
+    AutoRollbackConfiguration m_autoRollbackConfiguration;
+    bool m_autoRollbackConfigurationHasBeenSet;
+    DeploymentStyle m_deploymentStyle;
+    bool m_deploymentStyleHasBeenSet;
+    BlueGreenDeploymentConfiguration m_blueGreenDeploymentConfiguration;
+    bool m_blueGreenDeploymentConfigurationHasBeenSet;
+    LoadBalancerInfo m_loadBalancerInfo;
+    bool m_loadBalancerInfoHasBeenSet;
   };
 
 } // namespace Model

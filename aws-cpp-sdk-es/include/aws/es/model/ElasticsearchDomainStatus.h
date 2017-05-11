@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/es/model/EBSOptions.h>
 #include <aws/es/model/SnapshotOptions.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>The current status of an Elasticsearch domain.</p>
+   * <p>The current status of an Elasticsearch domain.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ElasticsearchDomainStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API ElasticsearchDomainStatus
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The unique identifier for the specified Elasticsearch domain.</p>
      */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
+    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
 
     /**
      * <p>The unique identifier for the specified Elasticsearch domain.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The unique identifier for the specified Elasticsearch domain.</p>
      */
-    inline ElasticsearchDomainStatus& WithDomainId(Aws::String&& value) { SetDomainId(value); return *this;}
+    inline ElasticsearchDomainStatus& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the specified Elasticsearch domain.</p>
@@ -102,7 +106,7 @@ namespace Model
      * letter or number and can contain the following characters: a-z (lowercase), 0-9,
      * and - (hyphen).</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * <p>The name of an Elasticsearch domain. Domain names are unique across the
@@ -126,7 +130,7 @@ namespace Model
      * letter or number and can contain the following characters: a-z (lowercase), 0-9,
      * and - (hyphen).</p>
      */
-    inline ElasticsearchDomainStatus& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline ElasticsearchDomainStatus& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The name of an Elasticsearch domain. Domain names are unique across the
@@ -158,7 +162,7 @@ namespace Model
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and
      * Access Management</i> for more information.</p>
      */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = value; }
+    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
 
     /**
      * <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a
@@ -182,7 +186,7 @@ namespace Model
      * target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and
      * Access Management</i> for more information.</p>
      */
-    inline ElasticsearchDomainStatus& WithARN(Aws::String&& value) { SetARN(value); return *this;}
+    inline ElasticsearchDomainStatus& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a
@@ -253,7 +257,7 @@ namespace Model
      * <p>The Elasticsearch domain endpoint that you use to submit index and search
      * requests.</p>
      */
-    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
+    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
 
     /**
      * <p>The Elasticsearch domain endpoint that you use to submit index and search
@@ -271,7 +275,7 @@ namespace Model
      * <p>The Elasticsearch domain endpoint that you use to submit index and search
      * requests.</p>
      */
-    inline ElasticsearchDomainStatus& WithEndpoint(Aws::String&& value) { SetEndpoint(value); return *this;}
+    inline ElasticsearchDomainStatus& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
 
     /**
      * <p>The Elasticsearch domain endpoint that you use to submit index and search
@@ -307,7 +311,7 @@ namespace Model
     inline void SetElasticsearchVersion(const Aws::String& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = value; }
 
     
-    inline void SetElasticsearchVersion(Aws::String&& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = value; }
+    inline void SetElasticsearchVersion(Aws::String&& value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion = std::move(value); }
 
     
     inline void SetElasticsearchVersion(const char* value) { m_elasticsearchVersionHasBeenSet = true; m_elasticsearchVersion.assign(value); }
@@ -316,7 +320,7 @@ namespace Model
     inline ElasticsearchDomainStatus& WithElasticsearchVersion(const Aws::String& value) { SetElasticsearchVersion(value); return *this;}
 
     
-    inline ElasticsearchDomainStatus& WithElasticsearchVersion(Aws::String&& value) { SetElasticsearchVersion(value); return *this;}
+    inline ElasticsearchDomainStatus& WithElasticsearchVersion(Aws::String&& value) { SetElasticsearchVersion(std::move(value)); return *this;}
 
     
     inline ElasticsearchDomainStatus& WithElasticsearchVersion(const char* value) { SetElasticsearchVersion(value); return *this;}
@@ -334,7 +338,7 @@ namespace Model
     /**
      * <p>The type and number of instances in the domain cluster.</p>
      */
-    inline void SetElasticsearchClusterConfig(ElasticsearchClusterConfig&& value) { m_elasticsearchClusterConfigHasBeenSet = true; m_elasticsearchClusterConfig = value; }
+    inline void SetElasticsearchClusterConfig(ElasticsearchClusterConfig&& value) { m_elasticsearchClusterConfigHasBeenSet = true; m_elasticsearchClusterConfig = std::move(value); }
 
     /**
      * <p>The type and number of instances in the domain cluster.</p>
@@ -344,7 +348,7 @@ namespace Model
     /**
      * <p>The type and number of instances in the domain cluster.</p>
      */
-    inline ElasticsearchDomainStatus& WithElasticsearchClusterConfig(ElasticsearchClusterConfig&& value) { SetElasticsearchClusterConfig(value); return *this;}
+    inline ElasticsearchDomainStatus& WithElasticsearchClusterConfig(ElasticsearchClusterConfig&& value) { SetElasticsearchClusterConfig(std::move(value)); return *this;}
 
     /**
      * <p>The <code>EBSOptions</code> for the specified domain. See <a
@@ -365,7 +369,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs"
      * target="_blank">Configuring EBS-based Storage</a> for more information.</p>
      */
-    inline void SetEBSOptions(EBSOptions&& value) { m_eBSOptionsHasBeenSet = true; m_eBSOptions = value; }
+    inline void SetEBSOptions(EBSOptions&& value) { m_eBSOptionsHasBeenSet = true; m_eBSOptions = std::move(value); }
 
     /**
      * <p>The <code>EBSOptions</code> for the specified domain. See <a
@@ -379,7 +383,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs"
      * target="_blank">Configuring EBS-based Storage</a> for more information.</p>
      */
-    inline ElasticsearchDomainStatus& WithEBSOptions(EBSOptions&& value) { SetEBSOptions(value); return *this;}
+    inline ElasticsearchDomainStatus& WithEBSOptions(EBSOptions&& value) { SetEBSOptions(std::move(value)); return *this;}
 
     /**
      * <p> IAM access policy as a JSON-formatted string.</p>
@@ -394,7 +398,7 @@ namespace Model
     /**
      * <p> IAM access policy as a JSON-formatted string.</p>
      */
-    inline void SetAccessPolicies(Aws::String&& value) { m_accessPoliciesHasBeenSet = true; m_accessPolicies = value; }
+    inline void SetAccessPolicies(Aws::String&& value) { m_accessPoliciesHasBeenSet = true; m_accessPolicies = std::move(value); }
 
     /**
      * <p> IAM access policy as a JSON-formatted string.</p>
@@ -409,7 +413,7 @@ namespace Model
     /**
      * <p> IAM access policy as a JSON-formatted string.</p>
      */
-    inline ElasticsearchDomainStatus& WithAccessPolicies(Aws::String&& value) { SetAccessPolicies(value); return *this;}
+    inline ElasticsearchDomainStatus& WithAccessPolicies(Aws::String&& value) { SetAccessPolicies(std::move(value)); return *this;}
 
     /**
      * <p> IAM access policy as a JSON-formatted string.</p>
@@ -429,7 +433,7 @@ namespace Model
     /**
      * <p>Specifies the status of the <code>SnapshotOptions</code></p>
      */
-    inline void SetSnapshotOptions(SnapshotOptions&& value) { m_snapshotOptionsHasBeenSet = true; m_snapshotOptions = value; }
+    inline void SetSnapshotOptions(SnapshotOptions&& value) { m_snapshotOptionsHasBeenSet = true; m_snapshotOptions = std::move(value); }
 
     /**
      * <p>Specifies the status of the <code>SnapshotOptions</code></p>
@@ -439,7 +443,7 @@ namespace Model
     /**
      * <p>Specifies the status of the <code>SnapshotOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& WithSnapshotOptions(SnapshotOptions&& value) { SetSnapshotOptions(value); return *this;}
+    inline ElasticsearchDomainStatus& WithSnapshotOptions(SnapshotOptions&& value) { SetSnapshotOptions(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
@@ -454,7 +458,7 @@ namespace Model
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline void SetAdvancedOptions(Aws::Map<Aws::String, Aws::String>&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions = value; }
+    inline void SetAdvancedOptions(Aws::Map<Aws::String, Aws::String>&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions = std::move(value); }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
@@ -464,42 +468,42 @@ namespace Model
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& WithAdvancedOptions(Aws::Map<Aws::String, Aws::String>&& value) { SetAdvancedOptions(value); return *this;}
+    inline ElasticsearchDomainStatus& WithAdvancedOptions(Aws::Map<Aws::String, Aws::String>&& value) { SetAdvancedOptions(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(const Aws::String& key, const Aws::String& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(const Aws::String& key, const Aws::String& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(key, value); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, const Aws::String& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, const Aws::String& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(const Aws::String& key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(const Aws::String& key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(const char* key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(const char* key, Aws::String&& value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, const char* value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(Aws::String&& key, const char* value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>Specifies the status of the <code>AdvancedOptions</code></p>
      */
-    inline ElasticsearchDomainStatus& AddAdvancedOptions(const char* key, const char* value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions[key] = value; return *this; }
+    inline ElasticsearchDomainStatus& AddAdvancedOptions(const char* key, const char* value) { m_advancedOptionsHasBeenSet = true; m_advancedOptions.emplace(key, value); return *this; }
 
   private:
     Aws::String m_domainId;

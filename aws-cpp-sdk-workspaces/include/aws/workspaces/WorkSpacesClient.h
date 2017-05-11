@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/workspaces/WorkSpacesErrors.h>
@@ -173,19 +174,25 @@ namespace Model
         virtual ~WorkSpacesClient();
 
         /**
-         * <p>Creates tags for a WorkSpace.</p>
+         * <p>Creates tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateTagsOutcome CreateTags(const Model::CreateTagsRequest& request) const;
 
         /**
-         * <p>Creates tags for a WorkSpace.</p>
+         * <p>Creates tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CreateTagsOutcomeCallable CreateTagsCallable(const Model::CreateTagsRequest& request) const;
 
         /**
-         * <p>Creates tags for a WorkSpace.</p>
+         * <p>Creates tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -193,13 +200,19 @@ namespace Model
 
         /**
          * <p>Creates one or more WorkSpaces.</p> <note> <p>This operation is asynchronous
-         * and returns before the WorkSpaces are created.</p> </note>
+         * and returns before the WorkSpaces are created.</p> </note><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateWorkspacesOutcome CreateWorkspaces(const Model::CreateWorkspacesRequest& request) const;
 
         /**
          * <p>Creates one or more WorkSpaces.</p> <note> <p>This operation is asynchronous
-         * and returns before the WorkSpaces are created.</p> </note>
+         * and returns before the WorkSpaces are created.</p> </note><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -207,45 +220,60 @@ namespace Model
 
         /**
          * <p>Creates one or more WorkSpaces.</p> <note> <p>This operation is asynchronous
-         * and returns before the WorkSpaces are created.</p> </note>
+         * and returns before the WorkSpaces are created.</p> </note><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CreateWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreateWorkspacesAsync(const Model::CreateWorkspacesRequest& request, const CreateWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes tags from a WorkSpace.</p>
+         * <p>Deletes tags from a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteTagsOutcome DeleteTags(const Model::DeleteTagsRequest& request) const;
 
         /**
-         * <p>Deletes tags from a WorkSpace.</p>
+         * <p>Deletes tags from a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteTagsOutcomeCallable DeleteTagsCallable(const Model::DeleteTagsRequest& request) const;
 
         /**
-         * <p>Deletes tags from a WorkSpace.</p>
+         * <p>Deletes tags from a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteTagsAsync(const Model::DeleteTagsRequest& request, const DeleteTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes tags for a WorkSpace.</p>
+         * <p>Describes tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTagsOutcome DescribeTags(const Model::DescribeTagsRequest& request) const;
 
         /**
-         * <p>Describes tags for a WorkSpace.</p>
+         * <p>Describes tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeTagsOutcomeCallable DescribeTagsCallable(const Model::DescribeTagsRequest& request) const;
 
         /**
-         * <p>Describes tags for a WorkSpace.</p>
+         * <p>Describes tags for a WorkSpace.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -258,7 +286,10 @@ namespace Model
          * not both.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeWorkspaceBundlesOutcome DescribeWorkspaceBundles(const Model::DescribeWorkspaceBundlesRequest& request) const;
 
@@ -269,7 +300,10 @@ namespace Model
          * not both.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -282,7 +316,10 @@ namespace Model
          * not both.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceBundles">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -294,7 +331,10 @@ namespace Model
          * account.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeWorkspaceDirectoriesOutcome DescribeWorkspaceDirectories(const Model::DescribeWorkspaceDirectoriesRequest& request) const;
 
@@ -304,7 +344,10 @@ namespace Model
          * account.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -316,7 +359,10 @@ namespace Model
          * account.</p> <p>This operation supports pagination with the use of the
          * <code>NextToken</code> request and response parameters. If more results are
          * available, the <code>NextToken</code> response member contains a token that you
-         * pass in the next call to this operation to retrieve the next set of items.</p>
+         * pass in the next call to this operation to retrieve the next set of
+         * items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -329,7 +375,9 @@ namespace Model
          * supports pagination with the use of the <code>NextToken</code> request and
          * response parameters. If more results are available, the <code>NextToken</code>
          * response member contains a token that you pass in the next call to this
-         * operation to retrieve the next set of items.</p>
+         * operation to retrieve the next set of items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeWorkspacesOutcome DescribeWorkspaces(const Model::DescribeWorkspacesRequest& request) const;
 
@@ -340,7 +388,9 @@ namespace Model
          * supports pagination with the use of the <code>NextToken</code> request and
          * response parameters. If more results are available, the <code>NextToken</code>
          * response member contains a token that you pass in the next call to this
-         * operation to retrieve the next set of items.</p>
+         * operation to retrieve the next set of items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -353,48 +403,65 @@ namespace Model
          * supports pagination with the use of the <code>NextToken</code> request and
          * response parameters. If more results are available, the <code>NextToken</code>
          * response member contains a token that you pass in the next call to this
-         * operation to retrieve the next set of items.</p>
+         * operation to retrieve the next set of items.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeWorkspacesAsync(const Model::DescribeWorkspacesRequest& request, const DescribeWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the connection status of a specified WorkSpace.</p>
+         * <p>Describes the connection status of a specified WorkSpace.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeWorkspacesConnectionStatusOutcome DescribeWorkspacesConnectionStatus(const Model::DescribeWorkspacesConnectionStatusRequest& request) const;
 
         /**
-         * <p>Describes the connection status of a specified WorkSpace.</p>
+         * <p>Describes the connection status of a specified WorkSpace.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeWorkspacesConnectionStatusOutcomeCallable DescribeWorkspacesConnectionStatusCallable(const Model::DescribeWorkspacesConnectionStatusRequest& request) const;
 
         /**
-         * <p>Describes the connection status of a specified WorkSpace.</p>
+         * <p>Describes the connection status of a specified WorkSpace.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspacesConnectionStatus">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeWorkspacesConnectionStatusAsync(const Model::DescribeWorkspacesConnectionStatusRequest& request, const DescribeWorkspacesConnectionStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Modifies the WorkSpace properties, including the RunningMode and AutoStop
-         * time.</p>
+         * <p>Modifies the WorkSpace properties, including the running mode and AutoStop
+         * time.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties">AWS
+         * API Reference</a></p>
          */
         virtual Model::ModifyWorkspacePropertiesOutcome ModifyWorkspaceProperties(const Model::ModifyWorkspacePropertiesRequest& request) const;
 
         /**
-         * <p>Modifies the WorkSpace properties, including the RunningMode and AutoStop
-         * time.</p>
+         * <p>Modifies the WorkSpace properties, including the running mode and AutoStop
+         * time.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ModifyWorkspacePropertiesOutcomeCallable ModifyWorkspacePropertiesCallable(const Model::ModifyWorkspacePropertiesRequest& request) const;
 
         /**
-         * <p>Modifies the WorkSpace properties, including the RunningMode and AutoStop
-         * time.</p>
+         * <p>Modifies the WorkSpace properties, including the running mode and AutoStop
+         * time.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceProperties">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -404,7 +471,10 @@ namespace Model
          * <p>Reboots the specified WorkSpaces.</p> <p>To be able to reboot a WorkSpace,
          * the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>,
          * <code>IMPAIRED</code>, or <code>INOPERABLE</code>.</p> <note> <p>This operation
-         * is asynchronous and returns before the WorkSpaces have rebooted.</p> </note>
+         * is asynchronous and returns before the WorkSpaces have rebooted.</p>
+         * </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::RebootWorkspacesOutcome RebootWorkspaces(const Model::RebootWorkspacesRequest& request) const;
 
@@ -412,7 +482,10 @@ namespace Model
          * <p>Reboots the specified WorkSpaces.</p> <p>To be able to reboot a WorkSpace,
          * the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>,
          * <code>IMPAIRED</code>, or <code>INOPERABLE</code>.</p> <note> <p>This operation
-         * is asynchronous and returns before the WorkSpaces have rebooted.</p> </note>
+         * is asynchronous and returns before the WorkSpaces have rebooted.</p>
+         * </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -422,7 +495,10 @@ namespace Model
          * <p>Reboots the specified WorkSpaces.</p> <p>To be able to reboot a WorkSpace,
          * the WorkSpace must have a <b>State</b> of <code>AVAILABLE</code>,
          * <code>IMPAIRED</code>, or <code>INOPERABLE</code>.</p> <note> <p>This operation
-         * is asynchronous and returns before the WorkSpaces have rebooted.</p> </note>
+         * is asynchronous and returns before the WorkSpaces have rebooted.</p>
+         * </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebootWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -441,7 +517,9 @@ namespace Model
          * old.</p> </li> </ul> <p>To be able to rebuild a WorkSpace, the WorkSpace must
          * have a <b>State</b> of <code>AVAILABLE</code> or <code>ERROR</code>.</p> <note>
          * <p>This operation is asynchronous and returns before the WorkSpaces have been
-         * completely rebuilt.</p> </note>
+         * completely rebuilt.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::RebuildWorkspacesOutcome RebuildWorkspaces(const Model::RebuildWorkspacesRequest& request) const;
 
@@ -458,7 +536,9 @@ namespace Model
          * old.</p> </li> </ul> <p>To be able to rebuild a WorkSpace, the WorkSpace must
          * have a <b>State</b> of <code>AVAILABLE</code> or <code>ERROR</code>.</p> <note>
          * <p>This operation is asynchronous and returns before the WorkSpaces have been
-         * completely rebuilt.</p> </note>
+         * completely rebuilt.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -477,54 +557,68 @@ namespace Model
          * old.</p> </li> </ul> <p>To be able to rebuild a WorkSpace, the WorkSpace must
          * have a <b>State</b> of <code>AVAILABLE</code> or <code>ERROR</code>.</p> <note>
          * <p>This operation is asynchronous and returns before the WorkSpaces have been
-         * completely rebuilt.</p> </note>
+         * completely rebuilt.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RebuildWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void RebuildWorkspacesAsync(const Model::RebuildWorkspacesRequest& request, const RebuildWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Starts the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to “STOPPED.”</p>
+         * <p>Starts the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of STOPPED.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::StartWorkspacesOutcome StartWorkspaces(const Model::StartWorkspacesRequest& request) const;
 
         /**
-         * <p>Starts the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to “STOPPED.”</p>
+         * <p>Starts the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of STOPPED.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::StartWorkspacesOutcomeCallable StartWorkspacesCallable(const Model::StartWorkspacesRequest& request) const;
 
         /**
-         * <p>Starts the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to “STOPPED.”</p>
+         * <p>Starts the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of STOPPED.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StartWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void StartWorkspacesAsync(const Model::StartWorkspacesRequest& request, const StartWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p> Stops the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to AVAILABLE, IMPAIRED,
-         * UNHEALTHY, or ERROR.</p>
+         * <p> Stops the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::StopWorkspacesOutcome StopWorkspaces(const Model::StopWorkspacesRequest& request) const;
 
         /**
-         * <p> Stops the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to AVAILABLE, IMPAIRED,
-         * UNHEALTHY, or ERROR.</p>
+         * <p> Stops the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::StopWorkspacesOutcomeCallable StopWorkspacesCallable(const Model::StopWorkspacesRequest& request) const;
 
         /**
-         * <p> Stops the specified WorkSpaces. The API only works with WorkSpaces that have
-         * RunningMode configured as AutoStop and the State set to AVAILABLE, IMPAIRED,
-         * UNHEALTHY, or ERROR.</p>
+         * <p> Stops the specified WorkSpaces. The WorkSpaces must have a running mode of
+         * AutoStop and a state of AVAILABLE, IMPAIRED, UNHEALTHY, or ERROR.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/StopWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -537,7 +631,9 @@ namespace Model
          * Services before terminating the WorkSpace.</p> <p>You can terminate a WorkSpace
          * that is in any state except <code>SUSPENDED</code>.</p> <note> <p>This operation
          * is asynchronous and returns before the WorkSpaces have been completely
-         * terminated.</p> </note>
+         * terminated.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces">AWS
+         * API Reference</a></p>
          */
         virtual Model::TerminateWorkspacesOutcome TerminateWorkspaces(const Model::TerminateWorkspacesRequest& request) const;
 
@@ -548,7 +644,9 @@ namespace Model
          * Services before terminating the WorkSpace.</p> <p>You can terminate a WorkSpace
          * that is in any state except <code>SUSPENDED</code>.</p> <note> <p>This operation
          * is asynchronous and returns before the WorkSpaces have been completely
-         * terminated.</p> </note>
+         * terminated.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -561,7 +659,9 @@ namespace Model
          * Services before terminating the WorkSpace.</p> <p>You can terminate a WorkSpace
          * that is in any state except <code>SUSPENDED</code>.</p> <note> <p>This operation
          * is asynchronous and returns before the WorkSpaces have been completely
-         * terminated.</p> </note>
+         * terminated.</p> </note><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspaces">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -588,7 +688,7 @@ namespace Model
         void TerminateWorkspacesAsyncHelper(const Model::TerminateWorkspacesRequest& request, const TerminateWorkspacesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace WorkSpaces

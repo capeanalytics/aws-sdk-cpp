@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sdb/model/Attribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p></p>
+   * <p></p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/Item">AWS API
+   * Reference</a></p>
    */
   class AWS_SIMPLEDB_API Item
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * The name of the item.
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * The name of the item.
@@ -74,7 +78,7 @@ namespace Model
     /**
      * The name of the item.
      */
-    inline Item& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Item& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * The name of the item.
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p></p>
      */
-    inline void SetAlternateNameEncoding(Aws::String&& value) { m_alternateNameEncodingHasBeenSet = true; m_alternateNameEncoding = value; }
+    inline void SetAlternateNameEncoding(Aws::String&& value) { m_alternateNameEncodingHasBeenSet = true; m_alternateNameEncoding = std::move(value); }
 
     /**
      * <p></p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p></p>
      */
-    inline Item& WithAlternateNameEncoding(Aws::String&& value) { SetAlternateNameEncoding(value); return *this;}
+    inline Item& WithAlternateNameEncoding(Aws::String&& value) { SetAlternateNameEncoding(std::move(value)); return *this;}
 
     /**
      * <p></p>
@@ -129,7 +133,7 @@ namespace Model
     /**
      * A list of attributes.
      */
-    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * A list of attributes.
@@ -139,7 +143,7 @@ namespace Model
     /**
      * A list of attributes.
      */
-    inline Item& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(value); return *this;}
+    inline Item& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * A list of attributes.
@@ -149,7 +153,7 @@ namespace Model
     /**
      * A list of attributes.
      */
-    inline Item& AddAttributes(Attribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
+    inline Item& AddAttributes(Attribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_name;

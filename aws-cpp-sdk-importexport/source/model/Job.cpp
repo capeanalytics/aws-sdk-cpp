@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/importexport/model/Job.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,6 +35,7 @@ Job::Job() :
     m_creationDateHasBeenSet(false),
     m_isCanceled(false),
     m_isCanceledHasBeenSet(false),
+    m_jobType(JobType::NOT_SET),
     m_jobTypeHasBeenSet(false)
 {
 }
@@ -43,6 +45,7 @@ Job::Job(const XmlNode& xmlNode) :
     m_creationDateHasBeenSet(false),
     m_isCanceled(false),
     m_isCanceledHasBeenSet(false),
+    m_jobType(JobType::NOT_SET),
     m_jobTypeHasBeenSet(false)
 {
   *this = xmlNode;
@@ -97,7 +100,7 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location, unsigned i
 
   if(m_isCanceledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsCanceled=" << m_isCanceled << "&";
+      oStream << location << index << locationValue << ".IsCanceled=" << std::boolalpha << m_isCanceled << "&";
   }
 
   if(m_jobTypeHasBeenSet)
@@ -119,7 +122,7 @@ void Job::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_isCanceledHasBeenSet)
   {
-      oStream << location << ".IsCanceled=" << m_isCanceled << "&";
+      oStream << location << ".IsCanceled=" << std::boolalpha << m_isCanceled << "&";
   }
   if(m_jobTypeHasBeenSet)
   {

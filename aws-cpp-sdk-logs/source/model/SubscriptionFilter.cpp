@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/logs/model/SubscriptionFilter.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,6 +34,8 @@ SubscriptionFilter::SubscriptionFilter() :
     m_filterPatternHasBeenSet(false),
     m_destinationArnHasBeenSet(false),
     m_roleArnHasBeenSet(false),
+    m_distribution(Distribution::NOT_SET),
+    m_distributionHasBeenSet(false),
     m_creationTime(0),
     m_creationTimeHasBeenSet(false)
 {
@@ -44,6 +47,8 @@ SubscriptionFilter::SubscriptionFilter(const JsonValue& jsonValue) :
     m_filterPatternHasBeenSet(false),
     m_destinationArnHasBeenSet(false),
     m_roleArnHasBeenSet(false),
+    m_distribution(Distribution::NOT_SET),
+    m_distributionHasBeenSet(false),
     m_creationTime(0),
     m_creationTimeHasBeenSet(false)
 {
@@ -85,6 +90,13 @@ SubscriptionFilter& SubscriptionFilter::operator =(const JsonValue& jsonValue)
     m_roleArn = jsonValue.GetString("roleArn");
 
     m_roleArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("distribution"))
+  {
+    m_distribution = DistributionMapper::GetDistributionForName(jsonValue.GetString("distribution"));
+
+    m_distributionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("creationTime"))
@@ -129,6 +141,11 @@ JsonValue SubscriptionFilter::Jsonize() const
   {
    payload.WithString("roleArn", m_roleArn);
 
+  }
+
+  if(m_distributionHasBeenSet)
+  {
+   payload.WithString("distribution", DistributionMapper::GetNameForDistribution(m_distribution));
   }
 
   if(m_creationTimeHasBeenSet)

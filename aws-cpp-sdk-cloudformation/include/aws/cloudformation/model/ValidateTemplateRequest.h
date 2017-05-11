@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/cloudformation/CloudFormationRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>The input for <a>ValidateTemplate</a> action.</p>
+   * <p>The input for <a>ValidateTemplate</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ValidateTemplateInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API ValidateTemplateRequest : public CloudFormationRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     ValidateTemplateRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Structure containing the template body with a minimum length of 1 byte and a
      * maximum length of 51,200 bytes. For more information, go to <a
@@ -61,7 +70,7 @@ namespace Model
      * pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed,
      * only <code>TemplateBody</code> is used.</p>
      */
-    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = value; }
+    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::move(value); }
 
     /**
      * <p>Structure containing the template body with a minimum length of 1 byte and a
@@ -91,7 +100,7 @@ namespace Model
      * pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed,
      * only <code>TemplateBody</code> is used.</p>
      */
-    inline ValidateTemplateRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(value); return *this;}
+    inline ValidateTemplateRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(std::move(value)); return *this;}
 
     /**
      * <p>Structure containing the template body with a minimum length of 1 byte and a
@@ -134,7 +143,7 @@ namespace Model
      * pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed,
      * only <code>TemplateBody</code> is used.</p>
      */
-    inline void SetTemplateURL(Aws::String&& value) { m_templateURLHasBeenSet = true; m_templateURL = value; }
+    inline void SetTemplateURL(Aws::String&& value) { m_templateURLHasBeenSet = true; m_templateURL = std::move(value); }
 
     /**
      * <p>Location of file containing the template body. The URL must point to a
@@ -167,7 +176,7 @@ namespace Model
      * pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed,
      * only <code>TemplateBody</code> is used.</p>
      */
-    inline ValidateTemplateRequest& WithTemplateURL(Aws::String&& value) { SetTemplateURL(value); return *this;}
+    inline ValidateTemplateRequest& WithTemplateURL(Aws::String&& value) { SetTemplateURL(std::move(value)); return *this;}
 
     /**
      * <p>Location of file containing the template body. The URL must point to a

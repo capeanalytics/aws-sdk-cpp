@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/ConfigServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p> The input for the <a>DeliverConfigSnapshot</a> action. </p>
+   * <p>The input for the <a>DeliverConfigSnapshot</a> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeliverConfigSnapshotRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API DeliverConfigSnapshotRequest : public ConfigServiceRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the delivery channel through which the snapshot is delivered.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The name of the delivery channel through which the snapshot is delivered.</p>
      */
-    inline void SetDeliveryChannelName(Aws::String&& value) { m_deliveryChannelNameHasBeenSet = true; m_deliveryChannelName = value; }
+    inline void SetDeliveryChannelName(Aws::String&& value) { m_deliveryChannelNameHasBeenSet = true; m_deliveryChannelName = std::move(value); }
 
     /**
      * <p>The name of the delivery channel through which the snapshot is delivered.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the delivery channel through which the snapshot is delivered.</p>
      */
-    inline DeliverConfigSnapshotRequest& WithDeliveryChannelName(Aws::String&& value) { SetDeliveryChannelName(value); return *this;}
+    inline DeliverConfigSnapshotRequest& WithDeliveryChannelName(Aws::String&& value) { SetDeliveryChannelName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the delivery channel through which the snapshot is delivered.</p>

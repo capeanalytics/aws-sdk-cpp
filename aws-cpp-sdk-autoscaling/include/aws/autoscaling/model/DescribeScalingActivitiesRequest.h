@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeScalingActivities.</p>
+   * <p>Contains the parameters for DescribeScalingActivities.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivitiesType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeScalingActivitiesRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     DescribeScalingActivitiesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The activity IDs of the desired scaling activities. If you omit this
      * parameter, all activities for the past six weeks are described. If you specify
@@ -59,7 +69,7 @@ namespace Model
      * requested activities cannot contain more than 50 items. If unknown activities
      * are requested, they are ignored with no error.</p>
      */
-    inline void SetActivityIds(Aws::Vector<Aws::String>&& value) { m_activityIdsHasBeenSet = true; m_activityIds = value; }
+    inline void SetActivityIds(Aws::Vector<Aws::String>&& value) { m_activityIdsHasBeenSet = true; m_activityIds = std::move(value); }
 
     /**
      * <p>The activity IDs of the desired scaling activities. If you omit this
@@ -77,7 +87,7 @@ namespace Model
      * requested activities cannot contain more than 50 items. If unknown activities
      * are requested, they are ignored with no error.</p>
      */
-    inline DescribeScalingActivitiesRequest& WithActivityIds(Aws::Vector<Aws::String>&& value) { SetActivityIds(value); return *this;}
+    inline DescribeScalingActivitiesRequest& WithActivityIds(Aws::Vector<Aws::String>&& value) { SetActivityIds(std::move(value)); return *this;}
 
     /**
      * <p>The activity IDs of the desired scaling activities. If you omit this
@@ -95,7 +105,7 @@ namespace Model
      * requested activities cannot contain more than 50 items. If unknown activities
      * are requested, they are ignored with no error.</p>
      */
-    inline DescribeScalingActivitiesRequest& AddActivityIds(Aws::String&& value) { m_activityIdsHasBeenSet = true; m_activityIds.push_back(value); return *this; }
+    inline DescribeScalingActivitiesRequest& AddActivityIds(Aws::String&& value) { m_activityIdsHasBeenSet = true; m_activityIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The activity IDs of the desired scaling activities. If you omit this
@@ -119,7 +129,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the group.</p>
@@ -134,7 +144,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline DescribeScalingActivitiesRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline DescribeScalingActivitiesRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the group.</p>
@@ -172,7 +182,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -190,7 +200,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline DescribeScalingActivitiesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeScalingActivitiesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

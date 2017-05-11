@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/CreateChangeSetRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -28,11 +29,14 @@ CreateChangeSetRequest::CreateChangeSetRequest() :
     m_parametersHasBeenSet(false),
     m_capabilitiesHasBeenSet(false),
     m_resourceTypesHasBeenSet(false),
+    m_roleARNHasBeenSet(false),
     m_notificationARNsHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_changeSetNameHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+    m_descriptionHasBeenSet(false),
+    m_changeSetType(ChangeSetType::NOT_SET),
+    m_changeSetTypeHasBeenSet(false)
 {
 }
 
@@ -57,7 +61,7 @@ Aws::String CreateChangeSetRequest::SerializePayload() const
 
   if(m_usePreviousTemplateHasBeenSet)
   {
-    ss << "UsePreviousTemplate=" << m_usePreviousTemplate << "&";
+    ss << "UsePreviousTemplate=" << std::boolalpha << m_usePreviousTemplate << "&";
   }
 
   if(m_parametersHasBeenSet)
@@ -90,6 +94,11 @@ Aws::String CreateChangeSetRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       resourceTypesCount++;
     }
+  }
+
+  if(m_roleARNHasBeenSet)
+  {
+    ss << "RoleARN=" << StringUtils::URLEncode(m_roleARN.c_str()) << "&";
   }
 
   if(m_notificationARNsHasBeenSet)
@@ -128,7 +137,17 @@ Aws::String CreateChangeSetRequest::SerializePayload() const
     ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
+  if(m_changeSetTypeHasBeenSet)
+  {
+    ss << "ChangeSetType=" << ChangeSetTypeMapper::GetNameForChangeSetType(m_changeSetType) << "&";
+  }
+
   ss << "Version=2010-05-15";
   return ss.str();
 }
 
+
+void  CreateChangeSetRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

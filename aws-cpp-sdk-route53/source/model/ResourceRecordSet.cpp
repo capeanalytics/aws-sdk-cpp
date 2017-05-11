@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/route53/model/ResourceRecordSet.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,12 +32,15 @@ namespace Model
 
 ResourceRecordSet::ResourceRecordSet() : 
     m_nameHasBeenSet(false),
+    m_type(RRType::NOT_SET),
     m_typeHasBeenSet(false),
     m_setIdentifierHasBeenSet(false),
     m_weight(0),
     m_weightHasBeenSet(false),
+    m_region(ResourceRecordSetRegion::NOT_SET),
     m_regionHasBeenSet(false),
     m_geoLocationHasBeenSet(false),
+    m_failover(ResourceRecordSetFailover::NOT_SET),
     m_failoverHasBeenSet(false),
     m_tTL(0),
     m_tTLHasBeenSet(false),
@@ -49,12 +53,15 @@ ResourceRecordSet::ResourceRecordSet() :
 
 ResourceRecordSet::ResourceRecordSet(const XmlNode& xmlNode) : 
     m_nameHasBeenSet(false),
+    m_type(RRType::NOT_SET),
     m_typeHasBeenSet(false),
     m_setIdentifierHasBeenSet(false),
     m_weight(0),
     m_weightHasBeenSet(false),
+    m_region(ResourceRecordSetRegion::NOT_SET),
     m_regionHasBeenSet(false),
     m_geoLocationHasBeenSet(false),
+    m_failover(ResourceRecordSetFailover::NOT_SET),
     m_failoverHasBeenSet(false),
     m_tTL(0),
     m_tTLHasBeenSet(false),

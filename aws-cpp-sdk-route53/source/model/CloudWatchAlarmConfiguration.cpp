@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/route53/model/CloudWatchAlarmConfiguration.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,11 +35,13 @@ CloudWatchAlarmConfiguration::CloudWatchAlarmConfiguration() :
     m_evaluationPeriodsHasBeenSet(false),
     m_threshold(0.0),
     m_thresholdHasBeenSet(false),
+    m_comparisonOperator(ComparisonOperator::NOT_SET),
     m_comparisonOperatorHasBeenSet(false),
     m_period(0),
     m_periodHasBeenSet(false),
     m_metricNameHasBeenSet(false),
     m_namespaceHasBeenSet(false),
+    m_statistic(Statistic::NOT_SET),
     m_statisticHasBeenSet(false),
     m_dimensionsHasBeenSet(false)
 {
@@ -49,11 +52,13 @@ CloudWatchAlarmConfiguration::CloudWatchAlarmConfiguration(const XmlNode& xmlNod
     m_evaluationPeriodsHasBeenSet(false),
     m_threshold(0.0),
     m_thresholdHasBeenSet(false),
+    m_comparisonOperator(ComparisonOperator::NOT_SET),
     m_comparisonOperatorHasBeenSet(false),
     m_period(0),
     m_periodHasBeenSet(false),
     m_metricNameHasBeenSet(false),
     m_namespaceHasBeenSet(false),
+    m_statistic(Statistic::NOT_SET),
     m_statisticHasBeenSet(false),
     m_dimensionsHasBeenSet(false)
 {

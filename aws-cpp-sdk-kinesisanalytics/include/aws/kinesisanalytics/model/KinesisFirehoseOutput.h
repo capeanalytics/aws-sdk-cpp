@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
    * <p>When configuring application output, identifies an Amazon Kinesis Firehose
    * delivery stream as the destination. You provide the stream Amazon Resource Name
    * (ARN) and an IAM role that enables Amazon Kinesis Analytics to write to the
-   * stream on your behalf.</p>
+   * stream on your behalf.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisFirehoseOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API KinesisFirehoseOutput
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>ARN of the destination Amazon Kinesis Firehose delivery stream to write
      * to.</p>
      */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
+    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
 
     /**
      * <p>ARN of the destination Amazon Kinesis Firehose delivery stream to write
@@ -78,7 +82,7 @@ namespace Model
      * <p>ARN of the destination Amazon Kinesis Firehose delivery stream to write
      * to.</p>
      */
-    inline KinesisFirehoseOutput& WithResourceARN(Aws::String&& value) { SetResourceARN(value); return *this;}
+    inline KinesisFirehoseOutput& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the destination Amazon Kinesis Firehose delivery stream to write
@@ -105,7 +109,7 @@ namespace Model
      * destination stream on your behalf. You need to grant the necessary permissions
      * to this role.</p>
      */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the
@@ -126,7 +130,7 @@ namespace Model
      * destination stream on your behalf. You need to grant the necessary permissions
      * to this role.</p>
      */
-    inline KinesisFirehoseOutput& WithRoleARN(Aws::String&& value) { SetRoleARN(value); return *this;}
+    inline KinesisFirehoseOutput& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to write to the

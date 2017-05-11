@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/config/model/GetResourceConfigHistoryRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -22,10 +23,12 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
 GetResourceConfigHistoryRequest::GetResourceConfigHistoryRequest() : 
+    m_resourceType(ResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
     m_laterTimeHasBeenSet(false),
     m_earlierTimeHasBeenSet(false),
+    m_chronologicalOrder(ChronologicalOrder::NOT_SET),
     m_chronologicalOrderHasBeenSet(false),
     m_limit(0),
     m_limitHasBeenSet(false),
@@ -85,6 +88,7 @@ Aws::Http::HeaderValueCollection GetResourceConfigHistoryRequest::GetRequestSpec
   return headers;
 
 }
+
 
 
 

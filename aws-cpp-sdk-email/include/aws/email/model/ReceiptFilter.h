@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/email/model/ReceiptIpFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * reject mail originating from an IP address or range of IP addresses.</p> <p>For
    * information about setting up IP address filters, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReceiptFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ReceiptFilter
   {
@@ -71,7 +75,7 @@ namespace Model
      * dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li>
      * <li> <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain
@@ -95,7 +99,7 @@ namespace Model
      * dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li>
      * <li> <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline ReceiptFilter& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ReceiptFilter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain
@@ -121,7 +125,7 @@ namespace Model
      * <p>A structure that provides the IP addresses to block or allow, and whether to
      * block or allow incoming mail from them.</p>
      */
-    inline void SetIpFilter(ReceiptIpFilter&& value) { m_ipFilterHasBeenSet = true; m_ipFilter = value; }
+    inline void SetIpFilter(ReceiptIpFilter&& value) { m_ipFilterHasBeenSet = true; m_ipFilter = std::move(value); }
 
     /**
      * <p>A structure that provides the IP addresses to block or allow, and whether to
@@ -133,7 +137,7 @@ namespace Model
      * <p>A structure that provides the IP addresses to block or allow, and whether to
      * block or allow incoming mail from them.</p>
      */
-    inline ReceiptFilter& WithIpFilter(ReceiptIpFilter&& value) { SetIpFilter(value); return *this;}
+    inline ReceiptFilter& WithIpFilter(ReceiptIpFilter&& value) { SetIpFilter(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

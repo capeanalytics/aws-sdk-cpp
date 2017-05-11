@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -32,6 +33,9 @@
 #include <aws/es/model/DescribeElasticsearchDomainRequest.h>
 #include <aws/es/model/DescribeElasticsearchDomainConfigRequest.h>
 #include <aws/es/model/DescribeElasticsearchDomainsRequest.h>
+#include <aws/es/model/DescribeElasticsearchInstanceTypeLimitsRequest.h>
+#include <aws/es/model/ListElasticsearchInstanceTypesRequest.h>
+#include <aws/es/model/ListElasticsearchVersionsRequest.h>
 #include <aws/es/model/ListTagsRequest.h>
 #include <aws/es/model/RemoveTagsRequest.h>
 #include <aws/es/model/UpdateElasticsearchDomainConfigRequest.h>
@@ -118,7 +122,10 @@ AddTagsOutcome ElasticsearchServiceClient::AddTags(const AddTagsRequest& request
 
 AddTagsOutcomeCallable ElasticsearchServiceClient::AddTagsCallable(const AddTagsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AddTags(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< AddTagsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AddTags(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::AddTagsAsync(const AddTagsRequest& request, const AddTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -149,7 +156,10 @@ CreateElasticsearchDomainOutcome ElasticsearchServiceClient::CreateElasticsearch
 
 CreateElasticsearchDomainOutcomeCallable ElasticsearchServiceClient::CreateElasticsearchDomainCallable(const CreateElasticsearchDomainRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateElasticsearchDomain(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateElasticsearchDomainOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateElasticsearchDomain(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::CreateElasticsearchDomainAsync(const CreateElasticsearchDomainRequest& request, const CreateElasticsearchDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -181,7 +191,10 @@ DeleteElasticsearchDomainOutcome ElasticsearchServiceClient::DeleteElasticsearch
 
 DeleteElasticsearchDomainOutcomeCallable ElasticsearchServiceClient::DeleteElasticsearchDomainCallable(const DeleteElasticsearchDomainRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteElasticsearchDomain(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteElasticsearchDomainOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteElasticsearchDomain(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::DeleteElasticsearchDomainAsync(const DeleteElasticsearchDomainRequest& request, const DeleteElasticsearchDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -213,7 +226,10 @@ DescribeElasticsearchDomainOutcome ElasticsearchServiceClient::DescribeElasticse
 
 DescribeElasticsearchDomainOutcomeCallable ElasticsearchServiceClient::DescribeElasticsearchDomainCallable(const DescribeElasticsearchDomainRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeElasticsearchDomain(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeElasticsearchDomainOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeElasticsearchDomain(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::DescribeElasticsearchDomainAsync(const DescribeElasticsearchDomainRequest& request, const DescribeElasticsearchDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -246,7 +262,10 @@ DescribeElasticsearchDomainConfigOutcome ElasticsearchServiceClient::DescribeEla
 
 DescribeElasticsearchDomainConfigOutcomeCallable ElasticsearchServiceClient::DescribeElasticsearchDomainConfigCallable(const DescribeElasticsearchDomainConfigRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeElasticsearchDomainConfig(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeElasticsearchDomainConfigOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeElasticsearchDomainConfig(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::DescribeElasticsearchDomainConfigAsync(const DescribeElasticsearchDomainConfigRequest& request, const DescribeElasticsearchDomainConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -277,7 +296,10 @@ DescribeElasticsearchDomainsOutcome ElasticsearchServiceClient::DescribeElastics
 
 DescribeElasticsearchDomainsOutcomeCallable ElasticsearchServiceClient::DescribeElasticsearchDomainsCallable(const DescribeElasticsearchDomainsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeElasticsearchDomains(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeElasticsearchDomainsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeElasticsearchDomains(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::DescribeElasticsearchDomainsAsync(const DescribeElasticsearchDomainsRequest& request, const DescribeElasticsearchDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -288,6 +310,43 @@ void ElasticsearchServiceClient::DescribeElasticsearchDomainsAsync(const Describ
 void ElasticsearchServiceClient::DescribeElasticsearchDomainsAsyncHelper(const DescribeElasticsearchDomainsRequest& request, const DescribeElasticsearchDomainsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeElasticsearchDomains(request), context);
+}
+
+DescribeElasticsearchInstanceTypeLimitsOutcome ElasticsearchServiceClient::DescribeElasticsearchInstanceTypeLimits(const DescribeElasticsearchInstanceTypeLimitsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-01-01/es/instanceTypeLimits/";
+  ss << request.GetElasticsearchVersion();
+  ss << "/";
+  ss << ESPartitionInstanceTypeMapper::GetNameForESPartitionInstanceType(request.GetInstanceType());
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return DescribeElasticsearchInstanceTypeLimitsOutcome(DescribeElasticsearchInstanceTypeLimitsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeElasticsearchInstanceTypeLimitsOutcome(outcome.GetError());
+  }
+}
+
+DescribeElasticsearchInstanceTypeLimitsOutcomeCallable ElasticsearchServiceClient::DescribeElasticsearchInstanceTypeLimitsCallable(const DescribeElasticsearchInstanceTypeLimitsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< DescribeElasticsearchInstanceTypeLimitsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeElasticsearchInstanceTypeLimits(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void ElasticsearchServiceClient::DescribeElasticsearchInstanceTypeLimitsAsync(const DescribeElasticsearchInstanceTypeLimitsRequest& request, const DescribeElasticsearchInstanceTypeLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->DescribeElasticsearchInstanceTypeLimitsAsyncHelper( request, handler, context ); } );
+}
+
+void ElasticsearchServiceClient::DescribeElasticsearchInstanceTypeLimitsAsyncHelper(const DescribeElasticsearchInstanceTypeLimitsRequest& request, const DescribeElasticsearchInstanceTypeLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeElasticsearchInstanceTypeLimits(request), context);
 }
 
 ListDomainNamesOutcome ElasticsearchServiceClient::ListDomainNames() const
@@ -308,7 +367,10 @@ ListDomainNamesOutcome ElasticsearchServiceClient::ListDomainNames() const
 
 ListDomainNamesOutcomeCallable ElasticsearchServiceClient::ListDomainNamesCallable() const
 {
-  return std::async(std::launch::async, [this](){ return this->ListDomainNames(); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDomainNamesOutcome() > >(ALLOCATION_TAG, [this](){ return this->ListDomainNames(); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::ListDomainNamesAsync(const ListDomainNamesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -319,6 +381,75 @@ void ElasticsearchServiceClient::ListDomainNamesAsync(const ListDomainNamesRespo
 void ElasticsearchServiceClient::ListDomainNamesAsyncHelper(const ListDomainNamesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, ListDomainNames(), context);
+}
+
+ListElasticsearchInstanceTypesOutcome ElasticsearchServiceClient::ListElasticsearchInstanceTypes(const ListElasticsearchInstanceTypesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-01-01/es/instanceTypes/";
+  ss << request.GetElasticsearchVersion();
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return ListElasticsearchInstanceTypesOutcome(ListElasticsearchInstanceTypesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListElasticsearchInstanceTypesOutcome(outcome.GetError());
+  }
+}
+
+ListElasticsearchInstanceTypesOutcomeCallable ElasticsearchServiceClient::ListElasticsearchInstanceTypesCallable(const ListElasticsearchInstanceTypesRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListElasticsearchInstanceTypesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListElasticsearchInstanceTypes(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void ElasticsearchServiceClient::ListElasticsearchInstanceTypesAsync(const ListElasticsearchInstanceTypesRequest& request, const ListElasticsearchInstanceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListElasticsearchInstanceTypesAsyncHelper( request, handler, context ); } );
+}
+
+void ElasticsearchServiceClient::ListElasticsearchInstanceTypesAsyncHelper(const ListElasticsearchInstanceTypesRequest& request, const ListElasticsearchInstanceTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListElasticsearchInstanceTypes(request), context);
+}
+
+ListElasticsearchVersionsOutcome ElasticsearchServiceClient::ListElasticsearchVersions(const ListElasticsearchVersionsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/2015-01-01/es/versions";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_GET);
+  if(outcome.IsSuccess())
+  {
+    return ListElasticsearchVersionsOutcome(ListElasticsearchVersionsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListElasticsearchVersionsOutcome(outcome.GetError());
+  }
+}
+
+ListElasticsearchVersionsOutcomeCallable ElasticsearchServiceClient::ListElasticsearchVersionsCallable(const ListElasticsearchVersionsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListElasticsearchVersionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListElasticsearchVersions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void ElasticsearchServiceClient::ListElasticsearchVersionsAsync(const ListElasticsearchVersionsRequest& request, const ListElasticsearchVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListElasticsearchVersionsAsyncHelper( request, handler, context ); } );
+}
+
+void ElasticsearchServiceClient::ListElasticsearchVersionsAsyncHelper(const ListElasticsearchVersionsRequest& request, const ListElasticsearchVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListElasticsearchVersions(request), context);
 }
 
 ListTagsOutcome ElasticsearchServiceClient::ListTags(const ListTagsRequest& request) const
@@ -339,7 +470,10 @@ ListTagsOutcome ElasticsearchServiceClient::ListTags(const ListTagsRequest& requ
 
 ListTagsOutcomeCallable ElasticsearchServiceClient::ListTagsCallable(const ListTagsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTags(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTags(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::ListTagsAsync(const ListTagsRequest& request, const ListTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -370,7 +504,10 @@ RemoveTagsOutcome ElasticsearchServiceClient::RemoveTags(const RemoveTagsRequest
 
 RemoveTagsOutcomeCallable ElasticsearchServiceClient::RemoveTagsCallable(const RemoveTagsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RemoveTags(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RemoveTagsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RemoveTags(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::RemoveTagsAsync(const RemoveTagsRequest& request, const RemoveTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -403,7 +540,10 @@ UpdateElasticsearchDomainConfigOutcome ElasticsearchServiceClient::UpdateElastic
 
 UpdateElasticsearchDomainConfigOutcomeCallable ElasticsearchServiceClient::UpdateElasticsearchDomainConfigCallable(const UpdateElasticsearchDomainConfigRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateElasticsearchDomainConfig(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateElasticsearchDomainConfigOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateElasticsearchDomainConfig(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ElasticsearchServiceClient::UpdateElasticsearchDomainConfigAsync(const UpdateElasticsearchDomainConfigRequest& request, const UpdateElasticsearchDomainConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

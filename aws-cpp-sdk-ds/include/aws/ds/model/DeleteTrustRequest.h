@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 
   /**
    * <p>Deletes the local side of an existing trust relationship between the
-   * Microsoft AD in the AWS cloud and the external domain.</p>
+   * Microsoft AD in the AWS cloud and the external domain.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteTrustRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API DeleteTrustRequest : public DirectoryServiceRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Trust ID of the trust relationship to be deleted.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The Trust ID of the trust relationship to be deleted.</p>
      */
-    inline void SetTrustId(Aws::String&& value) { m_trustIdHasBeenSet = true; m_trustId = value; }
+    inline void SetTrustId(Aws::String&& value) { m_trustIdHasBeenSet = true; m_trustId = std::move(value); }
 
     /**
      * <p>The Trust ID of the trust relationship to be deleted.</p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>The Trust ID of the trust relationship to be deleted.</p>
      */
-    inline DeleteTrustRequest& WithTrustId(Aws::String&& value) { SetTrustId(value); return *this;}
+    inline DeleteTrustRequest& WithTrustId(Aws::String&& value) { SetTrustId(std::move(value)); return *this;}
 
     /**
      * <p>The Trust ID of the trust relationship to be deleted.</p>

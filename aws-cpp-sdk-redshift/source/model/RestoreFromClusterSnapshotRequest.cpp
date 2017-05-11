@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/RestoreFromClusterSnapshotRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -43,6 +44,8 @@ RestoreFromClusterSnapshotRequest::RestoreFromClusterSnapshotRequest() :
     m_automatedSnapshotRetentionPeriodHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
     m_nodeTypeHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false),
     m_additionalInfoHasBeenSet(false),
     m_iamRolesHasBeenSet(false)
 {
@@ -79,7 +82,7 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 
   if(m_allowVersionUpgradeHasBeenSet)
   {
-    ss << "AllowVersionUpgrade=" << m_allowVersionUpgrade << "&";
+    ss << "AllowVersionUpgrade=" << std::boolalpha << m_allowVersionUpgrade << "&";
   }
 
   if(m_clusterSubnetGroupNameHasBeenSet)
@@ -89,7 +92,7 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-    ss << "PubliclyAccessible=" << m_publiclyAccessible << "&";
+    ss << "PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_ownerAccountHasBeenSet)
@@ -159,6 +162,11 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
     ss << "NodeType=" << StringUtils::URLEncode(m_nodeType.c_str()) << "&";
   }
 
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+    ss << "EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
+  }
+
   if(m_additionalInfoHasBeenSet)
   {
     ss << "AdditionalInfo=" << StringUtils::URLEncode(m_additionalInfo.c_str()) << "&";
@@ -179,3 +187,8 @@ Aws::String RestoreFromClusterSnapshotRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  RestoreFromClusterSnapshotRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

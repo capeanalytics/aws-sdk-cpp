@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/sns/SNSRequest.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>The input for the SetSMSAttributes action.</p>
+   * <p>The input for the SetSMSAttributes action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/SetSMSAttributesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API SetSMSAttributesRequest : public SNSRequest
   {
@@ -34,6 +38,11 @@ namespace Model
     SetSMSAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
      * values for the following attribute names:</p> <p> <code>MonthlySpendLimit</code>
@@ -185,7 +194,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -287,7 +296,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline SetSMSAttributesRequest& WithAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -338,7 +347,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(const Aws::String& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -389,7 +398,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -440,7 +449,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(const Aws::String& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -491,7 +500,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -542,7 +551,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(const char* key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(const char* key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -593,7 +602,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(Aws::String&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The default settings for sending SMS messages from your account. You can set
@@ -644,7 +653,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS
      * Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
      */
-    inline SetSMSAttributesRequest& AddAttributes(const char* key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline SetSMSAttributesRequest& AddAttributes(const char* key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
 
   private:
     Aws::Map<Aws::String, Aws::String> m_attributes;

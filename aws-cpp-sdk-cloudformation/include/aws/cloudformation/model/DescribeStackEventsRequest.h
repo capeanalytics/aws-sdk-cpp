@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/cloudformation/CloudFormationRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>The input for <a>DescribeStackEvents</a> action.</p>
+   * <p>The input for <a>DescribeStackEvents</a> action.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackEventsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API DescribeStackEventsRequest : public CloudFormationRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeStackEventsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
      * not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify
@@ -58,7 +68,7 @@ namespace Model
      * stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There
      * is no default value.</p>
      */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
+    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
 
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
@@ -85,7 +95,7 @@ namespace Model
      * stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There
      * is no default value.</p>
      */
-    inline DescribeStackEventsRequest& WithStackName(Aws::String&& value) { SetStackName(value); return *this;}
+    inline DescribeStackEventsRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
 
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
@@ -112,7 +122,7 @@ namespace Model
      * <p>A string that identifies the next page of events that you want to
      * retrieve.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>A string that identifies the next page of events that you want to
@@ -130,7 +140,7 @@ namespace Model
      * <p>A string that identifies the next page of events that you want to
      * retrieve.</p>
      */
-    inline DescribeStackEventsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeStackEventsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>A string that identifies the next page of events that you want to

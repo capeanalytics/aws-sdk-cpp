@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about an application revision.</p>
+   * <p>Information about an application revision.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/GenericRevisionInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API GenericRevisionInfo
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>A comment about the revision.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A comment about the revision.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>A comment about the revision.</p>
      */
-    inline GenericRevisionInfo& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline GenericRevisionInfo& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A comment about the revision.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
      */
-    inline void SetDeploymentGroups(Aws::Vector<Aws::String>&& value) { m_deploymentGroupsHasBeenSet = true; m_deploymentGroups = value; }
+    inline void SetDeploymentGroups(Aws::Vector<Aws::String>&& value) { m_deploymentGroupsHasBeenSet = true; m_deploymentGroups = std::move(value); }
 
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
      */
-    inline GenericRevisionInfo& WithDeploymentGroups(Aws::Vector<Aws::String>&& value) { SetDeploymentGroups(value); return *this;}
+    inline GenericRevisionInfo& WithDeploymentGroups(Aws::Vector<Aws::String>&& value) { SetDeploymentGroups(std::move(value)); return *this;}
 
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
      */
-    inline GenericRevisionInfo& AddDeploymentGroups(Aws::String&& value) { m_deploymentGroupsHasBeenSet = true; m_deploymentGroups.push_back(value); return *this; }
+    inline GenericRevisionInfo& AddDeploymentGroups(Aws::String&& value) { m_deploymentGroupsHasBeenSet = true; m_deploymentGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The deployment groups for which this is the current target revision.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>When the revision was first used by AWS CodeDeploy.</p>
      */
-    inline void SetFirstUsedTime(Aws::Utils::DateTime&& value) { m_firstUsedTimeHasBeenSet = true; m_firstUsedTime = value; }
+    inline void SetFirstUsedTime(Aws::Utils::DateTime&& value) { m_firstUsedTimeHasBeenSet = true; m_firstUsedTime = std::move(value); }
 
     /**
      * <p>When the revision was first used by AWS CodeDeploy.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>When the revision was first used by AWS CodeDeploy.</p>
      */
-    inline GenericRevisionInfo& WithFirstUsedTime(Aws::Utils::DateTime&& value) { SetFirstUsedTime(value); return *this;}
+    inline GenericRevisionInfo& WithFirstUsedTime(Aws::Utils::DateTime&& value) { SetFirstUsedTime(std::move(value)); return *this;}
 
     /**
      * <p>When the revision was last used by AWS CodeDeploy.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>When the revision was last used by AWS CodeDeploy.</p>
      */
-    inline void SetLastUsedTime(Aws::Utils::DateTime&& value) { m_lastUsedTimeHasBeenSet = true; m_lastUsedTime = value; }
+    inline void SetLastUsedTime(Aws::Utils::DateTime&& value) { m_lastUsedTimeHasBeenSet = true; m_lastUsedTime = std::move(value); }
 
     /**
      * <p>When the revision was last used by AWS CodeDeploy.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>When the revision was last used by AWS CodeDeploy.</p>
      */
-    inline GenericRevisionInfo& WithLastUsedTime(Aws::Utils::DateTime&& value) { SetLastUsedTime(value); return *this;}
+    inline GenericRevisionInfo& WithLastUsedTime(Aws::Utils::DateTime&& value) { SetLastUsedTime(std::move(value)); return *this;}
 
     /**
      * <p>When the revision was registered with AWS CodeDeploy.</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>When the revision was registered with AWS CodeDeploy.</p>
      */
-    inline void SetRegisterTime(Aws::Utils::DateTime&& value) { m_registerTimeHasBeenSet = true; m_registerTime = value; }
+    inline void SetRegisterTime(Aws::Utils::DateTime&& value) { m_registerTimeHasBeenSet = true; m_registerTime = std::move(value); }
 
     /**
      * <p>When the revision was registered with AWS CodeDeploy.</p>
@@ -191,7 +195,7 @@ namespace Model
     /**
      * <p>When the revision was registered with AWS CodeDeploy.</p>
      */
-    inline GenericRevisionInfo& WithRegisterTime(Aws::Utils::DateTime&& value) { SetRegisterTime(value); return *this;}
+    inline GenericRevisionInfo& WithRegisterTime(Aws::Utils::DateTime&& value) { SetRegisterTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_description;

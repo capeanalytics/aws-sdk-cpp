@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about an Availability Zone.</p>
+   * <p>Information about an Availability Zone.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/AvailabilityZone">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API AvailabilityZone
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the Availability Zone.</p>
      */
-    inline void SetZoneName(Aws::String&& value) { m_zoneNameHasBeenSet = true; m_zoneName = value; }
+    inline void SetZoneName(Aws::String&& value) { m_zoneNameHasBeenSet = true; m_zoneName = std::move(value); }
 
     /**
      * <p>The name of the Availability Zone.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the Availability Zone.</p>
      */
-    inline AvailabilityZone& WithZoneName(Aws::String&& value) { SetZoneName(value); return *this;}
+    inline AvailabilityZone& WithZoneName(Aws::String&& value) { SetZoneName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Availability Zone.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>The ID of the subnet.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The ID of the subnet.</p>
      */
-    inline AvailabilityZone& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline AvailabilityZone& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the subnet.</p>

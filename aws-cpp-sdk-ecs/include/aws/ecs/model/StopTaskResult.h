@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/model/Task.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,20 +41,30 @@ namespace Model
     StopTaskResult(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     StopTaskResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
-    
+    /**
+     * <p>The task that was stopped.</p>
+     */
     inline const Task& GetTask() const{ return m_task; }
 
-    
+    /**
+     * <p>The task that was stopped.</p>
+     */
     inline void SetTask(const Task& value) { m_task = value; }
 
-    
-    inline void SetTask(Task&& value) { m_task = value; }
+    /**
+     * <p>The task that was stopped.</p>
+     */
+    inline void SetTask(Task&& value) { m_task = std::move(value); }
 
-    
+    /**
+     * <p>The task that was stopped.</p>
+     */
     inline StopTaskResult& WithTask(const Task& value) { SetTask(value); return *this;}
 
-    
-    inline StopTaskResult& WithTask(Task&& value) { SetTask(value); return *this;}
+    /**
+     * <p>The task that was stopped.</p>
+     */
+    inline StopTaskResult& WithTask(Task&& value) { SetTask(std::move(value)); return *this;}
 
   private:
     Task m_task;

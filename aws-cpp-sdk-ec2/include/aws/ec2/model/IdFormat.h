@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the ID format for a resource.</p>
+   * <p>Describes the ID format for a resource.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/IdFormat">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API IdFormat
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The type of resource.</p>
      */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = value; }
+    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
 
     /**
      * <p>The type of resource.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The type of resource.</p>
      */
-    inline IdFormat& WithResource(Aws::String&& value) { SetResource(value); return *this;}
+    inline IdFormat& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
 
     /**
      * <p>The type of resource.</p>
@@ -117,7 +121,7 @@ namespace Model
      * IDs. If a deadline is not yet available for this resource type, this field is
      * not returned.</p>
      */
-    inline void SetDeadline(Aws::Utils::DateTime&& value) { m_deadlineHasBeenSet = true; m_deadline = value; }
+    inline void SetDeadline(Aws::Utils::DateTime&& value) { m_deadlineHasBeenSet = true; m_deadline = std::move(value); }
 
     /**
      * <p>The date in UTC at which you are permanently switched over to using longer
@@ -131,7 +135,7 @@ namespace Model
      * IDs. If a deadline is not yet available for this resource type, this field is
      * not returned.</p>
      */
-    inline IdFormat& WithDeadline(Aws::Utils::DateTime&& value) { SetDeadline(value); return *this;}
+    inline IdFormat& WithDeadline(Aws::Utils::DateTime&& value) { SetDeadline(std::move(value)); return *this;}
 
   private:
     Aws::String m_resource;

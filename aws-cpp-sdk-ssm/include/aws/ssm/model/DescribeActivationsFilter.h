@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/model/DescribeActivationsFilterKeys.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Filter for the DescribeActivation API.</p>
+   * <p>Filter for the DescribeActivation API.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeActivationsFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_SSM_API DescribeActivationsFilter
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The name of the filter.</p>
      */
-    inline void SetFilterKey(DescribeActivationsFilterKeys&& value) { m_filterKeyHasBeenSet = true; m_filterKey = value; }
+    inline void SetFilterKey(DescribeActivationsFilterKeys&& value) { m_filterKeyHasBeenSet = true; m_filterKey = std::move(value); }
 
     /**
      * <p>The name of the filter.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The name of the filter.</p>
      */
-    inline DescribeActivationsFilter& WithFilterKey(DescribeActivationsFilterKeys&& value) { SetFilterKey(value); return *this;}
+    inline DescribeActivationsFilter& WithFilterKey(DescribeActivationsFilterKeys&& value) { SetFilterKey(std::move(value)); return *this;}
 
     /**
      * <p>The filter values.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>The filter values.</p>
      */
-    inline void SetFilterValues(Aws::Vector<Aws::String>&& value) { m_filterValuesHasBeenSet = true; m_filterValues = value; }
+    inline void SetFilterValues(Aws::Vector<Aws::String>&& value) { m_filterValuesHasBeenSet = true; m_filterValues = std::move(value); }
 
     /**
      * <p>The filter values.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The filter values.</p>
      */
-    inline DescribeActivationsFilter& WithFilterValues(Aws::Vector<Aws::String>&& value) { SetFilterValues(value); return *this;}
+    inline DescribeActivationsFilter& WithFilterValues(Aws::Vector<Aws::String>&& value) { SetFilterValues(std::move(value)); return *this;}
 
     /**
      * <p>The filter values.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The filter values.</p>
      */
-    inline DescribeActivationsFilter& AddFilterValues(Aws::String&& value) { m_filterValuesHasBeenSet = true; m_filterValues.push_back(value); return *this; }
+    inline DescribeActivationsFilter& AddFilterValues(Aws::String&& value) { m_filterValuesHasBeenSet = true; m_filterValues.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The filter values.</p>

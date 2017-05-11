@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
   /**
    * <p>Represents a REST API.</p> <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create
-   * an API</a> </div>
+   * an API</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/RestApi">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API PutRestApiResult
   {
@@ -62,7 +66,7 @@ namespace Model
      * <p>The API's identifier. This identifier is unique across all of your APIs in
      * Amazon API Gateway.</p>
      */
-    inline void SetId(Aws::String&& value) { m_id = value; }
+    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
 
     /**
      * <p>The API's identifier. This identifier is unique across all of your APIs in
@@ -80,7 +84,7 @@ namespace Model
      * <p>The API's identifier. This identifier is unique across all of your APIs in
      * Amazon API Gateway.</p>
      */
-    inline PutRestApiResult& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline PutRestApiResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The API's identifier. This identifier is unique across all of your APIs in
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The API's name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_name = value; }
+    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
 
     /**
      * <p>The API's name.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>The API's name.</p>
      */
-    inline PutRestApiResult& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline PutRestApiResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The API's name.</p>
@@ -136,7 +140,7 @@ namespace Model
     /**
      * <p>The API's description.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
 
     /**
      * <p>The API's description.</p>
@@ -151,7 +155,7 @@ namespace Model
     /**
      * <p>The API's description.</p>
      */
-    inline PutRestApiResult& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline PutRestApiResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The API's description.</p>
@@ -159,39 +163,64 @@ namespace Model
     inline PutRestApiResult& WithDescription(const char* value) { SetDescription(value); return *this;}
 
     /**
-     * <p>The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO
-     * 8601 format</a>.</p>
+     * <p>The timestamp when the API was created.</p>
      */
     inline const Aws::Utils::DateTime& GetCreatedDate() const{ return m_createdDate; }
 
     /**
-     * <p>The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO
-     * 8601 format</a>.</p>
+     * <p>The timestamp when the API was created.</p>
      */
     inline void SetCreatedDate(const Aws::Utils::DateTime& value) { m_createdDate = value; }
 
     /**
-     * <p>The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO
-     * 8601 format</a>.</p>
+     * <p>The timestamp when the API was created.</p>
      */
-    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDate = value; }
+    inline void SetCreatedDate(Aws::Utils::DateTime&& value) { m_createdDate = std::move(value); }
 
     /**
-     * <p>The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO
-     * 8601 format</a>.</p>
+     * <p>The timestamp when the API was created.</p>
      */
     inline PutRestApiResult& WithCreatedDate(const Aws::Utils::DateTime& value) { SetCreatedDate(value); return *this;}
 
     /**
-     * <p>The date when the API was created, in <a
-     * href="http://www.iso.org/iso/home/standards/iso8601.htm" target="_blank">ISO
-     * 8601 format</a>.</p>
+     * <p>The timestamp when the API was created.</p>
      */
-    inline PutRestApiResult& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(value); return *this;}
+    inline PutRestApiResult& WithCreatedDate(Aws::Utils::DateTime&& value) { SetCreatedDate(std::move(value)); return *this;}
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline const Aws::String& GetVersion() const{ return m_version; }
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline void SetVersion(const Aws::String& value) { m_version = value; }
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline void SetVersion(Aws::String&& value) { m_version = std::move(value); }
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline void SetVersion(const char* value) { m_version.assign(value); }
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline PutRestApiResult& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline PutRestApiResult& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>A version identifier for the API.</p>
+     */
+    inline PutRestApiResult& WithVersion(const char* value) { SetVersion(value); return *this;}
 
     /**
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
@@ -209,7 +238,7 @@ namespace Model
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
      * during API import.</p>
      */
-    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = value; }
+    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = std::move(value); }
 
     /**
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
@@ -221,7 +250,7 @@ namespace Model
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
      * during API import.</p>
      */
-    inline PutRestApiResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(value); return *this;}
+    inline PutRestApiResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(std::move(value)); return *this;}
 
     /**
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
@@ -233,7 +262,7 @@ namespace Model
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
      * during API import.</p>
      */
-    inline PutRestApiResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(value); return *this; }
+    inline PutRestApiResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The warning messages reported when <code>failonwarnings</code> is turned on
@@ -241,12 +270,62 @@ namespace Model
      */
     inline PutRestApiResult& AddWarnings(const char* value) { m_warnings.push_back(value); return *this; }
 
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetBinaryMediaTypes() const{ return m_binaryMediaTypes; }
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline void SetBinaryMediaTypes(const Aws::Vector<Aws::String>& value) { m_binaryMediaTypes = value; }
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline void SetBinaryMediaTypes(Aws::Vector<Aws::String>&& value) { m_binaryMediaTypes = std::move(value); }
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline PutRestApiResult& WithBinaryMediaTypes(const Aws::Vector<Aws::String>& value) { SetBinaryMediaTypes(value); return *this;}
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline PutRestApiResult& WithBinaryMediaTypes(Aws::Vector<Aws::String>&& value) { SetBinaryMediaTypes(std::move(value)); return *this;}
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline PutRestApiResult& AddBinaryMediaTypes(const Aws::String& value) { m_binaryMediaTypes.push_back(value); return *this; }
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline PutRestApiResult& AddBinaryMediaTypes(Aws::String&& value) { m_binaryMediaTypes.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>The list of binary media types supported by the <a>RestApi</a>. By default,
+     * the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+     */
+    inline PutRestApiResult& AddBinaryMediaTypes(const char* value) { m_binaryMediaTypes.push_back(value); return *this; }
+
   private:
     Aws::String m_id;
     Aws::String m_name;
     Aws::String m_description;
     Aws::Utils::DateTime m_createdDate;
+    Aws::String m_version;
     Aws::Vector<Aws::String> m_warnings;
+    Aws::Vector<Aws::String> m_binaryMediaTypes;
   };
 
 } // namespace Model

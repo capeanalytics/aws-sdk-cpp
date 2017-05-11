@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ReportTaskRunnerHeartbeat.</p>
+   * <p>Contains the parameters for ReportTaskRunnerHeartbeat.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/ReportTaskRunnerHeartbeatInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API ReportTaskRunnerHeartbeatRequest : public DataPipelineRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The ID of the task runner. This value should be unique across your AWS
@@ -60,7 +66,7 @@ namespace Model
      * it launches the application. If you have written a custom task runner, you
      * should assign a unique identifier for the task runner.</p>
      */
-    inline void SetTaskrunnerId(Aws::String&& value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId = value; }
+    inline void SetTaskrunnerId(Aws::String&& value) { m_taskrunnerIdHasBeenSet = true; m_taskrunnerId = std::move(value); }
 
     /**
      * <p>The ID of the task runner. This value should be unique across your AWS
@@ -87,7 +93,7 @@ namespace Model
      * it launches the application. If you have written a custom task runner, you
      * should assign a unique identifier for the task runner.</p>
      */
-    inline ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(Aws::String&& value) { SetTaskrunnerId(value); return *this;}
+    inline ReportTaskRunnerHeartbeatRequest& WithTaskrunnerId(Aws::String&& value) { SetTaskrunnerId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the task runner. This value should be unique across your AWS
@@ -123,7 +129,7 @@ namespace Model
      * wildcard values permitted in <code>workerGroup</code>; the string must be an
      * exact, case-sensitive, match.</p>
      */
-    inline void SetWorkerGroup(Aws::String&& value) { m_workerGroupHasBeenSet = true; m_workerGroup = value; }
+    inline void SetWorkerGroup(Aws::String&& value) { m_workerGroupHasBeenSet = true; m_workerGroup = std::move(value); }
 
     /**
      * <p>The type of task the task runner is configured to accept and process. The
@@ -150,7 +156,7 @@ namespace Model
      * wildcard values permitted in <code>workerGroup</code>; the string must be an
      * exact, case-sensitive, match.</p>
      */
-    inline ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(Aws::String&& value) { SetWorkerGroup(value); return *this;}
+    inline ReportTaskRunnerHeartbeatRequest& WithWorkerGroup(Aws::String&& value) { SetWorkerGroup(std::move(value)); return *this;}
 
     /**
      * <p>The type of task the task runner is configured to accept and process. The
@@ -174,7 +180,7 @@ namespace Model
     /**
      * <p>The public DNS name of the task runner.</p>
      */
-    inline void SetHostname(Aws::String&& value) { m_hostnameHasBeenSet = true; m_hostname = value; }
+    inline void SetHostname(Aws::String&& value) { m_hostnameHasBeenSet = true; m_hostname = std::move(value); }
 
     /**
      * <p>The public DNS name of the task runner.</p>
@@ -189,7 +195,7 @@ namespace Model
     /**
      * <p>The public DNS name of the task runner.</p>
      */
-    inline ReportTaskRunnerHeartbeatRequest& WithHostname(Aws::String&& value) { SetHostname(value); return *this;}
+    inline ReportTaskRunnerHeartbeatRequest& WithHostname(Aws::String&& value) { SetHostname(std::move(value)); return *this;}
 
     /**
      * <p>The public DNS name of the task runner.</p>

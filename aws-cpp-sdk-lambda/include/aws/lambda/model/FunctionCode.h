@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/Array.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>The code for the Lambda function.</p>
+   * <p>The code for the Lambda function.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/FunctionCode">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API FunctionCode
   {
@@ -46,7 +50,7 @@ namespace Model
      * <p>The contents of your zip file containing your deployment package. If you are
      * using the web API directly, the contents of the zip file must be base64-encoded.
      * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, go to <a
+     * encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
      * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
      */
@@ -56,7 +60,7 @@ namespace Model
      * <p>The contents of your zip file containing your deployment package. If you are
      * using the web API directly, the contents of the zip file must be base64-encoded.
      * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, go to <a
+     * encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
      * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
      */
@@ -66,17 +70,17 @@ namespace Model
      * <p>The contents of your zip file containing your deployment package. If you are
      * using the web API directly, the contents of the zip file must be base64-encoded.
      * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, go to <a
+     * encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
      * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
      */
-    inline void SetZipFile(Aws::Utils::ByteBuffer&& value) { m_zipFileHasBeenSet = true; m_zipFile = value; }
+    inline void SetZipFile(Aws::Utils::ByteBuffer&& value) { m_zipFileHasBeenSet = true; m_zipFile = std::move(value); }
 
     /**
      * <p>The contents of your zip file containing your deployment package. If you are
      * using the web API directly, the contents of the zip file must be base64-encoded.
      * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, go to <a
+     * encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
      * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
      */
@@ -86,11 +90,11 @@ namespace Model
      * <p>The contents of your zip file containing your deployment package. If you are
      * using the web API directly, the contents of the zip file must be base64-encoded.
      * If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the
-     * encoding for you. For more information about creating a .zip file, go to <a
+     * encoding for you. For more information about creating a .zip file, see <a
      * href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution
      * Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
      */
-    inline FunctionCode& WithZipFile(Aws::Utils::ByteBuffer&& value) { SetZipFile(value); return *this;}
+    inline FunctionCode& WithZipFile(Aws::Utils::ByteBuffer&& value) { SetZipFile(std::move(value)); return *this;}
 
     /**
      * <p>Amazon S3 bucket name where the .zip file containing your deployment package
@@ -111,7 +115,7 @@ namespace Model
      * is stored. This bucket must reside in the same AWS region where you are creating
      * the Lambda function.</p>
      */
-    inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = value; }
+    inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::move(value); }
 
     /**
      * <p>Amazon S3 bucket name where the .zip file containing your deployment package
@@ -132,7 +136,7 @@ namespace Model
      * is stored. This bucket must reside in the same AWS region where you are creating
      * the Lambda function.</p>
      */
-    inline FunctionCode& WithS3Bucket(Aws::String&& value) { SetS3Bucket(value); return *this;}
+    inline FunctionCode& WithS3Bucket(Aws::String&& value) { SetS3Bucket(std::move(value)); return *this;}
 
     /**
      * <p>Amazon S3 bucket name where the .zip file containing your deployment package
@@ -157,7 +161,7 @@ namespace Model
      * <p>The Amazon S3 object (the deployment package) key name you want to
      * upload.</p>
      */
-    inline void SetS3Key(Aws::String&& value) { m_s3KeyHasBeenSet = true; m_s3Key = value; }
+    inline void SetS3Key(Aws::String&& value) { m_s3KeyHasBeenSet = true; m_s3Key = std::move(value); }
 
     /**
      * <p>The Amazon S3 object (the deployment package) key name you want to
@@ -175,7 +179,7 @@ namespace Model
      * <p>The Amazon S3 object (the deployment package) key name you want to
      * upload.</p>
      */
-    inline FunctionCode& WithS3Key(Aws::String&& value) { SetS3Key(value); return *this;}
+    inline FunctionCode& WithS3Key(Aws::String&& value) { SetS3Key(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 object (the deployment package) key name you want to
@@ -196,7 +200,7 @@ namespace Model
     /**
      * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
      */
-    inline void SetS3ObjectVersion(Aws::String&& value) { m_s3ObjectVersionHasBeenSet = true; m_s3ObjectVersion = value; }
+    inline void SetS3ObjectVersion(Aws::String&& value) { m_s3ObjectVersionHasBeenSet = true; m_s3ObjectVersion = std::move(value); }
 
     /**
      * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
@@ -211,7 +215,7 @@ namespace Model
     /**
      * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
      */
-    inline FunctionCode& WithS3ObjectVersion(Aws::String&& value) { SetS3ObjectVersion(value); return *this;}
+    inline FunctionCode& WithS3ObjectVersion(Aws::String&& value) { SetS3ObjectVersion(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 object (the deployment package) version you want to upload.</p>

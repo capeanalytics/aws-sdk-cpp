@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a>
    * in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use
-   * Custom Domain Names</a> </div>
+   * Custom Domain Names</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/BasePathMapping">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API UpdateBasePathMappingResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * <p>The base path name that callers of the API must provide as part of the URL
      * after the domain name.</p>
      */
-    inline void SetBasePath(Aws::String&& value) { m_basePath = value; }
+    inline void SetBasePath(Aws::String&& value) { m_basePath = std::move(value); }
 
     /**
      * <p>The base path name that callers of the API must provide as part of the URL
@@ -81,7 +85,7 @@ namespace Model
      * <p>The base path name that callers of the API must provide as part of the URL
      * after the domain name.</p>
      */
-    inline UpdateBasePathMappingResult& WithBasePath(Aws::String&& value) { SetBasePath(value); return *this;}
+    inline UpdateBasePathMappingResult& WithBasePath(Aws::String&& value) { SetBasePath(std::move(value)); return *this;}
 
     /**
      * <p>The base path name that callers of the API must provide as part of the URL
@@ -102,7 +106,7 @@ namespace Model
     /**
      * <p>The name of the API.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiId = std::move(value); }
 
     /**
      * <p>The name of the API.</p>
@@ -117,7 +121,7 @@ namespace Model
     /**
      * <p>The name of the API.</p>
      */
-    inline UpdateBasePathMappingResult& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline UpdateBasePathMappingResult& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The name of the API.</p>
@@ -137,7 +141,7 @@ namespace Model
     /**
      * <p>The name of the API's stage.</p>
      */
-    inline void SetStage(Aws::String&& value) { m_stage = value; }
+    inline void SetStage(Aws::String&& value) { m_stage = std::move(value); }
 
     /**
      * <p>The name of the API's stage.</p>
@@ -152,7 +156,7 @@ namespace Model
     /**
      * <p>The name of the API's stage.</p>
      */
-    inline UpdateBasePathMappingResult& WithStage(Aws::String&& value) { SetStage(value); return *this;}
+    inline UpdateBasePathMappingResult& WithStage(Aws::String&& value) { SetStage(std::move(value)); return *this;}
 
     /**
      * <p>The name of the API's stage.</p>

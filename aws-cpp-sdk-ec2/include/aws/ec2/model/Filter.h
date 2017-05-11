@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>A filter name and value pair that is used to return a more specific list of
    * results. Filters can be used to match a set of resources by various criteria,
-   * such as tags, attributes, or IDs.</p>
+   * such as tags, attributes, or IDs.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Filter">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Filter
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The name of the filter. Filter names are case-sensitive.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the filter. Filter names are case-sensitive.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The name of the filter. Filter names are case-sensitive.</p>
      */
-    inline Filter& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Filter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the filter. Filter names are case-sensitive.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>
      */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = value; }
+    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
 
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>
      */
-    inline Filter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(value); return *this;}
+    inline Filter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
 
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>
      */
-    inline Filter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
+    inline Filter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more filter values. Filter values are case-sensitive.</p>

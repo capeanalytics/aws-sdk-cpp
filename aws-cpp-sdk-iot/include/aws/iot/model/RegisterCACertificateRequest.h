@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>The input to the RegisterCACertificate operation.</p>
+   * <p>The input to the RegisterCACertificate operation.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCACertificateRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API RegisterCACertificateRequest : public IoTRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The CA certificate.</p>
@@ -52,7 +58,7 @@ namespace Model
     /**
      * <p>The CA certificate.</p>
      */
-    inline void SetCaCertificate(Aws::String&& value) { m_caCertificateHasBeenSet = true; m_caCertificate = value; }
+    inline void SetCaCertificate(Aws::String&& value) { m_caCertificateHasBeenSet = true; m_caCertificate = std::move(value); }
 
     /**
      * <p>The CA certificate.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>The CA certificate.</p>
      */
-    inline RegisterCACertificateRequest& WithCaCertificate(Aws::String&& value) { SetCaCertificate(value); return *this;}
+    inline RegisterCACertificateRequest& WithCaCertificate(Aws::String&& value) { SetCaCertificate(std::move(value)); return *this;}
 
     /**
      * <p>The CA certificate.</p>
@@ -87,7 +93,7 @@ namespace Model
     /**
      * <p>The private key verification certificate.</p>
      */
-    inline void SetVerificationCertificate(Aws::String&& value) { m_verificationCertificateHasBeenSet = true; m_verificationCertificate = value; }
+    inline void SetVerificationCertificate(Aws::String&& value) { m_verificationCertificateHasBeenSet = true; m_verificationCertificate = std::move(value); }
 
     /**
      * <p>The private key verification certificate.</p>
@@ -102,7 +108,7 @@ namespace Model
     /**
      * <p>The private key verification certificate.</p>
      */
-    inline RegisterCACertificateRequest& WithVerificationCertificate(Aws::String&& value) { SetVerificationCertificate(value); return *this;}
+    inline RegisterCACertificateRequest& WithVerificationCertificate(Aws::String&& value) { SetVerificationCertificate(std::move(value)); return *this;}
 
     /**
      * <p>The private key verification certificate.</p>

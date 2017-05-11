@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the <code>WorkflowExecutionCompleted</code> event.</p>
+   * <p>Provides details of the <code>WorkflowExecutionCompleted</code>
+   * event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionCompletedEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API WorkflowExecutionCompletedEventAttributes
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The result produced by the workflow execution upon successful completion.</p>
      */
-    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = value; }
+    inline void SetResult(Aws::String&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
 
     /**
      * <p>The result produced by the workflow execution upon successful completion.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The result produced by the workflow execution upon successful completion.</p>
      */
-    inline WorkflowExecutionCompletedEventAttributes& WithResult(Aws::String&& value) { SetResult(value); return *this;}
+    inline WorkflowExecutionCompletedEventAttributes& WithResult(Aws::String&& value) { SetResult(std::move(value)); return *this;}
 
     /**
      * <p>The result produced by the workflow execution upon successful completion.</p>

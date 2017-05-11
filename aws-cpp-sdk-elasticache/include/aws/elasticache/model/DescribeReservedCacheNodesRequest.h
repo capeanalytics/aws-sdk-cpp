@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>DescribeReservedCacheNodes</i> action.</p>
+   * <p>Represents the input of a <code>DescribeReservedCacheNodes</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeReservedCacheNodesMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API DescribeReservedCacheNodesRequest : public ElastiCacheRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeReservedCacheNodesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The reserved cache node identifier filter value. Use this parameter to show
      * only the reservation that matches the specified reservation ID.</p>
@@ -49,7 +59,7 @@ namespace Model
      * <p>The reserved cache node identifier filter value. Use this parameter to show
      * only the reservation that matches the specified reservation ID.</p>
      */
-    inline void SetReservedCacheNodeId(Aws::String&& value) { m_reservedCacheNodeIdHasBeenSet = true; m_reservedCacheNodeId = value; }
+    inline void SetReservedCacheNodeId(Aws::String&& value) { m_reservedCacheNodeIdHasBeenSet = true; m_reservedCacheNodeId = std::move(value); }
 
     /**
      * <p>The reserved cache node identifier filter value. Use this parameter to show
@@ -67,7 +77,7 @@ namespace Model
      * <p>The reserved cache node identifier filter value. Use this parameter to show
      * only the reservation that matches the specified reservation ID.</p>
      */
-    inline DescribeReservedCacheNodesRequest& WithReservedCacheNodeId(Aws::String&& value) { SetReservedCacheNodeId(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithReservedCacheNodeId(Aws::String&& value) { SetReservedCacheNodeId(std::move(value)); return *this;}
 
     /**
      * <p>The reserved cache node identifier filter value. Use this parameter to show
@@ -91,7 +101,7 @@ namespace Model
      * <p>The offering identifier filter value. Use this parameter to show only
      * purchased reservations matching the specified offering identifier.</p>
      */
-    inline void SetReservedCacheNodesOfferingId(Aws::String&& value) { m_reservedCacheNodesOfferingIdHasBeenSet = true; m_reservedCacheNodesOfferingId = value; }
+    inline void SetReservedCacheNodesOfferingId(Aws::String&& value) { m_reservedCacheNodesOfferingIdHasBeenSet = true; m_reservedCacheNodesOfferingId = std::move(value); }
 
     /**
      * <p>The offering identifier filter value. Use this parameter to show only
@@ -109,7 +119,7 @@ namespace Model
      * <p>The offering identifier filter value. Use this parameter to show only
      * purchased reservations matching the specified offering identifier.</p>
      */
-    inline DescribeReservedCacheNodesRequest& WithReservedCacheNodesOfferingId(Aws::String&& value) { SetReservedCacheNodesOfferingId(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithReservedCacheNodesOfferingId(Aws::String&& value) { SetReservedCacheNodesOfferingId(std::move(value)); return *this;}
 
     /**
      * <p>The offering identifier filter value. Use this parameter to show only
@@ -124,26 +134,30 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
     inline const Aws::String& GetCacheNodeType() const{ return m_cacheNodeType; }
@@ -155,26 +169,30 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
     inline void SetCacheNodeType(const Aws::String& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = value; }
@@ -186,29 +204,33 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
-    inline void SetCacheNodeType(Aws::String&& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = value; }
+    inline void SetCacheNodeType(Aws::String&& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = std::move(value); }
 
     /**
      * <p>The cache node type filter value. Use this parameter to show only those
@@ -217,26 +239,30 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
     inline void SetCacheNodeType(const char* value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType.assign(value); }
@@ -248,26 +274,30 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
     inline DescribeReservedCacheNodesRequest& WithCacheNodeType(const Aws::String& value) { SetCacheNodeType(value); return *this;}
@@ -279,29 +309,33 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
-    inline DescribeReservedCacheNodesRequest& WithCacheNodeType(Aws::String&& value) { SetCacheNodeType(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithCacheNodeType(Aws::String&& value) { SetCacheNodeType(std::move(value)); return *this;}
 
     /**
      * <p>The cache node type filter value. Use this parameter to show only those
@@ -310,26 +344,30 @@ namespace Model
      * generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
      * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
      * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-     * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-     * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-     * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-     * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-     * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-     * <p>Current generation: <code>cache.r3.large</code>,
-     * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-     * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-     * <p>Previous generation: <code>cache.m2.xlarge</code>,
-     * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-     * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-     * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-     * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-     * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-     * complete listing of cache node types and specifications, see <a
-     * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-     * Features and Details</a> and <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+     * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+     * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+     * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+     * <p>Previous generation: <code>cache.t1.micro</code>,
+     * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+     * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+     * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+     * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+     * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+     * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+     * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+     * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+     * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+     * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+     * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+     * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+     * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+     * Append-only files (AOF) functionality is not supported for T1 or T2
+     * instances.</p> </li> </ul> <p>For a complete listing of node types and
+     * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+     * ElastiCache Product Features and Details</a> and either <a
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
      * Node Type-Specific Parameters for Memcached</a> or <a
-     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
+     * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
      * Node Type-Specific Parameters for Redis</a>.</p>
      */
     inline DescribeReservedCacheNodesRequest& WithCacheNodeType(const char* value) { SetCacheNodeType(value); return *this;}
@@ -353,7 +391,7 @@ namespace Model
      * to show only reservations for this duration.</p> <p>Valid Values: <code>1 | 3 |
      * 31536000 | 94608000</code> </p>
      */
-    inline void SetDuration(Aws::String&& value) { m_durationHasBeenSet = true; m_duration = value; }
+    inline void SetDuration(Aws::String&& value) { m_durationHasBeenSet = true; m_duration = std::move(value); }
 
     /**
      * <p>The duration filter value, specified in years or seconds. Use this parameter
@@ -374,7 +412,7 @@ namespace Model
      * to show only reservations for this duration.</p> <p>Valid Values: <code>1 | 3 |
      * 31536000 | 94608000</code> </p>
      */
-    inline DescribeReservedCacheNodesRequest& WithDuration(Aws::String&& value) { SetDuration(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithDuration(Aws::String&& value) { SetDuration(std::move(value)); return *this;}
 
     /**
      * <p>The duration filter value, specified in years or seconds. Use this parameter
@@ -399,7 +437,7 @@ namespace Model
      * <p>The product description filter value. Use this parameter to show only those
      * reservations matching the specified product description.</p>
      */
-    inline void SetProductDescription(Aws::String&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = value; }
+    inline void SetProductDescription(Aws::String&& value) { m_productDescriptionHasBeenSet = true; m_productDescription = std::move(value); }
 
     /**
      * <p>The product description filter value. Use this parameter to show only those
@@ -417,7 +455,7 @@ namespace Model
      * <p>The product description filter value. Use this parameter to show only those
      * reservations matching the specified product description.</p>
      */
-    inline DescribeReservedCacheNodesRequest& WithProductDescription(Aws::String&& value) { SetProductDescription(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithProductDescription(Aws::String&& value) { SetProductDescription(std::move(value)); return *this;}
 
     /**
      * <p>The product description filter value. Use this parameter to show only those
@@ -444,7 +482,7 @@ namespace Model
      * offerings matching the specified offering type.</p> <p>Valid values:
      * <code>"Light Utilization"|"Medium Utilization"|"Heavy Utilization"</code> </p>
      */
-    inline void SetOfferingType(Aws::String&& value) { m_offeringTypeHasBeenSet = true; m_offeringType = value; }
+    inline void SetOfferingType(Aws::String&& value) { m_offeringTypeHasBeenSet = true; m_offeringType = std::move(value); }
 
     /**
      * <p>The offering type filter value. Use this parameter to show only the available
@@ -465,7 +503,7 @@ namespace Model
      * offerings matching the specified offering type.</p> <p>Valid values:
      * <code>"Light Utilization"|"Medium Utilization"|"Heavy Utilization"</code> </p>
      */
-    inline DescribeReservedCacheNodesRequest& WithOfferingType(Aws::String&& value) { SetOfferingType(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithOfferingType(Aws::String&& value) { SetOfferingType(std::move(value)); return *this;}
 
     /**
      * <p>The offering type filter value. Use this parameter to show only the available
@@ -500,57 +538,57 @@ namespace Model
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline DescribeReservedCacheNodesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
-    inline DescribeReservedCacheNodesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeReservedCacheNodesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline DescribeReservedCacheNodesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 

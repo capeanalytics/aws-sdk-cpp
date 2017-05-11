@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codedeploy/model/RevisionLocation.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a register application revision operation.</p>
+   * <p>Represents the input of a register application revision
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/RegisterApplicationRevisionInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API RegisterApplicationRevisionRequest : public CodeDeployRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -52,7 +58,7 @@ namespace Model
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
      * user or AWS account.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -70,7 +76,7 @@ namespace Model
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
      * user or AWS account.</p>
      */
-    inline RegisterApplicationRevisionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline RegisterApplicationRevisionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of an AWS CodeDeploy application associated with the applicable IAM
@@ -91,7 +97,7 @@ namespace Model
     /**
      * <p>A comment about the revision.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A comment about the revision.</p>
@@ -106,7 +112,7 @@ namespace Model
     /**
      * <p>A comment about the revision.</p>
      */
-    inline RegisterApplicationRevisionRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline RegisterApplicationRevisionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A comment about the revision.</p>
@@ -129,7 +135,7 @@ namespace Model
      * <p>Information about the application revision to register, including type and
      * location.</p>
      */
-    inline void SetRevision(RevisionLocation&& value) { m_revisionHasBeenSet = true; m_revision = value; }
+    inline void SetRevision(RevisionLocation&& value) { m_revisionHasBeenSet = true; m_revision = std::move(value); }
 
     /**
      * <p>Information about the application revision to register, including type and
@@ -141,7 +147,7 @@ namespace Model
      * <p>Information about the application revision to register, including type and
      * location.</p>
      */
-    inline RegisterApplicationRevisionRequest& WithRevision(RevisionLocation&& value) { SetRevision(value); return *this;}
+    inline RegisterApplicationRevisionRequest& WithRevision(RevisionLocation&& value) { SetRevision(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;

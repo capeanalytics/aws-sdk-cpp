@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for SetStatus.</p>
+   * <p>Contains the parameters for SetStatus.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/SetStatusInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API SetStatusRequest : public DataPipelineRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
@@ -49,7 +54,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
      */
-    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = value; }
+    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::move(value); }
 
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
      */
-    inline SetStatusRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(value); return *this;}
+    inline SetStatusRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the pipeline that contains the objects.</p>
@@ -87,7 +92,7 @@ namespace Model
      * <p>The IDs of the objects. The corresponding objects can be either physical or
      * components, but not a mix of both types.</p>
      */
-    inline void SetObjectIds(Aws::Vector<Aws::String>&& value) { m_objectIdsHasBeenSet = true; m_objectIds = value; }
+    inline void SetObjectIds(Aws::Vector<Aws::String>&& value) { m_objectIdsHasBeenSet = true; m_objectIds = std::move(value); }
 
     /**
      * <p>The IDs of the objects. The corresponding objects can be either physical or
@@ -99,7 +104,7 @@ namespace Model
      * <p>The IDs of the objects. The corresponding objects can be either physical or
      * components, but not a mix of both types.</p>
      */
-    inline SetStatusRequest& WithObjectIds(Aws::Vector<Aws::String>&& value) { SetObjectIds(value); return *this;}
+    inline SetStatusRequest& WithObjectIds(Aws::Vector<Aws::String>&& value) { SetObjectIds(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of the objects. The corresponding objects can be either physical or
@@ -111,7 +116,7 @@ namespace Model
      * <p>The IDs of the objects. The corresponding objects can be either physical or
      * components, but not a mix of both types.</p>
      */
-    inline SetStatusRequest& AddObjectIds(Aws::String&& value) { m_objectIdsHasBeenSet = true; m_objectIds.push_back(value); return *this; }
+    inline SetStatusRequest& AddObjectIds(Aws::String&& value) { m_objectIdsHasBeenSet = true; m_objectIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IDs of the objects. The corresponding objects can be either physical or
@@ -141,7 +146,7 @@ namespace Model
      * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
      * <code>MARK_FINISHED</code>.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status to be set on all the objects specified in <code>objectIds</code>.
@@ -165,7 +170,7 @@ namespace Model
      * use <code>TRY_CANCEL</code>, <code>RERUN</code>, or
      * <code>MARK_FINISHED</code>.</p>
      */
-    inline SetStatusRequest& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline SetStatusRequest& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status to be set on all the objects specified in <code>objectIds</code>.

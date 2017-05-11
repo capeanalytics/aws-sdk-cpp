@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ds/model/Trust.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,8 +32,11 @@ Trust::Trust() :
     m_directoryIdHasBeenSet(false),
     m_trustIdHasBeenSet(false),
     m_remoteDomainNameHasBeenSet(false),
+    m_trustType(TrustType::NOT_SET),
     m_trustTypeHasBeenSet(false),
+    m_trustDirection(TrustDirection::NOT_SET),
     m_trustDirectionHasBeenSet(false),
+    m_trustState(TrustState::NOT_SET),
     m_trustStateHasBeenSet(false),
     m_createdDateTimeHasBeenSet(false),
     m_lastUpdatedDateTimeHasBeenSet(false),
@@ -45,8 +49,11 @@ Trust::Trust(const JsonValue& jsonValue) :
     m_directoryIdHasBeenSet(false),
     m_trustIdHasBeenSet(false),
     m_remoteDomainNameHasBeenSet(false),
+    m_trustType(TrustType::NOT_SET),
     m_trustTypeHasBeenSet(false),
+    m_trustDirection(TrustDirection::NOT_SET),
     m_trustDirectionHasBeenSet(false),
+    m_trustState(TrustState::NOT_SET),
     m_trustStateHasBeenSet(false),
     m_createdDateTimeHasBeenSet(false),
     m_lastUpdatedDateTimeHasBeenSet(false),

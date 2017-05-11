@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
      */
-    inline void SetRunArnList(Aws::Vector<Aws::String>&& value) { m_runArnList = value; }
+    inline void SetRunArnList(Aws::Vector<Aws::String>&& value) { m_runArnList = std::move(value); }
 
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
@@ -63,7 +65,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
      */
-    inline ListRunsResult& WithRunArnList(Aws::Vector<Aws::String>&& value) { SetRunArnList(value); return *this;}
+    inline ListRunsResult& WithRunArnList(Aws::Vector<Aws::String>&& value) { SetRunArnList(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
      */
-    inline ListRunsResult& AddRunArnList(Aws::String&& value) { m_runArnList.push_back(value); return *this; }
+    inline ListRunsResult& AddRunArnList(Aws::String&& value) { m_runArnList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of ARNs specifying the assessment runs returned by the action.</p>
@@ -102,7 +104,7 @@ namespace Model
      * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
      * more data to be listed, this parameter is set to 'null'.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p> When a response is generated, if there is more data to be listed, this
@@ -126,7 +128,7 @@ namespace Model
      * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
      * more data to be listed, this parameter is set to 'null'.</p>
      */
-    inline ListRunsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListRunsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p> When a response is generated, if there is more data to be listed, this

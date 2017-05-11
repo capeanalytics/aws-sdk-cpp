@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>The details of the actions taken and results produced on an artifact as it
-   * passes through stages in the pipeline.</p>
+   * passes through stages in the pipeline.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ExecutionDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ExecutionDetails
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The summary of the current status of the actions.</p>
      */
-    inline void SetSummary(Aws::String&& value) { m_summaryHasBeenSet = true; m_summary = value; }
+    inline void SetSummary(Aws::String&& value) { m_summaryHasBeenSet = true; m_summary = std::move(value); }
 
     /**
      * <p>The summary of the current status of the actions.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The summary of the current status of the actions.</p>
      */
-    inline ExecutionDetails& WithSummary(Aws::String&& value) { SetSummary(value); return *this;}
+    inline ExecutionDetails& WithSummary(Aws::String&& value) { SetSummary(std::move(value)); return *this;}
 
     /**
      * <p>The summary of the current status of the actions.</p>
@@ -93,7 +97,7 @@ namespace Model
      * <p>The system-generated unique ID of this action used to identify this job
      * worker in any external systems, such as AWS CodeDeploy.</p>
      */
-    inline void SetExternalExecutionId(Aws::String&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = value; }
+    inline void SetExternalExecutionId(Aws::String&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = std::move(value); }
 
     /**
      * <p>The system-generated unique ID of this action used to identify this job
@@ -111,7 +115,7 @@ namespace Model
      * <p>The system-generated unique ID of this action used to identify this job
      * worker in any external systems, such as AWS CodeDeploy.</p>
      */
-    inline ExecutionDetails& WithExternalExecutionId(Aws::String&& value) { SetExternalExecutionId(value); return *this;}
+    inline ExecutionDetails& WithExternalExecutionId(Aws::String&& value) { SetExternalExecutionId(std::move(value)); return *this;}
 
     /**
      * <p>The system-generated unique ID of this action used to identify this job

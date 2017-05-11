@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/model/Suite.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DeviceFarm
 namespace Model
 {
   /**
-   * <p>Represents the result of a get suite request.</p>
+   * <p>Represents the result of a get suite request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/GetSuiteResult">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API GetSuiteResult
   {
@@ -42,20 +46,30 @@ namespace Model
     GetSuiteResult(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     GetSuiteResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
-    
+    /**
+     * <p>A collection of one or more tests.</p>
+     */
     inline const Suite& GetSuite() const{ return m_suite; }
 
-    
+    /**
+     * <p>A collection of one or more tests.</p>
+     */
     inline void SetSuite(const Suite& value) { m_suite = value; }
 
-    
-    inline void SetSuite(Suite&& value) { m_suite = value; }
+    /**
+     * <p>A collection of one or more tests.</p>
+     */
+    inline void SetSuite(Suite&& value) { m_suite = std::move(value); }
 
-    
+    /**
+     * <p>A collection of one or more tests.</p>
+     */
     inline GetSuiteResult& WithSuite(const Suite& value) { SetSuite(value); return *this;}
 
-    
-    inline GetSuiteResult& WithSuite(Suite&& value) { SetSuite(value); return *this;}
+    /**
+     * <p>A collection of one or more tests.</p>
+     */
+    inline GetSuiteResult& WithSuite(Suite&& value) { SetSuite(std::move(value)); return *this;}
 
   private:
     Suite m_suite;

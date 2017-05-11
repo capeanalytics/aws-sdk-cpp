@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/ActionType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CodePipeline
 namespace Model
 {
   /**
-   * <p>Represents the output of a list action types action.</p>
+   * <p>Represents the output of a list action types action.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypesOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ListActionTypesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Provides details of the action types.</p>
      */
-    inline void SetActionTypes(Aws::Vector<ActionType>&& value) { m_actionTypes = value; }
+    inline void SetActionTypes(Aws::Vector<ActionType>&& value) { m_actionTypes = std::move(value); }
 
     /**
      * <p>Provides details of the action types.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>Provides details of the action types.</p>
      */
-    inline ListActionTypesResult& WithActionTypes(Aws::Vector<ActionType>&& value) { SetActionTypes(value); return *this;}
+    inline ListActionTypesResult& WithActionTypes(Aws::Vector<ActionType>&& value) { SetActionTypes(std::move(value)); return *this;}
 
     /**
      * <p>Provides details of the action types.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>Provides details of the action types.</p>
      */
-    inline ListActionTypesResult& AddActionTypes(ActionType&& value) { m_actionTypes.push_back(value); return *this; }
+    inline ListActionTypesResult& AddActionTypes(ActionType&& value) { m_actionTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If the amount of returned information is significantly large, an identifier
@@ -98,7 +103,7 @@ namespace Model
      * is also returned which can be used in a subsequent list action types call to
      * return the next set of action types in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If the amount of returned information is significantly large, an identifier
@@ -119,7 +124,7 @@ namespace Model
      * is also returned which can be used in a subsequent list action types call to
      * return the next set of action types in the list.</p>
      */
-    inline ListActionTypesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListActionTypesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If the amount of returned information is significantly large, an identifier

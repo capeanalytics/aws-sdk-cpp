@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/ec2/model/S3Storage.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the storage location for an instance store-backed AMI.</p>
+   * <p>Describes the storage location for an instance store-backed
+   * AMI.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Storage">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API Storage
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>An Amazon S3 storage location.</p>
      */
-    inline void SetS3(S3Storage&& value) { m_s3HasBeenSet = true; m_s3 = value; }
+    inline void SetS3(S3Storage&& value) { m_s3HasBeenSet = true; m_s3 = std::move(value); }
 
     /**
      * <p>An Amazon S3 storage location.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>An Amazon S3 storage location.</p>
      */
-    inline Storage& WithS3(S3Storage&& value) { SetS3(value); return *this;}
+    inline Storage& WithS3(S3Storage&& value) { SetS3(std::move(value)); return *this;}
 
   private:
     S3Storage m_s3;

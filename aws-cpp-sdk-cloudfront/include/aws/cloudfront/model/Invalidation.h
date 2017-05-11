@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/cloudfront/model/InvalidationBatch.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * An invalidation.
+   * An invalidation.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/Invalidation">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API Invalidation
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * The identifier for the invalidation request. For example: IDFDVBD632BHDS5.
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * The identifier for the invalidation request. For example: IDFDVBD632BHDS5.
@@ -72,7 +76,7 @@ namespace Model
     /**
      * The identifier for the invalidation request. For example: IDFDVBD632BHDS5.
      */
-    inline Invalidation& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Invalidation& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * The identifier for the invalidation request. For example: IDFDVBD632BHDS5.
@@ -95,7 +99,7 @@ namespace Model
      * The status of the invalidation request. When the invalidation batch is finished,
      * the status is Completed.
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * The status of the invalidation request. When the invalidation batch is finished,
@@ -113,7 +117,7 @@ namespace Model
      * The status of the invalidation request. When the invalidation batch is finished,
      * the status is Completed.
      */
-    inline Invalidation& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline Invalidation& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * The status of the invalidation request. When the invalidation batch is finished,
@@ -134,7 +138,7 @@ namespace Model
     /**
      * The date and time the invalidation request was first made.
      */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
+    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
 
     /**
      * The date and time the invalidation request was first made.
@@ -144,7 +148,7 @@ namespace Model
     /**
      * The date and time the invalidation request was first made.
      */
-    inline Invalidation& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(value); return *this;}
+    inline Invalidation& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
 
     /**
      * The current invalidation information for the batch request.
@@ -159,7 +163,7 @@ namespace Model
     /**
      * The current invalidation information for the batch request.
      */
-    inline void SetInvalidationBatch(InvalidationBatch&& value) { m_invalidationBatchHasBeenSet = true; m_invalidationBatch = value; }
+    inline void SetInvalidationBatch(InvalidationBatch&& value) { m_invalidationBatchHasBeenSet = true; m_invalidationBatch = std::move(value); }
 
     /**
      * The current invalidation information for the batch request.
@@ -169,7 +173,7 @@ namespace Model
     /**
      * The current invalidation information for the batch request.
      */
-    inline Invalidation& WithInvalidationBatch(InvalidationBatch&& value) { SetInvalidationBatch(value); return *this;}
+    inline Invalidation& WithInvalidationBatch(InvalidationBatch&& value) { SetInvalidationBatch(std::move(value)); return *this;}
 
   private:
     Aws::String m_id;

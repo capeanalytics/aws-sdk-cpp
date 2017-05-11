@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DirectoryService
 namespace Model
 {
   /**
-   * <p>The result of a CreateTrust request.</p>
+   * <p>The result of a CreateTrust request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/CreateTrustResult">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API CreateTrustResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>A unique identifier for the trust relationship that was created.</p>
      */
-    inline void SetTrustId(Aws::String&& value) { m_trustId = value; }
+    inline void SetTrustId(Aws::String&& value) { m_trustId = std::move(value); }
 
     /**
      * <p>A unique identifier for the trust relationship that was created.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>A unique identifier for the trust relationship that was created.</p>
      */
-    inline CreateTrustResult& WithTrustId(Aws::String&& value) { SetTrustId(value); return *this;}
+    inline CreateTrustResult& WithTrustId(Aws::String&& value) { SetTrustId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for the trust relationship that was created.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/OptionGroupOption.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -214,7 +215,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_portRequiredHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PortRequired=" << m_portRequired << "&";
+      oStream << location << index << locationValue << ".PortRequired=" << std::boolalpha << m_portRequired << "&";
   }
 
   if(m_defaultPortHasBeenSet)
@@ -242,12 +243,12 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
 
   if(m_persistentHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Persistent=" << m_persistent << "&";
+      oStream << location << index << locationValue << ".Persistent=" << std::boolalpha << m_persistent << "&";
   }
 
   if(m_permanentHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Permanent=" << m_permanent << "&";
+      oStream << location << index << locationValue << ".Permanent=" << std::boolalpha << m_permanent << "&";
   }
 
   if(m_optionGroupOptionSettingsHasBeenSet)
@@ -298,7 +299,7 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_portRequiredHasBeenSet)
   {
-      oStream << location << ".PortRequired=" << m_portRequired << "&";
+      oStream << location << ".PortRequired=" << std::boolalpha << m_portRequired << "&";
   }
   if(m_defaultPortHasBeenSet)
   {
@@ -322,11 +323,11 @@ void OptionGroupOption::OutputToStream(Aws::OStream& oStream, const char* locati
   }
   if(m_persistentHasBeenSet)
   {
-      oStream << location << ".Persistent=" << m_persistent << "&";
+      oStream << location << ".Persistent=" << std::boolalpha << m_persistent << "&";
   }
   if(m_permanentHasBeenSet)
   {
-      oStream << location << ".Permanent=" << m_permanent << "&";
+      oStream << location << ".Permanent=" << std::boolalpha << m_permanent << "&";
   }
   if(m_optionGroupOptionSettingsHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/ItemSelection.h>
 #include <aws/cloudfront/model/CookieNames.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * A complex type that specifies the cookie preferences associated with this cache
-   * behavior.
+   * behavior.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CookiePreference">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CookiePreference
   {
@@ -66,7 +70,7 @@ namespace Model
      * none or whitelist. If you choose All, CloudFront forwards all cookies regardless
      * of how many your application uses.
      */
-    inline void SetForward(ItemSelection&& value) { m_forwardHasBeenSet = true; m_forward = value; }
+    inline void SetForward(ItemSelection&& value) { m_forwardHasBeenSet = true; m_forward = std::move(value); }
 
     /**
      * Use this element to specify whether you want CloudFront to forward cookies to
@@ -82,7 +86,7 @@ namespace Model
      * none or whitelist. If you choose All, CloudFront forwards all cookies regardless
      * of how many your application uses.
      */
-    inline CookiePreference& WithForward(ItemSelection&& value) { SetForward(value); return *this;}
+    inline CookiePreference& WithForward(ItemSelection&& value) { SetForward(std::move(value)); return *this;}
 
     /**
      * A complex type that specifies the whitelisted cookies, if any, that you want
@@ -103,7 +107,7 @@ namespace Model
      * CloudFront to forward to your origin that is associated with this cache
      * behavior.
      */
-    inline void SetWhitelistedNames(CookieNames&& value) { m_whitelistedNamesHasBeenSet = true; m_whitelistedNames = value; }
+    inline void SetWhitelistedNames(CookieNames&& value) { m_whitelistedNamesHasBeenSet = true; m_whitelistedNames = std::move(value); }
 
     /**
      * A complex type that specifies the whitelisted cookies, if any, that you want
@@ -117,7 +121,7 @@ namespace Model
      * CloudFront to forward to your origin that is associated with this cache
      * behavior.
      */
-    inline CookiePreference& WithWhitelistedNames(CookieNames&& value) { SetWhitelistedNames(value); return *this;}
+    inline CookiePreference& WithWhitelistedNames(CookieNames&& value) { SetWhitelistedNames(std::move(value)); return *this;}
 
   private:
     ItemSelection m_forward;

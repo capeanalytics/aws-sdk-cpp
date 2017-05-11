@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/opsworks/model/EbsBlockDevice.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,6 +34,7 @@ EbsBlockDevice::EbsBlockDevice() :
     m_iopsHasBeenSet(false),
     m_volumeSize(0),
     m_volumeSizeHasBeenSet(false),
+    m_volumeType(VolumeType::NOT_SET),
     m_volumeTypeHasBeenSet(false),
     m_deleteOnTermination(false),
     m_deleteOnTerminationHasBeenSet(false)
@@ -45,6 +47,7 @@ EbsBlockDevice::EbsBlockDevice(const JsonValue& jsonValue) :
     m_iopsHasBeenSet(false),
     m_volumeSize(0),
     m_volumeSizeHasBeenSet(false),
+    m_volumeType(VolumeType::NOT_SET),
     m_volumeTypeHasBeenSet(false),
     m_deleteOnTermination(false),
     m_deleteOnTerminationHasBeenSet(false)

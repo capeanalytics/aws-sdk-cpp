@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 
   /**
    * <p>The ThingTypeProperties contains information about the thing type including:
-   * a thing type description, and a list of searchable thing attribute names.</p>
+   * a thing type description, and a list of searchable thing attribute
+   * names.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ThingTypeProperties">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ThingTypeProperties
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The description of the thing type.</p>
      */
-    inline void SetThingTypeDescription(Aws::String&& value) { m_thingTypeDescriptionHasBeenSet = true; m_thingTypeDescription = value; }
+    inline void SetThingTypeDescription(Aws::String&& value) { m_thingTypeDescriptionHasBeenSet = true; m_thingTypeDescription = std::move(value); }
 
     /**
      * <p>The description of the thing type.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The description of the thing type.</p>
      */
-    inline ThingTypeProperties& WithThingTypeDescription(Aws::String&& value) { SetThingTypeDescription(value); return *this;}
+    inline ThingTypeProperties& WithThingTypeDescription(Aws::String&& value) { SetThingTypeDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the thing type.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>A list of searchable thing attribute names.</p>
      */
-    inline void SetSearchableAttributes(Aws::Vector<Aws::String>&& value) { m_searchableAttributesHasBeenSet = true; m_searchableAttributes = value; }
+    inline void SetSearchableAttributes(Aws::Vector<Aws::String>&& value) { m_searchableAttributesHasBeenSet = true; m_searchableAttributes = std::move(value); }
 
     /**
      * <p>A list of searchable thing attribute names.</p>
@@ -101,7 +106,7 @@ namespace Model
     /**
      * <p>A list of searchable thing attribute names.</p>
      */
-    inline ThingTypeProperties& WithSearchableAttributes(Aws::Vector<Aws::String>&& value) { SetSearchableAttributes(value); return *this;}
+    inline ThingTypeProperties& WithSearchableAttributes(Aws::Vector<Aws::String>&& value) { SetSearchableAttributes(std::move(value)); return *this;}
 
     /**
      * <p>A list of searchable thing attribute names.</p>
@@ -111,7 +116,7 @@ namespace Model
     /**
      * <p>A list of searchable thing attribute names.</p>
      */
-    inline ThingTypeProperties& AddSearchableAttributes(Aws::String&& value) { m_searchableAttributesHasBeenSet = true; m_searchableAttributes.push_back(value); return *this; }
+    inline ThingTypeProperties& AddSearchableAttributes(Aws::String&& value) { m_searchableAttributesHasBeenSet = true; m_searchableAttributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of searchable thing attribute names.</p>

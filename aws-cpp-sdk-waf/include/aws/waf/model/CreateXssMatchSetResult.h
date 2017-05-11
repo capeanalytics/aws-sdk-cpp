@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/XssMatchSet.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace WAF
 namespace Model
 {
   /**
-   * <p>The response to a <code>CreateXssMatchSet</code> request.</p>
+   * <p>The response to a <code>CreateXssMatchSet</code> request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/CreateXssMatchSetResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API CreateXssMatchSetResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>An <a>XssMatchSet</a>.</p>
      */
-    inline void SetXssMatchSet(XssMatchSet&& value) { m_xssMatchSet = value; }
+    inline void SetXssMatchSet(XssMatchSet&& value) { m_xssMatchSet = std::move(value); }
 
     /**
      * <p>An <a>XssMatchSet</a>.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>An <a>XssMatchSet</a>.</p>
      */
-    inline CreateXssMatchSetResult& WithXssMatchSet(XssMatchSet&& value) { SetXssMatchSet(value); return *this;}
+    inline CreateXssMatchSetResult& WithXssMatchSet(XssMatchSet&& value) { SetXssMatchSet(std::move(value)); return *this;}
 
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the
@@ -90,7 +95,7 @@ namespace Model
      * status of the request. For more information, see
      * <a>GetChangeTokenStatus</a>.</p>
      */
-    inline void SetChangeToken(Aws::String&& value) { m_changeToken = value; }
+    inline void SetChangeToken(Aws::String&& value) { m_changeToken = std::move(value); }
 
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the
@@ -114,7 +119,7 @@ namespace Model
      * status of the request. For more information, see
      * <a>GetChangeTokenStatus</a>.</p>
      */
-    inline CreateXssMatchSetResult& WithChangeToken(Aws::String&& value) { SetChangeToken(value); return *this;}
+    inline CreateXssMatchSetResult& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>ChangeToken</code> that you used to submit the

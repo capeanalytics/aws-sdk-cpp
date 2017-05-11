@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/elasticloadbalancing/ElasticLoadBalancingRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancing/model/Listener.h>
 #include <aws/elasticloadbalancing/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateLoadBalancer.</p>
+   * <p>Contains the parameters for CreateLoadBalancer.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateAccessPointInput">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API CreateLoadBalancerRequest : public ElasticLoadBalancingRequest
   {
@@ -36,6 +40,11 @@ namespace Model
     CreateLoadBalancerRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the load balancer.</p> <p>This name must be unique within your
      * set of load balancers for the region, must have a maximum of 32 characters, must
@@ -58,7 +67,7 @@ namespace Model
      * contain only alphanumeric characters or hyphens, and cannot begin or end with a
      * hyphen.</p>
      */
-    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = value; }
+    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::move(value); }
 
     /**
      * <p>The name of the load balancer.</p> <p>This name must be unique within your
@@ -82,7 +91,7 @@ namespace Model
      * contain only alphanumeric characters or hyphens, and cannot begin or end with a
      * hyphen.</p>
      */
-    inline CreateLoadBalancerRequest& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(value); return *this;}
+    inline CreateLoadBalancerRequest& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the load balancer.</p> <p>This name must be unique within your
@@ -114,7 +123,7 @@ namespace Model
      * for Your Classic Load Balancer</a> in the <i>Classic Load Balancers
      * Guide</i>.</p>
      */
-    inline void SetListeners(Aws::Vector<Listener>&& value) { m_listenersHasBeenSet = true; m_listeners = value; }
+    inline void SetListeners(Aws::Vector<Listener>&& value) { m_listenersHasBeenSet = true; m_listeners = std::move(value); }
 
     /**
      * <p>The listeners.</p> <p>For more information, see <a
@@ -130,7 +139,7 @@ namespace Model
      * for Your Classic Load Balancer</a> in the <i>Classic Load Balancers
      * Guide</i>.</p>
      */
-    inline CreateLoadBalancerRequest& WithListeners(Aws::Vector<Listener>&& value) { SetListeners(value); return *this;}
+    inline CreateLoadBalancerRequest& WithListeners(Aws::Vector<Listener>&& value) { SetListeners(std::move(value)); return *this;}
 
     /**
      * <p>The listeners.</p> <p>For more information, see <a
@@ -146,7 +155,7 @@ namespace Model
      * for Your Classic Load Balancer</a> in the <i>Classic Load Balancers
      * Guide</i>.</p>
      */
-    inline CreateLoadBalancerRequest& AddListeners(Listener&& value) { m_listenersHasBeenSet = true; m_listeners.push_back(value); return *this; }
+    inline CreateLoadBalancerRequest& AddListeners(Listener&& value) { m_listenersHasBeenSet = true; m_listeners.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more Availability Zones from the same region as the load balancer.</p>
@@ -170,7 +179,7 @@ namespace Model
      * Availability Zones after you create the load balancer using
      * <a>EnableAvailabilityZonesForLoadBalancer</a>.</p>
      */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
+    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
 
     /**
      * <p>One or more Availability Zones from the same region as the load balancer.</p>
@@ -186,7 +195,7 @@ namespace Model
      * Availability Zones after you create the load balancer using
      * <a>EnableAvailabilityZonesForLoadBalancer</a>.</p>
      */
-    inline CreateLoadBalancerRequest& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(value); return *this;}
+    inline CreateLoadBalancerRequest& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
 
     /**
      * <p>One or more Availability Zones from the same region as the load balancer.</p>
@@ -202,7 +211,7 @@ namespace Model
      * Availability Zones after you create the load balancer using
      * <a>EnableAvailabilityZonesForLoadBalancer</a>.</p>
      */
-    inline CreateLoadBalancerRequest& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
+    inline CreateLoadBalancerRequest& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more Availability Zones from the same region as the load balancer.</p>
@@ -231,7 +240,7 @@ namespace Model
      * one subnet per Availability Zone specified in
      * <code>AvailabilityZones</code>.</p>
      */
-    inline void SetSubnets(Aws::Vector<Aws::String>&& value) { m_subnetsHasBeenSet = true; m_subnets = value; }
+    inline void SetSubnets(Aws::Vector<Aws::String>&& value) { m_subnetsHasBeenSet = true; m_subnets = std::move(value); }
 
     /**
      * <p>The IDs of the subnets in your VPC to attach to the load balancer. Specify
@@ -245,7 +254,7 @@ namespace Model
      * one subnet per Availability Zone specified in
      * <code>AvailabilityZones</code>.</p>
      */
-    inline CreateLoadBalancerRequest& WithSubnets(Aws::Vector<Aws::String>&& value) { SetSubnets(value); return *this;}
+    inline CreateLoadBalancerRequest& WithSubnets(Aws::Vector<Aws::String>&& value) { SetSubnets(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of the subnets in your VPC to attach to the load balancer. Specify
@@ -259,7 +268,7 @@ namespace Model
      * one subnet per Availability Zone specified in
      * <code>AvailabilityZones</code>.</p>
      */
-    inline CreateLoadBalancerRequest& AddSubnets(Aws::String&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(value); return *this; }
+    inline CreateLoadBalancerRequest& AddSubnets(Aws::String&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IDs of the subnets in your VPC to attach to the load balancer. Specify
@@ -281,7 +290,7 @@ namespace Model
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
      */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
+    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
 
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
@@ -291,7 +300,7 @@ namespace Model
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
      */
-    inline CreateLoadBalancerRequest& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(value); return *this;}
+    inline CreateLoadBalancerRequest& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
@@ -301,7 +310,7 @@ namespace Model
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
      */
-    inline CreateLoadBalancerRequest& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
+    inline CreateLoadBalancerRequest& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IDs of the security groups to assign to the load balancer.</p>
@@ -342,7 +351,7 @@ namespace Model
      * <p>Specify <code>internal</code> to create a load balancer with a DNS name that
      * resolves to private IP addresses.</p>
      */
-    inline void SetScheme(Aws::String&& value) { m_schemeHasBeenSet = true; m_scheme = value; }
+    inline void SetScheme(Aws::String&& value) { m_schemeHasBeenSet = true; m_scheme = std::move(value); }
 
     /**
      * <p>The type of a load balancer. Valid only for load balancers in a VPC.</p>
@@ -378,7 +387,7 @@ namespace Model
      * <p>Specify <code>internal</code> to create a load balancer with a DNS name that
      * resolves to private IP addresses.</p>
      */
-    inline CreateLoadBalancerRequest& WithScheme(Aws::String&& value) { SetScheme(value); return *this;}
+    inline CreateLoadBalancerRequest& WithScheme(Aws::String&& value) { SetScheme(std::move(value)); return *this;}
 
     /**
      * <p>The type of a load balancer. Valid only for load balancers in a VPC.</p>
@@ -414,7 +423,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html">Tag
      * Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>A list of tags to assign to the load balancer.</p> <p>For more information
@@ -430,7 +439,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html">Tag
      * Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
      */
-    inline CreateLoadBalancerRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateLoadBalancerRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>A list of tags to assign to the load balancer.</p> <p>For more information
@@ -446,7 +455,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html">Tag
      * Your Classic Load Balancer</a> in the <i>Classic Load Balancers Guide</i>.</p>
      */
-    inline CreateLoadBalancerRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreateLoadBalancerRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_loadBalancerName;

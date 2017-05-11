@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/es/model/OptionState.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Provides the current status of the entity.</p>
+   * <p>Provides the current status of the entity.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/OptionStatus">AWS API
+   * Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API OptionStatus
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>Timestamp which tells the creation date for the entity.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>Timestamp which tells the creation date for the entity.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>Timestamp which tells the creation date for the entity.</p>
      */
-    inline OptionStatus& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline OptionStatus& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>Timestamp which tells the last updated time for the entity.</p>
@@ -80,7 +84,7 @@ namespace Model
     /**
      * <p>Timestamp which tells the last updated time for the entity.</p>
      */
-    inline void SetUpdateDate(Aws::Utils::DateTime&& value) { m_updateDateHasBeenSet = true; m_updateDate = value; }
+    inline void SetUpdateDate(Aws::Utils::DateTime&& value) { m_updateDateHasBeenSet = true; m_updateDate = std::move(value); }
 
     /**
      * <p>Timestamp which tells the last updated time for the entity.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>Timestamp which tells the last updated time for the entity.</p>
      */
-    inline OptionStatus& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(value); return *this;}
+    inline OptionStatus& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the latest version for the entity.</p>
@@ -120,7 +124,7 @@ namespace Model
     /**
      * <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
      */
-    inline void SetState(OptionState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(OptionState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
      */
-    inline OptionStatus& WithState(OptionState&& value) { SetState(value); return *this;}
+    inline OptionStatus& WithState(OptionState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the Elasticsearch domain is being deleted.</p>

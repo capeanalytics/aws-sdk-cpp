@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/email/SESRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,9 @@ namespace Model
    * enables you to authorize other senders to use your identities. For information,
    * see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListIdentityPoliciesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ListIdentityPoliciesRequest : public SESRequest
   {
@@ -38,6 +42,11 @@ namespace Model
     ListIdentityPoliciesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The identity that is associated with the policy for which the policies will
      * be listed. You can specify an identity by using its name or by using its Amazon
@@ -66,7 +75,7 @@ namespace Model
      * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To
      * successfully call this API, you must own the identity.</p>
      */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = value; }
+    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
 
     /**
      * <p>The identity that is associated with the policy for which the policies will
@@ -96,7 +105,7 @@ namespace Model
      * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To
      * successfully call this API, you must own the identity.</p>
      */
-    inline ListIdentityPoliciesRequest& WithIdentity(Aws::String&& value) { SetIdentity(value); return *this;}
+    inline ListIdentityPoliciesRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
 
     /**
      * <p>The identity that is associated with the policy for which the policies will

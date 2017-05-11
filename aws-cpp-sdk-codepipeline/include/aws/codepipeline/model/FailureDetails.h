@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/model/FailureType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about failure details.</p>
+   * <p>Represents information about failure details.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/FailureDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API FailureDetails
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The type of the failure.</p>
      */
-    inline void SetType(FailureType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(FailureType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of the failure.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>The type of the failure.</p>
      */
-    inline FailureDetails& WithType(FailureType&& value) { SetType(value); return *this;}
+    inline FailureDetails& WithType(FailureType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The message about the failure.</p>
@@ -80,7 +84,7 @@ namespace Model
     /**
      * <p>The message about the failure.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>The message about the failure.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The message about the failure.</p>
      */
-    inline FailureDetails& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline FailureDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>The message about the failure.</p>
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>The external ID of the run of the action that failed.</p>
      */
-    inline void SetExternalExecutionId(Aws::String&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = value; }
+    inline void SetExternalExecutionId(Aws::String&& value) { m_externalExecutionIdHasBeenSet = true; m_externalExecutionId = std::move(value); }
 
     /**
      * <p>The external ID of the run of the action that failed.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>The external ID of the run of the action that failed.</p>
      */
-    inline FailureDetails& WithExternalExecutionId(Aws::String&& value) { SetExternalExecutionId(value); return *this;}
+    inline FailureDetails& WithExternalExecutionId(Aws::String&& value) { SetExternalExecutionId(std::move(value)); return *this;}
 
     /**
      * <p>The external ID of the run of the action that failed.</p>

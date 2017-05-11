@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/CreateConnectionResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -25,11 +26,13 @@ using namespace Aws::Utils;
 using namespace Aws;
 
 CreateConnectionResult::CreateConnectionResult() : 
+    m_connectionState(ConnectionState::NOT_SET),
     m_vlan(0)
 {
 }
 
 CreateConnectionResult::CreateConnectionResult(const AmazonWebServiceResult<JsonValue>& result) : 
+    m_connectionState(ConnectionState::NOT_SET),
     m_vlan(0)
 {
   *this = result;
@@ -95,6 +98,18 @@ CreateConnectionResult& CreateConnectionResult::operator =(const AmazonWebServic
   if(jsonValue.ValueExists("loaIssueTime"))
   {
     m_loaIssueTime = jsonValue.GetDouble("loaIssueTime");
+
+  }
+
+  if(jsonValue.ValueExists("lagId"))
+  {
+    m_lagId = jsonValue.GetString("lagId");
+
+  }
+
+  if(jsonValue.ValueExists("awsDevice"))
+  {
+    m_awsDevice = jsonValue.GetString("awsDevice");
 
   }
 

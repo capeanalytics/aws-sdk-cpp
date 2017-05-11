@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/SnapshotDetail.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an import image task.</p>
+   * <p>Describes an import image task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportImageTask">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportImageTask
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The ID of the import image task.</p>
      */
-    inline void SetImportTaskId(Aws::String&& value) { m_importTaskIdHasBeenSet = true; m_importTaskId = value; }
+    inline void SetImportTaskId(Aws::String&& value) { m_importTaskIdHasBeenSet = true; m_importTaskId = std::move(value); }
 
     /**
      * <p>The ID of the import image task.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The ID of the import image task.</p>
      */
-    inline ImportImageTask& WithImportTaskId(Aws::String&& value) { SetImportTaskId(value); return *this;}
+    inline ImportImageTask& WithImportTaskId(Aws::String&& value) { SetImportTaskId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the import image task.</p>
@@ -83,43 +87,43 @@ namespace Model
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
     inline const Aws::String& GetArchitecture() const{ return m_architecture; }
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
     inline void SetArchitecture(const Aws::String& value) { m_architectureHasBeenSet = true; m_architecture = value; }
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
-    inline void SetArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
     inline void SetArchitecture(const char* value) { m_architectureHasBeenSet = true; m_architecture.assign(value); }
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
     inline ImportImageTask& WithArchitecture(const Aws::String& value) { SetArchitecture(value); return *this;}
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
-    inline ImportImageTask& WithArchitecture(Aws::String&& value) { SetArchitecture(value); return *this;}
+    inline ImportImageTask& WithArchitecture(Aws::String&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The architecture of the virtual machine.</p> <p>Valid values:
-     * <code>i386</code> | <code>x86_64</code></p>
+     * <code>i386</code> | <code>x86_64</code> </p>
      */
     inline ImportImageTask& WithArchitecture(const char* value) { SetArchitecture(value); return *this;}
 
@@ -136,7 +140,7 @@ namespace Model
     /**
      * <p>The license type of the virtual machine.</p>
      */
-    inline void SetLicenseType(Aws::String&& value) { m_licenseTypeHasBeenSet = true; m_licenseType = value; }
+    inline void SetLicenseType(Aws::String&& value) { m_licenseTypeHasBeenSet = true; m_licenseType = std::move(value); }
 
     /**
      * <p>The license type of the virtual machine.</p>
@@ -151,7 +155,7 @@ namespace Model
     /**
      * <p>The license type of the virtual machine.</p>
      */
-    inline ImportImageTask& WithLicenseType(Aws::String&& value) { SetLicenseType(value); return *this;}
+    inline ImportImageTask& WithLicenseType(Aws::String&& value) { SetLicenseType(std::move(value)); return *this;}
 
     /**
      * <p>The license type of the virtual machine.</p>
@@ -171,7 +175,7 @@ namespace Model
     /**
      * <p>The description string for the import image task.</p>
      */
-    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
 
     /**
      * <p>The description string for the import image task.</p>
@@ -186,7 +190,7 @@ namespace Model
     /**
      * <p>The description string for the import image task.</p>
      */
-    inline ImportImageTask& WithPlatform(Aws::String&& value) { SetPlatform(value); return *this;}
+    inline ImportImageTask& WithPlatform(Aws::String&& value) { SetPlatform(std::move(value)); return *this;}
 
     /**
      * <p>The description string for the import image task.</p>
@@ -195,43 +199,43 @@ namespace Model
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
     inline const Aws::String& GetHypervisor() const{ return m_hypervisor; }
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
     inline void SetHypervisor(const Aws::String& value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
-    inline void SetHypervisor(Aws::String&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = value; }
+    inline void SetHypervisor(Aws::String&& value) { m_hypervisorHasBeenSet = true; m_hypervisor = std::move(value); }
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
     inline void SetHypervisor(const char* value) { m_hypervisorHasBeenSet = true; m_hypervisor.assign(value); }
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
     inline ImportImageTask& WithHypervisor(const Aws::String& value) { SetHypervisor(value); return *this;}
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
-    inline ImportImageTask& WithHypervisor(Aws::String&& value) { SetHypervisor(value); return *this;}
+    inline ImportImageTask& WithHypervisor(Aws::String&& value) { SetHypervisor(std::move(value)); return *this;}
 
     /**
      * <p>The target hypervisor for the import task.</p> <p>Valid values:
-     * <code>xen</code></p>
+     * <code>xen</code> </p>
      */
     inline ImportImageTask& WithHypervisor(const char* value) { SetHypervisor(value); return *this;}
 
@@ -248,7 +252,7 @@ namespace Model
     /**
      * <p>A description of the import task.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the import task.</p>
@@ -263,7 +267,7 @@ namespace Model
     /**
      * <p>A description of the import task.</p>
      */
-    inline ImportImageTask& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ImportImageTask& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the import task.</p>
@@ -283,7 +287,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline void SetSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { m_snapshotDetailsHasBeenSet = true; m_snapshotDetails = value; }
+    inline void SetSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { m_snapshotDetailsHasBeenSet = true; m_snapshotDetails = std::move(value); }
 
     /**
      * <p>Information about the snapshots.</p>
@@ -293,7 +297,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline ImportImageTask& WithSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { SetSnapshotDetails(value); return *this;}
+    inline ImportImageTask& WithSnapshotDetails(Aws::Vector<SnapshotDetail>&& value) { SetSnapshotDetails(std::move(value)); return *this;}
 
     /**
      * <p>Information about the snapshots.</p>
@@ -303,7 +307,7 @@ namespace Model
     /**
      * <p>Information about the snapshots.</p>
      */
-    inline ImportImageTask& AddSnapshotDetails(SnapshotDetail&& value) { m_snapshotDetailsHasBeenSet = true; m_snapshotDetails.push_back(value); return *this; }
+    inline ImportImageTask& AddSnapshotDetails(SnapshotDetail&& value) { m_snapshotDetailsHasBeenSet = true; m_snapshotDetails.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</p>
@@ -318,7 +322,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</p>
@@ -333,7 +337,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</p>
      */
-    inline ImportImageTask& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline ImportImageTask& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) of the imported virtual machine.</p>
@@ -353,7 +357,7 @@ namespace Model
     /**
      * <p>The percentage of progress of the import image task.</p>
      */
-    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = value; }
+    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = std::move(value); }
 
     /**
      * <p>The percentage of progress of the import image task.</p>
@@ -368,7 +372,7 @@ namespace Model
     /**
      * <p>The percentage of progress of the import image task.</p>
      */
-    inline ImportImageTask& WithProgress(Aws::String&& value) { SetProgress(value); return *this;}
+    inline ImportImageTask& WithProgress(Aws::String&& value) { SetProgress(std::move(value)); return *this;}
 
     /**
      * <p>The percentage of progress of the import image task.</p>
@@ -388,7 +392,7 @@ namespace Model
     /**
      * <p>A descriptive status message for the import image task.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
 
     /**
      * <p>A descriptive status message for the import image task.</p>
@@ -403,7 +407,7 @@ namespace Model
     /**
      * <p>A descriptive status message for the import image task.</p>
      */
-    inline ImportImageTask& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline ImportImageTask& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>A descriptive status message for the import image task.</p>
@@ -423,7 +427,7 @@ namespace Model
     /**
      * <p>A brief status for the import image task.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>A brief status for the import image task.</p>
@@ -438,7 +442,7 @@ namespace Model
     /**
      * <p>A brief status for the import image task.</p>
      */
-    inline ImportImageTask& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline ImportImageTask& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>A brief status for the import image task.</p>

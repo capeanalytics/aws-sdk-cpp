@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -52,7 +54,7 @@ namespace Model
     /**
      * <p>The ARN specifying the application that is created.</p>
      */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArn = value; }
+    inline void SetApplicationArn(Aws::String&& value) { m_applicationArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the application that is created.</p>
@@ -67,7 +69,7 @@ namespace Model
     /**
      * <p>The ARN specifying the application that is created.</p>
      */
-    inline CreateApplicationResult& WithApplicationArn(Aws::String&& value) { SetApplicationArn(value); return *this;}
+    inline CreateApplicationResult& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the application that is created.</p>

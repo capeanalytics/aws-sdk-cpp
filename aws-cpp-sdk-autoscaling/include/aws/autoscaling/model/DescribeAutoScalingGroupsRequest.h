@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeAutoScalingGroups.</p>
+   * <p>Contains the parameters for DescribeAutoScalingGroups.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AutoScalingGroupNamesType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeAutoScalingGroupsRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     DescribeAutoScalingGroupsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
      * described.</p>
@@ -50,7 +60,7 @@ namespace Model
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
      * described.</p>
      */
-    inline void SetAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames = value; }
+    inline void SetAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames = std::move(value); }
 
     /**
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
@@ -62,7 +72,7 @@ namespace Model
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
      * described.</p>
      */
-    inline DescribeAutoScalingGroupsRequest& WithAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroupNames(value); return *this;}
+    inline DescribeAutoScalingGroupsRequest& WithAutoScalingGroupNames(Aws::Vector<Aws::String>&& value) { SetAutoScalingGroupNames(std::move(value)); return *this;}
 
     /**
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
@@ -74,7 +84,7 @@ namespace Model
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
      * described.</p>
      */
-    inline DescribeAutoScalingGroupsRequest& AddAutoScalingGroupNames(Aws::String&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames.push_back(value); return *this; }
+    inline DescribeAutoScalingGroupsRequest& AddAutoScalingGroupNames(Aws::String&& value) { m_autoScalingGroupNamesHasBeenSet = true; m_autoScalingGroupNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The group names. If you omit this parameter, all Auto Scaling groups are
@@ -98,7 +108,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -116,7 +126,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline DescribeAutoScalingGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeAutoScalingGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

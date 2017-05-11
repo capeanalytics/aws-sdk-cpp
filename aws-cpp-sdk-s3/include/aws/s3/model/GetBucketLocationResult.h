@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/model/BucketLocationConstraint.h>
+#include <utility>
 
 namespace Aws
 {
@@ -46,13 +48,13 @@ namespace Model
     inline void SetLocationConstraint(const BucketLocationConstraint& value) { m_locationConstraint = value; }
 
     
-    inline void SetLocationConstraint(BucketLocationConstraint&& value) { m_locationConstraint = value; }
+    inline void SetLocationConstraint(BucketLocationConstraint&& value) { m_locationConstraint = std::move(value); }
 
     
     inline GetBucketLocationResult& WithLocationConstraint(const BucketLocationConstraint& value) { SetLocationConstraint(value); return *this;}
 
     
-    inline GetBucketLocationResult& WithLocationConstraint(BucketLocationConstraint&& value) { SetLocationConstraint(value); return *this;}
+    inline GetBucketLocationResult& WithLocationConstraint(BucketLocationConstraint&& value) { SetLocationConstraint(std::move(value)); return *this;}
 
   private:
     BucketLocationConstraint m_locationConstraint;

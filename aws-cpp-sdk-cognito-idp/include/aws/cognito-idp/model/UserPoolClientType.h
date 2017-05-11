@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cognito-idp/model/ExplicitAuthFlowsType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>A user pool of the client type.</p>
+   * <p>A user pool of the client type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UserPoolClientType">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API UserPoolClientType
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The user pool ID for the user pool client.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
 
     /**
      * <p>The user pool ID for the user pool client.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The user pool ID for the user pool client.</p>
      */
-    inline UserPoolClientType& WithUserPoolId(Aws::String&& value) { SetUserPoolId(value); return *this;}
+    inline UserPoolClientType& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
 
     /**
      * <p>The user pool ID for the user pool client.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The client name from the user pool request of the client type.</p>
      */
-    inline void SetClientName(Aws::String&& value) { m_clientNameHasBeenSet = true; m_clientName = value; }
+    inline void SetClientName(Aws::String&& value) { m_clientNameHasBeenSet = true; m_clientName = std::move(value); }
 
     /**
      * <p>The client name from the user pool request of the client type.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The client name from the user pool request of the client type.</p>
      */
-    inline UserPoolClientType& WithClientName(Aws::String&& value) { SetClientName(value); return *this;}
+    inline UserPoolClientType& WithClientName(Aws::String&& value) { SetClientName(std::move(value)); return *this;}
 
     /**
      * <p>The client name from the user pool request of the client type.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The ID of the client associated with the user pool.</p>
      */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
+    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
 
     /**
      * <p>The ID of the client associated with the user pool.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The ID of the client associated with the user pool.</p>
      */
-    inline UserPoolClientType& WithClientId(Aws::String&& value) { SetClientId(value); return *this;}
+    inline UserPoolClientType& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the client associated with the user pool.</p>
@@ -162,7 +166,7 @@ namespace Model
     /**
      * <p>The client secret from the user pool request of the client type.</p>
      */
-    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = value; }
+    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::move(value); }
 
     /**
      * <p>The client secret from the user pool request of the client type.</p>
@@ -177,7 +181,7 @@ namespace Model
     /**
      * <p>The client secret from the user pool request of the client type.</p>
      */
-    inline UserPoolClientType& WithClientSecret(Aws::String&& value) { SetClientSecret(value); return *this;}
+    inline UserPoolClientType& WithClientSecret(Aws::String&& value) { SetClientSecret(std::move(value)); return *this;}
 
     /**
      * <p>The client secret from the user pool request of the client type.</p>
@@ -197,7 +201,7 @@ namespace Model
     /**
      * <p>The last modified date from the user pool request of the client type.</p>
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * <p>The last modified date from the user pool request of the client type.</p>
@@ -207,7 +211,7 @@ namespace Model
     /**
      * <p>The last modified date from the user pool request of the client type.</p>
      */
-    inline UserPoolClientType& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline UserPoolClientType& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * <p>The creation date from the user pool request of the client type.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>The creation date from the user pool request of the client type.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The creation date from the user pool request of the client type.</p>
@@ -232,20 +236,20 @@ namespace Model
     /**
      * <p>The creation date from the user pool request of the client type.</p>
      */
-    inline UserPoolClientType& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline UserPoolClientType& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
-     * <p>The validity of the refresh token.</p>
+     * <p>The validity of the refresh token, in days.</p>
      */
     inline int GetRefreshTokenValidity() const{ return m_refreshTokenValidity; }
 
     /**
-     * <p>The validity of the refresh token.</p>
+     * <p>The validity of the refresh token, in days.</p>
      */
     inline void SetRefreshTokenValidity(int value) { m_refreshTokenValidityHasBeenSet = true; m_refreshTokenValidity = value; }
 
     /**
-     * <p>The validity of the refresh token.</p>
+     * <p>The validity of the refresh token, in days.</p>
      */
     inline UserPoolClientType& WithRefreshTokenValidity(int value) { SetRefreshTokenValidity(value); return *this;}
 
@@ -262,7 +266,7 @@ namespace Model
     /**
      * <p>The Read-only attributes.</p>
      */
-    inline void SetReadAttributes(Aws::Vector<Aws::String>&& value) { m_readAttributesHasBeenSet = true; m_readAttributes = value; }
+    inline void SetReadAttributes(Aws::Vector<Aws::String>&& value) { m_readAttributesHasBeenSet = true; m_readAttributes = std::move(value); }
 
     /**
      * <p>The Read-only attributes.</p>
@@ -272,7 +276,7 @@ namespace Model
     /**
      * <p>The Read-only attributes.</p>
      */
-    inline UserPoolClientType& WithReadAttributes(Aws::Vector<Aws::String>&& value) { SetReadAttributes(value); return *this;}
+    inline UserPoolClientType& WithReadAttributes(Aws::Vector<Aws::String>&& value) { SetReadAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The Read-only attributes.</p>
@@ -282,7 +286,7 @@ namespace Model
     /**
      * <p>The Read-only attributes.</p>
      */
-    inline UserPoolClientType& AddReadAttributes(Aws::String&& value) { m_readAttributesHasBeenSet = true; m_readAttributes.push_back(value); return *this; }
+    inline UserPoolClientType& AddReadAttributes(Aws::String&& value) { m_readAttributesHasBeenSet = true; m_readAttributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Read-only attributes.</p>
@@ -302,7 +306,7 @@ namespace Model
     /**
      * <p>The writeable attributes.</p>
      */
-    inline void SetWriteAttributes(Aws::Vector<Aws::String>&& value) { m_writeAttributesHasBeenSet = true; m_writeAttributes = value; }
+    inline void SetWriteAttributes(Aws::Vector<Aws::String>&& value) { m_writeAttributesHasBeenSet = true; m_writeAttributes = std::move(value); }
 
     /**
      * <p>The writeable attributes.</p>
@@ -312,7 +316,7 @@ namespace Model
     /**
      * <p>The writeable attributes.</p>
      */
-    inline UserPoolClientType& WithWriteAttributes(Aws::Vector<Aws::String>&& value) { SetWriteAttributes(value); return *this;}
+    inline UserPoolClientType& WithWriteAttributes(Aws::Vector<Aws::String>&& value) { SetWriteAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The writeable attributes.</p>
@@ -322,7 +326,7 @@ namespace Model
     /**
      * <p>The writeable attributes.</p>
      */
-    inline UserPoolClientType& AddWriteAttributes(Aws::String&& value) { m_writeAttributesHasBeenSet = true; m_writeAttributes.push_back(value); return *this; }
+    inline UserPoolClientType& AddWriteAttributes(Aws::String&& value) { m_writeAttributesHasBeenSet = true; m_writeAttributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The writeable attributes.</p>
@@ -342,7 +346,7 @@ namespace Model
     /**
      * <p>The explicit authentication flows.</p>
      */
-    inline void SetExplicitAuthFlows(Aws::Vector<ExplicitAuthFlowsType>&& value) { m_explicitAuthFlowsHasBeenSet = true; m_explicitAuthFlows = value; }
+    inline void SetExplicitAuthFlows(Aws::Vector<ExplicitAuthFlowsType>&& value) { m_explicitAuthFlowsHasBeenSet = true; m_explicitAuthFlows = std::move(value); }
 
     /**
      * <p>The explicit authentication flows.</p>
@@ -352,7 +356,7 @@ namespace Model
     /**
      * <p>The explicit authentication flows.</p>
      */
-    inline UserPoolClientType& WithExplicitAuthFlows(Aws::Vector<ExplicitAuthFlowsType>&& value) { SetExplicitAuthFlows(value); return *this;}
+    inline UserPoolClientType& WithExplicitAuthFlows(Aws::Vector<ExplicitAuthFlowsType>&& value) { SetExplicitAuthFlows(std::move(value)); return *this;}
 
     /**
      * <p>The explicit authentication flows.</p>
@@ -362,7 +366,7 @@ namespace Model
     /**
      * <p>The explicit authentication flows.</p>
      */
-    inline UserPoolClientType& AddExplicitAuthFlows(ExplicitAuthFlowsType&& value) { m_explicitAuthFlowsHasBeenSet = true; m_explicitAuthFlows.push_back(value); return *this; }
+    inline UserPoolClientType& AddExplicitAuthFlows(ExplicitAuthFlowsType&& value) { m_explicitAuthFlowsHasBeenSet = true; m_explicitAuthFlows.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_userPoolId;

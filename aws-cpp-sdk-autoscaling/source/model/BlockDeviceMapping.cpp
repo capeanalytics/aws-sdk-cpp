@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/autoscaling/model/BlockDeviceMapping.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -104,7 +105,7 @@ void BlockDeviceMapping::OutputToStream(Aws::OStream& oStream, const char* locat
 
   if(m_noDeviceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NoDevice=" << m_noDevice << "&";
+      oStream << location << index << locationValue << ".NoDevice=" << std::boolalpha << m_noDevice << "&";
   }
 
 }
@@ -127,7 +128,7 @@ void BlockDeviceMapping::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_noDeviceHasBeenSet)
   {
-      oStream << location << ".NoDevice=" << m_noDevice << "&";
+      oStream << location << ".NoDevice=" << std::boolalpha << m_noDevice << "&";
   }
 }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/email/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>Returns a TXT record that you must publish to the DNS server of your domain
-   * to complete domain verification with Amazon SES.</p>
+   * to complete domain verification with Amazon SES.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainIdentityResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API VerifyDomainIdentityResult
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>A TXT record that must be placed in the DNS settings for the domain, in order
      * to complete domain verification.</p>
      */
-    inline void SetVerificationToken(Aws::String&& value) { m_verificationToken = value; }
+    inline void SetVerificationToken(Aws::String&& value) { m_verificationToken = std::move(value); }
 
     /**
      * <p>A TXT record that must be placed in the DNS settings for the domain, in order
@@ -78,7 +82,7 @@ namespace Model
      * <p>A TXT record that must be placed in the DNS settings for the domain, in order
      * to complete domain verification.</p>
      */
-    inline VerifyDomainIdentityResult& WithVerificationToken(Aws::String&& value) { SetVerificationToken(value); return *this;}
+    inline VerifyDomainIdentityResult& WithVerificationToken(Aws::String&& value) { SetVerificationToken(std::move(value)); return *this;}
 
     /**
      * <p>A TXT record that must be placed in the DNS settings for the domain, in order
@@ -93,13 +97,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline VerifyDomainIdentityResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline VerifyDomainIdentityResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline VerifyDomainIdentityResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_verificationToken;

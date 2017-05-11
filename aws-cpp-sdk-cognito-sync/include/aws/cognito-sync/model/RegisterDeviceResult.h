@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-sync/CognitoSync_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace CognitoSync
 namespace Model
 {
   /**
-   * <p>Response to a RegisterDevice request.</p>
+   * <p>Response to a RegisterDevice request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/RegisterDeviceResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOSYNC_API RegisterDeviceResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The unique ID generated for this device by Cognito.</p>
      */
-    inline void SetDeviceId(Aws::String&& value) { m_deviceId = value; }
+    inline void SetDeviceId(Aws::String&& value) { m_deviceId = std::move(value); }
 
     /**
      * <p>The unique ID generated for this device by Cognito.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The unique ID generated for this device by Cognito.</p>
      */
-    inline RegisterDeviceResult& WithDeviceId(Aws::String&& value) { SetDeviceId(value); return *this;}
+    inline RegisterDeviceResult& WithDeviceId(Aws::String&& value) { SetDeviceId(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID generated for this device by Cognito.</p>

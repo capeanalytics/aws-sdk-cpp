@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ecr/model/Layer.h>
 #include <aws/ecr/model/LayerFailure.h>
+#include <utility>
 
 namespace Aws
 {
@@ -57,7 +59,7 @@ namespace Model
      * <p>A list of image layer objects corresponding to the image layer references in
      * the request.</p>
      */
-    inline void SetLayers(Aws::Vector<Layer>&& value) { m_layers = value; }
+    inline void SetLayers(Aws::Vector<Layer>&& value) { m_layers = std::move(value); }
 
     /**
      * <p>A list of image layer objects corresponding to the image layer references in
@@ -69,7 +71,7 @@ namespace Model
      * <p>A list of image layer objects corresponding to the image layer references in
      * the request.</p>
      */
-    inline BatchCheckLayerAvailabilityResult& WithLayers(Aws::Vector<Layer>&& value) { SetLayers(value); return *this;}
+    inline BatchCheckLayerAvailabilityResult& WithLayers(Aws::Vector<Layer>&& value) { SetLayers(std::move(value)); return *this;}
 
     /**
      * <p>A list of image layer objects corresponding to the image layer references in
@@ -81,7 +83,7 @@ namespace Model
      * <p>A list of image layer objects corresponding to the image layer references in
      * the request.</p>
      */
-    inline BatchCheckLayerAvailabilityResult& AddLayers(Layer&& value) { m_layers.push_back(value); return *this; }
+    inline BatchCheckLayerAvailabilityResult& AddLayers(Layer&& value) { m_layers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -96,7 +98,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline void SetFailures(Aws::Vector<LayerFailure>&& value) { m_failures = value; }
+    inline void SetFailures(Aws::Vector<LayerFailure>&& value) { m_failures = std::move(value); }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -106,7 +108,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline BatchCheckLayerAvailabilityResult& WithFailures(Aws::Vector<LayerFailure>&& value) { SetFailures(value); return *this;}
+    inline BatchCheckLayerAvailabilityResult& WithFailures(Aws::Vector<LayerFailure>&& value) { SetFailures(std::move(value)); return *this;}
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -116,7 +118,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline BatchCheckLayerAvailabilityResult& AddFailures(LayerFailure&& value) { m_failures.push_back(value); return *this; }
+    inline BatchCheckLayerAvailabilityResult& AddFailures(LayerFailure&& value) { m_failures.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Layer> m_layers;

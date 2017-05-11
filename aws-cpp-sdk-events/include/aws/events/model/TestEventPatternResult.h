@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
 
@@ -31,9 +32,6 @@ namespace CloudWatchEvents
 {
 namespace Model
 {
-  /**
-   * <p>The result of the <a>TestEventPattern</a> operation.</p>
-   */
   class AWS_CLOUDWATCHEVENTS_API TestEventPatternResult
   {
   public:
@@ -42,17 +40,23 @@ namespace Model
     TestEventPatternResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>Indicates whether the event matches the event pattern.</p>
+     * <zonbook> <simpara>Indicates whether the event matches the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>Indicates whether the event matches the
+     * event pattern.</p> </xhtml>
      */
     inline bool GetResult() const{ return m_result; }
 
     /**
-     * <p>Indicates whether the event matches the event pattern.</p>
+     * <zonbook> <simpara>Indicates whether the event matches the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>Indicates whether the event matches the
+     * event pattern.</p> </xhtml>
      */
     inline void SetResult(bool value) { m_result = value; }
 
     /**
-     * <p>Indicates whether the event matches the event pattern.</p>
+     * <zonbook> <simpara>Indicates whether the event matches the event
+     * pattern.</simpara> </zonbook> <xhtml> <p>Indicates whether the event matches the
+     * event pattern.</p> </xhtml>
      */
     inline TestEventPatternResult& WithResult(bool value) { SetResult(value); return *this;}
 

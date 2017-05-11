@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBClusterMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DeleteDBClusterRequest : public RDSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     DeleteDBClusterRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The DB cluster identifier for the DB cluster to be deleted. This parameter
      * isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1
@@ -58,7 +67,7 @@ namespace Model
      * be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two
      * consecutive hyphens</p> </li> </ul>
      */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
+    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
 
     /**
      * <p>The DB cluster identifier for the DB cluster to be deleted. This parameter
@@ -85,7 +94,7 @@ namespace Model
      * be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two
      * consecutive hyphens</p> </li> </ul>
      */
-    inline DeleteDBClusterRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(value); return *this;}
+    inline DeleteDBClusterRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The DB cluster identifier for the DB cluster to be deleted. This parameter
@@ -160,7 +169,7 @@ namespace Model
      * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
      * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline void SetFinalDBSnapshotIdentifier(Aws::String&& value) { m_finalDBSnapshotIdentifierHasBeenSet = true; m_finalDBSnapshotIdentifier = value; }
+    inline void SetFinalDBSnapshotIdentifier(Aws::String&& value) { m_finalDBSnapshotIdentifierHasBeenSet = true; m_finalDBSnapshotIdentifier = std::move(value); }
 
     /**
      * <p> The DB cluster snapshot identifier of the new DB cluster snapshot created
@@ -193,7 +202,7 @@ namespace Model
      * characters</p> </li> <li> <p>First character must be a letter</p> </li> <li>
      * <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
      */
-    inline DeleteDBClusterRequest& WithFinalDBSnapshotIdentifier(Aws::String&& value) { SetFinalDBSnapshotIdentifier(value); return *this;}
+    inline DeleteDBClusterRequest& WithFinalDBSnapshotIdentifier(Aws::String&& value) { SetFinalDBSnapshotIdentifier(std::move(value)); return *this;}
 
     /**
      * <p> The DB cluster snapshot identifier of the new DB cluster snapshot created

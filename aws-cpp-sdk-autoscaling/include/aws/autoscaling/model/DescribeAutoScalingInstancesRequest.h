@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeAutoScalingInstances.</p>
+   * <p>Contains the parameters for DescribeAutoScalingInstances.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstancesType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeAutoScalingInstancesRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     DescribeAutoScalingInstancesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The instances to describe; up to 50 instance IDs. If you omit this parameter,
      * all Auto Scaling instances are described. If you specify an ID that does not
@@ -53,7 +63,7 @@ namespace Model
      * all Auto Scaling instances are described. If you specify an ID that does not
      * exist, it is ignored with no error.</p>
      */
-    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = value; }
+    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::move(value); }
 
     /**
      * <p>The instances to describe; up to 50 instance IDs. If you omit this parameter,
@@ -67,7 +77,7 @@ namespace Model
      * all Auto Scaling instances are described. If you specify an ID that does not
      * exist, it is ignored with no error.</p>
      */
-    inline DescribeAutoScalingInstancesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(value); return *this;}
+    inline DescribeAutoScalingInstancesRequest& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(std::move(value)); return *this;}
 
     /**
      * <p>The instances to describe; up to 50 instance IDs. If you omit this parameter,
@@ -81,7 +91,7 @@ namespace Model
      * all Auto Scaling instances are described. If you specify an ID that does not
      * exist, it is ignored with no error.</p>
      */
-    inline DescribeAutoScalingInstancesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
+    inline DescribeAutoScalingInstancesRequest& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The instances to describe; up to 50 instance IDs. If you omit this parameter,
@@ -121,7 +131,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -139,7 +149,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline DescribeAutoScalingInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeAutoScalingInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

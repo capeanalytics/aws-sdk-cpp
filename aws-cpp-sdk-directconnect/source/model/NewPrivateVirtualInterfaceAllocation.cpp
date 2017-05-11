@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/NewPrivateVirtualInterfaceAllocation.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -35,6 +36,8 @@ NewPrivateVirtualInterfaceAllocation::NewPrivateVirtualInterfaceAllocation() :
     m_asnHasBeenSet(false),
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
     m_customerAddressHasBeenSet(false)
 {
 }
@@ -47,6 +50,8 @@ NewPrivateVirtualInterfaceAllocation::NewPrivateVirtualInterfaceAllocation(const
     m_asnHasBeenSet(false),
     m_authKeyHasBeenSet(false),
     m_amazonAddressHasBeenSet(false),
+    m_addressFamily(AddressFamily::NOT_SET),
+    m_addressFamilyHasBeenSet(false),
     m_customerAddressHasBeenSet(false)
 {
   *this = jsonValue;
@@ -87,6 +92,13 @@ NewPrivateVirtualInterfaceAllocation& NewPrivateVirtualInterfaceAllocation::oper
     m_amazonAddress = jsonValue.GetString("amazonAddress");
 
     m_amazonAddressHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("addressFamily"))
+  {
+    m_addressFamily = AddressFamilyMapper::GetAddressFamilyForName(jsonValue.GetString("addressFamily"));
+
+    m_addressFamilyHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("customerAddress"))
@@ -131,6 +143,11 @@ JsonValue NewPrivateVirtualInterfaceAllocation::Jsonize() const
   {
    payload.WithString("amazonAddress", m_amazonAddress);
 
+  }
+
+  if(m_addressFamilyHasBeenSet)
+  {
+   payload.WithString("addressFamily", AddressFamilyMapper::GetNameForAddressFamily(m_addressFamily));
   }
 
   if(m_customerAddressHasBeenSet)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/codecommit/CodeCommitErrors.h>
@@ -33,11 +34,14 @@ static const int REPOSITORY_TRIGGER_EVENTS_LIST_REQUIRED_HASH = HashingUtils::Ha
 static const int COMMIT_ID_REQUIRED_HASH = HashingUtils::HashString("CommitIdRequiredException");
 static const int REPOSITORY_TRIGGER_DESTINATION_ARN_REQUIRED_HASH = HashingUtils::HashString("RepositoryTriggerDestinationArnRequiredException");
 static const int REPOSITORY_NAMES_REQUIRED_HASH = HashingUtils::HashString("RepositoryNamesRequiredException");
+static const int INVALID_MAX_RESULTS_HASH = HashingUtils::HashString("InvalidMaxResultsException");
 static const int REPOSITORY_NAME_EXISTS_HASH = HashingUtils::HashString("RepositoryNameExistsException");
+static const int INVALID_PATH_HASH = HashingUtils::HashString("InvalidPathException");
 static const int INVALID_REPOSITORY_TRIGGER_EVENTS_HASH = HashingUtils::HashString("InvalidRepositoryTriggerEventsException");
 static const int ENCRYPTION_INTEGRITY_CHECKS_FAILED_HASH = HashingUtils::HashString("EncryptionIntegrityChecksFailedException");
 static const int INVALID_REPOSITORY_TRIGGER_BRANCH_NAME_HASH = HashingUtils::HashString("InvalidRepositoryTriggerBranchNameException");
 static const int ENCRYPTION_KEY_UNAVAILABLE_HASH = HashingUtils::HashString("EncryptionKeyUnavailableException");
+static const int BLOB_ID_REQUIRED_HASH = HashingUtils::HashString("BlobIdRequiredException");
 static const int REPOSITORY_TRIGGER_BRANCH_NAME_LIST_REQUIRED_HASH = HashingUtils::HashString("RepositoryTriggerBranchNameListRequiredException");
 static const int INVALID_REPOSITORY_NAME_HASH = HashingUtils::HashString("InvalidRepositoryNameException");
 static const int REPOSITORY_TRIGGER_NAME_REQUIRED_HASH = HashingUtils::HashString("RepositoryTriggerNameRequiredException");
@@ -51,11 +55,15 @@ static const int REPOSITORY_TRIGGERS_LIST_REQUIRED_HASH = HashingUtils::HashStri
 static const int ENCRYPTION_KEY_DISABLED_HASH = HashingUtils::HashString("EncryptionKeyDisabledException");
 static const int INVALID_COMMIT_ID_HASH = HashingUtils::HashString("InvalidCommitIdException");
 static const int COMMIT_DOES_NOT_EXIST_HASH = HashingUtils::HashString("CommitDoesNotExistException");
+static const int COMMIT_REQUIRED_HASH = HashingUtils::HashString("CommitRequiredException");
 static const int INVALID_SORT_BY_HASH = HashingUtils::HashString("InvalidSortByException");
+static const int INVALID_BLOB_ID_HASH = HashingUtils::HashString("InvalidBlobIdException");
 static const int BRANCH_NAME_REQUIRED_HASH = HashingUtils::HashString("BranchNameRequiredException");
 static const int INVALID_REPOSITORY_DESCRIPTION_HASH = HashingUtils::HashString("InvalidRepositoryDescriptionException");
 static const int BRANCH_DOES_NOT_EXIST_HASH = HashingUtils::HashString("BranchDoesNotExistException");
 static const int REPOSITORY_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("RepositoryLimitExceededException");
+static const int BLOB_ID_DOES_NOT_EXIST_HASH = HashingUtils::HashString("BlobIdDoesNotExistException");
+static const int FILE_TOO_LARGE_HASH = HashingUtils::HashString("FileTooLargeException");
 static const int INVALID_BRANCH_NAME_HASH = HashingUtils::HashString("InvalidBranchNameException");
 static const int INVALID_CONTINUATION_TOKEN_HASH = HashingUtils::HashString("InvalidContinuationTokenException");
 static const int MAXIMUM_REPOSITORY_TRIGGERS_EXCEEDED_HASH = HashingUtils::HashString("MaximumRepositoryTriggersExceededException");
@@ -63,7 +71,9 @@ static const int REPOSITORY_NAME_REQUIRED_HASH = HashingUtils::HashString("Repos
 static const int BRANCH_NAME_EXISTS_HASH = HashingUtils::HashString("BranchNameExistsException");
 static const int INVALID_REPOSITORY_TRIGGER_CUSTOM_DATA_HASH = HashingUtils::HashString("InvalidRepositoryTriggerCustomDataException");
 static const int REPOSITORY_DOES_NOT_EXIST_HASH = HashingUtils::HashString("RepositoryDoesNotExistException");
+static const int PATH_DOES_NOT_EXIST_HASH = HashingUtils::HashString("PathDoesNotExistException");
 static const int MAXIMUM_REPOSITORY_NAMES_EXCEEDED_HASH = HashingUtils::HashString("MaximumRepositoryNamesExceededException");
+static const int INVALID_COMMIT_HASH = HashingUtils::HashString("InvalidCommitException");
 
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName)
@@ -94,9 +104,17 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::REPOSITORY_NAMES_REQUIRED), false);
   }
+  else if (hashCode == INVALID_MAX_RESULTS_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::INVALID_MAX_RESULTS), false);
+  }
   else if (hashCode == REPOSITORY_NAME_EXISTS_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::REPOSITORY_NAME_EXISTS), false);
+  }
+  else if (hashCode == INVALID_PATH_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::INVALID_PATH), false);
   }
   else if (hashCode == INVALID_REPOSITORY_TRIGGER_EVENTS_HASH)
   {
@@ -113,6 +131,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == ENCRYPTION_KEY_UNAVAILABLE_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::ENCRYPTION_KEY_UNAVAILABLE), false);
+  }
+  else if (hashCode == BLOB_ID_REQUIRED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::BLOB_ID_REQUIRED), false);
   }
   else if (hashCode == REPOSITORY_TRIGGER_BRANCH_NAME_LIST_REQUIRED_HASH)
   {
@@ -166,9 +188,17 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::COMMIT_DOES_NOT_EXIST), false);
   }
+  else if (hashCode == COMMIT_REQUIRED_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::COMMIT_REQUIRED), false);
+  }
   else if (hashCode == INVALID_SORT_BY_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::INVALID_SORT_BY), false);
+  }
+  else if (hashCode == INVALID_BLOB_ID_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::INVALID_BLOB_ID), false);
   }
   else if (hashCode == BRANCH_NAME_REQUIRED_HASH)
   {
@@ -185,6 +215,14 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == REPOSITORY_LIMIT_EXCEEDED_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::REPOSITORY_LIMIT_EXCEEDED), false);
+  }
+  else if (hashCode == BLOB_ID_DOES_NOT_EXIST_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::BLOB_ID_DOES_NOT_EXIST), false);
+  }
+  else if (hashCode == FILE_TOO_LARGE_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::FILE_TOO_LARGE), false);
   }
   else if (hashCode == INVALID_BRANCH_NAME_HASH)
   {
@@ -214,9 +252,17 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::REPOSITORY_DOES_NOT_EXIST), false);
   }
+  else if (hashCode == PATH_DOES_NOT_EXIST_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::PATH_DOES_NOT_EXIST), false);
+  }
   else if (hashCode == MAXIMUM_REPOSITORY_NAMES_EXCEEDED_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::MAXIMUM_REPOSITORY_NAMES_EXCEEDED), false);
+  }
+  else if (hashCode == INVALID_COMMIT_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(CodeCommitErrors::INVALID_COMMIT), false);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

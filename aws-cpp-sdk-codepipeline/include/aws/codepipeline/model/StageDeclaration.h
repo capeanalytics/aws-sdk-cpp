@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codepipeline/model/BlockerDeclaration.h>
 #include <aws/codepipeline/model/ActionDeclaration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about a stage and its definition.</p>
+   * <p>Represents information about a stage and its definition.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StageDeclaration">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API StageDeclaration
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the stage.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the stage.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the stage.</p>
      */
-    inline StageDeclaration& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline StageDeclaration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stage.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetBlockers(Aws::Vector<BlockerDeclaration>&& value) { m_blockersHasBeenSet = true; m_blockers = value; }
+    inline void SetBlockers(Aws::Vector<BlockerDeclaration>&& value) { m_blockersHasBeenSet = true; m_blockers = std::move(value); }
 
     /**
      * <p>Reserved for future use.</p>
@@ -102,7 +107,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline StageDeclaration& WithBlockers(Aws::Vector<BlockerDeclaration>&& value) { SetBlockers(value); return *this;}
+    inline StageDeclaration& WithBlockers(Aws::Vector<BlockerDeclaration>&& value) { SetBlockers(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>
@@ -112,7 +117,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline StageDeclaration& AddBlockers(BlockerDeclaration&& value) { m_blockersHasBeenSet = true; m_blockers.push_back(value); return *this; }
+    inline StageDeclaration& AddBlockers(BlockerDeclaration&& value) { m_blockersHasBeenSet = true; m_blockers.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The actions included in a stage.</p>
@@ -127,7 +132,7 @@ namespace Model
     /**
      * <p>The actions included in a stage.</p>
      */
-    inline void SetActions(Aws::Vector<ActionDeclaration>&& value) { m_actionsHasBeenSet = true; m_actions = value; }
+    inline void SetActions(Aws::Vector<ActionDeclaration>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
 
     /**
      * <p>The actions included in a stage.</p>
@@ -137,7 +142,7 @@ namespace Model
     /**
      * <p>The actions included in a stage.</p>
      */
-    inline StageDeclaration& WithActions(Aws::Vector<ActionDeclaration>&& value) { SetActions(value); return *this;}
+    inline StageDeclaration& WithActions(Aws::Vector<ActionDeclaration>&& value) { SetActions(std::move(value)); return *this;}
 
     /**
      * <p>The actions included in a stage.</p>
@@ -147,7 +152,7 @@ namespace Model
     /**
      * <p>The actions included in a stage.</p>
      */
-    inline StageDeclaration& AddActions(ActionDeclaration&& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
+    inline StageDeclaration& AddActions(ActionDeclaration&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_name;

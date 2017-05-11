@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elastictranscoder/model/CreateJobOutput.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -36,7 +37,6 @@ CreateJobOutput::CreateJobOutput() :
     m_segmentDurationHasBeenSet(false),
     m_watermarksHasBeenSet(false),
     m_albumArtHasBeenSet(false),
-    m_compositionHasBeenSet(false),
     m_captionsHasBeenSet(false),
     m_encryptionHasBeenSet(false)
 {
@@ -51,7 +51,6 @@ CreateJobOutput::CreateJobOutput(const JsonValue& jsonValue) :
     m_segmentDurationHasBeenSet(false),
     m_watermarksHasBeenSet(false),
     m_albumArtHasBeenSet(false),
-    m_compositionHasBeenSet(false),
     m_captionsHasBeenSet(false),
     m_encryptionHasBeenSet(false)
 {
@@ -117,16 +116,6 @@ CreateJobOutput& CreateJobOutput::operator =(const JsonValue& jsonValue)
     m_albumArt = jsonValue.GetObject("AlbumArt");
 
     m_albumArtHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("Composition"))
-  {
-    Array<JsonValue> compositionJsonList = jsonValue.GetArray("Composition");
-    for(unsigned compositionIndex = 0; compositionIndex < compositionJsonList.GetLength(); ++compositionIndex)
-    {
-      m_composition.push_back(compositionJsonList[compositionIndex].AsObject());
-    }
-    m_compositionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("Captions"))
@@ -200,17 +189,6 @@ JsonValue CreateJobOutput::Jsonize() const
   if(m_albumArtHasBeenSet)
   {
    payload.WithObject("AlbumArt", m_albumArt.Jsonize());
-
-  }
-
-  if(m_compositionHasBeenSet)
-  {
-   Array<JsonValue> compositionJsonList(m_composition.size());
-   for(unsigned compositionIndex = 0; compositionIndex < compositionJsonList.GetLength(); ++compositionIndex)
-   {
-     compositionJsonList[compositionIndex].AsObject(m_composition[compositionIndex].Jsonize());
-   }
-   payload.WithArray("Composition", std::move(compositionJsonList));
 
   }
 

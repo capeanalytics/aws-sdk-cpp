@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,10 +38,12 @@ namespace Model
    * <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated
    * gateway. It is a string made of information such as your account, gateway name,
    * and region. This ARN is used to reference the gateway in other API operations as
-   * well as resource-based authorization.</p> <note><p>For gateways activated prior
+   * well as resource-based authorization.</p> <note> <p>For gateways activated prior
    * to September 02, 2015 the gateway ARN contains the gateway name rather than the
    * gateway id. Changing the name of the gateway has no effect on the gateway
-   * ARN.</p> </note>
+   * ARN.</p> </note><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGatewayOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API ActivateGatewayResult
   {
@@ -55,7 +59,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARN.assign(value); }
@@ -64,7 +68,7 @@ namespace Model
     inline ActivateGatewayResult& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline ActivateGatewayResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline ActivateGatewayResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline ActivateGatewayResult& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/redshift/RedshiftRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,6 +27,9 @@ namespace Model
 {
 
   /**
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeTableRestoreStatusMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API DescribeTableRestoreStatusRequest : public RedshiftRequest
   {
@@ -32,6 +37,11 @@ namespace Model
     DescribeTableRestoreStatusRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Redshift cluster that the table is being restored to.</p>
      */
@@ -45,7 +55,7 @@ namespace Model
     /**
      * <p>The Amazon Redshift cluster that the table is being restored to.</p>
      */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
+    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
 
     /**
      * <p>The Amazon Redshift cluster that the table is being restored to.</p>
@@ -60,7 +70,7 @@ namespace Model
     /**
      * <p>The Amazon Redshift cluster that the table is being restored to.</p>
      */
-    inline DescribeTableRestoreStatusRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(value); return *this;}
+    inline DescribeTableRestoreStatusRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Redshift cluster that the table is being restored to.</p>
@@ -89,7 +99,7 @@ namespace Model
      * <code>DescribeTableRestoreStatus</code> returns the status of all in-progress
      * table restore requests.</p>
      */
-    inline void SetTableRestoreRequestId(Aws::String&& value) { m_tableRestoreRequestIdHasBeenSet = true; m_tableRestoreRequestId = value; }
+    inline void SetTableRestoreRequestId(Aws::String&& value) { m_tableRestoreRequestIdHasBeenSet = true; m_tableRestoreRequestId = std::move(value); }
 
     /**
      * <p>The identifier of the table restore request to return status for. If you
@@ -113,7 +123,7 @@ namespace Model
      * <code>DescribeTableRestoreStatus</code> returns the status of all in-progress
      * table restore requests.</p>
      */
-    inline DescribeTableRestoreStatusRequest& WithTableRestoreRequestId(Aws::String&& value) { SetTableRestoreRequestId(value); return *this;}
+    inline DescribeTableRestoreStatusRequest& WithTableRestoreRequestId(Aws::String&& value) { SetTableRestoreRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the table restore request to return status for. If you
@@ -169,7 +179,7 @@ namespace Model
      * the response includes only records beyond the marker, up to the value specified
      * by the <code>MaxRecords</code> parameter.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>An optional pagination token provided by a previous
@@ -193,7 +203,7 @@ namespace Model
      * the response includes only records beyond the marker, up to the value specified
      * by the <code>MaxRecords</code> parameter.</p>
      */
-    inline DescribeTableRestoreStatusRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeTableRestoreStatusRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>An optional pagination token provided by a previous

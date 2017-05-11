@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancingv2/model/TargetDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeTargetHealth.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API DescribeTargetHealthRequest : public ElasticLoadBalancingv2Request
   {
@@ -35,6 +36,11 @@ namespace Model
     DescribeTargetHealthRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline void SetTargetGroupArn(Aws::String&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = value; }
+    inline void SetTargetGroupArn(Aws::String&& value) { m_targetGroupArnHasBeenSet = true; m_targetGroupArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
      */
-    inline DescribeTargetHealthRequest& WithTargetGroupArn(Aws::String&& value) { SetTargetGroupArn(value); return *this;}
+    inline DescribeTargetHealthRequest& WithTargetGroupArn(Aws::String&& value) { SetTargetGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the target group.</p>
@@ -83,7 +89,7 @@ namespace Model
     /**
      * <p>The targets.</p>
      */
-    inline void SetTargets(Aws::Vector<TargetDescription>&& value) { m_targetsHasBeenSet = true; m_targets = value; }
+    inline void SetTargets(Aws::Vector<TargetDescription>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
 
     /**
      * <p>The targets.</p>
@@ -93,7 +99,7 @@ namespace Model
     /**
      * <p>The targets.</p>
      */
-    inline DescribeTargetHealthRequest& WithTargets(Aws::Vector<TargetDescription>&& value) { SetTargets(value); return *this;}
+    inline DescribeTargetHealthRequest& WithTargets(Aws::Vector<TargetDescription>&& value) { SetTargets(std::move(value)); return *this;}
 
     /**
      * <p>The targets.</p>
@@ -103,7 +109,7 @@ namespace Model
     /**
      * <p>The targets.</p>
      */
-    inline DescribeTargetHealthRequest& AddTargets(TargetDescription&& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
+    inline DescribeTargetHealthRequest& AddTargets(TargetDescription&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_targetGroupArn;

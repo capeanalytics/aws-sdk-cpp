@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>DescribeCacheClusters</i> action.</p>
+   * <p>Represents the input of a <code>DescribeCacheClusters</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DescribeCacheClustersMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API DescribeCacheClustersRequest : public ElastiCacheRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeCacheClustersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The user-supplied cluster identifier. If this parameter is specified, only
      * information about that specific cache cluster is returned. This parameter isn't
@@ -52,7 +62,7 @@ namespace Model
      * information about that specific cache cluster is returned. This parameter isn't
      * case sensitive.</p>
      */
-    inline void SetCacheClusterId(Aws::String&& value) { m_cacheClusterIdHasBeenSet = true; m_cacheClusterId = value; }
+    inline void SetCacheClusterId(Aws::String&& value) { m_cacheClusterIdHasBeenSet = true; m_cacheClusterId = std::move(value); }
 
     /**
      * <p>The user-supplied cluster identifier. If this parameter is specified, only
@@ -73,7 +83,7 @@ namespace Model
      * information about that specific cache cluster is returned. This parameter isn't
      * case sensitive.</p>
      */
-    inline DescribeCacheClustersRequest& WithCacheClusterId(Aws::String&& value) { SetCacheClusterId(value); return *this;}
+    inline DescribeCacheClustersRequest& WithCacheClusterId(Aws::String&& value) { SetCacheClusterId(std::move(value)); return *this;}
 
     /**
      * <p>The user-supplied cluster identifier. If this parameter is specified, only
@@ -108,77 +118,104 @@ namespace Model
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline const Aws::String& GetMarker() const{ return m_marker; }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline DescribeCacheClustersRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
-    inline DescribeCacheClustersRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeCacheClustersRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>An optional marker returned from a prior request. Use this marker for
-     * pagination of results from this action. If this parameter is specified, the
+     * pagination of results from this operation. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
-     * <i>MaxRecords</i>.</p>
+     * <code>MaxRecords</code>.</p>
      */
     inline DescribeCacheClustersRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>An optional flag that can be included in the DescribeCacheCluster request to
-     * retrieve information about the individual cache nodes.</p>
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to retrieve information about the
+     * individual cache nodes.</p>
      */
     inline bool GetShowCacheNodeInfo() const{ return m_showCacheNodeInfo; }
 
     /**
-     * <p>An optional flag that can be included in the DescribeCacheCluster request to
-     * retrieve information about the individual cache nodes.</p>
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to retrieve information about the
+     * individual cache nodes.</p>
      */
     inline void SetShowCacheNodeInfo(bool value) { m_showCacheNodeInfoHasBeenSet = true; m_showCacheNodeInfo = value; }
 
     /**
-     * <p>An optional flag that can be included in the DescribeCacheCluster request to
-     * retrieve information about the individual cache nodes.</p>
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to retrieve information about the
+     * individual cache nodes.</p>
      */
     inline DescribeCacheClustersRequest& WithShowCacheNodeInfo(bool value) { SetShowCacheNodeInfo(value); return *this;}
+
+    /**
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to show only nodes (API/CLI: clusters)
+     * that are not members of a replication group. In practice, this mean Memcached
+     * and single node Redis clusters.</p>
+     */
+    inline bool GetShowCacheClustersNotInReplicationGroups() const{ return m_showCacheClustersNotInReplicationGroups; }
+
+    /**
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to show only nodes (API/CLI: clusters)
+     * that are not members of a replication group. In practice, this mean Memcached
+     * and single node Redis clusters.</p>
+     */
+    inline void SetShowCacheClustersNotInReplicationGroups(bool value) { m_showCacheClustersNotInReplicationGroupsHasBeenSet = true; m_showCacheClustersNotInReplicationGroups = value; }
+
+    /**
+     * <p>An optional flag that can be included in the
+     * <code>DescribeCacheCluster</code> request to show only nodes (API/CLI: clusters)
+     * that are not members of a replication group. In practice, this mean Memcached
+     * and single node Redis clusters.</p>
+     */
+    inline DescribeCacheClustersRequest& WithShowCacheClustersNotInReplicationGroups(bool value) { SetShowCacheClustersNotInReplicationGroups(value); return *this;}
 
   private:
     Aws::String m_cacheClusterId;
@@ -189,6 +226,8 @@ namespace Model
     bool m_markerHasBeenSet;
     bool m_showCacheNodeInfo;
     bool m_showCacheNodeInfoHasBeenSet;
+    bool m_showCacheClustersNotInReplicationGroups;
+    bool m_showCacheClustersNotInReplicationGroupsHasBeenSet;
   };
 
 } // namespace Model

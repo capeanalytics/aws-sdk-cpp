@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/DataPipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datapipeline/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for AddTags.</p>
+   * <p>Contains the parameters for AddTags.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/AddTagsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API AddTagsRequest : public DataPipelineRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The ID of the pipeline.</p>
@@ -50,7 +55,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline.</p>
      */
-    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = value; }
+    inline void SetPipelineId(Aws::String&& value) { m_pipelineIdHasBeenSet = true; m_pipelineId = std::move(value); }
 
     /**
      * <p>The ID of the pipeline.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline.</p>
      */
-    inline AddTagsRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(value); return *this;}
+    inline AddTagsRequest& WithPipelineId(Aws::String&& value) { SetPipelineId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the pipeline.</p>
@@ -85,7 +90,7 @@ namespace Model
     /**
      * <p>The tags to add, as key/value pairs.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The tags to add, as key/value pairs.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>The tags to add, as key/value pairs.</p>
      */
-    inline AddTagsRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline AddTagsRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The tags to add, as key/value pairs.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The tags to add, as key/value pairs.</p>
      */
-    inline AddTagsRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline AddTagsRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_pipelineId;

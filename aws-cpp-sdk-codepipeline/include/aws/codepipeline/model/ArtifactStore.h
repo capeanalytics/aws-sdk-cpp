@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/model/ArtifactStoreType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/EncryptionKey.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,10 @@ namespace Model
    * <p>The Amazon S3 location where artifacts are stored for the pipeline. If this
    * Amazon S3 bucket is created manually, it must meet the requirements for AWS
    * CodePipeline. For more information, see the <a
-   * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html#CPS3Bucket">Concepts</a>.</p>
+   * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html#CPS3Bucket">Concepts</a>.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ArtifactStore">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ArtifactStore
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>The type of the artifact store, such as S3.</p>
      */
-    inline void SetType(ArtifactStoreType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(ArtifactStoreType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of the artifact store, such as S3.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The type of the artifact store, such as S3.</p>
      */
-    inline ArtifactStore& WithType(ArtifactStoreType&& value) { SetType(value); return *this;}
+    inline ArtifactStore& WithType(ArtifactStoreType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The location for storing the artifacts for a pipeline, such as an S3 bucket
@@ -87,7 +92,7 @@ namespace Model
      * <p>The location for storing the artifacts for a pipeline, such as an S3 bucket
      * or folder.</p>
      */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = value; }
+    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
 
     /**
      * <p>The location for storing the artifacts for a pipeline, such as an S3 bucket
@@ -105,7 +110,7 @@ namespace Model
      * <p>The location for storing the artifacts for a pipeline, such as an S3 bucket
      * or folder.</p>
      */
-    inline ArtifactStore& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    inline ArtifactStore& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
     /**
      * <p>The location for storing the artifacts for a pipeline, such as an S3 bucket
@@ -132,7 +137,7 @@ namespace Model
      * AWS Key Management Service (AWS KMS) key. If this is undefined, the default key
      * for Amazon S3 is used.</p>
      */
-    inline void SetEncryptionKey(EncryptionKey&& value) { m_encryptionKeyHasBeenSet = true; m_encryptionKey = value; }
+    inline void SetEncryptionKey(EncryptionKey&& value) { m_encryptionKeyHasBeenSet = true; m_encryptionKey = std::move(value); }
 
     /**
      * <p>The encryption key used to encrypt the data in the artifact store, such as an
@@ -146,7 +151,7 @@ namespace Model
      * AWS Key Management Service (AWS KMS) key. If this is undefined, the default key
      * for Amazon S3 is used.</p>
      */
-    inline ArtifactStore& WithEncryptionKey(EncryptionKey&& value) { SetEncryptionKey(value); return *this;}
+    inline ArtifactStore& WithEncryptionKey(EncryptionKey&& value) { SetEncryptionKey(std::move(value)); return *this;}
 
   private:
     ArtifactStoreType m_type;

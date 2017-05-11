@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/model/HostedZone.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains the response to the
-   * UpdateHostedZoneCommentRequest.</p>
+   * <code>UpdateHostedZoneComment</code> request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHostedZoneCommentResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API UpdateHostedZoneCommentResult
   {
@@ -50,13 +54,13 @@ namespace Model
     inline void SetHostedZone(const HostedZone& value) { m_hostedZone = value; }
 
     
-    inline void SetHostedZone(HostedZone&& value) { m_hostedZone = value; }
+    inline void SetHostedZone(HostedZone&& value) { m_hostedZone = std::move(value); }
 
     
     inline UpdateHostedZoneCommentResult& WithHostedZone(const HostedZone& value) { SetHostedZone(value); return *this;}
 
     
-    inline UpdateHostedZoneCommentResult& WithHostedZone(HostedZone&& value) { SetHostedZone(value); return *this;}
+    inline UpdateHostedZoneCommentResult& WithHostedZone(HostedZone&& value) { SetHostedZone(std::move(value)); return *this;}
 
   private:
     HostedZone m_hostedZone;

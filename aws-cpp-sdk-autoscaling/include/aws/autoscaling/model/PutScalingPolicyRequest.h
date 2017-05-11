@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/autoscaling/model/StepAdjustment.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for PutScalingPolicy.</p>
+   * <p>Contains the parameters for PutScalingPolicy.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicyType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API PutScalingPolicyRequest : public AutoScalingRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     PutScalingPolicyRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name or ARN of the group.</p>
      */
@@ -48,7 +57,7 @@ namespace Model
     /**
      * <p>The name or ARN of the group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name or ARN of the group.</p>
@@ -63,7 +72,7 @@ namespace Model
     /**
      * <p>The name or ARN of the group.</p>
      */
-    inline PutScalingPolicyRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline PutScalingPolicyRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name or ARN of the group.</p>
@@ -83,7 +92,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy.</p>
@@ -98,7 +107,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline PutScalingPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline PutScalingPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy.</p>
@@ -124,7 +133,7 @@ namespace Model
      * <code>StepScaling</code>. If the policy type is null, the value is treated as
      * <code>SimpleScaling</code>.</p>
      */
-    inline void SetPolicyType(Aws::String&& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline void SetPolicyType(Aws::String&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
 
     /**
      * <p>The policy type. Valid values are <code>SimpleScaling</code> and
@@ -145,7 +154,7 @@ namespace Model
      * <code>StepScaling</code>. If the policy type is null, the value is treated as
      * <code>SimpleScaling</code>.</p>
      */
-    inline PutScalingPolicyRequest& WithPolicyType(Aws::String&& value) { SetPolicyType(value); return *this;}
+    inline PutScalingPolicyRequest& WithPolicyType(Aws::String&& value) { SetPolicyType(std::move(value)); return *this;}
 
     /**
      * <p>The policy type. Valid values are <code>SimpleScaling</code> and
@@ -158,7 +167,7 @@ namespace Model
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline const Aws::String& GetAdjustmentType() const{ return m_adjustmentType; }
@@ -167,7 +176,7 @@ namespace Model
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline void SetAdjustmentType(const Aws::String& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = value; }
@@ -176,16 +185,16 @@ namespace Model
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
-    inline void SetAdjustmentType(Aws::String&& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = value; }
+    inline void SetAdjustmentType(Aws::String&& value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType = std::move(value); }
 
     /**
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline void SetAdjustmentType(const char* value) { m_adjustmentTypeHasBeenSet = true; m_adjustmentType.assign(value); }
@@ -194,7 +203,7 @@ namespace Model
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline PutScalingPolicyRequest& WithAdjustmentType(const Aws::String& value) { SetAdjustmentType(value); return *this;}
@@ -203,16 +212,16 @@ namespace Model
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
-    inline PutScalingPolicyRequest& WithAdjustmentType(Aws::String&& value) { SetAdjustmentType(value); return *this;}
+    inline PutScalingPolicyRequest& WithAdjustmentType(Aws::String&& value) { SetAdjustmentType(std::move(value)); return *this;}
 
     /**
      * <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>,
      * <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For
      * more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic
      * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline PutScalingPolicyRequest& WithAdjustmentType(const char* value) { SetAdjustmentType(value); return *this;}
@@ -292,7 +301,7 @@ namespace Model
      * default cooldown period for the group applies.</p> <p>This parameter is not
      * supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/Cooldown.html">Auto
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto
      * Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline int GetCooldown() const{ return m_cooldown; }
@@ -303,7 +312,7 @@ namespace Model
      * default cooldown period for the group applies.</p> <p>This parameter is not
      * supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/Cooldown.html">Auto
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto
      * Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline void SetCooldown(int value) { m_cooldownHasBeenSet = true; m_cooldown = value; }
@@ -314,7 +323,7 @@ namespace Model
      * default cooldown period for the group applies.</p> <p>This parameter is not
      * supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/Cooldown.html">Auto
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto
      * Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
      */
     inline PutScalingPolicyRequest& WithCooldown(int value) { SetCooldown(value); return *this;}
@@ -344,7 +353,7 @@ namespace Model
      * <p>This parameter is not supported if the policy type is
      * <code>SimpleScaling</code>.</p>
      */
-    inline void SetMetricAggregationType(Aws::String&& value) { m_metricAggregationTypeHasBeenSet = true; m_metricAggregationType = value; }
+    inline void SetMetricAggregationType(Aws::String&& value) { m_metricAggregationTypeHasBeenSet = true; m_metricAggregationType = std::move(value); }
 
     /**
      * <p>The aggregation type for the CloudWatch metrics. Valid values are
@@ -371,7 +380,7 @@ namespace Model
      * <p>This parameter is not supported if the policy type is
      * <code>SimpleScaling</code>.</p>
      */
-    inline PutScalingPolicyRequest& WithMetricAggregationType(Aws::String&& value) { SetMetricAggregationType(value); return *this;}
+    inline PutScalingPolicyRequest& WithMetricAggregationType(Aws::String&& value) { SetMetricAggregationType(std::move(value)); return *this;}
 
     /**
      * <p>The aggregation type for the CloudWatch metrics. Valid values are
@@ -401,7 +410,7 @@ namespace Model
      * breach.</p> <p>This parameter is required if the policy type is
      * <code>StepScaling</code> and not supported otherwise.</p>
      */
-    inline void SetStepAdjustments(Aws::Vector<StepAdjustment>&& value) { m_stepAdjustmentsHasBeenSet = true; m_stepAdjustments = value; }
+    inline void SetStepAdjustments(Aws::Vector<StepAdjustment>&& value) { m_stepAdjustmentsHasBeenSet = true; m_stepAdjustments = std::move(value); }
 
     /**
      * <p>A set of adjustments that enable you to scale based on the size of the alarm
@@ -415,7 +424,7 @@ namespace Model
      * breach.</p> <p>This parameter is required if the policy type is
      * <code>StepScaling</code> and not supported otherwise.</p>
      */
-    inline PutScalingPolicyRequest& WithStepAdjustments(Aws::Vector<StepAdjustment>&& value) { SetStepAdjustments(value); return *this;}
+    inline PutScalingPolicyRequest& WithStepAdjustments(Aws::Vector<StepAdjustment>&& value) { SetStepAdjustments(std::move(value)); return *this;}
 
     /**
      * <p>A set of adjustments that enable you to scale based on the size of the alarm
@@ -429,7 +438,7 @@ namespace Model
      * breach.</p> <p>This parameter is required if the policy type is
      * <code>StepScaling</code> and not supported otherwise.</p>
      */
-    inline PutScalingPolicyRequest& AddStepAdjustments(StepAdjustment&& value) { m_stepAdjustmentsHasBeenSet = true; m_stepAdjustments.push_back(value); return *this; }
+    inline PutScalingPolicyRequest& AddStepAdjustments(StepAdjustment&& value) { m_stepAdjustmentsHasBeenSet = true; m_stepAdjustments.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The estimated time, in seconds, until a newly launched instance can

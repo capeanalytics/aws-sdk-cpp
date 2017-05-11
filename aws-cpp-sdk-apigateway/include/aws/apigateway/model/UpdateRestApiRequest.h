@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/apigateway/model/PatchOperation.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,17 @@ namespace Model
 {
 
   /**
-   * <p>Request to update an existing <a>RestApi</a> resource in your collection.</p>
+   * <p>Request to update an existing <a>RestApi</a> resource in your
+   * collection.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateRestApiRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API UpdateRestApiRequest : public APIGatewayRequest
   {
   public:
     UpdateRestApiRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The ID of the <a>RestApi</a> you want to update.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The ID of the <a>RestApi</a> you want to update.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The ID of the <a>RestApi</a> you want to update.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The ID of the <a>RestApi</a> you want to update.</p>
      */
-    inline UpdateRestApiRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline UpdateRestApiRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <a>RestApi</a> you want to update.</p>
@@ -86,7 +92,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = value; }
+    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::move(value); }
 
     /**
      * <p>A list of update operations to be applied to the specified resource and in
@@ -98,7 +104,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline UpdateRestApiRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(value); return *this;}
+    inline UpdateRestApiRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(std::move(value)); return *this;}
 
     /**
      * <p>A list of update operations to be applied to the specified resource and in
@@ -110,7 +116,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline UpdateRestApiRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(value); return *this; }
+    inline UpdateRestApiRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_restApiId;

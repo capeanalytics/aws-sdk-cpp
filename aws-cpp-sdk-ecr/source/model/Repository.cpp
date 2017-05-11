@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecr/model/Repository.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,7 +32,8 @@ Repository::Repository() :
     m_repositoryArnHasBeenSet(false),
     m_registryIdHasBeenSet(false),
     m_repositoryNameHasBeenSet(false),
-    m_repositoryUriHasBeenSet(false)
+    m_repositoryUriHasBeenSet(false),
+    m_createdAtHasBeenSet(false)
 {
 }
 
@@ -39,7 +41,8 @@ Repository::Repository(const JsonValue& jsonValue) :
     m_repositoryArnHasBeenSet(false),
     m_registryIdHasBeenSet(false),
     m_repositoryNameHasBeenSet(false),
-    m_repositoryUriHasBeenSet(false)
+    m_repositoryUriHasBeenSet(false),
+    m_createdAtHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -74,6 +77,13 @@ Repository& Repository::operator =(const JsonValue& jsonValue)
     m_repositoryUriHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("createdAt"))
+  {
+    m_createdAt = jsonValue.GetDouble("createdAt");
+
+    m_createdAtHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -103,6 +113,11 @@ JsonValue Repository::Jsonize() const
   {
    payload.WithString("repositoryUri", m_repositoryUri);
 
+  }
+
+  if(m_createdAtHasBeenSet)
+  {
+   payload.WithDouble("createdAt", m_createdAt.SecondsWithMSPrecision());
   }
 
   return payload;

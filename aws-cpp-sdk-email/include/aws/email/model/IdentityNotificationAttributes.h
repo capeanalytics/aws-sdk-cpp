@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * <p>Represents the notification attributes of an identity, including whether an
    * identity has Amazon Simple Notification Service (Amazon SNS) topics set for
    * bounce, complaint, and/or delivery notifications, and whether feedback
-   * forwarding is enabled for bounce and complaint notifications.</p>
+   * forwarding is enabled for bounce and complaint notifications.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/IdentityNotificationAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API IdentityNotificationAttributes
   {
@@ -63,7 +68,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish bounce notifications.</p>
      */
-    inline void SetBounceTopic(Aws::String&& value) { m_bounceTopicHasBeenSet = true; m_bounceTopic = value; }
+    inline void SetBounceTopic(Aws::String&& value) { m_bounceTopicHasBeenSet = true; m_bounceTopic = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
@@ -81,7 +86,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish bounce notifications.</p>
      */
-    inline IdentityNotificationAttributes& WithBounceTopic(Aws::String&& value) { SetBounceTopic(value); return *this;}
+    inline IdentityNotificationAttributes& WithBounceTopic(Aws::String&& value) { SetBounceTopic(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
@@ -105,7 +110,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish complaint notifications.</p>
      */
-    inline void SetComplaintTopic(Aws::String&& value) { m_complaintTopicHasBeenSet = true; m_complaintTopic = value; }
+    inline void SetComplaintTopic(Aws::String&& value) { m_complaintTopicHasBeenSet = true; m_complaintTopic = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
@@ -123,7 +128,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish complaint notifications.</p>
      */
-    inline IdentityNotificationAttributes& WithComplaintTopic(Aws::String&& value) { SetComplaintTopic(value); return *this;}
+    inline IdentityNotificationAttributes& WithComplaintTopic(Aws::String&& value) { SetComplaintTopic(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
@@ -147,7 +152,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish delivery notifications.</p>
      */
-    inline void SetDeliveryTopic(Aws::String&& value) { m_deliveryTopicHasBeenSet = true; m_deliveryTopic = value; }
+    inline void SetDeliveryTopic(Aws::String&& value) { m_deliveryTopicHasBeenSet = true; m_deliveryTopic = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
@@ -165,7 +170,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will
      * publish delivery notifications.</p>
      */
-    inline IdentityNotificationAttributes& WithDeliveryTopic(Aws::String&& value) { SetDeliveryTopic(value); return *this;}
+    inline IdentityNotificationAttributes& WithDeliveryTopic(Aws::String&& value) { SetDeliveryTopic(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will

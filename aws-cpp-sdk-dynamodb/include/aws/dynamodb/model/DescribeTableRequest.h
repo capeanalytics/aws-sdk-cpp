@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/dynamodb/DynamoDBRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>DescribeTable</i> operation.</p>
+   * <p>Represents the input of a <code>DescribeTable</code> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTableInput">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API DescribeTableRequest : public DynamoDBRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the table to describe.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The name of the table to describe.</p>
      */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
+    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
 
     /**
      * <p>The name of the table to describe.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the table to describe.</p>
      */
-    inline DescribeTableRequest& WithTableName(Aws::String&& value) { SetTableName(value); return *this;}
+    inline DescribeTableRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the table to describe.</p>

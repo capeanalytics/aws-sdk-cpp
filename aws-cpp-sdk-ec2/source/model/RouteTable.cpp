@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/RouteTable.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -195,7 +196,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_routes)
       {
         Aws::StringStream routesSs;
-        routesSs << location <<  ".item." << routesIdx++;
+        routesSs << location <<  ".RouteSet." << routesIdx++;
         item.OutputToStream(oStream, routesSs.str().c_str());
       }
   }
@@ -205,7 +206,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_associations)
       {
         Aws::StringStream associationsSs;
-        associationsSs << location <<  ".item." << associationsIdx++;
+        associationsSs << location <<  ".AssociationSet." << associationsIdx++;
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
@@ -215,7 +216,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -225,7 +226,7 @@ void RouteTable::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_propagatingVgws)
       {
         Aws::StringStream propagatingVgwsSs;
-        propagatingVgwsSs << location <<  ".item." << propagatingVgwsIdx++;
+        propagatingVgwsSs << location <<  ".PropagatingVgwSet." << propagatingVgwsIdx++;
         item.OutputToStream(oStream, propagatingVgwsSs.str().c_str());
       }
   }

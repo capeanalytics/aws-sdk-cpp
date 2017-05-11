@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/datapipeline/model/TaskObject.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of PollForTask.</p>
+   * <p>Contains the output of PollForTask.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PollForTaskOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API PollForTaskResult
   {
@@ -67,7 +71,7 @@ namespace Model
      * runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a>
      * and <a>SetTaskStatus</a>.</p>
      */
-    inline void SetTaskObject(TaskObject&& value) { m_taskObject = value; }
+    inline void SetTaskObject(TaskObject&& value) { m_taskObject = std::move(value); }
 
     /**
      * <p>The information needed to complete the task that is being assigned to the
@@ -85,7 +89,7 @@ namespace Model
      * runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a>
      * and <a>SetTaskStatus</a>.</p>
      */
-    inline PollForTaskResult& WithTaskObject(TaskObject&& value) { SetTaskObject(value); return *this;}
+    inline PollForTaskResult& WithTaskObject(TaskObject&& value) { SetTaskObject(std::move(value)); return *this;}
 
   private:
     TaskObject m_taskObject;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>A tag associated with the record, stored as a key-value pair.</p>
+   * <p>A tag associated with the record, stored as a key-value pair.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/RecordTag">AWS
+   * API Reference</a></p>
    */
   class AWS_SERVICECATALOG_API RecordTag
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The key for this tag.</p>
      */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>The key for this tag.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The key for this tag.</p>
      */
-    inline RecordTag& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline RecordTag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>The key for this tag.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The value for this tag.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The value for this tag.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The value for this tag.</p>
      */
-    inline RecordTag& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline RecordTag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The value for this tag.</p>

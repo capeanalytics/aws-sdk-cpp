@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/ExpectedAttributeValue.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,6 +32,7 @@ ExpectedAttributeValue::ExpectedAttributeValue() :
     m_valueHasBeenSet(false),
     m_exists(false),
     m_existsHasBeenSet(false),
+    m_comparisonOperator(ComparisonOperator::NOT_SET),
     m_comparisonOperatorHasBeenSet(false),
     m_attributeValueListHasBeenSet(false)
 {
@@ -40,6 +42,7 @@ ExpectedAttributeValue::ExpectedAttributeValue(const JsonValue& jsonValue) :
     m_valueHasBeenSet(false),
     m_exists(false),
     m_existsHasBeenSet(false),
+    m_comparisonOperator(ComparisonOperator::NOT_SET),
     m_comparisonOperatorHasBeenSet(false),
     m_attributeValueListHasBeenSet(false)
 {

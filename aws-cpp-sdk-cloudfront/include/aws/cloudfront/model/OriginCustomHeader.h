@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * A complex type that contains information related to a Header
+   * A complex type that contains information related to a Header<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/OriginCustomHeader">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API OriginCustomHeader
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * The header's name.
      */
-    inline void SetHeaderName(Aws::String&& value) { m_headerNameHasBeenSet = true; m_headerName = value; }
+    inline void SetHeaderName(Aws::String&& value) { m_headerNameHasBeenSet = true; m_headerName = std::move(value); }
 
     /**
      * The header's name.
@@ -70,7 +75,7 @@ namespace Model
     /**
      * The header's name.
      */
-    inline OriginCustomHeader& WithHeaderName(Aws::String&& value) { SetHeaderName(value); return *this;}
+    inline OriginCustomHeader& WithHeaderName(Aws::String&& value) { SetHeaderName(std::move(value)); return *this;}
 
     /**
      * The header's name.
@@ -90,7 +95,7 @@ namespace Model
     /**
      * The header's value.
      */
-    inline void SetHeaderValue(Aws::String&& value) { m_headerValueHasBeenSet = true; m_headerValue = value; }
+    inline void SetHeaderValue(Aws::String&& value) { m_headerValueHasBeenSet = true; m_headerValue = std::move(value); }
 
     /**
      * The header's value.
@@ -105,7 +110,7 @@ namespace Model
     /**
      * The header's value.
      */
-    inline OriginCustomHeader& WithHeaderValue(Aws::String&& value) { SetHeaderValue(value); return *this;}
+    inline OriginCustomHeader& WithHeaderValue(Aws::String&& value) { SetHeaderValue(std::move(value)); return *this;}
 
     /**
      * The header's value.

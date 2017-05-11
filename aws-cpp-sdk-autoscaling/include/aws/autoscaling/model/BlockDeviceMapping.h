@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/autoscaling/model/Ebs.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a block device mapping.</p>
+   * <p>Describes a block device mapping.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/BlockDeviceMapping">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API BlockDeviceMapping
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
      */
-    inline void SetVirtualName(Aws::String&& value) { m_virtualNameHasBeenSet = true; m_virtualName = value; }
+    inline void SetVirtualName(Aws::String&& value) { m_virtualNameHasBeenSet = true; m_virtualName = std::move(value); }
 
     /**
      * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
      */
-    inline BlockDeviceMapping& WithVirtualName(Aws::String&& value) { SetVirtualName(value); return *this;}
+    inline BlockDeviceMapping& WithVirtualName(Aws::String&& value) { SetVirtualName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
@@ -96,7 +100,7 @@ namespace Model
      * <p>The device name exposed to the EC2 instance (for example,
      * <code>/dev/sdh</code> or <code>xvdh</code>).</p>
      */
-    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = value; }
+    inline void SetDeviceName(Aws::String&& value) { m_deviceNameHasBeenSet = true; m_deviceName = std::move(value); }
 
     /**
      * <p>The device name exposed to the EC2 instance (for example,
@@ -114,7 +118,7 @@ namespace Model
      * <p>The device name exposed to the EC2 instance (for example,
      * <code>/dev/sdh</code> or <code>xvdh</code>).</p>
      */
-    inline BlockDeviceMapping& WithDeviceName(Aws::String&& value) { SetDeviceName(value); return *this;}
+    inline BlockDeviceMapping& WithDeviceName(Aws::String&& value) { SetDeviceName(std::move(value)); return *this;}
 
     /**
      * <p>The device name exposed to the EC2 instance (for example,
@@ -135,7 +139,7 @@ namespace Model
     /**
      * <p>The information about the Amazon EBS volume.</p>
      */
-    inline void SetEbs(Ebs&& value) { m_ebsHasBeenSet = true; m_ebs = value; }
+    inline void SetEbs(Ebs&& value) { m_ebsHasBeenSet = true; m_ebs = std::move(value); }
 
     /**
      * <p>The information about the Amazon EBS volume.</p>
@@ -145,7 +149,7 @@ namespace Model
     /**
      * <p>The information about the Amazon EBS volume.</p>
      */
-    inline BlockDeviceMapping& WithEbs(Ebs&& value) { SetEbs(value); return *this;}
+    inline BlockDeviceMapping& WithEbs(Ebs&& value) { SetEbs(std::move(value)); return *this;}
 
     /**
      * <p>Suppresses a device mapping.</p> <p>If this parameter is true for the root

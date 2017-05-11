@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudformation/model/ResponseMetadata.h>
 #include <aws/cloudformation/model/Stack.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace CloudFormation
 namespace Model
 {
   /**
-   * <p>The output for a <a>DescribeStacks</a> action.</p>
+   * <p>The output for a <a>DescribeStacks</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStacksOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API DescribeStacksResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>A list of stack structures.</p>
      */
-    inline void SetStacks(Aws::Vector<Stack>&& value) { m_stacks = value; }
+    inline void SetStacks(Aws::Vector<Stack>&& value) { m_stacks = std::move(value); }
 
     /**
      * <p>A list of stack structures.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>A list of stack structures.</p>
      */
-    inline DescribeStacksResult& WithStacks(Aws::Vector<Stack>&& value) { SetStacks(value); return *this;}
+    inline DescribeStacksResult& WithStacks(Aws::Vector<Stack>&& value) { SetStacks(std::move(value)); return *this;}
 
     /**
      * <p>A list of stack structures.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>A list of stack structures.</p>
      */
-    inline DescribeStacksResult& AddStacks(Stack&& value) { m_stacks.push_back(value); return *this; }
+    inline DescribeStacksResult& AddStacks(Stack&& value) { m_stacks.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If the output exceeds 1 MB in size, a string that identifies the next page of
@@ -96,7 +100,7 @@ namespace Model
      * <p>If the output exceeds 1 MB in size, a string that identifies the next page of
      * stacks. If no additional page exists, this value is null.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If the output exceeds 1 MB in size, a string that identifies the next page of
@@ -114,7 +118,7 @@ namespace Model
      * <p>If the output exceeds 1 MB in size, a string that identifies the next page of
      * stacks. If no additional page exists, this value is null.</p>
      */
-    inline DescribeStacksResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeStacksResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If the output exceeds 1 MB in size, a string that identifies the next page of
@@ -129,13 +133,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeStacksResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeStacksResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeStacksResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Stack> m_stacks;

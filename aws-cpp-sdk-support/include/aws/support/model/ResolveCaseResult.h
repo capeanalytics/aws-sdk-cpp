@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Support
 namespace Model
 {
   /**
-   * <p>The status of the case returned by the <a>ResolveCase</a> operation.</p>
+   * <p>The status of the case returned by the <a>ResolveCase</a>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/ResolveCaseResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API ResolveCaseResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
      */
-    inline void SetInitialCaseStatus(Aws::String&& value) { m_initialCaseStatus = value; }
+    inline void SetInitialCaseStatus(Aws::String&& value) { m_initialCaseStatus = std::move(value); }
 
     /**
      * <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
      */
-    inline ResolveCaseResult& WithInitialCaseStatus(Aws::String&& value) { SetInitialCaseStatus(value); return *this;}
+    inline ResolveCaseResult& WithInitialCaseStatus(Aws::String&& value) { SetInitialCaseStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
@@ -93,7 +98,7 @@ namespace Model
      * <p>The status of the case after the <a>ResolveCase</a> request was
      * processed.</p>
      */
-    inline void SetFinalCaseStatus(Aws::String&& value) { m_finalCaseStatus = value; }
+    inline void SetFinalCaseStatus(Aws::String&& value) { m_finalCaseStatus = std::move(value); }
 
     /**
      * <p>The status of the case after the <a>ResolveCase</a> request was
@@ -111,7 +116,7 @@ namespace Model
      * <p>The status of the case after the <a>ResolveCase</a> request was
      * processed.</p>
      */
-    inline ResolveCaseResult& WithFinalCaseStatus(Aws::String&& value) { SetFinalCaseStatus(value); return *this;}
+    inline ResolveCaseResult& WithFinalCaseStatus(Aws::String&& value) { SetFinalCaseStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the case after the <a>ResolveCase</a> request was

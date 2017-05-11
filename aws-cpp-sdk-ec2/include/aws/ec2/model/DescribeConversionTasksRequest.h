@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
-#include <aws/ec2/model/Filter.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeConversionTasks.</p>
+   * <p>Contains the parameters for DescribeConversionTasks.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeConversionTasksRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeConversionTasksRequest : public EC2Request
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeConversionTasksRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -60,41 +69,6 @@ namespace Model
     inline DescribeConversionTasksRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
 
     /**
-     * <p>One or more filters.</p>
-     */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline DescribeConversionTasksRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline DescribeConversionTasksRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline DescribeConversionTasksRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>One or more filters.</p>
-     */
-    inline DescribeConversionTasksRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
      * <p>One or more conversion task IDs.</p>
      */
     inline const Aws::Vector<Aws::String>& GetConversionTaskIds() const{ return m_conversionTaskIds; }
@@ -107,7 +81,7 @@ namespace Model
     /**
      * <p>One or more conversion task IDs.</p>
      */
-    inline void SetConversionTaskIds(Aws::Vector<Aws::String>&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds = value; }
+    inline void SetConversionTaskIds(Aws::Vector<Aws::String>&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds = std::move(value); }
 
     /**
      * <p>One or more conversion task IDs.</p>
@@ -117,7 +91,7 @@ namespace Model
     /**
      * <p>One or more conversion task IDs.</p>
      */
-    inline DescribeConversionTasksRequest& WithConversionTaskIds(Aws::Vector<Aws::String>&& value) { SetConversionTaskIds(value); return *this;}
+    inline DescribeConversionTasksRequest& WithConversionTaskIds(Aws::Vector<Aws::String>&& value) { SetConversionTaskIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more conversion task IDs.</p>
@@ -127,7 +101,7 @@ namespace Model
     /**
      * <p>One or more conversion task IDs.</p>
      */
-    inline DescribeConversionTasksRequest& AddConversionTaskIds(Aws::String&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.push_back(value); return *this; }
+    inline DescribeConversionTasksRequest& AddConversionTaskIds(Aws::String&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more conversion task IDs.</p>
@@ -137,8 +111,6 @@ namespace Model
   private:
     bool m_dryRun;
     bool m_dryRunHasBeenSet;
-    Aws::Vector<Filter> m_filters;
-    bool m_filtersHasBeenSet;
     Aws::Vector<Aws::String> m_conversionTaskIds;
     bool m_conversionTaskIdsHasBeenSet;
   };

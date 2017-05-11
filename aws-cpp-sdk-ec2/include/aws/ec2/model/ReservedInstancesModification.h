@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/ReservedInstancesId.h>
 #include <aws/ec2/model/ReservedInstancesModificationResponse.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a Reserved Instance modification.</p>
+   * <p>Describes a Reserved Instance modification.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReservedInstancesModification">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ReservedInstancesModification
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>A unique ID for the Reserved Instance modification.</p>
      */
-    inline void SetReservedInstancesModificationId(Aws::String&& value) { m_reservedInstancesModificationIdHasBeenSet = true; m_reservedInstancesModificationId = value; }
+    inline void SetReservedInstancesModificationId(Aws::String&& value) { m_reservedInstancesModificationIdHasBeenSet = true; m_reservedInstancesModificationId = std::move(value); }
 
     /**
      * <p>A unique ID for the Reserved Instance modification.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>A unique ID for the Reserved Instance modification.</p>
      */
-    inline ReservedInstancesModification& WithReservedInstancesModificationId(Aws::String&& value) { SetReservedInstancesModificationId(value); return *this;}
+    inline ReservedInstancesModification& WithReservedInstancesModificationId(Aws::String&& value) { SetReservedInstancesModificationId(std::move(value)); return *this;}
 
     /**
      * <p>A unique ID for the Reserved Instance modification.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The IDs of one or more Reserved Instances.</p>
      */
-    inline void SetReservedInstancesIds(Aws::Vector<ReservedInstancesId>&& value) { m_reservedInstancesIdsHasBeenSet = true; m_reservedInstancesIds = value; }
+    inline void SetReservedInstancesIds(Aws::Vector<ReservedInstancesId>&& value) { m_reservedInstancesIdsHasBeenSet = true; m_reservedInstancesIds = std::move(value); }
 
     /**
      * <p>The IDs of one or more Reserved Instances.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The IDs of one or more Reserved Instances.</p>
      */
-    inline ReservedInstancesModification& WithReservedInstancesIds(Aws::Vector<ReservedInstancesId>&& value) { SetReservedInstancesIds(value); return *this;}
+    inline ReservedInstancesModification& WithReservedInstancesIds(Aws::Vector<ReservedInstancesId>&& value) { SetReservedInstancesIds(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of one or more Reserved Instances.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>The IDs of one or more Reserved Instances.</p>
      */
-    inline ReservedInstancesModification& AddReservedInstancesIds(ReservedInstancesId&& value) { m_reservedInstancesIdsHasBeenSet = true; m_reservedInstancesIds.push_back(value); return *this; }
+    inline ReservedInstancesModification& AddReservedInstancesIds(ReservedInstancesId&& value) { m_reservedInstancesIdsHasBeenSet = true; m_reservedInstancesIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Contains target configurations along with their corresponding new Reserved
@@ -134,7 +138,7 @@ namespace Model
      * <p>Contains target configurations along with their corresponding new Reserved
      * Instance IDs.</p>
      */
-    inline void SetModificationResults(Aws::Vector<ReservedInstancesModificationResponse>&& value) { m_modificationResultsHasBeenSet = true; m_modificationResults = value; }
+    inline void SetModificationResults(Aws::Vector<ReservedInstancesModificationResponse>&& value) { m_modificationResultsHasBeenSet = true; m_modificationResults = std::move(value); }
 
     /**
      * <p>Contains target configurations along with their corresponding new Reserved
@@ -146,7 +150,7 @@ namespace Model
      * <p>Contains target configurations along with their corresponding new Reserved
      * Instance IDs.</p>
      */
-    inline ReservedInstancesModification& WithModificationResults(Aws::Vector<ReservedInstancesModificationResponse>&& value) { SetModificationResults(value); return *this;}
+    inline ReservedInstancesModification& WithModificationResults(Aws::Vector<ReservedInstancesModificationResponse>&& value) { SetModificationResults(std::move(value)); return *this;}
 
     /**
      * <p>Contains target configurations along with their corresponding new Reserved
@@ -158,7 +162,7 @@ namespace Model
      * <p>Contains target configurations along with their corresponding new Reserved
      * Instance IDs.</p>
      */
-    inline ReservedInstancesModification& AddModificationResults(ReservedInstancesModificationResponse&& value) { m_modificationResultsHasBeenSet = true; m_modificationResults.push_back(value); return *this; }
+    inline ReservedInstancesModification& AddModificationResults(ReservedInstancesModificationResponse&& value) { m_modificationResultsHasBeenSet = true; m_modificationResults.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The time when the modification request was created.</p>
@@ -173,7 +177,7 @@ namespace Model
     /**
      * <p>The time when the modification request was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The time when the modification request was created.</p>
@@ -183,7 +187,7 @@ namespace Model
     /**
      * <p>The time when the modification request was created.</p>
      */
-    inline ReservedInstancesModification& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline ReservedInstancesModification& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>The time when the modification request was last updated.</p>
@@ -198,7 +202,7 @@ namespace Model
     /**
      * <p>The time when the modification request was last updated.</p>
      */
-    inline void SetUpdateDate(Aws::Utils::DateTime&& value) { m_updateDateHasBeenSet = true; m_updateDate = value; }
+    inline void SetUpdateDate(Aws::Utils::DateTime&& value) { m_updateDateHasBeenSet = true; m_updateDate = std::move(value); }
 
     /**
      * <p>The time when the modification request was last updated.</p>
@@ -208,7 +212,7 @@ namespace Model
     /**
      * <p>The time when the modification request was last updated.</p>
      */
-    inline ReservedInstancesModification& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(value); return *this;}
+    inline ReservedInstancesModification& WithUpdateDate(Aws::Utils::DateTime&& value) { SetUpdateDate(std::move(value)); return *this;}
 
     /**
      * <p>The time for the modification to become effective.</p>
@@ -223,7 +227,7 @@ namespace Model
     /**
      * <p>The time for the modification to become effective.</p>
      */
-    inline void SetEffectiveDate(Aws::Utils::DateTime&& value) { m_effectiveDateHasBeenSet = true; m_effectiveDate = value; }
+    inline void SetEffectiveDate(Aws::Utils::DateTime&& value) { m_effectiveDateHasBeenSet = true; m_effectiveDate = std::move(value); }
 
     /**
      * <p>The time for the modification to become effective.</p>
@@ -233,7 +237,7 @@ namespace Model
     /**
      * <p>The time for the modification to become effective.</p>
      */
-    inline ReservedInstancesModification& WithEffectiveDate(Aws::Utils::DateTime&& value) { SetEffectiveDate(value); return *this;}
+    inline ReservedInstancesModification& WithEffectiveDate(Aws::Utils::DateTime&& value) { SetEffectiveDate(std::move(value)); return *this;}
 
     /**
      * <p>The status of the Reserved Instances modification request.</p>
@@ -248,7 +252,7 @@ namespace Model
     /**
      * <p>The status of the Reserved Instances modification request.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the Reserved Instances modification request.</p>
@@ -263,7 +267,7 @@ namespace Model
     /**
      * <p>The status of the Reserved Instances modification request.</p>
      */
-    inline ReservedInstancesModification& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline ReservedInstancesModification& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the Reserved Instances modification request.</p>
@@ -283,7 +287,7 @@ namespace Model
     /**
      * <p>The reason for the status.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
 
     /**
      * <p>The reason for the status.</p>
@@ -298,7 +302,7 @@ namespace Model
     /**
      * <p>The reason for the status.</p>
      */
-    inline ReservedInstancesModification& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline ReservedInstancesModification& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>The reason for the status.</p>
@@ -327,7 +331,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
+    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
      * <p>A unique, case-sensitive key supplied by the client to ensure that the
@@ -351,7 +355,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline ReservedInstancesModification& WithClientToken(Aws::String&& value) { SetClientToken(value); return *this;}
+    inline ReservedInstancesModification& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
      * <p>A unique, case-sensitive key supplied by the client to ensure that the

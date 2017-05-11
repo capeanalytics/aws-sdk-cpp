@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dms/model/AvailabilityZone.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/Subnet">AWS API
+   * Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API Subnet
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The subnet identifier.</p>
      */
-    inline void SetSubnetIdentifier(Aws::String&& value) { m_subnetIdentifierHasBeenSet = true; m_subnetIdentifier = value; }
+    inline void SetSubnetIdentifier(Aws::String&& value) { m_subnetIdentifierHasBeenSet = true; m_subnetIdentifier = std::move(value); }
 
     /**
      * <p>The subnet identifier.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The subnet identifier.</p>
      */
-    inline Subnet& WithSubnetIdentifier(Aws::String&& value) { SetSubnetIdentifier(value); return *this;}
+    inline Subnet& WithSubnetIdentifier(Aws::String&& value) { SetSubnetIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The subnet identifier.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The Availability Zone of the subnet.</p>
      */
-    inline void SetSubnetAvailabilityZone(AvailabilityZone&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = value; }
+    inline void SetSubnetAvailabilityZone(AvailabilityZone&& value) { m_subnetAvailabilityZoneHasBeenSet = true; m_subnetAvailabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone of the subnet.</p>
@@ -100,7 +104,7 @@ namespace Model
     /**
      * <p>The Availability Zone of the subnet.</p>
      */
-    inline Subnet& WithSubnetAvailabilityZone(AvailabilityZone&& value) { SetSubnetAvailabilityZone(value); return *this;}
+    inline Subnet& WithSubnetAvailabilityZone(AvailabilityZone&& value) { SetSubnetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The status of the subnet.</p>
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>The status of the subnet.</p>
      */
-    inline void SetSubnetStatus(Aws::String&& value) { m_subnetStatusHasBeenSet = true; m_subnetStatus = value; }
+    inline void SetSubnetStatus(Aws::String&& value) { m_subnetStatusHasBeenSet = true; m_subnetStatus = std::move(value); }
 
     /**
      * <p>The status of the subnet.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>The status of the subnet.</p>
      */
-    inline Subnet& WithSubnetStatus(Aws::String&& value) { SetSubnetStatus(value); return *this;}
+    inline Subnet& WithSubnetStatus(Aws::String&& value) { SetSubnetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the subnet.</p>

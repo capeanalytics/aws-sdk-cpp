@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,9 +35,6 @@ namespace Firehose
 {
 namespace Model
 {
-  /**
-   * <p>Contains the output of <a>ListDeliveryStreams</a>.</p>
-   */
   class AWS_FIREHOSE_API ListDeliveryStreamsResult
   {
   public:
@@ -56,7 +55,7 @@ namespace Model
     /**
      * <p>The names of the delivery streams.</p>
      */
-    inline void SetDeliveryStreamNames(Aws::Vector<Aws::String>&& value) { m_deliveryStreamNames = value; }
+    inline void SetDeliveryStreamNames(Aws::Vector<Aws::String>&& value) { m_deliveryStreamNames = std::move(value); }
 
     /**
      * <p>The names of the delivery streams.</p>
@@ -66,7 +65,7 @@ namespace Model
     /**
      * <p>The names of the delivery streams.</p>
      */
-    inline ListDeliveryStreamsResult& WithDeliveryStreamNames(Aws::Vector<Aws::String>&& value) { SetDeliveryStreamNames(value); return *this;}
+    inline ListDeliveryStreamsResult& WithDeliveryStreamNames(Aws::Vector<Aws::String>&& value) { SetDeliveryStreamNames(std::move(value)); return *this;}
 
     /**
      * <p>The names of the delivery streams.</p>
@@ -76,7 +75,7 @@ namespace Model
     /**
      * <p>The names of the delivery streams.</p>
      */
-    inline ListDeliveryStreamsResult& AddDeliveryStreamNames(Aws::String&& value) { m_deliveryStreamNames.push_back(value); return *this; }
+    inline ListDeliveryStreamsResult& AddDeliveryStreamNames(Aws::String&& value) { m_deliveryStreamNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of the delivery streams.</p>

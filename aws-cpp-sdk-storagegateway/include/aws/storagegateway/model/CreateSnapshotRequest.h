@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/storagegateway/StorageGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
   /**
    * <p>A JSON object containing one or more of the following fields:</p> <ul> <li>
    * <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p>
-   * <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
+   * <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CreateSnapshotInput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API CreateSnapshotRequest : public StorageGatewayRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a>
@@ -53,7 +58,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a>
      * operation to return a list of gateway volumes.</p>
      */
-    inline void SetVolumeARN(Aws::String&& value) { m_volumeARNHasBeenSet = true; m_volumeARN = value; }
+    inline void SetVolumeARN(Aws::String&& value) { m_volumeARNHasBeenSet = true; m_volumeARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a>
@@ -71,7 +76,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a>
      * operation to return a list of gateway volumes.</p>
      */
-    inline CreateSnapshotRequest& WithVolumeARN(Aws::String&& value) { SetVolumeARN(value); return *this;}
+    inline CreateSnapshotRequest& WithVolumeARN(Aws::String&& value) { SetVolumeARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a>
@@ -98,7 +103,7 @@ namespace Model
      * Elastic Block Store snapshots panel in the <b>Description</b> field, and in the
      * AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
      */
-    inline void SetSnapshotDescription(Aws::String&& value) { m_snapshotDescriptionHasBeenSet = true; m_snapshotDescription = value; }
+    inline void SetSnapshotDescription(Aws::String&& value) { m_snapshotDescriptionHasBeenSet = true; m_snapshotDescription = std::move(value); }
 
     /**
      * <p>Textual description of the snapshot that appears in the Amazon EC2 console,
@@ -119,7 +124,7 @@ namespace Model
      * Elastic Block Store snapshots panel in the <b>Description</b> field, and in the
      * AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
      */
-    inline CreateSnapshotRequest& WithSnapshotDescription(Aws::String&& value) { SetSnapshotDescription(value); return *this;}
+    inline CreateSnapshotRequest& WithSnapshotDescription(Aws::String&& value) { SetSnapshotDescription(std::move(value)); return *this;}
 
     /**
      * <p>Textual description of the snapshot that appears in the Amazon EC2 console,

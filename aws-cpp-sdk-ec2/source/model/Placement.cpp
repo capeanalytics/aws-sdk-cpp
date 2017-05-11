@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Placement.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,6 +33,7 @@ namespace Model
 Placement::Placement() : 
     m_availabilityZoneHasBeenSet(false),
     m_groupNameHasBeenSet(false),
+    m_tenancy(Tenancy::NOT_SET),
     m_tenancyHasBeenSet(false),
     m_hostIdHasBeenSet(false),
     m_affinityHasBeenSet(false)
@@ -41,6 +43,7 @@ Placement::Placement() :
 Placement::Placement(const XmlNode& xmlNode) : 
     m_availabilityZoneHasBeenSet(false),
     m_groupNameHasBeenSet(false),
+    m_tenancy(Tenancy::NOT_SET),
     m_tenancyHasBeenSet(false),
     m_hostIdHasBeenSet(false),
     m_affinityHasBeenSet(false)

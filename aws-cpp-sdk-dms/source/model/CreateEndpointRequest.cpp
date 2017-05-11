@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dms/model/CreateEndpointRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,6 +24,7 @@ using namespace Aws::Utils;
 
 CreateEndpointRequest::CreateEndpointRequest() : 
     m_endpointIdentifierHasBeenSet(false),
+    m_endpointType(ReplicationEndpointTypeValue::NOT_SET),
     m_endpointTypeHasBeenSet(false),
     m_engineNameHasBeenSet(false),
     m_usernameHasBeenSet(false),
@@ -35,6 +37,7 @@ CreateEndpointRequest::CreateEndpointRequest() :
     m_kmsKeyIdHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_certificateArnHasBeenSet(false),
+    m_sslMode(DmsSslModeValue::NOT_SET),
     m_sslModeHasBeenSet(false)
 {
 }
@@ -134,6 +137,7 @@ Aws::Http::HeaderValueCollection CreateEndpointRequest::GetRequestSpecificHeader
   return headers;
 
 }
+
 
 
 

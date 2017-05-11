@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a key pair.</p>
+   * <p>Describes a key pair.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/KeyPair">AWS API
+   * Reference</a></p>
    */
   class AWS_IOT_API KeyPair
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The public key.</p>
      */
-    inline void SetPublicKey(Aws::String&& value) { m_publicKeyHasBeenSet = true; m_publicKey = value; }
+    inline void SetPublicKey(Aws::String&& value) { m_publicKeyHasBeenSet = true; m_publicKey = std::move(value); }
 
     /**
      * <p>The public key.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The public key.</p>
      */
-    inline KeyPair& WithPublicKey(Aws::String&& value) { SetPublicKey(value); return *this;}
+    inline KeyPair& WithPublicKey(Aws::String&& value) { SetPublicKey(std::move(value)); return *this;}
 
     /**
      * <p>The public key.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The private key.</p>
      */
-    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = value; }
+    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::move(value); }
 
     /**
      * <p>The private key.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The private key.</p>
      */
-    inline KeyPair& WithPrivateKey(Aws::String&& value) { SetPrivateKey(value); return *this;}
+    inline KeyPair& WithPrivateKey(Aws::String&& value) { SetPrivateKey(std::move(value)); return *this;}
 
     /**
      * <p>The private key.</p>

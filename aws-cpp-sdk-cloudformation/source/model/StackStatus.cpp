@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/StackStatus.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -45,6 +46,7 @@ namespace Aws
         static const int UPDATE_ROLLBACK_FAILED_HASH = HashingUtils::HashString("UPDATE_ROLLBACK_FAILED");
         static const int UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS_HASH = HashingUtils::HashString("UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS");
         static const int UPDATE_ROLLBACK_COMPLETE_HASH = HashingUtils::HashString("UPDATE_ROLLBACK_COMPLETE");
+        static const int REVIEW_IN_PROGRESS_HASH = HashingUtils::HashString("REVIEW_IN_PROGRESS");
 
 
         StackStatus GetStackStatusForName(const Aws::String& name)
@@ -114,6 +116,10 @@ namespace Aws
           {
             return StackStatus::UPDATE_ROLLBACK_COMPLETE;
           }
+          else if (hashCode == REVIEW_IN_PROGRESS_HASH)
+          {
+            return StackStatus::REVIEW_IN_PROGRESS;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -160,6 +166,8 @@ namespace Aws
             return "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS";
           case StackStatus::UPDATE_ROLLBACK_COMPLETE:
             return "UPDATE_ROLLBACK_COMPLETE";
+          case StackStatus::REVIEW_IN_PROGRESS:
+            return "REVIEW_IN_PROGRESS";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>Requests Amazon API Gateway to create a <a>Resource</a> resource.</p>
+   * <p>Requests Amazon API Gateway to create a <a>Resource</a>
+   * resource.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateResourceRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API CreateResourceRequest : public APIGatewayRequest
   {
   public:
     CreateResourceRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The identifier of the <a>RestApi</a> for the resource. </p>
@@ -46,7 +52,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>RestApi</a> for the resource. </p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>RestApi</a> for the resource. </p>
@@ -61,7 +67,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>RestApi</a> for the resource. </p>
      */
-    inline CreateResourceRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline CreateResourceRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>RestApi</a> for the resource. </p>
@@ -81,7 +87,7 @@ namespace Model
     /**
      * <p>The parent resource's identifier.</p>
      */
-    inline void SetParentId(Aws::String&& value) { m_parentIdHasBeenSet = true; m_parentId = value; }
+    inline void SetParentId(Aws::String&& value) { m_parentIdHasBeenSet = true; m_parentId = std::move(value); }
 
     /**
      * <p>The parent resource's identifier.</p>
@@ -96,7 +102,7 @@ namespace Model
     /**
      * <p>The parent resource's identifier.</p>
      */
-    inline CreateResourceRequest& WithParentId(Aws::String&& value) { SetParentId(value); return *this;}
+    inline CreateResourceRequest& WithParentId(Aws::String&& value) { SetParentId(std::move(value)); return *this;}
 
     /**
      * <p>The parent resource's identifier.</p>
@@ -116,7 +122,7 @@ namespace Model
     /**
      * <p>The last path segment for this resource.</p>
      */
-    inline void SetPathPart(Aws::String&& value) { m_pathPartHasBeenSet = true; m_pathPart = value; }
+    inline void SetPathPart(Aws::String&& value) { m_pathPartHasBeenSet = true; m_pathPart = std::move(value); }
 
     /**
      * <p>The last path segment for this resource.</p>
@@ -131,7 +137,7 @@ namespace Model
     /**
      * <p>The last path segment for this resource.</p>
      */
-    inline CreateResourceRequest& WithPathPart(Aws::String&& value) { SetPathPart(value); return *this;}
+    inline CreateResourceRequest& WithPathPart(Aws::String&& value) { SetPathPart(std::move(value)); return *this;}
 
     /**
      * <p>The last path segment for this resource.</p>

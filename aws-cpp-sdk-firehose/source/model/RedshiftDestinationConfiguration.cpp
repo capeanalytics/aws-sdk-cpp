@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/firehose/model/RedshiftDestinationConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -35,6 +36,10 @@ RedshiftDestinationConfiguration::RedshiftDestinationConfiguration() :
     m_passwordHasBeenSet(false),
     m_retryOptionsHasBeenSet(false),
     m_s3ConfigurationHasBeenSet(false),
+    m_processingConfigurationHasBeenSet(false),
+    m_s3BackupMode(RedshiftS3BackupMode::NOT_SET),
+    m_s3BackupModeHasBeenSet(false),
+    m_s3BackupConfigurationHasBeenSet(false),
     m_cloudWatchLoggingOptionsHasBeenSet(false)
 {
 }
@@ -47,6 +52,10 @@ RedshiftDestinationConfiguration::RedshiftDestinationConfiguration(const JsonVal
     m_passwordHasBeenSet(false),
     m_retryOptionsHasBeenSet(false),
     m_s3ConfigurationHasBeenSet(false),
+    m_processingConfigurationHasBeenSet(false),
+    m_s3BackupMode(RedshiftS3BackupMode::NOT_SET),
+    m_s3BackupModeHasBeenSet(false),
+    m_s3BackupConfigurationHasBeenSet(false),
     m_cloudWatchLoggingOptionsHasBeenSet(false)
 {
   *this = jsonValue;
@@ -103,6 +112,27 @@ RedshiftDestinationConfiguration& RedshiftDestinationConfiguration::operator =(c
     m_s3ConfigurationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("ProcessingConfiguration"))
+  {
+    m_processingConfiguration = jsonValue.GetObject("ProcessingConfiguration");
+
+    m_processingConfigurationHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("S3BackupMode"))
+  {
+    m_s3BackupMode = RedshiftS3BackupModeMapper::GetRedshiftS3BackupModeForName(jsonValue.GetString("S3BackupMode"));
+
+    m_s3BackupModeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("S3BackupConfiguration"))
+  {
+    m_s3BackupConfiguration = jsonValue.GetObject("S3BackupConfiguration");
+
+    m_s3BackupConfigurationHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("CloudWatchLoggingOptions"))
   {
     m_cloudWatchLoggingOptions = jsonValue.GetObject("CloudWatchLoggingOptions");
@@ -156,6 +186,23 @@ JsonValue RedshiftDestinationConfiguration::Jsonize() const
   if(m_s3ConfigurationHasBeenSet)
   {
    payload.WithObject("S3Configuration", m_s3Configuration.Jsonize());
+
+  }
+
+  if(m_processingConfigurationHasBeenSet)
+  {
+   payload.WithObject("ProcessingConfiguration", m_processingConfiguration.Jsonize());
+
+  }
+
+  if(m_s3BackupModeHasBeenSet)
+  {
+   payload.WithString("S3BackupMode", RedshiftS3BackupModeMapper::GetNameForRedshiftS3BackupMode(m_s3BackupMode));
+  }
+
+  if(m_s3BackupConfigurationHasBeenSet)
+  {
+   payload.WithObject("S3BackupConfiguration", m_s3BackupConfiguration.Jsonize());
 
   }
 

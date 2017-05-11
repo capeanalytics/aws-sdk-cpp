@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/TaskList.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details about the <code>DecisionTaskScheduled</code> event.</p>
+   * <p>Provides details about the <code>DecisionTaskScheduled</code>
+   * event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/DecisionTaskScheduledEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API DecisionTaskScheduledEventAttributes
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The name of the task list in which the decision task was scheduled.</p>
      */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = value; }
+    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
 
     /**
      * <p>The name of the task list in which the decision task was scheduled.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The name of the task list in which the decision task was scheduled.</p>
      */
-    inline DecisionTaskScheduledEventAttributes& WithTaskList(TaskList&& value) { SetTaskList(value); return *this;}
+    inline DecisionTaskScheduledEventAttributes& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> A task priority that, if set, specifies the priority for
@@ -98,7 +103,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = value; }
+    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = std::move(value); }
 
     /**
      * <p><i>Optional.</i> A task priority that, if set, specifies the priority for
@@ -131,7 +136,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline DecisionTaskScheduledEventAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(value); return *this;}
+    inline DecisionTaskScheduledEventAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> A task priority that, if set, specifies the priority for
@@ -166,7 +171,7 @@ namespace Model
      * in seconds; an integer greater than or equal to 0. The value "NONE" can be used
      * to specify unlimited duration.</p>
      */
-    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = value; }
+    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = std::move(value); }
 
     /**
      * <p>The maximum duration for this decision task. The task is considered timed out
@@ -190,7 +195,7 @@ namespace Model
      * in seconds; an integer greater than or equal to 0. The value "NONE" can be used
      * to specify unlimited duration.</p>
      */
-    inline DecisionTaskScheduledEventAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(value); return *this;}
+    inline DecisionTaskScheduledEventAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum duration for this decision task. The task is considered timed out

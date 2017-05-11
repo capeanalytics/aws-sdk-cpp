@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/PriceSchedule.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,6 +35,7 @@ PriceSchedule::PriceSchedule() :
     m_termHasBeenSet(false),
     m_price(0.0),
     m_priceHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
     m_active(false),
     m_activeHasBeenSet(false)
@@ -45,6 +47,7 @@ PriceSchedule::PriceSchedule(const XmlNode& xmlNode) :
     m_termHasBeenSet(false),
     m_price(0.0),
     m_priceHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
     m_active(false),
     m_activeHasBeenSet(false)
@@ -106,7 +109,7 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_activeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Active=" << m_active << "&";
+      oStream << location << index << locationValue << ".Active=" << std::boolalpha << m_active << "&";
   }
 
 }
@@ -127,7 +130,7 @@ void PriceSchedule::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_activeHasBeenSet)
   {
-      oStream << location << ".Active=" << m_active << "&";
+      oStream << location << ".Active=" << std::boolalpha << m_active << "&";
   }
 }
 

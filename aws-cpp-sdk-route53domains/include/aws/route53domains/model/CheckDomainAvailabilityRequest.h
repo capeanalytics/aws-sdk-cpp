@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53domains/Route53Domains_EXPORTS.h>
 #include <aws/route53domains/Route53DomainsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>The CheckDomainAvailability request contains the following elements.</p>
+   * <p>The CheckDomainAvailability request contains the following
+   * elements.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailabilityRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53DOMAINS_API CheckDomainAvailabilityRequest : public Route53DomainsRequest
   {
@@ -35,59 +40,60 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
     inline const Aws::String& GetDomainName() const{ return m_domainName; }
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
     inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
     inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
     inline CheckDomainAvailabilityRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
-    inline CheckDomainAvailabilityRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline CheckDomainAvailabilityRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of a domain.</p> <p>Type: String</p> <p>Default: None</p>
+     * <p>The name of the domain that you want to get availability for.</p>
      * <p>Constraints: The domain name can contain only the letters a through z, the
      * numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not
-     * supported.</p> <p>Required: Yes</p>
+     * supported.</p>
      */
     inline CheckDomainAvailabilityRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
 
@@ -104,7 +110,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetIdnLangCode(Aws::String&& value) { m_idnLangCodeHasBeenSet = true; m_idnLangCode = value; }
+    inline void SetIdnLangCode(Aws::String&& value) { m_idnLangCodeHasBeenSet = true; m_idnLangCode = std::move(value); }
 
     /**
      * <p>Reserved for future use.</p>
@@ -119,7 +125,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline CheckDomainAvailabilityRequest& WithIdnLangCode(Aws::String&& value) { SetIdnLangCode(value); return *this;}
+    inline CheckDomainAvailabilityRequest& WithIdnLangCode(Aws::String&& value) { SetIdnLangCode(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>

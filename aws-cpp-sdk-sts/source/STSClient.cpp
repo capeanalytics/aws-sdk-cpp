@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -99,10 +100,21 @@ void STSClient::init(const ClientConfiguration& config)
   m_uri = ss.str();
 }
 
+Aws::String STSClient::ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const
+{
+  Aws::StringStream ss;
+  ss << "https://" << STSEndpoint::ForRegion(region);
+  ss << "?" << requestToConvert.SerializePayload();
+
+  URI uri(ss.str());
+  return GeneratePresignedUrl(uri, HttpMethod::HTTP_GET, region, 3600);
+}
+
 AssumeRoleOutcome STSClient::AssumeRole(const AssumeRoleRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -116,7 +128,10 @@ AssumeRoleOutcome STSClient::AssumeRole(const AssumeRoleRequest& request) const
 
 AssumeRoleOutcomeCallable STSClient::AssumeRoleCallable(const AssumeRoleRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AssumeRole( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< AssumeRoleOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AssumeRole(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::AssumeRoleAsync(const AssumeRoleRequest& request, const AssumeRoleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -132,7 +147,8 @@ void STSClient::AssumeRoleAsyncHelper(const AssumeRoleRequest& request, const As
 AssumeRoleWithSAMLOutcome STSClient::AssumeRoleWithSAML(const AssumeRoleWithSAMLRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -146,7 +162,10 @@ AssumeRoleWithSAMLOutcome STSClient::AssumeRoleWithSAML(const AssumeRoleWithSAML
 
 AssumeRoleWithSAMLOutcomeCallable STSClient::AssumeRoleWithSAMLCallable(const AssumeRoleWithSAMLRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AssumeRoleWithSAML( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< AssumeRoleWithSAMLOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AssumeRoleWithSAML(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::AssumeRoleWithSAMLAsync(const AssumeRoleWithSAMLRequest& request, const AssumeRoleWithSAMLResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -162,7 +181,8 @@ void STSClient::AssumeRoleWithSAMLAsyncHelper(const AssumeRoleWithSAMLRequest& r
 AssumeRoleWithWebIdentityOutcome STSClient::AssumeRoleWithWebIdentity(const AssumeRoleWithWebIdentityRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -176,7 +196,10 @@ AssumeRoleWithWebIdentityOutcome STSClient::AssumeRoleWithWebIdentity(const Assu
 
 AssumeRoleWithWebIdentityOutcomeCallable STSClient::AssumeRoleWithWebIdentityCallable(const AssumeRoleWithWebIdentityRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AssumeRoleWithWebIdentity( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< AssumeRoleWithWebIdentityOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AssumeRoleWithWebIdentity(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::AssumeRoleWithWebIdentityAsync(const AssumeRoleWithWebIdentityRequest& request, const AssumeRoleWithWebIdentityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -192,7 +215,8 @@ void STSClient::AssumeRoleWithWebIdentityAsyncHelper(const AssumeRoleWithWebIden
 DecodeAuthorizationMessageOutcome STSClient::DecodeAuthorizationMessage(const DecodeAuthorizationMessageRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -206,7 +230,10 @@ DecodeAuthorizationMessageOutcome STSClient::DecodeAuthorizationMessage(const De
 
 DecodeAuthorizationMessageOutcomeCallable STSClient::DecodeAuthorizationMessageCallable(const DecodeAuthorizationMessageRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DecodeAuthorizationMessage( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< DecodeAuthorizationMessageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DecodeAuthorizationMessage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::DecodeAuthorizationMessageAsync(const DecodeAuthorizationMessageRequest& request, const DecodeAuthorizationMessageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -222,7 +249,8 @@ void STSClient::DecodeAuthorizationMessageAsyncHelper(const DecodeAuthorizationM
 GetCallerIdentityOutcome STSClient::GetCallerIdentity(const GetCallerIdentityRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -236,7 +264,10 @@ GetCallerIdentityOutcome STSClient::GetCallerIdentity(const GetCallerIdentityReq
 
 GetCallerIdentityOutcomeCallable STSClient::GetCallerIdentityCallable(const GetCallerIdentityRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetCallerIdentity( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetCallerIdentityOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetCallerIdentity(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::GetCallerIdentityAsync(const GetCallerIdentityRequest& request, const GetCallerIdentityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -252,7 +283,8 @@ void STSClient::GetCallerIdentityAsyncHelper(const GetCallerIdentityRequest& req
 GetFederationTokenOutcome STSClient::GetFederationToken(const GetFederationTokenRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -266,7 +298,10 @@ GetFederationTokenOutcome STSClient::GetFederationToken(const GetFederationToken
 
 GetFederationTokenOutcomeCallable STSClient::GetFederationTokenCallable(const GetFederationTokenRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetFederationToken( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetFederationTokenOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetFederationToken(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::GetFederationTokenAsync(const GetFederationTokenRequest& request, const GetFederationTokenResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -282,7 +317,8 @@ void STSClient::GetFederationTokenAsyncHelper(const GetFederationTokenRequest& r
 GetSessionTokenOutcome STSClient::GetSessionToken(const GetSessionTokenRequest& request) const
 {
   Aws::StringStream ss;
-  ss << m_uri << "/";
+  ss << m_uri;
+  ss << "/";
   XmlOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
   if(outcome.IsSuccess())
   {
@@ -296,7 +332,10 @@ GetSessionTokenOutcome STSClient::GetSessionToken(const GetSessionTokenRequest& 
 
 GetSessionTokenOutcomeCallable STSClient::GetSessionTokenCallable(const GetSessionTokenRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetSessionToken( request ); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetSessionTokenOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetSessionToken(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void STSClient::GetSessionTokenAsync(const GetSessionTokenRequest& request, const GetSessionTokenResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -308,4 +347,6 @@ void STSClient::GetSessionTokenAsyncHelper(const GetSessionTokenRequest& request
 {
   handler(this, request, GetSessionToken(request), context);
 }
+
+
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace StorageGateway
 namespace Model
 {
   /**
-   * <p>DisableGatewayOutput</p>
+   * <p>DisableGatewayOutput</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/DisableGatewayOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API DisableGatewayResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The unique Amazon Resource Name of the disabled gateway.</p>
      */
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARN = std::move(value); }
 
     /**
      * <p>The unique Amazon Resource Name of the disabled gateway.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The unique Amazon Resource Name of the disabled gateway.</p>
      */
-    inline DisableGatewayResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline DisableGatewayResult& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     /**
      * <p>The unique Amazon Resource Name of the disabled gateway.</p>

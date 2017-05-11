@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * when an email that Amazon SES receives on your behalf bounces.</p> <p>For
    * information about receiving email through Amazon SES, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ExtensionField">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ExtensionField
   {
@@ -67,7 +71,7 @@ namespace Model
      * inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes
      * only.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the header to add. Must be between 1 and 50 characters,
@@ -88,7 +92,7 @@ namespace Model
      * inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes
      * only.</p>
      */
-    inline ExtensionField& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ExtensionField& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the header to add. Must be between 1 and 50 characters,
@@ -113,7 +117,7 @@ namespace Model
      * <p>The value of the header to add. Must be less than 2048 characters, and must
      * not contain newline characters ("\r" or "\n").</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The value of the header to add. Must be less than 2048 characters, and must
@@ -131,7 +135,7 @@ namespace Model
      * <p>The value of the header to add. Must be less than 2048 characters, and must
      * not contain newline characters ("\r" or "\n").</p>
      */
-    inline ExtensionField& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline ExtensionField& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The value of the header to add. Must be less than 2048 characters, and must

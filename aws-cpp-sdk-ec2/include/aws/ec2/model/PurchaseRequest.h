@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes a request to purchase Scheduled Instances.</p>
+   * <p>Describes a request to purchase Scheduled Instances.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/PurchaseRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API PurchaseRequest
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The purchase token.</p>
      */
-    inline void SetPurchaseToken(Aws::String&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = value; }
+    inline void SetPurchaseToken(Aws::String&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = std::move(value); }
 
     /**
      * <p>The purchase token.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The purchase token.</p>
      */
-    inline PurchaseRequest& WithPurchaseToken(Aws::String&& value) { SetPurchaseToken(value); return *this;}
+    inline PurchaseRequest& WithPurchaseToken(Aws::String&& value) { SetPurchaseToken(std::move(value)); return *this;}
 
     /**
      * <p>The purchase token.</p>

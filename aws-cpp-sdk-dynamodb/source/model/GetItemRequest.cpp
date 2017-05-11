@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/GetItemRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -27,6 +28,7 @@ GetItemRequest::GetItemRequest() :
     m_attributesToGetHasBeenSet(false),
     m_consistentRead(false),
     m_consistentReadHasBeenSet(false),
+    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
     m_returnConsumedCapacityHasBeenSet(false),
     m_projectionExpressionHasBeenSet(false),
     m_expressionAttributeNamesHasBeenSet(false)
@@ -103,6 +105,7 @@ Aws::Http::HeaderValueCollection GetItemRequest::GetRequestSpecificHeaders() con
   return headers;
 
 }
+
 
 
 

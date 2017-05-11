@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/CodePipelineRequest.h>
 #include <aws/codepipeline/model/ActionTypeId.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a poll for third party jobs action.</p>
+   * <p>Represents the input of a poll for third party jobs action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PollForThirdPartyJobsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API PollForThirdPartyJobsRequest : public CodePipelineRequest
   {
@@ -35,6 +40,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const ActionTypeId& GetActionTypeId() const{ return m_actionTypeId; }
 
@@ -42,13 +48,13 @@ namespace Model
     inline void SetActionTypeId(const ActionTypeId& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = value; }
 
     
-    inline void SetActionTypeId(ActionTypeId&& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = value; }
+    inline void SetActionTypeId(ActionTypeId&& value) { m_actionTypeIdHasBeenSet = true; m_actionTypeId = std::move(value); }
 
     
     inline PollForThirdPartyJobsRequest& WithActionTypeId(const ActionTypeId& value) { SetActionTypeId(value); return *this;}
 
     
-    inline PollForThirdPartyJobsRequest& WithActionTypeId(ActionTypeId&& value) { SetActionTypeId(value); return *this;}
+    inline PollForThirdPartyJobsRequest& WithActionTypeId(ActionTypeId&& value) { SetActionTypeId(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of jobs to return in a poll for jobs call.</p>

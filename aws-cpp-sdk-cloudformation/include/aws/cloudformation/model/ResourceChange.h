@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -21,6 +22,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudformation/model/ResourceAttribute.h>
 #include <aws/cloudformation/model/ResourceChangeDetail.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
   /**
    * <p>The <code>ResourceChange</code> structure describes the resource and the
    * action that AWS CloudFormation will perform on it if you execute this change
-   * set.</p>
+   * set.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ResourceChange">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API ResourceChange
   {
@@ -70,7 +74,7 @@ namespace Model
      * <code>Add</code> (adds a new resource), <code>Modify</code> (changes a
      * resource), or <code>Remove</code> (deletes a resource).</p>
      */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>The action that AWS CloudFormation takes on the resource, such as
@@ -84,7 +88,7 @@ namespace Model
      * <code>Add</code> (adds a new resource), <code>Modify</code> (changes a
      * resource), or <code>Remove</code> (deletes a resource).</p>
      */
-    inline ResourceChange& WithAction(ChangeAction&& value) { SetAction(value); return *this;}
+    inline ResourceChange& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
 
     /**
      * <p>The resource's logical ID, which is defined in the stack's template.</p>
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>The resource's logical ID, which is defined in the stack's template.</p>
      */
-    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
+    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
 
     /**
      * <p>The resource's logical ID, which is defined in the stack's template.</p>
@@ -114,7 +118,7 @@ namespace Model
     /**
      * <p>The resource's logical ID, which is defined in the stack's template.</p>
      */
-    inline ResourceChange& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(value); return *this;}
+    inline ResourceChange& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The resource's logical ID, which is defined in the stack's template.</p>
@@ -137,7 +141,7 @@ namespace Model
      * <p>The resource's physical ID (resource name). Resources that you are adding
      * don't have physical IDs because they haven't been created.</p>
      */
-    inline void SetPhysicalResourceId(Aws::String&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = value; }
+    inline void SetPhysicalResourceId(Aws::String&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = std::move(value); }
 
     /**
      * <p>The resource's physical ID (resource name). Resources that you are adding
@@ -155,7 +159,7 @@ namespace Model
      * <p>The resource's physical ID (resource name). Resources that you are adding
      * don't have physical IDs because they haven't been created.</p>
      */
-    inline ResourceChange& WithPhysicalResourceId(Aws::String&& value) { SetPhysicalResourceId(value); return *this;}
+    inline ResourceChange& WithPhysicalResourceId(Aws::String&& value) { SetPhysicalResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The resource's physical ID (resource name). Resources that you are adding
@@ -179,7 +183,7 @@ namespace Model
      * <p>The type of AWS CloudFormation resource, such as
      * <code>AWS::S3::Bucket</code>.</p>
      */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
      * <p>The type of AWS CloudFormation resource, such as
@@ -197,7 +201,7 @@ namespace Model
      * <p>The type of AWS CloudFormation resource, such as
      * <code>AWS::S3::Bucket</code>.</p>
      */
-    inline ResourceChange& WithResourceType(Aws::String&& value) { SetResourceType(value); return *this;}
+    inline ResourceChange& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
 
     /**
      * <p>The type of AWS CloudFormation resource, such as
@@ -257,7 +261,7 @@ namespace Model
      * value of <code>Always</code> has the most impact, followed by
      * <code>Conditionally</code>, and then <code>Never</code>.</p>
      */
-    inline void SetReplacement(Replacement&& value) { m_replacementHasBeenSet = true; m_replacement = value; }
+    inline void SetReplacement(Replacement&& value) { m_replacementHasBeenSet = true; m_replacement = std::move(value); }
 
     /**
      * <p>For the <code>Modify</code> action, indicates whether AWS CloudFormation will
@@ -293,7 +297,7 @@ namespace Model
      * value of <code>Always</code> has the most impact, followed by
      * <code>Conditionally</code>, and then <code>Never</code>.</p>
      */
-    inline ResourceChange& WithReplacement(Replacement&& value) { SetReplacement(value); return *this;}
+    inline ResourceChange& WithReplacement(Replacement&& value) { SetReplacement(std::move(value)); return *this;}
 
     /**
      * <p>For the <code>Modify</code> action, indicates which resource attribute is
@@ -314,7 +318,7 @@ namespace Model
      * triggering this update, such as a change in the resource attribute's
      * <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
      */
-    inline void SetScope(Aws::Vector<ResourceAttribute>&& value) { m_scopeHasBeenSet = true; m_scope = value; }
+    inline void SetScope(Aws::Vector<ResourceAttribute>&& value) { m_scopeHasBeenSet = true; m_scope = std::move(value); }
 
     /**
      * <p>For the <code>Modify</code> action, indicates which resource attribute is
@@ -328,7 +332,7 @@ namespace Model
      * triggering this update, such as a change in the resource attribute's
      * <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
      */
-    inline ResourceChange& WithScope(Aws::Vector<ResourceAttribute>&& value) { SetScope(value); return *this;}
+    inline ResourceChange& WithScope(Aws::Vector<ResourceAttribute>&& value) { SetScope(std::move(value)); return *this;}
 
     /**
      * <p>For the <code>Modify</code> action, indicates which resource attribute is
@@ -342,7 +346,7 @@ namespace Model
      * triggering this update, such as a change in the resource attribute's
      * <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
      */
-    inline ResourceChange& AddScope(ResourceAttribute&& value) { m_scopeHasBeenSet = true; m_scope.push_back(value); return *this; }
+    inline ResourceChange& AddScope(ResourceAttribute&& value) { m_scopeHasBeenSet = true; m_scope.push_back(std::move(value)); return *this; }
 
     /**
      * <p>For the <code>Modify</code> action, a list of
@@ -363,7 +367,7 @@ namespace Model
      * <code>ResourceChangeDetail</code> structures that describes the changes that AWS
      * CloudFormation will make to the resource. </p>
      */
-    inline void SetDetails(Aws::Vector<ResourceChangeDetail>&& value) { m_detailsHasBeenSet = true; m_details = value; }
+    inline void SetDetails(Aws::Vector<ResourceChangeDetail>&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
 
     /**
      * <p>For the <code>Modify</code> action, a list of
@@ -377,7 +381,7 @@ namespace Model
      * <code>ResourceChangeDetail</code> structures that describes the changes that AWS
      * CloudFormation will make to the resource. </p>
      */
-    inline ResourceChange& WithDetails(Aws::Vector<ResourceChangeDetail>&& value) { SetDetails(value); return *this;}
+    inline ResourceChange& WithDetails(Aws::Vector<ResourceChangeDetail>&& value) { SetDetails(std::move(value)); return *this;}
 
     /**
      * <p>For the <code>Modify</code> action, a list of
@@ -391,7 +395,7 @@ namespace Model
      * <code>ResourceChangeDetail</code> structures that describes the changes that AWS
      * CloudFormation will make to the resource. </p>
      */
-    inline ResourceChange& AddDetails(ResourceChangeDetail&& value) { m_detailsHasBeenSet = true; m_details.push_back(value); return *this; }
+    inline ResourceChange& AddDetails(ResourceChangeDetail&& value) { m_detailsHasBeenSet = true; m_details.push_back(std::move(value)); return *this; }
 
   private:
     ChangeAction m_action;

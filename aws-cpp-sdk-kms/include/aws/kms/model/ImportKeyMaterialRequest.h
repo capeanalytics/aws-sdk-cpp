@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/kms/KMSRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/Array.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/kms/model/ExpirationModelType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,13 +39,14 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The identifier of the CMK to import the key material into. The CMK's
      * <code>Origin</code> must be <code>EXTERNAL</code>.</p> <p>A valid identifier is
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
     inline const Aws::String& GetKeyId() const{ return m_keyId; }
@@ -54,7 +57,7 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
     inline void SetKeyId(const Aws::String& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
@@ -65,10 +68,10 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
 
     /**
      * <p>The identifier of the CMK to import the key material into. The CMK's
@@ -76,7 +79,7 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
     inline void SetKeyId(const char* value) { m_keyIdHasBeenSet = true; m_keyId.assign(value); }
@@ -87,7 +90,7 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
     inline ImportKeyMaterialRequest& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
@@ -98,10 +101,10 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
-    inline ImportKeyMaterialRequest& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline ImportKeyMaterialRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the CMK to import the key material into. The CMK's
@@ -109,7 +112,7 @@ namespace Model
      * the unique key ID or the Amazon Resource Name (ARN) of the CMK. Examples:</p>
      * <ul> <li> <p>Unique key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> <li> <p>Key ARN:
-     * <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p> </li> </ul>
      */
     inline ImportKeyMaterialRequest& WithKeyId(const char* value) { SetKeyId(value); return *this;}
@@ -133,7 +136,7 @@ namespace Model
      * <a>GetParametersForImport</a> request. It must be from the same response that
      * contained the public key that you used to encrypt the key material.</p>
      */
-    inline void SetImportToken(Aws::Utils::ByteBuffer&& value) { m_importTokenHasBeenSet = true; m_importToken = value; }
+    inline void SetImportToken(Aws::Utils::ByteBuffer&& value) { m_importTokenHasBeenSet = true; m_importToken = std::move(value); }
 
     /**
      * <p>The import token that you received in the response to a previous
@@ -147,7 +150,7 @@ namespace Model
      * <a>GetParametersForImport</a> request. It must be from the same response that
      * contained the public key that you used to encrypt the key material.</p>
      */
-    inline ImportKeyMaterialRequest& WithImportToken(Aws::Utils::ByteBuffer&& value) { SetImportToken(value); return *this;}
+    inline ImportKeyMaterialRequest& WithImportToken(Aws::Utils::ByteBuffer&& value) { SetImportToken(std::move(value)); return *this;}
 
     /**
      * <p>The encrypted key material to import. It must be encrypted with the public
@@ -171,7 +174,7 @@ namespace Model
      * <a>GetParametersForImport</a> request, using the wrapping algorithm that you
      * specified in that request.</p>
      */
-    inline void SetEncryptedKeyMaterial(Aws::Utils::ByteBuffer&& value) { m_encryptedKeyMaterialHasBeenSet = true; m_encryptedKeyMaterial = value; }
+    inline void SetEncryptedKeyMaterial(Aws::Utils::ByteBuffer&& value) { m_encryptedKeyMaterialHasBeenSet = true; m_encryptedKeyMaterial = std::move(value); }
 
     /**
      * <p>The encrypted key material to import. It must be encrypted with the public
@@ -187,7 +190,7 @@ namespace Model
      * <a>GetParametersForImport</a> request, using the wrapping algorithm that you
      * specified in that request.</p>
      */
-    inline ImportKeyMaterialRequest& WithEncryptedKeyMaterial(Aws::Utils::ByteBuffer&& value) { SetEncryptedKeyMaterial(value); return *this;}
+    inline ImportKeyMaterialRequest& WithEncryptedKeyMaterial(Aws::Utils::ByteBuffer&& value) { SetEncryptedKeyMaterial(std::move(value)); return *this;}
 
     /**
      * <p>The time at which the imported key material expires. When the key material
@@ -211,7 +214,7 @@ namespace Model
      * omit this parameter when the <code>ExpirationModel</code> parameter is set to
      * <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>. Otherwise it is required.</p>
      */
-    inline void SetValidTo(Aws::Utils::DateTime&& value) { m_validToHasBeenSet = true; m_validTo = value; }
+    inline void SetValidTo(Aws::Utils::DateTime&& value) { m_validToHasBeenSet = true; m_validTo = std::move(value); }
 
     /**
      * <p>The time at which the imported key material expires. When the key material
@@ -227,7 +230,7 @@ namespace Model
      * omit this parameter when the <code>ExpirationModel</code> parameter is set to
      * <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>. Otherwise it is required.</p>
      */
-    inline ImportKeyMaterialRequest& WithValidTo(Aws::Utils::DateTime&& value) { SetValidTo(value); return *this;}
+    inline ImportKeyMaterialRequest& WithValidTo(Aws::Utils::DateTime&& value) { SetValidTo(std::move(value)); return *this;}
 
     /**
      * <p>Specifies whether the key material expires. The default is
@@ -254,7 +257,7 @@ namespace Model
      * <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must omit the
      * <code>ValidTo</code> parameter.</p>
      */
-    inline void SetExpirationModel(ExpirationModelType&& value) { m_expirationModelHasBeenSet = true; m_expirationModel = value; }
+    inline void SetExpirationModel(ExpirationModelType&& value) { m_expirationModelHasBeenSet = true; m_expirationModel = std::move(value); }
 
     /**
      * <p>Specifies whether the key material expires. The default is
@@ -272,7 +275,7 @@ namespace Model
      * <code>KEY_MATERIAL_DOES_NOT_EXPIRE</code>, you must omit the
      * <code>ValidTo</code> parameter.</p>
      */
-    inline ImportKeyMaterialRequest& WithExpirationModel(ExpirationModelType&& value) { SetExpirationModel(value); return *this;}
+    inline ImportKeyMaterialRequest& WithExpirationModel(ExpirationModelType&& value) { SetExpirationModel(std::move(value)); return *this;}
 
   private:
     Aws::String m_keyId;

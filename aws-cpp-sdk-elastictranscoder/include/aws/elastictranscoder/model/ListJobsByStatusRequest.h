@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/elastictranscoder/ElasticTranscoderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>The <code>ListJobsByStatusRequest</code> structure.</p>
+   * <p>The <code>ListJobsByStatusRequest</code> structure.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ListJobsByStatusRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API ListJobsByStatusRequest : public ElasticTranscoderRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>To get information about all of the jobs associated with the current AWS
@@ -61,7 +67,7 @@ namespace Model
      * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
      * <code>Canceled</code>, or <code>Error</code>.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>To get information about all of the jobs associated with the current AWS
@@ -85,7 +91,7 @@ namespace Model
      * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
      * <code>Canceled</code>, or <code>Error</code>.</p>
      */
-    inline ListJobsByStatusRequest& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline ListJobsByStatusRequest& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>To get information about all of the jobs associated with the current AWS
@@ -114,7 +120,7 @@ namespace Model
      * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
      * enter <code>false</code>. </p>
      */
-    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = value; }
+    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = std::move(value); }
 
     /**
      * <p> To list jobs in chronological order by the date and time that they were
@@ -135,7 +141,7 @@ namespace Model
      * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
      * enter <code>false</code>. </p>
      */
-    inline ListJobsByStatusRequest& WithAscending(Aws::String&& value) { SetAscending(value); return *this;}
+    inline ListJobsByStatusRequest& WithAscending(Aws::String&& value) { SetAscending(std::move(value)); return *this;}
 
     /**
      * <p> To list jobs in chronological order by the date and time that they were
@@ -163,7 +169,7 @@ namespace Model
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
+    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
 
     /**
      * <p> When Elastic Transcoder returns more than one page of results, use
@@ -184,7 +190,7 @@ namespace Model
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline ListJobsByStatusRequest& WithPageToken(Aws::String&& value) { SetPageToken(value); return *this;}
+    inline ListJobsByStatusRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
 
     /**
      * <p> When Elastic Transcoder returns more than one page of results, use

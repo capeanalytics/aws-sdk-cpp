@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudsearch/model/DoubleOptions.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -121,22 +122,22 @@ void DoubleOptions::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_facetEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".FacetEnabled=" << m_facetEnabled << "&";
+      oStream << location << index << locationValue << ".FacetEnabled=" << std::boolalpha << m_facetEnabled << "&";
   }
 
   if(m_searchEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SearchEnabled=" << m_searchEnabled << "&";
+      oStream << location << index << locationValue << ".SearchEnabled=" << std::boolalpha << m_searchEnabled << "&";
   }
 
   if(m_returnEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ReturnEnabled=" << m_returnEnabled << "&";
+      oStream << location << index << locationValue << ".ReturnEnabled=" << std::boolalpha << m_returnEnabled << "&";
   }
 
   if(m_sortEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SortEnabled=" << m_sortEnabled << "&";
+      oStream << location << index << locationValue << ".SortEnabled=" << std::boolalpha << m_sortEnabled << "&";
   }
 
 }
@@ -153,19 +154,19 @@ void DoubleOptions::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_facetEnabledHasBeenSet)
   {
-      oStream << location << ".FacetEnabled=" << m_facetEnabled << "&";
+      oStream << location << ".FacetEnabled=" << std::boolalpha << m_facetEnabled << "&";
   }
   if(m_searchEnabledHasBeenSet)
   {
-      oStream << location << ".SearchEnabled=" << m_searchEnabled << "&";
+      oStream << location << ".SearchEnabled=" << std::boolalpha << m_searchEnabled << "&";
   }
   if(m_returnEnabledHasBeenSet)
   {
-      oStream << location << ".ReturnEnabled=" << m_returnEnabled << "&";
+      oStream << location << ".ReturnEnabled=" << std::boolalpha << m_returnEnabled << "&";
   }
   if(m_sortEnabledHasBeenSet)
   {
-      oStream << location << ".SortEnabled=" << m_sortEnabled << "&";
+      oStream << location << ".SortEnabled=" << std::boolalpha << m_sortEnabled << "&";
   }
 }
 

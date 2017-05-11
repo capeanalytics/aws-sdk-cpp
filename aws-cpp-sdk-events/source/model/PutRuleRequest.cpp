@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/events/model/PutRuleRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -25,6 +26,7 @@ PutRuleRequest::PutRuleRequest() :
     m_nameHasBeenSet(false),
     m_scheduleExpressionHasBeenSet(false),
     m_eventPatternHasBeenSet(false),
+    m_state(RuleState::NOT_SET),
     m_stateHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_roleArnHasBeenSet(false)
@@ -80,6 +82,7 @@ Aws::Http::HeaderValueCollection PutRuleRequest::GetRequestSpecificHeaders() con
   return headers;
 
 }
+
 
 
 

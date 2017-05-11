@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of QueryObjects.</p>
+   * <p>Contains the output of QueryObjects.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/QueryObjectsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API QueryObjectsResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The identifiers that match the query selectors.</p>
      */
-    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_ids = value; }
+    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_ids = std::move(value); }
 
     /**
      * <p>The identifiers that match the query selectors.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The identifiers that match the query selectors.</p>
      */
-    inline QueryObjectsResult& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(value); return *this;}
+    inline QueryObjectsResult& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(std::move(value)); return *this;}
 
     /**
      * <p>The identifiers that match the query selectors.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The identifiers that match the query selectors.</p>
      */
-    inline QueryObjectsResult& AddIds(Aws::String&& value) { m_ids.push_back(value); return *this; }
+    inline QueryObjectsResult& AddIds(Aws::String&& value) { m_ids.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The identifiers that match the query selectors.</p>
@@ -102,7 +106,7 @@ namespace Model
      * results, call <code>QueryObjects</code> again with this marker value. If the
      * value is null, there are no more results.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>The starting point for the next page of results. To view the next page of
@@ -123,7 +127,7 @@ namespace Model
      * results, call <code>QueryObjects</code> again with this marker value. If the
      * value is null, there are no more results.</p>
      */
-    inline QueryObjectsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline QueryObjectsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The starting point for the next page of results. To view the next page of

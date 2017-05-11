@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/devicefarm/model/Suite.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace DeviceFarm
 namespace Model
 {
   /**
-   * <p>Represents the result of a list suites request.</p>
+   * <p>Represents the result of a list suites request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListSuitesResult">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API ListSuitesResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Information about the suites.</p>
      */
-    inline void SetSuites(Aws::Vector<Suite>&& value) { m_suites = value; }
+    inline void SetSuites(Aws::Vector<Suite>&& value) { m_suites = std::move(value); }
 
     /**
      * <p>Information about the suites.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>Information about the suites.</p>
      */
-    inline ListSuitesResult& WithSuites(Aws::Vector<Suite>&& value) { SetSuites(value); return *this;}
+    inline ListSuitesResult& WithSuites(Aws::Vector<Suite>&& value) { SetSuites(std::move(value)); return *this;}
 
     /**
      * <p>Information about the suites.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>Information about the suites.</p>
      */
-    inline ListSuitesResult& AddSuites(Suite&& value) { m_suites.push_back(value); return *this; }
+    inline ListSuitesResult& AddSuites(Suite&& value) { m_suites.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If the number of items that are returned is significantly large, this is an
@@ -98,7 +102,7 @@ namespace Model
      * identifier that is also returned, which can be used in a subsequent call to this
      * operation to return the next set of items in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>If the number of items that are returned is significantly large, this is an
@@ -119,7 +123,7 @@ namespace Model
      * identifier that is also returned, which can be used in a subsequent call to this
      * operation to return the next set of items in the list.</p>
      */
-    inline ListSuitesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListSuitesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If the number of items that are returned is significantly large, this is an

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iot/model/Action.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,6 +30,7 @@ namespace Model
 
 Action::Action() : 
     m_dynamoDBHasBeenSet(false),
+    m_dynamoDBv2HasBeenSet(false),
     m_lambdaHasBeenSet(false),
     m_snsHasBeenSet(false),
     m_sqsHasBeenSet(false),
@@ -44,6 +46,7 @@ Action::Action() :
 
 Action::Action(const JsonValue& jsonValue) : 
     m_dynamoDBHasBeenSet(false),
+    m_dynamoDBv2HasBeenSet(false),
     m_lambdaHasBeenSet(false),
     m_snsHasBeenSet(false),
     m_sqsHasBeenSet(false),
@@ -65,6 +68,13 @@ Action& Action::operator =(const JsonValue& jsonValue)
     m_dynamoDB = jsonValue.GetObject("dynamoDB");
 
     m_dynamoDBHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("dynamoDBv2"))
+  {
+    m_dynamoDBv2 = jsonValue.GetObject("dynamoDBv2");
+
+    m_dynamoDBv2HasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("lambda"))
@@ -147,6 +157,12 @@ JsonValue Action::Jsonize() const
   if(m_dynamoDBHasBeenSet)
   {
    payload.WithObject("dynamoDB", m_dynamoDB.Jsonize());
+
+  }
+
+  if(m_dynamoDBv2HasBeenSet)
+  {
+   payload.WithObject("dynamoDBv2", m_dynamoDBv2.Jsonize());
 
   }
 

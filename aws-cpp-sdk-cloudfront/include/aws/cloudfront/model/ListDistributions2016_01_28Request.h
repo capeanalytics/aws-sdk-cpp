@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/CloudFrontRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
 {
 
   /**
-   * The request to list your distributions.
+   * The request to list your distributions.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/ListDistributionsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API ListDistributions2016_01_28Request : public CloudFrontRequest
   {
@@ -38,6 +42,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * Use Marker and MaxItems to control pagination of results. If you have more than
@@ -64,7 +69,7 @@ namespace Model
      * the value of Marker, specify the value of NextMarker from the last response.
      * (For the first request, omit Marker.)
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * Use Marker and MaxItems to control pagination of results. If you have more than
@@ -91,7 +96,7 @@ namespace Model
      * the value of Marker, specify the value of NextMarker from the last response.
      * (For the first request, omit Marker.)
      */
-    inline ListDistributions2016_01_28Request& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListDistributions2016_01_28Request& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * Use Marker and MaxItems to control pagination of results. If you have more than
@@ -118,7 +123,7 @@ namespace Model
      * The maximum number of distributions that you want CloudFront to return in the
      * response body. The maximum and default values are both 100.
      */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
+    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::move(value); }
 
     /**
      * The maximum number of distributions that you want CloudFront to return in the
@@ -136,7 +141,7 @@ namespace Model
      * The maximum number of distributions that you want CloudFront to return in the
      * response body. The maximum and default values are both 100.
      */
-    inline ListDistributions2016_01_28Request& WithMaxItems(Aws::String&& value) { SetMaxItems(value); return *this;}
+    inline ListDistributions2016_01_28Request& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
 
     /**
      * The maximum number of distributions that you want CloudFront to return in the

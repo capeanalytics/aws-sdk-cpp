@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/CreateVolumeResponse.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -28,6 +29,8 @@ using namespace Aws;
 
 CreateVolumeResponse::CreateVolumeResponse() : 
     m_size(0),
+    m_state(VolumeState::NOT_SET),
+    m_volumeType(VolumeType::NOT_SET),
     m_iops(0),
     m_encrypted(false)
 {
@@ -35,6 +38,8 @@ CreateVolumeResponse::CreateVolumeResponse() :
 
 CreateVolumeResponse::CreateVolumeResponse(const AmazonWebServiceResult<XmlDocument>& result) : 
     m_size(0),
+    m_state(VolumeState::NOT_SET),
+    m_volumeType(VolumeType::NOT_SET),
     m_iops(0),
     m_encrypted(false)
 {

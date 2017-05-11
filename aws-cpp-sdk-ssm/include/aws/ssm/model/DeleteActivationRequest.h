@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ID of the activation that you want to delete.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The ID of the activation that you want to delete.</p>
      */
-    inline void SetActivationId(Aws::String&& value) { m_activationIdHasBeenSet = true; m_activationId = value; }
+    inline void SetActivationId(Aws::String&& value) { m_activationIdHasBeenSet = true; m_activationId = std::move(value); }
 
     /**
      * <p>The ID of the activation that you want to delete.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the activation that you want to delete.</p>
      */
-    inline DeleteActivationRequest& WithActivationId(Aws::String&& value) { SetActivationId(value); return *this;}
+    inline DeleteActivationRequest& WithActivationId(Aws::String&& value) { SetActivationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the activation that you want to delete.</p>

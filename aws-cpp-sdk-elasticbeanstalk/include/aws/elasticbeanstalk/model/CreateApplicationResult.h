@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/model/ApplicationDescription.h>
 #include <aws/elasticbeanstalk/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace ElasticBeanstalk
 namespace Model
 {
   /**
-   * <p>Result message containing a single description of an application.</p>
+   * <p>Result message containing a single description of an
+   * application.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplicationDescriptionMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API CreateApplicationResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p> The <a>ApplicationDescription</a> of the application. </p>
      */
-    inline void SetApplication(ApplicationDescription&& value) { m_application = value; }
+    inline void SetApplication(ApplicationDescription&& value) { m_application = std::move(value); }
 
     /**
      * <p> The <a>ApplicationDescription</a> of the application. </p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p> The <a>ApplicationDescription</a> of the application. </p>
      */
-    inline CreateApplicationResult& WithApplication(ApplicationDescription&& value) { SetApplication(value); return *this;}
+    inline CreateApplicationResult& WithApplication(ApplicationDescription&& value) { SetApplication(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -75,13 +80,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreateApplicationResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreateApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreateApplicationResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     ApplicationDescription m_application;

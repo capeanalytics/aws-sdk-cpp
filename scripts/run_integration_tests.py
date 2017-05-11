@@ -1,4 +1,4 @@
-#
+﻿#
 # Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # 
 # Licensed under the Apache License, Version 2.0 (the "License").
@@ -50,38 +50,23 @@ def Main():
         configDir = arguments["configuration"]
         exeExtension = ".exe"
 
-    dynamoDbTest = arguments["buildDir"] + "/aws-cpp-sdk-dynamodb-integration-tests/" + configDir + "/runDynamoDBIntegrationTests" + exeExtension
-    AddExecutableBit(dynamoDbTest)
-    subprocess.check_call(dynamoDbTest)
+    testList = [ "aws-cpp-sdk-dynamodb-integration-tests",
+                 "aws-cpp-sdk-sqs-integration-tests",
+                 "aws-cpp-sdk-s3-integration-tests",
+                 "aws-cpp-sdk-lambda-integration-tests",
+                 "aws-cpp-sdk-cognitoidentity-integration-tests",
+                 "aws-cpp-sdk-transfer-tests",
+                 "aws-cpp-sdk-s3-encryption-integration-tests",
+                 "aws-cpp-sdk-ec2-integration-tests" ]
 
-    sqsTest = arguments["buildDir"] + "/aws-cpp-sdk-sqs-integration-tests/" + configDir + "/runSqsIntegrationTests" + exeExtension
-    AddExecutableBit(sqsTest)
-    subprocess.check_call(sqsTest)
+    for testName in testList:
+        testExe = arguments["buildDir"] + "/" + testName + "/" + configDir + "/" + testName + exeExtension
+        prefix = platform.system().lower()
+        print("testExe = " + testExe)
+        print("prefix = " + prefix)
+        AddExecutableBit(testExe)
+        subprocess.check_call([testExe, prefix])
 
-    s3Test = arguments["buildDir"] + "/aws-cpp-sdk-s3-integration-tests/" + configDir + "/runS3IntegrationTests" + exeExtension
-    AddExecutableBit(s3Test)
-    subprocess.check_call(s3Test)
-
-    lambdaTest = arguments["buildDir"] + "/aws-cpp-sdk-lambda-integration-tests/" + configDir + "/runLambdaIntegrationTests" + exeExtension
-    AddExecutableBit(lambdaTest)   
-    subprocess.check_call(lambdaTest)
-
-    cognitoTest = arguments["buildDir"] + "/aws-cpp-sdk-cognitoidentity-integration-tests/" + configDir + "/runCognitoIntegrationTests" + exeExtension
-    AddExecutableBit(cognitoTest)   
-    subprocess.check_call(cognitoTest)
-
-    transferTest = arguments["buildDir"] + "/aws-cpp-sdk-transfer-tests/" + configDir + "/runTransferIntegrationTests" + exeExtension
-    AddExecutableBit(transferTest)  
-    subprocess.check_call(transferTest)
-
-    #These will cost you lots of money, don't run them unless you decide you want to test this functionality
-    #cloudFrontTests = arguments["buildDir"] + "/aws-cpp-sdk-cloudfront-integration-tests/" + configDir + "/runCloudfrontIntegrationTests" + exeExtension
-    #AddExecutableBit(cloudFrontTests)
-    #subprocess.check_call(cloudFrontTests)
-
-    #redshiftTests = arguments["buildDir"] + "/aws-cpp-sdk-redshift-integration-tests/" + configDir + "/runRedshiftIntegrationTests" + exeExtension
-    #AddExecutableBit(redshiftTests)
-    #subprocess.check_call(redshiftTests)
 
 # Run from powershell; make sure msbuild is in PATH environment variable  
 Main()

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/storagegateway/StorageGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
    * <a>ActivateGatewayInput$GatewayTimezone</a> </p> </li> <li> <p>
    * <a>ActivateGatewayInput$GatewayType</a> </p> </li> <li> <p>
    * <a>ActivateGatewayInput$TapeDriveType</a> </p> </li> <li> <p>
-   * <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul>
+   * <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/ActivateGatewayInput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API ActivateGatewayRequest : public StorageGatewayRequest
   {
@@ -41,6 +46,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Your gateway activation key. You can obtain the activation key by sending an
@@ -73,7 +79,7 @@ namespace Model
      * -- the arguments you pass to the <code>ActivateGateway</code> API call determine
      * the actual configuration of your gateway.</p>
      */
-    inline void SetActivationKey(Aws::String&& value) { m_activationKeyHasBeenSet = true; m_activationKey = value; }
+    inline void SetActivationKey(Aws::String&& value) { m_activationKeyHasBeenSet = true; m_activationKey = std::move(value); }
 
     /**
      * <p>Your gateway activation key. You can obtain the activation key by sending an
@@ -106,7 +112,7 @@ namespace Model
      * -- the arguments you pass to the <code>ActivateGateway</code> API call determine
      * the actual configuration of your gateway.</p>
      */
-    inline ActivateGatewayRequest& WithActivationKey(Aws::String&& value) { SetActivationKey(value); return *this;}
+    inline ActivateGatewayRequest& WithActivationKey(Aws::String&& value) { SetActivationKey(std::move(value)); return *this;}
 
     /**
      * <p>Your gateway activation key. You can obtain the activation key by sending an
@@ -132,7 +138,7 @@ namespace Model
     /**
      * <p>The name you configured for your gateway.</p>
      */
-    inline void SetGatewayName(Aws::String&& value) { m_gatewayNameHasBeenSet = true; m_gatewayName = value; }
+    inline void SetGatewayName(Aws::String&& value) { m_gatewayNameHasBeenSet = true; m_gatewayName = std::move(value); }
 
     /**
      * <p>The name you configured for your gateway.</p>
@@ -147,7 +153,7 @@ namespace Model
     /**
      * <p>The name you configured for your gateway.</p>
      */
-    inline ActivateGatewayRequest& WithGatewayName(Aws::String&& value) { SetGatewayName(value); return *this;}
+    inline ActivateGatewayRequest& WithGatewayName(Aws::String&& value) { SetGatewayName(std::move(value)); return *this;}
 
     /**
      * <p>The name you configured for your gateway.</p>
@@ -173,7 +179,7 @@ namespace Model
      * time zone is used, for example, for scheduling snapshots and your gateway's
      * maintenance schedule.</p>
      */
-    inline void SetGatewayTimezone(Aws::String&& value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone = value; }
+    inline void SetGatewayTimezone(Aws::String&& value) { m_gatewayTimezoneHasBeenSet = true; m_gatewayTimezone = std::move(value); }
 
     /**
      * <p>A value that indicates the time zone you want to set for the gateway. The
@@ -194,7 +200,7 @@ namespace Model
      * time zone is used, for example, for scheduling snapshots and your gateway's
      * maintenance schedule.</p>
      */
-    inline ActivateGatewayRequest& WithGatewayTimezone(Aws::String&& value) { SetGatewayTimezone(value); return *this;}
+    inline ActivateGatewayRequest& WithGatewayTimezone(Aws::String&& value) { SetGatewayTimezone(std::move(value)); return *this;}
 
     /**
      * <p>A value that indicates the time zone you want to set for the gateway. The
@@ -210,9 +216,9 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
     inline const Aws::String& GetGatewayRegion() const{ return m_gatewayRegion; }
 
@@ -223,9 +229,9 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
     inline void SetGatewayRegion(const Aws::String& value) { m_gatewayRegionHasBeenSet = true; m_gatewayRegion = value; }
 
@@ -236,11 +242,11 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
-    inline void SetGatewayRegion(Aws::String&& value) { m_gatewayRegionHasBeenSet = true; m_gatewayRegion = value; }
+    inline void SetGatewayRegion(Aws::String&& value) { m_gatewayRegionHasBeenSet = true; m_gatewayRegion = std::move(value); }
 
     /**
      * <p>A value that indicates the region where you want to store the snapshot
@@ -249,9 +255,9 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
     inline void SetGatewayRegion(const char* value) { m_gatewayRegionHasBeenSet = true; m_gatewayRegion.assign(value); }
 
@@ -262,9 +268,9 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
     inline ActivateGatewayRequest& WithGatewayRegion(const Aws::String& value) { SetGatewayRegion(value); return *this;}
 
@@ -275,11 +281,11 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
-    inline ActivateGatewayRequest& WithGatewayRegion(Aws::String&& value) { SetGatewayRegion(value); return *this;}
+    inline ActivateGatewayRequest& WithGatewayRegion(Aws::String&& value) { SetGatewayRegion(std::move(value)); return *this;}
 
     /**
      * <p>A value that indicates the region where you want to store the snapshot
@@ -288,141 +294,148 @@ namespace Model
      * available regions and endpoints for AWS Storage Gateway, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions
      * and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid
-     * Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-central-1",
-     * "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2",
-     * "sa-east-1"</p>
+     * Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1",
+     * "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2",
+     * "ap-southeast-1", "ap-southeast-2", "sa-east-1"</p>
      */
     inline ActivateGatewayRequest& WithGatewayRegion(const char* value) { SetGatewayRegion(value); return *this;}
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
     inline const Aws::String& GetGatewayType() const{ return m_gatewayType; }
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
     inline void SetGatewayType(const Aws::String& value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = value; }
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
-    inline void SetGatewayType(Aws::String&& value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = value; }
+    inline void SetGatewayType(Aws::String&& value) { m_gatewayTypeHasBeenSet = true; m_gatewayType = std::move(value); }
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
     inline void SetGatewayType(const char* value) { m_gatewayTypeHasBeenSet = true; m_gatewayType.assign(value); }
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
     inline ActivateGatewayRequest& WithGatewayType(const Aws::String& value) { SetGatewayType(value); return *this;}
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
-    inline ActivateGatewayRequest& WithGatewayType(Aws::String&& value) { SetGatewayType(value); return *this;}
+    inline ActivateGatewayRequest& WithGatewayType(Aws::String&& value) { SetGatewayType(std::move(value)); return *this;}
 
     /**
      * <p>A value that defines the type of gateway to activate. The type specified is
      * critical to all later functions of the gateway and cannot be changed after
-     * activation. The default value is <code>STORED</code>. </p>
+     * activation. The default value is <code>STORED</code>. </p> <p> Valid Values:
+     * "STORED", "CACHED", "VTL", "FILE_S3"</p>
      */
     inline ActivateGatewayRequest& WithGatewayType(const char* value) { SetGatewayType(value); return *this;}
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
     inline const Aws::String& GetTapeDriveType() const{ return m_tapeDriveType; }
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
     inline void SetTapeDriveType(const Aws::String& value) { m_tapeDriveTypeHasBeenSet = true; m_tapeDriveType = value; }
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
-    inline void SetTapeDriveType(Aws::String&& value) { m_tapeDriveTypeHasBeenSet = true; m_tapeDriveType = value; }
+    inline void SetTapeDriveType(Aws::String&& value) { m_tapeDriveTypeHasBeenSet = true; m_tapeDriveType = std::move(value); }
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
     inline void SetTapeDriveType(const char* value) { m_tapeDriveTypeHasBeenSet = true; m_tapeDriveType.assign(value); }
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
     inline ActivateGatewayRequest& WithTapeDriveType(const Aws::String& value) { SetTapeDriveType(value); return *this;}
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
-    inline ActivateGatewayRequest& WithTapeDriveType(Aws::String&& value) { SetTapeDriveType(value); return *this;}
+    inline ActivateGatewayRequest& WithTapeDriveType(Aws::String&& value) { SetTapeDriveType(std::move(value)); return *this;}
 
     /**
-     * <p>The value that indicates the type of tape drive to use for gateway-VTL. This
+     * <p>The value that indicates the type of tape drive to use for tape gateway. This
      * field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
      */
     inline ActivateGatewayRequest& WithTapeDriveType(const char* value) { SetTapeDriveType(value); return *this;}
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
     inline const Aws::String& GetMediumChangerType() const{ return m_mediumChangerType; }
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
     inline void SetMediumChangerType(const Aws::String& value) { m_mediumChangerTypeHasBeenSet = true; m_mediumChangerType = value; }
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
-    inline void SetMediumChangerType(Aws::String&& value) { m_mediumChangerTypeHasBeenSet = true; m_mediumChangerType = value; }
+    inline void SetMediumChangerType(Aws::String&& value) { m_mediumChangerTypeHasBeenSet = true; m_mediumChangerType = std::move(value); }
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
     inline void SetMediumChangerType(const char* value) { m_mediumChangerTypeHasBeenSet = true; m_mediumChangerType.assign(value); }
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
     inline ActivateGatewayRequest& WithMediumChangerType(const Aws::String& value) { SetMediumChangerType(value); return *this;}
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
-    inline ActivateGatewayRequest& WithMediumChangerType(Aws::String&& value) { SetMediumChangerType(value); return *this;}
+    inline ActivateGatewayRequest& WithMediumChangerType(Aws::String&& value) { SetMediumChangerType(std::move(value)); return *this;}
 
     /**
-     * <p>The value that indicates the type of medium changer to use for gateway-VTL.
+     * <p>The value that indicates the type of medium changer to use for tape gateway.
      * This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
      */
     inline ActivateGatewayRequest& WithMediumChangerType(const char* value) { SetMediumChangerType(value); return *this;}

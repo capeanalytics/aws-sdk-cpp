@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p> Describes the properties of an environment tier </p>
+   * <p>Describes the properties of an environment tier</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/EnvironmentTier">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API EnvironmentTier
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of this environment tier.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of this environment tier.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of this environment tier.</p>
      */
-    inline EnvironmentTier& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline EnvironmentTier& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of this environment tier.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The type of this environment tier.</p>
      */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of this environment tier.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The type of this environment tier.</p>
      */
-    inline EnvironmentTier& WithType(Aws::String&& value) { SetType(value); return *this;}
+    inline EnvironmentTier& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The type of this environment tier.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The version of this environment tier.</p>
      */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
 
     /**
      * <p>The version of this environment tier.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The version of this environment tier.</p>
      */
-    inline EnvironmentTier& WithVersion(Aws::String&& value) { SetVersion(value); return *this;}
+    inline EnvironmentTier& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version of this environment tier.</p>

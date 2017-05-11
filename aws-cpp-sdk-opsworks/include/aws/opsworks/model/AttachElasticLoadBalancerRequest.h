@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The Elastic Load Balancing instance's name.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The Elastic Load Balancing instance's name.</p>
      */
-    inline void SetElasticLoadBalancerName(Aws::String&& value) { m_elasticLoadBalancerNameHasBeenSet = true; m_elasticLoadBalancerName = value; }
+    inline void SetElasticLoadBalancerName(Aws::String&& value) { m_elasticLoadBalancerNameHasBeenSet = true; m_elasticLoadBalancerName = std::move(value); }
 
     /**
      * <p>The Elastic Load Balancing instance's name.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The Elastic Load Balancing instance's name.</p>
      */
-    inline AttachElasticLoadBalancerRequest& WithElasticLoadBalancerName(Aws::String&& value) { SetElasticLoadBalancerName(value); return *this;}
+    inline AttachElasticLoadBalancerRequest& WithElasticLoadBalancerName(Aws::String&& value) { SetElasticLoadBalancerName(std::move(value)); return *this;}
 
     /**
      * <p>The Elastic Load Balancing instance's name.</p>
@@ -85,7 +88,7 @@ namespace Model
      * <p>The ID of the layer that the Elastic Load Balancing instance is to be
      * attached to.</p>
      */
-    inline void SetLayerId(Aws::String&& value) { m_layerIdHasBeenSet = true; m_layerId = value; }
+    inline void SetLayerId(Aws::String&& value) { m_layerIdHasBeenSet = true; m_layerId = std::move(value); }
 
     /**
      * <p>The ID of the layer that the Elastic Load Balancing instance is to be
@@ -103,7 +106,7 @@ namespace Model
      * <p>The ID of the layer that the Elastic Load Balancing instance is to be
      * attached to.</p>
      */
-    inline AttachElasticLoadBalancerRequest& WithLayerId(Aws::String&& value) { SetLayerId(value); return *this;}
+    inline AttachElasticLoadBalancerRequest& WithLayerId(Aws::String&& value) { SetLayerId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the layer that the Elastic Load Balancing instance is to be

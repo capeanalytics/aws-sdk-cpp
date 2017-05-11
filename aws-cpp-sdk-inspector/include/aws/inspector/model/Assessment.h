@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/Attribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -58,7 +60,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment.</p>
      */
-    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = value; }
+    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = std::move(value); }
 
     /**
      * <p>The ARN of the assessment.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment.</p>
      */
-    inline Assessment& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(value); return *this;}
+    inline Assessment& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the assessment.</p>
@@ -93,7 +95,7 @@ namespace Model
     /**
      * <p>The name of the assessment.</p>
      */
-    inline void SetAssessmentName(Aws::String&& value) { m_assessmentNameHasBeenSet = true; m_assessmentName = value; }
+    inline void SetAssessmentName(Aws::String&& value) { m_assessmentNameHasBeenSet = true; m_assessmentName = std::move(value); }
 
     /**
      * <p>The name of the assessment.</p>
@@ -108,7 +110,7 @@ namespace Model
     /**
      * <p>The name of the assessment.</p>
      */
-    inline Assessment& WithAssessmentName(Aws::String&& value) { SetAssessmentName(value); return *this;}
+    inline Assessment& WithAssessmentName(Aws::String&& value) { SetAssessmentName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the assessment.</p>
@@ -128,7 +130,7 @@ namespace Model
     /**
      * <p>The ARN of the application that corresponds to this assessment.</p>
      */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
+    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
 
     /**
      * <p>The ARN of the application that corresponds to this assessment.</p>
@@ -143,7 +145,7 @@ namespace Model
     /**
      * <p>The ARN of the application that corresponds to this assessment.</p>
      */
-    inline Assessment& WithApplicationArn(Aws::String&& value) { SetApplicationArn(value); return *this;}
+    inline Assessment& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the application that corresponds to this assessment.</p>
@@ -166,7 +168,7 @@ namespace Model
      * <p>The state of the assessment. Values can be set to <i>Created</i>,
      * <i>Collecting Data</i>, <i>Stopping</i>, and <i>Completed</i>.</p>
      */
-    inline void SetAssessmentState(Aws::String&& value) { m_assessmentStateHasBeenSet = true; m_assessmentState = value; }
+    inline void SetAssessmentState(Aws::String&& value) { m_assessmentStateHasBeenSet = true; m_assessmentState = std::move(value); }
 
     /**
      * <p>The state of the assessment. Values can be set to <i>Created</i>,
@@ -184,7 +186,7 @@ namespace Model
      * <p>The state of the assessment. Values can be set to <i>Created</i>,
      * <i>Collecting Data</i>, <i>Stopping</i>, and <i>Completed</i>.</p>
      */
-    inline Assessment& WithAssessmentState(Aws::String&& value) { SetAssessmentState(value); return *this;}
+    inline Assessment& WithAssessmentState(Aws::String&& value) { SetAssessmentState(std::move(value)); return *this;}
 
     /**
      * <p>The state of the assessment. Values can be set to <i>Created</i>,
@@ -205,7 +207,7 @@ namespace Model
     /**
      * <p>This data type property is not currently used.</p>
      */
-    inline void SetFailureMessage(Aws::String&& value) { m_failureMessageHasBeenSet = true; m_failureMessage = value; }
+    inline void SetFailureMessage(Aws::String&& value) { m_failureMessageHasBeenSet = true; m_failureMessage = std::move(value); }
 
     /**
      * <p>This data type property is not currently used.</p>
@@ -220,7 +222,7 @@ namespace Model
     /**
      * <p>This data type property is not currently used.</p>
      */
-    inline Assessment& WithFailureMessage(Aws::String&& value) { SetFailureMessage(value); return *this;}
+    inline Assessment& WithFailureMessage(Aws::String&& value) { SetFailureMessage(std::move(value)); return *this;}
 
     /**
      * <p>This data type property is not currently used.</p>
@@ -258,7 +260,7 @@ namespace Model
     /**
      * <p>The assessment start time.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The assessment start time.</p>
@@ -268,7 +270,7 @@ namespace Model
     /**
      * <p>The assessment start time.</p>
      */
-    inline Assessment& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline Assessment& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The assessment end time.</p>
@@ -283,7 +285,7 @@ namespace Model
     /**
      * <p>The assessment end time.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>The assessment end time.</p>
@@ -293,7 +295,7 @@ namespace Model
     /**
      * <p>The assessment end time.</p>
      */
-    inline Assessment& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline Assessment& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
      * <p>The assessment duration in seconds. The default value is 3600 seconds (one
@@ -326,7 +328,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to every generated finding.</p>
      */
-    inline void SetUserAttributesForFindings(Aws::Vector<Attribute>&& value) { m_userAttributesForFindingsHasBeenSet = true; m_userAttributesForFindings = value; }
+    inline void SetUserAttributesForFindings(Aws::Vector<Attribute>&& value) { m_userAttributesForFindingsHasBeenSet = true; m_userAttributesForFindings = std::move(value); }
 
     /**
      * <p>The user-defined attributes that are assigned to every generated finding.</p>
@@ -336,7 +338,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to every generated finding.</p>
      */
-    inline Assessment& WithUserAttributesForFindings(Aws::Vector<Attribute>&& value) { SetUserAttributesForFindings(value); return *this;}
+    inline Assessment& WithUserAttributesForFindings(Aws::Vector<Attribute>&& value) { SetUserAttributesForFindings(std::move(value)); return *this;}
 
     /**
      * <p>The user-defined attributes that are assigned to every generated finding.</p>
@@ -346,7 +348,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to every generated finding.</p>
      */
-    inline Assessment& AddUserAttributesForFindings(Attribute&& value) { m_userAttributesForFindingsHasBeenSet = true; m_userAttributesForFindings.push_back(value); return *this; }
+    inline Assessment& AddUserAttributesForFindings(Attribute&& value) { m_userAttributesForFindingsHasBeenSet = true; m_userAttributesForFindings.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_assessmentArn;

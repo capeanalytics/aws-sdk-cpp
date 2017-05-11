@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a repository name and ID.</p>
+   * <p>Information about a repository name and ID.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/RepositoryNameIdPair">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API RepositoryNameIdPair
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The name associated with the repository.</p>
      */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
+    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
 
     /**
      * <p>The name associated with the repository.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The name associated with the repository.</p>
      */
-    inline RepositoryNameIdPair& WithRepositoryName(Aws::String&& value) { SetRepositoryName(value); return *this;}
+    inline RepositoryNameIdPair& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
 
     /**
      * <p>The name associated with the repository.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The ID associated with the repository.</p>
      */
-    inline void SetRepositoryId(Aws::String&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = value; }
+    inline void SetRepositoryId(Aws::String&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = std::move(value); }
 
     /**
      * <p>The ID associated with the repository.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The ID associated with the repository.</p>
      */
-    inline RepositoryNameIdPair& WithRepositoryId(Aws::String&& value) { SetRepositoryId(value); return *this;}
+    inline RepositoryNameIdPair& WithRepositoryId(Aws::String&& value) { SetRepositoryId(std::move(value)); return *this;}
 
     /**
      * <p>The ID associated with the repository.</p>

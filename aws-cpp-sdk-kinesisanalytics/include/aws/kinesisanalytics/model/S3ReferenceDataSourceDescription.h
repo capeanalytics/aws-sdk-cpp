@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>Provides the bucket name and object key name that stores the reference
-   * data.</p>
+   * data.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/S3ReferenceDataSourceDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API S3ReferenceDataSourceDescription
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
      */
-    inline void SetBucketARN(Aws::String&& value) { m_bucketARNHasBeenSet = true; m_bucketARN = value; }
+    inline void SetBucketARN(Aws::String&& value) { m_bucketARNHasBeenSet = true; m_bucketARN = std::move(value); }
 
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
      */
-    inline S3ReferenceDataSourceDescription& WithBucketARN(Aws::String&& value) { SetBucketARN(value); return *this;}
+    inline S3ReferenceDataSourceDescription& WithBucketARN(Aws::String&& value) { SetBucketARN(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>Amazon S3 object key name.</p>
      */
-    inline void SetFileKey(Aws::String&& value) { m_fileKeyHasBeenSet = true; m_fileKey = value; }
+    inline void SetFileKey(Aws::String&& value) { m_fileKeyHasBeenSet = true; m_fileKey = std::move(value); }
 
     /**
      * <p>Amazon S3 object key name.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>Amazon S3 object key name.</p>
      */
-    inline S3ReferenceDataSourceDescription& WithFileKey(Aws::String&& value) { SetFileKey(value); return *this;}
+    inline S3ReferenceDataSourceDescription& WithFileKey(Aws::String&& value) { SetFileKey(std::move(value)); return *this;}
 
     /**
      * <p>Amazon S3 object key name.</p>
@@ -131,7 +135,7 @@ namespace Model
      * Amazon S3 object on your behalf to populate the in-application reference
      * table.</p>
      */
-    inline void SetReferenceRoleARN(Aws::String&& value) { m_referenceRoleARNHasBeenSet = true; m_referenceRoleARN = value; }
+    inline void SetReferenceRoleARN(Aws::String&& value) { m_referenceRoleARNHasBeenSet = true; m_referenceRoleARN = std::move(value); }
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to read the
@@ -152,7 +156,7 @@ namespace Model
      * Amazon S3 object on your behalf to populate the in-application reference
      * table.</p>
      */
-    inline S3ReferenceDataSourceDescription& WithReferenceRoleARN(Aws::String&& value) { SetReferenceRoleARN(value); return *this;}
+    inline S3ReferenceDataSourceDescription& WithReferenceRoleARN(Aws::String&& value) { SetReferenceRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to read the

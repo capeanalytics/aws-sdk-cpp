@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/KinesisAnalyticsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DeleteApplicationOutputRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API DeleteApplicationOutputRequest : public KinesisAnalyticsRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Amazon Kinesis Analytics application name.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>Amazon Kinesis Analytics application name.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>Amazon Kinesis Analytics application name.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>Amazon Kinesis Analytics application name.</p>
      */
-    inline DeleteApplicationOutputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline DeleteApplicationOutputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Kinesis Analytics application name.</p>
@@ -122,7 +127,7 @@ namespace Model
      * from the application configuration. You can use the <a>DescribeApplication</a>
      * operation to get the specific <code>OutputId</code>. </p>
      */
-    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = value; }
+    inline void SetOutputId(Aws::String&& value) { m_outputIdHasBeenSet = true; m_outputId = std::move(value); }
 
     /**
      * <p>The ID of the configuration to delete. Each output configuration that is
@@ -152,7 +157,7 @@ namespace Model
      * from the application configuration. You can use the <a>DescribeApplication</a>
      * operation to get the specific <code>OutputId</code>. </p>
      */
-    inline DeleteApplicationOutputRequest& WithOutputId(Aws::String&& value) { SetOutputId(value); return *this;}
+    inline DeleteApplicationOutputRequest& WithOutputId(Aws::String&& value) { SetOutputId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the configuration to delete. Each output configuration that is

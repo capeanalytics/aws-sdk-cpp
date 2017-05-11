@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/Snapshot.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -67,7 +68,9 @@ Snapshot::Snapshot() :
     m_elapsedTimeInSecondsHasBeenSet(false),
     m_sourceRegionHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_restorableNodeTypesHasBeenSet(false)
+    m_restorableNodeTypesHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false)
 {
 }
 
@@ -109,7 +112,9 @@ Snapshot::Snapshot(const XmlNode& xmlNode) :
     m_elapsedTimeInSecondsHasBeenSet(false),
     m_sourceRegionHasBeenSet(false),
     m_tagsHasBeenSet(false),
-    m_restorableNodeTypesHasBeenSet(false)
+    m_restorableNodeTypesHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -306,6 +311,12 @@ Snapshot& Snapshot::operator =(const XmlNode& xmlNode)
 
       m_restorableNodeTypesHasBeenSet = true;
     }
+    XmlNode enhancedVpcRoutingNode = resultNode.FirstChild("EnhancedVpcRouting");
+    if(!enhancedVpcRoutingNode.IsNull())
+    {
+      m_enhancedVpcRouting = StringUtils::ConvertToBool(StringUtils::Trim(enhancedVpcRoutingNode.GetText().c_str()).c_str());
+      m_enhancedVpcRoutingHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -385,7 +396,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -395,7 +406,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_encryptedWithHSMHasBeenSet)
   {
-      oStream << location << index << locationValue << ".EncryptedWithHSM=" << m_encryptedWithHSM << "&";
+      oStream << location << index << locationValue << ".EncryptedWithHSM=" << std::boolalpha << m_encryptedWithHSM << "&";
   }
 
   if(m_accountsWithRestoreAccessHasBeenSet)
@@ -469,6 +480,11 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
       }
   }
 
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
+  }
+
 }
 
 void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -531,7 +547,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {
@@ -539,7 +555,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_encryptedWithHSMHasBeenSet)
   {
-      oStream << location << ".EncryptedWithHSM=" << m_encryptedWithHSM << "&";
+      oStream << location << ".EncryptedWithHSM=" << std::boolalpha << m_encryptedWithHSM << "&";
   }
   if(m_accountsWithRestoreAccessHasBeenSet)
   {
@@ -600,6 +616,10 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
       {
         oStream << location << ".NodeType." << restorableNodeTypesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+      oStream << location << ".EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
   }
 }
 

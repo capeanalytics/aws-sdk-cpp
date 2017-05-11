@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/email/SESRequest.h>
@@ -24,11 +25,13 @@ namespace Model
 {
 
   /**
-   * <p>: Represents a request to list the IP address filters that exist under your
-   * AWS account. You use IP address filters when you receive email with Amazon SES.
-   * For more information, see the <a
+   * <p>Represents a request to list the IP address filters that exist under your AWS
+   * account. You use IP address filters when you receive email with Amazon SES. For
+   * more information, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ListReceiptFiltersRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ListReceiptFiltersRequest : public SESRequest
   {
@@ -36,6 +39,11 @@ namespace Model
     ListReceiptFiltersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
   };
 
 } // namespace Model

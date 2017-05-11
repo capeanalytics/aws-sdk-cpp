@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/model/Group.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/ResponseMetadata.h>
 #include <aws/iam/model/User.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace IAM
 namespace Model
 {
   /**
-   * <p>Contains the response to a successful <a>GetGroup</a> request. </p>
+   * <p>Contains the response to a successful <a>GetGroup</a> request. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroupResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API GetGroupResult
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>A structure that contains details about the group.</p>
      */
-    inline void SetGroup(Group&& value) { m_group = value; }
+    inline void SetGroup(Group&& value) { m_group = std::move(value); }
 
     /**
      * <p>A structure that contains details about the group.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>A structure that contains details about the group.</p>
      */
-    inline GetGroupResult& WithGroup(Group&& value) { SetGroup(value); return *this;}
+    inline GetGroupResult& WithGroup(Group&& value) { SetGroup(std::move(value)); return *this;}
 
     /**
      * <p>A list of users in the group.</p>
@@ -84,7 +89,7 @@ namespace Model
     /**
      * <p>A list of users in the group.</p>
      */
-    inline void SetUsers(Aws::Vector<User>&& value) { m_users = value; }
+    inline void SetUsers(Aws::Vector<User>&& value) { m_users = std::move(value); }
 
     /**
      * <p>A list of users in the group.</p>
@@ -94,7 +99,7 @@ namespace Model
     /**
      * <p>A list of users in the group.</p>
      */
-    inline GetGroupResult& WithUsers(Aws::Vector<User>&& value) { SetUsers(value); return *this;}
+    inline GetGroupResult& WithUsers(Aws::Vector<User>&& value) { SetUsers(std::move(value)); return *this;}
 
     /**
      * <p>A list of users in the group.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>A list of users in the group.</p>
      */
-    inline GetGroupResult& AddUsers(User&& value) { m_users.push_back(value); return *this; }
+    inline GetGroupResult& AddUsers(User&& value) { m_users.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A flag that indicates whether there are more items to return. If your results
@@ -158,7 +163,7 @@ namespace Model
      * and contains the value to use for the <code>Marker</code> parameter in a
      * subsequent pagination request.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
@@ -179,7 +184,7 @@ namespace Model
      * and contains the value to use for the <code>Marker</code> parameter in a
      * subsequent pagination request.</p>
      */
-    inline GetGroupResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline GetGroupResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
@@ -195,13 +200,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetGroupResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetGroupResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetGroupResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Group m_group;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/PurchaseReservedDBInstancesOfferingMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API PurchaseReservedDBInstancesOfferingRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     PurchaseReservedDBInstancesOfferingRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example:
      * 438012d3-4052-4cc7-b2e3-8d3372e0e706</p>
@@ -51,7 +60,7 @@ namespace Model
      * <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example:
      * 438012d3-4052-4cc7-b2e3-8d3372e0e706</p>
      */
-    inline void SetReservedDBInstancesOfferingId(Aws::String&& value) { m_reservedDBInstancesOfferingIdHasBeenSet = true; m_reservedDBInstancesOfferingId = value; }
+    inline void SetReservedDBInstancesOfferingId(Aws::String&& value) { m_reservedDBInstancesOfferingIdHasBeenSet = true; m_reservedDBInstancesOfferingId = std::move(value); }
 
     /**
      * <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example:
@@ -69,7 +78,7 @@ namespace Model
      * <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example:
      * 438012d3-4052-4cc7-b2e3-8d3372e0e706</p>
      */
-    inline PurchaseReservedDBInstancesOfferingRequest& WithReservedDBInstancesOfferingId(Aws::String&& value) { SetReservedDBInstancesOfferingId(value); return *this;}
+    inline PurchaseReservedDBInstancesOfferingRequest& WithReservedDBInstancesOfferingId(Aws::String&& value) { SetReservedDBInstancesOfferingId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example:
@@ -93,7 +102,7 @@ namespace Model
      * <p>Customer-specified identifier to track this reservation.</p> <p>Example:
      * myreservationID</p>
      */
-    inline void SetReservedDBInstanceId(Aws::String&& value) { m_reservedDBInstanceIdHasBeenSet = true; m_reservedDBInstanceId = value; }
+    inline void SetReservedDBInstanceId(Aws::String&& value) { m_reservedDBInstanceIdHasBeenSet = true; m_reservedDBInstanceId = std::move(value); }
 
     /**
      * <p>Customer-specified identifier to track this reservation.</p> <p>Example:
@@ -111,7 +120,7 @@ namespace Model
      * <p>Customer-specified identifier to track this reservation.</p> <p>Example:
      * myreservationID</p>
      */
-    inline PurchaseReservedDBInstancesOfferingRequest& WithReservedDBInstanceId(Aws::String&& value) { SetReservedDBInstanceId(value); return *this;}
+    inline PurchaseReservedDBInstancesOfferingRequest& WithReservedDBInstanceId(Aws::String&& value) { SetReservedDBInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>Customer-specified identifier to track this reservation.</p> <p>Example:
@@ -141,19 +150,19 @@ namespace Model
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     
     inline PurchaseReservedDBInstancesOfferingRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     
-    inline PurchaseReservedDBInstancesOfferingRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline PurchaseReservedDBInstancesOfferingRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     
     inline PurchaseReservedDBInstancesOfferingRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     
-    inline PurchaseReservedDBInstancesOfferingRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline PurchaseReservedDBInstancesOfferingRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_reservedDBInstancesOfferingId;

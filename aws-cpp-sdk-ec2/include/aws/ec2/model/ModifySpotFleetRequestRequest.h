@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ExcessCapacityTerminationPolicy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ModifySpotFleetRequest.</p>
+   * <p>Contains the parameters for ModifySpotFleetRequest.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySpotFleetRequestRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ModifySpotFleetRequestRequest : public EC2Request
   {
@@ -34,6 +39,11 @@ namespace Model
     ModifySpotFleetRequestRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
@@ -47,7 +57,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = value; }
+    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = std::move(value); }
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -62,7 +72,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline ModifySpotFleetRequestRequest& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(value); return *this;}
+    inline ModifySpotFleetRequestRequest& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -103,7 +113,7 @@ namespace Model
      * capacity of the Spot fleet request is decreased below the current size of the
      * Spot fleet.</p>
      */
-    inline void SetExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy&& value) { m_excessCapacityTerminationPolicyHasBeenSet = true; m_excessCapacityTerminationPolicy = value; }
+    inline void SetExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy&& value) { m_excessCapacityTerminationPolicyHasBeenSet = true; m_excessCapacityTerminationPolicy = std::move(value); }
 
     /**
      * <p>Indicates whether running Spot instances should be terminated if the target
@@ -117,7 +127,7 @@ namespace Model
      * capacity of the Spot fleet request is decreased below the current size of the
      * Spot fleet.</p>
      */
-    inline ModifySpotFleetRequestRequest& WithExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy&& value) { SetExcessCapacityTerminationPolicy(value); return *this;}
+    inline ModifySpotFleetRequestRequest& WithExcessCapacityTerminationPolicy(ExcessCapacityTerminationPolicy&& value) { SetExcessCapacityTerminationPolicy(std::move(value)); return *this;}
 
   private:
     Aws::String m_spotFleetRequestId;

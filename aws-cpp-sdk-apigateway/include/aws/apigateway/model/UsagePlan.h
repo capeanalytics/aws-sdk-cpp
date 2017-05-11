@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/apigateway/model/ThrottleSettings.h>
 #include <aws/apigateway/model/QuotaSettings.h>
 #include <aws/apigateway/model/ApiStage.h>
+#include <utility>
 
 namespace Aws
 {
@@ -41,7 +43,9 @@ namespace Model
    * the specified API. You add plan customers by adding API keys to the plan. </p>
    * </div> <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create
-   * and Use Usage Plans</a> </div>
+   * and Use Usage Plans</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UsagePlan">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API UsagePlan
   {
@@ -64,7 +68,7 @@ namespace Model
     /**
      * <p>The identifier of a <a>UsagePlan</a> resource.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The identifier of a <a>UsagePlan</a> resource.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>The identifier of a <a>UsagePlan</a> resource.</p>
      */
-    inline UsagePlan& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline UsagePlan& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of a <a>UsagePlan</a> resource.</p>
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>The name of a usage plan.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of a usage plan.</p>
@@ -114,7 +118,7 @@ namespace Model
     /**
      * <p>The name of a usage plan.</p>
      */
-    inline UsagePlan& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UsagePlan& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of a usage plan.</p>
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>The description of a usage plan.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of a usage plan.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>The description of a usage plan.</p>
      */
-    inline UsagePlan& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline UsagePlan& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of a usage plan.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The associated API stages of a usage plan.</p>
      */
-    inline void SetApiStages(Aws::Vector<ApiStage>&& value) { m_apiStagesHasBeenSet = true; m_apiStages = value; }
+    inline void SetApiStages(Aws::Vector<ApiStage>&& value) { m_apiStagesHasBeenSet = true; m_apiStages = std::move(value); }
 
     /**
      * <p>The associated API stages of a usage plan.</p>
@@ -179,7 +183,7 @@ namespace Model
     /**
      * <p>The associated API stages of a usage plan.</p>
      */
-    inline UsagePlan& WithApiStages(Aws::Vector<ApiStage>&& value) { SetApiStages(value); return *this;}
+    inline UsagePlan& WithApiStages(Aws::Vector<ApiStage>&& value) { SetApiStages(std::move(value)); return *this;}
 
     /**
      * <p>The associated API stages of a usage plan.</p>
@@ -189,7 +193,7 @@ namespace Model
     /**
      * <p>The associated API stages of a usage plan.</p>
      */
-    inline UsagePlan& AddApiStages(ApiStage&& value) { m_apiStagesHasBeenSet = true; m_apiStages.push_back(value); return *this; }
+    inline UsagePlan& AddApiStages(ApiStage&& value) { m_apiStagesHasBeenSet = true; m_apiStages.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The request throttle limits of a usage plan.</p>
@@ -204,7 +208,7 @@ namespace Model
     /**
      * <p>The request throttle limits of a usage plan.</p>
      */
-    inline void SetThrottle(ThrottleSettings&& value) { m_throttleHasBeenSet = true; m_throttle = value; }
+    inline void SetThrottle(ThrottleSettings&& value) { m_throttleHasBeenSet = true; m_throttle = std::move(value); }
 
     /**
      * <p>The request throttle limits of a usage plan.</p>
@@ -214,7 +218,7 @@ namespace Model
     /**
      * <p>The request throttle limits of a usage plan.</p>
      */
-    inline UsagePlan& WithThrottle(ThrottleSettings&& value) { SetThrottle(value); return *this;}
+    inline UsagePlan& WithThrottle(ThrottleSettings&& value) { SetThrottle(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of permitted requests per a given unit time interval.</p>
@@ -229,7 +233,7 @@ namespace Model
     /**
      * <p>The maximum number of permitted requests per a given unit time interval.</p>
      */
-    inline void SetQuota(QuotaSettings&& value) { m_quotaHasBeenSet = true; m_quota = value; }
+    inline void SetQuota(QuotaSettings&& value) { m_quotaHasBeenSet = true; m_quota = std::move(value); }
 
     /**
      * <p>The maximum number of permitted requests per a given unit time interval.</p>
@@ -239,7 +243,49 @@ namespace Model
     /**
      * <p>The maximum number of permitted requests per a given unit time interval.</p>
      */
-    inline UsagePlan& WithQuota(QuotaSettings&& value) { SetQuota(value); return *this;}
+    inline UsagePlan& WithQuota(QuotaSettings&& value) { SetQuota(std::move(value)); return *this;}
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline const Aws::String& GetProductCode() const{ return m_productCode; }
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline void SetProductCode(const Aws::String& value) { m_productCodeHasBeenSet = true; m_productCode = value; }
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline void SetProductCode(Aws::String&& value) { m_productCodeHasBeenSet = true; m_productCode = std::move(value); }
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline void SetProductCode(const char* value) { m_productCodeHasBeenSet = true; m_productCode.assign(value); }
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline UsagePlan& WithProductCode(const Aws::String& value) { SetProductCode(value); return *this;}
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline UsagePlan& WithProductCode(Aws::String&& value) { SetProductCode(std::move(value)); return *this;}
+
+    /**
+     * <p>The AWS Markeplace product identifier to associate with the usage plan as a
+     * SaaS product on AWS Marketplace.</p>
+     */
+    inline UsagePlan& WithProductCode(const char* value) { SetProductCode(value); return *this;}
 
   private:
     Aws::String m_id;
@@ -254,6 +300,8 @@ namespace Model
     bool m_throttleHasBeenSet;
     QuotaSettings m_quota;
     bool m_quotaHasBeenSet;
+    Aws::String m_productCode;
+    bool m_productCodeHasBeenSet;
   };
 
 } // namespace Model

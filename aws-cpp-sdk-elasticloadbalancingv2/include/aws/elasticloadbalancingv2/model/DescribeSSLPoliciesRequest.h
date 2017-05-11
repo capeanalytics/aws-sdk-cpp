@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeSSLPolicies.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API DescribeSSLPoliciesRequest : public ElasticLoadBalancingv2Request
   {
@@ -34,6 +35,11 @@ namespace Model
     DescribeSSLPoliciesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The names of the policies.</p>
      */
@@ -47,7 +53,7 @@ namespace Model
     /**
      * <p>The names of the policies.</p>
      */
-    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = value; }
+    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = std::move(value); }
 
     /**
      * <p>The names of the policies.</p>
@@ -57,7 +63,7 @@ namespace Model
     /**
      * <p>The names of the policies.</p>
      */
-    inline DescribeSSLPoliciesRequest& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(value); return *this;}
+    inline DescribeSSLPoliciesRequest& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(std::move(value)); return *this;}
 
     /**
      * <p>The names of the policies.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>The names of the policies.</p>
      */
-    inline DescribeSSLPoliciesRequest& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
+    inline DescribeSSLPoliciesRequest& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of the policies.</p>
@@ -90,7 +96,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a
@@ -108,7 +114,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline DescribeSSLPoliciesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeSSLPoliciesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a

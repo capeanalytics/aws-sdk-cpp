@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DeleteNotificationConfiguration.</p>
+   * <p>Contains the parameters for DeleteNotificationConfiguration.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfigurationType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DeleteNotificationConfigurationRequest : public AutoScalingRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DeleteNotificationConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline DeleteNotificationConfigurationRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline DeleteNotificationConfigurationRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -84,7 +94,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
      * (SNS) topic.</p>
      */
-    inline void SetTopicARN(Aws::String&& value) { m_topicARNHasBeenSet = true; m_topicARN = value; }
+    inline void SetTopicARN(Aws::String&& value) { m_topicARNHasBeenSet = true; m_topicARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
@@ -102,7 +112,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
      * (SNS) topic.</p>
      */
-    inline DeleteNotificationConfigurationRequest& WithTopicARN(Aws::String&& value) { SetTopicARN(value); return *this;}
+    inline DeleteNotificationConfigurationRequest& WithTopicARN(Aws::String&& value) { SetTopicARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service

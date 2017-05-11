@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ConversionTask.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,6 +35,7 @@ ConversionTask::ConversionTask() :
     m_expirationTimeHasBeenSet(false),
     m_importInstanceHasBeenSet(false),
     m_importVolumeHasBeenSet(false),
+    m_state(ConversionTaskState::NOT_SET),
     m_stateHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
     m_tagsHasBeenSet(false)
@@ -45,6 +47,7 @@ ConversionTask::ConversionTask(const XmlNode& xmlNode) :
     m_expirationTimeHasBeenSet(false),
     m_importInstanceHasBeenSet(false),
     m_importVolumeHasBeenSet(false),
+    m_state(ConversionTaskState::NOT_SET),
     m_stateHasBeenSet(false),
     m_statusMessageHasBeenSet(false),
     m_tagsHasBeenSet(false)
@@ -196,7 +199,7 @@ void ConversionTask::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

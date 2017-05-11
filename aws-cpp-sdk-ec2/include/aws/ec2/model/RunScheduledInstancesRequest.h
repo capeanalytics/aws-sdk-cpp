@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ScheduledInstancesLaunchSpecification.h>
+#include <utility>
+#include <aws/core/utils/UUID.h>
 
 namespace Aws
 {
@@ -26,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for RunScheduledInstances.</p>
+   * <p>Contains the parameters for RunScheduledInstances.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RunScheduledInstancesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API RunScheduledInstancesRequest : public EC2Request
   {
@@ -34,6 +40,11 @@ namespace Model
     RunScheduledInstancesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -80,7 +91,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
+    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
      * <p>Unique, case-sensitive identifier that ensures the idempotency of the
@@ -104,7 +115,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * Idempotency</a>.</p>
      */
-    inline RunScheduledInstancesRequest& WithClientToken(Aws::String&& value) { SetClientToken(value); return *this;}
+    inline RunScheduledInstancesRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
      * <p>Unique, case-sensitive identifier that ensures the idempotency of the
@@ -142,7 +153,7 @@ namespace Model
     /**
      * <p>The Scheduled Instance ID.</p>
      */
-    inline void SetScheduledInstanceId(Aws::String&& value) { m_scheduledInstanceIdHasBeenSet = true; m_scheduledInstanceId = value; }
+    inline void SetScheduledInstanceId(Aws::String&& value) { m_scheduledInstanceIdHasBeenSet = true; m_scheduledInstanceId = std::move(value); }
 
     /**
      * <p>The Scheduled Instance ID.</p>
@@ -157,7 +168,7 @@ namespace Model
     /**
      * <p>The Scheduled Instance ID.</p>
      */
-    inline RunScheduledInstancesRequest& WithScheduledInstanceId(Aws::String&& value) { SetScheduledInstanceId(value); return *this;}
+    inline RunScheduledInstancesRequest& WithScheduledInstanceId(Aws::String&& value) { SetScheduledInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The Scheduled Instance ID.</p>
@@ -165,29 +176,34 @@ namespace Model
     inline RunScheduledInstancesRequest& WithScheduledInstanceId(const char* value) { SetScheduledInstanceId(value); return *this;}
 
     /**
-     * <p>The launch specification.</p>
+     * <p>The launch specification. You must match the instance type, Availability
+     * Zone, network, and platform of the schedule that you purchased.</p>
      */
     inline const ScheduledInstancesLaunchSpecification& GetLaunchSpecification() const{ return m_launchSpecification; }
 
     /**
-     * <p>The launch specification.</p>
+     * <p>The launch specification. You must match the instance type, Availability
+     * Zone, network, and platform of the schedule that you purchased.</p>
      */
     inline void SetLaunchSpecification(const ScheduledInstancesLaunchSpecification& value) { m_launchSpecificationHasBeenSet = true; m_launchSpecification = value; }
 
     /**
-     * <p>The launch specification.</p>
+     * <p>The launch specification. You must match the instance type, Availability
+     * Zone, network, and platform of the schedule that you purchased.</p>
      */
-    inline void SetLaunchSpecification(ScheduledInstancesLaunchSpecification&& value) { m_launchSpecificationHasBeenSet = true; m_launchSpecification = value; }
+    inline void SetLaunchSpecification(ScheduledInstancesLaunchSpecification&& value) { m_launchSpecificationHasBeenSet = true; m_launchSpecification = std::move(value); }
 
     /**
-     * <p>The launch specification.</p>
+     * <p>The launch specification. You must match the instance type, Availability
+     * Zone, network, and platform of the schedule that you purchased.</p>
      */
     inline RunScheduledInstancesRequest& WithLaunchSpecification(const ScheduledInstancesLaunchSpecification& value) { SetLaunchSpecification(value); return *this;}
 
     /**
-     * <p>The launch specification.</p>
+     * <p>The launch specification. You must match the instance type, Availability
+     * Zone, network, and platform of the schedule that you purchased.</p>
      */
-    inline RunScheduledInstancesRequest& WithLaunchSpecification(ScheduledInstancesLaunchSpecification&& value) { SetLaunchSpecification(value); return *this;}
+    inline RunScheduledInstancesRequest& WithLaunchSpecification(ScheduledInstancesLaunchSpecification&& value) { SetLaunchSpecification(std::move(value)); return *this;}
 
   private:
     bool m_dryRun;

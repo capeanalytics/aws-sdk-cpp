@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/ContainerInstance.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,8 @@ namespace Model
 ContainerInstance::ContainerInstance() : 
     m_containerInstanceArnHasBeenSet(false),
     m_ec2InstanceIdHasBeenSet(false),
+    m_version(0),
+    m_versionHasBeenSet(false),
     m_versionInfoHasBeenSet(false),
     m_remainingResourcesHasBeenSet(false),
     m_registeredResourcesHasBeenSet(false),
@@ -40,14 +43,18 @@ ContainerInstance::ContainerInstance() :
     m_runningTasksCountHasBeenSet(false),
     m_pendingTasksCount(0),
     m_pendingTasksCountHasBeenSet(false),
+    m_agentUpdateStatus(AgentUpdateStatus::NOT_SET),
     m_agentUpdateStatusHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+    m_attributesHasBeenSet(false),
+    m_registeredAtHasBeenSet(false)
 {
 }
 
 ContainerInstance::ContainerInstance(const JsonValue& jsonValue) : 
     m_containerInstanceArnHasBeenSet(false),
     m_ec2InstanceIdHasBeenSet(false),
+    m_version(0),
+    m_versionHasBeenSet(false),
     m_versionInfoHasBeenSet(false),
     m_remainingResourcesHasBeenSet(false),
     m_registeredResourcesHasBeenSet(false),
@@ -58,8 +65,10 @@ ContainerInstance::ContainerInstance(const JsonValue& jsonValue) :
     m_runningTasksCountHasBeenSet(false),
     m_pendingTasksCount(0),
     m_pendingTasksCountHasBeenSet(false),
+    m_agentUpdateStatus(AgentUpdateStatus::NOT_SET),
     m_agentUpdateStatusHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+    m_attributesHasBeenSet(false),
+    m_registeredAtHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -78,6 +87,13 @@ ContainerInstance& ContainerInstance::operator =(const JsonValue& jsonValue)
     m_ec2InstanceId = jsonValue.GetString("ec2InstanceId");
 
     m_ec2InstanceIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("version"))
+  {
+    m_version = jsonValue.GetInt64("version");
+
+    m_versionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("versionInfo"))
@@ -152,6 +168,13 @@ ContainerInstance& ContainerInstance::operator =(const JsonValue& jsonValue)
     m_attributesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("registeredAt"))
+  {
+    m_registeredAt = jsonValue.GetDouble("registeredAt");
+
+    m_registeredAtHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -168,6 +191,12 @@ JsonValue ContainerInstance::Jsonize() const
   if(m_ec2InstanceIdHasBeenSet)
   {
    payload.WithString("ec2InstanceId", m_ec2InstanceId);
+
+  }
+
+  if(m_versionHasBeenSet)
+  {
+   payload.WithInt64("version", m_version);
 
   }
 
@@ -237,6 +266,11 @@ JsonValue ContainerInstance::Jsonize() const
    }
    payload.WithArray("attributes", std::move(attributesJsonList));
 
+  }
+
+  if(m_registeredAtHasBeenSet)
+  {
+   payload.WithDouble("registeredAt", m_registeredAt.SecondsWithMSPrecision());
   }
 
   return payload;

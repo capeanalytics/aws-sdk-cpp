@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-identity/CognitoIdentity_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Credentials for the provided identity ID.</p>
+   * <p>Credentials for the provided identity ID.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/Credentials">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITY_API Credentials
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The Access Key portion of the credentials.</p>
      */
-    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = value; }
+    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::move(value); }
 
     /**
      * <p>The Access Key portion of the credentials.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The Access Key portion of the credentials.</p>
      */
-    inline Credentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(value); return *this;}
+    inline Credentials& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The Access Key portion of the credentials.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The Secret Access Key portion of the credentials</p>
      */
-    inline void SetSecretKey(Aws::String&& value) { m_secretKeyHasBeenSet = true; m_secretKey = value; }
+    inline void SetSecretKey(Aws::String&& value) { m_secretKeyHasBeenSet = true; m_secretKey = std::move(value); }
 
     /**
      * <p>The Secret Access Key portion of the credentials</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The Secret Access Key portion of the credentials</p>
      */
-    inline Credentials& WithSecretKey(Aws::String&& value) { SetSecretKey(value); return *this;}
+    inline Credentials& WithSecretKey(Aws::String&& value) { SetSecretKey(std::move(value)); return *this;}
 
     /**
      * <p>The Secret Access Key portion of the credentials</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>The Session Token portion of the credentials</p>
      */
-    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = value; }
+    inline void SetSessionToken(Aws::String&& value) { m_sessionTokenHasBeenSet = true; m_sessionToken = std::move(value); }
 
     /**
      * <p>The Session Token portion of the credentials</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The Session Token portion of the credentials</p>
      */
-    inline Credentials& WithSessionToken(Aws::String&& value) { SetSessionToken(value); return *this;}
+    inline Credentials& WithSessionToken(Aws::String&& value) { SetSessionToken(std::move(value)); return *this;}
 
     /**
      * <p>The Session Token portion of the credentials</p>
@@ -160,7 +164,7 @@ namespace Model
     /**
      * <p>The date at which these credentials will expire.</p>
      */
-    inline void SetExpiration(Aws::Utils::DateTime&& value) { m_expirationHasBeenSet = true; m_expiration = value; }
+    inline void SetExpiration(Aws::Utils::DateTime&& value) { m_expirationHasBeenSet = true; m_expiration = std::move(value); }
 
     /**
      * <p>The date at which these credentials will expire.</p>
@@ -170,7 +174,7 @@ namespace Model
     /**
      * <p>The date at which these credentials will expire.</p>
      */
-    inline Credentials& WithExpiration(Aws::Utils::DateTime&& value) { SetExpiration(value); return *this;}
+    inline Credentials& WithExpiration(Aws::Utils::DateTime&& value) { SetExpiration(std::move(value)); return *this;}
 
   private:
     Aws::String m_accessKeyId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an app's SSL configuration.</p>
+   * <p>Describes an app's SSL configuration.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/SslConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API SslConfiguration
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The contents of the certificate's domain.crt file.</p>
      */
-    inline void SetCertificate(Aws::String&& value) { m_certificateHasBeenSet = true; m_certificate = value; }
+    inline void SetCertificate(Aws::String&& value) { m_certificateHasBeenSet = true; m_certificate = std::move(value); }
 
     /**
      * <p>The contents of the certificate's domain.crt file.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The contents of the certificate's domain.crt file.</p>
      */
-    inline SslConfiguration& WithCertificate(Aws::String&& value) { SetCertificate(value); return *this;}
+    inline SslConfiguration& WithCertificate(Aws::String&& value) { SetCertificate(std::move(value)); return *this;}
 
     /**
      * <p>The contents of the certificate's domain.crt file.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The private key; the contents of the certificate's domain.kex file.</p>
      */
-    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = value; }
+    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::move(value); }
 
     /**
      * <p>The private key; the contents of the certificate's domain.kex file.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The private key; the contents of the certificate's domain.kex file.</p>
      */
-    inline SslConfiguration& WithPrivateKey(Aws::String&& value) { SetPrivateKey(value); return *this;}
+    inline SslConfiguration& WithPrivateKey(Aws::String&& value) { SetPrivateKey(std::move(value)); return *this;}
 
     /**
      * <p>The private key; the contents of the certificate's domain.kex file.</p>
@@ -127,7 +131,7 @@ namespace Model
      * <p>Optional. Can be used to specify an intermediate certificate authority key or
      * client authentication.</p>
      */
-    inline void SetChain(Aws::String&& value) { m_chainHasBeenSet = true; m_chain = value; }
+    inline void SetChain(Aws::String&& value) { m_chainHasBeenSet = true; m_chain = std::move(value); }
 
     /**
      * <p>Optional. Can be used to specify an intermediate certificate authority key or
@@ -145,7 +149,7 @@ namespace Model
      * <p>Optional. Can be used to specify an intermediate certificate authority key or
      * client authentication.</p>
      */
-    inline SslConfiguration& WithChain(Aws::String&& value) { SetChain(value); return *this;}
+    inline SslConfiguration& WithChain(Aws::String&& value) { SetChain(std::move(value)); return *this;}
 
     /**
      * <p>Optional. Can be used to specify an intermediate certificate authority key or

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/WAFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 
   /**
    * <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the
-   * current AWS account.</p>
+   * current AWS account.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/ListSqlInjectionMatchSetsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API ListSqlInjectionMatchSetsRequest : public WAFRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>If you specify a value for <code>Limit</code> and you have more
@@ -67,7 +72,7 @@ namespace Model
      * <code>NextMarker</code> from the previous response to get information about
      * another batch of <code>SqlInjectionMatchSets</code>.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarkerHasBeenSet = true; m_nextMarker = std::move(value); }
 
     /**
      * <p>If you specify a value for <code>Limit</code> and you have more
@@ -100,7 +105,7 @@ namespace Model
      * <code>NextMarker</code> from the previous response to get information about
      * another batch of <code>SqlInjectionMatchSets</code>.</p>
      */
-    inline ListSqlInjectionMatchSetsRequest& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListSqlInjectionMatchSetsRequest& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>If you specify a value for <code>Limit</code> and you have more

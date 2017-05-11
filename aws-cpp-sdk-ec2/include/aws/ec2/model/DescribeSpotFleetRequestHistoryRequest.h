@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/EventType.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeSpotFleetRequestHistory.</p>
+   * <p>Contains the parameters for DescribeSpotFleetRequestHistory.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistoryRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeSpotFleetRequestHistoryRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     DescribeSpotFleetRequestHistoryRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +82,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = value; }
+    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestIdHasBeenSet = true; m_spotFleetRequestId = std::move(value); }
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -87,7 +97,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline DescribeSpotFleetRequestHistoryRequest& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryRequest& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -107,7 +117,7 @@ namespace Model
     /**
      * <p>The type of events to describe. By default, all events are described.</p>
      */
-    inline void SetEventType(EventType&& value) { m_eventTypeHasBeenSet = true; m_eventType = value; }
+    inline void SetEventType(EventType&& value) { m_eventTypeHasBeenSet = true; m_eventType = std::move(value); }
 
     /**
      * <p>The type of events to describe. By default, all events are described.</p>
@@ -117,7 +127,7 @@ namespace Model
     /**
      * <p>The type of events to describe. By default, all events are described.</p>
      */
-    inline DescribeSpotFleetRequestHistoryRequest& WithEventType(EventType&& value) { SetEventType(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryRequest& WithEventType(EventType&& value) { SetEventType(std::move(value)); return *this;}
 
     /**
      * <p>The starting date and time for the events, in UTC format (for example,
@@ -135,7 +145,7 @@ namespace Model
      * <p>The starting date and time for the events, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The starting date and time for the events, in UTC format (for example,
@@ -147,7 +157,7 @@ namespace Model
      * <p>The starting date and time for the events, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline DescribeSpotFleetRequestHistoryRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of results.</p>
@@ -162,7 +172,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of results.</p>
@@ -177,7 +187,7 @@ namespace Model
     /**
      * <p>The token for the next set of results.</p>
      */
-    inline DescribeSpotFleetRequestHistoryRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of results.</p>

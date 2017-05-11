@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/ActivityType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/TaskList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -50,7 +52,9 @@ namespace Model
    * attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
    * details and example IAM policies, see <a
    * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
-   * IAM to Manage Access to Amazon SWF Workflows</a>.</p>
+   * IAM to Manage Access to Amazon SWF Workflows</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ScheduleActivityTaskDecisionAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API ScheduleActivityTaskDecisionAttributes
   {
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The type of the activity task to schedule.</p>
      */
-    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = value; }
+    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = std::move(value); }
 
     /**
      * <p><b>Required.</b> The type of the activity task to schedule.</p>
@@ -83,7 +87,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The type of the activity task to schedule.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithActivityType(ActivityType&& value) { SetActivityType(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithActivityType(ActivityType&& value) { SetActivityType(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The <code>activityId</code> of the activity task.</p> <p>The
@@ -110,7 +114,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline void SetActivityId(Aws::String&& value) { m_activityIdHasBeenSet = true; m_activityId = value; }
+    inline void SetActivityId(Aws::String&& value) { m_activityIdHasBeenSet = true; m_activityId = std::move(value); }
 
     /**
      * <p><b>Required.</b> The <code>activityId</code> of the activity task.</p> <p>The
@@ -137,7 +141,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithActivityId(Aws::String&& value) { SetActivityId(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithActivityId(Aws::String&& value) { SetActivityId(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The <code>activityId</code> of the activity task.</p> <p>The
@@ -164,7 +168,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks. This data is not sent to the activity.</p>
      */
-    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = value; }
+    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -182,7 +186,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks. This data is not sent to the activity.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithControl(Aws::String&& value) { SetControl(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithControl(Aws::String&& value) { SetControl(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -203,7 +207,7 @@ namespace Model
     /**
      * <p>The input provided to the activity task.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p>The input provided to the activity task.</p>
@@ -218,7 +222,7 @@ namespace Model
     /**
      * <p>The input provided to the activity task.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>The input provided to the activity task.</p>
@@ -253,7 +257,7 @@ namespace Model
      * through this field. If neither this field is set nor a default schedule-to-close
      * timeout was specified at registration time then a fault will be returned.</note>
      */
-    inline void SetScheduleToCloseTimeout(Aws::String&& value) { m_scheduleToCloseTimeoutHasBeenSet = true; m_scheduleToCloseTimeout = value; }
+    inline void SetScheduleToCloseTimeout(Aws::String&& value) { m_scheduleToCloseTimeoutHasBeenSet = true; m_scheduleToCloseTimeout = std::move(value); }
 
     /**
      * <p>The maximum duration for this activity task.</p> <p>The duration is specified
@@ -283,7 +287,7 @@ namespace Model
      * through this field. If neither this field is set nor a default schedule-to-close
      * timeout was specified at registration time then a fault will be returned.</note>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithScheduleToCloseTimeout(Aws::String&& value) { SetScheduleToCloseTimeout(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithScheduleToCloseTimeout(Aws::String&& value) { SetScheduleToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum duration for this activity task.</p> <p>The duration is specified
@@ -335,7 +339,7 @@ namespace Model
      * (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = value; }
+    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
 
     /**
      * <p>If set, specifies the name of the task list in which to schedule the activity
@@ -363,7 +367,7 @@ namespace Model
      * (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithTaskList(TaskList&& value) { SetTaskList(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> If set, specifies the priority with which the activity task
@@ -402,7 +406,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = value; }
+    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = std::move(value); }
 
     /**
      * <p><i>Optional.</i> If set, specifies the priority with which the activity task
@@ -441,7 +445,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> If set, specifies the priority with which the activity task
@@ -493,7 +497,7 @@ namespace Model
      * field. If neither this field is set nor a default schedule-to-start timeout was
      * specified at registration time then a fault will be returned.</note>
      */
-    inline void SetScheduleToStartTimeout(Aws::String&& value) { m_scheduleToStartTimeoutHasBeenSet = true; m_scheduleToStartTimeout = value; }
+    inline void SetScheduleToStartTimeout(Aws::String&& value) { m_scheduleToStartTimeoutHasBeenSet = true; m_scheduleToStartTimeout = std::move(value); }
 
     /**
      * <p><i>Optional.</i> If set, specifies the maximum duration the activity task can
@@ -532,7 +536,7 @@ namespace Model
      * field. If neither this field is set nor a default schedule-to-start timeout was
      * specified at registration time then a fault will be returned.</note>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithScheduleToStartTimeout(Aws::String&& value) { SetScheduleToStartTimeout(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithScheduleToStartTimeout(Aws::String&& value) { SetScheduleToStartTimeout(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> If set, specifies the maximum duration the activity task can
@@ -584,7 +588,7 @@ namespace Model
      * set nor a default start-to-close timeout was specified at registration time then
      * a fault will be returned.</note>
      */
-    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = value; }
+    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = std::move(value); }
 
     /**
      * <p>If set, specifies the maximum duration a worker may take to process this
@@ -623,7 +627,7 @@ namespace Model
      * set nor a default start-to-close timeout was specified at registration time then
      * a fault will be returned.</note>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>If set, specifies the maximum duration a worker may take to process this
@@ -672,7 +676,7 @@ namespace Model
      * duration is specified in seconds; an integer greater than or equal to 0. The
      * value "NONE" can be used to specify unlimited duration.</p>
      */
-    inline void SetHeartbeatTimeout(Aws::String&& value) { m_heartbeatTimeoutHasBeenSet = true; m_heartbeatTimeout = value; }
+    inline void SetHeartbeatTimeout(Aws::String&& value) { m_heartbeatTimeoutHasBeenSet = true; m_heartbeatTimeout = std::move(value); }
 
     /**
      * <p>If set, specifies the maximum time before which a worker processing a task of
@@ -708,7 +712,7 @@ namespace Model
      * duration is specified in seconds; an integer greater than or equal to 0. The
      * value "NONE" can be used to specify unlimited duration.</p>
      */
-    inline ScheduleActivityTaskDecisionAttributes& WithHeartbeatTimeout(Aws::String&& value) { SetHeartbeatTimeout(value); return *this;}
+    inline ScheduleActivityTaskDecisionAttributes& WithHeartbeatTimeout(Aws::String&& value) { SetHeartbeatTimeout(std::move(value)); return *this;}
 
     /**
      * <p>If set, specifies the maximum time before which a worker processing a task of

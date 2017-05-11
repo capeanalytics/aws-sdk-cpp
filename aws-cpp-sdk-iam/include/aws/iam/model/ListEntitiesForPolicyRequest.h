@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/EntityType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace Model
     ListEntitiesForPolicyRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
      * versions.</p> <p>For more information about ARNs, see <a
@@ -58,7 +65,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
+    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
@@ -85,7 +92,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline ListEntitiesForPolicyRequest& WithPolicyArn(Aws::String&& value) { SetPolicyArn(value); return *this;}
+    inline ListEntitiesForPolicyRequest& WithPolicyArn(Aws::String&& value) { SetPolicyArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
@@ -121,7 +128,7 @@ namespace Model
      * included, all attached entities (users, groups, and roles) are returned. The
      * argument for this parameter must be one of the valid values listed below.</p>
      */
-    inline void SetEntityFilter(EntityType&& value) { m_entityFilterHasBeenSet = true; m_entityFilter = value; }
+    inline void SetEntityFilter(EntityType&& value) { m_entityFilterHasBeenSet = true; m_entityFilter = std::move(value); }
 
     /**
      * <p>The entity type to use for filtering the results.</p> <p>For example, when
@@ -139,82 +146,82 @@ namespace Model
      * included, all attached entities (users, groups, and roles) are returned. The
      * argument for this parameter must be one of the valid values listed below.</p>
      */
-    inline ListEntitiesForPolicyRequest& WithEntityFilter(EntityType&& value) { SetEntityFilter(value); return *this;}
+    inline ListEntitiesForPolicyRequest& WithEntityFilter(EntityType&& value) { SetEntityFilter(std::move(value)); return *this;}
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
     inline const Aws::String& GetPathPrefix() const{ return m_pathPrefix; }
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
     inline void SetPathPrefix(const Aws::String& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = value; }
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
-    inline void SetPathPrefix(Aws::String&& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = value; }
+    inline void SetPathPrefix(Aws::String&& value) { m_pathPrefixHasBeenSet = true; m_pathPrefix = std::move(value); }
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
     inline void SetPathPrefix(const char* value) { m_pathPrefixHasBeenSet = true; m_pathPrefix.assign(value); }
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPathPrefix(const Aws::String& value) { SetPathPrefix(value); return *this;}
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
-    inline ListEntitiesForPolicyRequest& WithPathPrefix(Aws::String&& value) { SetPathPrefix(value); return *this;}
+    inline ListEntitiesForPolicyRequest& WithPathPrefix(Aws::String&& value) { SetPathPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The path prefix for filtering the results. This parameter is optional. If it
-     * is not included, it defaults to a slash (/), listing all entities.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of either a forward slash (/) by itself or a
-     * string that must begin and end with forward slashes, containing any ASCII
-     * character from the ! (\u0021) thru the DEL character (\u007F), including most
-     * punctuation characters, digits, and upper and lowercased letters.</p>
+     * is not included, it defaults to a slash (/), listing all entities.</p> <p>This
+     * paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of either a forward slash (/) by
+     * itself or a string that must begin and end with forward slashes, containing any
+     * ASCII character from the ! (\u0021) thru the DEL character (\u007F), including
+     * most punctuation characters, digits, and upper and lowercased letters.</p>
      */
     inline ListEntitiesForPolicyRequest& WithPathPrefix(const char* value) { SetPathPrefix(value); return *this;}
 
@@ -240,7 +247,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -264,7 +271,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline ListEntitiesForPolicyRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListEntitiesForPolicyRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -275,11 +282,11 @@ namespace Model
     inline ListEntitiesForPolicyRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -287,11 +294,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -299,11 +306,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>

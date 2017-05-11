@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/MachineLearningRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A user-supplied ID that uniquely identifies the
      * <code>BatchPrediction</code>.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>A user-supplied ID that uniquely identifies the
      * <code>BatchPrediction</code>.</p>
      */
-    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = value; }
+    inline void SetBatchPredictionId(Aws::String&& value) { m_batchPredictionIdHasBeenSet = true; m_batchPredictionId = std::move(value); }
 
     /**
      * <p>A user-supplied ID that uniquely identifies the
@@ -68,7 +71,7 @@ namespace Model
      * <p>A user-supplied ID that uniquely identifies the
      * <code>BatchPrediction</code>.</p>
      */
-    inline CreateBatchPredictionRequest& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(value); return *this;}
+    inline CreateBatchPredictionRequest& WithBatchPredictionId(Aws::String&& value) { SetBatchPredictionId(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied ID that uniquely identifies the
@@ -92,7 +95,7 @@ namespace Model
      * <p>A user-supplied name or description of the <code>BatchPrediction</code>.
      * <code>BatchPredictionName</code> can only use the UTF-8 character set.</p>
      */
-    inline void SetBatchPredictionName(Aws::String&& value) { m_batchPredictionNameHasBeenSet = true; m_batchPredictionName = value; }
+    inline void SetBatchPredictionName(Aws::String&& value) { m_batchPredictionNameHasBeenSet = true; m_batchPredictionName = std::move(value); }
 
     /**
      * <p>A user-supplied name or description of the <code>BatchPrediction</code>.
@@ -110,7 +113,7 @@ namespace Model
      * <p>A user-supplied name or description of the <code>BatchPrediction</code>.
      * <code>BatchPredictionName</code> can only use the UTF-8 character set.</p>
      */
-    inline CreateBatchPredictionRequest& WithBatchPredictionName(Aws::String&& value) { SetBatchPredictionName(value); return *this;}
+    inline CreateBatchPredictionRequest& WithBatchPredictionName(Aws::String&& value) { SetBatchPredictionName(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied name or description of the <code>BatchPrediction</code>.
@@ -134,7 +137,7 @@ namespace Model
      * <p>The ID of the <code>MLModel</code> that will generate predictions for the
      * group of observations. </p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
 
     /**
      * <p>The ID of the <code>MLModel</code> that will generate predictions for the
@@ -152,7 +155,7 @@ namespace Model
      * <p>The ID of the <code>MLModel</code> that will generate predictions for the
      * group of observations. </p>
      */
-    inline CreateBatchPredictionRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline CreateBatchPredictionRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <code>MLModel</code> that will generate predictions for the
@@ -176,7 +179,7 @@ namespace Model
      * <p>The ID of the <code>DataSource</code> that points to the group of
      * observations to predict.</p>
      */
-    inline void SetBatchPredictionDataSourceId(Aws::String&& value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId = value; }
+    inline void SetBatchPredictionDataSourceId(Aws::String&& value) { m_batchPredictionDataSourceIdHasBeenSet = true; m_batchPredictionDataSourceId = std::move(value); }
 
     /**
      * <p>The ID of the <code>DataSource</code> that points to the group of
@@ -194,7 +197,7 @@ namespace Model
      * <p>The ID of the <code>DataSource</code> that points to the group of
      * observations to predict.</p>
      */
-    inline CreateBatchPredictionRequest& WithBatchPredictionDataSourceId(Aws::String&& value) { SetBatchPredictionDataSourceId(value); return *this;}
+    inline CreateBatchPredictionRequest& WithBatchPredictionDataSourceId(Aws::String&& value) { SetBatchPredictionDataSourceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <code>DataSource</code> that points to the group of
@@ -233,7 +236,7 @@ namespace Model
      * see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon
      * Machine Learning Developer Guide</a>.</p>
      */
-    inline void SetOutputUri(Aws::String&& value) { m_outputUriHasBeenSet = true; m_outputUri = value; }
+    inline void SetOutputUri(Aws::String&& value) { m_outputUriHasBeenSet = true; m_outputUri = std::move(value); }
 
     /**
      * <p>The location of an Amazon Simple Storage Service (Amazon S3) bucket or
@@ -266,7 +269,7 @@ namespace Model
      * see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon
      * Machine Learning Developer Guide</a>.</p>
      */
-    inline CreateBatchPredictionRequest& WithOutputUri(Aws::String&& value) { SetOutputUri(value); return *this;}
+    inline CreateBatchPredictionRequest& WithOutputUri(Aws::String&& value) { SetOutputUri(std::move(value)); return *this;}
 
     /**
      * <p>The location of an Amazon Simple Storage Service (Amazon S3) bucket or

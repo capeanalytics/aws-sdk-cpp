@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * request. A record that is successfully added to a stream includes
    * <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record
    * that fails to be added to the stream includes <code>ErrorCode</code> and
-   * <code>ErrorMessage</code> in the result.</p>
+   * <code>ErrorMessage</code> in the result.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecordsResultEntry">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API PutRecordsResultEntry
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The sequence number for an individual record result.</p>
      */
-    inline void SetSequenceNumber(Aws::String&& value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = value; }
+    inline void SetSequenceNumber(Aws::String&& value) { m_sequenceNumberHasBeenSet = true; m_sequenceNumber = std::move(value); }
 
     /**
      * <p>The sequence number for an individual record result.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The sequence number for an individual record result.</p>
      */
-    inline PutRecordsResultEntry& WithSequenceNumber(Aws::String&& value) { SetSequenceNumber(value); return *this;}
+    inline PutRecordsResultEntry& WithSequenceNumber(Aws::String&& value) { SetSequenceNumber(std::move(value)); return *this;}
 
     /**
      * <p>The sequence number for an individual record result.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The shard ID for an individual record result.</p>
      */
-    inline void SetShardId(Aws::String&& value) { m_shardIdHasBeenSet = true; m_shardId = value; }
+    inline void SetShardId(Aws::String&& value) { m_shardIdHasBeenSet = true; m_shardId = std::move(value); }
 
     /**
      * <p>The shard ID for an individual record result.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The shard ID for an individual record result.</p>
      */
-    inline PutRecordsResultEntry& WithShardId(Aws::String&& value) { SetShardId(value); return *this;}
+    inline PutRecordsResultEntry& WithShardId(Aws::String&& value) { SetShardId(std::move(value)); return *this;}
 
     /**
      * <p>The shard ID for an individual record result.</p>
@@ -134,7 +138,7 @@ namespace Model
      * be either <code>ProvisionedThroughputExceededException</code> or
      * <code>InternalFailure</code>.</p>
      */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
 
     /**
      * <p>The error code for an individual record result. <code>ErrorCodes</code> can
@@ -155,7 +159,7 @@ namespace Model
      * be either <code>ProvisionedThroughputExceededException</code> or
      * <code>InternalFailure</code>.</p>
      */
-    inline PutRecordsResultEntry& WithErrorCode(Aws::String&& value) { SetErrorCode(value); return *this;}
+    inline PutRecordsResultEntry& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
 
     /**
      * <p>The error code for an individual record result. <code>ErrorCodes</code> can
@@ -189,7 +193,7 @@ namespace Model
      * <code>ErrorCode</code> value of <code>InternalFailure</code> has the error
      * message <code>"Internal Service Failure"</code>.</p>
      */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
+    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
 
     /**
      * <p>The error message for an individual record result. An <code>ErrorCode</code>
@@ -216,7 +220,7 @@ namespace Model
      * <code>ErrorCode</code> value of <code>InternalFailure</code> has the error
      * message <code>"Internal Service Failure"</code>.</p>
      */
-    inline PutRecordsResultEntry& WithErrorMessage(Aws::String&& value) { SetErrorMessage(value); return *this;}
+    inline PutRecordsResultEntry& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
 
     /**
      * <p>The error message for an individual record result. An <code>ErrorCode</code>

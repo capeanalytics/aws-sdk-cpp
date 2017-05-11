@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/CreateNetworkInterfaceRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -27,6 +28,9 @@ CreateNetworkInterfaceRequest::CreateNetworkInterfaceRequest() :
     m_privateIpAddressesHasBeenSet(false),
     m_secondaryPrivateIpAddressCount(0),
     m_secondaryPrivateIpAddressCountHasBeenSet(false),
+    m_ipv6AddressesHasBeenSet(false),
+    m_ipv6AddressCount(0),
+    m_ipv6AddressCountHasBeenSet(false),
     m_dryRun(false),
     m_dryRunHasBeenSet(false)
 {
@@ -77,12 +81,32 @@ Aws::String CreateNetworkInterfaceRequest::SerializePayload() const
     ss << "SecondaryPrivateIpAddressCount=" << m_secondaryPrivateIpAddressCount << "&";
   }
 
-  if(m_dryRunHasBeenSet)
+  if(m_ipv6AddressesHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    unsigned ipv6AddressesCount = 1;
+    for(auto& item : m_ipv6Addresses)
+    {
+      item.OutputToStream(ss, "Ipv6Addresses.", ipv6AddressesCount, "");
+      ipv6AddressesCount++;
+    }
   }
 
-  ss << "Version=2015-10-01";
+  if(m_ipv6AddressCountHasBeenSet)
+  {
+    ss << "Ipv6AddressCount=" << m_ipv6AddressCount << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  CreateNetworkInterfaceRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

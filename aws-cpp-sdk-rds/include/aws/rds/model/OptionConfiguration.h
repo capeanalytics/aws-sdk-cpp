@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/OptionSetting.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>A list of all available options</p>
+   * <p>A list of all available options</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API OptionConfiguration
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The configuration of options to include in a group.</p>
      */
-    inline void SetOptionName(Aws::String&& value) { m_optionNameHasBeenSet = true; m_optionName = value; }
+    inline void SetOptionName(Aws::String&& value) { m_optionNameHasBeenSet = true; m_optionName = std::move(value); }
 
     /**
      * <p>The configuration of options to include in a group.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The configuration of options to include in a group.</p>
      */
-    inline OptionConfiguration& WithOptionName(Aws::String&& value) { SetOptionName(value); return *this;}
+    inline OptionConfiguration& WithOptionName(Aws::String&& value) { SetOptionName(std::move(value)); return *this;}
 
     /**
      * <p>The configuration of options to include in a group.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The version for the option.</p>
      */
-    inline void SetOptionVersion(Aws::String&& value) { m_optionVersionHasBeenSet = true; m_optionVersion = value; }
+    inline void SetOptionVersion(Aws::String&& value) { m_optionVersionHasBeenSet = true; m_optionVersion = std::move(value); }
 
     /**
      * <p>The version for the option.</p>
@@ -124,7 +128,7 @@ namespace Model
     /**
      * <p>The version for the option.</p>
      */
-    inline OptionConfiguration& WithOptionVersion(Aws::String&& value) { SetOptionVersion(value); return *this;}
+    inline OptionConfiguration& WithOptionVersion(Aws::String&& value) { SetOptionVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version for the option.</p>
@@ -144,7 +148,7 @@ namespace Model
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline void SetDBSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { m_dBSecurityGroupMembershipsHasBeenSet = true; m_dBSecurityGroupMemberships = value; }
+    inline void SetDBSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { m_dBSecurityGroupMembershipsHasBeenSet = true; m_dBSecurityGroupMemberships = std::move(value); }
 
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
@@ -154,7 +158,7 @@ namespace Model
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline OptionConfiguration& WithDBSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { SetDBSecurityGroupMemberships(value); return *this;}
+    inline OptionConfiguration& WithDBSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { SetDBSecurityGroupMemberships(std::move(value)); return *this;}
 
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
@@ -164,7 +168,7 @@ namespace Model
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline OptionConfiguration& AddDBSecurityGroupMemberships(Aws::String&& value) { m_dBSecurityGroupMembershipsHasBeenSet = true; m_dBSecurityGroupMemberships.push_back(value); return *this; }
+    inline OptionConfiguration& AddDBSecurityGroupMemberships(Aws::String&& value) { m_dBSecurityGroupMembershipsHasBeenSet = true; m_dBSecurityGroupMemberships.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline void SetVpcSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupMembershipsHasBeenSet = true; m_vpcSecurityGroupMemberships = value; }
+    inline void SetVpcSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupMembershipsHasBeenSet = true; m_vpcSecurityGroupMemberships = std::move(value); }
 
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
@@ -194,7 +198,7 @@ namespace Model
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline OptionConfiguration& WithVpcSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupMemberships(value); return *this;}
+    inline OptionConfiguration& WithVpcSecurityGroupMemberships(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupMemberships(std::move(value)); return *this;}
 
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
@@ -204,7 +208,7 @@ namespace Model
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
      */
-    inline OptionConfiguration& AddVpcSecurityGroupMemberships(Aws::String&& value) { m_vpcSecurityGroupMembershipsHasBeenSet = true; m_vpcSecurityGroupMemberships.push_back(value); return *this; }
+    inline OptionConfiguration& AddVpcSecurityGroupMemberships(Aws::String&& value) { m_vpcSecurityGroupMembershipsHasBeenSet = true; m_vpcSecurityGroupMemberships.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
@@ -224,7 +228,7 @@ namespace Model
     /**
      * <p>The option settings to include in an option group.</p>
      */
-    inline void SetOptionSettings(Aws::Vector<OptionSetting>&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings = value; }
+    inline void SetOptionSettings(Aws::Vector<OptionSetting>&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings = std::move(value); }
 
     /**
      * <p>The option settings to include in an option group.</p>
@@ -234,7 +238,7 @@ namespace Model
     /**
      * <p>The option settings to include in an option group.</p>
      */
-    inline OptionConfiguration& WithOptionSettings(Aws::Vector<OptionSetting>&& value) { SetOptionSettings(value); return *this;}
+    inline OptionConfiguration& WithOptionSettings(Aws::Vector<OptionSetting>&& value) { SetOptionSettings(std::move(value)); return *this;}
 
     /**
      * <p>The option settings to include in an option group.</p>
@@ -244,7 +248,7 @@ namespace Model
     /**
      * <p>The option settings to include in an option group.</p>
      */
-    inline OptionConfiguration& AddOptionSettings(OptionSetting&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings.push_back(value); return *this; }
+    inline OptionConfiguration& AddOptionSettings(OptionSetting&& value) { m_optionSettingsHasBeenSet = true; m_optionSettings.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_optionName;

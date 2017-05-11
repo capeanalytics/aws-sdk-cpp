@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>A certificate that has been transfered but not yet accepted.</p>
+   * <p>A certificate that has been transfered but not yet accepted.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/OutgoingCertificate">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API OutgoingCertificate
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The certificate ARN.</p>
      */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
+    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
 
     /**
      * <p>The certificate ARN.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The certificate ARN.</p>
      */
-    inline OutgoingCertificate& WithCertificateArn(Aws::String&& value) { SetCertificateArn(value); return *this;}
+    inline OutgoingCertificate& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
 
     /**
      * <p>The certificate ARN.</p>
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The certificate ID.</p>
      */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
+    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
 
     /**
      * <p>The certificate ID.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The certificate ID.</p>
      */
-    inline OutgoingCertificate& WithCertificateId(Aws::String&& value) { SetCertificateId(value); return *this;}
+    inline OutgoingCertificate& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
 
     /**
      * <p>The certificate ID.</p>
@@ -125,7 +130,7 @@ namespace Model
     /**
      * <p>The AWS account to which the transfer was made.</p>
      */
-    inline void SetTransferredTo(Aws::String&& value) { m_transferredToHasBeenSet = true; m_transferredTo = value; }
+    inline void SetTransferredTo(Aws::String&& value) { m_transferredToHasBeenSet = true; m_transferredTo = std::move(value); }
 
     /**
      * <p>The AWS account to which the transfer was made.</p>
@@ -140,7 +145,7 @@ namespace Model
     /**
      * <p>The AWS account to which the transfer was made.</p>
      */
-    inline OutgoingCertificate& WithTransferredTo(Aws::String&& value) { SetTransferredTo(value); return *this;}
+    inline OutgoingCertificate& WithTransferredTo(Aws::String&& value) { SetTransferredTo(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account to which the transfer was made.</p>
@@ -160,7 +165,7 @@ namespace Model
     /**
      * <p>The date the transfer was initiated.</p>
      */
-    inline void SetTransferDate(Aws::Utils::DateTime&& value) { m_transferDateHasBeenSet = true; m_transferDate = value; }
+    inline void SetTransferDate(Aws::Utils::DateTime&& value) { m_transferDateHasBeenSet = true; m_transferDate = std::move(value); }
 
     /**
      * <p>The date the transfer was initiated.</p>
@@ -170,7 +175,7 @@ namespace Model
     /**
      * <p>The date the transfer was initiated.</p>
      */
-    inline OutgoingCertificate& WithTransferDate(Aws::Utils::DateTime&& value) { SetTransferDate(value); return *this;}
+    inline OutgoingCertificate& WithTransferDate(Aws::Utils::DateTime&& value) { SetTransferDate(std::move(value)); return *this;}
 
     /**
      * <p>The transfer message.</p>
@@ -185,7 +190,7 @@ namespace Model
     /**
      * <p>The transfer message.</p>
      */
-    inline void SetTransferMessage(Aws::String&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = value; }
+    inline void SetTransferMessage(Aws::String&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = std::move(value); }
 
     /**
      * <p>The transfer message.</p>
@@ -200,7 +205,7 @@ namespace Model
     /**
      * <p>The transfer message.</p>
      */
-    inline OutgoingCertificate& WithTransferMessage(Aws::String&& value) { SetTransferMessage(value); return *this;}
+    inline OutgoingCertificate& WithTransferMessage(Aws::String&& value) { SetTransferMessage(std::move(value)); return *this;}
 
     /**
      * <p>The transfer message.</p>
@@ -220,7 +225,7 @@ namespace Model
     /**
      * <p>The certificate creation date.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The certificate creation date.</p>
@@ -230,7 +235,7 @@ namespace Model
     /**
      * <p>The certificate creation date.</p>
      */
-    inline OutgoingCertificate& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline OutgoingCertificate& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
   private:
     Aws::String m_certificateArn;

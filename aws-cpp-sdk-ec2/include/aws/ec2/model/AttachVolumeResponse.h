@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/VolumeAttachmentState.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Describes volume attachment details.</p>
+   * <p>Describes volume attachment details.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VolumeAttachment">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AttachVolumeResponse
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeId = value; }
+    inline void SetVolumeId(Aws::String&& value) { m_volumeId = std::move(value); }
 
     /**
      * <p>The ID of the volume.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline AttachVolumeResponse& WithVolumeId(Aws::String&& value) { SetVolumeId(value); return *this;}
+    inline AttachVolumeResponse& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the volume.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline AttachVolumeResponse& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline AttachVolumeResponse& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The device name.</p>
      */
-    inline void SetDevice(Aws::String&& value) { m_device = value; }
+    inline void SetDevice(Aws::String&& value) { m_device = std::move(value); }
 
     /**
      * <p>The device name.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The device name.</p>
      */
-    inline AttachVolumeResponse& WithDevice(Aws::String&& value) { SetDevice(value); return *this;}
+    inline AttachVolumeResponse& WithDevice(Aws::String&& value) { SetDevice(std::move(value)); return *this;}
 
     /**
      * <p>The device name.</p>
@@ -163,7 +167,7 @@ namespace Model
     /**
      * <p>The attachment state of the volume.</p>
      */
-    inline void SetState(VolumeAttachmentState&& value) { m_state = value; }
+    inline void SetState(VolumeAttachmentState&& value) { m_state = std::move(value); }
 
     /**
      * <p>The attachment state of the volume.</p>
@@ -173,7 +177,7 @@ namespace Model
     /**
      * <p>The attachment state of the volume.</p>
      */
-    inline AttachVolumeResponse& WithState(VolumeAttachmentState&& value) { SetState(value); return *this;}
+    inline AttachVolumeResponse& WithState(VolumeAttachmentState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The time stamp when the attachment initiated.</p>
@@ -188,7 +192,7 @@ namespace Model
     /**
      * <p>The time stamp when the attachment initiated.</p>
      */
-    inline void SetAttachTime(Aws::Utils::DateTime&& value) { m_attachTime = value; }
+    inline void SetAttachTime(Aws::Utils::DateTime&& value) { m_attachTime = std::move(value); }
 
     /**
      * <p>The time stamp when the attachment initiated.</p>
@@ -198,7 +202,7 @@ namespace Model
     /**
      * <p>The time stamp when the attachment initiated.</p>
      */
-    inline AttachVolumeResponse& WithAttachTime(Aws::Utils::DateTime&& value) { SetAttachTime(value); return *this;}
+    inline AttachVolumeResponse& WithAttachTime(Aws::Utils::DateTime&& value) { SetAttachTime(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the EBS volume is deleted on instance termination.</p>
@@ -222,13 +226,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline AttachVolumeResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline AttachVolumeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline AttachVolumeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_volumeId;

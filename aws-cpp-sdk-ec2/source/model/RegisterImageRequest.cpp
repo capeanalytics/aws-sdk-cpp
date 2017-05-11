@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/RegisterImageRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -25,13 +26,17 @@ RegisterImageRequest::RegisterImageRequest() :
     m_imageLocationHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_architecture(ArchitectureValues::NOT_SET),
     m_architectureHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
     m_ramdiskIdHasBeenSet(false),
+    m_billingProductsHasBeenSet(false),
     m_rootDeviceNameHasBeenSet(false),
     m_blockDeviceMappingsHasBeenSet(false),
     m_virtualizationTypeHasBeenSet(false),
-    m_sriovNetSupportHasBeenSet(false)
+    m_sriovNetSupportHasBeenSet(false),
+    m_enaSupport(false),
+    m_enaSupportHasBeenSet(false)
 {
 }
 
@@ -41,7 +46,7 @@ Aws::String RegisterImageRequest::SerializePayload() const
   ss << "Action=RegisterImage&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_imageLocationHasBeenSet)
@@ -74,6 +79,17 @@ Aws::String RegisterImageRequest::SerializePayload() const
     ss << "RamdiskId=" << StringUtils::URLEncode(m_ramdiskId.c_str()) << "&";
   }
 
+  if(m_billingProductsHasBeenSet)
+  {
+    unsigned billingProductsCount = 1;
+    for(auto& item : m_billingProducts)
+    {
+      ss << "BillingProduct." << billingProductsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      billingProductsCount++;
+    }
+  }
+
   if(m_rootDeviceNameHasBeenSet)
   {
     ss << "RootDeviceName=" << StringUtils::URLEncode(m_rootDeviceName.c_str()) << "&";
@@ -99,7 +115,17 @@ Aws::String RegisterImageRequest::SerializePayload() const
     ss << "SriovNetSupport=" << StringUtils::URLEncode(m_sriovNetSupport.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  if(m_enaSupportHasBeenSet)
+  {
+    ss << "EnaSupport=" << std::boolalpha << m_enaSupport << "&";
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  RegisterImageRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

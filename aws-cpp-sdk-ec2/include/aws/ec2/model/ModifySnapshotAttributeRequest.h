@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
@@ -20,6 +21,7 @@
 #include <aws/ec2/model/OperationType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/CreateVolumePermissionModifications.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ModifySnapshotAttribute.</p>
+   * <p>Contains the parameters for ModifySnapshotAttribute.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttributeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ModifySnapshotAttributeRequest : public EC2Request
   {
@@ -37,6 +42,11 @@ namespace Model
     ModifySnapshotAttributeRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -74,7 +84,7 @@ namespace Model
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The ID of the snapshot.</p>
@@ -89,7 +99,7 @@ namespace Model
     /**
      * <p>The ID of the snapshot.</p>
      */
-    inline ModifySnapshotAttributeRequest& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the snapshot.</p>
@@ -112,7 +122,7 @@ namespace Model
      * <p>The snapshot attribute to modify.</p> <note> <p>Only volume creation
      * permissions may be modified at the customer level.</p> </note>
      */
-    inline void SetAttribute(SnapshotAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline void SetAttribute(SnapshotAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
 
     /**
      * <p>The snapshot attribute to modify.</p> <note> <p>Only volume creation
@@ -124,7 +134,7 @@ namespace Model
      * <p>The snapshot attribute to modify.</p> <note> <p>Only volume creation
      * permissions may be modified at the customer level.</p> </note>
      */
-    inline ModifySnapshotAttributeRequest& WithAttribute(SnapshotAttributeName&& value) { SetAttribute(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithAttribute(SnapshotAttributeName&& value) { SetAttribute(std::move(value)); return *this;}
 
     /**
      * <p>The type of operation to perform to the attribute.</p>
@@ -139,7 +149,7 @@ namespace Model
     /**
      * <p>The type of operation to perform to the attribute.</p>
      */
-    inline void SetOperationType(OperationType&& value) { m_operationTypeHasBeenSet = true; m_operationType = value; }
+    inline void SetOperationType(OperationType&& value) { m_operationTypeHasBeenSet = true; m_operationType = std::move(value); }
 
     /**
      * <p>The type of operation to perform to the attribute.</p>
@@ -149,7 +159,7 @@ namespace Model
     /**
      * <p>The type of operation to perform to the attribute.</p>
      */
-    inline ModifySnapshotAttributeRequest& WithOperationType(OperationType&& value) { SetOperationType(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithOperationType(OperationType&& value) { SetOperationType(std::move(value)); return *this;}
 
     /**
      * <p>The account ID to modify for the snapshot.</p>
@@ -164,7 +174,7 @@ namespace Model
     /**
      * <p>The account ID to modify for the snapshot.</p>
      */
-    inline void SetUserIds(Aws::Vector<Aws::String>&& value) { m_userIdsHasBeenSet = true; m_userIds = value; }
+    inline void SetUserIds(Aws::Vector<Aws::String>&& value) { m_userIdsHasBeenSet = true; m_userIds = std::move(value); }
 
     /**
      * <p>The account ID to modify for the snapshot.</p>
@@ -174,7 +184,7 @@ namespace Model
     /**
      * <p>The account ID to modify for the snapshot.</p>
      */
-    inline ModifySnapshotAttributeRequest& WithUserIds(Aws::Vector<Aws::String>&& value) { SetUserIds(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithUserIds(Aws::Vector<Aws::String>&& value) { SetUserIds(std::move(value)); return *this;}
 
     /**
      * <p>The account ID to modify for the snapshot.</p>
@@ -184,7 +194,7 @@ namespace Model
     /**
      * <p>The account ID to modify for the snapshot.</p>
      */
-    inline ModifySnapshotAttributeRequest& AddUserIds(Aws::String&& value) { m_userIdsHasBeenSet = true; m_userIds.push_back(value); return *this; }
+    inline ModifySnapshotAttributeRequest& AddUserIds(Aws::String&& value) { m_userIdsHasBeenSet = true; m_userIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The account ID to modify for the snapshot.</p>
@@ -204,7 +214,7 @@ namespace Model
     /**
      * <p>The group to modify for the snapshot.</p>
      */
-    inline void SetGroupNames(Aws::Vector<Aws::String>&& value) { m_groupNamesHasBeenSet = true; m_groupNames = value; }
+    inline void SetGroupNames(Aws::Vector<Aws::String>&& value) { m_groupNamesHasBeenSet = true; m_groupNames = std::move(value); }
 
     /**
      * <p>The group to modify for the snapshot.</p>
@@ -214,7 +224,7 @@ namespace Model
     /**
      * <p>The group to modify for the snapshot.</p>
      */
-    inline ModifySnapshotAttributeRequest& WithGroupNames(Aws::Vector<Aws::String>&& value) { SetGroupNames(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithGroupNames(Aws::Vector<Aws::String>&& value) { SetGroupNames(std::move(value)); return *this;}
 
     /**
      * <p>The group to modify for the snapshot.</p>
@@ -224,7 +234,7 @@ namespace Model
     /**
      * <p>The group to modify for the snapshot.</p>
      */
-    inline ModifySnapshotAttributeRequest& AddGroupNames(Aws::String&& value) { m_groupNamesHasBeenSet = true; m_groupNames.push_back(value); return *this; }
+    inline ModifySnapshotAttributeRequest& AddGroupNames(Aws::String&& value) { m_groupNamesHasBeenSet = true; m_groupNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The group to modify for the snapshot.</p>
@@ -244,7 +254,7 @@ namespace Model
     /**
      * <p>A JSON representation of the snapshot attribute modification.</p>
      */
-    inline void SetCreateVolumePermission(CreateVolumePermissionModifications&& value) { m_createVolumePermissionHasBeenSet = true; m_createVolumePermission = value; }
+    inline void SetCreateVolumePermission(CreateVolumePermissionModifications&& value) { m_createVolumePermissionHasBeenSet = true; m_createVolumePermission = std::move(value); }
 
     /**
      * <p>A JSON representation of the snapshot attribute modification.</p>
@@ -254,7 +264,7 @@ namespace Model
     /**
      * <p>A JSON representation of the snapshot attribute modification.</p>
      */
-    inline ModifySnapshotAttributeRequest& WithCreateVolumePermission(CreateVolumePermissionModifications&& value) { SetCreateVolumePermission(value); return *this;}
+    inline ModifySnapshotAttributeRequest& WithCreateVolumePermission(CreateVolumePermissionModifications&& value) { SetCreateVolumePermission(std::move(value)); return *this;}
 
   private:
     bool m_dryRun;

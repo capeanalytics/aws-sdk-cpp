@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/DeleteRouteRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -23,7 +24,8 @@ DeleteRouteRequest::DeleteRouteRequest() :
     m_dryRun(false),
     m_dryRunHasBeenSet(false),
     m_routeTableIdHasBeenSet(false),
-    m_destinationCidrBlockHasBeenSet(false)
+    m_destinationCidrBlockHasBeenSet(false),
+    m_destinationIpv6CidrBlockHasBeenSet(false)
 {
 }
 
@@ -33,7 +35,7 @@ Aws::String DeleteRouteRequest::SerializePayload() const
   ss << "Action=DeleteRoute&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_routeTableIdHasBeenSet)
@@ -46,7 +48,17 @@ Aws::String DeleteRouteRequest::SerializePayload() const
     ss << "DestinationCidrBlock=" << StringUtils::URLEncode(m_destinationCidrBlock.c_str()) << "&";
   }
 
-  ss << "Version=2015-10-01";
+  if(m_destinationIpv6CidrBlockHasBeenSet)
+  {
+    ss << "DestinationIpv6CidrBlock=" << StringUtils::URLEncode(m_destinationIpv6CidrBlock.c_str()) << "&";
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  DeleteRouteRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

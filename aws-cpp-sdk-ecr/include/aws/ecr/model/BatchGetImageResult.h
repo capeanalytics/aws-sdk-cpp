@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ecr/model/Image.h>
 #include <aws/ecr/model/ImageFailure.h>
+#include <utility>
 
 namespace Aws
 {
@@ -57,7 +59,7 @@ namespace Model
      * <p>A list of image objects corresponding to the image references in the
      * request.</p>
      */
-    inline void SetImages(Aws::Vector<Image>&& value) { m_images = value; }
+    inline void SetImages(Aws::Vector<Image>&& value) { m_images = std::move(value); }
 
     /**
      * <p>A list of image objects corresponding to the image references in the
@@ -69,7 +71,7 @@ namespace Model
      * <p>A list of image objects corresponding to the image references in the
      * request.</p>
      */
-    inline BatchGetImageResult& WithImages(Aws::Vector<Image>&& value) { SetImages(value); return *this;}
+    inline BatchGetImageResult& WithImages(Aws::Vector<Image>&& value) { SetImages(std::move(value)); return *this;}
 
     /**
      * <p>A list of image objects corresponding to the image references in the
@@ -81,7 +83,7 @@ namespace Model
      * <p>A list of image objects corresponding to the image references in the
      * request.</p>
      */
-    inline BatchGetImageResult& AddImages(Image&& value) { m_images.push_back(value); return *this; }
+    inline BatchGetImageResult& AddImages(Image&& value) { m_images.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -96,7 +98,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline void SetFailures(Aws::Vector<ImageFailure>&& value) { m_failures = value; }
+    inline void SetFailures(Aws::Vector<ImageFailure>&& value) { m_failures = std::move(value); }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -106,7 +108,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline BatchGetImageResult& WithFailures(Aws::Vector<ImageFailure>&& value) { SetFailures(value); return *this;}
+    inline BatchGetImageResult& WithFailures(Aws::Vector<ImageFailure>&& value) { SetFailures(std::move(value)); return *this;}
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -116,7 +118,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline BatchGetImageResult& AddFailures(ImageFailure&& value) { m_failures.push_back(value); return *this; }
+    inline BatchGetImageResult& AddFailures(ImageFailure&& value) { m_failures.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Image> m_images;

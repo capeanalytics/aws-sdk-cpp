@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/Telemetry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * <p>Telemetry details.</p>
      */
-    inline void SetTelemetry(Aws::Vector<Telemetry>&& value) { m_telemetry = value; }
+    inline void SetTelemetry(Aws::Vector<Telemetry>&& value) { m_telemetry = std::move(value); }
 
     /**
      * <p>Telemetry details.</p>
@@ -63,7 +65,7 @@ namespace Model
     /**
      * <p>Telemetry details.</p>
      */
-    inline GetAssessmentTelemetryResult& WithTelemetry(Aws::Vector<Telemetry>&& value) { SetTelemetry(value); return *this;}
+    inline GetAssessmentTelemetryResult& WithTelemetry(Aws::Vector<Telemetry>&& value) { SetTelemetry(std::move(value)); return *this;}
 
     /**
      * <p>Telemetry details.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>Telemetry details.</p>
      */
-    inline GetAssessmentTelemetryResult& AddTelemetry(Telemetry&& value) { m_telemetry.push_back(value); return *this; }
+    inline GetAssessmentTelemetryResult& AddTelemetry(Telemetry&& value) { m_telemetry.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Telemetry> m_telemetry;

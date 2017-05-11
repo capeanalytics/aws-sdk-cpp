@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/cloudsearch/model/AnalysisSchemeStatus.h>
 #include <aws/cloudsearch/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>The result of a <code>DeleteAnalysisScheme</code> request. Contains the
-   * status of the deleted analysis scheme.</p>
+   * status of the deleted analysis scheme.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DeleteAnalysisSchemeResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API DeleteAnalysisSchemeResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The status of the analysis scheme being deleted.</p>
      */
-    inline void SetAnalysisScheme(AnalysisSchemeStatus&& value) { m_analysisScheme = value; }
+    inline void SetAnalysisScheme(AnalysisSchemeStatus&& value) { m_analysisScheme = std::move(value); }
 
     /**
      * <p>The status of the analysis scheme being deleted.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The status of the analysis scheme being deleted.</p>
      */
-    inline DeleteAnalysisSchemeResult& WithAnalysisScheme(AnalysisSchemeStatus&& value) { SetAnalysisScheme(value); return *this;}
+    inline DeleteAnalysisSchemeResult& WithAnalysisScheme(AnalysisSchemeStatus&& value) { SetAnalysisScheme(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -76,13 +80,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DeleteAnalysisSchemeResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DeleteAnalysisSchemeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DeleteAnalysisSchemeResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     AnalysisSchemeStatus m_analysisScheme;

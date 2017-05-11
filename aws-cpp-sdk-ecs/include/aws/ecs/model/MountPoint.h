@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Details on a volume mount point that is used in a container definition.</p>
+   * <p>Details on a volume mount point that is used in a container
+   * definition.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/MountPoint">AWS API
+   * Reference</a></p>
    */
   class AWS_ECS_API MountPoint
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the volume to mount.</p>
      */
-    inline void SetSourceVolume(Aws::String&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = value; }
+    inline void SetSourceVolume(Aws::String&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = std::move(value); }
 
     /**
      * <p>The name of the volume to mount.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the volume to mount.</p>
      */
-    inline MountPoint& WithSourceVolume(Aws::String&& value) { SetSourceVolume(value); return *this;}
+    inline MountPoint& WithSourceVolume(Aws::String&& value) { SetSourceVolume(std::move(value)); return *this;}
 
     /**
      * <p>The name of the volume to mount.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The path on the container to mount the host volume at.</p>
      */
-    inline void SetContainerPath(Aws::String&& value) { m_containerPathHasBeenSet = true; m_containerPath = value; }
+    inline void SetContainerPath(Aws::String&& value) { m_containerPathHasBeenSet = true; m_containerPath = std::move(value); }
 
     /**
      * <p>The path on the container to mount the host volume at.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The path on the container to mount the host volume at.</p>
      */
-    inline MountPoint& WithContainerPath(Aws::String&& value) { SetContainerPath(value); return *this;}
+    inline MountPoint& WithContainerPath(Aws::String&& value) { SetContainerPath(std::move(value)); return *this;}
 
     /**
      * <p>The path on the container to mount the host volume at.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iam/model/EvaluationResult.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,9 +33,11 @@ namespace Model
 EvaluationResult::EvaluationResult() : 
     m_evalActionNameHasBeenSet(false),
     m_evalResourceNameHasBeenSet(false),
+    m_evalDecision(PolicyEvaluationDecisionType::NOT_SET),
     m_evalDecisionHasBeenSet(false),
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),
+    m_organizationsDecisionDetailHasBeenSet(false),
     m_evalDecisionDetailsHasBeenSet(false),
     m_resourceSpecificResultsHasBeenSet(false)
 {
@@ -43,9 +46,11 @@ EvaluationResult::EvaluationResult() :
 EvaluationResult::EvaluationResult(const XmlNode& xmlNode) : 
     m_evalActionNameHasBeenSet(false),
     m_evalResourceNameHasBeenSet(false),
+    m_evalDecision(PolicyEvaluationDecisionType::NOT_SET),
     m_evalDecisionHasBeenSet(false),
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),
+    m_organizationsDecisionDetailHasBeenSet(false),
     m_evalDecisionDetailsHasBeenSet(false),
     m_resourceSpecificResultsHasBeenSet(false)
 {
@@ -99,6 +104,12 @@ EvaluationResult& EvaluationResult::operator =(const XmlNode& xmlNode)
       }
 
       m_missingContextValuesHasBeenSet = true;
+    }
+    XmlNode organizationsDecisionDetailNode = resultNode.FirstChild("OrganizationsDecisionDetail");
+    if(!organizationsDecisionDetailNode.IsNull())
+    {
+      m_organizationsDecisionDetail = organizationsDecisionDetailNode;
+      m_organizationsDecisionDetailHasBeenSet = true;
     }
     XmlNode evalDecisionDetailsNode = resultNode.FirstChild("EvalDecisionDetails");
 
@@ -170,6 +181,13 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       }
   }
 
+  if(m_organizationsDecisionDetailHasBeenSet)
+  {
+      Aws::StringStream organizationsDecisionDetailLocationAndMemberSs;
+      organizationsDecisionDetailLocationAndMemberSs << location << index << locationValue << ".OrganizationsDecisionDetail";
+      m_organizationsDecisionDetail.OutputToStream(oStream, organizationsDecisionDetailLocationAndMemberSs.str().c_str());
+  }
+
   if(m_evalDecisionDetailsHasBeenSet)
   {
       unsigned evalDecisionDetailsIdx = 1;
@@ -227,6 +245,12 @@ void EvaluationResult::OutputToStream(Aws::OStream& oStream, const char* locatio
       {
         oStream << location << ".MissingContextValues.member." << missingContextValuesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_organizationsDecisionDetailHasBeenSet)
+  {
+      Aws::String organizationsDecisionDetailLocationAndMember(location);
+      organizationsDecisionDetailLocationAndMember += ".OrganizationsDecisionDetail";
+      m_organizationsDecisionDetail.OutputToStream(oStream, organizationsDecisionDetailLocationAndMember.c_str());
   }
   if(m_evalDecisionDetailsHasBeenSet)
   {

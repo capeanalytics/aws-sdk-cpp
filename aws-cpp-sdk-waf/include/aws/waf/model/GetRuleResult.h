@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/Rule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,57 +44,57 @@ namespace Model
     /**
      * <p>Information about the <a>Rule</a> that you specified in the
      * <code>GetRule</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>Rule</a>: Contains <code>MetricName</code>,
+     * topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>,
      * <code>Name</code>, an array of <code>Predicate</code> objects, and
-     * <code>RuleId</code></li> <li><a>Predicate</a>: Each <code>Predicate</code>
-     * object contains <code>DataId</code>, <code>Negated</code>, and
-     * <code>Type</code></li> </ul>
+     * <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each
+     * <code>Predicate</code> object contains <code>DataId</code>,
+     * <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
      */
     inline const Rule& GetRule() const{ return m_rule; }
 
     /**
      * <p>Information about the <a>Rule</a> that you specified in the
      * <code>GetRule</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>Rule</a>: Contains <code>MetricName</code>,
+     * topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>,
      * <code>Name</code>, an array of <code>Predicate</code> objects, and
-     * <code>RuleId</code></li> <li><a>Predicate</a>: Each <code>Predicate</code>
-     * object contains <code>DataId</code>, <code>Negated</code>, and
-     * <code>Type</code></li> </ul>
+     * <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each
+     * <code>Predicate</code> object contains <code>DataId</code>,
+     * <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
      */
     inline void SetRule(const Rule& value) { m_rule = value; }
 
     /**
      * <p>Information about the <a>Rule</a> that you specified in the
      * <code>GetRule</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>Rule</a>: Contains <code>MetricName</code>,
+     * topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>,
      * <code>Name</code>, an array of <code>Predicate</code> objects, and
-     * <code>RuleId</code></li> <li><a>Predicate</a>: Each <code>Predicate</code>
-     * object contains <code>DataId</code>, <code>Negated</code>, and
-     * <code>Type</code></li> </ul>
+     * <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each
+     * <code>Predicate</code> object contains <code>DataId</code>,
+     * <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
      */
-    inline void SetRule(Rule&& value) { m_rule = value; }
+    inline void SetRule(Rule&& value) { m_rule = std::move(value); }
 
     /**
      * <p>Information about the <a>Rule</a> that you specified in the
      * <code>GetRule</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>Rule</a>: Contains <code>MetricName</code>,
+     * topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>,
      * <code>Name</code>, an array of <code>Predicate</code> objects, and
-     * <code>RuleId</code></li> <li><a>Predicate</a>: Each <code>Predicate</code>
-     * object contains <code>DataId</code>, <code>Negated</code>, and
-     * <code>Type</code></li> </ul>
+     * <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each
+     * <code>Predicate</code> object contains <code>DataId</code>,
+     * <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
      */
     inline GetRuleResult& WithRule(const Rule& value) { SetRule(value); return *this;}
 
     /**
      * <p>Information about the <a>Rule</a> that you specified in the
      * <code>GetRule</code> request. For more information, see the following
-     * topics:</p> <ul> <li><a>Rule</a>: Contains <code>MetricName</code>,
+     * topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>,
      * <code>Name</code>, an array of <code>Predicate</code> objects, and
-     * <code>RuleId</code></li> <li><a>Predicate</a>: Each <code>Predicate</code>
-     * object contains <code>DataId</code>, <code>Negated</code>, and
-     * <code>Type</code></li> </ul>
+     * <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each
+     * <code>Predicate</code> object contains <code>DataId</code>,
+     * <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
      */
-    inline GetRuleResult& WithRule(Rule&& value) { SetRule(value); return *this;}
+    inline GetRuleResult& WithRule(Rule&& value) { SetRule(std::move(value)); return *this;}
 
   private:
     Rule m_rule;

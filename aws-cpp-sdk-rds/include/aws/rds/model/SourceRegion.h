@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Contains an AWS Region name as the result of a successful call to the
-   * <a>DescribeSourceRegions</a> action.</p>
+   * <a>DescribeSourceRegions</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/SourceRegion">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API SourceRegion
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The source region name.</p>
      */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
+    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
 
     /**
      * <p>The source region name.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The source region name.</p>
      */
-    inline SourceRegion& WithRegionName(Aws::String&& value) { SetRegionName(value); return *this;}
+    inline SourceRegion& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
 
     /**
      * <p>The source region name.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The source region endpoint.</p>
      */
-    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
+    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
 
     /**
      * <p>The source region endpoint.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The source region endpoint.</p>
      */
-    inline SourceRegion& WithEndpoint(Aws::String&& value) { SetEndpoint(value); return *this;}
+    inline SourceRegion& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
 
     /**
      * <p>The source region endpoint.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The status of the source region.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the source region.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The status of the source region.</p>
      */
-    inline SourceRegion& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline SourceRegion& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the source region.</p>

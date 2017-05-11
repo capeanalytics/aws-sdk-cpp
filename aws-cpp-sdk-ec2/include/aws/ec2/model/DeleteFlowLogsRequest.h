@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DeleteFlowLogs.</p>
+   * <p>Contains the parameters for DeleteFlowLogs.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteFlowLogsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DeleteFlowLogsRequest : public EC2Request
   {
@@ -34,6 +38,11 @@ namespace Model
     DeleteFlowLogsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>One or more flow log IDs.</p>
      */
@@ -47,7 +56,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline void SetFlowLogIds(Aws::Vector<Aws::String>&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds = value; }
+    inline void SetFlowLogIds(Aws::Vector<Aws::String>&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds = std::move(value); }
 
     /**
      * <p>One or more flow log IDs.</p>
@@ -57,7 +66,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline DeleteFlowLogsRequest& WithFlowLogIds(Aws::Vector<Aws::String>&& value) { SetFlowLogIds(value); return *this;}
+    inline DeleteFlowLogsRequest& WithFlowLogIds(Aws::Vector<Aws::String>&& value) { SetFlowLogIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more flow log IDs.</p>
@@ -67,7 +76,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline DeleteFlowLogsRequest& AddFlowLogIds(Aws::String&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds.push_back(value); return *this; }
+    inline DeleteFlowLogsRequest& AddFlowLogIds(Aws::String&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more flow log IDs.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/monitoring/model/DescribeAlarmsForMetricRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -22,10 +23,13 @@ using namespace Aws::Utils;
 DescribeAlarmsForMetricRequest::DescribeAlarmsForMetricRequest() : 
     m_metricNameHasBeenSet(false),
     m_namespaceHasBeenSet(false),
+    m_statistic(Statistic::NOT_SET),
     m_statisticHasBeenSet(false),
+    m_extendedStatisticHasBeenSet(false),
     m_dimensionsHasBeenSet(false),
     m_period(0),
     m_periodHasBeenSet(false),
+    m_unit(StandardUnit::NOT_SET),
     m_unitHasBeenSet(false)
 {
 }
@@ -47,6 +51,11 @@ Aws::String DescribeAlarmsForMetricRequest::SerializePayload() const
   if(m_statisticHasBeenSet)
   {
     ss << "Statistic=" << StatisticMapper::GetNameForStatistic(m_statistic) << "&";
+  }
+
+  if(m_extendedStatisticHasBeenSet)
+  {
+    ss << "ExtendedStatistic=" << StringUtils::URLEncode(m_extendedStatistic.c_str()) << "&";
   }
 
   if(m_dimensionsHasBeenSet)
@@ -73,3 +82,8 @@ Aws::String DescribeAlarmsForMetricRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  DescribeAlarmsForMetricRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

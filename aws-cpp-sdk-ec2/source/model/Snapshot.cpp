@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Snapshot.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,6 +33,7 @@ namespace Model
 Snapshot::Snapshot() : 
     m_snapshotIdHasBeenSet(false),
     m_volumeIdHasBeenSet(false),
+    m_state(SnapshotState::NOT_SET),
     m_stateHasBeenSet(false),
     m_stateMessageHasBeenSet(false),
     m_startTimeHasBeenSet(false),
@@ -53,6 +55,7 @@ Snapshot::Snapshot() :
 Snapshot::Snapshot(const XmlNode& xmlNode) : 
     m_snapshotIdHasBeenSet(false),
     m_volumeIdHasBeenSet(false),
+    m_state(SnapshotState::NOT_SET),
     m_stateHasBeenSet(false),
     m_stateMessageHasBeenSet(false),
     m_startTimeHasBeenSet(false),
@@ -238,7 +241,7 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -308,13 +311,13 @@ void Snapshot::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
   if(m_encryptedHasBeenSet)
   {
-      oStream << location << ".Encrypted=" << m_encrypted << "&";
+      oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/elastictranscoder/ElasticTranscoderRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/elastictranscoder/model/VideoParameters.h>
 #include <aws/elastictranscoder/model/AudioParameters.h>
 #include <aws/elastictranscoder/model/Thumbnails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,13 +30,16 @@ namespace Model
 {
 
   /**
-   * <p>The <code>CreatePresetRequest</code> structure.</p>
+   * <p>The <code>CreatePresetRequest</code> structure.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/CreatePresetRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API CreatePresetRequest : public ElasticTranscoderRequest
   {
   public:
     CreatePresetRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The name of the preset. We recommend that the name be unique within the AWS
@@ -52,7 +57,7 @@ namespace Model
      * <p>The name of the preset. We recommend that the name be unique within the AWS
      * account, but uniqueness is not enforced.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the preset. We recommend that the name be unique within the AWS
@@ -70,7 +75,7 @@ namespace Model
      * <p>The name of the preset. We recommend that the name be unique within the AWS
      * account, but uniqueness is not enforced.</p>
      */
-    inline CreatePresetRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreatePresetRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the preset. We recommend that the name be unique within the AWS
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>A description of the preset.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the preset.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>A description of the preset.</p>
      */
-    inline CreatePresetRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreatePresetRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the preset.</p>
@@ -135,7 +140,7 @@ namespace Model
      * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
      * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.</p>
      */
-    inline void SetContainer(Aws::String&& value) { m_containerHasBeenSet = true; m_container = value; }
+    inline void SetContainer(Aws::String&& value) { m_containerHasBeenSet = true; m_container = std::move(value); }
 
     /**
      * <p>The container type for the output file. Valid values include
@@ -159,7 +164,7 @@ namespace Model
      * <code>mp3</code>, <code>mp4</code>, <code>mpg</code>, <code>mxf</code>,
      * <code>oga</code>, <code>ogg</code>, <code>ts</code>, and <code>webm</code>.</p>
      */
-    inline CreatePresetRequest& WithContainer(Aws::String&& value) { SetContainer(value); return *this;}
+    inline CreatePresetRequest& WithContainer(Aws::String&& value) { SetContainer(std::move(value)); return *this;}
 
     /**
      * <p>The container type for the output file. Valid values include
@@ -182,7 +187,7 @@ namespace Model
     /**
      * <p>A section of the request body that specifies the video parameters.</p>
      */
-    inline void SetVideo(VideoParameters&& value) { m_videoHasBeenSet = true; m_video = value; }
+    inline void SetVideo(VideoParameters&& value) { m_videoHasBeenSet = true; m_video = std::move(value); }
 
     /**
      * <p>A section of the request body that specifies the video parameters.</p>
@@ -192,7 +197,7 @@ namespace Model
     /**
      * <p>A section of the request body that specifies the video parameters.</p>
      */
-    inline CreatePresetRequest& WithVideo(VideoParameters&& value) { SetVideo(value); return *this;}
+    inline CreatePresetRequest& WithVideo(VideoParameters&& value) { SetVideo(std::move(value)); return *this;}
 
     /**
      * <p>A section of the request body that specifies the audio parameters.</p>
@@ -207,7 +212,7 @@ namespace Model
     /**
      * <p>A section of the request body that specifies the audio parameters.</p>
      */
-    inline void SetAudio(AudioParameters&& value) { m_audioHasBeenSet = true; m_audio = value; }
+    inline void SetAudio(AudioParameters&& value) { m_audioHasBeenSet = true; m_audio = std::move(value); }
 
     /**
      * <p>A section of the request body that specifies the audio parameters.</p>
@@ -217,7 +222,7 @@ namespace Model
     /**
      * <p>A section of the request body that specifies the audio parameters.</p>
      */
-    inline CreatePresetRequest& WithAudio(AudioParameters&& value) { SetAudio(value); return *this;}
+    inline CreatePresetRequest& WithAudio(AudioParameters&& value) { SetAudio(std::move(value)); return *this;}
 
     /**
      * <p>A section of the request body that specifies the thumbnail parameters, if
@@ -235,7 +240,7 @@ namespace Model
      * <p>A section of the request body that specifies the thumbnail parameters, if
      * any.</p>
      */
-    inline void SetThumbnails(Thumbnails&& value) { m_thumbnailsHasBeenSet = true; m_thumbnails = value; }
+    inline void SetThumbnails(Thumbnails&& value) { m_thumbnailsHasBeenSet = true; m_thumbnails = std::move(value); }
 
     /**
      * <p>A section of the request body that specifies the thumbnail parameters, if
@@ -247,7 +252,7 @@ namespace Model
      * <p>A section of the request body that specifies the thumbnail parameters, if
      * any.</p>
      */
-    inline CreatePresetRequest& WithThumbnails(Thumbnails&& value) { SetThumbnails(value); return *this;}
+    inline CreatePresetRequest& WithThumbnails(Thumbnails&& value) { SetThumbnails(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

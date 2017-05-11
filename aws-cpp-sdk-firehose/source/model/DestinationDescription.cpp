@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/firehose/model/DestinationDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 DestinationDescription::DestinationDescription() : 
     m_destinationIdHasBeenSet(false),
     m_s3DestinationDescriptionHasBeenSet(false),
+    m_extendedS3DestinationDescriptionHasBeenSet(false),
     m_redshiftDestinationDescriptionHasBeenSet(false),
     m_elasticsearchDestinationDescriptionHasBeenSet(false)
 {
@@ -38,6 +40,7 @@ DestinationDescription::DestinationDescription() :
 DestinationDescription::DestinationDescription(const JsonValue& jsonValue) : 
     m_destinationIdHasBeenSet(false),
     m_s3DestinationDescriptionHasBeenSet(false),
+    m_extendedS3DestinationDescriptionHasBeenSet(false),
     m_redshiftDestinationDescriptionHasBeenSet(false),
     m_elasticsearchDestinationDescriptionHasBeenSet(false)
 {
@@ -58,6 +61,13 @@ DestinationDescription& DestinationDescription::operator =(const JsonValue& json
     m_s3DestinationDescription = jsonValue.GetObject("S3DestinationDescription");
 
     m_s3DestinationDescriptionHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ExtendedS3DestinationDescription"))
+  {
+    m_extendedS3DestinationDescription = jsonValue.GetObject("ExtendedS3DestinationDescription");
+
+    m_extendedS3DestinationDescriptionHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("RedshiftDestinationDescription"))
@@ -90,6 +100,12 @@ JsonValue DestinationDescription::Jsonize() const
   if(m_s3DestinationDescriptionHasBeenSet)
   {
    payload.WithObject("S3DestinationDescription", m_s3DestinationDescription.Jsonize());
+
+  }
+
+  if(m_extendedS3DestinationDescriptionHasBeenSet)
+  {
+   payload.WithObject("ExtendedS3DestinationDescription", m_extendedS3DestinationDescription.Jsonize());
 
   }
 

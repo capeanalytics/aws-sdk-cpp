@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/apigateway/model/CacheClusterSize.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,17 @@ namespace Model
 {
 
   /**
-   * <p>Requests Amazon API Gateway to create a <a>Stage</a> resource.</p>
+   * <p>Requests Amazon API Gateway to create a <a>Stage</a> resource.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateStageRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API CreateStageRequest : public APIGatewayRequest
   {
   public:
     CreateStageRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -51,7 +57,7 @@ namespace Model
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
      * to create.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -69,7 +75,7 @@ namespace Model
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
      * to create.</p>
      */
-    inline CreateStageRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline CreateStageRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -90,7 +96,7 @@ namespace Model
     /**
      * <p>The name for the <a>Stage</a> resource.</p>
      */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
+    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
 
     /**
      * <p>The name for the <a>Stage</a> resource.</p>
@@ -105,7 +111,7 @@ namespace Model
     /**
      * <p>The name for the <a>Stage</a> resource.</p>
      */
-    inline CreateStageRequest& WithStageName(Aws::String&& value) { SetStageName(value); return *this;}
+    inline CreateStageRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
 
     /**
      * <p>The name for the <a>Stage</a> resource.</p>
@@ -128,7 +134,7 @@ namespace Model
      * <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
      * resource.</p>
      */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = value; }
+    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
@@ -146,7 +152,7 @@ namespace Model
      * <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
      * resource.</p>
      */
-    inline CreateStageRequest& WithDeploymentId(Aws::String&& value) { SetDeploymentId(value); return *this;}
+    inline CreateStageRequest& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a>
@@ -167,7 +173,7 @@ namespace Model
     /**
      * <p>The description of the <a>Stage</a> resource.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the <a>Stage</a> resource.</p>
@@ -182,7 +188,7 @@ namespace Model
     /**
      * <p>The description of the <a>Stage</a> resource.</p>
      */
-    inline CreateStageRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreateStageRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the <a>Stage</a> resource.</p>
@@ -217,7 +223,7 @@ namespace Model
     /**
      * <p>The stage's cache cluster size.</p>
      */
-    inline void SetCacheClusterSize(CacheClusterSize&& value) { m_cacheClusterSizeHasBeenSet = true; m_cacheClusterSize = value; }
+    inline void SetCacheClusterSize(CacheClusterSize&& value) { m_cacheClusterSizeHasBeenSet = true; m_cacheClusterSize = std::move(value); }
 
     /**
      * <p>The stage's cache cluster size.</p>
@@ -227,7 +233,7 @@ namespace Model
     /**
      * <p>The stage's cache cluster size.</p>
      */
-    inline CreateStageRequest& WithCacheClusterSize(CacheClusterSize&& value) { SetCacheClusterSize(value); return *this;}
+    inline CreateStageRequest& WithCacheClusterSize(CacheClusterSize&& value) { SetCacheClusterSize(std::move(value)); return *this;}
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
@@ -248,7 +254,7 @@ namespace Model
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline void SetVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_variablesHasBeenSet = true; m_variables = value; }
+    inline void SetVariables(Aws::Map<Aws::String, Aws::String>&& value) { m_variablesHasBeenSet = true; m_variables = std::move(value); }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
@@ -262,56 +268,91 @@ namespace Model
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& WithVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetVariables(value); return *this;}
+    inline CreateStageRequest& WithVariables(Aws::Map<Aws::String, Aws::String>&& value) { SetVariables(std::move(value)); return *this;}
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(const Aws::String& key, const Aws::String& value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(const Aws::String& key, const Aws::String& value) { m_variablesHasBeenSet = true; m_variables.emplace(key, value); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(Aws::String&& key, const Aws::String& value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(Aws::String&& key, const Aws::String& value) { m_variablesHasBeenSet = true; m_variables.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(const Aws::String& key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(const Aws::String& key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(Aws::String&& key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(Aws::String&& key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(const char* key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(const char* key, Aws::String&& value) { m_variablesHasBeenSet = true; m_variables.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(Aws::String&& key, const char* value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(Aws::String&& key, const char* value) { m_variablesHasBeenSet = true; m_variables.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A map that defines the stage variables for the new <a>Stage</a> resource.
      * Variable names can have alphanumeric and underscore characters, and the values
      * must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
      */
-    inline CreateStageRequest& AddVariables(const char* key, const char* value) { m_variablesHasBeenSet = true; m_variables[key] = value; return *this; }
+    inline CreateStageRequest& AddVariables(const char* key, const char* value) { m_variablesHasBeenSet = true; m_variables.emplace(key, value); return *this; }
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline const Aws::String& GetDocumentationVersion() const{ return m_documentationVersion; }
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline void SetDocumentationVersion(const Aws::String& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = value; }
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline void SetDocumentationVersion(Aws::String&& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = std::move(value); }
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline void SetDocumentationVersion(const char* value) { m_documentationVersionHasBeenSet = true; m_documentationVersion.assign(value); }
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline CreateStageRequest& WithDocumentationVersion(const Aws::String& value) { SetDocumentationVersion(value); return *this;}
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline CreateStageRequest& WithDocumentationVersion(Aws::String&& value) { SetDocumentationVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The version of the associated API documentation.</p>
+     */
+    inline CreateStageRequest& WithDocumentationVersion(const char* value) { SetDocumentationVersion(value); return *this;}
 
   private:
     Aws::String m_restApiId;
@@ -328,6 +369,8 @@ namespace Model
     bool m_cacheClusterSizeHasBeenSet;
     Aws::Map<Aws::String, Aws::String> m_variables;
     bool m_variablesHasBeenSet;
+    Aws::String m_documentationVersion;
+    bool m_documentationVersionHasBeenSet;
   };
 
 } // namespace Model

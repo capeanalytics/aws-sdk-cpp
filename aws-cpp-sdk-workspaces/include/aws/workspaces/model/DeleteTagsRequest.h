@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/workspaces/WorkSpacesRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>The request of the <a>DeleteTags</a> operation.</p>
+   * <p>The request of the <a>DeleteTags</a> operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeleteTagsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API DeleteTagsRequest : public WorkSpacesRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The resource ID of the request.</p>
@@ -49,7 +54,7 @@ namespace Model
     /**
      * <p>The resource ID of the request.</p>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
 
     /**
      * <p>The resource ID of the request.</p>
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>The resource ID of the request.</p>
      */
-    inline DeleteTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline DeleteTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The resource ID of the request.</p>
@@ -84,7 +89,7 @@ namespace Model
     /**
      * <p>The tag keys of the request.</p>
      */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
+    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
 
     /**
      * <p>The tag keys of the request.</p>
@@ -94,7 +99,7 @@ namespace Model
     /**
      * <p>The tag keys of the request.</p>
      */
-    inline DeleteTagsRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(value); return *this;}
+    inline DeleteTagsRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
 
     /**
      * <p>The tag keys of the request.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The tag keys of the request.</p>
      */
-    inline DeleteTagsRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
+    inline DeleteTagsRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The tag keys of the request.</p>

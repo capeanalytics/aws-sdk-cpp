@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/kinesis/KinesisRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesis/model/PutRecordsRequestEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>A <code>PutRecords</code> request.</p>
+   * <p>A <code>PutRecords</code> request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/PutRecordsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API PutRecordsRequest : public KinesisRequest
   {
@@ -36,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The records associated with the request.</p>
@@ -50,7 +55,7 @@ namespace Model
     /**
      * <p>The records associated with the request.</p>
      */
-    inline void SetRecords(Aws::Vector<PutRecordsRequestEntry>&& value) { m_recordsHasBeenSet = true; m_records = value; }
+    inline void SetRecords(Aws::Vector<PutRecordsRequestEntry>&& value) { m_recordsHasBeenSet = true; m_records = std::move(value); }
 
     /**
      * <p>The records associated with the request.</p>
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The records associated with the request.</p>
      */
-    inline PutRecordsRequest& WithRecords(Aws::Vector<PutRecordsRequestEntry>&& value) { SetRecords(value); return *this;}
+    inline PutRecordsRequest& WithRecords(Aws::Vector<PutRecordsRequestEntry>&& value) { SetRecords(std::move(value)); return *this;}
 
     /**
      * <p>The records associated with the request.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The records associated with the request.</p>
      */
-    inline PutRecordsRequest& AddRecords(PutRecordsRequestEntry&& value) { m_recordsHasBeenSet = true; m_records.push_back(value); return *this; }
+    inline PutRecordsRequest& AddRecords(PutRecordsRequestEntry&& value) { m_recordsHasBeenSet = true; m_records.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The stream name associated with the request.</p>
@@ -85,7 +90,7 @@ namespace Model
     /**
      * <p>The stream name associated with the request.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
 
     /**
      * <p>The stream name associated with the request.</p>
@@ -100,7 +105,7 @@ namespace Model
     /**
      * <p>The stream name associated with the request.</p>
      */
-    inline PutRecordsRequest& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline PutRecordsRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The stream name associated with the request.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/ActivityType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/TaskList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the <code>ActivityTaskScheduled</code> event.</p>
+   * <p>Provides details of the <code>ActivityTaskScheduled</code>
+   * event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTaskScheduledEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API ActivityTaskScheduledEventAttributes
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The type of the activity task.</p>
      */
-    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = value; }
+    inline void SetActivityType(ActivityType&& value) { m_activityTypeHasBeenSet = true; m_activityType = std::move(value); }
 
     /**
      * <p>The type of the activity task.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The type of the activity task.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithActivityType(ActivityType&& value) { SetActivityType(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithActivityType(ActivityType&& value) { SetActivityType(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID of the activity task.</p>
@@ -81,7 +86,7 @@ namespace Model
     /**
      * <p>The unique ID of the activity task.</p>
      */
-    inline void SetActivityId(Aws::String&& value) { m_activityIdHasBeenSet = true; m_activityId = value; }
+    inline void SetActivityId(Aws::String&& value) { m_activityIdHasBeenSet = true; m_activityId = std::move(value); }
 
     /**
      * <p>The unique ID of the activity task.</p>
@@ -96,7 +101,7 @@ namespace Model
     /**
      * <p>The unique ID of the activity task.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithActivityId(Aws::String&& value) { SetActivityId(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithActivityId(Aws::String&& value) { SetActivityId(std::move(value)); return *this;}
 
     /**
      * <p>The unique ID of the activity task.</p>
@@ -116,7 +121,7 @@ namespace Model
     /**
      * <p>The input provided to the activity task.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p>The input provided to the activity task.</p>
@@ -131,7 +136,7 @@ namespace Model
     /**
      * <p>The input provided to the activity task.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>The input provided to the activity task.</p>
@@ -154,7 +159,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks. This data is not sent to the activity.</p>
      */
-    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = value; }
+    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -172,7 +177,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks. This data is not sent to the activity.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithControl(Aws::String&& value) { SetControl(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithControl(Aws::String&& value) { SetControl(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -196,7 +201,7 @@ namespace Model
      * <p>The maximum amount of time the activity task can wait to be assigned to a
      * worker.</p>
      */
-    inline void SetScheduleToStartTimeout(Aws::String&& value) { m_scheduleToStartTimeoutHasBeenSet = true; m_scheduleToStartTimeout = value; }
+    inline void SetScheduleToStartTimeout(Aws::String&& value) { m_scheduleToStartTimeoutHasBeenSet = true; m_scheduleToStartTimeout = std::move(value); }
 
     /**
      * <p>The maximum amount of time the activity task can wait to be assigned to a
@@ -214,7 +219,7 @@ namespace Model
      * <p>The maximum amount of time the activity task can wait to be assigned to a
      * worker.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithScheduleToStartTimeout(Aws::String&& value) { SetScheduleToStartTimeout(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithScheduleToStartTimeout(Aws::String&& value) { SetScheduleToStartTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum amount of time the activity task can wait to be assigned to a
@@ -235,7 +240,7 @@ namespace Model
     /**
      * <p>The maximum amount of time for this activity task.</p>
      */
-    inline void SetScheduleToCloseTimeout(Aws::String&& value) { m_scheduleToCloseTimeoutHasBeenSet = true; m_scheduleToCloseTimeout = value; }
+    inline void SetScheduleToCloseTimeout(Aws::String&& value) { m_scheduleToCloseTimeoutHasBeenSet = true; m_scheduleToCloseTimeout = std::move(value); }
 
     /**
      * <p>The maximum amount of time for this activity task.</p>
@@ -250,7 +255,7 @@ namespace Model
     /**
      * <p>The maximum amount of time for this activity task.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithScheduleToCloseTimeout(Aws::String&& value) { SetScheduleToCloseTimeout(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithScheduleToCloseTimeout(Aws::String&& value) { SetScheduleToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum amount of time for this activity task.</p>
@@ -273,7 +278,7 @@ namespace Model
      * <p>The maximum amount of time a worker may take to process the activity
      * task.</p>
      */
-    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = value; }
+    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = std::move(value); }
 
     /**
      * <p>The maximum amount of time a worker may take to process the activity
@@ -291,7 +296,7 @@ namespace Model
      * <p>The maximum amount of time a worker may take to process the activity
      * task.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum amount of time a worker may take to process the activity
@@ -312,7 +317,7 @@ namespace Model
     /**
      * <p>The task list in which the activity task has been scheduled.</p>
      */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = value; }
+    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
 
     /**
      * <p>The task list in which the activity task has been scheduled.</p>
@@ -322,7 +327,7 @@ namespace Model
     /**
      * <p>The task list in which the activity task has been scheduled.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithTaskList(TaskList&& value) { SetTaskList(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> The priority to assign to the scheduled activity task. If
@@ -358,7 +363,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = value; }
+    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = std::move(value); }
 
     /**
      * <p><i>Optional.</i> The priority to assign to the scheduled activity task. If
@@ -394,7 +399,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithTaskPriority(Aws::String&& value) { SetTaskPriority(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> The priority to assign to the scheduled activity task. If
@@ -457,7 +462,7 @@ namespace Model
      * subsequently attempts to record a heartbeat or return a result, it will be
      * ignored.</p>
      */
-    inline void SetHeartbeatTimeout(Aws::String&& value) { m_heartbeatTimeoutHasBeenSet = true; m_heartbeatTimeout = value; }
+    inline void SetHeartbeatTimeout(Aws::String&& value) { m_heartbeatTimeoutHasBeenSet = true; m_heartbeatTimeout = std::move(value); }
 
     /**
      * <p>The maximum time before which the worker processing this task must report
@@ -484,7 +489,7 @@ namespace Model
      * subsequently attempts to record a heartbeat or return a result, it will be
      * ignored.</p>
      */
-    inline ActivityTaskScheduledEventAttributes& WithHeartbeatTimeout(Aws::String&& value) { SetHeartbeatTimeout(value); return *this;}
+    inline ActivityTaskScheduledEventAttributes& WithHeartbeatTimeout(Aws::String&& value) { SetHeartbeatTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum time before which the worker processing this task must report

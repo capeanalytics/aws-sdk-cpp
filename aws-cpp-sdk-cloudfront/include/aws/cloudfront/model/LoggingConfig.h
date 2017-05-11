@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * A complex type that controls whether access logs are written for the
-   * distribution.
+   * distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/LoggingConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API LoggingConfig
   {
@@ -119,7 +123,7 @@ namespace Model
      * The Amazon S3 bucket to store the access logs in, for example,
      * myawslogbucket.s3.amazonaws.com.
      */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     /**
      * The Amazon S3 bucket to store the access logs in, for example,
@@ -137,7 +141,7 @@ namespace Model
      * The Amazon S3 bucket to store the access logs in, for example,
      * myawslogbucket.s3.amazonaws.com.
      */
-    inline LoggingConfig& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline LoggingConfig& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     /**
      * The Amazon S3 bucket to store the access logs in, for example,
@@ -167,7 +171,7 @@ namespace Model
      * logging, but you do not want to specify a prefix, you still must include an
      * empty Prefix element in the Logging element.
      */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = value; }
+    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
 
     /**
      * An optional string that you want CloudFront to prefix to the access log
@@ -191,7 +195,7 @@ namespace Model
      * logging, but you do not want to specify a prefix, you still must include an
      * empty Prefix element in the Logging element.
      */
-    inline LoggingConfig& WithPrefix(Aws::String&& value) { SetPrefix(value); return *this;}
+    inline LoggingConfig& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
 
     /**
      * An optional string that you want CloudFront to prefix to the access log

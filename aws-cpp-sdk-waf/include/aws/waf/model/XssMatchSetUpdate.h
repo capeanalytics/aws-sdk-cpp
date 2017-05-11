@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/ChangeAction.h>
 #include <aws/waf/model/XssMatchTuple.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
   /**
    * <p>Specifies the part of a web request that you want to inspect for cross-site
    * scripting attacks and indicates whether you want to add the specification to an
-   * <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.</p>
+   * <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/XssMatchSetUpdate">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API XssMatchSetUpdate
   {
@@ -63,7 +68,7 @@ namespace Model
      * <a>XssMatchSet</a>. Use <code>DELETE</code> to remove a
      * <code>XssMatchSetUpdate</code> from an <code>XssMatchSet</code>.</p>
      */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>Specify <code>INSERT</code> to add a <a>XssMatchSetUpdate</a> to an
@@ -77,7 +82,7 @@ namespace Model
      * <a>XssMatchSet</a>. Use <code>DELETE</code> to remove a
      * <code>XssMatchSetUpdate</code> from an <code>XssMatchSet</code>.</p>
      */
-    inline XssMatchSetUpdate& WithAction(ChangeAction&& value) { SetAction(value); return *this;}
+    inline XssMatchSetUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the part of a web request that you want AWS WAF to inspect for
@@ -98,7 +103,7 @@ namespace Model
      * cross-site scripting attacks and, if you want AWS WAF to inspect a header, the
      * name of the header.</p>
      */
-    inline void SetXssMatchTuple(XssMatchTuple&& value) { m_xssMatchTupleHasBeenSet = true; m_xssMatchTuple = value; }
+    inline void SetXssMatchTuple(XssMatchTuple&& value) { m_xssMatchTupleHasBeenSet = true; m_xssMatchTuple = std::move(value); }
 
     /**
      * <p>Specifies the part of a web request that you want AWS WAF to inspect for
@@ -112,7 +117,7 @@ namespace Model
      * cross-site scripting attacks and, if you want AWS WAF to inspect a header, the
      * name of the header.</p>
      */
-    inline XssMatchSetUpdate& WithXssMatchTuple(XssMatchTuple&& value) { SetXssMatchTuple(value); return *this;}
+    inline XssMatchSetUpdate& WithXssMatchTuple(XssMatchTuple&& value) { SetXssMatchTuple(std::move(value)); return *this;}
 
   private:
     ChangeAction m_action;

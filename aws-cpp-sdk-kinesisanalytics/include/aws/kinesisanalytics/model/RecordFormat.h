@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/model/RecordFormatType.h>
 #include <aws/kinesisanalytics/model/MappingParameters.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p> Describes the record format and relevant mapping information that should be
-   * applied to schematize the records on the stream. </p>
+   * applied to schematize the records on the stream. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/RecordFormat">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API RecordFormat
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The type of record format.</p>
      */
-    inline void SetRecordFormatType(RecordFormatType&& value) { m_recordFormatTypeHasBeenSet = true; m_recordFormatType = value; }
+    inline void SetRecordFormatType(RecordFormatType&& value) { m_recordFormatTypeHasBeenSet = true; m_recordFormatType = std::move(value); }
 
     /**
      * <p>The type of record format.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The type of record format.</p>
      */
-    inline RecordFormat& WithRecordFormatType(RecordFormatType&& value) { SetRecordFormatType(value); return *this;}
+    inline RecordFormat& WithRecordFormatType(RecordFormatType&& value) { SetRecordFormatType(std::move(value)); return *this;}
 
     
     inline const MappingParameters& GetMappingParameters() const{ return m_mappingParameters; }
@@ -75,13 +79,13 @@ namespace Model
     inline void SetMappingParameters(const MappingParameters& value) { m_mappingParametersHasBeenSet = true; m_mappingParameters = value; }
 
     
-    inline void SetMappingParameters(MappingParameters&& value) { m_mappingParametersHasBeenSet = true; m_mappingParameters = value; }
+    inline void SetMappingParameters(MappingParameters&& value) { m_mappingParametersHasBeenSet = true; m_mappingParameters = std::move(value); }
 
     
     inline RecordFormat& WithMappingParameters(const MappingParameters& value) { SetMappingParameters(value); return *this;}
 
     
-    inline RecordFormat& WithMappingParameters(MappingParameters&& value) { SetMappingParameters(value); return *this;}
+    inline RecordFormat& WithMappingParameters(MappingParameters&& value) { SetMappingParameters(std::move(value)); return *this;}
 
   private:
     RecordFormatType m_recordFormatType;

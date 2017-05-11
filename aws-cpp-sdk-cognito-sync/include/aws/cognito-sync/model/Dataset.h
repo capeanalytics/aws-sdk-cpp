@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-sync/CognitoSync_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * datasets. A dataset is per identity and can be general or associated with a
    * particular entity in an application (like a saved game). Datasets are
    * automatically created if they don't exist. Data is synced by dataset, and a
-   * dataset can hold up to 1MB of key-value pairs.
+   * dataset can hold up to 1MB of key-value pairs.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/Dataset">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOSYNC_API Dataset
   {
@@ -62,7 +66,7 @@ namespace Model
      * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
      * created by Amazon Cognito. GUID generation is unique within a region.
      */
-    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = value; }
+    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = std::move(value); }
 
     /**
      * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
@@ -80,7 +84,7 @@ namespace Model
      * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
      * created by Amazon Cognito. GUID generation is unique within a region.
      */
-    inline Dataset& WithIdentityId(Aws::String&& value) { SetIdentityId(value); return *this;}
+    inline Dataset& WithIdentityId(Aws::String&& value) { SetIdentityId(std::move(value)); return *this;}
 
     /**
      * A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
@@ -104,7 +108,7 @@ namespace Model
      * A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_'
      * (underscore), '-' (dash), and '.' (dot).
      */
-    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = value; }
+    inline void SetDatasetName(Aws::String&& value) { m_datasetNameHasBeenSet = true; m_datasetName = std::move(value); }
 
     /**
      * A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_'
@@ -122,7 +126,7 @@ namespace Model
      * A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_'
      * (underscore), '-' (dash), and '.' (dot).
      */
-    inline Dataset& WithDatasetName(Aws::String&& value) { SetDatasetName(value); return *this;}
+    inline Dataset& WithDatasetName(Aws::String&& value) { SetDatasetName(std::move(value)); return *this;}
 
     /**
      * A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_'
@@ -143,7 +147,7 @@ namespace Model
     /**
      * Date on which the dataset was created.
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * Date on which the dataset was created.
@@ -153,7 +157,7 @@ namespace Model
     /**
      * Date on which the dataset was created.
      */
-    inline Dataset& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline Dataset& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * Date when the dataset was last modified.
@@ -168,7 +172,7 @@ namespace Model
     /**
      * Date when the dataset was last modified.
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * Date when the dataset was last modified.
@@ -178,7 +182,7 @@ namespace Model
     /**
      * Date when the dataset was last modified.
      */
-    inline Dataset& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline Dataset& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * The device that made the last change to this dataset.
@@ -193,7 +197,7 @@ namespace Model
     /**
      * The device that made the last change to this dataset.
      */
-    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = value; }
+    inline void SetLastModifiedBy(Aws::String&& value) { m_lastModifiedByHasBeenSet = true; m_lastModifiedBy = std::move(value); }
 
     /**
      * The device that made the last change to this dataset.
@@ -208,7 +212,7 @@ namespace Model
     /**
      * The device that made the last change to this dataset.
      */
-    inline Dataset& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(value); return *this;}
+    inline Dataset& WithLastModifiedBy(Aws::String&& value) { SetLastModifiedBy(std::move(value)); return *this;}
 
     /**
      * The device that made the last change to this dataset.

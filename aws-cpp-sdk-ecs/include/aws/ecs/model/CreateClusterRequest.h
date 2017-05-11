@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of your cluster. If you do not specify a name for your cluster, you
@@ -53,7 +56,7 @@ namespace Model
      * create a cluster named <code>default</code>. Up to 255 letters (uppercase and
      * lowercase), numbers, hyphens, and underscores are allowed.</p>
      */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
+    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
 
     /**
      * <p>The name of your cluster. If you do not specify a name for your cluster, you
@@ -74,7 +77,7 @@ namespace Model
      * create a cluster named <code>default</code>. Up to 255 letters (uppercase and
      * lowercase), numbers, hyphens, and underscores are allowed.</p>
      */
-    inline CreateClusterRequest& WithClusterName(Aws::String&& value) { SetClusterName(value); return *this;}
+    inline CreateClusterRequest& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
 
     /**
      * <p>The name of your cluster. If you do not specify a name for your cluster, you

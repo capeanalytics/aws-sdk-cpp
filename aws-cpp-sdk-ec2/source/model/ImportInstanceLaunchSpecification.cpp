@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ImportInstanceLaunchSpecification.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -30,32 +31,38 @@ namespace Model
 {
 
 ImportInstanceLaunchSpecification::ImportInstanceLaunchSpecification() : 
+    m_architecture(ArchitectureValues::NOT_SET),
     m_architectureHasBeenSet(false),
     m_groupNamesHasBeenSet(false),
     m_groupIdsHasBeenSet(false),
     m_additionalInfoHasBeenSet(false),
     m_userDataHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_monitoring(false),
     m_monitoringHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
+    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
     m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false)
 {
 }
 
 ImportInstanceLaunchSpecification::ImportInstanceLaunchSpecification(const XmlNode& xmlNode) : 
+    m_architecture(ArchitectureValues::NOT_SET),
     m_architectureHasBeenSet(false),
     m_groupNamesHasBeenSet(false),
     m_groupIdsHasBeenSet(false),
     m_additionalInfoHasBeenSet(false),
     m_userDataHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_monitoring(false),
     m_monitoringHasBeenSet(false),
     m_subnetIdHasBeenSet(false),
+    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
     m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false)
 {
@@ -202,7 +209,7 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
 
   if(m_monitoringHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Monitoring=" << m_monitoring << "&";
+      oStream << location << index << locationValue << ".Monitoring=" << std::boolalpha << m_monitoring << "&";
   }
 
   if(m_subnetIdHasBeenSet)
@@ -233,7 +240,7 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
       unsigned groupNamesIdx = 1;
       for(auto& item : m_groupNames)
       {
-        oStream << location << ".SecurityGroup." << groupNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".GroupName." << groupNamesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_groupIdsHasBeenSet)
@@ -241,7 +248,7 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
       unsigned groupIdsIdx = 1;
       for(auto& item : m_groupIds)
       {
-        oStream << location << ".SecurityGroupId." << groupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".GroupId." << groupIdsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_additionalInfoHasBeenSet)
@@ -266,7 +273,7 @@ void ImportInstanceLaunchSpecification::OutputToStream(Aws::OStream& oStream, co
   }
   if(m_monitoringHasBeenSet)
   {
-      oStream << location << ".Monitoring=" << m_monitoring << "&";
+      oStream << location << ".Monitoring=" << std::boolalpha << m_monitoring << "&";
   }
   if(m_subnetIdHasBeenSet)
   {

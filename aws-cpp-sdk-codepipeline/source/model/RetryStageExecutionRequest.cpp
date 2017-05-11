@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codepipeline/model/RetryStageExecutionRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -25,6 +26,7 @@ RetryStageExecutionRequest::RetryStageExecutionRequest() :
     m_pipelineNameHasBeenSet(false),
     m_stageNameHasBeenSet(false),
     m_pipelineExecutionIdHasBeenSet(false),
+    m_retryMode(StageRetryMode::NOT_SET),
     m_retryModeHasBeenSet(false)
 {
 }
@@ -66,6 +68,7 @@ Aws::Http::HeaderValueCollection RetryStageExecutionRequest::GetRequestSpecificH
   return headers;
 
 }
+
 
 
 

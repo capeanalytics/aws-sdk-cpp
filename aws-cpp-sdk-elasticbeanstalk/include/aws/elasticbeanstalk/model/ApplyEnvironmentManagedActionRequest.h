@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Request to execute a scheduled managed action immediately.</p>
+   * <p>Request to execute a scheduled managed action immediately.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ApplyEnvironmentManagedActionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API ApplyEnvironmentManagedActionRequest : public ElasticBeanstalkRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     ApplyEnvironmentManagedActionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the target environment.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the target environment.</p>
      */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
 
     /**
      * <p>The name of the target environment.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the target environment.</p>
      */
-    inline ApplyEnvironmentManagedActionRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(value); return *this;}
+    inline ApplyEnvironmentManagedActionRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the target environment.</p>
@@ -81,7 +91,7 @@ namespace Model
     /**
      * <p>The environment ID of the target environment.</p>
      */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
+    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
 
     /**
      * <p>The environment ID of the target environment.</p>
@@ -96,7 +106,7 @@ namespace Model
     /**
      * <p>The environment ID of the target environment.</p>
      */
-    inline ApplyEnvironmentManagedActionRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(value); return *this;}
+    inline ApplyEnvironmentManagedActionRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
 
     /**
      * <p>The environment ID of the target environment.</p>
@@ -116,7 +126,7 @@ namespace Model
     /**
      * <p>The action ID of the scheduled managed action to execute.</p>
      */
-    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = value; }
+    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = std::move(value); }
 
     /**
      * <p>The action ID of the scheduled managed action to execute.</p>
@@ -131,7 +141,7 @@ namespace Model
     /**
      * <p>The action ID of the scheduled managed action to execute.</p>
      */
-    inline ApplyEnvironmentManagedActionRequest& WithActionId(Aws::String&& value) { SetActionId(value); return *this;}
+    inline ApplyEnvironmentManagedActionRequest& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
 
     /**
      * <p>The action ID of the scheduled managed action to execute.</p>

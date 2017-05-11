@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/stream/ResponseStream.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,10 @@ namespace Lambda
 namespace Model
 {
   /**
-   * <p>Upon success, returns an empty response. Otherwise, throws an exception.</p>
+   * <p>Upon success, returns an empty response. Otherwise, throws an
+   * exception.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/InvocationResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API InvokeResult
   {
@@ -108,7 +113,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming
      * Model</a>. </p>
      */
-    inline void SetFunctionError(Aws::String&& value) { m_functionError = value; }
+    inline void SetFunctionError(Aws::String&& value) { m_functionError = std::move(value); }
 
     /**
      * <p>Indicates whether an error occurred while executing the Lambda function. If
@@ -147,7 +152,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming
      * Model</a>. </p>
      */
-    inline InvokeResult& WithFunctionError(Aws::String&& value) { SetFunctionError(value); return *this;}
+    inline InvokeResult& WithFunctionError(Aws::String&& value) { SetFunctionError(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether an error occurred while executing the Lambda function. If
@@ -181,7 +186,7 @@ namespace Model
      * present only if the invocation type is <code>RequestResponse</code> and the logs
      * were requested. </p>
      */
-    inline void SetLogResult(Aws::String&& value) { m_logResult = value; }
+    inline void SetLogResult(Aws::String&& value) { m_logResult = std::move(value); }
 
     /**
      * <p> It is the base64-encoded logs for the Lambda function invocation. This is
@@ -202,7 +207,7 @@ namespace Model
      * present only if the invocation type is <code>RequestResponse</code> and the logs
      * were requested. </p>
      */
-    inline InvokeResult& WithLogResult(Aws::String&& value) { SetLogResult(value); return *this;}
+    inline InvokeResult& WithLogResult(Aws::String&& value) { SetLogResult(std::move(value)); return *this;}
 
     /**
      * <p> It is the base64-encoded logs for the Lambda function invocation. This is
@@ -213,7 +218,7 @@ namespace Model
 
     /**
      * <p> It is the JSON representation of the object returned by the Lambda function.
-     * In This is present only if the invocation type is <code>RequestResponse</code>.
+     * This is present only if the invocation type is <code>RequestResponse</code>.
      * </p> <p>In the event of a function error this field contains a message
      * describing the error. For the <code>Handled</code> errors the Lambda function
      * will report this message. For <code>Unhandled</code> errors AWS Lambda reports
@@ -221,6 +226,16 @@ namespace Model
      */
     inline Aws::IOStream& GetPayload() { return m_payload.GetUnderlyingStream(); }
 
+    /**
+     * <p> It is the JSON representation of the object returned by the Lambda function.
+     * This is present only if the invocation type is <code>RequestResponse</code>.
+     * </p> <p>In the event of a function error this field contains a message
+     * describing the error. For the <code>Handled</code> errors the Lambda function
+     * will report this message. For <code>Unhandled</code> errors AWS Lambda reports
+     * the message. </p>
+     */
+    inline void ReplaceBody(Aws::IOStream* body) { m_payload = Aws::Utils::Stream::ResponseStream(body); }
+    
   private:
     int m_statusCode;
     Aws::String m_functionError;

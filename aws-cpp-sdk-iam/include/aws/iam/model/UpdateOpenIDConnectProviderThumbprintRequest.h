@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace Model
     UpdateOpenIDConnectProviderThumbprintRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for
      * which you want to update the thumbprint. You can get a list of OIDC provider
@@ -64,7 +71,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetOpenIDConnectProviderArn(Aws::String&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = value; }
+    inline void SetOpenIDConnectProviderArn(Aws::String&& value) { m_openIDConnectProviderArnHasBeenSet = true; m_openIDConnectProviderArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for
@@ -97,7 +104,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline UpdateOpenIDConnectProviderThumbprintRequest& WithOpenIDConnectProviderArn(Aws::String&& value) { SetOpenIDConnectProviderArn(value); return *this;}
+    inline UpdateOpenIDConnectProviderThumbprintRequest& WithOpenIDConnectProviderArn(Aws::String&& value) { SetOpenIDConnectProviderArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for
@@ -129,7 +136,7 @@ namespace Model
      * OpenID Connect provider. For more information, see
      * <a>CreateOpenIDConnectProvider</a>. </p>
      */
-    inline void SetThumbprintList(Aws::Vector<Aws::String>&& value) { m_thumbprintListHasBeenSet = true; m_thumbprintList = value; }
+    inline void SetThumbprintList(Aws::Vector<Aws::String>&& value) { m_thumbprintListHasBeenSet = true; m_thumbprintList = std::move(value); }
 
     /**
      * <p>A list of certificate thumbprints that are associated with the specified IAM
@@ -143,7 +150,7 @@ namespace Model
      * OpenID Connect provider. For more information, see
      * <a>CreateOpenIDConnectProvider</a>. </p>
      */
-    inline UpdateOpenIDConnectProviderThumbprintRequest& WithThumbprintList(Aws::Vector<Aws::String>&& value) { SetThumbprintList(value); return *this;}
+    inline UpdateOpenIDConnectProviderThumbprintRequest& WithThumbprintList(Aws::Vector<Aws::String>&& value) { SetThumbprintList(std::move(value)); return *this;}
 
     /**
      * <p>A list of certificate thumbprints that are associated with the specified IAM
@@ -157,7 +164,7 @@ namespace Model
      * OpenID Connect provider. For more information, see
      * <a>CreateOpenIDConnectProvider</a>. </p>
      */
-    inline UpdateOpenIDConnectProviderThumbprintRequest& AddThumbprintList(Aws::String&& value) { m_thumbprintListHasBeenSet = true; m_thumbprintList.push_back(value); return *this; }
+    inline UpdateOpenIDConnectProviderThumbprintRequest& AddThumbprintList(Aws::String&& value) { m_thumbprintListHasBeenSet = true; m_thumbprintList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of certificate thumbprints that are associated with the specified IAM

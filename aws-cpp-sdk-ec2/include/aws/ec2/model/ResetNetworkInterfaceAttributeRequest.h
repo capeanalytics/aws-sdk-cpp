@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ResetNetworkInterfaceAttribute.</p>
+   * <p>Contains the parameters for ResetNetworkInterfaceAttribute.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetNetworkInterfaceAttributeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ResetNetworkInterfaceAttributeRequest : public EC2Request
   {
@@ -33,6 +38,11 @@ namespace Model
     ResetNetworkInterfaceAttributeRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
+    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
 
     /**
      * <p>The ID of the network interface.</p>
@@ -85,7 +95,7 @@ namespace Model
     /**
      * <p>The ID of the network interface.</p>
      */
-    inline ResetNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(value); return *this;}
+    inline ResetNetworkInterfaceAttributeRequest& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the network interface.</p>
@@ -108,7 +118,7 @@ namespace Model
      * <p>The source/destination checking attribute. Resets the value to
      * <code>true</code>.</p>
      */
-    inline void SetSourceDestCheck(Aws::String&& value) { m_sourceDestCheckHasBeenSet = true; m_sourceDestCheck = value; }
+    inline void SetSourceDestCheck(Aws::String&& value) { m_sourceDestCheckHasBeenSet = true; m_sourceDestCheck = std::move(value); }
 
     /**
      * <p>The source/destination checking attribute. Resets the value to
@@ -126,7 +136,7 @@ namespace Model
      * <p>The source/destination checking attribute. Resets the value to
      * <code>true</code>.</p>
      */
-    inline ResetNetworkInterfaceAttributeRequest& WithSourceDestCheck(Aws::String&& value) { SetSourceDestCheck(value); return *this;}
+    inline ResetNetworkInterfaceAttributeRequest& WithSourceDestCheck(Aws::String&& value) { SetSourceDestCheck(std::move(value)); return *this;}
 
     /**
      * <p>The source/destination checking attribute. Resets the value to

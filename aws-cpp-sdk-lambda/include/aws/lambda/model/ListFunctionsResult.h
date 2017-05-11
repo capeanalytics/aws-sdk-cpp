@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/lambda/model/FunctionConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>Contains a list of AWS Lambda function configurations (see
-   * <a>FunctionConfiguration</a>.</p>
+   * <a>FunctionConfiguration</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctionsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API ListFunctionsResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>A string, present if there are more functions.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
      * <p>A string, present if there are more functions.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>A string, present if there are more functions.</p>
      */
-    inline ListFunctionsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListFunctionsResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>A string, present if there are more functions.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>A list of Lambda functions.</p>
      */
-    inline void SetFunctions(Aws::Vector<FunctionConfiguration>&& value) { m_functions = value; }
+    inline void SetFunctions(Aws::Vector<FunctionConfiguration>&& value) { m_functions = std::move(value); }
 
     /**
      * <p>A list of Lambda functions.</p>
@@ -103,7 +107,7 @@ namespace Model
     /**
      * <p>A list of Lambda functions.</p>
      */
-    inline ListFunctionsResult& WithFunctions(Aws::Vector<FunctionConfiguration>&& value) { SetFunctions(value); return *this;}
+    inline ListFunctionsResult& WithFunctions(Aws::Vector<FunctionConfiguration>&& value) { SetFunctions(std::move(value)); return *this;}
 
     /**
      * <p>A list of Lambda functions.</p>
@@ -113,7 +117,7 @@ namespace Model
     /**
      * <p>A list of Lambda functions.</p>
      */
-    inline ListFunctionsResult& AddFunctions(FunctionConfiguration&& value) { m_functions.push_back(value); return *this; }
+    inline ListFunctionsResult& AddFunctions(FunctionConfiguration&& value) { m_functions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_nextMarker;

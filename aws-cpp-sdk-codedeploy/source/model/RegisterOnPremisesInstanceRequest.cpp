@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codedeploy/model/RegisterOnPremisesInstanceRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,6 +24,7 @@ using namespace Aws::Utils;
 
 RegisterOnPremisesInstanceRequest::RegisterOnPremisesInstanceRequest() : 
     m_instanceNameHasBeenSet(false),
+    m_iamSessionArnHasBeenSet(false),
     m_iamUserArnHasBeenSet(false)
 {
 }
@@ -34,6 +36,12 @@ Aws::String RegisterOnPremisesInstanceRequest::SerializePayload() const
   if(m_instanceNameHasBeenSet)
   {
    payload.WithString("instanceName", m_instanceName);
+
+  }
+
+  if(m_iamSessionArnHasBeenSet)
+  {
+   payload.WithString("iamSessionArn", m_iamSessionArn);
 
   }
 
@@ -53,6 +61,7 @@ Aws::Http::HeaderValueCollection RegisterOnPremisesInstanceRequest::GetRequestSp
   return headers;
 
 }
+
 
 
 

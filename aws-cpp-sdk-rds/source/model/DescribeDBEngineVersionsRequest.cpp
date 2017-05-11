@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DescribeDBEngineVersionsRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -30,7 +31,9 @@ DescribeDBEngineVersionsRequest::DescribeDBEngineVersionsRequest() :
     m_defaultOnly(false),
     m_defaultOnlyHasBeenSet(false),
     m_listSupportedCharacterSets(false),
-    m_listSupportedCharacterSetsHasBeenSet(false)
+    m_listSupportedCharacterSetsHasBeenSet(false),
+    m_listSupportedTimezones(false),
+    m_listSupportedTimezonesHasBeenSet(false)
 {
 }
 
@@ -75,15 +78,25 @@ Aws::String DescribeDBEngineVersionsRequest::SerializePayload() const
 
   if(m_defaultOnlyHasBeenSet)
   {
-    ss << "DefaultOnly=" << m_defaultOnly << "&";
+    ss << "DefaultOnly=" << std::boolalpha << m_defaultOnly << "&";
   }
 
   if(m_listSupportedCharacterSetsHasBeenSet)
   {
-    ss << "ListSupportedCharacterSets=" << m_listSupportedCharacterSets << "&";
+    ss << "ListSupportedCharacterSets=" << std::boolalpha << m_listSupportedCharacterSets << "&";
+  }
+
+  if(m_listSupportedTimezonesHasBeenSet)
+  {
+    ss << "ListSupportedTimezones=" << std::boolalpha << m_listSupportedTimezones << "&";
   }
 
   ss << "Version=2014-10-31";
   return ss.str();
 }
 
+
+void  DescribeDBEngineVersionsRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/servicecatalog/model/ProductViewSummary.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,6 +34,7 @@ ProductViewSummary::ProductViewSummary() :
     m_nameHasBeenSet(false),
     m_ownerHasBeenSet(false),
     m_shortDescriptionHasBeenSet(false),
+    m_type(ProductType::NOT_SET),
     m_typeHasBeenSet(false),
     m_distributorHasBeenSet(false),
     m_hasDefaultPath(false),
@@ -49,6 +51,7 @@ ProductViewSummary::ProductViewSummary(const JsonValue& jsonValue) :
     m_nameHasBeenSet(false),
     m_ownerHasBeenSet(false),
     m_shortDescriptionHasBeenSet(false),
+    m_type(ProductType::NOT_SET),
     m_typeHasBeenSet(false),
     m_distributorHasBeenSet(false),
     m_hasDefaultPath(false),
@@ -99,7 +102,7 @@ ProductViewSummary& ProductViewSummary::operator =(const JsonValue& jsonValue)
 
   if(jsonValue.ValueExists("Type"))
   {
-    m_type = jsonValue.GetString("Type");
+    m_type = ProductTypeMapper::GetProductTypeForName(jsonValue.GetString("Type"));
 
     m_typeHasBeenSet = true;
   }
@@ -178,8 +181,7 @@ JsonValue ProductViewSummary::Jsonize() const
 
   if(m_typeHasBeenSet)
   {
-   payload.WithString("Type", m_type);
-
+   payload.WithString("Type", ProductTypeMapper::GetNameForProductType(m_type));
   }
 
   if(m_distributorHasBeenSet)

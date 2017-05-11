@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,15 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/elasticbeanstalk/model/SourceBuildInformation.h>
 #include <aws/elasticbeanstalk/model/S3Location.h>
+#include <aws/elasticbeanstalk/model/BuildConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +30,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/CreateApplicationVersionMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API CreateApplicationVersionRequest : public ElasticBeanstalkRequest
   {
@@ -34,6 +40,11 @@ namespace Model
     CreateApplicationVersionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p> The name of the application. If no application is found with this name, and
      * <code>AutoCreateApplication</code> is <code>false</code>, returns an
@@ -53,7 +64,7 @@ namespace Model
      * <code>AutoCreateApplication</code> is <code>false</code>, returns an
      * <code>InvalidParameterValue</code> error. </p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p> The name of the application. If no application is found with this name, and
@@ -74,7 +85,7 @@ namespace Model
      * <code>AutoCreateApplication</code> is <code>false</code>, returns an
      * <code>InvalidParameterValue</code> error. </p>
      */
-    inline CreateApplicationVersionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline CreateApplicationVersionRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p> The name of the application. If no application is found with this name, and
@@ -105,7 +116,7 @@ namespace Model
      * specified application, AWS Elastic Beanstalk returns an
      * <code>InvalidParameterValue</code> error. </p>
      */
-    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = value; }
+    inline void SetVersionLabel(Aws::String&& value) { m_versionLabelHasBeenSet = true; m_versionLabel = std::move(value); }
 
     /**
      * <p>A label identifying this version.</p> <p>Constraint: Must be unique per
@@ -129,7 +140,7 @@ namespace Model
      * specified application, AWS Elastic Beanstalk returns an
      * <code>InvalidParameterValue</code> error. </p>
      */
-    inline CreateApplicationVersionRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(value); return *this;}
+    inline CreateApplicationVersionRequest& WithVersionLabel(Aws::String&& value) { SetVersionLabel(std::move(value)); return *this;}
 
     /**
      * <p>A label identifying this version.</p> <p>Constraint: Must be unique per
@@ -152,7 +163,7 @@ namespace Model
     /**
      * <p>Describes this version.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>Describes this version.</p>
@@ -167,7 +178,7 @@ namespace Model
     /**
      * <p>Describes this version.</p>
      */
-    inline CreateApplicationVersionRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreateApplicationVersionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>Describes this version.</p>
@@ -175,95 +186,130 @@ namespace Model
     inline CreateApplicationVersionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
 
     /**
-     * <p> The Amazon S3 bucket and key that identify the location of the source bundle
-     * for this version. </p> <p> If data found at the Amazon S3 location exceeds the
-     * maximum allowed source bundle size, AWS Elastic Beanstalk returns an
-     * <code>InvalidParameterValue</code> error. The maximum size allowed is 512 MB.
-     * </p> <p>Default: If not specified, AWS Elastic Beanstalk uses a sample
-     * application. If only partially specified (for example, a bucket is provided but
-     * not the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+     * <p>Specify a commit in an AWS CodeCommit Git repository to use as the source
+     * code for the application version.</p>
+     */
+    inline const SourceBuildInformation& GetSourceBuildInformation() const{ return m_sourceBuildInformation; }
+
+    /**
+     * <p>Specify a commit in an AWS CodeCommit Git repository to use as the source
+     * code for the application version.</p>
+     */
+    inline void SetSourceBuildInformation(const SourceBuildInformation& value) { m_sourceBuildInformationHasBeenSet = true; m_sourceBuildInformation = value; }
+
+    /**
+     * <p>Specify a commit in an AWS CodeCommit Git repository to use as the source
+     * code for the application version.</p>
+     */
+    inline void SetSourceBuildInformation(SourceBuildInformation&& value) { m_sourceBuildInformationHasBeenSet = true; m_sourceBuildInformation = std::move(value); }
+
+    /**
+     * <p>Specify a commit in an AWS CodeCommit Git repository to use as the source
+     * code for the application version.</p>
+     */
+    inline CreateApplicationVersionRequest& WithSourceBuildInformation(const SourceBuildInformation& value) { SetSourceBuildInformation(value); return *this;}
+
+    /**
+     * <p>Specify a commit in an AWS CodeCommit Git repository to use as the source
+     * code for the application version.</p>
+     */
+    inline CreateApplicationVersionRequest& WithSourceBuildInformation(SourceBuildInformation&& value) { SetSourceBuildInformation(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon S3 bucket and key that identify the location of the source bundle
+     * for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region
+     * as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in
+     * an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not
+     * both. If neither <code>SourceBundle</code> nor
+     * <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a
+     * sample application.</p>
      */
     inline const S3Location& GetSourceBundle() const{ return m_sourceBundle; }
 
     /**
-     * <p> The Amazon S3 bucket and key that identify the location of the source bundle
-     * for this version. </p> <p> If data found at the Amazon S3 location exceeds the
-     * maximum allowed source bundle size, AWS Elastic Beanstalk returns an
-     * <code>InvalidParameterValue</code> error. The maximum size allowed is 512 MB.
-     * </p> <p>Default: If not specified, AWS Elastic Beanstalk uses a sample
-     * application. If only partially specified (for example, a bucket is provided but
-     * not the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+     * <p>The Amazon S3 bucket and key that identify the location of the source bundle
+     * for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region
+     * as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in
+     * an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not
+     * both. If neither <code>SourceBundle</code> nor
+     * <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a
+     * sample application.</p>
      */
     inline void SetSourceBundle(const S3Location& value) { m_sourceBundleHasBeenSet = true; m_sourceBundle = value; }
 
     /**
-     * <p> The Amazon S3 bucket and key that identify the location of the source bundle
-     * for this version. </p> <p> If data found at the Amazon S3 location exceeds the
-     * maximum allowed source bundle size, AWS Elastic Beanstalk returns an
-     * <code>InvalidParameterValue</code> error. The maximum size allowed is 512 MB.
-     * </p> <p>Default: If not specified, AWS Elastic Beanstalk uses a sample
-     * application. If only partially specified (for example, a bucket is provided but
-     * not the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+     * <p>The Amazon S3 bucket and key that identify the location of the source bundle
+     * for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region
+     * as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in
+     * an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not
+     * both. If neither <code>SourceBundle</code> nor
+     * <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a
+     * sample application.</p>
      */
-    inline void SetSourceBundle(S3Location&& value) { m_sourceBundleHasBeenSet = true; m_sourceBundle = value; }
+    inline void SetSourceBundle(S3Location&& value) { m_sourceBundleHasBeenSet = true; m_sourceBundle = std::move(value); }
 
     /**
-     * <p> The Amazon S3 bucket and key that identify the location of the source bundle
-     * for this version. </p> <p> If data found at the Amazon S3 location exceeds the
-     * maximum allowed source bundle size, AWS Elastic Beanstalk returns an
-     * <code>InvalidParameterValue</code> error. The maximum size allowed is 512 MB.
-     * </p> <p>Default: If not specified, AWS Elastic Beanstalk uses a sample
-     * application. If only partially specified (for example, a bucket is provided but
-     * not the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+     * <p>The Amazon S3 bucket and key that identify the location of the source bundle
+     * for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region
+     * as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in
+     * an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not
+     * both. If neither <code>SourceBundle</code> nor
+     * <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a
+     * sample application.</p>
      */
     inline CreateApplicationVersionRequest& WithSourceBundle(const S3Location& value) { SetSourceBundle(value); return *this;}
 
     /**
-     * <p> The Amazon S3 bucket and key that identify the location of the source bundle
-     * for this version. </p> <p> If data found at the Amazon S3 location exceeds the
-     * maximum allowed source bundle size, AWS Elastic Beanstalk returns an
-     * <code>InvalidParameterValue</code> error. The maximum size allowed is 512 MB.
-     * </p> <p>Default: If not specified, AWS Elastic Beanstalk uses a sample
-     * application. If only partially specified (for example, a bucket is provided but
-     * not the key) or if no data is found at the Amazon S3 location, AWS Elastic
-     * Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+     * <p>The Amazon S3 bucket and key that identify the location of the source bundle
+     * for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region
+     * as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in
+     * an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not
+     * both. If neither <code>SourceBundle</code> nor
+     * <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a
+     * sample application.</p>
      */
-    inline CreateApplicationVersionRequest& WithSourceBundle(S3Location&& value) { SetSourceBundle(value); return *this;}
+    inline CreateApplicationVersionRequest& WithSourceBundle(S3Location&& value) { SetSourceBundle(std::move(value)); return *this;}
 
     /**
-     * <p> Determines how the system behaves if the specified application for this
-     * version does not already exist: </p> <ul> <li> <code>true</code> : Automatically
-     * creates the specified application for this release if it does not already exist.
-     * </li> <li> <code>false</code> : Throws an <code>InvalidParameterValue</code> if
-     * the specified application for this release does not already exist. </li> </ul>
-     * <p> Default: <code>false</code> </p> <p> Valid Values: <code>true</code> |
-     * <code>false</code> </p>
+     * <p>Settings for an AWS CodeBuild build.</p>
+     */
+    inline const BuildConfiguration& GetBuildConfiguration() const{ return m_buildConfiguration; }
+
+    /**
+     * <p>Settings for an AWS CodeBuild build.</p>
+     */
+    inline void SetBuildConfiguration(const BuildConfiguration& value) { m_buildConfigurationHasBeenSet = true; m_buildConfiguration = value; }
+
+    /**
+     * <p>Settings for an AWS CodeBuild build.</p>
+     */
+    inline void SetBuildConfiguration(BuildConfiguration&& value) { m_buildConfigurationHasBeenSet = true; m_buildConfiguration = std::move(value); }
+
+    /**
+     * <p>Settings for an AWS CodeBuild build.</p>
+     */
+    inline CreateApplicationVersionRequest& WithBuildConfiguration(const BuildConfiguration& value) { SetBuildConfiguration(value); return *this;}
+
+    /**
+     * <p>Settings for an AWS CodeBuild build.</p>
+     */
+    inline CreateApplicationVersionRequest& WithBuildConfiguration(BuildConfiguration&& value) { SetBuildConfiguration(std::move(value)); return *this;}
+
+    /**
+     * <p>Set to <code>true</code> to create an application with the specified name if
+     * it doesn't already exist.</p>
      */
     inline bool GetAutoCreateApplication() const{ return m_autoCreateApplication; }
 
     /**
-     * <p> Determines how the system behaves if the specified application for this
-     * version does not already exist: </p> <ul> <li> <code>true</code> : Automatically
-     * creates the specified application for this release if it does not already exist.
-     * </li> <li> <code>false</code> : Throws an <code>InvalidParameterValue</code> if
-     * the specified application for this release does not already exist. </li> </ul>
-     * <p> Default: <code>false</code> </p> <p> Valid Values: <code>true</code> |
-     * <code>false</code> </p>
+     * <p>Set to <code>true</code> to create an application with the specified name if
+     * it doesn't already exist.</p>
      */
     inline void SetAutoCreateApplication(bool value) { m_autoCreateApplicationHasBeenSet = true; m_autoCreateApplication = value; }
 
     /**
-     * <p> Determines how the system behaves if the specified application for this
-     * version does not already exist: </p> <ul> <li> <code>true</code> : Automatically
-     * creates the specified application for this release if it does not already exist.
-     * </li> <li> <code>false</code> : Throws an <code>InvalidParameterValue</code> if
-     * the specified application for this release does not already exist. </li> </ul>
-     * <p> Default: <code>false</code> </p> <p> Valid Values: <code>true</code> |
-     * <code>false</code> </p>
+     * <p>Set to <code>true</code> to create an application with the specified name if
+     * it doesn't already exist.</p>
      */
     inline CreateApplicationVersionRequest& WithAutoCreateApplication(bool value) { SetAutoCreateApplication(value); return *this;}
 
@@ -295,8 +341,12 @@ namespace Model
     bool m_versionLabelHasBeenSet;
     Aws::String m_description;
     bool m_descriptionHasBeenSet;
+    SourceBuildInformation m_sourceBuildInformation;
+    bool m_sourceBuildInformationHasBeenSet;
     S3Location m_sourceBundle;
     bool m_sourceBundleHasBeenSet;
+    BuildConfiguration m_buildConfiguration;
+    bool m_buildConfigurationHasBeenSet;
     bool m_autoCreateApplication;
     bool m_autoCreateApplicationHasBeenSet;
     bool m_process;

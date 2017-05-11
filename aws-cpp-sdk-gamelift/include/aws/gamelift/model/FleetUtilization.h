@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>Current status of fleet utilization, including the number of game and player
-   * sessions being hosted.</p>
+   * sessions being hosted.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/FleetUtilization">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API FleetUtilization
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>Unique identifier for a fleet.</p>
      */
-    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = value; }
+    inline void SetFleetId(Aws::String&& value) { m_fleetIdHasBeenSet = true; m_fleetId = std::move(value); }
 
     /**
      * <p>Unique identifier for a fleet.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>Unique identifier for a fleet.</p>
      */
-    inline FleetUtilization& WithFleetId(Aws::String&& value) { SetFleetId(value); return *this;}
+    inline FleetUtilization& WithFleetId(Aws::String&& value) { SetFleetId(std::move(value)); return *this;}
 
     /**
      * <p>Unique identifier for a fleet.</p>

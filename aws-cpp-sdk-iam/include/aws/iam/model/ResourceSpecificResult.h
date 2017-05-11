@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/iam/model/Statement.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
   /**
    * <p>Contains the result of the simulation of a single API action call on a single
    * resource.</p> <p>This data type is used by a member of the
-   * <a>EvaluationResult</a> data type.</p>
+   * <a>EvaluationResult</a> data type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ResourceSpecificResult">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API ResourceSpecificResult
   {
@@ -63,7 +67,7 @@ namespace Model
     /**
      * <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
      */
-    inline void SetEvalResourceName(Aws::String&& value) { m_evalResourceNameHasBeenSet = true; m_evalResourceName = value; }
+    inline void SetEvalResourceName(Aws::String&& value) { m_evalResourceNameHasBeenSet = true; m_evalResourceName = std::move(value); }
 
     /**
      * <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
      */
-    inline ResourceSpecificResult& WithEvalResourceName(Aws::String&& value) { SetEvalResourceName(value); return *this;}
+    inline ResourceSpecificResult& WithEvalResourceName(Aws::String&& value) { SetEvalResourceName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
@@ -101,7 +105,7 @@ namespace Model
      * <p>The result of the simulation of the simulated API action on the resource
      * specified in <code>EvalResourceName</code>.</p>
      */
-    inline void SetEvalResourceDecision(PolicyEvaluationDecisionType&& value) { m_evalResourceDecisionHasBeenSet = true; m_evalResourceDecision = value; }
+    inline void SetEvalResourceDecision(PolicyEvaluationDecisionType&& value) { m_evalResourceDecisionHasBeenSet = true; m_evalResourceDecision = std::move(value); }
 
     /**
      * <p>The result of the simulation of the simulated API action on the resource
@@ -113,7 +117,7 @@ namespace Model
      * <p>The result of the simulation of the simulated API action on the resource
      * specified in <code>EvalResourceName</code>.</p>
      */
-    inline ResourceSpecificResult& WithEvalResourceDecision(PolicyEvaluationDecisionType&& value) { SetEvalResourceDecision(value); return *this;}
+    inline ResourceSpecificResult& WithEvalResourceDecision(PolicyEvaluationDecisionType&& value) { SetEvalResourceDecision(std::move(value)); return *this;}
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -140,7 +144,7 @@ namespace Model
      * explicit deny overrides any allow, and the deny statement is the only entry
      * included in the result.</p>
      */
-    inline void SetMatchedStatements(Aws::Vector<Statement>&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements = value; }
+    inline void SetMatchedStatements(Aws::Vector<Statement>&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements = std::move(value); }
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -158,7 +162,7 @@ namespace Model
      * explicit deny overrides any allow, and the deny statement is the only entry
      * included in the result.</p>
      */
-    inline ResourceSpecificResult& WithMatchedStatements(Aws::Vector<Statement>&& value) { SetMatchedStatements(value); return *this;}
+    inline ResourceSpecificResult& WithMatchedStatements(Aws::Vector<Statement>&& value) { SetMatchedStatements(std::move(value)); return *this;}
 
     /**
      * <p>A list of the statements in the input policies that determine the result for
@@ -176,7 +180,7 @@ namespace Model
      * explicit deny overrides any allow, and the deny statement is the only entry
      * included in the result.</p>
      */
-    inline ResourceSpecificResult& AddMatchedStatements(Statement&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements.push_back(value); return *this; }
+    inline ResourceSpecificResult& AddMatchedStatements(Statement&& value) { m_matchedStatementsHasBeenSet = true; m_matchedStatements.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -218,7 +222,7 @@ namespace Model
      * <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline void SetMissingContextValues(Aws::Vector<Aws::String>&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues = value; }
+    inline void SetMissingContextValues(Aws::Vector<Aws::String>&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues = std::move(value); }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -246,7 +250,7 @@ namespace Model
      * <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline ResourceSpecificResult& WithMissingContextValues(Aws::Vector<Aws::String>&& value) { SetMissingContextValues(value); return *this;}
+    inline ResourceSpecificResult& WithMissingContextValues(Aws::Vector<Aws::String>&& value) { SetMissingContextValues(std::move(value)); return *this;}
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -274,7 +278,7 @@ namespace Model
      * <a>GetContextKeysForCustomPolicy</a> or
      * <a>GetContextKeysForPrincipalPolicy</a>.</p>
      */
-    inline ResourceSpecificResult& AddMissingContextValues(Aws::String&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues.push_back(value); return *this; }
+    inline ResourceSpecificResult& AddMissingContextValues(Aws::String&& value) { m_missingContextValuesHasBeenSet = true; m_missingContextValues.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of context keys that are required by the included input policies but
@@ -315,7 +319,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline void SetEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails = value; }
+    inline void SetEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails = std::move(value); }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -333,7 +337,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& WithEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { SetEvalDecisionDetails(value); return *this;}
+    inline ResourceSpecificResult& WithEvalDecisionDetails(Aws::Map<Aws::String, PolicyEvaluationDecisionType>&& value) { SetEvalDecisionDetails(std::move(value)); return *this;}
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -342,7 +346,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(const Aws::String& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(const Aws::String& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, value); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -351,7 +355,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(Aws::String&& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(Aws::String&& key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -360,7 +364,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(const Aws::String& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(const Aws::String& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -369,7 +373,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(Aws::String&& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(Aws::String&& key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -378,7 +382,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(const char* key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(const char* key, PolicyEvaluationDecisionType&& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>Additional details about the results of the evaluation decision. When there
@@ -387,7 +391,7 @@ namespace Model
      * cross-account access to a resource, both the resource-based policy and the
      * caller's IAM policy must grant access.</p>
      */
-    inline ResourceSpecificResult& AddEvalDecisionDetails(const char* key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails[key] = value; return *this; }
+    inline ResourceSpecificResult& AddEvalDecisionDetails(const char* key, const PolicyEvaluationDecisionType& value) { m_evalDecisionDetailsHasBeenSet = true; m_evalDecisionDetails.emplace(key, value); return *this; }
 
   private:
     Aws::String m_evalResourceName;

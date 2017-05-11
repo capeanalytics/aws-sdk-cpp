@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudfront/model/SSLSupportMethod.h>
 #include <aws/cloudfront/model/MinimumProtocolVersion.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 
   /**
    * A complex type that contains information about viewer certificates for this
-   * distribution.
+   * distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/ViewerCertificate">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API ViewerCertificate
   {
@@ -94,7 +98,7 @@ namespace Model
      * custom viewer certificate for this distribution. Specify either this value,
      * ACMCertificateArn, or CloudFrontDefaultCertificate.
      */
-    inline void SetIAMCertificateId(Aws::String&& value) { m_iAMCertificateIdHasBeenSet = true; m_iAMCertificateId = value; }
+    inline void SetIAMCertificateId(Aws::String&& value) { m_iAMCertificateIdHasBeenSet = true; m_iAMCertificateId = std::move(value); }
 
     /**
      * If you want viewers to use HTTPS to request your objects and you're using an
@@ -121,7 +125,7 @@ namespace Model
      * custom viewer certificate for this distribution. Specify either this value,
      * ACMCertificateArn, or CloudFrontDefaultCertificate.
      */
-    inline ViewerCertificate& WithIAMCertificateId(Aws::String&& value) { SetIAMCertificateId(value); return *this;}
+    inline ViewerCertificate& WithIAMCertificateId(Aws::String&& value) { SetIAMCertificateId(std::move(value)); return *this;}
 
     /**
      * If you want viewers to use HTTPS to request your objects and you're using an
@@ -157,7 +161,7 @@ namespace Model
      * viewer certificate for this distribution. Specify either this value,
      * IAMCertificateId, or CloudFrontDefaultCertificate.
      */
-    inline void SetACMCertificateArn(Aws::String&& value) { m_aCMCertificateArnHasBeenSet = true; m_aCMCertificateArn = value; }
+    inline void SetACMCertificateArn(Aws::String&& value) { m_aCMCertificateArnHasBeenSet = true; m_aCMCertificateArn = std::move(value); }
 
     /**
      * If you want viewers to use HTTPS to request your objects and you're using an
@@ -184,7 +188,7 @@ namespace Model
      * viewer certificate for this distribution. Specify either this value,
      * IAMCertificateId, or CloudFrontDefaultCertificate.
      */
-    inline ViewerCertificate& WithACMCertificateArn(Aws::String&& value) { SetACMCertificateArn(value); return *this;}
+    inline ViewerCertificate& WithACMCertificateArn(Aws::String&& value) { SetACMCertificateArn(std::move(value)); return *this;}
 
     /**
      * If you want viewers to use HTTPS to request your objects and you're using an
@@ -232,7 +236,7 @@ namespace Model
      * browsers still in use don't support SNI. Do not specify a value for
      * SSLSupportMethod if you specified true for CloudFrontDefaultCertificate.
      */
-    inline void SetSSLSupportMethod(SSLSupportMethod&& value) { m_sSLSupportMethodHasBeenSet = true; m_sSLSupportMethod = value; }
+    inline void SetSSLSupportMethod(SSLSupportMethod&& value) { m_sSLSupportMethodHasBeenSet = true; m_sSLSupportMethod = std::move(value); }
 
     /**
      * If you specify a value for IAMCertificateId, you must also specify how you want
@@ -258,7 +262,7 @@ namespace Model
      * browsers still in use don't support SNI. Do not specify a value for
      * SSLSupportMethod if you specified true for CloudFrontDefaultCertificate.
      */
-    inline ViewerCertificate& WithSSLSupportMethod(SSLSupportMethod&& value) { SetSSLSupportMethod(value); return *this;}
+    inline ViewerCertificate& WithSSLSupportMethod(SSLSupportMethod&& value) { SetSSLSupportMethod(std::move(value)); return *this;}
 
     /**
      * Specify the minimum version of the SSL protocol that you want CloudFront to use,
@@ -303,7 +307,7 @@ namespace Model
      * SNI (if you specify sni-only for SSLSupportMethod), you must specify TLSv1 for
      * MinimumProtocolVersion.
      */
-    inline void SetMinimumProtocolVersion(MinimumProtocolVersion&& value) { m_minimumProtocolVersionHasBeenSet = true; m_minimumProtocolVersion = value; }
+    inline void SetMinimumProtocolVersion(MinimumProtocolVersion&& value) { m_minimumProtocolVersionHasBeenSet = true; m_minimumProtocolVersion = std::move(value); }
 
     /**
      * Specify the minimum version of the SSL protocol that you want CloudFront to use,
@@ -333,7 +337,7 @@ namespace Model
      * SNI (if you specify sni-only for SSLSupportMethod), you must specify TLSv1 for
      * MinimumProtocolVersion.
      */
-    inline ViewerCertificate& WithMinimumProtocolVersion(MinimumProtocolVersion&& value) { SetMinimumProtocolVersion(value); return *this;}
+    inline ViewerCertificate& WithMinimumProtocolVersion(MinimumProtocolVersion&& value) { SetMinimumProtocolVersion(std::move(value)); return *this;}
 
   private:
     bool m_cloudFrontDefaultCertificate;

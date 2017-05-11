@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/RunInstancesRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -31,6 +32,7 @@ RunInstancesRequest::RunInstancesRequest() :
     m_securityGroupsHasBeenSet(false),
     m_securityGroupIdsHasBeenSet(false),
     m_userDataHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_placementHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
@@ -40,14 +42,19 @@ RunInstancesRequest::RunInstancesRequest() :
     m_subnetIdHasBeenSet(false),
     m_disableApiTermination(false),
     m_disableApiTerminationHasBeenSet(false),
+    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
     m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
     m_privateIpAddressHasBeenSet(false),
+    m_ipv6AddressesHasBeenSet(false),
+    m_ipv6AddressCount(0),
+    m_ipv6AddressCountHasBeenSet(false),
     m_clientTokenHasBeenSet(false),
     m_additionalInfoHasBeenSet(false),
     m_networkInterfacesHasBeenSet(false),
     m_iamInstanceProfileHasBeenSet(false),
     m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false)
+    m_ebsOptimizedHasBeenSet(false),
+    m_tagSpecificationsHasBeenSet(false)
 {
 }
 
@@ -57,7 +64,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
   ss << "Action=RunInstances&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_imageIdHasBeenSet)
@@ -149,7 +156,7 @@ Aws::String RunInstancesRequest::SerializePayload() const
 
   if(m_disableApiTerminationHasBeenSet)
   {
-    ss << "DisableApiTermination=" << m_disableApiTermination << "&";
+    ss << "DisableApiTermination=" << std::boolalpha << m_disableApiTermination << "&";
   }
 
   if(m_instanceInitiatedShutdownBehaviorHasBeenSet)
@@ -160,6 +167,21 @@ Aws::String RunInstancesRequest::SerializePayload() const
   if(m_privateIpAddressHasBeenSet)
   {
     ss << "PrivateIpAddress=" << StringUtils::URLEncode(m_privateIpAddress.c_str()) << "&";
+  }
+
+  if(m_ipv6AddressesHasBeenSet)
+  {
+    unsigned ipv6AddressesCount = 1;
+    for(auto& item : m_ipv6Addresses)
+    {
+      item.OutputToStream(ss, "Ipv6Address.", ipv6AddressesCount, "");
+      ipv6AddressesCount++;
+    }
+  }
+
+  if(m_ipv6AddressCountHasBeenSet)
+  {
+    ss << "Ipv6AddressCount=" << m_ipv6AddressCount << "&";
   }
 
   if(m_clientTokenHasBeenSet)
@@ -189,10 +211,25 @@ Aws::String RunInstancesRequest::SerializePayload() const
 
   if(m_ebsOptimizedHasBeenSet)
   {
-    ss << "EbsOptimized=" << m_ebsOptimized << "&";
+    ss << "EbsOptimized=" << std::boolalpha << m_ebsOptimized << "&";
   }
 
-  ss << "Version=2015-10-01";
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
+  }
+
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  RunInstancesRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

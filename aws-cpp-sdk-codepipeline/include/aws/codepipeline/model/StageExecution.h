@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/StageExecutionStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about the run of a stage.</p>
+   * <p>Represents information about the run of a stage.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StageExecution">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API StageExecution
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline execution associated with the stage.</p>
      */
-    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = value; }
+    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = std::move(value); }
 
     /**
      * <p>The ID of the pipeline execution associated with the stage.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The ID of the pipeline execution associated with the stage.</p>
      */
-    inline StageExecution& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(value); return *this;}
+    inline StageExecution& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the pipeline execution associated with the stage.</p>
@@ -93,7 +98,7 @@ namespace Model
      * <p>The status of the stage, or for a completed stage, the last status of the
      * stage.</p>
      */
-    inline void SetStatus(StageExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(StageExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the stage, or for a completed stage, the last status of the
@@ -105,7 +110,7 @@ namespace Model
      * <p>The status of the stage, or for a completed stage, the last status of the
      * stage.</p>
      */
-    inline StageExecution& WithStatus(StageExecutionStatus&& value) { SetStatus(value); return *this;}
+    inline StageExecution& WithStatus(StageExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     Aws::String m_pipelineExecutionId;

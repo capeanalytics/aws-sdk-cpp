@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster to
      * delete.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster to
      * delete.</p>
      */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = value; }
+    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster to
@@ -68,7 +71,7 @@ namespace Model
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster to
      * delete.</p>
      */
-    inline DeleteClusterRequest& WithCluster(Aws::String&& value) { SetCluster(value); return *this;}
+    inline DeleteClusterRequest& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster to

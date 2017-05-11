@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ecs/model/DeploymentConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that your
@@ -54,7 +57,7 @@ namespace Model
      * service is running on. If you do not specify a cluster, the default cluster is
      * assumed.</p>
      */
-    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = value; }
+    inline void SetCluster(Aws::String&& value) { m_clusterHasBeenSet = true; m_cluster = std::move(value); }
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that your
@@ -75,7 +78,7 @@ namespace Model
      * service is running on. If you do not specify a cluster, the default cluster is
      * assumed.</p>
      */
-    inline UpdateServiceRequest& WithCluster(Aws::String&& value) { SetCluster(value); return *this;}
+    inline UpdateServiceRequest& WithCluster(Aws::String&& value) { SetCluster(std::move(value)); return *this;}
 
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the cluster that your
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>The name of the service to update.</p>
      */
-    inline void SetService(Aws::String&& value) { m_serviceHasBeenSet = true; m_service = value; }
+    inline void SetService(Aws::String&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
 
     /**
      * <p>The name of the service to update.</p>
@@ -112,7 +115,7 @@ namespace Model
     /**
      * <p>The name of the service to update.</p>
      */
-    inline UpdateServiceRequest& WithService(Aws::String&& value) { SetService(value); return *this;}
+    inline UpdateServiceRequest& WithService(Aws::String&& value) { SetService(std::move(value)); return *this;}
 
     /**
      * <p>The name of the service to update.</p>
@@ -168,7 +171,7 @@ namespace Model
      * new version of the task definition and then stops an old task after the new
      * version is running.</p>
      */
-    inline void SetTaskDefinition(Aws::String&& value) { m_taskDefinitionHasBeenSet = true; m_taskDefinition = value; }
+    inline void SetTaskDefinition(Aws::String&& value) { m_taskDefinitionHasBeenSet = true; m_taskDefinition = std::move(value); }
 
     /**
      * <p>The <code>family</code> and <code>revision</code>
@@ -201,7 +204,7 @@ namespace Model
      * new version of the task definition and then stops an old task after the new
      * version is running.</p>
      */
-    inline UpdateServiceRequest& WithTaskDefinition(Aws::String&& value) { SetTaskDefinition(value); return *this;}
+    inline UpdateServiceRequest& WithTaskDefinition(Aws::String&& value) { SetTaskDefinition(std::move(value)); return *this;}
 
     /**
      * <p>The <code>family</code> and <code>revision</code>
@@ -230,7 +233,7 @@ namespace Model
      * <p>Optional deployment parameters that control how many tasks run during the
      * deployment and the ordering of stopping and starting tasks.</p>
      */
-    inline void SetDeploymentConfiguration(DeploymentConfiguration&& value) { m_deploymentConfigurationHasBeenSet = true; m_deploymentConfiguration = value; }
+    inline void SetDeploymentConfiguration(DeploymentConfiguration&& value) { m_deploymentConfigurationHasBeenSet = true; m_deploymentConfiguration = std::move(value); }
 
     /**
      * <p>Optional deployment parameters that control how many tasks run during the
@@ -242,7 +245,7 @@ namespace Model
      * <p>Optional deployment parameters that control how many tasks run during the
      * deployment and the ordering of stopping and starting tasks.</p>
      */
-    inline UpdateServiceRequest& WithDeploymentConfiguration(DeploymentConfiguration&& value) { SetDeploymentConfiguration(value); return *this;}
+    inline UpdateServiceRequest& WithDeploymentConfiguration(DeploymentConfiguration&& value) { SetDeploymentConfiguration(std::move(value)); return *this;}
 
   private:
     Aws::String m_cluster;

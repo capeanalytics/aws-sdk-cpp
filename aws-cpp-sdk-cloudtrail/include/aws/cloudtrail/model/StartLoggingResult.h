@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 
@@ -33,7 +34,9 @@ namespace Model
 {
   /**
    * <p>Returns the objects or data listed below if successful. Otherwise, returns an
-   * error.</p>
+   * error.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/StartLoggingResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API StartLoggingResult
   {

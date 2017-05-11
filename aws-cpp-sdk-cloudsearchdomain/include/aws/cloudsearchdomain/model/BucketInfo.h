@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cloudsearchdomain/model/Bucket.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>A container for the calculated facet values and counts.</p>
+   * <p>A container for the calculated facet values and counts.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/BucketInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API BucketInfo
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>A list of the calculated facet values and counts.</p>
      */
-    inline void SetBuckets(Aws::Vector<Bucket>&& value) { m_bucketsHasBeenSet = true; m_buckets = value; }
+    inline void SetBuckets(Aws::Vector<Bucket>&& value) { m_bucketsHasBeenSet = true; m_buckets = std::move(value); }
 
     /**
      * <p>A list of the calculated facet values and counts.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>A list of the calculated facet values and counts.</p>
      */
-    inline BucketInfo& WithBuckets(Aws::Vector<Bucket>&& value) { SetBuckets(value); return *this;}
+    inline BucketInfo& WithBuckets(Aws::Vector<Bucket>&& value) { SetBuckets(std::move(value)); return *this;}
 
     /**
      * <p>A list of the calculated facet values and counts.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>A list of the calculated facet values and counts.</p>
      */
-    inline BucketInfo& AddBuckets(Bucket&& value) { m_bucketsHasBeenSet = true; m_buckets.push_back(value); return *this; }
+    inline BucketInfo& AddBuckets(Bucket&& value) { m_bucketsHasBeenSet = true; m_buckets.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Bucket> m_buckets;

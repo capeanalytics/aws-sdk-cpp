@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudfront/model/KeyPairIds.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * A complex type that lists the AWS accounts that were included in the
    * TrustedSigners complex type, as well as their active CloudFront key pair IDs, if
-   * any.
+   * any.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/Signer">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API Signer
   {
@@ -67,7 +71,7 @@ namespace Model
      * created signed URLs, or an AWS account number. Omit the dashes in the account
      * number.
      */
-    inline void SetAwsAccountNumber(Aws::String&& value) { m_awsAccountNumberHasBeenSet = true; m_awsAccountNumber = value; }
+    inline void SetAwsAccountNumber(Aws::String&& value) { m_awsAccountNumberHasBeenSet = true; m_awsAccountNumber = std::move(value); }
 
     /**
      * Specifies an AWS account that can create signed URLs. Values: self, which
@@ -91,7 +95,7 @@ namespace Model
      * created signed URLs, or an AWS account number. Omit the dashes in the account
      * number.
      */
-    inline Signer& WithAwsAccountNumber(Aws::String&& value) { SetAwsAccountNumber(value); return *this;}
+    inline Signer& WithAwsAccountNumber(Aws::String&& value) { SetAwsAccountNumber(std::move(value)); return *this;}
 
     /**
      * Specifies an AWS account that can create signed URLs. Values: self, which
@@ -117,7 +121,7 @@ namespace Model
      * A complex type that lists the active CloudFront key pairs, if any, that are
      * associated with AwsAccountNumber.
      */
-    inline void SetKeyPairIds(KeyPairIds&& value) { m_keyPairIdsHasBeenSet = true; m_keyPairIds = value; }
+    inline void SetKeyPairIds(KeyPairIds&& value) { m_keyPairIdsHasBeenSet = true; m_keyPairIds = std::move(value); }
 
     /**
      * A complex type that lists the active CloudFront key pairs, if any, that are
@@ -129,7 +133,7 @@ namespace Model
      * A complex type that lists the active CloudFront key pairs, if any, that are
      * associated with AwsAccountNumber.
      */
-    inline Signer& WithKeyPairIds(KeyPairIds&& value) { SetKeyPairIds(value); return *this;}
+    inline Signer& WithKeyPairIds(KeyPairIds&& value) { SetKeyPairIds(std::move(value)); return *this;}
 
   private:
     Aws::String m_awsAccountNumber;

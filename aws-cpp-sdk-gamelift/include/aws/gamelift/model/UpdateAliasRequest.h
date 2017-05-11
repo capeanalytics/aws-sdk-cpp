@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/gamelift/GameLiftRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/gamelift/model/RoutingStrategy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input for a request action.</p>
+   * <p>Represents the input for a request action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/UpdateAliasInput">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API UpdateAliasRequest : public GameLiftRequest
   {
@@ -36,87 +40,88 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
     inline const Aws::String& GetAliasId() const{ return m_aliasId; }
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
     inline void SetAliasId(const Aws::String& value) { m_aliasIdHasBeenSet = true; m_aliasId = value; }
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
-    inline void SetAliasId(Aws::String&& value) { m_aliasIdHasBeenSet = true; m_aliasId = value; }
+    inline void SetAliasId(Aws::String&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::move(value); }
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
     inline void SetAliasId(const char* value) { m_aliasIdHasBeenSet = true; m_aliasId.assign(value); }
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
     inline UpdateAliasRequest& WithAliasId(const Aws::String& value) { SetAliasId(value); return *this;}
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
-    inline UpdateAliasRequest& WithAliasId(Aws::String&& value) { SetAliasId(value); return *this;}
+    inline UpdateAliasRequest& WithAliasId(Aws::String&& value) { SetAliasId(std::move(value)); return *this;}
 
     /**
-     * <p>Unique identifier for a fleet alias. Specify the alias you want to update.
-     * </p>
+     * <p>Unique identifier for a fleet alias. Specify the alias you want to
+     * update.</p>
      */
     inline UpdateAliasRequest& WithAliasId(const char* value) { SetAliasId(value); return *this;}
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
     inline const Aws::String& GetName() const{ return m_name; }
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
     inline UpdateAliasRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
-    inline UpdateAliasRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UpdateAliasRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
-     * <p>Descriptive label associated with an alias. Alias names do not need to be
-     * unique.</p>
+     * <p>Descriptive label that is associated with an alias. Alias names do not need
+     * to be unique.</p>
      */
     inline UpdateAliasRequest& WithName(const char* value) { SetName(value); return *this;}
 
@@ -133,7 +138,7 @@ namespace Model
     /**
      * <p>Human-readable description of an alias.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>Human-readable description of an alias.</p>
@@ -148,7 +153,7 @@ namespace Model
     /**
      * <p>Human-readable description of an alias.</p>
      */
-    inline UpdateAliasRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline UpdateAliasRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>Human-readable description of an alias.</p>
@@ -156,29 +161,29 @@ namespace Model
     inline UpdateAliasRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
 
     /**
-     * <p>Object specifying the fleet and routing type to use for the alias.</p>
+     * <p>Object that specifies the fleet and routing type to use for the alias.</p>
      */
     inline const RoutingStrategy& GetRoutingStrategy() const{ return m_routingStrategy; }
 
     /**
-     * <p>Object specifying the fleet and routing type to use for the alias.</p>
+     * <p>Object that specifies the fleet and routing type to use for the alias.</p>
      */
     inline void SetRoutingStrategy(const RoutingStrategy& value) { m_routingStrategyHasBeenSet = true; m_routingStrategy = value; }
 
     /**
-     * <p>Object specifying the fleet and routing type to use for the alias.</p>
+     * <p>Object that specifies the fleet and routing type to use for the alias.</p>
      */
-    inline void SetRoutingStrategy(RoutingStrategy&& value) { m_routingStrategyHasBeenSet = true; m_routingStrategy = value; }
+    inline void SetRoutingStrategy(RoutingStrategy&& value) { m_routingStrategyHasBeenSet = true; m_routingStrategy = std::move(value); }
 
     /**
-     * <p>Object specifying the fleet and routing type to use for the alias.</p>
+     * <p>Object that specifies the fleet and routing type to use for the alias.</p>
      */
     inline UpdateAliasRequest& WithRoutingStrategy(const RoutingStrategy& value) { SetRoutingStrategy(value); return *this;}
 
     /**
-     * <p>Object specifying the fleet and routing type to use for the alias.</p>
+     * <p>Object that specifies the fleet and routing type to use for the alias.</p>
      */
-    inline UpdateAliasRequest& WithRoutingStrategy(RoutingStrategy&& value) { SetRoutingStrategy(value); return *this;}
+    inline UpdateAliasRequest& WithRoutingStrategy(RoutingStrategy&& value) { SetRoutingStrategy(std::move(value)); return *this;}
 
   private:
     Aws::String m_aliasId;

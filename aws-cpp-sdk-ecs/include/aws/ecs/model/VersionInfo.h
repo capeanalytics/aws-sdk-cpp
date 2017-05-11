@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>The Docker and Amazon ECS container agent version information about a
-   * container instance.</p>
+   * container instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/VersionInfo">AWS API
+   * Reference</a></p>
    */
   class AWS_ECS_API VersionInfo
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The version number of the Amazon ECS container agent.</p>
      */
-    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
+    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::move(value); }
 
     /**
      * <p>The version number of the Amazon ECS container agent.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The version number of the Amazon ECS container agent.</p>
      */
-    inline VersionInfo& WithAgentVersion(Aws::String&& value) { SetAgentVersion(value); return *this;}
+    inline VersionInfo& WithAgentVersion(Aws::String&& value) { SetAgentVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version number of the Amazon ECS container agent.</p>
@@ -96,7 +100,7 @@ namespace Model
      * href="https://github.com/aws/amazon-ecs-agent/commits/master">amazon-ecs-agent
      * </a> GitHub repository.</p>
      */
-    inline void SetAgentHash(Aws::String&& value) { m_agentHashHasBeenSet = true; m_agentHash = value; }
+    inline void SetAgentHash(Aws::String&& value) { m_agentHashHasBeenSet = true; m_agentHash = std::move(value); }
 
     /**
      * <p>The Git commit hash for the Amazon ECS container agent build on the <a
@@ -117,7 +121,7 @@ namespace Model
      * href="https://github.com/aws/amazon-ecs-agent/commits/master">amazon-ecs-agent
      * </a> GitHub repository.</p>
      */
-    inline VersionInfo& WithAgentHash(Aws::String&& value) { SetAgentHash(value); return *this;}
+    inline VersionInfo& WithAgentHash(Aws::String&& value) { SetAgentHash(std::move(value)); return *this;}
 
     /**
      * <p>The Git commit hash for the Amazon ECS container agent build on the <a
@@ -139,7 +143,7 @@ namespace Model
     /**
      * <p>The Docker version running on the container instance.</p>
      */
-    inline void SetDockerVersion(Aws::String&& value) { m_dockerVersionHasBeenSet = true; m_dockerVersion = value; }
+    inline void SetDockerVersion(Aws::String&& value) { m_dockerVersionHasBeenSet = true; m_dockerVersion = std::move(value); }
 
     /**
      * <p>The Docker version running on the container instance.</p>
@@ -154,7 +158,7 @@ namespace Model
     /**
      * <p>The Docker version running on the container instance.</p>
      */
-    inline VersionInfo& WithDockerVersion(Aws::String&& value) { SetDockerVersion(value); return *this;}
+    inline VersionInfo& WithDockerVersion(Aws::String&& value) { SetDockerVersion(std::move(value)); return *this;}
 
     /**
      * <p>The Docker version running on the container instance.</p>

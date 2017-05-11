@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/KinesisAnalyticsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/ApplicationUpdate.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>Name of the Kinesis Analytics application to update.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>Name of the Kinesis Analytics application to update.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>Name of the Kinesis Analytics application to update.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>Name of the Kinesis Analytics application to update.</p>
      */
-    inline UpdateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline UpdateApplicationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the Kinesis Analytics application to update.</p>
@@ -101,7 +104,7 @@ namespace Model
     /**
      * <p>Describes application updates.</p>
      */
-    inline void SetApplicationUpdate(ApplicationUpdate&& value) { m_applicationUpdateHasBeenSet = true; m_applicationUpdate = value; }
+    inline void SetApplicationUpdate(ApplicationUpdate&& value) { m_applicationUpdateHasBeenSet = true; m_applicationUpdate = std::move(value); }
 
     /**
      * <p>Describes application updates.</p>
@@ -111,7 +114,7 @@ namespace Model
     /**
      * <p>Describes application updates.</p>
      */
-    inline UpdateApplicationRequest& WithApplicationUpdate(ApplicationUpdate&& value) { SetApplicationUpdate(value); return *this;}
+    inline UpdateApplicationRequest& WithApplicationUpdate(ApplicationUpdate&& value) { SetApplicationUpdate(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;

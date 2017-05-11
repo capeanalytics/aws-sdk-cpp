@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/waf/model/RuleSummary.h>
+#include <utility>
 
 namespace Aws
 {
@@ -66,7 +68,7 @@ namespace Model
      * <code>ListRules</code> request, and specify the <code>NextMarker</code> value
      * from the response in the <code>NextMarker</code> value in the next request.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
      * <p>If you have more <code>Rules</code> than the number that you specified for
@@ -93,7 +95,7 @@ namespace Model
      * <code>ListRules</code> request, and specify the <code>NextMarker</code> value
      * from the response in the <code>NextMarker</code> value in the next request.</p>
      */
-    inline ListRulesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListRulesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>If you have more <code>Rules</code> than the number that you specified for
@@ -117,7 +119,7 @@ namespace Model
     /**
      * <p>An array of <a>RuleSummary</a> objects.</p>
      */
-    inline void SetRules(Aws::Vector<RuleSummary>&& value) { m_rules = value; }
+    inline void SetRules(Aws::Vector<RuleSummary>&& value) { m_rules = std::move(value); }
 
     /**
      * <p>An array of <a>RuleSummary</a> objects.</p>
@@ -127,7 +129,7 @@ namespace Model
     /**
      * <p>An array of <a>RuleSummary</a> objects.</p>
      */
-    inline ListRulesResult& WithRules(Aws::Vector<RuleSummary>&& value) { SetRules(value); return *this;}
+    inline ListRulesResult& WithRules(Aws::Vector<RuleSummary>&& value) { SetRules(std::move(value)); return *this;}
 
     /**
      * <p>An array of <a>RuleSummary</a> objects.</p>
@@ -137,7 +139,7 @@ namespace Model
     /**
      * <p>An array of <a>RuleSummary</a> objects.</p>
      */
-    inline ListRulesResult& AddRules(RuleSummary&& value) { m_rules.push_back(value); return *this; }
+    inline ListRulesResult& AddRules(RuleSummary&& value) { m_rules.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_nextMarker;

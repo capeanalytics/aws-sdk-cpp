@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/kinesis/KinesisRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
+   * <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DecreaseStreamRetentionPeriodInput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API DecreaseStreamRetentionPeriodRequest : public KinesisRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the stream to modify.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The name of the stream to modify.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
 
     /**
      * <p>The name of the stream to modify.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the stream to modify.</p>
      */
-    inline DecreaseStreamRetentionPeriodRequest& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline DecreaseStreamRetentionPeriodRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stream to modify.</p>

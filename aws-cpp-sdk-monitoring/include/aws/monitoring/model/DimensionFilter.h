@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,8 +34,9 @@ namespace Model
 {
 
   /**
-   * <p> The <code>DimensionFilter</code> data type is used to filter
-   * <a>ListMetrics</a> results. </p>
+   * <p>Represents filters for a dimension.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DimensionFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDWATCH_API DimensionFilter
   {
@@ -58,7 +61,7 @@ namespace Model
     /**
      * <p>The dimension name to be matched.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The dimension name to be matched.</p>
@@ -73,7 +76,7 @@ namespace Model
     /**
      * <p>The dimension name to be matched.</p>
      */
-    inline DimensionFilter& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline DimensionFilter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The dimension name to be matched.</p>
@@ -81,51 +84,37 @@ namespace Model
     inline DimensionFilter& WithName(const char* value) { SetName(value); return *this;}
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
     inline const Aws::String& GetValue() const{ return m_value; }
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
     inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
     inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
     inline DimensionFilter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
-    inline DimensionFilter& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline DimensionFilter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
-     * <p>The value of the dimension to be matched.</p> <note> <p>Specifying a
-     * <code>Name</code> without specifying a <code>Value</code> returns all values
-     * associated with that <code>Name</code>.</p> </note>
+     * <p>The value of the dimension to be matched.</p>
      */
     inline DimensionFilter& WithValue(const char* value) { SetValue(value); return *this;}
 

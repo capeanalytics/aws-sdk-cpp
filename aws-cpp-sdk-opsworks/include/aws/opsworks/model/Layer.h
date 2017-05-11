@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,16 +12,19 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opsworks/model/LayerType.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <aws/opsworks/model/CloudWatchLogsConfiguration.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/opsworks/model/Recipes.h>
 #include <aws/opsworks/model/LifecycleEventConfiguration.h>
 #include <aws/opsworks/model/LayerAttributesKeys.h>
 #include <aws/opsworks/model/VolumeConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +41,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a layer.</p>
+   * <p>Describes a layer.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Layer">AWS API
+   * Reference</a></p>
    */
   class AWS_OPSWORKS_API Layer
   {
@@ -61,7 +66,7 @@ namespace Model
     /**
      * <p>The layer stack ID.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>The layer stack ID.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The layer stack ID.</p>
      */
-    inline Layer& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline Layer& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The layer stack ID.</p>
@@ -96,7 +101,7 @@ namespace Model
     /**
      * <p>The layer ID.</p>
      */
-    inline void SetLayerId(Aws::String&& value) { m_layerIdHasBeenSet = true; m_layerId = value; }
+    inline void SetLayerId(Aws::String&& value) { m_layerIdHasBeenSet = true; m_layerId = std::move(value); }
 
     /**
      * <p>The layer ID.</p>
@@ -111,7 +116,7 @@ namespace Model
     /**
      * <p>The layer ID.</p>
      */
-    inline Layer& WithLayerId(Aws::String&& value) { SetLayerId(value); return *this;}
+    inline Layer& WithLayerId(Aws::String&& value) { SetLayerId(std::move(value)); return *this;}
 
     /**
      * <p>The layer ID.</p>
@@ -131,7 +136,7 @@ namespace Model
     /**
      * <p>The layer type.</p>
      */
-    inline void SetType(LayerType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(LayerType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The layer type.</p>
@@ -141,7 +146,7 @@ namespace Model
     /**
      * <p>The layer type.</p>
      */
-    inline Layer& WithType(LayerType&& value) { SetType(value); return *this;}
+    inline Layer& WithType(LayerType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The layer name.</p>
@@ -156,7 +161,7 @@ namespace Model
     /**
      * <p>The layer name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The layer name.</p>
@@ -171,7 +176,7 @@ namespace Model
     /**
      * <p>The layer name.</p>
      */
-    inline Layer& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Layer& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The layer name.</p>
@@ -191,7 +196,7 @@ namespace Model
     /**
      * <p>The layer short name.</p>
      */
-    inline void SetShortname(Aws::String&& value) { m_shortnameHasBeenSet = true; m_shortname = value; }
+    inline void SetShortname(Aws::String&& value) { m_shortnameHasBeenSet = true; m_shortname = std::move(value); }
 
     /**
      * <p>The layer short name.</p>
@@ -206,7 +211,7 @@ namespace Model
     /**
      * <p>The layer short name.</p>
      */
-    inline Layer& WithShortname(Aws::String&& value) { SetShortname(value); return *this;}
+    inline Layer& WithShortname(Aws::String&& value) { SetShortname(std::move(value)); return *this;}
 
     /**
      * <p>The layer short name.</p>
@@ -216,101 +221,126 @@ namespace Model
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
     inline const Aws::Map<LayerAttributesKeys, Aws::String>& GetAttributes() const{ return m_attributes; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
     inline void SetAttributes(const Aws::Map<LayerAttributesKeys, Aws::String>& value) { m_attributesHasBeenSet = true; m_attributes = value; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline void SetAttributes(Aws::Map<LayerAttributesKeys, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Map<LayerAttributesKeys, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
     inline Layer& WithAttributes(const Aws::Map<LayerAttributesKeys, Aws::String>& value) { SetAttributes(value); return *this;}
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& WithAttributes(Aws::Map<LayerAttributesKeys, Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline Layer& WithAttributes(Aws::Map<LayerAttributesKeys, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(const LayerAttributesKeys& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(const LayerAttributesKeys& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(LayerAttributesKeys&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(LayerAttributesKeys&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(const LayerAttributesKeys& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(const LayerAttributesKeys& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(LayerAttributesKeys&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(LayerAttributesKeys&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(LayerAttributesKeys&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(LayerAttributesKeys&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>,
      * <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS
-     * OpsWorks returns <code>*****FILTERED*****</code> instead of the actual value</p>
-     * <p>For an ECS Cluster layer, AWS OpsWorks the <code>EcsClusterArn</code>
-     * attribute is set to the cluster's ARN.</p>
+     * OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual
+     * value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the
+     * <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
      */
-    inline Layer& AddAttributes(const LayerAttributesKeys& key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline Layer& AddAttributes(const LayerAttributesKeys& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
+
+    /**
+     * <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+     */
+    inline const CloudWatchLogsConfiguration& GetCloudWatchLogsConfiguration() const{ return m_cloudWatchLogsConfiguration; }
+
+    /**
+     * <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+     */
+    inline void SetCloudWatchLogsConfiguration(const CloudWatchLogsConfiguration& value) { m_cloudWatchLogsConfigurationHasBeenSet = true; m_cloudWatchLogsConfiguration = value; }
+
+    /**
+     * <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+     */
+    inline void SetCloudWatchLogsConfiguration(CloudWatchLogsConfiguration&& value) { m_cloudWatchLogsConfigurationHasBeenSet = true; m_cloudWatchLogsConfiguration = std::move(value); }
+
+    /**
+     * <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+     */
+    inline Layer& WithCloudWatchLogsConfiguration(const CloudWatchLogsConfiguration& value) { SetCloudWatchLogsConfiguration(value); return *this;}
+
+    /**
+     * <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+     */
+    inline Layer& WithCloudWatchLogsConfiguration(CloudWatchLogsConfiguration&& value) { SetCloudWatchLogsConfiguration(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the default IAM profile to be used for the layer's EC2 instances.
@@ -334,7 +364,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using
      * Identifiers</a>.</p>
      */
-    inline void SetCustomInstanceProfileArn(Aws::String&& value) { m_customInstanceProfileArnHasBeenSet = true; m_customInstanceProfileArn = value; }
+    inline void SetCustomInstanceProfileArn(Aws::String&& value) { m_customInstanceProfileArnHasBeenSet = true; m_customInstanceProfileArn = std::move(value); }
 
     /**
      * <p>The ARN of the default IAM profile to be used for the layer's EC2 instances.
@@ -358,7 +388,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using
      * Identifiers</a>.</p>
      */
-    inline Layer& WithCustomInstanceProfileArn(Aws::String&& value) { SetCustomInstanceProfileArn(value); return *this;}
+    inline Layer& WithCustomInstanceProfileArn(Aws::String&& value) { SetCustomInstanceProfileArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the default IAM profile to be used for the layer's EC2 instances.
@@ -384,7 +414,7 @@ namespace Model
      * <p>A JSON formatted string containing the layer's custom stack configuration and
      * deployment attributes.</p>
      */
-    inline void SetCustomJson(Aws::String&& value) { m_customJsonHasBeenSet = true; m_customJson = value; }
+    inline void SetCustomJson(Aws::String&& value) { m_customJsonHasBeenSet = true; m_customJson = std::move(value); }
 
     /**
      * <p>A JSON formatted string containing the layer's custom stack configuration and
@@ -402,7 +432,7 @@ namespace Model
      * <p>A JSON formatted string containing the layer's custom stack configuration and
      * deployment attributes.</p>
      */
-    inline Layer& WithCustomJson(Aws::String&& value) { SetCustomJson(value); return *this;}
+    inline Layer& WithCustomJson(Aws::String&& value) { SetCustomJson(std::move(value)); return *this;}
 
     /**
      * <p>A JSON formatted string containing the layer's custom stack configuration and
@@ -423,7 +453,7 @@ namespace Model
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
      */
-    inline void SetCustomSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_customSecurityGroupIdsHasBeenSet = true; m_customSecurityGroupIds = value; }
+    inline void SetCustomSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_customSecurityGroupIdsHasBeenSet = true; m_customSecurityGroupIds = std::move(value); }
 
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
@@ -433,7 +463,7 @@ namespace Model
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
      */
-    inline Layer& WithCustomSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetCustomSecurityGroupIds(value); return *this;}
+    inline Layer& WithCustomSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetCustomSecurityGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
@@ -443,7 +473,7 @@ namespace Model
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
      */
-    inline Layer& AddCustomSecurityGroupIds(Aws::String&& value) { m_customSecurityGroupIdsHasBeenSet = true; m_customSecurityGroupIds.push_back(value); return *this; }
+    inline Layer& AddCustomSecurityGroupIds(Aws::String&& value) { m_customSecurityGroupIdsHasBeenSet = true; m_customSecurityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array containing the layer's custom security group IDs.</p>
@@ -463,7 +493,7 @@ namespace Model
     /**
      * <p>An array containing the layer's security group names.</p>
      */
-    inline void SetDefaultSecurityGroupNames(Aws::Vector<Aws::String>&& value) { m_defaultSecurityGroupNamesHasBeenSet = true; m_defaultSecurityGroupNames = value; }
+    inline void SetDefaultSecurityGroupNames(Aws::Vector<Aws::String>&& value) { m_defaultSecurityGroupNamesHasBeenSet = true; m_defaultSecurityGroupNames = std::move(value); }
 
     /**
      * <p>An array containing the layer's security group names.</p>
@@ -473,7 +503,7 @@ namespace Model
     /**
      * <p>An array containing the layer's security group names.</p>
      */
-    inline Layer& WithDefaultSecurityGroupNames(Aws::Vector<Aws::String>&& value) { SetDefaultSecurityGroupNames(value); return *this;}
+    inline Layer& WithDefaultSecurityGroupNames(Aws::Vector<Aws::String>&& value) { SetDefaultSecurityGroupNames(std::move(value)); return *this;}
 
     /**
      * <p>An array containing the layer's security group names.</p>
@@ -483,7 +513,7 @@ namespace Model
     /**
      * <p>An array containing the layer's security group names.</p>
      */
-    inline Layer& AddDefaultSecurityGroupNames(Aws::String&& value) { m_defaultSecurityGroupNamesHasBeenSet = true; m_defaultSecurityGroupNames.push_back(value); return *this; }
+    inline Layer& AddDefaultSecurityGroupNames(Aws::String&& value) { m_defaultSecurityGroupNamesHasBeenSet = true; m_defaultSecurityGroupNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array containing the layer's security group names.</p>
@@ -506,7 +536,7 @@ namespace Model
      * <p>An array of <code>Package</code> objects that describe the layer's
      * packages.</p>
      */
-    inline void SetPackages(Aws::Vector<Aws::String>&& value) { m_packagesHasBeenSet = true; m_packages = value; }
+    inline void SetPackages(Aws::Vector<Aws::String>&& value) { m_packagesHasBeenSet = true; m_packages = std::move(value); }
 
     /**
      * <p>An array of <code>Package</code> objects that describe the layer's
@@ -518,7 +548,7 @@ namespace Model
      * <p>An array of <code>Package</code> objects that describe the layer's
      * packages.</p>
      */
-    inline Layer& WithPackages(Aws::Vector<Aws::String>&& value) { SetPackages(value); return *this;}
+    inline Layer& WithPackages(Aws::Vector<Aws::String>&& value) { SetPackages(std::move(value)); return *this;}
 
     /**
      * <p>An array of <code>Package</code> objects that describe the layer's
@@ -530,7 +560,7 @@ namespace Model
      * <p>An array of <code>Package</code> objects that describe the layer's
      * packages.</p>
      */
-    inline Layer& AddPackages(Aws::String&& value) { m_packagesHasBeenSet = true; m_packages.push_back(value); return *this; }
+    inline Layer& AddPackages(Aws::String&& value) { m_packagesHasBeenSet = true; m_packages.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of <code>Package</code> objects that describe the layer's
@@ -554,7 +584,7 @@ namespace Model
      * <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon
      * EBS volumes.</p>
      */
-    inline void SetVolumeConfigurations(Aws::Vector<VolumeConfiguration>&& value) { m_volumeConfigurationsHasBeenSet = true; m_volumeConfigurations = value; }
+    inline void SetVolumeConfigurations(Aws::Vector<VolumeConfiguration>&& value) { m_volumeConfigurationsHasBeenSet = true; m_volumeConfigurations = std::move(value); }
 
     /**
      * <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon
@@ -566,7 +596,7 @@ namespace Model
      * <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon
      * EBS volumes.</p>
      */
-    inline Layer& WithVolumeConfigurations(Aws::Vector<VolumeConfiguration>&& value) { SetVolumeConfigurations(value); return *this;}
+    inline Layer& WithVolumeConfigurations(Aws::Vector<VolumeConfiguration>&& value) { SetVolumeConfigurations(std::move(value)); return *this;}
 
     /**
      * <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon
@@ -578,7 +608,7 @@ namespace Model
      * <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon
      * EBS volumes.</p>
      */
-    inline Layer& AddVolumeConfigurations(VolumeConfiguration&& value) { m_volumeConfigurationsHasBeenSet = true; m_volumeConfigurations.push_back(value); return *this; }
+    inline Layer& AddVolumeConfigurations(VolumeConfiguration&& value) { m_volumeConfigurationsHasBeenSet = true; m_volumeConfigurations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Whether auto healing is disabled for the layer.</p>
@@ -653,13 +683,13 @@ namespace Model
     inline void SetDefaultRecipes(const Recipes& value) { m_defaultRecipesHasBeenSet = true; m_defaultRecipes = value; }
 
     
-    inline void SetDefaultRecipes(Recipes&& value) { m_defaultRecipesHasBeenSet = true; m_defaultRecipes = value; }
+    inline void SetDefaultRecipes(Recipes&& value) { m_defaultRecipesHasBeenSet = true; m_defaultRecipes = std::move(value); }
 
     
     inline Layer& WithDefaultRecipes(const Recipes& value) { SetDefaultRecipes(value); return *this;}
 
     
-    inline Layer& WithDefaultRecipes(Recipes&& value) { SetDefaultRecipes(value); return *this;}
+    inline Layer& WithDefaultRecipes(Recipes&& value) { SetDefaultRecipes(std::move(value)); return *this;}
 
     /**
      * <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom
@@ -677,7 +707,7 @@ namespace Model
      * <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom
      * recipes.</p>
      */
-    inline void SetCustomRecipes(Recipes&& value) { m_customRecipesHasBeenSet = true; m_customRecipes = value; }
+    inline void SetCustomRecipes(Recipes&& value) { m_customRecipesHasBeenSet = true; m_customRecipes = std::move(value); }
 
     /**
      * <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom
@@ -689,7 +719,7 @@ namespace Model
      * <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom
      * recipes.</p>
      */
-    inline Layer& WithCustomRecipes(Recipes&& value) { SetCustomRecipes(value); return *this;}
+    inline Layer& WithCustomRecipes(Recipes&& value) { SetCustomRecipes(std::move(value)); return *this;}
 
     /**
      * <p>Date when the layer was created.</p>
@@ -704,7 +734,7 @@ namespace Model
     /**
      * <p>Date when the layer was created.</p>
      */
-    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
 
     /**
      * <p>Date when the layer was created.</p>
@@ -719,7 +749,7 @@ namespace Model
     /**
      * <p>Date when the layer was created.</p>
      */
-    inline Layer& WithCreatedAt(Aws::String&& value) { SetCreatedAt(value); return *this;}
+    inline Layer& WithCreatedAt(Aws::String&& value) { SetCreatedAt(std::move(value)); return *this;}
 
     /**
      * <p>Date when the layer was created.</p>
@@ -793,7 +823,7 @@ namespace Model
      * <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown
      * event configuration.</p>
      */
-    inline void SetLifecycleEventConfiguration(LifecycleEventConfiguration&& value) { m_lifecycleEventConfigurationHasBeenSet = true; m_lifecycleEventConfiguration = value; }
+    inline void SetLifecycleEventConfiguration(LifecycleEventConfiguration&& value) { m_lifecycleEventConfigurationHasBeenSet = true; m_lifecycleEventConfiguration = std::move(value); }
 
     /**
      * <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown
@@ -805,7 +835,7 @@ namespace Model
      * <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown
      * event configuration.</p>
      */
-    inline Layer& WithLifecycleEventConfiguration(LifecycleEventConfiguration&& value) { SetLifecycleEventConfiguration(value); return *this;}
+    inline Layer& WithLifecycleEventConfiguration(LifecycleEventConfiguration&& value) { SetLifecycleEventConfiguration(std::move(value)); return *this;}
 
   private:
     Aws::String m_stackId;
@@ -820,6 +850,8 @@ namespace Model
     bool m_shortnameHasBeenSet;
     Aws::Map<LayerAttributesKeys, Aws::String> m_attributes;
     bool m_attributesHasBeenSet;
+    CloudWatchLogsConfiguration m_cloudWatchLogsConfiguration;
+    bool m_cloudWatchLogsConfigurationHasBeenSet;
     Aws::String m_customInstanceProfileArn;
     bool m_customInstanceProfileArnHasBeenSet;
     Aws::String m_customJson;

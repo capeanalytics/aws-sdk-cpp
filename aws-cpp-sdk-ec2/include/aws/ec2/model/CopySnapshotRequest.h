@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CopySnapshot.</p>
+   * <p>Contains the parameters for CopySnapshot.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshotRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CopySnapshotRequest : public EC2Request
   {
@@ -33,6 +37,11 @@ namespace Model
     CopySnapshotRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the region that contains the snapshot to be copied.</p>
      */
-    inline void SetSourceRegion(Aws::String&& value) { m_sourceRegionHasBeenSet = true; m_sourceRegion = value; }
+    inline void SetSourceRegion(Aws::String&& value) { m_sourceRegionHasBeenSet = true; m_sourceRegion = std::move(value); }
 
     /**
      * <p>The ID of the region that contains the snapshot to be copied.</p>
@@ -85,7 +94,7 @@ namespace Model
     /**
      * <p>The ID of the region that contains the snapshot to be copied.</p>
      */
-    inline CopySnapshotRequest& WithSourceRegion(Aws::String&& value) { SetSourceRegion(value); return *this;}
+    inline CopySnapshotRequest& WithSourceRegion(Aws::String&& value) { SetSourceRegion(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the region that contains the snapshot to be copied.</p>
@@ -105,7 +114,7 @@ namespace Model
     /**
      * <p>The ID of the EBS snapshot to copy.</p>
      */
-    inline void SetSourceSnapshotId(Aws::String&& value) { m_sourceSnapshotIdHasBeenSet = true; m_sourceSnapshotId = value; }
+    inline void SetSourceSnapshotId(Aws::String&& value) { m_sourceSnapshotIdHasBeenSet = true; m_sourceSnapshotId = std::move(value); }
 
     /**
      * <p>The ID of the EBS snapshot to copy.</p>
@@ -120,7 +129,7 @@ namespace Model
     /**
      * <p>The ID of the EBS snapshot to copy.</p>
      */
-    inline CopySnapshotRequest& WithSourceSnapshotId(Aws::String&& value) { SetSourceSnapshotId(value); return *this;}
+    inline CopySnapshotRequest& WithSourceSnapshotId(Aws::String&& value) { SetSourceSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the EBS snapshot to copy.</p>
@@ -140,7 +149,7 @@ namespace Model
     /**
      * <p>A description for the EBS snapshot.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description for the EBS snapshot.</p>
@@ -155,7 +164,7 @@ namespace Model
     /**
      * <p>A description for the EBS snapshot.</p>
      */
-    inline CopySnapshotRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CopySnapshotRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description for the EBS snapshot.</p>
@@ -166,8 +175,8 @@ namespace Model
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
@@ -178,8 +187,8 @@ namespace Model
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
@@ -190,20 +199,20 @@ namespace Model
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
      */
-    inline void SetDestinationRegion(Aws::String&& value) { m_destinationRegionHasBeenSet = true; m_destinationRegion = value; }
+    inline void SetDestinationRegion(Aws::String&& value) { m_destinationRegionHasBeenSet = true; m_destinationRegion = std::move(value); }
 
     /**
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
@@ -214,8 +223,8 @@ namespace Model
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
@@ -226,20 +235,20 @@ namespace Model
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
      */
-    inline CopySnapshotRequest& WithDestinationRegion(Aws::String&& value) { SetDestinationRegion(value); return *this;}
+    inline CopySnapshotRequest& WithDestinationRegion(Aws::String&& value) { SetDestinationRegion(std::move(value)); return *this;}
 
     /**
      * <p>The destination region to use in the <code>PresignedUrl</code> parameter of a
      * snapshot copy operation. This parameter is only valid for specifying the
      * destination region in a <code>PresignedUrl</code> parameter, where it is
-     * required.</p> <note> <p><code>CopySnapshot</code> sends the snapshot copy to the
-     * regional endpoint that you send the HTTP request to, such as
+     * required.</p> <note> <p> <code>CopySnapshot</code> sends the snapshot copy to
+     * the regional endpoint that you send the HTTP request to, such as
      * <code>ec2.us-east-1.amazonaws.com</code> (in the AWS CLI, this is specified with
      * the <code>--region</code> parameter or the default region in your AWS
      * configuration file).</p> </note>
@@ -298,7 +307,7 @@ namespace Model
      * signed <code>PresignedUrl</code> will cause the copy operation to fail
      * asynchronously, and the snapshot will move to an <code>error</code> state.</p>
      */
-    inline void SetPresignedUrl(Aws::String&& value) { m_presignedUrlHasBeenSet = true; m_presignedUrl = value; }
+    inline void SetPresignedUrl(Aws::String&& value) { m_presignedUrlHasBeenSet = true; m_presignedUrl = std::move(value); }
 
     /**
      * <p>The pre-signed URL that facilitates copying an encrypted snapshot. This
@@ -352,7 +361,7 @@ namespace Model
      * signed <code>PresignedUrl</code> will cause the copy operation to fail
      * asynchronously, and the snapshot will move to an <code>error</code> state.</p>
      */
-    inline CopySnapshotRequest& WithPresignedUrl(Aws::String&& value) { SetPresignedUrl(value); return *this;}
+    inline CopySnapshotRequest& WithPresignedUrl(Aws::String&& value) { SetPresignedUrl(std::move(value)); return *this;}
 
     /**
      * <p>The pre-signed URL that facilitates copying an encrypted snapshot. This
@@ -373,33 +382,33 @@ namespace Model
     inline CopySnapshotRequest& WithPresignedUrl(const char* value) { SetPresignedUrl(value); return *this;}
 
     /**
-     * <p>Specifies whether the destination snapshot should be encrypted. There is no
-     * way to create an unencrypted snapshot copy from an encrypted snapshot; however,
-     * you can encrypt a copy of an unencrypted snapshot with this flag. The default
-     * CMK for EBS is used unless a non-default AWS Key Management Service (AWS KMS)
-     * CMK is specified with <code>KmsKeyId</code>. For more information, see <a
+     * <p>Specifies whether the destination snapshot should be encrypted. You can
+     * encrypt a copy of an unencrypted snapshot using this flag, but you cannot use it
+     * to create an unencrypted copy from an encrypted snapshot. Your default CMK for
+     * EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is
+     * specified with <code>KmsKeyId</code>. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
      * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
     inline bool GetEncrypted() const{ return m_encrypted; }
 
     /**
-     * <p>Specifies whether the destination snapshot should be encrypted. There is no
-     * way to create an unencrypted snapshot copy from an encrypted snapshot; however,
-     * you can encrypt a copy of an unencrypted snapshot with this flag. The default
-     * CMK for EBS is used unless a non-default AWS Key Management Service (AWS KMS)
-     * CMK is specified with <code>KmsKeyId</code>. For more information, see <a
+     * <p>Specifies whether the destination snapshot should be encrypted. You can
+     * encrypt a copy of an unencrypted snapshot using this flag, but you cannot use it
+     * to create an unencrypted copy from an encrypted snapshot. Your default CMK for
+     * EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is
+     * specified with <code>KmsKeyId</code>. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
      * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
     inline void SetEncrypted(bool value) { m_encryptedHasBeenSet = true; m_encrypted = value; }
 
     /**
-     * <p>Specifies whether the destination snapshot should be encrypted. There is no
-     * way to create an unencrypted snapshot copy from an encrypted snapshot; however,
-     * you can encrypt a copy of an unencrypted snapshot with this flag. The default
-     * CMK for EBS is used unless a non-default AWS Key Management Service (AWS KMS)
-     * CMK is specified with <code>KmsKeyId</code>. For more information, see <a
+     * <p>Specifies whether the destination snapshot should be encrypted. You can
+     * encrypt a copy of an unencrypted snapshot using this flag, but you cannot use it
+     * to create an unencrypted copy from an encrypted snapshot. Your default CMK for
+     * EBS is used unless a non-default AWS Key Management Service (AWS KMS) CMK is
+     * specified with <code>KmsKeyId</code>. For more information, see <a
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon
      * EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
@@ -445,7 +454,7 @@ namespace Model
      * If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code> flag must
      * also be set.</p>
      */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
+    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
 
     /**
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when
@@ -487,7 +496,7 @@ namespace Model
      * If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code> flag must
      * also be set.</p>
      */
-    inline CopySnapshotRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(value); return *this;}
+    inline CopySnapshotRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when

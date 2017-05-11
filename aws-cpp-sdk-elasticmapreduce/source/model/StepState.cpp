@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticmapreduce/model/StepState.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -30,6 +31,7 @@ namespace Aws
       {
 
         static const int PENDING_HASH = HashingUtils::HashString("PENDING");
+        static const int CANCEL_PENDING_HASH = HashingUtils::HashString("CANCEL_PENDING");
         static const int RUNNING_HASH = HashingUtils::HashString("RUNNING");
         static const int COMPLETED_HASH = HashingUtils::HashString("COMPLETED");
         static const int CANCELLED_HASH = HashingUtils::HashString("CANCELLED");
@@ -43,6 +45,10 @@ namespace Aws
           if (hashCode == PENDING_HASH)
           {
             return StepState::PENDING;
+          }
+          else if (hashCode == CANCEL_PENDING_HASH)
+          {
+            return StepState::CANCEL_PENDING;
           }
           else if (hashCode == RUNNING_HASH)
           {
@@ -80,6 +86,8 @@ namespace Aws
           {
           case StepState::PENDING:
             return "PENDING";
+          case StepState::CANCEL_PENDING:
+            return "CANCEL_PENDING";
           case StepState::RUNNING:
             return "RUNNING";
           case StepState::COMPLETED:

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/InstanceState.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an instance state change.</p>
+   * <p>Describes an instance state change.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/InstanceStateChange">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API InstanceStateChange
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The ID of the instance.</p>
      */
-    inline InstanceStateChange& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline InstanceStateChange& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The current state of the instance.</p>
      */
-    inline void SetCurrentState(InstanceState&& value) { m_currentStateHasBeenSet = true; m_currentState = value; }
+    inline void SetCurrentState(InstanceState&& value) { m_currentStateHasBeenSet = true; m_currentState = std::move(value); }
 
     /**
      * <p>The current state of the instance.</p>
@@ -103,7 +107,7 @@ namespace Model
     /**
      * <p>The current state of the instance.</p>
      */
-    inline InstanceStateChange& WithCurrentState(InstanceState&& value) { SetCurrentState(value); return *this;}
+    inline InstanceStateChange& WithCurrentState(InstanceState&& value) { SetCurrentState(std::move(value)); return *this;}
 
     /**
      * <p>The previous state of the instance.</p>
@@ -118,7 +122,7 @@ namespace Model
     /**
      * <p>The previous state of the instance.</p>
      */
-    inline void SetPreviousState(InstanceState&& value) { m_previousStateHasBeenSet = true; m_previousState = value; }
+    inline void SetPreviousState(InstanceState&& value) { m_previousStateHasBeenSet = true; m_previousState = std::move(value); }
 
     /**
      * <p>The previous state of the instance.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The previous state of the instance.</p>
      */
-    inline InstanceStateChange& WithPreviousState(InstanceState&& value) { SetPreviousState(value); return *this;}
+    inline InstanceStateChange& WithPreviousState(InstanceState&& value) { SetPreviousState(std::move(value)); return *this;}
 
   private:
     Aws::String m_instanceId;

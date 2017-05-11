@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/SourceType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -33,6 +34,7 @@ namespace Aws
         static const int cache_parameter_group_HASH = HashingUtils::HashString("cache-parameter-group");
         static const int cache_security_group_HASH = HashingUtils::HashString("cache-security-group");
         static const int cache_subnet_group_HASH = HashingUtils::HashString("cache-subnet-group");
+        static const int replication_group_HASH = HashingUtils::HashString("replication-group");
 
 
         SourceType GetSourceTypeForName(const Aws::String& name)
@@ -53,6 +55,10 @@ namespace Aws
           else if (hashCode == cache_subnet_group_HASH)
           {
             return SourceType::cache_subnet_group;
+          }
+          else if (hashCode == replication_group_HASH)
+          {
+            return SourceType::replication_group;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -76,6 +82,8 @@ namespace Aws
             return "cache-security-group";
           case SourceType::cache_subnet_group:
             return "cache-subnet-group";
+          case SourceType::replication_group:
+            return "replication-group";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

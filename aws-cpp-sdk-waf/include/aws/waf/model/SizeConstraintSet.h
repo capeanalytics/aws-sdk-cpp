@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/waf/model/SizeConstraint.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * specify the parts of web requests that you want AWS WAF to inspect the size of.
    * If a <code>SizeConstraintSet</code> contains more than one
    * <code>SizeConstraint</code> object, a request only needs to match one constraint
-   * to be considered a match.</p>
+   * to be considered a match.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/SizeConstraintSet">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API SizeConstraintSet
   {
@@ -55,7 +59,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -69,7 +73,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -83,11 +87,11 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
-    inline void SetSizeConstraintSetId(Aws::String&& value) { m_sizeConstraintSetIdHasBeenSet = true; m_sizeConstraintSetId = value; }
+    inline void SetSizeConstraintSetId(Aws::String&& value) { m_sizeConstraintSetIdHasBeenSet = true; m_sizeConstraintSetId = std::move(value); }
 
     /**
      * <p>A unique identifier for a <code>SizeConstraintSet</code>. You use
@@ -97,7 +101,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -111,7 +115,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -125,11 +129,11 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
-    inline SizeConstraintSet& WithSizeConstraintSetId(Aws::String&& value) { SetSizeConstraintSetId(value); return *this;}
+    inline SizeConstraintSet& WithSizeConstraintSetId(Aws::String&& value) { SetSizeConstraintSetId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for a <code>SizeConstraintSet</code>. You use
@@ -139,7 +143,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -158,7 +162,7 @@ namespace Model
     /**
      * <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
@@ -173,7 +177,7 @@ namespace Model
     /**
      * <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
      */
-    inline SizeConstraintSet& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline SizeConstraintSet& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
@@ -193,7 +197,7 @@ namespace Model
     /**
      * <p>Specifies the parts of web requests that you want to inspect the size of.</p>
      */
-    inline void SetSizeConstraints(Aws::Vector<SizeConstraint>&& value) { m_sizeConstraintsHasBeenSet = true; m_sizeConstraints = value; }
+    inline void SetSizeConstraints(Aws::Vector<SizeConstraint>&& value) { m_sizeConstraintsHasBeenSet = true; m_sizeConstraints = std::move(value); }
 
     /**
      * <p>Specifies the parts of web requests that you want to inspect the size of.</p>
@@ -203,7 +207,7 @@ namespace Model
     /**
      * <p>Specifies the parts of web requests that you want to inspect the size of.</p>
      */
-    inline SizeConstraintSet& WithSizeConstraints(Aws::Vector<SizeConstraint>&& value) { SetSizeConstraints(value); return *this;}
+    inline SizeConstraintSet& WithSizeConstraints(Aws::Vector<SizeConstraint>&& value) { SetSizeConstraints(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the parts of web requests that you want to inspect the size of.</p>
@@ -213,7 +217,7 @@ namespace Model
     /**
      * <p>Specifies the parts of web requests that you want to inspect the size of.</p>
      */
-    inline SizeConstraintSet& AddSizeConstraints(SizeConstraint&& value) { m_sizeConstraintsHasBeenSet = true; m_sizeConstraints.push_back(value); return *this; }
+    inline SizeConstraintSet& AddSizeConstraints(SizeConstraint&& value) { m_sizeConstraintsHasBeenSet = true; m_sizeConstraints.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_sizeConstraintSetId;

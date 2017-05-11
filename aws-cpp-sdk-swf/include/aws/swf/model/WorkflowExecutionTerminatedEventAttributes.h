@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/ChildPolicy.h>
 #include <aws/swf/model/WorkflowExecutionTerminatedCause.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides details of the <code>WorkflowExecutionTerminated</code> event.</p>
+   * <p>Provides details of the <code>WorkflowExecutionTerminated</code>
+   * event.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionTerminatedEventAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API WorkflowExecutionTerminatedEventAttributes
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The reason provided for the termination (if any).</p>
      */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = value; }
+    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
 
     /**
      * <p>The reason provided for the termination (if any).</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The reason provided for the termination (if any).</p>
      */
-    inline WorkflowExecutionTerminatedEventAttributes& WithReason(Aws::String&& value) { SetReason(value); return *this;}
+    inline WorkflowExecutionTerminatedEventAttributes& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason provided for the termination (if any).</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The details provided for the termination (if any).</p>
      */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = value; }
+    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
 
     /**
      * <p>The details provided for the termination (if any).</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The details provided for the termination (if any).</p>
      */
-    inline WorkflowExecutionTerminatedEventAttributes& WithDetails(Aws::String&& value) { SetDetails(value); return *this;}
+    inline WorkflowExecutionTerminatedEventAttributes& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
 
     /**
      * <p>The details provided for the termination (if any).</p>
@@ -147,7 +152,7 @@ namespace Model
      * receives an execution history with this event.</li> <li><b>ABANDON:</b> no
      * action will be taken. The child executions will continue to run.</li> </ul>
      */
-    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = value; }
+    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = std::move(value); }
 
     /**
      * <p>The policy used for the child workflow executions of this workflow
@@ -171,7 +176,7 @@ namespace Model
      * receives an execution history with this event.</li> <li><b>ABANDON:</b> no
      * action will be taken. The child executions will continue to run.</li> </ul>
      */
-    inline WorkflowExecutionTerminatedEventAttributes& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(value); return *this;}
+    inline WorkflowExecutionTerminatedEventAttributes& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(std::move(value)); return *this;}
 
     /**
      * <p>If set, indicates that the workflow execution was automatically terminated,
@@ -192,7 +197,7 @@ namespace Model
      * and specifies the cause. This happens if the parent workflow execution times out
      * or is terminated and the child policy is set to terminate child executions.</p>
      */
-    inline void SetCause(WorkflowExecutionTerminatedCause&& value) { m_causeHasBeenSet = true; m_cause = value; }
+    inline void SetCause(WorkflowExecutionTerminatedCause&& value) { m_causeHasBeenSet = true; m_cause = std::move(value); }
 
     /**
      * <p>If set, indicates that the workflow execution was automatically terminated,
@@ -206,7 +211,7 @@ namespace Model
      * and specifies the cause. This happens if the parent workflow execution times out
      * or is terminated and the child policy is set to terminate child executions.</p>
      */
-    inline WorkflowExecutionTerminatedEventAttributes& WithCause(WorkflowExecutionTerminatedCause&& value) { SetCause(value); return *this;}
+    inline WorkflowExecutionTerminatedEventAttributes& WithCause(WorkflowExecutionTerminatedCause&& value) { SetCause(std::move(value)); return *this;}
 
   private:
     Aws::String m_reason;

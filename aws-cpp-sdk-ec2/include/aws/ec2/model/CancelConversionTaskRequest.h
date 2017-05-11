@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CancelConversionTask.</p>
+   * <p>Contains the parameters for CancelConversionTask.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CancelConversionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CancelConversionTaskRequest : public EC2Request
   {
@@ -33,6 +38,11 @@ namespace Model
     CancelConversionTaskRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the conversion task.</p>
      */
-    inline void SetConversionTaskId(Aws::String&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = value; }
+    inline void SetConversionTaskId(Aws::String&& value) { m_conversionTaskIdHasBeenSet = true; m_conversionTaskId = std::move(value); }
 
     /**
      * <p>The ID of the conversion task.</p>
@@ -85,7 +95,7 @@ namespace Model
     /**
      * <p>The ID of the conversion task.</p>
      */
-    inline CancelConversionTaskRequest& WithConversionTaskId(Aws::String&& value) { SetConversionTaskId(value); return *this;}
+    inline CancelConversionTaskRequest& WithConversionTaskId(Aws::String&& value) { SetConversionTaskId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the conversion task.</p>
@@ -105,7 +115,7 @@ namespace Model
     /**
      * <p>The reason for canceling the conversion task.</p>
      */
-    inline void SetReasonMessage(Aws::String&& value) { m_reasonMessageHasBeenSet = true; m_reasonMessage = value; }
+    inline void SetReasonMessage(Aws::String&& value) { m_reasonMessageHasBeenSet = true; m_reasonMessage = std::move(value); }
 
     /**
      * <p>The reason for canceling the conversion task.</p>
@@ -120,7 +130,7 @@ namespace Model
     /**
      * <p>The reason for canceling the conversion task.</p>
      */
-    inline CancelConversionTaskRequest& WithReasonMessage(Aws::String&& value) { SetReasonMessage(value); return *this;}
+    inline CancelConversionTaskRequest& WithReasonMessage(Aws::String&& value) { SetReasonMessage(std::move(value)); return *this;}
 
     /**
      * <p>The reason for canceling the conversion task.</p>

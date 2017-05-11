@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/sqs/model/Message.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -90,7 +91,7 @@ Message& Message::operator =(const XmlNode& xmlNode)
       {
         XmlNode keyNode = attributeEntry.FirstChild("Name");
         XmlNode valueNode = attributeEntry.FirstChild("Value");
-        m_attributes[QueueAttributeNameMapper::GetQueueAttributeNameForName(StringUtils::Trim(keyNode.GetText().c_str()))] =
+        m_attributes[MessageSystemAttributeNameMapper::GetMessageSystemAttributeNameForName(StringUtils::Trim(keyNode.GetText().c_str()))] =
             StringUtils::Trim(valueNode.GetText().c_str());
         attributeEntry = attributeEntry.NextNode("Attribute");
       }
@@ -151,7 +152,7 @@ void Message::OutputToStream(Aws::OStream& oStream, const char* location, unsign
       for(auto& item : m_attributes)
       {
         oStream << location << index << locationValue << ".Attribute." << attributesIdx << ".Name="
-            << StringUtils::URLEncode(QueueAttributeNameMapper::GetNameForQueueAttributeName(item.first).c_str()) << "&";
+            << StringUtils::URLEncode(MessageSystemAttributeNameMapper::GetNameForMessageSystemAttributeName(item.first).c_str()) << "&";
         oStream << location << index << locationValue << ".Attribute." << attributesIdx << ".Value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         attributesIdx++;
@@ -203,7 +204,7 @@ void Message::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_attributes)
       {
         oStream << location << ".Attribute."  << attributesIdx << ".Name="
-            << StringUtils::URLEncode(QueueAttributeNameMapper::GetNameForQueueAttributeName(item.first).c_str()) << "&";
+            << StringUtils::URLEncode(MessageSystemAttributeNameMapper::GetNameForMessageSystemAttributeName(item.first).c_str()) << "&";
         oStream << location <<  ".Attribute." << attributesIdx << ".Value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         attributesIdx++;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,59 +34,71 @@ namespace Model
     GetInstanceProfileRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
     inline const Aws::String& GetInstanceProfileName() const{ return m_instanceProfileName; }
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
     inline void SetInstanceProfileName(const Aws::String& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = value; }
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
-    inline void SetInstanceProfileName(Aws::String&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = value; }
+    inline void SetInstanceProfileName(Aws::String&& value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName = std::move(value); }
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
     inline void SetInstanceProfileName(const char* value) { m_instanceProfileNameHasBeenSet = true; m_instanceProfileName.assign(value); }
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
     inline GetInstanceProfileRequest& WithInstanceProfileName(const Aws::String& value) { SetInstanceProfileName(value); return *this;}
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
-    inline GetInstanceProfileRequest& WithInstanceProfileName(Aws::String&& value) { SetInstanceProfileName(value); return *this;}
+    inline GetInstanceProfileRequest& WithInstanceProfileName(Aws::String&& value) { SetInstanceProfileName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the instance profile to get information about.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the instance profile to get information about.</p> <p>This
+     * parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex
+     * pattern</a>) a string of characters consisting of upper and lowercase
+     * alphanumeric characters with no spaces. You can also include any of the
+     * following characters: =,.@-</p>
      */
     inline GetInstanceProfileRequest& WithInstanceProfileName(const char* value) { SetInstanceProfileName(value); return *this;}
 

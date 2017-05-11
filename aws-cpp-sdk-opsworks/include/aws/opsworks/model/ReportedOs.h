@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>A registered instance's reported operating system.</p>
+   * <p>A registered instance's reported operating system.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/ReportedOs">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API ReportedOs
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The operating system family.</p>
      */
-    inline void SetFamily(Aws::String&& value) { m_familyHasBeenSet = true; m_family = value; }
+    inline void SetFamily(Aws::String&& value) { m_familyHasBeenSet = true; m_family = std::move(value); }
 
     /**
      * <p>The operating system family.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The operating system family.</p>
      */
-    inline ReportedOs& WithFamily(Aws::String&& value) { SetFamily(value); return *this;}
+    inline ReportedOs& WithFamily(Aws::String&& value) { SetFamily(std::move(value)); return *this;}
 
     /**
      * <p>The operating system family.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The operating system name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The operating system name.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The operating system name.</p>
      */
-    inline ReportedOs& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ReportedOs& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The operating system name.</p>
@@ -124,7 +129,7 @@ namespace Model
     /**
      * <p>The operating system version.</p>
      */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
 
     /**
      * <p>The operating system version.</p>
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>The operating system version.</p>
      */
-    inline ReportedOs& WithVersion(Aws::String&& value) { SetVersion(value); return *this;}
+    inline ReportedOs& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
 
     /**
      * <p>The operating system version.</p>

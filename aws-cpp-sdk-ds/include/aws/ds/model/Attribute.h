@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents a named directory attribute.</p>
+   * <p>Represents a named directory attribute.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/Attribute">AWS API
+   * Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API Attribute
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the attribute.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline Attribute& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Attribute& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attribute.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The value of the attribute.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The value of the attribute.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The value of the attribute.</p>
      */
-    inline Attribute& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline Attribute& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The value of the attribute.</p>

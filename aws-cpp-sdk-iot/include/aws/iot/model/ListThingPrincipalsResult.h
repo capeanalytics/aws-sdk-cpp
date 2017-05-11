@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output from the ListThingPrincipals operation.</p>
+   * <p>The output from the ListThingPrincipals operation.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingPrincipalsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ListThingPrincipalsResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The principals associated with the thing.</p>
      */
-    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principals = value; }
+    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principals = std::move(value); }
 
     /**
      * <p>The principals associated with the thing.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The principals associated with the thing.</p>
      */
-    inline ListThingPrincipalsResult& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(value); return *this;}
+    inline ListThingPrincipalsResult& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(std::move(value)); return *this;}
 
     /**
      * <p>The principals associated with the thing.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>The principals associated with the thing.</p>
      */
-    inline ListThingPrincipalsResult& AddPrincipals(Aws::String&& value) { m_principals.push_back(value); return *this; }
+    inline ListThingPrincipalsResult& AddPrincipals(Aws::String&& value) { m_principals.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The principals associated with the thing.</p>

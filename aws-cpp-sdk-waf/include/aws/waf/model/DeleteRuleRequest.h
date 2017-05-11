@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/WAFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete.
@@ -53,7 +56,7 @@ namespace Model
      * <code>RuleId</code> is returned by <a>CreateRule</a> and by
      * <a>ListRules</a>.</p>
      */
-    inline void SetRuleId(Aws::String&& value) { m_ruleIdHasBeenSet = true; m_ruleId = value; }
+    inline void SetRuleId(Aws::String&& value) { m_ruleIdHasBeenSet = true; m_ruleId = std::move(value); }
 
     /**
      * <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete.
@@ -74,7 +77,7 @@ namespace Model
      * <code>RuleId</code> is returned by <a>CreateRule</a> and by
      * <a>ListRules</a>.</p>
      */
-    inline DeleteRuleRequest& WithRuleId(Aws::String&& value) { SetRuleId(value); return *this;}
+    inline DeleteRuleRequest& WithRuleId(Aws::String&& value) { SetRuleId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete.
@@ -96,7 +99,7 @@ namespace Model
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
      */
-    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = value; }
+    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::move(value); }
 
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
@@ -111,7 +114,7 @@ namespace Model
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
      */
-    inline DeleteRuleRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(value); return *this;}
+    inline DeleteRuleRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
 
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>

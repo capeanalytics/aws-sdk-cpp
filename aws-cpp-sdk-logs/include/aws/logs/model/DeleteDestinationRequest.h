@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/logs/CloudWatchLogs_EXPORTS.h>
 #include <aws/logs/CloudWatchLogsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,38 +36,39 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
     inline const Aws::String& GetDestinationName() const{ return m_destinationName; }
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
     inline void SetDestinationName(const Aws::String& value) { m_destinationNameHasBeenSet = true; m_destinationName = value; }
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
-    inline void SetDestinationName(Aws::String&& value) { m_destinationNameHasBeenSet = true; m_destinationName = value; }
+    inline void SetDestinationName(Aws::String&& value) { m_destinationNameHasBeenSet = true; m_destinationName = std::move(value); }
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
     inline void SetDestinationName(const char* value) { m_destinationNameHasBeenSet = true; m_destinationName.assign(value); }
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
     inline DeleteDestinationRequest& WithDestinationName(const Aws::String& value) { SetDestinationName(value); return *this;}
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
-    inline DeleteDestinationRequest& WithDestinationName(Aws::String&& value) { SetDestinationName(value); return *this;}
+    inline DeleteDestinationRequest& WithDestinationName(Aws::String&& value) { SetDestinationName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of destination to delete.</p>
+     * <p>The name of the destination.</p>
      */
     inline DeleteDestinationRequest& WithDestinationName(const char* value) { SetDestinationName(value); return *this;}
 

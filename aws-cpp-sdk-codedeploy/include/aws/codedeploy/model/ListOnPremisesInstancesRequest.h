@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codedeploy/model/TagFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a list on-premises instances operation.</p>.
+   * <p>Represents the input of a list on-premises instances operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ListOnPremisesInstancesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API ListOnPremisesInstancesRequest : public CodeDeployRequest
   {
@@ -38,45 +43,46 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
-     * <p>The registration status of the on-premises instances:</p> <ul>
-     * <li>Deregistered: Include deregistered on-premises instances in the resulting
-     * list.</li> <li>Registered: Include registered on-premises instances in the
-     * resulting list.</li> </ul>
+     * <p>The registration status of the on-premises instances:</p> <ul> <li>
+     * <p>Deregistered: Include deregistered on-premises instances in the resulting
+     * list.</p> </li> <li> <p>Registered: Include registered on-premises instances in
+     * the resulting list.</p> </li> </ul>
      */
     inline const RegistrationStatus& GetRegistrationStatus() const{ return m_registrationStatus; }
 
     /**
-     * <p>The registration status of the on-premises instances:</p> <ul>
-     * <li>Deregistered: Include deregistered on-premises instances in the resulting
-     * list.</li> <li>Registered: Include registered on-premises instances in the
-     * resulting list.</li> </ul>
+     * <p>The registration status of the on-premises instances:</p> <ul> <li>
+     * <p>Deregistered: Include deregistered on-premises instances in the resulting
+     * list.</p> </li> <li> <p>Registered: Include registered on-premises instances in
+     * the resulting list.</p> </li> </ul>
      */
     inline void SetRegistrationStatus(const RegistrationStatus& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = value; }
 
     /**
-     * <p>The registration status of the on-premises instances:</p> <ul>
-     * <li>Deregistered: Include deregistered on-premises instances in the resulting
-     * list.</li> <li>Registered: Include registered on-premises instances in the
-     * resulting list.</li> </ul>
+     * <p>The registration status of the on-premises instances:</p> <ul> <li>
+     * <p>Deregistered: Include deregistered on-premises instances in the resulting
+     * list.</p> </li> <li> <p>Registered: Include registered on-premises instances in
+     * the resulting list.</p> </li> </ul>
      */
-    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = value; }
+    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = std::move(value); }
 
     /**
-     * <p>The registration status of the on-premises instances:</p> <ul>
-     * <li>Deregistered: Include deregistered on-premises instances in the resulting
-     * list.</li> <li>Registered: Include registered on-premises instances in the
-     * resulting list.</li> </ul>
+     * <p>The registration status of the on-premises instances:</p> <ul> <li>
+     * <p>Deregistered: Include deregistered on-premises instances in the resulting
+     * list.</p> </li> <li> <p>Registered: Include registered on-premises instances in
+     * the resulting list.</p> </li> </ul>
      */
     inline ListOnPremisesInstancesRequest& WithRegistrationStatus(const RegistrationStatus& value) { SetRegistrationStatus(value); return *this;}
 
     /**
-     * <p>The registration status of the on-premises instances:</p> <ul>
-     * <li>Deregistered: Include deregistered on-premises instances in the resulting
-     * list.</li> <li>Registered: Include registered on-premises instances in the
-     * resulting list.</li> </ul>
+     * <p>The registration status of the on-premises instances:</p> <ul> <li>
+     * <p>Deregistered: Include deregistered on-premises instances in the resulting
+     * list.</p> </li> <li> <p>Registered: Include registered on-premises instances in
+     * the resulting list.</p> </li> </ul>
      */
-    inline ListOnPremisesInstancesRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(value); return *this;}
+    inline ListOnPremisesInstancesRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(std::move(value)); return *this;}
 
     /**
      * <p>The on-premises instance tags that will be used to restrict the corresponding
@@ -94,7 +100,7 @@ namespace Model
      * <p>The on-premises instance tags that will be used to restrict the corresponding
      * on-premises instance names returned.</p>
      */
-    inline void SetTagFilters(Aws::Vector<TagFilter>&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters = value; }
+    inline void SetTagFilters(Aws::Vector<TagFilter>&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters = std::move(value); }
 
     /**
      * <p>The on-premises instance tags that will be used to restrict the corresponding
@@ -106,7 +112,7 @@ namespace Model
      * <p>The on-premises instance tags that will be used to restrict the corresponding
      * on-premises instance names returned.</p>
      */
-    inline ListOnPremisesInstancesRequest& WithTagFilters(Aws::Vector<TagFilter>&& value) { SetTagFilters(value); return *this;}
+    inline ListOnPremisesInstancesRequest& WithTagFilters(Aws::Vector<TagFilter>&& value) { SetTagFilters(std::move(value)); return *this;}
 
     /**
      * <p>The on-premises instance tags that will be used to restrict the corresponding
@@ -118,7 +124,7 @@ namespace Model
      * <p>The on-premises instance tags that will be used to restrict the corresponding
      * on-premises instance names returned.</p>
      */
-    inline ListOnPremisesInstancesRequest& AddTagFilters(TagFilter&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters.push_back(value); return *this; }
+    inline ListOnPremisesInstancesRequest& AddTagFilters(TagFilter&& value) { m_tagFiltersHasBeenSet = true; m_tagFilters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An identifier returned from the previous list on-premises instances call. It
@@ -136,7 +142,7 @@ namespace Model
      * <p>An identifier returned from the previous list on-premises instances call. It
      * can be used to return the next set of on-premises instances in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier returned from the previous list on-premises instances call. It
@@ -154,7 +160,7 @@ namespace Model
      * <p>An identifier returned from the previous list on-premises instances call. It
      * can be used to return the next set of on-premises instances in the list.</p>
      */
-    inline ListOnPremisesInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListOnPremisesInstancesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier returned from the previous list on-premises instances call. It

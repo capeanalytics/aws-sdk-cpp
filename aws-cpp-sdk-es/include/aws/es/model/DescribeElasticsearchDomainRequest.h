@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/es/ElasticsearchServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,13 +28,17 @@ namespace Model
 
   /**
    * <p>Container for the parameters to the
-   * <code><a>DescribeElasticsearchDomain</a></code> operation.</p>
+   * <code><a>DescribeElasticsearchDomain</a></code> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/DescribeElasticsearchDomainRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API DescribeElasticsearchDomainRequest : public ElasticsearchServiceRequest
   {
   public:
     DescribeElasticsearchDomainRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The name of the Elasticsearch domain for which you want information.</p>
@@ -47,7 +53,7 @@ namespace Model
     /**
      * <p>The name of the Elasticsearch domain for which you want information.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * <p>The name of the Elasticsearch domain for which you want information.</p>
@@ -62,7 +68,7 @@ namespace Model
     /**
      * <p>The name of the Elasticsearch domain for which you want information.</p>
      */
-    inline DescribeElasticsearchDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline DescribeElasticsearchDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Elasticsearch domain for which you want information.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iot/model/UpdateCACertificateRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/http/URI.h>
@@ -26,7 +27,9 @@ using namespace Aws::Http;
 
 UpdateCACertificateRequest::UpdateCACertificateRequest() : 
     m_certificateIdHasBeenSet(false),
+    m_newStatus(CACertificateStatus::NOT_SET),
     m_newStatusHasBeenSet(false),
+    m_newAutoRegistrationStatus(AutoRegistrationStatus::NOT_SET),
     m_newAutoRegistrationStatusHasBeenSet(false)
 {
 }
@@ -54,5 +57,6 @@ void UpdateCACertificateRequest::AddQueryStringParameters(URI& uri) const
     }
 
 }
+
 
 

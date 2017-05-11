@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Request to delete a draft environment configuration.</p>
+   * <p>Request to delete a draft environment configuration.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DeleteEnvironmentConfigurationMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DeleteEnvironmentConfigurationRequest : public ElasticBeanstalkRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DeleteEnvironmentConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the application the environment is associated with.</p>
      */
@@ -46,7 +56,7 @@ namespace Model
     /**
      * <p>The name of the application the environment is associated with.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The name of the application the environment is associated with.</p>
@@ -61,7 +71,7 @@ namespace Model
     /**
      * <p>The name of the application the environment is associated with.</p>
      */
-    inline DeleteEnvironmentConfigurationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline DeleteEnvironmentConfigurationRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the application the environment is associated with.</p>
@@ -81,7 +91,7 @@ namespace Model
     /**
      * <p>The name of the environment to delete the draft configuration from.</p>
      */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
 
     /**
      * <p>The name of the environment to delete the draft configuration from.</p>
@@ -96,7 +106,7 @@ namespace Model
     /**
      * <p>The name of the environment to delete the draft configuration from.</p>
      */
-    inline DeleteEnvironmentConfigurationRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(value); return *this;}
+    inline DeleteEnvironmentConfigurationRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the environment to delete the draft configuration from.</p>

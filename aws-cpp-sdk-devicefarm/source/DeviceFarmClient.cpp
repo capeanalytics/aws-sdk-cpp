@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -27,10 +28,12 @@
 #include <aws/devicefarm/DeviceFarmEndpoint.h>
 #include <aws/devicefarm/DeviceFarmErrorMarshaller.h>
 #include <aws/devicefarm/model/CreateDevicePoolRequest.h>
+#include <aws/devicefarm/model/CreateNetworkProfileRequest.h>
 #include <aws/devicefarm/model/CreateProjectRequest.h>
 #include <aws/devicefarm/model/CreateRemoteAccessSessionRequest.h>
 #include <aws/devicefarm/model/CreateUploadRequest.h>
 #include <aws/devicefarm/model/DeleteDevicePoolRequest.h>
+#include <aws/devicefarm/model/DeleteNetworkProfileRequest.h>
 #include <aws/devicefarm/model/DeleteProjectRequest.h>
 #include <aws/devicefarm/model/DeleteRemoteAccessSessionRequest.h>
 #include <aws/devicefarm/model/DeleteRunRequest.h>
@@ -40,6 +43,7 @@
 #include <aws/devicefarm/model/GetDevicePoolRequest.h>
 #include <aws/devicefarm/model/GetDevicePoolCompatibilityRequest.h>
 #include <aws/devicefarm/model/GetJobRequest.h>
+#include <aws/devicefarm/model/GetNetworkProfileRequest.h>
 #include <aws/devicefarm/model/GetOfferingStatusRequest.h>
 #include <aws/devicefarm/model/GetProjectRequest.h>
 #include <aws/devicefarm/model/GetRemoteAccessSessionRequest.h>
@@ -52,6 +56,8 @@
 #include <aws/devicefarm/model/ListDevicePoolsRequest.h>
 #include <aws/devicefarm/model/ListDevicesRequest.h>
 #include <aws/devicefarm/model/ListJobsRequest.h>
+#include <aws/devicefarm/model/ListNetworkProfilesRequest.h>
+#include <aws/devicefarm/model/ListOfferingPromotionsRequest.h>
 #include <aws/devicefarm/model/ListOfferingTransactionsRequest.h>
 #include <aws/devicefarm/model/ListOfferingsRequest.h>
 #include <aws/devicefarm/model/ListProjectsRequest.h>
@@ -68,6 +74,7 @@
 #include <aws/devicefarm/model/StopRemoteAccessSessionRequest.h>
 #include <aws/devicefarm/model/StopRunRequest.h>
 #include <aws/devicefarm/model/UpdateDevicePoolRequest.h>
+#include <aws/devicefarm/model/UpdateNetworkProfileRequest.h>
 #include <aws/devicefarm/model/UpdateProjectRequest.h>
 
 using namespace Aws;
@@ -152,7 +159,10 @@ CreateDevicePoolOutcome DeviceFarmClient::CreateDevicePool(const CreateDevicePoo
 
 CreateDevicePoolOutcomeCallable DeviceFarmClient::CreateDevicePoolCallable(const CreateDevicePoolRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateDevicePool(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateDevicePoolOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateDevicePool(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::CreateDevicePoolAsync(const CreateDevicePoolRequest& request, const CreateDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -163,6 +173,40 @@ void DeviceFarmClient::CreateDevicePoolAsync(const CreateDevicePoolRequest& requ
 void DeviceFarmClient::CreateDevicePoolAsyncHelper(const CreateDevicePoolRequest& request, const CreateDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, CreateDevicePool(request), context);
+}
+
+CreateNetworkProfileOutcome DeviceFarmClient::CreateNetworkProfile(const CreateNetworkProfileRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CreateNetworkProfileOutcome(CreateNetworkProfileResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CreateNetworkProfileOutcome(outcome.GetError());
+  }
+}
+
+CreateNetworkProfileOutcomeCallable DeviceFarmClient::CreateNetworkProfileCallable(const CreateNetworkProfileRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< CreateNetworkProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateNetworkProfile(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::CreateNetworkProfileAsync(const CreateNetworkProfileRequest& request, const CreateNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->CreateNetworkProfileAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::CreateNetworkProfileAsyncHelper(const CreateNetworkProfileRequest& request, const CreateNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CreateNetworkProfile(request), context);
 }
 
 CreateProjectOutcome DeviceFarmClient::CreateProject(const CreateProjectRequest& request) const
@@ -183,7 +227,10 @@ CreateProjectOutcome DeviceFarmClient::CreateProject(const CreateProjectRequest&
 
 CreateProjectOutcomeCallable DeviceFarmClient::CreateProjectCallable(const CreateProjectRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateProject(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateProjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateProject(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::CreateProjectAsync(const CreateProjectRequest& request, const CreateProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -214,7 +261,10 @@ CreateRemoteAccessSessionOutcome DeviceFarmClient::CreateRemoteAccessSession(con
 
 CreateRemoteAccessSessionOutcomeCallable DeviceFarmClient::CreateRemoteAccessSessionCallable(const CreateRemoteAccessSessionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateRemoteAccessSession(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateRemoteAccessSessionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateRemoteAccessSession(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::CreateRemoteAccessSessionAsync(const CreateRemoteAccessSessionRequest& request, const CreateRemoteAccessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -245,7 +295,10 @@ CreateUploadOutcome DeviceFarmClient::CreateUpload(const CreateUploadRequest& re
 
 CreateUploadOutcomeCallable DeviceFarmClient::CreateUploadCallable(const CreateUploadRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateUpload(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateUpload(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::CreateUploadAsync(const CreateUploadRequest& request, const CreateUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -276,7 +329,10 @@ DeleteDevicePoolOutcome DeviceFarmClient::DeleteDevicePool(const DeleteDevicePoo
 
 DeleteDevicePoolOutcomeCallable DeviceFarmClient::DeleteDevicePoolCallable(const DeleteDevicePoolRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteDevicePool(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteDevicePoolOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteDevicePool(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::DeleteDevicePoolAsync(const DeleteDevicePoolRequest& request, const DeleteDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -287,6 +343,40 @@ void DeviceFarmClient::DeleteDevicePoolAsync(const DeleteDevicePoolRequest& requ
 void DeviceFarmClient::DeleteDevicePoolAsyncHelper(const DeleteDevicePoolRequest& request, const DeleteDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DeleteDevicePool(request), context);
+}
+
+DeleteNetworkProfileOutcome DeviceFarmClient::DeleteNetworkProfile(const DeleteNetworkProfileRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DeleteNetworkProfileOutcome(DeleteNetworkProfileResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DeleteNetworkProfileOutcome(outcome.GetError());
+  }
+}
+
+DeleteNetworkProfileOutcomeCallable DeviceFarmClient::DeleteNetworkProfileCallable(const DeleteNetworkProfileRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< DeleteNetworkProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteNetworkProfile(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::DeleteNetworkProfileAsync(const DeleteNetworkProfileRequest& request, const DeleteNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->DeleteNetworkProfileAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::DeleteNetworkProfileAsyncHelper(const DeleteNetworkProfileRequest& request, const DeleteNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DeleteNetworkProfile(request), context);
 }
 
 DeleteProjectOutcome DeviceFarmClient::DeleteProject(const DeleteProjectRequest& request) const
@@ -307,7 +397,10 @@ DeleteProjectOutcome DeviceFarmClient::DeleteProject(const DeleteProjectRequest&
 
 DeleteProjectOutcomeCallable DeviceFarmClient::DeleteProjectCallable(const DeleteProjectRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteProject(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteProjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteProject(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::DeleteProjectAsync(const DeleteProjectRequest& request, const DeleteProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -338,7 +431,10 @@ DeleteRemoteAccessSessionOutcome DeviceFarmClient::DeleteRemoteAccessSession(con
 
 DeleteRemoteAccessSessionOutcomeCallable DeviceFarmClient::DeleteRemoteAccessSessionCallable(const DeleteRemoteAccessSessionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteRemoteAccessSession(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteRemoteAccessSessionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteRemoteAccessSession(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::DeleteRemoteAccessSessionAsync(const DeleteRemoteAccessSessionRequest& request, const DeleteRemoteAccessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -369,7 +465,10 @@ DeleteRunOutcome DeviceFarmClient::DeleteRun(const DeleteRunRequest& request) co
 
 DeleteRunOutcomeCallable DeviceFarmClient::DeleteRunCallable(const DeleteRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::DeleteRunAsync(const DeleteRunRequest& request, const DeleteRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -400,7 +499,10 @@ DeleteUploadOutcome DeviceFarmClient::DeleteUpload(const DeleteUploadRequest& re
 
 DeleteUploadOutcomeCallable DeviceFarmClient::DeleteUploadCallable(const DeleteUploadRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteUpload(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteUpload(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::DeleteUploadAsync(const DeleteUploadRequest& request, const DeleteUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -431,7 +533,10 @@ GetAccountSettingsOutcome DeviceFarmClient::GetAccountSettings(const GetAccountS
 
 GetAccountSettingsOutcomeCallable DeviceFarmClient::GetAccountSettingsCallable(const GetAccountSettingsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetAccountSettings(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetAccountSettingsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetAccountSettings(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetAccountSettingsAsync(const GetAccountSettingsRequest& request, const GetAccountSettingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -462,7 +567,10 @@ GetDeviceOutcome DeviceFarmClient::GetDevice(const GetDeviceRequest& request) co
 
 GetDeviceOutcomeCallable DeviceFarmClient::GetDeviceCallable(const GetDeviceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetDevice(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetDeviceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetDevice(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetDeviceAsync(const GetDeviceRequest& request, const GetDeviceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -493,7 +601,10 @@ GetDevicePoolOutcome DeviceFarmClient::GetDevicePool(const GetDevicePoolRequest&
 
 GetDevicePoolOutcomeCallable DeviceFarmClient::GetDevicePoolCallable(const GetDevicePoolRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetDevicePool(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetDevicePoolOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetDevicePool(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetDevicePoolAsync(const GetDevicePoolRequest& request, const GetDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -524,7 +635,10 @@ GetDevicePoolCompatibilityOutcome DeviceFarmClient::GetDevicePoolCompatibility(c
 
 GetDevicePoolCompatibilityOutcomeCallable DeviceFarmClient::GetDevicePoolCompatibilityCallable(const GetDevicePoolCompatibilityRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetDevicePoolCompatibility(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetDevicePoolCompatibilityOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetDevicePoolCompatibility(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetDevicePoolCompatibilityAsync(const GetDevicePoolCompatibilityRequest& request, const GetDevicePoolCompatibilityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -555,7 +669,10 @@ GetJobOutcome DeviceFarmClient::GetJob(const GetJobRequest& request) const
 
 GetJobOutcomeCallable DeviceFarmClient::GetJobCallable(const GetJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetJob(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetJobAsync(const GetJobRequest& request, const GetJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -566,6 +683,40 @@ void DeviceFarmClient::GetJobAsync(const GetJobRequest& request, const GetJobRes
 void DeviceFarmClient::GetJobAsyncHelper(const GetJobRequest& request, const GetJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, GetJob(request), context);
+}
+
+GetNetworkProfileOutcome DeviceFarmClient::GetNetworkProfile(const GetNetworkProfileRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return GetNetworkProfileOutcome(GetNetworkProfileResult(outcome.GetResult()));
+  }
+  else
+  {
+    return GetNetworkProfileOutcome(outcome.GetError());
+  }
+}
+
+GetNetworkProfileOutcomeCallable DeviceFarmClient::GetNetworkProfileCallable(const GetNetworkProfileRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< GetNetworkProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetNetworkProfile(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::GetNetworkProfileAsync(const GetNetworkProfileRequest& request, const GetNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->GetNetworkProfileAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::GetNetworkProfileAsyncHelper(const GetNetworkProfileRequest& request, const GetNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, GetNetworkProfile(request), context);
 }
 
 GetOfferingStatusOutcome DeviceFarmClient::GetOfferingStatus(const GetOfferingStatusRequest& request) const
@@ -586,7 +737,10 @@ GetOfferingStatusOutcome DeviceFarmClient::GetOfferingStatus(const GetOfferingSt
 
 GetOfferingStatusOutcomeCallable DeviceFarmClient::GetOfferingStatusCallable(const GetOfferingStatusRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetOfferingStatus(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetOfferingStatusOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetOfferingStatus(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetOfferingStatusAsync(const GetOfferingStatusRequest& request, const GetOfferingStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -617,7 +771,10 @@ GetProjectOutcome DeviceFarmClient::GetProject(const GetProjectRequest& request)
 
 GetProjectOutcomeCallable DeviceFarmClient::GetProjectCallable(const GetProjectRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetProject(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetProjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetProject(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetProjectAsync(const GetProjectRequest& request, const GetProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -648,7 +805,10 @@ GetRemoteAccessSessionOutcome DeviceFarmClient::GetRemoteAccessSession(const Get
 
 GetRemoteAccessSessionOutcomeCallable DeviceFarmClient::GetRemoteAccessSessionCallable(const GetRemoteAccessSessionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetRemoteAccessSession(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetRemoteAccessSessionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetRemoteAccessSession(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetRemoteAccessSessionAsync(const GetRemoteAccessSessionRequest& request, const GetRemoteAccessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -679,7 +839,10 @@ GetRunOutcome DeviceFarmClient::GetRun(const GetRunRequest& request) const
 
 GetRunOutcomeCallable DeviceFarmClient::GetRunCallable(const GetRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetRunAsync(const GetRunRequest& request, const GetRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -710,7 +873,10 @@ GetSuiteOutcome DeviceFarmClient::GetSuite(const GetSuiteRequest& request) const
 
 GetSuiteOutcomeCallable DeviceFarmClient::GetSuiteCallable(const GetSuiteRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetSuite(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetSuiteOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetSuite(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetSuiteAsync(const GetSuiteRequest& request, const GetSuiteResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -741,7 +907,10 @@ GetTestOutcome DeviceFarmClient::GetTest(const GetTestRequest& request) const
 
 GetTestOutcomeCallable DeviceFarmClient::GetTestCallable(const GetTestRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetTest(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetTestOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetTest(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetTestAsync(const GetTestRequest& request, const GetTestResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -772,7 +941,10 @@ GetUploadOutcome DeviceFarmClient::GetUpload(const GetUploadRequest& request) co
 
 GetUploadOutcomeCallable DeviceFarmClient::GetUploadCallable(const GetUploadRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetUpload(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetUploadOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetUpload(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::GetUploadAsync(const GetUploadRequest& request, const GetUploadResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -803,7 +975,10 @@ InstallToRemoteAccessSessionOutcome DeviceFarmClient::InstallToRemoteAccessSessi
 
 InstallToRemoteAccessSessionOutcomeCallable DeviceFarmClient::InstallToRemoteAccessSessionCallable(const InstallToRemoteAccessSessionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->InstallToRemoteAccessSession(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< InstallToRemoteAccessSessionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->InstallToRemoteAccessSession(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::InstallToRemoteAccessSessionAsync(const InstallToRemoteAccessSessionRequest& request, const InstallToRemoteAccessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -834,7 +1009,10 @@ ListArtifactsOutcome DeviceFarmClient::ListArtifacts(const ListArtifactsRequest&
 
 ListArtifactsOutcomeCallable DeviceFarmClient::ListArtifactsCallable(const ListArtifactsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListArtifacts(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListArtifactsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListArtifacts(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListArtifactsAsync(const ListArtifactsRequest& request, const ListArtifactsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -865,7 +1043,10 @@ ListDevicePoolsOutcome DeviceFarmClient::ListDevicePools(const ListDevicePoolsRe
 
 ListDevicePoolsOutcomeCallable DeviceFarmClient::ListDevicePoolsCallable(const ListDevicePoolsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListDevicePools(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDevicePoolsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListDevicePools(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListDevicePoolsAsync(const ListDevicePoolsRequest& request, const ListDevicePoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -896,7 +1077,10 @@ ListDevicesOutcome DeviceFarmClient::ListDevices(const ListDevicesRequest& reque
 
 ListDevicesOutcomeCallable DeviceFarmClient::ListDevicesCallable(const ListDevicesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListDevices(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListDevicesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListDevices(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListDevicesAsync(const ListDevicesRequest& request, const ListDevicesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -927,7 +1111,10 @@ ListJobsOutcome DeviceFarmClient::ListJobs(const ListJobsRequest& request) const
 
 ListJobsOutcomeCallable DeviceFarmClient::ListJobsCallable(const ListJobsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListJobs(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListJobsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListJobs(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListJobsAsync(const ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -938,6 +1125,74 @@ void DeviceFarmClient::ListJobsAsync(const ListJobsRequest& request, const ListJ
 void DeviceFarmClient::ListJobsAsyncHelper(const ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, ListJobs(request), context);
+}
+
+ListNetworkProfilesOutcome DeviceFarmClient::ListNetworkProfiles(const ListNetworkProfilesRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListNetworkProfilesOutcome(ListNetworkProfilesResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListNetworkProfilesOutcome(outcome.GetError());
+  }
+}
+
+ListNetworkProfilesOutcomeCallable DeviceFarmClient::ListNetworkProfilesCallable(const ListNetworkProfilesRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListNetworkProfilesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListNetworkProfiles(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::ListNetworkProfilesAsync(const ListNetworkProfilesRequest& request, const ListNetworkProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListNetworkProfilesAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::ListNetworkProfilesAsyncHelper(const ListNetworkProfilesRequest& request, const ListNetworkProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListNetworkProfiles(request), context);
+}
+
+ListOfferingPromotionsOutcome DeviceFarmClient::ListOfferingPromotions(const ListOfferingPromotionsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListOfferingPromotionsOutcome(ListOfferingPromotionsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListOfferingPromotionsOutcome(outcome.GetError());
+  }
+}
+
+ListOfferingPromotionsOutcomeCallable DeviceFarmClient::ListOfferingPromotionsCallable(const ListOfferingPromotionsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListOfferingPromotionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListOfferingPromotions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::ListOfferingPromotionsAsync(const ListOfferingPromotionsRequest& request, const ListOfferingPromotionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListOfferingPromotionsAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::ListOfferingPromotionsAsyncHelper(const ListOfferingPromotionsRequest& request, const ListOfferingPromotionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListOfferingPromotions(request), context);
 }
 
 ListOfferingTransactionsOutcome DeviceFarmClient::ListOfferingTransactions(const ListOfferingTransactionsRequest& request) const
@@ -958,7 +1213,10 @@ ListOfferingTransactionsOutcome DeviceFarmClient::ListOfferingTransactions(const
 
 ListOfferingTransactionsOutcomeCallable DeviceFarmClient::ListOfferingTransactionsCallable(const ListOfferingTransactionsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListOfferingTransactions(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListOfferingTransactionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListOfferingTransactions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListOfferingTransactionsAsync(const ListOfferingTransactionsRequest& request, const ListOfferingTransactionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -989,7 +1247,10 @@ ListOfferingsOutcome DeviceFarmClient::ListOfferings(const ListOfferingsRequest&
 
 ListOfferingsOutcomeCallable DeviceFarmClient::ListOfferingsCallable(const ListOfferingsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListOfferings(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListOfferingsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListOfferings(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListOfferingsAsync(const ListOfferingsRequest& request, const ListOfferingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1020,7 +1281,10 @@ ListProjectsOutcome DeviceFarmClient::ListProjects(const ListProjectsRequest& re
 
 ListProjectsOutcomeCallable DeviceFarmClient::ListProjectsCallable(const ListProjectsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListProjects(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListProjectsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListProjects(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListProjectsAsync(const ListProjectsRequest& request, const ListProjectsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1051,7 +1315,10 @@ ListRemoteAccessSessionsOutcome DeviceFarmClient::ListRemoteAccessSessions(const
 
 ListRemoteAccessSessionsOutcomeCallable DeviceFarmClient::ListRemoteAccessSessionsCallable(const ListRemoteAccessSessionsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListRemoteAccessSessions(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListRemoteAccessSessionsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListRemoteAccessSessions(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListRemoteAccessSessionsAsync(const ListRemoteAccessSessionsRequest& request, const ListRemoteAccessSessionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1082,7 +1349,10 @@ ListRunsOutcome DeviceFarmClient::ListRuns(const ListRunsRequest& request) const
 
 ListRunsOutcomeCallable DeviceFarmClient::ListRunsCallable(const ListRunsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListRuns(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListRunsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListRuns(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListRunsAsync(const ListRunsRequest& request, const ListRunsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1113,7 +1383,10 @@ ListSamplesOutcome DeviceFarmClient::ListSamples(const ListSamplesRequest& reque
 
 ListSamplesOutcomeCallable DeviceFarmClient::ListSamplesCallable(const ListSamplesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListSamples(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListSamplesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListSamples(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListSamplesAsync(const ListSamplesRequest& request, const ListSamplesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1144,7 +1417,10 @@ ListSuitesOutcome DeviceFarmClient::ListSuites(const ListSuitesRequest& request)
 
 ListSuitesOutcomeCallable DeviceFarmClient::ListSuitesCallable(const ListSuitesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListSuites(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListSuitesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListSuites(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListSuitesAsync(const ListSuitesRequest& request, const ListSuitesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1175,7 +1451,10 @@ ListTestsOutcome DeviceFarmClient::ListTests(const ListTestsRequest& request) co
 
 ListTestsOutcomeCallable DeviceFarmClient::ListTestsCallable(const ListTestsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTests(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTestsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTests(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListTestsAsync(const ListTestsRequest& request, const ListTestsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1206,7 +1485,10 @@ ListUniqueProblemsOutcome DeviceFarmClient::ListUniqueProblems(const ListUniqueP
 
 ListUniqueProblemsOutcomeCallable DeviceFarmClient::ListUniqueProblemsCallable(const ListUniqueProblemsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListUniqueProblems(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListUniqueProblemsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListUniqueProblems(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListUniqueProblemsAsync(const ListUniqueProblemsRequest& request, const ListUniqueProblemsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1237,7 +1519,10 @@ ListUploadsOutcome DeviceFarmClient::ListUploads(const ListUploadsRequest& reque
 
 ListUploadsOutcomeCallable DeviceFarmClient::ListUploadsCallable(const ListUploadsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListUploads(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListUploadsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListUploads(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ListUploadsAsync(const ListUploadsRequest& request, const ListUploadsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1268,7 +1553,10 @@ PurchaseOfferingOutcome DeviceFarmClient::PurchaseOffering(const PurchaseOfferin
 
 PurchaseOfferingOutcomeCallable DeviceFarmClient::PurchaseOfferingCallable(const PurchaseOfferingRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->PurchaseOffering(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< PurchaseOfferingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->PurchaseOffering(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::PurchaseOfferingAsync(const PurchaseOfferingRequest& request, const PurchaseOfferingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1299,7 +1587,10 @@ RenewOfferingOutcome DeviceFarmClient::RenewOffering(const RenewOfferingRequest&
 
 RenewOfferingOutcomeCallable DeviceFarmClient::RenewOfferingCallable(const RenewOfferingRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RenewOffering(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RenewOfferingOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RenewOffering(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::RenewOfferingAsync(const RenewOfferingRequest& request, const RenewOfferingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1330,7 +1621,10 @@ ScheduleRunOutcome DeviceFarmClient::ScheduleRun(const ScheduleRunRequest& reque
 
 ScheduleRunOutcomeCallable DeviceFarmClient::ScheduleRunCallable(const ScheduleRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ScheduleRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ScheduleRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ScheduleRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::ScheduleRunAsync(const ScheduleRunRequest& request, const ScheduleRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1361,7 +1655,10 @@ StopRemoteAccessSessionOutcome DeviceFarmClient::StopRemoteAccessSession(const S
 
 StopRemoteAccessSessionOutcomeCallable DeviceFarmClient::StopRemoteAccessSessionCallable(const StopRemoteAccessSessionRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->StopRemoteAccessSession(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< StopRemoteAccessSessionOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->StopRemoteAccessSession(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::StopRemoteAccessSessionAsync(const StopRemoteAccessSessionRequest& request, const StopRemoteAccessSessionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1392,7 +1689,10 @@ StopRunOutcome DeviceFarmClient::StopRun(const StopRunRequest& request) const
 
 StopRunOutcomeCallable DeviceFarmClient::StopRunCallable(const StopRunRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->StopRun(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< StopRunOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->StopRun(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::StopRunAsync(const StopRunRequest& request, const StopRunResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1423,7 +1723,10 @@ UpdateDevicePoolOutcome DeviceFarmClient::UpdateDevicePool(const UpdateDevicePoo
 
 UpdateDevicePoolOutcomeCallable DeviceFarmClient::UpdateDevicePoolCallable(const UpdateDevicePoolRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateDevicePool(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateDevicePoolOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateDevicePool(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::UpdateDevicePoolAsync(const UpdateDevicePoolRequest& request, const UpdateDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -1434,6 +1737,40 @@ void DeviceFarmClient::UpdateDevicePoolAsync(const UpdateDevicePoolRequest& requ
 void DeviceFarmClient::UpdateDevicePoolAsyncHelper(const UpdateDevicePoolRequest& request, const UpdateDevicePoolResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, UpdateDevicePool(request), context);
+}
+
+UpdateNetworkProfileOutcome DeviceFarmClient::UpdateNetworkProfile(const UpdateNetworkProfileRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return UpdateNetworkProfileOutcome(UpdateNetworkProfileResult(outcome.GetResult()));
+  }
+  else
+  {
+    return UpdateNetworkProfileOutcome(outcome.GetError());
+  }
+}
+
+UpdateNetworkProfileOutcomeCallable DeviceFarmClient::UpdateNetworkProfileCallable(const UpdateNetworkProfileRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateNetworkProfileOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateNetworkProfile(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void DeviceFarmClient::UpdateNetworkProfileAsync(const UpdateNetworkProfileRequest& request, const UpdateNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateNetworkProfileAsyncHelper( request, handler, context ); } );
+}
+
+void DeviceFarmClient::UpdateNetworkProfileAsyncHelper(const UpdateNetworkProfileRequest& request, const UpdateNetworkProfileResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateNetworkProfile(request), context);
 }
 
 UpdateProjectOutcome DeviceFarmClient::UpdateProject(const UpdateProjectRequest& request) const
@@ -1454,7 +1791,10 @@ UpdateProjectOutcome DeviceFarmClient::UpdateProject(const UpdateProjectRequest&
 
 UpdateProjectOutcomeCallable DeviceFarmClient::UpdateProjectCallable(const UpdateProjectRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateProject(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateProjectOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateProject(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void DeviceFarmClient::UpdateProjectAsync(const UpdateProjectRequest& request, const UpdateProjectResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

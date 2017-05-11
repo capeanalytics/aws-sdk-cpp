@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -56,7 +58,7 @@ namespace Model
      * <p>The unique identifier of the customer master key (CMK) for which deletion is
      * scheduled.</p>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyId = std::move(value); }
 
     /**
      * <p>The unique identifier of the customer master key (CMK) for which deletion is
@@ -74,7 +76,7 @@ namespace Model
      * <p>The unique identifier of the customer master key (CMK) for which deletion is
      * scheduled.</p>
      */
-    inline ScheduleKeyDeletionResult& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline ScheduleKeyDeletionResult& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier of the customer master key (CMK) for which deletion is
@@ -98,7 +100,7 @@ namespace Model
      * <p>The date and time after which AWS KMS deletes the customer master key
      * (CMK).</p>
      */
-    inline void SetDeletionDate(Aws::Utils::DateTime&& value) { m_deletionDate = value; }
+    inline void SetDeletionDate(Aws::Utils::DateTime&& value) { m_deletionDate = std::move(value); }
 
     /**
      * <p>The date and time after which AWS KMS deletes the customer master key
@@ -110,7 +112,7 @@ namespace Model
      * <p>The date and time after which AWS KMS deletes the customer master key
      * (CMK).</p>
      */
-    inline ScheduleKeyDeletionResult& WithDeletionDate(Aws::Utils::DateTime&& value) { SetDeletionDate(value); return *this;}
+    inline ScheduleKeyDeletionResult& WithDeletionDate(Aws::Utils::DateTime&& value) { SetDeletionDate(std::move(value)); return *this;}
 
   private:
     Aws::String m_keyId;

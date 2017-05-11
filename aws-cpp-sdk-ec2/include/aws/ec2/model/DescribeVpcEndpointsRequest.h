@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeVpcEndpoints.</p>
+   * <p>Contains the parameters for DescribeVpcEndpoints.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcEndpointsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeVpcEndpointsRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     DescribeVpcEndpointsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +82,7 @@ namespace Model
     /**
      * <p>One or more endpoint IDs.</p>
      */
-    inline void SetVpcEndpointIds(Aws::Vector<Aws::String>&& value) { m_vpcEndpointIdsHasBeenSet = true; m_vpcEndpointIds = value; }
+    inline void SetVpcEndpointIds(Aws::Vector<Aws::String>&& value) { m_vpcEndpointIdsHasBeenSet = true; m_vpcEndpointIds = std::move(value); }
 
     /**
      * <p>One or more endpoint IDs.</p>
@@ -82,7 +92,7 @@ namespace Model
     /**
      * <p>One or more endpoint IDs.</p>
      */
-    inline DescribeVpcEndpointsRequest& WithVpcEndpointIds(Aws::Vector<Aws::String>&& value) { SetVpcEndpointIds(value); return *this;}
+    inline DescribeVpcEndpointsRequest& WithVpcEndpointIds(Aws::Vector<Aws::String>&& value) { SetVpcEndpointIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more endpoint IDs.</p>
@@ -92,7 +102,7 @@ namespace Model
     /**
      * <p>One or more endpoint IDs.</p>
      */
-    inline DescribeVpcEndpointsRequest& AddVpcEndpointIds(Aws::String&& value) { m_vpcEndpointIdsHasBeenSet = true; m_vpcEndpointIds.push_back(value); return *this; }
+    inline DescribeVpcEndpointsRequest& AddVpcEndpointIds(Aws::String&& value) { m_vpcEndpointIdsHasBeenSet = true; m_vpcEndpointIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more endpoint IDs.</p>
@@ -100,74 +110,74 @@ namespace Model
     inline DescribeVpcEndpointsRequest& AddVpcEndpointIds(const char* value) { m_vpcEndpointIdsHasBeenSet = true; m_vpcEndpointIds.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
     inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
     inline DescribeVpcEndpointsRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
-    inline DescribeVpcEndpointsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeVpcEndpointsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
     inline DescribeVpcEndpointsRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li> <p><code>service-name</code>: The name of
-     * the AWS service.</p> </li> <li> <p><code>vpc-id</code>: The ID of the VPC in
-     * which the endpoint resides.</p> </li> <li> <p><code>vpc-endpoint-id</code>: The
-     * ID of the endpoint.</p> </li> <li> <p><code>vpc-endpoint-state</code>: The state
-     * of the endpoint. (<code>pending</code> | <code>available</code> |
+     * <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of
+     * the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in
+     * which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The
+     * ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The
+     * state of the endpoint. (<code>pending</code> | <code>available</code> |
      * <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
      */
-    inline DescribeVpcEndpointsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeVpcEndpointsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of items to return for this request. The request returns a
@@ -209,7 +219,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a prior call.)</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token for the next set of items to return. (You received this token from
@@ -227,7 +237,7 @@ namespace Model
      * <p>The token for the next set of items to return. (You received this token from
      * a prior call.)</p>
      */
-    inline DescribeVpcEndpointsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeVpcEndpointsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token for the next set of items to return. (You received this token from

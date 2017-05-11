@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Lists iSCSI information about a volume.</p>
+   * <p>Lists iSCSI information about a volume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/VolumeiSCSIAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API VolumeiSCSIAttributes
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the volume target.</p>
      */
-    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = value; }
+    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume target.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the volume target.</p>
      */
-    inline VolumeiSCSIAttributes& WithTargetARN(Aws::String&& value) { SetTargetARN(value); return *this;}
+    inline VolumeiSCSIAttributes& WithTargetARN(Aws::String&& value) { SetTargetARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the volume target.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The network interface identifier.</p>
      */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
+    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
 
     /**
      * <p>The network interface identifier.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The network interface identifier.</p>
      */
-    inline VolumeiSCSIAttributes& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(value); return *this;}
+    inline VolumeiSCSIAttributes& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
 
     /**
      * <p>The network interface identifier.</p>

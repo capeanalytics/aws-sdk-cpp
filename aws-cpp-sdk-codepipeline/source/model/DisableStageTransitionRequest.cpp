@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codepipeline/model/DisableStageTransitionRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -24,6 +25,7 @@ using namespace Aws::Utils;
 DisableStageTransitionRequest::DisableStageTransitionRequest() : 
     m_pipelineNameHasBeenSet(false),
     m_stageNameHasBeenSet(false),
+    m_transitionType(StageTransitionType::NOT_SET),
     m_transitionTypeHasBeenSet(false),
     m_reasonHasBeenSet(false)
 {
@@ -66,6 +68,7 @@ Aws::Http::HeaderValueCollection DisableStageTransitionRequest::GetRequestSpecif
   return headers;
 
 }
+
 
 
 

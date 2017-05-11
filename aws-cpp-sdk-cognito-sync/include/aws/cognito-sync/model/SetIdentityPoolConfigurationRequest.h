@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-sync/CognitoSync_EXPORTS.h>
 #include <aws/cognito-sync/CognitoSyncRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-sync/model/PushSync.h>
 #include <aws/cognito-sync/model/CognitoStreams.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,17 @@ namespace Model
 {
 
   /**
-   * <p>The input for the SetIdentityPoolConfiguration operation.</p>
+   * <p>The input for the SetIdentityPoolConfiguration operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-sync-2014-06-30/SetIdentityPoolConfigurationRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOSYNC_API SetIdentityPoolConfigurationRequest : public CognitoSyncRequest
   {
   public:
     SetIdentityPoolConfigurationRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>A name-spaced GUID (for example,
@@ -54,7 +60,7 @@ namespace Model
      * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
      * is the ID of the pool to modify.</p>
      */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
+    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
 
     /**
      * <p>A name-spaced GUID (for example,
@@ -75,7 +81,7 @@ namespace Model
      * us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This
      * is the ID of the pool to modify.</p>
      */
-    inline SetIdentityPoolConfigurationRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(value); return *this;}
+    inline SetIdentityPoolConfigurationRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
 
     /**
      * <p>A name-spaced GUID (for example,
@@ -97,7 +103,7 @@ namespace Model
     /**
      * <p>Options to apply to this identity pool for push synchronization.</p>
      */
-    inline void SetPushSync(PushSync&& value) { m_pushSyncHasBeenSet = true; m_pushSync = value; }
+    inline void SetPushSync(PushSync&& value) { m_pushSyncHasBeenSet = true; m_pushSync = std::move(value); }
 
     /**
      * <p>Options to apply to this identity pool for push synchronization.</p>
@@ -107,7 +113,7 @@ namespace Model
     /**
      * <p>Options to apply to this identity pool for push synchronization.</p>
      */
-    inline SetIdentityPoolConfigurationRequest& WithPushSync(PushSync&& value) { SetPushSync(value); return *this;}
+    inline SetIdentityPoolConfigurationRequest& WithPushSync(PushSync&& value) { SetPushSync(std::move(value)); return *this;}
 
     /**
      * Options to apply to this identity pool for Amazon Cognito streams.
@@ -122,7 +128,7 @@ namespace Model
     /**
      * Options to apply to this identity pool for Amazon Cognito streams.
      */
-    inline void SetCognitoStreams(CognitoStreams&& value) { m_cognitoStreamsHasBeenSet = true; m_cognitoStreams = value; }
+    inline void SetCognitoStreams(CognitoStreams&& value) { m_cognitoStreamsHasBeenSet = true; m_cognitoStreams = std::move(value); }
 
     /**
      * Options to apply to this identity pool for Amazon Cognito streams.
@@ -132,7 +138,7 @@ namespace Model
     /**
      * Options to apply to this identity pool for Amazon Cognito streams.
      */
-    inline SetIdentityPoolConfigurationRequest& WithCognitoStreams(CognitoStreams&& value) { SetCognitoStreams(value); return *this;}
+    inline SetIdentityPoolConfigurationRequest& WithCognitoStreams(CognitoStreams&& value) { SetCognitoStreams(std::move(value)); return *this;}
 
   private:
     Aws::String m_identityPoolId;

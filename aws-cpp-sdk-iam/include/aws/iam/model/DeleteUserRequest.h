@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,59 +34,64 @@ namespace Model
     DeleteUserRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetUserName() const{ return m_userName; }
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
     inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = value; }
+    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
     inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
     inline DeleteUserRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
-    inline DeleteUserRequest& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
+    inline DeleteUserRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the user to delete.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the user to delete.</p> <p>This parameter allows (per its <a
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
+     * consisting of upper and lowercase alphanumeric characters with no spaces. You
+     * can also include any of the following characters: =,.@-</p>
      */
     inline DeleteUserRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/AttributeBooleanValue.h>
 #include <aws/ec2/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeVpcAttribute.</p>
+   * <p>Contains the output of DescribeVpcAttribute.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVpcAttributeResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeVpcAttributeResponse
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcId = std::move(value); }
 
     /**
      * <p>The ID of the VPC.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline DescribeVpcAttributeResponse& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline DescribeVpcAttributeResponse& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the VPC.</p>
@@ -98,7 +102,7 @@ namespace Model
      * <code>true</code>, the Amazon DNS server resolves DNS hostnames for your
      * instances to their corresponding IP addresses; otherwise, it does not.</p>
      */
-    inline void SetEnableDnsSupport(AttributeBooleanValue&& value) { m_enableDnsSupport = value; }
+    inline void SetEnableDnsSupport(AttributeBooleanValue&& value) { m_enableDnsSupport = std::move(value); }
 
     /**
      * <p>Indicates whether DNS resolution is enabled for the VPC. If this attribute is
@@ -112,7 +116,7 @@ namespace Model
      * <code>true</code>, the Amazon DNS server resolves DNS hostnames for your
      * instances to their corresponding IP addresses; otherwise, it does not.</p>
      */
-    inline DescribeVpcAttributeResponse& WithEnableDnsSupport(AttributeBooleanValue&& value) { SetEnableDnsSupport(value); return *this;}
+    inline DescribeVpcAttributeResponse& WithEnableDnsSupport(AttributeBooleanValue&& value) { SetEnableDnsSupport(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the instances launched in the VPC get DNS hostnames. If
@@ -133,7 +137,7 @@ namespace Model
      * this attribute is <code>true</code>, instances in the VPC get DNS hostnames;
      * otherwise, they do not.</p>
      */
-    inline void SetEnableDnsHostnames(AttributeBooleanValue&& value) { m_enableDnsHostnames = value; }
+    inline void SetEnableDnsHostnames(AttributeBooleanValue&& value) { m_enableDnsHostnames = std::move(value); }
 
     /**
      * <p>Indicates whether the instances launched in the VPC get DNS hostnames. If
@@ -147,7 +151,7 @@ namespace Model
      * this attribute is <code>true</code>, instances in the VPC get DNS hostnames;
      * otherwise, they do not.</p>
      */
-    inline DescribeVpcAttributeResponse& WithEnableDnsHostnames(AttributeBooleanValue&& value) { SetEnableDnsHostnames(value); return *this;}
+    inline DescribeVpcAttributeResponse& WithEnableDnsHostnames(AttributeBooleanValue&& value) { SetEnableDnsHostnames(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -156,13 +160,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeVpcAttributeResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeVpcAttributeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeVpcAttributeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_vpcId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opsworks/model/VolumeType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * <p>Describes an Amazon EBS volume. This data type maps directly to the Amazon
    * EC2 <a
    * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>
-   * data type.</p>
+   * data type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/EbsBlockDevice">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API EbsBlockDevice
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The snapshot ID.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The snapshot ID.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The snapshot ID.</p>
      */
-    inline EbsBlockDevice& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline EbsBlockDevice& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The snapshot ID.</p>
@@ -138,7 +142,7 @@ namespace Model
      * <code>io1</code> for Provisioned IOPS (SSD) volumes, and <code>standard</code>
      * for Magnetic volumes.</p>
      */
-    inline void SetVolumeType(VolumeType&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = value; }
+    inline void SetVolumeType(VolumeType&& value) { m_volumeTypeHasBeenSet = true; m_volumeType = std::move(value); }
 
     /**
      * <p>The volume type. <code>gp2</code> for General Purpose (SSD) volumes,
@@ -152,7 +156,7 @@ namespace Model
      * <code>io1</code> for Provisioned IOPS (SSD) volumes, and <code>standard</code>
      * for Magnetic volumes.</p>
      */
-    inline EbsBlockDevice& WithVolumeType(VolumeType&& value) { SetVolumeType(value); return *this;}
+    inline EbsBlockDevice& WithVolumeType(VolumeType&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p>Whether the volume is deleted on instance termination.</p>

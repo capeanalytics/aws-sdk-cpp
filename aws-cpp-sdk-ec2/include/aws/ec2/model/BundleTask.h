@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/ec2/model/Storage.h>
 #include <aws/ec2/model/BundleTaskError.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a bundle task.</p>
+   * <p>Describes a bundle task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/BundleTask">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API BundleTask
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The ID of the instance associated with this bundle task.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance associated with this bundle task.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the instance associated with this bundle task.</p>
      */
-    inline BundleTask& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline BundleTask& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance associated with this bundle task.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The ID of the bundle task.</p>
      */
-    inline void SetBundleId(Aws::String&& value) { m_bundleIdHasBeenSet = true; m_bundleId = value; }
+    inline void SetBundleId(Aws::String&& value) { m_bundleIdHasBeenSet = true; m_bundleId = std::move(value); }
 
     /**
      * <p>The ID of the bundle task.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The ID of the bundle task.</p>
      */
-    inline BundleTask& WithBundleId(Aws::String&& value) { SetBundleId(value); return *this;}
+    inline BundleTask& WithBundleId(Aws::String&& value) { SetBundleId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the bundle task.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The state of the task.</p>
      */
-    inline void SetState(BundleTaskState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(BundleTaskState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the task.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The state of the task.</p>
      */
-    inline BundleTask& WithState(BundleTaskState&& value) { SetState(value); return *this;}
+    inline BundleTask& WithState(BundleTaskState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The time this task started.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>The time this task started.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The time this task started.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>The time this task started.</p>
      */
-    inline BundleTask& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline BundleTask& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The time of the most recent update for the task.</p>
@@ -181,7 +185,7 @@ namespace Model
     /**
      * <p>The time of the most recent update for the task.</p>
      */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTimeHasBeenSet = true; m_updateTime = value; }
+    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::move(value); }
 
     /**
      * <p>The time of the most recent update for the task.</p>
@@ -191,7 +195,7 @@ namespace Model
     /**
      * <p>The time of the most recent update for the task.</p>
      */
-    inline BundleTask& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(value); return *this;}
+    inline BundleTask& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 storage locations.</p>
@@ -206,7 +210,7 @@ namespace Model
     /**
      * <p>The Amazon S3 storage locations.</p>
      */
-    inline void SetStorage(Storage&& value) { m_storageHasBeenSet = true; m_storage = value; }
+    inline void SetStorage(Storage&& value) { m_storageHasBeenSet = true; m_storage = std::move(value); }
 
     /**
      * <p>The Amazon S3 storage locations.</p>
@@ -216,7 +220,7 @@ namespace Model
     /**
      * <p>The Amazon S3 storage locations.</p>
      */
-    inline BundleTask& WithStorage(Storage&& value) { SetStorage(value); return *this;}
+    inline BundleTask& WithStorage(Storage&& value) { SetStorage(std::move(value)); return *this;}
 
     /**
      * <p>The level of task completion, as a percent (for example, 20%).</p>
@@ -231,7 +235,7 @@ namespace Model
     /**
      * <p>The level of task completion, as a percent (for example, 20%).</p>
      */
-    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = value; }
+    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = std::move(value); }
 
     /**
      * <p>The level of task completion, as a percent (for example, 20%).</p>
@@ -246,7 +250,7 @@ namespace Model
     /**
      * <p>The level of task completion, as a percent (for example, 20%).</p>
      */
-    inline BundleTask& WithProgress(Aws::String&& value) { SetProgress(value); return *this;}
+    inline BundleTask& WithProgress(Aws::String&& value) { SetProgress(std::move(value)); return *this;}
 
     /**
      * <p>The level of task completion, as a percent (for example, 20%).</p>
@@ -266,7 +270,7 @@ namespace Model
     /**
      * <p>If the task fails, a description of the error.</p>
      */
-    inline void SetBundleTaskError(BundleTaskError&& value) { m_bundleTaskErrorHasBeenSet = true; m_bundleTaskError = value; }
+    inline void SetBundleTaskError(BundleTaskError&& value) { m_bundleTaskErrorHasBeenSet = true; m_bundleTaskError = std::move(value); }
 
     /**
      * <p>If the task fails, a description of the error.</p>
@@ -276,7 +280,7 @@ namespace Model
     /**
      * <p>If the task fails, a description of the error.</p>
      */
-    inline BundleTask& WithBundleTaskError(BundleTaskError&& value) { SetBundleTaskError(value); return *this;}
+    inline BundleTask& WithBundleTaskError(BundleTaskError&& value) { SetBundleTaskError(std::move(value)); return *this;}
 
   private:
     Aws::String m_instanceId;

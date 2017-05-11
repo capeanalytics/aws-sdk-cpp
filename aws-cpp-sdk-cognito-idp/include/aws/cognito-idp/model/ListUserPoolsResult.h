@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-idp/model/UserPoolDescriptionType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace CognitoIdentityProvider
 namespace Model
 {
   /**
-   * <p>Represents the response to list user pools.</p>
+   * <p>Represents the response to list user pools.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListUserPoolsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API ListUserPoolsResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The user pools from the response to list users.</p>
      */
-    inline void SetUserPools(Aws::Vector<UserPoolDescriptionType>&& value) { m_userPools = value; }
+    inline void SetUserPools(Aws::Vector<UserPoolDescriptionType>&& value) { m_userPools = std::move(value); }
 
     /**
      * <p>The user pools from the response to list users.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>The user pools from the response to list users.</p>
      */
-    inline ListUserPoolsResult& WithUserPools(Aws::Vector<UserPoolDescriptionType>&& value) { SetUserPools(value); return *this;}
+    inline ListUserPoolsResult& WithUserPools(Aws::Vector<UserPoolDescriptionType>&& value) { SetUserPools(std::move(value)); return *this;}
 
     /**
      * <p>The user pools from the response to list users.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The user pools from the response to list users.</p>
      */
-    inline ListUserPoolsResult& AddUserPools(UserPoolDescriptionType&& value) { m_userPools.push_back(value); return *this; }
+    inline ListUserPoolsResult& AddUserPools(UserPoolDescriptionType&& value) { m_userPools.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,
@@ -95,7 +99,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,
@@ -113,7 +117,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline ListUserPoolsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListUserPoolsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,

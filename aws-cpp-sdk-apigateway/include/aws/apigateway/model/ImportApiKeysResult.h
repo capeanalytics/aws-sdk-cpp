@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,8 +36,10 @@ namespace APIGateway
 namespace Model
 {
   /**
-   * <p>The identifier of an API key used to reference an API key in a usage
-   * plan.</p>
+   * <p>The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/ApiKeyIds">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API ImportApiKeysResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
      */
-    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_ids = value; }
+    inline void SetIds(Aws::Vector<Aws::String>&& value) { m_ids = std::move(value); }
 
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
      */
-    inline ImportApiKeysResult& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(value); return *this;}
+    inline ImportApiKeysResult& WithIds(Aws::Vector<Aws::String>&& value) { SetIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
      */
-    inline ImportApiKeysResult& AddIds(Aws::String&& value) { m_ids.push_back(value); return *this; }
+    inline ImportApiKeysResult& AddIds(Aws::String&& value) { m_ids.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of all the <a>ApiKey</a> identifiers.</p>
@@ -97,7 +101,7 @@ namespace Model
     /**
      * <p>A list of warning messages.</p>
      */
-    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = value; }
+    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = std::move(value); }
 
     /**
      * <p>A list of warning messages.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>A list of warning messages.</p>
      */
-    inline ImportApiKeysResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(value); return *this;}
+    inline ImportApiKeysResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(std::move(value)); return *this;}
 
     /**
      * <p>A list of warning messages.</p>
@@ -117,7 +121,7 @@ namespace Model
     /**
      * <p>A list of warning messages.</p>
      */
-    inline ImportApiKeysResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(value); return *this; }
+    inline ImportApiKeysResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of warning messages.</p>

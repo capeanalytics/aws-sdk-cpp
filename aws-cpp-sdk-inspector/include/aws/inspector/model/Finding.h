@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector/model/LocalizedText.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector/model/Attribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -58,7 +60,7 @@ namespace Model
     /**
      * <p>The ARN specifying the finding.</p>
      */
-    inline void SetFindingArn(Aws::String&& value) { m_findingArnHasBeenSet = true; m_findingArn = value; }
+    inline void SetFindingArn(Aws::String&& value) { m_findingArnHasBeenSet = true; m_findingArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the finding.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>The ARN specifying the finding.</p>
      */
-    inline Finding& WithFindingArn(Aws::String&& value) { SetFindingArn(value); return *this;}
+    inline Finding& WithFindingArn(Aws::String&& value) { SetFindingArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the finding.</p>
@@ -93,7 +95,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment run that generated the finding.</p>
      */
-    inline void SetRunArn(Aws::String&& value) { m_runArnHasBeenSet = true; m_runArn = value; }
+    inline void SetRunArn(Aws::String&& value) { m_runArnHasBeenSet = true; m_runArn = std::move(value); }
 
     /**
      * <p>The ARN of the assessment run that generated the finding.</p>
@@ -108,7 +110,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment run that generated the finding.</p>
      */
-    inline Finding& WithRunArn(Aws::String&& value) { SetRunArn(value); return *this;}
+    inline Finding& WithRunArn(Aws::String&& value) { SetRunArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the assessment run that generated the finding.</p>
@@ -128,7 +130,7 @@ namespace Model
     /**
      * <p>The ARN of the rules package that is used to generate the finding.</p>
      */
-    inline void SetRulesPackageArn(Aws::String&& value) { m_rulesPackageArnHasBeenSet = true; m_rulesPackageArn = value; }
+    inline void SetRulesPackageArn(Aws::String&& value) { m_rulesPackageArnHasBeenSet = true; m_rulesPackageArn = std::move(value); }
 
     /**
      * <p>The ARN of the rules package that is used to generate the finding.</p>
@@ -143,7 +145,7 @@ namespace Model
     /**
      * <p>The ARN of the rules package that is used to generate the finding.</p>
      */
-    inline Finding& WithRulesPackageArn(Aws::String&& value) { SetRulesPackageArn(value); return *this;}
+    inline Finding& WithRulesPackageArn(Aws::String&& value) { SetRulesPackageArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the rules package that is used to generate the finding.</p>
@@ -163,7 +165,7 @@ namespace Model
     /**
      * <p>The rule name that is used to generate the finding.</p>
      */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
+    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
 
     /**
      * <p>The rule name that is used to generate the finding.</p>
@@ -178,7 +180,7 @@ namespace Model
     /**
      * <p>The rule name that is used to generate the finding.</p>
      */
-    inline Finding& WithRuleName(Aws::String&& value) { SetRuleName(value); return *this;}
+    inline Finding& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
 
     /**
      * <p>The rule name that is used to generate the finding.</p>
@@ -201,7 +203,7 @@ namespace Model
      * <p>The EC2 instance ID where the agent is installed that is used during the
      * assessment that generates the finding. </p>
      */
-    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = value; }
+    inline void SetAgentId(Aws::String&& value) { m_agentIdHasBeenSet = true; m_agentId = std::move(value); }
 
     /**
      * <p>The EC2 instance ID where the agent is installed that is used during the
@@ -219,7 +221,7 @@ namespace Model
      * <p>The EC2 instance ID where the agent is installed that is used during the
      * assessment that generates the finding. </p>
      */
-    inline Finding& WithAgentId(Aws::String&& value) { SetAgentId(value); return *this;}
+    inline Finding& WithAgentId(Aws::String&& value) { SetAgentId(std::move(value)); return *this;}
 
     /**
      * <p>The EC2 instance ID where the agent is installed that is used during the
@@ -243,7 +245,7 @@ namespace Model
      * <p>The autoscaling group of the EC2 instance where the agent is installed that
      * is used during the assessment that generates the finding.</p>
      */
-    inline void SetAutoScalingGroup(Aws::String&& value) { m_autoScalingGroupHasBeenSet = true; m_autoScalingGroup = value; }
+    inline void SetAutoScalingGroup(Aws::String&& value) { m_autoScalingGroupHasBeenSet = true; m_autoScalingGroup = std::move(value); }
 
     /**
      * <p>The autoscaling group of the EC2 instance where the agent is installed that
@@ -261,7 +263,7 @@ namespace Model
      * <p>The autoscaling group of the EC2 instance where the agent is installed that
      * is used during the assessment that generates the finding.</p>
      */
-    inline Finding& WithAutoScalingGroup(Aws::String&& value) { SetAutoScalingGroup(value); return *this;}
+    inline Finding& WithAutoScalingGroup(Aws::String&& value) { SetAutoScalingGroup(std::move(value)); return *this;}
 
     /**
      * <p>The autoscaling group of the EC2 instance where the agent is installed that
@@ -285,7 +287,7 @@ namespace Model
      * <p>The finding severity. Values can be set to <i>High</i>, <i>Medium</i>,
      * <i>Low</i>, and <i>Informational</i>.</p>
      */
-    inline void SetSeverity(Aws::String&& value) { m_severityHasBeenSet = true; m_severity = value; }
+    inline void SetSeverity(Aws::String&& value) { m_severityHasBeenSet = true; m_severity = std::move(value); }
 
     /**
      * <p>The finding severity. Values can be set to <i>High</i>, <i>Medium</i>,
@@ -303,7 +305,7 @@ namespace Model
      * <p>The finding severity. Values can be set to <i>High</i>, <i>Medium</i>,
      * <i>Low</i>, and <i>Informational</i>.</p>
      */
-    inline Finding& WithSeverity(Aws::String&& value) { SetSeverity(value); return *this;}
+    inline Finding& WithSeverity(Aws::String&& value) { SetSeverity(std::move(value)); return *this;}
 
     /**
      * <p>The finding severity. Values can be set to <i>High</i>, <i>Medium</i>,
@@ -324,7 +326,7 @@ namespace Model
     /**
      * <p>A short description that identifies the finding.</p>
      */
-    inline void SetFinding(LocalizedText&& value) { m_findingHasBeenSet = true; m_finding = value; }
+    inline void SetFinding(LocalizedText&& value) { m_findingHasBeenSet = true; m_finding = std::move(value); }
 
     /**
      * <p>A short description that identifies the finding.</p>
@@ -334,7 +336,7 @@ namespace Model
     /**
      * <p>A short description that identifies the finding.</p>
      */
-    inline Finding& WithFinding(LocalizedText&& value) { SetFinding(value); return *this;}
+    inline Finding& WithFinding(LocalizedText&& value) { SetFinding(std::move(value)); return *this;}
 
     /**
      * <p>The description of the finding.</p>
@@ -349,7 +351,7 @@ namespace Model
     /**
      * <p>The description of the finding.</p>
      */
-    inline void SetDescription(LocalizedText&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(LocalizedText&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the finding.</p>
@@ -359,7 +361,7 @@ namespace Model
     /**
      * <p>The description of the finding.</p>
      */
-    inline Finding& WithDescription(LocalizedText&& value) { SetDescription(value); return *this;}
+    inline Finding& WithDescription(LocalizedText&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The recommendation for the finding. </p>
@@ -374,7 +376,7 @@ namespace Model
     /**
      * <p>The recommendation for the finding. </p>
      */
-    inline void SetRecommendation(LocalizedText&& value) { m_recommendationHasBeenSet = true; m_recommendation = value; }
+    inline void SetRecommendation(LocalizedText&& value) { m_recommendationHasBeenSet = true; m_recommendation = std::move(value); }
 
     /**
      * <p>The recommendation for the finding. </p>
@@ -384,7 +386,7 @@ namespace Model
     /**
      * <p>The recommendation for the finding. </p>
      */
-    inline Finding& WithRecommendation(LocalizedText&& value) { SetRecommendation(value); return *this;}
+    inline Finding& WithRecommendation(LocalizedText&& value) { SetRecommendation(std::move(value)); return *this;}
 
     /**
      * <p>The system-defined attributes for the finding. </p>
@@ -399,7 +401,7 @@ namespace Model
     /**
      * <p>The system-defined attributes for the finding. </p>
      */
-    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Vector<Attribute>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>The system-defined attributes for the finding. </p>
@@ -409,7 +411,7 @@ namespace Model
     /**
      * <p>The system-defined attributes for the finding. </p>
      */
-    inline Finding& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(value); return *this;}
+    inline Finding& WithAttributes(Aws::Vector<Attribute>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The system-defined attributes for the finding. </p>
@@ -419,7 +421,7 @@ namespace Model
     /**
      * <p>The system-defined attributes for the finding. </p>
      */
-    inline Finding& AddAttributes(Attribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(value); return *this; }
+    inline Finding& AddAttributes(Attribute&& value) { m_attributesHasBeenSet = true; m_attributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
@@ -434,7 +436,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
      */
-    inline void SetUserAttributes(Aws::Vector<Attribute>&& value) { m_userAttributesHasBeenSet = true; m_userAttributes = value; }
+    inline void SetUserAttributes(Aws::Vector<Attribute>&& value) { m_userAttributesHasBeenSet = true; m_userAttributes = std::move(value); }
 
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
@@ -444,7 +446,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
      */
-    inline Finding& WithUserAttributes(Aws::Vector<Attribute>&& value) { SetUserAttributes(value); return *this;}
+    inline Finding& WithUserAttributes(Aws::Vector<Attribute>&& value) { SetUserAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
@@ -454,7 +456,7 @@ namespace Model
     /**
      * <p>The user-defined attributes that are assigned to the finding.</p>
      */
-    inline Finding& AddUserAttributes(Attribute&& value) { m_userAttributesHasBeenSet = true; m_userAttributes.push_back(value); return *this; }
+    inline Finding& AddUserAttributes(Attribute&& value) { m_userAttributesHasBeenSet = true; m_userAttributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_findingArn;

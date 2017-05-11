@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/IntegrationResponse.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,7 +32,9 @@ IntegrationResponse::IntegrationResponse() :
     m_statusCodeHasBeenSet(false),
     m_selectionPatternHasBeenSet(false),
     m_responseParametersHasBeenSet(false),
-    m_responseTemplatesHasBeenSet(false)
+    m_responseTemplatesHasBeenSet(false),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET),
+    m_contentHandlingHasBeenSet(false)
 {
 }
 
@@ -39,7 +42,9 @@ IntegrationResponse::IntegrationResponse(const JsonValue& jsonValue) :
     m_statusCodeHasBeenSet(false),
     m_selectionPatternHasBeenSet(false),
     m_responseParametersHasBeenSet(false),
-    m_responseTemplatesHasBeenSet(false)
+    m_responseTemplatesHasBeenSet(false),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET),
+    m_contentHandlingHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -78,6 +83,13 @@ IntegrationResponse& IntegrationResponse::operator =(const JsonValue& jsonValue)
       m_responseTemplates[responseTemplatesItem.first] = responseTemplatesItem.second.AsString();
     }
     m_responseTemplatesHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("contentHandling"))
+  {
+    m_contentHandling = ContentHandlingStrategyMapper::GetContentHandlingStrategyForName(jsonValue.GetString("contentHandling"));
+
+    m_contentHandlingHasBeenSet = true;
   }
 
   return *this;
@@ -119,6 +131,11 @@ JsonValue IntegrationResponse::Jsonize() const
    }
    payload.WithObject("responseTemplates", std::move(responseTemplatesJsonMap));
 
+  }
+
+  if(m_contentHandlingHasBeenSet)
+  {
+   payload.WithString("contentHandling", ContentHandlingStrategyMapper::GetNameForContentHandlingStrategy(m_contentHandling));
   }
 
   return payload;

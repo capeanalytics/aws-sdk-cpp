@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the Chef configuration.</p>
+   * <p>Describes the Chef configuration.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/ChefConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API ChefConfiguration
   {
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The Berkshelf version.</p>
      */
-    inline void SetBerkshelfVersion(Aws::String&& value) { m_berkshelfVersionHasBeenSet = true; m_berkshelfVersion = value; }
+    inline void SetBerkshelfVersion(Aws::String&& value) { m_berkshelfVersionHasBeenSet = true; m_berkshelfVersion = std::move(value); }
 
     /**
      * <p>The Berkshelf version.</p>
@@ -84,7 +88,7 @@ namespace Model
     /**
      * <p>The Berkshelf version.</p>
      */
-    inline ChefConfiguration& WithBerkshelfVersion(Aws::String&& value) { SetBerkshelfVersion(value); return *this;}
+    inline ChefConfiguration& WithBerkshelfVersion(Aws::String&& value) { SetBerkshelfVersion(std::move(value)); return *this;}
 
     /**
      * <p>The Berkshelf version.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the recurring schedule for a Scheduled Instance.</p>
+   * <p>Describes the recurring schedule for a Scheduled Instance.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstanceRecurrence">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ScheduledInstanceRecurrence
   {
@@ -61,7 +66,7 @@ namespace Model
      * <p>The frequency (<code>Daily</code>, <code>Weekly</code>, or
      * <code>Monthly</code>).</p>
      */
-    inline void SetFrequency(Aws::String&& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
+    inline void SetFrequency(Aws::String&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
 
     /**
      * <p>The frequency (<code>Daily</code>, <code>Weekly</code>, or
@@ -79,7 +84,7 @@ namespace Model
      * <p>The frequency (<code>Daily</code>, <code>Weekly</code>, or
      * <code>Monthly</code>).</p>
      */
-    inline ScheduledInstanceRecurrence& WithFrequency(Aws::String&& value) { SetFrequency(value); return *this;}
+    inline ScheduledInstanceRecurrence& WithFrequency(Aws::String&& value) { SetFrequency(std::move(value)); return *this;}
 
     /**
      * <p>The frequency (<code>Daily</code>, <code>Weekly</code>, or
@@ -124,7 +129,7 @@ namespace Model
      * (1-31). For a weekly schedule, this is one or more days of the week (1-7, where
      * 1 is Sunday).</p>
      */
-    inline void SetOccurrenceDaySet(Aws::Vector<int>&& value) { m_occurrenceDaySetHasBeenSet = true; m_occurrenceDaySet = value; }
+    inline void SetOccurrenceDaySet(Aws::Vector<int>&& value) { m_occurrenceDaySetHasBeenSet = true; m_occurrenceDaySet = std::move(value); }
 
     /**
      * <p>The days. For a monthly schedule, this is one or more days of the month
@@ -138,7 +143,7 @@ namespace Model
      * (1-31). For a weekly schedule, this is one or more days of the week (1-7, where
      * 1 is Sunday).</p>
      */
-    inline ScheduledInstanceRecurrence& WithOccurrenceDaySet(Aws::Vector<int>&& value) { SetOccurrenceDaySet(value); return *this;}
+    inline ScheduledInstanceRecurrence& WithOccurrenceDaySet(Aws::Vector<int>&& value) { SetOccurrenceDaySet(std::move(value)); return *this;}
 
     /**
      * <p>The days. For a monthly schedule, this is one or more days of the month
@@ -181,7 +186,7 @@ namespace Model
      * <p>The unit for <code>occurrenceDaySet</code> (<code>DayOfWeek</code> or
      * <code>DayOfMonth</code>).</p>
      */
-    inline void SetOccurrenceUnit(Aws::String&& value) { m_occurrenceUnitHasBeenSet = true; m_occurrenceUnit = value; }
+    inline void SetOccurrenceUnit(Aws::String&& value) { m_occurrenceUnitHasBeenSet = true; m_occurrenceUnit = std::move(value); }
 
     /**
      * <p>The unit for <code>occurrenceDaySet</code> (<code>DayOfWeek</code> or
@@ -199,7 +204,7 @@ namespace Model
      * <p>The unit for <code>occurrenceDaySet</code> (<code>DayOfWeek</code> or
      * <code>DayOfMonth</code>).</p>
      */
-    inline ScheduledInstanceRecurrence& WithOccurrenceUnit(Aws::String&& value) { SetOccurrenceUnit(value); return *this;}
+    inline ScheduledInstanceRecurrence& WithOccurrenceUnit(Aws::String&& value) { SetOccurrenceUnit(std::move(value)); return *this;}
 
     /**
      * <p>The unit for <code>occurrenceDaySet</code> (<code>DayOfWeek</code> or

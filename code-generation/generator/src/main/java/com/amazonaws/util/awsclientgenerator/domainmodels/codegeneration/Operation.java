@@ -27,4 +27,7 @@ public class Operation {
     private ShapeMember result;
     private List<Error> errors;
     private String documentation;
+    private boolean supportsPresigning;
+    private boolean virtualAddressAllowed;
+    private String virtualAddressMemberName;
 }

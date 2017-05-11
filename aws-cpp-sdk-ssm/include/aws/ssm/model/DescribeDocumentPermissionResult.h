@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -56,7 +58,7 @@ namespace Model
      * <p>The account IDs that have permission to use this document. The ID can be
      * either an AWS account or <i>All</i>.</p>
      */
-    inline void SetAccountIds(Aws::Vector<Aws::String>&& value) { m_accountIds = value; }
+    inline void SetAccountIds(Aws::Vector<Aws::String>&& value) { m_accountIds = std::move(value); }
 
     /**
      * <p>The account IDs that have permission to use this document. The ID can be
@@ -68,7 +70,7 @@ namespace Model
      * <p>The account IDs that have permission to use this document. The ID can be
      * either an AWS account or <i>All</i>.</p>
      */
-    inline DescribeDocumentPermissionResult& WithAccountIds(Aws::Vector<Aws::String>&& value) { SetAccountIds(value); return *this;}
+    inline DescribeDocumentPermissionResult& WithAccountIds(Aws::Vector<Aws::String>&& value) { SetAccountIds(std::move(value)); return *this;}
 
     /**
      * <p>The account IDs that have permission to use this document. The ID can be
@@ -80,7 +82,7 @@ namespace Model
      * <p>The account IDs that have permission to use this document. The ID can be
      * either an AWS account or <i>All</i>.</p>
      */
-    inline DescribeDocumentPermissionResult& AddAccountIds(Aws::String&& value) { m_accountIds.push_back(value); return *this; }
+    inline DescribeDocumentPermissionResult& AddAccountIds(Aws::String&& value) { m_accountIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The account IDs that have permission to use this document. The ID can be

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>The statistics for a field calculated in the request.</p>
+   * <p>The statistics for a field calculated in the request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/FieldStats">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API FieldStats
   {
@@ -75,7 +80,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline void SetMin(Aws::String&& value) { m_minHasBeenSet = true; m_min = value; }
+    inline void SetMin(Aws::String&& value) { m_minHasBeenSet = true; m_min = std::move(value); }
 
     /**
      * <p>The minimum value found in the specified field in the result set.</p> <p>If
@@ -111,7 +116,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline FieldStats& WithMin(Aws::String&& value) { SetMin(value); return *this;}
+    inline FieldStats& WithMin(Aws::String&& value) { SetMin(std::move(value)); return *this;}
 
     /**
      * <p>The minimum value found in the specified field in the result set.</p> <p>If
@@ -159,7 +164,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline void SetMax(Aws::String&& value) { m_maxHasBeenSet = true; m_max = value; }
+    inline void SetMax(Aws::String&& value) { m_maxHasBeenSet = true; m_max = std::move(value); }
 
     /**
      * <p>The maximum value found in the specified field in the result set.</p> <p>If
@@ -195,7 +200,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline FieldStats& WithMax(Aws::String&& value) { SetMax(value); return *this;}
+    inline FieldStats& WithMax(Aws::String&& value) { SetMax(std::move(value)); return *this;}
 
     /**
      * <p>The maximum value found in the specified field in the result set.</p> <p>If
@@ -312,7 +317,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline void SetMean(Aws::String&& value) { m_meanHasBeenSet = true; m_mean = value; }
+    inline void SetMean(Aws::String&& value) { m_meanHasBeenSet = true; m_mean = std::move(value); }
 
     /**
      * <p>The average of the values found in the specified field in the result set.</p>
@@ -348,7 +353,7 @@ namespace Model
      * href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>:
      * yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
      */
-    inline FieldStats& WithMean(Aws::String&& value) { SetMean(value); return *this;}
+    inline FieldStats& WithMean(Aws::String&& value) { SetMean(std::move(value)); return *this;}
 
     /**
      * <p>The average of the values found in the specified field in the result set.</p>

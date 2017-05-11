@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/directconnect/model/Interconnect.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,22 +31,28 @@ namespace Model
 Interconnect::Interconnect() : 
     m_interconnectIdHasBeenSet(false),
     m_interconnectNameHasBeenSet(false),
+    m_interconnectState(InterconnectState::NOT_SET),
     m_interconnectStateHasBeenSet(false),
     m_regionHasBeenSet(false),
     m_locationHasBeenSet(false),
     m_bandwidthHasBeenSet(false),
-    m_loaIssueTimeHasBeenSet(false)
+    m_loaIssueTimeHasBeenSet(false),
+    m_lagIdHasBeenSet(false),
+    m_awsDeviceHasBeenSet(false)
 {
 }
 
 Interconnect::Interconnect(const JsonValue& jsonValue) : 
     m_interconnectIdHasBeenSet(false),
     m_interconnectNameHasBeenSet(false),
+    m_interconnectState(InterconnectState::NOT_SET),
     m_interconnectStateHasBeenSet(false),
     m_regionHasBeenSet(false),
     m_locationHasBeenSet(false),
     m_bandwidthHasBeenSet(false),
-    m_loaIssueTimeHasBeenSet(false)
+    m_loaIssueTimeHasBeenSet(false),
+    m_lagIdHasBeenSet(false),
+    m_awsDeviceHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -101,6 +108,20 @@ Interconnect& Interconnect::operator =(const JsonValue& jsonValue)
     m_loaIssueTimeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("lagId"))
+  {
+    m_lagId = jsonValue.GetString("lagId");
+
+    m_lagIdHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("awsDevice"))
+  {
+    m_awsDevice = jsonValue.GetString("awsDevice");
+
+    m_awsDeviceHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -146,6 +167,18 @@ JsonValue Interconnect::Jsonize() const
   if(m_loaIssueTimeHasBeenSet)
   {
    payload.WithDouble("loaIssueTime", m_loaIssueTime.SecondsWithMSPrecision());
+  }
+
+  if(m_lagIdHasBeenSet)
+  {
+   payload.WithString("lagId", m_lagId);
+
+  }
+
+  if(m_awsDeviceHasBeenSet)
+  {
+   payload.WithString("awsDevice", m_awsDevice);
+
   }
 
   return payload;

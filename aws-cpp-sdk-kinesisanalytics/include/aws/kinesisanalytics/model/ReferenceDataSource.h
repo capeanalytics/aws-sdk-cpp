@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/S3ReferenceDataSource.h>
 #include <aws/kinesisanalytics/model/SourceSchema.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * <p>Describes the reference data source by providing the source information (S3
    * bucket name and object key name), the resulting in-application table name that
    * is created, and the necessary schema to map the data elements in the Amazon S3
-   * object to the in-application table.</p>
+   * object to the in-application table.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/ReferenceDataSource">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API ReferenceDataSource
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>Name of the in-application table to create.</p>
      */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
+    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
 
     /**
      * <p>Name of the in-application table to create.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>Name of the in-application table to create.</p>
      */
-    inline ReferenceDataSource& WithTableName(Aws::String&& value) { SetTableName(value); return *this;}
+    inline ReferenceDataSource& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the in-application table to create.</p>
@@ -88,13 +92,13 @@ namespace Model
     inline void SetS3ReferenceDataSource(const S3ReferenceDataSource& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = value; }
 
     
-    inline void SetS3ReferenceDataSource(S3ReferenceDataSource&& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = value; }
+    inline void SetS3ReferenceDataSource(S3ReferenceDataSource&& value) { m_s3ReferenceDataSourceHasBeenSet = true; m_s3ReferenceDataSource = std::move(value); }
 
     
     inline ReferenceDataSource& WithS3ReferenceDataSource(const S3ReferenceDataSource& value) { SetS3ReferenceDataSource(value); return *this;}
 
     
-    inline ReferenceDataSource& WithS3ReferenceDataSource(S3ReferenceDataSource&& value) { SetS3ReferenceDataSource(value); return *this;}
+    inline ReferenceDataSource& WithS3ReferenceDataSource(S3ReferenceDataSource&& value) { SetS3ReferenceDataSource(std::move(value)); return *this;}
 
     
     inline const SourceSchema& GetReferenceSchema() const{ return m_referenceSchema; }
@@ -103,13 +107,13 @@ namespace Model
     inline void SetReferenceSchema(const SourceSchema& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = value; }
 
     
-    inline void SetReferenceSchema(SourceSchema&& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = value; }
+    inline void SetReferenceSchema(SourceSchema&& value) { m_referenceSchemaHasBeenSet = true; m_referenceSchema = std::move(value); }
 
     
     inline ReferenceDataSource& WithReferenceSchema(const SourceSchema& value) { SetReferenceSchema(value); return *this;}
 
     
-    inline ReferenceDataSource& WithReferenceSchema(SourceSchema&& value) { SetReferenceSchema(value); return *this;}
+    inline ReferenceDataSource& WithReferenceSchema(SourceSchema&& value) { SetReferenceSchema(std::move(value)); return *this;}
 
   private:
     Aws::String m_tableName;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ds/model/DirectoryDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,18 +32,22 @@ DirectoryDescription::DirectoryDescription() :
     m_directoryIdHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_shortNameHasBeenSet(false),
+    m_size(DirectorySize::NOT_SET),
     m_sizeHasBeenSet(false),
     m_aliasHasBeenSet(false),
     m_accessUrlHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_dnsIpAddrsHasBeenSet(false),
+    m_stage(DirectoryStage::NOT_SET),
     m_stageHasBeenSet(false),
     m_launchTimeHasBeenSet(false),
     m_stageLastUpdatedDateTimeHasBeenSet(false),
+    m_type(DirectoryType::NOT_SET),
     m_typeHasBeenSet(false),
     m_vpcSettingsHasBeenSet(false),
     m_connectSettingsHasBeenSet(false),
     m_radiusSettingsHasBeenSet(false),
+    m_radiusStatus(RadiusStatus::NOT_SET),
     m_radiusStatusHasBeenSet(false),
     m_stageReasonHasBeenSet(false),
     m_ssoEnabled(false),
@@ -54,18 +59,22 @@ DirectoryDescription::DirectoryDescription(const JsonValue& jsonValue) :
     m_directoryIdHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_shortNameHasBeenSet(false),
+    m_size(DirectorySize::NOT_SET),
     m_sizeHasBeenSet(false),
     m_aliasHasBeenSet(false),
     m_accessUrlHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_dnsIpAddrsHasBeenSet(false),
+    m_stage(DirectoryStage::NOT_SET),
     m_stageHasBeenSet(false),
     m_launchTimeHasBeenSet(false),
     m_stageLastUpdatedDateTimeHasBeenSet(false),
+    m_type(DirectoryType::NOT_SET),
     m_typeHasBeenSet(false),
     m_vpcSettingsHasBeenSet(false),
     m_connectSettingsHasBeenSet(false),
     m_radiusSettingsHasBeenSet(false),
+    m_radiusStatus(RadiusStatus::NOT_SET),
     m_radiusStatusHasBeenSet(false),
     m_stageReasonHasBeenSet(false),
     m_ssoEnabled(false),

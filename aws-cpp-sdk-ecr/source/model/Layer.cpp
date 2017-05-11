@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecr/model/Layer.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,17 +30,21 @@ namespace Model
 
 Layer::Layer() : 
     m_layerDigestHasBeenSet(false),
+    m_layerAvailability(LayerAvailability::NOT_SET),
     m_layerAvailabilityHasBeenSet(false),
     m_layerSize(0),
-    m_layerSizeHasBeenSet(false)
+    m_layerSizeHasBeenSet(false),
+    m_mediaTypeHasBeenSet(false)
 {
 }
 
 Layer::Layer(const JsonValue& jsonValue) : 
     m_layerDigestHasBeenSet(false),
+    m_layerAvailability(LayerAvailability::NOT_SET),
     m_layerAvailabilityHasBeenSet(false),
     m_layerSize(0),
-    m_layerSizeHasBeenSet(false)
+    m_layerSizeHasBeenSet(false),
+    m_mediaTypeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -67,6 +72,13 @@ Layer& Layer::operator =(const JsonValue& jsonValue)
     m_layerSizeHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("mediaType"))
+  {
+    m_mediaType = jsonValue.GetString("mediaType");
+
+    m_mediaTypeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -88,6 +100,12 @@ JsonValue Layer::Jsonize() const
   if(m_layerSizeHasBeenSet)
   {
    payload.WithInt64("layerSize", m_layerSize);
+
+  }
+
+  if(m_mediaTypeHasBeenSet)
+  {
+   payload.WithString("mediaType", m_mediaType);
 
   }
 

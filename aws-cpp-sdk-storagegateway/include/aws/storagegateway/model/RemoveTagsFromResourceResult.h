@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace StorageGateway
 namespace Model
 {
   /**
-   * <p>RemoveTagsFromResourceOutput</p>
+   * <p>RemoveTagsFromResourceOutput</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/RemoveTagsFromResourceOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API RemoveTagsFromResourceResult
   {
@@ -58,7 +62,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the resource that the tags were removed
      * from.</p>
      */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARN = value; }
+    inline void SetResourceARN(Aws::String&& value) { m_resourceARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the resource that the tags were removed
@@ -76,7 +80,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the resource that the tags were removed
      * from.</p>
      */
-    inline RemoveTagsFromResourceResult& WithResourceARN(Aws::String&& value) { SetResourceARN(value); return *this;}
+    inline RemoveTagsFromResourceResult& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the resource that the tags were removed

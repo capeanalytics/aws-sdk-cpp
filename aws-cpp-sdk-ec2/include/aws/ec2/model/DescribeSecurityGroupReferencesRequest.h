@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace Model
     DescribeSecurityGroupReferencesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the operation, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +77,7 @@ namespace Model
     /**
      * <p>One or more security group IDs in your account.</p>
      */
-    inline void SetGroupId(Aws::Vector<Aws::String>&& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
+    inline void SetGroupId(Aws::Vector<Aws::String>&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
 
     /**
      * <p>One or more security group IDs in your account.</p>
@@ -80,7 +87,7 @@ namespace Model
     /**
      * <p>One or more security group IDs in your account.</p>
      */
-    inline DescribeSecurityGroupReferencesRequest& WithGroupId(Aws::Vector<Aws::String>&& value) { SetGroupId(value); return *this;}
+    inline DescribeSecurityGroupReferencesRequest& WithGroupId(Aws::Vector<Aws::String>&& value) { SetGroupId(std::move(value)); return *this;}
 
     /**
      * <p>One or more security group IDs in your account.</p>
@@ -90,7 +97,7 @@ namespace Model
     /**
      * <p>One or more security group IDs in your account.</p>
      */
-    inline DescribeSecurityGroupReferencesRequest& AddGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId.push_back(value); return *this; }
+    inline DescribeSecurityGroupReferencesRequest& AddGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more security group IDs in your account.</p>

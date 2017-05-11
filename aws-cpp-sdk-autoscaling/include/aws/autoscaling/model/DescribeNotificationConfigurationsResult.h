@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/autoscaling/model/ResponseMetadata.h>
 #include <aws/autoscaling/model/NotificationConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,10 @@ namespace AutoScaling
 namespace Model
 {
   /**
-   * <p>Contains the output from DescribeNotificationConfigurations.</p>
+   * <p>Contains the output from DescribeNotificationConfigurations.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurationsAnswer">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DescribeNotificationConfigurationsResult
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The notification configurations.</p>
      */
-    inline void SetNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { m_notificationConfigurations = value; }
+    inline void SetNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { m_notificationConfigurations = std::move(value); }
 
     /**
      * <p>The notification configurations.</p>
@@ -68,7 +73,7 @@ namespace Model
     /**
      * <p>The notification configurations.</p>
      */
-    inline DescribeNotificationConfigurationsResult& WithNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { SetNotificationConfigurations(value); return *this;}
+    inline DescribeNotificationConfigurationsResult& WithNotificationConfigurations(Aws::Vector<NotificationConfiguration>&& value) { SetNotificationConfigurations(std::move(value)); return *this;}
 
     /**
      * <p>The notification configurations.</p>
@@ -78,7 +83,7 @@ namespace Model
     /**
      * <p>The notification configurations.</p>
      */
-    inline DescribeNotificationConfigurationsResult& AddNotificationConfigurations(NotificationConfiguration&& value) { m_notificationConfigurations.push_back(value); return *this; }
+    inline DescribeNotificationConfigurationsResult& AddNotificationConfigurations(NotificationConfiguration&& value) { m_notificationConfigurations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -96,7 +101,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -114,7 +119,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline DescribeNotificationConfigurationsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeNotificationConfigurationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -129,13 +134,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeNotificationConfigurationsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeNotificationConfigurationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeNotificationConfigurationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<NotificationConfiguration> m_notificationConfigurations;

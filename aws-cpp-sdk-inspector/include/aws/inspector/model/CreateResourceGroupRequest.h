@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A collection of keys and an array of possible values in JSON format.</p>
      * <p>For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>A collection of keys and an array of possible values in JSON format.</p>
      * <p>For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]</p>
      */
-    inline void SetResourceGroupTags(Aws::String&& value) { m_resourceGroupTagsHasBeenSet = true; m_resourceGroupTags = value; }
+    inline void SetResourceGroupTags(Aws::String&& value) { m_resourceGroupTagsHasBeenSet = true; m_resourceGroupTags = std::move(value); }
 
     /**
      * <p>A collection of keys and an array of possible values in JSON format.</p>
@@ -68,7 +71,7 @@ namespace Model
      * <p>A collection of keys and an array of possible values in JSON format.</p>
      * <p>For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]</p>
      */
-    inline CreateResourceGroupRequest& WithResourceGroupTags(Aws::String&& value) { SetResourceGroupTags(value); return *this;}
+    inline CreateResourceGroupRequest& WithResourceGroupTags(Aws::String&& value) { SetResourceGroupTags(std::move(value)); return *this;}
 
     /**
      * <p>A collection of keys and an array of possible values in JSON format.</p>

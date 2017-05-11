@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Request to describe the resources in an environment.</p>
+   * <p>Request to describe the resources in an environment.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeEnvironmentResourcesMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DescribeEnvironmentResourcesRequest : public ElasticBeanstalkRequest
   {
@@ -33,8 +38,13 @@ namespace Model
     DescribeEnvironmentResourcesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -42,7 +52,7 @@ namespace Model
     inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -50,15 +60,15 @@ namespace Model
     inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
+    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -66,7 +76,7 @@ namespace Model
     inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -74,15 +84,15 @@ namespace Model
     inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(value); return *this;}
+    inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
 
     /**
-     * <p> The ID of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The ID of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentName, or both. If you
      * do not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -90,7 +100,7 @@ namespace Model
     inline DescribeEnvironmentResourcesRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -98,7 +108,7 @@ namespace Model
     inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -106,15 +116,15 @@ namespace Model
     inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -122,7 +132,7 @@ namespace Model
     inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
@@ -130,15 +140,15 @@ namespace Model
     inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>
      */
-    inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(value); return *this;}
+    inline DescribeEnvironmentResourcesRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
 
     /**
-     * <p> The name of the environment to retrieve AWS resource usage data. </p> <p>
+     * <p>The name of the environment to retrieve AWS resource usage data.</p> <p>
      * Condition: You must specify either this or an EnvironmentId, or both. If you do
      * not specify either, AWS Elastic Beanstalk returns
      * <code>MissingRequiredParameter</code> error. </p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/support/model/TrustedAdvisorCheckRefreshStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Support
 namespace Model
 {
   /**
-   * <p>The current refresh status of a Trusted Advisor check.</p>
+   * <p>The current refresh status of a Trusted Advisor check.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/RefreshTrustedAdvisorCheckResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API RefreshTrustedAdvisorCheckResult
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The current refresh status for a check, including the amount of time until
      * the check is eligible for refresh.</p>
      */
-    inline void SetStatus(TrustedAdvisorCheckRefreshStatus&& value) { m_status = value; }
+    inline void SetStatus(TrustedAdvisorCheckRefreshStatus&& value) { m_status = std::move(value); }
 
     /**
      * <p>The current refresh status for a check, including the amount of time until
@@ -70,7 +75,7 @@ namespace Model
      * <p>The current refresh status for a check, including the amount of time until
      * the check is eligible for refresh.</p>
      */
-    inline RefreshTrustedAdvisorCheckResult& WithStatus(TrustedAdvisorCheckRefreshStatus&& value) { SetStatus(value); return *this;}
+    inline RefreshTrustedAdvisorCheckResult& WithStatus(TrustedAdvisorCheckRefreshStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     TrustedAdvisorCheckRefreshStatus m_status;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/email/model/TlsPolicy.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/email/model/ReceiptAction.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,7 +44,9 @@ namespace Model
    * address of the message, Amazon SES executes all of the receipt rule's actions on
    * the message.</p> <p>For information about setting up receipt rules, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/ReceiptRule">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API ReceiptRule
   {
@@ -76,7 +80,7 @@ namespace Model
      * (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li>
      * <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only
@@ -100,7 +104,7 @@ namespace Model
      * (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li>
      * <p>Contain less than 64 characters.</p> </li> </ul>
      */
-    inline ReceiptRule& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ReceiptRule& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only
@@ -150,7 +154,7 @@ namespace Model
      * parameter is set to <code>Require</code>, Amazon SES will bounce emails that are
      * not received over TLS. The default is <code>Optional</code>.</p>
      */
-    inline void SetTlsPolicy(TlsPolicy&& value) { m_tlsPolicyHasBeenSet = true; m_tlsPolicy = value; }
+    inline void SetTlsPolicy(TlsPolicy&& value) { m_tlsPolicyHasBeenSet = true; m_tlsPolicy = std::move(value); }
 
     /**
      * <p>Specifies whether Amazon SES should require that incoming email is delivered
@@ -166,7 +170,7 @@ namespace Model
      * parameter is set to <code>Require</code>, Amazon SES will bounce emails that are
      * not received over TLS. The default is <code>Optional</code>.</p>
      */
-    inline ReceiptRule& WithTlsPolicy(TlsPolicy&& value) { SetTlsPolicy(value); return *this;}
+    inline ReceiptRule& WithTlsPolicy(TlsPolicy&& value) { SetTlsPolicy(std::move(value)); return *this;}
 
     /**
      * <p>The recipient domains and email addresses to which the receipt rule applies.
@@ -187,7 +191,7 @@ namespace Model
      * If this field is not specified, this rule will match all recipients under all
      * verified domains.</p>
      */
-    inline void SetRecipients(Aws::Vector<Aws::String>&& value) { m_recipientsHasBeenSet = true; m_recipients = value; }
+    inline void SetRecipients(Aws::Vector<Aws::String>&& value) { m_recipientsHasBeenSet = true; m_recipients = std::move(value); }
 
     /**
      * <p>The recipient domains and email addresses to which the receipt rule applies.
@@ -201,7 +205,7 @@ namespace Model
      * If this field is not specified, this rule will match all recipients under all
      * verified domains.</p>
      */
-    inline ReceiptRule& WithRecipients(Aws::Vector<Aws::String>&& value) { SetRecipients(value); return *this;}
+    inline ReceiptRule& WithRecipients(Aws::Vector<Aws::String>&& value) { SetRecipients(std::move(value)); return *this;}
 
     /**
      * <p>The recipient domains and email addresses to which the receipt rule applies.
@@ -215,7 +219,7 @@ namespace Model
      * If this field is not specified, this rule will match all recipients under all
      * verified domains.</p>
      */
-    inline ReceiptRule& AddRecipients(Aws::String&& value) { m_recipientsHasBeenSet = true; m_recipients.push_back(value); return *this; }
+    inline ReceiptRule& AddRecipients(Aws::String&& value) { m_recipientsHasBeenSet = true; m_recipients.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The recipient domains and email addresses to which the receipt rule applies.
@@ -240,7 +244,7 @@ namespace Model
      * <p>An ordered list of actions to perform on messages that match at least one of
      * the recipient email addresses or domains specified in the receipt rule.</p>
      */
-    inline void SetActions(Aws::Vector<ReceiptAction>&& value) { m_actionsHasBeenSet = true; m_actions = value; }
+    inline void SetActions(Aws::Vector<ReceiptAction>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
 
     /**
      * <p>An ordered list of actions to perform on messages that match at least one of
@@ -252,7 +256,7 @@ namespace Model
      * <p>An ordered list of actions to perform on messages that match at least one of
      * the recipient email addresses or domains specified in the receipt rule.</p>
      */
-    inline ReceiptRule& WithActions(Aws::Vector<ReceiptAction>&& value) { SetActions(value); return *this;}
+    inline ReceiptRule& WithActions(Aws::Vector<ReceiptAction>&& value) { SetActions(std::move(value)); return *this;}
 
     /**
      * <p>An ordered list of actions to perform on messages that match at least one of
@@ -264,7 +268,7 @@ namespace Model
      * <p>An ordered list of actions to perform on messages that match at least one of
      * the recipient email addresses or domains specified in the receipt rule.</p>
      */
-    inline ReceiptRule& AddActions(ReceiptAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
+    inline ReceiptRule& AddActions(ReceiptAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If <code>true</code>, then messages to which this receipt rule applies are

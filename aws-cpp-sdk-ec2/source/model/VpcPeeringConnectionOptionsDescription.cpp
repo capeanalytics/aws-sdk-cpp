@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/VpcPeeringConnectionOptionsDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,7 +34,9 @@ VpcPeeringConnectionOptionsDescription::VpcPeeringConnectionOptionsDescription()
     m_allowEgressFromLocalClassicLinkToRemoteVpc(false),
     m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet(false),
     m_allowEgressFromLocalVpcToRemoteClassicLink(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false)
+    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false),
+    m_allowDnsResolutionFromRemoteVpc(false),
+    m_allowDnsResolutionFromRemoteVpcHasBeenSet(false)
 {
 }
 
@@ -41,7 +44,9 @@ VpcPeeringConnectionOptionsDescription::VpcPeeringConnectionOptionsDescription(c
     m_allowEgressFromLocalClassicLinkToRemoteVpc(false),
     m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet(false),
     m_allowEgressFromLocalVpcToRemoteClassicLink(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false)
+    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false),
+    m_allowDnsResolutionFromRemoteVpc(false),
+    m_allowDnsResolutionFromRemoteVpcHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -64,6 +69,12 @@ VpcPeeringConnectionOptionsDescription& VpcPeeringConnectionOptionsDescription::
       m_allowEgressFromLocalVpcToRemoteClassicLink = StringUtils::ConvertToBool(StringUtils::Trim(allowEgressFromLocalVpcToRemoteClassicLinkNode.GetText().c_str()).c_str());
       m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet = true;
     }
+    XmlNode allowDnsResolutionFromRemoteVpcNode = resultNode.FirstChild("allowDnsResolutionFromRemoteVpc");
+    if(!allowDnsResolutionFromRemoteVpcNode.IsNull())
+    {
+      m_allowDnsResolutionFromRemoteVpc = StringUtils::ConvertToBool(StringUtils::Trim(allowDnsResolutionFromRemoteVpcNode.GetText().c_str()).c_str());
+      m_allowDnsResolutionFromRemoteVpcHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -73,12 +84,17 @@ void VpcPeeringConnectionOptionsDescription::OutputToStream(Aws::OStream& oStrea
 {
   if(m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllowEgressFromLocalClassicLinkToRemoteVpc=" << m_allowEgressFromLocalClassicLinkToRemoteVpc << "&";
+      oStream << location << index << locationValue << ".AllowEgressFromLocalClassicLinkToRemoteVpc=" << std::boolalpha << m_allowEgressFromLocalClassicLinkToRemoteVpc << "&";
   }
 
   if(m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllowEgressFromLocalVpcToRemoteClassicLink=" << m_allowEgressFromLocalVpcToRemoteClassicLink << "&";
+      oStream << location << index << locationValue << ".AllowEgressFromLocalVpcToRemoteClassicLink=" << std::boolalpha << m_allowEgressFromLocalVpcToRemoteClassicLink << "&";
+  }
+
+  if(m_allowDnsResolutionFromRemoteVpcHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AllowDnsResolutionFromRemoteVpc=" << std::boolalpha << m_allowDnsResolutionFromRemoteVpc << "&";
   }
 
 }
@@ -87,11 +103,15 @@ void VpcPeeringConnectionOptionsDescription::OutputToStream(Aws::OStream& oStrea
 {
   if(m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet)
   {
-      oStream << location << ".AllowEgressFromLocalClassicLinkToRemoteVpc=" << m_allowEgressFromLocalClassicLinkToRemoteVpc << "&";
+      oStream << location << ".AllowEgressFromLocalClassicLinkToRemoteVpc=" << std::boolalpha << m_allowEgressFromLocalClassicLinkToRemoteVpc << "&";
   }
   if(m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet)
   {
-      oStream << location << ".AllowEgressFromLocalVpcToRemoteClassicLink=" << m_allowEgressFromLocalVpcToRemoteClassicLink << "&";
+      oStream << location << ".AllowEgressFromLocalVpcToRemoteClassicLink=" << std::boolalpha << m_allowEgressFromLocalVpcToRemoteClassicLink << "&";
+  }
+  if(m_allowDnsResolutionFromRemoteVpcHasBeenSet)
+  {
+      oStream << location << ".AllowDnsResolutionFromRemoteVpc=" << std::boolalpha << m_allowDnsResolutionFromRemoteVpc << "&";
   }
 }
 

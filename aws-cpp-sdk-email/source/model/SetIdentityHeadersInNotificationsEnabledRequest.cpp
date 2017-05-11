@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/email/model/SetIdentityHeadersInNotificationsEnabledRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -21,6 +22,7 @@ using namespace Aws::Utils;
 
 SetIdentityHeadersInNotificationsEnabledRequest::SetIdentityHeadersInNotificationsEnabledRequest() : 
     m_identityHasBeenSet(false),
+    m_notificationType(NotificationType::NOT_SET),
     m_notificationTypeHasBeenSet(false),
     m_enabled(false),
     m_enabledHasBeenSet(false)
@@ -43,10 +45,15 @@ Aws::String SetIdentityHeadersInNotificationsEnabledRequest::SerializePayload() 
 
   if(m_enabledHasBeenSet)
   {
-    ss << "Enabled=" << m_enabled << "&";
+    ss << "Enabled=" << std::boolalpha << m_enabled << "&";
   }
 
   ss << "Version=2010-12-01";
   return ss.str();
 }
 
+
+void  SetIdentityHeadersInNotificationsEnabledRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

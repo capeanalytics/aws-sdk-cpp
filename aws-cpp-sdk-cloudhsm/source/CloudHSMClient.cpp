@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -129,7 +130,10 @@ AddTagsToResourceOutcome CloudHSMClient::AddTagsToResource(const AddTagsToResour
 
 AddTagsToResourceOutcomeCallable CloudHSMClient::AddTagsToResourceCallable(const AddTagsToResourceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AddTagsToResource(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< AddTagsToResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AddTagsToResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::AddTagsToResourceAsync(const AddTagsToResourceRequest& request, const AddTagsToResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -160,7 +164,10 @@ CreateHapgOutcome CloudHSMClient::CreateHapg(const CreateHapgRequest& request) c
 
 CreateHapgOutcomeCallable CloudHSMClient::CreateHapgCallable(const CreateHapgRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateHapg(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateHapgOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateHapg(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::CreateHapgAsync(const CreateHapgRequest& request, const CreateHapgResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -191,7 +198,10 @@ CreateHsmOutcome CloudHSMClient::CreateHsm(const CreateHsmRequest& request) cons
 
 CreateHsmOutcomeCallable CloudHSMClient::CreateHsmCallable(const CreateHsmRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateHsm(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateHsmOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateHsm(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::CreateHsmAsync(const CreateHsmRequest& request, const CreateHsmResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -222,7 +232,10 @@ CreateLunaClientOutcome CloudHSMClient::CreateLunaClient(const CreateLunaClientR
 
 CreateLunaClientOutcomeCallable CloudHSMClient::CreateLunaClientCallable(const CreateLunaClientRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateLunaClient(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateLunaClientOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateLunaClient(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::CreateLunaClientAsync(const CreateLunaClientRequest& request, const CreateLunaClientResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -253,7 +266,10 @@ DeleteHapgOutcome CloudHSMClient::DeleteHapg(const DeleteHapgRequest& request) c
 
 DeleteHapgOutcomeCallable CloudHSMClient::DeleteHapgCallable(const DeleteHapgRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteHapg(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteHapgOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteHapg(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DeleteHapgAsync(const DeleteHapgRequest& request, const DeleteHapgResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -284,7 +300,10 @@ DeleteHsmOutcome CloudHSMClient::DeleteHsm(const DeleteHsmRequest& request) cons
 
 DeleteHsmOutcomeCallable CloudHSMClient::DeleteHsmCallable(const DeleteHsmRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteHsm(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteHsmOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteHsm(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DeleteHsmAsync(const DeleteHsmRequest& request, const DeleteHsmResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -315,7 +334,10 @@ DeleteLunaClientOutcome CloudHSMClient::DeleteLunaClient(const DeleteLunaClientR
 
 DeleteLunaClientOutcomeCallable CloudHSMClient::DeleteLunaClientCallable(const DeleteLunaClientRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteLunaClient(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteLunaClientOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteLunaClient(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DeleteLunaClientAsync(const DeleteLunaClientRequest& request, const DeleteLunaClientResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -346,7 +368,10 @@ DescribeHapgOutcome CloudHSMClient::DescribeHapg(const DescribeHapgRequest& requ
 
 DescribeHapgOutcomeCallable CloudHSMClient::DescribeHapgCallable(const DescribeHapgRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeHapg(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeHapgOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeHapg(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DescribeHapgAsync(const DescribeHapgRequest& request, const DescribeHapgResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -377,7 +402,10 @@ DescribeHsmOutcome CloudHSMClient::DescribeHsm(const DescribeHsmRequest& request
 
 DescribeHsmOutcomeCallable CloudHSMClient::DescribeHsmCallable(const DescribeHsmRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeHsm(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeHsmOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeHsm(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DescribeHsmAsync(const DescribeHsmRequest& request, const DescribeHsmResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -408,7 +436,10 @@ DescribeLunaClientOutcome CloudHSMClient::DescribeLunaClient(const DescribeLunaC
 
 DescribeLunaClientOutcomeCallable CloudHSMClient::DescribeLunaClientCallable(const DescribeLunaClientRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeLunaClient(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeLunaClientOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeLunaClient(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::DescribeLunaClientAsync(const DescribeLunaClientRequest& request, const DescribeLunaClientResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -439,7 +470,10 @@ GetConfigOutcome CloudHSMClient::GetConfig(const GetConfigRequest& request) cons
 
 GetConfigOutcomeCallable CloudHSMClient::GetConfigCallable(const GetConfigRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetConfig(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetConfigOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetConfig(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::GetConfigAsync(const GetConfigRequest& request, const GetConfigResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -470,7 +504,10 @@ ListAvailableZonesOutcome CloudHSMClient::ListAvailableZones(const ListAvailable
 
 ListAvailableZonesOutcomeCallable CloudHSMClient::ListAvailableZonesCallable(const ListAvailableZonesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListAvailableZones(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListAvailableZonesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListAvailableZones(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ListAvailableZonesAsync(const ListAvailableZonesRequest& request, const ListAvailableZonesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -501,7 +538,10 @@ ListHapgsOutcome CloudHSMClient::ListHapgs(const ListHapgsRequest& request) cons
 
 ListHapgsOutcomeCallable CloudHSMClient::ListHapgsCallable(const ListHapgsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListHapgs(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListHapgsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListHapgs(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ListHapgsAsync(const ListHapgsRequest& request, const ListHapgsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -532,7 +572,10 @@ ListHsmsOutcome CloudHSMClient::ListHsms(const ListHsmsRequest& request) const
 
 ListHsmsOutcomeCallable CloudHSMClient::ListHsmsCallable(const ListHsmsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListHsms(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListHsmsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListHsms(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ListHsmsAsync(const ListHsmsRequest& request, const ListHsmsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -563,7 +606,10 @@ ListLunaClientsOutcome CloudHSMClient::ListLunaClients(const ListLunaClientsRequ
 
 ListLunaClientsOutcomeCallable CloudHSMClient::ListLunaClientsCallable(const ListLunaClientsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListLunaClients(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListLunaClientsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListLunaClients(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ListLunaClientsAsync(const ListLunaClientsRequest& request, const ListLunaClientsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -594,7 +640,10 @@ ListTagsForResourceOutcome CloudHSMClient::ListTagsForResource(const ListTagsFor
 
 ListTagsForResourceOutcomeCallable CloudHSMClient::ListTagsForResourceCallable(const ListTagsForResourceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTagsForResource(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsForResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTagsForResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ListTagsForResourceAsync(const ListTagsForResourceRequest& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -625,7 +674,10 @@ ModifyHapgOutcome CloudHSMClient::ModifyHapg(const ModifyHapgRequest& request) c
 
 ModifyHapgOutcomeCallable CloudHSMClient::ModifyHapgCallable(const ModifyHapgRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ModifyHapg(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ModifyHapgOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ModifyHapg(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ModifyHapgAsync(const ModifyHapgRequest& request, const ModifyHapgResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -656,7 +708,10 @@ ModifyHsmOutcome CloudHSMClient::ModifyHsm(const ModifyHsmRequest& request) cons
 
 ModifyHsmOutcomeCallable CloudHSMClient::ModifyHsmCallable(const ModifyHsmRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ModifyHsm(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ModifyHsmOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ModifyHsm(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ModifyHsmAsync(const ModifyHsmRequest& request, const ModifyHsmResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -687,7 +742,10 @@ ModifyLunaClientOutcome CloudHSMClient::ModifyLunaClient(const ModifyLunaClientR
 
 ModifyLunaClientOutcomeCallable CloudHSMClient::ModifyLunaClientCallable(const ModifyLunaClientRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ModifyLunaClient(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ModifyLunaClientOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ModifyLunaClient(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::ModifyLunaClientAsync(const ModifyLunaClientRequest& request, const ModifyLunaClientResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -718,7 +776,10 @@ RemoveTagsFromResourceOutcome CloudHSMClient::RemoveTagsFromResource(const Remov
 
 RemoveTagsFromResourceOutcomeCallable CloudHSMClient::RemoveTagsFromResourceCallable(const RemoveTagsFromResourceRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RemoveTagsFromResource(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RemoveTagsFromResourceOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RemoveTagsFromResource(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void CloudHSMClient::RemoveTagsFromResourceAsync(const RemoveTagsFromResourceRequest& request, const RemoveTagsFromResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

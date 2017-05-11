@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -21,6 +22,7 @@
 #include <aws/kinesisanalytics/model/SourceSchema.h>
 #include <aws/kinesisanalytics/model/InputParallelism.h>
 #include <aws/kinesisanalytics/model/InputStartingPositionConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
   /**
    * <p>Describes the application input configuration. For more information, see <a
    * href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html">Configuring
-   * Application Input</a>. </p>
+   * Application Input</a>. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/InputDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API InputDescription
   {
@@ -68,7 +72,7 @@ namespace Model
      * Kinesis Analytics assigns to each input configuration you add to your
      * application. </p>
      */
-    inline void SetInputId(Aws::String&& value) { m_inputIdHasBeenSet = true; m_inputId = value; }
+    inline void SetInputId(Aws::String&& value) { m_inputIdHasBeenSet = true; m_inputId = std::move(value); }
 
     /**
      * <p>Input ID associated with the application input. This is the ID that Amazon
@@ -89,7 +93,7 @@ namespace Model
      * Kinesis Analytics assigns to each input configuration you add to your
      * application. </p>
      */
-    inline InputDescription& WithInputId(Aws::String&& value) { SetInputId(value); return *this;}
+    inline InputDescription& WithInputId(Aws::String&& value) { SetInputId(std::move(value)); return *this;}
 
     /**
      * <p>Input ID associated with the application input. This is the ID that Amazon
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>In-application name prefix.</p>
      */
-    inline void SetNamePrefix(Aws::String&& value) { m_namePrefixHasBeenSet = true; m_namePrefix = value; }
+    inline void SetNamePrefix(Aws::String&& value) { m_namePrefixHasBeenSet = true; m_namePrefix = std::move(value); }
 
     /**
      * <p>In-application name prefix.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>In-application name prefix.</p>
      */
-    inline InputDescription& WithNamePrefix(Aws::String&& value) { SetNamePrefix(value); return *this;}
+    inline InputDescription& WithNamePrefix(Aws::String&& value) { SetNamePrefix(std::move(value)); return *this;}
 
     /**
      * <p>In-application name prefix.</p>
@@ -149,7 +153,7 @@ namespace Model
      * <p>Returns the in-application stream names that are mapped to the stream
      * source.</p>
      */
-    inline void SetInAppStreamNames(Aws::Vector<Aws::String>&& value) { m_inAppStreamNamesHasBeenSet = true; m_inAppStreamNames = value; }
+    inline void SetInAppStreamNames(Aws::Vector<Aws::String>&& value) { m_inAppStreamNamesHasBeenSet = true; m_inAppStreamNames = std::move(value); }
 
     /**
      * <p>Returns the in-application stream names that are mapped to the stream
@@ -161,7 +165,7 @@ namespace Model
      * <p>Returns the in-application stream names that are mapped to the stream
      * source.</p>
      */
-    inline InputDescription& WithInAppStreamNames(Aws::Vector<Aws::String>&& value) { SetInAppStreamNames(value); return *this;}
+    inline InputDescription& WithInAppStreamNames(Aws::Vector<Aws::String>&& value) { SetInAppStreamNames(std::move(value)); return *this;}
 
     /**
      * <p>Returns the in-application stream names that are mapped to the stream
@@ -173,7 +177,7 @@ namespace Model
      * <p>Returns the in-application stream names that are mapped to the stream
      * source.</p>
      */
-    inline InputDescription& AddInAppStreamNames(Aws::String&& value) { m_inAppStreamNamesHasBeenSet = true; m_inAppStreamNames.push_back(value); return *this; }
+    inline InputDescription& AddInAppStreamNames(Aws::String&& value) { m_inAppStreamNamesHasBeenSet = true; m_inAppStreamNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Returns the in-application stream names that are mapped to the stream
@@ -200,7 +204,7 @@ namespace Model
      * Amazon Kinesis stream's ARN and an IAM role that enables Amazon Kinesis
      * Analytics to access the stream on your behalf.</p>
      */
-    inline void SetKinesisStreamsInputDescription(KinesisStreamsInputDescription&& value) { m_kinesisStreamsInputDescriptionHasBeenSet = true; m_kinesisStreamsInputDescription = value; }
+    inline void SetKinesisStreamsInputDescription(KinesisStreamsInputDescription&& value) { m_kinesisStreamsInputDescriptionHasBeenSet = true; m_kinesisStreamsInputDescription = std::move(value); }
 
     /**
      * <p>If an Amazon Kinesis stream is configured as streaming source, provides
@@ -214,7 +218,7 @@ namespace Model
      * Amazon Kinesis stream's ARN and an IAM role that enables Amazon Kinesis
      * Analytics to access the stream on your behalf.</p>
      */
-    inline InputDescription& WithKinesisStreamsInputDescription(KinesisStreamsInputDescription&& value) { SetKinesisStreamsInputDescription(value); return *this;}
+    inline InputDescription& WithKinesisStreamsInputDescription(KinesisStreamsInputDescription&& value) { SetKinesisStreamsInputDescription(std::move(value)); return *this;}
 
     /**
      * <p>If an Amazon Kinesis Firehose delivery stream is configured as a streaming
@@ -238,7 +242,7 @@ namespace Model
      * an IAM role that enables Amazon Kinesis Analytics to access the stream on your
      * behalf.</p>
      */
-    inline void SetKinesisFirehoseInputDescription(KinesisFirehoseInputDescription&& value) { m_kinesisFirehoseInputDescriptionHasBeenSet = true; m_kinesisFirehoseInputDescription = value; }
+    inline void SetKinesisFirehoseInputDescription(KinesisFirehoseInputDescription&& value) { m_kinesisFirehoseInputDescriptionHasBeenSet = true; m_kinesisFirehoseInputDescription = std::move(value); }
 
     /**
      * <p>If an Amazon Kinesis Firehose delivery stream is configured as a streaming
@@ -254,7 +258,7 @@ namespace Model
      * an IAM role that enables Amazon Kinesis Analytics to access the stream on your
      * behalf.</p>
      */
-    inline InputDescription& WithKinesisFirehoseInputDescription(KinesisFirehoseInputDescription&& value) { SetKinesisFirehoseInputDescription(value); return *this;}
+    inline InputDescription& WithKinesisFirehoseInputDescription(KinesisFirehoseInputDescription&& value) { SetKinesisFirehoseInputDescription(std::move(value)); return *this;}
 
     
     inline const SourceSchema& GetInputSchema() const{ return m_inputSchema; }
@@ -263,13 +267,13 @@ namespace Model
     inline void SetInputSchema(const SourceSchema& value) { m_inputSchemaHasBeenSet = true; m_inputSchema = value; }
 
     
-    inline void SetInputSchema(SourceSchema&& value) { m_inputSchemaHasBeenSet = true; m_inputSchema = value; }
+    inline void SetInputSchema(SourceSchema&& value) { m_inputSchemaHasBeenSet = true; m_inputSchema = std::move(value); }
 
     
     inline InputDescription& WithInputSchema(const SourceSchema& value) { SetInputSchema(value); return *this;}
 
     
-    inline InputDescription& WithInputSchema(SourceSchema&& value) { SetInputSchema(value); return *this;}
+    inline InputDescription& WithInputSchema(SourceSchema&& value) { SetInputSchema(std::move(value)); return *this;}
 
     /**
      * <p>Describes the configured parallelism (number of in-application streams mapped
@@ -287,7 +291,7 @@ namespace Model
      * <p>Describes the configured parallelism (number of in-application streams mapped
      * to the streaming source).</p>
      */
-    inline void SetInputParallelism(InputParallelism&& value) { m_inputParallelismHasBeenSet = true; m_inputParallelism = value; }
+    inline void SetInputParallelism(InputParallelism&& value) { m_inputParallelismHasBeenSet = true; m_inputParallelism = std::move(value); }
 
     /**
      * <p>Describes the configured parallelism (number of in-application streams mapped
@@ -299,7 +303,7 @@ namespace Model
      * <p>Describes the configured parallelism (number of in-application streams mapped
      * to the streaming source).</p>
      */
-    inline InputDescription& WithInputParallelism(InputParallelism&& value) { SetInputParallelism(value); return *this;}
+    inline InputDescription& WithInputParallelism(InputParallelism&& value) { SetInputParallelism(std::move(value)); return *this;}
 
     /**
      * <p>Point at which the application is configured to read from the input
@@ -317,7 +321,7 @@ namespace Model
      * <p>Point at which the application is configured to read from the input
      * stream.</p>
      */
-    inline void SetInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { m_inputStartingPositionConfigurationHasBeenSet = true; m_inputStartingPositionConfiguration = value; }
+    inline void SetInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { m_inputStartingPositionConfigurationHasBeenSet = true; m_inputStartingPositionConfiguration = std::move(value); }
 
     /**
      * <p>Point at which the application is configured to read from the input
@@ -329,7 +333,7 @@ namespace Model
      * <p>Point at which the application is configured to read from the input
      * stream.</p>
      */
-    inline InputDescription& WithInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { SetInputStartingPositionConfiguration(value); return *this;}
+    inline InputDescription& WithInputStartingPositionConfiguration(InputStartingPositionConfiguration&& value) { SetInputStartingPositionConfiguration(std::move(value)); return *this;}
 
   private:
     Aws::String m_inputId;

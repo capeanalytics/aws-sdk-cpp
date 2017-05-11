@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/RunTaskRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -27,7 +28,10 @@ RunTaskRequest::RunTaskRequest() :
     m_overridesHasBeenSet(false),
     m_count(0),
     m_countHasBeenSet(false),
-    m_startedByHasBeenSet(false)
+    m_startedByHasBeenSet(false),
+    m_groupHasBeenSet(false),
+    m_placementConstraintsHasBeenSet(false),
+    m_placementStrategyHasBeenSet(false)
 {
 }
 
@@ -65,6 +69,34 @@ Aws::String RunTaskRequest::SerializePayload() const
 
   }
 
+  if(m_groupHasBeenSet)
+  {
+   payload.WithString("group", m_group);
+
+  }
+
+  if(m_placementConstraintsHasBeenSet)
+  {
+   Array<JsonValue> placementConstraintsJsonList(m_placementConstraints.size());
+   for(unsigned placementConstraintsIndex = 0; placementConstraintsIndex < placementConstraintsJsonList.GetLength(); ++placementConstraintsIndex)
+   {
+     placementConstraintsJsonList[placementConstraintsIndex].AsObject(m_placementConstraints[placementConstraintsIndex].Jsonize());
+   }
+   payload.WithArray("placementConstraints", std::move(placementConstraintsJsonList));
+
+  }
+
+  if(m_placementStrategyHasBeenSet)
+  {
+   Array<JsonValue> placementStrategyJsonList(m_placementStrategy.size());
+   for(unsigned placementStrategyIndex = 0; placementStrategyIndex < placementStrategyJsonList.GetLength(); ++placementStrategyIndex)
+   {
+     placementStrategyJsonList[placementStrategyIndex].AsObject(m_placementStrategy[placementStrategyIndex].Jsonize());
+   }
+   payload.WithArray("placementStrategy", std::move(placementStrategyJsonList));
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -75,6 +107,7 @@ Aws::Http::HeaderValueCollection RunTaskRequest::GetRequestSpecificHeaders() con
   return headers;
 
 }
+
 
 
 

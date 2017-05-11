@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a virtual tape object.</p>
+   * <p>Describes a virtual tape object.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/Tape">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API Tape
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
      */
-    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = value; }
+    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
      */
-    inline Tape& WithTapeARN(Aws::String&& value) { SetTapeARN(value); return *this;}
+    inline Tape& WithTapeARN(Aws::String&& value) { SetTapeARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The barcode that identifies a specific virtual tape.</p>
      */
-    inline void SetTapeBarcode(Aws::String&& value) { m_tapeBarcodeHasBeenSet = true; m_tapeBarcode = value; }
+    inline void SetTapeBarcode(Aws::String&& value) { m_tapeBarcodeHasBeenSet = true; m_tapeBarcode = std::move(value); }
 
     /**
      * <p>The barcode that identifies a specific virtual tape.</p>
@@ -104,12 +109,27 @@ namespace Model
     /**
      * <p>The barcode that identifies a specific virtual tape.</p>
      */
-    inline Tape& WithTapeBarcode(Aws::String&& value) { SetTapeBarcode(value); return *this;}
+    inline Tape& WithTapeBarcode(Aws::String&& value) { SetTapeBarcode(std::move(value)); return *this;}
 
     /**
      * <p>The barcode that identifies a specific virtual tape.</p>
      */
     inline Tape& WithTapeBarcode(const char* value) { SetTapeBarcode(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetTapeCreatedDate() const{ return m_tapeCreatedDate; }
+
+    
+    inline void SetTapeCreatedDate(const Aws::Utils::DateTime& value) { m_tapeCreatedDateHasBeenSet = true; m_tapeCreatedDate = value; }
+
+    
+    inline void SetTapeCreatedDate(Aws::Utils::DateTime&& value) { m_tapeCreatedDateHasBeenSet = true; m_tapeCreatedDate = std::move(value); }
+
+    
+    inline Tape& WithTapeCreatedDate(const Aws::Utils::DateTime& value) { SetTapeCreatedDate(value); return *this;}
+
+    
+    inline Tape& WithTapeCreatedDate(Aws::Utils::DateTime&& value) { SetTapeCreatedDate(std::move(value)); return *this;}
 
     /**
      * <p>The size, in bytes, of the virtual tape.</p>
@@ -139,7 +159,7 @@ namespace Model
     /**
      * <p>The current state of the virtual tape.</p>
      */
-    inline void SetTapeStatus(Aws::String&& value) { m_tapeStatusHasBeenSet = true; m_tapeStatus = value; }
+    inline void SetTapeStatus(Aws::String&& value) { m_tapeStatusHasBeenSet = true; m_tapeStatus = std::move(value); }
 
     /**
      * <p>The current state of the virtual tape.</p>
@@ -154,7 +174,7 @@ namespace Model
     /**
      * <p>The current state of the virtual tape.</p>
      */
-    inline Tape& WithTapeStatus(Aws::String&& value) { SetTapeStatus(value); return *this;}
+    inline Tape& WithTapeStatus(Aws::String&& value) { SetTapeStatus(std::move(value)); return *this;}
 
     /**
      * <p>The current state of the virtual tape.</p>
@@ -177,7 +197,7 @@ namespace Model
      * <p>The virtual tape library (VTL) device that the virtual tape is associated
      * with.</p>
      */
-    inline void SetVTLDevice(Aws::String&& value) { m_vTLDeviceHasBeenSet = true; m_vTLDevice = value; }
+    inline void SetVTLDevice(Aws::String&& value) { m_vTLDeviceHasBeenSet = true; m_vTLDevice = std::move(value); }
 
     /**
      * <p>The virtual tape library (VTL) device that the virtual tape is associated
@@ -195,7 +215,7 @@ namespace Model
      * <p>The virtual tape library (VTL) device that the virtual tape is associated
      * with.</p>
      */
-    inline Tape& WithVTLDevice(Aws::String&& value) { SetVTLDevice(value); return *this;}
+    inline Tape& WithVTLDevice(Aws::String&& value) { SetVTLDevice(std::move(value)); return *this;}
 
     /**
      * <p>The virtual tape library (VTL) device that the virtual tape is associated
@@ -229,6 +249,8 @@ namespace Model
     bool m_tapeARNHasBeenSet;
     Aws::String m_tapeBarcode;
     bool m_tapeBarcodeHasBeenSet;
+    Aws::Utils::DateTime m_tapeCreatedDate;
+    bool m_tapeCreatedDateHasBeenSet;
     long long m_tapeSizeInBytes;
     bool m_tapeSizeInBytesHasBeenSet;
     Aws::String m_tapeStatus;

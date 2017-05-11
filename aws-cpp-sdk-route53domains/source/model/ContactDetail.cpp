@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/route53domains/model/ContactDetail.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,12 +31,14 @@ namespace Model
 ContactDetail::ContactDetail() : 
     m_firstNameHasBeenSet(false),
     m_lastNameHasBeenSet(false),
+    m_contactType(ContactType::NOT_SET),
     m_contactTypeHasBeenSet(false),
     m_organizationNameHasBeenSet(false),
     m_addressLine1HasBeenSet(false),
     m_addressLine2HasBeenSet(false),
     m_cityHasBeenSet(false),
     m_stateHasBeenSet(false),
+    m_countryCode(CountryCode::NOT_SET),
     m_countryCodeHasBeenSet(false),
     m_zipCodeHasBeenSet(false),
     m_phoneNumberHasBeenSet(false),
@@ -48,12 +51,14 @@ ContactDetail::ContactDetail() :
 ContactDetail::ContactDetail(const JsonValue& jsonValue) : 
     m_firstNameHasBeenSet(false),
     m_lastNameHasBeenSet(false),
+    m_contactType(ContactType::NOT_SET),
     m_contactTypeHasBeenSet(false),
     m_organizationNameHasBeenSet(false),
     m_addressLine1HasBeenSet(false),
     m_addressLine2HasBeenSet(false),
     m_cityHasBeenSet(false),
     m_stateHasBeenSet(false),
+    m_countryCode(CountryCode::NOT_SET),
     m_countryCodeHasBeenSet(false),
     m_zipCodeHasBeenSet(false),
     m_phoneNumberHasBeenSet(false),

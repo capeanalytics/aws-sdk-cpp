@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * provide connection information in system properties that can be used to connect
    * to another environment in the same group. See <a
    * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment
-   * Manifest (env.yaml)</a> for details.</p>
+   * Manifest (env.yaml)</a> for details.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/EnvironmentLink">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API EnvironmentLink
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the link.</p>
      */
-    inline void SetLinkName(Aws::String&& value) { m_linkNameHasBeenSet = true; m_linkName = value; }
+    inline void SetLinkName(Aws::String&& value) { m_linkNameHasBeenSet = true; m_linkName = std::move(value); }
 
     /**
      * <p>The name of the link.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The name of the link.</p>
      */
-    inline EnvironmentLink& WithLinkName(Aws::String&& value) { SetLinkName(value); return *this;}
+    inline EnvironmentLink& WithLinkName(Aws::String&& value) { SetLinkName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the link.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The name of the linked environment (the dependency).</p>
      */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
 
     /**
      * <p>The name of the linked environment (the dependency).</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The name of the linked environment (the dependency).</p>
      */
-    inline EnvironmentLink& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(value); return *this;}
+    inline EnvironmentLink& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the linked environment (the dependency).</p>

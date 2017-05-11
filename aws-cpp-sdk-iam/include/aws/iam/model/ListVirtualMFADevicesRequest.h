@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/iam/model/AssignmentStatusType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace Model
     ListVirtualMFADevicesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices
      * to list. If you do not specify an <code>AssignmentStatus</code>, the action
@@ -55,7 +62,7 @@ namespace Model
      * defaults to <code>Any</code> which lists both assigned and unassigned virtual
      * MFA devices.</p>
      */
-    inline void SetAssignmentStatus(AssignmentStatusType&& value) { m_assignmentStatusHasBeenSet = true; m_assignmentStatus = value; }
+    inline void SetAssignmentStatus(AssignmentStatusType&& value) { m_assignmentStatusHasBeenSet = true; m_assignmentStatus = std::move(value); }
 
     /**
      * <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices
@@ -71,7 +78,7 @@ namespace Model
      * defaults to <code>Any</code> which lists both assigned and unassigned virtual
      * MFA devices.</p>
      */
-    inline ListVirtualMFADevicesRequest& WithAssignmentStatus(AssignmentStatusType&& value) { SetAssignmentStatus(value); return *this;}
+    inline ListVirtualMFADevicesRequest& WithAssignmentStatus(AssignmentStatusType&& value) { SetAssignmentStatus(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -95,7 +102,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -119,7 +126,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline ListVirtualMFADevicesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListVirtualMFADevicesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -130,11 +137,11 @@ namespace Model
     inline ListVirtualMFADevicesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -142,11 +149,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -154,11 +161,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>

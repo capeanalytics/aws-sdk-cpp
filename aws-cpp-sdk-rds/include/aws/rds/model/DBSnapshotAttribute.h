@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * <p>Contains the name and values of a manual DB snapshot attribute</p> <p>Manual
    * DB snapshot attributes are used to authorize other AWS accounts to restore a
    * manual DB snapshot. For more information, see the
-   * <a>ModifyDBSnapshotAttribute</a> API.</p>
+   * <a>ModifyDBSnapshotAttribute</a> API.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBSnapshotAttribute">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DBSnapshotAttribute
   {
@@ -70,7 +74,7 @@ namespace Model
      * copy or restore the manual DB cluster snapshot. For more information, see the
      * <a>ModifyDBSnapshotAttribute</a> API action.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
@@ -94,7 +98,7 @@ namespace Model
      * copy or restore the manual DB cluster snapshot. For more information, see the
      * <a>ModifyDBSnapshotAttribute</a> API action.</p>
      */
-    inline DBSnapshotAttribute& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline DBSnapshotAttribute& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named
@@ -132,7 +136,7 @@ namespace Model
      * then the manual DB snapshot is public and available for any AWS account to copy
      * or restore.</p>
      */
-    inline void SetAttributeValues(Aws::Vector<Aws::String>&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = value; }
+    inline void SetAttributeValues(Aws::Vector<Aws::String>&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = std::move(value); }
 
     /**
      * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
@@ -152,7 +156,7 @@ namespace Model
      * then the manual DB snapshot is public and available for any AWS account to copy
      * or restore.</p>
      */
-    inline DBSnapshotAttribute& WithAttributeValues(Aws::Vector<Aws::String>&& value) { SetAttributeValues(value); return *this;}
+    inline DBSnapshotAttribute& WithAttributeValues(Aws::Vector<Aws::String>&& value) { SetAttributeValues(std::move(value)); return *this;}
 
     /**
      * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the
@@ -172,7 +176,7 @@ namespace Model
      * then the manual DB snapshot is public and available for any AWS account to copy
      * or restore.</p>
      */
-    inline DBSnapshotAttribute& AddAttributeValues(Aws::String&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(value); return *this; }
+    inline DBSnapshotAttribute& AddAttributeValues(Aws::String&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The value or values for the manual DB snapshot attribute.</p> <p>If the

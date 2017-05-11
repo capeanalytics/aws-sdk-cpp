@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticache/model/ParameterNameValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>ModifyCacheParameterGroup</i> action.</p>
+   * <p>Represents the input of a <code>ModifyCacheParameterGroup</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/ModifyCacheParameterGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API ModifyCacheParameterGroupRequest : public ElastiCacheRequest
   {
@@ -35,6 +40,11 @@ namespace Model
     ModifyCacheParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the cache parameter group to modify.</p>
      */
@@ -48,7 +58,7 @@ namespace Model
     /**
      * <p>The name of the cache parameter group to modify.</p>
      */
-    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = value; }
+    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache parameter group to modify.</p>
@@ -63,7 +73,7 @@ namespace Model
     /**
      * <p>The name of the cache parameter group to modify.</p>
      */
-    inline ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(value); return *this;}
+    inline ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache parameter group to modify.</p>
@@ -89,7 +99,7 @@ namespace Model
      * supply at least one parameter name and value; subsequent arguments are optional.
      * A maximum of 20 parameters may be modified per request.</p>
      */
-    inline void SetParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues = value; }
+    inline void SetParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues = std::move(value); }
 
     /**
      * <p>An array of parameter names and values for the parameter update. You must
@@ -103,7 +113,7 @@ namespace Model
      * supply at least one parameter name and value; subsequent arguments are optional.
      * A maximum of 20 parameters may be modified per request.</p>
      */
-    inline ModifyCacheParameterGroupRequest& WithParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { SetParameterNameValues(value); return *this;}
+    inline ModifyCacheParameterGroupRequest& WithParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { SetParameterNameValues(std::move(value)); return *this;}
 
     /**
      * <p>An array of parameter names and values for the parameter update. You must
@@ -117,7 +127,7 @@ namespace Model
      * supply at least one parameter name and value; subsequent arguments are optional.
      * A maximum of 20 parameters may be modified per request.</p>
      */
-    inline ModifyCacheParameterGroupRequest& AddParameterNameValues(ParameterNameValue&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues.push_back(value); return *this; }
+    inline ModifyCacheParameterGroupRequest& AddParameterNameValues(ParameterNameValue&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_cacheParameterGroupName;

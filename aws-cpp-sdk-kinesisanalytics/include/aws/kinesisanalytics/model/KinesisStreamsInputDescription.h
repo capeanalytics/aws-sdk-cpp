@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p> Describes the Amazon Kinesis stream that is configured as the streaming
-   * source in the application input configuration. </p>
+   * source in the application input configuration. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisStreamsInputDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API KinesisStreamsInputDescription
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
      */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
+    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
 
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
      */
-    inline KinesisStreamsInputDescription& WithResourceARN(Aws::String&& value) { SetResourceARN(value); return *this;}
+    inline KinesisStreamsInputDescription& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream.</p>
@@ -93,7 +97,7 @@ namespace Model
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
      * stream.</p>
      */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
@@ -111,7 +115,7 @@ namespace Model
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
      * stream.</p>
      */
-    inline KinesisStreamsInputDescription& WithRoleARN(Aws::String&& value) { SetRoleARN(value); return *this;}
+    inline KinesisStreamsInputDescription& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the

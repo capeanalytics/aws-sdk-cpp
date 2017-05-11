@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/DeviceFarmRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/devicefarm/model/CreateRemoteAccessSessionConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Creates and submits a request to start a remote access session.</p>
+   * <p>Creates and submits a request to start a remote access session.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CreateRemoteAccessSessionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API CreateRemoteAccessSessionRequest : public DeviceFarmRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Amazon Resource Name (ARN) of the project for which you want to create a
@@ -52,7 +58,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the project for which you want to create a
      * remote access session.</p>
      */
-    inline void SetProjectArn(Aws::String&& value) { m_projectArnHasBeenSet = true; m_projectArn = value; }
+    inline void SetProjectArn(Aws::String&& value) { m_projectArnHasBeenSet = true; m_projectArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the project for which you want to create a
@@ -70,7 +76,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the project for which you want to create a
      * remote access session.</p>
      */
-    inline CreateRemoteAccessSessionRequest& WithProjectArn(Aws::String&& value) { SetProjectArn(value); return *this;}
+    inline CreateRemoteAccessSessionRequest& WithProjectArn(Aws::String&& value) { SetProjectArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the project for which you want to create a
@@ -94,7 +100,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the device for which you want to create a
      * remote access session.</p>
      */
-    inline void SetDeviceArn(Aws::String&& value) { m_deviceArnHasBeenSet = true; m_deviceArn = value; }
+    inline void SetDeviceArn(Aws::String&& value) { m_deviceArnHasBeenSet = true; m_deviceArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the device for which you want to create a
@@ -112,7 +118,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the device for which you want to create a
      * remote access session.</p>
      */
-    inline CreateRemoteAccessSessionRequest& WithDeviceArn(Aws::String&& value) { SetDeviceArn(value); return *this;}
+    inline CreateRemoteAccessSessionRequest& WithDeviceArn(Aws::String&& value) { SetDeviceArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the device for which you want to create a
@@ -133,7 +139,7 @@ namespace Model
     /**
      * <p>The name of the remote access session that you wish to create.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the remote access session that you wish to create.</p>
@@ -148,7 +154,7 @@ namespace Model
     /**
      * <p>The name of the remote access session that you wish to create.</p>
      */
-    inline CreateRemoteAccessSessionRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreateRemoteAccessSessionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the remote access session that you wish to create.</p>
@@ -168,7 +174,7 @@ namespace Model
     /**
      * <p>The configuration information for the remote access session request.</p>
      */
-    inline void SetConfiguration(CreateRemoteAccessSessionConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = value; }
+    inline void SetConfiguration(CreateRemoteAccessSessionConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
 
     /**
      * <p>The configuration information for the remote access session request.</p>
@@ -178,7 +184,7 @@ namespace Model
     /**
      * <p>The configuration information for the remote access session request.</p>
      */
-    inline CreateRemoteAccessSessionRequest& WithConfiguration(CreateRemoteAccessSessionConfiguration&& value) { SetConfiguration(value); return *this;}
+    inline CreateRemoteAccessSessionRequest& WithConfiguration(CreateRemoteAccessSessionConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
 
   private:
     Aws::String m_projectArn;

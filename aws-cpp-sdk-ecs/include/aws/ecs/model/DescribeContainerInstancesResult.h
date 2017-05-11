@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ecs/model/ContainerInstance.h>
 #include <aws/ecs/model/Failure.h>
+#include <utility>
 
 namespace Aws
 {
@@ -54,7 +56,7 @@ namespace Model
     /**
      * <p>The list of container instances.</p>
      */
-    inline void SetContainerInstances(Aws::Vector<ContainerInstance>&& value) { m_containerInstances = value; }
+    inline void SetContainerInstances(Aws::Vector<ContainerInstance>&& value) { m_containerInstances = std::move(value); }
 
     /**
      * <p>The list of container instances.</p>
@@ -64,7 +66,7 @@ namespace Model
     /**
      * <p>The list of container instances.</p>
      */
-    inline DescribeContainerInstancesResult& WithContainerInstances(Aws::Vector<ContainerInstance>&& value) { SetContainerInstances(value); return *this;}
+    inline DescribeContainerInstancesResult& WithContainerInstances(Aws::Vector<ContainerInstance>&& value) { SetContainerInstances(std::move(value)); return *this;}
 
     /**
      * <p>The list of container instances.</p>
@@ -74,7 +76,7 @@ namespace Model
     /**
      * <p>The list of container instances.</p>
      */
-    inline DescribeContainerInstancesResult& AddContainerInstances(ContainerInstance&& value) { m_containerInstances.push_back(value); return *this; }
+    inline DescribeContainerInstancesResult& AddContainerInstances(ContainerInstance&& value) { m_containerInstances.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -89,7 +91,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline void SetFailures(Aws::Vector<Failure>&& value) { m_failures = value; }
+    inline void SetFailures(Aws::Vector<Failure>&& value) { m_failures = std::move(value); }
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -99,7 +101,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline DescribeContainerInstancesResult& WithFailures(Aws::Vector<Failure>&& value) { SetFailures(value); return *this;}
+    inline DescribeContainerInstancesResult& WithFailures(Aws::Vector<Failure>&& value) { SetFailures(std::move(value)); return *this;}
 
     /**
      * <p>Any failures associated with the call.</p>
@@ -109,7 +111,7 @@ namespace Model
     /**
      * <p>Any failures associated with the call.</p>
      */
-    inline DescribeContainerInstancesResult& AddFailures(Failure&& value) { m_failures.push_back(value); return *this; }
+    inline DescribeContainerInstancesResult& AddFailures(Failure&& value) { m_failures.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<ContainerInstance> m_containerInstances;

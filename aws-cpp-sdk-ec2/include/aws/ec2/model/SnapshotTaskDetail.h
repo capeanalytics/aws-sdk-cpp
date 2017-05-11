@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/UserBucketDetails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Details about the import snapshot task.</p>
+   * <p>Details about the import snapshot task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SnapshotTaskDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API SnapshotTaskDetail
   {
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The description of the snapshot.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the snapshot.</p>
@@ -88,7 +92,7 @@ namespace Model
     /**
      * <p>The description of the snapshot.</p>
      */
-    inline SnapshotTaskDetail& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline SnapshotTaskDetail& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the snapshot.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The format of the disk image from which the snapshot is created.</p>
      */
-    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = value; }
+    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
 
     /**
      * <p>The format of the disk image from which the snapshot is created.</p>
@@ -123,7 +127,7 @@ namespace Model
     /**
      * <p>The format of the disk image from which the snapshot is created.</p>
      */
-    inline SnapshotTaskDetail& WithFormat(Aws::String&& value) { SetFormat(value); return *this;}
+    inline SnapshotTaskDetail& WithFormat(Aws::String&& value) { SetFormat(std::move(value)); return *this;}
 
     /**
      * <p>The format of the disk image from which the snapshot is created.</p>
@@ -143,7 +147,7 @@ namespace Model
     /**
      * <p>The URL of the disk image from which the snapshot is created.</p>
      */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = value; }
+    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
 
     /**
      * <p>The URL of the disk image from which the snapshot is created.</p>
@@ -158,7 +162,7 @@ namespace Model
     /**
      * <p>The URL of the disk image from which the snapshot is created.</p>
      */
-    inline SnapshotTaskDetail& WithUrl(Aws::String&& value) { SetUrl(value); return *this;}
+    inline SnapshotTaskDetail& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
 
     /**
      * <p>The URL of the disk image from which the snapshot is created.</p>
@@ -178,7 +182,7 @@ namespace Model
     /**
      * <p>The S3 bucket for the disk image.</p>
      */
-    inline void SetUserBucket(UserBucketDetails&& value) { m_userBucketHasBeenSet = true; m_userBucket = value; }
+    inline void SetUserBucket(UserBucketDetails&& value) { m_userBucketHasBeenSet = true; m_userBucket = std::move(value); }
 
     /**
      * <p>The S3 bucket for the disk image.</p>
@@ -188,7 +192,7 @@ namespace Model
     /**
      * <p>The S3 bucket for the disk image.</p>
      */
-    inline SnapshotTaskDetail& WithUserBucket(UserBucketDetails&& value) { SetUserBucket(value); return *this;}
+    inline SnapshotTaskDetail& WithUserBucket(UserBucketDetails&& value) { SetUserBucket(std::move(value)); return *this;}
 
     /**
      * <p>The snapshot ID of the disk being imported.</p>
@@ -203,7 +207,7 @@ namespace Model
     /**
      * <p>The snapshot ID of the disk being imported.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotIdHasBeenSet = true; m_snapshotId = std::move(value); }
 
     /**
      * <p>The snapshot ID of the disk being imported.</p>
@@ -218,7 +222,7 @@ namespace Model
     /**
      * <p>The snapshot ID of the disk being imported.</p>
      */
-    inline SnapshotTaskDetail& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline SnapshotTaskDetail& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The snapshot ID of the disk being imported.</p>
@@ -238,7 +242,7 @@ namespace Model
     /**
      * <p>The percentage of completion for the import snapshot task.</p>
      */
-    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = value; }
+    inline void SetProgress(Aws::String&& value) { m_progressHasBeenSet = true; m_progress = std::move(value); }
 
     /**
      * <p>The percentage of completion for the import snapshot task.</p>
@@ -253,7 +257,7 @@ namespace Model
     /**
      * <p>The percentage of completion for the import snapshot task.</p>
      */
-    inline SnapshotTaskDetail& WithProgress(Aws::String&& value) { SetProgress(value); return *this;}
+    inline SnapshotTaskDetail& WithProgress(Aws::String&& value) { SetProgress(std::move(value)); return *this;}
 
     /**
      * <p>The percentage of completion for the import snapshot task.</p>
@@ -273,7 +277,7 @@ namespace Model
     /**
      * <p>A detailed status message for the import snapshot task.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
 
     /**
      * <p>A detailed status message for the import snapshot task.</p>
@@ -288,7 +292,7 @@ namespace Model
     /**
      * <p>A detailed status message for the import snapshot task.</p>
      */
-    inline SnapshotTaskDetail& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline SnapshotTaskDetail& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>A detailed status message for the import snapshot task.</p>
@@ -308,7 +312,7 @@ namespace Model
     /**
      * <p>A brief status for the import snapshot task.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>A brief status for the import snapshot task.</p>
@@ -323,7 +327,7 @@ namespace Model
     /**
      * <p>A brief status for the import snapshot task.</p>
      */
-    inline SnapshotTaskDetail& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline SnapshotTaskDetail& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>A brief status for the import snapshot task.</p>

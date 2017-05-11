@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeFlowLogs.</p>
+   * <p>Contains the parameters for DescribeFlowLogs.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFlowLogsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeFlowLogsRequest : public EC2Request
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeFlowLogsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>One or more flow log IDs.</p>
      */
@@ -48,7 +57,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline void SetFlowLogIds(Aws::Vector<Aws::String>&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds = value; }
+    inline void SetFlowLogIds(Aws::Vector<Aws::String>&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds = std::move(value); }
 
     /**
      * <p>One or more flow log IDs.</p>
@@ -58,7 +67,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline DescribeFlowLogsRequest& WithFlowLogIds(Aws::Vector<Aws::String>&& value) { SetFlowLogIds(value); return *this;}
+    inline DescribeFlowLogsRequest& WithFlowLogIds(Aws::Vector<Aws::String>&& value) { SetFlowLogIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more flow log IDs.</p>
@@ -68,7 +77,7 @@ namespace Model
     /**
      * <p>One or more flow log IDs.</p>
      */
-    inline DescribeFlowLogsRequest& AddFlowLogIds(Aws::String&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds.push_back(value); return *this; }
+    inline DescribeFlowLogsRequest& AddFlowLogIds(Aws::String&& value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more flow log IDs.</p>
@@ -76,88 +85,81 @@ namespace Model
     inline DescribeFlowLogsRequest& AddFlowLogIds(const char* value) { m_flowLogIdsHasBeenSet = true; m_flowLogIds.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
     inline const Aws::Vector<Filter>& GetFilter() const{ return m_filter; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
     inline void SetFilter(const Aws::Vector<Filter>& value) { m_filterHasBeenSet = true; m_filter = value; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
-    inline void SetFilter(Aws::Vector<Filter>&& value) { m_filterHasBeenSet = true; m_filter = value; }
+    inline void SetFilter(Aws::Vector<Filter>&& value) { m_filterHasBeenSet = true; m_filter = std::move(value); }
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& WithFilter(const Aws::Vector<Filter>& value) { SetFilter(value); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
-    inline DescribeFlowLogsRequest& WithFilter(Aws::Vector<Filter>&& value) { SetFilter(value); return *this;}
+    inline DescribeFlowLogsRequest& WithFilter(Aws::Vector<Filter>&& value) { SetFilter(std::move(value)); return *this;}
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
     inline DescribeFlowLogsRequest& AddFilter(const Filter& value) { m_filterHasBeenSet = true; m_filter.push_back(value); return *this; }
 
     /**
-     * <p>One or more filters.</p> <ul> <li><p><code>deliver-log-status</code> - The
-     * status of the logs delivery (<code>SUCCESS</code> |
-     * <code>FAILED</code>).</p></li> <li><p><code>flow-log-id</code> - The ID of the
-     * flow log.</p></li> <li><p><code>log-group-name</code> - The name of the log
-     * group.</p></li> <li><p><code>resource-id</code> - The ID of the VPC, subnet, or
-     * network interface.</p></li> <li><p><code>traffic-type</code> - The type of
-     * traffic (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p></li>
-     * </ul>
+     * <p>One or more filters.</p> <ul> <li> <p> <code>deliver-log-status</code> - The
+     * status of the logs delivery (<code>SUCCESS</code> | <code>FAILED</code>).</p>
+     * </li> <li> <p> <code>flow-log-id</code> - The ID of the flow log.</p> </li> <li>
+     * <p> <code>log-group-name</code> - The name of the log group.</p> </li> <li> <p>
+     * <code>resource-id</code> - The ID of the VPC, subnet, or network interface.</p>
+     * </li> <li> <p> <code>traffic-type</code> - The type of traffic
+     * (<code>ACCEPT</code> | <code>REJECT</code> | <code>ALL</code>)</p> </li> </ul>
      */
-    inline DescribeFlowLogsRequest& AddFilter(Filter&& value) { m_filterHasBeenSet = true; m_filter.push_back(value); return *this; }
+    inline DescribeFlowLogsRequest& AddFilter(Filter&& value) { m_filterHasBeenSet = true; m_filter.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token to retrieve the next page of results.</p>
@@ -172,7 +174,7 @@ namespace Model
     /**
      * <p>The token to retrieve the next page of results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The token to retrieve the next page of results.</p>
@@ -187,7 +189,7 @@ namespace Model
     /**
      * <p>The token to retrieve the next page of results.</p>
      */
-    inline DescribeFlowLogsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeFlowLogsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to retrieve the next page of results.</p>

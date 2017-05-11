@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/s3/model/ListObjectsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -28,11 +29,14 @@ using namespace Aws::Http;
 ListObjectsRequest::ListObjectsRequest() : 
     m_bucketHasBeenSet(false),
     m_delimiterHasBeenSet(false),
+    m_encodingType(EncodingType::NOT_SET),
     m_encodingTypeHasBeenSet(false),
     m_markerHasBeenSet(false),
     m_maxKeys(0),
     m_maxKeysHasBeenSet(false),
-    m_prefixHasBeenSet(false)
+    m_prefixHasBeenSet(false),
+    m_requestPayer(RequestPayer::NOT_SET),
+    m_requestPayerHasBeenSet(false)
 {
 }
 
@@ -81,3 +85,14 @@ void ListObjectsRequest::AddQueryStringParameters(URI& uri) const
 
 }
 
+Aws::Http::HeaderValueCollection ListObjectsRequest::GetRequestSpecificHeaders() const
+{
+  Aws::Http::HeaderValueCollection headers;
+  Aws::StringStream ss;
+  if(m_requestPayerHasBeenSet)
+  {
+    headers.insert(Aws::Http::HeaderValuePair("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer)));
+  }
+
+  return headers;
+}

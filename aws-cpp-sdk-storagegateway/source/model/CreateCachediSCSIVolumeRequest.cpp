@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/storagegateway/model/CreateCachediSCSIVolumeRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -27,6 +28,7 @@ CreateCachediSCSIVolumeRequest::CreateCachediSCSIVolumeRequest() :
     m_volumeSizeInBytesHasBeenSet(false),
     m_snapshotIdHasBeenSet(false),
     m_targetNameHasBeenSet(false),
+    m_sourceVolumeARNHasBeenSet(false),
     m_networkInterfaceIdHasBeenSet(false),
     m_clientTokenHasBeenSet(false)
 {
@@ -60,6 +62,12 @@ Aws::String CreateCachediSCSIVolumeRequest::SerializePayload() const
 
   }
 
+  if(m_sourceVolumeARNHasBeenSet)
+  {
+   payload.WithString("SourceVolumeARN", m_sourceVolumeARN);
+
+  }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
    payload.WithString("NetworkInterfaceId", m_networkInterfaceId);
@@ -82,6 +90,7 @@ Aws::Http::HeaderValueCollection CreateCachediSCSIVolumeRequest::GetRequestSpeci
   return headers;
 
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateOptionGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API CreateOptionGroupRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     CreateOptionGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Specifies the name of the option group to be created.</p> <p>Constraints:</p>
      * <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens</p> </li> <li>
@@ -60,7 +69,7 @@ namespace Model
      * or contain two consecutive hyphens</p> </li> </ul> <p>Example:
      * <code>myoptiongroup</code> </p>
      */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
+    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
      * <p>Specifies the name of the option group to be created.</p> <p>Constraints:</p>
@@ -87,7 +96,7 @@ namespace Model
      * or contain two consecutive hyphens</p> </li> </ul> <p>Example:
      * <code>myoptiongroup</code> </p>
      */
-    inline CreateOptionGroupRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(value); return *this;}
+    inline CreateOptionGroupRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the option group to be created.</p> <p>Constraints:</p>
@@ -114,7 +123,7 @@ namespace Model
      * <p>Specifies the name of the engine that this option group should be associated
      * with.</p>
      */
-    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
+    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = std::move(value); }
 
     /**
      * <p>Specifies the name of the engine that this option group should be associated
@@ -132,7 +141,7 @@ namespace Model
      * <p>Specifies the name of the engine that this option group should be associated
      * with.</p>
      */
-    inline CreateOptionGroupRequest& WithEngineName(Aws::String&& value) { SetEngineName(value); return *this;}
+    inline CreateOptionGroupRequest& WithEngineName(Aws::String&& value) { SetEngineName(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the engine that this option group should be associated
@@ -156,7 +165,7 @@ namespace Model
      * <p>Specifies the major version of the engine that this option group should be
      * associated with.</p>
      */
-    inline void SetMajorEngineVersion(Aws::String&& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = value; }
+    inline void SetMajorEngineVersion(Aws::String&& value) { m_majorEngineVersionHasBeenSet = true; m_majorEngineVersion = std::move(value); }
 
     /**
      * <p>Specifies the major version of the engine that this option group should be
@@ -174,7 +183,7 @@ namespace Model
      * <p>Specifies the major version of the engine that this option group should be
      * associated with.</p>
      */
-    inline CreateOptionGroupRequest& WithMajorEngineVersion(Aws::String&& value) { SetMajorEngineVersion(value); return *this;}
+    inline CreateOptionGroupRequest& WithMajorEngineVersion(Aws::String&& value) { SetMajorEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the major version of the engine that this option group should be
@@ -195,7 +204,7 @@ namespace Model
     /**
      * <p>The description of the option group.</p>
      */
-    inline void SetOptionGroupDescription(Aws::String&& value) { m_optionGroupDescriptionHasBeenSet = true; m_optionGroupDescription = value; }
+    inline void SetOptionGroupDescription(Aws::String&& value) { m_optionGroupDescriptionHasBeenSet = true; m_optionGroupDescription = std::move(value); }
 
     /**
      * <p>The description of the option group.</p>
@@ -210,7 +219,7 @@ namespace Model
     /**
      * <p>The description of the option group.</p>
      */
-    inline CreateOptionGroupRequest& WithOptionGroupDescription(Aws::String&& value) { SetOptionGroupDescription(value); return *this;}
+    inline CreateOptionGroupRequest& WithOptionGroupDescription(Aws::String&& value) { SetOptionGroupDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the option group.</p>
@@ -224,19 +233,19 @@ namespace Model
     inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
 
     
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     
     inline CreateOptionGroupRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
 
     
-    inline CreateOptionGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateOptionGroupRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     
     inline CreateOptionGroupRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
 
     
-    inline CreateOptionGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreateOptionGroupRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_optionGroupName;

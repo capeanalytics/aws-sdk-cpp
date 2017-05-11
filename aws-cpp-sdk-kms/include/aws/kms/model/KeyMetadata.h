@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -20,6 +21,7 @@
 #include <aws/kms/model/KeyState.h>
 #include <aws/kms/model/OriginType.h>
 #include <aws/kms/model/ExpirationModelType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
   /**
    * <p>Contains metadata about a customer master key (CMK).</p> <p>This data type is
    * used as a response element for the <a>CreateKey</a> and <a>DescribeKey</a>
-   * operations.</p>
+   * operations.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/KeyMetadata">AWS API
+   * Reference</a></p>
    */
   class AWS_KMS_API KeyMetadata
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
      */
-    inline void SetAWSAccountId(Aws::String&& value) { m_aWSAccountIdHasBeenSet = true; m_aWSAccountId = value; }
+    inline void SetAWSAccountId(Aws::String&& value) { m_aWSAccountIdHasBeenSet = true; m_aWSAccountId = std::move(value); }
 
     /**
      * <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
      */
-    inline KeyMetadata& WithAWSAccountId(Aws::String&& value) { SetAWSAccountId(value); return *this;}
+    inline KeyMetadata& WithAWSAccountId(Aws::String&& value) { SetAWSAccountId(std::move(value)); return *this;}
 
     /**
      * <p>The twelve-digit account ID of the AWS account that owns the CMK.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The globally unique identifier for the CMK.</p>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
 
     /**
      * <p>The globally unique identifier for the CMK.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The globally unique identifier for the CMK.</p>
      */
-    inline KeyMetadata& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline KeyMetadata& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The globally unique identifier for the CMK.</p>
@@ -140,7 +144,7 @@ namespace Model
      * Key Management Service (AWS KMS)</a> in the Example ARNs section of the <i>AWS
      * General Reference</i>.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the CMK. For examples, see <a
@@ -164,7 +168,7 @@ namespace Model
      * Key Management Service (AWS KMS)</a> in the Example ARNs section of the <i>AWS
      * General Reference</i>.</p>
      */
-    inline KeyMetadata& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline KeyMetadata& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the CMK. For examples, see <a
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The date and time when the CMK was created.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The date and time when the CMK was created.</p>
@@ -197,7 +201,7 @@ namespace Model
     /**
      * <p>The date and time when the CMK was created.</p>
      */
-    inline KeyMetadata& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline KeyMetadata& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>Specifies whether the CMK is enabled. When <code>KeyState</code> is
@@ -230,7 +234,7 @@ namespace Model
     /**
      * <p>The description of the CMK.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the CMK.</p>
@@ -245,7 +249,7 @@ namespace Model
     /**
      * <p>The description of the CMK.</p>
      */
-    inline KeyMetadata& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline KeyMetadata& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the CMK.</p>
@@ -271,7 +275,7 @@ namespace Model
      * only allowed value is <code>ENCRYPT_DECRYPT</code>, which means you can use the
      * CMK for the <a>Encrypt</a> and <a>Decrypt</a> operations.</p>
      */
-    inline void SetKeyUsage(KeyUsageType&& value) { m_keyUsageHasBeenSet = true; m_keyUsage = value; }
+    inline void SetKeyUsage(KeyUsageType&& value) { m_keyUsageHasBeenSet = true; m_keyUsage = std::move(value); }
 
     /**
      * <p>The cryptographic operations for which you can use the CMK. Currently the
@@ -285,7 +289,7 @@ namespace Model
      * only allowed value is <code>ENCRYPT_DECRYPT</code>, which means you can use the
      * CMK for the <a>Encrypt</a> and <a>Decrypt</a> operations.</p>
      */
-    inline KeyMetadata& WithKeyUsage(KeyUsageType&& value) { SetKeyUsage(value); return *this;}
+    inline KeyMetadata& WithKeyUsage(KeyUsageType&& value) { SetKeyUsage(std::move(value)); return *this;}
 
     /**
      * <p>The state of the CMK.</p> <p>For more information about how key state affects
@@ -312,7 +316,7 @@ namespace Model
      * Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
      * Management Service Developer Guide</i>.</p>
      */
-    inline void SetKeyState(KeyState&& value) { m_keyStateHasBeenSet = true; m_keyState = value; }
+    inline void SetKeyState(KeyState&& value) { m_keyStateHasBeenSet = true; m_keyState = std::move(value); }
 
     /**
      * <p>The state of the CMK.</p> <p>For more information about how key state affects
@@ -330,7 +334,7 @@ namespace Model
      * Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
      * Management Service Developer Guide</i>.</p>
      */
-    inline KeyMetadata& WithKeyState(KeyState&& value) { SetKeyState(value); return *this;}
+    inline KeyMetadata& WithKeyState(KeyState&& value) { SetKeyState(std::move(value)); return *this;}
 
     /**
      * <p>The date and time after which AWS KMS deletes the CMK. This value is present
@@ -351,7 +355,7 @@ namespace Model
      * only when <code>KeyState</code> is <code>PendingDeletion</code>, otherwise this
      * value is omitted.</p>
      */
-    inline void SetDeletionDate(Aws::Utils::DateTime&& value) { m_deletionDateHasBeenSet = true; m_deletionDate = value; }
+    inline void SetDeletionDate(Aws::Utils::DateTime&& value) { m_deletionDateHasBeenSet = true; m_deletionDate = std::move(value); }
 
     /**
      * <p>The date and time after which AWS KMS deletes the CMK. This value is present
@@ -365,7 +369,7 @@ namespace Model
      * only when <code>KeyState</code> is <code>PendingDeletion</code>, otherwise this
      * value is omitted.</p>
      */
-    inline KeyMetadata& WithDeletionDate(Aws::Utils::DateTime&& value) { SetDeletionDate(value); return *this;}
+    inline KeyMetadata& WithDeletionDate(Aws::Utils::DateTime&& value) { SetDeletionDate(std::move(value)); return *this;}
 
     /**
      * <p>The time at which the imported key material expires. When the key material
@@ -392,7 +396,7 @@ namespace Model
      * <code>EXTERNAL</code> and whose <code>ExpirationModel</code> is
      * <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
      */
-    inline void SetValidTo(Aws::Utils::DateTime&& value) { m_validToHasBeenSet = true; m_validTo = value; }
+    inline void SetValidTo(Aws::Utils::DateTime&& value) { m_validToHasBeenSet = true; m_validTo = std::move(value); }
 
     /**
      * <p>The time at which the imported key material expires. When the key material
@@ -410,7 +414,7 @@ namespace Model
      * <code>EXTERNAL</code> and whose <code>ExpirationModel</code> is
      * <code>KEY_MATERIAL_EXPIRES</code>, otherwise this value is omitted.</p>
      */
-    inline KeyMetadata& WithValidTo(Aws::Utils::DateTime&& value) { SetValidTo(value); return *this;}
+    inline KeyMetadata& WithValidTo(Aws::Utils::DateTime&& value) { SetValidTo(std::move(value)); return *this;}
 
     /**
      * <p>The source of the CMK's key material. When this value is
@@ -434,7 +438,7 @@ namespace Model
      * <code>EXTERNAL</code>, the key material was imported from your existing key
      * management infrastructure or the CMK lacks key material.</p>
      */
-    inline void SetOrigin(OriginType&& value) { m_originHasBeenSet = true; m_origin = value; }
+    inline void SetOrigin(OriginType&& value) { m_originHasBeenSet = true; m_origin = std::move(value); }
 
     /**
      * <p>The source of the CMK's key material. When this value is
@@ -450,7 +454,7 @@ namespace Model
      * <code>EXTERNAL</code>, the key material was imported from your existing key
      * management infrastructure or the CMK lacks key material.</p>
      */
-    inline KeyMetadata& WithOrigin(OriginType&& value) { SetOrigin(value); return *this;}
+    inline KeyMetadata& WithOrigin(OriginType&& value) { SetOrigin(std::move(value)); return *this;}
 
     /**
      * <p>Specifies whether the CMK's key material expires. This value is present only
@@ -471,7 +475,7 @@ namespace Model
      * when <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is
      * omitted.</p>
      */
-    inline void SetExpirationModel(ExpirationModelType&& value) { m_expirationModelHasBeenSet = true; m_expirationModel = value; }
+    inline void SetExpirationModel(ExpirationModelType&& value) { m_expirationModelHasBeenSet = true; m_expirationModel = std::move(value); }
 
     /**
      * <p>Specifies whether the CMK's key material expires. This value is present only
@@ -485,7 +489,7 @@ namespace Model
      * when <code>Origin</code> is <code>EXTERNAL</code>, otherwise this value is
      * omitted.</p>
      */
-    inline KeyMetadata& WithExpirationModel(ExpirationModelType&& value) { SetExpirationModel(value); return *this;}
+    inline KeyMetadata& WithExpirationModel(ExpirationModelType&& value) { SetExpirationModel(std::move(value)); return *this;}
 
   private:
     Aws::String m_aWSAccountId;

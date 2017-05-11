@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/model/InternetGateway.h>
 #include <aws/ec2/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of CreateInternetGateway.</p>
+   * <p>Contains the output of CreateInternetGateway.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateInternetGatewayResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API CreateInternetGatewayResponse
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>Information about the Internet gateway.</p>
      */
-    inline void SetInternetGateway(InternetGateway&& value) { m_internetGateway = value; }
+    inline void SetInternetGateway(InternetGateway&& value) { m_internetGateway = std::move(value); }
 
     /**
      * <p>Information about the Internet gateway.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>Information about the Internet gateway.</p>
      */
-    inline CreateInternetGatewayResponse& WithInternetGateway(InternetGateway&& value) { SetInternetGateway(value); return *this;}
+    inline CreateInternetGatewayResponse& WithInternetGateway(InternetGateway&& value) { SetInternetGateway(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -75,13 +79,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreateInternetGatewayResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreateInternetGatewayResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreateInternetGatewayResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     InternetGateway m_internetGateway;

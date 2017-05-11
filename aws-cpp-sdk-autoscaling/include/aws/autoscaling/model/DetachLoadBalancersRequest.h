@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DetachLoadBalancers.</p>
+   * <p>Contains the parameters for DetachLoadBalancers.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancersType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API DetachLoadBalancersRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     DetachLoadBalancersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
@@ -47,7 +57,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -62,7 +72,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline DetachLoadBalancersRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline DetachLoadBalancersRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -82,7 +92,7 @@ namespace Model
     /**
      * <p>One or more load balancer names.</p>
      */
-    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = value; }
+    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::move(value); }
 
     /**
      * <p>One or more load balancer names.</p>
@@ -92,7 +102,7 @@ namespace Model
     /**
      * <p>One or more load balancer names.</p>
      */
-    inline DetachLoadBalancersRequest& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(value); return *this;}
+    inline DetachLoadBalancersRequest& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(std::move(value)); return *this;}
 
     /**
      * <p>One or more load balancer names.</p>
@@ -102,7 +112,7 @@ namespace Model
     /**
      * <p>One or more load balancer names.</p>
      */
-    inline DetachLoadBalancersRequest& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
+    inline DetachLoadBalancersRequest& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more load balancer names.</p>

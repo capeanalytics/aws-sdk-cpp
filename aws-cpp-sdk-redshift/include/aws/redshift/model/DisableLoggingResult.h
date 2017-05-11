@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/redshift/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Redshift
 namespace Model
 {
   /**
-   * <p>Describes the status of logging for a cluster.</p>
+   * <p>Describes the status of logging for a cluster.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/LoggingStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API DisableLoggingResult
   {
@@ -45,17 +49,20 @@ namespace Model
     DisableLoggingResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p><code>true</code> if logging is on, <code>false</code> if logging is off.</p>
+     * <p> <code>true</code> if logging is on, <code>false</code> if logging is
+     * off.</p>
      */
     inline bool GetLoggingEnabled() const{ return m_loggingEnabled; }
 
     /**
-     * <p><code>true</code> if logging is on, <code>false</code> if logging is off.</p>
+     * <p> <code>true</code> if logging is on, <code>false</code> if logging is
+     * off.</p>
      */
     inline void SetLoggingEnabled(bool value) { m_loggingEnabled = value; }
 
     /**
-     * <p><code>true</code> if logging is on, <code>false</code> if logging is off.</p>
+     * <p> <code>true</code> if logging is on, <code>false</code> if logging is
+     * off.</p>
      */
     inline DisableLoggingResult& WithLoggingEnabled(bool value) { SetLoggingEnabled(value); return *this;}
 
@@ -72,7 +79,7 @@ namespace Model
     /**
      * <p>The name of the S3 bucket where the log files are stored.</p>
      */
-    inline void SetBucketName(Aws::String&& value) { m_bucketName = value; }
+    inline void SetBucketName(Aws::String&& value) { m_bucketName = std::move(value); }
 
     /**
      * <p>The name of the S3 bucket where the log files are stored.</p>
@@ -87,7 +94,7 @@ namespace Model
     /**
      * <p>The name of the S3 bucket where the log files are stored.</p>
      */
-    inline DisableLoggingResult& WithBucketName(Aws::String&& value) { SetBucketName(value); return *this;}
+    inline DisableLoggingResult& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the S3 bucket where the log files are stored.</p>
@@ -107,7 +114,7 @@ namespace Model
     /**
      * <p>The prefix applied to the log file names.</p>
      */
-    inline void SetS3KeyPrefix(Aws::String&& value) { m_s3KeyPrefix = value; }
+    inline void SetS3KeyPrefix(Aws::String&& value) { m_s3KeyPrefix = std::move(value); }
 
     /**
      * <p>The prefix applied to the log file names.</p>
@@ -122,7 +129,7 @@ namespace Model
     /**
      * <p>The prefix applied to the log file names.</p>
      */
-    inline DisableLoggingResult& WithS3KeyPrefix(Aws::String&& value) { SetS3KeyPrefix(value); return *this;}
+    inline DisableLoggingResult& WithS3KeyPrefix(Aws::String&& value) { SetS3KeyPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The prefix applied to the log file names.</p>
@@ -130,87 +137,87 @@ namespace Model
     inline DisableLoggingResult& WithS3KeyPrefix(const char* value) { SetS3KeyPrefix(value); return *this;}
 
     /**
-     * <p> The last time that logs were delivered. </p>
+     * <p>The last time that logs were delivered.</p>
      */
     inline const Aws::Utils::DateTime& GetLastSuccessfulDeliveryTime() const{ return m_lastSuccessfulDeliveryTime; }
 
     /**
-     * <p> The last time that logs were delivered. </p>
+     * <p>The last time that logs were delivered.</p>
      */
     inline void SetLastSuccessfulDeliveryTime(const Aws::Utils::DateTime& value) { m_lastSuccessfulDeliveryTime = value; }
 
     /**
-     * <p> The last time that logs were delivered. </p>
+     * <p>The last time that logs were delivered.</p>
      */
-    inline void SetLastSuccessfulDeliveryTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulDeliveryTime = value; }
+    inline void SetLastSuccessfulDeliveryTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulDeliveryTime = std::move(value); }
 
     /**
-     * <p> The last time that logs were delivered. </p>
+     * <p>The last time that logs were delivered.</p>
      */
     inline DisableLoggingResult& WithLastSuccessfulDeliveryTime(const Aws::Utils::DateTime& value) { SetLastSuccessfulDeliveryTime(value); return *this;}
 
     /**
-     * <p> The last time that logs were delivered. </p>
+     * <p>The last time that logs were delivered.</p>
      */
-    inline DisableLoggingResult& WithLastSuccessfulDeliveryTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulDeliveryTime(value); return *this;}
+    inline DisableLoggingResult& WithLastSuccessfulDeliveryTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulDeliveryTime(std::move(value)); return *this;}
 
     /**
-     * <p> The last time when logs failed to be delivered. </p>
+     * <p>The last time when logs failed to be delivered.</p>
      */
     inline const Aws::Utils::DateTime& GetLastFailureTime() const{ return m_lastFailureTime; }
 
     /**
-     * <p> The last time when logs failed to be delivered. </p>
+     * <p>The last time when logs failed to be delivered.</p>
      */
     inline void SetLastFailureTime(const Aws::Utils::DateTime& value) { m_lastFailureTime = value; }
 
     /**
-     * <p> The last time when logs failed to be delivered. </p>
+     * <p>The last time when logs failed to be delivered.</p>
      */
-    inline void SetLastFailureTime(Aws::Utils::DateTime&& value) { m_lastFailureTime = value; }
+    inline void SetLastFailureTime(Aws::Utils::DateTime&& value) { m_lastFailureTime = std::move(value); }
 
     /**
-     * <p> The last time when logs failed to be delivered. </p>
+     * <p>The last time when logs failed to be delivered.</p>
      */
     inline DisableLoggingResult& WithLastFailureTime(const Aws::Utils::DateTime& value) { SetLastFailureTime(value); return *this;}
 
     /**
-     * <p> The last time when logs failed to be delivered. </p>
+     * <p>The last time when logs failed to be delivered.</p>
      */
-    inline DisableLoggingResult& WithLastFailureTime(Aws::Utils::DateTime&& value) { SetLastFailureTime(value); return *this;}
+    inline DisableLoggingResult& WithLastFailureTime(Aws::Utils::DateTime&& value) { SetLastFailureTime(std::move(value)); return *this;}
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
     inline const Aws::String& GetLastFailureMessage() const{ return m_lastFailureMessage; }
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
     inline void SetLastFailureMessage(const Aws::String& value) { m_lastFailureMessage = value; }
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
-    inline void SetLastFailureMessage(Aws::String&& value) { m_lastFailureMessage = value; }
+    inline void SetLastFailureMessage(Aws::String&& value) { m_lastFailureMessage = std::move(value); }
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
     inline void SetLastFailureMessage(const char* value) { m_lastFailureMessage.assign(value); }
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
     inline DisableLoggingResult& WithLastFailureMessage(const Aws::String& value) { SetLastFailureMessage(value); return *this;}
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
-    inline DisableLoggingResult& WithLastFailureMessage(Aws::String&& value) { SetLastFailureMessage(value); return *this;}
+    inline DisableLoggingResult& WithLastFailureMessage(Aws::String&& value) { SetLastFailureMessage(std::move(value)); return *this;}
 
     /**
-     * <p> The message indicating that logs failed to be delivered. </p>
+     * <p>The message indicating that logs failed to be delivered.</p>
      */
     inline DisableLoggingResult& WithLastFailureMessage(const char* value) { SetLastFailureMessage(value); return *this;}
 
@@ -221,13 +228,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DisableLoggingResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DisableLoggingResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DisableLoggingResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     bool m_loggingEnabled;

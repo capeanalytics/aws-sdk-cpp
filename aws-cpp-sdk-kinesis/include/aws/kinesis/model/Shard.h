@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesis/model/HashKeyRange.h>
 #include <aws/kinesis/model/SequenceNumberRange.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>A uniquely identified group of data records in an Amazon Kinesis stream.</p>
+   * <p>A uniquely identified group of data records in an Amazon Kinesis
+   * stream.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/Shard">AWS API
+   * Reference</a></p>
    */
   class AWS_KINESIS_API Shard
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The unique identifier of the shard within the stream.</p>
      */
-    inline void SetShardId(Aws::String&& value) { m_shardIdHasBeenSet = true; m_shardId = value; }
+    inline void SetShardId(Aws::String&& value) { m_shardIdHasBeenSet = true; m_shardId = std::move(value); }
 
     /**
      * <p>The unique identifier of the shard within the stream.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The unique identifier of the shard within the stream.</p>
      */
-    inline Shard& WithShardId(Aws::String&& value) { SetShardId(value); return *this;}
+    inline Shard& WithShardId(Aws::String&& value) { SetShardId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier of the shard within the stream.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The shard ID of the shard's parent.</p>
      */
-    inline void SetParentShardId(Aws::String&& value) { m_parentShardIdHasBeenSet = true; m_parentShardId = value; }
+    inline void SetParentShardId(Aws::String&& value) { m_parentShardIdHasBeenSet = true; m_parentShardId = std::move(value); }
 
     /**
      * <p>The shard ID of the shard's parent.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The shard ID of the shard's parent.</p>
      */
-    inline Shard& WithParentShardId(Aws::String&& value) { SetParentShardId(value); return *this;}
+    inline Shard& WithParentShardId(Aws::String&& value) { SetParentShardId(std::move(value)); return *this;}
 
     /**
      * <p>The shard ID of the shard's parent.</p>
@@ -126,7 +131,7 @@ namespace Model
     /**
      * <p>The shard ID of the shard adjacent to the shard's parent.</p>
      */
-    inline void SetAdjacentParentShardId(Aws::String&& value) { m_adjacentParentShardIdHasBeenSet = true; m_adjacentParentShardId = value; }
+    inline void SetAdjacentParentShardId(Aws::String&& value) { m_adjacentParentShardIdHasBeenSet = true; m_adjacentParentShardId = std::move(value); }
 
     /**
      * <p>The shard ID of the shard adjacent to the shard's parent.</p>
@@ -141,7 +146,7 @@ namespace Model
     /**
      * <p>The shard ID of the shard adjacent to the shard's parent.</p>
      */
-    inline Shard& WithAdjacentParentShardId(Aws::String&& value) { SetAdjacentParentShardId(value); return *this;}
+    inline Shard& WithAdjacentParentShardId(Aws::String&& value) { SetAdjacentParentShardId(std::move(value)); return *this;}
 
     /**
      * <p>The shard ID of the shard adjacent to the shard's parent.</p>
@@ -164,7 +169,7 @@ namespace Model
      * <p>The range of possible hash key values for the shard, which is a set of
      * ordered contiguous positive integers.</p>
      */
-    inline void SetHashKeyRange(HashKeyRange&& value) { m_hashKeyRangeHasBeenSet = true; m_hashKeyRange = value; }
+    inline void SetHashKeyRange(HashKeyRange&& value) { m_hashKeyRangeHasBeenSet = true; m_hashKeyRange = std::move(value); }
 
     /**
      * <p>The range of possible hash key values for the shard, which is a set of
@@ -176,7 +181,7 @@ namespace Model
      * <p>The range of possible hash key values for the shard, which is a set of
      * ordered contiguous positive integers.</p>
      */
-    inline Shard& WithHashKeyRange(HashKeyRange&& value) { SetHashKeyRange(value); return *this;}
+    inline Shard& WithHashKeyRange(HashKeyRange&& value) { SetHashKeyRange(std::move(value)); return *this;}
 
     /**
      * <p>The range of possible sequence numbers for the shard.</p>
@@ -191,7 +196,7 @@ namespace Model
     /**
      * <p>The range of possible sequence numbers for the shard.</p>
      */
-    inline void SetSequenceNumberRange(SequenceNumberRange&& value) { m_sequenceNumberRangeHasBeenSet = true; m_sequenceNumberRange = value; }
+    inline void SetSequenceNumberRange(SequenceNumberRange&& value) { m_sequenceNumberRangeHasBeenSet = true; m_sequenceNumberRange = std::move(value); }
 
     /**
      * <p>The range of possible sequence numbers for the shard.</p>
@@ -201,7 +206,7 @@ namespace Model
     /**
      * <p>The range of possible sequence numbers for the shard.</p>
      */
-    inline Shard& WithSequenceNumberRange(SequenceNumberRange&& value) { SetSequenceNumberRange(value); return *this;}
+    inline Shard& WithSequenceNumberRange(SequenceNumberRange&& value) { SetSequenceNumberRange(std::move(value)); return *this;}
 
   private:
     Aws::String m_shardId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/apigateway/model/PatchOperation.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,17 @@ namespace Model
 {
 
   /**
-   * <p>The PATCH request to update a usage plan of a given plan Id.</p>
+   * <p>The PATCH request to update a usage plan of a given plan Id.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/UpdateUsagePlanRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API UpdateUsagePlanRequest : public APIGatewayRequest
   {
   public:
     UpdateUsagePlanRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The Id of the to-be-updated usage plan.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The Id of the to-be-updated usage plan.</p>
      */
-    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = value; }
+    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = std::move(value); }
 
     /**
      * <p>The Id of the to-be-updated usage plan.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The Id of the to-be-updated usage plan.</p>
      */
-    inline UpdateUsagePlanRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(value); return *this;}
+    inline UpdateUsagePlanRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(std::move(value)); return *this;}
 
     /**
      * <p>The Id of the to-be-updated usage plan.</p>
@@ -86,7 +92,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = value; }
+    inline void SetPatchOperations(Aws::Vector<PatchOperation>&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations = std::move(value); }
 
     /**
      * <p>A list of update operations to be applied to the specified resource and in
@@ -98,7 +104,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline UpdateUsagePlanRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(value); return *this;}
+    inline UpdateUsagePlanRequest& WithPatchOperations(Aws::Vector<PatchOperation>&& value) { SetPatchOperations(std::move(value)); return *this;}
 
     /**
      * <p>A list of update operations to be applied to the specified resource and in
@@ -110,7 +116,7 @@ namespace Model
      * <p>A list of update operations to be applied to the specified resource and in
      * the order specified in this list.</p>
      */
-    inline UpdateUsagePlanRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(value); return *this; }
+    inline UpdateUsagePlanRequest& AddPatchOperations(PatchOperation&& value) { m_patchOperationsHasBeenSet = true; m_patchOperations.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_usagePlanId;

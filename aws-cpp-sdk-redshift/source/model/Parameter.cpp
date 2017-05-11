@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/Parameter.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -36,6 +37,7 @@ Parameter::Parameter() :
     m_sourceHasBeenSet(false),
     m_dataTypeHasBeenSet(false),
     m_allowedValuesHasBeenSet(false),
+    m_applyType(ParameterApplyType::NOT_SET),
     m_applyTypeHasBeenSet(false),
     m_isModifiable(false),
     m_isModifiableHasBeenSet(false),
@@ -50,6 +52,7 @@ Parameter::Parameter(const XmlNode& xmlNode) :
     m_sourceHasBeenSet(false),
     m_dataTypeHasBeenSet(false),
     m_allowedValuesHasBeenSet(false),
+    m_applyType(ParameterApplyType::NOT_SET),
     m_applyTypeHasBeenSet(false),
     m_isModifiable(false),
     m_isModifiableHasBeenSet(false),
@@ -162,7 +165,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_isModifiableHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsModifiable=" << m_isModifiable << "&";
+      oStream << location << index << locationValue << ".IsModifiable=" << std::boolalpha << m_isModifiable << "&";
   }
 
   if(m_minimumEngineVersionHasBeenSet)
@@ -204,7 +207,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_isModifiableHasBeenSet)
   {
-      oStream << location << ".IsModifiable=" << m_isModifiable << "&";
+      oStream << location << ".IsModifiable=" << std::boolalpha << m_isModifiable << "&";
   }
   if(m_minimumEngineVersionHasBeenSet)
   {

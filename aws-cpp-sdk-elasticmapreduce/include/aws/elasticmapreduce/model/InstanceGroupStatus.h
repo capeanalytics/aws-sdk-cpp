@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/model/InstanceGroupState.h>
 #include <aws/elasticmapreduce/model/InstanceGroupStateChangeReason.h>
 #include <aws/elasticmapreduce/model/InstanceGroupTimeline.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>The details of the instance group status.</p>
+   * <p>The details of the instance group status.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/InstanceGroupStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API InstanceGroupStatus
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The current state of the instance group.</p>
      */
-    inline void SetState(InstanceGroupState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(InstanceGroupState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the instance group.</p>
@@ -66,7 +70,7 @@ namespace Model
     /**
      * <p>The current state of the instance group.</p>
      */
-    inline InstanceGroupStatus& WithState(InstanceGroupState&& value) { SetState(value); return *this;}
+    inline InstanceGroupStatus& WithState(InstanceGroupState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The status change reason details for the instance group.</p>
@@ -81,7 +85,7 @@ namespace Model
     /**
      * <p>The status change reason details for the instance group.</p>
      */
-    inline void SetStateChangeReason(InstanceGroupStateChangeReason&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = value; }
+    inline void SetStateChangeReason(InstanceGroupStateChangeReason&& value) { m_stateChangeReasonHasBeenSet = true; m_stateChangeReason = std::move(value); }
 
     /**
      * <p>The status change reason details for the instance group.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The status change reason details for the instance group.</p>
      */
-    inline InstanceGroupStatus& WithStateChangeReason(InstanceGroupStateChangeReason&& value) { SetStateChangeReason(value); return *this;}
+    inline InstanceGroupStatus& WithStateChangeReason(InstanceGroupStateChangeReason&& value) { SetStateChangeReason(std::move(value)); return *this;}
 
     /**
      * <p>The timeline of the instance group status over time.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The timeline of the instance group status over time.</p>
      */
-    inline void SetTimeline(InstanceGroupTimeline&& value) { m_timelineHasBeenSet = true; m_timeline = value; }
+    inline void SetTimeline(InstanceGroupTimeline&& value) { m_timelineHasBeenSet = true; m_timeline = std::move(value); }
 
     /**
      * <p>The timeline of the instance group status over time.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>The timeline of the instance group status over time.</p>
      */
-    inline InstanceGroupStatus& WithTimeline(InstanceGroupTimeline&& value) { SetTimeline(value); return *this;}
+    inline InstanceGroupStatus& WithTimeline(InstanceGroupTimeline&& value) { SetTimeline(std::move(value)); return *this;}
 
   private:
     InstanceGroupState m_state;

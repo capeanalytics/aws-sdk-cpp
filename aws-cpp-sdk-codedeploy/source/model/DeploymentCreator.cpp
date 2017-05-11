@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codedeploy/model/DeploymentCreator.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -31,6 +32,7 @@ namespace Aws
 
         static const int user_HASH = HashingUtils::HashString("user");
         static const int autoscaling_HASH = HashingUtils::HashString("autoscaling");
+        static const int codeDeployRollback_HASH = HashingUtils::HashString("codeDeployRollback");
 
 
         DeploymentCreator GetDeploymentCreatorForName(const Aws::String& name)
@@ -43,6 +45,10 @@ namespace Aws
           else if (hashCode == autoscaling_HASH)
           {
             return DeploymentCreator::autoscaling;
+          }
+          else if (hashCode == codeDeployRollback_HASH)
+          {
+            return DeploymentCreator::codeDeployRollback;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -62,6 +68,8 @@ namespace Aws
             return "user";
           case DeploymentCreator::autoscaling:
             return "autoscaling";
+          case DeploymentCreator::codeDeployRollback:
+            return "codeDeployRollback";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

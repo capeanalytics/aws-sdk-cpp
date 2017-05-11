@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
@@ -20,6 +21,7 @@
 #include <aws/swf/model/WorkflowTypeFilter.h>
 #include <aws/swf/model/TagFilter.h>
 #include <aws/swf/model/WorkflowExecutionFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,6 +40,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain that contains the workflow executions to list.</p>
      */
@@ -51,7 +54,7 @@ namespace Model
     /**
      * <p>The name of the domain that contains the workflow executions to list.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain that contains the workflow executions to list.</p>
@@ -66,7 +69,7 @@ namespace Model
     /**
      * <p>The name of the domain that contains the workflow executions to list.</p>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain that contains the workflow executions to list.</p>
@@ -89,7 +92,7 @@ namespace Model
      * <p>Workflow executions are included in the returned results based on whether
      * their start times are within the range specified by this filter.</p>
      */
-    inline void SetStartTimeFilter(ExecutionTimeFilter&& value) { m_startTimeFilterHasBeenSet = true; m_startTimeFilter = value; }
+    inline void SetStartTimeFilter(ExecutionTimeFilter&& value) { m_startTimeFilterHasBeenSet = true; m_startTimeFilter = std::move(value); }
 
     /**
      * <p>Workflow executions are included in the returned results based on whether
@@ -101,7 +104,7 @@ namespace Model
      * <p>Workflow executions are included in the returned results based on whether
      * their start times are within the range specified by this filter.</p>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithStartTimeFilter(ExecutionTimeFilter&& value) { SetStartTimeFilter(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithStartTimeFilter(ExecutionTimeFilter&& value) { SetStartTimeFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only executions of the type specified in the filter are
@@ -125,7 +128,7 @@ namespace Model
      * <code>tagFilter</code> are mutually exclusive. You can specify at most one of
      * these in a request.</note>
      */
-    inline void SetTypeFilter(WorkflowTypeFilter&& value) { m_typeFilterHasBeenSet = true; m_typeFilter = value; }
+    inline void SetTypeFilter(WorkflowTypeFilter&& value) { m_typeFilterHasBeenSet = true; m_typeFilter = std::move(value); }
 
     /**
      * <p>If specified, only executions of the type specified in the filter are
@@ -141,7 +144,7 @@ namespace Model
      * <code>tagFilter</code> are mutually exclusive. You can specify at most one of
      * these in a request.</note>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithTypeFilter(WorkflowTypeFilter&& value) { SetTypeFilter(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithTypeFilter(WorkflowTypeFilter&& value) { SetTypeFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only executions that have the matching tag are listed.</p>
@@ -165,7 +168,7 @@ namespace Model
      * <code>tagFilter</code> are mutually exclusive. You can specify at most one of
      * these in a request.</note>
      */
-    inline void SetTagFilter(TagFilter&& value) { m_tagFilterHasBeenSet = true; m_tagFilter = value; }
+    inline void SetTagFilter(TagFilter&& value) { m_tagFilterHasBeenSet = true; m_tagFilter = std::move(value); }
 
     /**
      * <p>If specified, only executions that have the matching tag are listed.</p>
@@ -181,7 +184,7 @@ namespace Model
      * <code>tagFilter</code> are mutually exclusive. You can specify at most one of
      * these in a request.</note>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithTagFilter(TagFilter&& value) { SetTagFilter(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithTagFilter(TagFilter&& value) { SetTagFilter(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -208,7 +211,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = value; }
+    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::move(value); }
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -235,7 +238,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -319,7 +322,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline void SetExecutionFilter(WorkflowExecutionFilter&& value) { m_executionFilterHasBeenSet = true; m_executionFilter = value; }
+    inline void SetExecutionFilter(WorkflowExecutionFilter&& value) { m_executionFilterHasBeenSet = true; m_executionFilter = std::move(value); }
 
     /**
      * <p>If specified, only workflow executions matching the workflow ID specified in
@@ -335,7 +338,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline ListOpenWorkflowExecutionsRequest& WithExecutionFilter(WorkflowExecutionFilter&& value) { SetExecutionFilter(value); return *this;}
+    inline ListOpenWorkflowExecutionsRequest& WithExecutionFilter(WorkflowExecutionFilter&& value) { SetExecutionFilter(std::move(value)); return *this;}
 
   private:
     Aws::String m_domain;

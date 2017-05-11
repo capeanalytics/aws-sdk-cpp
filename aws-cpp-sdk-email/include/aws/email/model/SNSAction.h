@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/email/model/SNSActionEncoding.h>
+#include <utility>
 
 namespace Aws
 {
@@ -49,7 +51,9 @@ namespace Model
    * </important> <p>For information about using a receipt rule to publish an Amazon
    * SNS notification, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SNSAction">AWS API
+   * Reference</a></p>
    */
   class AWS_SES_API SNSAction
   {
@@ -89,7 +93,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example
@@ -119,7 +123,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline SNSAction& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline SNSAction& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example
@@ -153,7 +157,7 @@ namespace Model
      * encoded with a different encoding format. Base64 preserves all special
      * characters. The default value is UTF-8.</p>
      */
-    inline void SetEncoding(SNSActionEncoding&& value) { m_encodingHasBeenSet = true; m_encoding = value; }
+    inline void SetEncoding(SNSActionEncoding&& value) { m_encodingHasBeenSet = true; m_encoding = std::move(value); }
 
     /**
      * <p>The encoding to use for the email within the Amazon SNS notification. UTF-8
@@ -169,7 +173,7 @@ namespace Model
      * encoded with a different encoding format. Base64 preserves all special
      * characters. The default value is UTF-8.</p>
      */
-    inline SNSAction& WithEncoding(SNSActionEncoding&& value) { SetEncoding(value); return *this;}
+    inline SNSAction& WithEncoding(SNSActionEncoding&& value) { SetEncoding(std::move(value)); return *this;}
 
   private:
     Aws::String m_topicArn;

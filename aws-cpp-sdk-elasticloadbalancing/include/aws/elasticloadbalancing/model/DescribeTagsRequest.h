@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/elasticloadbalancing/ElasticLoadBalancingRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeTags.</p>
+   * <p>Contains the parameters for DescribeTags.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/DescribeTagsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API DescribeTagsRequest : public ElasticLoadBalancingRequest
   {
@@ -34,6 +38,11 @@ namespace Model
     DescribeTagsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The names of the load balancers.</p>
      */
@@ -47,7 +56,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = value; }
+    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::move(value); }
 
     /**
      * <p>The names of the load balancers.</p>
@@ -57,7 +66,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline DescribeTagsRequest& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(value); return *this;}
+    inline DescribeTagsRequest& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(std::move(value)); return *this;}
 
     /**
      * <p>The names of the load balancers.</p>
@@ -67,7 +76,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline DescribeTagsRequest& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
+    inline DescribeTagsRequest& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of the load balancers.</p>

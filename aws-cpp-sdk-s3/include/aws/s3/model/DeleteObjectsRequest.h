@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/S3Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/s3/model/Delete.h>
 #include <aws/s3/model/RequestPayer.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,6 +40,7 @@ namespace Model
 
     inline bool ShouldComputeContentMd5() const override { return true; }
 
+
     
     inline const Aws::String& GetBucket() const{ return m_bucket; }
 
@@ -45,7 +48,7 @@ namespace Model
     inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
 
     
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     
     inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
@@ -54,7 +57,7 @@ namespace Model
     inline DeleteObjectsRequest& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
 
     
-    inline DeleteObjectsRequest& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline DeleteObjectsRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     
     inline DeleteObjectsRequest& WithBucket(const char* value) { SetBucket(value); return *this;}
@@ -66,13 +69,13 @@ namespace Model
     inline void SetDelete(const Delete& value) { m_deleteHasBeenSet = true; m_delete = value; }
 
     
-    inline void SetDelete(Delete&& value) { m_deleteHasBeenSet = true; m_delete = value; }
+    inline void SetDelete(Delete&& value) { m_deleteHasBeenSet = true; m_delete = std::move(value); }
 
     
     inline DeleteObjectsRequest& WithDelete(const Delete& value) { SetDelete(value); return *this;}
 
     
-    inline DeleteObjectsRequest& WithDelete(Delete&& value) { SetDelete(value); return *this;}
+    inline DeleteObjectsRequest& WithDelete(Delete&& value) { SetDelete(std::move(value)); return *this;}
 
     /**
      * The concatenation of the authentication device's serial number, a space, and the
@@ -90,7 +93,7 @@ namespace Model
      * The concatenation of the authentication device's serial number, a space, and the
      * value that is displayed on your authentication device.
      */
-    inline void SetMFA(Aws::String&& value) { m_mFAHasBeenSet = true; m_mFA = value; }
+    inline void SetMFA(Aws::String&& value) { m_mFAHasBeenSet = true; m_mFA = std::move(value); }
 
     /**
      * The concatenation of the authentication device's serial number, a space, and the
@@ -108,7 +111,7 @@ namespace Model
      * The concatenation of the authentication device's serial number, a space, and the
      * value that is displayed on your authentication device.
      */
-    inline DeleteObjectsRequest& WithMFA(Aws::String&& value) { SetMFA(value); return *this;}
+    inline DeleteObjectsRequest& WithMFA(Aws::String&& value) { SetMFA(std::move(value)); return *this;}
 
     /**
      * The concatenation of the authentication device's serial number, a space, and the
@@ -123,13 +126,13 @@ namespace Model
     inline void SetRequestPayer(const RequestPayer& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
 
     
-    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = value; }
+    inline void SetRequestPayer(RequestPayer&& value) { m_requestPayerHasBeenSet = true; m_requestPayer = std::move(value); }
 
     
     inline DeleteObjectsRequest& WithRequestPayer(const RequestPayer& value) { SetRequestPayer(value); return *this;}
 
     
-    inline DeleteObjectsRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(value); return *this;}
+    inline DeleteObjectsRequest& WithRequestPayer(RequestPayer&& value) { SetRequestPayer(std::move(value)); return *this;}
 
   private:
     Aws::String m_bucket;

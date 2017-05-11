@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticbeanstalk/model/ResponseMetadata.h>
 #include <aws/elasticbeanstalk/model/SingleInstanceHealth.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace ElasticBeanstalk
 namespace Model
 {
   /**
-   * <p>See the example below for a sample response.</p>
+   * <p>Detailed health information about the Amazon EC2 instances in an AWS Elastic
+   * Beanstalk environment.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/DescribeInstancesHealthResult">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API DescribeInstancesHealthResult
   {
@@ -47,104 +52,97 @@ namespace Model
     DescribeInstancesHealthResult& operator=(const AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
     inline const Aws::Vector<SingleInstanceHealth>& GetInstanceHealthList() const{ return m_instanceHealthList; }
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
     inline void SetInstanceHealthList(const Aws::Vector<SingleInstanceHealth>& value) { m_instanceHealthList = value; }
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
-    inline void SetInstanceHealthList(Aws::Vector<SingleInstanceHealth>&& value) { m_instanceHealthList = value; }
+    inline void SetInstanceHealthList(Aws::Vector<SingleInstanceHealth>&& value) { m_instanceHealthList = std::move(value); }
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
     inline DescribeInstancesHealthResult& WithInstanceHealthList(const Aws::Vector<SingleInstanceHealth>& value) { SetInstanceHealthList(value); return *this;}
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
-    inline DescribeInstancesHealthResult& WithInstanceHealthList(Aws::Vector<SingleInstanceHealth>&& value) { SetInstanceHealthList(value); return *this;}
+    inline DescribeInstancesHealthResult& WithInstanceHealthList(Aws::Vector<SingleInstanceHealth>&& value) { SetInstanceHealthList(std::move(value)); return *this;}
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
     inline DescribeInstancesHealthResult& AddInstanceHealthList(const SingleInstanceHealth& value) { m_instanceHealthList.push_back(value); return *this; }
 
     /**
-     * <p>Contains the response body with information about the health of the
-     * instance.</p>
+     * <p>Detailed health information about each instance.</p>
      */
-    inline DescribeInstancesHealthResult& AddInstanceHealthList(SingleInstanceHealth&& value) { m_instanceHealthList.push_back(value); return *this; }
+    inline DescribeInstancesHealthResult& AddInstanceHealthList(SingleInstanceHealth&& value) { m_instanceHealthList.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The date and time the information was last refreshed.</p>
+     * <p>The date and time that the health information was retrieved.</p>
      */
     inline const Aws::Utils::DateTime& GetRefreshedAt() const{ return m_refreshedAt; }
 
     /**
-     * <p>The date and time the information was last refreshed.</p>
+     * <p>The date and time that the health information was retrieved.</p>
      */
     inline void SetRefreshedAt(const Aws::Utils::DateTime& value) { m_refreshedAt = value; }
 
     /**
-     * <p>The date and time the information was last refreshed.</p>
+     * <p>The date and time that the health information was retrieved.</p>
      */
-    inline void SetRefreshedAt(Aws::Utils::DateTime&& value) { m_refreshedAt = value; }
+    inline void SetRefreshedAt(Aws::Utils::DateTime&& value) { m_refreshedAt = std::move(value); }
 
     /**
-     * <p>The date and time the information was last refreshed.</p>
+     * <p>The date and time that the health information was retrieved.</p>
      */
     inline DescribeInstancesHealthResult& WithRefreshedAt(const Aws::Utils::DateTime& value) { SetRefreshedAt(value); return *this;}
 
     /**
-     * <p>The date and time the information was last refreshed.</p>
+     * <p>The date and time that the health information was retrieved.</p>
      */
-    inline DescribeInstancesHealthResult& WithRefreshedAt(Aws::Utils::DateTime&& value) { SetRefreshedAt(value); return *this;}
+    inline DescribeInstancesHealthResult& WithRefreshedAt(Aws::Utils::DateTime&& value) { SetRefreshedAt(std::move(value)); return *this;}
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
     inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
     inline DescribeInstancesHealthResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
-    inline DescribeInstancesHealthResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeInstancesHealthResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>The next token.</p>
+     * <p>Pagination token for the next page of results, if available.</p>
      */
     inline DescribeInstancesHealthResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 
@@ -155,13 +153,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeInstancesHealthResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeInstancesHealthResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeInstancesHealthResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<SingleInstanceHealth> m_instanceHealthList;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * <p>Contains information about an IAM policy, including the policy document.</p>
    * <p>This data type is used as a response element in the
-   * <a>GetAccountAuthorizationDetails</a> action.</p>
+   * <a>GetAccountAuthorizationDetails</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/PolicyDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API PolicyDetail
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline PolicyDetail& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline PolicyDetail& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The policy document.</p>
      */
-    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = value; }
+    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = std::move(value); }
 
     /**
      * <p>The policy document.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The policy document.</p>
      */
-    inline PolicyDetail& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(value); return *this;}
+    inline PolicyDetail& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(std::move(value)); return *this;}
 
     /**
      * <p>The policy document.</p>

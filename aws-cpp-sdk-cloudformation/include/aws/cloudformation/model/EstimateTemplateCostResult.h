@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudformation/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CloudFormation
 namespace Model
 {
   /**
-   * <p>The output for a <a>EstimateTemplateCost</a> action.</p>
+   * <p>The output for a <a>EstimateTemplateCost</a> action.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/EstimateTemplateCostOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API EstimateTemplateCostResult
   {
@@ -59,7 +64,7 @@ namespace Model
      * <p>An AWS Simple Monthly Calculator URL with a query string that describes the
      * resources required to run the template.</p>
      */
-    inline void SetUrl(Aws::String&& value) { m_url = value; }
+    inline void SetUrl(Aws::String&& value) { m_url = std::move(value); }
 
     /**
      * <p>An AWS Simple Monthly Calculator URL with a query string that describes the
@@ -77,7 +82,7 @@ namespace Model
      * <p>An AWS Simple Monthly Calculator URL with a query string that describes the
      * resources required to run the template.</p>
      */
-    inline EstimateTemplateCostResult& WithUrl(Aws::String&& value) { SetUrl(value); return *this;}
+    inline EstimateTemplateCostResult& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
 
     /**
      * <p>An AWS Simple Monthly Calculator URL with a query string that describes the
@@ -92,13 +97,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline EstimateTemplateCostResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline EstimateTemplateCostResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline EstimateTemplateCostResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_url;

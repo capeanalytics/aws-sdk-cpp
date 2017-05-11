@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>The input for the TransferCertificate operation.</p>
+   * <p>The input for the TransferCertificate operation.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/TransferCertificateRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API TransferCertificateRequest : public IoTRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>The ID of the certificate.</p>
@@ -52,7 +58,7 @@ namespace Model
     /**
      * <p>The ID of the certificate.</p>
      */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
+    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
 
     /**
      * <p>The ID of the certificate.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>The ID of the certificate.</p>
      */
-    inline TransferCertificateRequest& WithCertificateId(Aws::String&& value) { SetCertificateId(value); return *this;}
+    inline TransferCertificateRequest& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the certificate.</p>
@@ -87,7 +93,7 @@ namespace Model
     /**
      * <p>The AWS account.</p>
      */
-    inline void SetTargetAwsAccount(Aws::String&& value) { m_targetAwsAccountHasBeenSet = true; m_targetAwsAccount = value; }
+    inline void SetTargetAwsAccount(Aws::String&& value) { m_targetAwsAccountHasBeenSet = true; m_targetAwsAccount = std::move(value); }
 
     /**
      * <p>The AWS account.</p>
@@ -102,7 +108,7 @@ namespace Model
     /**
      * <p>The AWS account.</p>
      */
-    inline TransferCertificateRequest& WithTargetAwsAccount(Aws::String&& value) { SetTargetAwsAccount(value); return *this;}
+    inline TransferCertificateRequest& WithTargetAwsAccount(Aws::String&& value) { SetTargetAwsAccount(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account.</p>
@@ -122,7 +128,7 @@ namespace Model
     /**
      * <p>The transfer message.</p>
      */
-    inline void SetTransferMessage(Aws::String&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = value; }
+    inline void SetTransferMessage(Aws::String&& value) { m_transferMessageHasBeenSet = true; m_transferMessage = std::move(value); }
 
     /**
      * <p>The transfer message.</p>
@@ -137,7 +143,7 @@ namespace Model
     /**
      * <p>The transfer message.</p>
      */
-    inline TransferCertificateRequest& WithTransferMessage(Aws::String&& value) { SetTransferMessage(value); return *this;}
+    inline TransferCertificateRequest& WithTransferMessage(Aws::String&& value) { SetTransferMessage(std::move(value)); return *this;}
 
     /**
      * <p>The transfer message.</p>

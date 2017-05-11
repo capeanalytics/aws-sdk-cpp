@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/email/model/IdentityNotificationAttributes.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -132,22 +133,22 @@ void IdentityNotificationAttributes::OutputToStream(Aws::OStream& oStream, const
 
   if(m_forwardingEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ForwardingEnabled=" << m_forwardingEnabled << "&";
+      oStream << location << index << locationValue << ".ForwardingEnabled=" << std::boolalpha << m_forwardingEnabled << "&";
   }
 
   if(m_headersInBounceNotificationsEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HeadersInBounceNotificationsEnabled=" << m_headersInBounceNotificationsEnabled << "&";
+      oStream << location << index << locationValue << ".HeadersInBounceNotificationsEnabled=" << std::boolalpha << m_headersInBounceNotificationsEnabled << "&";
   }
 
   if(m_headersInComplaintNotificationsEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HeadersInComplaintNotificationsEnabled=" << m_headersInComplaintNotificationsEnabled << "&";
+      oStream << location << index << locationValue << ".HeadersInComplaintNotificationsEnabled=" << std::boolalpha << m_headersInComplaintNotificationsEnabled << "&";
   }
 
   if(m_headersInDeliveryNotificationsEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HeadersInDeliveryNotificationsEnabled=" << m_headersInDeliveryNotificationsEnabled << "&";
+      oStream << location << index << locationValue << ".HeadersInDeliveryNotificationsEnabled=" << std::boolalpha << m_headersInDeliveryNotificationsEnabled << "&";
   }
 
 }
@@ -168,19 +169,19 @@ void IdentityNotificationAttributes::OutputToStream(Aws::OStream& oStream, const
   }
   if(m_forwardingEnabledHasBeenSet)
   {
-      oStream << location << ".ForwardingEnabled=" << m_forwardingEnabled << "&";
+      oStream << location << ".ForwardingEnabled=" << std::boolalpha << m_forwardingEnabled << "&";
   }
   if(m_headersInBounceNotificationsEnabledHasBeenSet)
   {
-      oStream << location << ".HeadersInBounceNotificationsEnabled=" << m_headersInBounceNotificationsEnabled << "&";
+      oStream << location << ".HeadersInBounceNotificationsEnabled=" << std::boolalpha << m_headersInBounceNotificationsEnabled << "&";
   }
   if(m_headersInComplaintNotificationsEnabledHasBeenSet)
   {
-      oStream << location << ".HeadersInComplaintNotificationsEnabled=" << m_headersInComplaintNotificationsEnabled << "&";
+      oStream << location << ".HeadersInComplaintNotificationsEnabled=" << std::boolalpha << m_headersInComplaintNotificationsEnabled << "&";
   }
   if(m_headersInDeliveryNotificationsEnabledHasBeenSet)
   {
-      oStream << location << ".HeadersInDeliveryNotificationsEnabled=" << m_headersInDeliveryNotificationsEnabled << "&";
+      oStream << location << ".HeadersInDeliveryNotificationsEnabled=" << std::boolalpha << m_headersInDeliveryNotificationsEnabled << "&";
   }
 }
 

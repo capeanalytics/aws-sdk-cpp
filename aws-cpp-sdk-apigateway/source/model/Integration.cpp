@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/Integration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,6 +29,7 @@ namespace Model
 {
 
 Integration::Integration() : 
+    m_type(IntegrationType::NOT_SET),
     m_typeHasBeenSet(false),
     m_httpMethodHasBeenSet(false),
     m_uriHasBeenSet(false),
@@ -35,6 +37,8 @@ Integration::Integration() :
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
     m_passthroughBehaviorHasBeenSet(false),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET),
+    m_contentHandlingHasBeenSet(false),
     m_cacheNamespaceHasBeenSet(false),
     m_cacheKeyParametersHasBeenSet(false),
     m_integrationResponsesHasBeenSet(false)
@@ -42,6 +46,7 @@ Integration::Integration() :
 }
 
 Integration::Integration(const JsonValue& jsonValue) : 
+    m_type(IntegrationType::NOT_SET),
     m_typeHasBeenSet(false),
     m_httpMethodHasBeenSet(false),
     m_uriHasBeenSet(false),
@@ -49,6 +54,8 @@ Integration::Integration(const JsonValue& jsonValue) :
     m_requestParametersHasBeenSet(false),
     m_requestTemplatesHasBeenSet(false),
     m_passthroughBehaviorHasBeenSet(false),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET),
+    m_contentHandlingHasBeenSet(false),
     m_cacheNamespaceHasBeenSet(false),
     m_cacheKeyParametersHasBeenSet(false),
     m_integrationResponsesHasBeenSet(false)
@@ -111,6 +118,13 @@ Integration& Integration::operator =(const JsonValue& jsonValue)
     m_passthroughBehavior = jsonValue.GetString("passthroughBehavior");
 
     m_passthroughBehaviorHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("contentHandling"))
+  {
+    m_contentHandling = ContentHandlingStrategyMapper::GetContentHandlingStrategyForName(jsonValue.GetString("contentHandling"));
+
+    m_contentHandlingHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("cacheNamespace"))
@@ -196,6 +210,11 @@ JsonValue Integration::Jsonize() const
   {
    payload.WithString("passthroughBehavior", m_passthroughBehavior);
 
+  }
+
+  if(m_contentHandlingHasBeenSet)
+  {
+   payload.WithString("contentHandling", ContentHandlingStrategyMapper::GetNameForContentHandlingStrategy(m_contentHandling));
   }
 
   if(m_cacheNamespaceHasBeenSet)

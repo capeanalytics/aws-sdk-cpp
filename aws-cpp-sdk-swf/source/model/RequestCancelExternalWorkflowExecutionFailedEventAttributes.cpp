@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/swf/model/RequestCancelExternalWorkflowExecutionFailedEventAttributes.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 RequestCancelExternalWorkflowExecutionFailedEventAttributes::RequestCancelExternalWorkflowExecutionFailedEventAttributes() : 
     m_workflowIdHasBeenSet(false),
     m_runIdHasBeenSet(false),
+    m_cause(RequestCancelExternalWorkflowExecutionFailedCause::NOT_SET),
     m_causeHasBeenSet(false),
     m_initiatedEventId(0),
     m_initiatedEventIdHasBeenSet(false),
@@ -42,6 +44,7 @@ RequestCancelExternalWorkflowExecutionFailedEventAttributes::RequestCancelExtern
 RequestCancelExternalWorkflowExecutionFailedEventAttributes::RequestCancelExternalWorkflowExecutionFailedEventAttributes(const JsonValue& jsonValue) : 
     m_workflowIdHasBeenSet(false),
     m_runIdHasBeenSet(false),
+    m_cause(RequestCancelExternalWorkflowExecutionFailedCause::NOT_SET),
     m_causeHasBeenSet(false),
     m_initiatedEventId(0),
     m_initiatedEventIdHasBeenSet(false),

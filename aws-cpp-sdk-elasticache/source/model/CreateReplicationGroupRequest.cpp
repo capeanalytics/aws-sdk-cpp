@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/CreateReplicationGroupRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -28,6 +29,11 @@ CreateReplicationGroupRequest::CreateReplicationGroupRequest() :
     m_numCacheClusters(0),
     m_numCacheClustersHasBeenSet(false),
     m_preferredCacheClusterAZsHasBeenSet(false),
+    m_numNodeGroups(0),
+    m_numNodeGroupsHasBeenSet(false),
+    m_replicasPerNodeGroup(0),
+    m_replicasPerNodeGroupHasBeenSet(false),
+    m_nodeGroupConfigurationHasBeenSet(false),
     m_cacheNodeTypeHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
@@ -46,7 +52,8 @@ CreateReplicationGroupRequest::CreateReplicationGroupRequest() :
     m_autoMinorVersionUpgradeHasBeenSet(false),
     m_snapshotRetentionLimit(0),
     m_snapshotRetentionLimitHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false)
+    m_snapshotWindowHasBeenSet(false),
+    m_authTokenHasBeenSet(false)
 {
 }
 
@@ -71,7 +78,7 @@ Aws::String CreateReplicationGroupRequest::SerializePayload() const
 
   if(m_automaticFailoverEnabledHasBeenSet)
   {
-    ss << "AutomaticFailoverEnabled=" << m_automaticFailoverEnabled << "&";
+    ss << "AutomaticFailoverEnabled=" << std::boolalpha << m_automaticFailoverEnabled << "&";
   }
 
   if(m_numCacheClustersHasBeenSet)
@@ -87,6 +94,26 @@ Aws::String CreateReplicationGroupRequest::SerializePayload() const
       ss << "PreferredCacheClusterAZs.member." << preferredCacheClusterAZsCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       preferredCacheClusterAZsCount++;
+    }
+  }
+
+  if(m_numNodeGroupsHasBeenSet)
+  {
+    ss << "NumNodeGroups=" << m_numNodeGroups << "&";
+  }
+
+  if(m_replicasPerNodeGroupHasBeenSet)
+  {
+    ss << "ReplicasPerNodeGroup=" << m_replicasPerNodeGroup << "&";
+  }
+
+  if(m_nodeGroupConfigurationHasBeenSet)
+  {
+    unsigned nodeGroupConfigurationCount = 1;
+    for(auto& item : m_nodeGroupConfiguration)
+    {
+      item.OutputToStream(ss, "NodeGroupConfiguration.member.", nodeGroupConfigurationCount, "");
+      nodeGroupConfigurationCount++;
     }
   }
 
@@ -180,7 +207,7 @@ Aws::String CreateReplicationGroupRequest::SerializePayload() const
 
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-    ss << "AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+    ss << "AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
 
   if(m_snapshotRetentionLimitHasBeenSet)
@@ -193,7 +220,17 @@ Aws::String CreateReplicationGroupRequest::SerializePayload() const
     ss << "SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
   }
 
+  if(m_authTokenHasBeenSet)
+  {
+    ss << "AuthToken=" << StringUtils::URLEncode(m_authToken.c_str()) << "&";
+  }
+
   ss << "Version=2015-02-02";
   return ss.str();
 }
 
+
+void  CreateReplicationGroupRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

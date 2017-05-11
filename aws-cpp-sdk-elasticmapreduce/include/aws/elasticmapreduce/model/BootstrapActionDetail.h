@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/model/BootstrapActionConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Reports the configuration of a bootstrap action in a job flow.</p>
+   * <p>Reports the configuration of a bootstrap action in a cluster (job
+   * flow).</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/BootstrapActionDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API BootstrapActionDetail
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>A description of the bootstrap action.</p>
      */
-    inline void SetBootstrapActionConfig(BootstrapActionConfig&& value) { m_bootstrapActionConfigHasBeenSet = true; m_bootstrapActionConfig = value; }
+    inline void SetBootstrapActionConfig(BootstrapActionConfig&& value) { m_bootstrapActionConfigHasBeenSet = true; m_bootstrapActionConfig = std::move(value); }
 
     /**
      * <p>A description of the bootstrap action.</p>
@@ -64,7 +69,7 @@ namespace Model
     /**
      * <p>A description of the bootstrap action.</p>
      */
-    inline BootstrapActionDetail& WithBootstrapActionConfig(BootstrapActionConfig&& value) { SetBootstrapActionConfig(value); return *this;}
+    inline BootstrapActionDetail& WithBootstrapActionConfig(BootstrapActionConfig&& value) { SetBootstrapActionConfig(std::move(value)); return *this;}
 
   private:
     BootstrapActionConfig m_bootstrapActionConfig;

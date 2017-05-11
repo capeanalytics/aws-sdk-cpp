@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/elasticache/ElastiCacheRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a <i>DeleteCacheParameterGroup</i> action.</p>
+   * <p>Represents the input of a <code>DeleteCacheParameterGroup</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/DeleteCacheParameterGroupMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API DeleteCacheParameterGroupRequest : public ElastiCacheRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DeleteCacheParameterGroupRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the cache parameter group to delete.</p> <note> <p>The specified
      * cache security group must not be associated with any cache clusters.</p> </note>
@@ -49,7 +59,7 @@ namespace Model
      * <p>The name of the cache parameter group to delete.</p> <note> <p>The specified
      * cache security group must not be associated with any cache clusters.</p> </note>
      */
-    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = value; }
+    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache parameter group to delete.</p> <note> <p>The specified
@@ -67,7 +77,7 @@ namespace Model
      * <p>The name of the cache parameter group to delete.</p> <note> <p>The specified
      * cache security group must not be associated with any cache clusters.</p> </note>
      */
-    inline DeleteCacheParameterGroupRequest& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(value); return *this;}
+    inline DeleteCacheParameterGroupRequest& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache parameter group to delete.</p> <note> <p>The specified

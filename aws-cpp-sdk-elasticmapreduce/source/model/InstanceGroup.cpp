@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticmapreduce/model/InstanceGroup.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,7 +31,9 @@ namespace Model
 InstanceGroup::InstanceGroup() : 
     m_idHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_market(MarketType::NOT_SET),
     m_marketHasBeenSet(false),
+    m_instanceGroupType(InstanceGroupType::NOT_SET),
     m_instanceGroupTypeHasBeenSet(false),
     m_bidPriceHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
@@ -43,14 +46,17 @@ InstanceGroup::InstanceGroup() :
     m_ebsBlockDevicesHasBeenSet(false),
     m_ebsOptimized(false),
     m_ebsOptimizedHasBeenSet(false),
-    m_shrinkPolicyHasBeenSet(false)
+    m_shrinkPolicyHasBeenSet(false),
+    m_autoScalingPolicyHasBeenSet(false)
 {
 }
 
 InstanceGroup::InstanceGroup(const JsonValue& jsonValue) : 
     m_idHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_market(MarketType::NOT_SET),
     m_marketHasBeenSet(false),
+    m_instanceGroupType(InstanceGroupType::NOT_SET),
     m_instanceGroupTypeHasBeenSet(false),
     m_bidPriceHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
@@ -63,7 +69,8 @@ InstanceGroup::InstanceGroup(const JsonValue& jsonValue) :
     m_ebsBlockDevicesHasBeenSet(false),
     m_ebsOptimized(false),
     m_ebsOptimizedHasBeenSet(false),
-    m_shrinkPolicyHasBeenSet(false)
+    m_shrinkPolicyHasBeenSet(false),
+    m_autoScalingPolicyHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -167,6 +174,13 @@ InstanceGroup& InstanceGroup::operator =(const JsonValue& jsonValue)
     m_shrinkPolicyHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("AutoScalingPolicy"))
+  {
+    m_autoScalingPolicy = jsonValue.GetObject("AutoScalingPolicy");
+
+    m_autoScalingPolicyHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -257,6 +271,12 @@ JsonValue InstanceGroup::Jsonize() const
   if(m_shrinkPolicyHasBeenSet)
   {
    payload.WithObject("ShrinkPolicy", m_shrinkPolicy.Jsonize());
+
+  }
+
+  if(m_autoScalingPolicyHasBeenSet)
+  {
+   payload.WithObject("AutoScalingPolicy", m_autoScalingPolicy.Jsonize());
 
   }
 

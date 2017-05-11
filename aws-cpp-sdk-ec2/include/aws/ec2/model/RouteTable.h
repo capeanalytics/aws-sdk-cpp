@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -21,6 +22,7 @@
 #include <aws/ec2/model/RouteTableAssociation.h>
 #include <aws/ec2/model/Tag.h>
 #include <aws/ec2/model/PropagatingVgw.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a route table.</p>
+   * <p>Describes a route table.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RouteTable">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API RouteTable
   {
@@ -62,7 +66,7 @@ namespace Model
     /**
      * <p>The ID of the route table.</p>
      */
-    inline void SetRouteTableId(Aws::String&& value) { m_routeTableIdHasBeenSet = true; m_routeTableId = value; }
+    inline void SetRouteTableId(Aws::String&& value) { m_routeTableIdHasBeenSet = true; m_routeTableId = std::move(value); }
 
     /**
      * <p>The ID of the route table.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The ID of the route table.</p>
      */
-    inline RouteTable& WithRouteTableId(Aws::String&& value) { SetRouteTableId(value); return *this;}
+    inline RouteTable& WithRouteTableId(Aws::String&& value) { SetRouteTableId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the route table.</p>
@@ -97,7 +101,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The ID of the VPC.</p>
@@ -112,7 +116,7 @@ namespace Model
     /**
      * <p>The ID of the VPC.</p>
      */
-    inline RouteTable& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline RouteTable& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the VPC.</p>
@@ -132,7 +136,7 @@ namespace Model
     /**
      * <p>The routes in the route table.</p>
      */
-    inline void SetRoutes(Aws::Vector<Route>&& value) { m_routesHasBeenSet = true; m_routes = value; }
+    inline void SetRoutes(Aws::Vector<Route>&& value) { m_routesHasBeenSet = true; m_routes = std::move(value); }
 
     /**
      * <p>The routes in the route table.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The routes in the route table.</p>
      */
-    inline RouteTable& WithRoutes(Aws::Vector<Route>&& value) { SetRoutes(value); return *this;}
+    inline RouteTable& WithRoutes(Aws::Vector<Route>&& value) { SetRoutes(std::move(value)); return *this;}
 
     /**
      * <p>The routes in the route table.</p>
@@ -152,7 +156,7 @@ namespace Model
     /**
      * <p>The routes in the route table.</p>
      */
-    inline RouteTable& AddRoutes(Route&& value) { m_routesHasBeenSet = true; m_routes.push_back(value); return *this; }
+    inline RouteTable& AddRoutes(Route&& value) { m_routesHasBeenSet = true; m_routes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The associations between the route table and one or more subnets.</p>
@@ -167,7 +171,7 @@ namespace Model
     /**
      * <p>The associations between the route table and one or more subnets.</p>
      */
-    inline void SetAssociations(Aws::Vector<RouteTableAssociation>&& value) { m_associationsHasBeenSet = true; m_associations = value; }
+    inline void SetAssociations(Aws::Vector<RouteTableAssociation>&& value) { m_associationsHasBeenSet = true; m_associations = std::move(value); }
 
     /**
      * <p>The associations between the route table and one or more subnets.</p>
@@ -177,7 +181,7 @@ namespace Model
     /**
      * <p>The associations between the route table and one or more subnets.</p>
      */
-    inline RouteTable& WithAssociations(Aws::Vector<RouteTableAssociation>&& value) { SetAssociations(value); return *this;}
+    inline RouteTable& WithAssociations(Aws::Vector<RouteTableAssociation>&& value) { SetAssociations(std::move(value)); return *this;}
 
     /**
      * <p>The associations between the route table and one or more subnets.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The associations between the route table and one or more subnets.</p>
      */
-    inline RouteTable& AddAssociations(RouteTableAssociation&& value) { m_associationsHasBeenSet = true; m_associations.push_back(value); return *this; }
+    inline RouteTable& AddAssociations(RouteTableAssociation&& value) { m_associationsHasBeenSet = true; m_associations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any tags assigned to the route table.</p>
@@ -202,7 +206,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the route table.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the route table.</p>
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the route table.</p>
      */
-    inline RouteTable& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline RouteTable& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the route table.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the route table.</p>
      */
-    inline RouteTable& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline RouteTable& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
@@ -237,7 +241,7 @@ namespace Model
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
      */
-    inline void SetPropagatingVgws(Aws::Vector<PropagatingVgw>&& value) { m_propagatingVgwsHasBeenSet = true; m_propagatingVgws = value; }
+    inline void SetPropagatingVgws(Aws::Vector<PropagatingVgw>&& value) { m_propagatingVgwsHasBeenSet = true; m_propagatingVgws = std::move(value); }
 
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
@@ -247,7 +251,7 @@ namespace Model
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
      */
-    inline RouteTable& WithPropagatingVgws(Aws::Vector<PropagatingVgw>&& value) { SetPropagatingVgws(value); return *this;}
+    inline RouteTable& WithPropagatingVgws(Aws::Vector<PropagatingVgw>&& value) { SetPropagatingVgws(std::move(value)); return *this;}
 
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
@@ -257,7 +261,7 @@ namespace Model
     /**
      * <p>Any virtual private gateway (VGW) propagating routes.</p>
      */
-    inline RouteTable& AddPropagatingVgws(PropagatingVgw&& value) { m_propagatingVgwsHasBeenSet = true; m_propagatingVgws.push_back(value); return *this; }
+    inline RouteTable& AddPropagatingVgws(PropagatingVgw&& value) { m_propagatingVgwsHasBeenSet = true; m_propagatingVgws.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_routeTableId;

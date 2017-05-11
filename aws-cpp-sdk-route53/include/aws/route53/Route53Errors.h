@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 
 #include <aws/core/client/CoreErrors.h>
@@ -44,7 +45,13 @@ enum class Route53Errors
   RESOURCE_NOT_FOUND = 16,
   UNRECOGNIZED_CLIENT = 17,
   MALFORMED_QUERY_STRING = 18,
+  SLOW_DOWN = 19,
+  REQUEST_TIME_TOO_SKEWED = 20,
+  INVALID_SIGNATURE = 21,
+  SIGNATURE_DOES_NOT_MATCH = 22,
+  INVALID_ACCESS_KEY_ID = 23,
   NETWORK_CONNECTION = 99,
+  
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,10 +74,12 @@ enum class Route53Errors
   INVALID_CHANGE_BATCH,
   INVALID_DOMAIN_NAME,
   INVALID_INPUT,
+  INVALID_PAGINATION_TOKEN,
   INVALID_TRAFFIC_POLICY_DOCUMENT,
   INVALID_V_P_C_ID,
   LAST_V_P_C_ASSOCIATION,
   LIMITS_EXCEEDED,
+  NOT_AUTHORIZED,
   NO_SUCH_CHANGE,
   NO_SUCH_DELEGATION_SET,
   NO_SUCH_GEO_LOCATION,
@@ -84,9 +93,11 @@ enum class Route53Errors
   TOO_MANY_HOSTED_ZONES,
   TOO_MANY_TRAFFIC_POLICIES,
   TOO_MANY_TRAFFIC_POLICY_INSTANCES,
+  TOO_MANY_V_P_C_ASSOCIATION_AUTHORIZATIONS,
   TRAFFIC_POLICY_ALREADY_EXISTS,
   TRAFFIC_POLICY_INSTANCE_ALREADY_EXISTS,
   TRAFFIC_POLICY_IN_USE,
+  V_P_C_ASSOCIATION_AUTHORIZATION_NOT_FOUND,
   V_P_C_ASSOCIATION_NOT_FOUND
 };
 namespace Route53ErrorMapper

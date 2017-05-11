@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/IntegrationType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -32,6 +33,8 @@ namespace Aws
         static const int HTTP_HASH = HashingUtils::HashString("HTTP");
         static const int AWS_HASH = HashingUtils::HashString("AWS");
         static const int MOCK_HASH = HashingUtils::HashString("MOCK");
+        static const int HTTP_PROXY_HASH = HashingUtils::HashString("HTTP_PROXY");
+        static const int AWS_PROXY_HASH = HashingUtils::HashString("AWS_PROXY");
 
 
         IntegrationType GetIntegrationTypeForName(const Aws::String& name)
@@ -48,6 +51,14 @@ namespace Aws
           else if (hashCode == MOCK_HASH)
           {
             return IntegrationType::MOCK;
+          }
+          else if (hashCode == HTTP_PROXY_HASH)
+          {
+            return IntegrationType::HTTP_PROXY;
+          }
+          else if (hashCode == AWS_PROXY_HASH)
+          {
+            return IntegrationType::AWS_PROXY;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -69,6 +80,10 @@ namespace Aws
             return "AWS";
           case IntegrationType::MOCK:
             return "MOCK";
+          case IntegrationType::HTTP_PROXY:
+            return "HTTP_PROXY";
+          case IntegrationType::AWS_PROXY:
+            return "AWS_PROXY";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

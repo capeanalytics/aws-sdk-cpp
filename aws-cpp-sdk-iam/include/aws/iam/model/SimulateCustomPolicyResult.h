@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/ResponseMetadata.h>
 #include <aws/iam/model/EvaluationResult.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
 {
   /**
    * <p>Contains the response to a successful <a>SimulatePrincipalPolicy</a> or
-   * <a>SimulateCustomPolicy</a> request.</p>
+   * <a>SimulateCustomPolicy</a> request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SimulatePolicyResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API SimulateCustomPolicyResult
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The results of the simulation.</p>
      */
-    inline void SetEvaluationResults(Aws::Vector<EvaluationResult>&& value) { m_evaluationResults = value; }
+    inline void SetEvaluationResults(Aws::Vector<EvaluationResult>&& value) { m_evaluationResults = std::move(value); }
 
     /**
      * <p>The results of the simulation.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The results of the simulation.</p>
      */
-    inline SimulateCustomPolicyResult& WithEvaluationResults(Aws::Vector<EvaluationResult>&& value) { SetEvaluationResults(value); return *this;}
+    inline SimulateCustomPolicyResult& WithEvaluationResults(Aws::Vector<EvaluationResult>&& value) { SetEvaluationResults(std::move(value)); return *this;}
 
     /**
      * <p>The results of the simulation.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>The results of the simulation.</p>
      */
-    inline SimulateCustomPolicyResult& AddEvaluationResults(EvaluationResult&& value) { m_evaluationResults.push_back(value); return *this; }
+    inline SimulateCustomPolicyResult& AddEvaluationResults(EvaluationResult&& value) { m_evaluationResults.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A flag that indicates whether there are more items to return. If your results
@@ -133,7 +137,7 @@ namespace Model
      * and contains the value to use for the <code>Marker</code> parameter in a
      * subsequent pagination request.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
@@ -154,7 +158,7 @@ namespace Model
      * and contains the value to use for the <code>Marker</code> parameter in a
      * subsequent pagination request.</p>
      */
-    inline SimulateCustomPolicyResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline SimulateCustomPolicyResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present
@@ -170,13 +174,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline SimulateCustomPolicyResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline SimulateCustomPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline SimulateCustomPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<EvaluationResult> m_evaluationResults;

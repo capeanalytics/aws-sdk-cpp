@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>A code and name pair that represent a severity level that can be applied to a
-   * support case.</p>
+   * support case.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/SeverityLevel">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API SeverityLevel
   {
@@ -61,7 +65,7 @@ namespace Model
      * correspond to response times returned to the caller in
      * <code>severityLevel.name</code>. </p>
      */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
      * <p>One of four values: "low," "medium," "high," and "urgent". These values
@@ -82,7 +86,7 @@ namespace Model
      * correspond to response times returned to the caller in
      * <code>severityLevel.name</code>. </p>
      */
-    inline SeverityLevel& WithCode(Aws::String&& value) { SetCode(value); return *this;}
+    inline SeverityLevel& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>One of four values: "low," "medium," "high," and "urgent". These values
@@ -107,7 +111,7 @@ namespace Model
      * <p>The name of the severity level that corresponds to the severity level
      * code.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the severity level that corresponds to the severity level
@@ -125,7 +129,7 @@ namespace Model
      * <p>The name of the severity level that corresponds to the severity level
      * code.</p>
      */
-    inline SeverityLevel& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline SeverityLevel& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the severity level that corresponds to the severity level

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 
   /**
    * <p>Represents the amount of CPU that an app is using on a physical device.</p>
-   * <p>Note that this does not represent system-wide CPU usage.</p>
+   * <p>Note that this does not represent system-wide CPU usage.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CPU">AWS API
+   * Reference</a></p>
    */
   class AWS_DEVICEFARM_API CPU
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The CPU's frequency.</p>
      */
-    inline void SetFrequency(Aws::String&& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
+    inline void SetFrequency(Aws::String&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
 
     /**
      * <p>The CPU's frequency.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The CPU's frequency.</p>
      */
-    inline CPU& WithFrequency(Aws::String&& value) { SetFrequency(value); return *this;}
+    inline CPU& WithFrequency(Aws::String&& value) { SetFrequency(std::move(value)); return *this;}
 
     /**
      * <p>The CPU's frequency.</p>
@@ -90,7 +95,7 @@ namespace Model
     /**
      * <p>The CPU's architecture, for example x86 or ARM.</p>
      */
-    inline void SetArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(Aws::String&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The CPU's architecture, for example x86 or ARM.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The CPU's architecture, for example x86 or ARM.</p>
      */
-    inline CPU& WithArchitecture(Aws::String&& value) { SetArchitecture(value); return *this;}
+    inline CPU& WithArchitecture(Aws::String&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The CPU's architecture, for example x86 or ARM.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/importexport/ImportExport_EXPORTS.h>
 #include <aws/importexport/ImportExportRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace Model
     GetShippingLabelRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     
     inline const Aws::Vector<Aws::String>& GetJobIds() const{ return m_jobIds; }
 
@@ -40,19 +47,19 @@ namespace Model
     inline void SetJobIds(const Aws::Vector<Aws::String>& value) { m_jobIdsHasBeenSet = true; m_jobIds = value; }
 
     
-    inline void SetJobIds(Aws::Vector<Aws::String>&& value) { m_jobIdsHasBeenSet = true; m_jobIds = value; }
+    inline void SetJobIds(Aws::Vector<Aws::String>&& value) { m_jobIdsHasBeenSet = true; m_jobIds = std::move(value); }
 
     
     inline GetShippingLabelRequest& WithJobIds(const Aws::Vector<Aws::String>& value) { SetJobIds(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithJobIds(Aws::Vector<Aws::String>&& value) { SetJobIds(value); return *this;}
+    inline GetShippingLabelRequest& WithJobIds(Aws::Vector<Aws::String>&& value) { SetJobIds(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& AddJobIds(const Aws::String& value) { m_jobIdsHasBeenSet = true; m_jobIds.push_back(value); return *this; }
 
     
-    inline GetShippingLabelRequest& AddJobIds(Aws::String&& value) { m_jobIdsHasBeenSet = true; m_jobIds.push_back(value); return *this; }
+    inline GetShippingLabelRequest& AddJobIds(Aws::String&& value) { m_jobIdsHasBeenSet = true; m_jobIds.push_back(std::move(value)); return *this; }
 
     
     inline GetShippingLabelRequest& AddJobIds(const char* value) { m_jobIdsHasBeenSet = true; m_jobIds.push_back(value); return *this; }
@@ -64,7 +71,7 @@ namespace Model
     inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
 
     
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     
     inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
@@ -73,7 +80,7 @@ namespace Model
     inline GetShippingLabelRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline GetShippingLabelRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithName(const char* value) { SetName(value); return *this;}
@@ -85,7 +92,7 @@ namespace Model
     inline void SetCompany(const Aws::String& value) { m_companyHasBeenSet = true; m_company = value; }
 
     
-    inline void SetCompany(Aws::String&& value) { m_companyHasBeenSet = true; m_company = value; }
+    inline void SetCompany(Aws::String&& value) { m_companyHasBeenSet = true; m_company = std::move(value); }
 
     
     inline void SetCompany(const char* value) { m_companyHasBeenSet = true; m_company.assign(value); }
@@ -94,7 +101,7 @@ namespace Model
     inline GetShippingLabelRequest& WithCompany(const Aws::String& value) { SetCompany(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithCompany(Aws::String&& value) { SetCompany(value); return *this;}
+    inline GetShippingLabelRequest& WithCompany(Aws::String&& value) { SetCompany(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithCompany(const char* value) { SetCompany(value); return *this;}
@@ -106,7 +113,7 @@ namespace Model
     inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
 
     
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
+    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
 
     
     inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
@@ -115,7 +122,7 @@ namespace Model
     inline GetShippingLabelRequest& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(value); return *this;}
+    inline GetShippingLabelRequest& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
@@ -127,7 +134,7 @@ namespace Model
     inline void SetCountry(const Aws::String& value) { m_countryHasBeenSet = true; m_country = value; }
 
     
-    inline void SetCountry(Aws::String&& value) { m_countryHasBeenSet = true; m_country = value; }
+    inline void SetCountry(Aws::String&& value) { m_countryHasBeenSet = true; m_country = std::move(value); }
 
     
     inline void SetCountry(const char* value) { m_countryHasBeenSet = true; m_country.assign(value); }
@@ -136,7 +143,7 @@ namespace Model
     inline GetShippingLabelRequest& WithCountry(const Aws::String& value) { SetCountry(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithCountry(Aws::String&& value) { SetCountry(value); return *this;}
+    inline GetShippingLabelRequest& WithCountry(Aws::String&& value) { SetCountry(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithCountry(const char* value) { SetCountry(value); return *this;}
@@ -148,7 +155,7 @@ namespace Model
     inline void SetStateOrProvince(const Aws::String& value) { m_stateOrProvinceHasBeenSet = true; m_stateOrProvince = value; }
 
     
-    inline void SetStateOrProvince(Aws::String&& value) { m_stateOrProvinceHasBeenSet = true; m_stateOrProvince = value; }
+    inline void SetStateOrProvince(Aws::String&& value) { m_stateOrProvinceHasBeenSet = true; m_stateOrProvince = std::move(value); }
 
     
     inline void SetStateOrProvince(const char* value) { m_stateOrProvinceHasBeenSet = true; m_stateOrProvince.assign(value); }
@@ -157,7 +164,7 @@ namespace Model
     inline GetShippingLabelRequest& WithStateOrProvince(const Aws::String& value) { SetStateOrProvince(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithStateOrProvince(Aws::String&& value) { SetStateOrProvince(value); return *this;}
+    inline GetShippingLabelRequest& WithStateOrProvince(Aws::String&& value) { SetStateOrProvince(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithStateOrProvince(const char* value) { SetStateOrProvince(value); return *this;}
@@ -169,7 +176,7 @@ namespace Model
     inline void SetCity(const Aws::String& value) { m_cityHasBeenSet = true; m_city = value; }
 
     
-    inline void SetCity(Aws::String&& value) { m_cityHasBeenSet = true; m_city = value; }
+    inline void SetCity(Aws::String&& value) { m_cityHasBeenSet = true; m_city = std::move(value); }
 
     
     inline void SetCity(const char* value) { m_cityHasBeenSet = true; m_city.assign(value); }
@@ -178,7 +185,7 @@ namespace Model
     inline GetShippingLabelRequest& WithCity(const Aws::String& value) { SetCity(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithCity(Aws::String&& value) { SetCity(value); return *this;}
+    inline GetShippingLabelRequest& WithCity(Aws::String&& value) { SetCity(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithCity(const char* value) { SetCity(value); return *this;}
@@ -190,7 +197,7 @@ namespace Model
     inline void SetPostalCode(const Aws::String& value) { m_postalCodeHasBeenSet = true; m_postalCode = value; }
 
     
-    inline void SetPostalCode(Aws::String&& value) { m_postalCodeHasBeenSet = true; m_postalCode = value; }
+    inline void SetPostalCode(Aws::String&& value) { m_postalCodeHasBeenSet = true; m_postalCode = std::move(value); }
 
     
     inline void SetPostalCode(const char* value) { m_postalCodeHasBeenSet = true; m_postalCode.assign(value); }
@@ -199,7 +206,7 @@ namespace Model
     inline GetShippingLabelRequest& WithPostalCode(const Aws::String& value) { SetPostalCode(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithPostalCode(Aws::String&& value) { SetPostalCode(value); return *this;}
+    inline GetShippingLabelRequest& WithPostalCode(Aws::String&& value) { SetPostalCode(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithPostalCode(const char* value) { SetPostalCode(value); return *this;}
@@ -211,7 +218,7 @@ namespace Model
     inline void SetStreet1(const Aws::String& value) { m_street1HasBeenSet = true; m_street1 = value; }
 
     
-    inline void SetStreet1(Aws::String&& value) { m_street1HasBeenSet = true; m_street1 = value; }
+    inline void SetStreet1(Aws::String&& value) { m_street1HasBeenSet = true; m_street1 = std::move(value); }
 
     
     inline void SetStreet1(const char* value) { m_street1HasBeenSet = true; m_street1.assign(value); }
@@ -220,7 +227,7 @@ namespace Model
     inline GetShippingLabelRequest& WithStreet1(const Aws::String& value) { SetStreet1(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithStreet1(Aws::String&& value) { SetStreet1(value); return *this;}
+    inline GetShippingLabelRequest& WithStreet1(Aws::String&& value) { SetStreet1(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithStreet1(const char* value) { SetStreet1(value); return *this;}
@@ -232,7 +239,7 @@ namespace Model
     inline void SetStreet2(const Aws::String& value) { m_street2HasBeenSet = true; m_street2 = value; }
 
     
-    inline void SetStreet2(Aws::String&& value) { m_street2HasBeenSet = true; m_street2 = value; }
+    inline void SetStreet2(Aws::String&& value) { m_street2HasBeenSet = true; m_street2 = std::move(value); }
 
     
     inline void SetStreet2(const char* value) { m_street2HasBeenSet = true; m_street2.assign(value); }
@@ -241,7 +248,7 @@ namespace Model
     inline GetShippingLabelRequest& WithStreet2(const Aws::String& value) { SetStreet2(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithStreet2(Aws::String&& value) { SetStreet2(value); return *this;}
+    inline GetShippingLabelRequest& WithStreet2(Aws::String&& value) { SetStreet2(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithStreet2(const char* value) { SetStreet2(value); return *this;}
@@ -253,7 +260,7 @@ namespace Model
     inline void SetStreet3(const Aws::String& value) { m_street3HasBeenSet = true; m_street3 = value; }
 
     
-    inline void SetStreet3(Aws::String&& value) { m_street3HasBeenSet = true; m_street3 = value; }
+    inline void SetStreet3(Aws::String&& value) { m_street3HasBeenSet = true; m_street3 = std::move(value); }
 
     
     inline void SetStreet3(const char* value) { m_street3HasBeenSet = true; m_street3.assign(value); }
@@ -262,7 +269,7 @@ namespace Model
     inline GetShippingLabelRequest& WithStreet3(const Aws::String& value) { SetStreet3(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithStreet3(Aws::String&& value) { SetStreet3(value); return *this;}
+    inline GetShippingLabelRequest& WithStreet3(Aws::String&& value) { SetStreet3(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithStreet3(const char* value) { SetStreet3(value); return *this;}
@@ -274,7 +281,7 @@ namespace Model
     inline void SetAPIVersion(const Aws::String& value) { m_aPIVersionHasBeenSet = true; m_aPIVersion = value; }
 
     
-    inline void SetAPIVersion(Aws::String&& value) { m_aPIVersionHasBeenSet = true; m_aPIVersion = value; }
+    inline void SetAPIVersion(Aws::String&& value) { m_aPIVersionHasBeenSet = true; m_aPIVersion = std::move(value); }
 
     
     inline void SetAPIVersion(const char* value) { m_aPIVersionHasBeenSet = true; m_aPIVersion.assign(value); }
@@ -283,7 +290,7 @@ namespace Model
     inline GetShippingLabelRequest& WithAPIVersion(const Aws::String& value) { SetAPIVersion(value); return *this;}
 
     
-    inline GetShippingLabelRequest& WithAPIVersion(Aws::String&& value) { SetAPIVersion(value); return *this;}
+    inline GetShippingLabelRequest& WithAPIVersion(Aws::String&& value) { SetAPIVersion(std::move(value)); return *this;}
 
     
     inline GetShippingLabelRequest& WithAPIVersion(const char* value) { SetAPIVersion(value); return *this;}

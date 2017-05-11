@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>A complex type that contains information about a geo location.</p>
+   * <p>A complex type that contains information about a geo location.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GeoLocation">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API GeoLocation
   {
@@ -67,7 +72,7 @@ namespace Model
      * <code>ContinentCode</code> with either <code>CountryCode</code> or
      * <code>SubdivisionCode</code> returns an <code>InvalidInput</code> error.</p>
      */
-    inline void SetContinentCode(Aws::String&& value) { m_continentCodeHasBeenSet = true; m_continentCode = value; }
+    inline void SetContinentCode(Aws::String&& value) { m_continentCodeHasBeenSet = true; m_continentCode = std::move(value); }
 
     /**
      * <p>The two-letter code for the continent.</p> <p>Valid values: <code>AF</code> |
@@ -94,7 +99,7 @@ namespace Model
      * <code>ContinentCode</code> with either <code>CountryCode</code> or
      * <code>SubdivisionCode</code> returns an <code>InvalidInput</code> error.</p>
      */
-    inline GeoLocation& WithContinentCode(Aws::String&& value) { SetContinentCode(value); return *this;}
+    inline GeoLocation& WithContinentCode(Aws::String&& value) { SetContinentCode(std::move(value)); return *this;}
 
     /**
      * <p>The two-letter code for the continent.</p> <p>Valid values: <code>AF</code> |
@@ -118,7 +123,7 @@ namespace Model
     /**
      * <p>The two-letter code for the country.</p>
      */
-    inline void SetCountryCode(Aws::String&& value) { m_countryCodeHasBeenSet = true; m_countryCode = value; }
+    inline void SetCountryCode(Aws::String&& value) { m_countryCodeHasBeenSet = true; m_countryCode = std::move(value); }
 
     /**
      * <p>The two-letter code for the country.</p>
@@ -133,7 +138,7 @@ namespace Model
     /**
      * <p>The two-letter code for the country.</p>
      */
-    inline GeoLocation& WithCountryCode(Aws::String&& value) { SetCountryCode(value); return *this;}
+    inline GeoLocation& WithCountryCode(Aws::String&& value) { SetCountryCode(std::move(value)); return *this;}
 
     /**
      * <p>The two-letter code for the country.</p>
@@ -156,7 +161,7 @@ namespace Model
      * <p>The code for the subdivision, for example, a state in the United States or a
      * province in Canada.</p>
      */
-    inline void SetSubdivisionCode(Aws::String&& value) { m_subdivisionCodeHasBeenSet = true; m_subdivisionCode = value; }
+    inline void SetSubdivisionCode(Aws::String&& value) { m_subdivisionCodeHasBeenSet = true; m_subdivisionCode = std::move(value); }
 
     /**
      * <p>The code for the subdivision, for example, a state in the United States or a
@@ -174,7 +179,7 @@ namespace Model
      * <p>The code for the subdivision, for example, a state in the United States or a
      * province in Canada.</p>
      */
-    inline GeoLocation& WithSubdivisionCode(Aws::String&& value) { SetSubdivisionCode(value); return *this;}
+    inline GeoLocation& WithSubdivisionCode(Aws::String&& value) { SetSubdivisionCode(std::move(value)); return *this;}
 
     /**
      * <p>The code for the subdivision, for example, a state in the United States or a

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about an alias.</p>
+   * <p>Contains information about an alias.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/AliasListEntry">AWS
+   * API Reference</a></p>
    */
   class AWS_KMS_API AliasListEntry
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>String that contains the alias.</p>
      */
-    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = value; }
+    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::move(value); }
 
     /**
      * <p>String that contains the alias.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>String that contains the alias.</p>
      */
-    inline AliasListEntry& WithAliasName(Aws::String&& value) { SetAliasName(value); return *this;}
+    inline AliasListEntry& WithAliasName(Aws::String&& value) { SetAliasName(std::move(value)); return *this;}
 
     /**
      * <p>String that contains the alias.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>String that contains the key ARN.</p>
      */
-    inline void SetAliasArn(Aws::String&& value) { m_aliasArnHasBeenSet = true; m_aliasArn = value; }
+    inline void SetAliasArn(Aws::String&& value) { m_aliasArnHasBeenSet = true; m_aliasArn = std::move(value); }
 
     /**
      * <p>String that contains the key ARN.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>String that contains the key ARN.</p>
      */
-    inline AliasListEntry& WithAliasArn(Aws::String&& value) { SetAliasArn(value); return *this;}
+    inline AliasListEntry& WithAliasArn(Aws::String&& value) { SetAliasArn(std::move(value)); return *this;}
 
     /**
      * <p>String that contains the key ARN.</p>
@@ -112,37 +116,37 @@ namespace Model
     inline AliasListEntry& WithAliasArn(const char* value) { SetAliasArn(value); return *this;}
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
     inline const Aws::String& GetTargetKeyId() const{ return m_targetKeyId; }
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
     inline void SetTargetKeyId(const Aws::String& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = value; }
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
-    inline void SetTargetKeyId(Aws::String&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = value; }
+    inline void SetTargetKeyId(Aws::String&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = std::move(value); }
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
     inline void SetTargetKeyId(const char* value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId.assign(value); }
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
     inline AliasListEntry& WithTargetKeyId(const Aws::String& value) { SetTargetKeyId(value); return *this;}
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
-    inline AliasListEntry& WithTargetKeyId(Aws::String&& value) { SetTargetKeyId(value); return *this;}
+    inline AliasListEntry& WithTargetKeyId(Aws::String&& value) { SetTargetKeyId(std::move(value)); return *this;}
 
     /**
-     * <p>String that contains the key identifier pointed to by the alias.</p>
+     * <p>String that contains the key identifier referred to by the alias.</p>
      */
     inline AliasListEntry& WithTargetKeyId(const char* value) { SetTargetKeyId(value); return *this;}
 

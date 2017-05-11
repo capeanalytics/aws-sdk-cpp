@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codedeploy/model/InstanceInfo.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,6 +30,7 @@ namespace Model
 
 InstanceInfo::InstanceInfo() : 
     m_instanceNameHasBeenSet(false),
+    m_iamSessionArnHasBeenSet(false),
     m_iamUserArnHasBeenSet(false),
     m_instanceArnHasBeenSet(false),
     m_registerTimeHasBeenSet(false),
@@ -39,6 +41,7 @@ InstanceInfo::InstanceInfo() :
 
 InstanceInfo::InstanceInfo(const JsonValue& jsonValue) : 
     m_instanceNameHasBeenSet(false),
+    m_iamSessionArnHasBeenSet(false),
     m_iamUserArnHasBeenSet(false),
     m_instanceArnHasBeenSet(false),
     m_registerTimeHasBeenSet(false),
@@ -55,6 +58,13 @@ InstanceInfo& InstanceInfo::operator =(const JsonValue& jsonValue)
     m_instanceName = jsonValue.GetString("instanceName");
 
     m_instanceNameHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("iamSessionArn"))
+  {
+    m_iamSessionArn = jsonValue.GetString("iamSessionArn");
+
+    m_iamSessionArnHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("iamUserArn"))
@@ -105,6 +115,12 @@ JsonValue InstanceInfo::Jsonize() const
   if(m_instanceNameHasBeenSet)
   {
    payload.WithString("instanceName", m_instanceName);
+
+  }
+
+  if(m_iamSessionArnHasBeenSet)
+  {
+   payload.WithString("iamSessionArn", m_iamSessionArn);
 
   }
 

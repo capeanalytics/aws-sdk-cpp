@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
 #include <aws/servicecatalog/model/AccessLevelFilterKey.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>The access level to limit results.</p>
+   * <p>The access level to limit results.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/AccessLevelFilter">AWS
+   * API Reference</a></p>
    */
   class AWS_SERVICECATALOG_API AccessLevelFilter
   {
@@ -64,7 +68,7 @@ namespace Model
      * federated role of the specified user.</p> <p> <code>User</code> allows results
      * limited to the specified user. </p>
      */
-    inline void SetKey(AccessLevelFilterKey&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(AccessLevelFilterKey&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>Specifies the access level.</p> <p> <code>Account</code> allows results at
@@ -80,7 +84,7 @@ namespace Model
      * federated role of the specified user.</p> <p> <code>User</code> allows results
      * limited to the specified user. </p>
      */
-    inline AccessLevelFilter& WithKey(AccessLevelFilterKey&& value) { SetKey(value); return *this;}
+    inline AccessLevelFilter& WithKey(AccessLevelFilterKey&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the user to which the access level applies. A value of
@@ -98,7 +102,7 @@ namespace Model
      * <p>Specifies the user to which the access level applies. A value of
      * <code>Self</code> is currently supported.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>Specifies the user to which the access level applies. A value of
@@ -116,7 +120,7 @@ namespace Model
      * <p>Specifies the user to which the access level applies. A value of
      * <code>Self</code> is currently supported.</p>
      */
-    inline AccessLevelFilter& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline AccessLevelFilter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the user to which the access level applies. A value of

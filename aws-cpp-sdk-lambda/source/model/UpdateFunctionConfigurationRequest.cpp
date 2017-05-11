@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/lambda/model/UpdateFunctionConfigurationRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,7 +32,12 @@ UpdateFunctionConfigurationRequest::UpdateFunctionConfigurationRequest() :
     m_memorySize(0),
     m_memorySizeHasBeenSet(false),
     m_vpcConfigHasBeenSet(false),
-    m_runtimeHasBeenSet(false)
+    m_environmentHasBeenSet(false),
+    m_runtime(Runtime::NOT_SET),
+    m_runtimeHasBeenSet(false),
+    m_deadLetterConfigHasBeenSet(false),
+    m_kMSKeyArnHasBeenSet(false),
+    m_tracingConfigHasBeenSet(false)
 {
 }
 
@@ -75,13 +81,38 @@ Aws::String UpdateFunctionConfigurationRequest::SerializePayload() const
 
   }
 
+  if(m_environmentHasBeenSet)
+  {
+   payload.WithObject("Environment", m_environment.Jsonize());
+
+  }
+
   if(m_runtimeHasBeenSet)
   {
    payload.WithString("Runtime", RuntimeMapper::GetNameForRuntime(m_runtime));
   }
 
+  if(m_deadLetterConfigHasBeenSet)
+  {
+   payload.WithObject("DeadLetterConfig", m_deadLetterConfig.Jsonize());
+
+  }
+
+  if(m_kMSKeyArnHasBeenSet)
+  {
+   payload.WithString("KMSKeyArn", m_kMSKeyArn);
+
+  }
+
+  if(m_tracingConfigHasBeenSet)
+  {
+   payload.WithObject("TracingConfig", m_tracingConfig.Jsonize());
+
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/model/ActionCategory.h>
 #include <aws/codepipeline/model/ActionOwner.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about an action type.</p>
+   * <p>Represents information about an action type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ActionTypeId">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ActionTypeId
   {
@@ -62,7 +66,7 @@ namespace Model
      * constrains the provider type for the action. Valid categories are limited to one
      * of the values below.</p>
      */
-    inline void SetCategory(ActionCategory&& value) { m_categoryHasBeenSet = true; m_category = value; }
+    inline void SetCategory(ActionCategory&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
 
     /**
      * <p>A category defines what kind of action can be taken in the stage, and
@@ -76,7 +80,7 @@ namespace Model
      * constrains the provider type for the action. Valid categories are limited to one
      * of the values below.</p>
      */
-    inline ActionTypeId& WithCategory(ActionCategory&& value) { SetCategory(value); return *this;}
+    inline ActionTypeId& WithCategory(ActionCategory&& value) { SetCategory(std::move(value)); return *this;}
 
     /**
      * <p>The creator of the action being called.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The creator of the action being called.</p>
      */
-    inline void SetOwner(ActionOwner&& value) { m_ownerHasBeenSet = true; m_owner = value; }
+    inline void SetOwner(ActionOwner&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
 
     /**
      * <p>The creator of the action being called.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The creator of the action being called.</p>
      */
-    inline ActionTypeId& WithOwner(ActionOwner&& value) { SetOwner(value); return *this;}
+    inline ActionTypeId& WithOwner(ActionOwner&& value) { SetOwner(std::move(value)); return *this;}
 
     /**
      * <p>The provider of the service being called by the action. Valid providers are
@@ -125,7 +129,7 @@ namespace Model
      * type might have a provider of AWS CodeDeploy, which would be specified as
      * CodeDeploy.</p>
      */
-    inline void SetProvider(Aws::String&& value) { m_providerHasBeenSet = true; m_provider = value; }
+    inline void SetProvider(Aws::String&& value) { m_providerHasBeenSet = true; m_provider = std::move(value); }
 
     /**
      * <p>The provider of the service being called by the action. Valid providers are
@@ -149,7 +153,7 @@ namespace Model
      * type might have a provider of AWS CodeDeploy, which would be specified as
      * CodeDeploy.</p>
      */
-    inline ActionTypeId& WithProvider(Aws::String&& value) { SetProvider(value); return *this;}
+    inline ActionTypeId& WithProvider(Aws::String&& value) { SetProvider(std::move(value)); return *this;}
 
     /**
      * <p>The provider of the service being called by the action. Valid providers are
@@ -172,7 +176,7 @@ namespace Model
     /**
      * <p>A string that identifies the action type.</p>
      */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
 
     /**
      * <p>A string that identifies the action type.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>A string that identifies the action type.</p>
      */
-    inline ActionTypeId& WithVersion(Aws::String&& value) { SetVersion(value); return *this;}
+    inline ActionTypeId& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
 
     /**
      * <p>A string that identifies the action type.</p>

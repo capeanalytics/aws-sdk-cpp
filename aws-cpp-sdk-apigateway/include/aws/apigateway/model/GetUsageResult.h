@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,7 +42,9 @@ namespace Model
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create
    * and Use Usage Plans</a>, <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage
-   * Usage in a Usage Plan</a> </div>
+   * Usage in a Usage Plan</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/Usage">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetUsageResult
   {
@@ -62,7 +66,7 @@ namespace Model
     /**
      * <p>The plan Id associated with this usage data.</p>
      */
-    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanId = value; }
+    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanId = std::move(value); }
 
     /**
      * <p>The plan Id associated with this usage data.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The plan Id associated with this usage data.</p>
      */
-    inline GetUsageResult& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(value); return *this;}
+    inline GetUsageResult& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(std::move(value)); return *this;}
 
     /**
      * <p>The plan Id associated with this usage data.</p>
@@ -97,7 +101,7 @@ namespace Model
     /**
      * <p>The starting date of the usage data.</p>
      */
-    inline void SetStartDate(Aws::String&& value) { m_startDate = value; }
+    inline void SetStartDate(Aws::String&& value) { m_startDate = std::move(value); }
 
     /**
      * <p>The starting date of the usage data.</p>
@@ -112,7 +116,7 @@ namespace Model
     /**
      * <p>The starting date of the usage data.</p>
      */
-    inline GetUsageResult& WithStartDate(Aws::String&& value) { SetStartDate(value); return *this;}
+    inline GetUsageResult& WithStartDate(Aws::String&& value) { SetStartDate(std::move(value)); return *this;}
 
     /**
      * <p>The starting date of the usage data.</p>
@@ -132,7 +136,7 @@ namespace Model
     /**
      * <p>The ending date of the usage data.</p>
      */
-    inline void SetEndDate(Aws::String&& value) { m_endDate = value; }
+    inline void SetEndDate(Aws::String&& value) { m_endDate = std::move(value); }
 
     /**
      * <p>The ending date of the usage data.</p>
@@ -147,7 +151,7 @@ namespace Model
     /**
      * <p>The ending date of the usage data.</p>
      */
-    inline GetUsageResult& WithEndDate(Aws::String&& value) { SetEndDate(value); return *this;}
+    inline GetUsageResult& WithEndDate(Aws::String&& value) { SetEndDate(std::move(value)); return *this;}
 
     /**
      * <p>The ending date of the usage data.</p>
@@ -161,7 +165,7 @@ namespace Model
     inline void SetPosition(const Aws::String& value) { m_position = value; }
 
     
-    inline void SetPosition(Aws::String&& value) { m_position = value; }
+    inline void SetPosition(Aws::String&& value) { m_position = std::move(value); }
 
     
     inline void SetPosition(const char* value) { m_position.assign(value); }
@@ -170,7 +174,7 @@ namespace Model
     inline GetUsageResult& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
 
     
-    inline GetUsageResult& WithPosition(Aws::String&& value) { SetPosition(value); return *this;}
+    inline GetUsageResult& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
 
     
     inline GetUsageResult& WithPosition(const char* value) { SetPosition(value); return *this;}
@@ -200,7 +204,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline void SetItems(Aws::Map<Aws::String, Aws::Vector<Aws::Vector<long long>>>&& value) { m_items = value; }
+    inline void SetItems(Aws::Map<Aws::String, Aws::Vector<Aws::Vector<long long>>>&& value) { m_items = std::move(value); }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -218,7 +222,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& WithItems(Aws::Map<Aws::String, Aws::Vector<Aws::Vector<long long>>>&& value) { SetItems(value); return *this;}
+    inline GetUsageResult& WithItems(Aws::Map<Aws::String, Aws::Vector<Aws::Vector<long long>>>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -227,7 +231,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(const Aws::String& key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(const Aws::String& key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items.emplace(key, value); return *this; }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -236,7 +240,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(Aws::String&& key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(Aws::String&& key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -245,7 +249,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(const Aws::String& key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(const Aws::String& key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -254,7 +258,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(Aws::String&& key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(Aws::String&& key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -263,7 +267,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(const char* key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(const char* key, Aws::Vector<Aws::Vector<long long>>&& value) { m_items.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The usage data, as daily logs of used and remaining quotas, over the
@@ -272,7 +276,7 @@ namespace Model
      * where <code>{api_key}</code> stands for an API key value and the daily log entry
      * is of the format <code>[used quota, remaining quota]</code>.</p>
      */
-    inline GetUsageResult& AddItems(const char* key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items[key] = value; return *this; }
+    inline GetUsageResult& AddItems(const char* key, const Aws::Vector<Aws::Vector<long long>>& value) { m_items.emplace(key, value); return *this; }
 
   private:
     Aws::String m_usagePlanId;

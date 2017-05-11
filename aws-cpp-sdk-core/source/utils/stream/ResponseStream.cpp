@@ -16,10 +16,22 @@
 #include <aws/core/utils/stream/ResponseStream.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
+#if defined(_GLIBCXX_FULLY_DYNAMIC_STRING) && _GLIBCXX_FULLY_DYNAMIC_STRING == 0 && defined(__ANDROID__)
+#include <aws/core/utils/stream/SimpleStreamBuf.h>
+using DefaultStreamBufType = Aws::Utils::Stream::SimpleStreamBuf;
+#else
+using DefaultStreamBufType = Aws::StringBuf;
+#endif
+
 using namespace Aws::Utils::Stream;
 
 ResponseStream::ResponseStream(void) :
     m_underlyingStream(nullptr)
+{
+}
+
+ResponseStream::ResponseStream(Aws::IOStream* underlyingStreamToManage) :
+    m_underlyingStream(underlyingStreamToManage)
 {
 }
 
@@ -66,7 +78,7 @@ void ResponseStream::ReleaseStream()
 static const char *DEFAULT_STREAM_TAG = "DefaultUnderlyingStream";
 
 DefaultUnderlyingStream::DefaultUnderlyingStream() :
-    Base( Aws::New< Aws::StringBuf >( DEFAULT_STREAM_TAG ) )
+    Base( Aws::New< DefaultStreamBufType >( DEFAULT_STREAM_TAG ) )
 {}
 
 DefaultUnderlyingStream::~DefaultUnderlyingStream()

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 
   /**
    * <p>Represents sending statistics data. Each <code>SendDataPoint</code> contains
-   * statistics for a 15-minute period of sending activity. </p>
+   * statistics for a 15-minute period of sending activity. </p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/SendDataPoint">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API SendDataPoint
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>Time of the data point.</p>
      */
-    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
+    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
 
     /**
      * <p>Time of the data point.</p>
@@ -68,20 +73,20 @@ namespace Model
     /**
      * <p>Time of the data point.</p>
      */
-    inline SendDataPoint& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(value); return *this;}
+    inline SendDataPoint& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(std::move(value)); return *this;}
 
     /**
-     * <p>Number of emails that have been enqueued for sending.</p>
+     * <p>Number of emails that have been sent.</p>
      */
     inline long long GetDeliveryAttempts() const{ return m_deliveryAttempts; }
 
     /**
-     * <p>Number of emails that have been enqueued for sending.</p>
+     * <p>Number of emails that have been sent.</p>
      */
     inline void SetDeliveryAttempts(long long value) { m_deliveryAttemptsHasBeenSet = true; m_deliveryAttempts = value; }
 
     /**
-     * <p>Number of emails that have been enqueued for sending.</p>
+     * <p>Number of emails that have been sent.</p>
      */
     inline SendDataPoint& WithDeliveryAttempts(long long value) { SetDeliveryAttempts(value); return *this;}
 

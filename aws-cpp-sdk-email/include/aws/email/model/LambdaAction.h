@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/email/model/InvocationType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -43,7 +45,9 @@ namespace Model
    * SES Developer Guide</a>.</p> <p>For information about using AWS Lambda actions
    * in receipt rules, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/LambdaAction">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API LambdaAction
   {
@@ -83,7 +87,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
@@ -113,7 +117,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline LambdaAction& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline LambdaAction& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the
@@ -153,7 +157,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda
      * Developer Guide</a>.</p>
      */
-    inline void SetFunctionArn(Aws::String&& value) { m_functionArnHasBeenSet = true; m_functionArn = value; }
+    inline void SetFunctionArn(Aws::String&& value) { m_functionArnHasBeenSet = true; m_functionArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an
@@ -183,7 +187,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda
      * Developer Guide</a>.</p>
      */
-    inline LambdaAction& WithFunctionArn(Aws::String&& value) { SetFunctionArn(value); return *this;}
+    inline LambdaAction& WithFunctionArn(Aws::String&& value) { SetFunctionArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an
@@ -238,7 +242,7 @@ namespace Model
      * make a mail flow decision, such as whether to stop the receipt rule or the
      * receipt rule set.</p> </important>
      */
-    inline void SetInvocationType(InvocationType&& value) { m_invocationTypeHasBeenSet = true; m_invocationType = value; }
+    inline void SetInvocationType(InvocationType&& value) { m_invocationTypeHasBeenSet = true; m_invocationType = std::move(value); }
 
     /**
      * <p>The invocation type of the AWS Lambda function. An invocation type of
@@ -268,7 +272,7 @@ namespace Model
      * make a mail flow decision, such as whether to stop the receipt rule or the
      * receipt rule set.</p> </important>
      */
-    inline LambdaAction& WithInvocationType(InvocationType&& value) { SetInvocationType(value); return *this;}
+    inline LambdaAction& WithInvocationType(InvocationType&& value) { SetInvocationType(std::move(value)); return *this;}
 
   private:
     Aws::String m_topicArn;

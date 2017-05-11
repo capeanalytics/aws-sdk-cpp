@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/Paths.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * An invalidation batch.
+   * An invalidation batch.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/InvalidationBatch">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API InvalidationBatch
   {
@@ -71,7 +75,7 @@ namespace Model
      * encode those characters. Do not URL encode any other characters in the path, or
      * CloudFront will not invalidate the old version of the updated object.
      */
-    inline void SetPaths(Paths&& value) { m_pathsHasBeenSet = true; m_paths = value; }
+    inline void SetPaths(Paths&& value) { m_pathsHasBeenSet = true; m_paths = std::move(value); }
 
     /**
      * The path of the object to invalidate. The path is relative to the distribution
@@ -91,7 +95,7 @@ namespace Model
      * encode those characters. Do not URL encode any other characters in the path, or
      * CloudFront will not invalidate the old version of the updated object.
      */
-    inline InvalidationBatch& WithPaths(Paths&& value) { SetPaths(value); return *this;}
+    inline InvalidationBatch& WithPaths(Paths&& value) { SetPaths(std::move(value)); return *this;}
 
     /**
      * A unique name that ensures the request can't be replayed. If the CallerReference
@@ -130,7 +134,7 @@ namespace Model
      * is different from the original request, CloudFront returns an
      * InvalidationBatchAlreadyExists error.
      */
-    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = value; }
+    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = std::move(value); }
 
     /**
      * A unique name that ensures the request can't be replayed. If the CallerReference
@@ -169,7 +173,7 @@ namespace Model
      * is different from the original request, CloudFront returns an
      * InvalidationBatchAlreadyExists error.
      */
-    inline InvalidationBatch& WithCallerReference(Aws::String&& value) { SetCallerReference(value); return *this;}
+    inline InvalidationBatch& WithCallerReference(Aws::String&& value) { SetCallerReference(std::move(value)); return *this;}
 
     /**
      * A unique name that ensures the request can't be replayed. If the CallerReference

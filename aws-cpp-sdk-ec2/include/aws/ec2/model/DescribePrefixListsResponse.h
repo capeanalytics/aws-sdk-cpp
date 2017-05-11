@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/PrefixList.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribePrefixLists.</p>
+   * <p>Contains the output of DescribePrefixLists.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribePrefixListsResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribePrefixListsResponse
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>All available prefix lists.</p>
      */
-    inline void SetPrefixLists(Aws::Vector<PrefixList>&& value) { m_prefixLists = value; }
+    inline void SetPrefixLists(Aws::Vector<PrefixList>&& value) { m_prefixLists = std::move(value); }
 
     /**
      * <p>All available prefix lists.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>All available prefix lists.</p>
      */
-    inline DescribePrefixListsResponse& WithPrefixLists(Aws::Vector<PrefixList>&& value) { SetPrefixLists(value); return *this;}
+    inline DescribePrefixListsResponse& WithPrefixLists(Aws::Vector<PrefixList>&& value) { SetPrefixLists(std::move(value)); return *this;}
 
     /**
      * <p>All available prefix lists.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>All available prefix lists.</p>
      */
-    inline DescribePrefixListsResponse& AddPrefixLists(PrefixList&& value) { m_prefixLists.push_back(value); return *this; }
+    inline DescribePrefixListsResponse& AddPrefixLists(PrefixList&& value) { m_prefixLists.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -96,7 +100,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -114,7 +118,7 @@ namespace Model
      * <p>The token to use when requesting the next set of items. If there are no
      * additional items to return, the string is empty.</p>
      */
-    inline DescribePrefixListsResponse& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribePrefixListsResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to use when requesting the next set of items. If there are no
@@ -129,13 +133,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribePrefixListsResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribePrefixListsResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribePrefixListsResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<PrefixList> m_prefixLists;

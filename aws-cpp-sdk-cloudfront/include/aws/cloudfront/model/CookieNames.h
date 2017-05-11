@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * A complex type that specifies the whitelisted cookies, if any, that you want
    * CloudFront to forward to your origin that is associated with this cache
-   * behavior.
+   * behavior.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CookieNames">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CookieNames
   {
@@ -76,7 +80,7 @@ namespace Model
      * Optional: A complex type that contains whitelisted cookies for this cache
      * behavior. If Quantity is 0, you can omit Items.
      */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * Optional: A complex type that contains whitelisted cookies for this cache
@@ -88,7 +92,7 @@ namespace Model
      * Optional: A complex type that contains whitelisted cookies for this cache
      * behavior. If Quantity is 0, you can omit Items.
      */
-    inline CookieNames& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(value); return *this;}
+    inline CookieNames& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * Optional: A complex type that contains whitelisted cookies for this cache
@@ -100,7 +104,7 @@ namespace Model
      * Optional: A complex type that contains whitelisted cookies for this cache
      * behavior. If Quantity is 0, you can omit Items.
      */
-    inline CookieNames& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline CookieNames& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
     /**
      * Optional: A complex type that contains whitelisted cookies for this cache

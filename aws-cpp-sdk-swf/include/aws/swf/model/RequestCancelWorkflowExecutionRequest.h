@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
      */
-    inline RequestCancelWorkflowExecutionRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline RequestCancelWorkflowExecutionRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>The workflowId of the workflow execution to cancel.</p>
      */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
+    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
 
     /**
      * <p>The workflowId of the workflow execution to cancel.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>The workflowId of the workflow execution to cancel.</p>
      */
-    inline RequestCancelWorkflowExecutionRequest& WithWorkflowId(Aws::String&& value) { SetWorkflowId(value); return *this;}
+    inline RequestCancelWorkflowExecutionRequest& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
 
     /**
      * <p>The workflowId of the workflow execution to cancel.</p>
@@ -117,7 +120,7 @@ namespace Model
     /**
      * <p>The runId of the workflow execution to cancel.</p>
      */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = value; }
+    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
 
     /**
      * <p>The runId of the workflow execution to cancel.</p>
@@ -132,7 +135,7 @@ namespace Model
     /**
      * <p>The runId of the workflow execution to cancel.</p>
      */
-    inline RequestCancelWorkflowExecutionRequest& WithRunId(Aws::String&& value) { SetRunId(value); return *this;}
+    inline RequestCancelWorkflowExecutionRequest& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
 
     /**
      * <p>The runId of the workflow execution to cancel.</p>

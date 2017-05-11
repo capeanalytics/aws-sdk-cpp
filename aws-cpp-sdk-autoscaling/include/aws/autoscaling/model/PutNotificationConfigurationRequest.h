@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for PutNotificationConfiguration.</p>
+   * <p>Contains the parameters for PutNotificationConfiguration.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfigurationType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API PutNotificationConfigurationRequest : public AutoScalingRequest
   {
@@ -34,6 +39,11 @@ namespace Model
     PutNotificationConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
@@ -47,7 +57,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -62,7 +72,7 @@ namespace Model
     /**
      * <p>The name of the Auto Scaling group.</p>
      */
-    inline PutNotificationConfigurationRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline PutNotificationConfigurationRequest& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Auto Scaling group.</p>
@@ -85,7 +95,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
      * (SNS) topic.</p>
      */
-    inline void SetTopicARN(Aws::String&& value) { m_topicARNHasBeenSet = true; m_topicARN = value; }
+    inline void SetTopicARN(Aws::String&& value) { m_topicARNHasBeenSet = true; m_topicARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
@@ -103,7 +113,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
      * (SNS) topic.</p>
      */
-    inline PutNotificationConfigurationRequest& WithTopicARN(Aws::String&& value) { SetTopicARN(value); return *this;}
+    inline PutNotificationConfigurationRequest& WithTopicARN(Aws::String&& value) { SetTopicARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
@@ -130,7 +140,7 @@ namespace Model
      * about notification types supported by Auto Scaling, see
      * <a>DescribeAutoScalingNotificationTypes</a>.</p>
      */
-    inline void SetNotificationTypes(Aws::Vector<Aws::String>&& value) { m_notificationTypesHasBeenSet = true; m_notificationTypes = value; }
+    inline void SetNotificationTypes(Aws::Vector<Aws::String>&& value) { m_notificationTypesHasBeenSet = true; m_notificationTypes = std::move(value); }
 
     /**
      * <p>The type of event that will cause the notification to be sent. For details
@@ -144,7 +154,7 @@ namespace Model
      * about notification types supported by Auto Scaling, see
      * <a>DescribeAutoScalingNotificationTypes</a>.</p>
      */
-    inline PutNotificationConfigurationRequest& WithNotificationTypes(Aws::Vector<Aws::String>&& value) { SetNotificationTypes(value); return *this;}
+    inline PutNotificationConfigurationRequest& WithNotificationTypes(Aws::Vector<Aws::String>&& value) { SetNotificationTypes(std::move(value)); return *this;}
 
     /**
      * <p>The type of event that will cause the notification to be sent. For details
@@ -158,7 +168,7 @@ namespace Model
      * about notification types supported by Auto Scaling, see
      * <a>DescribeAutoScalingNotificationTypes</a>.</p>
      */
-    inline PutNotificationConfigurationRequest& AddNotificationTypes(Aws::String&& value) { m_notificationTypesHasBeenSet = true; m_notificationTypes.push_back(value); return *this; }
+    inline PutNotificationConfigurationRequest& AddNotificationTypes(Aws::String&& value) { m_notificationTypesHasBeenSet = true; m_notificationTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The type of event that will cause the notification to be sent. For details

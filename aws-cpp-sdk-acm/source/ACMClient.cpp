@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -30,6 +31,7 @@
 #include <aws/acm/model/DeleteCertificateRequest.h>
 #include <aws/acm/model/DescribeCertificateRequest.h>
 #include <aws/acm/model/GetCertificateRequest.h>
+#include <aws/acm/model/ImportCertificateRequest.h>
 #include <aws/acm/model/ListCertificatesRequest.h>
 #include <aws/acm/model/ListTagsForCertificateRequest.h>
 #include <aws/acm/model/RemoveTagsFromCertificateRequest.h>
@@ -118,7 +120,10 @@ AddTagsToCertificateOutcome ACMClient::AddTagsToCertificate(const AddTagsToCerti
 
 AddTagsToCertificateOutcomeCallable ACMClient::AddTagsToCertificateCallable(const AddTagsToCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->AddTagsToCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< AddTagsToCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->AddTagsToCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::AddTagsToCertificateAsync(const AddTagsToCertificateRequest& request, const AddTagsToCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -149,7 +154,10 @@ DeleteCertificateOutcome ACMClient::DeleteCertificate(const DeleteCertificateReq
 
 DeleteCertificateOutcomeCallable ACMClient::DeleteCertificateCallable(const DeleteCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DeleteCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DeleteCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DeleteCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::DeleteCertificateAsync(const DeleteCertificateRequest& request, const DeleteCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -180,7 +188,10 @@ DescribeCertificateOutcome ACMClient::DescribeCertificate(const DescribeCertific
 
 DescribeCertificateOutcomeCallable ACMClient::DescribeCertificateCallable(const DescribeCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::DescribeCertificateAsync(const DescribeCertificateRequest& request, const DescribeCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -211,7 +222,10 @@ GetCertificateOutcome ACMClient::GetCertificate(const GetCertificateRequest& req
 
 GetCertificateOutcomeCallable ACMClient::GetCertificateCallable(const GetCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::GetCertificateAsync(const GetCertificateRequest& request, const GetCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -222,6 +236,40 @@ void ACMClient::GetCertificateAsync(const GetCertificateRequest& request, const 
 void ACMClient::GetCertificateAsyncHelper(const GetCertificateRequest& request, const GetCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, GetCertificate(request), context);
+}
+
+ImportCertificateOutcome ACMClient::ImportCertificate(const ImportCertificateRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ImportCertificateOutcome(ImportCertificateResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ImportCertificateOutcome(outcome.GetError());
+  }
+}
+
+ImportCertificateOutcomeCallable ACMClient::ImportCertificateCallable(const ImportCertificateRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ImportCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ImportCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void ACMClient::ImportCertificateAsync(const ImportCertificateRequest& request, const ImportCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ImportCertificateAsyncHelper( request, handler, context ); } );
+}
+
+void ACMClient::ImportCertificateAsyncHelper(const ImportCertificateRequest& request, const ImportCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ImportCertificate(request), context);
 }
 
 ListCertificatesOutcome ACMClient::ListCertificates(const ListCertificatesRequest& request) const
@@ -242,7 +290,10 @@ ListCertificatesOutcome ACMClient::ListCertificates(const ListCertificatesReques
 
 ListCertificatesOutcomeCallable ACMClient::ListCertificatesCallable(const ListCertificatesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListCertificates(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListCertificatesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListCertificates(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::ListCertificatesAsync(const ListCertificatesRequest& request, const ListCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -273,7 +324,10 @@ ListTagsForCertificateOutcome ACMClient::ListTagsForCertificate(const ListTagsFo
 
 ListTagsForCertificateOutcomeCallable ACMClient::ListTagsForCertificateCallable(const ListTagsForCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListTagsForCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListTagsForCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListTagsForCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::ListTagsForCertificateAsync(const ListTagsForCertificateRequest& request, const ListTagsForCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -304,7 +358,10 @@ RemoveTagsFromCertificateOutcome ACMClient::RemoveTagsFromCertificate(const Remo
 
 RemoveTagsFromCertificateOutcomeCallable ACMClient::RemoveTagsFromCertificateCallable(const RemoveTagsFromCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RemoveTagsFromCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RemoveTagsFromCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RemoveTagsFromCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::RemoveTagsFromCertificateAsync(const RemoveTagsFromCertificateRequest& request, const RemoveTagsFromCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -335,7 +392,10 @@ RequestCertificateOutcome ACMClient::RequestCertificate(const RequestCertificate
 
 RequestCertificateOutcomeCallable ACMClient::RequestCertificateCallable(const RequestCertificateRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->RequestCertificate(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< RequestCertificateOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->RequestCertificate(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::RequestCertificateAsync(const RequestCertificateRequest& request, const RequestCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -366,7 +426,10 @@ ResendValidationEmailOutcome ACMClient::ResendValidationEmail(const ResendValida
 
 ResendValidationEmailOutcomeCallable ACMClient::ResendValidationEmailCallable(const ResendValidationEmailRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ResendValidationEmail(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ResendValidationEmailOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ResendValidationEmail(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void ACMClient::ResendValidationEmailAsync(const ResendValidationEmailRequest& request, const ResendValidationEmailResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 
   /**
    * A complex type that contains information about the Amazon S3 bucket from which
-   * you want CloudFront to get your media files for distribution.
+   * you want CloudFront to get your media files for distribution.<p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/S3Origin">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API S3Origin
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * The DNS name of the S3 origin.
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * The DNS name of the S3 origin.
@@ -71,7 +76,7 @@ namespace Model
     /**
      * The DNS name of the S3 origin.
      */
-    inline S3Origin& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline S3Origin& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * The DNS name of the S3 origin.
@@ -91,7 +96,7 @@ namespace Model
     /**
      * Your S3 origin's origin access identity.
      */
-    inline void SetOriginAccessIdentity(Aws::String&& value) { m_originAccessIdentityHasBeenSet = true; m_originAccessIdentity = value; }
+    inline void SetOriginAccessIdentity(Aws::String&& value) { m_originAccessIdentityHasBeenSet = true; m_originAccessIdentity = std::move(value); }
 
     /**
      * Your S3 origin's origin access identity.
@@ -106,7 +111,7 @@ namespace Model
     /**
      * Your S3 origin's origin access identity.
      */
-    inline S3Origin& WithOriginAccessIdentity(Aws::String&& value) { SetOriginAccessIdentity(value); return *this;}
+    inline S3Origin& WithOriginAccessIdentity(Aws::String&& value) { SetOriginAccessIdentity(std::move(value)); return *this;}
 
     /**
      * Your S3 origin's origin access identity.

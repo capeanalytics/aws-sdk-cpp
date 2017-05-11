@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/ResourceChange.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -30,10 +31,12 @@ namespace Model
 {
 
 ResourceChange::ResourceChange() : 
+    m_action(ChangeAction::NOT_SET),
     m_actionHasBeenSet(false),
     m_logicalResourceIdHasBeenSet(false),
     m_physicalResourceIdHasBeenSet(false),
     m_resourceTypeHasBeenSet(false),
+    m_replacement(Replacement::NOT_SET),
     m_replacementHasBeenSet(false),
     m_scopeHasBeenSet(false),
     m_detailsHasBeenSet(false)
@@ -41,10 +44,12 @@ ResourceChange::ResourceChange() :
 }
 
 ResourceChange::ResourceChange(const XmlNode& xmlNode) : 
+    m_action(ChangeAction::NOT_SET),
     m_actionHasBeenSet(false),
     m_logicalResourceIdHasBeenSet(false),
     m_physicalResourceIdHasBeenSet(false),
     m_resourceTypeHasBeenSet(false),
+    m_replacement(Replacement::NOT_SET),
     m_replacementHasBeenSet(false),
     m_scopeHasBeenSet(false),
     m_detailsHasBeenSet(false)

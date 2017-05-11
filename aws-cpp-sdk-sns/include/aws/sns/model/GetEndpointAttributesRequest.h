@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/sns/SNSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Input for GetEndpointAttributes action.</p>
+   * <p>Input for GetEndpointAttributes action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/GetEndpointAttributesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API GetEndpointAttributesRequest : public SNSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     GetEndpointAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>EndpointArn for GetEndpointAttributes input.</p>
      */
@@ -46,7 +55,7 @@ namespace Model
     /**
      * <p>EndpointArn for GetEndpointAttributes input.</p>
      */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
+    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
 
     /**
      * <p>EndpointArn for GetEndpointAttributes input.</p>
@@ -61,7 +70,7 @@ namespace Model
     /**
      * <p>EndpointArn for GetEndpointAttributes input.</p>
      */
-    inline GetEndpointAttributesRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(value); return *this;}
+    inline GetEndpointAttributesRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
 
     /**
      * <p>EndpointArn for GetEndpointAttributes input.</p>

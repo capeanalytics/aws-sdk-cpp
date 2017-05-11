@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/EventDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -36,7 +37,9 @@ EventDescription::EventDescription() :
     m_versionLabelHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_environmentNameHasBeenSet(false),
+    m_platformArnHasBeenSet(false),
     m_requestIdHasBeenSet(false),
+    m_severity(EventSeverity::NOT_SET),
     m_severityHasBeenSet(false)
 {
 }
@@ -48,7 +51,9 @@ EventDescription::EventDescription(const XmlNode& xmlNode) :
     m_versionLabelHasBeenSet(false),
     m_templateNameHasBeenSet(false),
     m_environmentNameHasBeenSet(false),
+    m_platformArnHasBeenSet(false),
     m_requestIdHasBeenSet(false),
+    m_severity(EventSeverity::NOT_SET),
     m_severityHasBeenSet(false)
 {
   *this = xmlNode;
@@ -95,6 +100,12 @@ EventDescription& EventDescription::operator =(const XmlNode& xmlNode)
     {
       m_environmentName = StringUtils::Trim(environmentNameNode.GetText().c_str());
       m_environmentNameHasBeenSet = true;
+    }
+    XmlNode platformArnNode = resultNode.FirstChild("PlatformArn");
+    if(!platformArnNode.IsNull())
+    {
+      m_platformArn = StringUtils::Trim(platformArnNode.GetText().c_str());
+      m_platformArnHasBeenSet = true;
     }
     XmlNode requestIdNode = resultNode.FirstChild("RequestId");
     if(!requestIdNode.IsNull())
@@ -145,6 +156,11 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".EnvironmentName=" << StringUtils::URLEncode(m_environmentName.c_str()) << "&";
   }
 
+  if(m_platformArnHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PlatformArn=" << StringUtils::URLEncode(m_platformArn.c_str()) << "&";
+  }
+
   if(m_requestIdHasBeenSet)
   {
       oStream << location << index << locationValue << ".RequestId=" << StringUtils::URLEncode(m_requestId.c_str()) << "&";
@@ -182,6 +198,10 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_environmentNameHasBeenSet)
   {
       oStream << location << ".EnvironmentName=" << StringUtils::URLEncode(m_environmentName.c_str()) << "&";
+  }
+  if(m_platformArnHasBeenSet)
+  {
+      oStream << location << ".PlatformArn=" << StringUtils::URLEncode(m_platformArn.c_str()) << "&";
   }
   if(m_requestIdHasBeenSet)
   {

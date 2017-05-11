@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/route53/model/RRType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains the response to a <code>TestDNSAnswer</code>
-   * request. </p>
+   * request. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/TestDNSAnswerResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API TestDNSAnswerResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The Amazon Route 53 name server used to respond to the request.</p>
      */
-    inline void SetNameserver(Aws::String&& value) { m_nameserver = value; }
+    inline void SetNameserver(Aws::String&& value) { m_nameserver = std::move(value); }
 
     /**
      * <p>The Amazon Route 53 name server used to respond to the request.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The Amazon Route 53 name server used to respond to the request.</p>
      */
-    inline TestDNSAnswerResult& WithNameserver(Aws::String&& value) { SetNameserver(value); return *this;}
+    inline TestDNSAnswerResult& WithNameserver(Aws::String&& value) { SetNameserver(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Route 53 name server used to respond to the request.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The name of the resource record set that you submitted a request for.</p>
      */
-    inline void SetRecordName(Aws::String&& value) { m_recordName = value; }
+    inline void SetRecordName(Aws::String&& value) { m_recordName = std::move(value); }
 
     /**
      * <p>The name of the resource record set that you submitted a request for.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The name of the resource record set that you submitted a request for.</p>
      */
-    inline TestDNSAnswerResult& WithRecordName(Aws::String&& value) { SetRecordName(value); return *this;}
+    inline TestDNSAnswerResult& WithRecordName(Aws::String&& value) { SetRecordName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the resource record set that you submitted a request for.</p>
@@ -128,7 +132,7 @@ namespace Model
     /**
      * <p>The type of the resource record set that you submitted a request for.</p>
      */
-    inline void SetRecordType(RRType&& value) { m_recordType = value; }
+    inline void SetRecordType(RRType&& value) { m_recordType = std::move(value); }
 
     /**
      * <p>The type of the resource record set that you submitted a request for.</p>
@@ -138,7 +142,7 @@ namespace Model
     /**
      * <p>The type of the resource record set that you submitted a request for.</p>
      */
-    inline TestDNSAnswerResult& WithRecordType(RRType&& value) { SetRecordType(value); return *this;}
+    inline TestDNSAnswerResult& WithRecordType(RRType&& value) { SetRecordType(std::move(value)); return *this;}
 
     /**
      * <p>A list that contains values that Amazon Route 53 returned for this resource
@@ -156,7 +160,7 @@ namespace Model
      * <p>A list that contains values that Amazon Route 53 returned for this resource
      * record set.</p>
      */
-    inline void SetRecordData(Aws::Vector<Aws::String>&& value) { m_recordData = value; }
+    inline void SetRecordData(Aws::Vector<Aws::String>&& value) { m_recordData = std::move(value); }
 
     /**
      * <p>A list that contains values that Amazon Route 53 returned for this resource
@@ -168,7 +172,7 @@ namespace Model
      * <p>A list that contains values that Amazon Route 53 returned for this resource
      * record set.</p>
      */
-    inline TestDNSAnswerResult& WithRecordData(Aws::Vector<Aws::String>&& value) { SetRecordData(value); return *this;}
+    inline TestDNSAnswerResult& WithRecordData(Aws::Vector<Aws::String>&& value) { SetRecordData(std::move(value)); return *this;}
 
     /**
      * <p>A list that contains values that Amazon Route 53 returned for this resource
@@ -180,7 +184,7 @@ namespace Model
      * <p>A list that contains values that Amazon Route 53 returned for this resource
      * record set.</p>
      */
-    inline TestDNSAnswerResult& AddRecordData(Aws::String&& value) { m_recordData.push_back(value); return *this; }
+    inline TestDNSAnswerResult& AddRecordData(Aws::String&& value) { m_recordData.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list that contains values that Amazon Route 53 returned for this resource
@@ -216,7 +220,7 @@ namespace Model
      * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS
      * RCODES</a> on the IANA website. </p>
      */
-    inline void SetResponseCode(Aws::String&& value) { m_responseCode = value; }
+    inline void SetResponseCode(Aws::String&& value) { m_responseCode = std::move(value); }
 
     /**
      * <p>A code that indicates whether the request is valid or not. The most common
@@ -246,7 +250,7 @@ namespace Model
      * href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS
      * RCODES</a> on the IANA website. </p>
      */
-    inline TestDNSAnswerResult& WithResponseCode(Aws::String&& value) { SetResponseCode(value); return *this;}
+    inline TestDNSAnswerResult& WithResponseCode(Aws::String&& value) { SetResponseCode(std::move(value)); return *this;}
 
     /**
      * <p>A code that indicates whether the request is valid or not. The most common
@@ -274,7 +278,7 @@ namespace Model
      * <p>The protocol that Amazon Route 53 used to respond to the request, either
      * <code>UDP</code> or <code>TCP</code>. </p>
      */
-    inline void SetProtocol(Aws::String&& value) { m_protocol = value; }
+    inline void SetProtocol(Aws::String&& value) { m_protocol = std::move(value); }
 
     /**
      * <p>The protocol that Amazon Route 53 used to respond to the request, either
@@ -292,7 +296,7 @@ namespace Model
      * <p>The protocol that Amazon Route 53 used to respond to the request, either
      * <code>UDP</code> or <code>TCP</code>. </p>
      */
-    inline TestDNSAnswerResult& WithProtocol(Aws::String&& value) { SetProtocol(value); return *this;}
+    inline TestDNSAnswerResult& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The protocol that Amazon Route 53 used to respond to the request, either

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/kms/KMSErrors.h>
@@ -37,6 +38,7 @@
 #include <aws/kms/model/ListGrantsResult.h>
 #include <aws/kms/model/ListKeyPoliciesResult.h>
 #include <aws/kms/model/ListKeysResult.h>
+#include <aws/kms/model/ListResourceTagsResult.h>
 #include <aws/kms/model/ListRetirableGrantsResult.h>
 #include <aws/kms/model/ReEncryptResult.h>
 #include <aws/kms/model/ScheduleKeyDeletionResult.h>
@@ -110,12 +112,15 @@ namespace Model
         class ListGrantsRequest;
         class ListKeyPoliciesRequest;
         class ListKeysRequest;
+        class ListResourceTagsRequest;
         class ListRetirableGrantsRequest;
         class PutKeyPolicyRequest;
         class ReEncryptRequest;
         class RetireGrantRequest;
         class RevokeGrantRequest;
         class ScheduleKeyDeletionRequest;
+        class TagResourceRequest;
+        class UntagResourceRequest;
         class UpdateAliasRequest;
         class UpdateKeyDescriptionRequest;
 
@@ -143,12 +148,15 @@ namespace Model
         typedef Aws::Utils::Outcome<ListGrantsResult, Aws::Client::AWSError<KMSErrors>> ListGrantsOutcome;
         typedef Aws::Utils::Outcome<ListKeyPoliciesResult, Aws::Client::AWSError<KMSErrors>> ListKeyPoliciesOutcome;
         typedef Aws::Utils::Outcome<ListKeysResult, Aws::Client::AWSError<KMSErrors>> ListKeysOutcome;
+        typedef Aws::Utils::Outcome<ListResourceTagsResult, Aws::Client::AWSError<KMSErrors>> ListResourceTagsOutcome;
         typedef Aws::Utils::Outcome<ListRetirableGrantsResult, Aws::Client::AWSError<KMSErrors>> ListRetirableGrantsOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> PutKeyPolicyOutcome;
         typedef Aws::Utils::Outcome<ReEncryptResult, Aws::Client::AWSError<KMSErrors>> ReEncryptOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> RetireGrantOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> RevokeGrantOutcome;
         typedef Aws::Utils::Outcome<ScheduleKeyDeletionResult, Aws::Client::AWSError<KMSErrors>> ScheduleKeyDeletionOutcome;
+        typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> TagResourceOutcome;
+        typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> UntagResourceOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> UpdateAliasOutcome;
         typedef Aws::Utils::Outcome<NoResult, Aws::Client::AWSError<KMSErrors>> UpdateKeyDescriptionOutcome;
 
@@ -176,12 +184,15 @@ namespace Model
         typedef std::future<ListGrantsOutcome> ListGrantsOutcomeCallable;
         typedef std::future<ListKeyPoliciesOutcome> ListKeyPoliciesOutcomeCallable;
         typedef std::future<ListKeysOutcome> ListKeysOutcomeCallable;
+        typedef std::future<ListResourceTagsOutcome> ListResourceTagsOutcomeCallable;
         typedef std::future<ListRetirableGrantsOutcome> ListRetirableGrantsOutcomeCallable;
         typedef std::future<PutKeyPolicyOutcome> PutKeyPolicyOutcomeCallable;
         typedef std::future<ReEncryptOutcome> ReEncryptOutcomeCallable;
         typedef std::future<RetireGrantOutcome> RetireGrantOutcomeCallable;
         typedef std::future<RevokeGrantOutcome> RevokeGrantOutcomeCallable;
         typedef std::future<ScheduleKeyDeletionOutcome> ScheduleKeyDeletionOutcomeCallable;
+        typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
+        typedef std::future<UntagResourceOutcome> UntagResourceOutcomeCallable;
         typedef std::future<UpdateAliasOutcome> UpdateAliasOutcomeCallable;
         typedef std::future<UpdateKeyDescriptionOutcome> UpdateKeyDescriptionOutcomeCallable;
 } // namespace Model
@@ -212,12 +223,15 @@ namespace Model
     typedef std::function<void(const KMSClient*, const Model::ListGrantsRequest&, const Model::ListGrantsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListGrantsResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::ListKeyPoliciesRequest&, const Model::ListKeyPoliciesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListKeyPoliciesResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::ListKeysRequest&, const Model::ListKeysOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListKeysResponseReceivedHandler;
+    typedef std::function<void(const KMSClient*, const Model::ListResourceTagsRequest&, const Model::ListResourceTagsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListResourceTagsResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::ListRetirableGrantsRequest&, const Model::ListRetirableGrantsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListRetirableGrantsResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::PutKeyPolicyRequest&, const Model::PutKeyPolicyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutKeyPolicyResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::ReEncryptRequest&, const Model::ReEncryptOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ReEncryptResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::RetireGrantRequest&, const Model::RetireGrantOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RetireGrantResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::RevokeGrantRequest&, const Model::RevokeGrantOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RevokeGrantResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::ScheduleKeyDeletionRequest&, const Model::ScheduleKeyDeletionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ScheduleKeyDeletionResponseReceivedHandler;
+    typedef std::function<void(const KMSClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;
+    typedef std::function<void(const KMSClient*, const Model::UntagResourceRequest&, const Model::UntagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UntagResourceResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::UpdateAliasRequest&, const Model::UpdateAliasOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateAliasResponseReceivedHandler;
     typedef std::function<void(const KMSClient*, const Model::UpdateKeyDescriptionRequest&, const Model::UpdateKeyDescriptionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateKeyDescriptionResponseReceivedHandler;
 
@@ -307,7 +321,9 @@ namespace Model
          * deletion of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion">AWS
+         * API Reference</a></p>
          */
         virtual Model::CancelKeyDeletionOutcome CancelKeyDeletion(const Model::CancelKeyDeletionRequest& request) const;
 
@@ -318,7 +334,9 @@ namespace Model
          * deletion of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -331,7 +349,9 @@ namespace Model
          * deletion of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CancelKeyDeletion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -346,7 +366,9 @@ namespace Model
          * begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon
          * Web Services (AWS).</p> <p>The alias and the key it is mapped to must be in the
          * same AWS account and the same region.</p> <p>To map an alias to a different key,
-         * call <a>UpdateAlias</a>.</p>
+         * call <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias">AWS API
+         * Reference</a></p>
          */
         virtual Model::CreateAliasOutcome CreateAlias(const Model::CreateAliasRequest& request) const;
 
@@ -359,7 +381,9 @@ namespace Model
          * begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon
          * Web Services (AWS).</p> <p>The alias and the key it is mapped to must be in the
          * same AWS account and the same region.</p> <p>To map an alias to a different key,
-         * call <a>UpdateAlias</a>.</p>
+         * call <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -374,7 +398,9 @@ namespace Model
          * begins with "aws" after the forward slash (alias/aws...) is reserved by Amazon
          * Web Services (AWS).</p> <p>The alias and the key it is mapped to must be in the
          * same AWS account and the same region.</p> <p>To map an alias to a different key,
-         * call <a>UpdateAlias</a>.</p>
+         * call <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateAlias">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -385,7 +411,10 @@ namespace Model
          * conditions. Grants are alternate permission mechanisms to key policies.</p>
          * <p>For more information about grants, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a>
-         * in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * in the <i>AWS Key Management Service Developer Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant">AWS API
+         * Reference</a></p>
          */
         virtual Model::CreateGrantOutcome CreateGrant(const Model::CreateGrantRequest& request) const;
 
@@ -394,7 +423,10 @@ namespace Model
          * conditions. Grants are alternate permission mechanisms to key policies.</p>
          * <p>For more information about grants, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a>
-         * in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * in the <i>AWS Key Management Service Developer Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -405,7 +437,10 @@ namespace Model
          * conditions. Grants are alternate permission mechanisms to key policies.</p>
          * <p>For more information about grants, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a>
-         * in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * in the <i>AWS Key Management Service Developer Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateGrant">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -420,7 +455,9 @@ namespace Model
          * <p> <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
          * Key Management Service Concepts</a> in the <i>AWS Key Management Service
-         * Developer Guide</i> </p> </li> </ul>
+         * Developer Guide</i> </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey">AWS API
+         * Reference</a></p>
          */
         virtual Model::CreateKeyOutcome CreateKey(const Model::CreateKeyRequest& request) const;
 
@@ -433,7 +470,9 @@ namespace Model
          * <p> <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
          * Key Management Service Concepts</a> in the <i>AWS Key Management Service
-         * Developer Guide</i> </p> </li> </ul>
+         * Developer Guide</i> </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -448,7 +487,9 @@ namespace Model
          * <p> <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS
          * Key Management Service Concepts</a> in the <i>AWS Key Management Service
-         * Developer Guide</i> </p> </li> </ul>
+         * Developer Guide</i> </p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/CreateKey">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -466,7 +507,10 @@ namespace Model
          * this, we recommend that you do not grant <code>Decrypt</code> access in an IAM
          * user policy. Instead grant <code>Decrypt</code> access only in key policies. If
          * you must grant <code>Decrypt</code> access in an IAM user policy, you should
-         * scope the resource to specific keys or to specific trusted accounts.</p>
+         * scope the resource to specific keys or to specific trusted
+         * accounts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt">AWS API
+         * Reference</a></p>
          */
         virtual Model::DecryptOutcome Decrypt(const Model::DecryptRequest& request) const;
 
@@ -482,7 +526,10 @@ namespace Model
          * this, we recommend that you do not grant <code>Decrypt</code> access in an IAM
          * user policy. Instead grant <code>Decrypt</code> access only in key policies. If
          * you must grant <code>Decrypt</code> access in an IAM user policy, you should
-         * scope the resource to specific keys or to specific trusted accounts.</p>
+         * scope the resource to specific keys or to specific trusted
+         * accounts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -500,7 +547,10 @@ namespace Model
          * this, we recommend that you do not grant <code>Decrypt</code> access in an IAM
          * user policy. Instead grant <code>Decrypt</code> access only in key policies. If
          * you must grant <code>Decrypt</code> access in an IAM user policy, you should
-         * scope the resource to specific keys or to specific trusted accounts.</p>
+         * scope the resource to specific keys or to specific trusted
+         * accounts.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Decrypt">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -508,13 +558,17 @@ namespace Model
 
         /**
          * <p>Deletes the specified alias. To map an alias to a different key, call
-         * <a>UpdateAlias</a>.</p>
+         * <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias">AWS API
+         * Reference</a></p>
          */
         virtual Model::DeleteAliasOutcome DeleteAlias(const Model::DeleteAliasRequest& request) const;
 
         /**
          * <p>Deletes the specified alias. To map an alias to a different key, call
-         * <a>UpdateAlias</a>.</p>
+         * <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -522,7 +576,9 @@ namespace Model
 
         /**
          * <p>Deletes the specified alias. To map an alias to a different key, call
-         * <a>UpdateAlias</a>.</p>
+         * <a>UpdateAlias</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteAlias">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -537,7 +593,10 @@ namespace Model
          * <p>When the specified CMK is in the <code>PendingDeletion</code> state, this
          * operation does not change the CMK's state. Otherwise, it changes the CMK's state
          * to <code>PendingImport</code>.</p> <p>After you delete key material, you can use
-         * <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.</p>
+         * <a>ImportKeyMaterial</a> to reimport the same key material into the
+         * CMK.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteImportedKeyMaterialOutcome DeleteImportedKeyMaterial(const Model::DeleteImportedKeyMaterialRequest& request) const;
 
@@ -550,7 +609,10 @@ namespace Model
          * <p>When the specified CMK is in the <code>PendingDeletion</code> state, this
          * operation does not change the CMK's state. Otherwise, it changes the CMK's state
          * to <code>PendingImport</code>.</p> <p>After you delete key material, you can use
-         * <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.</p>
+         * <a>ImportKeyMaterial</a> to reimport the same key material into the
+         * CMK.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -565,26 +627,38 @@ namespace Model
          * <p>When the specified CMK is in the <code>PendingDeletion</code> state, this
          * operation does not change the CMK's state. Otherwise, it changes the CMK's state
          * to <code>PendingImport</code>.</p> <p>After you delete key material, you can use
-         * <a>ImportKeyMaterial</a> to reimport the same key material into the CMK.</p>
+         * <a>ImportKeyMaterial</a> to reimport the same key material into the
+         * CMK.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DeleteImportedKeyMaterial">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteImportedKeyMaterialAsync(const Model::DeleteImportedKeyMaterialRequest& request, const DeleteImportedKeyMaterialResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Provides detailed information about the specified customer master key.</p>
+         * <p>Provides detailed information about the specified customer master
+         * key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey">AWS API
+         * Reference</a></p>
          */
         virtual Model::DescribeKeyOutcome DescribeKey(const Model::DescribeKeyRequest& request) const;
 
         /**
-         * <p>Provides detailed information about the specified customer master key.</p>
+         * <p>Provides detailed information about the specified customer master
+         * key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeKeyOutcomeCallable DescribeKeyCallable(const Model::DescribeKeyRequest& request) const;
 
         /**
-         * <p>Provides detailed information about the specified customer master key.</p>
+         * <p>Provides detailed information about the specified customer master
+         * key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DescribeKey">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -596,7 +670,9 @@ namespace Model
          * affects the use of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How
          * Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
-         * Management Service Developer Guide</i>.</p>
+         * Management Service Developer Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey">AWS API
+         * Reference</a></p>
          */
         virtual Model::DisableKeyOutcome DisableKey(const Model::DisableKeyRequest& request) const;
 
@@ -606,7 +682,9 @@ namespace Model
          * affects the use of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How
          * Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
-         * Management Service Developer Guide</i>.</p>
+         * Management Service Developer Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -618,64 +696,87 @@ namespace Model
          * affects the use of a CMK, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How
          * Key State Affects the Use of a Customer Master Key</a> in the <i>AWS Key
-         * Management Service Developer Guide</i>.</p>
+         * Management Service Developer Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKey">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DisableKeyAsync(const Model::DisableKeyRequest& request, const DisableKeyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Disables rotation of the specified key.</p>
+         * <p>Disables rotation of the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation">AWS
+         * API Reference</a></p>
          */
         virtual Model::DisableKeyRotationOutcome DisableKeyRotation(const Model::DisableKeyRotationRequest& request) const;
 
         /**
-         * <p>Disables rotation of the specified key.</p>
+         * <p>Disables rotation of the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DisableKeyRotationOutcomeCallable DisableKeyRotationCallable(const Model::DisableKeyRotationRequest& request) const;
 
         /**
-         * <p>Disables rotation of the specified key.</p>
+         * <p>Disables rotation of the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/DisableKeyRotation">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DisableKeyRotationAsync(const Model::DisableKeyRotationRequest& request, const DisableKeyRotationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Marks a key as enabled, thereby permitting its use.</p>
+         * <p>Marks a key as enabled, thereby permitting its use.</p><p><h3>See Also:</h3> 
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableKeyOutcome EnableKey(const Model::EnableKeyRequest& request) const;
 
         /**
-         * <p>Marks a key as enabled, thereby permitting its use.</p>
+         * <p>Marks a key as enabled, thereby permitting its use.</p><p><h3>See Also:</h3> 
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::EnableKeyOutcomeCallable EnableKeyCallable(const Model::EnableKeyRequest& request) const;
 
         /**
-         * <p>Marks a key as enabled, thereby permitting its use.</p>
+         * <p>Marks a key as enabled, thereby permitting its use.</p><p><h3>See Also:</h3> 
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKey">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void EnableKeyAsync(const Model::EnableKeyRequest& request, const EnableKeyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Enables rotation of the specified customer master key.</p>
+         * <p>Enables rotation of the specified customer master key.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableKeyRotationOutcome EnableKeyRotation(const Model::EnableKeyRotationRequest& request) const;
 
         /**
-         * <p>Enables rotation of the specified customer master key.</p>
+         * <p>Enables rotation of the specified customer master key.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::EnableKeyRotationOutcomeCallable EnableKeyRotationCallable(const Model::EnableKeyRotationRequest& request) const;
 
         /**
-         * <p>Enables rotation of the specified customer master key.</p>
+         * <p>Enables rotation of the specified customer master key.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/EnableKeyRotation">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -698,7 +799,9 @@ namespace Model
          * you want to encrypt data locally in your application, you can use the
          * <code>GenerateDataKey</code> function to return a plaintext data encryption key
          * and a copy of the key encrypted under the customer master key (CMK) of your
-         * choosing.</p>
+         * choosing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt">AWS API
+         * Reference</a></p>
          */
         virtual Model::EncryptOutcome Encrypt(const Model::EncryptRequest& request) const;
 
@@ -719,7 +822,9 @@ namespace Model
          * you want to encrypt data locally in your application, you can use the
          * <code>GenerateDataKey</code> function to return a plaintext data encryption key
          * and a copy of the key encrypted under the customer master key (CMK) of your
-         * choosing.</p>
+         * choosing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -742,179 +847,256 @@ namespace Model
          * you want to encrypt data locally in your application, you can use the
          * <code>GenerateDataKey</code> function to return a plaintext data encryption key
          * and a copy of the key encrypted under the customer master key (CMK) of your
-         * choosing.</p>
+         * choosing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/Encrypt">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void EncryptAsync(const Model::EncryptRequest& request, const EncryptResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Generates a data key that you can use in your application to locally encrypt
-         * data. This call returns a plaintext version of the key in the
-         * <code>Plaintext</code> field of the response object and an encrypted copy of the
-         * key in the <code>CiphertextBlob</code> field. The key is encrypted by using the
-         * master key specified by the <code>KeyId</code> field. To decrypt the encrypted
-         * key, pass it to the <code>Decrypt</code> API.</p> <p>We recommend that you use
-         * the following pattern to locally encrypt data: call the
-         * <code>GenerateDataKey</code> API, use the key returned in the
-         * <code>Plaintext</code> response field to locally encrypt data, and then erase
-         * the plaintext data key from memory. Store the encrypted data key (contained in
-         * the <code>CiphertextBlob</code> field) alongside of the locally encrypted
-         * data.</p> <note> <p>You should not call the <code>Encrypt</code> function to
-         * re-encrypt your data keys within a region. <code>GenerateDataKey</code> always
-         * returns the data key encrypted and tied to the customer master key that will be
-         * used to decrypt it. There is no need to decrypt it twice.</p> </note> <p>If you
-         * decide to use the optional <code>EncryptionContext</code> parameter, you must
-         * also store the context in full or at least store enough information along with
-         * the encrypted data to be able to reconstruct the context when submitting the
-         * ciphertext to the <code>Decrypt</code> API. It is a good practice to choose a
-         * context that you can reconstruct on the fly to better secure the ciphertext. For
-         * more information about how this parameter is used, see <a
-         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encrypt-context.html">Encryption
-         * Context</a>.</p> <p>To decrypt data, pass the encrypted data key to the
-         * <code>Decrypt</code> API. <code>Decrypt</code> uses the associated master key to
-         * decrypt the encrypted data key and returns it as plaintext. Use the plaintext
-         * data key to locally decrypt your data and then erase the key from memory. You
-         * must specify the encryption context, if any, that you specified when you
-         * generated the key. The encryption context is logged by CloudTrail, and you can
-         * use this log to help track the use of particular data.</p>
+         * <p>Returns a data encryption key that you can use in your application to encrypt
+         * data locally.</p> <p>You must specify the customer master key (CMK) under which
+         * to generate the data key. You must also specify the length of the data key using
+         * either the <code>KeySpec</code> or <code>NumberOfBytes</code> field. You must
+         * specify one field or the other, but not both. For common key lengths (128-bit
+         * and 256-bit symmetric keys), we recommend that you use <code>KeySpec</code>.</p>
+         * <p>This operation returns a plaintext copy of the data key in the
+         * <code>Plaintext</code> field of the response, and an encrypted copy of the data
+         * key in the <code>CiphertextBlob</code> field. The data key is encrypted under
+         * the CMK specified in the <code>KeyId</code> field of the request.</p> <p>We
+         * recommend that you use the following pattern to encrypt data locally in your
+         * application:</p> <ol> <li> <p>Use this operation (<code>GenerateDataKey</code>)
+         * to retrieve a data encryption key.</p> </li> <li> <p>Use the plaintext data
+         * encryption key (returned in the <code>Plaintext</code> field of the response) to
+         * encrypt data locally, then erase the plaintext data key from memory.</p> </li>
+         * <li> <p>Store the encrypted data key (returned in the
+         * <code>CiphertextBlob</code> field of the response) alongside the locally
+         * encrypted data.</p> </li> </ol> <p>To decrypt data locally:</p> <ol> <li> <p>Use
+         * the <a>Decrypt</a> operation to decrypt the encrypted data key into a plaintext
+         * copy of the data key.</p> </li> <li> <p>Use the plaintext data key to decrypt
+         * data locally, then erase the plaintext data key from memory.</p> </li> </ol>
+         * <p>To return only an encrypted copy of the data key, use
+         * <a>GenerateDataKeyWithoutPlaintext</a>. To return a random byte string that is
+         * cryptographically secure, use <a>GenerateRandom</a>.</p> <p>If you use the
+         * optional <code>EncryptionContext</code> field, you must store at least enough
+         * information to be able to reconstruct the full encryption context when you later
+         * send the ciphertext to the <a>Decrypt</a> operation. It is a good practice to
+         * choose an encryption context that you can reconstruct on the fly to better
+         * secure the ciphertext. For more information, see <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption
+         * Context</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey">AWS
+         * API Reference</a></p>
          */
         virtual Model::GenerateDataKeyOutcome GenerateDataKey(const Model::GenerateDataKeyRequest& request) const;
 
         /**
-         * <p>Generates a data key that you can use in your application to locally encrypt
-         * data. This call returns a plaintext version of the key in the
-         * <code>Plaintext</code> field of the response object and an encrypted copy of the
-         * key in the <code>CiphertextBlob</code> field. The key is encrypted by using the
-         * master key specified by the <code>KeyId</code> field. To decrypt the encrypted
-         * key, pass it to the <code>Decrypt</code> API.</p> <p>We recommend that you use
-         * the following pattern to locally encrypt data: call the
-         * <code>GenerateDataKey</code> API, use the key returned in the
-         * <code>Plaintext</code> response field to locally encrypt data, and then erase
-         * the plaintext data key from memory. Store the encrypted data key (contained in
-         * the <code>CiphertextBlob</code> field) alongside of the locally encrypted
-         * data.</p> <note> <p>You should not call the <code>Encrypt</code> function to
-         * re-encrypt your data keys within a region. <code>GenerateDataKey</code> always
-         * returns the data key encrypted and tied to the customer master key that will be
-         * used to decrypt it. There is no need to decrypt it twice.</p> </note> <p>If you
-         * decide to use the optional <code>EncryptionContext</code> parameter, you must
-         * also store the context in full or at least store enough information along with
-         * the encrypted data to be able to reconstruct the context when submitting the
-         * ciphertext to the <code>Decrypt</code> API. It is a good practice to choose a
-         * context that you can reconstruct on the fly to better secure the ciphertext. For
-         * more information about how this parameter is used, see <a
-         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encrypt-context.html">Encryption
-         * Context</a>.</p> <p>To decrypt data, pass the encrypted data key to the
-         * <code>Decrypt</code> API. <code>Decrypt</code> uses the associated master key to
-         * decrypt the encrypted data key and returns it as plaintext. Use the plaintext
-         * data key to locally decrypt your data and then erase the key from memory. You
-         * must specify the encryption context, if any, that you specified when you
-         * generated the key. The encryption context is logged by CloudTrail, and you can
-         * use this log to help track the use of particular data.</p>
+         * <p>Returns a data encryption key that you can use in your application to encrypt
+         * data locally.</p> <p>You must specify the customer master key (CMK) under which
+         * to generate the data key. You must also specify the length of the data key using
+         * either the <code>KeySpec</code> or <code>NumberOfBytes</code> field. You must
+         * specify one field or the other, but not both. For common key lengths (128-bit
+         * and 256-bit symmetric keys), we recommend that you use <code>KeySpec</code>.</p>
+         * <p>This operation returns a plaintext copy of the data key in the
+         * <code>Plaintext</code> field of the response, and an encrypted copy of the data
+         * key in the <code>CiphertextBlob</code> field. The data key is encrypted under
+         * the CMK specified in the <code>KeyId</code> field of the request.</p> <p>We
+         * recommend that you use the following pattern to encrypt data locally in your
+         * application:</p> <ol> <li> <p>Use this operation (<code>GenerateDataKey</code>)
+         * to retrieve a data encryption key.</p> </li> <li> <p>Use the plaintext data
+         * encryption key (returned in the <code>Plaintext</code> field of the response) to
+         * encrypt data locally, then erase the plaintext data key from memory.</p> </li>
+         * <li> <p>Store the encrypted data key (returned in the
+         * <code>CiphertextBlob</code> field of the response) alongside the locally
+         * encrypted data.</p> </li> </ol> <p>To decrypt data locally:</p> <ol> <li> <p>Use
+         * the <a>Decrypt</a> operation to decrypt the encrypted data key into a plaintext
+         * copy of the data key.</p> </li> <li> <p>Use the plaintext data key to decrypt
+         * data locally, then erase the plaintext data key from memory.</p> </li> </ol>
+         * <p>To return only an encrypted copy of the data key, use
+         * <a>GenerateDataKeyWithoutPlaintext</a>. To return a random byte string that is
+         * cryptographically secure, use <a>GenerateRandom</a>.</p> <p>If you use the
+         * optional <code>EncryptionContext</code> field, you must store at least enough
+         * information to be able to reconstruct the full encryption context when you later
+         * send the ciphertext to the <a>Decrypt</a> operation. It is a good practice to
+         * choose an encryption context that you can reconstruct on the fly to better
+         * secure the ciphertext. For more information, see <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption
+         * Context</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GenerateDataKeyOutcomeCallable GenerateDataKeyCallable(const Model::GenerateDataKeyRequest& request) const;
 
         /**
-         * <p>Generates a data key that you can use in your application to locally encrypt
-         * data. This call returns a plaintext version of the key in the
-         * <code>Plaintext</code> field of the response object and an encrypted copy of the
-         * key in the <code>CiphertextBlob</code> field. The key is encrypted by using the
-         * master key specified by the <code>KeyId</code> field. To decrypt the encrypted
-         * key, pass it to the <code>Decrypt</code> API.</p> <p>We recommend that you use
-         * the following pattern to locally encrypt data: call the
-         * <code>GenerateDataKey</code> API, use the key returned in the
-         * <code>Plaintext</code> response field to locally encrypt data, and then erase
-         * the plaintext data key from memory. Store the encrypted data key (contained in
-         * the <code>CiphertextBlob</code> field) alongside of the locally encrypted
-         * data.</p> <note> <p>You should not call the <code>Encrypt</code> function to
-         * re-encrypt your data keys within a region. <code>GenerateDataKey</code> always
-         * returns the data key encrypted and tied to the customer master key that will be
-         * used to decrypt it. There is no need to decrypt it twice.</p> </note> <p>If you
-         * decide to use the optional <code>EncryptionContext</code> parameter, you must
-         * also store the context in full or at least store enough information along with
-         * the encrypted data to be able to reconstruct the context when submitting the
-         * ciphertext to the <code>Decrypt</code> API. It is a good practice to choose a
-         * context that you can reconstruct on the fly to better secure the ciphertext. For
-         * more information about how this parameter is used, see <a
-         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encrypt-context.html">Encryption
-         * Context</a>.</p> <p>To decrypt data, pass the encrypted data key to the
-         * <code>Decrypt</code> API. <code>Decrypt</code> uses the associated master key to
-         * decrypt the encrypted data key and returns it as plaintext. Use the plaintext
-         * data key to locally decrypt your data and then erase the key from memory. You
-         * must specify the encryption context, if any, that you specified when you
-         * generated the key. The encryption context is logged by CloudTrail, and you can
-         * use this log to help track the use of particular data.</p>
+         * <p>Returns a data encryption key that you can use in your application to encrypt
+         * data locally.</p> <p>You must specify the customer master key (CMK) under which
+         * to generate the data key. You must also specify the length of the data key using
+         * either the <code>KeySpec</code> or <code>NumberOfBytes</code> field. You must
+         * specify one field or the other, but not both. For common key lengths (128-bit
+         * and 256-bit symmetric keys), we recommend that you use <code>KeySpec</code>.</p>
+         * <p>This operation returns a plaintext copy of the data key in the
+         * <code>Plaintext</code> field of the response, and an encrypted copy of the data
+         * key in the <code>CiphertextBlob</code> field. The data key is encrypted under
+         * the CMK specified in the <code>KeyId</code> field of the request.</p> <p>We
+         * recommend that you use the following pattern to encrypt data locally in your
+         * application:</p> <ol> <li> <p>Use this operation (<code>GenerateDataKey</code>)
+         * to retrieve a data encryption key.</p> </li> <li> <p>Use the plaintext data
+         * encryption key (returned in the <code>Plaintext</code> field of the response) to
+         * encrypt data locally, then erase the plaintext data key from memory.</p> </li>
+         * <li> <p>Store the encrypted data key (returned in the
+         * <code>CiphertextBlob</code> field of the response) alongside the locally
+         * encrypted data.</p> </li> </ol> <p>To decrypt data locally:</p> <ol> <li> <p>Use
+         * the <a>Decrypt</a> operation to decrypt the encrypted data key into a plaintext
+         * copy of the data key.</p> </li> <li> <p>Use the plaintext data key to decrypt
+         * data locally, then erase the plaintext data key from memory.</p> </li> </ol>
+         * <p>To return only an encrypted copy of the data key, use
+         * <a>GenerateDataKeyWithoutPlaintext</a>. To return a random byte string that is
+         * cryptographically secure, use <a>GenerateRandom</a>.</p> <p>If you use the
+         * optional <code>EncryptionContext</code> field, you must store at least enough
+         * information to be able to reconstruct the full encryption context when you later
+         * send the ciphertext to the <a>Decrypt</a> operation. It is a good practice to
+         * choose an encryption context that you can reconstruct on the fly to better
+         * secure the ciphertext. For more information, see <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption
+         * Context</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKey">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GenerateDataKeyAsync(const Model::GenerateDataKeyRequest& request, const GenerateDataKeyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Returns a data key encrypted by a customer master key without the plaintext
-         * copy of that key. Otherwise, this API functions exactly like
-         * <a>GenerateDataKey</a>. You can use this API to, for example, satisfy an audit
-         * requirement that an encrypted key be made available without exposing the
-         * plaintext copy of that key.</p>
+         * <p>Returns a data encryption key encrypted under a customer master key (CMK).
+         * This operation is identical to <a>GenerateDataKey</a> but returns only the
+         * encrypted copy of the data key.</p> <p>This operation is useful in a system that
+         * has multiple components with different degrees of trust. For example, consider a
+         * system that stores encrypted data in containers. Each container stores the
+         * encrypted data and an encrypted copy of the data key. One component of the
+         * system, called the <i>control plane</i>, creates new containers. When it creates
+         * a new container, it uses this operation
+         * (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and
+         * then stores it in the container. Later, a different component of the system,
+         * called the <i>data plane</i>, puts encrypted data into the containers. To do
+         * this, it passes the encrypted data key to the <a>Decrypt</a> operation, then
+         * uses the returned plaintext data key to encrypt data, and finally stores the
+         * encrypted data in the container. In this system, the control plane never sees
+         * the plaintext data key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext">AWS
+         * API Reference</a></p>
          */
         virtual Model::GenerateDataKeyWithoutPlaintextOutcome GenerateDataKeyWithoutPlaintext(const Model::GenerateDataKeyWithoutPlaintextRequest& request) const;
 
         /**
-         * <p>Returns a data key encrypted by a customer master key without the plaintext
-         * copy of that key. Otherwise, this API functions exactly like
-         * <a>GenerateDataKey</a>. You can use this API to, for example, satisfy an audit
-         * requirement that an encrypted key be made available without exposing the
-         * plaintext copy of that key.</p>
+         * <p>Returns a data encryption key encrypted under a customer master key (CMK).
+         * This operation is identical to <a>GenerateDataKey</a> but returns only the
+         * encrypted copy of the data key.</p> <p>This operation is useful in a system that
+         * has multiple components with different degrees of trust. For example, consider a
+         * system that stores encrypted data in containers. Each container stores the
+         * encrypted data and an encrypted copy of the data key. One component of the
+         * system, called the <i>control plane</i>, creates new containers. When it creates
+         * a new container, it uses this operation
+         * (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and
+         * then stores it in the container. Later, a different component of the system,
+         * called the <i>data plane</i>, puts encrypted data into the containers. To do
+         * this, it passes the encrypted data key to the <a>Decrypt</a> operation, then
+         * uses the returned plaintext data key to encrypt data, and finally stores the
+         * encrypted data in the container. In this system, the control plane never sees
+         * the plaintext data key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GenerateDataKeyWithoutPlaintextOutcomeCallable GenerateDataKeyWithoutPlaintextCallable(const Model::GenerateDataKeyWithoutPlaintextRequest& request) const;
 
         /**
-         * <p>Returns a data key encrypted by a customer master key without the plaintext
-         * copy of that key. Otherwise, this API functions exactly like
-         * <a>GenerateDataKey</a>. You can use this API to, for example, satisfy an audit
-         * requirement that an encrypted key be made available without exposing the
-         * plaintext copy of that key.</p>
+         * <p>Returns a data encryption key encrypted under a customer master key (CMK).
+         * This operation is identical to <a>GenerateDataKey</a> but returns only the
+         * encrypted copy of the data key.</p> <p>This operation is useful in a system that
+         * has multiple components with different degrees of trust. For example, consider a
+         * system that stores encrypted data in containers. Each container stores the
+         * encrypted data and an encrypted copy of the data key. One component of the
+         * system, called the <i>control plane</i>, creates new containers. When it creates
+         * a new container, it uses this operation
+         * (<code>GenerateDataKeyWithoutPlaintext</code>) to get an encrypted data key and
+         * then stores it in the container. Later, a different component of the system,
+         * called the <i>data plane</i>, puts encrypted data into the containers. To do
+         * this, it passes the encrypted data key to the <a>Decrypt</a> operation, then
+         * uses the returned plaintext data key to encrypt data, and finally stores the
+         * encrypted data in the container. In this system, the control plane never sees
+         * the plaintext data key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateDataKeyWithoutPlaintext">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GenerateDataKeyWithoutPlaintextAsync(const Model::GenerateDataKeyWithoutPlaintextRequest& request, const GenerateDataKeyWithoutPlaintextResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Generates an unpredictable byte string.</p>
+         * <p>Returns a random byte string that is cryptographically secure.</p> <p>For
+         * more information about entropy and random number generation, see the <a
+         * href="https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf">AWS
+         * Key Management Service Cryptographic Details</a> whitepaper.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom">AWS
+         * API Reference</a></p>
          */
         virtual Model::GenerateRandomOutcome GenerateRandom(const Model::GenerateRandomRequest& request) const;
 
         /**
-         * <p>Generates an unpredictable byte string.</p>
+         * <p>Returns a random byte string that is cryptographically secure.</p> <p>For
+         * more information about entropy and random number generation, see the <a
+         * href="https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf">AWS
+         * Key Management Service Cryptographic Details</a> whitepaper.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GenerateRandomOutcomeCallable GenerateRandomCallable(const Model::GenerateRandomRequest& request) const;
 
         /**
-         * <p>Generates an unpredictable byte string.</p>
+         * <p>Returns a random byte string that is cryptographically secure.</p> <p>For
+         * more information about entropy and random number generation, see the <a
+         * href="https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf">AWS
+         * Key Management Service Cryptographic Details</a> whitepaper.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GenerateRandom">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GenerateRandomAsync(const Model::GenerateRandomRequest& request, const GenerateRandomResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Retrieves a policy attached to the specified key.</p>
+         * <p>Retrieves a policy attached to the specified key.</p><p><h3>See Also:</h3>  
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetKeyPolicyOutcome GetKeyPolicy(const Model::GetKeyPolicyRequest& request) const;
 
         /**
-         * <p>Retrieves a policy attached to the specified key.</p>
+         * <p>Retrieves a policy attached to the specified key.</p><p><h3>See Also:</h3>  
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetKeyPolicyOutcomeCallable GetKeyPolicyCallable(const Model::GetKeyPolicyRequest& request) const;
 
         /**
-         * <p>Retrieves a policy attached to the specified key.</p>
+         * <p>Retrieves a policy attached to the specified key.</p><p><h3>See Also:</h3>  
+         * <a href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyPolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -922,13 +1104,17 @@ namespace Model
 
         /**
          * <p>Retrieves a Boolean value that indicates whether key rotation is enabled for
-         * the specified key.</p>
+         * the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetKeyRotationStatusOutcome GetKeyRotationStatus(const Model::GetKeyRotationStatusRequest& request) const;
 
         /**
          * <p>Retrieves a Boolean value that indicates whether key rotation is enabled for
-         * the specified key.</p>
+         * the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -936,7 +1122,9 @@ namespace Model
 
         /**
          * <p>Retrieves a Boolean value that indicates whether key rotation is enabled for
-         * the specified key.</p>
+         * the specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetKeyRotationStatus">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -957,7 +1145,10 @@ namespace Model
          * <a>ImportKeyMaterial</a> request. The public key and import token from the same
          * response must be used together. These items are valid for 24 hours, after which
          * they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To
-         * retrieve new ones, send another <code>GetParametersForImport</code> request.</p>
+         * retrieve new ones, send another <code>GetParametersForImport</code>
+         * request.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetParametersForImportOutcome GetParametersForImport(const Model::GetParametersForImportRequest& request) const;
 
@@ -976,7 +1167,10 @@ namespace Model
          * <a>ImportKeyMaterial</a> request. The public key and import token from the same
          * response must be used together. These items are valid for 24 hours, after which
          * they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To
-         * retrieve new ones, send another <code>GetParametersForImport</code> request.</p>
+         * retrieve new ones, send another <code>GetParametersForImport</code>
+         * request.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -997,7 +1191,10 @@ namespace Model
          * <a>ImportKeyMaterial</a> request. The public key and import token from the same
          * response must be used together. These items are valid for 24 hours, after which
          * they cannot be used for a subsequent <a>ImportKeyMaterial</a> request. To
-         * retrieve new ones, send another <code>GetParametersForImport</code> request.</p>
+         * retrieve new ones, send another <code>GetParametersForImport</code>
+         * request.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/GetParametersForImport">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1021,7 +1218,10 @@ namespace Model
          * expiration date.</p> <p>When this operation is successful, the specified CMK's
          * key state changes to <code>Enabled</code>, and you can use the CMK.</p> <p>After
          * you successfully import key material into a CMK, you can reimport the same key
-         * material into that CMK, but you cannot import different key material.</p>
+         * material into that CMK, but you cannot import different key
+         * material.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial">AWS
+         * API Reference</a></p>
          */
         virtual Model::ImportKeyMaterialOutcome ImportKeyMaterial(const Model::ImportKeyMaterialRequest& request) const;
 
@@ -1043,7 +1243,10 @@ namespace Model
          * expiration date.</p> <p>When this operation is successful, the specified CMK's
          * key state changes to <code>Enabled</code>, and you can use the CMK.</p> <p>After
          * you successfully import key material into a CMK, you can reimport the same key
-         * material into that CMK, but you cannot import different key material.</p>
+         * material into that CMK, but you cannot import different key
+         * material.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1067,93 +1270,150 @@ namespace Model
          * expiration date.</p> <p>When this operation is successful, the specified CMK's
          * key state changes to <code>Enabled</code>, and you can use the CMK.</p> <p>After
          * you successfully import key material into a CMK, you can reimport the same key
-         * material into that CMK, but you cannot import different key material.</p>
+         * material into that CMK, but you cannot import different key
+         * material.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ImportKeyMaterial">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ImportKeyMaterialAsync(const Model::ImportKeyMaterialRequest& request, const ImportKeyMaterialResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists all of the key aliases in the account.</p>
+         * <p>Lists all of the key aliases in the account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases">AWS API
+         * Reference</a></p>
          */
         virtual Model::ListAliasesOutcome ListAliases(const Model::ListAliasesRequest& request) const;
 
         /**
-         * <p>Lists all of the key aliases in the account.</p>
+         * <p>Lists all of the key aliases in the account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListAliasesOutcomeCallable ListAliasesCallable(const Model::ListAliasesRequest& request) const;
 
         /**
-         * <p>Lists all of the key aliases in the account.</p>
+         * <p>Lists all of the key aliases in the account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListAliases">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListAliasesAsync(const Model::ListAliasesRequest& request, const ListAliasesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>List the grants for a specified key.</p>
+         * <p>List the grants for a specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants">AWS API
+         * Reference</a></p>
          */
         virtual Model::ListGrantsOutcome ListGrants(const Model::ListGrantsRequest& request) const;
 
         /**
-         * <p>List the grants for a specified key.</p>
+         * <p>List the grants for a specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListGrantsOutcomeCallable ListGrantsCallable(const Model::ListGrantsRequest& request) const;
 
         /**
-         * <p>List the grants for a specified key.</p>
+         * <p>List the grants for a specified key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListGrants">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListGrantsAsync(const Model::ListGrantsRequest& request, const ListGrantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Retrieves a list of policies attached to a key.</p>
+         * <p>Retrieves a list of policies attached to a key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListKeyPoliciesOutcome ListKeyPolicies(const Model::ListKeyPoliciesRequest& request) const;
 
         /**
-         * <p>Retrieves a list of policies attached to a key.</p>
+         * <p>Retrieves a list of policies attached to a key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListKeyPoliciesOutcomeCallable ListKeyPoliciesCallable(const Model::ListKeyPoliciesRequest& request) const;
 
         /**
-         * <p>Retrieves a list of policies attached to a key.</p>
+         * <p>Retrieves a list of policies attached to a key.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeyPolicies">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListKeyPoliciesAsync(const Model::ListKeyPoliciesRequest& request, const ListKeyPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the customer master keys.</p>
+         * <p>Lists the customer master keys.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys">AWS API
+         * Reference</a></p>
          */
         virtual Model::ListKeysOutcome ListKeys(const Model::ListKeysRequest& request) const;
 
         /**
-         * <p>Lists the customer master keys.</p>
+         * <p>Lists the customer master keys.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListKeysOutcomeCallable ListKeysCallable(const Model::ListKeysRequest& request) const;
 
         /**
-         * <p>Lists the customer master keys.</p>
+         * <p>Lists the customer master keys.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListKeys">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListKeysAsync(const Model::ListKeysRequest& request, const ListKeysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
+         * <p>Returns a list of all tags for the specified customer master key
+         * (CMK).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListResourceTagsOutcome ListResourceTags(const Model::ListResourceTagsRequest& request) const;
+
+        /**
+         * <p>Returns a list of all tags for the specified customer master key
+         * (CMK).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::ListResourceTagsOutcomeCallable ListResourceTagsCallable(const Model::ListResourceTagsRequest& request) const;
+
+        /**
+         * <p>Returns a list of all tags for the specified customer master key
+         * (CMK).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListResourceTags">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void ListResourceTagsAsync(const Model::ListResourceTagsRequest& request, const ListResourceTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
          * <p>Returns a list of all grants for which the grant's
          * <code>RetiringPrincipal</code> matches the one specified.</p> <p>A typical use
          * is to list all grants that you are able to retire. To retire a grant, use
-         * <a>RetireGrant</a>.</p>
+         * <a>RetireGrant</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListRetirableGrantsOutcome ListRetirableGrants(const Model::ListRetirableGrantsRequest& request) const;
 
@@ -1161,7 +1421,9 @@ namespace Model
          * <p>Returns a list of all grants for which the grant's
          * <code>RetiringPrincipal</code> matches the one specified.</p> <p>A typical use
          * is to list all grants that you are able to retire. To retire a grant, use
-         * <a>RetireGrant</a>.</p>
+         * <a>RetireGrant</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1171,7 +1433,9 @@ namespace Model
          * <p>Returns a list of all grants for which the grant's
          * <code>RetiringPrincipal</code> matches the one specified.</p> <p>A typical use
          * is to list all grants that you are able to retire. To retire a grant, use
-         * <a>RetireGrant</a>.</p>
+         * <a>RetireGrant</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ListRetirableGrants">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1181,7 +1445,10 @@ namespace Model
          * <p>Attaches a key policy to the specified customer master key (CMK).</p> <p>For
          * more information about key policies, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key
-         * Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * Policies</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutKeyPolicyOutcome PutKeyPolicy(const Model::PutKeyPolicyRequest& request) const;
 
@@ -1189,7 +1456,10 @@ namespace Model
          * <p>Attaches a key policy to the specified customer master key (CMK).</p> <p>For
          * more information about key policies, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key
-         * Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * Policies</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1199,105 +1469,132 @@ namespace Model
          * <p>Attaches a key policy to the specified customer master key (CMK).</p> <p>For
          * more information about key policies, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Key
-         * Policies</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+         * Policies</a> in the <i>AWS Key Management Service Developer
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/PutKeyPolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void PutKeyPolicyAsync(const Model::PutKeyPolicyRequest& request, const PutKeyPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Encrypts data on the server side with a new customer master key without
+         * <p>Encrypts data on the server side with a new customer master key (CMK) without
          * exposing the plaintext of the data on the client side. The data is first
-         * decrypted and then encrypted. This operation can also be used to change the
-         * encryption context of a ciphertext.</p> <p>Unlike other actions,
-         * <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code>
-         * on the source key and once as <code>ReEncryptTo</code> on the destination key.
-         * We therefore recommend that you include the
-         * <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit
-         * re-encryption from or to the key. The statement is included automatically when
-         * you authorize use of the key through the console but must be included manually
-         * when you set a policy by using the <a>PutKeyPolicy</a> function.</p>
+         * decrypted and then reencrypted. You can also use this operation to change the
+         * encryption context of a ciphertext.</p> <p>Unlike other operations,
+         * <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code>
+         * on the source CMK and once as <code>ReEncryptTo</code> on the destination CMK.
+         * We recommend that you include the <code>"kms:ReEncrypt*"</code> permission in
+         * your <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key
+         * policies</a> to permit reencryption from or to the CMK. This permission is
+         * automatically included in the key policy when you create a CMK through the
+         * console, but you must include it manually when you create a CMK programmatically
+         * or when you set a key policy with the <a>PutKeyPolicy</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt">AWS API
+         * Reference</a></p>
          */
         virtual Model::ReEncryptOutcome ReEncrypt(const Model::ReEncryptRequest& request) const;
 
         /**
-         * <p>Encrypts data on the server side with a new customer master key without
+         * <p>Encrypts data on the server side with a new customer master key (CMK) without
          * exposing the plaintext of the data on the client side. The data is first
-         * decrypted and then encrypted. This operation can also be used to change the
-         * encryption context of a ciphertext.</p> <p>Unlike other actions,
-         * <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code>
-         * on the source key and once as <code>ReEncryptTo</code> on the destination key.
-         * We therefore recommend that you include the
-         * <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit
-         * re-encryption from or to the key. The statement is included automatically when
-         * you authorize use of the key through the console but must be included manually
-         * when you set a policy by using the <a>PutKeyPolicy</a> function.</p>
+         * decrypted and then reencrypted. You can also use this operation to change the
+         * encryption context of a ciphertext.</p> <p>Unlike other operations,
+         * <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code>
+         * on the source CMK and once as <code>ReEncryptTo</code> on the destination CMK.
+         * We recommend that you include the <code>"kms:ReEncrypt*"</code> permission in
+         * your <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key
+         * policies</a> to permit reencryption from or to the CMK. This permission is
+         * automatically included in the key policy when you create a CMK through the
+         * console, but you must include it manually when you create a CMK programmatically
+         * or when you set a key policy with the <a>PutKeyPolicy</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ReEncryptOutcomeCallable ReEncryptCallable(const Model::ReEncryptRequest& request) const;
 
         /**
-         * <p>Encrypts data on the server side with a new customer master key without
+         * <p>Encrypts data on the server side with a new customer master key (CMK) without
          * exposing the plaintext of the data on the client side. The data is first
-         * decrypted and then encrypted. This operation can also be used to change the
-         * encryption context of a ciphertext.</p> <p>Unlike other actions,
-         * <code>ReEncrypt</code> is authorized twice - once as <code>ReEncryptFrom</code>
-         * on the source key and once as <code>ReEncryptTo</code> on the destination key.
-         * We therefore recommend that you include the
-         * <code>"action":"kms:ReEncrypt*"</code> statement in your key policies to permit
-         * re-encryption from or to the key. The statement is included automatically when
-         * you authorize use of the key through the console but must be included manually
-         * when you set a policy by using the <a>PutKeyPolicy</a> function.</p>
+         * decrypted and then reencrypted. You can also use this operation to change the
+         * encryption context of a ciphertext.</p> <p>Unlike other operations,
+         * <code>ReEncrypt</code> is authorized twice, once as <code>ReEncryptFrom</code>
+         * on the source CMK and once as <code>ReEncryptTo</code> on the destination CMK.
+         * We recommend that you include the <code>"kms:ReEncrypt*"</code> permission in
+         * your <a
+         * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">key
+         * policies</a> to permit reencryption from or to the CMK. This permission is
+         * automatically included in the key policy when you create a CMK through the
+         * console, but you must include it manually when you create a CMK programmatically
+         * or when you set a key policy with the <a>PutKeyPolicy</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ReEncrypt">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ReEncryptAsync(const Model::ReEncryptRequest& request, const ReEncryptResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Retires a grant. You can retire a grant when you're done using it to clean
-         * up. You should revoke a grant when you intend to actively deny operations that
+         * <p>Retires a grant. To clean up, you can retire a grant when you're done using
+         * it. You should revoke a grant when you intend to actively deny operations that
          * depend on it. The following are permitted to call this API:</p> <ul> <li> <p>The
-         * account that created the grant</p> </li> <li> <p>The
-         * <code>RetiringPrincipal</code>, if present</p> </li> <li> <p>The
-         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee
-         * operation</p> </li> </ul> <p>The grant to retire must be identified by its grant
-         * token or by a combination of the key ARN and the grant ID. A grant token is a
-         * unique variable-length base64-encoded string. A grant ID is a 64 character
-         * unique identifier of a grant. Both are returned by the <code>CreateGrant</code>
-         * function.</p>
+         * AWS account (root user) under which the grant was created</p> </li> <li> <p>The
+         * <code>RetiringPrincipal</code>, if present in the grant</p> </li> <li> <p>The
+         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation
+         * specified in the grant</p> </li> </ul> <p>You must identify the grant to retire
+         * by its grant token or by a combination of the grant ID and the Amazon Resource
+         * Name (ARN) of the customer master key (CMK). A grant token is a unique
+         * variable-length base64-encoded string. A grant ID is a 64 character unique
+         * identifier of a grant. The <a>CreateGrant</a> operation returns
+         * both.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant">AWS API
+         * Reference</a></p>
          */
         virtual Model::RetireGrantOutcome RetireGrant(const Model::RetireGrantRequest& request) const;
 
         /**
-         * <p>Retires a grant. You can retire a grant when you're done using it to clean
-         * up. You should revoke a grant when you intend to actively deny operations that
+         * <p>Retires a grant. To clean up, you can retire a grant when you're done using
+         * it. You should revoke a grant when you intend to actively deny operations that
          * depend on it. The following are permitted to call this API:</p> <ul> <li> <p>The
-         * account that created the grant</p> </li> <li> <p>The
-         * <code>RetiringPrincipal</code>, if present</p> </li> <li> <p>The
-         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee
-         * operation</p> </li> </ul> <p>The grant to retire must be identified by its grant
-         * token or by a combination of the key ARN and the grant ID. A grant token is a
-         * unique variable-length base64-encoded string. A grant ID is a 64 character
-         * unique identifier of a grant. Both are returned by the <code>CreateGrant</code>
-         * function.</p>
+         * AWS account (root user) under which the grant was created</p> </li> <li> <p>The
+         * <code>RetiringPrincipal</code>, if present in the grant</p> </li> <li> <p>The
+         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation
+         * specified in the grant</p> </li> </ul> <p>You must identify the grant to retire
+         * by its grant token or by a combination of the grant ID and the Amazon Resource
+         * Name (ARN) of the customer master key (CMK). A grant token is a unique
+         * variable-length base64-encoded string. A grant ID is a 64 character unique
+         * identifier of a grant. The <a>CreateGrant</a> operation returns
+         * both.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::RetireGrantOutcomeCallable RetireGrantCallable(const Model::RetireGrantRequest& request) const;
 
         /**
-         * <p>Retires a grant. You can retire a grant when you're done using it to clean
-         * up. You should revoke a grant when you intend to actively deny operations that
+         * <p>Retires a grant. To clean up, you can retire a grant when you're done using
+         * it. You should revoke a grant when you intend to actively deny operations that
          * depend on it. The following are permitted to call this API:</p> <ul> <li> <p>The
-         * account that created the grant</p> </li> <li> <p>The
-         * <code>RetiringPrincipal</code>, if present</p> </li> <li> <p>The
-         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is a grantee
-         * operation</p> </li> </ul> <p>The grant to retire must be identified by its grant
-         * token or by a combination of the key ARN and the grant ID. A grant token is a
-         * unique variable-length base64-encoded string. A grant ID is a 64 character
-         * unique identifier of a grant. Both are returned by the <code>CreateGrant</code>
-         * function.</p>
+         * AWS account (root user) under which the grant was created</p> </li> <li> <p>The
+         * <code>RetiringPrincipal</code>, if present in the grant</p> </li> <li> <p>The
+         * <code>GranteePrincipal</code>, if <code>RetireGrant</code> is an operation
+         * specified in the grant</p> </li> </ul> <p>You must identify the grant to retire
+         * by its grant token or by a combination of the grant ID and the Amazon Resource
+         * Name (ARN) of the customer master key (CMK). A grant token is a unique
+         * variable-length base64-encoded string. A grant ID is a 64 character unique
+         * identifier of a grant. The <a>CreateGrant</a> operation returns
+         * both.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RetireGrant">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1305,13 +1602,17 @@ namespace Model
 
         /**
          * <p>Revokes a grant. You can revoke a grant to actively deny operations that
-         * depend on it.</p>
+         * depend on it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant">AWS API
+         * Reference</a></p>
          */
         virtual Model::RevokeGrantOutcome RevokeGrant(const Model::RevokeGrantRequest& request) const;
 
         /**
          * <p>Revokes a grant. You can revoke a grant to actively deny operations that
-         * depend on it.</p>
+         * depend on it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1319,7 +1620,9 @@ namespace Model
 
         /**
          * <p>Revokes a grant. You can revoke a grant to actively deny operations that
-         * depend on it.</p>
+         * depend on it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/RevokeGrant">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1332,7 +1635,7 @@ namespace Model
          * successful, the state of the CMK changes to <code>PendingDeletion</code>. Before
          * the waiting period ends, you can use <a>CancelKeyDeletion</a> to cancel the
          * deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and
-         * all AWS KMS data associated with it, including all aliases that point to it.</p>
+         * all AWS KMS data associated with it, including all aliases that refer to it.</p>
          * <important> <p>Deleting a CMK is a destructive and potentially dangerous
          * operation. When a CMK is deleted, all data that was encrypted under the CMK is
          * rendered unrecoverable. To restrict the use of a CMK without deleting it, use
@@ -1340,7 +1643,9 @@ namespace Model
          * CMK for deletion, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion">AWS
+         * API Reference</a></p>
          */
         virtual Model::ScheduleKeyDeletionOutcome ScheduleKeyDeletion(const Model::ScheduleKeyDeletionRequest& request) const;
 
@@ -1351,7 +1656,7 @@ namespace Model
          * successful, the state of the CMK changes to <code>PendingDeletion</code>. Before
          * the waiting period ends, you can use <a>CancelKeyDeletion</a> to cancel the
          * deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and
-         * all AWS KMS data associated with it, including all aliases that point to it.</p>
+         * all AWS KMS data associated with it, including all aliases that refer to it.</p>
          * <important> <p>Deleting a CMK is a destructive and potentially dangerous
          * operation. When a CMK is deleted, all data that was encrypted under the CMK is
          * rendered unrecoverable. To restrict the use of a CMK without deleting it, use
@@ -1359,7 +1664,9 @@ namespace Model
          * CMK for deletion, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1372,7 +1679,7 @@ namespace Model
          * successful, the state of the CMK changes to <code>PendingDeletion</code>. Before
          * the waiting period ends, you can use <a>CancelKeyDeletion</a> to cancel the
          * deletion of the CMK. After the waiting period ends, AWS KMS deletes the CMK and
-         * all AWS KMS data associated with it, including all aliases that point to it.</p>
+         * all AWS KMS data associated with it, including all aliases that refer to it.</p>
          * <important> <p>Deleting a CMK is a destructive and potentially dangerous
          * operation. When a CMK is deleted, all data that was encrypted under the CMK is
          * rendered unrecoverable. To restrict the use of a CMK without deleting it, use
@@ -1380,11 +1687,96 @@ namespace Model
          * CMK for deletion, see <a
          * href="http://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting
          * Customer Master Keys</a> in the <i>AWS Key Management Service Developer
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/ScheduleKeyDeletion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ScheduleKeyDeletionAsync(const Model::ScheduleKeyDeletionRequest& request, const ScheduleKeyDeletionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Adds or overwrites one or more tags for the specified customer master key
+         * (CMK). </p> <p>Each tag consists of a tag key and a tag value. Tag keys and tag
+         * values are both required, but tag values can be empty (null) strings.</p> <p>You
+         * cannot use the same tag key more than once per CMK. For example, consider a CMK
+         * with one tag whose tag key is <code>Purpose</code> and tag value is
+         * <code>Test</code>. If you send a <code>TagResource</code> request for this CMK
+         * with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it
+         * does not create a second tag. Instead, the original tag is overwritten with the
+         * new tag value.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource">AWS API
+         * Reference</a></p>
+         */
+        virtual Model::TagResourceOutcome TagResource(const Model::TagResourceRequest& request) const;
+
+        /**
+         * <p>Adds or overwrites one or more tags for the specified customer master key
+         * (CMK). </p> <p>Each tag consists of a tag key and a tag value. Tag keys and tag
+         * values are both required, but tag values can be empty (null) strings.</p> <p>You
+         * cannot use the same tag key more than once per CMK. For example, consider a CMK
+         * with one tag whose tag key is <code>Purpose</code> and tag value is
+         * <code>Test</code>. If you send a <code>TagResource</code> request for this CMK
+         * with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it
+         * does not create a second tag. Instead, the original tag is overwritten with the
+         * new tag value.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource">AWS API
+         * Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::TagResourceOutcomeCallable TagResourceCallable(const Model::TagResourceRequest& request) const;
+
+        /**
+         * <p>Adds or overwrites one or more tags for the specified customer master key
+         * (CMK). </p> <p>Each tag consists of a tag key and a tag value. Tag keys and tag
+         * values are both required, but tag values can be empty (null) strings.</p> <p>You
+         * cannot use the same tag key more than once per CMK. For example, consider a CMK
+         * with one tag whose tag key is <code>Purpose</code> and tag value is
+         * <code>Test</code>. If you send a <code>TagResource</code> request for this CMK
+         * with a tag key of <code>Purpose</code> and a tag value of <code>Prod</code>, it
+         * does not create a second tag. Instead, the original tag is overwritten with the
+         * new tag value.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/TagResource">AWS API
+         * Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void TagResourceAsync(const Model::TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
+
+        /**
+         * <p>Removes the specified tag or tags from the specified customer master key
+         * (CMK). </p> <p>To remove a tag, you specify the tag key for each tag to remove.
+         * You do not specify the tag value. To overwrite the tag value for an existing
+         * tag, use <a>TagResource</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UntagResourceOutcome UntagResource(const Model::UntagResourceRequest& request) const;
+
+        /**
+         * <p>Removes the specified tag or tags from the specified customer master key
+         * (CMK). </p> <p>To remove a tag, you specify the tag key for each tag to remove.
+         * You do not specify the tag value. To overwrite the tag value for an existing
+         * tag, use <a>TagResource</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource">AWS
+         * API Reference</a></p>
+         *
+         * returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        virtual Model::UntagResourceOutcomeCallable UntagResourceCallable(const Model::UntagResourceRequest& request) const;
+
+        /**
+         * <p>Removes the specified tag or tags from the specified customer master key
+         * (CMK). </p> <p>To remove a tag, you specify the tag key for each tag to remove.
+         * You do not specify the tag value. To overwrite the tag value for an existing
+         * tag, use <a>TagResource</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UntagResource">AWS
+         * API Reference</a></p>
+         *
+         * Queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        virtual void UntagResourceAsync(const Model::UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
          * <p>Updates an alias to map it to a different key.</p> <p>An alias is not a
@@ -1394,7 +1786,10 @@ namespace Model
          * and dashes (-). An alias must start with the word "alias" followed by a forward
          * slash (alias/). An alias that begins with "aws" after the forward slash
          * (alias/aws...) is reserved by Amazon Web Services (AWS).</p> <p>The alias and
-         * the key it is mapped to must be in the same AWS account and the same region.</p>
+         * the key it is mapped to must be in the same AWS account and the same
+         * region.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias">AWS API
+         * Reference</a></p>
          */
         virtual Model::UpdateAliasOutcome UpdateAlias(const Model::UpdateAliasRequest& request) const;
 
@@ -1406,7 +1801,10 @@ namespace Model
          * and dashes (-). An alias must start with the word "alias" followed by a forward
          * slash (alias/). An alias that begins with "aws" after the forward slash
          * (alias/aws...) is reserved by Amazon Web Services (AWS).</p> <p>The alias and
-         * the key it is mapped to must be in the same AWS account and the same region.</p>
+         * the key it is mapped to must be in the same AWS account and the same
+         * region.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1420,26 +1818,38 @@ namespace Model
          * and dashes (-). An alias must start with the word "alias" followed by a forward
          * slash (alias/). An alias that begins with "aws" after the forward slash
          * (alias/aws...) is reserved by Amazon Web Services (AWS).</p> <p>The alias and
-         * the key it is mapped to must be in the same AWS account and the same region.</p>
+         * the key it is mapped to must be in the same AWS account and the same
+         * region.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateAlias">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void UpdateAliasAsync(const Model::UpdateAliasRequest& request, const UpdateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Updates the description of a key.</p>
+         * <p>Updates the description of a customer master key (CMK).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateKeyDescriptionOutcome UpdateKeyDescription(const Model::UpdateKeyDescriptionRequest& request) const;
 
         /**
-         * <p>Updates the description of a key.</p>
+         * <p>Updates the description of a customer master key (CMK).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::UpdateKeyDescriptionOutcomeCallable UpdateKeyDescriptionCallable(const Model::UpdateKeyDescriptionRequest& request) const;
 
         /**
-         * <p>Updates the description of a key.</p>
+         * <p>Updates the description of a customer master key (CMK).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kms-2014-11-01/UpdateKeyDescription">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1474,17 +1884,20 @@ namespace Model
         void ListGrantsAsyncHelper(const Model::ListGrantsRequest& request, const ListGrantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListKeyPoliciesAsyncHelper(const Model::ListKeyPoliciesRequest& request, const ListKeyPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListKeysAsyncHelper(const Model::ListKeysRequest& request, const ListKeysResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void ListResourceTagsAsyncHelper(const Model::ListResourceTagsRequest& request, const ListResourceTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ListRetirableGrantsAsyncHelper(const Model::ListRetirableGrantsRequest& request, const ListRetirableGrantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void PutKeyPolicyAsyncHelper(const Model::PutKeyPolicyRequest& request, const PutKeyPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ReEncryptAsyncHelper(const Model::ReEncryptRequest& request, const ReEncryptResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void RetireGrantAsyncHelper(const Model::RetireGrantRequest& request, const RetireGrantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void RevokeGrantAsyncHelper(const Model::RevokeGrantRequest& request, const RevokeGrantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void ScheduleKeyDeletionAsyncHelper(const Model::ScheduleKeyDeletionRequest& request, const ScheduleKeyDeletionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void TagResourceAsyncHelper(const Model::TagResourceRequest& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
+        void UntagResourceAsyncHelper(const Model::UntagResourceRequest& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void UpdateAliasAsyncHelper(const Model::UpdateAliasRequest& request, const UpdateAliasResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
         void UpdateKeyDescriptionAsyncHelper(const Model::UpdateKeyDescriptionRequest& request, const UpdateKeyDescriptionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace KMS

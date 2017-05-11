@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/devicefarm/model/RemoteAccessSession.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -31,12 +32,15 @@ RemoteAccessSession::RemoteAccessSession() :
     m_arnHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_createdHasBeenSet(false),
+    m_status(ExecutionStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_result(ExecutionResult::NOT_SET),
     m_resultHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_startedHasBeenSet(false),
     m_stoppedHasBeenSet(false),
     m_deviceHasBeenSet(false),
+    m_billingMethod(BillingMethod::NOT_SET),
     m_billingMethodHasBeenSet(false),
     m_deviceMinutesHasBeenSet(false),
     m_endpointHasBeenSet(false)
@@ -47,12 +51,15 @@ RemoteAccessSession::RemoteAccessSession(const JsonValue& jsonValue) :
     m_arnHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_createdHasBeenSet(false),
+    m_status(ExecutionStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_result(ExecutionResult::NOT_SET),
     m_resultHasBeenSet(false),
     m_messageHasBeenSet(false),
     m_startedHasBeenSet(false),
     m_stoppedHasBeenSet(false),
     m_deviceHasBeenSet(false),
+    m_billingMethod(BillingMethod::NOT_SET),
     m_billingMethodHasBeenSet(false),
     m_deviceMinutesHasBeenSet(false),
     m_endpointHasBeenSet(false)

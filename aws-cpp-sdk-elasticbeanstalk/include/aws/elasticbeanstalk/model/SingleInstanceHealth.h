@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -21,6 +22,7 @@
 #include <aws/elasticbeanstalk/model/ApplicationMetrics.h>
 #include <aws/elasticbeanstalk/model/SystemStatus.h>
 #include <aws/elasticbeanstalk/model/Deployment.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,9 +39,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents health information from the specified instance that belongs to the
-   * AWS Elastic Beanstalk environment. Use the <code>InstanceId</code> property to
-   * specify the application instance for which you'd like to return data.</p>
+   * <p>Detailed health information about an Amazon EC2 instance in your Elastic
+   * Beanstalk environment.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SingleInstanceHealth">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API SingleInstanceHealth
   {
@@ -64,7 +67,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon EC2 instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the Amazon EC2 instance.</p>
@@ -79,7 +82,7 @@ namespace Model
     /**
      * <p>The ID of the Amazon EC2 instance.</p>
      */
-    inline SingleInstanceHealth& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline SingleInstanceHealth& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Amazon EC2 instance.</p>
@@ -108,7 +111,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health
      * Colors and Statuses</a>.</p>
      */
-    inline void SetHealthStatus(Aws::String&& value) { m_healthStatusHasBeenSet = true; m_healthStatus = value; }
+    inline void SetHealthStatus(Aws::String&& value) { m_healthStatusHasBeenSet = true; m_healthStatus = std::move(value); }
 
     /**
      * <p>Returns the health status of the specified instance. For more information,
@@ -132,7 +135,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health
      * Colors and Statuses</a>.</p>
      */
-    inline SingleInstanceHealth& WithHealthStatus(Aws::String&& value) { SetHealthStatus(value); return *this;}
+    inline SingleInstanceHealth& WithHealthStatus(Aws::String&& value) { SetHealthStatus(std::move(value)); return *this;}
 
     /**
      * <p>Returns the health status of the specified instance. For more information,
@@ -164,7 +167,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health
      * Colors and Statuses</a>.</p>
      */
-    inline void SetColor(Aws::String&& value) { m_colorHasBeenSet = true; m_color = value; }
+    inline void SetColor(Aws::String&& value) { m_colorHasBeenSet = true; m_color = std::move(value); }
 
     /**
      * <p>Represents the color indicator that gives you information about the health of
@@ -188,7 +191,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health
      * Colors and Statuses</a>.</p>
      */
-    inline SingleInstanceHealth& WithColor(Aws::String&& value) { SetColor(value); return *this;}
+    inline SingleInstanceHealth& WithColor(Aws::String&& value) { SetColor(std::move(value)); return *this;}
 
     /**
      * <p>Represents the color indicator that gives you information about the health of
@@ -214,7 +217,7 @@ namespace Model
      * <p>Represents the causes, which provide more information about the current
      * health status.</p>
      */
-    inline void SetCauses(Aws::Vector<Aws::String>&& value) { m_causesHasBeenSet = true; m_causes = value; }
+    inline void SetCauses(Aws::Vector<Aws::String>&& value) { m_causesHasBeenSet = true; m_causes = std::move(value); }
 
     /**
      * <p>Represents the causes, which provide more information about the current
@@ -226,7 +229,7 @@ namespace Model
      * <p>Represents the causes, which provide more information about the current
      * health status.</p>
      */
-    inline SingleInstanceHealth& WithCauses(Aws::Vector<Aws::String>&& value) { SetCauses(value); return *this;}
+    inline SingleInstanceHealth& WithCauses(Aws::Vector<Aws::String>&& value) { SetCauses(std::move(value)); return *this;}
 
     /**
      * <p>Represents the causes, which provide more information about the current
@@ -238,7 +241,7 @@ namespace Model
      * <p>Represents the causes, which provide more information about the current
      * health status.</p>
      */
-    inline SingleInstanceHealth& AddCauses(Aws::String&& value) { m_causesHasBeenSet = true; m_causes.push_back(value); return *this; }
+    inline SingleInstanceHealth& AddCauses(Aws::String&& value) { m_causesHasBeenSet = true; m_causes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Represents the causes, which provide more information about the current
@@ -259,7 +262,7 @@ namespace Model
     /**
      * <p>The time at which the EC2 instance was launched.</p>
      */
-    inline void SetLaunchedAt(Aws::Utils::DateTime&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = value; }
+    inline void SetLaunchedAt(Aws::Utils::DateTime&& value) { m_launchedAtHasBeenSet = true; m_launchedAt = std::move(value); }
 
     /**
      * <p>The time at which the EC2 instance was launched.</p>
@@ -269,37 +272,57 @@ namespace Model
     /**
      * <p>The time at which the EC2 instance was launched.</p>
      */
-    inline SingleInstanceHealth& WithLaunchedAt(Aws::Utils::DateTime&& value) { SetLaunchedAt(value); return *this;}
+    inline SingleInstanceHealth& WithLaunchedAt(Aws::Utils::DateTime&& value) { SetLaunchedAt(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>Request metrics from your application.</p>
+     */
     inline const ApplicationMetrics& GetApplicationMetrics() const{ return m_applicationMetrics; }
 
-    
+    /**
+     * <p>Request metrics from your application.</p>
+     */
     inline void SetApplicationMetrics(const ApplicationMetrics& value) { m_applicationMetricsHasBeenSet = true; m_applicationMetrics = value; }
 
-    
-    inline void SetApplicationMetrics(ApplicationMetrics&& value) { m_applicationMetricsHasBeenSet = true; m_applicationMetrics = value; }
+    /**
+     * <p>Request metrics from your application.</p>
+     */
+    inline void SetApplicationMetrics(ApplicationMetrics&& value) { m_applicationMetricsHasBeenSet = true; m_applicationMetrics = std::move(value); }
 
-    
+    /**
+     * <p>Request metrics from your application.</p>
+     */
     inline SingleInstanceHealth& WithApplicationMetrics(const ApplicationMetrics& value) { SetApplicationMetrics(value); return *this;}
 
-    
-    inline SingleInstanceHealth& WithApplicationMetrics(ApplicationMetrics&& value) { SetApplicationMetrics(value); return *this;}
+    /**
+     * <p>Request metrics from your application.</p>
+     */
+    inline SingleInstanceHealth& WithApplicationMetrics(ApplicationMetrics&& value) { SetApplicationMetrics(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>Operating system metrics from the instance.</p>
+     */
     inline const SystemStatus& GetSystem() const{ return m_system; }
 
-    
+    /**
+     * <p>Operating system metrics from the instance.</p>
+     */
     inline void SetSystem(const SystemStatus& value) { m_systemHasBeenSet = true; m_system = value; }
 
-    
-    inline void SetSystem(SystemStatus&& value) { m_systemHasBeenSet = true; m_system = value; }
+    /**
+     * <p>Operating system metrics from the instance.</p>
+     */
+    inline void SetSystem(SystemStatus&& value) { m_systemHasBeenSet = true; m_system = std::move(value); }
 
-    
+    /**
+     * <p>Operating system metrics from the instance.</p>
+     */
     inline SingleInstanceHealth& WithSystem(const SystemStatus& value) { SetSystem(value); return *this;}
 
-    
-    inline SingleInstanceHealth& WithSystem(SystemStatus&& value) { SetSystem(value); return *this;}
+    /**
+     * <p>Operating system metrics from the instance.</p>
+     */
+    inline SingleInstanceHealth& WithSystem(SystemStatus&& value) { SetSystem(std::move(value)); return *this;}
 
     /**
      * <p>Information about the most recent deployment to an instance.</p>
@@ -314,7 +337,7 @@ namespace Model
     /**
      * <p>Information about the most recent deployment to an instance.</p>
      */
-    inline void SetDeployment(Deployment&& value) { m_deploymentHasBeenSet = true; m_deployment = value; }
+    inline void SetDeployment(Deployment&& value) { m_deploymentHasBeenSet = true; m_deployment = std::move(value); }
 
     /**
      * <p>Information about the most recent deployment to an instance.</p>
@@ -324,7 +347,7 @@ namespace Model
     /**
      * <p>Information about the most recent deployment to an instance.</p>
      */
-    inline SingleInstanceHealth& WithDeployment(Deployment&& value) { SetDeployment(value); return *this;}
+    inline SingleInstanceHealth& WithDeployment(Deployment&& value) { SetDeployment(std::move(value)); return *this;}
 
     /**
      * <p>The availability zone in which the instance runs.</p>
@@ -339,7 +362,7 @@ namespace Model
     /**
      * <p>The availability zone in which the instance runs.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The availability zone in which the instance runs.</p>
@@ -354,7 +377,7 @@ namespace Model
     /**
      * <p>The availability zone in which the instance runs.</p>
      */
-    inline SingleInstanceHealth& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline SingleInstanceHealth& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The availability zone in which the instance runs.</p>
@@ -374,7 +397,7 @@ namespace Model
     /**
      * <p>The instance's type.</p>
      */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance's type.</p>
@@ -389,7 +412,7 @@ namespace Model
     /**
      * <p>The instance's type.</p>
      */
-    inline SingleInstanceHealth& WithInstanceType(Aws::String&& value) { SetInstanceType(value); return *this;}
+    inline SingleInstanceHealth& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The instance's type.</p>

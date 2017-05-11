@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-identity/CognitoIdentity_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-identity/model/ErrorCode.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>An array of UnprocessedIdentityId objects, each of which contains an
-   * ErrorCode and IdentityId.</p>
+   * ErrorCode and IdentityId.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/UnprocessedIdentityId">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITY_API UnprocessedIdentityId
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = value; }
+    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = std::move(value); }
 
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline UnprocessedIdentityId& WithIdentityId(Aws::String&& value) { SetIdentityId(value); return *this;}
+    inline UnprocessedIdentityId& WithIdentityId(Aws::String&& value) { SetIdentityId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The error code indicating the type of error that occurred.</p>
      */
-    inline void SetErrorCode(ErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline void SetErrorCode(ErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
 
     /**
      * <p>The error code indicating the type of error that occurred.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The error code indicating the type of error that occurred.</p>
      */
-    inline UnprocessedIdentityId& WithErrorCode(ErrorCode&& value) { SetErrorCode(value); return *this;}
+    inline UnprocessedIdentityId& WithErrorCode(ErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
 
   private:
     Aws::String m_identityId;

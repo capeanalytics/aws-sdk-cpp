@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/ReplicationGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -37,7 +38,15 @@ ReplicationGroup::ReplicationGroup() :
     m_memberClustersHasBeenSet(false),
     m_nodeGroupsHasBeenSet(false),
     m_snapshottingClusterIdHasBeenSet(false),
-    m_automaticFailoverHasBeenSet(false)
+    m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
+    m_automaticFailoverHasBeenSet(false),
+    m_configurationEndpointHasBeenSet(false),
+    m_snapshotRetentionLimit(0),
+    m_snapshotRetentionLimitHasBeenSet(false),
+    m_snapshotWindowHasBeenSet(false),
+    m_clusterEnabled(false),
+    m_clusterEnabledHasBeenSet(false),
+    m_cacheNodeTypeHasBeenSet(false)
 {
 }
 
@@ -49,7 +58,15 @@ ReplicationGroup::ReplicationGroup(const XmlNode& xmlNode) :
     m_memberClustersHasBeenSet(false),
     m_nodeGroupsHasBeenSet(false),
     m_snapshottingClusterIdHasBeenSet(false),
-    m_automaticFailoverHasBeenSet(false)
+    m_automaticFailover(AutomaticFailoverStatus::NOT_SET),
+    m_automaticFailoverHasBeenSet(false),
+    m_configurationEndpointHasBeenSet(false),
+    m_snapshotRetentionLimit(0),
+    m_snapshotRetentionLimitHasBeenSet(false),
+    m_snapshotWindowHasBeenSet(false),
+    m_clusterEnabled(false),
+    m_clusterEnabledHasBeenSet(false),
+    m_cacheNodeTypeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -120,6 +137,36 @@ ReplicationGroup& ReplicationGroup::operator =(const XmlNode& xmlNode)
       m_automaticFailover = AutomaticFailoverStatusMapper::GetAutomaticFailoverStatusForName(StringUtils::Trim(automaticFailoverNode.GetText().c_str()).c_str());
       m_automaticFailoverHasBeenSet = true;
     }
+    XmlNode configurationEndpointNode = resultNode.FirstChild("ConfigurationEndpoint");
+    if(!configurationEndpointNode.IsNull())
+    {
+      m_configurationEndpoint = configurationEndpointNode;
+      m_configurationEndpointHasBeenSet = true;
+    }
+    XmlNode snapshotRetentionLimitNode = resultNode.FirstChild("SnapshotRetentionLimit");
+    if(!snapshotRetentionLimitNode.IsNull())
+    {
+      m_snapshotRetentionLimit = StringUtils::ConvertToInt32(StringUtils::Trim(snapshotRetentionLimitNode.GetText().c_str()).c_str());
+      m_snapshotRetentionLimitHasBeenSet = true;
+    }
+    XmlNode snapshotWindowNode = resultNode.FirstChild("SnapshotWindow");
+    if(!snapshotWindowNode.IsNull())
+    {
+      m_snapshotWindow = StringUtils::Trim(snapshotWindowNode.GetText().c_str());
+      m_snapshotWindowHasBeenSet = true;
+    }
+    XmlNode clusterEnabledNode = resultNode.FirstChild("ClusterEnabled");
+    if(!clusterEnabledNode.IsNull())
+    {
+      m_clusterEnabled = StringUtils::ConvertToBool(StringUtils::Trim(clusterEnabledNode.GetText().c_str()).c_str());
+      m_clusterEnabledHasBeenSet = true;
+    }
+    XmlNode cacheNodeTypeNode = resultNode.FirstChild("CacheNodeType");
+    if(!cacheNodeTypeNode.IsNull())
+    {
+      m_cacheNodeType = StringUtils::Trim(cacheNodeTypeNode.GetText().c_str());
+      m_cacheNodeTypeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -179,6 +226,33 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
       oStream << location << index << locationValue << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
   }
 
+  if(m_configurationEndpointHasBeenSet)
+  {
+      Aws::StringStream configurationEndpointLocationAndMemberSs;
+      configurationEndpointLocationAndMemberSs << location << index << locationValue << ".ConfigurationEndpoint";
+      m_configurationEndpoint.OutputToStream(oStream, configurationEndpointLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_snapshotRetentionLimitHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SnapshotRetentionLimit=" << m_snapshotRetentionLimit << "&";
+  }
+
+  if(m_snapshotWindowHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
+  }
+
+  if(m_clusterEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ClusterEnabled=" << std::boolalpha << m_clusterEnabled << "&";
+  }
+
+  if(m_cacheNodeTypeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
+  }
+
 }
 
 void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -226,6 +300,28 @@ void ReplicationGroup::OutputToStream(Aws::OStream& oStream, const char* locatio
   if(m_automaticFailoverHasBeenSet)
   {
       oStream << location << ".AutomaticFailover=" << AutomaticFailoverStatusMapper::GetNameForAutomaticFailoverStatus(m_automaticFailover) << "&";
+  }
+  if(m_configurationEndpointHasBeenSet)
+  {
+      Aws::String configurationEndpointLocationAndMember(location);
+      configurationEndpointLocationAndMember += ".ConfigurationEndpoint";
+      m_configurationEndpoint.OutputToStream(oStream, configurationEndpointLocationAndMember.c_str());
+  }
+  if(m_snapshotRetentionLimitHasBeenSet)
+  {
+      oStream << location << ".SnapshotRetentionLimit=" << m_snapshotRetentionLimit << "&";
+  }
+  if(m_snapshotWindowHasBeenSet)
+  {
+      oStream << location << ".SnapshotWindow=" << StringUtils::URLEncode(m_snapshotWindow.c_str()) << "&";
+  }
+  if(m_clusterEnabledHasBeenSet)
+  {
+      oStream << location << ".ClusterEnabled=" << std::boolalpha << m_clusterEnabled << "&";
+  }
+  if(m_cacheNodeTypeHasBeenSet)
+  {
+      oStream << location << ".CacheNodeType=" << StringUtils::URLEncode(m_cacheNodeType.c_str()) << "&";
   }
 }
 

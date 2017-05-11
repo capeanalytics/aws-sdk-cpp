@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/WAFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>A request to get an <a>XssMatchSet</a>.</p>
+   * <p>A request to get an <a>XssMatchSet</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/GetXssMatchSetRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API GetXssMatchSetRequest : public WAFRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
@@ -54,7 +59,7 @@ namespace Model
      * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
      * <a>ListXssMatchSets</a>.</p>
      */
-    inline void SetXssMatchSetId(Aws::String&& value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId = value; }
+    inline void SetXssMatchSetId(Aws::String&& value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId = std::move(value); }
 
     /**
      * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
@@ -75,7 +80,7 @@ namespace Model
      * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
      * <a>ListXssMatchSets</a>.</p>
      */
-    inline GetXssMatchSetRequest& WithXssMatchSetId(Aws::String&& value) { SetXssMatchSetId(value); return *this;}
+    inline GetXssMatchSetRequest& WithXssMatchSetId(Aws::String&& value) { SetXssMatchSetId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to

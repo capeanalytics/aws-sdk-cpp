@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/CloudFrontRequest.h>
 #include <aws/cloudfront/model/DistributionConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,16 @@ namespace Model
 {
 
   /**
-   * The request to create a new distribution.
+   * The request to create a new distribution.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CreateDistributionRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CreateDistribution2016_01_28Request : public CloudFrontRequest
   {
   public:
     CreateDistribution2016_01_28Request();
     Aws::String SerializePayload() const override;
+
 
     /**
      * The distribution's configuration information.
@@ -46,7 +51,7 @@ namespace Model
     /**
      * The distribution's configuration information.
      */
-    inline void SetDistributionConfig(DistributionConfig&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = value; }
+    inline void SetDistributionConfig(DistributionConfig&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = std::move(value); }
 
     /**
      * The distribution's configuration information.
@@ -56,7 +61,7 @@ namespace Model
     /**
      * The distribution's configuration information.
      */
-    inline CreateDistribution2016_01_28Request& WithDistributionConfig(DistributionConfig&& value) { SetDistributionConfig(value); return *this;}
+    inline CreateDistribution2016_01_28Request& WithDistributionConfig(DistributionConfig&& value) { SetDistributionConfig(std::move(value)); return *this;}
 
   private:
     DistributionConfig m_distributionConfig;

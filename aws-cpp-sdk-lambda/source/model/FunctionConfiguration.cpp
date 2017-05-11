@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/lambda/model/FunctionConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 FunctionConfiguration::FunctionConfiguration() : 
     m_functionNameHasBeenSet(false),
     m_functionArnHasBeenSet(false),
+    m_runtime(Runtime::NOT_SET),
     m_runtimeHasBeenSet(false),
     m_roleHasBeenSet(false),
     m_handlerHasBeenSet(false),
@@ -43,13 +45,18 @@ FunctionConfiguration::FunctionConfiguration() :
     m_lastModifiedHasBeenSet(false),
     m_codeSha256HasBeenSet(false),
     m_versionHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false)
+    m_vpcConfigHasBeenSet(false),
+    m_deadLetterConfigHasBeenSet(false),
+    m_environmentHasBeenSet(false),
+    m_kMSKeyArnHasBeenSet(false),
+    m_tracingConfigHasBeenSet(false)
 {
 }
 
 FunctionConfiguration::FunctionConfiguration(const JsonValue& jsonValue) : 
     m_functionNameHasBeenSet(false),
     m_functionArnHasBeenSet(false),
+    m_runtime(Runtime::NOT_SET),
     m_runtimeHasBeenSet(false),
     m_roleHasBeenSet(false),
     m_handlerHasBeenSet(false),
@@ -63,7 +70,11 @@ FunctionConfiguration::FunctionConfiguration(const JsonValue& jsonValue) :
     m_lastModifiedHasBeenSet(false),
     m_codeSha256HasBeenSet(false),
     m_versionHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false)
+    m_vpcConfigHasBeenSet(false),
+    m_deadLetterConfigHasBeenSet(false),
+    m_environmentHasBeenSet(false),
+    m_kMSKeyArnHasBeenSet(false),
+    m_tracingConfigHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -161,6 +172,34 @@ FunctionConfiguration& FunctionConfiguration::operator =(const JsonValue& jsonVa
     m_vpcConfigHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("DeadLetterConfig"))
+  {
+    m_deadLetterConfig = jsonValue.GetObject("DeadLetterConfig");
+
+    m_deadLetterConfigHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("Environment"))
+  {
+    m_environment = jsonValue.GetObject("Environment");
+
+    m_environmentHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("KMSKeyArn"))
+  {
+    m_kMSKeyArn = jsonValue.GetString("KMSKeyArn");
+
+    m_kMSKeyArnHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TracingConfig"))
+  {
+    m_tracingConfig = jsonValue.GetObject("TracingConfig");
+
+    m_tracingConfigHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -242,6 +281,30 @@ JsonValue FunctionConfiguration::Jsonize() const
   if(m_vpcConfigHasBeenSet)
   {
    payload.WithObject("VpcConfig", m_vpcConfig.Jsonize());
+
+  }
+
+  if(m_deadLetterConfigHasBeenSet)
+  {
+   payload.WithObject("DeadLetterConfig", m_deadLetterConfig.Jsonize());
+
+  }
+
+  if(m_environmentHasBeenSet)
+  {
+   payload.WithObject("Environment", m_environment.Jsonize());
+
+  }
+
+  if(m_kMSKeyArnHasBeenSet)
+  {
+   payload.WithString("KMSKeyArn", m_kMSKeyArn);
+
+  }
+
+  if(m_tracingConfigHasBeenSet)
+  {
+   payload.WithObject("TracingConfig", m_tracingConfig.Jsonize());
 
   }
 

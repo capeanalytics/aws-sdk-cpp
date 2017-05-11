@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudfront/model/CustomHeaders.h>
 #include <aws/cloudfront/model/S3OriginConfig.h>
 #include <aws/cloudfront/model/CustomOriginConfig.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
   /**
    * A complex type that describes the Amazon S3 bucket or the HTTP server (for
    * example, a web server) from which CloudFront gets your files.You must create at
-   * least one origin.
+   * least one origin.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/Origin">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API Origin
   {
@@ -69,7 +73,7 @@ namespace Model
      * identifies the origin that CloudFront routes a request to when the request
      * matches the path pattern for that cache behavior.
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * A unique identifier for the origin. The value of Id must be unique within the
@@ -93,7 +97,7 @@ namespace Model
      * identifies the origin that CloudFront routes a request to when the request
      * matches the path pattern for that cache behavior.
      */
-    inline Origin& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Origin& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * A unique identifier for the origin. The value of Id must be unique within the
@@ -128,7 +132,7 @@ namespace Model
      * server from which you want CloudFront to get objects for this origin, for
      * example, www.example.com.
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * Amazon S3 origins: The DNS name of the Amazon S3 bucket from which you want
@@ -155,7 +159,7 @@ namespace Model
      * server from which you want CloudFront to get objects for this origin, for
      * example, www.example.com.
      */
-    inline Origin& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline Origin& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * Amazon S3 origins: The DNS name of the Amazon S3 bucket from which you want
@@ -188,7 +192,7 @@ namespace Model
      * OriginPath element, specify the directory name, beginning with a /. CloudFront
      * appends the directory name to the value of DomainName.
      */
-    inline void SetOriginPath(Aws::String&& value) { m_originPathHasBeenSet = true; m_originPath = value; }
+    inline void SetOriginPath(Aws::String&& value) { m_originPathHasBeenSet = true; m_originPath = std::move(value); }
 
     /**
      * An optional element that causes CloudFront to request your content from a
@@ -212,7 +216,7 @@ namespace Model
      * OriginPath element, specify the directory name, beginning with a /. CloudFront
      * appends the directory name to the value of DomainName.
      */
-    inline Origin& WithOriginPath(Aws::String&& value) { SetOriginPath(value); return *this;}
+    inline Origin& WithOriginPath(Aws::String&& value) { SetOriginPath(std::move(value)); return *this;}
 
     /**
      * An optional element that causes CloudFront to request your content from a
@@ -238,7 +242,7 @@ namespace Model
      * A complex type that contains information about the custom headers associated
      * with this Origin.
      */
-    inline void SetCustomHeaders(CustomHeaders&& value) { m_customHeadersHasBeenSet = true; m_customHeaders = value; }
+    inline void SetCustomHeaders(CustomHeaders&& value) { m_customHeadersHasBeenSet = true; m_customHeaders = std::move(value); }
 
     /**
      * A complex type that contains information about the custom headers associated
@@ -250,7 +254,7 @@ namespace Model
      * A complex type that contains information about the custom headers associated
      * with this Origin.
      */
-    inline Origin& WithCustomHeaders(CustomHeaders&& value) { SetCustomHeaders(value); return *this;}
+    inline Origin& WithCustomHeaders(CustomHeaders&& value) { SetCustomHeaders(std::move(value)); return *this;}
 
     /**
      * A complex type that contains information about the Amazon S3 origin. If the
@@ -268,7 +272,7 @@ namespace Model
      * A complex type that contains information about the Amazon S3 origin. If the
      * origin is a custom origin, use the CustomOriginConfig element instead.
      */
-    inline void SetS3OriginConfig(S3OriginConfig&& value) { m_s3OriginConfigHasBeenSet = true; m_s3OriginConfig = value; }
+    inline void SetS3OriginConfig(S3OriginConfig&& value) { m_s3OriginConfigHasBeenSet = true; m_s3OriginConfig = std::move(value); }
 
     /**
      * A complex type that contains information about the Amazon S3 origin. If the
@@ -280,7 +284,7 @@ namespace Model
      * A complex type that contains information about the Amazon S3 origin. If the
      * origin is a custom origin, use the CustomOriginConfig element instead.
      */
-    inline Origin& WithS3OriginConfig(S3OriginConfig&& value) { SetS3OriginConfig(value); return *this;}
+    inline Origin& WithS3OriginConfig(S3OriginConfig&& value) { SetS3OriginConfig(std::move(value)); return *this;}
 
     /**
      * A complex type that contains information about a custom origin. If the origin is
@@ -298,7 +302,7 @@ namespace Model
      * A complex type that contains information about a custom origin. If the origin is
      * an Amazon S3 bucket, use the S3OriginConfig element instead.
      */
-    inline void SetCustomOriginConfig(CustomOriginConfig&& value) { m_customOriginConfigHasBeenSet = true; m_customOriginConfig = value; }
+    inline void SetCustomOriginConfig(CustomOriginConfig&& value) { m_customOriginConfigHasBeenSet = true; m_customOriginConfig = std::move(value); }
 
     /**
      * A complex type that contains information about a custom origin. If the origin is
@@ -310,7 +314,7 @@ namespace Model
      * A complex type that contains information about a custom origin. If the origin is
      * an Amazon S3 bucket, use the S3OriginConfig element instead.
      */
-    inline Origin& WithCustomOriginConfig(CustomOriginConfig&& value) { SetCustomOriginConfig(value); return *this;}
+    inline Origin& WithCustomOriginConfig(CustomOriginConfig&& value) { SetCustomOriginConfig(std::move(value)); return *this;}
 
   private:
     Aws::String m_id;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace Model
    * <a>CreateDBInstance</a> </p> </li> <li> <p> <a>CreateDBInstanceReadReplica</a>
    * </p> </li> <li> <p> <a>DeleteDBInstance</a> </p> </li> <li> <p>
    * <a>ModifyDBInstance</a> </p> </li> <li> <p> <a>RebootDBInstance</a> </p> </li>
-   * <li> <p> <a>RestoreDBInstanceFromDBSnapshot</a> </p> </li> </ul>
+   * <li> <p> <a>RestoreDBInstanceFromDBSnapshot</a> </p> </li> </ul><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBParameterGroupStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DBParameterGroupStatus
   {
@@ -62,7 +67,7 @@ namespace Model
     /**
      * <p>The name of the DP parameter group.</p>
      */
-    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = value; }
+    inline void SetDBParameterGroupName(Aws::String&& value) { m_dBParameterGroupNameHasBeenSet = true; m_dBParameterGroupName = std::move(value); }
 
     /**
      * <p>The name of the DP parameter group.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The name of the DP parameter group.</p>
      */
-    inline DBParameterGroupStatus& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(value); return *this;}
+    inline DBParameterGroupStatus& WithDBParameterGroupName(Aws::String&& value) { SetDBParameterGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DP parameter group.</p>
@@ -97,7 +102,7 @@ namespace Model
     /**
      * <p>The status of parameter updates.</p>
      */
-    inline void SetParameterApplyStatus(Aws::String&& value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus = value; }
+    inline void SetParameterApplyStatus(Aws::String&& value) { m_parameterApplyStatusHasBeenSet = true; m_parameterApplyStatus = std::move(value); }
 
     /**
      * <p>The status of parameter updates.</p>
@@ -112,7 +117,7 @@ namespace Model
     /**
      * <p>The status of parameter updates.</p>
      */
-    inline DBParameterGroupStatus& WithParameterApplyStatus(Aws::String&& value) { SetParameterApplyStatus(value); return *this;}
+    inline DBParameterGroupStatus& WithParameterApplyStatus(Aws::String&& value) { SetParameterApplyStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of parameter updates.</p>

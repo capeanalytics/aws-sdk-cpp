@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -20,6 +21,7 @@
 #include <aws/cognito-idp/model/UserStatusType.h>
 #include <aws/cognito-idp/model/AttributeType.h>
 #include <aws/cognito-idp/model/MFAOptionType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
 {
   /**
    * <p>Represents the response from the server from the request to get the specified
-   * user as an administrator.</p>
+   * user as an administrator.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminGetUserResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API AdminGetUserResult
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The user name of the user about whom you are receiving information.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_username = value; }
+    inline void SetUsername(Aws::String&& value) { m_username = std::move(value); }
 
     /**
      * <p>The user name of the user about whom you are receiving information.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The user name of the user about whom you are receiving information.</p>
      */
-    inline AdminGetUserResult& WithUsername(Aws::String&& value) { SetUsername(value); return *this;}
+    inline AdminGetUserResult& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
 
     /**
      * <p>The user name of the user about whom you are receiving information.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>An array of name-value pairs representing user attributes.</p>
      */
-    inline void SetUserAttributes(Aws::Vector<AttributeType>&& value) { m_userAttributes = value; }
+    inline void SetUserAttributes(Aws::Vector<AttributeType>&& value) { m_userAttributes = std::move(value); }
 
     /**
      * <p>An array of name-value pairs representing user attributes.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>An array of name-value pairs representing user attributes.</p>
      */
-    inline AdminGetUserResult& WithUserAttributes(Aws::Vector<AttributeType>&& value) { SetUserAttributes(value); return *this;}
+    inline AdminGetUserResult& WithUserAttributes(Aws::Vector<AttributeType>&& value) { SetUserAttributes(std::move(value)); return *this;}
 
     /**
      * <p>An array of name-value pairs representing user attributes.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>An array of name-value pairs representing user attributes.</p>
      */
-    inline AdminGetUserResult& AddUserAttributes(AttributeType&& value) { m_userAttributes.push_back(value); return *this; }
+    inline AdminGetUserResult& AddUserAttributes(AttributeType&& value) { m_userAttributes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The date the user was created.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The date the user was created.</p>
      */
-    inline void SetUserCreateDate(Aws::Utils::DateTime&& value) { m_userCreateDate = value; }
+    inline void SetUserCreateDate(Aws::Utils::DateTime&& value) { m_userCreateDate = std::move(value); }
 
     /**
      * <p>The date the user was created.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The date the user was created.</p>
      */
-    inline AdminGetUserResult& WithUserCreateDate(Aws::Utils::DateTime&& value) { SetUserCreateDate(value); return *this;}
+    inline AdminGetUserResult& WithUserCreateDate(Aws::Utils::DateTime&& value) { SetUserCreateDate(std::move(value)); return *this;}
 
     /**
      * <p>The date the user was last modified.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>The date the user was last modified.</p>
      */
-    inline void SetUserLastModifiedDate(Aws::Utils::DateTime&& value) { m_userLastModifiedDate = value; }
+    inline void SetUserLastModifiedDate(Aws::Utils::DateTime&& value) { m_userLastModifiedDate = std::move(value); }
 
     /**
      * <p>The date the user was last modified.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>The date the user was last modified.</p>
      */
-    inline AdminGetUserResult& WithUserLastModifiedDate(Aws::Utils::DateTime&& value) { SetUserLastModifiedDate(value); return *this;}
+    inline AdminGetUserResult& WithUserLastModifiedDate(Aws::Utils::DateTime&& value) { SetUserLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * <p>Indicates that the status is enabled.</p>
@@ -184,49 +188,49 @@ namespace Model
     inline AdminGetUserResult& WithEnabled(bool value) { SetEnabled(value); return *this;}
 
     /**
-     * <p>The user status. Can be one of the following:</p> <ul> <li>UNCONFIRMED - User
-     * has been created but not confirmed.</li> <li>CONFIRMED - User has been
-     * confirmed.</li> <li>ARCHIVED - User is no longer active.</li> <li>COMPROMISED -
-     * User is disabled due to a potential security threat.</li> <li>UNKNOWN - User
-     * status is not known.</li> </ul>
+     * <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED -
+     * User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has
+     * been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li>
+     * <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p>
+     * </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
      */
     inline const UserStatusType& GetUserStatus() const{ return m_userStatus; }
 
     /**
-     * <p>The user status. Can be one of the following:</p> <ul> <li>UNCONFIRMED - User
-     * has been created but not confirmed.</li> <li>CONFIRMED - User has been
-     * confirmed.</li> <li>ARCHIVED - User is no longer active.</li> <li>COMPROMISED -
-     * User is disabled due to a potential security threat.</li> <li>UNKNOWN - User
-     * status is not known.</li> </ul>
+     * <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED -
+     * User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has
+     * been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li>
+     * <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p>
+     * </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
      */
     inline void SetUserStatus(const UserStatusType& value) { m_userStatus = value; }
 
     /**
-     * <p>The user status. Can be one of the following:</p> <ul> <li>UNCONFIRMED - User
-     * has been created but not confirmed.</li> <li>CONFIRMED - User has been
-     * confirmed.</li> <li>ARCHIVED - User is no longer active.</li> <li>COMPROMISED -
-     * User is disabled due to a potential security threat.</li> <li>UNKNOWN - User
-     * status is not known.</li> </ul>
+     * <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED -
+     * User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has
+     * been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li>
+     * <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p>
+     * </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
      */
-    inline void SetUserStatus(UserStatusType&& value) { m_userStatus = value; }
+    inline void SetUserStatus(UserStatusType&& value) { m_userStatus = std::move(value); }
 
     /**
-     * <p>The user status. Can be one of the following:</p> <ul> <li>UNCONFIRMED - User
-     * has been created but not confirmed.</li> <li>CONFIRMED - User has been
-     * confirmed.</li> <li>ARCHIVED - User is no longer active.</li> <li>COMPROMISED -
-     * User is disabled due to a potential security threat.</li> <li>UNKNOWN - User
-     * status is not known.</li> </ul>
+     * <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED -
+     * User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has
+     * been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li>
+     * <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p>
+     * </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
      */
     inline AdminGetUserResult& WithUserStatus(const UserStatusType& value) { SetUserStatus(value); return *this;}
 
     /**
-     * <p>The user status. Can be one of the following:</p> <ul> <li>UNCONFIRMED - User
-     * has been created but not confirmed.</li> <li>CONFIRMED - User has been
-     * confirmed.</li> <li>ARCHIVED - User is no longer active.</li> <li>COMPROMISED -
-     * User is disabled due to a potential security threat.</li> <li>UNKNOWN - User
-     * status is not known.</li> </ul>
+     * <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED -
+     * User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has
+     * been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li>
+     * <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p>
+     * </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
      */
-    inline AdminGetUserResult& WithUserStatus(UserStatusType&& value) { SetUserStatus(value); return *this;}
+    inline AdminGetUserResult& WithUserStatus(UserStatusType&& value) { SetUserStatus(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
@@ -241,7 +245,7 @@ namespace Model
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
      */
-    inline void SetMFAOptions(Aws::Vector<MFAOptionType>&& value) { m_mFAOptions = value; }
+    inline void SetMFAOptions(Aws::Vector<MFAOptionType>&& value) { m_mFAOptions = std::move(value); }
 
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
@@ -251,7 +255,7 @@ namespace Model
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
      */
-    inline AdminGetUserResult& WithMFAOptions(Aws::Vector<MFAOptionType>&& value) { SetMFAOptions(value); return *this;}
+    inline AdminGetUserResult& WithMFAOptions(Aws::Vector<MFAOptionType>&& value) { SetMFAOptions(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
@@ -261,7 +265,7 @@ namespace Model
     /**
      * <p>Specifies the options for MFA (e.g., email or phone number).</p>
      */
-    inline AdminGetUserResult& AddMFAOptions(MFAOptionType&& value) { m_mFAOptions.push_back(value); return *this; }
+    inline AdminGetUserResult& AddMFAOptions(MFAOptionType&& value) { m_mFAOptions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_username;

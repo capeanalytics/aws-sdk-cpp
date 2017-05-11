@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/kinesis/model/MetricsName.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>Represents the output for <a>EnableEnhancedMonitoring</a> and
-   * <a>DisableEnhancedMonitoring</a>.</p>
+   * <a>DisableEnhancedMonitoring</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/EnhancedMonitoringOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API EnableEnhancedMonitoringResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamName = std::move(value); }
 
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
      */
-    inline EnableEnhancedMonitoringResult& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline EnableEnhancedMonitoringResult& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
@@ -96,7 +100,7 @@ namespace Model
      * <p>Represents the current state of the metrics that are in the enhanced state
      * before the operation.</p>
      */
-    inline void SetCurrentShardLevelMetrics(Aws::Vector<MetricsName>&& value) { m_currentShardLevelMetrics = value; }
+    inline void SetCurrentShardLevelMetrics(Aws::Vector<MetricsName>&& value) { m_currentShardLevelMetrics = std::move(value); }
 
     /**
      * <p>Represents the current state of the metrics that are in the enhanced state
@@ -108,7 +112,7 @@ namespace Model
      * <p>Represents the current state of the metrics that are in the enhanced state
      * before the operation.</p>
      */
-    inline EnableEnhancedMonitoringResult& WithCurrentShardLevelMetrics(Aws::Vector<MetricsName>&& value) { SetCurrentShardLevelMetrics(value); return *this;}
+    inline EnableEnhancedMonitoringResult& WithCurrentShardLevelMetrics(Aws::Vector<MetricsName>&& value) { SetCurrentShardLevelMetrics(std::move(value)); return *this;}
 
     /**
      * <p>Represents the current state of the metrics that are in the enhanced state
@@ -120,7 +124,7 @@ namespace Model
      * <p>Represents the current state of the metrics that are in the enhanced state
      * before the operation.</p>
      */
-    inline EnableEnhancedMonitoringResult& AddCurrentShardLevelMetrics(MetricsName&& value) { m_currentShardLevelMetrics.push_back(value); return *this; }
+    inline EnableEnhancedMonitoringResult& AddCurrentShardLevelMetrics(MetricsName&& value) { m_currentShardLevelMetrics.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Represents the list of all the metrics that would be in the enhanced state
@@ -138,7 +142,7 @@ namespace Model
      * <p>Represents the list of all the metrics that would be in the enhanced state
      * after the operation.</p>
      */
-    inline void SetDesiredShardLevelMetrics(Aws::Vector<MetricsName>&& value) { m_desiredShardLevelMetrics = value; }
+    inline void SetDesiredShardLevelMetrics(Aws::Vector<MetricsName>&& value) { m_desiredShardLevelMetrics = std::move(value); }
 
     /**
      * <p>Represents the list of all the metrics that would be in the enhanced state
@@ -150,7 +154,7 @@ namespace Model
      * <p>Represents the list of all the metrics that would be in the enhanced state
      * after the operation.</p>
      */
-    inline EnableEnhancedMonitoringResult& WithDesiredShardLevelMetrics(Aws::Vector<MetricsName>&& value) { SetDesiredShardLevelMetrics(value); return *this;}
+    inline EnableEnhancedMonitoringResult& WithDesiredShardLevelMetrics(Aws::Vector<MetricsName>&& value) { SetDesiredShardLevelMetrics(std::move(value)); return *this;}
 
     /**
      * <p>Represents the list of all the metrics that would be in the enhanced state
@@ -162,7 +166,7 @@ namespace Model
      * <p>Represents the list of all the metrics that would be in the enhanced state
      * after the operation.</p>
      */
-    inline EnableEnhancedMonitoringResult& AddDesiredShardLevelMetrics(MetricsName&& value) { m_desiredShardLevelMetrics.push_back(value); return *this; }
+    inline EnableEnhancedMonitoringResult& AddDesiredShardLevelMetrics(MetricsName&& value) { m_desiredShardLevelMetrics.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_streamName;

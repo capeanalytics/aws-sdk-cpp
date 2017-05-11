@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/firehose/Firehose_EXPORTS.h>
 #include <aws/firehose/FirehoseRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for <a>ListDeliveryStreams</a>.</p>
    */
   class AWS_FIREHOSE_API ListDeliveryStreamsRequest : public FirehoseRequest
   {
@@ -34,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The maximum number of delivery streams to list.</p>
@@ -63,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the delivery stream to start the list with.</p>
      */
-    inline void SetExclusiveStartDeliveryStreamName(Aws::String&& value) { m_exclusiveStartDeliveryStreamNameHasBeenSet = true; m_exclusiveStartDeliveryStreamName = value; }
+    inline void SetExclusiveStartDeliveryStreamName(Aws::String&& value) { m_exclusiveStartDeliveryStreamNameHasBeenSet = true; m_exclusiveStartDeliveryStreamName = std::move(value); }
 
     /**
      * <p>The name of the delivery stream to start the list with.</p>
@@ -78,7 +80,7 @@ namespace Model
     /**
      * <p>The name of the delivery stream to start the list with.</p>
      */
-    inline ListDeliveryStreamsRequest& WithExclusiveStartDeliveryStreamName(Aws::String&& value) { SetExclusiveStartDeliveryStreamName(value); return *this;}
+    inline ListDeliveryStreamsRequest& WithExclusiveStartDeliveryStreamName(Aws::String&& value) { SetExclusiveStartDeliveryStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the delivery stream to start the list with.</p>

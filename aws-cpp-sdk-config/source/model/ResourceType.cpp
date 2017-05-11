@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/config/model/ResourceType.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -55,6 +56,14 @@ namespace Aws
         static const int AWS_RDS_DBSnapshot_HASH = HashingUtils::HashString("AWS::RDS::DBSnapshot");
         static const int AWS_RDS_EventSubscription_HASH = HashingUtils::HashString("AWS::RDS::EventSubscription");
         static const int AWS_ElasticLoadBalancingV2_LoadBalancer_HASH = HashingUtils::HashString("AWS::ElasticLoadBalancingV2::LoadBalancer");
+        static const int AWS_S3_Bucket_HASH = HashingUtils::HashString("AWS::S3::Bucket");
+        static const int AWS_SSM_ManagedInstanceInventory_HASH = HashingUtils::HashString("AWS::SSM::ManagedInstanceInventory");
+        static const int AWS_Redshift_Cluster_HASH = HashingUtils::HashString("AWS::Redshift::Cluster");
+        static const int AWS_Redshift_ClusterSnapshot_HASH = HashingUtils::HashString("AWS::Redshift::ClusterSnapshot");
+        static const int AWS_Redshift_ClusterParameterGroup_HASH = HashingUtils::HashString("AWS::Redshift::ClusterParameterGroup");
+        static const int AWS_Redshift_ClusterSecurityGroup_HASH = HashingUtils::HashString("AWS::Redshift::ClusterSecurityGroup");
+        static const int AWS_Redshift_ClusterSubnetGroup_HASH = HashingUtils::HashString("AWS::Redshift::ClusterSubnetGroup");
+        static const int AWS_Redshift_EventSubscription_HASH = HashingUtils::HashString("AWS::Redshift::EventSubscription");
 
 
         ResourceType GetResourceTypeForName(const Aws::String& name)
@@ -164,6 +173,38 @@ namespace Aws
           {
             return ResourceType::AWS_ElasticLoadBalancingV2_LoadBalancer;
           }
+          else if (hashCode == AWS_S3_Bucket_HASH)
+          {
+            return ResourceType::AWS_S3_Bucket;
+          }
+          else if (hashCode == AWS_SSM_ManagedInstanceInventory_HASH)
+          {
+            return ResourceType::AWS_SSM_ManagedInstanceInventory;
+          }
+          else if (hashCode == AWS_Redshift_Cluster_HASH)
+          {
+            return ResourceType::AWS_Redshift_Cluster;
+          }
+          else if (hashCode == AWS_Redshift_ClusterSnapshot_HASH)
+          {
+            return ResourceType::AWS_Redshift_ClusterSnapshot;
+          }
+          else if (hashCode == AWS_Redshift_ClusterParameterGroup_HASH)
+          {
+            return ResourceType::AWS_Redshift_ClusterParameterGroup;
+          }
+          else if (hashCode == AWS_Redshift_ClusterSecurityGroup_HASH)
+          {
+            return ResourceType::AWS_Redshift_ClusterSecurityGroup;
+          }
+          else if (hashCode == AWS_Redshift_ClusterSubnetGroup_HASH)
+          {
+            return ResourceType::AWS_Redshift_ClusterSubnetGroup;
+          }
+          else if (hashCode == AWS_Redshift_EventSubscription_HASH)
+          {
+            return ResourceType::AWS_Redshift_EventSubscription;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -230,6 +271,22 @@ namespace Aws
             return "AWS::RDS::EventSubscription";
           case ResourceType::AWS_ElasticLoadBalancingV2_LoadBalancer:
             return "AWS::ElasticLoadBalancingV2::LoadBalancer";
+          case ResourceType::AWS_S3_Bucket:
+            return "AWS::S3::Bucket";
+          case ResourceType::AWS_SSM_ManagedInstanceInventory:
+            return "AWS::SSM::ManagedInstanceInventory";
+          case ResourceType::AWS_Redshift_Cluster:
+            return "AWS::Redshift::Cluster";
+          case ResourceType::AWS_Redshift_ClusterSnapshot:
+            return "AWS::Redshift::ClusterSnapshot";
+          case ResourceType::AWS_Redshift_ClusterParameterGroup:
+            return "AWS::Redshift::ClusterParameterGroup";
+          case ResourceType::AWS_Redshift_ClusterSecurityGroup:
+            return "AWS::Redshift::ClusterSecurityGroup";
+          case ResourceType::AWS_Redshift_ClusterSubnetGroup:
+            return "AWS::Redshift::ClusterSubnetGroup";
+          case ResourceType::AWS_Redshift_EventSubscription:
+            return "AWS::Redshift::EventSubscription";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

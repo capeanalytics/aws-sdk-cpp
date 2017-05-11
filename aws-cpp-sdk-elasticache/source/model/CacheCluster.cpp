@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticache/model/CacheCluster.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -358,7 +359,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+      oStream << location << index << locationValue << ".AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
 
   if(m_securityGroupsHasBeenSet)
@@ -481,7 +482,7 @@ void CacheCluster::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-      oStream << location << ".AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+      oStream << location << ".AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
   if(m_securityGroupsHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/lambda/model/CreateEventSourceMappingRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,7 +29,9 @@ CreateEventSourceMappingRequest::CreateEventSourceMappingRequest() :
     m_enabledHasBeenSet(false),
     m_batchSize(0),
     m_batchSizeHasBeenSet(false),
-    m_startingPositionHasBeenSet(false)
+    m_startingPosition(EventSourcePosition::NOT_SET),
+    m_startingPositionHasBeenSet(false),
+    m_startingPositionTimestampHasBeenSet(false)
 {
 }
 
@@ -65,8 +68,14 @@ Aws::String CreateEventSourceMappingRequest::SerializePayload() const
    payload.WithString("StartingPosition", EventSourcePositionMapper::GetNameForEventSourcePosition(m_startingPosition));
   }
 
+  if(m_startingPositionTimestampHasBeenSet)
+  {
+   payload.WithDouble("StartingPositionTimestamp", m_startingPositionTimestamp.SecondsWithMSPrecision());
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancingv2/model/RuleCondition.h>
 #include <aws/elasticloadbalancingv2/model/Action.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a rule.</p>
+   * <p>Information about a rule.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/Rule">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API Rule
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
      */
-    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = value; }
+    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
      */
-    inline Rule& WithRuleArn(Aws::String&& value) { SetRuleArn(value); return *this;}
+    inline Rule& WithRuleArn(Aws::String&& value) { SetRuleArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>The priority.</p>
      */
-    inline void SetPriority(Aws::String&& value) { m_priorityHasBeenSet = true; m_priority = value; }
+    inline void SetPriority(Aws::String&& value) { m_priorityHasBeenSet = true; m_priority = std::move(value); }
 
     /**
      * <p>The priority.</p>
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>The priority.</p>
      */
-    inline Rule& WithPriority(Aws::String&& value) { SetPriority(value); return *this;}
+    inline Rule& WithPriority(Aws::String&& value) { SetPriority(std::move(value)); return *this;}
 
     /**
      * <p>The priority.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>The conditions.</p>
      */
-    inline void SetConditions(Aws::Vector<RuleCondition>&& value) { m_conditionsHasBeenSet = true; m_conditions = value; }
+    inline void SetConditions(Aws::Vector<RuleCondition>&& value) { m_conditionsHasBeenSet = true; m_conditions = std::move(value); }
 
     /**
      * <p>The conditions.</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The conditions.</p>
      */
-    inline Rule& WithConditions(Aws::Vector<RuleCondition>&& value) { SetConditions(value); return *this;}
+    inline Rule& WithConditions(Aws::Vector<RuleCondition>&& value) { SetConditions(std::move(value)); return *this;}
 
     /**
      * <p>The conditions.</p>
@@ -150,7 +154,7 @@ namespace Model
     /**
      * <p>The conditions.</p>
      */
-    inline Rule& AddConditions(RuleCondition&& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(value); return *this; }
+    inline Rule& AddConditions(RuleCondition&& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The actions.</p>
@@ -165,7 +169,7 @@ namespace Model
     /**
      * <p>The actions.</p>
      */
-    inline void SetActions(Aws::Vector<Action>&& value) { m_actionsHasBeenSet = true; m_actions = value; }
+    inline void SetActions(Aws::Vector<Action>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
 
     /**
      * <p>The actions.</p>
@@ -175,7 +179,7 @@ namespace Model
     /**
      * <p>The actions.</p>
      */
-    inline Rule& WithActions(Aws::Vector<Action>&& value) { SetActions(value); return *this;}
+    inline Rule& WithActions(Aws::Vector<Action>&& value) { SetActions(std::move(value)); return *this;}
 
     /**
      * <p>The actions.</p>
@@ -185,7 +189,7 @@ namespace Model
     /**
      * <p>The actions.</p>
      */
-    inline Rule& AddActions(Action&& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
+    inline Rule& AddActions(Action&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Indicates whether this is the default rule.</p>

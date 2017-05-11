@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 
@@ -31,7 +32,10 @@ namespace Model
 
   /**
    * Specifies the days since the initiation of an Incomplete Multipart Upload that
-   * Lifecycle will wait before permanently removing all parts of the upload.
+   * Lifecycle will wait before permanently removing all parts of the
+   * upload.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AbortIncompleteMultipartUpload">AWS
+   * API Reference</a></p>
    */
   class AWS_S3_API AbortIncompleteMultipartUpload
   {

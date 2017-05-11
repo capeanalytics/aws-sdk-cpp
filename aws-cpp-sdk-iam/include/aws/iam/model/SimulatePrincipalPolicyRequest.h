@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/iam/model/ContextEntry.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,11 @@ namespace Model
     SimulatePrincipalPolicyRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you
      * want to include in the simulation. If you specify a user, group, or role, the
@@ -68,7 +75,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetPolicySourceArn(Aws::String&& value) { m_policySourceArnHasBeenSet = true; m_policySourceArn = value; }
+    inline void SetPolicySourceArn(Aws::String&& value) { m_policySourceArnHasBeenSet = true; m_policySourceArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you
@@ -104,7 +111,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithPolicySourceArn(Aws::String&& value) { SetPolicySourceArn(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithPolicySourceArn(Aws::String&& value) { SetPolicySourceArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you
@@ -122,10 +129,12 @@ namespace Model
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
     inline const Aws::Vector<Aws::String>& GetPolicyInputList() const{ return m_policyInputList; }
 
@@ -133,10 +142,12 @@ namespace Model
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
     inline void SetPolicyInputList(const Aws::Vector<Aws::String>& value) { m_policyInputListHasBeenSet = true; m_policyInputList = value; }
 
@@ -144,21 +155,25 @@ namespace Model
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
-    inline void SetPolicyInputList(Aws::Vector<Aws::String>&& value) { m_policyInputListHasBeenSet = true; m_policyInputList = value; }
+    inline void SetPolicyInputList(Aws::Vector<Aws::String>&& value) { m_policyInputListHasBeenSet = true; m_policyInputList = std::move(value); }
 
     /**
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
     inline SimulatePrincipalPolicyRequest& WithPolicyInputList(const Aws::Vector<Aws::String>& value) { SetPolicyInputList(value); return *this;}
 
@@ -166,21 +181,25 @@ namespace Model
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithPolicyInputList(Aws::Vector<Aws::String>&& value) { SetPolicyInputList(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithPolicyInputList(Aws::Vector<Aws::String>&& value) { SetPolicyInputList(std::move(value)); return *this;}
 
     /**
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
     inline SimulatePrincipalPolicyRequest& AddPolicyInputList(const Aws::String& value) { m_policyInputListHasBeenSet = true; m_policyInputList.push_back(value); return *this; }
 
@@ -188,21 +207,25 @@ namespace Model
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
-    inline SimulatePrincipalPolicyRequest& AddPolicyInputList(Aws::String&& value) { m_policyInputListHasBeenSet = true; m_policyInputList.push_back(value); return *this; }
+    inline SimulatePrincipalPolicyRequest& AddPolicyInputList(Aws::String&& value) { m_policyInputListHasBeenSet = true; m_policyInputList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An optional list of additional policy documents to include in the simulation.
      * Each document is specified as a string containing the complete, valid JSON text
      * of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a> for this parameter is a string of characters consisting of any
-     * printable ASCII character ranging from the space character (\u0020) through end
-     * of the ASCII character range (\u00FF). It also includes the special characters
-     * tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+     * pattern</a> used to validate this parameter is a string of characters consisting
+     * of any printable ASCII character ranging from the space character (\u0020)
+     * through end of the ASCII character range as well as the printable characters in
+     * the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also
+     * includes the special characters tab (\u0009), line feed (\u000A), and carriage
+     * return (\u000D).</p>
      */
     inline SimulatePrincipalPolicyRequest& AddPolicyInputList(const char* value) { m_policyInputListHasBeenSet = true; m_policyInputList.push_back(value); return *this; }
 
@@ -225,7 +248,7 @@ namespace Model
      * evaluated for each resource. Each action must include the service identifier,
      * such as <code>iam:CreateUser</code>.</p>
      */
-    inline void SetActionNames(Aws::Vector<Aws::String>&& value) { m_actionNamesHasBeenSet = true; m_actionNames = value; }
+    inline void SetActionNames(Aws::Vector<Aws::String>&& value) { m_actionNamesHasBeenSet = true; m_actionNames = std::move(value); }
 
     /**
      * <p>A list of names of API actions to evaluate in the simulation. Each action is
@@ -239,7 +262,7 @@ namespace Model
      * evaluated for each resource. Each action must include the service identifier,
      * such as <code>iam:CreateUser</code>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithActionNames(Aws::Vector<Aws::String>&& value) { SetActionNames(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithActionNames(Aws::Vector<Aws::String>&& value) { SetActionNames(std::move(value)); return *this;}
 
     /**
      * <p>A list of names of API actions to evaluate in the simulation. Each action is
@@ -253,7 +276,7 @@ namespace Model
      * evaluated for each resource. Each action must include the service identifier,
      * such as <code>iam:CreateUser</code>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& AddActionNames(Aws::String&& value) { m_actionNamesHasBeenSet = true; m_actionNames.push_back(value); return *this; }
+    inline SimulatePrincipalPolicyRequest& AddActionNames(Aws::String&& value) { m_actionNamesHasBeenSet = true; m_actionNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of names of API actions to evaluate in the simulation. Each action is
@@ -308,7 +331,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetResourceArns(Aws::Vector<Aws::String>&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = value; }
+    inline void SetResourceArns(Aws::Vector<Aws::String>&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::move(value); }
 
     /**
      * <p>A list of ARNs of AWS resources to include in the simulation. If this
@@ -340,7 +363,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithResourceArns(Aws::Vector<Aws::String>&& value) { SetResourceArns(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithResourceArns(Aws::Vector<Aws::String>&& value) { SetResourceArns(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs of AWS resources to include in the simulation. If this
@@ -372,7 +395,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& AddResourceArns(Aws::String&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
+    inline SimulatePrincipalPolicyRequest& AddResourceArns(Aws::String&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of ARNs of AWS resources to include in the simulation. If this
@@ -394,11 +417,12 @@ namespace Model
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline const Aws::String& GetResourcePolicy() const{ return m_resourcePolicy; }
 
@@ -406,11 +430,12 @@ namespace Model
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline void SetResourcePolicy(const Aws::String& value) { m_resourcePolicyHasBeenSet = true; m_resourcePolicy = value; }
 
@@ -418,23 +443,25 @@ namespace Model
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
-    inline void SetResourcePolicy(Aws::String&& value) { m_resourcePolicyHasBeenSet = true; m_resourcePolicy = value; }
+    inline void SetResourcePolicy(Aws::String&& value) { m_resourcePolicyHasBeenSet = true; m_resourcePolicy = std::move(value); }
 
     /**
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline void SetResourcePolicy(const char* value) { m_resourcePolicyHasBeenSet = true; m_resourcePolicy.assign(value); }
 
@@ -442,11 +469,12 @@ namespace Model
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline SimulatePrincipalPolicyRequest& WithResourcePolicy(const Aws::String& value) { SetResourcePolicy(value); return *this;}
 
@@ -454,23 +482,25 @@ namespace Model
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithResourcePolicy(Aws::String&& value) { SetResourcePolicy(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithResourcePolicy(Aws::String&& value) { SetResourcePolicy(std::move(value)); return *this;}
 
     /**
      * <p>A resource-based policy to include in the simulation provided as a string.
      * Each resource in the simulation is treated as if it had this policy attached.
      * You can include only one resource-based policy in a simulation.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline SimulatePrincipalPolicyRequest& WithResourcePolicy(const char* value) { SetResourcePolicy(value); return *this;}
 
@@ -514,7 +544,7 @@ namespace Model
      * from the account that owns the simulated calling user
      * <code>CallerArn</code>.</p>
      */
-    inline void SetResourceOwner(Aws::String&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = value; }
+    inline void SetResourceOwner(Aws::String&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::move(value); }
 
     /**
      * <p>An AWS account ID that specifies the owner of any simulated resource that
@@ -556,7 +586,7 @@ namespace Model
      * from the account that owns the simulated calling user
      * <code>CallerArn</code>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithResourceOwner(Aws::String&& value) { SetResourceOwner(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithResourceOwner(Aws::String&& value) { SetResourceOwner(std::move(value)); return *this;}
 
     /**
      * <p>An AWS account ID that specifies the owner of any simulated resource that
@@ -633,7 +663,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetCallerArn(Aws::String&& value) { m_callerArnHasBeenSet = true; m_callerArn = value; }
+    inline void SetCallerArn(Aws::String&& value) { m_callerArnHasBeenSet = true; m_callerArn = std::move(value); }
 
     /**
      * <p>The ARN of the IAM user that you want to specify as the simulated caller of
@@ -696,7 +726,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithCallerArn(Aws::String&& value) { SetCallerArn(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithCallerArn(Aws::String&& value) { SetCallerArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the IAM user that you want to specify as the simulated caller of
@@ -738,7 +768,7 @@ namespace Model
      * Whenever a context key is evaluated in one of the simulated IAM permission
      * policies, the corresponding value is supplied.</p>
      */
-    inline void SetContextEntries(Aws::Vector<ContextEntry>&& value) { m_contextEntriesHasBeenSet = true; m_contextEntries = value; }
+    inline void SetContextEntries(Aws::Vector<ContextEntry>&& value) { m_contextEntriesHasBeenSet = true; m_contextEntries = std::move(value); }
 
     /**
      * <p>A list of context keys and corresponding values for the simulation to use.
@@ -752,7 +782,7 @@ namespace Model
      * Whenever a context key is evaluated in one of the simulated IAM permission
      * policies, the corresponding value is supplied.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithContextEntries(Aws::Vector<ContextEntry>&& value) { SetContextEntries(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithContextEntries(Aws::Vector<ContextEntry>&& value) { SetContextEntries(std::move(value)); return *this;}
 
     /**
      * <p>A list of context keys and corresponding values for the simulation to use.
@@ -766,7 +796,7 @@ namespace Model
      * Whenever a context key is evaluated in one of the simulated IAM permission
      * policies, the corresponding value is supplied.</p>
      */
-    inline SimulatePrincipalPolicyRequest& AddContextEntries(ContextEntry&& value) { m_contextEntriesHasBeenSet = true; m_contextEntries.push_back(value); return *this; }
+    inline SimulatePrincipalPolicyRequest& AddContextEntries(ContextEntry&& value) { m_contextEntriesHasBeenSet = true; m_contextEntries.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies the type of simulation to run. Different APIs that support
@@ -850,7 +880,7 @@ namespace Model
      * <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group,
      * network-interface, subnet, volume</p> </li> </ul>
      */
-    inline void SetResourceHandlingOption(Aws::String&& value) { m_resourceHandlingOptionHasBeenSet = true; m_resourceHandlingOption = value; }
+    inline void SetResourceHandlingOption(Aws::String&& value) { m_resourceHandlingOptionHasBeenSet = true; m_resourceHandlingOption = std::move(value); }
 
     /**
      * <p>Specifies the type of simulation to run. Different APIs that support
@@ -934,7 +964,7 @@ namespace Model
      * <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group,
      * network-interface, subnet, volume</p> </li> </ul>
      */
-    inline SimulatePrincipalPolicyRequest& WithResourceHandlingOption(Aws::String&& value) { SetResourceHandlingOption(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithResourceHandlingOption(Aws::String&& value) { SetResourceHandlingOption(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the type of simulation to run. Different APIs that support
@@ -965,11 +995,11 @@ namespace Model
     inline SimulatePrincipalPolicyRequest& WithResourceHandlingOption(const char* value) { SetResourceHandlingOption(value); return *this;}
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -977,11 +1007,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -989,11 +1019,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -1022,7 +1052,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -1046,7 +1076,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline SimulatePrincipalPolicyRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline SimulatePrincipalPolicyRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a

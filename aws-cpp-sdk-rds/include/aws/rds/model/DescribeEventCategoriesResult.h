@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/ResponseMetadata.h>
 #include <aws/rds/model/EventCategoriesMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace RDS
 namespace Model
 {
   /**
-   * <p>Data returned from the <b>DescribeEventCategories</b> action.</p>
+   * <p>Data returned from the <b>DescribeEventCategories</b> action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/EventCategoriesMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeEventCategoriesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>A list of EventCategoriesMap data types.</p>
      */
-    inline void SetEventCategoriesMapList(Aws::Vector<EventCategoriesMap>&& value) { m_eventCategoriesMapList = value; }
+    inline void SetEventCategoriesMapList(Aws::Vector<EventCategoriesMap>&& value) { m_eventCategoriesMapList = std::move(value); }
 
     /**
      * <p>A list of EventCategoriesMap data types.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>A list of EventCategoriesMap data types.</p>
      */
-    inline DescribeEventCategoriesResult& WithEventCategoriesMapList(Aws::Vector<EventCategoriesMap>&& value) { SetEventCategoriesMapList(value); return *this;}
+    inline DescribeEventCategoriesResult& WithEventCategoriesMapList(Aws::Vector<EventCategoriesMap>&& value) { SetEventCategoriesMapList(std::move(value)); return *this;}
 
     /**
      * <p>A list of EventCategoriesMap data types.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>A list of EventCategoriesMap data types.</p>
      */
-    inline DescribeEventCategoriesResult& AddEventCategoriesMapList(EventCategoriesMap&& value) { m_eventCategoriesMapList.push_back(value); return *this; }
+    inline DescribeEventCategoriesResult& AddEventCategoriesMapList(EventCategoriesMap&& value) { m_eventCategoriesMapList.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -86,13 +91,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeEventCategoriesResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeEventCategoriesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeEventCategoriesResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<EventCategoriesMap> m_eventCategoriesMapList;

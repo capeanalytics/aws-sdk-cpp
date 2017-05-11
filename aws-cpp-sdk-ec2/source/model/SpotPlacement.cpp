@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/SpotPlacement.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,13 +32,17 @@ namespace Model
 
 SpotPlacement::SpotPlacement() : 
     m_availabilityZoneHasBeenSet(false),
-    m_groupNameHasBeenSet(false)
+    m_groupNameHasBeenSet(false),
+    m_tenancy(Tenancy::NOT_SET),
+    m_tenancyHasBeenSet(false)
 {
 }
 
 SpotPlacement::SpotPlacement(const XmlNode& xmlNode) : 
     m_availabilityZoneHasBeenSet(false),
-    m_groupNameHasBeenSet(false)
+    m_groupNameHasBeenSet(false),
+    m_tenancy(Tenancy::NOT_SET),
+    m_tenancyHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -60,6 +65,12 @@ SpotPlacement& SpotPlacement::operator =(const XmlNode& xmlNode)
       m_groupName = StringUtils::Trim(groupNameNode.GetText().c_str());
       m_groupNameHasBeenSet = true;
     }
+    XmlNode tenancyNode = resultNode.FirstChild("tenancy");
+    if(!tenancyNode.IsNull())
+    {
+      m_tenancy = TenancyMapper::GetTenancyForName(StringUtils::Trim(tenancyNode.GetText().c_str()).c_str());
+      m_tenancyHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -77,6 +88,11 @@ void SpotPlacement::OutputToStream(Aws::OStream& oStream, const char* location, 
       oStream << location << index << locationValue << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
   }
 
+  if(m_tenancyHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Tenancy=" << TenancyMapper::GetNameForTenancy(m_tenancy) << "&";
+  }
+
 }
 
 void SpotPlacement::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -88,6 +104,10 @@ void SpotPlacement::OutputToStream(Aws::OStream& oStream, const char* location) 
   if(m_groupNameHasBeenSet)
   {
       oStream << location << ".GroupName=" << StringUtils::URLEncode(m_groupName.c_str()) << "&";
+  }
+  if(m_tenancyHasBeenSet)
+  {
+      oStream << location << ".Tenancy=" << TenancyMapper::GetNameForTenancy(m_tenancy) << "&";
   }
 }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/redshift/model/CreateClusterRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -50,6 +51,8 @@ CreateClusterRequest::CreateClusterRequest() :
     m_elasticIpHasBeenSet(false),
     m_tagsHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
+    m_enhancedVpcRouting(false),
+    m_enhancedVpcRoutingHasBeenSet(false),
     m_additionalInfoHasBeenSet(false),
     m_iamRolesHasBeenSet(false)
 {
@@ -148,7 +151,7 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   if(m_allowVersionUpgradeHasBeenSet)
   {
-    ss << "AllowVersionUpgrade=" << m_allowVersionUpgrade << "&";
+    ss << "AllowVersionUpgrade=" << std::boolalpha << m_allowVersionUpgrade << "&";
   }
 
   if(m_numberOfNodesHasBeenSet)
@@ -158,12 +161,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-    ss << "PubliclyAccessible=" << m_publiclyAccessible << "&";
+    ss << "PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_encryptedHasBeenSet)
   {
-    ss << "Encrypted=" << m_encrypted << "&";
+    ss << "Encrypted=" << std::boolalpha << m_encrypted << "&";
   }
 
   if(m_hsmClientCertificateIdentifierHasBeenSet)
@@ -196,6 +199,11 @@ Aws::String CreateClusterRequest::SerializePayload() const
     ss << "KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
   }
 
+  if(m_enhancedVpcRoutingHasBeenSet)
+  {
+    ss << "EnhancedVpcRouting=" << std::boolalpha << m_enhancedVpcRouting << "&";
+  }
+
   if(m_additionalInfoHasBeenSet)
   {
     ss << "AdditionalInfo=" << StringUtils::URLEncode(m_additionalInfo.c_str()) << "&";
@@ -216,3 +224,8 @@ Aws::String CreateClusterRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  CreateClusterRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

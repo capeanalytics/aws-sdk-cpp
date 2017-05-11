@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Filter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeSourceRegionsMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeSourceRegionsRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     DescribeSourceRegionsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The source region name. For example, <code>us-east-1</code>.</p>
      * <p>Constraints:</p> <ul> <li> <p>Must specify a valid AWS Region name.</p> </li>
@@ -54,7 +63,7 @@ namespace Model
      * <p>Constraints:</p> <ul> <li> <p>Must specify a valid AWS Region name.</p> </li>
      * </ul>
      */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
+    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
 
     /**
      * <p>The source region name. For example, <code>us-east-1</code>.</p>
@@ -75,7 +84,7 @@ namespace Model
      * <p>Constraints:</p> <ul> <li> <p>Must specify a valid AWS Region name.</p> </li>
      * </ul>
      */
-    inline DescribeSourceRegionsRequest& WithRegionName(Aws::String&& value) { SetRegionName(value); return *this;}
+    inline DescribeSourceRegionsRequest& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
 
     /**
      * <p>The source region name. For example, <code>us-east-1</code>.</p>
@@ -130,7 +139,7 @@ namespace Model
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -154,7 +163,7 @@ namespace Model
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>.</p>
      */
-    inline DescribeSourceRegionsRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeSourceRegionsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -177,7 +186,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -187,7 +196,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeSourceRegionsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(value); return *this;}
+    inline DescribeSourceRegionsRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>This parameter is not currently supported.</p>
@@ -197,7 +206,7 @@ namespace Model
     /**
      * <p>This parameter is not currently supported.</p>
      */
-    inline DescribeSourceRegionsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeSourceRegionsRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_regionName;

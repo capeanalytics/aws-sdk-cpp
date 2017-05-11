@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/lambda/LambdaRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,38 +34,53 @@ namespace Model
     UpdateAliasRequest();
     Aws::String SerializePayload() const override;
 
+
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline const Aws::String& GetFunctionName() const{ return m_functionName; }
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
-    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
+    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline UpdateAliasRequest& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
-    inline UpdateAliasRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(value); return *this;}
+    inline UpdateAliasRequest& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
 
     /**
-     * <p>The function name for which the alias is created.</p>
+     * <p>The function name for which the alias is created. Note that the length
+     * constraint applies only to the ARN. If you specify only the function name, it is
+     * limited to 64 characters in length.</p>
      */
     inline UpdateAliasRequest& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
 
@@ -80,7 +97,7 @@ namespace Model
     /**
      * <p>The alias name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The alias name.</p>
@@ -95,7 +112,7 @@ namespace Model
     /**
      * <p>The alias name.</p>
      */
-    inline UpdateAliasRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UpdateAliasRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The alias name.</p>
@@ -118,7 +135,7 @@ namespace Model
      * <p>Using this parameter you can change the Lambda function version to which the
      * alias points.</p>
      */
-    inline void SetFunctionVersion(Aws::String&& value) { m_functionVersionHasBeenSet = true; m_functionVersion = value; }
+    inline void SetFunctionVersion(Aws::String&& value) { m_functionVersionHasBeenSet = true; m_functionVersion = std::move(value); }
 
     /**
      * <p>Using this parameter you can change the Lambda function version to which the
@@ -136,7 +153,7 @@ namespace Model
      * <p>Using this parameter you can change the Lambda function version to which the
      * alias points.</p>
      */
-    inline UpdateAliasRequest& WithFunctionVersion(Aws::String&& value) { SetFunctionVersion(value); return *this;}
+    inline UpdateAliasRequest& WithFunctionVersion(Aws::String&& value) { SetFunctionVersion(std::move(value)); return *this;}
 
     /**
      * <p>Using this parameter you can change the Lambda function version to which the
@@ -157,7 +174,7 @@ namespace Model
     /**
      * <p>You can change the description of the alias using this parameter.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>You can change the description of the alias using this parameter.</p>
@@ -172,7 +189,7 @@ namespace Model
     /**
      * <p>You can change the description of the alias using this parameter.</p>
      */
-    inline UpdateAliasRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline UpdateAliasRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>You can change the description of the alias using this parameter.</p>

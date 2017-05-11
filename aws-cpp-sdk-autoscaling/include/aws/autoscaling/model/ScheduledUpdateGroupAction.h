@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes a scheduled update to an Auto Scaling group.</p>
+   * <p>Describes a scheduled update to an Auto Scaling group.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ScheduledUpdateGroupAction">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API ScheduledUpdateGroupAction
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = value; }
+    inline void SetAutoScalingGroupName(Aws::String&& value) { m_autoScalingGroupNameHasBeenSet = true; m_autoScalingGroupName = std::move(value); }
 
     /**
      * <p>The name of the group.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the group.</p>
      */
-    inline ScheduledUpdateGroupAction& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithAutoScalingGroupName(Aws::String&& value) { SetAutoScalingGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the group.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>The name of the scheduled action.</p>
      */
-    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = value; }
+    inline void SetScheduledActionName(Aws::String&& value) { m_scheduledActionNameHasBeenSet = true; m_scheduledActionName = std::move(value); }
 
     /**
      * <p>The name of the scheduled action.</p>
@@ -108,7 +113,7 @@ namespace Model
     /**
      * <p>The name of the scheduled action.</p>
      */
-    inline ScheduledUpdateGroupAction& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithScheduledActionName(Aws::String&& value) { SetScheduledActionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the scheduled action.</p>
@@ -128,7 +133,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
      */
-    inline void SetScheduledActionARN(Aws::String&& value) { m_scheduledActionARNHasBeenSet = true; m_scheduledActionARN = value; }
+    inline void SetScheduledActionARN(Aws::String&& value) { m_scheduledActionARNHasBeenSet = true; m_scheduledActionARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
@@ -143,7 +148,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
      */
-    inline ScheduledUpdateGroupAction& WithScheduledActionARN(Aws::String&& value) { SetScheduledActionARN(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithScheduledActionARN(Aws::String&& value) { SetScheduledActionARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
@@ -163,7 +168,7 @@ namespace Model
     /**
      * <p>This parameter is deprecated.</p>
      */
-    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = value; }
+    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = std::move(value); }
 
     /**
      * <p>This parameter is deprecated.</p>
@@ -173,7 +178,7 @@ namespace Model
     /**
      * <p>This parameter is deprecated.</p>
      */
-    inline ScheduledUpdateGroupAction& WithTime(Aws::Utils::DateTime&& value) { SetTime(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithTime(Aws::Utils::DateTime&& value) { SetTime(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the action is scheduled to begin. This date and time
@@ -197,7 +202,7 @@ namespace Model
      * <code>EndTime</code> are specified with <code>Recurrence</code>, they form the
      * boundaries of when the recurring action will start and stop.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>The date and time that the action is scheduled to begin. This date and time
@@ -213,7 +218,7 @@ namespace Model
      * <code>EndTime</code> are specified with <code>Recurrence</code>, they form the
      * boundaries of when the recurring action will start and stop.</p>
      */
-    inline ScheduledUpdateGroupAction& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The date and time that the action is scheduled to end. This date and time can
@@ -231,7 +236,7 @@ namespace Model
      * <p>The date and time that the action is scheduled to end. This date and time can
      * be up to one month in the future.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>The date and time that the action is scheduled to end. This date and time can
@@ -243,7 +248,7 @@ namespace Model
      * <p>The date and time that the action is scheduled to end. This date and time can
      * be up to one month in the future.</p>
      */
-    inline ScheduledUpdateGroupAction& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
      * <p>The recurring schedule for the action.</p>
@@ -258,7 +263,7 @@ namespace Model
     /**
      * <p>The recurring schedule for the action.</p>
      */
-    inline void SetRecurrence(Aws::String&& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
+    inline void SetRecurrence(Aws::String&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::move(value); }
 
     /**
      * <p>The recurring schedule for the action.</p>
@@ -273,7 +278,7 @@ namespace Model
     /**
      * <p>The recurring schedule for the action.</p>
      */
-    inline ScheduledUpdateGroupAction& WithRecurrence(Aws::String&& value) { SetRecurrence(value); return *this;}
+    inline ScheduledUpdateGroupAction& WithRecurrence(Aws::String&& value) { SetRecurrence(std::move(value)); return *this;}
 
     /**
      * <p>The recurring schedule for the action.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/config/model/Evaluation.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 Evaluation::Evaluation() : 
     m_complianceResourceTypeHasBeenSet(false),
     m_complianceResourceIdHasBeenSet(false),
+    m_complianceType(ComplianceType::NOT_SET),
     m_complianceTypeHasBeenSet(false),
     m_annotationHasBeenSet(false),
     m_orderingTimestampHasBeenSet(false)
@@ -39,6 +41,7 @@ Evaluation::Evaluation() :
 Evaluation::Evaluation(const JsonValue& jsonValue) : 
     m_complianceResourceTypeHasBeenSet(false),
     m_complianceResourceIdHasBeenSet(false),
+    m_complianceType(ComplianceType::NOT_SET),
     m_complianceTypeHasBeenSet(false),
     m_annotationHasBeenSet(false),
     m_orderingTimestampHasBeenSet(false)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/VolumeStatusItem.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -166,7 +167,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_events)
       {
         Aws::StringStream eventsSs;
-        eventsSs << location <<  ".item." << eventsIdx++;
+        eventsSs << location <<  ".EventsSet." << eventsIdx++;
         item.OutputToStream(oStream, eventsSs.str().c_str());
       }
   }
@@ -176,7 +177,7 @@ void VolumeStatusItem::OutputToStream(Aws::OStream& oStream, const char* locatio
       for(auto& item : m_actions)
       {
         Aws::StringStream actionsSs;
-        actionsSs << location <<  ".item." << actionsIdx++;
+        actionsSs << location <<  ".ActionsSet." << actionsIdx++;
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }

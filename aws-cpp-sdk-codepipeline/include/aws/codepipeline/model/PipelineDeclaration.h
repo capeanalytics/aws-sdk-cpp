@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/ArtifactStore.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codepipeline/model/StageDeclaration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 
   /**
    * <p>Represents the structure of actions and stages to be performed in the
-   * pipeline.</p>
+   * pipeline.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PipelineDeclaration">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API PipelineDeclaration
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the action to be performed.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the action to be performed.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the action to be performed.</p>
      */
-    inline PipelineDeclaration& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline PipelineDeclaration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the action to be performed.</p>
@@ -99,7 +103,7 @@ namespace Model
      * actions with no actionRoleArn, or to use to assume roles for actions with an
      * actionRoleArn.</p>
      */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform
@@ -120,7 +124,7 @@ namespace Model
      * actions with no actionRoleArn, or to use to assume roles for actions with an
      * actionRoleArn.</p>
      */
-    inline PipelineDeclaration& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
+    inline PipelineDeclaration& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform
@@ -136,13 +140,13 @@ namespace Model
     inline void SetArtifactStore(const ArtifactStore& value) { m_artifactStoreHasBeenSet = true; m_artifactStore = value; }
 
     
-    inline void SetArtifactStore(ArtifactStore&& value) { m_artifactStoreHasBeenSet = true; m_artifactStore = value; }
+    inline void SetArtifactStore(ArtifactStore&& value) { m_artifactStoreHasBeenSet = true; m_artifactStore = std::move(value); }
 
     
     inline PipelineDeclaration& WithArtifactStore(const ArtifactStore& value) { SetArtifactStore(value); return *this;}
 
     
-    inline PipelineDeclaration& WithArtifactStore(ArtifactStore&& value) { SetArtifactStore(value); return *this;}
+    inline PipelineDeclaration& WithArtifactStore(ArtifactStore&& value) { SetArtifactStore(std::move(value)); return *this;}
 
     /**
      * <p>The stage in which to perform the action.</p>
@@ -157,7 +161,7 @@ namespace Model
     /**
      * <p>The stage in which to perform the action.</p>
      */
-    inline void SetStages(Aws::Vector<StageDeclaration>&& value) { m_stagesHasBeenSet = true; m_stages = value; }
+    inline void SetStages(Aws::Vector<StageDeclaration>&& value) { m_stagesHasBeenSet = true; m_stages = std::move(value); }
 
     /**
      * <p>The stage in which to perform the action.</p>
@@ -167,7 +171,7 @@ namespace Model
     /**
      * <p>The stage in which to perform the action.</p>
      */
-    inline PipelineDeclaration& WithStages(Aws::Vector<StageDeclaration>&& value) { SetStages(value); return *this;}
+    inline PipelineDeclaration& WithStages(Aws::Vector<StageDeclaration>&& value) { SetStages(std::move(value)); return *this;}
 
     /**
      * <p>The stage in which to perform the action.</p>
@@ -177,7 +181,7 @@ namespace Model
     /**
      * <p>The stage in which to perform the action.</p>
      */
-    inline PipelineDeclaration& AddStages(StageDeclaration&& value) { m_stagesHasBeenSet = true; m_stages.push_back(value); return *this; }
+    inline PipelineDeclaration& AddStages(StageDeclaration&& value) { m_stagesHasBeenSet = true; m_stages.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The version number of the pipeline. A new pipeline always has a version

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticache/model/Subnet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,9 +36,11 @@ namespace Model
 {
 
   /**
-   * <p>Represents the output of one of the following actions:</p> <ul> <li> <p>
-   * <i>CreateCacheSubnetGroup</i> </p> </li> <li> <p> <i>ModifyCacheSubnetGroup</i>
-   * </p> </li> </ul>
+   * <p>Represents the output of one of the following operations:</p> <ul> <li> <p>
+   * <code>CreateCacheSubnetGroup</code> </p> </li> <li> <p>
+   * <code>ModifyCacheSubnetGroup</code> </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheSubnetGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheSubnetGroup
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the cache subnet group.</p>
      */
-    inline void SetCacheSubnetGroupName(Aws::String&& value) { m_cacheSubnetGroupNameHasBeenSet = true; m_cacheSubnetGroupName = value; }
+    inline void SetCacheSubnetGroupName(Aws::String&& value) { m_cacheSubnetGroupNameHasBeenSet = true; m_cacheSubnetGroupName = std::move(value); }
 
     /**
      * <p>The name of the cache subnet group.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The name of the cache subnet group.</p>
      */
-    inline CacheSubnetGroup& WithCacheSubnetGroupName(Aws::String&& value) { SetCacheSubnetGroupName(value); return *this;}
+    inline CacheSubnetGroup& WithCacheSubnetGroupName(Aws::String&& value) { SetCacheSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache subnet group.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The description of the cache subnet group.</p>
      */
-    inline void SetCacheSubnetGroupDescription(Aws::String&& value) { m_cacheSubnetGroupDescriptionHasBeenSet = true; m_cacheSubnetGroupDescription = value; }
+    inline void SetCacheSubnetGroupDescription(Aws::String&& value) { m_cacheSubnetGroupDescriptionHasBeenSet = true; m_cacheSubnetGroupDescription = std::move(value); }
 
     /**
      * <p>The description of the cache subnet group.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The description of the cache subnet group.</p>
      */
-    inline CacheSubnetGroup& WithCacheSubnetGroupDescription(Aws::String&& value) { SetCacheSubnetGroupDescription(value); return *this;}
+    inline CacheSubnetGroup& WithCacheSubnetGroupDescription(Aws::String&& value) { SetCacheSubnetGroupDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the cache subnet group.</p>
@@ -134,7 +138,7 @@ namespace Model
      * <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet
      * group.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet
@@ -152,7 +156,7 @@ namespace Model
      * <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet
      * group.</p>
      */
-    inline CacheSubnetGroup& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline CacheSubnetGroup& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet
@@ -173,7 +177,7 @@ namespace Model
     /**
      * <p>A list of subnets associated with the cache subnet group.</p>
      */
-    inline void SetSubnets(Aws::Vector<Subnet>&& value) { m_subnetsHasBeenSet = true; m_subnets = value; }
+    inline void SetSubnets(Aws::Vector<Subnet>&& value) { m_subnetsHasBeenSet = true; m_subnets = std::move(value); }
 
     /**
      * <p>A list of subnets associated with the cache subnet group.</p>
@@ -183,7 +187,7 @@ namespace Model
     /**
      * <p>A list of subnets associated with the cache subnet group.</p>
      */
-    inline CacheSubnetGroup& WithSubnets(Aws::Vector<Subnet>&& value) { SetSubnets(value); return *this;}
+    inline CacheSubnetGroup& WithSubnets(Aws::Vector<Subnet>&& value) { SetSubnets(std::move(value)); return *this;}
 
     /**
      * <p>A list of subnets associated with the cache subnet group.</p>
@@ -193,7 +197,7 @@ namespace Model
     /**
      * <p>A list of subnets associated with the cache subnet group.</p>
      */
-    inline CacheSubnetGroup& AddSubnets(Subnet&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(value); return *this; }
+    inline CacheSubnetGroup& AddSubnets(Subnet&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_cacheSubnetGroupName;

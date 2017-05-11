@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the client-specific data.</p>
+   * <p>Describes the client-specific data.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ClientData">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API ClientData
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The time that the disk upload starts.</p>
      */
-    inline void SetUploadStart(Aws::Utils::DateTime&& value) { m_uploadStartHasBeenSet = true; m_uploadStart = value; }
+    inline void SetUploadStart(Aws::Utils::DateTime&& value) { m_uploadStartHasBeenSet = true; m_uploadStart = std::move(value); }
 
     /**
      * <p>The time that the disk upload starts.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>The time that the disk upload starts.</p>
      */
-    inline ClientData& WithUploadStart(Aws::Utils::DateTime&& value) { SetUploadStart(value); return *this;}
+    inline ClientData& WithUploadStart(Aws::Utils::DateTime&& value) { SetUploadStart(std::move(value)); return *this;}
 
     /**
      * <p>The time that the disk upload ends.</p>
@@ -83,7 +87,7 @@ namespace Model
     /**
      * <p>The time that the disk upload ends.</p>
      */
-    inline void SetUploadEnd(Aws::Utils::DateTime&& value) { m_uploadEndHasBeenSet = true; m_uploadEnd = value; }
+    inline void SetUploadEnd(Aws::Utils::DateTime&& value) { m_uploadEndHasBeenSet = true; m_uploadEnd = std::move(value); }
 
     /**
      * <p>The time that the disk upload ends.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The time that the disk upload ends.</p>
      */
-    inline ClientData& WithUploadEnd(Aws::Utils::DateTime&& value) { SetUploadEnd(value); return *this;}
+    inline ClientData& WithUploadEnd(Aws::Utils::DateTime&& value) { SetUploadEnd(std::move(value)); return *this;}
 
     /**
      * <p>The size of the uploaded disk image, in GiB.</p>
@@ -123,7 +127,7 @@ namespace Model
     /**
      * <p>A user-defined comment about the disk upload.</p>
      */
-    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = value; }
+    inline void SetComment(Aws::String&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
 
     /**
      * <p>A user-defined comment about the disk upload.</p>
@@ -138,7 +142,7 @@ namespace Model
     /**
      * <p>A user-defined comment about the disk upload.</p>
      */
-    inline ClientData& WithComment(Aws::String&& value) { SetComment(value); return *this;}
+    inline ClientData& WithComment(Aws::String&& value) { SetComment(std::move(value)); return *this;}
 
     /**
      * <p>A user-defined comment about the disk upload.</p>

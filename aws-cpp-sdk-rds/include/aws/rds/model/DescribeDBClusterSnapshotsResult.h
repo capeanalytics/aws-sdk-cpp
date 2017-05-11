@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/ResponseMetadata.h>
 #include <aws/rds/model/DBClusterSnapshot.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
 {
   /**
    * <p> Provides a list of DB cluster snapshots for the user as the result of a call
-   * to the <a>DescribeDBClusterSnapshots</a> action. </p>
+   * to the <a>DescribeDBClusterSnapshots</a> action. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBClusterSnapshotMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DescribeDBClusterSnapshotsResult
   {
@@ -68,7 +72,7 @@ namespace Model
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>. </p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -92,7 +96,7 @@ namespace Model
      * response includes only records beyond the marker, up to the value specified by
      * <code>MaxRecords</code>. </p>
      */
-    inline DescribeDBClusterSnapshotsResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeDBClusterSnapshotsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p> An optional pagination token provided by a previous
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>Provides a list of DB cluster snapshots for the user.</p>
      */
-    inline void SetDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { m_dBClusterSnapshots = value; }
+    inline void SetDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { m_dBClusterSnapshots = std::move(value); }
 
     /**
      * <p>Provides a list of DB cluster snapshots for the user.</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>Provides a list of DB cluster snapshots for the user.</p>
      */
-    inline DescribeDBClusterSnapshotsResult& WithDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { SetDBClusterSnapshots(value); return *this;}
+    inline DescribeDBClusterSnapshotsResult& WithDBClusterSnapshots(Aws::Vector<DBClusterSnapshot>&& value) { SetDBClusterSnapshots(std::move(value)); return *this;}
 
     /**
      * <p>Provides a list of DB cluster snapshots for the user.</p>
@@ -135,7 +139,7 @@ namespace Model
     /**
      * <p>Provides a list of DB cluster snapshots for the user.</p>
      */
-    inline DescribeDBClusterSnapshotsResult& AddDBClusterSnapshots(DBClusterSnapshot&& value) { m_dBClusterSnapshots.push_back(value); return *this; }
+    inline DescribeDBClusterSnapshotsResult& AddDBClusterSnapshots(DBClusterSnapshot&& value) { m_dBClusterSnapshots.push_back(std::move(value)); return *this; }
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -144,13 +148,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeDBClusterSnapshotsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeDBClusterSnapshotsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeDBClusterSnapshotsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_marker;

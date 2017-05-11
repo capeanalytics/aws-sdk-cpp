@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/NetworkAcl.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -131,7 +132,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_isDefaultHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsDefault=" << m_isDefault << "&";
+      oStream << location << index << locationValue << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
   }
 
   if(m_entriesHasBeenSet)
@@ -181,7 +182,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_isDefaultHasBeenSet)
   {
-      oStream << location << ".IsDefault=" << m_isDefault << "&";
+      oStream << location << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
   }
   if(m_entriesHasBeenSet)
   {
@@ -189,7 +190,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_entries)
       {
         Aws::StringStream entriesSs;
-        entriesSs << location <<  ".item." << entriesIdx++;
+        entriesSs << location <<  ".EntrySet." << entriesIdx++;
         item.OutputToStream(oStream, entriesSs.str().c_str());
       }
   }
@@ -199,7 +200,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_associations)
       {
         Aws::StringStream associationsSs;
-        associationsSs << location <<  ".item." << associationsIdx++;
+        associationsSs << location <<  ".AssociationSet." << associationsIdx++;
         item.OutputToStream(oStream, associationsSs.str().c_str());
       }
   }
@@ -209,7 +210,7 @@ void NetworkAcl::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

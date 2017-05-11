@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cognito-idp/model/UserPoolType.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,6 +33,7 @@ UserPoolType::UserPoolType() :
     m_nameHasBeenSet(false),
     m_policiesHasBeenSet(false),
     m_lambdaConfigHasBeenSet(false),
+    m_status(StatusType::NOT_SET),
     m_statusHasBeenSet(false),
     m_lastModifiedDateHasBeenSet(false),
     m_creationDateHasBeenSet(false),
@@ -42,14 +44,17 @@ UserPoolType::UserPoolType() :
     m_emailVerificationMessageHasBeenSet(false),
     m_emailVerificationSubjectHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
     m_estimatedNumberOfUsers(0),
     m_estimatedNumberOfUsersHasBeenSet(false),
     m_emailConfigurationHasBeenSet(false),
     m_smsConfigurationHasBeenSet(false),
+    m_userPoolTagsHasBeenSet(false),
     m_smsConfigurationFailureHasBeenSet(false),
-    m_emailConfigurationFailureHasBeenSet(false)
+    m_emailConfigurationFailureHasBeenSet(false),
+    m_adminCreateUserConfigHasBeenSet(false)
 {
 }
 
@@ -58,6 +63,7 @@ UserPoolType::UserPoolType(const JsonValue& jsonValue) :
     m_nameHasBeenSet(false),
     m_policiesHasBeenSet(false),
     m_lambdaConfigHasBeenSet(false),
+    m_status(StatusType::NOT_SET),
     m_statusHasBeenSet(false),
     m_lastModifiedDateHasBeenSet(false),
     m_creationDateHasBeenSet(false),
@@ -68,14 +74,17 @@ UserPoolType::UserPoolType(const JsonValue& jsonValue) :
     m_emailVerificationMessageHasBeenSet(false),
     m_emailVerificationSubjectHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
     m_estimatedNumberOfUsers(0),
     m_estimatedNumberOfUsersHasBeenSet(false),
     m_emailConfigurationHasBeenSet(false),
     m_smsConfigurationHasBeenSet(false),
+    m_userPoolTagsHasBeenSet(false),
     m_smsConfigurationFailureHasBeenSet(false),
-    m_emailConfigurationFailureHasBeenSet(false)
+    m_emailConfigurationFailureHasBeenSet(false),
+    m_adminCreateUserConfigHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -224,6 +233,16 @@ UserPoolType& UserPoolType::operator =(const JsonValue& jsonValue)
     m_smsConfigurationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("UserPoolTags"))
+  {
+    Aws::Map<Aws::String, JsonValue> userPoolTagsJsonMap = jsonValue.GetObject("UserPoolTags").GetAllObjects();
+    for(auto& userPoolTagsItem : userPoolTagsJsonMap)
+    {
+      m_userPoolTags[userPoolTagsItem.first] = userPoolTagsItem.second.AsString();
+    }
+    m_userPoolTagsHasBeenSet = true;
+  }
+
   if(jsonValue.ValueExists("SmsConfigurationFailure"))
   {
     m_smsConfigurationFailure = jsonValue.GetString("SmsConfigurationFailure");
@@ -236,6 +255,13 @@ UserPoolType& UserPoolType::operator =(const JsonValue& jsonValue)
     m_emailConfigurationFailure = jsonValue.GetString("EmailConfigurationFailure");
 
     m_emailConfigurationFailureHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("AdminCreateUserConfig"))
+  {
+    m_adminCreateUserConfig = jsonValue.GetObject("AdminCreateUserConfig");
+
+    m_adminCreateUserConfigHasBeenSet = true;
   }
 
   return *this;
@@ -370,6 +396,17 @@ JsonValue UserPoolType::Jsonize() const
 
   }
 
+  if(m_userPoolTagsHasBeenSet)
+  {
+   JsonValue userPoolTagsJsonMap;
+   for(auto& userPoolTagsItem : m_userPoolTags)
+   {
+     userPoolTagsJsonMap.WithString(userPoolTagsItem.first, userPoolTagsItem.second);
+   }
+   payload.WithObject("UserPoolTags", std::move(userPoolTagsJsonMap));
+
+  }
+
   if(m_smsConfigurationFailureHasBeenSet)
   {
    payload.WithString("SmsConfigurationFailure", m_smsConfigurationFailure);
@@ -379,6 +416,12 @@ JsonValue UserPoolType::Jsonize() const
   if(m_emailConfigurationFailureHasBeenSet)
   {
    payload.WithString("EmailConfigurationFailure", m_emailConfigurationFailure);
+
+  }
+
+  if(m_adminCreateUserConfigHasBeenSet)
+  {
+   payload.WithObject("AdminCreateUserConfig", m_adminCreateUserConfig.Jsonize());
 
   }
 

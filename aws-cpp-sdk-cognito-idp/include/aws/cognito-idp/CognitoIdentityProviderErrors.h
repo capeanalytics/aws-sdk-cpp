@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 
 #include <aws/core/client/CoreErrors.h>
@@ -44,7 +45,13 @@ enum class CognitoIdentityProviderErrors
   RESOURCE_NOT_FOUND = 16,
   UNRECOGNIZED_CLIENT = 17,
   MALFORMED_QUERY_STRING = 18,
+  SLOW_DOWN = 19,
+  REQUEST_TIME_TOO_SKEWED = 20,
+  INVALID_SIGNATURE = 21,
+  SIGNATURE_DOES_NOT_MATCH = 22,
+  INVALID_ACCESS_KEY_ID = 23,
   NETWORK_CONNECTION = 99,
+  
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,6 +60,7 @@ enum class CognitoIdentityProviderErrors
   CODE_MISMATCH,
   CONCURRENT_MODIFICATION,
   EXPIRED_CODE,
+  GROUP_EXISTS,
   INTERNAL_ERROR,
   INVALID_EMAIL_ROLE_ACCESS_POLICY,
   INVALID_LAMBDA_RESPONSE,
@@ -69,11 +77,13 @@ enum class CognitoIdentityProviderErrors
   TOO_MANY_FAILED_ATTEMPTS,
   TOO_MANY_REQUESTS,
   UNEXPECTED_LAMBDA,
+  UNSUPPORTED_USER_STATE,
   USERNAME_EXISTS,
   USER_IMPORT_IN_PROGRESS,
   USER_LAMBDA_VALIDATION,
   USER_NOT_CONFIRMED,
-  USER_NOT_FOUND
+  USER_NOT_FOUND,
+  USER_POOL_TAGGING
 };
 namespace CognitoIdentityProviderErrorMapper
 {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
   /**
    * <p> When updating an output configuration using the <a>UpdateApplication</a>
    * operation, provides information about an Amazon Kinesis stream configured as the
-   * destination. </p>
+   * destination. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/KinesisStreamsOutputUpdate">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API KinesisStreamsOutputUpdate
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to
      * write the output.</p>
      */
-    inline void SetResourceARNUpdate(Aws::String&& value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate = value; }
+    inline void SetResourceARNUpdate(Aws::String&& value) { m_resourceARNUpdateHasBeenSet = true; m_resourceARNUpdate = std::move(value); }
 
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to
@@ -77,7 +81,7 @@ namespace Model
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to
      * write the output.</p>
      */
-    inline KinesisStreamsOutputUpdate& WithResourceARNUpdate(Aws::String&& value) { SetResourceARNUpdate(value); return *this;}
+    inline KinesisStreamsOutputUpdate& WithResourceARNUpdate(Aws::String&& value) { SetResourceARNUpdate(std::move(value)); return *this;}
 
     /**
      * <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to
@@ -104,7 +108,7 @@ namespace Model
      * stream on your behalf. You need to grant the necessary permissions to this
      * role.</p>
      */
-    inline void SetRoleARNUpdate(Aws::String&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = value; }
+    inline void SetRoleARNUpdate(Aws::String&& value) { m_roleARNUpdateHasBeenSet = true; m_roleARNUpdate = std::move(value); }
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the
@@ -125,7 +129,7 @@ namespace Model
      * stream on your behalf. You need to grant the necessary permissions to this
      * role.</p>
      */
-    inline KinesisStreamsOutputUpdate& WithRoleARNUpdate(Aws::String&& value) { SetRoleARNUpdate(value); return *this;}
+    inline KinesisStreamsOutputUpdate& WithRoleARNUpdate(Aws::String&& value) { SetRoleARNUpdate(std::move(value)); return *this;}
 
     /**
      * <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the

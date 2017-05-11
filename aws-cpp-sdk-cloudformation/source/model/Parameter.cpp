@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/Parameter.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -89,7 +90,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_usePreviousValueHasBeenSet)
   {
-      oStream << location << index << locationValue << ".UsePreviousValue=" << m_usePreviousValue << "&";
+      oStream << location << index << locationValue << ".UsePreviousValue=" << std::boolalpha << m_usePreviousValue << "&";
   }
 
 }
@@ -106,7 +107,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_usePreviousValueHasBeenSet)
   {
-      oStream << location << ".UsePreviousValue=" << m_usePreviousValue << "&";
+      oStream << location << ".UsePreviousValue=" << std::boolalpha << m_usePreviousValue << "&";
   }
 }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/cloudsearch/CloudSearchRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,10 @@ namespace Model
    * operation. Specifies the name of the domain you want to describe. To restrict
    * the response to particular expressions, specify the names of the expressions you
    * want to describe. To show the active configuration and exclude any pending
-   * changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+   * changes, set the <code>Deployed</code> option to
+   * <code>true</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/DescribeExpressionsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API DescribeExpressionsRequest : public CloudSearchRequest
   {
@@ -38,6 +43,11 @@ namespace Model
     DescribeExpressionsRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the domain you want to describe.</p>
      */
@@ -51,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the domain you want to describe.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * <p>The name of the domain you want to describe.</p>
@@ -66,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the domain you want to describe.</p>
      */
-    inline DescribeExpressionsRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline DescribeExpressionsRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain you want to describe.</p>
@@ -89,7 +99,7 @@ namespace Model
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified
      * expressions. If not specified, all expressions are shown.</p>
      */
-    inline void SetExpressionNames(Aws::Vector<Aws::String>&& value) { m_expressionNamesHasBeenSet = true; m_expressionNames = value; }
+    inline void SetExpressionNames(Aws::Vector<Aws::String>&& value) { m_expressionNamesHasBeenSet = true; m_expressionNames = std::move(value); }
 
     /**
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified
@@ -101,7 +111,7 @@ namespace Model
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified
      * expressions. If not specified, all expressions are shown.</p>
      */
-    inline DescribeExpressionsRequest& WithExpressionNames(Aws::Vector<Aws::String>&& value) { SetExpressionNames(value); return *this;}
+    inline DescribeExpressionsRequest& WithExpressionNames(Aws::Vector<Aws::String>&& value) { SetExpressionNames(std::move(value)); return *this;}
 
     /**
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified
@@ -113,7 +123,7 @@ namespace Model
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified
      * expressions. If not specified, all expressions are shown.</p>
      */
-    inline DescribeExpressionsRequest& AddExpressionNames(Aws::String&& value) { m_expressionNamesHasBeenSet = true; m_expressionNames.push_back(value); return *this; }
+    inline DescribeExpressionsRequest& AddExpressionNames(Aws::String&& value) { m_expressionNamesHasBeenSet = true; m_expressionNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified

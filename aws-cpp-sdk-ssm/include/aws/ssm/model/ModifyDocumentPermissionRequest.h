@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ssm/model/DocumentPermissionType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the document that you want to share.</p>
      */
@@ -49,7 +52,7 @@ namespace Model
     /**
      * <p>The name of the document that you want to share.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the document that you want to share.</p>
@@ -64,7 +67,7 @@ namespace Model
     /**
      * <p>The name of the document that you want to share.</p>
      */
-    inline ModifyDocumentPermissionRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ModifyDocumentPermissionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the document that you want to share.</p>
@@ -87,7 +90,7 @@ namespace Model
      * <p>The permission type for the document. The permission type can be
      * <i>Share</i>.</p>
      */
-    inline void SetPermissionType(DocumentPermissionType&& value) { m_permissionTypeHasBeenSet = true; m_permissionType = value; }
+    inline void SetPermissionType(DocumentPermissionType&& value) { m_permissionTypeHasBeenSet = true; m_permissionType = std::move(value); }
 
     /**
      * <p>The permission type for the document. The permission type can be
@@ -99,7 +102,7 @@ namespace Model
      * <p>The permission type for the document. The permission type can be
      * <i>Share</i>.</p>
      */
-    inline ModifyDocumentPermissionRequest& WithPermissionType(DocumentPermissionType&& value) { SetPermissionType(value); return *this;}
+    inline ModifyDocumentPermissionRequest& WithPermissionType(DocumentPermissionType&& value) { SetPermissionType(std::move(value)); return *this;}
 
     /**
      * <p>The AWS user accounts that should have access to the document. The account
@@ -117,7 +120,7 @@ namespace Model
      * <p>The AWS user accounts that should have access to the document. The account
      * IDs can either be a group of account IDs or <i>All</i>.</p>
      */
-    inline void SetAccountIdsToAdd(Aws::Vector<Aws::String>&& value) { m_accountIdsToAddHasBeenSet = true; m_accountIdsToAdd = value; }
+    inline void SetAccountIdsToAdd(Aws::Vector<Aws::String>&& value) { m_accountIdsToAddHasBeenSet = true; m_accountIdsToAdd = std::move(value); }
 
     /**
      * <p>The AWS user accounts that should have access to the document. The account
@@ -129,7 +132,7 @@ namespace Model
      * <p>The AWS user accounts that should have access to the document. The account
      * IDs can either be a group of account IDs or <i>All</i>.</p>
      */
-    inline ModifyDocumentPermissionRequest& WithAccountIdsToAdd(Aws::Vector<Aws::String>&& value) { SetAccountIdsToAdd(value); return *this;}
+    inline ModifyDocumentPermissionRequest& WithAccountIdsToAdd(Aws::Vector<Aws::String>&& value) { SetAccountIdsToAdd(std::move(value)); return *this;}
 
     /**
      * <p>The AWS user accounts that should have access to the document. The account
@@ -141,7 +144,7 @@ namespace Model
      * <p>The AWS user accounts that should have access to the document. The account
      * IDs can either be a group of account IDs or <i>All</i>.</p>
      */
-    inline ModifyDocumentPermissionRequest& AddAccountIdsToAdd(Aws::String&& value) { m_accountIdsToAddHasBeenSet = true; m_accountIdsToAdd.push_back(value); return *this; }
+    inline ModifyDocumentPermissionRequest& AddAccountIdsToAdd(Aws::String&& value) { m_accountIdsToAddHasBeenSet = true; m_accountIdsToAdd.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The AWS user accounts that should have access to the document. The account
@@ -171,7 +174,7 @@ namespace Model
      * has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID
      * to add and the same ID to remove, the system removes access to the document.</p>
      */
-    inline void SetAccountIdsToRemove(Aws::Vector<Aws::String>&& value) { m_accountIdsToRemoveHasBeenSet = true; m_accountIdsToRemove = value; }
+    inline void SetAccountIdsToRemove(Aws::Vector<Aws::String>&& value) { m_accountIdsToRemoveHasBeenSet = true; m_accountIdsToRemove = std::move(value); }
 
     /**
      * <p>The AWS user accounts that should no longer have access to the document. The
@@ -187,7 +190,7 @@ namespace Model
      * has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID
      * to add and the same ID to remove, the system removes access to the document.</p>
      */
-    inline ModifyDocumentPermissionRequest& WithAccountIdsToRemove(Aws::Vector<Aws::String>&& value) { SetAccountIdsToRemove(value); return *this;}
+    inline ModifyDocumentPermissionRequest& WithAccountIdsToRemove(Aws::Vector<Aws::String>&& value) { SetAccountIdsToRemove(std::move(value)); return *this;}
 
     /**
      * <p>The AWS user accounts that should no longer have access to the document. The
@@ -203,7 +206,7 @@ namespace Model
      * has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID
      * to add and the same ID to remove, the system removes access to the document.</p>
      */
-    inline ModifyDocumentPermissionRequest& AddAccountIdsToRemove(Aws::String&& value) { m_accountIdsToRemoveHasBeenSet = true; m_accountIdsToRemove.push_back(value); return *this; }
+    inline ModifyDocumentPermissionRequest& AddAccountIdsToRemove(Aws::String&& value) { m_accountIdsToRemoveHasBeenSet = true; m_accountIdsToRemove.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The AWS user accounts that should no longer have access to the document. The

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/monitoring/model/GetMetricStatisticsRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -28,6 +29,8 @@ GetMetricStatisticsRequest::GetMetricStatisticsRequest() :
     m_period(0),
     m_periodHasBeenSet(false),
     m_statisticsHasBeenSet(false),
+    m_extendedStatisticsHasBeenSet(false),
+    m_unit(StandardUnit::NOT_SET),
     m_unitHasBeenSet(false)
 {
 }
@@ -82,6 +85,17 @@ Aws::String GetMetricStatisticsRequest::SerializePayload() const
     }
   }
 
+  if(m_extendedStatisticsHasBeenSet)
+  {
+    unsigned extendedStatisticsCount = 1;
+    for(auto& item : m_extendedStatistics)
+    {
+      ss << "ExtendedStatistics.member." << extendedStatisticsCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      extendedStatisticsCount++;
+    }
+  }
+
   if(m_unitHasBeenSet)
   {
     ss << "Unit=" << StandardUnitMapper::GetNameForStandardUnit(m_unit) << "&";
@@ -91,3 +105,8 @@ Aws::String GetMetricStatisticsRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  GetMetricStatisticsRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

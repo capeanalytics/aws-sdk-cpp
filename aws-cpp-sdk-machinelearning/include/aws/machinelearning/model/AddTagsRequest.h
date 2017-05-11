@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/MachineLearningRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/machinelearning/model/TaggableResourceType.h>
 #include <aws/machinelearning/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The key-value pairs to use to create tags. If you specify a key without
@@ -56,7 +59,7 @@ namespace Model
      * specifying a value, Amazon ML creates a tag with the specified key and a value
      * of null.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The key-value pairs to use to create tags. If you specify a key without
@@ -70,7 +73,7 @@ namespace Model
      * specifying a value, Amazon ML creates a tag with the specified key and a value
      * of null.</p>
      */
-    inline AddTagsRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline AddTagsRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The key-value pairs to use to create tags. If you specify a key without
@@ -84,7 +87,7 @@ namespace Model
      * specifying a value, Amazon ML creates a tag with the specified key and a value
      * of null.</p>
      */
-    inline AddTagsRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline AddTagsRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
@@ -99,7 +102,7 @@ namespace Model
     /**
      * <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
 
     /**
      * <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
@@ -114,7 +117,7 @@ namespace Model
     /**
      * <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
      */
-    inline AddTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline AddTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
@@ -134,7 +137,7 @@ namespace Model
     /**
      * <p>The type of the ML object to tag. </p>
      */
-    inline void SetResourceType(TaggableResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
+    inline void SetResourceType(TaggableResourceType&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
 
     /**
      * <p>The type of the ML object to tag. </p>
@@ -144,7 +147,7 @@ namespace Model
     /**
      * <p>The type of the ML object to tag. </p>
      */
-    inline AddTagsRequest& WithResourceType(TaggableResourceType&& value) { SetResourceType(value); return *this;}
+    inline AddTagsRequest& WithResourceType(TaggableResourceType&& value) { SetResourceType(std::move(value)); return *this;}
 
   private:
     Aws::Vector<Tag> m_tags;

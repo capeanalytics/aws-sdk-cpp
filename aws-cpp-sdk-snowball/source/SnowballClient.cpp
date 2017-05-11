@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/utils/Outcome.h>
 #include <aws/core/auth/AWSAuthSigner.h>
 #include <aws/core/client/CoreErrors.h>
@@ -26,16 +27,22 @@
 #include <aws/snowball/SnowballClient.h>
 #include <aws/snowball/SnowballEndpoint.h>
 #include <aws/snowball/SnowballErrorMarshaller.h>
+#include <aws/snowball/model/CancelClusterRequest.h>
 #include <aws/snowball/model/CancelJobRequest.h>
 #include <aws/snowball/model/CreateAddressRequest.h>
+#include <aws/snowball/model/CreateClusterRequest.h>
 #include <aws/snowball/model/CreateJobRequest.h>
 #include <aws/snowball/model/DescribeAddressRequest.h>
 #include <aws/snowball/model/DescribeAddressesRequest.h>
+#include <aws/snowball/model/DescribeClusterRequest.h>
 #include <aws/snowball/model/DescribeJobRequest.h>
 #include <aws/snowball/model/GetJobManifestRequest.h>
 #include <aws/snowball/model/GetJobUnlockCodeRequest.h>
 #include <aws/snowball/model/GetSnowballUsageRequest.h>
+#include <aws/snowball/model/ListClusterJobsRequest.h>
+#include <aws/snowball/model/ListClustersRequest.h>
 #include <aws/snowball/model/ListJobsRequest.h>
+#include <aws/snowball/model/UpdateClusterRequest.h>
 #include <aws/snowball/model/UpdateJobRequest.h>
 
 using namespace Aws;
@@ -102,6 +109,40 @@ void SnowballClient::init(const ClientConfiguration& config)
   m_uri = ss.str();
 }
 
+CancelClusterOutcome SnowballClient::CancelCluster(const CancelClusterRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CancelClusterOutcome(CancelClusterResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CancelClusterOutcome(outcome.GetError());
+  }
+}
+
+CancelClusterOutcomeCallable SnowballClient::CancelClusterCallable(const CancelClusterRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< CancelClusterOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CancelCluster(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::CancelClusterAsync(const CancelClusterRequest& request, const CancelClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->CancelClusterAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::CancelClusterAsyncHelper(const CancelClusterRequest& request, const CancelClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CancelCluster(request), context);
+}
+
 CancelJobOutcome SnowballClient::CancelJob(const CancelJobRequest& request) const
 {
   Aws::StringStream ss;
@@ -120,7 +161,10 @@ CancelJobOutcome SnowballClient::CancelJob(const CancelJobRequest& request) cons
 
 CancelJobOutcomeCallable SnowballClient::CancelJobCallable(const CancelJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CancelJob(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CancelJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CancelJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::CancelJobAsync(const CancelJobRequest& request, const CancelJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -151,7 +195,10 @@ CreateAddressOutcome SnowballClient::CreateAddress(const CreateAddressRequest& r
 
 CreateAddressOutcomeCallable SnowballClient::CreateAddressCallable(const CreateAddressRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateAddress(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateAddressOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateAddress(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::CreateAddressAsync(const CreateAddressRequest& request, const CreateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -162,6 +209,40 @@ void SnowballClient::CreateAddressAsync(const CreateAddressRequest& request, con
 void SnowballClient::CreateAddressAsyncHelper(const CreateAddressRequest& request, const CreateAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, CreateAddress(request), context);
+}
+
+CreateClusterOutcome SnowballClient::CreateCluster(const CreateClusterRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return CreateClusterOutcome(CreateClusterResult(outcome.GetResult()));
+  }
+  else
+  {
+    return CreateClusterOutcome(outcome.GetError());
+  }
+}
+
+CreateClusterOutcomeCallable SnowballClient::CreateClusterCallable(const CreateClusterRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< CreateClusterOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateCluster(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::CreateClusterAsync(const CreateClusterRequest& request, const CreateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->CreateClusterAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::CreateClusterAsyncHelper(const CreateClusterRequest& request, const CreateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, CreateCluster(request), context);
 }
 
 CreateJobOutcome SnowballClient::CreateJob(const CreateJobRequest& request) const
@@ -182,7 +263,10 @@ CreateJobOutcome SnowballClient::CreateJob(const CreateJobRequest& request) cons
 
 CreateJobOutcomeCallable SnowballClient::CreateJobCallable(const CreateJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->CreateJob(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< CreateJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->CreateJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::CreateJobAsync(const CreateJobRequest& request, const CreateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -213,7 +297,10 @@ DescribeAddressOutcome SnowballClient::DescribeAddress(const DescribeAddressRequ
 
 DescribeAddressOutcomeCallable SnowballClient::DescribeAddressCallable(const DescribeAddressRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeAddress(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeAddressOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeAddress(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::DescribeAddressAsync(const DescribeAddressRequest& request, const DescribeAddressResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -244,7 +331,10 @@ DescribeAddressesOutcome SnowballClient::DescribeAddresses(const DescribeAddress
 
 DescribeAddressesOutcomeCallable SnowballClient::DescribeAddressesCallable(const DescribeAddressesRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeAddresses(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeAddressesOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeAddresses(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::DescribeAddressesAsync(const DescribeAddressesRequest& request, const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -255,6 +345,40 @@ void SnowballClient::DescribeAddressesAsync(const DescribeAddressesRequest& requ
 void SnowballClient::DescribeAddressesAsyncHelper(const DescribeAddressesRequest& request, const DescribeAddressesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, DescribeAddresses(request), context);
+}
+
+DescribeClusterOutcome SnowballClient::DescribeCluster(const DescribeClusterRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return DescribeClusterOutcome(DescribeClusterResult(outcome.GetResult()));
+  }
+  else
+  {
+    return DescribeClusterOutcome(outcome.GetError());
+  }
+}
+
+DescribeClusterOutcomeCallable SnowballClient::DescribeClusterCallable(const DescribeClusterRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< DescribeClusterOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeCluster(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::DescribeClusterAsync(const DescribeClusterRequest& request, const DescribeClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->DescribeClusterAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::DescribeClusterAsyncHelper(const DescribeClusterRequest& request, const DescribeClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, DescribeCluster(request), context);
 }
 
 DescribeJobOutcome SnowballClient::DescribeJob(const DescribeJobRequest& request) const
@@ -275,7 +399,10 @@ DescribeJobOutcome SnowballClient::DescribeJob(const DescribeJobRequest& request
 
 DescribeJobOutcomeCallable SnowballClient::DescribeJobCallable(const DescribeJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->DescribeJob(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< DescribeJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->DescribeJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::DescribeJobAsync(const DescribeJobRequest& request, const DescribeJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -306,7 +433,10 @@ GetJobManifestOutcome SnowballClient::GetJobManifest(const GetJobManifestRequest
 
 GetJobManifestOutcomeCallable SnowballClient::GetJobManifestCallable(const GetJobManifestRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetJobManifest(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetJobManifestOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetJobManifest(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::GetJobManifestAsync(const GetJobManifestRequest& request, const GetJobManifestResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -337,7 +467,10 @@ GetJobUnlockCodeOutcome SnowballClient::GetJobUnlockCode(const GetJobUnlockCodeR
 
 GetJobUnlockCodeOutcomeCallable SnowballClient::GetJobUnlockCodeCallable(const GetJobUnlockCodeRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetJobUnlockCode(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetJobUnlockCodeOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetJobUnlockCode(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::GetJobUnlockCodeAsync(const GetJobUnlockCodeRequest& request, const GetJobUnlockCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -368,7 +501,10 @@ GetSnowballUsageOutcome SnowballClient::GetSnowballUsage(const GetSnowballUsageR
 
 GetSnowballUsageOutcomeCallable SnowballClient::GetSnowballUsageCallable(const GetSnowballUsageRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->GetSnowballUsage(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< GetSnowballUsageOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->GetSnowballUsage(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::GetSnowballUsageAsync(const GetSnowballUsageRequest& request, const GetSnowballUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -379,6 +515,74 @@ void SnowballClient::GetSnowballUsageAsync(const GetSnowballUsageRequest& reques
 void SnowballClient::GetSnowballUsageAsyncHelper(const GetSnowballUsageRequest& request, const GetSnowballUsageResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, GetSnowballUsage(request), context);
+}
+
+ListClusterJobsOutcome SnowballClient::ListClusterJobs(const ListClusterJobsRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListClusterJobsOutcome(ListClusterJobsResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListClusterJobsOutcome(outcome.GetError());
+  }
+}
+
+ListClusterJobsOutcomeCallable SnowballClient::ListClusterJobsCallable(const ListClusterJobsRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListClusterJobsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListClusterJobs(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::ListClusterJobsAsync(const ListClusterJobsRequest& request, const ListClusterJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListClusterJobsAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::ListClusterJobsAsyncHelper(const ListClusterJobsRequest& request, const ListClusterJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListClusterJobs(request), context);
+}
+
+ListClustersOutcome SnowballClient::ListClusters(const ListClustersRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return ListClustersOutcome(ListClustersResult(outcome.GetResult()));
+  }
+  else
+  {
+    return ListClustersOutcome(outcome.GetError());
+  }
+}
+
+ListClustersOutcomeCallable SnowballClient::ListClustersCallable(const ListClustersRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< ListClustersOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListClusters(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::ListClustersAsync(const ListClustersRequest& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->ListClustersAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::ListClustersAsyncHelper(const ListClustersRequest& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, ListClusters(request), context);
 }
 
 ListJobsOutcome SnowballClient::ListJobs(const ListJobsRequest& request) const
@@ -399,7 +603,10 @@ ListJobsOutcome SnowballClient::ListJobs(const ListJobsRequest& request) const
 
 ListJobsOutcomeCallable SnowballClient::ListJobsCallable(const ListJobsRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->ListJobs(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< ListJobsOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->ListJobs(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::ListJobsAsync(const ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
@@ -410,6 +617,40 @@ void SnowballClient::ListJobsAsync(const ListJobsRequest& request, const ListJob
 void SnowballClient::ListJobsAsyncHelper(const ListJobsRequest& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
 {
   handler(this, request, ListJobs(request), context);
+}
+
+UpdateClusterOutcome SnowballClient::UpdateCluster(const UpdateClusterRequest& request) const
+{
+  Aws::StringStream ss;
+  ss << m_uri << "/";
+
+  JsonOutcome outcome = MakeRequest(ss.str(), request, HttpMethod::HTTP_POST);
+  if(outcome.IsSuccess())
+  {
+    return UpdateClusterOutcome(UpdateClusterResult(outcome.GetResult()));
+  }
+  else
+  {
+    return UpdateClusterOutcome(outcome.GetError());
+  }
+}
+
+UpdateClusterOutcomeCallable SnowballClient::UpdateClusterCallable(const UpdateClusterRequest& request) const
+{
+  auto task = Aws::MakeShared< std::packaged_task< UpdateClusterOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateCluster(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
+}
+
+void SnowballClient::UpdateClusterAsync(const UpdateClusterRequest& request, const UpdateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  m_executor->Submit( [this, request, handler, context](){ this->UpdateClusterAsyncHelper( request, handler, context ); } );
+}
+
+void SnowballClient::UpdateClusterAsyncHelper(const UpdateClusterRequest& request, const UpdateClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const
+{
+  handler(this, request, UpdateCluster(request), context);
 }
 
 UpdateJobOutcome SnowballClient::UpdateJob(const UpdateJobRequest& request) const
@@ -430,7 +671,10 @@ UpdateJobOutcome SnowballClient::UpdateJob(const UpdateJobRequest& request) cons
 
 UpdateJobOutcomeCallable SnowballClient::UpdateJobCallable(const UpdateJobRequest& request) const
 {
-  return std::async(std::launch::async, [this, request](){ return this->UpdateJob(request); } );
+  auto task = Aws::MakeShared< std::packaged_task< UpdateJobOutcome() > >(ALLOCATION_TAG, [this, request](){ return this->UpdateJob(request); } );
+  auto packagedFunction = [task]() { (*task)(); };
+  m_executor->Submit(packagedFunction);
+  return task->get_future();
 }
 
 void SnowballClient::UpdateJobAsync(const UpdateJobRequest& request, const UpdateJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const

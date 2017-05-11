@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticmapreduce/model/ClusterStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>The summary description of the cluster.</p>
+   * <p>The summary description of the cluster.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ClusterSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API ClusterSummary
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The unique identifier for the cluster.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The unique identifier for the cluster.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The unique identifier for the cluster.</p>
      */
-    inline ClusterSummary& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline ClusterSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the cluster.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The name of the cluster.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the cluster.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The name of the cluster.</p>
      */
-    inline ClusterSummary& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ClusterSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cluster.</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>The details about the current status of the cluster.</p>
      */
-    inline void SetStatus(ClusterStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(ClusterStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The details about the current status of the cluster.</p>
@@ -135,10 +139,10 @@ namespace Model
     /**
      * <p>The details about the current status of the cluster.</p>
      */
-    inline ClusterSummary& WithStatus(ClusterStatus&& value) { SetStatus(value); return *this;}
+    inline ClusterSummary& WithStatus(ClusterStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
-     * <p>An approximation of the cost of the job flow, represented in m1.small/hours.
+     * <p>An approximation of the cost of the cluster, represented in m1.small/hours.
      * This value is incremented one time for every hour an m1.small instance runs.
      * Larger instances are weighted more, so an EC2 instance that is roughly four
      * times more expensive would result in the normalized instance hours being
@@ -148,7 +152,7 @@ namespace Model
     inline int GetNormalizedInstanceHours() const{ return m_normalizedInstanceHours; }
 
     /**
-     * <p>An approximation of the cost of the job flow, represented in m1.small/hours.
+     * <p>An approximation of the cost of the cluster, represented in m1.small/hours.
      * This value is incremented one time for every hour an m1.small instance runs.
      * Larger instances are weighted more, so an EC2 instance that is roughly four
      * times more expensive would result in the normalized instance hours being
@@ -158,7 +162,7 @@ namespace Model
     inline void SetNormalizedInstanceHours(int value) { m_normalizedInstanceHoursHasBeenSet = true; m_normalizedInstanceHours = value; }
 
     /**
-     * <p>An approximation of the cost of the job flow, represented in m1.small/hours.
+     * <p>An approximation of the cost of the cluster, represented in m1.small/hours.
      * This value is incremented one time for every hour an m1.small instance runs.
      * Larger instances are weighted more, so an EC2 instance that is roughly four
      * times more expensive would result in the normalized instance hours being

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>An AWS Direct Connect location where connections and interconnects can be
-   * requested.</p>
+   * requested.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/Location">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API Location
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The code used to indicate the AWS Direct Connect location.</p>
      */
-    inline void SetLocationCode(Aws::String&& value) { m_locationCodeHasBeenSet = true; m_locationCode = value; }
+    inline void SetLocationCode(Aws::String&& value) { m_locationCodeHasBeenSet = true; m_locationCode = std::move(value); }
 
     /**
      * <p>The code used to indicate the AWS Direct Connect location.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The code used to indicate the AWS Direct Connect location.</p>
      */
-    inline Location& WithLocationCode(Aws::String&& value) { SetLocationCode(value); return *this;}
+    inline Location& WithLocationCode(Aws::String&& value) { SetLocationCode(std::move(value)); return *this;}
 
     /**
      * <p>The code used to indicate the AWS Direct Connect location.</p>
@@ -93,7 +97,7 @@ namespace Model
      * <p>The name of the AWS Direct Connect location. The name includes the colocation
      * partner name and the physical site of the lit building.</p>
      */
-    inline void SetLocationName(Aws::String&& value) { m_locationNameHasBeenSet = true; m_locationName = value; }
+    inline void SetLocationName(Aws::String&& value) { m_locationNameHasBeenSet = true; m_locationName = std::move(value); }
 
     /**
      * <p>The name of the AWS Direct Connect location. The name includes the colocation
@@ -111,7 +115,7 @@ namespace Model
      * <p>The name of the AWS Direct Connect location. The name includes the colocation
      * partner name and the physical site of the lit building.</p>
      */
-    inline Location& WithLocationName(Aws::String&& value) { SetLocationName(value); return *this;}
+    inline Location& WithLocationName(Aws::String&& value) { SetLocationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the AWS Direct Connect location. The name includes the colocation

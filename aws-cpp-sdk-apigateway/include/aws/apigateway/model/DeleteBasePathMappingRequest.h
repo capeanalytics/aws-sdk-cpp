@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>A request to delete the <a>BasePathMapping</a> resource.</p>
+   * <p>A request to delete the <a>BasePathMapping</a> resource.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/DeleteBasePathMappingRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API DeleteBasePathMappingRequest : public APIGatewayRequest
   {
   public:
     DeleteBasePathMappingRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
@@ -46,7 +52,7 @@ namespace Model
     /**
      * <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
@@ -61,7 +67,7 @@ namespace Model
     /**
      * <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
      */
-    inline DeleteBasePathMappingRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline DeleteBasePathMappingRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
@@ -81,7 +87,7 @@ namespace Model
     /**
      * <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
      */
-    inline void SetBasePath(Aws::String&& value) { m_basePathHasBeenSet = true; m_basePath = value; }
+    inline void SetBasePath(Aws::String&& value) { m_basePathHasBeenSet = true; m_basePath = std::move(value); }
 
     /**
      * <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
@@ -96,7 +102,7 @@ namespace Model
     /**
      * <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
      */
-    inline DeleteBasePathMappingRequest& WithBasePath(Aws::String&& value) { SetBasePath(value); return *this;}
+    inline DeleteBasePathMappingRequest& WithBasePath(Aws::String&& value) { SetBasePath(std::move(value)); return *this;}
 
     /**
      * <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>

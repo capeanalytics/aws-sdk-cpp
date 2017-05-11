@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/PendingMaintenanceAction.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the pending maintenance actions for a resource.</p>
+   * <p>Describes the pending maintenance actions for a resource.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ResourcePendingMaintenanceActions">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API ResourcePendingMaintenanceActions
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>The ARN of the resource that has pending maintenance actions.</p>
      */
-    inline void SetResourceIdentifier(Aws::String&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = value; }
+    inline void SetResourceIdentifier(Aws::String&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = std::move(value); }
 
     /**
      * <p>The ARN of the resource that has pending maintenance actions.</p>
@@ -74,7 +79,7 @@ namespace Model
     /**
      * <p>The ARN of the resource that has pending maintenance actions.</p>
      */
-    inline ResourcePendingMaintenanceActions& WithResourceIdentifier(Aws::String&& value) { SetResourceIdentifier(value); return *this;}
+    inline ResourcePendingMaintenanceActions& WithResourceIdentifier(Aws::String&& value) { SetResourceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the resource that has pending maintenance actions.</p>
@@ -97,7 +102,7 @@ namespace Model
      * <p>A list that provides details about the pending maintenance actions for the
      * resource.</p>
      */
-    inline void SetPendingMaintenanceActionDetails(Aws::Vector<PendingMaintenanceAction>&& value) { m_pendingMaintenanceActionDetailsHasBeenSet = true; m_pendingMaintenanceActionDetails = value; }
+    inline void SetPendingMaintenanceActionDetails(Aws::Vector<PendingMaintenanceAction>&& value) { m_pendingMaintenanceActionDetailsHasBeenSet = true; m_pendingMaintenanceActionDetails = std::move(value); }
 
     /**
      * <p>A list that provides details about the pending maintenance actions for the
@@ -109,7 +114,7 @@ namespace Model
      * <p>A list that provides details about the pending maintenance actions for the
      * resource.</p>
      */
-    inline ResourcePendingMaintenanceActions& WithPendingMaintenanceActionDetails(Aws::Vector<PendingMaintenanceAction>&& value) { SetPendingMaintenanceActionDetails(value); return *this;}
+    inline ResourcePendingMaintenanceActions& WithPendingMaintenanceActionDetails(Aws::Vector<PendingMaintenanceAction>&& value) { SetPendingMaintenanceActionDetails(std::move(value)); return *this;}
 
     /**
      * <p>A list that provides details about the pending maintenance actions for the
@@ -121,7 +126,7 @@ namespace Model
      * <p>A list that provides details about the pending maintenance actions for the
      * resource.</p>
      */
-    inline ResourcePendingMaintenanceActions& AddPendingMaintenanceActionDetails(PendingMaintenanceAction&& value) { m_pendingMaintenanceActionDetailsHasBeenSet = true; m_pendingMaintenanceActionDetails.push_back(value); return *this; }
+    inline ResourcePendingMaintenanceActions& AddPendingMaintenanceActionDetails(PendingMaintenanceAction&& value) { m_pendingMaintenanceActionDetailsHasBeenSet = true; m_pendingMaintenanceActionDetails.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_resourceIdentifier;

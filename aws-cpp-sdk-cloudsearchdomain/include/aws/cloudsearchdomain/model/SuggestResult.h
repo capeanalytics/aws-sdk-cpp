@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/cloudsearchdomain/model/SuggestStatus.h>
 #include <aws/cloudsearchdomain/model/SuggestModel.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CloudSearchDomain
 namespace Model
 {
   /**
-   * <p>Contains the response to a <code>Suggest</code> request.</p>
+   * <p>Contains the response to a <code>Suggest</code> request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/SuggestResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API SuggestResult
   {
@@ -62,7 +67,7 @@ namespace Model
      * (<code>rid</code>) and how long it took to process the request
      * (<code>timems</code>).</p>
      */
-    inline void SetStatus(SuggestStatus&& value) { m_status = value; }
+    inline void SetStatus(SuggestStatus&& value) { m_status = std::move(value); }
 
     /**
      * <p>The status of a <code>SuggestRequest</code>. Contains the resource ID
@@ -76,7 +81,7 @@ namespace Model
      * (<code>rid</code>) and how long it took to process the request
      * (<code>timems</code>).</p>
      */
-    inline SuggestResult& WithStatus(SuggestStatus&& value) { SetStatus(value); return *this;}
+    inline SuggestResult& WithStatus(SuggestStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Container for the matching search suggestion information.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>Container for the matching search suggestion information.</p>
      */
-    inline void SetSuggest(SuggestModel&& value) { m_suggest = value; }
+    inline void SetSuggest(SuggestModel&& value) { m_suggest = std::move(value); }
 
     /**
      * <p>Container for the matching search suggestion information.</p>
@@ -101,7 +106,7 @@ namespace Model
     /**
      * <p>Container for the matching search suggestion information.</p>
      */
-    inline SuggestResult& WithSuggest(SuggestModel&& value) { SetSuggest(value); return *this;}
+    inline SuggestResult& WithSuggest(SuggestModel&& value) { SetSuggest(std::move(value)); return *this;}
 
   private:
     SuggestStatus m_status;

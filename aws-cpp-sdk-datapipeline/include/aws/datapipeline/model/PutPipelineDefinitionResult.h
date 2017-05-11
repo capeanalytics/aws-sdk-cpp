@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datapipeline/model/ValidationError.h>
 #include <aws/datapipeline/model/ValidationWarning.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace DataPipeline
 namespace Model
 {
   /**
-   * <p>Contains the output of PutPipelineDefinition.</p>
+   * <p>Contains the output of PutPipelineDefinition.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/PutPipelineDefinitionOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API PutPipelineDefinitionResult
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The validation errors that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline void SetValidationErrors(Aws::Vector<ValidationError>&& value) { m_validationErrors = value; }
+    inline void SetValidationErrors(Aws::Vector<ValidationError>&& value) { m_validationErrors = std::move(value); }
 
     /**
      * <p>The validation errors that are associated with the objects defined in
@@ -72,7 +76,7 @@ namespace Model
      * <p>The validation errors that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline PutPipelineDefinitionResult& WithValidationErrors(Aws::Vector<ValidationError>&& value) { SetValidationErrors(value); return *this;}
+    inline PutPipelineDefinitionResult& WithValidationErrors(Aws::Vector<ValidationError>&& value) { SetValidationErrors(std::move(value)); return *this;}
 
     /**
      * <p>The validation errors that are associated with the objects defined in
@@ -84,7 +88,7 @@ namespace Model
      * <p>The validation errors that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline PutPipelineDefinitionResult& AddValidationErrors(ValidationError&& value) { m_validationErrors.push_back(value); return *this; }
+    inline PutPipelineDefinitionResult& AddValidationErrors(ValidationError&& value) { m_validationErrors.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The validation warnings that are associated with the objects defined in
@@ -102,7 +106,7 @@ namespace Model
      * <p>The validation warnings that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline void SetValidationWarnings(Aws::Vector<ValidationWarning>&& value) { m_validationWarnings = value; }
+    inline void SetValidationWarnings(Aws::Vector<ValidationWarning>&& value) { m_validationWarnings = std::move(value); }
 
     /**
      * <p>The validation warnings that are associated with the objects defined in
@@ -114,7 +118,7 @@ namespace Model
      * <p>The validation warnings that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline PutPipelineDefinitionResult& WithValidationWarnings(Aws::Vector<ValidationWarning>&& value) { SetValidationWarnings(value); return *this;}
+    inline PutPipelineDefinitionResult& WithValidationWarnings(Aws::Vector<ValidationWarning>&& value) { SetValidationWarnings(std::move(value)); return *this;}
 
     /**
      * <p>The validation warnings that are associated with the objects defined in
@@ -126,7 +130,7 @@ namespace Model
      * <p>The validation warnings that are associated with the objects defined in
      * <code>pipelineObjects</code>.</p>
      */
-    inline PutPipelineDefinitionResult& AddValidationWarnings(ValidationWarning&& value) { m_validationWarnings.push_back(value); return *this; }
+    inline PutPipelineDefinitionResult& AddValidationWarnings(ValidationWarning&& value) { m_validationWarnings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Indicates whether there were validation errors, and the pipeline definition

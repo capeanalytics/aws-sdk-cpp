@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,13 +28,16 @@ namespace Model
 
   /**
    * <p>Requests Amazon API Gateway to get information about a <a>Stage</a>
-   * resource.</p>
+   * resource.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetStageRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetStageRequest : public APIGatewayRequest
   {
   public:
     GetStageRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -50,7 +55,7 @@ namespace Model
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
      * to get information about.</p>
      */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
+    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -68,7 +73,7 @@ namespace Model
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
      * to get information about.</p>
      */
-    inline GetStageRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(value); return *this;}
+    inline GetStageRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The name of the <a>Stage</a> resource to get information about.</p>
      */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
+    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
 
     /**
      * <p>The name of the <a>Stage</a> resource to get information about.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The name of the <a>Stage</a> resource to get information about.</p>
      */
-    inline GetStageRequest& WithStageName(Aws::String&& value) { SetStageName(value); return *this;}
+    inline GetStageRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the <a>Stage</a> resource to get information about.</p>

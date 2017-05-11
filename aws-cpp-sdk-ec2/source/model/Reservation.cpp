@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Reservation.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -171,7 +172,7 @@ void Reservation::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location <<  ".item." << groupsIdx++;
+        groupsSs << location <<  ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
@@ -181,7 +182,7 @@ void Reservation::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".item." << instancesIdx++;
+        instancesSs << location <<  ".InstancesSet." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }

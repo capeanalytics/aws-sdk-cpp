@@ -149,12 +149,14 @@ struct CurlWriteCallbackContext
 
 struct CurlReadCallbackContext
 {
-    CurlReadCallbackContext(const CurlHttpClient* client, HttpRequest* request) :
+    CurlReadCallbackContext(const CurlHttpClient* client, HttpRequest* request, Aws::Utils::RateLimits::RateLimiterInterface* limiter) :
         m_client(client),
+        m_rateLimiter(limiter),
         m_request(request)
     {}
 
     const CurlHttpClient* m_client;
+    Aws::Utils::RateLimits::RateLimiterInterface* m_rateLimiter;
     HttpRequest* m_request;
 };
 
@@ -192,7 +194,16 @@ void SetOptCodeForHttpMethod(CURL* requestHandle, const HttpRequest& request)
             curl_easy_setopt(requestHandle, CURLOPT_NOBODY, 1L);
             break;
         case HttpMethod::HTTP_PATCH:
-            curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "PATCH");
+            if (!request.HasHeader(Aws::Http::CONTENT_LENGTH_HEADER)|| request.GetHeaderValue(Aws::Http::CONTENT_LENGTH_HEADER) == "0")
+            {
+                curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "PATCH");
+            }
+            else
+            {
+                curl_easy_setopt(requestHandle, CURLOPT_POST, 1L);
+                curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "PATCH");
+            }
+
             break;
         case HttpMethod::HTTP_DELETE:
             curl_easy_setopt(requestHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
@@ -282,7 +293,8 @@ CurlHttpClient::CurlHttpClient(const ClientConfiguration& clientConfig) :
     m_curlHandleContainer(clientConfig.maxConnections, clientConfig.requestTimeoutMs, clientConfig.connectTimeoutMs),
     m_isUsingProxy(!clientConfig.proxyHost.empty()), m_proxyUserName(clientConfig.proxyUserName),
     m_proxyPassword(clientConfig.proxyPassword), m_proxyHost(clientConfig.proxyHost),
-    m_proxyPort(clientConfig.proxyPort), m_verifySSL(clientConfig.verifySSL), m_caPath(clientConfig.caPath), m_allowRedirects(clientConfig.followRedirects)
+    m_proxyPort(clientConfig.proxyPort), m_verifySSL(clientConfig.verifySSL), m_caPath(clientConfig.caPath),
+    m_caFile(clientConfig.caFile), m_allowRedirects(clientConfig.followRedirects)
 {
 }
 
@@ -341,7 +353,7 @@ std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, 
 
         response = Aws::MakeShared<StandardHttpResponse>(CURL_HTTP_CLIENT_TAG, request);
         CurlWriteCallbackContext writeContext(this, &request, response.get(), readLimiter);
-        CurlReadCallbackContext readContext(this, &request);
+        CurlReadCallbackContext readContext(this, &request, writeLimiter);
 
         SetOptCodeForHttpMethod(connectionHandle, request);
 
@@ -355,6 +367,10 @@ std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, 
         if(!m_caPath.empty())
         {
             curl_easy_setopt(connectionHandle, CURLOPT_CAPATH, m_caPath.c_str());
+        }
+        if(!m_caFile.empty())
+        {
+            curl_easy_setopt(connectionHandle, CURLOPT_CAINFO, m_caFile.c_str());
         }
 
 	// only set by android test builds because the emulator is missing a cert needed for aws services
@@ -396,6 +412,10 @@ std::shared_ptr<HttpResponse> CurlHttpClient::MakeRequest(HttpRequest& request, 
             curl_easy_setopt(connectionHandle, CURLOPT_PROXYPORT, (long) m_proxyPort);
             curl_easy_setopt(connectionHandle, CURLOPT_PROXYUSERNAME, m_proxyUserName.c_str());
             curl_easy_setopt(connectionHandle, CURLOPT_PROXYPASSWORD, m_proxyPassword.c_str());
+        }
+        else
+        {
+            curl_easy_setopt(connectionHandle, CURLOPT_PROXY, "");
         }
 
         if (request.GetContentBody())
@@ -520,6 +540,7 @@ size_t CurlHttpClient::WriteHeader(char* ptr, size_t size, size_t nmemb, void* u
 
             response->AddHeader(headerName, headerValue);
         }
+
         return size * nmemb;
     }
     return 0;
@@ -531,7 +552,7 @@ size_t CurlHttpClient::ReadBody(char* ptr, size_t size, size_t nmemb, void* user
     CurlReadCallbackContext* context = reinterpret_cast<CurlReadCallbackContext*>(userdata);
     if(context == nullptr)
     {
-	    return 0;
+        return 0;
     }
 
     const CurlHttpClient* client = context->m_client;
@@ -552,6 +573,11 @@ size_t CurlHttpClient::ReadBody(char* ptr, size_t size, size_t nmemb, void* user
         if (sentHandler)
         {
             sentHandler(request, static_cast<long long>(amountRead));
+        }
+
+        if (context->m_rateLimiter)
+        {
+            context->m_rateLimiter->ApplyAndPayForCost(static_cast<int64_t>(amountRead));
         }
 
         return amountRead;

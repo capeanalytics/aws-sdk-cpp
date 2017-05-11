@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,13 +27,17 @@ namespace Model
 {
 
   /**
-   * <p>The GET request to get a usage plan of a given plan identifier.</p>
+   * <p>The GET request to get a usage plan of a given plan identifier.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/GetUsagePlanRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetUsagePlanRequest : public APIGatewayRequest
   {
   public:
     GetUsagePlanRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
@@ -46,7 +52,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
      */
-    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = value; }
+    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = std::move(value); }
 
     /**
      * <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
@@ -61,7 +67,7 @@ namespace Model
     /**
      * <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
      */
-    inline GetUsagePlanRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(value); return *this;}
+    inline GetUsagePlanRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>

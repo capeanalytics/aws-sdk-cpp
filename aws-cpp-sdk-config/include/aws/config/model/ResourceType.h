@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -50,7 +51,15 @@ namespace Model
     AWS_RDS_DBSecurityGroup,
     AWS_RDS_DBSnapshot,
     AWS_RDS_EventSubscription,
-    AWS_ElasticLoadBalancingV2_LoadBalancer
+    AWS_ElasticLoadBalancingV2_LoadBalancer,
+    AWS_S3_Bucket,
+    AWS_SSM_ManagedInstanceInventory,
+    AWS_Redshift_Cluster,
+    AWS_Redshift_ClusterSnapshot,
+    AWS_Redshift_ClusterParameterGroup,
+    AWS_Redshift_ClusterSecurityGroup,
+    AWS_Redshift_ClusterSubnetGroup,
+    AWS_Redshift_EventSubscription
   };
 
 namespace ResourceTypeMapper

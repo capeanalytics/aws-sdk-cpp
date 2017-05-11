@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/dynamodb/model/Projection.h>
 #include <aws/dynamodb/model/ProvisionedThroughput.h>
 #include <aws/dynamodb/model/KeySchemaElement.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents a new global secondary index to be added to an existing table.</p>
+   * <p>Represents a new global secondary index to be added to an existing
+   * table.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/CreateGlobalSecondaryIndexAction">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API CreateGlobalSecondaryIndexAction
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the global secondary index to be created.</p>
      */
-    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = value; }
+    inline void SetIndexName(Aws::String&& value) { m_indexNameHasBeenSet = true; m_indexName = std::move(value); }
 
     /**
      * <p>The name of the global secondary index to be created.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the global secondary index to be created.</p>
      */
-    inline CreateGlobalSecondaryIndexAction& WithIndexName(Aws::String&& value) { SetIndexName(value); return *this;}
+    inline CreateGlobalSecondaryIndexAction& WithIndexName(Aws::String&& value) { SetIndexName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the global secondary index to be created.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>The key schema for the global secondary index.</p>
      */
-    inline void SetKeySchema(Aws::Vector<KeySchemaElement>&& value) { m_keySchemaHasBeenSet = true; m_keySchema = value; }
+    inline void SetKeySchema(Aws::Vector<KeySchemaElement>&& value) { m_keySchemaHasBeenSet = true; m_keySchema = std::move(value); }
 
     /**
      * <p>The key schema for the global secondary index.</p>
@@ -103,7 +108,7 @@ namespace Model
     /**
      * <p>The key schema for the global secondary index.</p>
      */
-    inline CreateGlobalSecondaryIndexAction& WithKeySchema(Aws::Vector<KeySchemaElement>&& value) { SetKeySchema(value); return *this;}
+    inline CreateGlobalSecondaryIndexAction& WithKeySchema(Aws::Vector<KeySchemaElement>&& value) { SetKeySchema(std::move(value)); return *this;}
 
     /**
      * <p>The key schema for the global secondary index.</p>
@@ -113,37 +118,87 @@ namespace Model
     /**
      * <p>The key schema for the global secondary index.</p>
      */
-    inline CreateGlobalSecondaryIndexAction& AddKeySchema(KeySchemaElement&& value) { m_keySchemaHasBeenSet = true; m_keySchema.push_back(value); return *this; }
+    inline CreateGlobalSecondaryIndexAction& AddKeySchema(KeySchemaElement&& value) { m_keySchemaHasBeenSet = true; m_keySchema.push_back(std::move(value)); return *this; }
 
-    
+    /**
+     * <p>Represents attributes that are copied (projected) from the table into an
+     * index. These are in addition to the primary key attributes and index key
+     * attributes, which are automatically projected.</p>
+     */
     inline const Projection& GetProjection() const{ return m_projection; }
 
-    
+    /**
+     * <p>Represents attributes that are copied (projected) from the table into an
+     * index. These are in addition to the primary key attributes and index key
+     * attributes, which are automatically projected.</p>
+     */
     inline void SetProjection(const Projection& value) { m_projectionHasBeenSet = true; m_projection = value; }
 
-    
-    inline void SetProjection(Projection&& value) { m_projectionHasBeenSet = true; m_projection = value; }
+    /**
+     * <p>Represents attributes that are copied (projected) from the table into an
+     * index. These are in addition to the primary key attributes and index key
+     * attributes, which are automatically projected.</p>
+     */
+    inline void SetProjection(Projection&& value) { m_projectionHasBeenSet = true; m_projection = std::move(value); }
 
-    
+    /**
+     * <p>Represents attributes that are copied (projected) from the table into an
+     * index. These are in addition to the primary key attributes and index key
+     * attributes, which are automatically projected.</p>
+     */
     inline CreateGlobalSecondaryIndexAction& WithProjection(const Projection& value) { SetProjection(value); return *this;}
 
-    
-    inline CreateGlobalSecondaryIndexAction& WithProjection(Projection&& value) { SetProjection(value); return *this;}
+    /**
+     * <p>Represents attributes that are copied (projected) from the table into an
+     * index. These are in addition to the primary key attributes and index key
+     * attributes, which are automatically projected.</p>
+     */
+    inline CreateGlobalSecondaryIndexAction& WithProjection(Projection&& value) { SetProjection(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>Represents the provisioned throughput settings for the specified global
+     * secondary index.</p> <p>For current minimum and maximum provisioned throughput
+     * values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     */
     inline const ProvisionedThroughput& GetProvisionedThroughput() const{ return m_provisionedThroughput; }
 
-    
+    /**
+     * <p>Represents the provisioned throughput settings for the specified global
+     * secondary index.</p> <p>For current minimum and maximum provisioned throughput
+     * values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     */
     inline void SetProvisionedThroughput(const ProvisionedThroughput& value) { m_provisionedThroughputHasBeenSet = true; m_provisionedThroughput = value; }
 
-    
-    inline void SetProvisionedThroughput(ProvisionedThroughput&& value) { m_provisionedThroughputHasBeenSet = true; m_provisionedThroughput = value; }
+    /**
+     * <p>Represents the provisioned throughput settings for the specified global
+     * secondary index.</p> <p>For current minimum and maximum provisioned throughput
+     * values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     */
+    inline void SetProvisionedThroughput(ProvisionedThroughput&& value) { m_provisionedThroughputHasBeenSet = true; m_provisionedThroughput = std::move(value); }
 
-    
+    /**
+     * <p>Represents the provisioned throughput settings for the specified global
+     * secondary index.</p> <p>For current minimum and maximum provisioned throughput
+     * values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     */
     inline CreateGlobalSecondaryIndexAction& WithProvisionedThroughput(const ProvisionedThroughput& value) { SetProvisionedThroughput(value); return *this;}
 
-    
-    inline CreateGlobalSecondaryIndexAction& WithProvisionedThroughput(ProvisionedThroughput&& value) { SetProvisionedThroughput(value); return *this;}
+    /**
+     * <p>Represents the provisioned throughput settings for the specified global
+     * secondary index.</p> <p>For current minimum and maximum provisioned throughput
+     * values, see <a
+     * href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a>
+     * in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+     */
+    inline CreateGlobalSecondaryIndexAction& WithProvisionedThroughput(ProvisionedThroughput&& value) { SetProvisionedThroughput(std::move(value)); return *this;}
 
   private:
     Aws::String m_indexName;

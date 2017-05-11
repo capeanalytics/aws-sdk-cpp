@@ -147,6 +147,8 @@ This file has been modified from its original version by Amazon:
 /// Only has effects if AWS_JSON_VALUE_USE_INTERNAL_MAP is defined.
 //#  define AWS_JSON_USE_SIMPLE_INTERNAL_ALLOCATOR 1
 
+#include <aws/core/SDKConfig.h>
+
 // If non-zero, the library uses exceptions to report bad input instead of C
 // assertion macros. The default is to use exceptions.
 #ifndef JSON_USE_EXCEPTION
@@ -201,7 +203,8 @@ This file has been modified from its original version by Amazon:
 #if defined(_MSC_VER) && _MSC_VER >= 1500 // MSVC 2008
 /// Indicates that the following function is deprecated.
 #define AWS_JSONCPP_DEPRECATED(message) __declspec(deprecated(message))
-#pragma warning(disable : 4267)
+//#pragma warning(disable : 4267)
+#pragma warning(push)
 #pragma warning(disable : 4512)
 #endif
 
@@ -2223,7 +2226,9 @@ AWS_JSON_API Aws::OStream& operator<<(Aws::OStream&, const Value& root);
 // //////////////////////////////////////////////////////////////////////
 
 
-
+#if defined(_MSC_VER) && _MSC_VER >= 1500 // MSVC 2008
+#pragma warning(pop)
+#endif
 
 
 #endif //ifndef AWS_JSON_AMALGATED_H_INCLUDED

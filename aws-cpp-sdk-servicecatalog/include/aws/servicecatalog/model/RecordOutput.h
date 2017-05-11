@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
   /**
    * <p>An output for the specified Product object created as the result of a
    * request. For example, a CloudFormation-backed product that creates an S3 bucket
-   * would have an output for the S3 bucket URL.</p>
+   * would have an output for the S3 bucket URL.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/RecordOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_SERVICECATALOG_API RecordOutput
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The output key.</p>
      */
-    inline void SetOutputKey(Aws::String&& value) { m_outputKeyHasBeenSet = true; m_outputKey = value; }
+    inline void SetOutputKey(Aws::String&& value) { m_outputKeyHasBeenSet = true; m_outputKey = std::move(value); }
 
     /**
      * <p>The output key.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The output key.</p>
      */
-    inline RecordOutput& WithOutputKey(Aws::String&& value) { SetOutputKey(value); return *this;}
+    inline RecordOutput& WithOutputKey(Aws::String&& value) { SetOutputKey(std::move(value)); return *this;}
 
     /**
      * <p>The output key.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The output value.</p>
      */
-    inline void SetOutputValue(Aws::String&& value) { m_outputValueHasBeenSet = true; m_outputValue = value; }
+    inline void SetOutputValue(Aws::String&& value) { m_outputValueHasBeenSet = true; m_outputValue = std::move(value); }
 
     /**
      * <p>The output value.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The output value.</p>
      */
-    inline RecordOutput& WithOutputValue(Aws::String&& value) { SetOutputValue(value); return *this;}
+    inline RecordOutput& WithOutputValue(Aws::String&& value) { SetOutputValue(std::move(value)); return *this;}
 
     /**
      * <p>The output value.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The text description of the output.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The text description of the output.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The text description of the output.</p>
      */
-    inline RecordOutput& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline RecordOutput& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The text description of the output.</p>

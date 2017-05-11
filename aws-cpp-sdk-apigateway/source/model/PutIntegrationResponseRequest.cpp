@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/PutIntegrationResponseRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,7 +29,9 @@ PutIntegrationResponseRequest::PutIntegrationResponseRequest() :
     m_statusCodeHasBeenSet(false),
     m_selectionPatternHasBeenSet(false),
     m_responseParametersHasBeenSet(false),
-    m_responseTemplatesHasBeenSet(false)
+    m_responseTemplatesHasBeenSet(false),
+    m_contentHandling(ContentHandlingStrategy::NOT_SET),
+    m_contentHandlingHasBeenSet(false)
 {
 }
 
@@ -64,8 +67,14 @@ Aws::String PutIntegrationResponseRequest::SerializePayload() const
 
   }
 
+  if(m_contentHandlingHasBeenSet)
+  {
+   payload.WithString("contentHandling", ContentHandlingStrategyMapper::GetNameForContentHandlingStrategy(m_contentHandling));
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

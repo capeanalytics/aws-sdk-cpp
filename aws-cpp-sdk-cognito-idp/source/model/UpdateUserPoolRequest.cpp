@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cognito-idp/model/UpdateUserPoolRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,10 +31,13 @@ UpdateUserPoolRequest::UpdateUserPoolRequest() :
     m_emailVerificationMessageHasBeenSet(false),
     m_emailVerificationSubjectHasBeenSet(false),
     m_smsAuthenticationMessageHasBeenSet(false),
+    m_mfaConfiguration(UserPoolMfaType::NOT_SET),
     m_mfaConfigurationHasBeenSet(false),
     m_deviceConfigurationHasBeenSet(false),
     m_emailConfigurationHasBeenSet(false),
-    m_smsConfigurationHasBeenSet(false)
+    m_smsConfigurationHasBeenSet(false),
+    m_userPoolTagsHasBeenSet(false),
+    m_adminCreateUserConfigHasBeenSet(false)
 {
 }
 
@@ -117,6 +121,23 @@ Aws::String UpdateUserPoolRequest::SerializePayload() const
 
   }
 
+  if(m_userPoolTagsHasBeenSet)
+  {
+   JsonValue userPoolTagsJsonMap;
+   for(auto& userPoolTagsItem : m_userPoolTags)
+   {
+     userPoolTagsJsonMap.WithString(userPoolTagsItem.first, userPoolTagsItem.second);
+   }
+   payload.WithObject("UserPoolTags", std::move(userPoolTagsJsonMap));
+
+  }
+
+  if(m_adminCreateUserConfigHasBeenSet)
+  {
+   payload.WithObject("AdminCreateUserConfig", m_adminCreateUserConfig.Jsonize());
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -127,6 +148,7 @@ Aws::Http::HeaderValueCollection UpdateUserPoolRequest::GetRequestSpecificHeader
   return headers;
 
 }
+
 
 
 

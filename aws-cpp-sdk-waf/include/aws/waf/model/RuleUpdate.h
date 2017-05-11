@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/model/ChangeAction.h>
 #include <aws/waf/model/Predicate.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and
    * indicates whether you want to add it to a <code>Rule</code> or delete it from a
-   * <code>Rule</code>.</p>
+   * <code>Rule</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/RuleUpdate">AWS API
+   * Reference</a></p>
    */
   class AWS_WAF_API RuleUpdate
   {
@@ -63,7 +67,7 @@ namespace Model
      * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
      * from a <code>Rule</code>.</p>
      */
-    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = value; }
+    inline void SetAction(ChangeAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
 
     /**
      * <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a
@@ -77,7 +81,7 @@ namespace Model
      * <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code>
      * from a <code>Rule</code>.</p>
      */
-    inline RuleUpdate& WithAction(ChangeAction&& value) { SetAction(value); return *this;}
+    inline RuleUpdate& WithAction(ChangeAction&& value) { SetAction(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
@@ -95,7 +99,7 @@ namespace Model
      * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
      * want to add to a <code>Rule</code>.</p>
      */
-    inline void SetPredicate(Predicate&& value) { m_predicateHasBeenSet = true; m_predicate = value; }
+    inline void SetPredicate(Predicate&& value) { m_predicateHasBeenSet = true; m_predicate = std::move(value); }
 
     /**
      * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
@@ -107,7 +111,7 @@ namespace Model
      * <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you
      * want to add to a <code>Rule</code>.</p>
      */
-    inline RuleUpdate& WithPredicate(Predicate&& value) { SetPredicate(value); return *this;}
+    inline RuleUpdate& WithPredicate(Predicate&& value) { SetPredicate(std::move(value)); return *this;}
 
   private:
     ChangeAction m_action;

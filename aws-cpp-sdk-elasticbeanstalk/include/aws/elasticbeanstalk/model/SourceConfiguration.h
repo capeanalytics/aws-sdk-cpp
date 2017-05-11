@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>A specification for an environment configuration</p>
+   * <p>A specification for an environment configuration</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/SourceConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API SourceConfiguration
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the application associated with the configuration.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>The name of the application associated with the configuration.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the application associated with the configuration.</p>
      */
-    inline SourceConfiguration& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline SourceConfiguration& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the application associated with the configuration.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The name of the configuration template.</p>
      */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
+    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
 
     /**
      * <p>The name of the configuration template.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The name of the configuration template.</p>
      */
-    inline SourceConfiguration& WithTemplateName(Aws::String&& value) { SetTemplateName(value); return *this;}
+    inline SourceConfiguration& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the configuration template.</p>

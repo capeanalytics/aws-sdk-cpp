@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/codepipeline/CodePipelineRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/ApprovalResult.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a put approval result action.</p>
+   * <p>Represents the input of a put approval result action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutApprovalResultInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API PutApprovalResultRequest : public CodePipelineRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name of the pipeline that contains the action. </p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The name of the pipeline that contains the action. </p>
      */
-    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = value; }
+    inline void SetPipelineName(Aws::String&& value) { m_pipelineNameHasBeenSet = true; m_pipelineName = std::move(value); }
 
     /**
      * <p>The name of the pipeline that contains the action. </p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>The name of the pipeline that contains the action. </p>
      */
-    inline PutApprovalResultRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(value); return *this;}
+    inline PutApprovalResultRequest& WithPipelineName(Aws::String&& value) { SetPipelineName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the pipeline that contains the action. </p>
@@ -84,7 +90,7 @@ namespace Model
     /**
      * <p>The name of the stage that contains the action.</p>
      */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
+    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
 
     /**
      * <p>The name of the stage that contains the action.</p>
@@ -99,7 +105,7 @@ namespace Model
     /**
      * <p>The name of the stage that contains the action.</p>
      */
-    inline PutApprovalResultRequest& WithStageName(Aws::String&& value) { SetStageName(value); return *this;}
+    inline PutApprovalResultRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stage that contains the action.</p>
@@ -119,7 +125,7 @@ namespace Model
     /**
      * <p>The name of the action for which approval is requested.</p>
      */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
+    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
 
     /**
      * <p>The name of the action for which approval is requested.</p>
@@ -134,7 +140,7 @@ namespace Model
     /**
      * <p>The name of the action for which approval is requested.</p>
      */
-    inline PutApprovalResultRequest& WithActionName(Aws::String&& value) { SetActionName(value); return *this;}
+    inline PutApprovalResultRequest& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the action for which approval is requested.</p>
@@ -154,7 +160,7 @@ namespace Model
     /**
      * <p>Represents information about the result of the approval request.</p>
      */
-    inline void SetResult(ApprovalResult&& value) { m_resultHasBeenSet = true; m_result = value; }
+    inline void SetResult(ApprovalResult&& value) { m_resultHasBeenSet = true; m_result = std::move(value); }
 
     /**
      * <p>Represents information about the result of the approval request.</p>
@@ -164,7 +170,7 @@ namespace Model
     /**
      * <p>Represents information about the result of the approval request.</p>
      */
-    inline PutApprovalResultRequest& WithResult(ApprovalResult&& value) { SetResult(value); return *this;}
+    inline PutApprovalResultRequest& WithResult(ApprovalResult&& value) { SetResult(std::move(value)); return *this;}
 
     /**
      * <p>The system-generated token used to identify a unique approval request. The
@@ -188,7 +194,7 @@ namespace Model
      * <a>GetPipelineState</a> action and is used to validate that the approval request
      * corresponding to this token is still valid.</p>
      */
-    inline void SetToken(Aws::String&& value) { m_tokenHasBeenSet = true; m_token = value; }
+    inline void SetToken(Aws::String&& value) { m_tokenHasBeenSet = true; m_token = std::move(value); }
 
     /**
      * <p>The system-generated token used to identify a unique approval request. The
@@ -212,7 +218,7 @@ namespace Model
      * <a>GetPipelineState</a> action and is used to validate that the approval request
      * corresponding to this token is still valid.</p>
      */
-    inline PutApprovalResultRequest& WithToken(Aws::String&& value) { SetToken(value); return *this;}
+    inline PutApprovalResultRequest& WithToken(Aws::String&& value) { SetToken(std::move(value)); return *this;}
 
     /**
      * <p>The system-generated token used to identify a unique approval request. The

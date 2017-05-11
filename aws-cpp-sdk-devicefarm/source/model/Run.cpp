@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/devicefarm/model/Run.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,10 +31,14 @@ namespace Model
 Run::Run() : 
     m_arnHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_type(TestType::NOT_SET),
     m_typeHasBeenSet(false),
+    m_platform(DevicePlatform::NOT_SET),
     m_platformHasBeenSet(false),
     m_createdHasBeenSet(false),
+    m_status(ExecutionStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_result(ExecutionResult::NOT_SET),
     m_resultHasBeenSet(false),
     m_startedHasBeenSet(false),
     m_stoppedHasBeenSet(false),
@@ -43,18 +48,24 @@ Run::Run() :
     m_totalJobsHasBeenSet(false),
     m_completedJobs(0),
     m_completedJobsHasBeenSet(false),
+    m_billingMethod(BillingMethod::NOT_SET),
     m_billingMethodHasBeenSet(false),
-    m_deviceMinutesHasBeenSet(false)
+    m_deviceMinutesHasBeenSet(false),
+    m_networkProfileHasBeenSet(false)
 {
 }
 
 Run::Run(const JsonValue& jsonValue) : 
     m_arnHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_type(TestType::NOT_SET),
     m_typeHasBeenSet(false),
+    m_platform(DevicePlatform::NOT_SET),
     m_platformHasBeenSet(false),
     m_createdHasBeenSet(false),
+    m_status(ExecutionStatus::NOT_SET),
     m_statusHasBeenSet(false),
+    m_result(ExecutionResult::NOT_SET),
     m_resultHasBeenSet(false),
     m_startedHasBeenSet(false),
     m_stoppedHasBeenSet(false),
@@ -64,8 +75,10 @@ Run::Run(const JsonValue& jsonValue) :
     m_totalJobsHasBeenSet(false),
     m_completedJobs(0),
     m_completedJobsHasBeenSet(false),
+    m_billingMethod(BillingMethod::NOT_SET),
     m_billingMethodHasBeenSet(false),
-    m_deviceMinutesHasBeenSet(false)
+    m_deviceMinutesHasBeenSet(false),
+    m_networkProfileHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -177,6 +190,13 @@ Run& Run::operator =(const JsonValue& jsonValue)
     m_deviceMinutesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("networkProfile"))
+  {
+    m_networkProfile = jsonValue.GetObject("networkProfile");
+
+    m_networkProfileHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -263,6 +283,12 @@ JsonValue Run::Jsonize() const
   if(m_deviceMinutesHasBeenSet)
   {
    payload.WithObject("deviceMinutes", m_deviceMinutes.Jsonize());
+
+  }
+
+  if(m_networkProfileHasBeenSet)
+  {
+   payload.WithObject("networkProfile", m_networkProfile.Jsonize());
 
   }
 

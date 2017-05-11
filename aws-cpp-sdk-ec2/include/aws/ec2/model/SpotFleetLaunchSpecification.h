@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -24,6 +25,7 @@
 #include <aws/ec2/model/GroupIdentifier.h>
 #include <aws/ec2/model/BlockDeviceMapping.h>
 #include <aws/ec2/model/InstanceNetworkInterfaceSpecification.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,7 +42,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the launch specification for one or more Spot instances.</p>
+   * <p>Describes the launch specification for one or more Spot
+   * instances.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotFleetLaunchSpecification">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API SpotFleetLaunchSpecification
   {
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the AMI.</p>
@@ -80,7 +85,7 @@ namespace Model
     /**
      * <p>The ID of the AMI.</p>
      */
-    inline SpotFleetLaunchSpecification& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AMI.</p>
@@ -100,7 +105,7 @@ namespace Model
     /**
      * <p>The name of the key pair.</p>
      */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
+    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
 
     /**
      * <p>The name of the key pair.</p>
@@ -115,7 +120,7 @@ namespace Model
     /**
      * <p>The name of the key pair.</p>
      */
-    inline SpotFleetLaunchSpecification& WithKeyName(Aws::String&& value) { SetKeyName(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the key pair.</p>
@@ -141,7 +146,7 @@ namespace Model
      * specify the IDs of the security groups. When requesting instances in
      * EC2-Classic, you can specify the names or the IDs of the security groups.</p>
      */
-    inline void SetSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
+    inline void SetSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
 
     /**
      * <p>One or more security groups. When requesting instances in a VPC, you must
@@ -155,7 +160,7 @@ namespace Model
      * specify the IDs of the security groups. When requesting instances in
      * EC2-Classic, you can specify the names or the IDs of the security groups.</p>
      */
-    inline SpotFleetLaunchSpecification& WithSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { SetSecurityGroups(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithSecurityGroups(Aws::Vector<GroupIdentifier>&& value) { SetSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>One or more security groups. When requesting instances in a VPC, you must
@@ -169,40 +174,54 @@ namespace Model
      * specify the IDs of the security groups. When requesting instances in
      * EC2-Classic, you can specify the names or the IDs of the security groups.</p>
      */
-    inline SpotFleetLaunchSpecification& AddSecurityGroups(GroupIdentifier&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
+    inline SpotFleetLaunchSpecification& AddSecurityGroups(GroupIdentifier&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline const Aws::String& GetUserData() const{ return m_userData; }
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline void SetUserData(const Aws::String& value) { m_userDataHasBeenSet = true; m_userData = value; }
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
-    inline void SetUserData(Aws::String&& value) { m_userDataHasBeenSet = true; m_userData = value; }
+    inline void SetUserData(Aws::String&& value) { m_userDataHasBeenSet = true; m_userData = std::move(value); }
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline void SetUserData(const char* value) { m_userDataHasBeenSet = true; m_userData.assign(value); }
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline SpotFleetLaunchSpecification& WithUserData(const Aws::String& value) { SetUserData(value); return *this;}
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
-    inline SpotFleetLaunchSpecification& WithUserData(Aws::String&& value) { SetUserData(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithUserData(Aws::String&& value) { SetUserData(std::move(value)); return *this;}
 
     /**
-     * <p>The Base64-encoded MIME user data to make available to the instances.</p>
+     * <p>The user data to make available to the instances. If you are using an AWS SDK
+     * or command line tool, Base64-encoding is performed for you, and you can load the
+     * text from a file. Otherwise, you must provide Base64-encoded text.</p>
      */
     inline SpotFleetLaunchSpecification& WithUserData(const char* value) { SetUserData(value); return *this;}
 
@@ -219,7 +238,7 @@ namespace Model
     /**
      * <p>Deprecated.</p>
      */
-    inline void SetAddressingType(Aws::String&& value) { m_addressingTypeHasBeenSet = true; m_addressingType = value; }
+    inline void SetAddressingType(Aws::String&& value) { m_addressingTypeHasBeenSet = true; m_addressingType = std::move(value); }
 
     /**
      * <p>Deprecated.</p>
@@ -234,7 +253,7 @@ namespace Model
     /**
      * <p>Deprecated.</p>
      */
-    inline SpotFleetLaunchSpecification& WithAddressingType(Aws::String&& value) { SetAddressingType(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithAddressingType(Aws::String&& value) { SetAddressingType(std::move(value)); return *this;}
 
     /**
      * <p>Deprecated.</p>
@@ -242,29 +261,29 @@ namespace Model
     inline SpotFleetLaunchSpecification& WithAddressingType(const char* value) { SetAddressingType(value); return *this;}
 
     /**
-     * <p>The instance type.</p>
+     * <p>The instance type. Note that T2 and HS1 instance types are not supported.</p>
      */
     inline const InstanceType& GetInstanceType() const{ return m_instanceType; }
 
     /**
-     * <p>The instance type.</p>
+     * <p>The instance type. Note that T2 and HS1 instance types are not supported.</p>
      */
     inline void SetInstanceType(const InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
 
     /**
-     * <p>The instance type.</p>
+     * <p>The instance type. Note that T2 and HS1 instance types are not supported.</p>
      */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
-     * <p>The instance type.</p>
+     * <p>The instance type. Note that T2 and HS1 instance types are not supported.</p>
      */
     inline SpotFleetLaunchSpecification& WithInstanceType(const InstanceType& value) { SetInstanceType(value); return *this;}
 
     /**
-     * <p>The instance type.</p>
+     * <p>The instance type. Note that T2 and HS1 instance types are not supported.</p>
      */
-    inline SpotFleetLaunchSpecification& WithInstanceType(InstanceType&& value) { SetInstanceType(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The placement information.</p>
@@ -279,7 +298,7 @@ namespace Model
     /**
      * <p>The placement information.</p>
      */
-    inline void SetPlacement(SpotPlacement&& value) { m_placementHasBeenSet = true; m_placement = value; }
+    inline void SetPlacement(SpotPlacement&& value) { m_placementHasBeenSet = true; m_placement = std::move(value); }
 
     /**
      * <p>The placement information.</p>
@@ -289,7 +308,7 @@ namespace Model
     /**
      * <p>The placement information.</p>
      */
-    inline SpotFleetLaunchSpecification& WithPlacement(SpotPlacement&& value) { SetPlacement(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithPlacement(SpotPlacement&& value) { SetPlacement(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the kernel.</p>
@@ -304,7 +323,7 @@ namespace Model
     /**
      * <p>The ID of the kernel.</p>
      */
-    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = value; }
+    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::move(value); }
 
     /**
      * <p>The ID of the kernel.</p>
@@ -319,7 +338,7 @@ namespace Model
     /**
      * <p>The ID of the kernel.</p>
      */
-    inline SpotFleetLaunchSpecification& WithKernelId(Aws::String&& value) { SetKernelId(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithKernelId(Aws::String&& value) { SetKernelId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the kernel.</p>
@@ -339,7 +358,7 @@ namespace Model
     /**
      * <p>The ID of the RAM disk.</p>
      */
-    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = value; }
+    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::move(value); }
 
     /**
      * <p>The ID of the RAM disk.</p>
@@ -354,7 +373,7 @@ namespace Model
     /**
      * <p>The ID of the RAM disk.</p>
      */
-    inline SpotFleetLaunchSpecification& WithRamdiskId(Aws::String&& value) { SetRamdiskId(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithRamdiskId(Aws::String&& value) { SetRamdiskId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the RAM disk.</p>
@@ -374,7 +393,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>One or more block device mapping entries.</p>
@@ -384,7 +403,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline SpotFleetLaunchSpecification& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>One or more block device mapping entries.</p>
@@ -394,7 +413,7 @@ namespace Model
     /**
      * <p>One or more block device mapping entries.</p>
      */
-    inline SpotFleetLaunchSpecification& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
+    inline SpotFleetLaunchSpecification& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Enable or disable monitoring for the instances.</p>
@@ -409,7 +428,7 @@ namespace Model
     /**
      * <p>Enable or disable monitoring for the instances.</p>
      */
-    inline void SetMonitoring(SpotFleetMonitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = value; }
+    inline void SetMonitoring(SpotFleetMonitoring&& value) { m_monitoringHasBeenSet = true; m_monitoring = std::move(value); }
 
     /**
      * <p>Enable or disable monitoring for the instances.</p>
@@ -419,7 +438,7 @@ namespace Model
     /**
      * <p>Enable or disable monitoring for the instances.</p>
      */
-    inline SpotFleetLaunchSpecification& WithMonitoring(SpotFleetMonitoring&& value) { SetMonitoring(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithMonitoring(SpotFleetMonitoring&& value) { SetMonitoring(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the subnet in which to launch the instances. To specify multiple
@@ -440,7 +459,7 @@ namespace Model
      * subnets, separate them using commas; for example, "subnet-a61dafcf,
      * subnet-65ea5f08".</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>The ID of the subnet in which to launch the instances. To specify multiple
@@ -461,7 +480,7 @@ namespace Model
      * subnets, separate them using commas; for example, "subnet-a61dafcf,
      * subnet-65ea5f08".</p>
      */
-    inline SpotFleetLaunchSpecification& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the subnet in which to launch the instances. To specify multiple
@@ -471,39 +490,46 @@ namespace Model
     inline SpotFleetLaunchSpecification& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
     inline const Aws::Vector<InstanceNetworkInterfaceSpecification>& GetNetworkInterfaces() const{ return m_networkInterfaces; }
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
     inline void SetNetworkInterfaces(const Aws::Vector<InstanceNetworkInterfaceSpecification>& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
-    inline void SetNetworkInterfaces(Aws::Vector<InstanceNetworkInterfaceSpecification>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = value; }
+    inline void SetNetworkInterfaces(Aws::Vector<InstanceNetworkInterfaceSpecification>&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces = std::move(value); }
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
     inline SpotFleetLaunchSpecification& WithNetworkInterfaces(const Aws::Vector<InstanceNetworkInterfaceSpecification>& value) { SetNetworkInterfaces(value); return *this;}
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
-    inline SpotFleetLaunchSpecification& WithNetworkInterfaces(Aws::Vector<InstanceNetworkInterfaceSpecification>&& value) { SetNetworkInterfaces(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithNetworkInterfaces(Aws::Vector<InstanceNetworkInterfaceSpecification>&& value) { SetNetworkInterfaces(std::move(value)); return *this;}
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
     inline SpotFleetLaunchSpecification& AddNetworkInterfaces(const InstanceNetworkInterfaceSpecification& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
 
     /**
-     * <p>One or more network interfaces.</p>
+     * <p>One or more network interfaces. If you specify a network interface, you must
+     * specify subnet IDs and security group IDs using the network interface.</p>
      */
-    inline SpotFleetLaunchSpecification& AddNetworkInterfaces(InstanceNetworkInterfaceSpecification&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(value); return *this; }
+    inline SpotFleetLaunchSpecification& AddNetworkInterfaces(InstanceNetworkInterfaceSpecification&& value) { m_networkInterfacesHasBeenSet = true; m_networkInterfaces.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IAM instance profile.</p>
@@ -518,7 +544,7 @@ namespace Model
     /**
      * <p>The IAM instance profile.</p>
      */
-    inline void SetIamInstanceProfile(IamInstanceProfileSpecification&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = value; }
+    inline void SetIamInstanceProfile(IamInstanceProfileSpecification&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::move(value); }
 
     /**
      * <p>The IAM instance profile.</p>
@@ -528,14 +554,14 @@ namespace Model
     /**
      * <p>The IAM instance profile.</p>
      */
-    inline SpotFleetLaunchSpecification& WithIamInstanceProfile(IamInstanceProfileSpecification&& value) { SetIamInstanceProfile(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithIamInstanceProfile(IamInstanceProfileSpecification&& value) { SetIamInstanceProfile(std::move(value)); return *this;}
 
     /**
      * <p>Indicates whether the instances are optimized for EBS I/O. This optimization
      * provides dedicated throughput to Amazon EBS and an optimized configuration stack
      * to provide optimal EBS I/O performance. This optimization isn't available with
      * all instance types. Additional usage charges apply when using an EBS Optimized
-     * instance.</p> <p>Default: <code>false</code></p>
+     * instance.</p> <p>Default: <code>false</code> </p>
      */
     inline bool GetEbsOptimized() const{ return m_ebsOptimized; }
 
@@ -544,7 +570,7 @@ namespace Model
      * provides dedicated throughput to Amazon EBS and an optimized configuration stack
      * to provide optimal EBS I/O performance. This optimization isn't available with
      * all instance types. Additional usage charges apply when using an EBS Optimized
-     * instance.</p> <p>Default: <code>false</code></p>
+     * instance.</p> <p>Default: <code>false</code> </p>
      */
     inline void SetEbsOptimized(bool value) { m_ebsOptimizedHasBeenSet = true; m_ebsOptimized = value; }
 
@@ -553,7 +579,7 @@ namespace Model
      * provides dedicated throughput to Amazon EBS and an optimized configuration stack
      * to provide optimal EBS I/O performance. This optimization isn't available with
      * all instance types. Additional usage charges apply when using an EBS Optimized
-     * instance.</p> <p>Default: <code>false</code></p>
+     * instance.</p> <p>Default: <code>false</code> </p>
      */
     inline SpotFleetLaunchSpecification& WithEbsOptimized(bool value) { SetEbsOptimized(value); return *this;}
 
@@ -609,7 +635,7 @@ namespace Model
      * determine the bid price per unit hour, divide the Spot bid price by the value of
      * <code>WeightedCapacity</code>.</p>
      */
-    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = value; }
+    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = std::move(value); }
 
     /**
      * <p>The bid price per unit hour for the specified instance type. If this value is
@@ -633,7 +659,7 @@ namespace Model
      * determine the bid price per unit hour, divide the Spot bid price by the value of
      * <code>WeightedCapacity</code>.</p>
      */
-    inline SpotFleetLaunchSpecification& WithSpotPrice(Aws::String&& value) { SetSpotPrice(value); return *this;}
+    inline SpotFleetLaunchSpecification& WithSpotPrice(Aws::String&& value) { SetSpotPrice(std::move(value)); return *this;}
 
     /**
      * <p>The bid price per unit hour for the specified instance type. If this value is

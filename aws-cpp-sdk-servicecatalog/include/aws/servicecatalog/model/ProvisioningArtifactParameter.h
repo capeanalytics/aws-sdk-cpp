@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/servicecatalog/model/ParameterConstraints.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>A parameter used to successfully provision the product. This value includes a
-   * list of allowable values and additional metadata. </p>
+   * list of allowable values and additional metadata. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ProvisioningArtifactParameter">AWS
+   * API Reference</a></p>
    */
   class AWS_SERVICECATALOG_API ProvisioningArtifactParameter
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The parameter key. </p>
      */
-    inline void SetParameterKey(Aws::String&& value) { m_parameterKeyHasBeenSet = true; m_parameterKey = value; }
+    inline void SetParameterKey(Aws::String&& value) { m_parameterKeyHasBeenSet = true; m_parameterKey = std::move(value); }
 
     /**
      * <p>The parameter key. </p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The parameter key. </p>
      */
-    inline ProvisioningArtifactParameter& WithParameterKey(Aws::String&& value) { SetParameterKey(value); return *this;}
+    inline ProvisioningArtifactParameter& WithParameterKey(Aws::String&& value) { SetParameterKey(std::move(value)); return *this;}
 
     /**
      * <p>The parameter key. </p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The default value for this parameter.</p>
      */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
+    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
 
     /**
      * <p>The default value for this parameter.</p>
@@ -106,7 +110,7 @@ namespace Model
     /**
      * <p>The default value for this parameter.</p>
      */
-    inline ProvisioningArtifactParameter& WithDefaultValue(Aws::String&& value) { SetDefaultValue(value); return *this;}
+    inline ProvisioningArtifactParameter& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
 
     /**
      * <p>The default value for this parameter.</p>
@@ -126,7 +130,7 @@ namespace Model
     /**
      * <p>The parameter type.</p>
      */
-    inline void SetParameterType(Aws::String&& value) { m_parameterTypeHasBeenSet = true; m_parameterType = value; }
+    inline void SetParameterType(Aws::String&& value) { m_parameterTypeHasBeenSet = true; m_parameterType = std::move(value); }
 
     /**
      * <p>The parameter type.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The parameter type.</p>
      */
-    inline ProvisioningArtifactParameter& WithParameterType(Aws::String&& value) { SetParameterType(value); return *this;}
+    inline ProvisioningArtifactParameter& WithParameterType(Aws::String&& value) { SetParameterType(std::move(value)); return *this;}
 
     /**
      * <p>The parameter type.</p>
@@ -182,7 +186,7 @@ namespace Model
     /**
      * <p>The text description of the parameter.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The text description of the parameter.</p>
@@ -197,7 +201,7 @@ namespace Model
     /**
      * <p>The text description of the parameter.</p>
      */
-    inline ProvisioningArtifactParameter& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ProvisioningArtifactParameter& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The text description of the parameter.</p>
@@ -217,7 +221,7 @@ namespace Model
     /**
      * <p>The list of constraints that the administrator has put on the parameter.</p>
      */
-    inline void SetParameterConstraints(ParameterConstraints&& value) { m_parameterConstraintsHasBeenSet = true; m_parameterConstraints = value; }
+    inline void SetParameterConstraints(ParameterConstraints&& value) { m_parameterConstraintsHasBeenSet = true; m_parameterConstraints = std::move(value); }
 
     /**
      * <p>The list of constraints that the administrator has put on the parameter.</p>
@@ -227,7 +231,7 @@ namespace Model
     /**
      * <p>The list of constraints that the administrator has put on the parameter.</p>
      */
-    inline ProvisioningArtifactParameter& WithParameterConstraints(ParameterConstraints&& value) { SetParameterConstraints(value); return *this;}
+    inline ProvisioningArtifactParameter& WithParameterConstraints(ParameterConstraints&& value) { SetParameterConstraints(std::move(value)); return *this;}
 
   private:
     Aws::String m_parameterKey;

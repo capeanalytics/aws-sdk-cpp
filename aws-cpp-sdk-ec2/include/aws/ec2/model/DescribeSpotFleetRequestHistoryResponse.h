@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/HistoryRecord.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,10 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeSpotFleetRequestHistory.</p>
+   * <p>Contains the output of DescribeSpotFleetRequestHistory.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSpotFleetRequestHistoryResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeSpotFleetRequestHistoryResponse
   {
@@ -59,7 +64,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestId = value; }
+    inline void SetSpotFleetRequestId(Aws::String&& value) { m_spotFleetRequestId = std::move(value); }
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -74,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the Spot fleet request.</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithSpotFleetRequestId(Aws::String&& value) { SetSpotFleetRequestId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Spot fleet request.</p>
@@ -97,7 +102,7 @@ namespace Model
      * <p>The starting date and time for the events, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTime = std::move(value); }
 
     /**
      * <p>The starting date and time for the events, in UTC format (for example,
@@ -109,7 +114,7 @@ namespace Model
      * <p>The starting date and time for the events, in UTC format (for example,
      * <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The last date and time for the events, in UTC format (for example,
@@ -133,7 +138,7 @@ namespace Model
      * to this time were retrieved.</p> <p>If <code>nextToken</code> indicates that
      * there are more results, this value is not present.</p>
      */
-    inline void SetLastEvaluatedTime(Aws::Utils::DateTime&& value) { m_lastEvaluatedTime = value; }
+    inline void SetLastEvaluatedTime(Aws::Utils::DateTime&& value) { m_lastEvaluatedTime = std::move(value); }
 
     /**
      * <p>The last date and time for the events, in UTC format (for example,
@@ -149,7 +154,7 @@ namespace Model
      * to this time were retrieved.</p> <p>If <code>nextToken</code> indicates that
      * there are more results, this value is not present.</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& WithLastEvaluatedTime(Aws::Utils::DateTime&& value) { SetLastEvaluatedTime(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithLastEvaluatedTime(Aws::Utils::DateTime&& value) { SetLastEvaluatedTime(std::move(value)); return *this;}
 
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
@@ -164,7 +169,7 @@ namespace Model
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
      */
-    inline void SetHistoryRecords(Aws::Vector<HistoryRecord>&& value) { m_historyRecords = value; }
+    inline void SetHistoryRecords(Aws::Vector<HistoryRecord>&& value) { m_historyRecords = std::move(value); }
 
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
@@ -174,7 +179,7 @@ namespace Model
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& WithHistoryRecords(Aws::Vector<HistoryRecord>&& value) { SetHistoryRecords(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithHistoryRecords(Aws::Vector<HistoryRecord>&& value) { SetHistoryRecords(std::move(value)); return *this;}
 
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
@@ -184,7 +189,7 @@ namespace Model
     /**
      * <p>Information about the events in the history of the Spot fleet request.</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& AddHistoryRecords(HistoryRecord&& value) { m_historyRecords.push_back(value); return *this; }
+    inline DescribeSpotFleetRequestHistoryResponse& AddHistoryRecords(HistoryRecord&& value) { m_historyRecords.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token required to retrieve the next set of results. This value is
@@ -202,7 +207,7 @@ namespace Model
      * <p>The token required to retrieve the next set of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>The token required to retrieve the next set of results. This value is
@@ -220,7 +225,7 @@ namespace Model
      * <p>The token required to retrieve the next set of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline DescribeSpotFleetRequestHistoryResponse& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token required to retrieve the next set of results. This value is
@@ -235,13 +240,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeSpotFleetRequestHistoryResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeSpotFleetRequestHistoryResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeSpotFleetRequestHistoryResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_spotFleetRequestId;

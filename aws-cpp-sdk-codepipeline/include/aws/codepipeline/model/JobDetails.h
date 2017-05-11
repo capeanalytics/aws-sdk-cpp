@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/JobData.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about the details of a job.</p>
+   * <p>Represents information about the details of a job.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/JobDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API JobDetails
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The unique system-generated ID of the job.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The unique system-generated ID of the job.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The unique system-generated ID of the job.</p>
      */
-    inline JobDetails& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline JobDetails& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The unique system-generated ID of the job.</p>
@@ -84,13 +89,13 @@ namespace Model
     inline void SetData(const JobData& value) { m_dataHasBeenSet = true; m_data = value; }
 
     
-    inline void SetData(JobData&& value) { m_dataHasBeenSet = true; m_data = value; }
+    inline void SetData(JobData&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
 
     
     inline JobDetails& WithData(const JobData& value) { SetData(value); return *this;}
 
     
-    inline JobDetails& WithData(JobData&& value) { SetData(value); return *this;}
+    inline JobDetails& WithData(JobData&& value) { SetData(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account ID associated with the job.</p>
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>The AWS account ID associated with the job.</p>
      */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
+    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
      * <p>The AWS account ID associated with the job.</p>
@@ -120,7 +125,7 @@ namespace Model
     /**
      * <p>The AWS account ID associated with the job.</p>
      */
-    inline JobDetails& WithAccountId(Aws::String&& value) { SetAccountId(value); return *this;}
+    inline JobDetails& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account ID associated with the job.</p>

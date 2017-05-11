@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/ssm/SSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ssm/model/DescribeActivationsFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A filter to view information about your activations.</p>
      */
@@ -49,7 +52,7 @@ namespace Model
     /**
      * <p>A filter to view information about your activations.</p>
      */
-    inline void SetFilters(Aws::Vector<DescribeActivationsFilter>&& value) { m_filtersHasBeenSet = true; m_filters = value; }
+    inline void SetFilters(Aws::Vector<DescribeActivationsFilter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
 
     /**
      * <p>A filter to view information about your activations.</p>
@@ -59,7 +62,7 @@ namespace Model
     /**
      * <p>A filter to view information about your activations.</p>
      */
-    inline DescribeActivationsRequest& WithFilters(Aws::Vector<DescribeActivationsFilter>&& value) { SetFilters(value); return *this;}
+    inline DescribeActivationsRequest& WithFilters(Aws::Vector<DescribeActivationsFilter>&& value) { SetFilters(std::move(value)); return *this;}
 
     /**
      * <p>A filter to view information about your activations.</p>
@@ -69,7 +72,7 @@ namespace Model
     /**
      * <p>A filter to view information about your activations.</p>
      */
-    inline DescribeActivationsRequest& AddFilters(DescribeActivationsFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
+    inline DescribeActivationsRequest& AddFilters(DescribeActivationsFilter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The maximum number of items to return for this call. The call also returns a
@@ -108,7 +111,7 @@ namespace Model
      * <p>A token to start the list. Use this token to get the next set of results.
      * </p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>A token to start the list. Use this token to get the next set of results.
@@ -126,7 +129,7 @@ namespace Model
      * <p>A token to start the list. Use this token to get the next set of results.
      * </p>
      */
-    inline DescribeActivationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeActivationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>A token to start the list. Use this token to get the next set of results.

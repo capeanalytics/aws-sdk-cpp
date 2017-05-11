@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/waf/WAFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The change token for which you want to get the status. This change token was
      * previously returned in the <code>GetChangeToken</code> response.</p>
@@ -50,7 +53,7 @@ namespace Model
      * <p>The change token for which you want to get the status. This change token was
      * previously returned in the <code>GetChangeToken</code> response.</p>
      */
-    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = value; }
+    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::move(value); }
 
     /**
      * <p>The change token for which you want to get the status. This change token was
@@ -68,7 +71,7 @@ namespace Model
      * <p>The change token for which you want to get the status. This change token was
      * previously returned in the <code>GetChangeToken</code> response.</p>
      */
-    inline GetChangeTokenStatusRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(value); return *this;}
+    inline GetChangeTokenStatusRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
 
     /**
      * <p>The change token for which you want to get the status. This change token was

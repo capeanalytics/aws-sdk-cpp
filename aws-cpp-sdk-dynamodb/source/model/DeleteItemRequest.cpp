@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/DeleteItemRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -25,9 +26,13 @@ DeleteItemRequest::DeleteItemRequest() :
     m_tableNameHasBeenSet(false),
     m_keyHasBeenSet(false),
     m_expectedHasBeenSet(false),
+    m_conditionalOperator(ConditionalOperator::NOT_SET),
     m_conditionalOperatorHasBeenSet(false),
+    m_returnValues(ReturnValue::NOT_SET),
     m_returnValuesHasBeenSet(false),
+    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
     m_returnConsumedCapacityHasBeenSet(false),
+    m_returnItemCollectionMetrics(ReturnItemCollectionMetrics::NOT_SET),
     m_returnItemCollectionMetricsHasBeenSet(false),
     m_conditionExpressionHasBeenSet(false),
     m_expressionAttributeNamesHasBeenSet(false),
@@ -125,6 +130,7 @@ Aws::Http::HeaderValueCollection DeleteItemRequest::GetRequestSpecificHeaders() 
   return headers;
 
 }
+
 
 
 

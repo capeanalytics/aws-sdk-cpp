@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ecs/model/TaskDefinitionFamilyStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The <code>familyPrefix</code> is a string that is used to filter the results
@@ -57,7 +60,7 @@ namespace Model
      * <code>familyPrefix</code>, only task definition family names that begin with the
      * <code>familyPrefix</code> string are returned.</p>
      */
-    inline void SetFamilyPrefix(Aws::String&& value) { m_familyPrefixHasBeenSet = true; m_familyPrefix = value; }
+    inline void SetFamilyPrefix(Aws::String&& value) { m_familyPrefixHasBeenSet = true; m_familyPrefix = std::move(value); }
 
     /**
      * <p>The <code>familyPrefix</code> is a string that is used to filter the results
@@ -81,7 +84,7 @@ namespace Model
      * <code>familyPrefix</code>, only task definition family names that begin with the
      * <code>familyPrefix</code> string are returned.</p>
      */
-    inline ListTaskDefinitionFamiliesRequest& WithFamilyPrefix(Aws::String&& value) { SetFamilyPrefix(value); return *this;}
+    inline ListTaskDefinitionFamiliesRequest& WithFamilyPrefix(Aws::String&& value) { SetFamilyPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The <code>familyPrefix</code> is a string that is used to filter the results
@@ -128,7 +131,7 @@ namespace Model
      * If you paginate the resulting output, be sure to keep the <code>status</code>
      * value constant in each subsequent request.</p>
      */
-    inline void SetStatus(TaskDefinitionFamilyStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(TaskDefinitionFamilyStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The task definition family status with which to filter the
@@ -154,7 +157,7 @@ namespace Model
      * If you paginate the resulting output, be sure to keep the <code>status</code>
      * value constant in each subsequent request.</p>
      */
-    inline ListTaskDefinitionFamiliesRequest& WithStatus(TaskDefinitionFamilyStatus&& value) { SetStatus(value); return *this;}
+    inline ListTaskDefinitionFamiliesRequest& WithStatus(TaskDefinitionFamilyStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated
@@ -190,7 +193,7 @@ namespace Model
      * identifier that is only used to retrieve the next items in a list and not for
      * other programmatic purposes.</p> </note>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated
@@ -226,7 +229,7 @@ namespace Model
      * identifier that is only used to retrieve the next items in a list and not for
      * other programmatic purposes.</p> </note>
      */
-    inline ListTaskDefinitionFamiliesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListTaskDefinitionFamiliesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated

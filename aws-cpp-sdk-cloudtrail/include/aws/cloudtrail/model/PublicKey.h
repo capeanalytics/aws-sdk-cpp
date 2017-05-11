@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/core/utils/Array.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about a returned public key.</p>
+   * <p>Contains information about a returned public key.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/PublicKey">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API PublicKey
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The DER encoded public key value in PKCS#1 format.</p>
      */
-    inline void SetValue(Aws::Utils::ByteBuffer&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::Utils::ByteBuffer&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The DER encoded public key value in PKCS#1 format.</p>
@@ -66,7 +71,7 @@ namespace Model
     /**
      * <p>The DER encoded public key value in PKCS#1 format.</p>
      */
-    inline PublicKey& WithValue(Aws::Utils::ByteBuffer&& value) { SetValue(value); return *this;}
+    inline PublicKey& WithValue(Aws::Utils::ByteBuffer&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The starting time of validity of the public key.</p>
@@ -81,7 +86,7 @@ namespace Model
     /**
      * <p>The starting time of validity of the public key.</p>
      */
-    inline void SetValidityStartTime(Aws::Utils::DateTime&& value) { m_validityStartTimeHasBeenSet = true; m_validityStartTime = value; }
+    inline void SetValidityStartTime(Aws::Utils::DateTime&& value) { m_validityStartTimeHasBeenSet = true; m_validityStartTime = std::move(value); }
 
     /**
      * <p>The starting time of validity of the public key.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The starting time of validity of the public key.</p>
      */
-    inline PublicKey& WithValidityStartTime(Aws::Utils::DateTime&& value) { SetValidityStartTime(value); return *this;}
+    inline PublicKey& WithValidityStartTime(Aws::Utils::DateTime&& value) { SetValidityStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The ending time of validity of the public key.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The ending time of validity of the public key.</p>
      */
-    inline void SetValidityEndTime(Aws::Utils::DateTime&& value) { m_validityEndTimeHasBeenSet = true; m_validityEndTime = value; }
+    inline void SetValidityEndTime(Aws::Utils::DateTime&& value) { m_validityEndTimeHasBeenSet = true; m_validityEndTime = std::move(value); }
 
     /**
      * <p>The ending time of validity of the public key.</p>
@@ -116,7 +121,7 @@ namespace Model
     /**
      * <p>The ending time of validity of the public key.</p>
      */
-    inline PublicKey& WithValidityEndTime(Aws::Utils::DateTime&& value) { SetValidityEndTime(value); return *this;}
+    inline PublicKey& WithValidityEndTime(Aws::Utils::DateTime&& value) { SetValidityEndTime(std::move(value)); return *this;}
 
     /**
      * <p>The fingerprint of the public key.</p>
@@ -131,7 +136,7 @@ namespace Model
     /**
      * <p>The fingerprint of the public key.</p>
      */
-    inline void SetFingerprint(Aws::String&& value) { m_fingerprintHasBeenSet = true; m_fingerprint = value; }
+    inline void SetFingerprint(Aws::String&& value) { m_fingerprintHasBeenSet = true; m_fingerprint = std::move(value); }
 
     /**
      * <p>The fingerprint of the public key.</p>
@@ -146,7 +151,7 @@ namespace Model
     /**
      * <p>The fingerprint of the public key.</p>
      */
-    inline PublicKey& WithFingerprint(Aws::String&& value) { SetFingerprint(value); return *this;}
+    inline PublicKey& WithFingerprint(Aws::String&& value) { SetFingerprint(std::move(value)); return *this;}
 
     /**
      * <p>The fingerprint of the public key.</p>

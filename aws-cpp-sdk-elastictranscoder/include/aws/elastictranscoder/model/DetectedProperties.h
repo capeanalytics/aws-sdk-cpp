@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>The detected properties of the input file. Elastic Transcoder identifies
-   * these values from the input file.</p>
+   * these values from the input file.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/DetectedProperties">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API DetectedProperties
   {
@@ -85,7 +89,7 @@ namespace Model
     /**
      * <p>The detected frame rate of the input file, in frames per second.</p>
      */
-    inline void SetFrameRate(Aws::String&& value) { m_frameRateHasBeenSet = true; m_frameRate = value; }
+    inline void SetFrameRate(Aws::String&& value) { m_frameRateHasBeenSet = true; m_frameRate = std::move(value); }
 
     /**
      * <p>The detected frame rate of the input file, in frames per second.</p>
@@ -100,7 +104,7 @@ namespace Model
     /**
      * <p>The detected frame rate of the input file, in frames per second.</p>
      */
-    inline DetectedProperties& WithFrameRate(Aws::String&& value) { SetFrameRate(value); return *this;}
+    inline DetectedProperties& WithFrameRate(Aws::String&& value) { SetFrameRate(std::move(value)); return *this;}
 
     /**
      * <p>The detected frame rate of the input file, in frames per second.</p>

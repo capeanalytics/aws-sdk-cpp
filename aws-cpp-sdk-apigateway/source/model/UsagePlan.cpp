@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/UsagePlan.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -33,7 +34,8 @@ UsagePlan::UsagePlan() :
     m_descriptionHasBeenSet(false),
     m_apiStagesHasBeenSet(false),
     m_throttleHasBeenSet(false),
-    m_quotaHasBeenSet(false)
+    m_quotaHasBeenSet(false),
+    m_productCodeHasBeenSet(false)
 {
 }
 
@@ -43,7 +45,8 @@ UsagePlan::UsagePlan(const JsonValue& jsonValue) :
     m_descriptionHasBeenSet(false),
     m_apiStagesHasBeenSet(false),
     m_throttleHasBeenSet(false),
-    m_quotaHasBeenSet(false)
+    m_quotaHasBeenSet(false),
+    m_productCodeHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -95,6 +98,13 @@ UsagePlan& UsagePlan::operator =(const JsonValue& jsonValue)
     m_quotaHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("productCode"))
+  {
+    m_productCode = jsonValue.GetString("productCode");
+
+    m_productCodeHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -140,6 +150,12 @@ JsonValue UsagePlan::Jsonize() const
   if(m_quotaHasBeenSet)
   {
    payload.WithObject("quota", m_quota.Jsonize());
+
+  }
+
+  if(m_productCodeHasBeenSet)
+  {
+   payload.WithString("productCode", m_productCode);
 
   }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/machinelearning/model/TaggableResourceType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace MachineLearning
 namespace Model
 {
   /**
-   * <p>Amazon ML returns the following elements. </p>
+   * <p>Amazon ML returns the following elements. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/DeleteTagsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API DeleteTagsResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The ID of the ML object from which tags were deleted.</p>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceId = std::move(value); }
 
     /**
      * <p>The ID of the ML object from which tags were deleted.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The ID of the ML object from which tags were deleted.</p>
      */
-    inline DeleteTagsResult& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline DeleteTagsResult& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the ML object from which tags were deleted.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The type of the ML object from which tags were deleted.</p>
      */
-    inline void SetResourceType(TaggableResourceType&& value) { m_resourceType = value; }
+    inline void SetResourceType(TaggableResourceType&& value) { m_resourceType = std::move(value); }
 
     /**
      * <p>The type of the ML object from which tags were deleted.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The type of the ML object from which tags were deleted.</p>
      */
-    inline DeleteTagsResult& WithResourceType(TaggableResourceType&& value) { SetResourceType(value); return *this;}
+    inline DeleteTagsResult& WithResourceType(TaggableResourceType&& value) { SetResourceType(std::move(value)); return *this;}
 
   private:
     Aws::String m_resourceId;

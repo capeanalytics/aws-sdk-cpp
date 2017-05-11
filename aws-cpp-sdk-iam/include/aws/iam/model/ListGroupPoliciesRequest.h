@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,59 +34,64 @@ namespace Model
     ListGroupPoliciesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline const Aws::String& GetGroupName() const{ return m_groupName; }
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline void SetGroupName(const Aws::String& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
+    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline void SetGroupName(const char* value) { m_groupNameHasBeenSet = true; m_groupName.assign(value); }
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline ListGroupPoliciesRequest& WithGroupName(const Aws::String& value) { SetGroupName(value); return *this;}
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
-    inline ListGroupPoliciesRequest& WithGroupName(Aws::String&& value) { SetGroupName(value); return *this;}
+    inline ListGroupPoliciesRequest& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
 
     /**
-     * <p>The name of the group to list policies for.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters: =,.@-</p>
+     * <p>The name of the group to list policies for.</p> <p>This parameter allows (per
+     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
+     * characters consisting of upper and lowercase alphanumeric characters with no
+     * spaces. You can also include any of the following characters: =,.@-</p>
      */
     inline ListGroupPoliciesRequest& WithGroupName(const char* value) { SetGroupName(value); return *this;}
 
@@ -110,7 +117,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -134,7 +141,7 @@ namespace Model
      * <code>Marker</code> element in the response that you received to indicate where
      * the next call should start.</p>
      */
-    inline ListGroupPoliciesRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListGroupPoliciesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only after you receive a
@@ -145,11 +152,11 @@ namespace Model
     inline ListGroupPoliciesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -157,11 +164,11 @@ namespace Model
     inline int GetMaxItems() const{ return m_maxItems; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>
@@ -169,11 +176,11 @@ namespace Model
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
 
     /**
-     * <p>Use this only when paginating results to indicate the maximum number of items
-     * you want in the response. If additional items exist beyond the maximum you
-     * specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
-     * <p>This parameter is optional. If you do not include it, it defaults to 100.
-     * Note that IAM might return fewer results, even when there are more results
+     * <p>(Optional) Use this only when paginating results to indicate the maximum
+     * number of items you want in the response. If additional items exist beyond the
+     * maximum you specify, the <code>IsTruncated</code> response element is
+     * <code>true</code>.</p> <p>If you do not include this parameter, it defaults to
+     * 100. Note that IAM might return fewer results, even when there are more results
      * available. In that case, the <code>IsTruncated</code> response element returns
      * <code>true</code> and <code>Marker</code> contains a value to include in the
      * subsequent call that tells the service where to continue from.</p>

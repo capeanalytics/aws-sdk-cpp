@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codepipeline/model/ActionRevision.h>
 #include <aws/codepipeline/model/ActionExecution.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about the state of an action.</p>
+   * <p>Represents information about the state of an action.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ActionState">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ActionState
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the action.</p>
      */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
+    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
 
     /**
      * <p>The name of the action.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the action.</p>
      */
-    inline ActionState& WithActionName(Aws::String&& value) { SetActionName(value); return *this;}
+    inline ActionState& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the action.</p>
@@ -85,13 +90,13 @@ namespace Model
     inline void SetCurrentRevision(const ActionRevision& value) { m_currentRevisionHasBeenSet = true; m_currentRevision = value; }
 
     
-    inline void SetCurrentRevision(ActionRevision&& value) { m_currentRevisionHasBeenSet = true; m_currentRevision = value; }
+    inline void SetCurrentRevision(ActionRevision&& value) { m_currentRevisionHasBeenSet = true; m_currentRevision = std::move(value); }
 
     
     inline ActionState& WithCurrentRevision(const ActionRevision& value) { SetCurrentRevision(value); return *this;}
 
     
-    inline ActionState& WithCurrentRevision(ActionRevision&& value) { SetCurrentRevision(value); return *this;}
+    inline ActionState& WithCurrentRevision(ActionRevision&& value) { SetCurrentRevision(std::move(value)); return *this;}
 
     
     inline const ActionExecution& GetLatestExecution() const{ return m_latestExecution; }
@@ -100,13 +105,13 @@ namespace Model
     inline void SetLatestExecution(const ActionExecution& value) { m_latestExecutionHasBeenSet = true; m_latestExecution = value; }
 
     
-    inline void SetLatestExecution(ActionExecution&& value) { m_latestExecutionHasBeenSet = true; m_latestExecution = value; }
+    inline void SetLatestExecution(ActionExecution&& value) { m_latestExecutionHasBeenSet = true; m_latestExecution = std::move(value); }
 
     
     inline ActionState& WithLatestExecution(const ActionExecution& value) { SetLatestExecution(value); return *this;}
 
     
-    inline ActionState& WithLatestExecution(ActionExecution&& value) { SetLatestExecution(value); return *this;}
+    inline ActionState& WithLatestExecution(ActionExecution&& value) { SetLatestExecution(std::move(value)); return *this;}
 
     /**
      * <p>A URL link for more information about the state of the action, such as a
@@ -124,7 +129,7 @@ namespace Model
      * <p>A URL link for more information about the state of the action, such as a
      * deployment group details page.</p>
      */
-    inline void SetEntityUrl(Aws::String&& value) { m_entityUrlHasBeenSet = true; m_entityUrl = value; }
+    inline void SetEntityUrl(Aws::String&& value) { m_entityUrlHasBeenSet = true; m_entityUrl = std::move(value); }
 
     /**
      * <p>A URL link for more information about the state of the action, such as a
@@ -142,7 +147,7 @@ namespace Model
      * <p>A URL link for more information about the state of the action, such as a
      * deployment group details page.</p>
      */
-    inline ActionState& WithEntityUrl(Aws::String&& value) { SetEntityUrl(value); return *this;}
+    inline ActionState& WithEntityUrl(Aws::String&& value) { SetEntityUrl(std::move(value)); return *this;}
 
     /**
      * <p>A URL link for more information about the state of the action, such as a
@@ -166,7 +171,7 @@ namespace Model
      * <p>A URL link for more information about the revision, such as a commit details
      * page.</p>
      */
-    inline void SetRevisionUrl(Aws::String&& value) { m_revisionUrlHasBeenSet = true; m_revisionUrl = value; }
+    inline void SetRevisionUrl(Aws::String&& value) { m_revisionUrlHasBeenSet = true; m_revisionUrl = std::move(value); }
 
     /**
      * <p>A URL link for more information about the revision, such as a commit details
@@ -184,7 +189,7 @@ namespace Model
      * <p>A URL link for more information about the revision, such as a commit details
      * page.</p>
      */
-    inline ActionState& WithRevisionUrl(Aws::String&& value) { SetRevisionUrl(value); return *this;}
+    inline ActionState& WithRevisionUrl(Aws::String&& value) { SetRevisionUrl(std::move(value)); return *this;}
 
     /**
      * <p>A URL link for more information about the revision, such as a commit details

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/elasticache/model/Endpoint.h>
+#include <utility>
 
 namespace Aws
 {
@@ -41,27 +43,33 @@ namespace Model
    * <code>cache.t2.micro</code>, <code>cache.t2.small</code>,
    * <code>cache.t2.medium</code>, <code>cache.m3.medium</code>,
    * <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>,
-   * <code>cache.m3.2xlarge</code> </p> </li> <li> <p>Previous generation:
-   * <code>cache.t1.micro</code>, <code>cache.m1.small</code>,
-   * <code>cache.m1.medium</code>, <code>cache.m1.large</code>,
-   * <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized:
-   * <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li>
-   * <p>Current generation: <code>cache.r3.large</code>,
-   * <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>,
-   * <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li>
-   * <p>Previous generation: <code>cache.m2.xlarge</code>,
-   * <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul>
-   * </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All t2 instances are created in
-   * an Amazon Virtual Private Cloud (VPC).</p> </li> <li> <p>Redis backup/restore is
-   * not supported for t2 instances.</p> </li> <li> <p>Redis Append-only files (AOF)
-   * functionality is not supported for t1 or t2 instances.</p> </li> </ul> <p>For a
-   * complete listing of cache node types and specifications, see <a
-   * href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product
-   * Features and Details</a> and either <a
-   * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#CacheParameterGroups.Memcached.NodeSpecific">Cache
+   * <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>,
+   * <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>,
+   * <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li>
+   * <p>Previous generation: <code>cache.t1.micro</code>,
+   * <code>cache.m1.small</code>, <code>cache.m1.medium</code>,
+   * <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li>
+   * <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li>
+   * <p>Memory optimized:</p> <ul> <li> <p>Current generation:
+   * <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>,
+   * <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>,
+   * <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation:
+   * <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>,
+   * <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b>
+   * </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private
+   * Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for
+   * Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported
+   * on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis
+   * Append-only files (AOF) functionality is not supported for T1 or T2
+   * instances.</p> </li> </ul> <p>For a complete listing of node types and
+   * specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon
+   * ElastiCache Product Features and Details</a> and either <a
+   * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache
    * Node Type-Specific Parameters for Memcached</a> or <a
-   * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#CacheParameterGroups.Redis.NodeSpecific">Cache
-   * Node Type-Specific Parameters for Redis</a>.</p>
+   * href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache
+   * Node Type-Specific Parameters for Redis</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheNode">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheNode
   {
@@ -92,7 +100,7 @@ namespace Model
      * etc.). The combination of cluster ID and node ID uniquely identifies every cache
      * node used in a customer's AWS account.</p>
      */
-    inline void SetCacheNodeId(Aws::String&& value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId = value; }
+    inline void SetCacheNodeId(Aws::String&& value) { m_cacheNodeIdHasBeenSet = true; m_cacheNodeId = std::move(value); }
 
     /**
      * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
@@ -113,7 +121,7 @@ namespace Model
      * etc.). The combination of cluster ID and node ID uniquely identifies every cache
      * node used in a customer's AWS account.</p>
      */
-    inline CacheNode& WithCacheNodeId(Aws::String&& value) { SetCacheNodeId(value); return *this;}
+    inline CacheNode& WithCacheNodeId(Aws::String&& value) { SetCacheNodeId(std::move(value)); return *this;}
 
     /**
      * <p>The cache node identifier. A node ID is a numeric identifier (0001, 0002,
@@ -135,7 +143,7 @@ namespace Model
     /**
      * <p>The current state of this cache node.</p>
      */
-    inline void SetCacheNodeStatus(Aws::String&& value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus = value; }
+    inline void SetCacheNodeStatus(Aws::String&& value) { m_cacheNodeStatusHasBeenSet = true; m_cacheNodeStatus = std::move(value); }
 
     /**
      * <p>The current state of this cache node.</p>
@@ -150,7 +158,7 @@ namespace Model
     /**
      * <p>The current state of this cache node.</p>
      */
-    inline CacheNode& WithCacheNodeStatus(Aws::String&& value) { SetCacheNodeStatus(value); return *this;}
+    inline CacheNode& WithCacheNodeStatus(Aws::String&& value) { SetCacheNodeStatus(std::move(value)); return *this;}
 
     /**
      * <p>The current state of this cache node.</p>
@@ -170,7 +178,7 @@ namespace Model
     /**
      * <p>The date and time when the cache node was created.</p>
      */
-    inline void SetCacheNodeCreateTime(Aws::Utils::DateTime&& value) { m_cacheNodeCreateTimeHasBeenSet = true; m_cacheNodeCreateTime = value; }
+    inline void SetCacheNodeCreateTime(Aws::Utils::DateTime&& value) { m_cacheNodeCreateTimeHasBeenSet = true; m_cacheNodeCreateTime = std::move(value); }
 
     /**
      * <p>The date and time when the cache node was created.</p>
@@ -180,7 +188,7 @@ namespace Model
     /**
      * <p>The date and time when the cache node was created.</p>
      */
-    inline CacheNode& WithCacheNodeCreateTime(Aws::Utils::DateTime&& value) { SetCacheNodeCreateTime(value); return *this;}
+    inline CacheNode& WithCacheNodeCreateTime(Aws::Utils::DateTime&& value) { SetCacheNodeCreateTime(std::move(value)); return *this;}
 
     /**
      * <p>The hostname for connecting to this cache node.</p>
@@ -195,7 +203,7 @@ namespace Model
     /**
      * <p>The hostname for connecting to this cache node.</p>
      */
-    inline void SetEndpoint(Endpoint&& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
+    inline void SetEndpoint(Endpoint&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
 
     /**
      * <p>The hostname for connecting to this cache node.</p>
@@ -205,7 +213,7 @@ namespace Model
     /**
      * <p>The hostname for connecting to this cache node.</p>
      */
-    inline CacheNode& WithEndpoint(Endpoint&& value) { SetEndpoint(value); return *this;}
+    inline CacheNode& WithEndpoint(Endpoint&& value) { SetEndpoint(std::move(value)); return *this;}
 
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
@@ -220,7 +228,7 @@ namespace Model
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
      */
-    inline void SetParameterGroupStatus(Aws::String&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = value; }
+    inline void SetParameterGroupStatus(Aws::String&& value) { m_parameterGroupStatusHasBeenSet = true; m_parameterGroupStatus = std::move(value); }
 
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
@@ -235,7 +243,7 @@ namespace Model
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
      */
-    inline CacheNode& WithParameterGroupStatus(Aws::String&& value) { SetParameterGroupStatus(value); return *this;}
+    inline CacheNode& WithParameterGroupStatus(Aws::String&& value) { SetParameterGroupStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the parameter group applied to this cache node.</p>
@@ -244,49 +252,49 @@ namespace Model
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
     inline const Aws::String& GetSourceCacheNodeId() const{ return m_sourceCacheNodeId; }
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
     inline void SetSourceCacheNodeId(const Aws::String& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = value; }
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
-    inline void SetSourceCacheNodeId(Aws::String&& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = value; }
+    inline void SetSourceCacheNodeId(Aws::String&& value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId = std::move(value); }
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
     inline void SetSourceCacheNodeId(const char* value) { m_sourceCacheNodeIdHasBeenSet = true; m_sourceCacheNodeId.assign(value); }
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
     inline CacheNode& WithSourceCacheNodeId(const Aws::String& value) { SetSourceCacheNodeId(value); return *this;}
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
-    inline CacheNode& WithSourceCacheNodeId(Aws::String&& value) { SetSourceCacheNodeId(value); return *this;}
+    inline CacheNode& WithSourceCacheNodeId(Aws::String&& value) { SetSourceCacheNodeId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the primary node to which this read replica node is synchronized.
-     * If this field is empty, then this node is not associated with a primary cache
+     * If this field is empty, this node is not associated with a primary cache
      * cluster.</p>
      */
     inline CacheNode& WithSourceCacheNodeId(const char* value) { SetSourceCacheNodeId(value); return *this;}
@@ -304,7 +312,7 @@ namespace Model
     /**
      * <p>The Availability Zone where this node was created and now resides.</p>
      */
-    inline void SetCustomerAvailabilityZone(Aws::String&& value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone = value; }
+    inline void SetCustomerAvailabilityZone(Aws::String&& value) { m_customerAvailabilityZoneHasBeenSet = true; m_customerAvailabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone where this node was created and now resides.</p>
@@ -319,7 +327,7 @@ namespace Model
     /**
      * <p>The Availability Zone where this node was created and now resides.</p>
      */
-    inline CacheNode& WithCustomerAvailabilityZone(Aws::String&& value) { SetCustomerAvailabilityZone(value); return *this;}
+    inline CacheNode& WithCustomerAvailabilityZone(Aws::String&& value) { SetCustomerAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone where this node was created and now resides.</p>

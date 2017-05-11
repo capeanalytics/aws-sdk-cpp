@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/cloudformation/CloudFormationRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudformation/model/ResourceSignalStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>The input for the <a>SignalResource</a> action.</p>
+   * <p>The input for the <a>SignalResource</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SignalResourceInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API SignalResourceRequest : public CloudFormationRequest
   {
@@ -34,6 +38,11 @@ namespace Model
     SignalResourceRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The stack name or unique stack ID that includes the resource that you want to
      * signal.</p>
@@ -50,7 +59,7 @@ namespace Model
      * <p>The stack name or unique stack ID that includes the resource that you want to
      * signal.</p>
      */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
+    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
 
     /**
      * <p>The stack name or unique stack ID that includes the resource that you want to
@@ -68,7 +77,7 @@ namespace Model
      * <p>The stack name or unique stack ID that includes the resource that you want to
      * signal.</p>
      */
-    inline SignalResourceRequest& WithStackName(Aws::String&& value) { SetStackName(value); return *this;}
+    inline SignalResourceRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
 
     /**
      * <p>The stack name or unique stack ID that includes the resource that you want to
@@ -92,7 +101,7 @@ namespace Model
      * <p>The logical ID of the resource that you want to signal. The logical ID is the
      * name of the resource that given in the template.</p>
      */
-    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
+    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
 
     /**
      * <p>The logical ID of the resource that you want to signal. The logical ID is the
@@ -110,7 +119,7 @@ namespace Model
      * <p>The logical ID of the resource that you want to signal. The logical ID is the
      * name of the resource that given in the template.</p>
      */
-    inline SignalResourceRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(value); return *this;}
+    inline SignalResourceRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The logical ID of the resource that you want to signal. The logical ID is the
@@ -140,7 +149,7 @@ namespace Model
      * If you send multiple signals to a single resource (such as signaling a wait
      * condition), each signal requires a different unique ID.</p>
      */
-    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = value; }
+    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::move(value); }
 
     /**
      * <p>A unique ID of the signal. When you signal Amazon EC2 instances or Auto
@@ -164,7 +173,7 @@ namespace Model
      * If you send multiple signals to a single resource (such as signaling a wait
      * condition), each signal requires a different unique ID.</p>
      */
-    inline SignalResourceRequest& WithUniqueId(Aws::String&& value) { SetUniqueId(value); return *this;}
+    inline SignalResourceRequest& WithUniqueId(Aws::String&& value) { SetUniqueId(std::move(value)); return *this;}
 
     /**
      * <p>A unique ID of the signal. When you signal Amazon EC2 instances or Auto
@@ -193,7 +202,7 @@ namespace Model
      * signal causes AWS CloudFormation to immediately fail the stack creation or
      * update.</p>
      */
-    inline void SetStatus(ResourceSignalStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(ResourceSignalStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the signal, which is either success or failure. A failure
@@ -207,7 +216,7 @@ namespace Model
      * signal causes AWS CloudFormation to immediately fail the stack creation or
      * update.</p>
      */
-    inline SignalResourceRequest& WithStatus(ResourceSignalStatus&& value) { SetStatus(value); return *this;}
+    inline SignalResourceRequest& WithStatus(ResourceSignalStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     Aws::String m_stackName;

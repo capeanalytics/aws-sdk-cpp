@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/route53/model/ResourceTagSet.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -30,6 +31,7 @@ namespace Model
 {
 
 ResourceTagSet::ResourceTagSet() : 
+    m_resourceType(TagResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
     m_tagsHasBeenSet(false)
@@ -37,6 +39,7 @@ ResourceTagSet::ResourceTagSet() :
 }
 
 ResourceTagSet::ResourceTagSet(const XmlNode& xmlNode) : 
+    m_resourceType(TagResourceType::NOT_SET),
     m_resourceTypeHasBeenSet(false),
     m_resourceIdHasBeenSet(false),
     m_tagsHasBeenSet(false)

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/sdb/SimpleDBRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sdb/model/DeletableItem.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,11 @@ namespace Model
     BatchDeleteAttributesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * The name of the domain in which the attributes are being deleted.
      */
@@ -47,7 +54,7 @@ namespace Model
     /**
      * The name of the domain in which the attributes are being deleted.
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * The name of the domain in which the attributes are being deleted.
@@ -62,7 +69,7 @@ namespace Model
     /**
      * The name of the domain in which the attributes are being deleted.
      */
-    inline BatchDeleteAttributesRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline BatchDeleteAttributesRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * The name of the domain in which the attributes are being deleted.
@@ -82,7 +89,7 @@ namespace Model
     /**
      * A list of items on which to perform the operation.
      */
-    inline void SetItems(Aws::Vector<DeletableItem>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<DeletableItem>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * A list of items on which to perform the operation.
@@ -92,7 +99,7 @@ namespace Model
     /**
      * A list of items on which to perform the operation.
      */
-    inline BatchDeleteAttributesRequest& WithItems(Aws::Vector<DeletableItem>&& value) { SetItems(value); return *this;}
+    inline BatchDeleteAttributesRequest& WithItems(Aws::Vector<DeletableItem>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * A list of items on which to perform the operation.
@@ -102,7 +109,7 @@ namespace Model
     /**
      * A list of items on which to perform the operation.
      */
-    inline BatchDeleteAttributesRequest& AddItems(DeletableItem&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline BatchDeleteAttributesRequest& AddItems(DeletableItem&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_domainName;

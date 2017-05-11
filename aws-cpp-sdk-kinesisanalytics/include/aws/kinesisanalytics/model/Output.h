@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/KinesisStreamsOutput.h>
 #include <aws/kinesisanalytics/model/KinesisFirehoseOutput.h>
 #include <aws/kinesisanalytics/model/DestinationSchema.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,10 @@ namespace Model
    * in-application stream and a destination where you want the in-application stream
    * data to be written. The destination can be an Amazon Kinesis stream or an Amazon
    * Kinesis Firehose delivery stream. </p> <p/> <p>You can configure your
-   * application to write output to up to five destinations.</p>
+   * application to write output to up to five destinations.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/Output">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API Output
   {
@@ -61,7 +66,7 @@ namespace Model
     /**
      * <p>Name of the in-application stream.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>Name of the in-application stream.</p>
@@ -76,7 +81,7 @@ namespace Model
     /**
      * <p>Name of the in-application stream.</p>
      */
-    inline Output& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Output& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the in-application stream.</p>
@@ -96,7 +101,7 @@ namespace Model
     /**
      * <p>Identifies an Amazon Kinesis stream as the destination.</p>
      */
-    inline void SetKinesisStreamsOutput(KinesisStreamsOutput&& value) { m_kinesisStreamsOutputHasBeenSet = true; m_kinesisStreamsOutput = value; }
+    inline void SetKinesisStreamsOutput(KinesisStreamsOutput&& value) { m_kinesisStreamsOutputHasBeenSet = true; m_kinesisStreamsOutput = std::move(value); }
 
     /**
      * <p>Identifies an Amazon Kinesis stream as the destination.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>Identifies an Amazon Kinesis stream as the destination.</p>
      */
-    inline Output& WithKinesisStreamsOutput(KinesisStreamsOutput&& value) { SetKinesisStreamsOutput(value); return *this;}
+    inline Output& WithKinesisStreamsOutput(KinesisStreamsOutput&& value) { SetKinesisStreamsOutput(std::move(value)); return *this;}
 
     /**
      * <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
@@ -121,7 +126,7 @@ namespace Model
     /**
      * <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
      */
-    inline void SetKinesisFirehoseOutput(KinesisFirehoseOutput&& value) { m_kinesisFirehoseOutputHasBeenSet = true; m_kinesisFirehoseOutput = value; }
+    inline void SetKinesisFirehoseOutput(KinesisFirehoseOutput&& value) { m_kinesisFirehoseOutputHasBeenSet = true; m_kinesisFirehoseOutput = std::move(value); }
 
     /**
      * <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
@@ -131,7 +136,7 @@ namespace Model
     /**
      * <p>Identifies an Amazon Kinesis Firehose delivery stream as the destination.</p>
      */
-    inline Output& WithKinesisFirehoseOutput(KinesisFirehoseOutput&& value) { SetKinesisFirehoseOutput(value); return *this;}
+    inline Output& WithKinesisFirehoseOutput(KinesisFirehoseOutput&& value) { SetKinesisFirehoseOutput(std::move(value)); return *this;}
 
     
     inline const DestinationSchema& GetDestinationSchema() const{ return m_destinationSchema; }
@@ -140,13 +145,13 @@ namespace Model
     inline void SetDestinationSchema(const DestinationSchema& value) { m_destinationSchemaHasBeenSet = true; m_destinationSchema = value; }
 
     
-    inline void SetDestinationSchema(DestinationSchema&& value) { m_destinationSchemaHasBeenSet = true; m_destinationSchema = value; }
+    inline void SetDestinationSchema(DestinationSchema&& value) { m_destinationSchemaHasBeenSet = true; m_destinationSchema = std::move(value); }
 
     
     inline Output& WithDestinationSchema(const DestinationSchema& value) { SetDestinationSchema(value); return *this;}
 
     
-    inline Output& WithDestinationSchema(DestinationSchema&& value) { SetDestinationSchema(value); return *this;}
+    inline Output& WithDestinationSchema(DestinationSchema&& value) { SetDestinationSchema(std::move(value)); return *this;}
 
   private:
     Aws::String m_name;

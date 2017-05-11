@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/sdb/model/ReplaceableAttribute.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -89,7 +90,7 @@ void ReplaceableAttribute::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_replaceHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Replace=" << m_replace << "&";
+      oStream << location << index << locationValue << ".Replace=" << std::boolalpha << m_replace << "&";
   }
 
 }
@@ -106,7 +107,7 @@ void ReplaceableAttribute::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_replaceHasBeenSet)
   {
-      oStream << location << ".Replace=" << m_replace << "&";
+      oStream << location << ".Replace=" << std::boolalpha << m_replace << "&";
   }
 }
 

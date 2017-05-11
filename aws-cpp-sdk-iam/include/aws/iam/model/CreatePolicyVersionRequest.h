@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/iam/IAMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     CreatePolicyVersionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a
      * new version.</p> <p>For more information about ARNs, see <a
@@ -57,7 +64,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = value; }
+    inline void SetPolicyArn(Aws::String&& value) { m_policyArnHasBeenSet = true; m_policyArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a
@@ -84,7 +91,7 @@ namespace Model
      * Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General
      * Reference</i>.</p>
      */
-    inline CreatePolicyVersionRequest& WithPolicyArn(Aws::String&& value) { SetPolicyArn(value); return *this;}
+    inline CreatePolicyVersionRequest& WithPolicyArn(Aws::String&& value) { SetPolicyArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a
@@ -98,77 +105,84 @@ namespace Model
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline const Aws::String& GetPolicyDocument() const{ return m_policyDocument; }
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline void SetPolicyDocument(const Aws::String& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = value; }
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
-    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = value; }
+    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = std::move(value); }
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline void SetPolicyDocument(const char* value) { m_policyDocumentHasBeenSet = true; m_policyDocument.assign(value); }
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline CreatePolicyVersionRequest& WithPolicyDocument(const Aws::String& value) { SetPolicyDocument(value); return *this;}
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
-    inline CreatePolicyVersionRequest& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(value); return *this;}
+    inline CreatePolicyVersionRequest& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(std::move(value)); return *this;}
 
     /**
      * <p>The JSON policy document that you want to use as the content for this new
      * version of the policy.</p> <p>The <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a
-     * string of characters consisting of any printable ASCII character ranging from
-     * the space character (\u0020) through end of the ASCII character range (\u00FF).
-     * It also includes the special characters tab (\u0009), line feed (\u000A), and
-     * carriage return (\u000D).</p>
+     * href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this
+     * parameter is a string of characters consisting of any printable ASCII character
+     * ranging from the space character (\u0020) through end of the ASCII character
+     * range as well as the printable characters in the Basic Latin and Latin-1
+     * Supplement character set (through \u00FF). It also includes the special
+     * characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
      */
     inline CreatePolicyVersionRequest& WithPolicyDocument(const char* value) { SetPolicyDocument(value); return *this;}
 

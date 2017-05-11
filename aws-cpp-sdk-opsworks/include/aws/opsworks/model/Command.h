@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a command.</p>
+   * <p>Describes a command.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/Command">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API Command
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The command ID.</p>
      */
-    inline void SetCommandId(Aws::String&& value) { m_commandIdHasBeenSet = true; m_commandId = value; }
+    inline void SetCommandId(Aws::String&& value) { m_commandIdHasBeenSet = true; m_commandId = std::move(value); }
 
     /**
      * <p>The command ID.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The command ID.</p>
      */
-    inline Command& WithCommandId(Aws::String&& value) { SetCommandId(value); return *this;}
+    inline Command& WithCommandId(Aws::String&& value) { SetCommandId(std::move(value)); return *this;}
 
     /**
      * <p>The command ID.</p>
@@ -89,7 +93,7 @@ namespace Model
     /**
      * <p>The ID of the instance where the command was executed.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance where the command was executed.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>The ID of the instance where the command was executed.</p>
      */
-    inline Command& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline Command& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance where the command was executed.</p>
@@ -124,7 +128,7 @@ namespace Model
     /**
      * <p>The command deployment ID.</p>
      */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = value; }
+    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::move(value); }
 
     /**
      * <p>The command deployment ID.</p>
@@ -139,7 +143,7 @@ namespace Model
     /**
      * <p>The command deployment ID.</p>
      */
-    inline Command& WithDeploymentId(Aws::String&& value) { SetDeploymentId(value); return *this;}
+    inline Command& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
 
     /**
      * <p>The command deployment ID.</p>
@@ -159,7 +163,7 @@ namespace Model
     /**
      * <p>Date and time when the command was run.</p>
      */
-    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
+    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
 
     /**
      * <p>Date and time when the command was run.</p>
@@ -174,7 +178,7 @@ namespace Model
     /**
      * <p>Date and time when the command was run.</p>
      */
-    inline Command& WithCreatedAt(Aws::String&& value) { SetCreatedAt(value); return *this;}
+    inline Command& WithCreatedAt(Aws::String&& value) { SetCreatedAt(std::move(value)); return *this;}
 
     /**
      * <p>Date and time when the command was run.</p>
@@ -194,7 +198,7 @@ namespace Model
     /**
      * <p>Date and time when the command was acknowledged.</p>
      */
-    inline void SetAcknowledgedAt(Aws::String&& value) { m_acknowledgedAtHasBeenSet = true; m_acknowledgedAt = value; }
+    inline void SetAcknowledgedAt(Aws::String&& value) { m_acknowledgedAtHasBeenSet = true; m_acknowledgedAt = std::move(value); }
 
     /**
      * <p>Date and time when the command was acknowledged.</p>
@@ -209,7 +213,7 @@ namespace Model
     /**
      * <p>Date and time when the command was acknowledged.</p>
      */
-    inline Command& WithAcknowledgedAt(Aws::String&& value) { SetAcknowledgedAt(value); return *this;}
+    inline Command& WithAcknowledgedAt(Aws::String&& value) { SetAcknowledgedAt(std::move(value)); return *this;}
 
     /**
      * <p>Date and time when the command was acknowledged.</p>
@@ -229,7 +233,7 @@ namespace Model
     /**
      * <p>Date when the command completed.</p>
      */
-    inline void SetCompletedAt(Aws::String&& value) { m_completedAtHasBeenSet = true; m_completedAt = value; }
+    inline void SetCompletedAt(Aws::String&& value) { m_completedAtHasBeenSet = true; m_completedAt = std::move(value); }
 
     /**
      * <p>Date when the command completed.</p>
@@ -244,7 +248,7 @@ namespace Model
     /**
      * <p>Date when the command completed.</p>
      */
-    inline Command& WithCompletedAt(Aws::String&& value) { SetCompletedAt(value); return *this;}
+    inline Command& WithCompletedAt(Aws::String&& value) { SetCompletedAt(std::move(value)); return *this;}
 
     /**
      * <p>Date when the command completed.</p>
@@ -267,7 +271,7 @@ namespace Model
      * <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p>
      * </li> <li> <p>skipped</p> </li> <li> <p>pending</p> </li> </ul>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p>
@@ -285,7 +289,7 @@ namespace Model
      * <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p>
      * </li> <li> <p>skipped</p> </li> <li> <p>pending</p> </li> </ul>
      */
-    inline Command& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline Command& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p>
@@ -321,7 +325,7 @@ namespace Model
     /**
      * <p>The URL of the command log.</p>
      */
-    inline void SetLogUrl(Aws::String&& value) { m_logUrlHasBeenSet = true; m_logUrl = value; }
+    inline void SetLogUrl(Aws::String&& value) { m_logUrlHasBeenSet = true; m_logUrl = std::move(value); }
 
     /**
      * <p>The URL of the command log.</p>
@@ -336,7 +340,7 @@ namespace Model
     /**
      * <p>The URL of the command log.</p>
      */
-    inline Command& WithLogUrl(Aws::String&& value) { SetLogUrl(value); return *this;}
+    inline Command& WithLogUrl(Aws::String&& value) { SetLogUrl(std::move(value)); return *this;}
 
     /**
      * <p>The URL of the command log.</p>
@@ -374,7 +378,7 @@ namespace Model
      * <code>update_custom_cookbooks</code> </p> </li> <li> <p>
      * <code>execute_recipes</code> </p> </li> </ul>
      */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The command type:</p> <ul> <li> <p> <code>deploy</code> </p> </li> <li> <p>
@@ -407,7 +411,7 @@ namespace Model
      * <code>update_custom_cookbooks</code> </p> </li> <li> <p>
      * <code>execute_recipes</code> </p> </li> </ul>
      */
-    inline Command& WithType(Aws::String&& value) { SetType(value); return *this;}
+    inline Command& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The command type:</p> <ul> <li> <p> <code>deploy</code> </p> </li> <li> <p>

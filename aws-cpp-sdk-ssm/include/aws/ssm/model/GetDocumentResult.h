@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ssm/model/DocumentType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -52,7 +55,7 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline void SetName(Aws::String&& value) { m_name = value; }
+    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
 
     /**
      * <p>The name of the SSM document.</p>
@@ -67,12 +70,47 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline GetDocumentResult& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline GetDocumentResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the SSM document.</p>
      */
     inline GetDocumentResult& WithName(const char* value) { SetName(value); return *this;}
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline const Aws::String& GetDocumentVersion() const{ return m_documentVersion; }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(const Aws::String& value) { m_documentVersion = value; }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(Aws::String&& value) { m_documentVersion = std::move(value); }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(const char* value) { m_documentVersion.assign(value); }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline GetDocumentResult& WithDocumentVersion(const Aws::String& value) { SetDocumentVersion(value); return *this;}
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline GetDocumentResult& WithDocumentVersion(Aws::String&& value) { SetDocumentVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline GetDocumentResult& WithDocumentVersion(const char* value) { SetDocumentVersion(value); return *this;}
 
     /**
      * <p>The contents of the SSM document.</p>
@@ -87,7 +125,7 @@ namespace Model
     /**
      * <p>The contents of the SSM document.</p>
      */
-    inline void SetContent(Aws::String&& value) { m_content = value; }
+    inline void SetContent(Aws::String&& value) { m_content = std::move(value); }
 
     /**
      * <p>The contents of the SSM document.</p>
@@ -102,16 +140,43 @@ namespace Model
     /**
      * <p>The contents of the SSM document.</p>
      */
-    inline GetDocumentResult& WithContent(Aws::String&& value) { SetContent(value); return *this;}
+    inline GetDocumentResult& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
 
     /**
      * <p>The contents of the SSM document.</p>
      */
     inline GetDocumentResult& WithContent(const char* value) { SetContent(value); return *this;}
 
+    /**
+     * <p>The document type.</p>
+     */
+    inline const DocumentType& GetDocumentType() const{ return m_documentType; }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline void SetDocumentType(const DocumentType& value) { m_documentType = value; }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline void SetDocumentType(DocumentType&& value) { m_documentType = std::move(value); }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline GetDocumentResult& WithDocumentType(const DocumentType& value) { SetDocumentType(value); return *this;}
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline GetDocumentResult& WithDocumentType(DocumentType&& value) { SetDocumentType(std::move(value)); return *this;}
+
   private:
     Aws::String m_name;
+    Aws::String m_documentVersion;
     Aws::String m_content;
+    DocumentType m_documentType;
   };
 
 } // namespace Model

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/Attribute.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,13 +30,19 @@ namespace Model
 
 Attribute::Attribute() : 
     m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+    m_valueHasBeenSet(false),
+    m_targetType(TargetType::NOT_SET),
+    m_targetTypeHasBeenSet(false),
+    m_targetIdHasBeenSet(false)
 {
 }
 
 Attribute::Attribute(const JsonValue& jsonValue) : 
     m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+    m_valueHasBeenSet(false),
+    m_targetType(TargetType::NOT_SET),
+    m_targetTypeHasBeenSet(false),
+    m_targetIdHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -56,6 +63,20 @@ Attribute& Attribute::operator =(const JsonValue& jsonValue)
     m_valueHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("targetType"))
+  {
+    m_targetType = TargetTypeMapper::GetTargetTypeForName(jsonValue.GetString("targetType"));
+
+    m_targetTypeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("targetId"))
+  {
+    m_targetId = jsonValue.GetString("targetId");
+
+    m_targetIdHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -72,6 +93,17 @@ JsonValue Attribute::Jsonize() const
   if(m_valueHasBeenSet)
   {
    payload.WithString("value", m_value);
+
+  }
+
+  if(m_targetTypeHasBeenSet)
+  {
+   payload.WithString("targetType", TargetTypeMapper::GetNameForTargetType(m_targetType));
+  }
+
+  if(m_targetIdHasBeenSet)
+  {
+   payload.WithString("targetId", m_targetId);
 
   }
 

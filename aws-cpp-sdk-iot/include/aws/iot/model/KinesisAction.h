@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes an action to write data to an Amazon Kinesis stream.</p>
+   * <p>Describes an action to write data to an Amazon Kinesis stream.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/KinesisAction">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API KinesisAction
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
      */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
+    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
 
     /**
      * <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
      */
-    inline KinesisAction& WithRoleArn(Aws::String&& value) { SetRoleArn(value); return *this;}
+    inline KinesisAction& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
 
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
      */
-    inline KinesisAction& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline KinesisAction& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Amazon Kinesis stream.</p>
@@ -124,7 +129,7 @@ namespace Model
     /**
      * <p>The partition key.</p>
      */
-    inline void SetPartitionKey(Aws::String&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = value; }
+    inline void SetPartitionKey(Aws::String&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = std::move(value); }
 
     /**
      * <p>The partition key.</p>
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>The partition key.</p>
      */
-    inline KinesisAction& WithPartitionKey(Aws::String&& value) { SetPartitionKey(value); return *this;}
+    inline KinesisAction& WithPartitionKey(Aws::String&& value) { SetPartitionKey(std::move(value)); return *this;}
 
     /**
      * <p>The partition key.</p>

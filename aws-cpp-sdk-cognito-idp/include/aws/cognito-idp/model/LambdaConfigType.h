@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the type of configuration for AWS Lambda triggers.</p>
+   * <p>Specifies the type of configuration for AWS Lambda triggers.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/LambdaConfigType">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API LambdaConfigType
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>A pre-registration AWS Lambda trigger.</p>
      */
-    inline void SetPreSignUp(Aws::String&& value) { m_preSignUpHasBeenSet = true; m_preSignUp = value; }
+    inline void SetPreSignUp(Aws::String&& value) { m_preSignUpHasBeenSet = true; m_preSignUp = std::move(value); }
 
     /**
      * <p>A pre-registration AWS Lambda trigger.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>A pre-registration AWS Lambda trigger.</p>
      */
-    inline LambdaConfigType& WithPreSignUp(Aws::String&& value) { SetPreSignUp(value); return *this;}
+    inline LambdaConfigType& WithPreSignUp(Aws::String&& value) { SetPreSignUp(std::move(value)); return *this;}
 
     /**
      * <p>A pre-registration AWS Lambda trigger.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>A custom Message AWS Lambda trigger.</p>
      */
-    inline void SetCustomMessage(Aws::String&& value) { m_customMessageHasBeenSet = true; m_customMessage = value; }
+    inline void SetCustomMessage(Aws::String&& value) { m_customMessageHasBeenSet = true; m_customMessage = std::move(value); }
 
     /**
      * <p>A custom Message AWS Lambda trigger.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>A custom Message AWS Lambda trigger.</p>
      */
-    inline LambdaConfigType& WithCustomMessage(Aws::String&& value) { SetCustomMessage(value); return *this;}
+    inline LambdaConfigType& WithCustomMessage(Aws::String&& value) { SetCustomMessage(std::move(value)); return *this;}
 
     /**
      * <p>A custom Message AWS Lambda trigger.</p>
@@ -124,7 +129,7 @@ namespace Model
     /**
      * <p>A post-confirmation AWS Lambda trigger.</p>
      */
-    inline void SetPostConfirmation(Aws::String&& value) { m_postConfirmationHasBeenSet = true; m_postConfirmation = value; }
+    inline void SetPostConfirmation(Aws::String&& value) { m_postConfirmationHasBeenSet = true; m_postConfirmation = std::move(value); }
 
     /**
      * <p>A post-confirmation AWS Lambda trigger.</p>
@@ -139,7 +144,7 @@ namespace Model
     /**
      * <p>A post-confirmation AWS Lambda trigger.</p>
      */
-    inline LambdaConfigType& WithPostConfirmation(Aws::String&& value) { SetPostConfirmation(value); return *this;}
+    inline LambdaConfigType& WithPostConfirmation(Aws::String&& value) { SetPostConfirmation(std::move(value)); return *this;}
 
     /**
      * <p>A post-confirmation AWS Lambda trigger.</p>
@@ -159,7 +164,7 @@ namespace Model
     /**
      * <p>A pre-authentication AWS Lambda trigger.</p>
      */
-    inline void SetPreAuthentication(Aws::String&& value) { m_preAuthenticationHasBeenSet = true; m_preAuthentication = value; }
+    inline void SetPreAuthentication(Aws::String&& value) { m_preAuthenticationHasBeenSet = true; m_preAuthentication = std::move(value); }
 
     /**
      * <p>A pre-authentication AWS Lambda trigger.</p>
@@ -174,7 +179,7 @@ namespace Model
     /**
      * <p>A pre-authentication AWS Lambda trigger.</p>
      */
-    inline LambdaConfigType& WithPreAuthentication(Aws::String&& value) { SetPreAuthentication(value); return *this;}
+    inline LambdaConfigType& WithPreAuthentication(Aws::String&& value) { SetPreAuthentication(std::move(value)); return *this;}
 
     /**
      * <p>A pre-authentication AWS Lambda trigger.</p>
@@ -194,7 +199,7 @@ namespace Model
     /**
      * <p>A post-authentication AWS Lambda trigger.</p>
      */
-    inline void SetPostAuthentication(Aws::String&& value) { m_postAuthenticationHasBeenSet = true; m_postAuthentication = value; }
+    inline void SetPostAuthentication(Aws::String&& value) { m_postAuthenticationHasBeenSet = true; m_postAuthentication = std::move(value); }
 
     /**
      * <p>A post-authentication AWS Lambda trigger.</p>
@@ -209,7 +214,7 @@ namespace Model
     /**
      * <p>A post-authentication AWS Lambda trigger.</p>
      */
-    inline LambdaConfigType& WithPostAuthentication(Aws::String&& value) { SetPostAuthentication(value); return *this;}
+    inline LambdaConfigType& WithPostAuthentication(Aws::String&& value) { SetPostAuthentication(std::move(value)); return *this;}
 
     /**
      * <p>A post-authentication AWS Lambda trigger.</p>
@@ -229,7 +234,7 @@ namespace Model
     /**
      * <p>Defines the authentication challenge.</p>
      */
-    inline void SetDefineAuthChallenge(Aws::String&& value) { m_defineAuthChallengeHasBeenSet = true; m_defineAuthChallenge = value; }
+    inline void SetDefineAuthChallenge(Aws::String&& value) { m_defineAuthChallengeHasBeenSet = true; m_defineAuthChallenge = std::move(value); }
 
     /**
      * <p>Defines the authentication challenge.</p>
@@ -244,7 +249,7 @@ namespace Model
     /**
      * <p>Defines the authentication challenge.</p>
      */
-    inline LambdaConfigType& WithDefineAuthChallenge(Aws::String&& value) { SetDefineAuthChallenge(value); return *this;}
+    inline LambdaConfigType& WithDefineAuthChallenge(Aws::String&& value) { SetDefineAuthChallenge(std::move(value)); return *this;}
 
     /**
      * <p>Defines the authentication challenge.</p>
@@ -264,7 +269,7 @@ namespace Model
     /**
      * <p>Creates an authentication challenge.</p>
      */
-    inline void SetCreateAuthChallenge(Aws::String&& value) { m_createAuthChallengeHasBeenSet = true; m_createAuthChallenge = value; }
+    inline void SetCreateAuthChallenge(Aws::String&& value) { m_createAuthChallengeHasBeenSet = true; m_createAuthChallenge = std::move(value); }
 
     /**
      * <p>Creates an authentication challenge.</p>
@@ -279,7 +284,7 @@ namespace Model
     /**
      * <p>Creates an authentication challenge.</p>
      */
-    inline LambdaConfigType& WithCreateAuthChallenge(Aws::String&& value) { SetCreateAuthChallenge(value); return *this;}
+    inline LambdaConfigType& WithCreateAuthChallenge(Aws::String&& value) { SetCreateAuthChallenge(std::move(value)); return *this;}
 
     /**
      * <p>Creates an authentication challenge.</p>
@@ -299,7 +304,7 @@ namespace Model
     /**
      * <p>Verifies the authentication challenge response.</p>
      */
-    inline void SetVerifyAuthChallengeResponse(Aws::String&& value) { m_verifyAuthChallengeResponseHasBeenSet = true; m_verifyAuthChallengeResponse = value; }
+    inline void SetVerifyAuthChallengeResponse(Aws::String&& value) { m_verifyAuthChallengeResponseHasBeenSet = true; m_verifyAuthChallengeResponse = std::move(value); }
 
     /**
      * <p>Verifies the authentication challenge response.</p>
@@ -314,7 +319,7 @@ namespace Model
     /**
      * <p>Verifies the authentication challenge response.</p>
      */
-    inline LambdaConfigType& WithVerifyAuthChallengeResponse(Aws::String&& value) { SetVerifyAuthChallengeResponse(value); return *this;}
+    inline LambdaConfigType& WithVerifyAuthChallengeResponse(Aws::String&& value) { SetVerifyAuthChallengeResponse(std::move(value)); return *this;}
 
     /**
      * <p>Verifies the authentication challenge response.</p>

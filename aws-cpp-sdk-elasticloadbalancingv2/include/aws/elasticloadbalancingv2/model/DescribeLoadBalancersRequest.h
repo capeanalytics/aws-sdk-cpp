@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeLoadBalancers.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API DescribeLoadBalancersRequest : public ElasticLoadBalancingv2Request
   {
@@ -34,43 +35,56 @@ namespace Model
     DescribeLoadBalancersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
     inline const Aws::Vector<Aws::String>& GetLoadBalancerArns() const{ return m_loadBalancerArns; }
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
     inline void SetLoadBalancerArns(const Aws::Vector<Aws::String>& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns = value; }
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
-    inline void SetLoadBalancerArns(Aws::Vector<Aws::String>&& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns = value; }
+    inline void SetLoadBalancerArns(Aws::Vector<Aws::String>&& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
     inline DescribeLoadBalancersRequest& WithLoadBalancerArns(const Aws::Vector<Aws::String>& value) { SetLoadBalancerArns(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
-    inline DescribeLoadBalancersRequest& WithLoadBalancerArns(Aws::Vector<Aws::String>&& value) { SetLoadBalancerArns(value); return *this;}
+    inline DescribeLoadBalancersRequest& WithLoadBalancerArns(Aws::Vector<Aws::String>&& value) { SetLoadBalancerArns(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
     inline DescribeLoadBalancersRequest& AddLoadBalancerArns(const Aws::String& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns.push_back(value); return *this; }
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
-    inline DescribeLoadBalancersRequest& AddLoadBalancerArns(Aws::String&& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns.push_back(value); return *this; }
+    inline DescribeLoadBalancersRequest& AddLoadBalancerArns(Aws::String&& value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>The Amazon Resource Names (ARN) of the load balancers.</p>
+     * <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to
+     * 20 load balancers in a single call.</p>
      */
     inline DescribeLoadBalancersRequest& AddLoadBalancerArns(const char* value) { m_loadBalancerArnsHasBeenSet = true; m_loadBalancerArns.push_back(value); return *this; }
 
@@ -87,7 +101,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = value; }
+    inline void SetNames(Aws::Vector<Aws::String>&& value) { m_namesHasBeenSet = true; m_names = std::move(value); }
 
     /**
      * <p>The names of the load balancers.</p>
@@ -97,7 +111,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline DescribeLoadBalancersRequest& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(value); return *this;}
+    inline DescribeLoadBalancersRequest& WithNames(Aws::Vector<Aws::String>&& value) { SetNames(std::move(value)); return *this;}
 
     /**
      * <p>The names of the load balancers.</p>
@@ -107,7 +121,7 @@ namespace Model
     /**
      * <p>The names of the load balancers.</p>
      */
-    inline DescribeLoadBalancersRequest& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(value); return *this; }
+    inline DescribeLoadBalancersRequest& AddNames(Aws::String&& value) { m_namesHasBeenSet = true; m_names.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of the load balancers.</p>
@@ -130,7 +144,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a
@@ -148,7 +162,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline DescribeLoadBalancersRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeLoadBalancersRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a

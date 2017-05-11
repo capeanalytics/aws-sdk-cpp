@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/support/SupportRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorCheckResultRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API DescribeTrustedAdvisorCheckResultRequest : public SupportRequest
   {
@@ -34,6 +38,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
      */
-    inline void SetCheckId(Aws::String&& value) { m_checkIdHasBeenSet = true; m_checkId = value; }
+    inline void SetCheckId(Aws::String&& value) { m_checkIdHasBeenSet = true; m_checkId = std::move(value); }
 
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
      */
-    inline DescribeTrustedAdvisorCheckResultRequest& WithCheckId(Aws::String&& value) { SetCheckId(value); return *this;}
+    inline DescribeTrustedAdvisorCheckResultRequest& WithCheckId(Aws::String&& value) { SetCheckId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the Trusted Advisor check.</p>
@@ -89,7 +94,7 @@ namespace Model
      * Support currently supports English ("en") and Japanese ("ja"). Language
      * parameters must be passed explicitly for operations that take them.</p>
      */
-    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = value; }
+    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
 
     /**
      * <p>The ISO 639-1 code for the language in which AWS provides support. AWS
@@ -110,7 +115,7 @@ namespace Model
      * Support currently supports English ("en") and Japanese ("ja"). Language
      * parameters must be passed explicitly for operations that take them.</p>
      */
-    inline DescribeTrustedAdvisorCheckResultRequest& WithLanguage(Aws::String&& value) { SetLanguage(value); return *this;}
+    inline DescribeTrustedAdvisorCheckResultRequest& WithLanguage(Aws::String&& value) { SetLanguage(std::move(value)); return *this;}
 
     /**
      * <p>The ISO 639-1 code for the language in which AWS provides support. AWS

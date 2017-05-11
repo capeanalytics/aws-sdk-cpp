@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/cloudformation/CloudFormationRequest.h>
@@ -21,6 +22,7 @@
 #include <aws/cloudformation/model/Parameter.h>
 #include <aws/cloudformation/model/Capability.h>
 #include <aws/cloudformation/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,7 +32,9 @@ namespace Model
 {
 
   /**
-   * <p>The input for <a>CreateStack</a> action.</p>
+   * <p>The input for <a>CreateStack</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateStackInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API CreateStackRequest : public CloudFormationRequest
   {
@@ -38,6 +42,11 @@ namespace Model
     CreateStackRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name that is associated with the stack. The name must be unique in the
      * region in which you are creating the stack.</p> <note> <p>A stack name can
@@ -63,7 +72,7 @@ namespace Model
      * with an alphabetic character and cannot be longer than 128 characters.</p>
      * </note>
      */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
+    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
 
     /**
      * <p>The name that is associated with the stack. The name must be unique in the
@@ -90,7 +99,7 @@ namespace Model
      * with an alphabetic character and cannot be longer than 128 characters.</p>
      * </note>
      */
-    inline CreateStackRequest& WithStackName(Aws::String&& value) { SetStackName(value); return *this;}
+    inline CreateStackRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
 
     /**
      * <p>The name that is associated with the stack. The name must be unique in the
@@ -129,7 +138,7 @@ namespace Model
      * specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
      * parameter, but not both.</p>
      */
-    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = value; }
+    inline void SetTemplateBody(Aws::String&& value) { m_templateBodyHasBeenSet = true; m_templateBody = std::move(value); }
 
     /**
      * <p>Structure containing the template body with a minimum length of 1 byte and a
@@ -159,7 +168,7 @@ namespace Model
      * specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
      * parameter, but not both.</p>
      */
-    inline CreateStackRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(value); return *this;}
+    inline CreateStackRequest& WithTemplateBody(Aws::String&& value) { SetTemplateBody(std::move(value)); return *this;}
 
     /**
      * <p>Structure containing the template body with a minimum length of 1 byte and a
@@ -202,7 +211,7 @@ namespace Model
      * specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
      * parameter, but not both.</p>
      */
-    inline void SetTemplateURL(Aws::String&& value) { m_templateURLHasBeenSet = true; m_templateURL = value; }
+    inline void SetTemplateURL(Aws::String&& value) { m_templateURLHasBeenSet = true; m_templateURL = std::move(value); }
 
     /**
      * <p>Location of file containing the template body. The URL must point to a
@@ -235,7 +244,7 @@ namespace Model
      * specify either the <code>TemplateBody</code> or the <code>TemplateURL</code>
      * parameter, but not both.</p>
      */
-    inline CreateStackRequest& WithTemplateURL(Aws::String&& value) { SetTemplateURL(value); return *this;}
+    inline CreateStackRequest& WithTemplateURL(Aws::String&& value) { SetTemplateURL(std::move(value)); return *this;}
 
     /**
      * <p>Location of file containing the template body. The URL must point to a
@@ -270,7 +279,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a>
      * data type.</p>
      */
-    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = value; }
+    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
 
     /**
      * <p>A list of <code>Parameter</code> structures that specify input parameters for
@@ -286,7 +295,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a>
      * data type.</p>
      */
-    inline CreateStackRequest& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(value); return *this;}
+    inline CreateStackRequest& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(std::move(value)); return *this;}
 
     /**
      * <p>A list of <code>Parameter</code> structures that specify input parameters for
@@ -302,7 +311,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a>
      * data type.</p>
      */
-    inline CreateStackRequest& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
+    inline CreateStackRequest& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Set to <code>true</code> to disable rollback of the stack if stack creation
@@ -348,65 +357,57 @@ namespace Model
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
     inline const Aws::Vector<Aws::String>& GetNotificationARNs() const{ return m_notificationARNs; }
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
     inline void SetNotificationARNs(const Aws::Vector<Aws::String>& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs = value; }
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
-    inline void SetNotificationARNs(Aws::Vector<Aws::String>&& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs = value; }
+    inline void SetNotificationARNs(Aws::Vector<Aws::String>&& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs = std::move(value); }
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
     inline CreateStackRequest& WithNotificationARNs(const Aws::Vector<Aws::String>& value) { SetNotificationARNs(value); return *this;}
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
-    inline CreateStackRequest& WithNotificationARNs(Aws::Vector<Aws::String>&& value) { SetNotificationARNs(value); return *this;}
+    inline CreateStackRequest& WithNotificationARNs(Aws::Vector<Aws::String>&& value) { SetNotificationARNs(std::move(value)); return *this;}
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
     inline CreateStackRequest& AddNotificationARNs(const Aws::String& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs.push_back(value); return *this; }
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
-    inline CreateStackRequest& AddNotificationARNs(Aws::String&& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs.push_back(value); return *this; }
+    inline CreateStackRequest& AddNotificationARNs(Aws::String&& value) { m_notificationARNsHasBeenSet = true; m_notificationARNs.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Simple Notification Service (SNS) topic ARNs to publish stack related
-     * events. You can find your SNS topic ARNs using the <a
-     * href="https://console.aws.amazon.com/sns">SNS console</a> or your Command Line
-     * Interface (CLI).</p>
+     * events. You can find your SNS topic ARNs using the SNS console or your Command
+     * Line Interface (CLI).</p>
      */
     inline CreateStackRequest& AddNotificationARNs(const char* value) { m_notificationARNsHasBeenSet = true; m_notificationARNs.push_back(value); return *this; }
 
@@ -507,7 +508,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
      * IAM Resources in AWS CloudFormation Templates</a>.</p>
      */
-    inline void SetCapabilities(Aws::Vector<Capability>&& value) { m_capabilitiesHasBeenSet = true; m_capabilities = value; }
+    inline void SetCapabilities(Aws::Vector<Capability>&& value) { m_capabilitiesHasBeenSet = true; m_capabilities = std::move(value); }
 
     /**
      * <p>A list of values that you must specify before AWS CloudFormation can create
@@ -573,7 +574,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
      * IAM Resources in AWS CloudFormation Templates</a>.</p>
      */
-    inline CreateStackRequest& WithCapabilities(Aws::Vector<Capability>&& value) { SetCapabilities(value); return *this;}
+    inline CreateStackRequest& WithCapabilities(Aws::Vector<Capability>&& value) { SetCapabilities(std::move(value)); return *this;}
 
     /**
      * <p>A list of values that you must specify before AWS CloudFormation can create
@@ -639,7 +640,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging
      * IAM Resources in AWS CloudFormation Templates</a>.</p>
      */
-    inline CreateStackRequest& AddCapabilities(Capability&& value) { m_capabilitiesHasBeenSet = true; m_capabilities.push_back(value); return *this; }
+    inline CreateStackRequest& AddCapabilities(Capability&& value) { m_capabilitiesHasBeenSet = true; m_capabilities.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The template resource types that you have permissions to work with for this
@@ -696,7 +697,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling
      * Access with AWS Identity and Access Management</a>.</p>
      */
-    inline void SetResourceTypes(Aws::Vector<Aws::String>&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = value; }
+    inline void SetResourceTypes(Aws::Vector<Aws::String>&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = std::move(value); }
 
     /**
      * <p>The template resource types that you have permissions to work with for this
@@ -734,7 +735,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling
      * Access with AWS Identity and Access Management</a>.</p>
      */
-    inline CreateStackRequest& WithResourceTypes(Aws::Vector<Aws::String>&& value) { SetResourceTypes(value); return *this;}
+    inline CreateStackRequest& WithResourceTypes(Aws::Vector<Aws::String>&& value) { SetResourceTypes(std::move(value)); return *this;}
 
     /**
      * <p>The template resource types that you have permissions to work with for this
@@ -772,7 +773,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling
      * Access with AWS Identity and Access Management</a>.</p>
      */
-    inline CreateStackRequest& AddResourceTypes(Aws::String&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(value); return *this; }
+    inline CreateStackRequest& AddResourceTypes(Aws::String&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The template resource types that you have permissions to work with for this
@@ -792,6 +793,104 @@ namespace Model
      * Access with AWS Identity and Access Management</a>.</p>
      */
     inline CreateStackRequest& AddResourceTypes(const char* value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(value); return *this; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline const Aws::String& GetRoleARN() const{ return m_roleARN; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline void SetRoleARN(const Aws::String& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline void SetRoleARN(const char* value) { m_roleARNHasBeenSet = true; m_roleARN.assign(value); }
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline CreateStackRequest& WithRoleARN(const Aws::String& value) { SetRoleARN(value); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline CreateStackRequest& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
+
+    /**
+     * <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM)
+     * role that AWS CloudFormation assumes to create the stack. AWS CloudFormation
+     * uses the role's credentials to make calls on your behalf. AWS CloudFormation
+     * always uses this role for all future operations on the stack. As long as users
+     * have permission to operate on the stack, AWS CloudFormation uses this role even
+     * if the users don't have permission to pass it. Ensure that the role grants least
+     * privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role
+     * that was previously associated with the stack. If no role is available, AWS
+     * CloudFormation uses a temporary session that is generated from your user
+     * credentials.</p>
+     */
+    inline CreateStackRequest& WithRoleARN(const char* value) { SetRoleARN(value); return *this;}
 
     /**
      * <p>Determines what action will be taken if stack creation fails. This must be
@@ -815,7 +914,7 @@ namespace Model
      * <code>OnFailure</code> or <code>DisableRollback</code>, but not both.</p>
      * <p>Default: <code>ROLLBACK</code> </p>
      */
-    inline void SetOnFailure(OnFailure&& value) { m_onFailureHasBeenSet = true; m_onFailure = value; }
+    inline void SetOnFailure(OnFailure&& value) { m_onFailureHasBeenSet = true; m_onFailure = std::move(value); }
 
     /**
      * <p>Determines what action will be taken if stack creation fails. This must be
@@ -831,13 +930,13 @@ namespace Model
      * <code>OnFailure</code> or <code>DisableRollback</code>, but not both.</p>
      * <p>Default: <code>ROLLBACK</code> </p>
      */
-    inline CreateStackRequest& WithOnFailure(OnFailure&& value) { SetOnFailure(value); return *this;}
+    inline CreateStackRequest& WithOnFailure(OnFailure&& value) { SetOnFailure(std::move(value)); return *this;}
 
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline const Aws::String& GetStackPolicyBody() const{ return m_stackPolicyBody; }
@@ -845,8 +944,8 @@ namespace Model
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline void SetStackPolicyBody(const Aws::String& value) { m_stackPolicyBodyHasBeenSet = true; m_stackPolicyBody = value; }
@@ -854,17 +953,17 @@ namespace Model
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
-    inline void SetStackPolicyBody(Aws::String&& value) { m_stackPolicyBodyHasBeenSet = true; m_stackPolicyBody = value; }
+    inline void SetStackPolicyBody(Aws::String&& value) { m_stackPolicyBodyHasBeenSet = true; m_stackPolicyBody = std::move(value); }
 
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline void SetStackPolicyBody(const char* value) { m_stackPolicyBodyHasBeenSet = true; m_stackPolicyBody.assign(value); }
@@ -872,8 +971,8 @@ namespace Model
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline CreateStackRequest& WithStackPolicyBody(const Aws::String& value) { SetStackPolicyBody(value); return *this;}
@@ -881,73 +980,73 @@ namespace Model
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
-    inline CreateStackRequest& WithStackPolicyBody(Aws::String&& value) { SetStackPolicyBody(value); return *this;}
+    inline CreateStackRequest& WithStackPolicyBody(Aws::String&& value) { SetStackPolicyBody(std::move(value)); return *this;}
 
     /**
      * <p>Structure containing the stack policy body. For more information, go to <a
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html">
-     * Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You
-     * can specify either the <code>StackPolicyBody</code> or the
+     * Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User
+     * Guide</i>. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline CreateStackRequest& WithStackPolicyBody(const char* value) { SetStackPolicyBody(value); return *this;}
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline const Aws::String& GetStackPolicyURL() const{ return m_stackPolicyURL; }
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline void SetStackPolicyURL(const Aws::String& value) { m_stackPolicyURLHasBeenSet = true; m_stackPolicyURL = value; }
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
-    inline void SetStackPolicyURL(Aws::String&& value) { m_stackPolicyURLHasBeenSet = true; m_stackPolicyURL = value; }
+    inline void SetStackPolicyURL(Aws::String&& value) { m_stackPolicyURLHasBeenSet = true; m_stackPolicyURL = std::move(value); }
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline void SetStackPolicyURL(const char* value) { m_stackPolicyURLHasBeenSet = true; m_stackPolicyURL.assign(value); }
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline CreateStackRequest& WithStackPolicyURL(const Aws::String& value) { SetStackPolicyURL(value); return *this;}
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
-    inline CreateStackRequest& WithStackPolicyURL(Aws::String&& value) { SetStackPolicyURL(value); return *this;}
+    inline CreateStackRequest& WithStackPolicyURL(Aws::String&& value) { SetStackPolicyURL(std::move(value)); return *this;}
 
     /**
      * <p>Location of a file containing the stack policy. The URL must point to a
-     * policy (max size: 16KB) located in an S3 bucket in the same region as the stack.
-     * You can specify either the <code>StackPolicyBody</code> or the
+     * policy (maximum size: 16 KB) located in an S3 bucket in the same region as the
+     * stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.</p>
      */
     inline CreateStackRequest& WithStackPolicyURL(const char* value) { SetStackPolicyURL(value); return *this;}
@@ -971,7 +1070,7 @@ namespace Model
      * propagates these tags to the resources created in the stack. A maximum number of
      * 10 tags can be specified.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Key-value pairs to associate with this stack. AWS CloudFormation also
@@ -985,7 +1084,7 @@ namespace Model
      * propagates these tags to the resources created in the stack. A maximum number of
      * 10 tags can be specified.</p>
      */
-    inline CreateStackRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateStackRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Key-value pairs to associate with this stack. AWS CloudFormation also
@@ -999,7 +1098,70 @@ namespace Model
      * propagates these tags to the resources created in the stack. A maximum number of
      * 10 tags can be specified.</p>
      */
-    inline CreateStackRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline CreateStackRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline CreateStackRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline CreateStackRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
+
+    /**
+     * <p>A unique identifier for this <code>CreateStack</code> request. Specify this
+     * token if you plan to retry requests so that AWS CloudFormation knows that you're
+     * not attempting to create a stack with the same name. You might retry
+     * <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully
+     * received them.</p>
+     */
+    inline CreateStackRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
 
   private:
     Aws::String m_stackName;
@@ -1020,6 +1182,8 @@ namespace Model
     bool m_capabilitiesHasBeenSet;
     Aws::Vector<Aws::String> m_resourceTypes;
     bool m_resourceTypesHasBeenSet;
+    Aws::String m_roleARN;
+    bool m_roleARNHasBeenSet;
     OnFailure m_onFailure;
     bool m_onFailureHasBeenSet;
     Aws::String m_stackPolicyBody;
@@ -1028,6 +1192,8 @@ namespace Model
     bool m_stackPolicyURLHasBeenSet;
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet;
+    Aws::String m_clientRequestToken;
+    bool m_clientRequestTokenHasBeenSet;
   };
 
 } // namespace Model

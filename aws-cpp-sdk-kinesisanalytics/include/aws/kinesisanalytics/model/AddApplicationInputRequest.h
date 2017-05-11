@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/KinesisAnalyticsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalytics/model/Input.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/AddApplicationInputRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API AddApplicationInputRequest : public KinesisAnalyticsRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Name of your existing Amazon Kinesis Analytics application to which you want
@@ -52,7 +57,7 @@ namespace Model
      * <p>Name of your existing Amazon Kinesis Analytics application to which you want
      * to add the streaming source.</p>
      */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
+    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
 
     /**
      * <p>Name of your existing Amazon Kinesis Analytics application to which you want
@@ -70,7 +75,7 @@ namespace Model
      * <p>Name of your existing Amazon Kinesis Analytics application to which you want
      * to add the streaming source.</p>
      */
-    inline AddApplicationInputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(value); return *this;}
+    inline AddApplicationInputRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
 
     /**
      * <p>Name of your existing Amazon Kinesis Analytics application to which you want
@@ -106,13 +111,13 @@ namespace Model
     inline void SetInput(const Input& value) { m_inputHasBeenSet = true; m_input = value; }
 
     
-    inline void SetInput(Input&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Input&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     
     inline AddApplicationInputRequest& WithInput(const Input& value) { SetInput(value); return *this;}
 
     
-    inline AddApplicationInputRequest& WithInput(Input&& value) { SetInput(value); return *this;}
+    inline AddApplicationInputRequest& WithInput(Input&& value) { SetInput(std::move(value)); return *this;}
 
   private:
     Aws::String m_applicationName;

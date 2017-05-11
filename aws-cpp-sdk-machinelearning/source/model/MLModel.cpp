@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/machinelearning/model/MLModel.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -34,13 +35,16 @@ MLModel::MLModel() :
     m_createdAtHasBeenSet(false),
     m_lastUpdatedAtHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_status(EntityStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_sizeInBytes(0),
     m_sizeInBytesHasBeenSet(false),
     m_endpointInfoHasBeenSet(false),
     m_trainingParametersHasBeenSet(false),
     m_inputDataLocationS3HasBeenSet(false),
+    m_algorithm(Algorithm::NOT_SET),
     m_algorithmHasBeenSet(false),
+    m_mLModelType(MLModelType::NOT_SET),
     m_mLModelTypeHasBeenSet(false),
     m_scoreThreshold(0.0),
     m_scoreThresholdHasBeenSet(false),
@@ -60,13 +64,16 @@ MLModel::MLModel(const JsonValue& jsonValue) :
     m_createdAtHasBeenSet(false),
     m_lastUpdatedAtHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_status(EntityStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_sizeInBytes(0),
     m_sizeInBytesHasBeenSet(false),
     m_endpointInfoHasBeenSet(false),
     m_trainingParametersHasBeenSet(false),
     m_inputDataLocationS3HasBeenSet(false),
+    m_algorithm(Algorithm::NOT_SET),
     m_algorithmHasBeenSet(false),
+    m_mLModelType(MLModelType::NOT_SET),
     m_mLModelTypeHasBeenSet(false),
     m_scoreThreshold(0.0),
     m_scoreThresholdHasBeenSet(false),

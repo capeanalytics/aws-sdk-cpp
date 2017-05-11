@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/model/ResourceTagSet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains information about the health checks or hosted
-   * zones for which you want to list tags.</p>
+   * zones for which you want to list tags.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListTagsForResourceResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API ListTagsForResourceResult
   {
@@ -59,7 +63,7 @@ namespace Model
      * <p>A <code>ResourceTagSet</code> containing tags associated with the specified
      * resource.</p>
      */
-    inline void SetResourceTagSet(ResourceTagSet&& value) { m_resourceTagSet = value; }
+    inline void SetResourceTagSet(ResourceTagSet&& value) { m_resourceTagSet = std::move(value); }
 
     /**
      * <p>A <code>ResourceTagSet</code> containing tags associated with the specified
@@ -71,7 +75,7 @@ namespace Model
      * <p>A <code>ResourceTagSet</code> containing tags associated with the specified
      * resource.</p>
      */
-    inline ListTagsForResourceResult& WithResourceTagSet(ResourceTagSet&& value) { SetResourceTagSet(value); return *this;}
+    inline ListTagsForResourceResult& WithResourceTagSet(ResourceTagSet&& value) { SetResourceTagSet(std::move(value)); return *this;}
 
   private:
     ResourceTagSet m_resourceTagSet;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the properties of a Listener for the LoadBalancer.</p>
+   * <p>Describes the properties of a Listener for the LoadBalancer.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/Listener">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API Listener
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The protocol that is used by the Listener.</p>
      */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
 
     /**
      * <p>The protocol that is used by the Listener.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The protocol that is used by the Listener.</p>
      */
-    inline Listener& WithProtocol(Aws::String&& value) { SetProtocol(value); return *this;}
+    inline Listener& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The protocol that is used by the Listener.</p>

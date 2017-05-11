@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/storagegateway/model/Tape.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,6 +31,7 @@ namespace Model
 Tape::Tape() : 
     m_tapeARNHasBeenSet(false),
     m_tapeBarcodeHasBeenSet(false),
+    m_tapeCreatedDateHasBeenSet(false),
     m_tapeSizeInBytes(0),
     m_tapeSizeInBytesHasBeenSet(false),
     m_tapeStatusHasBeenSet(false),
@@ -42,6 +44,7 @@ Tape::Tape() :
 Tape::Tape(const JsonValue& jsonValue) : 
     m_tapeARNHasBeenSet(false),
     m_tapeBarcodeHasBeenSet(false),
+    m_tapeCreatedDateHasBeenSet(false),
     m_tapeSizeInBytes(0),
     m_tapeSizeInBytesHasBeenSet(false),
     m_tapeStatusHasBeenSet(false),
@@ -66,6 +69,13 @@ Tape& Tape::operator =(const JsonValue& jsonValue)
     m_tapeBarcode = jsonValue.GetString("TapeBarcode");
 
     m_tapeBarcodeHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("TapeCreatedDate"))
+  {
+    m_tapeCreatedDate = jsonValue.GetDouble("TapeCreatedDate");
+
+    m_tapeCreatedDateHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("TapeSizeInBytes"))
@@ -113,6 +123,11 @@ JsonValue Tape::Jsonize() const
   {
    payload.WithString("TapeBarcode", m_tapeBarcode);
 
+  }
+
+  if(m_tapeCreatedDateHasBeenSet)
+  {
+   payload.WithDouble("TapeCreatedDate", m_tapeCreatedDate.SecondsWithMSPrecision());
   }
 
   if(m_tapeSizeInBytesHasBeenSet)

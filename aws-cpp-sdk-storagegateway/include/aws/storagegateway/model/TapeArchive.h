@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>Represents a virtual tape that is archived in the virtual tape shelf
-   * (VTS).</p>
+   * (VTS).</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/TapeArchive">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API TapeArchive
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
      */
-    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = value; }
+    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
      */
-    inline TapeArchive& WithTapeARN(Aws::String&& value) { SetTapeARN(value); return *this;}
+    inline TapeArchive& WithTapeARN(Aws::String&& value) { SetTapeARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The barcode that identifies the archived virtual tape.</p>
      */
-    inline void SetTapeBarcode(Aws::String&& value) { m_tapeBarcodeHasBeenSet = true; m_tapeBarcode = value; }
+    inline void SetTapeBarcode(Aws::String&& value) { m_tapeBarcodeHasBeenSet = true; m_tapeBarcode = std::move(value); }
 
     /**
      * <p>The barcode that identifies the archived virtual tape.</p>
@@ -106,12 +110,27 @@ namespace Model
     /**
      * <p>The barcode that identifies the archived virtual tape.</p>
      */
-    inline TapeArchive& WithTapeBarcode(Aws::String&& value) { SetTapeBarcode(value); return *this;}
+    inline TapeArchive& WithTapeBarcode(Aws::String&& value) { SetTapeBarcode(std::move(value)); return *this;}
 
     /**
      * <p>The barcode that identifies the archived virtual tape.</p>
      */
     inline TapeArchive& WithTapeBarcode(const char* value) { SetTapeBarcode(value); return *this;}
+
+    
+    inline const Aws::Utils::DateTime& GetTapeCreatedDate() const{ return m_tapeCreatedDate; }
+
+    
+    inline void SetTapeCreatedDate(const Aws::Utils::DateTime& value) { m_tapeCreatedDateHasBeenSet = true; m_tapeCreatedDate = value; }
+
+    
+    inline void SetTapeCreatedDate(Aws::Utils::DateTime&& value) { m_tapeCreatedDateHasBeenSet = true; m_tapeCreatedDate = std::move(value); }
+
+    
+    inline TapeArchive& WithTapeCreatedDate(const Aws::Utils::DateTime& value) { SetTapeCreatedDate(value); return *this;}
+
+    
+    inline TapeArchive& WithTapeCreatedDate(Aws::Utils::DateTime&& value) { SetTapeCreatedDate(std::move(value)); return *this;}
 
     /**
      * <p>The size, in bytes, of the archived virtual tape.</p>
@@ -147,7 +166,7 @@ namespace Model
      * string format of the completion time is in the ISO8601 extended
      * YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
      */
-    inline void SetCompletionTime(Aws::Utils::DateTime&& value) { m_completionTimeHasBeenSet = true; m_completionTime = value; }
+    inline void SetCompletionTime(Aws::Utils::DateTime&& value) { m_completionTimeHasBeenSet = true; m_completionTime = std::move(value); }
 
     /**
      * <p>The time that the archiving of the virtual tape was completed.</p> <p>The
@@ -161,52 +180,52 @@ namespace Model
      * string format of the completion time is in the ISO8601 extended
      * YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
      */
-    inline TapeArchive& WithCompletionTime(Aws::Utils::DateTime&& value) { SetCompletionTime(value); return *this;}
+    inline TapeArchive& WithCompletionTime(Aws::Utils::DateTime&& value) { SetCompletionTime(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
     inline const Aws::String& GetRetrievedTo() const{ return m_retrievedTo; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
     inline void SetRetrievedTo(const Aws::String& value) { m_retrievedToHasBeenSet = true; m_retrievedTo = value; }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
-    inline void SetRetrievedTo(Aws::String&& value) { m_retrievedToHasBeenSet = true; m_retrievedTo = value; }
+    inline void SetRetrievedTo(Aws::String&& value) { m_retrievedToHasBeenSet = true; m_retrievedTo = std::move(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
     inline void SetRetrievedTo(const char* value) { m_retrievedToHasBeenSet = true; m_retrievedTo.assign(value); }
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
     inline TapeArchive& WithRetrievedTo(const Aws::String& value) { SetRetrievedTo(value); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
-    inline TapeArchive& WithRetrievedTo(Aws::String&& value) { SetRetrievedTo(value); return *this;}
+    inline TapeArchive& WithRetrievedTo(Aws::String&& value) { SetRetrievedTo(std::move(value)); return *this;}
 
     /**
-     * <p>The Amazon Resource Name (ARN) of the gateway-VTL that the virtual tape is
+     * <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is
      * being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape
      * shelf (VTS).</p>
      */
@@ -225,7 +244,7 @@ namespace Model
     /**
      * <p>The current state of the archived virtual tape.</p>
      */
-    inline void SetTapeStatus(Aws::String&& value) { m_tapeStatusHasBeenSet = true; m_tapeStatus = value; }
+    inline void SetTapeStatus(Aws::String&& value) { m_tapeStatusHasBeenSet = true; m_tapeStatus = std::move(value); }
 
     /**
      * <p>The current state of the archived virtual tape.</p>
@@ -240,7 +259,7 @@ namespace Model
     /**
      * <p>The current state of the archived virtual tape.</p>
      */
-    inline TapeArchive& WithTapeStatus(Aws::String&& value) { SetTapeStatus(value); return *this;}
+    inline TapeArchive& WithTapeStatus(Aws::String&& value) { SetTapeStatus(std::move(value)); return *this;}
 
     /**
      * <p>The current state of the archived virtual tape.</p>
@@ -252,6 +271,8 @@ namespace Model
     bool m_tapeARNHasBeenSet;
     Aws::String m_tapeBarcode;
     bool m_tapeBarcodeHasBeenSet;
+    Aws::Utils::DateTime m_tapeCreatedDate;
+    bool m_tapeCreatedDateHasBeenSet;
     long long m_tapeSizeInBytes;
     bool m_tapeSizeInBytesHasBeenSet;
     Aws::Utils::DateTime m_completionTime;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/UpdateRestApiResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -60,12 +61,27 @@ UpdateRestApiResult& UpdateRestApiResult::operator =(const AmazonWebServiceResul
 
   }
 
+  if(jsonValue.ValueExists("version"))
+  {
+    m_version = jsonValue.GetString("version");
+
+  }
+
   if(jsonValue.ValueExists("warnings"))
   {
     Array<JsonValue> warningsJsonList = jsonValue.GetArray("warnings");
     for(unsigned warningsIndex = 0; warningsIndex < warningsJsonList.GetLength(); ++warningsIndex)
     {
       m_warnings.push_back(warningsJsonList[warningsIndex].AsString());
+    }
+  }
+
+  if(jsonValue.ValueExists("binaryMediaTypes"))
+  {
+    Array<JsonValue> binaryMediaTypesJsonList = jsonValue.GetArray("binaryMediaTypes");
+    for(unsigned binaryMediaTypesIndex = 0; binaryMediaTypesIndex < binaryMediaTypesJsonList.GetLength(); ++binaryMediaTypesIndex)
+    {
+      m_binaryMediaTypes.push_back(binaryMediaTypesJsonList[binaryMediaTypesIndex].AsString());
     }
   }
 

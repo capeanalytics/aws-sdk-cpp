@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/es/ElasticsearchService_EXPORTS.h>
 #include <aws/es/ElasticsearchServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
   /**
    * <p>Container for the parameters to the <code><a>ListTags</a></code> operation.
    * Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are
-   * attached that you want to view are attached.</p>
+   * attached that you want to view are attached.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/es-2015-01-01/ListTagsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICSEARCHSERVICE_API ListTagsRequest : public ElasticsearchServiceRequest
   {
@@ -40,6 +44,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
@@ -57,7 +62,7 @@ namespace Model
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
      * are attached that you want to view.</p>
      */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = value; }
+    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
 
     /**
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
@@ -75,7 +80,7 @@ namespace Model
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags
      * are attached that you want to view.</p>
      */
-    inline ListTagsRequest& WithARN(Aws::String&& value) { SetARN(value); return *this;}
+    inline ListTagsRequest& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
 
     /**
      * <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags

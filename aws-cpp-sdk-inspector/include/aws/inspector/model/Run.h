@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -58,7 +60,7 @@ namespace Model
     /**
      * <p>The ARN of the run.</p>
      */
-    inline void SetRunArn(Aws::String&& value) { m_runArnHasBeenSet = true; m_runArn = value; }
+    inline void SetRunArn(Aws::String&& value) { m_runArnHasBeenSet = true; m_runArn = std::move(value); }
 
     /**
      * <p>The ARN of the run.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>The ARN of the run.</p>
      */
-    inline Run& WithRunArn(Aws::String&& value) { SetRunArn(value); return *this;}
+    inline Run& WithRunArn(Aws::String&& value) { SetRunArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the run.</p>
@@ -93,7 +95,7 @@ namespace Model
     /**
      * <p>The auto-generated name for the run. </p>
      */
-    inline void SetRunName(Aws::String&& value) { m_runNameHasBeenSet = true; m_runName = value; }
+    inline void SetRunName(Aws::String&& value) { m_runNameHasBeenSet = true; m_runName = std::move(value); }
 
     /**
      * <p>The auto-generated name for the run. </p>
@@ -108,7 +110,7 @@ namespace Model
     /**
      * <p>The auto-generated name for the run. </p>
      */
-    inline Run& WithRunName(Aws::String&& value) { SetRunName(value); return *this;}
+    inline Run& WithRunName(Aws::String&& value) { SetRunName(std::move(value)); return *this;}
 
     /**
      * <p>The auto-generated name for the run. </p>
@@ -128,7 +130,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment that is associated with the run.</p>
      */
-    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = value; }
+    inline void SetAssessmentArn(Aws::String&& value) { m_assessmentArnHasBeenSet = true; m_assessmentArn = std::move(value); }
 
     /**
      * <p>The ARN of the assessment that is associated with the run.</p>
@@ -143,7 +145,7 @@ namespace Model
     /**
      * <p>The ARN of the assessment that is associated with the run.</p>
      */
-    inline Run& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(value); return *this;}
+    inline Run& WithAssessmentArn(Aws::String&& value) { SetAssessmentArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the assessment that is associated with the run.</p>
@@ -169,7 +171,7 @@ namespace Model
      * <i>EvaluatingPolicies</i>, <i>EvaluatingPoliciesErrorCanRetry</i>,
      * <i>Completed</i>, <i>Failed</i>, <i>TombStoned</i>.</p>
      */
-    inline void SetRunState(Aws::String&& value) { m_runStateHasBeenSet = true; m_runState = value; }
+    inline void SetRunState(Aws::String&& value) { m_runStateHasBeenSet = true; m_runState = std::move(value); }
 
     /**
      * <p>The state of the run. Values can be set to <i>DataCollectionComplete</i>,
@@ -190,7 +192,7 @@ namespace Model
      * <i>EvaluatingPolicies</i>, <i>EvaluatingPoliciesErrorCanRetry</i>,
      * <i>Completed</i>, <i>Failed</i>, <i>TombStoned</i>.</p>
      */
-    inline Run& WithRunState(Aws::String&& value) { SetRunState(value); return *this;}
+    inline Run& WithRunState(Aws::String&& value) { SetRunState(std::move(value)); return *this;}
 
     /**
      * <p>The state of the run. Values can be set to <i>DataCollectionComplete</i>,
@@ -212,7 +214,7 @@ namespace Model
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
      */
-    inline void SetRulesPackages(Aws::Vector<Aws::String>&& value) { m_rulesPackagesHasBeenSet = true; m_rulesPackages = value; }
+    inline void SetRulesPackages(Aws::Vector<Aws::String>&& value) { m_rulesPackagesHasBeenSet = true; m_rulesPackages = std::move(value); }
 
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
@@ -222,7 +224,7 @@ namespace Model
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
      */
-    inline Run& WithRulesPackages(Aws::Vector<Aws::String>&& value) { SetRulesPackages(value); return *this;}
+    inline Run& WithRulesPackages(Aws::Vector<Aws::String>&& value) { SetRulesPackages(std::move(value)); return *this;}
 
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
@@ -232,7 +234,7 @@ namespace Model
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
      */
-    inline Run& AddRulesPackages(Aws::String&& value) { m_rulesPackagesHasBeenSet = true; m_rulesPackages.push_back(value); return *this; }
+    inline Run& AddRulesPackages(Aws::String&& value) { m_rulesPackagesHasBeenSet = true; m_rulesPackages.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Rules packages selected for the run of the assessment.</p>
@@ -255,7 +257,7 @@ namespace Model
      * <p>Run creation time that corresponds to the data collection completion time or
      * failure.</p>
      */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
+    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
 
     /**
      * <p>Run creation time that corresponds to the data collection completion time or
@@ -267,7 +269,7 @@ namespace Model
      * <p>Run creation time that corresponds to the data collection completion time or
      * failure.</p>
      */
-    inline Run& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(value); return *this;}
+    inline Run& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
 
     /**
      * <p>Run completion time that corresponds to the rules packages evaluation
@@ -285,7 +287,7 @@ namespace Model
      * <p>Run completion time that corresponds to the rules packages evaluation
      * completion time or failure.</p>
      */
-    inline void SetCompletionTime(Aws::Utils::DateTime&& value) { m_completionTimeHasBeenSet = true; m_completionTime = value; }
+    inline void SetCompletionTime(Aws::Utils::DateTime&& value) { m_completionTimeHasBeenSet = true; m_completionTime = std::move(value); }
 
     /**
      * <p>Run completion time that corresponds to the rules packages evaluation
@@ -297,7 +299,7 @@ namespace Model
      * <p>Run completion time that corresponds to the rules packages evaluation
      * completion time or failure.</p>
      */
-    inline Run& WithCompletionTime(Aws::Utils::DateTime&& value) { SetCompletionTime(value); return *this;}
+    inline Run& WithCompletionTime(Aws::Utils::DateTime&& value) { SetCompletionTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_runArn;

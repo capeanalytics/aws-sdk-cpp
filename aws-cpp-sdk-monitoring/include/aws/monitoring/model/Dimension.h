@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/monitoring/CloudWatch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,9 +34,9 @@ namespace Model
 {
 
   /**
-   * <p> The <code>Dimension</code> data type further expands on the identity of a
-   * metric using a Name, Value pair. </p> <p>For examples that use one or more
-   * dimensions, see <a>PutMetricData</a>.</p>
+   * <p>Expands the identity of a metric.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/Dimension">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDWATCH_API Dimension
   {
@@ -59,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the dimension.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the dimension.</p>
@@ -74,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the dimension.</p>
      */
-    inline Dimension& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline Dimension& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the dimension.</p>
@@ -82,37 +84,37 @@ namespace Model
     inline Dimension& WithName(const char* value) { SetName(value); return *this;}
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
     inline const Aws::String& GetValue() const{ return m_value; }
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
     inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
     inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
     inline Dimension& WithValue(const Aws::String& value) { SetValue(value); return *this;}
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
-    inline Dimension& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline Dimension& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
-     * <p>The value representing the dimension measurement</p>
+     * <p>The value representing the dimension measurement.</p>
      */
     inline Dimension& WithValue(const char* value) { SetValue(value); return *this;}
 

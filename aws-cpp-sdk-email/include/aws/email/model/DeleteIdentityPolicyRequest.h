@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/email/SESRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
    * identity. Sending authorization is an Amazon SES feature that enables you to
    * authorize other senders to use your identities. For information, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/DeleteIdentityPolicyRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API DeleteIdentityPolicyRequest : public SESRequest
   {
@@ -37,6 +41,11 @@ namespace Model
     DeleteIdentityPolicyRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The identity that is associated with the policy that you want to delete. You
      * can specify the identity by using its name or by using its Amazon Resource Name
@@ -62,7 +71,7 @@ namespace Model
      * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To
      * successfully call this API, you must own the identity.</p>
      */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = value; }
+    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
 
     /**
      * <p>The identity that is associated with the policy that you want to delete. You
@@ -89,7 +98,7 @@ namespace Model
      * <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To
      * successfully call this API, you must own the identity.</p>
      */
-    inline DeleteIdentityPolicyRequest& WithIdentity(Aws::String&& value) { SetIdentity(value); return *this;}
+    inline DeleteIdentityPolicyRequest& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
 
     /**
      * <p>The identity that is associated with the policy that you want to delete. You
@@ -113,7 +122,7 @@ namespace Model
     /**
      * <p>The name of the policy to be deleted.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy to be deleted.</p>
@@ -128,7 +137,7 @@ namespace Model
     /**
      * <p>The name of the policy to be deleted.</p>
      */
-    inline DeleteIdentityPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline DeleteIdentityPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy to be deleted.</p>

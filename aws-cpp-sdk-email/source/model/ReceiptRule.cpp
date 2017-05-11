@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/email/model/ReceiptRule.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -33,6 +34,7 @@ ReceiptRule::ReceiptRule() :
     m_nameHasBeenSet(false),
     m_enabled(false),
     m_enabledHasBeenSet(false),
+    m_tlsPolicy(TlsPolicy::NOT_SET),
     m_tlsPolicyHasBeenSet(false),
     m_recipientsHasBeenSet(false),
     m_actionsHasBeenSet(false),
@@ -45,6 +47,7 @@ ReceiptRule::ReceiptRule(const XmlNode& xmlNode) :
     m_nameHasBeenSet(false),
     m_enabled(false),
     m_enabledHasBeenSet(false),
+    m_tlsPolicy(TlsPolicy::NOT_SET),
     m_tlsPolicyHasBeenSet(false),
     m_recipientsHasBeenSet(false),
     m_actionsHasBeenSet(false),
@@ -122,7 +125,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_enabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Enabled=" << m_enabled << "&";
+      oStream << location << index << locationValue << ".Enabled=" << std::boolalpha << m_enabled << "&";
   }
 
   if(m_tlsPolicyHasBeenSet)
@@ -152,7 +155,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_scanEnabledHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ScanEnabled=" << m_scanEnabled << "&";
+      oStream << location << index << locationValue << ".ScanEnabled=" << std::boolalpha << m_scanEnabled << "&";
   }
 
 }
@@ -165,7 +168,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_enabledHasBeenSet)
   {
-      oStream << location << ".Enabled=" << m_enabled << "&";
+      oStream << location << ".Enabled=" << std::boolalpha << m_enabled << "&";
   }
   if(m_tlsPolicyHasBeenSet)
   {
@@ -191,7 +194,7 @@ void ReceiptRule::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_scanEnabledHasBeenSet)
   {
-      oStream << location << ".ScanEnabled=" << m_scanEnabled << "&";
+      oStream << location << ".ScanEnabled=" << std::boolalpha << m_scanEnabled << "&";
   }
 }
 

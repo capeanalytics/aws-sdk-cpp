@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/CertificateStatus.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/iot/model/TransferData.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a certificate.</p>
+   * <p>Describes a certificate.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CertificateDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API CertificateDescription
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The ARN of the certificate.</p>
      */
-    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = value; }
+    inline void SetCertificateArn(Aws::String&& value) { m_certificateArnHasBeenSet = true; m_certificateArn = std::move(value); }
 
     /**
      * <p>The ARN of the certificate.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The ARN of the certificate.</p>
      */
-    inline CertificateDescription& WithCertificateArn(Aws::String&& value) { SetCertificateArn(value); return *this;}
+    inline CertificateDescription& WithCertificateArn(Aws::String&& value) { SetCertificateArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the certificate.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The ID of the certificate.</p>
      */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
+    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
 
     /**
      * <p>The ID of the certificate.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The ID of the certificate.</p>
      */
-    inline CertificateDescription& WithCertificateId(Aws::String&& value) { SetCertificateId(value); return *this;}
+    inline CertificateDescription& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the certificate.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The certificate ID of the CA certificate used to sign this certificate.</p>
      */
-    inline void SetCaCertificateId(Aws::String&& value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId = value; }
+    inline void SetCaCertificateId(Aws::String&& value) { m_caCertificateIdHasBeenSet = true; m_caCertificateId = std::move(value); }
 
     /**
      * <p>The certificate ID of the CA certificate used to sign this certificate.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The certificate ID of the CA certificate used to sign this certificate.</p>
      */
-    inline CertificateDescription& WithCaCertificateId(Aws::String&& value) { SetCaCertificateId(value); return *this;}
+    inline CertificateDescription& WithCaCertificateId(Aws::String&& value) { SetCaCertificateId(std::move(value)); return *this;}
 
     /**
      * <p>The certificate ID of the CA certificate used to sign this certificate.</p>
@@ -162,7 +166,7 @@ namespace Model
     /**
      * <p>The status of the certificate.</p>
      */
-    inline void SetStatus(CertificateStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(CertificateStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the certificate.</p>
@@ -172,7 +176,7 @@ namespace Model
     /**
      * <p>The status of the certificate.</p>
      */
-    inline CertificateDescription& WithStatus(CertificateStatus&& value) { SetStatus(value); return *this;}
+    inline CertificateDescription& WithStatus(CertificateStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The certificate data, in PEM format.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The certificate data, in PEM format.</p>
      */
-    inline void SetCertificatePem(Aws::String&& value) { m_certificatePemHasBeenSet = true; m_certificatePem = value; }
+    inline void SetCertificatePem(Aws::String&& value) { m_certificatePemHasBeenSet = true; m_certificatePem = std::move(value); }
 
     /**
      * <p>The certificate data, in PEM format.</p>
@@ -202,7 +206,7 @@ namespace Model
     /**
      * <p>The certificate data, in PEM format.</p>
      */
-    inline CertificateDescription& WithCertificatePem(Aws::String&& value) { SetCertificatePem(value); return *this;}
+    inline CertificateDescription& WithCertificatePem(Aws::String&& value) { SetCertificatePem(std::move(value)); return *this;}
 
     /**
      * <p>The certificate data, in PEM format.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account that owns the certificate.</p>
      */
-    inline void SetOwnedBy(Aws::String&& value) { m_ownedByHasBeenSet = true; m_ownedBy = value; }
+    inline void SetOwnedBy(Aws::String&& value) { m_ownedByHasBeenSet = true; m_ownedBy = std::move(value); }
 
     /**
      * <p>The ID of the AWS account that owns the certificate.</p>
@@ -237,7 +241,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account that owns the certificate.</p>
      */
-    inline CertificateDescription& WithOwnedBy(Aws::String&& value) { SetOwnedBy(value); return *this;}
+    inline CertificateDescription& WithOwnedBy(Aws::String&& value) { SetOwnedBy(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AWS account that owns the certificate.</p>
@@ -257,7 +261,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account of the previous owner of the certificate.</p>
      */
-    inline void SetPreviousOwnedBy(Aws::String&& value) { m_previousOwnedByHasBeenSet = true; m_previousOwnedBy = value; }
+    inline void SetPreviousOwnedBy(Aws::String&& value) { m_previousOwnedByHasBeenSet = true; m_previousOwnedBy = std::move(value); }
 
     /**
      * <p>The ID of the AWS account of the previous owner of the certificate.</p>
@@ -272,7 +276,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account of the previous owner of the certificate.</p>
      */
-    inline CertificateDescription& WithPreviousOwnedBy(Aws::String&& value) { SetPreviousOwnedBy(value); return *this;}
+    inline CertificateDescription& WithPreviousOwnedBy(Aws::String&& value) { SetPreviousOwnedBy(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AWS account of the previous owner of the certificate.</p>
@@ -292,7 +296,7 @@ namespace Model
     /**
      * <p>The date and time the certificate was created.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The date and time the certificate was created.</p>
@@ -302,7 +306,7 @@ namespace Model
     /**
      * <p>The date and time the certificate was created.</p>
      */
-    inline CertificateDescription& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline CertificateDescription& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>The date and time the certificate was last modified.</p>
@@ -317,7 +321,7 @@ namespace Model
     /**
      * <p>The date and time the certificate was last modified.</p>
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * <p>The date and time the certificate was last modified.</p>
@@ -327,7 +331,7 @@ namespace Model
     /**
      * <p>The date and time the certificate was last modified.</p>
      */
-    inline CertificateDescription& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline CertificateDescription& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * <p>The transfer data.</p>
@@ -342,7 +346,7 @@ namespace Model
     /**
      * <p>The transfer data.</p>
      */
-    inline void SetTransferData(TransferData&& value) { m_transferDataHasBeenSet = true; m_transferData = value; }
+    inline void SetTransferData(TransferData&& value) { m_transferDataHasBeenSet = true; m_transferData = std::move(value); }
 
     /**
      * <p>The transfer data.</p>
@@ -352,7 +356,7 @@ namespace Model
     /**
      * <p>The transfer data.</p>
      */
-    inline CertificateDescription& WithTransferData(TransferData&& value) { SetTransferData(value); return *this;}
+    inline CertificateDescription& WithTransferData(TransferData&& value) { SetTransferData(std::move(value)); return *this;}
 
   private:
     Aws::String m_certificateArn;

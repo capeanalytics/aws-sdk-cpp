@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTRequest.h>
@@ -24,13 +25,17 @@ namespace Model
 {
 
   /**
-   * <p>The input for the DeleteRegistrationCode operation.</p>
+   * <p>The input for the DeleteRegistrationCode operation.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteRegistrationCodeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API DeleteRegistrationCodeRequest : public IoTRequest
   {
   public:
     DeleteRegistrationCodeRequest();
     Aws::String SerializePayload() const override;
+
 
   };
 

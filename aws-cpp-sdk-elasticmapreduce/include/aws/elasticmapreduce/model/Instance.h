@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,15 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticmapreduce/model/InstanceStatus.h>
+#include <aws/elasticmapreduce/model/MarketType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticmapreduce/model/EbsVolume.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +37,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents an EC2 instance provisioned as part of cluster.</p>
+   * <p>Represents an EC2 instance provisioned as part of cluster.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/Instance">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API Instance
   {
@@ -57,7 +63,7 @@ namespace Model
     /**
      * <p>The unique identifier for the instance in Amazon EMR.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p>The unique identifier for the instance in Amazon EMR.</p>
@@ -72,7 +78,7 @@ namespace Model
     /**
      * <p>The unique identifier for the instance in Amazon EMR.</p>
      */
-    inline Instance& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline Instance& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier for the instance in Amazon EMR.</p>
@@ -92,7 +98,7 @@ namespace Model
     /**
      * <p>The unique identifier of the instance in Amazon EC2.</p>
      */
-    inline void SetEc2InstanceId(Aws::String&& value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId = value; }
+    inline void SetEc2InstanceId(Aws::String&& value) { m_ec2InstanceIdHasBeenSet = true; m_ec2InstanceId = std::move(value); }
 
     /**
      * <p>The unique identifier of the instance in Amazon EC2.</p>
@@ -107,7 +113,7 @@ namespace Model
     /**
      * <p>The unique identifier of the instance in Amazon EC2.</p>
      */
-    inline Instance& WithEc2InstanceId(Aws::String&& value) { SetEc2InstanceId(value); return *this;}
+    inline Instance& WithEc2InstanceId(Aws::String&& value) { SetEc2InstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The unique identifier of the instance in Amazon EC2.</p>
@@ -127,7 +133,7 @@ namespace Model
     /**
      * <p>The public DNS name of the instance.</p>
      */
-    inline void SetPublicDnsName(Aws::String&& value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName = value; }
+    inline void SetPublicDnsName(Aws::String&& value) { m_publicDnsNameHasBeenSet = true; m_publicDnsName = std::move(value); }
 
     /**
      * <p>The public DNS name of the instance.</p>
@@ -142,7 +148,7 @@ namespace Model
     /**
      * <p>The public DNS name of the instance.</p>
      */
-    inline Instance& WithPublicDnsName(Aws::String&& value) { SetPublicDnsName(value); return *this;}
+    inline Instance& WithPublicDnsName(Aws::String&& value) { SetPublicDnsName(std::move(value)); return *this;}
 
     /**
      * <p>The public DNS name of the instance.</p>
@@ -162,7 +168,7 @@ namespace Model
     /**
      * <p>The public IP address of the instance.</p>
      */
-    inline void SetPublicIpAddress(Aws::String&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = value; }
+    inline void SetPublicIpAddress(Aws::String&& value) { m_publicIpAddressHasBeenSet = true; m_publicIpAddress = std::move(value); }
 
     /**
      * <p>The public IP address of the instance.</p>
@@ -177,7 +183,7 @@ namespace Model
     /**
      * <p>The public IP address of the instance.</p>
      */
-    inline Instance& WithPublicIpAddress(Aws::String&& value) { SetPublicIpAddress(value); return *this;}
+    inline Instance& WithPublicIpAddress(Aws::String&& value) { SetPublicIpAddress(std::move(value)); return *this;}
 
     /**
      * <p>The public IP address of the instance.</p>
@@ -197,7 +203,7 @@ namespace Model
     /**
      * <p>The private DNS name of the instance.</p>
      */
-    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
+    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::move(value); }
 
     /**
      * <p>The private DNS name of the instance.</p>
@@ -212,7 +218,7 @@ namespace Model
     /**
      * <p>The private DNS name of the instance.</p>
      */
-    inline Instance& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(value); return *this;}
+    inline Instance& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(std::move(value)); return *this;}
 
     /**
      * <p>The private DNS name of the instance.</p>
@@ -232,7 +238,7 @@ namespace Model
     /**
      * <p>The private IP address of the instance.</p>
      */
-    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = value; }
+    inline void SetPrivateIpAddress(Aws::String&& value) { m_privateIpAddressHasBeenSet = true; m_privateIpAddress = std::move(value); }
 
     /**
      * <p>The private IP address of the instance.</p>
@@ -247,7 +253,7 @@ namespace Model
     /**
      * <p>The private IP address of the instance.</p>
      */
-    inline Instance& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(value); return *this;}
+    inline Instance& WithPrivateIpAddress(Aws::String&& value) { SetPrivateIpAddress(std::move(value)); return *this;}
 
     /**
      * <p>The private IP address of the instance.</p>
@@ -267,7 +273,7 @@ namespace Model
     /**
      * <p>The current status of the instance.</p>
      */
-    inline void SetStatus(InstanceStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(InstanceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The current status of the instance.</p>
@@ -277,7 +283,7 @@ namespace Model
     /**
      * <p>The current status of the instance.</p>
      */
-    inline Instance& WithStatus(InstanceStatus&& value) { SetStatus(value); return *this;}
+    inline Instance& WithStatus(InstanceStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the instance group to which this instance belongs.</p>
@@ -292,7 +298,7 @@ namespace Model
     /**
      * <p>The identifier of the instance group to which this instance belongs.</p>
      */
-    inline void SetInstanceGroupId(Aws::String&& value) { m_instanceGroupIdHasBeenSet = true; m_instanceGroupId = value; }
+    inline void SetInstanceGroupId(Aws::String&& value) { m_instanceGroupIdHasBeenSet = true; m_instanceGroupId = std::move(value); }
 
     /**
      * <p>The identifier of the instance group to which this instance belongs.</p>
@@ -307,12 +313,119 @@ namespace Model
     /**
      * <p>The identifier of the instance group to which this instance belongs.</p>
      */
-    inline Instance& WithInstanceGroupId(Aws::String&& value) { SetInstanceGroupId(value); return *this;}
+    inline Instance& WithInstanceGroupId(Aws::String&& value) { SetInstanceGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the instance group to which this instance belongs.</p>
      */
     inline Instance& WithInstanceGroupId(const char* value) { SetInstanceGroupId(value); return *this;}
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline const Aws::String& GetInstanceFleetId() const{ return m_instanceFleetId; }
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline void SetInstanceFleetId(const Aws::String& value) { m_instanceFleetIdHasBeenSet = true; m_instanceFleetId = value; }
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline void SetInstanceFleetId(Aws::String&& value) { m_instanceFleetIdHasBeenSet = true; m_instanceFleetId = std::move(value); }
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline void SetInstanceFleetId(const char* value) { m_instanceFleetIdHasBeenSet = true; m_instanceFleetId.assign(value); }
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline Instance& WithInstanceFleetId(const Aws::String& value) { SetInstanceFleetId(value); return *this;}
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline Instance& WithInstanceFleetId(Aws::String&& value) { SetInstanceFleetId(std::move(value)); return *this;}
+
+    /**
+     * <p>The unique identifier of the instance fleet to which an EC2 instance
+     * belongs.</p>
+     */
+    inline Instance& WithInstanceFleetId(const char* value) { SetInstanceFleetId(value); return *this;}
+
+    /**
+     * <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or
+     * <code>SPOT</code>. </p>
+     */
+    inline const MarketType& GetMarket() const{ return m_market; }
+
+    /**
+     * <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or
+     * <code>SPOT</code>. </p>
+     */
+    inline void SetMarket(const MarketType& value) { m_marketHasBeenSet = true; m_market = value; }
+
+    /**
+     * <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or
+     * <code>SPOT</code>. </p>
+     */
+    inline void SetMarket(MarketType&& value) { m_marketHasBeenSet = true; m_market = std::move(value); }
+
+    /**
+     * <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or
+     * <code>SPOT</code>. </p>
+     */
+    inline Instance& WithMarket(const MarketType& value) { SetMarket(value); return *this;}
+
+    /**
+     * <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or
+     * <code>SPOT</code>. </p>
+     */
+    inline Instance& WithMarket(MarketType&& value) { SetMarket(std::move(value)); return *this;}
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline Instance& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline Instance& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
+
+    /**
+     * <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+     */
+    inline Instance& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
 
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
@@ -327,7 +440,7 @@ namespace Model
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
      */
-    inline void SetEbsVolumes(Aws::Vector<EbsVolume>&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes = value; }
+    inline void SetEbsVolumes(Aws::Vector<EbsVolume>&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes = std::move(value); }
 
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
@@ -337,7 +450,7 @@ namespace Model
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
      */
-    inline Instance& WithEbsVolumes(Aws::Vector<EbsVolume>&& value) { SetEbsVolumes(value); return *this;}
+    inline Instance& WithEbsVolumes(Aws::Vector<EbsVolume>&& value) { SetEbsVolumes(std::move(value)); return *this;}
 
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
@@ -347,7 +460,7 @@ namespace Model
     /**
      * <p>The list of EBS volumes that are attached to this instance.</p>
      */
-    inline Instance& AddEbsVolumes(EbsVolume&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes.push_back(value); return *this; }
+    inline Instance& AddEbsVolumes(EbsVolume&& value) { m_ebsVolumesHasBeenSet = true; m_ebsVolumes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_id;
@@ -366,6 +479,12 @@ namespace Model
     bool m_statusHasBeenSet;
     Aws::String m_instanceGroupId;
     bool m_instanceGroupIdHasBeenSet;
+    Aws::String m_instanceFleetId;
+    bool m_instanceFleetIdHasBeenSet;
+    MarketType m_market;
+    bool m_marketHasBeenSet;
+    Aws::String m_instanceType;
+    bool m_instanceTypeHasBeenSet;
     Aws::Vector<EbsVolume> m_ebsVolumes;
     bool m_ebsVolumesHasBeenSet;
   };

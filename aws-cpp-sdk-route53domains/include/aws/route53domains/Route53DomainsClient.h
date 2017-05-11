@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53domains/Route53Domains_EXPORTS.h>
 #include <aws/route53domains/Route53DomainsErrors.h>
@@ -187,6 +188,10 @@ namespace Model
     typedef std::function<void(const Route53DomainsClient*, const Model::UpdateTagsForDomainRequest&, const Model::UpdateTagsForDomainOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateTagsForDomainResponseReceivedHandler;
     typedef std::function<void(const Route53DomainsClient*, const Model::ViewBillingRequest&, const Model::ViewBillingOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ViewBillingResponseReceivedHandler;
 
+  /**
+   * <p>Amazon Route 53 API actions let you register domain names and perform related
+   * operations.</p>
+   */
   class AWS_ROUTE53DOMAINS_API Route53DomainsClient : public Aws::Client::AWSJsonClient
   {
     public:
@@ -216,14 +221,18 @@ namespace Model
         /**
          * <p>This operation checks the availability of one domain name. Note that if the
          * availability status of a domain is pending, you must submit another request to
-         * determine the availability of the domain name.</p>
+         * determine the availability of the domain name.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability">AWS
+         * API Reference</a></p>
          */
         virtual Model::CheckDomainAvailabilityOutcome CheckDomainAvailability(const Model::CheckDomainAvailabilityRequest& request) const;
 
         /**
          * <p>This operation checks the availability of one domain name. Note that if the
          * availability status of a domain is pending, you must submit another request to
-         * determine the availability of the domain name.</p>
+         * determine the availability of the domain name.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -232,7 +241,9 @@ namespace Model
         /**
          * <p>This operation checks the availability of one domain name. Note that if the
          * availability status of a domain is pending, you must submit another request to
-         * determine the availability of the domain name.</p>
+         * determine the availability of the domain name.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/CheckDomainAvailability">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -241,14 +252,18 @@ namespace Model
         /**
          * <p>This operation deletes the specified tags for a domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DeleteTagsForDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteTagsForDomainOutcome DeleteTagsForDomain(const Model::DeleteTagsForDomainRequest& request) const;
 
         /**
          * <p>This operation deletes the specified tags for a domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DeleteTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -257,7 +272,9 @@ namespace Model
         /**
          * <p>This operation deletes the specified tags for a domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DeleteTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -265,13 +282,17 @@ namespace Model
 
         /**
          * <p>This operation disables automatic renewal of domain registration for the
-         * specified domain.</p>
+         * specified domain.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainAutoRenew">AWS
+         * API Reference</a></p>
          */
         virtual Model::DisableDomainAutoRenewOutcome DisableDomainAutoRenew(const Model::DisableDomainAutoRenewRequest& request) const;
 
         /**
          * <p>This operation disables automatic renewal of domain registration for the
-         * specified domain.</p>
+         * specified domain.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainAutoRenew">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -279,7 +300,9 @@ namespace Model
 
         /**
          * <p>This operation disables automatic renewal of domain registration for the
-         * specified domain.</p>
+         * specified domain.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainAutoRenew">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -292,7 +315,9 @@ namespace Model
          * the domain to a different registrar. Successful submission returns an operation
          * ID that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainTransferLock">AWS
+         * API Reference</a></p>
          */
         virtual Model::DisableDomainTransferLockOutcome DisableDomainTransferLock(const Model::DisableDomainTransferLockRequest& request) const;
 
@@ -303,7 +328,9 @@ namespace Model
          * the domain to a different registrar. Successful submission returns an operation
          * ID that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainTransferLock">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -316,7 +343,9 @@ namespace Model
          * the domain to a different registrar. Successful submission returns an operation
          * ID that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/DisableDomainTransferLock">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -332,7 +361,9 @@ namespace Model
          * restoration, and deletion times"</a> on the website for our registrar partner,
          * Gandi. Route 53 requires that you renew before the end of the renewal period
          * that is listed on the Gandi website so we can complete processing before the
-         * deadline.</p>
+         * deadline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainAutoRenew">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableDomainAutoRenewOutcome EnableDomainAutoRenew(const Model::EnableDomainAutoRenewRequest& request) const;
 
@@ -346,7 +377,9 @@ namespace Model
          * restoration, and deletion times"</a> on the website for our registrar partner,
          * Gandi. Route 53 requires that you renew before the end of the renewal period
          * that is listed on the Gandi website so we can complete processing before the
-         * deadline.</p>
+         * deadline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainAutoRenew">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -362,7 +395,9 @@ namespace Model
          * restoration, and deletion times"</a> on the website for our registrar partner,
          * Gandi. Route 53 requires that you renew before the end of the renewal period
          * that is listed on the Gandi website so we can complete processing before the
-         * deadline.</p>
+         * deadline.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainAutoRenew">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -373,7 +408,10 @@ namespace Model
          * <code>clientTransferProhibited</code> status) to prevent domain transfers.
          * Successful submission returns an operation ID that you can use to track the
          * progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * successfully, the domain registrant will be notified by email.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainTransferLock">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableDomainTransferLockOutcome EnableDomainTransferLock(const Model::EnableDomainTransferLockRequest& request) const;
 
@@ -382,7 +420,10 @@ namespace Model
          * <code>clientTransferProhibited</code> status) to prevent domain transfers.
          * Successful submission returns an operation ID that you can use to track the
          * progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * successfully, the domain registrant will be notified by email.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainTransferLock">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -393,7 +434,10 @@ namespace Model
          * <code>clientTransferProhibited</code> status) to prevent domain transfers.
          * Successful submission returns an operation ID that you can use to track the
          * progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * successfully, the domain registrant will be notified by email.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/EnableDomainTransferLock">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -404,7 +448,10 @@ namespace Model
          * registrant contact is valid, such as registering a new domain, this operation
          * returns information about whether the registrant contact has responded.</p>
          * <p>If you want us to resend the email, use the
-         * <code>ResendContactReachabilityEmail</code> operation.</p>
+         * <code>ResendContactReachabilityEmail</code> operation.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetContactReachabilityStatus">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetContactReachabilityStatusOutcome GetContactReachabilityStatus(const Model::GetContactReachabilityStatusRequest& request) const;
 
@@ -413,7 +460,10 @@ namespace Model
          * registrant contact is valid, such as registering a new domain, this operation
          * returns information about whether the registrant contact has responded.</p>
          * <p>If you want us to resend the email, use the
-         * <code>ResendContactReachabilityEmail</code> operation.</p>
+         * <code>ResendContactReachabilityEmail</code> operation.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetContactReachabilityStatus">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -424,29 +474,41 @@ namespace Model
          * registrant contact is valid, such as registering a new domain, this operation
          * returns information about whether the registrant contact has responded.</p>
          * <p>If you want us to resend the email, use the
-         * <code>ResendContactReachabilityEmail</code> operation.</p>
+         * <code>ResendContactReachabilityEmail</code> operation.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetContactReachabilityStatus">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GetContactReachabilityStatusAsync(const Model::GetContactReachabilityStatusRequest& request, const GetContactReachabilityStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>This operation returns detailed information about the domain. The domain's
-         * contact information is also returned as part of the output.</p>
+         * <p>This operation returns detailed information about a specified domain that is
+         * associated with the current AWS account. Contact information for the domain is
+         * also returned as part of the output.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetDomainDetailOutcome GetDomainDetail(const Model::GetDomainDetailRequest& request) const;
 
         /**
-         * <p>This operation returns detailed information about the domain. The domain's
-         * contact information is also returned as part of the output.</p>
+         * <p>This operation returns detailed information about a specified domain that is
+         * associated with the current AWS account. Contact information for the domain is
+         * also returned as part of the output.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetDomainDetailOutcomeCallable GetDomainDetailCallable(const Model::GetDomainDetailRequest& request) const;
 
         /**
-         * <p>This operation returns detailed information about the domain. The domain's
-         * contact information is also returned as part of the output.</p>
+         * <p>This operation returns detailed information about a specified domain that is
+         * associated with the current AWS account. Contact information for the domain is
+         * also returned as part of the output.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainDetail">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -455,30 +517,18 @@ namespace Model
         /**
          * <p>The GetDomainSuggestions operation returns a list of suggested domain names
          * given a string, which can either be a domain name or simply a word or phrase
-         * (without spaces).</p> <p> Parameters: <ul><li>DomainName (string): The basis for
-         * your domain suggestion search, a string with (or without) top-level domain
-         * specified.</li> <li>SuggestionCount (int): The number of domain suggestions to
-         * be returned, maximum 50, minimum 1.</li> <li>OnlyAvailable (bool): If true,
-         * availability check will be performed on suggestion results, and only available
-         * domains will be returned. If false, suggestions will be returned without
-         * checking whether the domain is actually available, and caller will have to call
-         * checkDomainAvailability for each suggestion to determine availability for
-         * registration.</li> </ul> </p>
+         * (without spaces).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainSuggestions">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetDomainSuggestionsOutcome GetDomainSuggestions(const Model::GetDomainSuggestionsRequest& request) const;
 
         /**
          * <p>The GetDomainSuggestions operation returns a list of suggested domain names
          * given a string, which can either be a domain name or simply a word or phrase
-         * (without spaces).</p> <p> Parameters: <ul><li>DomainName (string): The basis for
-         * your domain suggestion search, a string with (or without) top-level domain
-         * specified.</li> <li>SuggestionCount (int): The number of domain suggestions to
-         * be returned, maximum 50, minimum 1.</li> <li>OnlyAvailable (bool): If true,
-         * availability check will be performed on suggestion results, and only available
-         * domains will be returned. If false, suggestions will be returned without
-         * checking whether the domain is actually available, and caller will have to call
-         * checkDomainAvailability for each suggestion to determine availability for
-         * registration.</li> </ul> </p>
+         * (without spaces).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainSuggestions">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -487,15 +537,9 @@ namespace Model
         /**
          * <p>The GetDomainSuggestions operation returns a list of suggested domain names
          * given a string, which can either be a domain name or simply a word or phrase
-         * (without spaces).</p> <p> Parameters: <ul><li>DomainName (string): The basis for
-         * your domain suggestion search, a string with (or without) top-level domain
-         * specified.</li> <li>SuggestionCount (int): The number of domain suggestions to
-         * be returned, maximum 50, minimum 1.</li> <li>OnlyAvailable (bool): If true,
-         * availability check will be performed on suggestion results, and only available
-         * domains will be returned. If false, suggestions will be returned without
-         * checking whether the domain is actually available, and caller will have to call
-         * checkDomainAvailability for each suggestion to determine availability for
-         * registration.</li> </ul> </p>
+         * (without spaces).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetDomainSuggestions">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -503,13 +547,17 @@ namespace Model
 
         /**
          * <p>This operation returns the current status of an operation that is not
-         * completed.</p>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetOperationDetail">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetOperationDetailOutcome GetOperationDetail(const Model::GetOperationDetailRequest& request) const;
 
         /**
          * <p>This operation returns the current status of an operation that is not
-         * completed.</p>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetOperationDetail">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -517,7 +565,9 @@ namespace Model
 
         /**
          * <p>This operation returns the current status of an operation that is not
-         * completed.</p>
+         * completed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/GetOperationDetail">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -525,13 +575,17 @@ namespace Model
 
         /**
          * <p>This operation returns all the domain names registered with Amazon Route 53
-         * for the current AWS account.</p>
+         * for the current AWS account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListDomains">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListDomainsOutcome ListDomains(const Model::ListDomainsRequest& request) const;
 
         /**
          * <p>This operation returns all the domain names registered with Amazon Route 53
-         * for the current AWS account.</p>
+         * for the current AWS account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListDomains">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -539,7 +593,9 @@ namespace Model
 
         /**
          * <p>This operation returns all the domain names registered with Amazon Route 53
-         * for the current AWS account.</p>
+         * for the current AWS account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListDomains">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -547,13 +603,17 @@ namespace Model
 
         /**
          * <p>This operation returns the operation IDs of operations that are not yet
-         * complete.</p>
+         * complete.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListOperations">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListOperationsOutcome ListOperations(const Model::ListOperationsRequest& request) const;
 
         /**
          * <p>This operation returns the operation IDs of operations that are not yet
-         * complete.</p>
+         * complete.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListOperations">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -561,7 +621,9 @@ namespace Model
 
         /**
          * <p>This operation returns the operation IDs of operations that are not yet
-         * complete.</p>
+         * complete.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListOperations">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -570,14 +632,20 @@ namespace Model
         /**
          * <p>This operation returns all of the tags that are associated with the specified
          * domain.</p> <p>All tag operations are eventually consistent; subsequent
-         * operations may not immediately represent all issued operations.</p>
+         * operations may not immediately represent all issued operations.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListTagsForDomainOutcome ListTagsForDomain(const Model::ListTagsForDomainRequest& request) const;
 
         /**
          * <p>This operation returns all of the tags that are associated with the specified
          * domain.</p> <p>All tag operations are eventually consistent; subsequent
-         * operations may not immediately represent all issued operations.</p>
+         * operations may not immediately represent all issued operations.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -586,7 +654,10 @@ namespace Model
         /**
          * <p>This operation returns all of the tags that are associated with the specified
          * domain.</p> <p>All tag operations are eventually consistent; subsequent
-         * operations may not immediately represent all issued operations.</p>
+         * operations may not immediately represent all issued operations.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -596,21 +667,23 @@ namespace Model
          * <p>This operation registers a domain. Domains are registered by the AWS
          * registrar partner, Gandi. For some top-level domains (TLDs), this operation
          * requires extra parameters.</p> <p>When you register a domain, Amazon Route 53
-         * does the following:</p> <ul> <li>Creates a Amazon Route 53 hosted zone that has
-         * the same name as the domain. Amazon Route 53 assigns four name servers to your
-         * hosted zone and automatically updates your domain registration with the names of
-         * these name servers.</li> <li>Enables autorenew, so your domain registration will
-         * renew automatically each year. We'll notify you in advance of the renewal date
-         * so you can choose whether to renew the registration.</li> <li>Optionally enables
-         * privacy protection, so WHOIS queries return contact information for our
-         * registrar partner, Gandi, instead of the information you entered for registrant,
-         * admin, and tech contacts.</li> <li>If registration is successful, returns an
-         * operation ID that you can use to track the progress and completion of the
-         * action. If the request is not completed successfully, the domain registrant is
-         * notified by email.</li> <li>Charges your AWS account an amount based on the
-         * top-level domain. For more information, see <a
-         * href="http://aws.amazon.com/route53/pricing/">Amazon Route 53 Pricing</a>.</li>
-         * </ul>
+         * does the following:</p> <ul> <li> <p>Creates a Amazon Route 53 hosted zone that
+         * has the same name as the domain. Amazon Route 53 assigns four name servers to
+         * your hosted zone and automatically updates your domain registration with the
+         * names of these name servers.</p> </li> <li> <p>Enables autorenew, so your domain
+         * registration will renew automatically each year. We'll notify you in advance of
+         * the renewal date so you can choose whether to renew the registration.</p> </li>
+         * <li> <p>Optionally enables privacy protection, so WHOIS queries return contact
+         * information for our registrar partner, Gandi, instead of the information you
+         * entered for registrant, admin, and tech contacts.</p> </li> <li> <p>If
+         * registration is successful, returns an operation ID that you can use to track
+         * the progress and completion of the action. If the request is not completed
+         * successfully, the domain registrant is notified by email.</p> </li> <li>
+         * <p>Charges your AWS account an amount based on the top-level domain. For more
+         * information, see <a href="http://aws.amazon.com/route53/pricing/">Amazon Route
+         * 53 Pricing</a>.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::RegisterDomainOutcome RegisterDomain(const Model::RegisterDomainRequest& request) const;
 
@@ -618,21 +691,23 @@ namespace Model
          * <p>This operation registers a domain. Domains are registered by the AWS
          * registrar partner, Gandi. For some top-level domains (TLDs), this operation
          * requires extra parameters.</p> <p>When you register a domain, Amazon Route 53
-         * does the following:</p> <ul> <li>Creates a Amazon Route 53 hosted zone that has
-         * the same name as the domain. Amazon Route 53 assigns four name servers to your
-         * hosted zone and automatically updates your domain registration with the names of
-         * these name servers.</li> <li>Enables autorenew, so your domain registration will
-         * renew automatically each year. We'll notify you in advance of the renewal date
-         * so you can choose whether to renew the registration.</li> <li>Optionally enables
-         * privacy protection, so WHOIS queries return contact information for our
-         * registrar partner, Gandi, instead of the information you entered for registrant,
-         * admin, and tech contacts.</li> <li>If registration is successful, returns an
-         * operation ID that you can use to track the progress and completion of the
-         * action. If the request is not completed successfully, the domain registrant is
-         * notified by email.</li> <li>Charges your AWS account an amount based on the
-         * top-level domain. For more information, see <a
-         * href="http://aws.amazon.com/route53/pricing/">Amazon Route 53 Pricing</a>.</li>
-         * </ul>
+         * does the following:</p> <ul> <li> <p>Creates a Amazon Route 53 hosted zone that
+         * has the same name as the domain. Amazon Route 53 assigns four name servers to
+         * your hosted zone and automatically updates your domain registration with the
+         * names of these name servers.</p> </li> <li> <p>Enables autorenew, so your domain
+         * registration will renew automatically each year. We'll notify you in advance of
+         * the renewal date so you can choose whether to renew the registration.</p> </li>
+         * <li> <p>Optionally enables privacy protection, so WHOIS queries return contact
+         * information for our registrar partner, Gandi, instead of the information you
+         * entered for registrant, admin, and tech contacts.</p> </li> <li> <p>If
+         * registration is successful, returns an operation ID that you can use to track
+         * the progress and completion of the action. If the request is not completed
+         * successfully, the domain registrant is notified by email.</p> </li> <li>
+         * <p>Charges your AWS account an amount based on the top-level domain. For more
+         * information, see <a href="http://aws.amazon.com/route53/pricing/">Amazon Route
+         * 53 Pricing</a>.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -642,21 +717,23 @@ namespace Model
          * <p>This operation registers a domain. Domains are registered by the AWS
          * registrar partner, Gandi. For some top-level domains (TLDs), this operation
          * requires extra parameters.</p> <p>When you register a domain, Amazon Route 53
-         * does the following:</p> <ul> <li>Creates a Amazon Route 53 hosted zone that has
-         * the same name as the domain. Amazon Route 53 assigns four name servers to your
-         * hosted zone and automatically updates your domain registration with the names of
-         * these name servers.</li> <li>Enables autorenew, so your domain registration will
-         * renew automatically each year. We'll notify you in advance of the renewal date
-         * so you can choose whether to renew the registration.</li> <li>Optionally enables
-         * privacy protection, so WHOIS queries return contact information for our
-         * registrar partner, Gandi, instead of the information you entered for registrant,
-         * admin, and tech contacts.</li> <li>If registration is successful, returns an
-         * operation ID that you can use to track the progress and completion of the
-         * action. If the request is not completed successfully, the domain registrant is
-         * notified by email.</li> <li>Charges your AWS account an amount based on the
-         * top-level domain. For more information, see <a
-         * href="http://aws.amazon.com/route53/pricing/">Amazon Route 53 Pricing</a>.</li>
-         * </ul>
+         * does the following:</p> <ul> <li> <p>Creates a Amazon Route 53 hosted zone that
+         * has the same name as the domain. Amazon Route 53 assigns four name servers to
+         * your hosted zone and automatically updates your domain registration with the
+         * names of these name servers.</p> </li> <li> <p>Enables autorenew, so your domain
+         * registration will renew automatically each year. We'll notify you in advance of
+         * the renewal date so you can choose whether to renew the registration.</p> </li>
+         * <li> <p>Optionally enables privacy protection, so WHOIS queries return contact
+         * information for our registrar partner, Gandi, instead of the information you
+         * entered for registrant, admin, and tech contacts.</p> </li> <li> <p>If
+         * registration is successful, returns an operation ID that you can use to track
+         * the progress and completion of the action. If the request is not completed
+         * successfully, the domain registrant is notified by email.</p> </li> <li>
+         * <p>Charges your AWS account an amount based on the top-level domain. For more
+         * information, see <a href="http://aws.amazon.com/route53/pricing/">Amazon Route
+         * 53 Pricing</a>.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RegisterDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -668,8 +745,11 @@ namespace Model
          * renew your domain several weeks before the expiration date. Some TLD registries
          * delete domains before the expiration date if you haven't renewed far enough in
          * advance. For more information about renewing domain registration, see <a
-         * href="http://docs.aws.amazon.com/console/route53/domain-renew">Renewing
-         * Registration for a Domain</a> in the Amazon Route 53 documentation.</p>
+         * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html">Renewing
+         * Registration for a Domain</a> in the Amazon Route 53 Developer
+         * Guide.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::RenewDomainOutcome RenewDomain(const Model::RenewDomainRequest& request) const;
 
@@ -679,8 +759,11 @@ namespace Model
          * renew your domain several weeks before the expiration date. Some TLD registries
          * delete domains before the expiration date if you haven't renewed far enough in
          * advance. For more information about renewing domain registration, see <a
-         * href="http://docs.aws.amazon.com/console/route53/domain-renew">Renewing
-         * Registration for a Domain</a> in the Amazon Route 53 documentation.</p>
+         * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html">Renewing
+         * Registration for a Domain</a> in the Amazon Route 53 Developer
+         * Guide.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -692,8 +775,11 @@ namespace Model
          * renew your domain several weeks before the expiration date. Some TLD registries
          * delete domains before the expiration date if you haven't renewed far enough in
          * advance. For more information about renewing domain registration, see <a
-         * href="http://docs.aws.amazon.com/console/route53/domain-renew">Renewing
-         * Registration for a Domain</a> in the Amazon Route 53 documentation.</p>
+         * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html">Renewing
+         * Registration for a Domain</a> in the Amazon Route 53 Developer
+         * Guide.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RenewDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -703,7 +789,9 @@ namespace Model
          * <p>For operations that require confirmation that the email address for the
          * registrant contact is valid, such as registering a new domain, this operation
          * resends the confirmation email to the current email address for the registrant
-         * contact. </p>
+         * contact.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ResendContactReachabilityEmail">AWS
+         * API Reference</a></p>
          */
         virtual Model::ResendContactReachabilityEmailOutcome ResendContactReachabilityEmail(const Model::ResendContactReachabilityEmailRequest& request) const;
 
@@ -711,7 +799,9 @@ namespace Model
          * <p>For operations that require confirmation that the email address for the
          * registrant contact is valid, such as registering a new domain, this operation
          * resends the confirmation email to the current email address for the registrant
-         * contact. </p>
+         * contact.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ResendContactReachabilityEmail">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -721,7 +811,9 @@ namespace Model
          * <p>For operations that require confirmation that the email address for the
          * registrant contact is valid, such as registering a new domain, this operation
          * resends the confirmation email to the current email address for the registrant
-         * contact. </p>
+         * contact.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ResendContactReachabilityEmail">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -729,13 +821,19 @@ namespace Model
 
         /**
          * <p>This operation returns the AuthCode for the domain. To transfer a domain to
-         * another registrar, you provide this value to the new registrar.</p>
+         * another registrar, you provide this value to the new registrar.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RetrieveDomainAuthCode">AWS
+         * API Reference</a></p>
          */
         virtual Model::RetrieveDomainAuthCodeOutcome RetrieveDomainAuthCode(const Model::RetrieveDomainAuthCodeRequest& request) const;
 
         /**
          * <p>This operation returns the AuthCode for the domain. To transfer a domain to
-         * another registrar, you provide this value to the new registrar.</p>
+         * another registrar, you provide this value to the new registrar.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RetrieveDomainAuthCode">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -743,7 +841,10 @@ namespace Model
 
         /**
          * <p>This operation returns the AuthCode for the domain. To transfer a domain to
-         * another registrar, you provide this value to the new registrar.</p>
+         * another registrar, you provide this value to the new registrar.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/RetrieveDomainAuthCode">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -755,20 +856,23 @@ namespace Model
          * partner, Gandi.</p> <p>For transfer requirements, a detailed procedure, and
          * information about viewing the status of a domain transfer, see <a
          * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html">Transferring
-         * Registration for a Domain to Amazon Route 53</a> in the Amazon Route 53
-         * Developer Guide.</p> <p>If the registrar for your domain is also the DNS service
-         * provider for the domain, we highly recommend that you consider transferring your
-         * DNS service to Amazon Route 53 or to another DNS service provider before you
-         * transfer your registration. Some registrars provide free DNS service when you
-         * purchase a domain registration. When you transfer the registration, the previous
-         * registrar will not renew your domain registration and could end your DNS service
-         * at any time.</p> <note>Caution! If the registrar for your domain is also the DNS
-         * service provider for the domain and you don't transfer DNS service to another
-         * provider, your website, email, and the web applications associated with the
-         * domain might become unavailable.</note> <p>If the transfer is successful, this
-         * method returns an operation ID that you can use to track the progress and
-         * completion of the action. If the transfer doesn't complete successfully, the
-         * domain registrant will be notified by email.</p>
+         * Registration for a Domain to Amazon Route 53</a> in the <i>Amazon Route 53
+         * Developer Guide</i>.</p> <p>If the registrar for your domain is also the DNS
+         * service provider for the domain, we highly recommend that you consider
+         * transferring your DNS service to Amazon Route 53 or to another DNS service
+         * provider before you transfer your registration. Some registrars provide free DNS
+         * service when you purchase a domain registration. When you transfer the
+         * registration, the previous registrar will not renew your domain registration and
+         * could end your DNS service at any time.</p> <important> <p>If the registrar for
+         * your domain is also the DNS service provider for the domain and you don't
+         * transfer DNS service to another provider, your website, email, and the web
+         * applications associated with the domain might become unavailable.</p>
+         * </important> <p>If the transfer is successful, this method returns an operation
+         * ID that you can use to track the progress and completion of the action. If the
+         * transfer doesn't complete successfully, the domain registrant will be notified
+         * by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/TransferDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::TransferDomainOutcome TransferDomain(const Model::TransferDomainRequest& request) const;
 
@@ -778,20 +882,23 @@ namespace Model
          * partner, Gandi.</p> <p>For transfer requirements, a detailed procedure, and
          * information about viewing the status of a domain transfer, see <a
          * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html">Transferring
-         * Registration for a Domain to Amazon Route 53</a> in the Amazon Route 53
-         * Developer Guide.</p> <p>If the registrar for your domain is also the DNS service
-         * provider for the domain, we highly recommend that you consider transferring your
-         * DNS service to Amazon Route 53 or to another DNS service provider before you
-         * transfer your registration. Some registrars provide free DNS service when you
-         * purchase a domain registration. When you transfer the registration, the previous
-         * registrar will not renew your domain registration and could end your DNS service
-         * at any time.</p> <note>Caution! If the registrar for your domain is also the DNS
-         * service provider for the domain and you don't transfer DNS service to another
-         * provider, your website, email, and the web applications associated with the
-         * domain might become unavailable.</note> <p>If the transfer is successful, this
-         * method returns an operation ID that you can use to track the progress and
-         * completion of the action. If the transfer doesn't complete successfully, the
-         * domain registrant will be notified by email.</p>
+         * Registration for a Domain to Amazon Route 53</a> in the <i>Amazon Route 53
+         * Developer Guide</i>.</p> <p>If the registrar for your domain is also the DNS
+         * service provider for the domain, we highly recommend that you consider
+         * transferring your DNS service to Amazon Route 53 or to another DNS service
+         * provider before you transfer your registration. Some registrars provide free DNS
+         * service when you purchase a domain registration. When you transfer the
+         * registration, the previous registrar will not renew your domain registration and
+         * could end your DNS service at any time.</p> <important> <p>If the registrar for
+         * your domain is also the DNS service provider for the domain and you don't
+         * transfer DNS service to another provider, your website, email, and the web
+         * applications associated with the domain might become unavailable.</p>
+         * </important> <p>If the transfer is successful, this method returns an operation
+         * ID that you can use to track the progress and completion of the action. If the
+         * transfer doesn't complete successfully, the domain registrant will be notified
+         * by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/TransferDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -803,20 +910,23 @@ namespace Model
          * partner, Gandi.</p> <p>For transfer requirements, a detailed procedure, and
          * information about viewing the status of a domain transfer, see <a
          * href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html">Transferring
-         * Registration for a Domain to Amazon Route 53</a> in the Amazon Route 53
-         * Developer Guide.</p> <p>If the registrar for your domain is also the DNS service
-         * provider for the domain, we highly recommend that you consider transferring your
-         * DNS service to Amazon Route 53 or to another DNS service provider before you
-         * transfer your registration. Some registrars provide free DNS service when you
-         * purchase a domain registration. When you transfer the registration, the previous
-         * registrar will not renew your domain registration and could end your DNS service
-         * at any time.</p> <note>Caution! If the registrar for your domain is also the DNS
-         * service provider for the domain and you don't transfer DNS service to another
-         * provider, your website, email, and the web applications associated with the
-         * domain might become unavailable.</note> <p>If the transfer is successful, this
-         * method returns an operation ID that you can use to track the progress and
-         * completion of the action. If the transfer doesn't complete successfully, the
-         * domain registrant will be notified by email.</p>
+         * Registration for a Domain to Amazon Route 53</a> in the <i>Amazon Route 53
+         * Developer Guide</i>.</p> <p>If the registrar for your domain is also the DNS
+         * service provider for the domain, we highly recommend that you consider
+         * transferring your DNS service to Amazon Route 53 or to another DNS service
+         * provider before you transfer your registration. Some registrars provide free DNS
+         * service when you purchase a domain registration. When you transfer the
+         * registration, the previous registrar will not renew your domain registration and
+         * could end your DNS service at any time.</p> <important> <p>If the registrar for
+         * your domain is also the DNS service provider for the domain and you don't
+         * transfer DNS service to another provider, your website, email, and the web
+         * applications associated with the domain might become unavailable.</p>
+         * </important> <p>If the transfer is successful, this method returns an operation
+         * ID that you can use to track the progress and completion of the action. If the
+         * transfer doesn't complete successfully, the domain registrant will be notified
+         * by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/TransferDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -828,7 +938,9 @@ namespace Model
          * must be supplied for update.</p> <p>If the update is successful, this method
          * returns an operation ID that you can use to track the progress and completion of
          * the action. If the request is not completed successfully, the domain registrant
-         * will be notified by email.</p>
+         * will be notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContact">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateDomainContactOutcome UpdateDomainContact(const Model::UpdateDomainContactRequest& request) const;
 
@@ -838,7 +950,9 @@ namespace Model
          * must be supplied for update.</p> <p>If the update is successful, this method
          * returns an operation ID that you can use to track the progress and completion of
          * the action. If the request is not completed successfully, the domain registrant
-         * will be notified by email.</p>
+         * will be notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContact">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -850,7 +964,9 @@ namespace Model
          * must be supplied for update.</p> <p>If the update is successful, this method
          * returns an operation ID that you can use to track the progress and completion of
          * the action. If the request is not completed successfully, the domain registrant
-         * will be notified by email.</p>
+         * will be notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContact">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -864,9 +980,12 @@ namespace Model
          * href="http://www.gandi.net/domain/whois/?currency=USD&amp;amp;lang=en">Gandi
          * privacy features</a>.</p> <p>This operation only affects the privacy of the
          * specified contact type (registrant, administrator, or tech). Successful
-         * acceptance returns an operation ID that you can use with GetOperationDetail to
-         * track the progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * acceptance returns an operation ID that you can use with
+         * <a>GetOperationDetail</a> to track the progress and completion of the action. If
+         * the request is not completed successfully, the domain registrant will be
+         * notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateDomainContactPrivacyOutcome UpdateDomainContactPrivacy(const Model::UpdateDomainContactPrivacyRequest& request) const;
 
@@ -878,9 +997,12 @@ namespace Model
          * href="http://www.gandi.net/domain/whois/?currency=USD&amp;amp;lang=en">Gandi
          * privacy features</a>.</p> <p>This operation only affects the privacy of the
          * specified contact type (registrant, administrator, or tech). Successful
-         * acceptance returns an operation ID that you can use with GetOperationDetail to
-         * track the progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * acceptance returns an operation ID that you can use with
+         * <a>GetOperationDetail</a> to track the progress and completion of the action. If
+         * the request is not completed successfully, the domain registrant will be
+         * notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -894,9 +1016,12 @@ namespace Model
          * href="http://www.gandi.net/domain/whois/?currency=USD&amp;amp;lang=en">Gandi
          * privacy features</a>.</p> <p>This operation only affects the privacy of the
          * specified contact type (registrant, administrator, or tech). Successful
-         * acceptance returns an operation ID that you can use with GetOperationDetail to
-         * track the progress and completion of the action. If the request is not completed
-         * successfully, the domain registrant will be notified by email.</p>
+         * acceptance returns an operation ID that you can use with
+         * <a>GetOperationDetail</a> to track the progress and completion of the action. If
+         * the request is not completed successfully, the domain registrant will be
+         * notified by email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainContactPrivacy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -906,10 +1031,12 @@ namespace Model
          * <p>This operation replaces the current set of name servers for the domain with
          * the specified set of name servers. If you use Amazon Route 53 as your DNS
          * service, specify the four name servers in the delegation set for the hosted zone
-         * for the domain. </p> <p>If successful, this operation returns an operation ID
+         * for the domain.</p> <p>If successful, this operation returns an operation ID
          * that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainNameservers">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateDomainNameserversOutcome UpdateDomainNameservers(const Model::UpdateDomainNameserversRequest& request) const;
 
@@ -917,10 +1044,12 @@ namespace Model
          * <p>This operation replaces the current set of name servers for the domain with
          * the specified set of name servers. If you use Amazon Route 53 as your DNS
          * service, specify the four name servers in the delegation set for the hosted zone
-         * for the domain. </p> <p>If successful, this operation returns an operation ID
+         * for the domain.</p> <p>If successful, this operation returns an operation ID
          * that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainNameservers">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -930,10 +1059,12 @@ namespace Model
          * <p>This operation replaces the current set of name servers for the domain with
          * the specified set of name servers. If you use Amazon Route 53 as your DNS
          * service, specify the four name servers in the delegation set for the hosted zone
-         * for the domain. </p> <p>If successful, this operation returns an operation ID
+         * for the domain.</p> <p>If successful, this operation returns an operation ID
          * that you can use to track the progress and completion of the action. If the
          * request is not completed successfully, the domain registrant will be notified by
-         * email.</p>
+         * email.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateDomainNameservers">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -942,14 +1073,18 @@ namespace Model
         /**
          * <p>This operation adds or updates tags for a specified domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateTagsForDomain">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateTagsForDomainOutcome UpdateTagsForDomain(const Model::UpdateTagsForDomainRequest& request) const;
 
         /**
          * <p>This operation adds or updates tags for a specified domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -958,29 +1093,37 @@ namespace Model
         /**
          * <p>This operation adds or updates tags for a specified domain.</p> <p>All tag
          * operations are eventually consistent; subsequent operations may not immediately
-         * represent all issued operations.</p>
+         * represent all issued operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/UpdateTagsForDomain">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void UpdateTagsForDomainAsync(const Model::UpdateTagsForDomainRequest& request, const UpdateTagsForDomainResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>This operation returns all the domain-related billing records for the current
-         * AWS account for a specified period</p>
+         * <p>Returns all the domain-related billing records for the current AWS account
+         * for a specified period</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ViewBilling">AWS
+         * API Reference</a></p>
          */
         virtual Model::ViewBillingOutcome ViewBilling(const Model::ViewBillingRequest& request) const;
 
         /**
-         * <p>This operation returns all the domain-related billing records for the current
-         * AWS account for a specified period</p>
+         * <p>Returns all the domain-related billing records for the current AWS account
+         * for a specified period</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ViewBilling">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ViewBillingOutcomeCallable ViewBillingCallable(const Model::ViewBillingRequest& request) const;
 
         /**
-         * <p>This operation returns all the domain-related billing records for the current
-         * AWS account for a specified period</p>
+         * <p>Returns all the domain-related billing records for the current AWS account
+         * for a specified period</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ViewBilling">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1016,7 +1159,7 @@ namespace Model
         void ViewBillingAsyncHelper(const Model::ViewBillingRequest& request, const ViewBillingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace Route53Domains

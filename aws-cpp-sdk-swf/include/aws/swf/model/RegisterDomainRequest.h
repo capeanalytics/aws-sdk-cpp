@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Name of the domain to register. The name must be unique in the region that
@@ -62,7 +65,7 @@ namespace Model
      * | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>Name of the domain to register. The name must be unique in the region that
@@ -92,7 +95,7 @@ namespace Model
      * | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline RegisterDomainRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline RegisterDomainRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>Name of the domain to register. The name must be unique in the region that
@@ -117,7 +120,7 @@ namespace Model
     /**
      * <p>A text description of the domain.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A text description of the domain.</p>
@@ -132,7 +135,7 @@ namespace Model
     /**
      * <p>A text description of the domain.</p>
      */
-    inline RegisterDomainRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline RegisterDomainRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A text description of the domain.</p>
@@ -179,7 +182,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html">Amazon
      * SWF Service Limits</a> in the <i>Amazon SWF Developer Guide</i>.</p>
      */
-    inline void SetWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays = value; }
+    inline void SetWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays = std::move(value); }
 
     /**
      * <p>The duration (in days) that records and histories of workflow executions on
@@ -221,7 +224,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html">Amazon
      * SWF Service Limits</a> in the <i>Amazon SWF Developer Guide</i>.</p>
      */
-    inline RegisterDomainRequest& WithWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { SetWorkflowExecutionRetentionPeriodInDays(value); return *this;}
+    inline RegisterDomainRequest& WithWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { SetWorkflowExecutionRetentionPeriodInDays(std::move(value)); return *this;}
 
     /**
      * <p>The duration (in days) that records and histories of workflow executions on

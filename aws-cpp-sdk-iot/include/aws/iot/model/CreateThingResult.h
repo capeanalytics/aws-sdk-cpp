@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output of the CreateThing operation.</p>
+   * <p>The output of the CreateThing operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API CreateThingResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the new thing.</p>
      */
-    inline void SetThingName(Aws::String&& value) { m_thingName = value; }
+    inline void SetThingName(Aws::String&& value) { m_thingName = std::move(value); }
 
     /**
      * <p>The name of the new thing.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the new thing.</p>
      */
-    inline CreateThingResult& WithThingName(Aws::String&& value) { SetThingName(value); return *this;}
+    inline CreateThingResult& WithThingName(Aws::String&& value) { SetThingName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the new thing.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The ARN of the new thing.</p>
      */
-    inline void SetThingArn(Aws::String&& value) { m_thingArn = value; }
+    inline void SetThingArn(Aws::String&& value) { m_thingArn = std::move(value); }
 
     /**
      * <p>The ARN of the new thing.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The ARN of the new thing.</p>
      */
-    inline CreateThingResult& WithThingArn(Aws::String&& value) { SetThingArn(value); return *this;}
+    inline CreateThingResult& WithThingArn(Aws::String&& value) { SetThingArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the new thing.</p>

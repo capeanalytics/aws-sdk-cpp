@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/GameSession.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -37,12 +38,15 @@ GameSession::GameSession() :
     m_currentPlayerSessionCountHasBeenSet(false),
     m_maximumPlayerSessionCount(0),
     m_maximumPlayerSessionCountHasBeenSet(false),
+    m_status(GameSessionStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_gamePropertiesHasBeenSet(false),
     m_ipAddressHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
-    m_playerSessionCreationPolicyHasBeenSet(false)
+    m_playerSessionCreationPolicy(PlayerSessionCreationPolicy::NOT_SET),
+    m_playerSessionCreationPolicyHasBeenSet(false),
+    m_creatorIdHasBeenSet(false)
 {
 }
 
@@ -56,12 +60,15 @@ GameSession::GameSession(const JsonValue& jsonValue) :
     m_currentPlayerSessionCountHasBeenSet(false),
     m_maximumPlayerSessionCount(0),
     m_maximumPlayerSessionCountHasBeenSet(false),
+    m_status(GameSessionStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_gamePropertiesHasBeenSet(false),
     m_ipAddressHasBeenSet(false),
     m_port(0),
     m_portHasBeenSet(false),
-    m_playerSessionCreationPolicyHasBeenSet(false)
+    m_playerSessionCreationPolicy(PlayerSessionCreationPolicy::NOT_SET),
+    m_playerSessionCreationPolicyHasBeenSet(false),
+    m_creatorIdHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -155,6 +162,13 @@ GameSession& GameSession::operator =(const JsonValue& jsonValue)
     m_playerSessionCreationPolicyHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("CreatorId"))
+  {
+    m_creatorId = jsonValue.GetString("CreatorId");
+
+    m_creatorIdHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -233,6 +247,12 @@ JsonValue GameSession::Jsonize() const
   if(m_playerSessionCreationPolicyHasBeenSet)
   {
    payload.WithString("PlayerSessionCreationPolicy", PlayerSessionCreationPolicyMapper::GetNameForPlayerSessionCreationPolicy(m_playerSessionCreationPolicy));
+  }
+
+  if(m_creatorIdHasBeenSet)
+  {
+   payload.WithString("CreatorId", m_creatorId);
+
   }
 
   return payload;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/StartTaskRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -26,7 +27,8 @@ StartTaskRequest::StartTaskRequest() :
     m_taskDefinitionHasBeenSet(false),
     m_overridesHasBeenSet(false),
     m_containerInstancesHasBeenSet(false),
-    m_startedByHasBeenSet(false)
+    m_startedByHasBeenSet(false),
+    m_groupHasBeenSet(false)
 {
 }
 
@@ -69,6 +71,12 @@ Aws::String StartTaskRequest::SerializePayload() const
 
   }
 
+  if(m_groupHasBeenSet)
+  {
+   payload.WithString("group", m_group);
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -79,6 +87,7 @@ Aws::Http::HeaderValueCollection StartTaskRequest::GetRequestSpecificHeaders() c
   return headers;
 
 }
+
 
 
 

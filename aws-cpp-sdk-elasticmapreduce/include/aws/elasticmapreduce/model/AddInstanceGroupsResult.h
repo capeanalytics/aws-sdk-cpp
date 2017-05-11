@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace EMR
 namespace Model
 {
   /**
-   * <p>Output from an AddInstanceGroups call.</p>
+   * <p>Output from an AddInstanceGroups call.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/AddInstanceGroupsOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API AddInstanceGroupsResult
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The job flow ID in which the instance groups are added.</p>
      */
-    inline void SetJobFlowId(Aws::String&& value) { m_jobFlowId = value; }
+    inline void SetJobFlowId(Aws::String&& value) { m_jobFlowId = std::move(value); }
 
     /**
      * <p>The job flow ID in which the instance groups are added.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The job flow ID in which the instance groups are added.</p>
      */
-    inline AddInstanceGroupsResult& WithJobFlowId(Aws::String&& value) { SetJobFlowId(value); return *this;}
+    inline AddInstanceGroupsResult& WithJobFlowId(Aws::String&& value) { SetJobFlowId(std::move(value)); return *this;}
 
     /**
      * <p>The job flow ID in which the instance groups are added.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
      */
-    inline void SetInstanceGroupIds(Aws::Vector<Aws::String>&& value) { m_instanceGroupIds = value; }
+    inline void SetInstanceGroupIds(Aws::Vector<Aws::String>&& value) { m_instanceGroupIds = std::move(value); }
 
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
      */
-    inline AddInstanceGroupsResult& WithInstanceGroupIds(Aws::Vector<Aws::String>&& value) { SetInstanceGroupIds(value); return *this;}
+    inline AddInstanceGroupsResult& WithInstanceGroupIds(Aws::Vector<Aws::String>&& value) { SetInstanceGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
      */
-    inline AddInstanceGroupsResult& AddInstanceGroupIds(Aws::String&& value) { m_instanceGroupIds.push_back(value); return *this; }
+    inline AddInstanceGroupsResult& AddInstanceGroupIds(Aws::String&& value) { m_instanceGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>

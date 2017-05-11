@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The instance ID. If you include this parameter,
@@ -54,7 +57,7 @@ namespace Model
      * <code>DescribeElasticIps</code> returns a description of the Elastic IP
      * addresses associated with the specified instance.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The instance ID. If you include this parameter,
@@ -75,7 +78,7 @@ namespace Model
      * <code>DescribeElasticIps</code> returns a description of the Elastic IP
      * addresses associated with the specified instance.</p>
      */
-    inline DescribeElasticIpsRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline DescribeElasticIpsRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The instance ID. If you include this parameter,
@@ -103,7 +106,7 @@ namespace Model
      * returns a description of the Elastic IP addresses that are registered with the
      * specified stack.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>A stack ID. If you include this parameter, <code>DescribeElasticIps</code>
@@ -124,7 +127,7 @@ namespace Model
      * returns a description of the Elastic IP addresses that are registered with the
      * specified stack.</p>
      */
-    inline DescribeElasticIpsRequest& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline DescribeElasticIpsRequest& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>A stack ID. If you include this parameter, <code>DescribeElasticIps</code>
@@ -155,7 +158,7 @@ namespace Model
      * specified Elastic IP addresses. Otherwise, it returns a description of every
      * Elastic IP address.</p>
      */
-    inline void SetIps(Aws::Vector<Aws::String>&& value) { m_ipsHasBeenSet = true; m_ips = value; }
+    inline void SetIps(Aws::Vector<Aws::String>&& value) { m_ipsHasBeenSet = true; m_ips = std::move(value); }
 
     /**
      * <p>An array of Elastic IP addresses to be described. If you include this
@@ -171,7 +174,7 @@ namespace Model
      * specified Elastic IP addresses. Otherwise, it returns a description of every
      * Elastic IP address.</p>
      */
-    inline DescribeElasticIpsRequest& WithIps(Aws::Vector<Aws::String>&& value) { SetIps(value); return *this;}
+    inline DescribeElasticIpsRequest& WithIps(Aws::Vector<Aws::String>&& value) { SetIps(std::move(value)); return *this;}
 
     /**
      * <p>An array of Elastic IP addresses to be described. If you include this
@@ -187,7 +190,7 @@ namespace Model
      * specified Elastic IP addresses. Otherwise, it returns a description of every
      * Elastic IP address.</p>
      */
-    inline DescribeElasticIpsRequest& AddIps(Aws::String&& value) { m_ipsHasBeenSet = true; m_ips.push_back(value); return *this; }
+    inline DescribeElasticIpsRequest& AddIps(Aws::String&& value) { m_ipsHasBeenSet = true; m_ips.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array of Elastic IP addresses to be described. If you include this

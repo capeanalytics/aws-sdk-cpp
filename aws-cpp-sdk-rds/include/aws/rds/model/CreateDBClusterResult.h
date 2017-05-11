@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/model/DBCluster.h>
 #include <aws/rds/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -47,13 +49,13 @@ namespace Model
     inline void SetDBCluster(const DBCluster& value) { m_dBCluster = value; }
 
     
-    inline void SetDBCluster(DBCluster&& value) { m_dBCluster = value; }
+    inline void SetDBCluster(DBCluster&& value) { m_dBCluster = std::move(value); }
 
     
     inline CreateDBClusterResult& WithDBCluster(const DBCluster& value) { SetDBCluster(value); return *this;}
 
     
-    inline CreateDBClusterResult& WithDBCluster(DBCluster&& value) { SetDBCluster(value); return *this;}
+    inline CreateDBClusterResult& WithDBCluster(DBCluster&& value) { SetDBCluster(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -62,13 +64,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreateDBClusterResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreateDBClusterResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreateDBClusterResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     DBCluster m_dBCluster;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/apigateway/model/ApiKey.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * <p>Represents a collection of API keys as represented by an <a>ApiKeys</a>
    * resource.</p> <div class="seeAlso"> <a
    * href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use
-   * API Keys</a> </div>
+   * API Keys</a> </div><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/ApiKeys">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API GetApiKeysResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * <p>A list of warning messages logged during the import of API keys when the
      * <code>failOnWarnings</code> option is set to true.</p>
      */
-    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = value; }
+    inline void SetWarnings(Aws::Vector<Aws::String>&& value) { m_warnings = std::move(value); }
 
     /**
      * <p>A list of warning messages logged during the import of API keys when the
@@ -75,7 +79,7 @@ namespace Model
      * <p>A list of warning messages logged during the import of API keys when the
      * <code>failOnWarnings</code> option is set to true.</p>
      */
-    inline GetApiKeysResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(value); return *this;}
+    inline GetApiKeysResult& WithWarnings(Aws::Vector<Aws::String>&& value) { SetWarnings(std::move(value)); return *this;}
 
     /**
      * <p>A list of warning messages logged during the import of API keys when the
@@ -87,7 +91,7 @@ namespace Model
      * <p>A list of warning messages logged during the import of API keys when the
      * <code>failOnWarnings</code> option is set to true.</p>
      */
-    inline GetApiKeysResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(value); return *this; }
+    inline GetApiKeysResult& AddWarnings(Aws::String&& value) { m_warnings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of warning messages logged during the import of API keys when the
@@ -102,7 +106,7 @@ namespace Model
     inline void SetPosition(const Aws::String& value) { m_position = value; }
 
     
-    inline void SetPosition(Aws::String&& value) { m_position = value; }
+    inline void SetPosition(Aws::String&& value) { m_position = std::move(value); }
 
     
     inline void SetPosition(const char* value) { m_position.assign(value); }
@@ -111,7 +115,7 @@ namespace Model
     inline GetApiKeysResult& WithPosition(const Aws::String& value) { SetPosition(value); return *this;}
 
     
-    inline GetApiKeysResult& WithPosition(Aws::String&& value) { SetPosition(value); return *this;}
+    inline GetApiKeysResult& WithPosition(Aws::String&& value) { SetPosition(std::move(value)); return *this;}
 
     
     inline GetApiKeysResult& WithPosition(const char* value) { SetPosition(value); return *this;}
@@ -132,7 +136,7 @@ namespace Model
      * <p>The current page of any <a>ApiKey</a> resources in the collection of
      * <a>ApiKey</a> resources.</p>
      */
-    inline void SetItems(Aws::Vector<ApiKey>&& value) { m_items = value; }
+    inline void SetItems(Aws::Vector<ApiKey>&& value) { m_items = std::move(value); }
 
     /**
      * <p>The current page of any <a>ApiKey</a> resources in the collection of
@@ -144,7 +148,7 @@ namespace Model
      * <p>The current page of any <a>ApiKey</a> resources in the collection of
      * <a>ApiKey</a> resources.</p>
      */
-    inline GetApiKeysResult& WithItems(Aws::Vector<ApiKey>&& value) { SetItems(value); return *this;}
+    inline GetApiKeysResult& WithItems(Aws::Vector<ApiKey>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * <p>The current page of any <a>ApiKey</a> resources in the collection of
@@ -156,7 +160,7 @@ namespace Model
      * <p>The current page of any <a>ApiKey</a> resources in the collection of
      * <a>ApiKey</a> resources.</p>
      */
-    inline GetApiKeysResult& AddItems(ApiKey&& value) { m_items.push_back(value); return *this; }
+    inline GetApiKeysResult& AddItems(ApiKey&& value) { m_items.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<Aws::String> m_warnings;

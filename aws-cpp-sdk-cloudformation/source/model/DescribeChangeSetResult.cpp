@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/DescribeChangeSetResult.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -26,11 +27,15 @@ using namespace Aws::Utils::Logging;
 using namespace Aws::Utils;
 using namespace Aws;
 
-DescribeChangeSetResult::DescribeChangeSetResult()
+DescribeChangeSetResult::DescribeChangeSetResult() : 
+    m_executionStatus(ExecutionStatus::NOT_SET),
+    m_status(ChangeSetStatus::NOT_SET)
 {
 }
 
-DescribeChangeSetResult::DescribeChangeSetResult(const AmazonWebServiceResult<XmlDocument>& result)
+DescribeChangeSetResult::DescribeChangeSetResult(const AmazonWebServiceResult<XmlDocument>& result) : 
+    m_executionStatus(ExecutionStatus::NOT_SET),
+    m_status(ChangeSetStatus::NOT_SET)
 {
   *this = result;
 }

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/ecr/ECRErrors.h>
@@ -32,6 +33,7 @@ static const int INVALID_LAYER_PART_HASH = HashingUtils::HashString("InvalidLaye
 static const int SERVER_HASH = HashingUtils::HashString("ServerException");
 static const int REPOSITORY_POLICY_NOT_FOUND_HASH = HashingUtils::HashString("RepositoryPolicyNotFoundException");
 static const int IMAGE_ALREADY_EXISTS_HASH = HashingUtils::HashString("ImageAlreadyExistsException");
+static const int IMAGE_NOT_FOUND_HASH = HashingUtils::HashString("ImageNotFoundException");
 static const int REPOSITORY_NOT_FOUND_HASH = HashingUtils::HashString("RepositoryNotFoundException");
 static const int REPOSITORY_NOT_EMPTY_HASH = HashingUtils::HashString("RepositoryNotEmptyException");
 static const int LIMIT_EXCEEDED_HASH = HashingUtils::HashString("LimitExceededException");
@@ -68,6 +70,10 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   else if (hashCode == IMAGE_ALREADY_EXISTS_HASH)
   {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(ECRErrors::IMAGE_ALREADY_EXISTS), false);
+  }
+  else if (hashCode == IMAGE_NOT_FOUND_HASH)
+  {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(ECRErrors::IMAGE_NOT_FOUND), false);
   }
   else if (hashCode == REPOSITORY_NOT_FOUND_HASH)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/CodeDeployRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the input of a batch get on-premises instances operation.</p>
+   * <p>Represents the input of a batch get on-premises instances
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/BatchGetOnPremisesInstancesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API BatchGetOnPremisesInstancesRequest : public CodeDeployRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
      */
-    inline void SetInstanceNames(Aws::Vector<Aws::String>&& value) { m_instanceNamesHasBeenSet = true; m_instanceNames = value; }
+    inline void SetInstanceNames(Aws::Vector<Aws::String>&& value) { m_instanceNamesHasBeenSet = true; m_instanceNames = std::move(value); }
 
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
@@ -59,7 +65,7 @@ namespace Model
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
      */
-    inline BatchGetOnPremisesInstancesRequest& WithInstanceNames(Aws::Vector<Aws::String>&& value) { SetInstanceNames(value); return *this;}
+    inline BatchGetOnPremisesInstancesRequest& WithInstanceNames(Aws::Vector<Aws::String>&& value) { SetInstanceNames(std::move(value)); return *this;}
 
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
@@ -69,7 +75,7 @@ namespace Model
     /**
      * <p>The names of the on-premises instances about which to get information.</p>
      */
-    inline BatchGetOnPremisesInstancesRequest& AddInstanceNames(Aws::String&& value) { m_instanceNamesHasBeenSet = true; m_instanceNames.push_back(value); return *this; }
+    inline BatchGetOnPremisesInstancesRequest& AddInstanceNames(Aws::String&& value) { m_instanceNamesHasBeenSet = true; m_instanceNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The names of the on-premises instances about which to get information.</p>

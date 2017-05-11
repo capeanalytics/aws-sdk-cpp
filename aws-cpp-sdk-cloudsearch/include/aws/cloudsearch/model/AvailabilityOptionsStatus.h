@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/cloudsearch/model/OptionStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>The status and configuration of the domain's availability options.</p>
+   * <p>The status and configuration of the domain's availability
+   * options.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/AvailabilityOptionsStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API AvailabilityOptionsStatus
   {
@@ -66,13 +71,13 @@ namespace Model
     inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
 
     
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     
     inline AvailabilityOptionsStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
 
     
-    inline AvailabilityOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(value); return *this;}
+    inline AvailabilityOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
   private:
     bool m_options;

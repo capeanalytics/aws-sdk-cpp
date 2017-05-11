@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/BatchGetItemRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,6 +24,7 @@ using namespace Aws::Utils;
 
 BatchGetItemRequest::BatchGetItemRequest() : 
     m_requestItemsHasBeenSet(false),
+    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
     m_returnConsumedCapacityHasBeenSet(false)
 {
 }
@@ -57,6 +59,7 @@ Aws::Http::HeaderValueCollection BatchGetItemRequest::GetRequestSpecificHeaders(
   return headers;
 
 }
+
 
 
 

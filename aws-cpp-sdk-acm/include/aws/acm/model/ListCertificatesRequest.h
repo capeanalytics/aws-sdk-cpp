@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/acm/ACM_EXPORTS.h>
 #include <aws/acm/ACMRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/acm/model/CertificateStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,6 +38,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
      */
@@ -49,7 +52,7 @@ namespace Model
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
      */
-    inline void SetCertificateStatuses(Aws::Vector<CertificateStatus>&& value) { m_certificateStatusesHasBeenSet = true; m_certificateStatuses = value; }
+    inline void SetCertificateStatuses(Aws::Vector<CertificateStatus>&& value) { m_certificateStatusesHasBeenSet = true; m_certificateStatuses = std::move(value); }
 
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
@@ -59,7 +62,7 @@ namespace Model
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
      */
-    inline ListCertificatesRequest& WithCertificateStatuses(Aws::Vector<CertificateStatus>&& value) { SetCertificateStatuses(value); return *this;}
+    inline ListCertificatesRequest& WithCertificateStatuses(Aws::Vector<CertificateStatus>&& value) { SetCertificateStatuses(std::move(value)); return *this;}
 
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
@@ -69,7 +72,7 @@ namespace Model
     /**
      * <p>The status or statuses on which to filter the list of ACM Certificates.</p>
      */
-    inline ListCertificatesRequest& AddCertificateStatuses(CertificateStatus&& value) { m_certificateStatusesHasBeenSet = true; m_certificateStatuses.push_back(value); return *this; }
+    inline ListCertificatesRequest& AddCertificateStatuses(CertificateStatus&& value) { m_certificateStatusesHasBeenSet = true; m_certificateStatuses.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Use this parameter only when paginating results and only in a subsequent
@@ -90,7 +93,7 @@ namespace Model
      * request after you receive a response with truncated results. Set it to the value
      * of <code>NextToken</code> from the response you just received.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>Use this parameter only when paginating results and only in a subsequent
@@ -111,7 +114,7 @@ namespace Model
      * request after you receive a response with truncated results. Set it to the value
      * of <code>NextToken</code> from the response you just received.</p>
      */
-    inline ListCertificatesRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListCertificatesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>Use this parameter only when paginating results and only in a subsequent

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/waf/WAF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>The <code>Id</code> and <code>Name</code> of a
-   * <code>SizeConstraintSet</code>.</p>
+   * <code>SizeConstraintSet</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/SizeConstraintSetSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_WAF_API SizeConstraintSetSummary
   {
@@ -50,7 +54,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -64,7 +68,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -78,11 +82,11 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
-    inline void SetSizeConstraintSetId(Aws::String&& value) { m_sizeConstraintSetIdHasBeenSet = true; m_sizeConstraintSetId = value; }
+    inline void SetSizeConstraintSetId(Aws::String&& value) { m_sizeConstraintSetIdHasBeenSet = true; m_sizeConstraintSetId = std::move(value); }
 
     /**
      * <p>A unique identifier for a <code>SizeConstraintSet</code>. You use
@@ -92,7 +96,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -106,7 +110,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -120,11 +124,11 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
-    inline SizeConstraintSetSummary& WithSizeConstraintSetId(Aws::String&& value) { SetSizeConstraintSetId(value); return *this;}
+    inline SizeConstraintSetSummary& WithSizeConstraintSetId(Aws::String&& value) { SetSizeConstraintSetId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for a <code>SizeConstraintSet</code>. You use
@@ -134,7 +138,7 @@ namespace Model
      * <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a
      * <code>Rule</code> (see <a>UpdateRule</a>), and delete a
      * <code>SizeConstraintSet</code> from AWS WAF (see
-     * <a>DeleteSizeConstraintSet</a>).</p> <p><code>SizeConstraintSetId</code> is
+     * <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is
      * returned by <a>CreateSizeConstraintSet</a> and by
      * <a>ListSizeConstraintSets</a>.</p>
      */
@@ -153,7 +157,7 @@ namespace Model
     /**
      * <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
@@ -168,7 +172,7 @@ namespace Model
     /**
      * <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
      */
-    inline SizeConstraintSetSummary& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline SizeConstraintSetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the <code>SizeConstraintSet</code>, if any.</p>

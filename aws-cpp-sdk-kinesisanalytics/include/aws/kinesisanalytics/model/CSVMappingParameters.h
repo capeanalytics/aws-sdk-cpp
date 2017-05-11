@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * delimiters, such as CSV. For example, the following sample records use CSV
    * format, where the records use the <i>'\n'</i> as the row delimiter and a comma
    * (",") as the column delimiter: </p> <p> <code>"name1", "address1" </code> </p>
-   * <p> <code>"name2, "address2"</code> </p>
+   * <p> <code>"name2, "address2"</code> </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/CSVMappingParameters">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API CSVMappingParameters
   {
@@ -61,7 +65,7 @@ namespace Model
      * <p>Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row
      * delimiter.</p>
      */
-    inline void SetRecordRowDelimiter(Aws::String&& value) { m_recordRowDelimiterHasBeenSet = true; m_recordRowDelimiter = value; }
+    inline void SetRecordRowDelimiter(Aws::String&& value) { m_recordRowDelimiterHasBeenSet = true; m_recordRowDelimiter = std::move(value); }
 
     /**
      * <p>Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row
@@ -79,7 +83,7 @@ namespace Model
      * <p>Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row
      * delimiter.</p>
      */
-    inline CSVMappingParameters& WithRecordRowDelimiter(Aws::String&& value) { SetRecordRowDelimiter(value); return *this;}
+    inline CSVMappingParameters& WithRecordRowDelimiter(Aws::String&& value) { SetRecordRowDelimiter(std::move(value)); return *this;}
 
     /**
      * <p>Row delimiter. For example, in a CSV format, <i>'\n'</i> is the typical row
@@ -103,7 +107,7 @@ namespace Model
      * <p>Column delimiter. For example, in a CSV format, a comma (",") is the typical
      * column delimiter.</p>
      */
-    inline void SetRecordColumnDelimiter(Aws::String&& value) { m_recordColumnDelimiterHasBeenSet = true; m_recordColumnDelimiter = value; }
+    inline void SetRecordColumnDelimiter(Aws::String&& value) { m_recordColumnDelimiterHasBeenSet = true; m_recordColumnDelimiter = std::move(value); }
 
     /**
      * <p>Column delimiter. For example, in a CSV format, a comma (",") is the typical
@@ -121,7 +125,7 @@ namespace Model
      * <p>Column delimiter. For example, in a CSV format, a comma (",") is the typical
      * column delimiter.</p>
      */
-    inline CSVMappingParameters& WithRecordColumnDelimiter(Aws::String&& value) { SetRecordColumnDelimiter(value); return *this;}
+    inline CSVMappingParameters& WithRecordColumnDelimiter(Aws::String&& value) { SetRecordColumnDelimiter(std::move(value)); return *this;}
 
     /**
      * <p>Column delimiter. For example, in a CSV format, a comma (",") is the typical

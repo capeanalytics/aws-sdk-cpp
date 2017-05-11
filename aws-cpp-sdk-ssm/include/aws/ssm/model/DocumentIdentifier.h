@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ssm/SSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/ssm/model/DocumentType.h>
 #include <aws/ssm/model/PlatformType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the name of an SSM document.</p>
+   * <p>Describes the name of an SSM document.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DocumentIdentifier">AWS
+   * API Reference</a></p>
    */
   class AWS_SSM_API DocumentIdentifier
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the SSM document.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the SSM document.</p>
      */
-    inline DocumentIdentifier& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline DocumentIdentifier& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the SSM document.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The AWS user account of the person who created the document.</p>
      */
-    inline void SetOwner(Aws::String&& value) { m_ownerHasBeenSet = true; m_owner = value; }
+    inline void SetOwner(Aws::String&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
 
     /**
      * <p>The AWS user account of the person who created the document.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The AWS user account of the person who created the document.</p>
      */
-    inline DocumentIdentifier& WithOwner(Aws::String&& value) { SetOwner(value); return *this;}
+    inline DocumentIdentifier& WithOwner(Aws::String&& value) { SetOwner(std::move(value)); return *this;}
 
     /**
      * <p>The AWS user account of the person who created the document.</p>
@@ -126,7 +131,7 @@ namespace Model
     /**
      * <p>The operating system platform. </p>
      */
-    inline void SetPlatformTypes(Aws::Vector<PlatformType>&& value) { m_platformTypesHasBeenSet = true; m_platformTypes = value; }
+    inline void SetPlatformTypes(Aws::Vector<PlatformType>&& value) { m_platformTypesHasBeenSet = true; m_platformTypes = std::move(value); }
 
     /**
      * <p>The operating system platform. </p>
@@ -136,7 +141,7 @@ namespace Model
     /**
      * <p>The operating system platform. </p>
      */
-    inline DocumentIdentifier& WithPlatformTypes(Aws::Vector<PlatformType>&& value) { SetPlatformTypes(value); return *this;}
+    inline DocumentIdentifier& WithPlatformTypes(Aws::Vector<PlatformType>&& value) { SetPlatformTypes(std::move(value)); return *this;}
 
     /**
      * <p>The operating system platform. </p>
@@ -146,7 +151,102 @@ namespace Model
     /**
      * <p>The operating system platform. </p>
      */
-    inline DocumentIdentifier& AddPlatformTypes(PlatformType&& value) { m_platformTypesHasBeenSet = true; m_platformTypes.push_back(value); return *this; }
+    inline DocumentIdentifier& AddPlatformTypes(PlatformType&& value) { m_platformTypesHasBeenSet = true; m_platformTypes.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline const Aws::String& GetDocumentVersion() const{ return m_documentVersion; }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(const Aws::String& value) { m_documentVersionHasBeenSet = true; m_documentVersion = value; }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(Aws::String&& value) { m_documentVersionHasBeenSet = true; m_documentVersion = std::move(value); }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline void SetDocumentVersion(const char* value) { m_documentVersionHasBeenSet = true; m_documentVersion.assign(value); }
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline DocumentIdentifier& WithDocumentVersion(const Aws::String& value) { SetDocumentVersion(value); return *this;}
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline DocumentIdentifier& WithDocumentVersion(Aws::String&& value) { SetDocumentVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The document version.</p>
+     */
+    inline DocumentIdentifier& WithDocumentVersion(const char* value) { SetDocumentVersion(value); return *this;}
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline const DocumentType& GetDocumentType() const{ return m_documentType; }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline void SetDocumentType(const DocumentType& value) { m_documentTypeHasBeenSet = true; m_documentType = value; }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline void SetDocumentType(DocumentType&& value) { m_documentTypeHasBeenSet = true; m_documentType = std::move(value); }
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline DocumentIdentifier& WithDocumentType(const DocumentType& value) { SetDocumentType(value); return *this;}
+
+    /**
+     * <p>The document type.</p>
+     */
+    inline DocumentIdentifier& WithDocumentType(DocumentType&& value) { SetDocumentType(std::move(value)); return *this;}
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline const Aws::String& GetSchemaVersion() const{ return m_schemaVersion; }
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline void SetSchemaVersion(const Aws::String& value) { m_schemaVersionHasBeenSet = true; m_schemaVersion = value; }
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline void SetSchemaVersion(Aws::String&& value) { m_schemaVersionHasBeenSet = true; m_schemaVersion = std::move(value); }
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline void SetSchemaVersion(const char* value) { m_schemaVersionHasBeenSet = true; m_schemaVersion.assign(value); }
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline DocumentIdentifier& WithSchemaVersion(const Aws::String& value) { SetSchemaVersion(value); return *this;}
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline DocumentIdentifier& WithSchemaVersion(Aws::String&& value) { SetSchemaVersion(std::move(value)); return *this;}
+
+    /**
+     * <p>The schema version.</p>
+     */
+    inline DocumentIdentifier& WithSchemaVersion(const char* value) { SetSchemaVersion(value); return *this;}
 
   private:
     Aws::String m_name;
@@ -155,6 +255,12 @@ namespace Model
     bool m_ownerHasBeenSet;
     Aws::Vector<PlatformType> m_platformTypes;
     bool m_platformTypesHasBeenSet;
+    Aws::String m_documentVersion;
+    bool m_documentVersionHasBeenSet;
+    DocumentType m_documentType;
+    bool m_documentTypeHasBeenSet;
+    Aws::String m_schemaVersion;
+    bool m_schemaVersionHasBeenSet;
   };
 
 } // namespace Model

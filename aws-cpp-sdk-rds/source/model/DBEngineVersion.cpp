@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBEngineVersion.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -37,7 +38,8 @@ DBEngineVersion::DBEngineVersion() :
     m_dBEngineVersionDescriptionHasBeenSet(false),
     m_defaultCharacterSetHasBeenSet(false),
     m_supportedCharacterSetsHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false)
+    m_validUpgradeTargetHasBeenSet(false),
+    m_supportedTimezonesHasBeenSet(false)
 {
 }
 
@@ -49,7 +51,8 @@ DBEngineVersion::DBEngineVersion(const XmlNode& xmlNode) :
     m_dBEngineVersionDescriptionHasBeenSet(false),
     m_defaultCharacterSetHasBeenSet(false),
     m_supportedCharacterSetsHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false)
+    m_validUpgradeTargetHasBeenSet(false),
+    m_supportedTimezonesHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -120,6 +123,18 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
 
       m_validUpgradeTargetHasBeenSet = true;
     }
+    XmlNode supportedTimezonesNode = resultNode.FirstChild("SupportedTimezones");
+    if(!supportedTimezonesNode.IsNull())
+    {
+      XmlNode supportedTimezonesMember = supportedTimezonesNode.FirstChild("Timezone");
+      while(!supportedTimezonesMember.IsNull())
+      {
+        m_supportedTimezones.push_back(supportedTimezonesMember);
+        supportedTimezonesMember = supportedTimezonesMember.NextNode("Timezone");
+      }
+
+      m_supportedTimezonesHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -181,6 +196,17 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       }
   }
 
+  if(m_supportedTimezonesHasBeenSet)
+  {
+      unsigned supportedTimezonesIdx = 1;
+      for(auto& item : m_supportedTimezones)
+      {
+        Aws::StringStream supportedTimezonesSs;
+        supportedTimezonesSs << location << index << locationValue << ".Timezone." << supportedTimezonesIdx++;
+        item.OutputToStream(oStream, supportedTimezonesSs.str().c_str());
+      }
+  }
+
 }
 
 void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -229,6 +255,16 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
         Aws::StringStream validUpgradeTargetSs;
         validUpgradeTargetSs << location <<  ".UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
+      }
+  }
+  if(m_supportedTimezonesHasBeenSet)
+  {
+      unsigned supportedTimezonesIdx = 1;
+      for(auto& item : m_supportedTimezones)
+      {
+        Aws::StringStream supportedTimezonesSs;
+        supportedTimezonesSs << location <<  ".Timezone." << supportedTimezonesIdx++;
+        item.OutputToStream(oStream, supportedTimezonesSs.str().c_str());
       }
   }
 }

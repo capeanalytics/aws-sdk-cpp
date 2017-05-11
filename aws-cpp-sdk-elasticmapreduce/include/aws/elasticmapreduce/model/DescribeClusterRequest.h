@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/EMRRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>This input determines which cluster to describe.</p>
+   * <p>This input determines which cluster to describe.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/DescribeClusterInput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API DescribeClusterRequest : public EMRRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The identifier of the cluster to describe.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster to describe.</p>
      */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
+    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
 
     /**
      * <p>The identifier of the cluster to describe.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The identifier of the cluster to describe.</p>
      */
-    inline DescribeClusterRequest& WithClusterId(Aws::String&& value) { SetClusterId(value); return *this;}
+    inline DescribeClusterRequest& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the cluster to describe.</p>

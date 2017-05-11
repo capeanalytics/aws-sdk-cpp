@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Subnet.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,9 +32,13 @@ namespace Model
 
 Subnet::Subnet() : 
     m_subnetIdHasBeenSet(false),
+    m_state(SubnetState::NOT_SET),
     m_stateHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_cidrBlockHasBeenSet(false),
+    m_ipv6CidrBlockAssociationSetHasBeenSet(false),
+    m_assignIpv6AddressOnCreation(false),
+    m_assignIpv6AddressOnCreationHasBeenSet(false),
     m_availableIpAddressCount(0),
     m_availableIpAddressCountHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
@@ -47,9 +52,13 @@ Subnet::Subnet() :
 
 Subnet::Subnet(const XmlNode& xmlNode) : 
     m_subnetIdHasBeenSet(false),
+    m_state(SubnetState::NOT_SET),
     m_stateHasBeenSet(false),
     m_vpcIdHasBeenSet(false),
     m_cidrBlockHasBeenSet(false),
+    m_ipv6CidrBlockAssociationSetHasBeenSet(false),
+    m_assignIpv6AddressOnCreation(false),
+    m_assignIpv6AddressOnCreationHasBeenSet(false),
     m_availableIpAddressCount(0),
     m_availableIpAddressCountHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
@@ -91,6 +100,24 @@ Subnet& Subnet::operator =(const XmlNode& xmlNode)
     {
       m_cidrBlock = StringUtils::Trim(cidrBlockNode.GetText().c_str());
       m_cidrBlockHasBeenSet = true;
+    }
+    XmlNode ipv6CidrBlockAssociationSetNode = resultNode.FirstChild("ipv6CidrBlockAssociationSet");
+    if(!ipv6CidrBlockAssociationSetNode.IsNull())
+    {
+      XmlNode ipv6CidrBlockAssociationSetMember = ipv6CidrBlockAssociationSetNode.FirstChild("item");
+      while(!ipv6CidrBlockAssociationSetMember.IsNull())
+      {
+        m_ipv6CidrBlockAssociationSet.push_back(ipv6CidrBlockAssociationSetMember);
+        ipv6CidrBlockAssociationSetMember = ipv6CidrBlockAssociationSetMember.NextNode("item");
+      }
+
+      m_ipv6CidrBlockAssociationSetHasBeenSet = true;
+    }
+    XmlNode assignIpv6AddressOnCreationNode = resultNode.FirstChild("assignIpv6AddressOnCreation");
+    if(!assignIpv6AddressOnCreationNode.IsNull())
+    {
+      m_assignIpv6AddressOnCreation = StringUtils::ConvertToBool(StringUtils::Trim(assignIpv6AddressOnCreationNode.GetText().c_str()).c_str());
+      m_assignIpv6AddressOnCreationHasBeenSet = true;
     }
     XmlNode availableIpAddressCountNode = resultNode.FirstChild("availableIpAddressCount");
     if(!availableIpAddressCountNode.IsNull())
@@ -155,6 +182,22 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
       oStream << location << index << locationValue << ".CidrBlock=" << StringUtils::URLEncode(m_cidrBlock.c_str()) << "&";
   }
 
+  if(m_ipv6CidrBlockAssociationSetHasBeenSet)
+  {
+      unsigned ipv6CidrBlockAssociationSetIdx = 1;
+      for(auto& item : m_ipv6CidrBlockAssociationSet)
+      {
+        Aws::StringStream ipv6CidrBlockAssociationSetSs;
+        ipv6CidrBlockAssociationSetSs << location << index << locationValue << ".Ipv6CidrBlockAssociationSet." << ipv6CidrBlockAssociationSetIdx++;
+        item.OutputToStream(oStream, ipv6CidrBlockAssociationSetSs.str().c_str());
+      }
+  }
+
+  if(m_assignIpv6AddressOnCreationHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AssignIpv6AddressOnCreation=" << std::boolalpha << m_assignIpv6AddressOnCreation << "&";
+  }
+
   if(m_availableIpAddressCountHasBeenSet)
   {
       oStream << location << index << locationValue << ".AvailableIpAddressCount=" << m_availableIpAddressCount << "&";
@@ -167,12 +210,12 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
 
   if(m_defaultForAzHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DefaultForAz=" << m_defaultForAz << "&";
+      oStream << location << index << locationValue << ".DefaultForAz=" << std::boolalpha << m_defaultForAz << "&";
   }
 
   if(m_mapPublicIpOnLaunchHasBeenSet)
   {
-      oStream << location << index << locationValue << ".MapPublicIpOnLaunch=" << m_mapPublicIpOnLaunch << "&";
+      oStream << location << index << locationValue << ".MapPublicIpOnLaunch=" << std::boolalpha << m_mapPublicIpOnLaunch << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -206,6 +249,20 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location) const
   {
       oStream << location << ".CidrBlock=" << StringUtils::URLEncode(m_cidrBlock.c_str()) << "&";
   }
+  if(m_ipv6CidrBlockAssociationSetHasBeenSet)
+  {
+      unsigned ipv6CidrBlockAssociationSetIdx = 1;
+      for(auto& item : m_ipv6CidrBlockAssociationSet)
+      {
+        Aws::StringStream ipv6CidrBlockAssociationSetSs;
+        ipv6CidrBlockAssociationSetSs << location <<  ".Ipv6CidrBlockAssociationSet." << ipv6CidrBlockAssociationSetIdx++;
+        item.OutputToStream(oStream, ipv6CidrBlockAssociationSetSs.str().c_str());
+      }
+  }
+  if(m_assignIpv6AddressOnCreationHasBeenSet)
+  {
+      oStream << location << ".AssignIpv6AddressOnCreation=" << std::boolalpha << m_assignIpv6AddressOnCreation << "&";
+  }
   if(m_availableIpAddressCountHasBeenSet)
   {
       oStream << location << ".AvailableIpAddressCount=" << m_availableIpAddressCount << "&";
@@ -216,11 +273,11 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_defaultForAzHasBeenSet)
   {
-      oStream << location << ".DefaultForAz=" << m_defaultForAz << "&";
+      oStream << location << ".DefaultForAz=" << std::boolalpha << m_defaultForAz << "&";
   }
   if(m_mapPublicIpOnLaunchHasBeenSet)
   {
-      oStream << location << ".MapPublicIpOnLaunch=" << m_mapPublicIpOnLaunch << "&";
+      oStream << location << ".MapPublicIpOnLaunch=" << std::boolalpha << m_mapPublicIpOnLaunch << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -228,7 +285,7 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

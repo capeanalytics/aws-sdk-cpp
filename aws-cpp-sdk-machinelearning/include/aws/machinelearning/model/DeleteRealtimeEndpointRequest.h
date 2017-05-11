@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/MachineLearningRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
 
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
      */
-    inline DeleteRealtimeEndpointRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline DeleteRealtimeEndpointRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>

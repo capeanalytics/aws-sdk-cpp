@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/CreateStageRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,8 +29,10 @@ CreateStageRequest::CreateStageRequest() :
     m_descriptionHasBeenSet(false),
     m_cacheClusterEnabled(false),
     m_cacheClusterEnabledHasBeenSet(false),
+    m_cacheClusterSize(CacheClusterSize::NOT_SET),
     m_cacheClusterSizeHasBeenSet(false),
-    m_variablesHasBeenSet(false)
+    m_variablesHasBeenSet(false),
+    m_documentationVersionHasBeenSet(false)
 {
 }
 
@@ -77,8 +80,15 @@ Aws::String CreateStageRequest::SerializePayload() const
 
   }
 
+  if(m_documentationVersionHasBeenSet)
+  {
+   payload.WithString("documentationVersion", m_documentationVersion);
+
+  }
+
   return payload.WriteReadable();
 }
+
 
 
 

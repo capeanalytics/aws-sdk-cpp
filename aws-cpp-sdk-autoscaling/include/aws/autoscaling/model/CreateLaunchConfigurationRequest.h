@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingRequest.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/autoscaling/model/InstanceMonitoring.h>
 #include <aws/autoscaling/model/BlockDeviceMapping.h>
+#include <utility>
 
 namespace Aws
 {
@@ -28,7 +30,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateLaunchConfiguration.</p>
+   * <p>Contains the parameters for CreateLaunchConfiguration.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfigurationType">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API CreateLaunchConfigurationRequest : public AutoScalingRequest
   {
@@ -36,6 +41,11 @@ namespace Model
     CreateLaunchConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the launch configuration. This name must be unique within the
      * scope of your AWS account.</p>
@@ -52,7 +62,7 @@ namespace Model
      * <p>The name of the launch configuration. This name must be unique within the
      * scope of your AWS account.</p>
      */
-    inline void SetLaunchConfigurationName(Aws::String&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = value; }
+    inline void SetLaunchConfigurationName(Aws::String&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = std::move(value); }
 
     /**
      * <p>The name of the launch configuration. This name must be unique within the
@@ -70,7 +80,7 @@ namespace Model
      * <p>The name of the launch configuration. This name must be unique within the
      * scope of your AWS account.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithLaunchConfigurationName(Aws::String&& value) { SetLaunchConfigurationName(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithLaunchConfigurationName(Aws::String&& value) { SetLaunchConfigurationName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the launch configuration. This name must be unique within the
@@ -100,7 +110,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
      * an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = value; }
+    inline void SetImageId(Aws::String&& value) { m_imageIdHasBeenSet = true; m_imageId = std::move(value); }
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.
@@ -124,7 +134,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
      * an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithImageId(Aws::String&& value) { SetImageId(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithImageId(Aws::String&& value) { SetImageId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.
@@ -153,7 +163,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon
      * EC2 Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = value; }
+    inline void SetKeyName(Aws::String&& value) { m_keyNameHasBeenSet = true; m_keyName = std::move(value); }
 
     /**
      * <p>The name of the key pair. For more information, see <a
@@ -174,7 +184,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon
      * EC2 Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithKeyName(Aws::String&& value) { SetKeyName(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithKeyName(Aws::String&& value) { SetKeyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the key pair. For more information, see <a
@@ -226,7 +236,7 @@ namespace Model
      * Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User
      * Guide</i>.</p>
      */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
+    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
 
     /**
      * <p>One or more security groups with which to associate the instances.</p> <p>If
@@ -256,7 +266,7 @@ namespace Model
      * Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>One or more security groups with which to associate the instances.</p> <p>If
@@ -286,7 +296,7 @@ namespace Model
      * Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
+    inline CreateLaunchConfigurationRequest& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more security groups with which to associate the instances.</p> <p>If
@@ -328,7 +338,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
      * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetClassicLinkVPCId(Aws::String&& value) { m_classicLinkVPCIdHasBeenSet = true; m_classicLinkVPCId = value; }
+    inline void SetClassicLinkVPCId(Aws::String&& value) { m_classicLinkVPCIdHasBeenSet = true; m_classicLinkVPCId = std::move(value); }
 
     /**
      * <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to.
@@ -355,7 +365,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
      * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithClassicLinkVPCId(Aws::String&& value) { SetClassicLinkVPCId(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithClassicLinkVPCId(Aws::String&& value) { SetClassicLinkVPCId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to.
@@ -391,7 +401,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
      * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetClassicLinkVPCSecurityGroups(Aws::Vector<Aws::String>&& value) { m_classicLinkVPCSecurityGroupsHasBeenSet = true; m_classicLinkVPCSecurityGroups = value; }
+    inline void SetClassicLinkVPCSecurityGroups(Aws::Vector<Aws::String>&& value) { m_classicLinkVPCSecurityGroupsHasBeenSet = true; m_classicLinkVPCSecurityGroups = std::move(value); }
 
     /**
      * <p>The IDs of one or more security groups for the specified ClassicLink-enabled
@@ -409,7 +419,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
      * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithClassicLinkVPCSecurityGroups(Aws::Vector<Aws::String>&& value) { SetClassicLinkVPCSecurityGroups(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithClassicLinkVPCSecurityGroups(Aws::Vector<Aws::String>&& value) { SetClassicLinkVPCSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of one or more security groups for the specified ClassicLink-enabled
@@ -427,7 +437,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a>
      * in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& AddClassicLinkVPCSecurityGroups(Aws::String&& value) { m_classicLinkVPCSecurityGroupsHasBeenSet = true; m_classicLinkVPCSecurityGroups.push_back(value); return *this; }
+    inline CreateLaunchConfigurationRequest& AddClassicLinkVPCSecurityGroups(Aws::String&& value) { m_classicLinkVPCSecurityGroupsHasBeenSet = true; m_classicLinkVPCSecurityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The IDs of one or more security groups for the specified ClassicLink-enabled
@@ -463,7 +473,7 @@ namespace Model
      * Metadata and User Data</a> in the <i>Amazon Elastic Compute Cloud User
      * Guide</i>.</p>
      */
-    inline void SetUserData(Aws::String&& value) { m_userDataHasBeenSet = true; m_userData = value; }
+    inline void SetUserData(Aws::String&& value) { m_userDataHasBeenSet = true; m_userData = std::move(value); }
 
     /**
      * <p>The user data to make available to the launched EC2 instances. For more
@@ -490,7 +500,7 @@ namespace Model
      * Metadata and User Data</a> in the <i>Amazon Elastic Compute Cloud User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithUserData(Aws::String&& value) { SetUserData(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithUserData(Aws::String&& value) { SetUserData(std::move(value)); return *this;}
 
     /**
      * <p>The user data to make available to the launched EC2 instances. For more
@@ -507,7 +517,7 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -519,7 +529,7 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -531,11 +541,11 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
+    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
 
     /**
      * <p>The ID of the instance to use to create the launch configuration.</p> <p>The
@@ -543,7 +553,7 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -555,7 +565,7 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -567,11 +577,11 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance to use to create the launch configuration.</p> <p>The
@@ -579,7 +589,7 @@ namespace Model
      * exception of the block device mapping.</p> <p>To create a launch configuration
      * with a block device mapping or override any other instance attributes, specify
      * them as part of the same request.</p> <p>For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html">Create
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create
      * a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -610,7 +620,7 @@ namespace Model
      * Available Instance Types</a> in the <i>Amazon Elastic Compute Cloud User
      * Guide.</i> </p>
      */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type of the EC2 instance. For information about available
@@ -637,7 +647,7 @@ namespace Model
      * Available Instance Types</a> in the <i>Amazon Elastic Compute Cloud User
      * Guide.</i> </p>
      */
-    inline CreateLaunchConfigurationRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The instance type of the EC2 instance. For information about available
@@ -661,7 +671,7 @@ namespace Model
     /**
      * <p>The ID of the kernel associated with the AMI.</p>
      */
-    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = value; }
+    inline void SetKernelId(Aws::String&& value) { m_kernelIdHasBeenSet = true; m_kernelId = std::move(value); }
 
     /**
      * <p>The ID of the kernel associated with the AMI.</p>
@@ -676,7 +686,7 @@ namespace Model
     /**
      * <p>The ID of the kernel associated with the AMI.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithKernelId(Aws::String&& value) { SetKernelId(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithKernelId(Aws::String&& value) { SetKernelId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the kernel associated with the AMI.</p>
@@ -696,7 +706,7 @@ namespace Model
     /**
      * <p>The ID of the RAM disk associated with the AMI.</p>
      */
-    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = value; }
+    inline void SetRamdiskId(Aws::String&& value) { m_ramdiskIdHasBeenSet = true; m_ramdiskId = std::move(value); }
 
     /**
      * <p>The ID of the RAM disk associated with the AMI.</p>
@@ -711,7 +721,7 @@ namespace Model
     /**
      * <p>The ID of the RAM disk associated with the AMI.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithRamdiskId(Aws::String&& value) { SetRamdiskId(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithRamdiskId(Aws::String&& value) { SetRamdiskId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the RAM disk associated with the AMI.</p>
@@ -740,7 +750,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block
      * Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>One or more mappings that specify how block devices are exposed to the
@@ -756,7 +766,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block
      * Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>One or more mappings that specify how block devices are exposed to the
@@ -772,7 +782,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block
      * Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
+    inline CreateLaunchConfigurationRequest& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Enables detailed monitoring (<code>true</code>) or basic monitoring
@@ -790,7 +800,7 @@ namespace Model
      * <p>Enables detailed monitoring (<code>true</code>) or basic monitoring
      * (<code>false</code>) for the Auto Scaling instances.</p>
      */
-    inline void SetInstanceMonitoring(InstanceMonitoring&& value) { m_instanceMonitoringHasBeenSet = true; m_instanceMonitoring = value; }
+    inline void SetInstanceMonitoring(InstanceMonitoring&& value) { m_instanceMonitoringHasBeenSet = true; m_instanceMonitoring = std::move(value); }
 
     /**
      * <p>Enables detailed monitoring (<code>true</code>) or basic monitoring
@@ -802,13 +812,13 @@ namespace Model
      * <p>Enables detailed monitoring (<code>true</code>) or basic monitoring
      * (<code>false</code>) for the Auto Scaling instances.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithInstanceMonitoring(InstanceMonitoring&& value) { SetInstanceMonitoring(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithInstanceMonitoring(InstanceMonitoring&& value) { SetInstanceMonitoring(std::move(value)); return *this;}
 
     /**
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -818,7 +828,7 @@ namespace Model
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -828,17 +838,17 @@ namespace Model
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = value; }
+    inline void SetSpotPrice(Aws::String&& value) { m_spotPriceHasBeenSet = true; m_spotPrice = std::move(value); }
 
     /**
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -848,7 +858,7 @@ namespace Model
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -858,17 +868,17 @@ namespace Model
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithSpotPrice(Aws::String&& value) { SetSpotPrice(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithSpotPrice(Aws::String&& value) { SetSpotPrice(std::move(value)); return *this;}
 
     /**
      * <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill
      * the request. Spot Instances are launched when the price you specify exceeds the
      * current Spot market price. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US-SpotInstances.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching
      * Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -880,7 +890,7 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -892,7 +902,7 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -904,11 +914,11 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline void SetIamInstanceProfile(Aws::String&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = value; }
+    inline void SetIamInstanceProfile(Aws::String&& value) { m_iamInstanceProfileHasBeenSet = true; m_iamInstanceProfile = std::move(value); }
 
     /**
      * <p>The name or the Amazon Resource Name (ARN) of the instance profile associated
@@ -916,7 +926,7 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -928,7 +938,7 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -940,11 +950,11 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
-    inline CreateLaunchConfigurationRequest& WithIamInstanceProfile(Aws::String&& value) { SetIamInstanceProfile(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithIamInstanceProfile(Aws::String&& value) { SetIamInstanceProfile(std::move(value)); return *this;}
 
     /**
      * <p>The name or the Amazon Resource Name (ARN) of the instance profile associated
@@ -952,7 +962,7 @@ namespace Model
      * role will automatically have AWS security credentials available. You can use IAM
      * roles with Auto Scaling to automatically enable applications running on your EC2
      * instances to securely access other AWS resources. For more information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/us-iam-role.html">Launch
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch
      * Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User
      * Guide</i>.</p>
      */
@@ -998,7 +1008,7 @@ namespace Model
      * <p>Used for groups that launch instances into a virtual private cloud (VPC).
      * Specifies whether to assign a public IP address to each instance. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>If you specify this parameter, be sure to specify at least one subnet when
      * you create your group.</p> <p>Default: If the instance is launched into a
@@ -1014,7 +1024,7 @@ namespace Model
      * <p>Used for groups that launch instances into a virtual private cloud (VPC).
      * Specifies whether to assign a public IP address to each instance. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>If you specify this parameter, be sure to specify at least one subnet when
      * you create your group.</p> <p>Default: If the instance is launched into a
@@ -1030,7 +1040,7 @@ namespace Model
      * <p>Used for groups that launch instances into a virtual private cloud (VPC).
      * Specifies whether to assign a public IP address to each instance. For more
      * information, see <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>If you specify this parameter, be sure to specify at least one subnet when
      * you create your group.</p> <p>Default: If the instance is launched into a
@@ -1051,7 +1061,7 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
@@ -1066,7 +1076,7 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
@@ -1081,11 +1091,11 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
-    inline void SetPlacementTenancy(Aws::String&& value) { m_placementTenancyHasBeenSet = true; m_placementTenancy = value; }
+    inline void SetPlacementTenancy(Aws::String&& value) { m_placementTenancyHasBeenSet = true; m_placementTenancy = std::move(value); }
 
     /**
      * <p>The tenancy of the instance. An instance with a tenancy of
@@ -1096,7 +1106,7 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
@@ -1111,7 +1121,7 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
@@ -1126,11 +1136,11 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */
-    inline CreateLaunchConfigurationRequest& WithPlacementTenancy(Aws::String&& value) { SetPlacementTenancy(value); return *this;}
+    inline CreateLaunchConfigurationRequest& WithPlacementTenancy(Aws::String&& value) { SetPlacementTenancy(std::move(value)); return *this;}
 
     /**
      * <p>The tenancy of the instance. An instance with a tenancy of
@@ -1141,7 +1151,7 @@ namespace Model
      * <code>default</code>).</p> <p>If you specify this parameter, be sure to specify
      * at least one subnet when you create your group.</p> <p>For more information, see
      * <a
-     * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/asg-in-vpc.html">Launching
+     * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching
      * Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
      * <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
      */

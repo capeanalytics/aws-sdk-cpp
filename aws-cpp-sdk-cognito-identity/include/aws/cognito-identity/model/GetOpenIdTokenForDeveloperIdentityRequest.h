@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-identity/CognitoIdentity_EXPORTS.h>
 #include <aws/cognito-identity/CognitoIdentityRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
+   * <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code>
+   * action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-identity-2014-06-30/GetOpenIdTokenForDeveloperIdentityInput">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITY_API GetOpenIdTokenForDeveloperIdentityRequest : public CognitoIdentityRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
      */
-    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = value; }
+    inline void SetIdentityPoolId(Aws::String&& value) { m_identityPoolIdHasBeenSet = true; m_identityPoolId = std::move(value); }
 
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
@@ -64,7 +70,7 @@ namespace Model
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(value); return *this;}
+    inline GetOpenIdTokenForDeveloperIdentityRequest& WithIdentityPoolId(Aws::String&& value) { SetIdentityPoolId(std::move(value)); return *this;}
 
     /**
      * <p>An identity pool ID in the format REGION:GUID.</p>
@@ -84,7 +90,7 @@ namespace Model
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = value; }
+    inline void SetIdentityId(Aws::String&& value) { m_identityIdHasBeenSet = true; m_identityId = std::move(value); }
 
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
@@ -99,7 +105,7 @@ namespace Model
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& WithIdentityId(Aws::String&& value) { SetIdentityId(value); return *this;}
+    inline GetOpenIdTokenForDeveloperIdentityRequest& WithIdentityId(Aws::String&& value) { SetIdentityId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier in the format REGION:GUID.</p>
@@ -143,7 +149,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline void SetLogins(Aws::Map<Aws::String, Aws::String>&& value) { m_loginsHasBeenSet = true; m_logins = value; }
+    inline void SetLogins(Aws::Map<Aws::String, Aws::String>&& value) { m_loginsHasBeenSet = true; m_logins = std::move(value); }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -169,7 +175,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& WithLogins(Aws::Map<Aws::String, Aws::String>&& value) { SetLogins(value); return *this;}
+    inline GetOpenIdTokenForDeveloperIdentityRequest& WithLogins(Aws::Map<Aws::String, Aws::String>&& value) { SetLogins(std::move(value)); return *this;}
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -182,7 +188,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const Aws::String& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const Aws::String& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins.emplace(key, value); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -195,7 +201,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, const Aws::String& value) { m_loginsHasBeenSet = true; m_logins.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -208,7 +214,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const Aws::String& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const Aws::String& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -221,7 +227,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -234,7 +240,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const char* key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const char* key, Aws::String&& value) { m_loginsHasBeenSet = true; m_logins.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -247,7 +253,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, const char* value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(Aws::String&& key, const char* value) { m_loginsHasBeenSet = true; m_logins.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>A set of optional name-value pairs that map provider names to provider
@@ -260,7 +266,7 @@ namespace Model
      * identifier from your backend that uniquely identifies a user. When you create an
      * identity pool, you can specify the supported logins.</p>
      */
-    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const char* key, const char* value) { m_loginsHasBeenSet = true; m_logins[key] = value; return *this; }
+    inline GetOpenIdTokenForDeveloperIdentityRequest& AddLogins(const char* key, const char* value) { m_loginsHasBeenSet = true; m_logins.emplace(key, value); return *this; }
 
     /**
      * <p>The expiration time of the token, in seconds. You can specify a custom

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/support/model/TrustedAdvisorCheckDescription.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>Information about the Trusted Advisor checks returned by the
-   * <a>DescribeTrustedAdvisorChecks</a> operation.</p>
+   * <a>DescribeTrustedAdvisorChecks</a> operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/DescribeTrustedAdvisorChecksResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API DescribeTrustedAdvisorChecksResult
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>Information about all available Trusted Advisor checks.</p>
      */
-    inline void SetChecks(Aws::Vector<TrustedAdvisorCheckDescription>&& value) { m_checks = value; }
+    inline void SetChecks(Aws::Vector<TrustedAdvisorCheckDescription>&& value) { m_checks = std::move(value); }
 
     /**
      * <p>Information about all available Trusted Advisor checks.</p>
@@ -67,7 +71,7 @@ namespace Model
     /**
      * <p>Information about all available Trusted Advisor checks.</p>
      */
-    inline DescribeTrustedAdvisorChecksResult& WithChecks(Aws::Vector<TrustedAdvisorCheckDescription>&& value) { SetChecks(value); return *this;}
+    inline DescribeTrustedAdvisorChecksResult& WithChecks(Aws::Vector<TrustedAdvisorCheckDescription>&& value) { SetChecks(std::move(value)); return *this;}
 
     /**
      * <p>Information about all available Trusted Advisor checks.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>Information about all available Trusted Advisor checks.</p>
      */
-    inline DescribeTrustedAdvisorChecksResult& AddChecks(TrustedAdvisorCheckDescription&& value) { m_checks.push_back(value); return *this; }
+    inline DescribeTrustedAdvisorChecksResult& AddChecks(TrustedAdvisorCheckDescription&& value) { m_checks.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<TrustedAdvisorCheckDescription> m_checks;

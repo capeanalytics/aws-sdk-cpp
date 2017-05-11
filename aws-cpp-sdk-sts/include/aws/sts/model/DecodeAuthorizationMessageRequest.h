@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sts/STS_EXPORTS.h>
 #include <aws/sts/STSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,11 @@ namespace Model
     DecodeAuthorizationMessageRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The encoded message that was returned with the response.</p>
      */
@@ -45,7 +52,7 @@ namespace Model
     /**
      * <p>The encoded message that was returned with the response.</p>
      */
-    inline void SetEncodedMessage(Aws::String&& value) { m_encodedMessageHasBeenSet = true; m_encodedMessage = value; }
+    inline void SetEncodedMessage(Aws::String&& value) { m_encodedMessageHasBeenSet = true; m_encodedMessage = std::move(value); }
 
     /**
      * <p>The encoded message that was returned with the response.</p>
@@ -60,7 +67,7 @@ namespace Model
     /**
      * <p>The encoded message that was returned with the response.</p>
      */
-    inline DecodeAuthorizationMessageRequest& WithEncodedMessage(Aws::String&& value) { SetEncodedMessage(value); return *this;}
+    inline DecodeAuthorizationMessageRequest& WithEncodedMessage(Aws::String&& value) { SetEncodedMessage(std::move(value)); return *this;}
 
     /**
      * <p>The encoded message that was returned with the response.</p>

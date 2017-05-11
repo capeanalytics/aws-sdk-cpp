@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -45,7 +47,9 @@ namespace Model
    * that will bounce.</p> </note> <p>For information about specifying Amazon S3
    * actions in receipt rules, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/S3Action">AWS API
+   * Reference</a></p>
    */
   class AWS_SES_API S3Action
   {
@@ -85,7 +89,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = value; }
+    inline void SetTopicArn(Aws::String&& value) { m_topicArnHasBeenSet = true; m_topicArn = std::move(value); }
 
     /**
      * <p>The ARN of the Amazon SNS topic to notify when the message is saved to the
@@ -115,7 +119,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS
      * Developer Guide</a>.</p>
      */
-    inline S3Action& WithTopicArn(Aws::String&& value) { SetTopicArn(value); return *this;}
+    inline S3Action& WithTopicArn(Aws::String&& value) { SetTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the Amazon SNS topic to notify when the message is saved to the
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The name of the Amazon S3 bucket to which to save the received email.</p>
      */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
+    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
 
     /**
      * <p>The name of the Amazon S3 bucket to which to save the received email.</p>
@@ -155,7 +159,7 @@ namespace Model
     /**
      * <p>The name of the Amazon S3 bucket to which to save the received email.</p>
      */
-    inline S3Action& WithBucketName(Aws::String&& value) { SetBucketName(value); return *this;}
+    inline S3Action& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the Amazon S3 bucket to which to save the received email.</p>
@@ -181,7 +185,7 @@ namespace Model
      * directory name that enables you to store similar data under the same directory
      * in a bucket.</p>
      */
-    inline void SetObjectKeyPrefix(Aws::String&& value) { m_objectKeyPrefixHasBeenSet = true; m_objectKeyPrefix = value; }
+    inline void SetObjectKeyPrefix(Aws::String&& value) { m_objectKeyPrefixHasBeenSet = true; m_objectKeyPrefix = std::move(value); }
 
     /**
      * <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a
@@ -202,7 +206,7 @@ namespace Model
      * directory name that enables you to store similar data under the same directory
      * in a bucket.</p>
      */
-    inline S3Action& WithObjectKeyPrefix(Aws::String&& value) { SetObjectKeyPrefix(value); return *this;}
+    inline S3Action& WithObjectKeyPrefix(Aws::String&& value) { SetObjectKeyPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a
@@ -308,7 +312,7 @@ namespace Model
      * href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon
      * S3 Developer Guide</a>.</p> </important>
      */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
+    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
 
     /**
      * <p>The customer master key that Amazon SES should use to encrypt your emails
@@ -407,7 +411,7 @@ namespace Model
      * href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon
      * S3 Developer Guide</a>.</p> </important>
      */
-    inline S3Action& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(value); return *this;}
+    inline S3Action& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
 
     /**
      * <p>The customer master key that Amazon SES should use to encrypt your emails

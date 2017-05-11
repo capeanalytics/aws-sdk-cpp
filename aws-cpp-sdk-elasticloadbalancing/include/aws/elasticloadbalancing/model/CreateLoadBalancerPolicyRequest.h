@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/elasticloadbalancing/ElasticLoadBalancingRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/elasticloadbalancing/model/PolicyAttribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for CreateLoadBalancerPolicy.</p>
+   * <p>Contains the parameters for CreateLoadBalancerPolicy.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/CreateLoadBalancerPolicyInput">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API CreateLoadBalancerPolicyRequest : public ElasticLoadBalancingRequest
   {
@@ -35,6 +40,11 @@ namespace Model
     CreateLoadBalancerPolicyRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the load balancer.</p>
      */
@@ -48,7 +58,7 @@ namespace Model
     /**
      * <p>The name of the load balancer.</p>
      */
-    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = value; }
+    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::move(value); }
 
     /**
      * <p>The name of the load balancer.</p>
@@ -63,7 +73,7 @@ namespace Model
     /**
      * <p>The name of the load balancer.</p>
      */
-    inline CreateLoadBalancerPolicyRequest& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(value); return *this;}
+    inline CreateLoadBalancerPolicyRequest& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the load balancer.</p>
@@ -86,7 +96,7 @@ namespace Model
      * <p>The name of the load balancer policy to be created. This name must be unique
      * within the set of policies for this load balancer.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the load balancer policy to be created. This name must be unique
@@ -104,7 +114,7 @@ namespace Model
      * <p>The name of the load balancer policy to be created. This name must be unique
      * within the set of policies for this load balancer.</p>
      */
-    inline CreateLoadBalancerPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline CreateLoadBalancerPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the load balancer policy to be created. This name must be unique
@@ -128,7 +138,7 @@ namespace Model
      * <p>The name of the base policy type. To get the list of policy types, use
      * <a>DescribeLoadBalancerPolicyTypes</a>.</p>
      */
-    inline void SetPolicyTypeName(Aws::String&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = value; }
+    inline void SetPolicyTypeName(Aws::String&& value) { m_policyTypeNameHasBeenSet = true; m_policyTypeName = std::move(value); }
 
     /**
      * <p>The name of the base policy type. To get the list of policy types, use
@@ -146,7 +156,7 @@ namespace Model
      * <p>The name of the base policy type. To get the list of policy types, use
      * <a>DescribeLoadBalancerPolicyTypes</a>.</p>
      */
-    inline CreateLoadBalancerPolicyRequest& WithPolicyTypeName(Aws::String&& value) { SetPolicyTypeName(value); return *this;}
+    inline CreateLoadBalancerPolicyRequest& WithPolicyTypeName(Aws::String&& value) { SetPolicyTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the base policy type. To get the list of policy types, use
@@ -167,7 +177,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline void SetPolicyAttributes(Aws::Vector<PolicyAttribute>&& value) { m_policyAttributesHasBeenSet = true; m_policyAttributes = value; }
+    inline void SetPolicyAttributes(Aws::Vector<PolicyAttribute>&& value) { m_policyAttributesHasBeenSet = true; m_policyAttributes = std::move(value); }
 
     /**
      * <p>The policy attributes.</p>
@@ -177,7 +187,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline CreateLoadBalancerPolicyRequest& WithPolicyAttributes(Aws::Vector<PolicyAttribute>&& value) { SetPolicyAttributes(value); return *this;}
+    inline CreateLoadBalancerPolicyRequest& WithPolicyAttributes(Aws::Vector<PolicyAttribute>&& value) { SetPolicyAttributes(std::move(value)); return *this;}
 
     /**
      * <p>The policy attributes.</p>
@@ -187,7 +197,7 @@ namespace Model
     /**
      * <p>The policy attributes.</p>
      */
-    inline CreateLoadBalancerPolicyRequest& AddPolicyAttributes(PolicyAttribute&& value) { m_policyAttributesHasBeenSet = true; m_policyAttributes.push_back(value); return *this; }
+    inline CreateLoadBalancerPolicyRequest& AddPolicyAttributes(PolicyAttribute&& value) { m_policyAttributesHasBeenSet = true; m_policyAttributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_loadBalancerName;

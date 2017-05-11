@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -57,7 +59,7 @@ namespace Model
     /**
      * <p>The ARN of the resource group. </p>
      */
-    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = value; }
+    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = std::move(value); }
 
     /**
      * <p>The ARN of the resource group. </p>
@@ -72,7 +74,7 @@ namespace Model
     /**
      * <p>The ARN of the resource group. </p>
      */
-    inline ResourceGroup& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(value); return *this;}
+    inline ResourceGroup& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the resource group. </p>
@@ -101,7 +103,7 @@ namespace Model
      * of keys and an array of possible values in JSON format.</p> <p>For example, [{
      * "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]</p>
      */
-    inline void SetResourceGroupTags(Aws::String&& value) { m_resourceGroupTagsHasBeenSet = true; m_resourceGroupTags = value; }
+    inline void SetResourceGroupTags(Aws::String&& value) { m_resourceGroupTagsHasBeenSet = true; m_resourceGroupTags = std::move(value); }
 
     /**
      * <p>The tags (key and value pairs) of the resource group.</p> <p>This data type
@@ -125,7 +127,7 @@ namespace Model
      * of keys and an array of possible values in JSON format.</p> <p>For example, [{
      * "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]</p>
      */
-    inline ResourceGroup& WithResourceGroupTags(Aws::String&& value) { SetResourceGroupTags(value); return *this;}
+    inline ResourceGroup& WithResourceGroupTags(Aws::String&& value) { SetResourceGroupTags(std::move(value)); return *this;}
 
     /**
      * <p>The tags (key and value pairs) of the resource group.</p> <p>This data type

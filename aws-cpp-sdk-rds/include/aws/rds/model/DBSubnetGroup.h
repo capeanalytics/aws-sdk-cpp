@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/rds/model/Subnet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
    * <a>ModifyDBSubnetGroup</a> </p> </li> <li> <p> <a>DescribeDBSubnetGroups</a>
    * </p> </li> <li> <p> <a>DeleteDBSubnetGroup</a> </p> </li> </ul> <p>This data
    * type is used as a response element in the <a>DescribeDBSubnetGroups</a>
-   * action.</p>
+   * action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBSubnetGroup">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DBSubnetGroup
   {
@@ -64,7 +68,7 @@ namespace Model
     /**
      * <p>The name of the DB subnet group.</p>
      */
-    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
+    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB subnet group.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>The name of the DB subnet group.</p>
      */
-    inline DBSubnetGroup& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(value); return *this;}
+    inline DBSubnetGroup& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB subnet group.</p>
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>Provides the description of the DB subnet group.</p>
      */
-    inline void SetDBSubnetGroupDescription(Aws::String&& value) { m_dBSubnetGroupDescriptionHasBeenSet = true; m_dBSubnetGroupDescription = value; }
+    inline void SetDBSubnetGroupDescription(Aws::String&& value) { m_dBSubnetGroupDescriptionHasBeenSet = true; m_dBSubnetGroupDescription = std::move(value); }
 
     /**
      * <p>Provides the description of the DB subnet group.</p>
@@ -114,7 +118,7 @@ namespace Model
     /**
      * <p>Provides the description of the DB subnet group.</p>
      */
-    inline DBSubnetGroup& WithDBSubnetGroupDescription(Aws::String&& value) { SetDBSubnetGroupDescription(value); return *this;}
+    inline DBSubnetGroup& WithDBSubnetGroupDescription(Aws::String&& value) { SetDBSubnetGroupDescription(std::move(value)); return *this;}
 
     /**
      * <p>Provides the description of the DB subnet group.</p>
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>Provides the VpcId of the DB subnet group.</p>
      */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
+    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
 
     /**
      * <p>Provides the VpcId of the DB subnet group.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>Provides the VpcId of the DB subnet group.</p>
      */
-    inline DBSubnetGroup& WithVpcId(Aws::String&& value) { SetVpcId(value); return *this;}
+    inline DBSubnetGroup& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
 
     /**
      * <p>Provides the VpcId of the DB subnet group.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>Provides the status of the DB subnet group.</p>
      */
-    inline void SetSubnetGroupStatus(Aws::String&& value) { m_subnetGroupStatusHasBeenSet = true; m_subnetGroupStatus = value; }
+    inline void SetSubnetGroupStatus(Aws::String&& value) { m_subnetGroupStatusHasBeenSet = true; m_subnetGroupStatus = std::move(value); }
 
     /**
      * <p>Provides the status of the DB subnet group.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>Provides the status of the DB subnet group.</p>
      */
-    inline DBSubnetGroup& WithSubnetGroupStatus(Aws::String&& value) { SetSubnetGroupStatus(value); return *this;}
+    inline DBSubnetGroup& WithSubnetGroupStatus(Aws::String&& value) { SetSubnetGroupStatus(std::move(value)); return *this;}
 
     /**
      * <p>Provides the status of the DB subnet group.</p>
@@ -204,7 +208,7 @@ namespace Model
     /**
      * <p> Contains a list of <a>Subnet</a> elements. </p>
      */
-    inline void SetSubnets(Aws::Vector<Subnet>&& value) { m_subnetsHasBeenSet = true; m_subnets = value; }
+    inline void SetSubnets(Aws::Vector<Subnet>&& value) { m_subnetsHasBeenSet = true; m_subnets = std::move(value); }
 
     /**
      * <p> Contains a list of <a>Subnet</a> elements. </p>
@@ -214,7 +218,7 @@ namespace Model
     /**
      * <p> Contains a list of <a>Subnet</a> elements. </p>
      */
-    inline DBSubnetGroup& WithSubnets(Aws::Vector<Subnet>&& value) { SetSubnets(value); return *this;}
+    inline DBSubnetGroup& WithSubnets(Aws::Vector<Subnet>&& value) { SetSubnets(std::move(value)); return *this;}
 
     /**
      * <p> Contains a list of <a>Subnet</a> elements. </p>
@@ -224,7 +228,7 @@ namespace Model
     /**
      * <p> Contains a list of <a>Subnet</a> elements. </p>
      */
-    inline DBSubnetGroup& AddSubnets(Subnet&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(value); return *this; }
+    inline DBSubnetGroup& AddSubnets(Subnet&& value) { m_subnetsHasBeenSet = true; m_subnets.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>
@@ -239,7 +243,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>
      */
-    inline void SetDBSubnetGroupArn(Aws::String&& value) { m_dBSubnetGroupArnHasBeenSet = true; m_dBSubnetGroupArn = value; }
+    inline void SetDBSubnetGroupArn(Aws::String&& value) { m_dBSubnetGroupArnHasBeenSet = true; m_dBSubnetGroupArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>
@@ -254,7 +258,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>
      */
-    inline DBSubnetGroup& WithDBSubnetGroupArn(Aws::String&& value) { SetDBSubnetGroupArn(value); return *this;}
+    inline DBSubnetGroup& WithDBSubnetGroupArn(Aws::String&& value) { SetDBSubnetGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>

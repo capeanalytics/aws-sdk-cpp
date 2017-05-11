@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/AccountAttributeValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an account attribute.</p>
+   * <p>Describes an account attribute.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AccountAttribute">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API AccountAttribute
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the account attribute.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the account attribute.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the account attribute.</p>
      */
-    inline AccountAttribute& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline AccountAttribute& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the account attribute.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>One or more values for the account attribute.</p>
      */
-    inline void SetAttributeValues(Aws::Vector<AccountAttributeValue>&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = value; }
+    inline void SetAttributeValues(Aws::Vector<AccountAttributeValue>&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues = std::move(value); }
 
     /**
      * <p>One or more values for the account attribute.</p>
@@ -104,7 +108,7 @@ namespace Model
     /**
      * <p>One or more values for the account attribute.</p>
      */
-    inline AccountAttribute& WithAttributeValues(Aws::Vector<AccountAttributeValue>&& value) { SetAttributeValues(value); return *this;}
+    inline AccountAttribute& WithAttributeValues(Aws::Vector<AccountAttributeValue>&& value) { SetAttributeValues(std::move(value)); return *this;}
 
     /**
      * <p>One or more values for the account attribute.</p>
@@ -114,7 +118,7 @@ namespace Model
     /**
      * <p>One or more values for the account attribute.</p>
      */
-    inline AccountAttribute& AddAttributeValues(AccountAttributeValue&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(value); return *this; }
+    inline AccountAttribute& AddAttributeValues(AccountAttributeValue&& value) { m_attributeValuesHasBeenSet = true; m_attributeValues.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_attributeName;

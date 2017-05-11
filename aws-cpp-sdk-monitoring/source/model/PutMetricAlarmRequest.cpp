@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/monitoring/model/PutMetricAlarmRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -29,16 +30,22 @@ PutMetricAlarmRequest::PutMetricAlarmRequest() :
     m_insufficientDataActionsHasBeenSet(false),
     m_metricNameHasBeenSet(false),
     m_namespaceHasBeenSet(false),
+    m_statistic(Statistic::NOT_SET),
     m_statisticHasBeenSet(false),
+    m_extendedStatisticHasBeenSet(false),
     m_dimensionsHasBeenSet(false),
     m_period(0),
     m_periodHasBeenSet(false),
+    m_unit(StandardUnit::NOT_SET),
     m_unitHasBeenSet(false),
     m_evaluationPeriods(0),
     m_evaluationPeriodsHasBeenSet(false),
     m_threshold(0.0),
     m_thresholdHasBeenSet(false),
-    m_comparisonOperatorHasBeenSet(false)
+    m_comparisonOperator(ComparisonOperator::NOT_SET),
+    m_comparisonOperatorHasBeenSet(false),
+    m_treatMissingDataHasBeenSet(false),
+    m_evaluateLowSampleCountPercentileHasBeenSet(false)
 {
 }
 
@@ -58,7 +65,7 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_actionsEnabledHasBeenSet)
   {
-    ss << "ActionsEnabled=" << m_actionsEnabled << "&";
+    ss << "ActionsEnabled=" << std::boolalpha << m_actionsEnabled << "&";
   }
 
   if(m_oKActionsHasBeenSet)
@@ -109,6 +116,11 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
     ss << "Statistic=" << StatisticMapper::GetNameForStatistic(m_statistic) << "&";
   }
 
+  if(m_extendedStatisticHasBeenSet)
+  {
+    ss << "ExtendedStatistic=" << StringUtils::URLEncode(m_extendedStatistic.c_str()) << "&";
+  }
+
   if(m_dimensionsHasBeenSet)
   {
     unsigned dimensionsCount = 1;
@@ -144,7 +156,22 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
     ss << "ComparisonOperator=" << ComparisonOperatorMapper::GetNameForComparisonOperator(m_comparisonOperator) << "&";
   }
 
+  if(m_treatMissingDataHasBeenSet)
+  {
+    ss << "TreatMissingData=" << StringUtils::URLEncode(m_treatMissingData.c_str()) << "&";
+  }
+
+  if(m_evaluateLowSampleCountPercentileHasBeenSet)
+  {
+    ss << "EvaluateLowSampleCountPercentile=" << StringUtils::URLEncode(m_evaluateLowSampleCountPercentile.c_str()) << "&";
+  }
+
   ss << "Version=2010-08-01";
   return ss.str();
 }
 
+
+void  PutMetricAlarmRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

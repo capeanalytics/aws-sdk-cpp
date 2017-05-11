@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/cloudformation/CloudFormationRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>The input for <a>DescribeStackResources</a> action.</p>
+   * <p>The input for <a>DescribeStackResources</a> action.</p><p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeStackResourcesInput">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API DescribeStackResourcesRequest : public CloudFormationRequest
   {
@@ -33,6 +38,11 @@ namespace Model
     DescribeStackResourcesRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
      * not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify
@@ -61,7 +71,7 @@ namespace Model
      * is no default value.</p> <p>Required: Conditional. If you do not specify
      * <code>StackName</code>, you must specify <code>PhysicalResourceId</code>.</p>
      */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
+    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
 
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
@@ -91,7 +101,7 @@ namespace Model
      * is no default value.</p> <p>Required: Conditional. If you do not specify
      * <code>StackName</code>, you must specify <code>PhysicalResourceId</code>.</p>
      */
-    inline DescribeStackResourcesRequest& WithStackName(Aws::String&& value) { SetStackName(value); return *this;}
+    inline DescribeStackResourcesRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
 
     /**
      * <p>The name or the unique stack ID that is associated with the stack, which are
@@ -119,7 +129,7 @@ namespace Model
      * <p>The logical name of the resource as specified in the template.</p>
      * <p>Default: There is no default value.</p>
      */
-    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = value; }
+    inline void SetLogicalResourceId(Aws::String&& value) { m_logicalResourceIdHasBeenSet = true; m_logicalResourceId = std::move(value); }
 
     /**
      * <p>The logical name of the resource as specified in the template.</p>
@@ -137,7 +147,7 @@ namespace Model
      * <p>The logical name of the resource as specified in the template.</p>
      * <p>Default: There is no default value.</p>
      */
-    inline DescribeStackResourcesRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(value); return *this;}
+    inline DescribeStackResourcesRequest& WithLogicalResourceId(Aws::String&& value) { SetLogicalResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The logical name of the resource as specified in the template.</p>
@@ -182,7 +192,7 @@ namespace Model
      * <code>PhysicalResourceId</code>, you must specify <code>StackName</code>.</p>
      * <p>Default: There is no default value.</p>
      */
-    inline void SetPhysicalResourceId(Aws::String&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = value; }
+    inline void SetPhysicalResourceId(Aws::String&& value) { m_physicalResourceIdHasBeenSet = true; m_physicalResourceId = std::move(value); }
 
     /**
      * <p>The name or unique identifier that corresponds to a physical instance ID of a
@@ -221,7 +231,7 @@ namespace Model
      * <code>PhysicalResourceId</code>, you must specify <code>StackName</code>.</p>
      * <p>Default: There is no default value.</p>
      */
-    inline DescribeStackResourcesRequest& WithPhysicalResourceId(Aws::String&& value) { SetPhysicalResourceId(value); return *this;}
+    inline DescribeStackResourcesRequest& WithPhysicalResourceId(Aws::String&& value) { SetPhysicalResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The name or unique identifier that corresponds to a physical instance ID of a

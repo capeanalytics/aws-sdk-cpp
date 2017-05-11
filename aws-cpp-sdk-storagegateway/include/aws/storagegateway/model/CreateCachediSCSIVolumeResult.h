@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -46,7 +48,7 @@ namespace Model
     inline void SetVolumeARN(const Aws::String& value) { m_volumeARN = value; }
 
     
-    inline void SetVolumeARN(Aws::String&& value) { m_volumeARN = value; }
+    inline void SetVolumeARN(Aws::String&& value) { m_volumeARN = std::move(value); }
 
     
     inline void SetVolumeARN(const char* value) { m_volumeARN.assign(value); }
@@ -55,7 +57,7 @@ namespace Model
     inline CreateCachediSCSIVolumeResult& WithVolumeARN(const Aws::String& value) { SetVolumeARN(value); return *this;}
 
     
-    inline CreateCachediSCSIVolumeResult& WithVolumeARN(Aws::String&& value) { SetVolumeARN(value); return *this;}
+    inline CreateCachediSCSIVolumeResult& WithVolumeARN(Aws::String&& value) { SetVolumeARN(std::move(value)); return *this;}
 
     
     inline CreateCachediSCSIVolumeResult& WithVolumeARN(const char* value) { SetVolumeARN(value); return *this;}
@@ -67,7 +69,7 @@ namespace Model
     inline void SetTargetARN(const Aws::String& value) { m_targetARN = value; }
 
     
-    inline void SetTargetARN(Aws::String&& value) { m_targetARN = value; }
+    inline void SetTargetARN(Aws::String&& value) { m_targetARN = std::move(value); }
 
     
     inline void SetTargetARN(const char* value) { m_targetARN.assign(value); }
@@ -76,7 +78,7 @@ namespace Model
     inline CreateCachediSCSIVolumeResult& WithTargetARN(const Aws::String& value) { SetTargetARN(value); return *this;}
 
     
-    inline CreateCachediSCSIVolumeResult& WithTargetARN(Aws::String&& value) { SetTargetARN(value); return *this;}
+    inline CreateCachediSCSIVolumeResult& WithTargetARN(Aws::String&& value) { SetTargetARN(std::move(value)); return *this;}
 
     
     inline CreateCachediSCSIVolumeResult& WithTargetARN(const char* value) { SetTargetARN(value); return *this;}

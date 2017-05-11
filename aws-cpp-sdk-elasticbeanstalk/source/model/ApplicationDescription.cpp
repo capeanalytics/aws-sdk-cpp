@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/ApplicationDescription.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -35,7 +36,8 @@ ApplicationDescription::ApplicationDescription() :
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
     m_versionsHasBeenSet(false),
-    m_configurationTemplatesHasBeenSet(false)
+    m_configurationTemplatesHasBeenSet(false),
+    m_resourceLifecycleConfigHasBeenSet(false)
 {
 }
 
@@ -45,7 +47,8 @@ ApplicationDescription::ApplicationDescription(const XmlNode& xmlNode) :
     m_dateCreatedHasBeenSet(false),
     m_dateUpdatedHasBeenSet(false),
     m_versionsHasBeenSet(false),
-    m_configurationTemplatesHasBeenSet(false)
+    m_configurationTemplatesHasBeenSet(false),
+    m_resourceLifecycleConfigHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -104,6 +107,12 @@ ApplicationDescription& ApplicationDescription::operator =(const XmlNode& xmlNod
 
       m_configurationTemplatesHasBeenSet = true;
     }
+    XmlNode resourceLifecycleConfigNode = resultNode.FirstChild("ResourceLifecycleConfig");
+    if(!resourceLifecycleConfigNode.IsNull())
+    {
+      m_resourceLifecycleConfig = resourceLifecycleConfigNode;
+      m_resourceLifecycleConfigHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -149,6 +158,13 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
       }
   }
 
+  if(m_resourceLifecycleConfigHasBeenSet)
+  {
+      Aws::StringStream resourceLifecycleConfigLocationAndMemberSs;
+      resourceLifecycleConfigLocationAndMemberSs << location << index << locationValue << ".ResourceLifecycleConfig";
+      m_resourceLifecycleConfig.OutputToStream(oStream, resourceLifecycleConfigLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -184,6 +200,12 @@ void ApplicationDescription::OutputToStream(Aws::OStream& oStream, const char* l
       {
         oStream << location << ".ConfigurationTemplates.member." << configurationTemplatesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
+  }
+  if(m_resourceLifecycleConfigHasBeenSet)
+  {
+      Aws::String resourceLifecycleConfigLocationAndMember(location);
+      resourceLifecycleConfigLocationAndMember += ".ResourceLifecycleConfig";
+      m_resourceLifecycleConfig.OutputToStream(oStream, resourceLifecycleConfigLocationAndMember.c_str());
   }
 }
 

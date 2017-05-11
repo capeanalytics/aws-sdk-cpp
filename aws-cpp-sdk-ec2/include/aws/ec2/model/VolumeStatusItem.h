@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -20,6 +21,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/VolumeStatusEvent.h>
 #include <aws/ec2/model/VolumeStatusAction.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the volume status.</p>
+   * <p>Describes the volume status.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VolumeStatusItem">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API VolumeStatusItem
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The volume ID.</p>
      */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
+    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
 
     /**
      * <p>The volume ID.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The volume ID.</p>
      */
-    inline VolumeStatusItem& WithVolumeId(Aws::String&& value) { SetVolumeId(value); return *this;}
+    inline VolumeStatusItem& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
 
     /**
      * <p>The volume ID.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The Availability Zone of the volume.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone of the volume.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The Availability Zone of the volume.</p>
      */
-    inline VolumeStatusItem& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline VolumeStatusItem& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone of the volume.</p>
@@ -131,7 +135,7 @@ namespace Model
     /**
      * <p>The volume status.</p>
      */
-    inline void SetVolumeStatus(VolumeStatusInfo&& value) { m_volumeStatusHasBeenSet = true; m_volumeStatus = value; }
+    inline void SetVolumeStatus(VolumeStatusInfo&& value) { m_volumeStatusHasBeenSet = true; m_volumeStatus = std::move(value); }
 
     /**
      * <p>The volume status.</p>
@@ -141,7 +145,7 @@ namespace Model
     /**
      * <p>The volume status.</p>
      */
-    inline VolumeStatusItem& WithVolumeStatus(VolumeStatusInfo&& value) { SetVolumeStatus(value); return *this;}
+    inline VolumeStatusItem& WithVolumeStatus(VolumeStatusInfo&& value) { SetVolumeStatus(std::move(value)); return *this;}
 
     /**
      * <p>A list of events associated with the volume.</p>
@@ -156,7 +160,7 @@ namespace Model
     /**
      * <p>A list of events associated with the volume.</p>
      */
-    inline void SetEvents(Aws::Vector<VolumeStatusEvent>&& value) { m_eventsHasBeenSet = true; m_events = value; }
+    inline void SetEvents(Aws::Vector<VolumeStatusEvent>&& value) { m_eventsHasBeenSet = true; m_events = std::move(value); }
 
     /**
      * <p>A list of events associated with the volume.</p>
@@ -166,7 +170,7 @@ namespace Model
     /**
      * <p>A list of events associated with the volume.</p>
      */
-    inline VolumeStatusItem& WithEvents(Aws::Vector<VolumeStatusEvent>&& value) { SetEvents(value); return *this;}
+    inline VolumeStatusItem& WithEvents(Aws::Vector<VolumeStatusEvent>&& value) { SetEvents(std::move(value)); return *this;}
 
     /**
      * <p>A list of events associated with the volume.</p>
@@ -176,7 +180,7 @@ namespace Model
     /**
      * <p>A list of events associated with the volume.</p>
      */
-    inline VolumeStatusItem& AddEvents(VolumeStatusEvent&& value) { m_eventsHasBeenSet = true; m_events.push_back(value); return *this; }
+    inline VolumeStatusItem& AddEvents(VolumeStatusEvent&& value) { m_eventsHasBeenSet = true; m_events.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The details of the operation.</p>
@@ -191,7 +195,7 @@ namespace Model
     /**
      * <p>The details of the operation.</p>
      */
-    inline void SetActions(Aws::Vector<VolumeStatusAction>&& value) { m_actionsHasBeenSet = true; m_actions = value; }
+    inline void SetActions(Aws::Vector<VolumeStatusAction>&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
 
     /**
      * <p>The details of the operation.</p>
@@ -201,7 +205,7 @@ namespace Model
     /**
      * <p>The details of the operation.</p>
      */
-    inline VolumeStatusItem& WithActions(Aws::Vector<VolumeStatusAction>&& value) { SetActions(value); return *this;}
+    inline VolumeStatusItem& WithActions(Aws::Vector<VolumeStatusAction>&& value) { SetActions(std::move(value)); return *this;}
 
     /**
      * <p>The details of the operation.</p>
@@ -211,7 +215,7 @@ namespace Model
     /**
      * <p>The details of the operation.</p>
      */
-    inline VolumeStatusItem& AddActions(VolumeStatusAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(value); return *this; }
+    inline VolumeStatusItem& AddActions(VolumeStatusAction&& value) { m_actionsHasBeenSet = true; m_actions.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_volumeId;

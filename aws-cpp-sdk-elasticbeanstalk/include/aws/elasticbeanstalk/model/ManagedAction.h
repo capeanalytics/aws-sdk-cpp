@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/elasticbeanstalk/model/ActionType.h>
 #include <aws/elasticbeanstalk/model/ActionStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 {
 
   /**
-   * <p>The record of an upcoming or in-progress managed action.</p>
+   * <p>The record of an upcoming or in-progress managed action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/ManagedAction">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API ManagedAction
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>A unique identifier for the managed action.</p>
      */
-    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = value; }
+    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = std::move(value); }
 
     /**
      * <p>A unique identifier for the managed action.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>A unique identifier for the managed action.</p>
      */
-    inline ManagedAction& WithActionId(Aws::String&& value) { SetActionId(value); return *this;}
+    inline ManagedAction& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for the managed action.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>A description of the managed action.</p>
      */
-    inline void SetActionDescription(Aws::String&& value) { m_actionDescriptionHasBeenSet = true; m_actionDescription = value; }
+    inline void SetActionDescription(Aws::String&& value) { m_actionDescriptionHasBeenSet = true; m_actionDescription = std::move(value); }
 
     /**
      * <p>A description of the managed action.</p>
@@ -110,7 +115,7 @@ namespace Model
     /**
      * <p>A description of the managed action.</p>
      */
-    inline ManagedAction& WithActionDescription(Aws::String&& value) { SetActionDescription(value); return *this;}
+    inline ManagedAction& WithActionDescription(Aws::String&& value) { SetActionDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the managed action.</p>
@@ -130,7 +135,7 @@ namespace Model
     /**
      * <p>The type of managed action.</p>
      */
-    inline void SetActionType(ActionType&& value) { m_actionTypeHasBeenSet = true; m_actionType = value; }
+    inline void SetActionType(ActionType&& value) { m_actionTypeHasBeenSet = true; m_actionType = std::move(value); }
 
     /**
      * <p>The type of managed action.</p>
@@ -140,7 +145,7 @@ namespace Model
     /**
      * <p>The type of managed action.</p>
      */
-    inline ManagedAction& WithActionType(ActionType&& value) { SetActionType(value); return *this;}
+    inline ManagedAction& WithActionType(ActionType&& value) { SetActionType(std::move(value)); return *this;}
 
     /**
      * <p>The status of the managed action. If the action is <code>Scheduled</code>,
@@ -158,7 +163,7 @@ namespace Model
      * <p>The status of the managed action. If the action is <code>Scheduled</code>,
      * you can apply it immediately with <a>ApplyEnvironmentManagedAction</a>.</p>
      */
-    inline void SetStatus(ActionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(ActionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the managed action. If the action is <code>Scheduled</code>,
@@ -170,7 +175,7 @@ namespace Model
      * <p>The status of the managed action. If the action is <code>Scheduled</code>,
      * you can apply it immediately with <a>ApplyEnvironmentManagedAction</a>.</p>
      */
-    inline ManagedAction& WithStatus(ActionStatus&& value) { SetStatus(value); return *this;}
+    inline ManagedAction& WithStatus(ActionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The start time of the maintenance window in which the managed action will
@@ -188,7 +193,7 @@ namespace Model
      * <p>The start time of the maintenance window in which the managed action will
      * execute.</p>
      */
-    inline void SetWindowStartTime(Aws::Utils::DateTime&& value) { m_windowStartTimeHasBeenSet = true; m_windowStartTime = value; }
+    inline void SetWindowStartTime(Aws::Utils::DateTime&& value) { m_windowStartTimeHasBeenSet = true; m_windowStartTime = std::move(value); }
 
     /**
      * <p>The start time of the maintenance window in which the managed action will
@@ -200,7 +205,7 @@ namespace Model
      * <p>The start time of the maintenance window in which the managed action will
      * execute.</p>
      */
-    inline ManagedAction& WithWindowStartTime(Aws::Utils::DateTime&& value) { SetWindowStartTime(value); return *this;}
+    inline ManagedAction& WithWindowStartTime(Aws::Utils::DateTime&& value) { SetWindowStartTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_actionId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/OptionGroup.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -156,7 +157,7 @@ void OptionGroup::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_allowsVpcAndNonVpcInstanceMembershipsHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AllowsVpcAndNonVpcInstanceMemberships=" << m_allowsVpcAndNonVpcInstanceMemberships << "&";
+      oStream << location << index << locationValue << ".AllowsVpcAndNonVpcInstanceMemberships=" << std::boolalpha << m_allowsVpcAndNonVpcInstanceMemberships << "&";
   }
 
   if(m_vpcIdHasBeenSet)
@@ -201,7 +202,7 @@ void OptionGroup::OutputToStream(Aws::OStream& oStream, const char* location) co
   }
   if(m_allowsVpcAndNonVpcInstanceMembershipsHasBeenSet)
   {
-      oStream << location << ".AllowsVpcAndNonVpcInstanceMemberships=" << m_allowsVpcAndNonVpcInstanceMemberships << "&";
+      oStream << location << ".AllowsVpcAndNonVpcInstanceMemberships=" << std::boolalpha << m_allowsVpcAndNonVpcInstanceMemberships << "&";
   }
   if(m_vpcIdHasBeenSet)
   {

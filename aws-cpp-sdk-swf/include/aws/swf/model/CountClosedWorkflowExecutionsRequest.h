@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
@@ -21,6 +22,7 @@
 #include <aws/swf/model/WorkflowTypeFilter.h>
 #include <aws/swf/model/TagFilter.h>
 #include <aws/swf/model/CloseStatusFilter.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,6 +41,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain containing the workflow executions to count.</p>
      */
@@ -52,7 +55,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow executions to count.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain containing the workflow executions to count.</p>
@@ -67,7 +70,7 @@ namespace Model
     /**
      * <p>The name of the domain containing the workflow executions to count.</p>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain containing the workflow executions to count.</p>
@@ -96,7 +99,7 @@ namespace Model
      * <code>closeTimeFilter</code> are mutually exclusive. You must specify one of
      * these in a request but not both.</note>
      */
-    inline void SetStartTimeFilter(ExecutionTimeFilter&& value) { m_startTimeFilterHasBeenSet = true; m_startTimeFilter = value; }
+    inline void SetStartTimeFilter(ExecutionTimeFilter&& value) { m_startTimeFilterHasBeenSet = true; m_startTimeFilter = std::move(value); }
 
     /**
      * <p>If specified, only workflow executions that meet the start time criteria of
@@ -112,7 +115,7 @@ namespace Model
      * <code>closeTimeFilter</code> are mutually exclusive. You must specify one of
      * these in a request but not both.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithStartTimeFilter(ExecutionTimeFilter&& value) { SetStartTimeFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithStartTimeFilter(ExecutionTimeFilter&& value) { SetStartTimeFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only workflow executions that meet the close time criteria of
@@ -136,7 +139,7 @@ namespace Model
      * <code>closeTimeFilter</code> are mutually exclusive. You must specify one of
      * these in a request but not both.</note>
      */
-    inline void SetCloseTimeFilter(ExecutionTimeFilter&& value) { m_closeTimeFilterHasBeenSet = true; m_closeTimeFilter = value; }
+    inline void SetCloseTimeFilter(ExecutionTimeFilter&& value) { m_closeTimeFilterHasBeenSet = true; m_closeTimeFilter = std::move(value); }
 
     /**
      * <p>If specified, only workflow executions that meet the close time criteria of
@@ -152,7 +155,7 @@ namespace Model
      * <code>closeTimeFilter</code> are mutually exclusive. You must specify one of
      * these in a request but not both.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithCloseTimeFilter(ExecutionTimeFilter&& value) { SetCloseTimeFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithCloseTimeFilter(ExecutionTimeFilter&& value) { SetCloseTimeFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only workflow executions matching the <code>WorkflowId</code>
@@ -179,7 +182,7 @@ namespace Model
      * are mutually exclusive. You can specify at most one of these in a
      * request.</note>
      */
-    inline void SetExecutionFilter(WorkflowExecutionFilter&& value) { m_executionFilterHasBeenSet = true; m_executionFilter = value; }
+    inline void SetExecutionFilter(WorkflowExecutionFilter&& value) { m_executionFilterHasBeenSet = true; m_executionFilter = std::move(value); }
 
     /**
      * <p>If specified, only workflow executions matching the <code>WorkflowId</code>
@@ -197,7 +200,7 @@ namespace Model
      * are mutually exclusive. You can specify at most one of these in a
      * request.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithExecutionFilter(WorkflowExecutionFilter&& value) { SetExecutionFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithExecutionFilter(WorkflowExecutionFilter&& value) { SetExecutionFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, indicates the type of the workflow executions to be
@@ -221,7 +224,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline void SetTypeFilter(WorkflowTypeFilter&& value) { m_typeFilterHasBeenSet = true; m_typeFilter = value; }
+    inline void SetTypeFilter(WorkflowTypeFilter&& value) { m_typeFilterHasBeenSet = true; m_typeFilter = std::move(value); }
 
     /**
      * <p>If specified, indicates the type of the workflow executions to be
@@ -237,7 +240,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithTypeFilter(WorkflowTypeFilter&& value) { SetTypeFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithTypeFilter(WorkflowTypeFilter&& value) { SetTypeFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only executions that have a tag that matches the filter are
@@ -261,7 +264,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline void SetTagFilter(TagFilter&& value) { m_tagFilterHasBeenSet = true; m_tagFilter = value; }
+    inline void SetTagFilter(TagFilter&& value) { m_tagFilterHasBeenSet = true; m_tagFilter = std::move(value); }
 
     /**
      * <p>If specified, only executions that have a tag that matches the filter are
@@ -277,7 +280,7 @@ namespace Model
      * <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You
      * can specify at most one of these in a request.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithTagFilter(TagFilter&& value) { SetTagFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithTagFilter(TagFilter&& value) { SetTagFilter(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only workflow executions that match this close status are
@@ -307,7 +310,7 @@ namespace Model
      * are mutually exclusive. You can specify at most one of these in a
      * request.</note>
      */
-    inline void SetCloseStatusFilter(CloseStatusFilter&& value) { m_closeStatusFilterHasBeenSet = true; m_closeStatusFilter = value; }
+    inline void SetCloseStatusFilter(CloseStatusFilter&& value) { m_closeStatusFilterHasBeenSet = true; m_closeStatusFilter = std::move(value); }
 
     /**
      * <p>If specified, only workflow executions that match this close status are
@@ -327,7 +330,7 @@ namespace Model
      * are mutually exclusive. You can specify at most one of these in a
      * request.</note>
      */
-    inline CountClosedWorkflowExecutionsRequest& WithCloseStatusFilter(CloseStatusFilter&& value) { SetCloseStatusFilter(value); return *this;}
+    inline CountClosedWorkflowExecutionsRequest& WithCloseStatusFilter(CloseStatusFilter&& value) { SetCloseStatusFilter(std::move(value)); return *this;}
 
   private:
     Aws::String m_domain;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/route53/model/ChangeBatch.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,16 @@ namespace Model
 
   /**
    * <p>A complex type that contains change information for the resource record
-   * set.</p>
+   * set.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ChangeResourceRecordSetsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API ChangeResourceRecordSetsRequest : public Route53Request
   {
   public:
     ChangeResourceRecordSetsRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The ID of the hosted zone that contains the resource record sets that you
@@ -51,7 +56,7 @@ namespace Model
      * <p>The ID of the hosted zone that contains the resource record sets that you
      * want to change.</p>
      */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
+    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
 
     /**
      * <p>The ID of the hosted zone that contains the resource record sets that you
@@ -69,7 +74,7 @@ namespace Model
      * <p>The ID of the hosted zone that contains the resource record sets that you
      * want to change.</p>
      */
-    inline ChangeResourceRecordSetsRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(value); return *this;}
+    inline ChangeResourceRecordSetsRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the hosted zone that contains the resource record sets that you
@@ -93,7 +98,7 @@ namespace Model
      * <p>A complex type that contains an optional comment and the <code>Changes</code>
      * element.</p>
      */
-    inline void SetChangeBatch(ChangeBatch&& value) { m_changeBatchHasBeenSet = true; m_changeBatch = value; }
+    inline void SetChangeBatch(ChangeBatch&& value) { m_changeBatchHasBeenSet = true; m_changeBatch = std::move(value); }
 
     /**
      * <p>A complex type that contains an optional comment and the <code>Changes</code>
@@ -105,7 +110,7 @@ namespace Model
      * <p>A complex type that contains an optional comment and the <code>Changes</code>
      * element.</p>
      */
-    inline ChangeResourceRecordSetsRequest& WithChangeBatch(ChangeBatch&& value) { SetChangeBatch(value); return *this;}
+    inline ChangeResourceRecordSetsRequest& WithChangeBatch(ChangeBatch&& value) { SetChangeBatch(std::move(value)); return *this;}
 
   private:
     Aws::String m_hostedZoneId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -43,7 +45,9 @@ namespace Model
    * parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM
    * policies, see <a
    * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
-   * IAM to Manage Access to Amazon SWF Workflows</a>.</p>
+   * IAM to Manage Access to Amazon SWF Workflows</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/StartTimerDecisionAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API StartTimerDecisionAttributes
   {
@@ -78,7 +82,7 @@ namespace Model
      * (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline void SetTimerId(Aws::String&& value) { m_timerIdHasBeenSet = true; m_timerId = value; }
+    inline void SetTimerId(Aws::String&& value) { m_timerIdHasBeenSet = true; m_timerId = std::move(value); }
 
     /**
      * <p><b>Required.</b> The unique ID of the timer.</p> <p>The specified string must
@@ -105,7 +109,7 @@ namespace Model
      * (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string
      * quotarnquot.</p>
      */
-    inline StartTimerDecisionAttributes& WithTimerId(Aws::String&& value) { SetTimerId(value); return *this;}
+    inline StartTimerDecisionAttributes& WithTimerId(Aws::String&& value) { SetTimerId(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The unique ID of the timer.</p> <p>The specified string must
@@ -132,7 +136,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks.</p>
      */
-    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = value; }
+    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -150,7 +154,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent workflow tasks.</p>
      */
-    inline StartTimerDecisionAttributes& WithControl(Aws::String&& value) { SetControl(value); return *this;}
+    inline StartTimerDecisionAttributes& WithControl(Aws::String&& value) { SetControl(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -174,7 +178,7 @@ namespace Model
      * <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The
      * duration is specified in seconds; an integer greater than or equal to 0.</p>
      */
-    inline void SetStartToFireTimeout(Aws::String&& value) { m_startToFireTimeoutHasBeenSet = true; m_startToFireTimeout = value; }
+    inline void SetStartToFireTimeout(Aws::String&& value) { m_startToFireTimeoutHasBeenSet = true; m_startToFireTimeout = std::move(value); }
 
     /**
      * <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The
@@ -192,7 +196,7 @@ namespace Model
      * <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The
      * duration is specified in seconds; an integer greater than or equal to 0.</p>
      */
-    inline StartTimerDecisionAttributes& WithStartToFireTimeout(Aws::String&& value) { SetStartToFireTimeout(value); return *this;}
+    inline StartTimerDecisionAttributes& WithStartToFireTimeout(Aws::String&& value) { SetStartToFireTimeout(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The

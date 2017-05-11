@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/model/RDSDatabase.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/machinelearning/model/RDSDatabaseCredentials.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 
   /**
    * <p>The data specification of an Amazon Relational Database Service (Amazon RDS)
-   * <code>DataSource</code>.</p>
+   * <code>DataSource</code>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/RDSDataSpec">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API RDSDataSpec
   {
@@ -61,7 +65,7 @@ namespace Model
      * <p>Describes the <code>DatabaseName</code> and <code>InstanceIdentifier</code>
      * of an Amazon RDS database.</p>
      */
-    inline void SetDatabaseInformation(RDSDatabase&& value) { m_databaseInformationHasBeenSet = true; m_databaseInformation = value; }
+    inline void SetDatabaseInformation(RDSDatabase&& value) { m_databaseInformationHasBeenSet = true; m_databaseInformation = std::move(value); }
 
     /**
      * <p>Describes the <code>DatabaseName</code> and <code>InstanceIdentifier</code>
@@ -73,7 +77,7 @@ namespace Model
      * <p>Describes the <code>DatabaseName</code> and <code>InstanceIdentifier</code>
      * of an Amazon RDS database.</p>
      */
-    inline RDSDataSpec& WithDatabaseInformation(RDSDatabase&& value) { SetDatabaseInformation(value); return *this;}
+    inline RDSDataSpec& WithDatabaseInformation(RDSDatabase&& value) { SetDatabaseInformation(std::move(value)); return *this;}
 
     /**
      * <p>The query that is used to retrieve the observation data for the
@@ -91,7 +95,7 @@ namespace Model
      * <p>The query that is used to retrieve the observation data for the
      * <code>DataSource</code>.</p>
      */
-    inline void SetSelectSqlQuery(Aws::String&& value) { m_selectSqlQueryHasBeenSet = true; m_selectSqlQuery = value; }
+    inline void SetSelectSqlQuery(Aws::String&& value) { m_selectSqlQueryHasBeenSet = true; m_selectSqlQuery = std::move(value); }
 
     /**
      * <p>The query that is used to retrieve the observation data for the
@@ -109,7 +113,7 @@ namespace Model
      * <p>The query that is used to retrieve the observation data for the
      * <code>DataSource</code>.</p>
      */
-    inline RDSDataSpec& WithSelectSqlQuery(Aws::String&& value) { SetSelectSqlQuery(value); return *this;}
+    inline RDSDataSpec& WithSelectSqlQuery(Aws::String&& value) { SetSelectSqlQuery(std::move(value)); return *this;}
 
     /**
      * <p>The query that is used to retrieve the observation data for the
@@ -133,7 +137,7 @@ namespace Model
      * <p>The AWS Identity and Access Management (IAM) credentials that are used
      * connect to the Amazon RDS database.</p>
      */
-    inline void SetDatabaseCredentials(RDSDatabaseCredentials&& value) { m_databaseCredentialsHasBeenSet = true; m_databaseCredentials = value; }
+    inline void SetDatabaseCredentials(RDSDatabaseCredentials&& value) { m_databaseCredentialsHasBeenSet = true; m_databaseCredentials = std::move(value); }
 
     /**
      * <p>The AWS Identity and Access Management (IAM) credentials that are used
@@ -145,7 +149,7 @@ namespace Model
      * <p>The AWS Identity and Access Management (IAM) credentials that are used
      * connect to the Amazon RDS database.</p>
      */
-    inline RDSDataSpec& WithDatabaseCredentials(RDSDatabaseCredentials&& value) { SetDatabaseCredentials(value); return *this;}
+    inline RDSDataSpec& WithDatabaseCredentials(RDSDatabaseCredentials&& value) { SetDatabaseCredentials(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from
@@ -163,7 +167,7 @@ namespace Model
      * <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from
      * Amazon RDS using <code>SelectSqlQuery</code> is stored in this location.</p>
      */
-    inline void SetS3StagingLocation(Aws::String&& value) { m_s3StagingLocationHasBeenSet = true; m_s3StagingLocation = value; }
+    inline void SetS3StagingLocation(Aws::String&& value) { m_s3StagingLocationHasBeenSet = true; m_s3StagingLocation = std::move(value); }
 
     /**
      * <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from
@@ -181,7 +185,7 @@ namespace Model
      * <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from
      * Amazon RDS using <code>SelectSqlQuery</code> is stored in this location.</p>
      */
-    inline RDSDataSpec& WithS3StagingLocation(Aws::String&& value) { SetS3StagingLocation(value); return *this;}
+    inline RDSDataSpec& WithS3StagingLocation(Aws::String&& value) { SetS3StagingLocation(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from
@@ -376,7 +380,7 @@ namespace Model
      * "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv",
      * "complement":"true"}}</code></p> </li> </ul>
      */
-    inline void SetDataRearrangement(Aws::String&& value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement = value; }
+    inline void SetDataRearrangement(Aws::String&& value) { m_dataRearrangementHasBeenSet = true; m_dataRearrangement = std::move(value); }
 
     /**
      * <p>A JSON string that represents the splitting and rearrangement processing to
@@ -565,7 +569,7 @@ namespace Model
      * "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv",
      * "complement":"true"}}</code></p> </li> </ul>
      */
-    inline RDSDataSpec& WithDataRearrangement(Aws::String&& value) { SetDataRearrangement(value); return *this;}
+    inline RDSDataSpec& WithDataRearrangement(Aws::String&& value) { SetDataRearrangement(std::move(value)); return *this;}
 
     /**
      * <p>A JSON string that represents the splitting and rearrangement processing to
@@ -694,7 +698,7 @@ namespace Model
      * "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ],</p> <p>
      * "excludedVariableNames": [ "F6" ] } </p> <?oxy_insert_end>
      */
-    inline void SetDataSchema(Aws::String&& value) { m_dataSchemaHasBeenSet = true; m_dataSchema = value; }
+    inline void SetDataSchema(Aws::String&& value) { m_dataSchemaHasBeenSet = true; m_dataSchema = std::move(value); }
 
     /**
      * <p>A JSON string that represents the schema for an Amazon RDS
@@ -760,7 +764,7 @@ namespace Model
      * "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ],</p> <p>
      * "excludedVariableNames": [ "F6" ] } </p> <?oxy_insert_end>
      */
-    inline RDSDataSpec& WithDataSchema(Aws::String&& value) { SetDataSchema(value); return *this;}
+    inline RDSDataSpec& WithDataSchema(Aws::String&& value) { SetDataSchema(std::move(value)); return *this;}
 
     /**
      * <p>A JSON string that represents the schema for an Amazon RDS
@@ -797,7 +801,7 @@ namespace Model
     /**
      * <p>The Amazon S3 location of the <code>DataSchema</code>. </p>
      */
-    inline void SetDataSchemaUri(Aws::String&& value) { m_dataSchemaUriHasBeenSet = true; m_dataSchemaUri = value; }
+    inline void SetDataSchemaUri(Aws::String&& value) { m_dataSchemaUriHasBeenSet = true; m_dataSchemaUri = std::move(value); }
 
     /**
      * <p>The Amazon S3 location of the <code>DataSchema</code>. </p>
@@ -812,7 +816,7 @@ namespace Model
     /**
      * <p>The Amazon S3 location of the <code>DataSchema</code>. </p>
      */
-    inline RDSDataSpec& WithDataSchemaUri(Aws::String&& value) { SetDataSchemaUri(value); return *this;}
+    inline RDSDataSpec& WithDataSchemaUri(Aws::String&& value) { SetDataSchemaUri(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon S3 location of the <code>DataSchema</code>. </p>
@@ -844,7 +848,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role
      * templates</a> for data pipelines.</p>
      */
-    inline void SetResourceRole(Aws::String&& value) { m_resourceRoleHasBeenSet = true; m_resourceRole = value; }
+    inline void SetResourceRole(Aws::String&& value) { m_resourceRoleHasBeenSet = true; m_resourceRole = std::move(value); }
 
     /**
      * <p>The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic
@@ -871,7 +875,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role
      * templates</a> for data pipelines.</p>
      */
-    inline RDSDataSpec& WithResourceRole(Aws::String&& value) { SetResourceRole(value); return *this;}
+    inline RDSDataSpec& WithResourceRole(Aws::String&& value) { SetResourceRole(std::move(value)); return *this;}
 
     /**
      * <p>The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic
@@ -907,7 +911,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role
      * templates</a> for data pipelines.</p>
      */
-    inline void SetServiceRole(Aws::String&& value) { m_serviceRoleHasBeenSet = true; m_serviceRole = value; }
+    inline void SetServiceRole(Aws::String&& value) { m_serviceRoleHasBeenSet = true; m_serviceRole = std::move(value); }
 
     /**
      * <p>The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service to
@@ -934,7 +938,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role
      * templates</a> for data pipelines.</p>
      */
-    inline RDSDataSpec& WithServiceRole(Aws::String&& value) { SetServiceRole(value); return *this;}
+    inline RDSDataSpec& WithServiceRole(Aws::String&& value) { SetServiceRole(std::move(value)); return *this;}
 
     /**
      * <p>The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service to
@@ -964,7 +968,7 @@ namespace Model
      * attribute is used by Data Pipeline to carry out the copy task from Amazon RDS to
      * Amazon S3.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>The subnet ID to be used to access a VPC-based RDS DB instance. This
@@ -985,7 +989,7 @@ namespace Model
      * attribute is used by Data Pipeline to carry out the copy task from Amazon RDS to
      * Amazon S3.</p>
      */
-    inline RDSDataSpec& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline RDSDataSpec& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>The subnet ID to be used to access a VPC-based RDS DB instance. This
@@ -1016,7 +1020,7 @@ namespace Model
      * RDS DB instance. This attribute is used by Data Pipeline to carry out the copy
      * operation from Amazon RDS to an Amazon S3 task.</p>
      */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
+    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
 
     /**
      * <p>The security group IDs to be used to access a VPC-based RDS DB instance.
@@ -1032,7 +1036,7 @@ namespace Model
      * RDS DB instance. This attribute is used by Data Pipeline to carry out the copy
      * operation from Amazon RDS to an Amazon S3 task.</p>
      */
-    inline RDSDataSpec& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(value); return *this;}
+    inline RDSDataSpec& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>The security group IDs to be used to access a VPC-based RDS DB instance.
@@ -1048,7 +1052,7 @@ namespace Model
      * RDS DB instance. This attribute is used by Data Pipeline to carry out the copy
      * operation from Amazon RDS to an Amazon S3 task.</p>
      */
-    inline RDSDataSpec& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
+    inline RDSDataSpec& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The security group IDs to be used to access a VPC-based RDS DB instance.

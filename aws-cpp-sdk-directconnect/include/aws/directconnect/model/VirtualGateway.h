@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/directconnect/DirectConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
    * linking to your virtual private gateway.</p> <p>Virtual private gateways can be
    * managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a
    * href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon
-   * EC2 CreateVpnGateway action</a>.</p>
+   * EC2 CreateVpnGateway action</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/directconnect-2012-10-25/VirtualGateway">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTCONNECT_API VirtualGateway
   {
@@ -52,7 +56,7 @@ namespace Model
     inline void SetVirtualGatewayId(const Aws::String& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = value; }
 
     
-    inline void SetVirtualGatewayId(Aws::String&& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = value; }
+    inline void SetVirtualGatewayId(Aws::String&& value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId = std::move(value); }
 
     
     inline void SetVirtualGatewayId(const char* value) { m_virtualGatewayIdHasBeenSet = true; m_virtualGatewayId.assign(value); }
@@ -61,7 +65,7 @@ namespace Model
     inline VirtualGateway& WithVirtualGatewayId(const Aws::String& value) { SetVirtualGatewayId(value); return *this;}
 
     
-    inline VirtualGateway& WithVirtualGatewayId(Aws::String&& value) { SetVirtualGatewayId(value); return *this;}
+    inline VirtualGateway& WithVirtualGatewayId(Aws::String&& value) { SetVirtualGatewayId(std::move(value)); return *this;}
 
     
     inline VirtualGateway& WithVirtualGatewayId(const char* value) { SetVirtualGatewayId(value); return *this;}
@@ -73,7 +77,7 @@ namespace Model
     inline void SetVirtualGatewayState(const Aws::String& value) { m_virtualGatewayStateHasBeenSet = true; m_virtualGatewayState = value; }
 
     
-    inline void SetVirtualGatewayState(Aws::String&& value) { m_virtualGatewayStateHasBeenSet = true; m_virtualGatewayState = value; }
+    inline void SetVirtualGatewayState(Aws::String&& value) { m_virtualGatewayStateHasBeenSet = true; m_virtualGatewayState = std::move(value); }
 
     
     inline void SetVirtualGatewayState(const char* value) { m_virtualGatewayStateHasBeenSet = true; m_virtualGatewayState.assign(value); }
@@ -82,7 +86,7 @@ namespace Model
     inline VirtualGateway& WithVirtualGatewayState(const Aws::String& value) { SetVirtualGatewayState(value); return *this;}
 
     
-    inline VirtualGateway& WithVirtualGatewayState(Aws::String&& value) { SetVirtualGatewayState(value); return *this;}
+    inline VirtualGateway& WithVirtualGatewayState(Aws::String&& value) { SetVirtualGatewayState(std::move(value)); return *this;}
 
     
     inline VirtualGateway& WithVirtualGatewayState(const char* value) { SetVirtualGatewayState(value); return *this;}

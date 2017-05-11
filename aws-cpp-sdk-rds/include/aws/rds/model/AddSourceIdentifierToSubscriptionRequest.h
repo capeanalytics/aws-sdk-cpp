@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/AddSourceIdentifierToSubscriptionMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API AddSourceIdentifierToSubscriptionRequest : public RDSRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     AddSourceIdentifierToSubscriptionRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The name of the RDS event notification subscription you want to add a source
      * identifier to.</p>
@@ -49,7 +58,7 @@ namespace Model
      * <p>The name of the RDS event notification subscription you want to add a source
      * identifier to.</p>
      */
-    inline void SetSubscriptionName(Aws::String&& value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName = value; }
+    inline void SetSubscriptionName(Aws::String&& value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName = std::move(value); }
 
     /**
      * <p>The name of the RDS event notification subscription you want to add a source
@@ -67,7 +76,7 @@ namespace Model
      * <p>The name of the RDS event notification subscription you want to add a source
      * identifier to.</p>
      */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(Aws::String&& value) { SetSubscriptionName(value); return *this;}
+    inline AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(Aws::String&& value) { SetSubscriptionName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the RDS event notification subscription you want to add a source
@@ -115,7 +124,7 @@ namespace Model
      * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must be
      * supplied.</p> </li> </ul>
      */
-    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = value; }
+    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::move(value); }
 
     /**
      * <p>The identifier of the event source to be added. An identifier must begin with
@@ -157,7 +166,7 @@ namespace Model
      * source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must be
      * supplied.</p> </li> </ul>
      */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(value); return *this;}
+    inline AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the event source to be added. An identifier must begin with

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/iot/IoTErrors.h>
@@ -382,14 +383,20 @@ namespace Model
         /**
          * <p>Accepts a pending certificate transfer. The default state of the certificate
          * is INACTIVE.</p> <p>To check for pending certificate transfers, call
-         * <a>ListCertificates</a> to enumerate your certificates.</p>
+         * <a>ListCertificates</a> to enumerate your certificates.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AcceptCertificateTransfer">AWS
+         * API Reference</a></p>
          */
         virtual Model::AcceptCertificateTransferOutcome AcceptCertificateTransfer(const Model::AcceptCertificateTransferRequest& request) const;
 
         /**
          * <p>Accepts a pending certificate transfer. The default state of the certificate
          * is INACTIVE.</p> <p>To check for pending certificate transfers, call
-         * <a>ListCertificates</a> to enumerate your certificates.</p>
+         * <a>ListCertificates</a> to enumerate your certificates.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AcceptCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -398,7 +405,10 @@ namespace Model
         /**
          * <p>Accepts a pending certificate transfer. The default state of the certificate
          * is INACTIVE.</p> <p>To check for pending certificate transfers, call
-         * <a>ListCertificates</a> to enumerate your certificates.</p>
+         * <a>ListCertificates</a> to enumerate your certificates.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AcceptCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -406,13 +416,17 @@ namespace Model
 
         /**
          * <p>Attaches the specified policy to the specified principal (certificate or
-         * other credential).</p>
+         * other credential).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachPrincipalPolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::AttachPrincipalPolicyOutcome AttachPrincipalPolicy(const Model::AttachPrincipalPolicyRequest& request) const;
 
         /**
          * <p>Attaches the specified policy to the specified principal (certificate or
-         * other credential).</p>
+         * other credential).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachPrincipalPolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -420,26 +434,37 @@ namespace Model
 
         /**
          * <p>Attaches the specified policy to the specified principal (certificate or
-         * other credential).</p>
+         * other credential).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachPrincipalPolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void AttachPrincipalPolicyAsync(const Model::AttachPrincipalPolicyRequest& request, const AttachPrincipalPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Attaches the specified principal to the specified thing.</p>
+         * <p>Attaches the specified principal to the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachThingPrincipal">AWS
+         * API Reference</a></p>
          */
         virtual Model::AttachThingPrincipalOutcome AttachThingPrincipal(const Model::AttachThingPrincipalRequest& request) const;
 
         /**
-         * <p>Attaches the specified principal to the specified thing.</p>
+         * <p>Attaches the specified principal to the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachThingPrincipal">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::AttachThingPrincipalOutcomeCallable AttachThingPrincipalCallable(const Model::AttachThingPrincipalRequest& request) const;
 
         /**
-         * <p>Attaches the specified principal to the specified thing.</p>
+         * <p>Attaches the specified principal to the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/AttachThingPrincipal">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -452,7 +477,10 @@ namespace Model
          * transfer, AWS IoT returns the certificate to the source account in the INACTIVE
          * state. After the destination account has accepted the transfer, the transfer
          * cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the
-         * status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p>
+         * status of the certificate changes from PENDING_TRANSFER to
+         * INACTIVE.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CancelCertificateTransfer">AWS
+         * API Reference</a></p>
          */
         virtual Model::CancelCertificateTransferOutcome CancelCertificateTransfer(const Model::CancelCertificateTransferRequest& request) const;
 
@@ -463,7 +491,10 @@ namespace Model
          * transfer, AWS IoT returns the certificate to the source account in the INACTIVE
          * state. After the destination account has accepted the transfer, the transfer
          * cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the
-         * status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p>
+         * status of the certificate changes from PENDING_TRANSFER to
+         * INACTIVE.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CancelCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -476,7 +507,10 @@ namespace Model
          * transfer, AWS IoT returns the certificate to the source account in the INACTIVE
          * state. After the destination account has accepted the transfer, the transfer
          * cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the
-         * status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p>
+         * status of the certificate changes from PENDING_TRANSFER to
+         * INACTIVE.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CancelCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -505,7 +539,10 @@ namespace Model
          * --certificate-signing-request file://my-csr-directory/$_} </p> <p> On a Windows
          * command prompt, the command to create certificates for all CSRs in
          * my-csr-directory is: </p> <p> &gt; forfiles /p my-csr-directory /c "cmd /c aws
-         * iot create-certificate-from-csr --certificate-signing-request file://@path"</p>
+         * iot create-certificate-from-csr --certificate-signing-request
+         * file://@path"</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateCertificateFromCsr">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateCertificateFromCsrOutcome CreateCertificateFromCsr(const Model::CreateCertificateFromCsrRequest& request) const;
 
@@ -532,7 +569,10 @@ namespace Model
          * --certificate-signing-request file://my-csr-directory/$_} </p> <p> On a Windows
          * command prompt, the command to create certificates for all CSRs in
          * my-csr-directory is: </p> <p> &gt; forfiles /p my-csr-directory /c "cmd /c aws
-         * iot create-certificate-from-csr --certificate-signing-request file://@path"</p>
+         * iot create-certificate-from-csr --certificate-signing-request
+         * file://@path"</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateCertificateFromCsr">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -561,7 +601,10 @@ namespace Model
          * --certificate-signing-request file://my-csr-directory/$_} </p> <p> On a Windows
          * command prompt, the command to create certificates for all CSRs in
          * my-csr-directory is: </p> <p> &gt; forfiles /p my-csr-directory /c "cmd /c aws
-         * iot create-certificate-from-csr --certificate-signing-request file://@path"</p>
+         * iot create-certificate-from-csr --certificate-signing-request
+         * file://@path"</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateCertificateFromCsr">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -571,7 +614,9 @@ namespace Model
          * <p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the
          * issued public key.</p> <p><b>Note</b> This is the only time AWS IoT issues the
          * private key for this certificate, so it is important to keep it in a secure
-         * location.</p>
+         * location.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateKeysAndCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateKeysAndCertificateOutcome CreateKeysAndCertificate(const Model::CreateKeysAndCertificateRequest& request) const;
 
@@ -579,7 +624,9 @@ namespace Model
          * <p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the
          * issued public key.</p> <p><b>Note</b> This is the only time AWS IoT issues the
          * private key for this certificate, so it is important to keep it in a secure
-         * location.</p>
+         * location.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateKeysAndCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -589,7 +636,9 @@ namespace Model
          * <p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the
          * issued public key.</p> <p><b>Note</b> This is the only time AWS IoT issues the
          * private key for this certificate, so it is important to keep it in a secure
-         * location.</p>
+         * location.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateKeysAndCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -598,14 +647,20 @@ namespace Model
         /**
          * <p>Creates an AWS IoT policy.</p> <p>The created policy is the default version
          * for the policy. This operation creates a policy version with a version
-         * identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p>
+         * identifier of <b>1</b> and sets <b>1</b> as the policy's default
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreatePolicyOutcome CreatePolicy(const Model::CreatePolicyRequest& request) const;
 
         /**
          * <p>Creates an AWS IoT policy.</p> <p>The created policy is the default version
          * for the policy. This operation creates a policy version with a version
-         * identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p>
+         * identifier of <b>1</b> and sets <b>1</b> as the policy's default
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -614,7 +669,10 @@ namespace Model
         /**
          * <p>Creates an AWS IoT policy.</p> <p>The created policy is the default version
          * for the policy. This operation creates a policy version with a version
-         * identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p>
+         * identifier of <b>1</b> and sets <b>1</b> as the policy's default
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -627,7 +685,9 @@ namespace Model
          * an existing version before you create a new one.</p> <p>Optionally, you can set
          * the new version as the policy's default version. The default version is the
          * operative version (that is, the version that is in effect for the certificates
-         * to which the policy is attached).</p>
+         * to which the policy is attached).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicyVersion">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreatePolicyVersionOutcome CreatePolicyVersion(const Model::CreatePolicyVersionRequest& request) const;
 
@@ -638,7 +698,9 @@ namespace Model
          * an existing version before you create a new one.</p> <p>Optionally, you can set
          * the new version as the policy's default version. The default version is the
          * operative version (that is, the version that is in effect for the certificates
-         * to which the policy is attached).</p>
+         * to which the policy is attached).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicyVersion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -651,45 +713,59 @@ namespace Model
          * an existing version before you create a new one.</p> <p>Optionally, you can set
          * the new version as the policy's default version. The default version is the
          * operative version (that is, the version that is in effect for the certificates
-         * to which the policy is attached).</p>
+         * to which the policy is attached).</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreatePolicyVersion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreatePolicyVersionAsync(const Model::CreatePolicyVersionRequest& request, const CreatePolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Creates a thing record in the thing registry.</p>
+         * <p>Creates a thing record in the thing registry.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThing">AWS API
+         * Reference</a></p>
          */
         virtual Model::CreateThingOutcome CreateThing(const Model::CreateThingRequest& request) const;
 
         /**
-         * <p>Creates a thing record in the thing registry.</p>
+         * <p>Creates a thing record in the thing registry.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThing">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CreateThingOutcomeCallable CreateThingCallable(const Model::CreateThingRequest& request) const;
 
         /**
-         * <p>Creates a thing record in the thing registry.</p>
+         * <p>Creates a thing record in the thing registry.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThing">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreateThingAsync(const Model::CreateThingRequest& request, const CreateThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Creates a new thing type.</p>
+         * <p>Creates a new thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingType">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateThingTypeOutcome CreateThingType(const Model::CreateThingTypeRequest& request) const;
 
         /**
-         * <p>Creates a new thing type.</p>
+         * <p>Creates a new thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingType">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::CreateThingTypeOutcomeCallable CreateThingTypeCallable(const Model::CreateThingTypeRequest& request) const;
 
         /**
-         * <p>Creates a new thing type.</p>
+         * <p>Creates a new thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingType">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -698,14 +774,18 @@ namespace Model
         /**
          * <p>Creates a rule. Creating rules is an administrator-level action. Any user who
          * has permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateTopicRuleOutcome CreateTopicRule(const Model::CreateTopicRuleRequest& request) const;
 
         /**
          * <p>Creates a rule. Creating rules is an administrator-level action. Any user who
          * has permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -714,26 +794,34 @@ namespace Model
         /**
          * <p>Creates a rule. Creating rules is an administrator-level action. Any user who
          * has permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void CreateTopicRuleAsync(const Model::CreateTopicRuleRequest& request, const CreateTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes a registered CA certificate.</p>
+         * <p>Deletes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCACertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteCACertificateOutcome DeleteCACertificate(const Model::DeleteCACertificateRequest& request) const;
 
         /**
-         * <p>Deletes a registered CA certificate.</p>
+         * <p>Deletes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCACertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteCACertificateOutcomeCallable DeleteCACertificateCallable(const Model::DeleteCACertificateRequest& request) const;
 
         /**
-         * <p>Deletes a registered CA certificate.</p>
+         * <p>Deletes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCACertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -744,7 +832,9 @@ namespace Model
          * it has a policy attached to it or if its status is set to ACTIVE. To delete a
          * certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all
          * policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to
-         * the INACTIVE status.</p>
+         * the INACTIVE status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteCertificateOutcome DeleteCertificate(const Model::DeleteCertificateRequest& request) const;
 
@@ -753,7 +843,9 @@ namespace Model
          * it has a policy attached to it or if its status is set to ACTIVE. To delete a
          * certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all
          * policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to
-         * the INACTIVE status.</p>
+         * the INACTIVE status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -764,7 +856,9 @@ namespace Model
          * it has a policy attached to it or if its status is set to ACTIVE. To delete a
          * certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all
          * policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to
-         * the INACTIVE status.</p>
+         * the INACTIVE status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -777,7 +871,9 @@ namespace Model
          * the policy; use the DetachPrincipalPolicy API to detach the policy from any
          * certificate; and then use the DeletePolicy API to delete the policy.</p> <p>When
          * a policy is deleted using DeletePolicy, its default version is deleted with
-         * it.</p>
+         * it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeletePolicyOutcome DeletePolicy(const Model::DeletePolicyRequest& request) const;
 
@@ -788,7 +884,9 @@ namespace Model
          * the policy; use the DetachPrincipalPolicy API to detach the policy from any
          * certificate; and then use the DeletePolicy API to delete the policy.</p> <p>When
          * a policy is deleted using DeletePolicy, its default version is deleted with
-         * it.</p>
+         * it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -801,7 +899,9 @@ namespace Model
          * the policy; use the DetachPrincipalPolicy API to detach the policy from any
          * certificate; and then use the DeletePolicy API to delete the policy.</p> <p>When
          * a policy is deleted using DeletePolicy, its default version is deleted with
-         * it.</p>
+         * it.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -811,7 +911,9 @@ namespace Model
          * <p>Deletes the specified version of the specified policy. You cannot delete the
          * default version of a policy using this API. To delete the default version of a
          * policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked
-         * as the default version, use ListPolicyVersions.</p>
+         * as the default version, use ListPolicyVersions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicyVersion">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeletePolicyVersionOutcome DeletePolicyVersion(const Model::DeletePolicyVersionRequest& request) const;
 
@@ -819,7 +921,9 @@ namespace Model
          * <p>Deletes the specified version of the specified policy. You cannot delete the
          * default version of a policy using this API. To delete the default version of a
          * policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked
-         * as the default version, use ListPolicyVersions.</p>
+         * as the default version, use ListPolicyVersions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicyVersion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -829,45 +933,59 @@ namespace Model
          * <p>Deletes the specified version of the specified policy. You cannot delete the
          * default version of a policy using this API. To delete the default version of a
          * policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked
-         * as the default version, use ListPolicyVersions.</p>
+         * as the default version, use ListPolicyVersions.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeletePolicyVersion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeletePolicyVersionAsync(const Model::DeletePolicyVersionRequest& request, const DeletePolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes a CA certificate registration code.</p>
+         * <p>Deletes a CA certificate registration code.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteRegistrationCode">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteRegistrationCodeOutcome DeleteRegistrationCode(const Model::DeleteRegistrationCodeRequest& request) const;
 
         /**
-         * <p>Deletes a CA certificate registration code.</p>
+         * <p>Deletes a CA certificate registration code.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteRegistrationCode">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteRegistrationCodeOutcomeCallable DeleteRegistrationCodeCallable(const Model::DeleteRegistrationCodeRequest& request) const;
 
         /**
-         * <p>Deletes a CA certificate registration code.</p>
+         * <p>Deletes a CA certificate registration code.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteRegistrationCode">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteRegistrationCodeAsync(const Model::DeleteRegistrationCodeRequest& request, const DeleteRegistrationCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified thing.</p>
+         * <p>Deletes the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThing">AWS API
+         * Reference</a></p>
          */
         virtual Model::DeleteThingOutcome DeleteThing(const Model::DeleteThingRequest& request) const;
 
         /**
-         * <p>Deletes the specified thing.</p>
+         * <p>Deletes the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThing">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteThingOutcomeCallable DeleteThingCallable(const Model::DeleteThingRequest& request) const;
 
         /**
-         * <p>Deletes the specified thing.</p>
+         * <p>Deletes the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThing">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -878,7 +996,10 @@ namespace Model
          * things associated with it. To delete a thing type, first mark it as deprecated
          * by calling <a>DeprecateThingType</a>, then remove any associated things by
          * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
-         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThingType">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteThingTypeOutcome DeleteThingType(const Model::DeleteThingTypeRequest& request) const;
 
@@ -887,7 +1008,10 @@ namespace Model
          * things associated with it. To delete a thing type, first mark it as deprecated
          * by calling <a>DeprecateThingType</a>, then remove any associated things by
          * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
-         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThingType">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -898,26 +1022,35 @@ namespace Model
          * things associated with it. To delete a thing type, first mark it as deprecated
          * by calling <a>DeprecateThingType</a>, then remove any associated things by
          * calling <a>UpdateThing</a> to change the thing type on any associated thing, and
-         * finally use <a>DeleteThingType</a> to delete the thing type.</p>
+         * finally use <a>DeleteThingType</a> to delete the thing type.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteThingType">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteThingTypeAsync(const Model::DeleteThingTypeRequest& request, const DeleteThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified rule.</p>
+         * <p>Deletes the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteTopicRuleOutcome DeleteTopicRule(const Model::DeleteTopicRuleRequest& request) const;
 
         /**
-         * <p>Deletes the specified rule.</p>
+         * <p>Deletes the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteTopicRuleOutcomeCallable DeleteTopicRuleCallable(const Model::DeleteTopicRuleRequest& request) const;
 
         /**
-         * <p>Deletes the specified rule.</p>
+         * <p>Deletes the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -925,13 +1058,17 @@ namespace Model
 
         /**
          * <p>Deprecates a thing type. You can not associate new things with deprecated
-         * thing type.</p>
+         * thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeprecateThingType">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeprecateThingTypeOutcome DeprecateThingType(const Model::DeprecateThingTypeRequest& request) const;
 
         /**
          * <p>Deprecates a thing type. You can not associate new things with deprecated
-         * thing type.</p>
+         * thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeprecateThingType">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -939,197 +1076,274 @@ namespace Model
 
         /**
          * <p>Deprecates a thing type. You can not associate new things with deprecated
-         * thing type.</p>
+         * thing type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeprecateThingType">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeprecateThingTypeAsync(const Model::DeprecateThingTypeRequest& request, const DeprecateThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes a registered CA certificate.</p>
+         * <p>Describes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCACertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeCACertificateOutcome DescribeCACertificate(const Model::DescribeCACertificateRequest& request) const;
 
         /**
-         * <p>Describes a registered CA certificate.</p>
+         * <p>Describes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCACertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeCACertificateOutcomeCallable DescribeCACertificateCallable(const Model::DescribeCACertificateRequest& request) const;
 
         /**
-         * <p>Describes a registered CA certificate.</p>
+         * <p>Describes a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCACertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeCACertificateAsync(const Model::DescribeCACertificateRequest& request, const DescribeCACertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets information about the specified certificate.</p>
+         * <p>Gets information about the specified certificate.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeCertificateOutcome DescribeCertificate(const Model::DescribeCertificateRequest& request) const;
 
         /**
-         * <p>Gets information about the specified certificate.</p>
+         * <p>Gets information about the specified certificate.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeCertificateOutcomeCallable DescribeCertificateCallable(const Model::DescribeCertificateRequest& request) const;
 
         /**
-         * <p>Gets information about the specified certificate.</p>
+         * <p>Gets information about the specified certificate.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeCertificateAsync(const Model::DescribeCertificateRequest& request, const DescribeCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeEndpoint">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeEndpointOutcome DescribeEndpoint(const Model::DescribeEndpointRequest& request) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeEndpoint">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeEndpointOutcomeCallable DescribeEndpointCallable(const Model::DescribeEndpointRequest& request) const;
 
         /**
-         * <p>Returns a unique endpoint specific to the AWS account making the call.</p>
+         * <p>Returns a unique endpoint specific to the AWS account making the
+         * call.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeEndpoint">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeEndpointAsync(const Model::DescribeEndpointRequest& request, const DescribeEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets information about the specified thing.</p>
+         * <p>Gets information about the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThing">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeThingOutcome DescribeThing(const Model::DescribeThingRequest& request) const;
 
         /**
-         * <p>Gets information about the specified thing.</p>
+         * <p>Gets information about the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThing">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeThingOutcomeCallable DescribeThingCallable(const Model::DescribeThingRequest& request) const;
 
         /**
-         * <p>Gets information about the specified thing.</p>
+         * <p>Gets information about the specified thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThing">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeThingAsync(const Model::DescribeThingRequest& request, const DescribeThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets information about the specified thing type.</p>
+         * <p>Gets information about the specified thing type.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThingType">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeThingTypeOutcome DescribeThingType(const Model::DescribeThingTypeRequest& request) const;
 
         /**
-         * <p>Gets information about the specified thing type.</p>
+         * <p>Gets information about the specified thing type.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThingType">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeThingTypeOutcomeCallable DescribeThingTypeCallable(const Model::DescribeThingTypeRequest& request) const;
 
         /**
-         * <p>Gets information about the specified thing type.</p>
+         * <p>Gets information about the specified thing type.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DescribeThingType">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeThingTypeAsync(const Model::DescribeThingTypeRequest& request, const DescribeThingTypeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Removes the specified policy from the specified certificate.</p>
+         * <p>Removes the specified policy from the specified certificate.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachPrincipalPolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::DetachPrincipalPolicyOutcome DetachPrincipalPolicy(const Model::DetachPrincipalPolicyRequest& request) const;
 
         /**
-         * <p>Removes the specified policy from the specified certificate.</p>
+         * <p>Removes the specified policy from the specified certificate.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachPrincipalPolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DetachPrincipalPolicyOutcomeCallable DetachPrincipalPolicyCallable(const Model::DetachPrincipalPolicyRequest& request) const;
 
         /**
-         * <p>Removes the specified policy from the specified certificate.</p>
+         * <p>Removes the specified policy from the specified certificate.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachPrincipalPolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DetachPrincipalPolicyAsync(const Model::DetachPrincipalPolicyRequest& request, const DetachPrincipalPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Detaches the specified principal from the specified thing.</p>
+         * <p>Detaches the specified principal from the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachThingPrincipal">AWS
+         * API Reference</a></p>
          */
         virtual Model::DetachThingPrincipalOutcome DetachThingPrincipal(const Model::DetachThingPrincipalRequest& request) const;
 
         /**
-         * <p>Detaches the specified principal from the specified thing.</p>
+         * <p>Detaches the specified principal from the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachThingPrincipal">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DetachThingPrincipalOutcomeCallable DetachThingPrincipalCallable(const Model::DetachThingPrincipalRequest& request) const;
 
         /**
-         * <p>Detaches the specified principal from the specified thing.</p>
+         * <p>Detaches the specified principal from the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DetachThingPrincipal">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DetachThingPrincipalAsync(const Model::DetachThingPrincipalRequest& request, const DetachThingPrincipalResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Disables the specified rule.</p>
+         * <p>Disables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DisableTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::DisableTopicRuleOutcome DisableTopicRule(const Model::DisableTopicRuleRequest& request) const;
 
         /**
-         * <p>Disables the specified rule.</p>
+         * <p>Disables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DisableTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DisableTopicRuleOutcomeCallable DisableTopicRuleCallable(const Model::DisableTopicRuleRequest& request) const;
 
         /**
-         * <p>Disables the specified rule.</p>
+         * <p>Disables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DisableTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DisableTopicRuleAsync(const Model::DisableTopicRuleRequest& request, const DisableTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Enables the specified rule.</p>
+         * <p>Enables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/EnableTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableTopicRuleOutcome EnableTopicRule(const Model::EnableTopicRuleRequest& request) const;
 
         /**
-         * <p>Enables the specified rule.</p>
+         * <p>Enables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/EnableTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::EnableTopicRuleOutcomeCallable EnableTopicRuleCallable(const Model::EnableTopicRuleRequest& request) const;
 
         /**
-         * <p>Enables the specified rule.</p>
+         * <p>Enables the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/EnableTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void EnableTopicRuleAsync(const Model::EnableTopicRuleRequest& request, const EnableTopicRuleResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets the logging options.</p>
+         * <p>Gets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetLoggingOptions">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetLoggingOptionsOutcome GetLoggingOptions(const Model::GetLoggingOptionsRequest& request) const;
 
         /**
-         * <p>Gets the logging options.</p>
+         * <p>Gets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetLoggingOptions">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetLoggingOptionsOutcomeCallable GetLoggingOptionsCallable(const Model::GetLoggingOptionsRequest& request) const;
 
         /**
-         * <p>Gets the logging options.</p>
+         * <p>Gets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetLoggingOptions">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1137,13 +1351,17 @@ namespace Model
 
         /**
          * <p>Gets information about the specified policy with the policy document of the
-         * default version.</p>
+         * default version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicy">AWS API
+         * Reference</a></p>
          */
         virtual Model::GetPolicyOutcome GetPolicy(const Model::GetPolicyRequest& request) const;
 
         /**
          * <p>Gets information about the specified policy with the policy document of the
-         * default version.</p>
+         * default version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicy">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1151,64 +1369,90 @@ namespace Model
 
         /**
          * <p>Gets information about the specified policy with the policy document of the
-         * default version.</p>
+         * default version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicy">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GetPolicyAsync(const Model::GetPolicyRequest& request, const GetPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets information about the specified policy version.</p>
+         * <p>Gets information about the specified policy version.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicyVersion">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetPolicyVersionOutcome GetPolicyVersion(const Model::GetPolicyVersionRequest& request) const;
 
         /**
-         * <p>Gets information about the specified policy version.</p>
+         * <p>Gets information about the specified policy version.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicyVersion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetPolicyVersionOutcomeCallable GetPolicyVersionCallable(const Model::GetPolicyVersionRequest& request) const;
 
         /**
-         * <p>Gets information about the specified policy version.</p>
+         * <p>Gets information about the specified policy version.</p><p><h3>See Also:</h3>
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPolicyVersion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GetPolicyVersionAsync(const Model::GetPolicyVersionRequest& request, const GetPolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets a registration code used to register a CA certificate with AWS IoT.</p>
+         * <p>Gets a registration code used to register a CA certificate with AWS
+         * IoT.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetRegistrationCode">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetRegistrationCodeOutcome GetRegistrationCode(const Model::GetRegistrationCodeRequest& request) const;
 
         /**
-         * <p>Gets a registration code used to register a CA certificate with AWS IoT.</p>
+         * <p>Gets a registration code used to register a CA certificate with AWS
+         * IoT.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetRegistrationCode">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetRegistrationCodeOutcomeCallable GetRegistrationCodeCallable(const Model::GetRegistrationCodeRequest& request) const;
 
         /**
-         * <p>Gets a registration code used to register a CA certificate with AWS IoT.</p>
+         * <p>Gets a registration code used to register a CA certificate with AWS
+         * IoT.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetRegistrationCode">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void GetRegistrationCodeAsync(const Model::GetRegistrationCodeRequest& request, const GetRegistrationCodeResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Gets information about the specified rule.</p>
+         * <p>Gets information about the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::GetTopicRuleOutcome GetTopicRule(const Model::GetTopicRuleRequest& request) const;
 
         /**
-         * <p>Gets information about the specified rule.</p>
+         * <p>Gets information about the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::GetTopicRuleOutcomeCallable GetTopicRuleCallable(const Model::GetTopicRuleRequest& request) const;
 
         /**
-         * <p>Gets information about the specified rule.</p>
+         * <p>Gets information about the specified rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1217,14 +1461,18 @@ namespace Model
         /**
          * <p>Lists the CA certificates registered for your AWS account.</p> <p>The results
          * are paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCACertificates">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListCACertificatesOutcome ListCACertificates(const Model::ListCACertificatesRequest& request) const;
 
         /**
          * <p>Lists the CA certificates registered for your AWS account.</p> <p>The results
          * are paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCACertificates">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1233,7 +1481,9 @@ namespace Model
         /**
          * <p>Lists the CA certificates registered for your AWS account.</p> <p>The results
          * are paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCACertificates">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1242,14 +1492,18 @@ namespace Model
         /**
          * <p>Lists the certificates registered in your AWS account.</p> <p>The results are
          * paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificates">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListCertificatesOutcome ListCertificates(const Model::ListCertificatesRequest& request) const;
 
         /**
          * <p>Lists the certificates registered in your AWS account.</p> <p>The results are
          * paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificates">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1258,83 +1512,118 @@ namespace Model
         /**
          * <p>Lists the certificates registered in your AWS account.</p> <p>The results are
          * paginated with a default page size of 25. You can use the returned marker to
-         * retrieve additional results.</p>
+         * retrieve additional results.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificates">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListCertificatesAsync(const Model::ListCertificatesRequest& request, const ListCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>List the device certificates signed by the specified CA certificate.</p>
+         * <p>List the device certificates signed by the specified CA
+         * certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificatesByCA">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListCertificatesByCAOutcome ListCertificatesByCA(const Model::ListCertificatesByCARequest& request) const;
 
         /**
-         * <p>List the device certificates signed by the specified CA certificate.</p>
+         * <p>List the device certificates signed by the specified CA
+         * certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificatesByCA">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListCertificatesByCAOutcomeCallable ListCertificatesByCACallable(const Model::ListCertificatesByCARequest& request) const;
 
         /**
-         * <p>List the device certificates signed by the specified CA certificate.</p>
+         * <p>List the device certificates signed by the specified CA
+         * certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListCertificatesByCA">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListCertificatesByCAAsync(const Model::ListCertificatesByCARequest& request, const ListCertificatesByCAResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         * <p>Lists certificates that are being transfered but not yet
+         * accepted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListOutgoingCertificates">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListOutgoingCertificatesOutcome ListOutgoingCertificates(const Model::ListOutgoingCertificatesRequest& request) const;
 
         /**
-         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         * <p>Lists certificates that are being transfered but not yet
+         * accepted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListOutgoingCertificates">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListOutgoingCertificatesOutcomeCallable ListOutgoingCertificatesCallable(const Model::ListOutgoingCertificatesRequest& request) const;
 
         /**
-         * <p>Lists certificates that are being transfered but not yet accepted.</p>
+         * <p>Lists certificates that are being transfered but not yet
+         * accepted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListOutgoingCertificates">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListOutgoingCertificatesAsync(const Model::ListOutgoingCertificatesRequest& request, const ListOutgoingCertificatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists your policies.</p>
+         * <p>Lists your policies.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicies">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPoliciesOutcome ListPolicies(const Model::ListPoliciesRequest& request) const;
 
         /**
-         * <p>Lists your policies.</p>
+         * <p>Lists your policies.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicies">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListPoliciesOutcomeCallable ListPoliciesCallable(const Model::ListPoliciesRequest& request) const;
 
         /**
-         * <p>Lists your policies.</p>
+         * <p>Lists your policies.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicies">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListPoliciesAsync(const Model::ListPoliciesRequest& request, const ListPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the principals associated with the specified policy.</p>
+         * <p>Lists the principals associated with the specified policy.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyPrincipals">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPolicyPrincipalsOutcome ListPolicyPrincipals(const Model::ListPolicyPrincipalsRequest& request) const;
 
         /**
-         * <p>Lists the principals associated with the specified policy.</p>
+         * <p>Lists the principals associated with the specified policy.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyPrincipals">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListPolicyPrincipalsOutcomeCallable ListPolicyPrincipalsCallable(const Model::ListPolicyPrincipalsRequest& request) const;
 
         /**
-         * <p>Lists the principals associated with the specified policy.</p>
+         * <p>Lists the principals associated with the specified policy.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyPrincipals">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1342,13 +1631,17 @@ namespace Model
 
         /**
          * <p>Lists the versions of the specified policy and identifies the default
-         * version.</p>
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyVersions">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPolicyVersionsOutcome ListPolicyVersions(const Model::ListPolicyVersionsRequest& request) const;
 
         /**
          * <p>Lists the versions of the specified policy and identifies the default
-         * version.</p>
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyVersions">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1356,7 +1649,9 @@ namespace Model
 
         /**
          * <p>Lists the versions of the specified policy and identifies the default
-         * version.</p>
+         * version.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPolicyVersions">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1366,7 +1661,9 @@ namespace Model
          * <p>Lists the policies attached to the specified principal. If you use an Cognito
          * identity, the ID must be in <a
          * href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito
-         * Identity format</a>.</p>
+         * Identity format</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalPolicies">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPrincipalPoliciesOutcome ListPrincipalPolicies(const Model::ListPrincipalPoliciesRequest& request) const;
 
@@ -1374,7 +1671,9 @@ namespace Model
          * <p>Lists the policies attached to the specified principal. If you use an Cognito
          * identity, the ID must be in <a
          * href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito
-         * Identity format</a>.</p>
+         * Identity format</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalPolicies">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1384,64 +1683,90 @@ namespace Model
          * <p>Lists the policies attached to the specified principal. If you use an Cognito
          * identity, the ID must be in <a
          * href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito
-         * Identity format</a>.</p>
+         * Identity format</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalPolicies">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListPrincipalPoliciesAsync(const Model::ListPrincipalPoliciesRequest& request, const ListPrincipalPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the things associated with the specified principal.</p>
+         * <p>Lists the things associated with the specified principal.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalThings">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListPrincipalThingsOutcome ListPrincipalThings(const Model::ListPrincipalThingsRequest& request) const;
 
         /**
-         * <p>Lists the things associated with the specified principal.</p>
+         * <p>Lists the things associated with the specified principal.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalThings">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListPrincipalThingsOutcomeCallable ListPrincipalThingsCallable(const Model::ListPrincipalThingsRequest& request) const;
 
         /**
-         * <p>Lists the things associated with the specified principal.</p>
+         * <p>Lists the things associated with the specified principal.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListPrincipalThings">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListPrincipalThingsAsync(const Model::ListPrincipalThingsRequest& request, const ListPrincipalThingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the principals associated with the specified thing.</p>
+         * <p>Lists the principals associated with the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingPrincipals">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListThingPrincipalsOutcome ListThingPrincipals(const Model::ListThingPrincipalsRequest& request) const;
 
         /**
-         * <p>Lists the principals associated with the specified thing.</p>
+         * <p>Lists the principals associated with the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingPrincipals">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListThingPrincipalsOutcomeCallable ListThingPrincipalsCallable(const Model::ListThingPrincipalsRequest& request) const;
 
         /**
-         * <p>Lists the principals associated with the specified thing.</p>
+         * <p>Lists the principals associated with the specified thing.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingPrincipals">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListThingPrincipalsAsync(const Model::ListThingPrincipalsRequest& request, const ListThingPrincipalsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the existing thing types.</p>
+         * <p>Lists the existing thing types.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListThingTypesOutcome ListThingTypes(const Model::ListThingTypesRequest& request) const;
 
         /**
-         * <p>Lists the existing thing types.</p>
+         * <p>Lists the existing thing types.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListThingTypesOutcomeCallable ListThingTypesCallable(const Model::ListThingTypesRequest& request) const;
 
         /**
-         * <p>Lists the existing thing types.</p>
+         * <p>Lists the existing thing types.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThingTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1451,7 +1776,10 @@ namespace Model
          * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
          * parameters to filter your things. For example, calling <code>ListThings</code>
          * with attributeName=Color and attributeValue=Red retrieves all things in the
-         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThings">AWS API
+         * Reference</a></p>
          */
         virtual Model::ListThingsOutcome ListThings(const Model::ListThingsRequest& request) const;
 
@@ -1459,7 +1787,10 @@ namespace Model
          * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
          * parameters to filter your things. For example, calling <code>ListThings</code>
          * with attributeName=Color and attributeValue=Red retrieves all things in the
-         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThings">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1469,26 +1800,35 @@ namespace Model
          * <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b>
          * parameters to filter your things. For example, calling <code>ListThings</code>
          * with attributeName=Color and attributeValue=Red retrieves all things in the
-         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
+         * registry that contain an attribute <b>Color</b> with the value <b>Red</b>.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListThings">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void ListThingsAsync(const Model::ListThingsRequest& request, const ListThingsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Lists the rules for the specific topic.</p>
+         * <p>Lists the rules for the specific topic.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListTopicRules">AWS
+         * API Reference</a></p>
          */
         virtual Model::ListTopicRulesOutcome ListTopicRules(const Model::ListTopicRulesRequest& request) const;
 
         /**
-         * <p>Lists the rules for the specific topic.</p>
+         * <p>Lists the rules for the specific topic.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListTopicRules">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ListTopicRulesOutcomeCallable ListTopicRulesCallable(const Model::ListTopicRulesRequest& request) const;
 
         /**
-         * <p>Lists the rules for the specific topic.</p>
+         * <p>Lists the rules for the specific topic.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListTopicRules">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1501,7 +1841,9 @@ namespace Model
          * field and public key. This enables you to have up to 10 certificate authorities
          * sign your device certificates. If you have more than one CA certificate
          * registered, make sure you pass the CA certificate when you register your device
-         * certificates with the RegisterCertificate API.</p>
+         * certificates with the RegisterCertificate API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCACertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::RegisterCACertificateOutcome RegisterCACertificate(const Model::RegisterCACertificateRequest& request) const;
 
@@ -1512,7 +1854,9 @@ namespace Model
          * field and public key. This enables you to have up to 10 certificate authorities
          * sign your device certificates. If you have more than one CA certificate
          * registered, make sure you pass the CA certificate when you register your device
-         * certificates with the RegisterCertificate API.</p>
+         * certificates with the RegisterCertificate API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCACertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1525,7 +1869,9 @@ namespace Model
          * field and public key. This enables you to have up to 10 certificate authorities
          * sign your device certificates. If you have more than one CA certificate
          * registered, make sure you pass the CA certificate when you register your device
-         * certificates with the RegisterCertificate API.</p>
+         * certificates with the RegisterCertificate API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCACertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1534,14 +1880,20 @@ namespace Model
         /**
          * <p>Registers a device certificate with AWS IoT. If you have more than one CA
          * certificate that has the same subject field, you must specify the CA certificate
-         * that was used to sign the device certificate being registered.</p>
+         * that was used to sign the device certificate being registered.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::RegisterCertificateOutcome RegisterCertificate(const Model::RegisterCertificateRequest& request) const;
 
         /**
          * <p>Registers a device certificate with AWS IoT. If you have more than one CA
          * certificate that has the same subject field, you must specify the CA certificate
-         * that was used to sign the device certificate being registered.</p>
+         * that was used to sign the device certificate being registered.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1550,7 +1902,10 @@ namespace Model
         /**
          * <p>Registers a device certificate with AWS IoT. If you have more than one CA
          * certificate that has the same subject field, you must specify the CA certificate
-         * that was used to sign the device certificate being registered.</p>
+         * that was used to sign the device certificate being registered.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1562,7 +1917,10 @@ namespace Model
          * <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call
          * <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation
          * can only be called by the transfer destination. After it is called, the
-         * certificate will be returned to the source's account in the INACTIVE state.</p>
+         * certificate will be returned to the source's account in the INACTIVE
+         * state.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RejectCertificateTransfer">AWS
+         * API Reference</a></p>
          */
         virtual Model::RejectCertificateTransferOutcome RejectCertificateTransfer(const Model::RejectCertificateTransferRequest& request) const;
 
@@ -1572,7 +1930,10 @@ namespace Model
          * <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call
          * <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation
          * can only be called by the transfer destination. After it is called, the
-         * certificate will be returned to the source's account in the INACTIVE state.</p>
+         * certificate will be returned to the source's account in the INACTIVE
+         * state.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RejectCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1584,7 +1945,10 @@ namespace Model
          * <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call
          * <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation
          * can only be called by the transfer destination. After it is called, the
-         * certificate will be returned to the source's account in the INACTIVE state.</p>
+         * certificate will be returned to the source's account in the INACTIVE
+         * state.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RejectCertificateTransfer">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1594,7 +1958,9 @@ namespace Model
          * <p>Replaces the specified rule. You must specify all parameters for the new
          * rule. Creating rules is an administrator-level action. Any user who has
          * permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ReplaceTopicRule">AWS
+         * API Reference</a></p>
          */
         virtual Model::ReplaceTopicRuleOutcome ReplaceTopicRule(const Model::ReplaceTopicRuleRequest& request) const;
 
@@ -1602,7 +1968,9 @@ namespace Model
          * <p>Replaces the specified rule. You must specify all parameters for the new
          * rule. Creating rules is an administrator-level action. Any user who has
          * permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ReplaceTopicRule">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1612,7 +1980,9 @@ namespace Model
          * <p>Replaces the specified rule. You must specify all parameters for the new
          * rule. Creating rules is an administrator-level action. Any user who has
          * permission to create rules will be able to access data processed by the
-         * rule.</p>
+         * rule.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ReplaceTopicRule">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1622,7 +1992,9 @@ namespace Model
          * <p>Sets the specified version of the specified policy as the policy's default
          * (operative) version. This action affects all certificates to which the policy is
          * attached. To list the principals the policy is attached to, use the
-         * ListPrincipalPolicy API.</p>
+         * ListPrincipalPolicy API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetDefaultPolicyVersion">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetDefaultPolicyVersionOutcome SetDefaultPolicyVersion(const Model::SetDefaultPolicyVersionRequest& request) const;
 
@@ -1630,7 +2002,9 @@ namespace Model
          * <p>Sets the specified version of the specified policy as the policy's default
          * (operative) version. This action affects all certificates to which the policy is
          * attached. To list the principals the policy is attached to, use the
-         * ListPrincipalPolicy API.</p>
+         * ListPrincipalPolicy API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetDefaultPolicyVersion">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1640,26 +2014,34 @@ namespace Model
          * <p>Sets the specified version of the specified policy as the policy's default
          * (operative) version. This action affects all certificates to which the policy is
          * attached. To list the principals the policy is attached to, use the
-         * ListPrincipalPolicy API.</p>
+         * ListPrincipalPolicy API.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetDefaultPolicyVersion">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void SetDefaultPolicyVersionAsync(const Model::SetDefaultPolicyVersionRequest& request, const SetDefaultPolicyVersionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Sets the logging options.</p>
+         * <p>Sets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetLoggingOptions">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetLoggingOptionsOutcome SetLoggingOptions(const Model::SetLoggingOptionsRequest& request) const;
 
         /**
-         * <p>Sets the logging options.</p>
+         * <p>Sets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetLoggingOptions">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::SetLoggingOptionsOutcomeCallable SetLoggingOptionsCallable(const Model::SetLoggingOptionsRequest& request) const;
 
         /**
-         * <p>Sets the logging options.</p>
+         * <p>Sets the logging options.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/SetLoggingOptions">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1672,7 +2054,10 @@ namespace Model
          * caller to notify the transfer target.</p> <p>The certificate being transferred
          * must not be in the ACTIVE state. You can use the UpdateCertificate API to
          * deactivate it.</p> <p>The certificate must not have any policies attached to it.
-         * You can use the DetachPrincipalPolicy API to detach them.</p>
+         * You can use the DetachPrincipalPolicy API to detach them.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/TransferCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::TransferCertificateOutcome TransferCertificate(const Model::TransferCertificateRequest& request) const;
 
@@ -1683,7 +2068,10 @@ namespace Model
          * caller to notify the transfer target.</p> <p>The certificate being transferred
          * must not be in the ACTIVE state. You can use the UpdateCertificate API to
          * deactivate it.</p> <p>The certificate must not have any policies attached to it.
-         * You can use the DetachPrincipalPolicy API to detach them.</p>
+         * You can use the DetachPrincipalPolicy API to detach them.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/TransferCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1696,26 +2084,35 @@ namespace Model
          * caller to notify the transfer target.</p> <p>The certificate being transferred
          * must not be in the ACTIVE state. You can use the UpdateCertificate API to
          * deactivate it.</p> <p>The certificate must not have any policies attached to it.
-         * You can use the DetachPrincipalPolicy API to detach them.</p>
+         * You can use the DetachPrincipalPolicy API to detach them.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/TransferCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void TransferCertificateAsync(const Model::TransferCertificateRequest& request, const TransferCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Updates a registered CA certificate.</p>
+         * <p>Updates a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCACertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateCACertificateOutcome UpdateCACertificate(const Model::UpdateCACertificateRequest& request) const;
 
         /**
-         * <p>Updates a registered CA certificate.</p>
+         * <p>Updates a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCACertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::UpdateCACertificateOutcomeCallable UpdateCACertificateCallable(const Model::UpdateCACertificateRequest& request) const;
 
         /**
-         * <p>Updates a registered CA certificate.</p>
+         * <p>Updates a registered CA certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCACertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1726,7 +2123,9 @@ namespace Model
          * idempotent.</p> <p>Moving a certificate from the ACTIVE state (including
          * REVOKED) will not disconnect currently connected devices, but these devices will
          * be unable to reconnect.</p> <p>The ACTIVE state is required to authenticate
-         * devices connecting to AWS IoT using a certificate.</p>
+         * devices connecting to AWS IoT using a certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCertificate">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateCertificateOutcome UpdateCertificate(const Model::UpdateCertificateRequest& request) const;
 
@@ -1735,7 +2134,9 @@ namespace Model
          * idempotent.</p> <p>Moving a certificate from the ACTIVE state (including
          * REVOKED) will not disconnect currently connected devices, but these devices will
          * be unable to reconnect.</p> <p>The ACTIVE state is required to authenticate
-         * devices connecting to AWS IoT using a certificate.</p>
+         * devices connecting to AWS IoT using a certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCertificate">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1746,26 +2147,34 @@ namespace Model
          * idempotent.</p> <p>Moving a certificate from the ACTIVE state (including
          * REVOKED) will not disconnect currently connected devices, but these devices will
          * be unable to reconnect.</p> <p>The ACTIVE state is required to authenticate
-         * devices connecting to AWS IoT using a certificate.</p>
+         * devices connecting to AWS IoT using a certificate.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateCertificate">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void UpdateCertificateAsync(const Model::UpdateCertificateRequest& request, const UpdateCertificateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Updates the data for a thing.</p>
+         * <p>Updates the data for a thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateThing">AWS API
+         * Reference</a></p>
          */
         virtual Model::UpdateThingOutcome UpdateThing(const Model::UpdateThingRequest& request) const;
 
         /**
-         * <p>Updates the data for a thing.</p>
+         * <p>Updates the data for a thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateThing">AWS API
+         * Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::UpdateThingOutcomeCallable UpdateThingCallable(const Model::UpdateThingRequest& request) const;
 
         /**
-         * <p>Updates the data for a thing.</p>
+         * <p>Updates the data for a thing.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateThing">AWS API
+         * Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1835,7 +2244,7 @@ namespace Model
         void UpdateThingAsyncHelper(const Model::UpdateThingRequest& request, const UpdateThingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context) const;
 
       Aws::String m_uri;
-      std::shared_ptr<Utils::Threading::Executor> m_executor;
+      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
   };
 
 } // namespace IoT

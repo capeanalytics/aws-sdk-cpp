@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains status information for a DB cluster option group.</p>
+   * <p>Contains status information for a DB cluster option group.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBClusterOptionGroupStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API DBClusterOptionGroupStatus
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Specifies the name of the DB cluster option group.</p>
      */
-    inline void SetDBClusterOptionGroupName(Aws::String&& value) { m_dBClusterOptionGroupNameHasBeenSet = true; m_dBClusterOptionGroupName = value; }
+    inline void SetDBClusterOptionGroupName(Aws::String&& value) { m_dBClusterOptionGroupNameHasBeenSet = true; m_dBClusterOptionGroupName = std::move(value); }
 
     /**
      * <p>Specifies the name of the DB cluster option group.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>Specifies the name of the DB cluster option group.</p>
      */
-    inline DBClusterOptionGroupStatus& WithDBClusterOptionGroupName(Aws::String&& value) { SetDBClusterOptionGroupName(value); return *this;}
+    inline DBClusterOptionGroupStatus& WithDBClusterOptionGroupName(Aws::String&& value) { SetDBClusterOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the DB cluster option group.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>Specifies the status of the DB cluster option group.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>Specifies the status of the DB cluster option group.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>Specifies the status of the DB cluster option group.</p>
      */
-    inline DBClusterOptionGroupStatus& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline DBClusterOptionGroupStatus& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the status of the DB cluster option group.</p>

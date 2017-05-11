@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticmapreduce/model/JobFlowDetail.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -40,7 +41,10 @@ JobFlowDetail::JobFlowDetail() :
     m_visibleToAllUsers(false),
     m_visibleToAllUsersHasBeenSet(false),
     m_jobFlowRoleHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false)
+    m_serviceRoleHasBeenSet(false),
+    m_autoScalingRoleHasBeenSet(false),
+    m_scaleDownBehavior(ScaleDownBehavior::NOT_SET),
+    m_scaleDownBehaviorHasBeenSet(false)
 {
 }
 
@@ -57,7 +61,10 @@ JobFlowDetail::JobFlowDetail(const JsonValue& jsonValue) :
     m_visibleToAllUsers(false),
     m_visibleToAllUsersHasBeenSet(false),
     m_jobFlowRoleHasBeenSet(false),
-    m_serviceRoleHasBeenSet(false)
+    m_serviceRoleHasBeenSet(false),
+    m_autoScalingRoleHasBeenSet(false),
+    m_scaleDownBehavior(ScaleDownBehavior::NOT_SET),
+    m_scaleDownBehaviorHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -157,6 +164,20 @@ JobFlowDetail& JobFlowDetail::operator =(const JsonValue& jsonValue)
     m_serviceRoleHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("AutoScalingRole"))
+  {
+    m_autoScalingRole = jsonValue.GetString("AutoScalingRole");
+
+    m_autoScalingRoleHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("ScaleDownBehavior"))
+  {
+    m_scaleDownBehavior = ScaleDownBehaviorMapper::GetScaleDownBehaviorForName(jsonValue.GetString("ScaleDownBehavior"));
+
+    m_scaleDownBehaviorHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -249,6 +270,17 @@ JsonValue JobFlowDetail::Jsonize() const
   {
    payload.WithString("ServiceRole", m_serviceRole);
 
+  }
+
+  if(m_autoScalingRoleHasBeenSet)
+  {
+   payload.WithString("AutoScalingRole", m_autoScalingRole);
+
+  }
+
+  if(m_scaleDownBehaviorHasBeenSet)
+  {
+   payload.WithString("ScaleDownBehavior", ScaleDownBehaviorMapper::GetNameForScaleDownBehavior(m_scaleDownBehavior));
   }
 
   return payload;

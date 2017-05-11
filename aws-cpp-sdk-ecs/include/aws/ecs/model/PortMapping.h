@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/model/TransportProtocol.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * to send or receive traffic. Port mappings are specified as part of the container
    * definition. After a task reaches the <code>RUNNING</code> status, manual and
    * automatic host and container port assignments are visible in the
-   * <code>networkBindings</code> section of <a>DescribeTasks</a> API responses.</p>
+   * <code>networkBindings</code> section of <a>DescribeTasks</a> API
+   * responses.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/PortMapping">AWS API
+   * Reference</a></p>
    */
   class AWS_ECS_API PortMapping
   {
@@ -89,10 +94,10 @@ namespace Model
      * specify a host port in the ephemeral port range, because these are reserved for
      * automatic assignment. In general, ports below 32768 are outside of the ephemeral
      * port range.</p> <p>The default reserved ports are 22 for SSH, the Docker ports
-     * 2375 and 2376, and the Amazon ECS container agent port 51678. Any host port that
-     * was previously specified in a running task is also reserved while the task is
-     * running (after a task stops, the host port is released).The current reserved
-     * ports are displayed in the <code>remainingResources</code> of
+     * 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any
+     * host port that was previously specified in a running task is also reserved while
+     * the task is running (after a task stops, the host port is released).The current
+     * reserved ports are displayed in the <code>remainingResources</code> of
      * <a>DescribeContainerInstances</a> output, and a container instance may have up
      * to 100 reserved ports at a time, including the default reserved ports
      * (automatically assigned ports do not count toward the 100 reserved ports
@@ -114,10 +119,10 @@ namespace Model
      * specify a host port in the ephemeral port range, because these are reserved for
      * automatic assignment. In general, ports below 32768 are outside of the ephemeral
      * port range.</p> <p>The default reserved ports are 22 for SSH, the Docker ports
-     * 2375 and 2376, and the Amazon ECS container agent port 51678. Any host port that
-     * was previously specified in a running task is also reserved while the task is
-     * running (after a task stops, the host port is released).The current reserved
-     * ports are displayed in the <code>remainingResources</code> of
+     * 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any
+     * host port that was previously specified in a running task is also reserved while
+     * the task is running (after a task stops, the host port is released).The current
+     * reserved ports are displayed in the <code>remainingResources</code> of
      * <a>DescribeContainerInstances</a> output, and a container instance may have up
      * to 100 reserved ports at a time, including the default reserved ports
      * (automatically assigned ports do not count toward the 100 reserved ports
@@ -139,10 +144,10 @@ namespace Model
      * specify a host port in the ephemeral port range, because these are reserved for
      * automatic assignment. In general, ports below 32768 are outside of the ephemeral
      * port range.</p> <p>The default reserved ports are 22 for SSH, the Docker ports
-     * 2375 and 2376, and the Amazon ECS container agent port 51678. Any host port that
-     * was previously specified in a running task is also reserved while the task is
-     * running (after a task stops, the host port is released).The current reserved
-     * ports are displayed in the <code>remainingResources</code> of
+     * 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any
+     * host port that was previously specified in a running task is also reserved while
+     * the task is running (after a task stops, the host port is released).The current
+     * reserved ports are displayed in the <code>remainingResources</code> of
      * <a>DescribeContainerInstances</a> output, and a container instance may have up
      * to 100 reserved ports at a time, including the default reserved ports
      * (automatically assigned ports do not count toward the 100 reserved ports
@@ -166,7 +171,7 @@ namespace Model
      * <p>The protocol used for the port mapping. Valid values are <code>tcp</code> and
      * <code>udp</code>. The default is <code>tcp</code>.</p>
      */
-    inline void SetProtocol(TransportProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline void SetProtocol(TransportProtocol&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
 
     /**
      * <p>The protocol used for the port mapping. Valid values are <code>tcp</code> and
@@ -178,7 +183,7 @@ namespace Model
      * <p>The protocol used for the port mapping. Valid values are <code>tcp</code> and
      * <code>udp</code>. The default is <code>tcp</code>.</p>
      */
-    inline PortMapping& WithProtocol(TransportProtocol&& value) { SetProtocol(value); return *this;}
+    inline PortMapping& WithProtocol(TransportProtocol&& value) { SetProtocol(std::move(value)); return *this;}
 
   private:
     int m_containerPort;

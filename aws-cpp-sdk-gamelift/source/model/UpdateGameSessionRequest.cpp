@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/gamelift/model/UpdateGameSessionRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -26,7 +27,9 @@ UpdateGameSessionRequest::UpdateGameSessionRequest() :
     m_maximumPlayerSessionCount(0),
     m_maximumPlayerSessionCountHasBeenSet(false),
     m_nameHasBeenSet(false),
+    m_playerSessionCreationPolicy(PlayerSessionCreationPolicy::NOT_SET),
     m_playerSessionCreationPolicyHasBeenSet(false),
+    m_protectionPolicy(ProtectionPolicy::NOT_SET),
     m_protectionPolicyHasBeenSet(false)
 {
 }
@@ -73,6 +76,7 @@ Aws::Http::HeaderValueCollection UpdateGameSessionRequest::GetRequestSpecificHea
   return headers;
 
 }
+
 
 
 

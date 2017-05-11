@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/OriginProtocolPolicy.h>
 #include <aws/cloudfront/model/OriginSslProtocols.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * A customer origin.
+   * A customer origin.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/CustomOriginConfig">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API CustomOriginConfig
   {
@@ -86,7 +90,7 @@ namespace Model
     /**
      * The origin protocol policy to apply to your origin.
      */
-    inline void SetOriginProtocolPolicy(OriginProtocolPolicy&& value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy = value; }
+    inline void SetOriginProtocolPolicy(OriginProtocolPolicy&& value) { m_originProtocolPolicyHasBeenSet = true; m_originProtocolPolicy = std::move(value); }
 
     /**
      * The origin protocol policy to apply to your origin.
@@ -96,7 +100,7 @@ namespace Model
     /**
      * The origin protocol policy to apply to your origin.
      */
-    inline CustomOriginConfig& WithOriginProtocolPolicy(OriginProtocolPolicy&& value) { SetOriginProtocolPolicy(value); return *this;}
+    inline CustomOriginConfig& WithOriginProtocolPolicy(OriginProtocolPolicy&& value) { SetOriginProtocolPolicy(std::move(value)); return *this;}
 
     /**
      * The SSL/TLS protocols that you want CloudFront to use when communicating with
@@ -114,7 +118,7 @@ namespace Model
      * The SSL/TLS protocols that you want CloudFront to use when communicating with
      * your origin over HTTPS.
      */
-    inline void SetOriginSslProtocols(OriginSslProtocols&& value) { m_originSslProtocolsHasBeenSet = true; m_originSslProtocols = value; }
+    inline void SetOriginSslProtocols(OriginSslProtocols&& value) { m_originSslProtocolsHasBeenSet = true; m_originSslProtocols = std::move(value); }
 
     /**
      * The SSL/TLS protocols that you want CloudFront to use when communicating with
@@ -126,7 +130,7 @@ namespace Model
      * The SSL/TLS protocols that you want CloudFront to use when communicating with
      * your origin over HTTPS.
      */
-    inline CustomOriginConfig& WithOriginSslProtocols(OriginSslProtocols&& value) { SetOriginSslProtocols(value); return *this;}
+    inline CustomOriginConfig& WithOriginSslProtocols(OriginSslProtocols&& value) { SetOriginSslProtocols(std::move(value)); return *this;}
 
   private:
     int m_hTTPPort;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sdb/SimpleDB_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
    * <p> Specifies the conditions under which data should be updated. If an update
    * condition is specified for a request, the data will only be updated if the
    * condition is satisfied. For example, if an attribute with a specific name and
-   * value exists, or if a specific attribute doesn't exist. </p>
+   * value exists, or if a specific attribute doesn't exist. </p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sdb-2009-04-15/UpdateCondition">AWS
+   * API Reference</a></p>
    */
   class AWS_SIMPLEDB_API UpdateCondition
   {
@@ -60,7 +65,7 @@ namespace Model
     /**
      * <p>The name of the attribute involved in the condition.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the attribute involved in the condition.</p>
@@ -75,7 +80,7 @@ namespace Model
     /**
      * <p>The name of the attribute involved in the condition.</p>
      */
-    inline UpdateCondition& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UpdateCondition& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attribute involved in the condition.</p>
@@ -98,7 +103,7 @@ namespace Model
      * <p>The value of an attribute. This value can only be specified when the
      * <code>Exists</code> parameter is equal to <code>true</code>.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The value of an attribute. This value can only be specified when the
@@ -116,7 +121,7 @@ namespace Model
      * <p>The value of an attribute. This value can only be specified when the
      * <code>Exists</code> parameter is equal to <code>true</code>.</p>
      */
-    inline UpdateCondition& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline UpdateCondition& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The value of an attribute. This value can only be specified when the

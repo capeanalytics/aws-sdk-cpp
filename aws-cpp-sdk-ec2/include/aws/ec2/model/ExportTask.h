@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/ec2/model/ExportTaskState.h>
 #include <aws/ec2/model/InstanceExportDetails.h>
 #include <aws/ec2/model/ExportToS3Task.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes an instance export task.</p>
+   * <p>Describes an instance export task.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ExportTask">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API ExportTask
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The ID of the export task.</p>
      */
-    inline void SetExportTaskId(Aws::String&& value) { m_exportTaskIdHasBeenSet = true; m_exportTaskId = value; }
+    inline void SetExportTaskId(Aws::String&& value) { m_exportTaskIdHasBeenSet = true; m_exportTaskId = std::move(value); }
 
     /**
      * <p>The ID of the export task.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the export task.</p>
      */
-    inline ExportTask& WithExportTaskId(Aws::String&& value) { SetExportTaskId(value); return *this;}
+    inline ExportTask& WithExportTaskId(Aws::String&& value) { SetExportTaskId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the export task.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>A description of the resource being exported.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the resource being exported.</p>
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>A description of the resource being exported.</p>
      */
-    inline ExportTask& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ExportTask& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the resource being exported.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>The state of the export task.</p>
      */
-    inline void SetState(ExportTaskState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(ExportTaskState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The state of the export task.</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The state of the export task.</p>
      */
-    inline ExportTask& WithState(ExportTaskState&& value) { SetState(value); return *this;}
+    inline ExportTask& WithState(ExportTaskState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The status message related to the export task.</p>
@@ -155,7 +159,7 @@ namespace Model
     /**
      * <p>The status message related to the export task.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
 
     /**
      * <p>The status message related to the export task.</p>
@@ -170,7 +174,7 @@ namespace Model
     /**
      * <p>The status message related to the export task.</p>
      */
-    inline ExportTask& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline ExportTask& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>The status message related to the export task.</p>
@@ -190,7 +194,7 @@ namespace Model
     /**
      * <p>Information about the instance to export.</p>
      */
-    inline void SetInstanceExportDetails(InstanceExportDetails&& value) { m_instanceExportDetailsHasBeenSet = true; m_instanceExportDetails = value; }
+    inline void SetInstanceExportDetails(InstanceExportDetails&& value) { m_instanceExportDetailsHasBeenSet = true; m_instanceExportDetails = std::move(value); }
 
     /**
      * <p>Information about the instance to export.</p>
@@ -200,7 +204,7 @@ namespace Model
     /**
      * <p>Information about the instance to export.</p>
      */
-    inline ExportTask& WithInstanceExportDetails(InstanceExportDetails&& value) { SetInstanceExportDetails(value); return *this;}
+    inline ExportTask& WithInstanceExportDetails(InstanceExportDetails&& value) { SetInstanceExportDetails(std::move(value)); return *this;}
 
     /**
      * <p>Information about the export task.</p>
@@ -215,7 +219,7 @@ namespace Model
     /**
      * <p>Information about the export task.</p>
      */
-    inline void SetExportToS3Task(ExportToS3Task&& value) { m_exportToS3TaskHasBeenSet = true; m_exportToS3Task = value; }
+    inline void SetExportToS3Task(ExportToS3Task&& value) { m_exportToS3TaskHasBeenSet = true; m_exportToS3Task = std::move(value); }
 
     /**
      * <p>Information about the export task.</p>
@@ -225,7 +229,7 @@ namespace Model
     /**
      * <p>Information about the export task.</p>
      */
-    inline ExportTask& WithExportToS3Task(ExportToS3Task&& value) { SetExportToS3Task(value); return *this;}
+    inline ExportTask& WithExportToS3Task(ExportToS3Task&& value) { SetExportToS3Task(std::move(value)); return *this;}
 
   private:
     Aws::String m_exportTaskId;

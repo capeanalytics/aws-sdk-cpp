@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
    * value, or a combination of one resource type and one resource ID. Specify a
    * scope to constrain which resources trigger an evaluation for a rule. Otherwise,
    * evaluations for the rule are triggered when any resource in your recording group
-   * changes in configuration. </p>
+   * changes in configuration.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/Scope">AWS API
+   * Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API Scope
   {
@@ -66,7 +70,7 @@ namespace Model
      * evaluation for the rule. You can only specify one type if you also specify a
      * resource ID for <code>ComplianceResourceId</code>.</p>
      */
-    inline void SetComplianceResourceTypes(Aws::Vector<Aws::String>&& value) { m_complianceResourceTypesHasBeenSet = true; m_complianceResourceTypes = value; }
+    inline void SetComplianceResourceTypes(Aws::Vector<Aws::String>&& value) { m_complianceResourceTypesHasBeenSet = true; m_complianceResourceTypes = std::move(value); }
 
     /**
      * <p>The resource types of only those AWS resources that you want to trigger an
@@ -80,7 +84,7 @@ namespace Model
      * evaluation for the rule. You can only specify one type if you also specify a
      * resource ID for <code>ComplianceResourceId</code>.</p>
      */
-    inline Scope& WithComplianceResourceTypes(Aws::Vector<Aws::String>&& value) { SetComplianceResourceTypes(value); return *this;}
+    inline Scope& WithComplianceResourceTypes(Aws::Vector<Aws::String>&& value) { SetComplianceResourceTypes(std::move(value)); return *this;}
 
     /**
      * <p>The resource types of only those AWS resources that you want to trigger an
@@ -94,7 +98,7 @@ namespace Model
      * evaluation for the rule. You can only specify one type if you also specify a
      * resource ID for <code>ComplianceResourceId</code>.</p>
      */
-    inline Scope& AddComplianceResourceTypes(Aws::String&& value) { m_complianceResourceTypesHasBeenSet = true; m_complianceResourceTypes.push_back(value); return *this; }
+    inline Scope& AddComplianceResourceTypes(Aws::String&& value) { m_complianceResourceTypesHasBeenSet = true; m_complianceResourceTypes.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The resource types of only those AWS resources that you want to trigger an
@@ -119,7 +123,7 @@ namespace Model
      * <p>The tag key that is applied to only those AWS resources that you want you
      * want to trigger an evaluation for the rule.</p>
      */
-    inline void SetTagKey(Aws::String&& value) { m_tagKeyHasBeenSet = true; m_tagKey = value; }
+    inline void SetTagKey(Aws::String&& value) { m_tagKeyHasBeenSet = true; m_tagKey = std::move(value); }
 
     /**
      * <p>The tag key that is applied to only those AWS resources that you want you
@@ -137,7 +141,7 @@ namespace Model
      * <p>The tag key that is applied to only those AWS resources that you want you
      * want to trigger an evaluation for the rule.</p>
      */
-    inline Scope& WithTagKey(Aws::String&& value) { SetTagKey(value); return *this;}
+    inline Scope& WithTagKey(Aws::String&& value) { SetTagKey(std::move(value)); return *this;}
 
     /**
      * <p>The tag key that is applied to only those AWS resources that you want you
@@ -164,7 +168,7 @@ namespace Model
      * evaluation for the rule. If you specify a value for <code>TagValue</code>, you
      * must also specify a value for <code>TagKey</code>.</p>
      */
-    inline void SetTagValue(Aws::String&& value) { m_tagValueHasBeenSet = true; m_tagValue = value; }
+    inline void SetTagValue(Aws::String&& value) { m_tagValueHasBeenSet = true; m_tagValue = std::move(value); }
 
     /**
      * <p>The tag value applied to only those AWS resources that you want to trigger an
@@ -185,7 +189,7 @@ namespace Model
      * evaluation for the rule. If you specify a value for <code>TagValue</code>, you
      * must also specify a value for <code>TagKey</code>.</p>
      */
-    inline Scope& WithTagValue(Aws::String&& value) { SetTagValue(value); return *this;}
+    inline Scope& WithTagValue(Aws::String&& value) { SetTagValue(std::move(value)); return *this;}
 
     /**
      * <p>The tag value applied to only those AWS resources that you want to trigger an
@@ -213,7 +217,7 @@ namespace Model
      * the rule. If you specify a resource ID, you must specify one resource type for
      * <code>ComplianceResourceTypes</code>.</p>
      */
-    inline void SetComplianceResourceId(Aws::String&& value) { m_complianceResourceIdHasBeenSet = true; m_complianceResourceId = value; }
+    inline void SetComplianceResourceId(Aws::String&& value) { m_complianceResourceIdHasBeenSet = true; m_complianceResourceId = std::move(value); }
 
     /**
      * <p>The IDs of the only AWS resource that you want to trigger an evaluation for
@@ -234,7 +238,7 @@ namespace Model
      * the rule. If you specify a resource ID, you must specify one resource type for
      * <code>ComplianceResourceTypes</code>.</p>
      */
-    inline Scope& WithComplianceResourceId(Aws::String&& value) { SetComplianceResourceId(value); return *this;}
+    inline Scope& WithComplianceResourceId(Aws::String&& value) { SetComplianceResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The IDs of the only AWS resource that you want to trigger an evaluation for

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ReleaseAddress.</p>
+   * <p>Contains the parameters for ReleaseAddress.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ReleaseAddressRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ReleaseAddressRequest : public EC2Request
   {
@@ -33,6 +37,11 @@ namespace Model
     ReleaseAddressRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -70,7 +79,7 @@ namespace Model
     /**
      * <p>[EC2-Classic] The Elastic IP address. Required for EC2-Classic.</p>
      */
-    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = value; }
+    inline void SetPublicIp(Aws::String&& value) { m_publicIpHasBeenSet = true; m_publicIp = std::move(value); }
 
     /**
      * <p>[EC2-Classic] The Elastic IP address. Required for EC2-Classic.</p>
@@ -85,7 +94,7 @@ namespace Model
     /**
      * <p>[EC2-Classic] The Elastic IP address. Required for EC2-Classic.</p>
      */
-    inline ReleaseAddressRequest& WithPublicIp(Aws::String&& value) { SetPublicIp(value); return *this;}
+    inline ReleaseAddressRequest& WithPublicIp(Aws::String&& value) { SetPublicIp(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-Classic] The Elastic IP address. Required for EC2-Classic.</p>
@@ -105,7 +114,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The allocation ID. Required for EC2-VPC.</p>
      */
-    inline void SetAllocationId(Aws::String&& value) { m_allocationIdHasBeenSet = true; m_allocationId = value; }
+    inline void SetAllocationId(Aws::String&& value) { m_allocationIdHasBeenSet = true; m_allocationId = std::move(value); }
 
     /**
      * <p>[EC2-VPC] The allocation ID. Required for EC2-VPC.</p>
@@ -120,7 +129,7 @@ namespace Model
     /**
      * <p>[EC2-VPC] The allocation ID. Required for EC2-VPC.</p>
      */
-    inline ReleaseAddressRequest& WithAllocationId(Aws::String&& value) { SetAllocationId(value); return *this;}
+    inline ReleaseAddressRequest& WithAllocationId(Aws::String&& value) { SetAllocationId(std::move(value)); return *this;}
 
     /**
      * <p>[EC2-VPC] The allocation ID. Required for EC2-VPC.</p>

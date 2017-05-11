@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/machinelearning/MachineLearningRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/machinelearning/model/RDSDataSpec.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.
@@ -54,7 +57,7 @@ namespace Model
      * Typically, an Amazon Resource Number (ARN) becomes the ID for a
      * <code>DataSource</code>.</p>
      */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
+    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.
@@ -75,7 +78,7 @@ namespace Model
      * Typically, an Amazon Resource Number (ARN) becomes the ID for a
      * <code>DataSource</code>.</p>
      */
-    inline CreateDataSourceFromRDSRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(value); return *this;}
+    inline CreateDataSourceFromRDSRequest& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
      */
-    inline void SetDataSourceName(Aws::String&& value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName = value; }
+    inline void SetDataSourceName(Aws::String&& value) { m_dataSourceNameHasBeenSet = true; m_dataSourceName = std::move(value); }
 
     /**
      * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
@@ -112,7 +115,7 @@ namespace Model
     /**
      * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
      */
-    inline CreateDataSourceFromRDSRequest& WithDataSourceName(Aws::String&& value) { SetDataSourceName(value); return *this;}
+    inline CreateDataSourceFromRDSRequest& WithDataSourceName(Aws::String&& value) { SetDataSourceName(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied name or description of the <code>DataSource</code>.</p>
@@ -225,7 +228,7 @@ namespace Model
      * "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"</code> </p> </li>
      * </ul>
      */
-    inline void SetRDSData(RDSDataSpec&& value) { m_rDSDataHasBeenSet = true; m_rDSData = value; }
+    inline void SetRDSData(RDSDataSpec&& value) { m_rDSDataHasBeenSet = true; m_rDSData = std::move(value); }
 
     /**
      * <p>The data specification of an Amazon RDS <code>DataSource</code>:</p> <ul>
@@ -297,7 +300,7 @@ namespace Model
      * "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"</code> </p> </li>
      * </ul>
      */
-    inline CreateDataSourceFromRDSRequest& WithRDSData(RDSDataSpec&& value) { SetRDSData(value); return *this;}
+    inline CreateDataSourceFromRDSRequest& WithRDSData(RDSDataSpec&& value) { SetRDSData(std::move(value)); return *this;}
 
     /**
      * <p>The role that Amazon ML assumes on behalf of the user to create and activate
@@ -318,7 +321,7 @@ namespace Model
      * a data pipeline in the user's account and copy data using the
      * <code>SelectSqlQuery</code> query from Amazon RDS to Amazon S3.</p> <p> </p>
      */
-    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = value; }
+    inline void SetRoleARN(Aws::String&& value) { m_roleARNHasBeenSet = true; m_roleARN = std::move(value); }
 
     /**
      * <p>The role that Amazon ML assumes on behalf of the user to create and activate
@@ -339,7 +342,7 @@ namespace Model
      * a data pipeline in the user's account and copy data using the
      * <code>SelectSqlQuery</code> query from Amazon RDS to Amazon S3.</p> <p> </p>
      */
-    inline CreateDataSourceFromRDSRequest& WithRoleARN(Aws::String&& value) { SetRoleARN(value); return *this;}
+    inline CreateDataSourceFromRDSRequest& WithRoleARN(Aws::String&& value) { SetRoleARN(std::move(value)); return *this;}
 
     /**
      * <p>The role that Amazon ML assumes on behalf of the user to create and activate

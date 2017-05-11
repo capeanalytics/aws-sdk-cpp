@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticfilesystem/EFS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * <p>Array of security groups.</p>
      */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroups = value; }
+    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroups = std::move(value); }
 
     /**
      * <p>Array of security groups.</p>
@@ -63,7 +65,7 @@ namespace Model
     /**
      * <p>Array of security groups.</p>
      */
-    inline DescribeMountTargetSecurityGroupsResult& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(value); return *this;}
+    inline DescribeMountTargetSecurityGroupsResult& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
 
     /**
      * <p>Array of security groups.</p>
@@ -73,7 +75,7 @@ namespace Model
     /**
      * <p>Array of security groups.</p>
      */
-    inline DescribeMountTargetSecurityGroupsResult& AddSecurityGroups(Aws::String&& value) { m_securityGroups.push_back(value); return *this; }
+    inline DescribeMountTargetSecurityGroupsResult& AddSecurityGroups(Aws::String&& value) { m_securityGroups.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Array of security groups.</p>

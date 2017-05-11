@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/StreamingDistribution.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace CloudFront
 namespace Model
 {
   /**
-   * The returned result of the corresponding request.
+   * The returned result of the corresponding request.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/GetStreamingDistributionResult">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API GetStreamingDistribution2016_01_28Result
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * The streaming distribution's information.
      */
-    inline void SetStreamingDistribution(StreamingDistribution&& value) { m_streamingDistribution = value; }
+    inline void SetStreamingDistribution(StreamingDistribution&& value) { m_streamingDistribution = std::move(value); }
 
     /**
      * The streaming distribution's information.
@@ -66,7 +70,7 @@ namespace Model
     /**
      * The streaming distribution's information.
      */
-    inline GetStreamingDistribution2016_01_28Result& WithStreamingDistribution(StreamingDistribution&& value) { SetStreamingDistribution(value); return *this;}
+    inline GetStreamingDistribution2016_01_28Result& WithStreamingDistribution(StreamingDistribution&& value) { SetStreamingDistribution(std::move(value)); return *this;}
 
     /**
      * The current version of the streaming distribution's information. For example:
@@ -84,7 +88,7 @@ namespace Model
      * The current version of the streaming distribution's information. For example:
      * E2QWRUHAPOMQZL.
      */
-    inline void SetETag(Aws::String&& value) { m_eTag = value; }
+    inline void SetETag(Aws::String&& value) { m_eTag = std::move(value); }
 
     /**
      * The current version of the streaming distribution's information. For example:
@@ -102,7 +106,7 @@ namespace Model
      * The current version of the streaming distribution's information. For example:
      * E2QWRUHAPOMQZL.
      */
-    inline GetStreamingDistribution2016_01_28Result& WithETag(Aws::String&& value) { SetETag(value); return *this;}
+    inline GetStreamingDistribution2016_01_28Result& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
 
     /**
      * The current version of the streaming distribution's information. For example:

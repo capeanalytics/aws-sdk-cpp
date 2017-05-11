@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/SWFRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/RegistrationStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The name of the domain in which the activity types have been registered.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The name of the domain in which the activity types have been registered.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The name of the domain in which the activity types have been registered.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The name of the domain in which the activity types have been registered.</p>
      */
-    inline ListActivityTypesRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline ListActivityTypesRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The name of the domain in which the activity types have been registered.</p>
@@ -83,7 +86,7 @@ namespace Model
     /**
      * <p>If specified, only lists the activity types that have this name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>If specified, only lists the activity types that have this name.</p>
@@ -98,7 +101,7 @@ namespace Model
     /**
      * <p>If specified, only lists the activity types that have this name.</p>
      */
-    inline ListActivityTypesRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ListActivityTypesRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>If specified, only lists the activity types that have this name.</p>
@@ -118,7 +121,7 @@ namespace Model
     /**
      * <p>Specifies the registration status of the activity types to list.</p>
      */
-    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = value; }
+    inline void SetRegistrationStatus(RegistrationStatus&& value) { m_registrationStatusHasBeenSet = true; m_registrationStatus = std::move(value); }
 
     /**
      * <p>Specifies the registration status of the activity types to list.</p>
@@ -128,7 +131,7 @@ namespace Model
     /**
      * <p>Specifies the registration status of the activity types to list.</p>
      */
-    inline ListActivityTypesRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(value); return *this;}
+    inline ListActivityTypesRequest& WithRegistrationStatus(RegistrationStatus&& value) { SetRegistrationStatus(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -155,7 +158,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = value; }
+    inline void SetNextPageToken(Aws::String&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::move(value); }
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
@@ -182,7 +185,7 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline ListActivityTypesRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(value); return *this;}
+    inline ListActivityTypesRequest& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
 
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are

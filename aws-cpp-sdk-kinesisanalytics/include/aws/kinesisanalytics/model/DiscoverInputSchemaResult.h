@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesisanalytics/KinesisAnalytics_EXPORTS.h>
 #include <aws/kinesisanalytics/model/SourceSchema.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace KinesisAnalytics
 namespace Model
 {
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalytics-2015-08-14/DiscoverInputSchemaResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESISANALYTICS_API DiscoverInputSchemaResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * data in the streaming source and how each data element maps to corresponding
      * columns in the in-application stream that you can create.</p>
      */
-    inline void SetInputSchema(SourceSchema&& value) { m_inputSchema = value; }
+    inline void SetInputSchema(SourceSchema&& value) { m_inputSchema = std::move(value); }
 
     /**
      * <p>Schema inferred from the streaming source. It identifies the format of the
@@ -77,7 +81,7 @@ namespace Model
      * data in the streaming source and how each data element maps to corresponding
      * columns in the in-application stream that you can create.</p>
      */
-    inline DiscoverInputSchemaResult& WithInputSchema(SourceSchema&& value) { SetInputSchema(value); return *this;}
+    inline DiscoverInputSchemaResult& WithInputSchema(SourceSchema&& value) { SetInputSchema(std::move(value)); return *this;}
 
     /**
      * <p>An array of elements, where each element corresponds to a row in a stream
@@ -95,7 +99,7 @@ namespace Model
      * <p>An array of elements, where each element corresponds to a row in a stream
      * record (a stream record can have more than one row).</p>
      */
-    inline void SetParsedInputRecords(Aws::Vector<Aws::Vector<Aws::String>>&& value) { m_parsedInputRecords = value; }
+    inline void SetParsedInputRecords(Aws::Vector<Aws::Vector<Aws::String>>&& value) { m_parsedInputRecords = std::move(value); }
 
     /**
      * <p>An array of elements, where each element corresponds to a row in a stream
@@ -107,7 +111,7 @@ namespace Model
      * <p>An array of elements, where each element corresponds to a row in a stream
      * record (a stream record can have more than one row).</p>
      */
-    inline DiscoverInputSchemaResult& WithParsedInputRecords(Aws::Vector<Aws::Vector<Aws::String>>&& value) { SetParsedInputRecords(value); return *this;}
+    inline DiscoverInputSchemaResult& WithParsedInputRecords(Aws::Vector<Aws::Vector<Aws::String>>&& value) { SetParsedInputRecords(std::move(value)); return *this;}
 
     /**
      * <p>An array of elements, where each element corresponds to a row in a stream
@@ -119,7 +123,7 @@ namespace Model
      * <p>An array of elements, where each element corresponds to a row in a stream
      * record (a stream record can have more than one row).</p>
      */
-    inline DiscoverInputSchemaResult& AddParsedInputRecords(Aws::Vector<Aws::String>&& value) { m_parsedInputRecords.push_back(value); return *this; }
+    inline DiscoverInputSchemaResult& AddParsedInputRecords(Aws::Vector<Aws::String>&& value) { m_parsedInputRecords.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
      */
-    inline void SetRawInputRecords(Aws::Vector<Aws::String>&& value) { m_rawInputRecords = value; }
+    inline void SetRawInputRecords(Aws::Vector<Aws::String>&& value) { m_rawInputRecords = std::move(value); }
 
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
@@ -144,7 +148,7 @@ namespace Model
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
      */
-    inline DiscoverInputSchemaResult& WithRawInputRecords(Aws::Vector<Aws::String>&& value) { SetRawInputRecords(value); return *this;}
+    inline DiscoverInputSchemaResult& WithRawInputRecords(Aws::Vector<Aws::String>&& value) { SetRawInputRecords(std::move(value)); return *this;}
 
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
@@ -154,7 +158,7 @@ namespace Model
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>
      */
-    inline DiscoverInputSchemaResult& AddRawInputRecords(Aws::String&& value) { m_rawInputRecords.push_back(value); return *this; }
+    inline DiscoverInputSchemaResult& AddRawInputRecords(Aws::String&& value) { m_rawInputRecords.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Raw stream data that was sampled to infer the schema.</p>

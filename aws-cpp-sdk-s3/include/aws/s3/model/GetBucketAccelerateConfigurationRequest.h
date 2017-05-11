@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/s3/S3_EXPORTS.h>
 #include <aws/s3/S3Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,6 +34,7 @@ namespace Model
     GetBucketAccelerateConfigurationRequest();
     Aws::String SerializePayload() const override;
 
+
     /**
      * Name of the bucket for which the accelerate configuration is retrieved.
      */
@@ -45,7 +48,7 @@ namespace Model
     /**
      * Name of the bucket for which the accelerate configuration is retrieved.
      */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = value; }
+    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
 
     /**
      * Name of the bucket for which the accelerate configuration is retrieved.
@@ -60,7 +63,7 @@ namespace Model
     /**
      * Name of the bucket for which the accelerate configuration is retrieved.
      */
-    inline GetBucketAccelerateConfigurationRequest& WithBucket(Aws::String&& value) { SetBucket(value); return *this;}
+    inline GetBucketAccelerateConfigurationRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
 
     /**
      * Name of the bucket for which the accelerate configuration is retrieved.

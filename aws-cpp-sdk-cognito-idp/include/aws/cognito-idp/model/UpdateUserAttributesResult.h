@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/cognito-idp/model/CodeDeliveryDetailsType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>Represents the response from the server for the request to update user
-   * attributes.</p>
+   * attributes.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UpdateUserAttributesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API UpdateUserAttributesResult
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The code delivery details list from the server for the request to update user
      * attributes.</p>
      */
-    inline void SetCodeDeliveryDetailsList(Aws::Vector<CodeDeliveryDetailsType>&& value) { m_codeDeliveryDetailsList = value; }
+    inline void SetCodeDeliveryDetailsList(Aws::Vector<CodeDeliveryDetailsType>&& value) { m_codeDeliveryDetailsList = std::move(value); }
 
     /**
      * <p>The code delivery details list from the server for the request to update user
@@ -72,7 +76,7 @@ namespace Model
      * <p>The code delivery details list from the server for the request to update user
      * attributes.</p>
      */
-    inline UpdateUserAttributesResult& WithCodeDeliveryDetailsList(Aws::Vector<CodeDeliveryDetailsType>&& value) { SetCodeDeliveryDetailsList(value); return *this;}
+    inline UpdateUserAttributesResult& WithCodeDeliveryDetailsList(Aws::Vector<CodeDeliveryDetailsType>&& value) { SetCodeDeliveryDetailsList(std::move(value)); return *this;}
 
     /**
      * <p>The code delivery details list from the server for the request to update user
@@ -84,7 +88,7 @@ namespace Model
      * <p>The code delivery details list from the server for the request to update user
      * attributes.</p>
      */
-    inline UpdateUserAttributesResult& AddCodeDeliveryDetailsList(CodeDeliveryDetailsType&& value) { m_codeDeliveryDetailsList.push_back(value); return *this; }
+    inline UpdateUserAttributesResult& AddCodeDeliveryDetailsList(CodeDeliveryDetailsType&& value) { m_codeDeliveryDetailsList.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<CodeDeliveryDetailsType> m_codeDeliveryDetailsList;

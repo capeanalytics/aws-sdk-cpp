@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -31,7 +32,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes the VPC peering connection options.</p>
+   * <p>Describes the VPC peering connection options.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VpcPeeringConnectionOptionsDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API VpcPeeringConnectionOptionsDescription
   {
@@ -79,11 +82,31 @@ namespace Model
      */
     inline VpcPeeringConnectionOptionsDescription& WithAllowEgressFromLocalVpcToRemoteClassicLink(bool value) { SetAllowEgressFromLocalVpcToRemoteClassicLink(value); return *this;}
 
+    /**
+     * <p>Indicates whether a local VPC can resolve public DNS hostnames to private IP
+     * addresses when queried from instances in a peer VPC.</p>
+     */
+    inline bool GetAllowDnsResolutionFromRemoteVpc() const{ return m_allowDnsResolutionFromRemoteVpc; }
+
+    /**
+     * <p>Indicates whether a local VPC can resolve public DNS hostnames to private IP
+     * addresses when queried from instances in a peer VPC.</p>
+     */
+    inline void SetAllowDnsResolutionFromRemoteVpc(bool value) { m_allowDnsResolutionFromRemoteVpcHasBeenSet = true; m_allowDnsResolutionFromRemoteVpc = value; }
+
+    /**
+     * <p>Indicates whether a local VPC can resolve public DNS hostnames to private IP
+     * addresses when queried from instances in a peer VPC.</p>
+     */
+    inline VpcPeeringConnectionOptionsDescription& WithAllowDnsResolutionFromRemoteVpc(bool value) { SetAllowDnsResolutionFromRemoteVpc(value); return *this;}
+
   private:
     bool m_allowEgressFromLocalClassicLinkToRemoteVpc;
     bool m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet;
     bool m_allowEgressFromLocalVpcToRemoteClassicLink;
     bool m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet;
+    bool m_allowDnsResolutionFromRemoteVpc;
+    bool m_allowDnsResolutionFromRemoteVpcHasBeenSet;
   };
 
 } // namespace Model

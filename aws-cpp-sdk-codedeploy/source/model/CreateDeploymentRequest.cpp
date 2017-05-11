@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codedeploy/model/CreateDeploymentRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,7 +29,11 @@ CreateDeploymentRequest::CreateDeploymentRequest() :
     m_deploymentConfigNameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
     m_ignoreApplicationStopFailures(false),
-    m_ignoreApplicationStopFailuresHasBeenSet(false)
+    m_ignoreApplicationStopFailuresHasBeenSet(false),
+    m_targetInstancesHasBeenSet(false),
+    m_autoRollbackConfigurationHasBeenSet(false),
+    m_updateOutdatedInstancesOnly(false),
+    m_updateOutdatedInstancesOnlyHasBeenSet(false)
 {
 }
 
@@ -72,6 +77,24 @@ Aws::String CreateDeploymentRequest::SerializePayload() const
 
   }
 
+  if(m_targetInstancesHasBeenSet)
+  {
+   payload.WithObject("targetInstances", m_targetInstances.Jsonize());
+
+  }
+
+  if(m_autoRollbackConfigurationHasBeenSet)
+  {
+   payload.WithObject("autoRollbackConfiguration", m_autoRollbackConfiguration.Jsonize());
+
+  }
+
+  if(m_updateOutdatedInstancesOnlyHasBeenSet)
+  {
+   payload.WithBool("updateOutdatedInstancesOnly", m_updateOutdatedInstancesOnly);
+
+  }
+
   return payload.WriteReadable();
 }
 
@@ -82,6 +105,7 @@ Aws::Http::HeaderValueCollection CreateDeploymentRequest::GetRequestSpecificHead
   return headers;
 
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 
   /**
    * <p>Contains the results of a successful invocation of the
-   * <a>DescribeEventSubscriptions</a> action.</p>
+   * <a>DescribeEventSubscriptions</a> action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/EventSubscription">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API EventSubscription
   {
@@ -62,7 +66,7 @@ namespace Model
      * <p>The AWS customer account associated with the RDS event notification
      * subscription.</p>
      */
-    inline void SetCustomerAwsId(Aws::String&& value) { m_customerAwsIdHasBeenSet = true; m_customerAwsId = value; }
+    inline void SetCustomerAwsId(Aws::String&& value) { m_customerAwsIdHasBeenSet = true; m_customerAwsId = std::move(value); }
 
     /**
      * <p>The AWS customer account associated with the RDS event notification
@@ -80,7 +84,7 @@ namespace Model
      * <p>The AWS customer account associated with the RDS event notification
      * subscription.</p>
      */
-    inline EventSubscription& WithCustomerAwsId(Aws::String&& value) { SetCustomerAwsId(value); return *this;}
+    inline EventSubscription& WithCustomerAwsId(Aws::String&& value) { SetCustomerAwsId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS customer account associated with the RDS event notification
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The RDS event notification subscription Id.</p>
      */
-    inline void SetCustSubscriptionId(Aws::String&& value) { m_custSubscriptionIdHasBeenSet = true; m_custSubscriptionId = value; }
+    inline void SetCustSubscriptionId(Aws::String&& value) { m_custSubscriptionIdHasBeenSet = true; m_custSubscriptionId = std::move(value); }
 
     /**
      * <p>The RDS event notification subscription Id.</p>
@@ -116,7 +120,7 @@ namespace Model
     /**
      * <p>The RDS event notification subscription Id.</p>
      */
-    inline EventSubscription& WithCustSubscriptionId(Aws::String&& value) { SetCustSubscriptionId(value); return *this;}
+    inline EventSubscription& WithCustSubscriptionId(Aws::String&& value) { SetCustSubscriptionId(std::move(value)); return *this;}
 
     /**
      * <p>The RDS event notification subscription Id.</p>
@@ -136,7 +140,7 @@ namespace Model
     /**
      * <p>The topic ARN of the RDS event notification subscription.</p>
      */
-    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = value; }
+    inline void SetSnsTopicArn(Aws::String&& value) { m_snsTopicArnHasBeenSet = true; m_snsTopicArn = std::move(value); }
 
     /**
      * <p>The topic ARN of the RDS event notification subscription.</p>
@@ -151,7 +155,7 @@ namespace Model
     /**
      * <p>The topic ARN of the RDS event notification subscription.</p>
      */
-    inline EventSubscription& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(value); return *this;}
+    inline EventSubscription& WithSnsTopicArn(Aws::String&& value) { SetSnsTopicArn(std::move(value)); return *this;}
 
     /**
      * <p>The topic ARN of the RDS event notification subscription.</p>
@@ -186,7 +190,7 @@ namespace Model
      * topic. The status "topic-not-exist" indicates that the topic was deleted after
      * the subscription was created.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the RDS event notification subscription.</p>
@@ -216,7 +220,7 @@ namespace Model
      * topic. The status "topic-not-exist" indicates that the topic was deleted after
      * the subscription was created.</p>
      */
-    inline EventSubscription& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline EventSubscription& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the RDS event notification subscription.</p>
@@ -241,7 +245,7 @@ namespace Model
     /**
      * <p>The time the RDS event notification subscription was created.</p>
      */
-    inline void SetSubscriptionCreationTime(Aws::String&& value) { m_subscriptionCreationTimeHasBeenSet = true; m_subscriptionCreationTime = value; }
+    inline void SetSubscriptionCreationTime(Aws::String&& value) { m_subscriptionCreationTimeHasBeenSet = true; m_subscriptionCreationTime = std::move(value); }
 
     /**
      * <p>The time the RDS event notification subscription was created.</p>
@@ -256,7 +260,7 @@ namespace Model
     /**
      * <p>The time the RDS event notification subscription was created.</p>
      */
-    inline EventSubscription& WithSubscriptionCreationTime(Aws::String&& value) { SetSubscriptionCreationTime(value); return *this;}
+    inline EventSubscription& WithSubscriptionCreationTime(Aws::String&& value) { SetSubscriptionCreationTime(std::move(value)); return *this;}
 
     /**
      * <p>The time the RDS event notification subscription was created.</p>
@@ -276,7 +280,7 @@ namespace Model
     /**
      * <p>The source type for the RDS event notification subscription.</p>
      */
-    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
 
     /**
      * <p>The source type for the RDS event notification subscription.</p>
@@ -291,7 +295,7 @@ namespace Model
     /**
      * <p>The source type for the RDS event notification subscription.</p>
      */
-    inline EventSubscription& WithSourceType(Aws::String&& value) { SetSourceType(value); return *this;}
+    inline EventSubscription& WithSourceType(Aws::String&& value) { SetSourceType(std::move(value)); return *this;}
 
     /**
      * <p>The source type for the RDS event notification subscription.</p>
@@ -311,7 +315,7 @@ namespace Model
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
      */
-    inline void SetSourceIdsList(Aws::Vector<Aws::String>&& value) { m_sourceIdsListHasBeenSet = true; m_sourceIdsList = value; }
+    inline void SetSourceIdsList(Aws::Vector<Aws::String>&& value) { m_sourceIdsListHasBeenSet = true; m_sourceIdsList = std::move(value); }
 
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
@@ -321,7 +325,7 @@ namespace Model
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
      */
-    inline EventSubscription& WithSourceIdsList(Aws::Vector<Aws::String>&& value) { SetSourceIdsList(value); return *this;}
+    inline EventSubscription& WithSourceIdsList(Aws::Vector<Aws::String>&& value) { SetSourceIdsList(std::move(value)); return *this;}
 
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
@@ -331,7 +335,7 @@ namespace Model
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
      */
-    inline EventSubscription& AddSourceIdsList(Aws::String&& value) { m_sourceIdsListHasBeenSet = true; m_sourceIdsList.push_back(value); return *this; }
+    inline EventSubscription& AddSourceIdsList(Aws::String&& value) { m_sourceIdsListHasBeenSet = true; m_sourceIdsList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of source IDs for the RDS event notification subscription.</p>
@@ -351,7 +355,7 @@ namespace Model
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
      */
-    inline void SetEventCategoriesList(Aws::Vector<Aws::String>&& value) { m_eventCategoriesListHasBeenSet = true; m_eventCategoriesList = value; }
+    inline void SetEventCategoriesList(Aws::Vector<Aws::String>&& value) { m_eventCategoriesListHasBeenSet = true; m_eventCategoriesList = std::move(value); }
 
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
@@ -361,7 +365,7 @@ namespace Model
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
      */
-    inline EventSubscription& WithEventCategoriesList(Aws::Vector<Aws::String>&& value) { SetEventCategoriesList(value); return *this;}
+    inline EventSubscription& WithEventCategoriesList(Aws::Vector<Aws::String>&& value) { SetEventCategoriesList(std::move(value)); return *this;}
 
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
@@ -371,7 +375,7 @@ namespace Model
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
      */
-    inline EventSubscription& AddEventCategoriesList(Aws::String&& value) { m_eventCategoriesListHasBeenSet = true; m_eventCategoriesList.push_back(value); return *this; }
+    inline EventSubscription& AddEventCategoriesList(Aws::String&& value) { m_eventCategoriesListHasBeenSet = true; m_eventCategoriesList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of event categories for the RDS event notification subscription.</p>
@@ -409,7 +413,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the event subscription.</p>
      */
-    inline void SetEventSubscriptionArn(Aws::String&& value) { m_eventSubscriptionArnHasBeenSet = true; m_eventSubscriptionArn = value; }
+    inline void SetEventSubscriptionArn(Aws::String&& value) { m_eventSubscriptionArnHasBeenSet = true; m_eventSubscriptionArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the event subscription.</p>
@@ -424,7 +428,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the event subscription.</p>
      */
-    inline EventSubscription& WithEventSubscriptionArn(Aws::String&& value) { SetEventSubscriptionArn(value); return *this;}
+    inline EventSubscription& WithEventSubscriptionArn(Aws::String&& value) { SetEventSubscriptionArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the event subscription.</p>

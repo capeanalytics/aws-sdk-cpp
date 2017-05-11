@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/StackSummary.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -36,6 +37,7 @@ StackSummary::StackSummary() :
     m_creationTimeHasBeenSet(false),
     m_lastUpdatedTimeHasBeenSet(false),
     m_deletionTimeHasBeenSet(false),
+    m_stackStatus(StackStatus::NOT_SET),
     m_stackStatusHasBeenSet(false),
     m_stackStatusReasonHasBeenSet(false)
 {
@@ -48,6 +50,7 @@ StackSummary::StackSummary(const XmlNode& xmlNode) :
     m_creationTimeHasBeenSet(false),
     m_lastUpdatedTimeHasBeenSet(false),
     m_deletionTimeHasBeenSet(false),
+    m_stackStatus(StackStatus::NOT_SET),
     m_stackStatusHasBeenSet(false),
     m_stackStatusReasonHasBeenSet(false)
 {

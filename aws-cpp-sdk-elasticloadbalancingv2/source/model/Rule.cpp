@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticloadbalancingv2/model/Rule.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -139,7 +140,7 @@ void Rule::OutputToStream(Aws::OStream& oStream, const char* location, unsigned 
 
   if(m_isDefaultHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsDefault=" << m_isDefault << "&";
+      oStream << location << index << locationValue << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
   }
 
 }
@@ -176,7 +177,7 @@ void Rule::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_isDefaultHasBeenSet)
   {
-      oStream << location << ".IsDefault=" << m_isDefault << "&";
+      oStream << location << ".IsDefault=" << std::boolalpha << m_isDefault << "&";
   }
 }
 

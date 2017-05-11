@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dynamodb/model/BatchGetItemResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -42,7 +43,8 @@ BatchGetItemResult& BatchGetItemResult::operator =(const AmazonWebServiceResult<
     for(auto& responsesItem : responsesJsonMap)
     {
       Array<JsonValue> itemListJsonList = responsesItem.second.AsArray();
-      Aws::Vector<Aws::Map<Aws::String, AttributeValue>> itemListList((size_t)itemListJsonList.GetLength());
+      Aws::Vector<Aws::Map<Aws::String, AttributeValue>> itemListList;
+      itemListList.reserve((size_t)itemListJsonList.GetLength());
       for(unsigned itemListIndex = 0; itemListIndex < itemListJsonList.GetLength(); ++itemListIndex)
       {
         Aws::Map<Aws::String, JsonValue> attributeMapJsonMap = itemListJsonList[itemListIndex].GetAllObjects();

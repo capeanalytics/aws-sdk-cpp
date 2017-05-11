@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ScheduledInstanceRecurrence.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes a schedule that is available for your Scheduled Instances.</p>
+   * <p>Describes a schedule that is available for your Scheduled
+   * Instances.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstanceAvailability">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ScheduledInstanceAvailability
   {
@@ -62,7 +67,7 @@ namespace Model
      * <p>The instance type. You can specify one of the C3, C4, M4, or R3 instance
      * types.</p>
      */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type. You can specify one of the C3, C4, M4, or R3 instance
@@ -80,7 +85,7 @@ namespace Model
      * <p>The instance type. You can specify one of the C3, C4, M4, or R3 instance
      * types.</p>
      */
-    inline ScheduledInstanceAvailability& WithInstanceType(Aws::String&& value) { SetInstanceType(value); return *this;}
+    inline ScheduledInstanceAvailability& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The instance type. You can specify one of the C3, C4, M4, or R3 instance
@@ -101,7 +106,7 @@ namespace Model
     /**
      * <p>The platform (<code>Linux/UNIX</code> or <code>Windows</code>).</p>
      */
-    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline void SetPlatform(Aws::String&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
 
     /**
      * <p>The platform (<code>Linux/UNIX</code> or <code>Windows</code>).</p>
@@ -116,7 +121,7 @@ namespace Model
     /**
      * <p>The platform (<code>Linux/UNIX</code> or <code>Windows</code>).</p>
      */
-    inline ScheduledInstanceAvailability& WithPlatform(Aws::String&& value) { SetPlatform(value); return *this;}
+    inline ScheduledInstanceAvailability& WithPlatform(Aws::String&& value) { SetPlatform(std::move(value)); return *this;}
 
     /**
      * <p>The platform (<code>Linux/UNIX</code> or <code>Windows</code>).</p>
@@ -136,7 +141,7 @@ namespace Model
     /**
      * <p>The network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p>
      */
-    inline void SetNetworkPlatform(Aws::String&& value) { m_networkPlatformHasBeenSet = true; m_networkPlatform = value; }
+    inline void SetNetworkPlatform(Aws::String&& value) { m_networkPlatformHasBeenSet = true; m_networkPlatform = std::move(value); }
 
     /**
      * <p>The network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p>
@@ -151,7 +156,7 @@ namespace Model
     /**
      * <p>The network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p>
      */
-    inline ScheduledInstanceAvailability& WithNetworkPlatform(Aws::String&& value) { SetNetworkPlatform(value); return *this;}
+    inline ScheduledInstanceAvailability& WithNetworkPlatform(Aws::String&& value) { SetNetworkPlatform(std::move(value)); return *this;}
 
     /**
      * <p>The network platform (<code>EC2-Classic</code> or <code>EC2-VPC</code>).</p>
@@ -171,7 +176,7 @@ namespace Model
     /**
      * <p>The Availability Zone.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone.</p>
@@ -186,7 +191,7 @@ namespace Model
     /**
      * <p>The Availability Zone.</p>
      */
-    inline ScheduledInstanceAvailability& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline ScheduledInstanceAvailability& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone.</p>
@@ -206,7 +211,7 @@ namespace Model
     /**
      * <p>The purchase token. This token expires in two hours.</p>
      */
-    inline void SetPurchaseToken(Aws::String&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = value; }
+    inline void SetPurchaseToken(Aws::String&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = std::move(value); }
 
     /**
      * <p>The purchase token. This token expires in two hours.</p>
@@ -221,7 +226,7 @@ namespace Model
     /**
      * <p>The purchase token. This token expires in two hours.</p>
      */
-    inline ScheduledInstanceAvailability& WithPurchaseToken(Aws::String&& value) { SetPurchaseToken(value); return *this;}
+    inline ScheduledInstanceAvailability& WithPurchaseToken(Aws::String&& value) { SetPurchaseToken(std::move(value)); return *this;}
 
     /**
      * <p>The purchase token. This token expires in two hours.</p>
@@ -256,7 +261,7 @@ namespace Model
     /**
      * <p>The schedule recurrence.</p>
      */
-    inline void SetRecurrence(ScheduledInstanceRecurrence&& value) { m_recurrenceHasBeenSet = true; m_recurrence = value; }
+    inline void SetRecurrence(ScheduledInstanceRecurrence&& value) { m_recurrenceHasBeenSet = true; m_recurrence = std::move(value); }
 
     /**
      * <p>The schedule recurrence.</p>
@@ -266,7 +271,7 @@ namespace Model
     /**
      * <p>The schedule recurrence.</p>
      */
-    inline ScheduledInstanceAvailability& WithRecurrence(ScheduledInstanceRecurrence&& value) { SetRecurrence(value); return *this;}
+    inline ScheduledInstanceAvailability& WithRecurrence(ScheduledInstanceRecurrence&& value) { SetRecurrence(std::move(value)); return *this;}
 
     /**
      * <p>The time period for the first schedule to start.</p>
@@ -281,7 +286,7 @@ namespace Model
     /**
      * <p>The time period for the first schedule to start.</p>
      */
-    inline void SetFirstSlotStartTime(Aws::Utils::DateTime&& value) { m_firstSlotStartTimeHasBeenSet = true; m_firstSlotStartTime = value; }
+    inline void SetFirstSlotStartTime(Aws::Utils::DateTime&& value) { m_firstSlotStartTimeHasBeenSet = true; m_firstSlotStartTime = std::move(value); }
 
     /**
      * <p>The time period for the first schedule to start.</p>
@@ -291,7 +296,7 @@ namespace Model
     /**
      * <p>The time period for the first schedule to start.</p>
      */
-    inline ScheduledInstanceAvailability& WithFirstSlotStartTime(Aws::Utils::DateTime&& value) { SetFirstSlotStartTime(value); return *this;}
+    inline ScheduledInstanceAvailability& WithFirstSlotStartTime(Aws::Utils::DateTime&& value) { SetFirstSlotStartTime(std::move(value)); return *this;}
 
     /**
      * <p>The hourly price for a single instance.</p>
@@ -306,7 +311,7 @@ namespace Model
     /**
      * <p>The hourly price for a single instance.</p>
      */
-    inline void SetHourlyPrice(Aws::String&& value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice = value; }
+    inline void SetHourlyPrice(Aws::String&& value) { m_hourlyPriceHasBeenSet = true; m_hourlyPrice = std::move(value); }
 
     /**
      * <p>The hourly price for a single instance.</p>
@@ -321,7 +326,7 @@ namespace Model
     /**
      * <p>The hourly price for a single instance.</p>
      */
-    inline ScheduledInstanceAvailability& WithHourlyPrice(Aws::String&& value) { SetHourlyPrice(value); return *this;}
+    inline ScheduledInstanceAvailability& WithHourlyPrice(Aws::String&& value) { SetHourlyPrice(std::move(value)); return *this;}
 
     /**
      * <p>The hourly price for a single instance.</p>

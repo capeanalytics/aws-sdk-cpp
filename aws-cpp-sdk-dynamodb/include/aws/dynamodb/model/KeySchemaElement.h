@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dynamodb/DynamoDB_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dynamodb/model/KeyType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,14 +36,16 @@ namespace Model
   /**
    * <p>Represents <i>a single element</i> of a key schema. A key schema specifies
    * the attributes that make up the primary key of a table, or the key attributes of
-   * an index.</p> <p>A <i>KeySchemaElement</i> represents exactly one attribute of
-   * the primary key. For example, a simple primary key would be represented by one
-   * <i>KeySchemaElement</i> (for the partition key). A composite primary key would
-   * require one <i>KeySchemaElement</i> for the partition key, and another
-   * <i>KeySchemaElement</i> for the sort key.</p> <p>A <i>KeySchemaElement</i> must
-   * be a scalar, top-level attribute (not a nested attribute). The data type must be
-   * one of String, Number, or Binary. The attribute cannot be nested within a List
-   * or a Map.</p>
+   * an index.</p> <p>A <code>KeySchemaElement</code> represents exactly one
+   * attribute of the primary key. For example, a simple primary key would be
+   * represented by one <code>KeySchemaElement</code> (for the partition key). A
+   * composite primary key would require one <code>KeySchemaElement</code> for the
+   * partition key, and another <code>KeySchemaElement</code> for the sort key.</p>
+   * <p>A <code>KeySchemaElement</code> must be a scalar, top-level attribute (not a
+   * nested attribute). The data type must be one of String, Number, or Binary. The
+   * attribute cannot be nested within a List or a Map.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/KeySchemaElement">AWS
+   * API Reference</a></p>
    */
   class AWS_DYNAMODB_API KeySchemaElement
   {
@@ -64,7 +68,7 @@ namespace Model
     /**
      * <p>The name of a key attribute.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of a key attribute.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>The name of a key attribute.</p>
      */
-    inline KeySchemaElement& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline KeySchemaElement& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of a key attribute.</p>
@@ -123,7 +127,7 @@ namespace Model
      * way DynamoDB stores items with the same partition key physically close together,
      * in sorted order by the sort key value.</p> </note>
      */
-    inline void SetKeyType(KeyType&& value) { m_keyTypeHasBeenSet = true; m_keyType = value; }
+    inline void SetKeyType(KeyType&& value) { m_keyTypeHasBeenSet = true; m_keyType = std::move(value); }
 
     /**
      * <p>The role that this key attribute will assume:</p> <ul> <li> <p>
@@ -149,7 +153,7 @@ namespace Model
      * way DynamoDB stores items with the same partition key physically close together,
      * in sorted order by the sort key value.</p> </note>
      */
-    inline KeySchemaElement& WithKeyType(KeyType&& value) { SetKeyType(value); return *this;}
+    inline KeySchemaElement& WithKeyType(KeyType&& value) { SetKeyType(std::move(value)); return *this;}
 
   private:
     Aws::String m_attributeName;

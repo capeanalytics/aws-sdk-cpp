@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
    * <p>Contains information about a WorkSpace that could not be rebooted
    * (<a>RebootWorkspaces</a>), rebuilt (<a>RebuildWorkspaces</a>), terminated
    * (<a>TerminateWorkspaces</a>), started (<a>StartWorkspaces</a>), or stopped
-   * (<a>StopWorkspaces</a>).</p>
+   * (<a>StopWorkspaces</a>).</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/FailedWorkspaceChangeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API FailedWorkspaceChangeRequest
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The identifier of the WorkSpace.</p>
      */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
+    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
 
     /**
      * <p>The identifier of the WorkSpace.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The identifier of the WorkSpace.</p>
      */
-    inline FailedWorkspaceChangeRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(value); return *this;}
+    inline FailedWorkspaceChangeRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the WorkSpace.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The error code.</p>
      */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
 
     /**
      * <p>The error code.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The error code.</p>
      */
-    inline FailedWorkspaceChangeRequest& WithErrorCode(Aws::String&& value) { SetErrorCode(value); return *this;}
+    inline FailedWorkspaceChangeRequest& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
 
     /**
      * <p>The error code.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The textual error message.</p>
      */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
+    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
 
     /**
      * <p>The textual error message.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The textual error message.</p>
      */
-    inline FailedWorkspaceChangeRequest& WithErrorMessage(Aws::String&& value) { SetErrorMessage(value); return *this;}
+    inline FailedWorkspaceChangeRequest& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
 
     /**
      * <p>The textual error message.</p>

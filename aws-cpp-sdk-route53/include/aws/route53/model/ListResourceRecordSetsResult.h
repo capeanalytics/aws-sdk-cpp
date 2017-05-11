@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/route53/model/RRType.h>
 #include <aws/route53/model/ResourceRecordSet.h>
+#include <utility>
 
 namespace Aws
 {
@@ -37,7 +39,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains list information for the resource record
-   * set.</p>
+   * set.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/ListResourceRecordSetsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API ListResourceRecordSetsResult
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>Information about multiple resource record sets.</p>
      */
-    inline void SetResourceRecordSets(Aws::Vector<ResourceRecordSet>&& value) { m_resourceRecordSets = value; }
+    inline void SetResourceRecordSets(Aws::Vector<ResourceRecordSet>&& value) { m_resourceRecordSets = std::move(value); }
 
     /**
      * <p>Information about multiple resource record sets.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>Information about multiple resource record sets.</p>
      */
-    inline ListResourceRecordSetsResult& WithResourceRecordSets(Aws::Vector<ResourceRecordSet>&& value) { SetResourceRecordSets(value); return *this;}
+    inline ListResourceRecordSetsResult& WithResourceRecordSets(Aws::Vector<ResourceRecordSet>&& value) { SetResourceRecordSets(std::move(value)); return *this;}
 
     /**
      * <p>Information about multiple resource record sets.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>Information about multiple resource record sets.</p>
      */
-    inline ListResourceRecordSetsResult& AddResourceRecordSets(ResourceRecordSet&& value) { m_resourceRecordSets.push_back(value); return *this; }
+    inline ListResourceRecordSetsResult& AddResourceRecordSets(ResourceRecordSet&& value) { m_resourceRecordSets.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A flag that indicates whether more resource record sets remain to be listed.
@@ -118,7 +122,7 @@ namespace Model
      * <p>If the results were truncated, the name of the next record in the list.</p>
      * <p>This element is present only if <code>IsTruncated</code> is true. </p>
      */
-    inline void SetNextRecordName(Aws::String&& value) { m_nextRecordName = value; }
+    inline void SetNextRecordName(Aws::String&& value) { m_nextRecordName = std::move(value); }
 
     /**
      * <p>If the results were truncated, the name of the next record in the list.</p>
@@ -136,7 +140,7 @@ namespace Model
      * <p>If the results were truncated, the name of the next record in the list.</p>
      * <p>This element is present only if <code>IsTruncated</code> is true. </p>
      */
-    inline ListResourceRecordSetsResult& WithNextRecordName(Aws::String&& value) { SetNextRecordName(value); return *this;}
+    inline ListResourceRecordSetsResult& WithNextRecordName(Aws::String&& value) { SetNextRecordName(std::move(value)); return *this;}
 
     /**
      * <p>If the results were truncated, the name of the next record in the list.</p>
@@ -160,7 +164,7 @@ namespace Model
      * <p>If the results were truncated, the type of the next record in the list.</p>
      * <p>This element is present only if <code>IsTruncated</code> is true. </p>
      */
-    inline void SetNextRecordType(RRType&& value) { m_nextRecordType = value; }
+    inline void SetNextRecordType(RRType&& value) { m_nextRecordType = std::move(value); }
 
     /**
      * <p>If the results were truncated, the type of the next record in the list.</p>
@@ -172,7 +176,7 @@ namespace Model
      * <p>If the results were truncated, the type of the next record in the list.</p>
      * <p>This element is present only if <code>IsTruncated</code> is true. </p>
      */
-    inline ListResourceRecordSetsResult& WithNextRecordType(RRType&& value) { SetNextRecordType(value); return *this;}
+    inline ListResourceRecordSetsResult& WithNextRecordType(RRType&& value) { SetNextRecordType(std::move(value)); return *this;}
 
     /**
      * <p> <i>Weighted, latency, geolocation, and failover resource record sets
@@ -196,7 +200,7 @@ namespace Model
      * <code>SetIdentifier</code> for the next resource record set that has the current
      * DNS name and type.</p>
      */
-    inline void SetNextRecordIdentifier(Aws::String&& value) { m_nextRecordIdentifier = value; }
+    inline void SetNextRecordIdentifier(Aws::String&& value) { m_nextRecordIdentifier = std::move(value); }
 
     /**
      * <p> <i>Weighted, latency, geolocation, and failover resource record sets
@@ -220,7 +224,7 @@ namespace Model
      * <code>SetIdentifier</code> for the next resource record set that has the current
      * DNS name and type.</p>
      */
-    inline ListResourceRecordSetsResult& WithNextRecordIdentifier(Aws::String&& value) { SetNextRecordIdentifier(value); return *this;}
+    inline ListResourceRecordSetsResult& WithNextRecordIdentifier(Aws::String&& value) { SetNextRecordIdentifier(std::move(value)); return *this;}
 
     /**
      * <p> <i>Weighted, latency, geolocation, and failover resource record sets
@@ -243,7 +247,7 @@ namespace Model
     /**
      * <p>The maximum number of records you requested.</p>
      */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItems = value; }
+    inline void SetMaxItems(Aws::String&& value) { m_maxItems = std::move(value); }
 
     /**
      * <p>The maximum number of records you requested.</p>
@@ -258,7 +262,7 @@ namespace Model
     /**
      * <p>The maximum number of records you requested.</p>
      */
-    inline ListResourceRecordSetsResult& WithMaxItems(Aws::String&& value) { SetMaxItems(value); return *this;}
+    inline ListResourceRecordSetsResult& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
 
     /**
      * <p>The maximum number of records you requested.</p>

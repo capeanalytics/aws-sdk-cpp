@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents an activity type.</p>
+   * <p>Represents an activity type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityType">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API ActivityType
   {
@@ -57,7 +61,7 @@ namespace Model
      * <p>The name of this activity.</p> <note>The combination of activity type name
      * and version must be unique within a domain.</note>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of this activity.</p> <note>The combination of activity type name
@@ -75,7 +79,7 @@ namespace Model
      * <p>The name of this activity.</p> <note>The combination of activity type name
      * and version must be unique within a domain.</note>
      */
-    inline ActivityType& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ActivityType& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of this activity.</p> <note>The combination of activity type name
@@ -99,7 +103,7 @@ namespace Model
      * <p>The version of this activity.</p> <note>The combination of activity type name
      * and version must be unique with in a domain.</note>
      */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = value; }
+    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
 
     /**
      * <p>The version of this activity.</p> <note>The combination of activity type name
@@ -117,7 +121,7 @@ namespace Model
      * <p>The version of this activity.</p> <note>The combination of activity type name
      * and version must be unique with in a domain.</note>
      */
-    inline ActivityType& WithVersion(Aws::String&& value) { SetVersion(value); return *this;}
+    inline ActivityType& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version of this activity.</p> <note>The combination of activity type name

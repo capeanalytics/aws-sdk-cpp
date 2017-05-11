@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,6 +33,7 @@ namespace Model
   public:
     CreateReusableDelegationSetRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>A unique string that identifies the request, and that allows you to retry
@@ -60,7 +63,7 @@ namespace Model
      * <code>CreateReusableDelegationSet</code> request. <code>CallerReference</code>
      * can be any unique string, for example a date/time stamp.</p>
      */
-    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = value; }
+    inline void SetCallerReference(Aws::String&& value) { m_callerReferenceHasBeenSet = true; m_callerReference = std::move(value); }
 
     /**
      * <p>A unique string that identifies the request, and that allows you to retry
@@ -90,7 +93,7 @@ namespace Model
      * <code>CreateReusableDelegationSet</code> request. <code>CallerReference</code>
      * can be any unique string, for example a date/time stamp.</p>
      */
-    inline CreateReusableDelegationSetRequest& WithCallerReference(Aws::String&& value) { SetCallerReference(value); return *this;}
+    inline CreateReusableDelegationSetRequest& WithCallerReference(Aws::String&& value) { SetCallerReference(std::move(value)); return *this;}
 
     /**
      * <p>A unique string that identifies the request, and that allows you to retry
@@ -118,7 +121,7 @@ namespace Model
      * <p>If you want to mark the delegation set for an existing hosted zone as
      * reusable, the ID for that hosted zone.</p>
      */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
+    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
 
     /**
      * <p>If you want to mark the delegation set for an existing hosted zone as
@@ -136,7 +139,7 @@ namespace Model
      * <p>If you want to mark the delegation set for an existing hosted zone as
      * reusable, the ID for that hosted zone.</p>
      */
-    inline CreateReusableDelegationSetRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(value); return *this;}
+    inline CreateReusableDelegationSetRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
 
     /**
      * <p>If you want to mark the delegation set for an existing hosted zone as

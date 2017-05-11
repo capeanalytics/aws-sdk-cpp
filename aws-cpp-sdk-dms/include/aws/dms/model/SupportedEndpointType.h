@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/dms/DatabaseMigrationService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dms/model/ReplicationEndpointTypeValue.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/SupportedEndpointType">AWS
+   * API Reference</a></p>
    */
   class AWS_DATABASEMIGRATIONSERVICE_API SupportedEndpointType
   {
@@ -43,37 +47,44 @@ namespace Model
     Aws::Utils::Json::JsonValue Jsonize() const;
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline const Aws::String& GetEngineName() const{ return m_engineName; }
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline void SetEngineName(const Aws::String& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
-    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = value; }
+    inline void SetEngineName(Aws::String&& value) { m_engineNameHasBeenSet = true; m_engineName = std::move(value); }
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline void SetEngineName(const char* value) { m_engineNameHasBeenSet = true; m_engineName.assign(value); }
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline SupportedEndpointType& WithEngineName(const Aws::String& value) { SetEngineName(value); return *this;}
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
-    inline SupportedEndpointType& WithEngineName(Aws::String&& value) { SetEngineName(value); return *this;}
+    inline SupportedEndpointType& WithEngineName(Aws::String&& value) { SetEngineName(std::move(value)); return *this;}
 
     /**
-     * <p>The database engine name.</p>
+     * <p>The database engine name. Valid values include MYSQL, ORACLE, POSTGRES,
+     * MARIADB, AURORA, REDSHIFT, SYBASE, and SQLSERVER.</p>
      */
     inline SupportedEndpointType& WithEngineName(const char* value) { SetEngineName(value); return *this;}
 
@@ -105,7 +116,7 @@ namespace Model
     /**
      * <p>The type of endpoint.</p>
      */
-    inline void SetEndpointType(ReplicationEndpointTypeValue&& value) { m_endpointTypeHasBeenSet = true; m_endpointType = value; }
+    inline void SetEndpointType(ReplicationEndpointTypeValue&& value) { m_endpointTypeHasBeenSet = true; m_endpointType = std::move(value); }
 
     /**
      * <p>The type of endpoint.</p>
@@ -115,7 +126,7 @@ namespace Model
     /**
      * <p>The type of endpoint.</p>
      */
-    inline SupportedEndpointType& WithEndpointType(ReplicationEndpointTypeValue&& value) { SetEndpointType(value); return *this;}
+    inline SupportedEndpointType& WithEndpointType(ReplicationEndpointTypeValue&& value) { SetEndpointType(std::move(value)); return *this;}
 
   private:
     Aws::String m_engineName;

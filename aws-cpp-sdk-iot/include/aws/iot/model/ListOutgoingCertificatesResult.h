@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iot/model/OutgoingCertificate.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output from the ListOutgoingCertificates operation.</p>
+   * <p>The output from the ListOutgoingCertificates operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListOutgoingCertificatesResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API ListOutgoingCertificatesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The certificates that are being transfered but not yet accepted.</p>
      */
-    inline void SetOutgoingCertificates(Aws::Vector<OutgoingCertificate>&& value) { m_outgoingCertificates = value; }
+    inline void SetOutgoingCertificates(Aws::Vector<OutgoingCertificate>&& value) { m_outgoingCertificates = std::move(value); }
 
     /**
      * <p>The certificates that are being transfered but not yet accepted.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>The certificates that are being transfered but not yet accepted.</p>
      */
-    inline ListOutgoingCertificatesResult& WithOutgoingCertificates(Aws::Vector<OutgoingCertificate>&& value) { SetOutgoingCertificates(value); return *this;}
+    inline ListOutgoingCertificatesResult& WithOutgoingCertificates(Aws::Vector<OutgoingCertificate>&& value) { SetOutgoingCertificates(std::move(value)); return *this;}
 
     /**
      * <p>The certificates that are being transfered but not yet accepted.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>The certificates that are being transfered but not yet accepted.</p>
      */
-    inline ListOutgoingCertificatesResult& AddOutgoingCertificates(OutgoingCertificate&& value) { m_outgoingCertificates.push_back(value); return *this; }
+    inline ListOutgoingCertificatesResult& AddOutgoingCertificates(OutgoingCertificate&& value) { m_outgoingCertificates.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The marker for the next set of results.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The marker for the next set of results.</p>
      */
-    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = value; }
+    inline void SetNextMarker(Aws::String&& value) { m_nextMarker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The marker for the next set of results.</p>
      */
-    inline ListOutgoingCertificatesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(value); return *this;}
+    inline ListOutgoingCertificatesResult& WithNextMarker(Aws::String&& value) { SetNextMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results.</p>

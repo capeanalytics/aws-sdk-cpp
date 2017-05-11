@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/config/model/ComplianceSummaryByResourceType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,11 @@ namespace ConfigService
 {
 namespace Model
 {
+  /**
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetComplianceSummaryByResourceTypeResponse">AWS
+   * API Reference</a></p>
+   */
   class AWS_CONFIGSERVICE_API GetComplianceSummaryByResourceTypeResult
   {
   public:
@@ -62,7 +69,7 @@ namespace Model
      * numbers are returned for each resource type. The maximum number returned is
      * 100.</p>
      */
-    inline void SetComplianceSummariesByResourceType(Aws::Vector<ComplianceSummaryByResourceType>&& value) { m_complianceSummariesByResourceType = value; }
+    inline void SetComplianceSummariesByResourceType(Aws::Vector<ComplianceSummaryByResourceType>&& value) { m_complianceSummariesByResourceType = std::move(value); }
 
     /**
      * <p>The number of resources that are compliant and the number that are
@@ -78,7 +85,7 @@ namespace Model
      * numbers are returned for each resource type. The maximum number returned is
      * 100.</p>
      */
-    inline GetComplianceSummaryByResourceTypeResult& WithComplianceSummariesByResourceType(Aws::Vector<ComplianceSummaryByResourceType>&& value) { SetComplianceSummariesByResourceType(value); return *this;}
+    inline GetComplianceSummaryByResourceTypeResult& WithComplianceSummariesByResourceType(Aws::Vector<ComplianceSummaryByResourceType>&& value) { SetComplianceSummariesByResourceType(std::move(value)); return *this;}
 
     /**
      * <p>The number of resources that are compliant and the number that are
@@ -94,7 +101,7 @@ namespace Model
      * numbers are returned for each resource type. The maximum number returned is
      * 100.</p>
      */
-    inline GetComplianceSummaryByResourceTypeResult& AddComplianceSummariesByResourceType(ComplianceSummaryByResourceType&& value) { m_complianceSummariesByResourceType.push_back(value); return *this; }
+    inline GetComplianceSummaryByResourceTypeResult& AddComplianceSummariesByResourceType(ComplianceSummaryByResourceType&& value) { m_complianceSummariesByResourceType.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<ComplianceSummaryByResourceType> m_complianceSummariesByResourceType;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/redshift/Redshift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes the status of changes to HSM settings.</p>
+   * <p>Describes the status of changes to HSM settings.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/HsmStatus">AWS
+   * API Reference</a></p>
    */
   class AWS_REDSHIFT_API HsmStatus
   {
@@ -60,7 +65,7 @@ namespace Model
      * <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster
      * uses to retrieve the data encryption keys stored in an HSM.</p>
      */
-    inline void SetHsmClientCertificateIdentifier(Aws::String&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = value; }
+    inline void SetHsmClientCertificateIdentifier(Aws::String&& value) { m_hsmClientCertificateIdentifierHasBeenSet = true; m_hsmClientCertificateIdentifier = std::move(value); }
 
     /**
      * <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster
@@ -78,7 +83,7 @@ namespace Model
      * <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster
      * uses to retrieve the data encryption keys stored in an HSM.</p>
      */
-    inline HsmStatus& WithHsmClientCertificateIdentifier(Aws::String&& value) { SetHsmClientCertificateIdentifier(value); return *this;}
+    inline HsmStatus& WithHsmClientCertificateIdentifier(Aws::String&& value) { SetHsmClientCertificateIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster
@@ -102,7 +107,7 @@ namespace Model
      * <p>Specifies the name of the HSM configuration that contains the information the
      * Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
      */
-    inline void SetHsmConfigurationIdentifier(Aws::String&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = value; }
+    inline void SetHsmConfigurationIdentifier(Aws::String&& value) { m_hsmConfigurationIdentifierHasBeenSet = true; m_hsmConfigurationIdentifier = std::move(value); }
 
     /**
      * <p>Specifies the name of the HSM configuration that contains the information the
@@ -120,7 +125,7 @@ namespace Model
      * <p>Specifies the name of the HSM configuration that contains the information the
      * Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
      */
-    inline HsmStatus& WithHsmConfigurationIdentifier(Aws::String&& value) { SetHsmConfigurationIdentifier(value); return *this;}
+    inline HsmStatus& WithHsmConfigurationIdentifier(Aws::String&& value) { SetHsmConfigurationIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the HSM configuration that contains the information the
@@ -147,7 +152,7 @@ namespace Model
      * settings changes specified in a modify cluster command.</p> <p>Values: active,
      * applying</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>Reports whether the Amazon Redshift cluster has finished applying any HSM
@@ -168,7 +173,7 @@ namespace Model
      * settings changes specified in a modify cluster command.</p> <p>Values: active,
      * applying</p>
      */
-    inline HsmStatus& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline HsmStatus& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>Reports whether the Amazon Redshift cluster has finished applying any HSM

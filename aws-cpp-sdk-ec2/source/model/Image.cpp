@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/Image.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -32,27 +33,36 @@ namespace Model
 Image::Image() : 
     m_imageIdHasBeenSet(false),
     m_imageLocationHasBeenSet(false),
+    m_state(ImageState::NOT_SET),
     m_stateHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
     m_creationDateHasBeenSet(false),
     m_public(false),
     m_publicHasBeenSet(false),
     m_productCodesHasBeenSet(false),
+    m_architecture(ArchitectureValues::NOT_SET),
     m_architectureHasBeenSet(false),
+    m_imageType(ImageTypeValues::NOT_SET),
     m_imageTypeHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
     m_ramdiskIdHasBeenSet(false),
+    m_platform(PlatformValues::NOT_SET),
     m_platformHasBeenSet(false),
     m_sriovNetSupportHasBeenSet(false),
+    m_enaSupport(false),
+    m_enaSupportHasBeenSet(false),
     m_stateReasonHasBeenSet(false),
     m_imageOwnerAliasHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_rootDeviceType(DeviceType::NOT_SET),
     m_rootDeviceTypeHasBeenSet(false),
     m_rootDeviceNameHasBeenSet(false),
     m_blockDeviceMappingsHasBeenSet(false),
+    m_virtualizationType(VirtualizationType::NOT_SET),
     m_virtualizationTypeHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_hypervisor(HypervisorType::NOT_SET),
     m_hypervisorHasBeenSet(false)
 {
 }
@@ -60,27 +70,36 @@ Image::Image() :
 Image::Image(const XmlNode& xmlNode) : 
     m_imageIdHasBeenSet(false),
     m_imageLocationHasBeenSet(false),
+    m_state(ImageState::NOT_SET),
     m_stateHasBeenSet(false),
     m_ownerIdHasBeenSet(false),
     m_creationDateHasBeenSet(false),
     m_public(false),
     m_publicHasBeenSet(false),
     m_productCodesHasBeenSet(false),
+    m_architecture(ArchitectureValues::NOT_SET),
     m_architectureHasBeenSet(false),
+    m_imageType(ImageTypeValues::NOT_SET),
     m_imageTypeHasBeenSet(false),
     m_kernelIdHasBeenSet(false),
     m_ramdiskIdHasBeenSet(false),
+    m_platform(PlatformValues::NOT_SET),
     m_platformHasBeenSet(false),
     m_sriovNetSupportHasBeenSet(false),
+    m_enaSupport(false),
+    m_enaSupportHasBeenSet(false),
     m_stateReasonHasBeenSet(false),
     m_imageOwnerAliasHasBeenSet(false),
     m_nameHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_rootDeviceType(DeviceType::NOT_SET),
     m_rootDeviceTypeHasBeenSet(false),
     m_rootDeviceNameHasBeenSet(false),
     m_blockDeviceMappingsHasBeenSet(false),
+    m_virtualizationType(VirtualizationType::NOT_SET),
     m_virtualizationTypeHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_hypervisor(HypervisorType::NOT_SET),
     m_hypervisorHasBeenSet(false)
 {
   *this = xmlNode;
@@ -175,6 +194,12 @@ Image& Image::operator =(const XmlNode& xmlNode)
     {
       m_sriovNetSupport = StringUtils::Trim(sriovNetSupportNode.GetText().c_str());
       m_sriovNetSupportHasBeenSet = true;
+    }
+    XmlNode enaSupportNode = resultNode.FirstChild("enaSupport");
+    if(!enaSupportNode.IsNull())
+    {
+      m_enaSupport = StringUtils::ConvertToBool(StringUtils::Trim(enaSupportNode.GetText().c_str()).c_str());
+      m_enaSupportHasBeenSet = true;
     }
     XmlNode stateReasonNode = resultNode.FirstChild("stateReason");
     if(!stateReasonNode.IsNull())
@@ -282,7 +307,7 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
 
   if(m_publicHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Public=" << m_public << "&";
+      oStream << location << index << locationValue << ".Public=" << std::boolalpha << m_public << "&";
   }
 
   if(m_productCodesHasBeenSet)
@@ -324,6 +349,11 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
   if(m_sriovNetSupportHasBeenSet)
   {
       oStream << location << index << locationValue << ".SriovNetSupport=" << StringUtils::URLEncode(m_sriovNetSupport.c_str()) << "&";
+  }
+
+  if(m_enaSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".EnaSupport=" << std::boolalpha << m_enaSupport << "&";
   }
 
   if(m_stateReasonHasBeenSet)
@@ -416,7 +446,7 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_publicHasBeenSet)
   {
-      oStream << location << ".Public=" << m_public << "&";
+      oStream << location << ".Public=" << std::boolalpha << m_public << "&";
   }
   if(m_productCodesHasBeenSet)
   {
@@ -424,7 +454,7 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_productCodes)
       {
         Aws::StringStream productCodesSs;
-        productCodesSs << location <<  ".item." << productCodesIdx++;
+        productCodesSs << location <<  ".ProductCodes." << productCodesIdx++;
         item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }
@@ -451,6 +481,10 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
   if(m_sriovNetSupportHasBeenSet)
   {
       oStream << location << ".SriovNetSupport=" << StringUtils::URLEncode(m_sriovNetSupport.c_str()) << "&";
+  }
+  if(m_enaSupportHasBeenSet)
+  {
+      oStream << location << ".EnaSupport=" << std::boolalpha << m_enaSupport << "&";
   }
   if(m_stateReasonHasBeenSet)
   {
@@ -484,7 +518,7 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".item." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -498,7 +532,7 @@ void Image::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

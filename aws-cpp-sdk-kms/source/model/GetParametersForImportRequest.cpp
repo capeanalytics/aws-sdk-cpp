@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/kms/model/GetParametersForImportRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,7 +24,9 @@ using namespace Aws::Utils;
 
 GetParametersForImportRequest::GetParametersForImportRequest() : 
     m_keyIdHasBeenSet(false),
+    m_wrappingAlgorithm(AlgorithmSpec::NOT_SET),
     m_wrappingAlgorithmHasBeenSet(false),
+    m_wrappingKeySpec(WrappingKeySpec::NOT_SET),
     m_wrappingKeySpecHasBeenSet(false)
 {
 }
@@ -58,6 +61,7 @@ Aws::Http::HeaderValueCollection GetParametersForImportRequest::GetRequestSpecif
   return headers;
 
 }
+
 
 
 

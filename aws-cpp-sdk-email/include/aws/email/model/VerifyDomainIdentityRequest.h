@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/email/SES_EXPORTS.h>
 #include <aws/email/SESRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,9 @@ namespace Model
    * the TXT records that you must publish to the DNS server of your domain to
    * complete the verification. For information about domain verification, see the <a
    * href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html">Amazon
-   * SES Developer Guide</a>.</p>
+   * SES Developer Guide</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/email-2010-12-01/VerifyDomainIdentityRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_SES_API VerifyDomainIdentityRequest : public SESRequest
   {
@@ -37,6 +41,11 @@ namespace Model
     VerifyDomainIdentityRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The domain to be verified.</p>
      */
@@ -50,7 +59,7 @@ namespace Model
     /**
      * <p>The domain to be verified.</p>
      */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = value; }
+    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
 
     /**
      * <p>The domain to be verified.</p>
@@ -65,7 +74,7 @@ namespace Model
     /**
      * <p>The domain to be verified.</p>
      */
-    inline VerifyDomainIdentityRequest& WithDomain(Aws::String&& value) { SetDomain(value); return *this;}
+    inline VerifyDomainIdentityRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
 
     /**
      * <p>The domain to be verified.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kms/KMS_EXPORTS.h>
 #include <aws/kms/KMSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -62,7 +65,7 @@ namespace Model
      * </li> <li> <p>Globally Unique Key ID Example -
      * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
+    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -92,7 +95,7 @@ namespace Model
      * </li> <li> <p>Globally Unique Key ID Example -
      * 12345678-1234-1234-1234-123456789012</p> </li> </ul>
      */
-    inline GetKeyPolicyRequest& WithKeyId(Aws::String&& value) { SetKeyId(value); return *this;}
+    inline GetKeyPolicyRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
 
     /**
      * <p>A unique identifier for the customer master key. This value can be a globally
@@ -120,7 +123,7 @@ namespace Model
      * <p>String that contains the name of the policy. Currently, this must be
      * "default". Policy names can be discovered by calling <a>ListKeyPolicies</a>.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>String that contains the name of the policy. Currently, this must be
@@ -138,7 +141,7 @@ namespace Model
      * <p>String that contains the name of the policy. Currently, this must be
      * "default". Policy names can be discovered by calling <a>ListKeyPolicies</a>.</p>
      */
-    inline GetKeyPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline GetKeyPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>String that contains the name of the policy. Currently, this must be

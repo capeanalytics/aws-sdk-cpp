@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
      */
-    inline void SetFindingArns(Aws::Vector<Aws::String>&& value) { m_findingArnsHasBeenSet = true; m_findingArns = value; }
+    inline void SetFindingArns(Aws::Vector<Aws::String>&& value) { m_findingArnsHasBeenSet = true; m_findingArns = std::move(value); }
 
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
@@ -58,7 +61,7 @@ namespace Model
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
      */
-    inline RemoveAttributesFromFindingsRequest& WithFindingArns(Aws::Vector<Aws::String>&& value) { SetFindingArns(value); return *this;}
+    inline RemoveAttributesFromFindingsRequest& WithFindingArns(Aws::Vector<Aws::String>&& value) { SetFindingArns(std::move(value)); return *this;}
 
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
@@ -68,7 +71,7 @@ namespace Model
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
      */
-    inline RemoveAttributesFromFindingsRequest& AddFindingArns(Aws::String&& value) { m_findingArnsHasBeenSet = true; m_findingArns.push_back(value); return *this; }
+    inline RemoveAttributesFromFindingsRequest& AddFindingArns(Aws::String&& value) { m_findingArnsHasBeenSet = true; m_findingArns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The ARNs specifying the findings that you want to remove attributes from.</p>
@@ -91,7 +94,7 @@ namespace Model
      * <p>The array of attribute keys that you want to remove from specified
      * findings.</p>
      */
-    inline void SetAttributeKeys(Aws::Vector<Aws::String>&& value) { m_attributeKeysHasBeenSet = true; m_attributeKeys = value; }
+    inline void SetAttributeKeys(Aws::Vector<Aws::String>&& value) { m_attributeKeysHasBeenSet = true; m_attributeKeys = std::move(value); }
 
     /**
      * <p>The array of attribute keys that you want to remove from specified
@@ -103,7 +106,7 @@ namespace Model
      * <p>The array of attribute keys that you want to remove from specified
      * findings.</p>
      */
-    inline RemoveAttributesFromFindingsRequest& WithAttributeKeys(Aws::Vector<Aws::String>&& value) { SetAttributeKeys(value); return *this;}
+    inline RemoveAttributesFromFindingsRequest& WithAttributeKeys(Aws::Vector<Aws::String>&& value) { SetAttributeKeys(std::move(value)); return *this;}
 
     /**
      * <p>The array of attribute keys that you want to remove from specified
@@ -115,7 +118,7 @@ namespace Model
      * <p>The array of attribute keys that you want to remove from specified
      * findings.</p>
      */
-    inline RemoveAttributesFromFindingsRequest& AddAttributeKeys(Aws::String&& value) { m_attributeKeysHasBeenSet = true; m_attributeKeys.push_back(value); return *this; }
+    inline RemoveAttributesFromFindingsRequest& AddAttributeKeys(Aws::String&& value) { m_attributeKeysHasBeenSet = true; m_attributeKeys.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The array of attribute keys that you want to remove from specified

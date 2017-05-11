@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticfilesystem/EFS_EXPORTS.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * consistent when there are no writes to the file system. That is, the value will
    * represent the actual size only if the file system is not modified for a period
    * longer than a couple of hours. Otherwise, the value is not necessarily the exact
-   * size the file system was at any instant in time.</p>
+   * size the file system was at any instant in time.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01/FileSystemSize">AWS
+   * API Reference</a></p>
    */
   class AWS_EFS_API FileSystemSize
   {
@@ -82,7 +86,7 @@ namespace Model
      * determined. The value is the integer number of seconds since
      * 1970-01-01T00:00:00Z.</p>
      */
-    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
+    inline void SetTimestamp(Aws::Utils::DateTime&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
 
     /**
      * <p>Time at which the size of data, returned in the <code>Value</code> field, was
@@ -96,7 +100,7 @@ namespace Model
      * determined. The value is the integer number of seconds since
      * 1970-01-01T00:00:00Z.</p>
      */
-    inline FileSystemSize& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(value); return *this;}
+    inline FileSystemSize& WithTimestamp(Aws::Utils::DateTime&& value) { SetTimestamp(std::move(value)); return *this;}
 
   private:
     long long m_value;

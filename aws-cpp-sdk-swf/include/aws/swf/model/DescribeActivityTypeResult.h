@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/swf/model/ActivityTypeInfo.h>
 #include <aws/swf/model/ActivityTypeConfiguration.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace SWF
 namespace Model
 {
   /**
-   * <p>Detailed information about an activity type.</p>
+   * <p>Detailed information about an activity type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ActivityTypeDetail">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API DescribeActivityTypeResult
   {
@@ -74,7 +78,7 @@ namespace Model
      * but is still in use. You should keep workers supporting this type running. You
      * cannot create new tasks of this type. </li> </ul>
      */
-    inline void SetTypeInfo(ActivityTypeInfo&& value) { m_typeInfo = value; }
+    inline void SetTypeInfo(ActivityTypeInfo&& value) { m_typeInfo = std::move(value); }
 
     /**
      * <p>General information about the activity type.</p> <p>The status of activity
@@ -96,7 +100,7 @@ namespace Model
      * but is still in use. You should keep workers supporting this type running. You
      * cannot create new tasks of this type. </li> </ul>
      */
-    inline DescribeActivityTypeResult& WithTypeInfo(ActivityTypeInfo&& value) { SetTypeInfo(value); return *this;}
+    inline DescribeActivityTypeResult& WithTypeInfo(ActivityTypeInfo&& value) { SetTypeInfo(std::move(value)); return *this;}
 
     /**
      * <p>The configuration settings registered with the activity type.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The configuration settings registered with the activity type.</p>
      */
-    inline void SetConfiguration(ActivityTypeConfiguration&& value) { m_configuration = value; }
+    inline void SetConfiguration(ActivityTypeConfiguration&& value) { m_configuration = std::move(value); }
 
     /**
      * <p>The configuration settings registered with the activity type.</p>
@@ -121,7 +125,7 @@ namespace Model
     /**
      * <p>The configuration settings registered with the activity type.</p>
      */
-    inline DescribeActivityTypeResult& WithConfiguration(ActivityTypeConfiguration&& value) { SetConfiguration(value); return *this;}
+    inline DescribeActivityTypeResult& WithConfiguration(ActivityTypeConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
 
   private:
     ActivityTypeInfo m_typeInfo;

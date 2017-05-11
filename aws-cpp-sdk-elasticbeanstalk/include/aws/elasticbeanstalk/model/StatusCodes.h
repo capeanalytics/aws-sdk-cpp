@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -34,7 +35,9 @@ namespace Model
    * <p>Represents the percentage of requests over the last 10 seconds that resulted
    * in each type of status code response. For more information, see <a
    * href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code
-   * Definitions</a>.</p>
+   * Definitions</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/StatusCodes">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API StatusCodes
   {

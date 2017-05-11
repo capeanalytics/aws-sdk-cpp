@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/cloudtrail/model/LookupAttributeKey.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Specifies an attribute and value that filter the events returned.</p>
+   * <p>Specifies an attribute and value that filter the events
+   * returned.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/LookupAttribute">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API LookupAttribute
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>Specifies an attribute on which to filter the events returned.</p>
      */
-    inline void SetAttributeKey(LookupAttributeKey&& value) { m_attributeKeyHasBeenSet = true; m_attributeKey = value; }
+    inline void SetAttributeKey(LookupAttributeKey&& value) { m_attributeKeyHasBeenSet = true; m_attributeKey = std::move(value); }
 
     /**
      * <p>Specifies an attribute on which to filter the events returned.</p>
@@ -65,7 +70,7 @@ namespace Model
     /**
      * <p>Specifies an attribute on which to filter the events returned.</p>
      */
-    inline LookupAttribute& WithAttributeKey(LookupAttributeKey&& value) { SetAttributeKey(value); return *this;}
+    inline LookupAttribute& WithAttributeKey(LookupAttributeKey&& value) { SetAttributeKey(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a value for the specified AttributeKey.</p>
@@ -80,7 +85,7 @@ namespace Model
     /**
      * <p>Specifies a value for the specified AttributeKey.</p>
      */
-    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
+    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
 
     /**
      * <p>Specifies a value for the specified AttributeKey.</p>
@@ -95,7 +100,7 @@ namespace Model
     /**
      * <p>Specifies a value for the specified AttributeKey.</p>
      */
-    inline LookupAttribute& WithAttributeValue(Aws::String&& value) { SetAttributeValue(value); return *this;}
+    inline LookupAttribute& WithAttributeValue(Aws::String&& value) { SetAttributeValue(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a value for the specified AttributeKey.</p>

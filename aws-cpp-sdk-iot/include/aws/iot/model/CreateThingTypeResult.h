@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iot/IoT_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace IoT
 namespace Model
 {
   /**
-   * <p>The output of the CreateThingType operation.</p>
+   * <p>The output of the CreateThingType operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateThingTypeResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IOT_API CreateThingTypeResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The name of the thing type.</p>
      */
-    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeName = value; }
+    inline void SetThingTypeName(Aws::String&& value) { m_thingTypeName = std::move(value); }
 
     /**
      * <p>The name of the thing type.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The name of the thing type.</p>
      */
-    inline CreateThingTypeResult& WithThingTypeName(Aws::String&& value) { SetThingTypeName(value); return *this;}
+    inline CreateThingTypeResult& WithThingTypeName(Aws::String&& value) { SetThingTypeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the thing type.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the thing type.</p>
      */
-    inline void SetThingTypeArn(Aws::String&& value) { m_thingTypeArn = value; }
+    inline void SetThingTypeArn(Aws::String&& value) { m_thingTypeArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the thing type.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the thing type.</p>
      */
-    inline CreateThingTypeResult& WithThingTypeArn(Aws::String&& value) { SetThingTypeArn(value); return *this;}
+    inline CreateThingTypeResult& WithThingTypeArn(Aws::String&& value) { SetThingTypeArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the thing type.</p>

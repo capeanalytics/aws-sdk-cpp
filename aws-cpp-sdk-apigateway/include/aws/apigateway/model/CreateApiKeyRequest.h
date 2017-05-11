@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/apigateway/APIGateway_EXPORTS.h>
 #include <aws/apigateway/APIGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/apigateway/model/StageKey.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,13 +29,16 @@ namespace Model
 {
 
   /**
-   * <p>Request to create an <a>ApiKey</a> resource.</p>
+   * <p>Request to create an <a>ApiKey</a> resource.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/apigateway-2015-07-09/CreateApiKeyRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_APIGATEWAY_API CreateApiKeyRequest : public APIGatewayRequest
   {
   public:
     CreateApiKeyRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The name of the <a>ApiKey</a>.</p>
@@ -48,7 +53,7 @@ namespace Model
     /**
      * <p>The name of the <a>ApiKey</a>.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name of the <a>ApiKey</a>.</p>
@@ -63,7 +68,7 @@ namespace Model
     /**
      * <p>The name of the <a>ApiKey</a>.</p>
      */
-    inline CreateApiKeyRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreateApiKeyRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the <a>ApiKey</a>.</p>
@@ -83,7 +88,7 @@ namespace Model
     /**
      * <p>The description of the <a>ApiKey</a>.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description of the <a>ApiKey</a>.</p>
@@ -98,7 +103,7 @@ namespace Model
     /**
      * <p>The description of the <a>ApiKey</a>.</p>
      */
-    inline CreateApiKeyRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline CreateApiKeyRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the <a>ApiKey</a>.</p>
@@ -151,7 +156,7 @@ namespace Model
     /**
      * <p>Specifies a value of the API key.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>Specifies a value of the API key.</p>
@@ -166,7 +171,7 @@ namespace Model
     /**
      * <p>Specifies a value of the API key.</p>
      */
-    inline CreateApiKeyRequest& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline CreateApiKeyRequest& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a value of the API key.</p>
@@ -189,7 +194,7 @@ namespace Model
      * <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
      * key.</p>
      */
-    inline void SetStageKeys(Aws::Vector<StageKey>&& value) { m_stageKeysHasBeenSet = true; m_stageKeys = value; }
+    inline void SetStageKeys(Aws::Vector<StageKey>&& value) { m_stageKeysHasBeenSet = true; m_stageKeys = std::move(value); }
 
     /**
      * <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
@@ -201,7 +206,7 @@ namespace Model
      * <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
      * key.</p>
      */
-    inline CreateApiKeyRequest& WithStageKeys(Aws::Vector<StageKey>&& value) { SetStageKeys(value); return *this;}
+    inline CreateApiKeyRequest& WithStageKeys(Aws::Vector<StageKey>&& value) { SetStageKeys(std::move(value)); return *this;}
 
     /**
      * <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
@@ -213,7 +218,49 @@ namespace Model
      * <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
      * key.</p>
      */
-    inline CreateApiKeyRequest& AddStageKeys(StageKey&& value) { m_stageKeysHasBeenSet = true; m_stageKeys.push_back(value); return *this; }
+    inline CreateApiKeyRequest& AddStageKeys(StageKey&& value) { m_stageKeysHasBeenSet = true; m_stageKeys.push_back(std::move(value)); return *this; }
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline const Aws::String& GetCustomerId() const{ return m_customerId; }
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline void SetCustomerId(const Aws::String& value) { m_customerIdHasBeenSet = true; m_customerId = value; }
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline void SetCustomerId(Aws::String&& value) { m_customerIdHasBeenSet = true; m_customerId = std::move(value); }
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline void SetCustomerId(const char* value) { m_customerIdHasBeenSet = true; m_customerId.assign(value); }
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline CreateApiKeyRequest& WithCustomerId(const Aws::String& value) { SetCustomerId(value); return *this;}
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline CreateApiKeyRequest& WithCustomerId(Aws::String&& value) { SetCustomerId(std::move(value)); return *this;}
+
+    /**
+     * <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS
+     * Marketplace.</p>
+     */
+    inline CreateApiKeyRequest& WithCustomerId(const char* value) { SetCustomerId(value); return *this;}
 
   private:
     Aws::String m_name;
@@ -228,6 +275,8 @@ namespace Model
     bool m_valueHasBeenSet;
     Aws::Vector<StageKey> m_stageKeys;
     bool m_stageKeysHasBeenSet;
+    Aws::String m_customerId;
+    bool m_customerIdHasBeenSet;
   };
 
 } // namespace Model

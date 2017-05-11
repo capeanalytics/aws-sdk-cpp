@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides options for specifying a range inventory retrieval job.</p>
+   * <p>Provides options for specifying a range inventory retrieval
+   * job.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/InventoryRetrievalJobInput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API InventoryRetrievalJobInput
   {
@@ -43,99 +48,99 @@ namespace Model
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline const Aws::String& GetStartDate() const{ return m_startDate; }
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline void SetStartDate(const Aws::String& value) { m_startDateHasBeenSet = true; m_startDate = value; }
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
-    inline void SetStartDate(Aws::String&& value) { m_startDateHasBeenSet = true; m_startDate = value; }
+    inline void SetStartDate(Aws::String&& value) { m_startDateHasBeenSet = true; m_startDate = std::move(value); }
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline void SetStartDate(const char* value) { m_startDateHasBeenSet = true; m_startDate.assign(value); }
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline InventoryRetrievalJobInput& WithStartDate(const Aws::String& value) { SetStartDate(value); return *this;}
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
-    inline InventoryRetrievalJobInput& WithStartDate(Aws::String&& value) { SetStartDate(value); return *this;}
+    inline InventoryRetrievalJobInput& WithStartDate(Aws::String&& value) { SetStartDate(std::move(value)); return *this;}
 
     /**
      * <p>The start of the date range in UTC for vault inventory retrieval that
-     * includes archives created on or after this date. A string representation of ISO
-     * 8601 date format, for example, 2013-03-20T17:03:43Z.</p>
+     * includes archives created on or after this date. This value should be a string
+     * in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline InventoryRetrievalJobInput& WithStartDate(const char* value) { SetStartDate(value); return *this;}
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline const Aws::String& GetEndDate() const{ return m_endDate; }
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline void SetEndDate(const Aws::String& value) { m_endDateHasBeenSet = true; m_endDate = value; }
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
-    inline void SetEndDate(Aws::String&& value) { m_endDateHasBeenSet = true; m_endDate = value; }
+    inline void SetEndDate(Aws::String&& value) { m_endDateHasBeenSet = true; m_endDate = std::move(value); }
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline void SetEndDate(const char* value) { m_endDateHasBeenSet = true; m_endDate.assign(value); }
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline InventoryRetrievalJobInput& WithEndDate(const Aws::String& value) { SetEndDate(value); return *this;}
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
-    inline InventoryRetrievalJobInput& WithEndDate(Aws::String&& value) { SetEndDate(value); return *this;}
+    inline InventoryRetrievalJobInput& WithEndDate(Aws::String&& value) { SetEndDate(std::move(value)); return *this;}
 
     /**
      * <p>The end of the date range in UTC for vault inventory retrieval that includes
-     * archives created before this date. A string representation of ISO 8601 date
-     * format, for example, 2013-03-20T17:03:43Z.</p>
+     * archives created before this date. This value should be a string in the ISO 8601
+     * date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
      */
     inline InventoryRetrievalJobInput& WithEndDate(const char* value) { SetEndDate(value); return *this;}
 
@@ -155,7 +160,7 @@ namespace Model
      * <p>Specifies the maximum number of inventory items returned per vault inventory
      * retrieval request. Valid values are greater than or equal to 1.</p>
      */
-    inline void SetLimit(Aws::String&& value) { m_limitHasBeenSet = true; m_limit = value; }
+    inline void SetLimit(Aws::String&& value) { m_limitHasBeenSet = true; m_limit = std::move(value); }
 
     /**
      * <p>Specifies the maximum number of inventory items returned per vault inventory
@@ -173,7 +178,7 @@ namespace Model
      * <p>Specifies the maximum number of inventory items returned per vault inventory
      * retrieval request. Valid values are greater than or equal to 1.</p>
      */
-    inline InventoryRetrievalJobInput& WithLimit(Aws::String&& value) { SetLimit(value); return *this;}
+    inline InventoryRetrievalJobInput& WithLimit(Aws::String&& value) { SetLimit(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the maximum number of inventory items returned per vault inventory
@@ -203,7 +208,7 @@ namespace Model
      * request to obtain additional inventory items. If there are no more inventory
      * items, this value is <code>null</code>.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>An opaque string that represents where to continue pagination of the vault
@@ -227,7 +232,7 @@ namespace Model
      * request to obtain additional inventory items. If there are no more inventory
      * items, this value is <code>null</code>.</p>
      */
-    inline InventoryRetrievalJobInput& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline InventoryRetrievalJobInput& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>An opaque string that represents where to continue pagination of the vault

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace OpsWorks
 namespace Model
 {
   /**
-   * <p>Contains the response to a <code>CreateStack</code> request.</p>
+   * <p>Contains the response to a <code>CreateStack</code> request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/opsworks-2013-02-18/CreateStackResult">AWS
+   * API Reference</a></p>
    */
   class AWS_OPSWORKS_API CreateStackResult
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The stack ID, which is an opaque string that you use to identify the stack
      * when performing actions such as <code>DescribeStacks</code>.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackId = std::move(value); }
 
     /**
      * <p>The stack ID, which is an opaque string that you use to identify the stack
@@ -76,7 +81,7 @@ namespace Model
      * <p>The stack ID, which is an opaque string that you use to identify the stack
      * when performing actions such as <code>DescribeStacks</code>.</p>
      */
-    inline CreateStackResult& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline CreateStackResult& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The stack ID, which is an opaque string that you use to identify the stack

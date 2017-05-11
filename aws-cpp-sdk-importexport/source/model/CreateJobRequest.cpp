@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/importexport/model/CreateJobRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -20,6 +21,7 @@ using namespace Aws::ImportExport::Model;
 using namespace Aws::Utils;
 
 CreateJobRequest::CreateJobRequest() : 
+    m_jobType(JobType::NOT_SET),
     m_jobTypeHasBeenSet(false),
     m_manifestHasBeenSet(false),
     m_manifestAddendumHasBeenSet(false),
@@ -50,7 +52,7 @@ Aws::String CreateJobRequest::SerializePayload() const
 
   if(m_validateOnlyHasBeenSet)
   {
-    ss << "ValidateOnly=" << m_validateOnly << "&";
+    ss << "ValidateOnly=" << std::boolalpha << m_validateOnly << "&";
   }
 
   if(m_aPIVersionHasBeenSet)
@@ -62,3 +64,8 @@ Aws::String CreateJobRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  CreateJobRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

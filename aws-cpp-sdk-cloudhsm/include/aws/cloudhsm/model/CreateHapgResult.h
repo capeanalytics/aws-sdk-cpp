@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CloudHSM
 namespace Model
 {
   /**
-   * <p>Contains the output of the <a>CreateHAPartitionGroup</a> action.</p>
+   * <p>Contains the output of the <a>CreateHAPartitionGroup</a>
+   * action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudhsm-2014-05-30/CreateHapgResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDHSM_API CreateHapgResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The ARN of the high-availability partition group.</p>
      */
-    inline void SetHapgArn(Aws::String&& value) { m_hapgArn = value; }
+    inline void SetHapgArn(Aws::String&& value) { m_hapgArn = std::move(value); }
 
     /**
      * <p>The ARN of the high-availability partition group.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The ARN of the high-availability partition group.</p>
      */
-    inline CreateHapgResult& WithHapgArn(Aws::String&& value) { SetHapgArn(value); return *this;}
+    inline CreateHapgResult& WithHapgArn(Aws::String&& value) { SetHapgArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the high-availability partition group.</p>

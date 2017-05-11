@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p> This data type is used as a response element in the action
-   * <a>DescribeDBEngineVersions</a>. </p>
+   * <a>DescribeDBEngineVersions</a>. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CharacterSet">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API CharacterSet
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the character set.</p>
      */
-    inline void SetCharacterSetName(Aws::String&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = value; }
+    inline void SetCharacterSetName(Aws::String&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = std::move(value); }
 
     /**
      * <p>The name of the character set.</p>
@@ -73,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the character set.</p>
      */
-    inline CharacterSet& WithCharacterSetName(Aws::String&& value) { SetCharacterSetName(value); return *this;}
+    inline CharacterSet& WithCharacterSetName(Aws::String&& value) { SetCharacterSetName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the character set.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The description of the character set.</p>
      */
-    inline void SetCharacterSetDescription(Aws::String&& value) { m_characterSetDescriptionHasBeenSet = true; m_characterSetDescription = value; }
+    inline void SetCharacterSetDescription(Aws::String&& value) { m_characterSetDescriptionHasBeenSet = true; m_characterSetDescription = std::move(value); }
 
     /**
      * <p>The description of the character set.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The description of the character set.</p>
      */
-    inline CharacterSet& WithCharacterSetDescription(Aws::String&& value) { SetCharacterSetDescription(value); return *this;}
+    inline CharacterSet& WithCharacterSetDescription(Aws::String&& value) { SetCharacterSetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the character set.</p>

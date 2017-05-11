@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/ds/DirectoryServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Updates a conditional forwarder.</p>
+   * <p>Updates a conditional forwarder.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/UpdateConditionalForwarderRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API UpdateConditionalForwarderRequest : public DirectoryServiceRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The directory ID of the AWS directory for which to update the conditional
@@ -52,7 +57,7 @@ namespace Model
      * <p>The directory ID of the AWS directory for which to update the conditional
      * forwarder.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
 
     /**
      * <p>The directory ID of the AWS directory for which to update the conditional
@@ -70,7 +75,7 @@ namespace Model
      * <p>The directory ID of the AWS directory for which to update the conditional
      * forwarder.</p>
      */
-    inline UpdateConditionalForwarderRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline UpdateConditionalForwarderRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The directory ID of the AWS directory for which to update the conditional
@@ -94,7 +99,7 @@ namespace Model
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
      * will set up a trust relationship.</p>
      */
-    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = value; }
+    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = std::move(value); }
 
     /**
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
@@ -112,7 +117,7 @@ namespace Model
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
      * will set up a trust relationship.</p>
      */
-    inline UpdateConditionalForwarderRequest& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(value); return *this;}
+    inline UpdateConditionalForwarderRequest& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
@@ -136,7 +141,7 @@ namespace Model
      * <p>The updated IP addresses of the remote DNS server associated with the
      * conditional forwarder.</p>
      */
-    inline void SetDnsIpAddrs(Aws::Vector<Aws::String>&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = value; }
+    inline void SetDnsIpAddrs(Aws::Vector<Aws::String>&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = std::move(value); }
 
     /**
      * <p>The updated IP addresses of the remote DNS server associated with the
@@ -148,7 +153,7 @@ namespace Model
      * <p>The updated IP addresses of the remote DNS server associated with the
      * conditional forwarder.</p>
      */
-    inline UpdateConditionalForwarderRequest& WithDnsIpAddrs(Aws::Vector<Aws::String>&& value) { SetDnsIpAddrs(value); return *this;}
+    inline UpdateConditionalForwarderRequest& WithDnsIpAddrs(Aws::Vector<Aws::String>&& value) { SetDnsIpAddrs(std::move(value)); return *this;}
 
     /**
      * <p>The updated IP addresses of the remote DNS server associated with the
@@ -160,7 +165,7 @@ namespace Model
      * <p>The updated IP addresses of the remote DNS server associated with the
      * conditional forwarder.</p>
      */
-    inline UpdateConditionalForwarderRequest& AddDnsIpAddrs(Aws::String&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(value); return *this; }
+    inline UpdateConditionalForwarderRequest& AddDnsIpAddrs(Aws::String&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The updated IP addresses of the remote DNS server associated with the

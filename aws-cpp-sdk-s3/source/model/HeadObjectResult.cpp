@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/s3/model/HeadObjectResult.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -28,14 +29,24 @@ using namespace Aws;
 HeadObjectResult::HeadObjectResult() : 
     m_deleteMarker(false),
     m_contentLength(0),
-    m_missingMeta(0)
+    m_missingMeta(0),
+    m_serverSideEncryption(ServerSideEncryption::NOT_SET),
+    m_storageClass(StorageClass::NOT_SET),
+    m_requestCharged(RequestCharged::NOT_SET),
+    m_replicationStatus(ReplicationStatus::NOT_SET),
+    m_partsCount(0)
 {
 }
 
 HeadObjectResult::HeadObjectResult(const AmazonWebServiceResult<XmlDocument>& result) : 
     m_deleteMarker(false),
     m_contentLength(0),
-    m_missingMeta(0)
+    m_missingMeta(0),
+    m_serverSideEncryption(ServerSideEncryption::NOT_SET),
+    m_storageClass(StorageClass::NOT_SET),
+    m_requestCharged(RequestCharged::NOT_SET),
+    m_replicationStatus(ReplicationStatus::NOT_SET),
+    m_partsCount(0)
 {
   *this = result;
 }
@@ -197,6 +208,12 @@ HeadObjectResult& HeadObjectResult::operator =(const AmazonWebServiceResult<XmlD
   if(replicationStatusIter != headers.end())
   {
     m_replicationStatus = ReplicationStatusMapper::GetReplicationStatusForName(replicationStatusIter->second);
+  }
+
+  const auto& partsCountIter = headers.find("x-amz-mp-parts-count");
+  if(partsCountIter != headers.end())
+  {
+     m_partsCount = StringUtils::ConvertToInt32(partsCountIter->second.c_str());
   }
 
   return *this;

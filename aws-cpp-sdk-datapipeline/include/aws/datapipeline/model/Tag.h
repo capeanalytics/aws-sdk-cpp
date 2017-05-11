@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/datapipeline/DataPipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * For more information, see <a
    * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
    * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-   * Guide</i>.</p>
+   * Guide</i>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datapipeline-2012-10-29/Tag">AWS
+   * API Reference</a></p>
    */
   class AWS_DATAPIPELINE_API Tag
   {
@@ -68,7 +72,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = value; }
+    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
 
     /**
      * <p>The key name of a tag defined by a user. For more information, see <a
@@ -92,7 +96,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline Tag& WithKey(Aws::String&& value) { SetKey(value); return *this;}
+    inline Tag& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
 
     /**
      * <p>The key name of a tag defined by a user. For more information, see <a
@@ -127,7 +131,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = value; }
+    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
 
     /**
      * <p>The optional value portion of a tag defined by a user. For more information,
@@ -154,7 +158,7 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline Tag& WithValue(Aws::String&& value) { SetValue(value); return *this;}
+    inline Tag& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
 
     /**
      * <p>The optional value portion of a tag defined by a user. For more information,

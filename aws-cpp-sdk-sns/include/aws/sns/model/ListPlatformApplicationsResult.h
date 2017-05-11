@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sns/SNS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/sns/model/ResponseMetadata.h>
 #include <aws/sns/model/PlatformApplication.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace SNS
 namespace Model
 {
   /**
-   * <p>Response for ListPlatformApplications action.</p>
+   * <p>Response for ListPlatformApplications action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListPlatformApplicationsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_SNS_API ListPlatformApplicationsResult
   {
@@ -61,7 +65,7 @@ namespace Model
      * <p>Platform applications returned when calling ListPlatformApplications
      * action.</p>
      */
-    inline void SetPlatformApplications(Aws::Vector<PlatformApplication>&& value) { m_platformApplications = value; }
+    inline void SetPlatformApplications(Aws::Vector<PlatformApplication>&& value) { m_platformApplications = std::move(value); }
 
     /**
      * <p>Platform applications returned when calling ListPlatformApplications
@@ -73,7 +77,7 @@ namespace Model
      * <p>Platform applications returned when calling ListPlatformApplications
      * action.</p>
      */
-    inline ListPlatformApplicationsResult& WithPlatformApplications(Aws::Vector<PlatformApplication>&& value) { SetPlatformApplications(value); return *this;}
+    inline ListPlatformApplicationsResult& WithPlatformApplications(Aws::Vector<PlatformApplication>&& value) { SetPlatformApplications(std::move(value)); return *this;}
 
     /**
      * <p>Platform applications returned when calling ListPlatformApplications
@@ -85,7 +89,7 @@ namespace Model
      * <p>Platform applications returned when calling ListPlatformApplications
      * action.</p>
      */
-    inline ListPlatformApplicationsResult& AddPlatformApplications(PlatformApplication&& value) { m_platformApplications.push_back(value); return *this; }
+    inline ListPlatformApplicationsResult& AddPlatformApplications(PlatformApplication&& value) { m_platformApplications.push_back(std::move(value)); return *this; }
 
     /**
      * <p>NextToken string is returned when calling ListPlatformApplications action if
@@ -103,7 +107,7 @@ namespace Model
      * <p>NextToken string is returned when calling ListPlatformApplications action if
      * additional records are available after the first page results.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>NextToken string is returned when calling ListPlatformApplications action if
@@ -121,7 +125,7 @@ namespace Model
      * <p>NextToken string is returned when calling ListPlatformApplications action if
      * additional records are available after the first page results.</p>
      */
-    inline ListPlatformApplicationsResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListPlatformApplicationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>NextToken string is returned when calling ListPlatformApplications action if
@@ -136,13 +140,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline ListPlatformApplicationsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline ListPlatformApplicationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline ListPlatformApplicationsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<PlatformApplication> m_platformApplications;

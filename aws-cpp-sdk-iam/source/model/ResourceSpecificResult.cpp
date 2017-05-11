@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iam/model/ResourceSpecificResult.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,6 +32,7 @@ namespace Model
 
 ResourceSpecificResult::ResourceSpecificResult() : 
     m_evalResourceNameHasBeenSet(false),
+    m_evalResourceDecision(PolicyEvaluationDecisionType::NOT_SET),
     m_evalResourceDecisionHasBeenSet(false),
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),
@@ -40,6 +42,7 @@ ResourceSpecificResult::ResourceSpecificResult() :
 
 ResourceSpecificResult::ResourceSpecificResult(const XmlNode& xmlNode) : 
     m_evalResourceNameHasBeenSet(false),
+    m_evalResourceDecision(PolicyEvaluationDecisionType::NOT_SET),
     m_evalResourceDecisionHasBeenSet(false),
     m_matchedStatementsHasBeenSet(false),
     m_missingContextValuesHasBeenSet(false),

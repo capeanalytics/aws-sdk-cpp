@@ -16,7 +16,7 @@
 #include <aws/core/config/AWSProfileConfigLoader.h>
 #include <aws/core/utils/FileSystemUtils.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
-#include <aws/testing/mocks/aws/auth/MockEC2MetadataClient.h>
+#include <aws/testing/mocks/aws/auth/MockAWSHttpResourceClient.h>
 #include <fstream>
 
 using namespace Aws::Utils;

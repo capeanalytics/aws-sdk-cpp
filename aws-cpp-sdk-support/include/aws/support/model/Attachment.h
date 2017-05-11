@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/Array.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 
   /**
    * <p>An attachment to a case communication. The attachment consists of the file
-   * name and the content of the file.</p>
+   * name and the content of the file.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/Attachment">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API Attachment
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>The name of the attachment file.</p>
      */
-    inline void SetFileName(Aws::String&& value) { m_fileNameHasBeenSet = true; m_fileName = value; }
+    inline void SetFileName(Aws::String&& value) { m_fileNameHasBeenSet = true; m_fileName = std::move(value); }
 
     /**
      * <p>The name of the attachment file.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>The name of the attachment file.</p>
      */
-    inline Attachment& WithFileName(Aws::String&& value) { SetFileName(value); return *this;}
+    inline Attachment& WithFileName(Aws::String&& value) { SetFileName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attachment file.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The content of the attachment file.</p>
      */
-    inline void SetData(Aws::Utils::ByteBuffer&& value) { m_dataHasBeenSet = true; m_data = value; }
+    inline void SetData(Aws::Utils::ByteBuffer&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
 
     /**
      * <p>The content of the attachment file.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The content of the attachment file.</p>
      */
-    inline Attachment& WithData(Aws::Utils::ByteBuffer&& value) { SetData(value); return *this;}
+    inline Attachment& WithData(Aws::Utils::ByteBuffer&& value) { SetData(std::move(value)); return *this;}
 
   private:
     Aws::String m_fileName;

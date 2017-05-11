@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ModifyVpcEndpoint.</p>
+   * <p>Contains the parameters for ModifyVpcEndpoint.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVpcEndpointRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ModifyVpcEndpointRequest : public EC2Request
   {
@@ -34,6 +38,11 @@ namespace Model
     ModifyVpcEndpointRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -71,7 +80,7 @@ namespace Model
     /**
      * <p>The ID of the endpoint.</p>
      */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
+    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
 
     /**
      * <p>The ID of the endpoint.</p>
@@ -86,7 +95,7 @@ namespace Model
     /**
      * <p>The ID of the endpoint.</p>
      */
-    inline ModifyVpcEndpointRequest& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(value); return *this;}
+    inline ModifyVpcEndpointRequest& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the endpoint.</p>
@@ -113,43 +122,43 @@ namespace Model
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
     inline const Aws::String& GetPolicyDocument() const{ return m_policyDocument; }
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
     inline void SetPolicyDocument(const Aws::String& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = value; }
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
-    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = value; }
+    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocumentHasBeenSet = true; m_policyDocument = std::move(value); }
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
     inline void SetPolicyDocument(const char* value) { m_policyDocumentHasBeenSet = true; m_policyDocument.assign(value); }
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
     inline ModifyVpcEndpointRequest& WithPolicyDocument(const Aws::String& value) { SetPolicyDocument(value); return *this;}
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
-    inline ModifyVpcEndpointRequest& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(value); return *this;}
+    inline ModifyVpcEndpointRequest& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(std::move(value)); return *this;}
 
     /**
      * <p>A policy document to attach to the endpoint. The policy must be in valid JSON
-     * format. </p>
+     * format.</p>
      */
     inline ModifyVpcEndpointRequest& WithPolicyDocument(const char* value) { SetPolicyDocument(value); return *this;}
 
@@ -166,7 +175,7 @@ namespace Model
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
      */
-    inline void SetAddRouteTableIds(Aws::Vector<Aws::String>&& value) { m_addRouteTableIdsHasBeenSet = true; m_addRouteTableIds = value; }
+    inline void SetAddRouteTableIds(Aws::Vector<Aws::String>&& value) { m_addRouteTableIdsHasBeenSet = true; m_addRouteTableIds = std::move(value); }
 
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
@@ -176,7 +185,7 @@ namespace Model
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
      */
-    inline ModifyVpcEndpointRequest& WithAddRouteTableIds(Aws::Vector<Aws::String>&& value) { SetAddRouteTableIds(value); return *this;}
+    inline ModifyVpcEndpointRequest& WithAddRouteTableIds(Aws::Vector<Aws::String>&& value) { SetAddRouteTableIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
@@ -186,7 +195,7 @@ namespace Model
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
      */
-    inline ModifyVpcEndpointRequest& AddAddRouteTableIds(Aws::String&& value) { m_addRouteTableIdsHasBeenSet = true; m_addRouteTableIds.push_back(value); return *this; }
+    inline ModifyVpcEndpointRequest& AddAddRouteTableIds(Aws::String&& value) { m_addRouteTableIdsHasBeenSet = true; m_addRouteTableIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more route tables IDs to associate with the endpoint.</p>
@@ -206,7 +215,7 @@ namespace Model
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>
      */
-    inline void SetRemoveRouteTableIds(Aws::Vector<Aws::String>&& value) { m_removeRouteTableIdsHasBeenSet = true; m_removeRouteTableIds = value; }
+    inline void SetRemoveRouteTableIds(Aws::Vector<Aws::String>&& value) { m_removeRouteTableIdsHasBeenSet = true; m_removeRouteTableIds = std::move(value); }
 
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>
@@ -216,7 +225,7 @@ namespace Model
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>
      */
-    inline ModifyVpcEndpointRequest& WithRemoveRouteTableIds(Aws::Vector<Aws::String>&& value) { SetRemoveRouteTableIds(value); return *this;}
+    inline ModifyVpcEndpointRequest& WithRemoveRouteTableIds(Aws::Vector<Aws::String>&& value) { SetRemoveRouteTableIds(std::move(value)); return *this;}
 
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>
@@ -226,7 +235,7 @@ namespace Model
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>
      */
-    inline ModifyVpcEndpointRequest& AddRemoveRouteTableIds(Aws::String&& value) { m_removeRouteTableIdsHasBeenSet = true; m_removeRouteTableIds.push_back(value); return *this; }
+    inline ModifyVpcEndpointRequest& AddRemoveRouteTableIds(Aws::String&& value) { m_removeRouteTableIdsHasBeenSet = true; m_removeRouteTableIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>One or more route table IDs to disassociate from the endpoint.</p>

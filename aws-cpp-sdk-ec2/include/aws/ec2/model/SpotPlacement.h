@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/ec2/model/Tenancy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes Spot instance placement.</p>
+   * <p>Describes Spot instance placement.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SpotPlacement">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API SpotPlacement
   {
@@ -63,7 +68,7 @@ namespace Model
      * Availability Zones, separate them using commas; for example, "us-west-2a,
      * us-west-2b".</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone.</p> <p>[Spot fleet only] To specify multiple
@@ -84,7 +89,7 @@ namespace Model
      * Availability Zones, separate them using commas; for example, "us-west-2a,
      * us-west-2b".</p>
      */
-    inline SpotPlacement& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline SpotPlacement& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone.</p> <p>[Spot fleet only] To specify multiple
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The name of the placement group (for cluster instances).</p>
      */
-    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = value; }
+    inline void SetGroupName(Aws::String&& value) { m_groupNameHasBeenSet = true; m_groupName = std::move(value); }
 
     /**
      * <p>The name of the placement group (for cluster instances).</p>
@@ -121,18 +126,55 @@ namespace Model
     /**
      * <p>The name of the placement group (for cluster instances).</p>
      */
-    inline SpotPlacement& WithGroupName(Aws::String&& value) { SetGroupName(value); return *this;}
+    inline SpotPlacement& WithGroupName(Aws::String&& value) { SetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the placement group (for cluster instances).</p>
      */
     inline SpotPlacement& WithGroupName(const char* value) { SetGroupName(value); return *this;}
 
+    /**
+     * <p>The tenancy of the instance (if the instance is running in a VPC). An
+     * instance with a tenancy of <code>dedicated</code> runs on single-tenant
+     * hardware. The <code>host</code> tenancy is not supported for Spot instances.</p>
+     */
+    inline const Tenancy& GetTenancy() const{ return m_tenancy; }
+
+    /**
+     * <p>The tenancy of the instance (if the instance is running in a VPC). An
+     * instance with a tenancy of <code>dedicated</code> runs on single-tenant
+     * hardware. The <code>host</code> tenancy is not supported for Spot instances.</p>
+     */
+    inline void SetTenancy(const Tenancy& value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
+
+    /**
+     * <p>The tenancy of the instance (if the instance is running in a VPC). An
+     * instance with a tenancy of <code>dedicated</code> runs on single-tenant
+     * hardware. The <code>host</code> tenancy is not supported for Spot instances.</p>
+     */
+    inline void SetTenancy(Tenancy&& value) { m_tenancyHasBeenSet = true; m_tenancy = std::move(value); }
+
+    /**
+     * <p>The tenancy of the instance (if the instance is running in a VPC). An
+     * instance with a tenancy of <code>dedicated</code> runs on single-tenant
+     * hardware. The <code>host</code> tenancy is not supported for Spot instances.</p>
+     */
+    inline SpotPlacement& WithTenancy(const Tenancy& value) { SetTenancy(value); return *this;}
+
+    /**
+     * <p>The tenancy of the instance (if the instance is running in a VPC). An
+     * instance with a tenancy of <code>dedicated</code> runs on single-tenant
+     * hardware. The <code>host</code> tenancy is not supported for Spot instances.</p>
+     */
+    inline SpotPlacement& WithTenancy(Tenancy&& value) { SetTenancy(std::move(value)); return *this;}
+
   private:
     Aws::String m_availabilityZone;
     bool m_availabilityZoneHasBeenSet;
     Aws::String m_groupName;
     bool m_groupNameHasBeenSet;
+    Tenancy m_tenancy;
+    bool m_tenancyHasBeenSet;
   };
 
 } // namespace Model

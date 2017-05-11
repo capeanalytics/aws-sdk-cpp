@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/sqs/model/SendMessageBatchRequestEntry.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,7 +35,9 @@ SendMessageBatchRequestEntry::SendMessageBatchRequestEntry() :
     m_messageBodyHasBeenSet(false),
     m_delaySeconds(0),
     m_delaySecondsHasBeenSet(false),
-    m_messageAttributesHasBeenSet(false)
+    m_messageAttributesHasBeenSet(false),
+    m_messageDeduplicationIdHasBeenSet(false),
+    m_messageGroupIdHasBeenSet(false)
 {
 }
 
@@ -43,7 +46,9 @@ SendMessageBatchRequestEntry::SendMessageBatchRequestEntry(const XmlNode& xmlNod
     m_messageBodyHasBeenSet(false),
     m_delaySeconds(0),
     m_delaySecondsHasBeenSet(false),
-    m_messageAttributesHasBeenSet(false)
+    m_messageAttributesHasBeenSet(false),
+    m_messageDeduplicationIdHasBeenSet(false),
+    m_messageGroupIdHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -87,6 +92,18 @@ SendMessageBatchRequestEntry& SendMessageBatchRequestEntry::operator =(const Xml
 
       m_messageAttributesHasBeenSet = true;
     }
+    XmlNode messageDeduplicationIdNode = resultNode.FirstChild("MessageDeduplicationId");
+    if(!messageDeduplicationIdNode.IsNull())
+    {
+      m_messageDeduplicationId = StringUtils::Trim(messageDeduplicationIdNode.GetText().c_str());
+      m_messageDeduplicationIdHasBeenSet = true;
+    }
+    XmlNode messageGroupIdNode = resultNode.FirstChild("MessageGroupId");
+    if(!messageGroupIdNode.IsNull())
+    {
+      m_messageGroupId = StringUtils::Trim(messageGroupIdNode.GetText().c_str());
+      m_messageGroupIdHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -123,6 +140,16 @@ void SendMessageBatchRequestEntry::OutputToStream(Aws::OStream& oStream, const c
       }
   }
 
+  if(m_messageDeduplicationIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MessageDeduplicationId=" << StringUtils::URLEncode(m_messageDeduplicationId.c_str()) << "&";
+  }
+
+  if(m_messageGroupIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MessageGroupId=" << StringUtils::URLEncode(m_messageGroupId.c_str()) << "&";
+  }
+
 }
 
 void SendMessageBatchRequestEntry::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -152,6 +179,14 @@ void SendMessageBatchRequestEntry::OutputToStream(Aws::OStream& oStream, const c
         messageAttributesIdx++;
       }
 
+  }
+  if(m_messageDeduplicationIdHasBeenSet)
+  {
+      oStream << location << ".MessageDeduplicationId=" << StringUtils::URLEncode(m_messageDeduplicationId.c_str()) << "&";
+  }
+  if(m_messageGroupIdHasBeenSet)
+  {
+      oStream << location << ".MessageGroupId=" << StringUtils::URLEncode(m_messageGroupId.c_str()) << "&";
   }
 }
 

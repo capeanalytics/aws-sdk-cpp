@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/cloudtrail/CloudTrailRequest.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Requests the public keys for a specified time range.</p>
+   * <p>Requests the public keys for a specified time range.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListPublicKeysRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API ListPublicKeysRequest : public CloudTrailRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Optionally specifies, in UTC, the start of the time range to look up public
@@ -55,7 +61,7 @@ namespace Model
      * keys for CloudTrail digest files. If not specified, the current time is used,
      * and the current public key is returned.</p>
      */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
+    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
 
     /**
      * <p>Optionally specifies, in UTC, the start of the time range to look up public
@@ -69,7 +75,7 @@ namespace Model
      * keys for CloudTrail digest files. If not specified, the current time is used,
      * and the current public key is returned.</p>
      */
-    inline ListPublicKeysRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(value); return *this;}
+    inline ListPublicKeysRequest& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
 
     /**
      * <p>Optionally specifies, in UTC, the end of the time range to look up public
@@ -90,7 +96,7 @@ namespace Model
      * keys for CloudTrail digest files. If not specified, the current time is
      * used.</p>
      */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
+    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
 
     /**
      * <p>Optionally specifies, in UTC, the end of the time range to look up public
@@ -104,7 +110,7 @@ namespace Model
      * keys for CloudTrail digest files. If not specified, the current time is
      * used.</p>
      */
-    inline ListPublicKeysRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(value); return *this;}
+    inline ListPublicKeysRequest& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>
@@ -119,7 +125,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>Reserved for future use.</p>
@@ -134,7 +140,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline ListPublicKeysRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListPublicKeysRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>

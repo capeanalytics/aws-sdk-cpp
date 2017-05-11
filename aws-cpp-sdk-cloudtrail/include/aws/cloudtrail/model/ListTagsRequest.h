@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudtrail/CloudTrail_EXPORTS.h>
 #include <aws/cloudtrail/CloudTrailRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,9 @@ namespace Model
 {
 
   /**
-   * <p>Specifies a list of trail tags to return.</p>
+   * <p>Specifies a list of trail tags to return.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudtrail-2013-11-01/ListTagsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDTRAIL_API ListTagsRequest : public CloudTrailRequest
   {
@@ -35,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>Specifies a list of trail ARNs whose tags will be listed. The list has a
@@ -55,7 +60,7 @@ namespace Model
      * limit of 20 ARNs. The format of a trail ARN is:</p> <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
      */
-    inline void SetResourceIdList(Aws::Vector<Aws::String>&& value) { m_resourceIdListHasBeenSet = true; m_resourceIdList = value; }
+    inline void SetResourceIdList(Aws::Vector<Aws::String>&& value) { m_resourceIdListHasBeenSet = true; m_resourceIdList = std::move(value); }
 
     /**
      * <p>Specifies a list of trail ARNs whose tags will be listed. The list has a
@@ -69,7 +74,7 @@ namespace Model
      * limit of 20 ARNs. The format of a trail ARN is:</p> <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
      */
-    inline ListTagsRequest& WithResourceIdList(Aws::Vector<Aws::String>&& value) { SetResourceIdList(value); return *this;}
+    inline ListTagsRequest& WithResourceIdList(Aws::Vector<Aws::String>&& value) { SetResourceIdList(std::move(value)); return *this;}
 
     /**
      * <p>Specifies a list of trail ARNs whose tags will be listed. The list has a
@@ -83,7 +88,7 @@ namespace Model
      * limit of 20 ARNs. The format of a trail ARN is:</p> <p>
      * <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
      */
-    inline ListTagsRequest& AddResourceIdList(Aws::String&& value) { m_resourceIdListHasBeenSet = true; m_resourceIdList.push_back(value); return *this; }
+    inline ListTagsRequest& AddResourceIdList(Aws::String&& value) { m_resourceIdListHasBeenSet = true; m_resourceIdList.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Specifies a list of trail ARNs whose tags will be listed. The list has a
@@ -105,7 +110,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>Reserved for future use.</p>
@@ -120,7 +125,7 @@ namespace Model
     /**
      * <p>Reserved for future use.</p>
      */
-    inline ListTagsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListTagsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>Reserved for future use.</p>

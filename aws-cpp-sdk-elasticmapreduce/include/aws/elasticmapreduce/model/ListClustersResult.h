@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/elasticmapreduce/model/ClusterSummary.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
 {
   /**
    * <p>This contains a ClusterSummaryList with the cluster details; for example, the
-   * cluster IDs, names, and status.</p>
+   * cluster IDs, names, and status.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListClustersOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API ListClustersResult
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The list of clusters for the account based on the given filters.</p>
      */
-    inline void SetClusters(Aws::Vector<ClusterSummary>&& value) { m_clusters = value; }
+    inline void SetClusters(Aws::Vector<ClusterSummary>&& value) { m_clusters = std::move(value); }
 
     /**
      * <p>The list of clusters for the account based on the given filters.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>The list of clusters for the account based on the given filters.</p>
      */
-    inline ListClustersResult& WithClusters(Aws::Vector<ClusterSummary>&& value) { SetClusters(value); return *this;}
+    inline ListClustersResult& WithClusters(Aws::Vector<ClusterSummary>&& value) { SetClusters(std::move(value)); return *this;}
 
     /**
      * <p>The list of clusters for the account based on the given filters.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>The list of clusters for the account based on the given filters.</p>
      */
-    inline ListClustersResult& AddClusters(ClusterSummary&& value) { m_clusters.push_back(value); return *this; }
+    inline ListClustersResult& AddClusters(ClusterSummary&& value) { m_clusters.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
@@ -93,7 +97,7 @@ namespace Model
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
 
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline ListClustersResult& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline ListClustersResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>

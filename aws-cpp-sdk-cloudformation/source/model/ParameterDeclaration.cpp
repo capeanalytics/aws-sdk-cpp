@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cloudformation/model/ParameterDeclaration.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -118,7 +119,7 @@ void ParameterDeclaration::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_noEchoHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NoEcho=" << m_noEcho << "&";
+      oStream << location << index << locationValue << ".NoEcho=" << std::boolalpha << m_noEcho << "&";
   }
 
   if(m_descriptionHasBeenSet)
@@ -151,7 +152,7 @@ void ParameterDeclaration::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_noEchoHasBeenSet)
   {
-      oStream << location << ".NoEcho=" << m_noEcho << "&";
+      oStream << location << ".NoEcho=" << std::boolalpha << m_noEcho << "&";
   }
   if(m_descriptionHasBeenSet)
   {

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/ConfigServiceRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,6 +28,9 @@ namespace Model
 {
 
   /**
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartConfigRulesEvaluationRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API StartConfigRulesEvaluationRequest : public ConfigServiceRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
      */
-    inline void SetConfigRuleNames(Aws::Vector<Aws::String>&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames = value; }
+    inline void SetConfigRuleNames(Aws::Vector<Aws::String>&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames = std::move(value); }
 
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
@@ -58,7 +64,7 @@ namespace Model
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
      */
-    inline StartConfigRulesEvaluationRequest& WithConfigRuleNames(Aws::Vector<Aws::String>&& value) { SetConfigRuleNames(value); return *this;}
+    inline StartConfigRulesEvaluationRequest& WithConfigRuleNames(Aws::Vector<Aws::String>&& value) { SetConfigRuleNames(std::move(value)); return *this;}
 
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
@@ -68,7 +74,7 @@ namespace Model
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>
      */
-    inline StartConfigRulesEvaluationRequest& AddConfigRuleNames(Aws::String&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.push_back(value); return *this; }
+    inline StartConfigRulesEvaluationRequest& AddConfigRuleNames(Aws::String&& value) { m_configRuleNamesHasBeenSet = true; m_configRuleNames.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The list of names of Config rules that you want to run evaluations for.</p>

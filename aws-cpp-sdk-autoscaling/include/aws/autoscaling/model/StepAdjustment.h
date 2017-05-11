@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -47,7 +48,9 @@ namespace Model
    * adjustment can have a null upper bound. If one step adjustment has a positive
    * upper bound, then there must be a step adjustment with a null upper bound.</p>
    * </li> <li> <p>The upper and lower bound can't be null in the same step
-   * adjustment.</p> </li> </ul>
+   * adjustment.</p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/StepAdjustment">AWS
+   * API Reference</a></p>
    */
   class AWS_AUTOSCALING_API StepAdjustment
   {

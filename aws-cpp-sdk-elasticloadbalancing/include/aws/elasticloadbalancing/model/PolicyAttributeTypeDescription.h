@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a policy attribute type.</p>
+   * <p>Information about a policy attribute type.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/PolicyAttributeTypeDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API PolicyAttributeTypeDescription
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
+    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
 
     /**
      * <p>The name of the attribute.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The name of the attribute.</p>
      */
-    inline PolicyAttributeTypeDescription& WithAttributeName(Aws::String&& value) { SetAttributeName(value); return *this;}
+    inline PolicyAttributeTypeDescription& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the attribute.</p>
@@ -95,7 +99,7 @@ namespace Model
      * <p>The type of the attribute. For example, <code>Boolean</code> or
      * <code>Integer</code>.</p>
      */
-    inline void SetAttributeType(Aws::String&& value) { m_attributeTypeHasBeenSet = true; m_attributeType = value; }
+    inline void SetAttributeType(Aws::String&& value) { m_attributeTypeHasBeenSet = true; m_attributeType = std::move(value); }
 
     /**
      * <p>The type of the attribute. For example, <code>Boolean</code> or
@@ -113,7 +117,7 @@ namespace Model
      * <p>The type of the attribute. For example, <code>Boolean</code> or
      * <code>Integer</code>.</p>
      */
-    inline PolicyAttributeTypeDescription& WithAttributeType(Aws::String&& value) { SetAttributeType(value); return *this;}
+    inline PolicyAttributeTypeDescription& WithAttributeType(Aws::String&& value) { SetAttributeType(std::move(value)); return *this;}
 
     /**
      * <p>The type of the attribute. For example, <code>Boolean</code> or
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p>A description of the attribute.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the attribute.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p>A description of the attribute.</p>
      */
-    inline PolicyAttributeTypeDescription& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline PolicyAttributeTypeDescription& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the attribute.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The default value of the attribute, if applicable.</p>
      */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
+    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
 
     /**
      * <p>The default value of the attribute, if applicable.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The default value of the attribute, if applicable.</p>
      */
-    inline PolicyAttributeTypeDescription& WithDefaultValue(Aws::String&& value) { SetDefaultValue(value); return *this;}
+    inline PolicyAttributeTypeDescription& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
 
     /**
      * <p>The default value of the attribute, if applicable.</p>
@@ -216,7 +220,7 @@ namespace Model
      * values are allowed</p> </li> <li> <p>ONE_OR_MORE(1..*0) : Required. Multiple
      * values are allowed</p> </li> </ul>
      */
-    inline void SetCardinality(Aws::String&& value) { m_cardinalityHasBeenSet = true; m_cardinality = value; }
+    inline void SetCardinality(Aws::String&& value) { m_cardinalityHasBeenSet = true; m_cardinality = std::move(value); }
 
     /**
      * <p>The cardinality of the attribute.</p> <p>Valid values:</p> <ul> <li>
@@ -243,7 +247,7 @@ namespace Model
      * values are allowed</p> </li> <li> <p>ONE_OR_MORE(1..*0) : Required. Multiple
      * values are allowed</p> </li> </ul>
      */
-    inline PolicyAttributeTypeDescription& WithCardinality(Aws::String&& value) { SetCardinality(value); return *this;}
+    inline PolicyAttributeTypeDescription& WithCardinality(Aws::String&& value) { SetCardinality(std::move(value)); return *this;}
 
     /**
      * <p>The cardinality of the attribute.</p> <p>Valid values:</p> <ul> <li>

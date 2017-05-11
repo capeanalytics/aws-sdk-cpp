@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/model/ErrorCode.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a deployment error.</p>
+   * <p>Information about a deployment error.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/ErrorInformation">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API ErrorInformation
   {
@@ -43,129 +47,154 @@ namespace Model
     Aws::Utils::Json::JsonValue Jsonize() const;
 
     /**
-     * <p>The error code:</p> <ul> <li>APPLICATION_MISSING: The application was
-     * missing. This error code will most likely be raised if the application is
-     * deleted after the deployment is created but before it is started.</li>
-     * <li>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code
-     * will most likely be raised if the deployment group is deleted after the
-     * deployment is created but before it is started.</li> <li>HEALTH_CONSTRAINTS: The
-     * deployment failed on too many instances to be successfully deployed within the
-     * instance health constraints specified.</li> <li>HEALTH_CONSTRAINTS_INVALID: The
-     * revision cannot be successfully deployed within the instance health constraints
-     * specified.</li> <li>IAM_ROLE_MISSING: The service role cannot be accessed.</li>
-     * <li>IAM_ROLE_PERMISSIONS: The service role does not have the correct
-     * permissions.</li> <li>INTERNAL_ERROR: There was an internal error.</li>
-     * <li>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2
-     * service.</li> <li>NO_INSTANCES: No instance were specified, or no instance can
-     * be found.</li> <li>OVER_MAX_INSTANCES: The maximum number of instance was
-     * exceeded.</li> <li>THROTTLED: The operation was throttled because the calling
-     * account exceeded the throttling limits of one or more AWS services.</li>
-     * <li>TIMEOUT: The deployment has timed out.</li> <li>REVISION_MISSING: The
-     * revision ID was missing. This error code will most likely be raised if the
-     * revision is deleted after the deployment is created but before it is
-     * started.</li> </ul>
+     * <p>For information about additional error codes, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error
+     * Codes for AWS CodeDeploy</a> in the <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy
+     * User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The
+     * application was missing. This error code will most likely be raised if the
+     * application is deleted after the deployment is created but before it is
+     * started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was
+     * missing. This error code will most likely be raised if the deployment group is
+     * deleted after the deployment is created but before it is started.</p> </li> <li>
+     * <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+     * successfully deployed within the instance health constraints specified.</p>
+     * </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+     * deployed within the instance health constraints specified.</p> </li> <li>
+     * <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li>
+     * <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct
+     * permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p>
+     * </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+     * Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified,
+     * or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum
+     * number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was
+     * throttled because the calling account exceeded the throttling limits of one or
+     * more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p>
+     * </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code
+     * will most likely be raised if the revision is deleted after the deployment is
+     * created but before it is started.</p> </li> </ul>
      */
     inline const ErrorCode& GetCode() const{ return m_code; }
 
     /**
-     * <p>The error code:</p> <ul> <li>APPLICATION_MISSING: The application was
-     * missing. This error code will most likely be raised if the application is
-     * deleted after the deployment is created but before it is started.</li>
-     * <li>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code
-     * will most likely be raised if the deployment group is deleted after the
-     * deployment is created but before it is started.</li> <li>HEALTH_CONSTRAINTS: The
-     * deployment failed on too many instances to be successfully deployed within the
-     * instance health constraints specified.</li> <li>HEALTH_CONSTRAINTS_INVALID: The
-     * revision cannot be successfully deployed within the instance health constraints
-     * specified.</li> <li>IAM_ROLE_MISSING: The service role cannot be accessed.</li>
-     * <li>IAM_ROLE_PERMISSIONS: The service role does not have the correct
-     * permissions.</li> <li>INTERNAL_ERROR: There was an internal error.</li>
-     * <li>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2
-     * service.</li> <li>NO_INSTANCES: No instance were specified, or no instance can
-     * be found.</li> <li>OVER_MAX_INSTANCES: The maximum number of instance was
-     * exceeded.</li> <li>THROTTLED: The operation was throttled because the calling
-     * account exceeded the throttling limits of one or more AWS services.</li>
-     * <li>TIMEOUT: The deployment has timed out.</li> <li>REVISION_MISSING: The
-     * revision ID was missing. This error code will most likely be raised if the
-     * revision is deleted after the deployment is created but before it is
-     * started.</li> </ul>
+     * <p>For information about additional error codes, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error
+     * Codes for AWS CodeDeploy</a> in the <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy
+     * User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The
+     * application was missing. This error code will most likely be raised if the
+     * application is deleted after the deployment is created but before it is
+     * started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was
+     * missing. This error code will most likely be raised if the deployment group is
+     * deleted after the deployment is created but before it is started.</p> </li> <li>
+     * <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+     * successfully deployed within the instance health constraints specified.</p>
+     * </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+     * deployed within the instance health constraints specified.</p> </li> <li>
+     * <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li>
+     * <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct
+     * permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p>
+     * </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+     * Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified,
+     * or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum
+     * number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was
+     * throttled because the calling account exceeded the throttling limits of one or
+     * more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p>
+     * </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code
+     * will most likely be raised if the revision is deleted after the deployment is
+     * created but before it is started.</p> </li> </ul>
      */
     inline void SetCode(const ErrorCode& value) { m_codeHasBeenSet = true; m_code = value; }
 
     /**
-     * <p>The error code:</p> <ul> <li>APPLICATION_MISSING: The application was
-     * missing. This error code will most likely be raised if the application is
-     * deleted after the deployment is created but before it is started.</li>
-     * <li>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code
-     * will most likely be raised if the deployment group is deleted after the
-     * deployment is created but before it is started.</li> <li>HEALTH_CONSTRAINTS: The
-     * deployment failed on too many instances to be successfully deployed within the
-     * instance health constraints specified.</li> <li>HEALTH_CONSTRAINTS_INVALID: The
-     * revision cannot be successfully deployed within the instance health constraints
-     * specified.</li> <li>IAM_ROLE_MISSING: The service role cannot be accessed.</li>
-     * <li>IAM_ROLE_PERMISSIONS: The service role does not have the correct
-     * permissions.</li> <li>INTERNAL_ERROR: There was an internal error.</li>
-     * <li>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2
-     * service.</li> <li>NO_INSTANCES: No instance were specified, or no instance can
-     * be found.</li> <li>OVER_MAX_INSTANCES: The maximum number of instance was
-     * exceeded.</li> <li>THROTTLED: The operation was throttled because the calling
-     * account exceeded the throttling limits of one or more AWS services.</li>
-     * <li>TIMEOUT: The deployment has timed out.</li> <li>REVISION_MISSING: The
-     * revision ID was missing. This error code will most likely be raised if the
-     * revision is deleted after the deployment is created but before it is
-     * started.</li> </ul>
+     * <p>For information about additional error codes, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error
+     * Codes for AWS CodeDeploy</a> in the <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy
+     * User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The
+     * application was missing. This error code will most likely be raised if the
+     * application is deleted after the deployment is created but before it is
+     * started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was
+     * missing. This error code will most likely be raised if the deployment group is
+     * deleted after the deployment is created but before it is started.</p> </li> <li>
+     * <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+     * successfully deployed within the instance health constraints specified.</p>
+     * </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+     * deployed within the instance health constraints specified.</p> </li> <li>
+     * <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li>
+     * <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct
+     * permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p>
+     * </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+     * Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified,
+     * or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum
+     * number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was
+     * throttled because the calling account exceeded the throttling limits of one or
+     * more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p>
+     * </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code
+     * will most likely be raised if the revision is deleted after the deployment is
+     * created but before it is started.</p> </li> </ul>
      */
-    inline void SetCode(ErrorCode&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(ErrorCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
-     * <p>The error code:</p> <ul> <li>APPLICATION_MISSING: The application was
-     * missing. This error code will most likely be raised if the application is
-     * deleted after the deployment is created but before it is started.</li>
-     * <li>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code
-     * will most likely be raised if the deployment group is deleted after the
-     * deployment is created but before it is started.</li> <li>HEALTH_CONSTRAINTS: The
-     * deployment failed on too many instances to be successfully deployed within the
-     * instance health constraints specified.</li> <li>HEALTH_CONSTRAINTS_INVALID: The
-     * revision cannot be successfully deployed within the instance health constraints
-     * specified.</li> <li>IAM_ROLE_MISSING: The service role cannot be accessed.</li>
-     * <li>IAM_ROLE_PERMISSIONS: The service role does not have the correct
-     * permissions.</li> <li>INTERNAL_ERROR: There was an internal error.</li>
-     * <li>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2
-     * service.</li> <li>NO_INSTANCES: No instance were specified, or no instance can
-     * be found.</li> <li>OVER_MAX_INSTANCES: The maximum number of instance was
-     * exceeded.</li> <li>THROTTLED: The operation was throttled because the calling
-     * account exceeded the throttling limits of one or more AWS services.</li>
-     * <li>TIMEOUT: The deployment has timed out.</li> <li>REVISION_MISSING: The
-     * revision ID was missing. This error code will most likely be raised if the
-     * revision is deleted after the deployment is created but before it is
-     * started.</li> </ul>
+     * <p>For information about additional error codes, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error
+     * Codes for AWS CodeDeploy</a> in the <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy
+     * User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The
+     * application was missing. This error code will most likely be raised if the
+     * application is deleted after the deployment is created but before it is
+     * started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was
+     * missing. This error code will most likely be raised if the deployment group is
+     * deleted after the deployment is created but before it is started.</p> </li> <li>
+     * <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+     * successfully deployed within the instance health constraints specified.</p>
+     * </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+     * deployed within the instance health constraints specified.</p> </li> <li>
+     * <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li>
+     * <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct
+     * permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p>
+     * </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+     * Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified,
+     * or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum
+     * number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was
+     * throttled because the calling account exceeded the throttling limits of one or
+     * more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p>
+     * </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code
+     * will most likely be raised if the revision is deleted after the deployment is
+     * created but before it is started.</p> </li> </ul>
      */
     inline ErrorInformation& WithCode(const ErrorCode& value) { SetCode(value); return *this;}
 
     /**
-     * <p>The error code:</p> <ul> <li>APPLICATION_MISSING: The application was
-     * missing. This error code will most likely be raised if the application is
-     * deleted after the deployment is created but before it is started.</li>
-     * <li>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code
-     * will most likely be raised if the deployment group is deleted after the
-     * deployment is created but before it is started.</li> <li>HEALTH_CONSTRAINTS: The
-     * deployment failed on too many instances to be successfully deployed within the
-     * instance health constraints specified.</li> <li>HEALTH_CONSTRAINTS_INVALID: The
-     * revision cannot be successfully deployed within the instance health constraints
-     * specified.</li> <li>IAM_ROLE_MISSING: The service role cannot be accessed.</li>
-     * <li>IAM_ROLE_PERMISSIONS: The service role does not have the correct
-     * permissions.</li> <li>INTERNAL_ERROR: There was an internal error.</li>
-     * <li>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2
-     * service.</li> <li>NO_INSTANCES: No instance were specified, or no instance can
-     * be found.</li> <li>OVER_MAX_INSTANCES: The maximum number of instance was
-     * exceeded.</li> <li>THROTTLED: The operation was throttled because the calling
-     * account exceeded the throttling limits of one or more AWS services.</li>
-     * <li>TIMEOUT: The deployment has timed out.</li> <li>REVISION_MISSING: The
-     * revision ID was missing. This error code will most likely be raised if the
-     * revision is deleted after the deployment is created but before it is
-     * started.</li> </ul>
+     * <p>For information about additional error codes, see <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error
+     * Codes for AWS CodeDeploy</a> in the <a
+     * href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy
+     * User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The
+     * application was missing. This error code will most likely be raised if the
+     * application is deleted after the deployment is created but before it is
+     * started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was
+     * missing. This error code will most likely be raised if the deployment group is
+     * deleted after the deployment is created but before it is started.</p> </li> <li>
+     * <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be
+     * successfully deployed within the instance health constraints specified.</p>
+     * </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+     * deployed within the instance health constraints specified.</p> </li> <li>
+     * <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li>
+     * <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct
+     * permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p>
+     * </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the
+     * Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified,
+     * or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum
+     * number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was
+     * throttled because the calling account exceeded the throttling limits of one or
+     * more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p>
+     * </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code
+     * will most likely be raised if the revision is deleted after the deployment is
+     * created but before it is started.</p> </li> </ul>
      */
-    inline ErrorInformation& WithCode(ErrorCode&& value) { SetCode(value); return *this;}
+    inline ErrorInformation& WithCode(ErrorCode&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>An accompanying error message.</p>
@@ -180,7 +209,7 @@ namespace Model
     /**
      * <p>An accompanying error message.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>An accompanying error message.</p>
@@ -195,7 +224,7 @@ namespace Model
     /**
      * <p>An accompanying error message.</p>
      */
-    inline ErrorInformation& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline ErrorInformation& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>An accompanying error message.</p>

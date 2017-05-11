@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearchdomain/CloudSearchDomain_EXPORTS.h>
 #include <aws/cloudsearchdomain/CloudSearchDomainRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -29,7 +31,10 @@ namespace Model
 {
 
   /**
-   * <p>Container for the parameters to the <code>Suggest</code> request.</p>
+   * <p>Container for the parameters to the <code>Suggest</code>
+   * request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearchdomain-2013-01-01/SuggestRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCHDOMAIN_API SuggestRequest : public CloudSearchDomainRequest
   {
@@ -38,6 +43,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     void AddQueryStringParameters(Aws::Http::URI& uri) const override;
+
 
     /**
      * <p>Specifies the string for which you want to get suggestions.</p>
@@ -52,7 +58,7 @@ namespace Model
     /**
      * <p>Specifies the string for which you want to get suggestions.</p>
      */
-    inline void SetQuery(Aws::String&& value) { m_queryHasBeenSet = true; m_query = value; }
+    inline void SetQuery(Aws::String&& value) { m_queryHasBeenSet = true; m_query = std::move(value); }
 
     /**
      * <p>Specifies the string for which you want to get suggestions.</p>
@@ -67,7 +73,7 @@ namespace Model
     /**
      * <p>Specifies the string for which you want to get suggestions.</p>
      */
-    inline SuggestRequest& WithQuery(Aws::String&& value) { SetQuery(value); return *this;}
+    inline SuggestRequest& WithQuery(Aws::String&& value) { SetQuery(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the string for which you want to get suggestions.</p>
@@ -87,7 +93,7 @@ namespace Model
     /**
      * <p>Specifies the name of the suggester to use to find suggested matches.</p>
      */
-    inline void SetSuggester(Aws::String&& value) { m_suggesterHasBeenSet = true; m_suggester = value; }
+    inline void SetSuggester(Aws::String&& value) { m_suggesterHasBeenSet = true; m_suggester = std::move(value); }
 
     /**
      * <p>Specifies the name of the suggester to use to find suggested matches.</p>
@@ -102,7 +108,7 @@ namespace Model
     /**
      * <p>Specifies the name of the suggester to use to find suggested matches.</p>
      */
-    inline SuggestRequest& WithSuggester(Aws::String&& value) { SetSuggester(value); return *this;}
+    inline SuggestRequest& WithSuggester(Aws::String&& value) { SetSuggester(std::move(value)); return *this;}
 
     /**
      * <p>Specifies the name of the suggester to use to find suggested matches.</p>

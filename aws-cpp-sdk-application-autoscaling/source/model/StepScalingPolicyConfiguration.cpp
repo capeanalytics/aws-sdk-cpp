@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/application-autoscaling/model/StepScalingPolicyConfiguration.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,23 +29,27 @@ namespace Model
 {
 
 StepScalingPolicyConfiguration::StepScalingPolicyConfiguration() : 
+    m_adjustmentType(AdjustmentType::NOT_SET),
     m_adjustmentTypeHasBeenSet(false),
     m_stepAdjustmentsHasBeenSet(false),
     m_minAdjustmentMagnitude(0),
     m_minAdjustmentMagnitudeHasBeenSet(false),
     m_cooldown(0),
     m_cooldownHasBeenSet(false),
+    m_metricAggregationType(MetricAggregationType::NOT_SET),
     m_metricAggregationTypeHasBeenSet(false)
 {
 }
 
 StepScalingPolicyConfiguration::StepScalingPolicyConfiguration(const JsonValue& jsonValue) : 
+    m_adjustmentType(AdjustmentType::NOT_SET),
     m_adjustmentTypeHasBeenSet(false),
     m_stepAdjustmentsHasBeenSet(false),
     m_minAdjustmentMagnitude(0),
     m_minAdjustmentMagnitudeHasBeenSet(false),
     m_cooldown(0),
     m_cooldownHasBeenSet(false),
+    m_metricAggregationType(MetricAggregationType::NOT_SET),
     m_metricAggregationTypeHasBeenSet(false)
 {
   *this = jsonValue;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53domains/Route53Domains_EXPORTS.h>
 #include <aws/route53domains/Route53DomainsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>The ListTagsForDomainRequest includes the following elements.</p>
+   * <p>The ListTagsForDomainRequest includes the following elements.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53domains-2014-05-15/ListTagsForDomainRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53DOMAINS_API ListTagsForDomainRequest : public Route53DomainsRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The domain for which you want to get a list of tags.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The domain for which you want to get a list of tags.</p>
      */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
+    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
 
     /**
      * <p>The domain for which you want to get a list of tags.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The domain for which you want to get a list of tags.</p>
      */
-    inline ListTagsForDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(value); return *this;}
+    inline ListTagsForDomainRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
 
     /**
      * <p>The domain for which you want to get a list of tags.</p>

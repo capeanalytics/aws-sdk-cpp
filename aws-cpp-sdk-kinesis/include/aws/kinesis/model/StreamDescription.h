@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,13 +12,16 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/kinesis/Kinesis_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesis/model/StreamStatus.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/DateTime.h>
 #include <aws/kinesis/model/Shard.h>
 #include <aws/kinesis/model/EnhancedMetrics.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +38,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents the output for <a>DescribeStream</a>.</p>
+   * <p>Represents the output for <a>DescribeStream</a>.</p><p><h3>See Also:</h3>  
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/StreamDescription">AWS
+   * API Reference</a></p>
    */
   class AWS_KINESIS_API StreamDescription
   {
@@ -58,7 +64,7 @@ namespace Model
     /**
      * <p>The name of the stream being described.</p>
      */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
+    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
 
     /**
      * <p>The name of the stream being described.</p>
@@ -73,7 +79,7 @@ namespace Model
     /**
      * <p>The name of the stream being described.</p>
      */
-    inline StreamDescription& WithStreamName(Aws::String&& value) { SetStreamName(value); return *this;}
+    inline StreamDescription& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the stream being described.</p>
@@ -93,7 +99,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the stream being described.</p>
      */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
+    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) for the stream being described.</p>
@@ -108,7 +114,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) for the stream being described.</p>
      */
-    inline StreamDescription& WithStreamARN(Aws::String&& value) { SetStreamARN(value); return *this;}
+    inline StreamDescription& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) for the stream being described.</p>
@@ -117,78 +123,83 @@ namespace Model
 
     /**
      * <p>The current status of the stream being described. The stream status is one of
-     * the following states:</p> <ul> <li><code>CREATING</code> - The stream is being
-     * created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code>
-     * to <code>CREATING</code>.</li> <li><code>DELETING</code> - The stream is being
-     * deleted. The specified stream is in the <code>DELETING</code> state until Amazon
-     * Kinesis completes the deletion.</li> <li><code>ACTIVE</code> - The stream exists
-     * and is ready for read and write operations or deletion. You should perform read
-     * and write operations only on an <code>ACTIVE</code> stream.</li>
-     * <li><code>UPDATING</code> - Shards in the stream are being merged or split. Read
-     * and write operations continue to work while the stream is in the
-     * <code>UPDATING</code> state.</li> </ul>
+     * the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is
+     * being created. Amazon Kinesis immediately returns and sets
+     * <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p>
+     * <code>DELETING</code> - The stream is being deleted. The specified stream is in
+     * the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p>
+     * </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and
+     * write operations or deletion. You should perform read and write operations only
+     * on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> -
+     * Shards in the stream are being merged or split. Read and write operations
+     * continue to work while the stream is in the <code>UPDATING</code> state.</p>
+     * </li> </ul>
      */
     inline const StreamStatus& GetStreamStatus() const{ return m_streamStatus; }
 
     /**
      * <p>The current status of the stream being described. The stream status is one of
-     * the following states:</p> <ul> <li><code>CREATING</code> - The stream is being
-     * created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code>
-     * to <code>CREATING</code>.</li> <li><code>DELETING</code> - The stream is being
-     * deleted. The specified stream is in the <code>DELETING</code> state until Amazon
-     * Kinesis completes the deletion.</li> <li><code>ACTIVE</code> - The stream exists
-     * and is ready for read and write operations or deletion. You should perform read
-     * and write operations only on an <code>ACTIVE</code> stream.</li>
-     * <li><code>UPDATING</code> - Shards in the stream are being merged or split. Read
-     * and write operations continue to work while the stream is in the
-     * <code>UPDATING</code> state.</li> </ul>
+     * the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is
+     * being created. Amazon Kinesis immediately returns and sets
+     * <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p>
+     * <code>DELETING</code> - The stream is being deleted. The specified stream is in
+     * the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p>
+     * </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and
+     * write operations or deletion. You should perform read and write operations only
+     * on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> -
+     * Shards in the stream are being merged or split. Read and write operations
+     * continue to work while the stream is in the <code>UPDATING</code> state.</p>
+     * </li> </ul>
      */
     inline void SetStreamStatus(const StreamStatus& value) { m_streamStatusHasBeenSet = true; m_streamStatus = value; }
 
     /**
      * <p>The current status of the stream being described. The stream status is one of
-     * the following states:</p> <ul> <li><code>CREATING</code> - The stream is being
-     * created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code>
-     * to <code>CREATING</code>.</li> <li><code>DELETING</code> - The stream is being
-     * deleted. The specified stream is in the <code>DELETING</code> state until Amazon
-     * Kinesis completes the deletion.</li> <li><code>ACTIVE</code> - The stream exists
-     * and is ready for read and write operations or deletion. You should perform read
-     * and write operations only on an <code>ACTIVE</code> stream.</li>
-     * <li><code>UPDATING</code> - Shards in the stream are being merged or split. Read
-     * and write operations continue to work while the stream is in the
-     * <code>UPDATING</code> state.</li> </ul>
+     * the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is
+     * being created. Amazon Kinesis immediately returns and sets
+     * <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p>
+     * <code>DELETING</code> - The stream is being deleted. The specified stream is in
+     * the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p>
+     * </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and
+     * write operations or deletion. You should perform read and write operations only
+     * on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> -
+     * Shards in the stream are being merged or split. Read and write operations
+     * continue to work while the stream is in the <code>UPDATING</code> state.</p>
+     * </li> </ul>
      */
-    inline void SetStreamStatus(StreamStatus&& value) { m_streamStatusHasBeenSet = true; m_streamStatus = value; }
+    inline void SetStreamStatus(StreamStatus&& value) { m_streamStatusHasBeenSet = true; m_streamStatus = std::move(value); }
 
     /**
      * <p>The current status of the stream being described. The stream status is one of
-     * the following states:</p> <ul> <li><code>CREATING</code> - The stream is being
-     * created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code>
-     * to <code>CREATING</code>.</li> <li><code>DELETING</code> - The stream is being
-     * deleted. The specified stream is in the <code>DELETING</code> state until Amazon
-     * Kinesis completes the deletion.</li> <li><code>ACTIVE</code> - The stream exists
-     * and is ready for read and write operations or deletion. You should perform read
-     * and write operations only on an <code>ACTIVE</code> stream.</li>
-     * <li><code>UPDATING</code> - Shards in the stream are being merged or split. Read
-     * and write operations continue to work while the stream is in the
-     * <code>UPDATING</code> state.</li> </ul>
+     * the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is
+     * being created. Amazon Kinesis immediately returns and sets
+     * <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p>
+     * <code>DELETING</code> - The stream is being deleted. The specified stream is in
+     * the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p>
+     * </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and
+     * write operations or deletion. You should perform read and write operations only
+     * on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> -
+     * Shards in the stream are being merged or split. Read and write operations
+     * continue to work while the stream is in the <code>UPDATING</code> state.</p>
+     * </li> </ul>
      */
     inline StreamDescription& WithStreamStatus(const StreamStatus& value) { SetStreamStatus(value); return *this;}
 
     /**
      * <p>The current status of the stream being described. The stream status is one of
-     * the following states:</p> <ul> <li><code>CREATING</code> - The stream is being
-     * created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code>
-     * to <code>CREATING</code>.</li> <li><code>DELETING</code> - The stream is being
-     * deleted. The specified stream is in the <code>DELETING</code> state until Amazon
-     * Kinesis completes the deletion.</li> <li><code>ACTIVE</code> - The stream exists
-     * and is ready for read and write operations or deletion. You should perform read
-     * and write operations only on an <code>ACTIVE</code> stream.</li>
-     * <li><code>UPDATING</code> - Shards in the stream are being merged or split. Read
-     * and write operations continue to work while the stream is in the
-     * <code>UPDATING</code> state.</li> </ul>
+     * the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is
+     * being created. Amazon Kinesis immediately returns and sets
+     * <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p>
+     * <code>DELETING</code> - The stream is being deleted. The specified stream is in
+     * the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p>
+     * </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and
+     * write operations or deletion. You should perform read and write operations only
+     * on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> -
+     * Shards in the stream are being merged or split. Read and write operations
+     * continue to work while the stream is in the <code>UPDATING</code> state.</p>
+     * </li> </ul>
      */
-    inline StreamDescription& WithStreamStatus(StreamStatus&& value) { SetStreamStatus(value); return *this;}
+    inline StreamDescription& WithStreamStatus(StreamStatus&& value) { SetStreamStatus(std::move(value)); return *this;}
 
     /**
      * <p>The shards that comprise the stream.</p>
@@ -203,7 +214,7 @@ namespace Model
     /**
      * <p>The shards that comprise the stream.</p>
      */
-    inline void SetShards(Aws::Vector<Shard>&& value) { m_shardsHasBeenSet = true; m_shards = value; }
+    inline void SetShards(Aws::Vector<Shard>&& value) { m_shardsHasBeenSet = true; m_shards = std::move(value); }
 
     /**
      * <p>The shards that comprise the stream.</p>
@@ -213,7 +224,7 @@ namespace Model
     /**
      * <p>The shards that comprise the stream.</p>
      */
-    inline StreamDescription& WithShards(Aws::Vector<Shard>&& value) { SetShards(value); return *this;}
+    inline StreamDescription& WithShards(Aws::Vector<Shard>&& value) { SetShards(std::move(value)); return *this;}
 
     /**
      * <p>The shards that comprise the stream.</p>
@@ -223,7 +234,7 @@ namespace Model
     /**
      * <p>The shards that comprise the stream.</p>
      */
-    inline StreamDescription& AddShards(Shard&& value) { m_shardsHasBeenSet = true; m_shards.push_back(value); return *this; }
+    inline StreamDescription& AddShards(Shard&& value) { m_shardsHasBeenSet = true; m_shards.push_back(std::move(value)); return *this; }
 
     /**
      * <p>If set to <code>true</code>, more shards in the stream are available to
@@ -259,6 +270,31 @@ namespace Model
     inline StreamDescription& WithRetentionPeriodHours(int value) { SetRetentionPeriodHours(value); return *this;}
 
     /**
+     * <p>The approximate time that the stream was created.</p>
+     */
+    inline const Aws::Utils::DateTime& GetStreamCreationTimestamp() const{ return m_streamCreationTimestamp; }
+
+    /**
+     * <p>The approximate time that the stream was created.</p>
+     */
+    inline void SetStreamCreationTimestamp(const Aws::Utils::DateTime& value) { m_streamCreationTimestampHasBeenSet = true; m_streamCreationTimestamp = value; }
+
+    /**
+     * <p>The approximate time that the stream was created.</p>
+     */
+    inline void SetStreamCreationTimestamp(Aws::Utils::DateTime&& value) { m_streamCreationTimestampHasBeenSet = true; m_streamCreationTimestamp = std::move(value); }
+
+    /**
+     * <p>The approximate time that the stream was created.</p>
+     */
+    inline StreamDescription& WithStreamCreationTimestamp(const Aws::Utils::DateTime& value) { SetStreamCreationTimestamp(value); return *this;}
+
+    /**
+     * <p>The approximate time that the stream was created.</p>
+     */
+    inline StreamDescription& WithStreamCreationTimestamp(Aws::Utils::DateTime&& value) { SetStreamCreationTimestamp(std::move(value)); return *this;}
+
+    /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
      */
     inline const Aws::Vector<EnhancedMetrics>& GetEnhancedMonitoring() const{ return m_enhancedMonitoring; }
@@ -271,7 +307,7 @@ namespace Model
     /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
      */
-    inline void SetEnhancedMonitoring(Aws::Vector<EnhancedMetrics>&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = value; }
+    inline void SetEnhancedMonitoring(Aws::Vector<EnhancedMetrics>&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring = std::move(value); }
 
     /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
@@ -281,7 +317,7 @@ namespace Model
     /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
      */
-    inline StreamDescription& WithEnhancedMonitoring(Aws::Vector<EnhancedMetrics>&& value) { SetEnhancedMonitoring(value); return *this;}
+    inline StreamDescription& WithEnhancedMonitoring(Aws::Vector<EnhancedMetrics>&& value) { SetEnhancedMonitoring(std::move(value)); return *this;}
 
     /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
@@ -291,7 +327,7 @@ namespace Model
     /**
      * <p>Represents the current enhanced monitoring settings of the stream.</p>
      */
-    inline StreamDescription& AddEnhancedMonitoring(EnhancedMetrics&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring.push_back(value); return *this; }
+    inline StreamDescription& AddEnhancedMonitoring(EnhancedMetrics&& value) { m_enhancedMonitoringHasBeenSet = true; m_enhancedMonitoring.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_streamName;
@@ -306,6 +342,8 @@ namespace Model
     bool m_hasMoreShardsHasBeenSet;
     int m_retentionPeriodHours;
     bool m_retentionPeriodHoursHasBeenSet;
+    Aws::Utils::DateTime m_streamCreationTimestamp;
+    bool m_streamCreationTimestampHasBeenSet;
     Aws::Vector<EnhancedMetrics> m_enhancedMonitoring;
     bool m_enhancedMonitoringHasBeenSet;
   };

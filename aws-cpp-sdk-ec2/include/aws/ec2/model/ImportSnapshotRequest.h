@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/SnapshotDiskContainer.h>
 #include <aws/ec2/model/ClientData.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for ImportSnapshot.</p>
+   * <p>Contains the parameters for ImportSnapshot.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ImportSnapshotRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ImportSnapshotRequest : public EC2Request
   {
@@ -35,6 +39,11 @@ namespace Model
     ImportSnapshotRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +81,7 @@ namespace Model
     /**
      * <p>The description string for the import snapshot task.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The description string for the import snapshot task.</p>
@@ -87,7 +96,7 @@ namespace Model
     /**
      * <p>The description string for the import snapshot task.</p>
      */
-    inline ImportSnapshotRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ImportSnapshotRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description string for the import snapshot task.</p>
@@ -107,7 +116,7 @@ namespace Model
     /**
      * <p>Information about the disk container.</p>
      */
-    inline void SetDiskContainer(SnapshotDiskContainer&& value) { m_diskContainerHasBeenSet = true; m_diskContainer = value; }
+    inline void SetDiskContainer(SnapshotDiskContainer&& value) { m_diskContainerHasBeenSet = true; m_diskContainer = std::move(value); }
 
     /**
      * <p>Information about the disk container.</p>
@@ -117,7 +126,7 @@ namespace Model
     /**
      * <p>Information about the disk container.</p>
      */
-    inline ImportSnapshotRequest& WithDiskContainer(SnapshotDiskContainer&& value) { SetDiskContainer(value); return *this;}
+    inline ImportSnapshotRequest& WithDiskContainer(SnapshotDiskContainer&& value) { SetDiskContainer(std::move(value)); return *this;}
 
     /**
      * <p>The client-specific data.</p>
@@ -132,7 +141,7 @@ namespace Model
     /**
      * <p>The client-specific data.</p>
      */
-    inline void SetClientData(ClientData&& value) { m_clientDataHasBeenSet = true; m_clientData = value; }
+    inline void SetClientData(ClientData&& value) { m_clientDataHasBeenSet = true; m_clientData = std::move(value); }
 
     /**
      * <p>The client-specific data.</p>
@@ -142,7 +151,7 @@ namespace Model
     /**
      * <p>The client-specific data.</p>
      */
-    inline ImportSnapshotRequest& WithClientData(ClientData&& value) { SetClientData(value); return *this;}
+    inline ImportSnapshotRequest& WithClientData(ClientData&& value) { SetClientData(std::move(value)); return *this;}
 
     /**
      * <p>Token to enable idempotency for VM import requests.</p>
@@ -157,7 +166,7 @@ namespace Model
     /**
      * <p>Token to enable idempotency for VM import requests.</p>
      */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
+    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
 
     /**
      * <p>Token to enable idempotency for VM import requests.</p>
@@ -172,7 +181,7 @@ namespace Model
     /**
      * <p>Token to enable idempotency for VM import requests.</p>
      */
-    inline ImportSnapshotRequest& WithClientToken(Aws::String&& value) { SetClientToken(value); return *this;}
+    inline ImportSnapshotRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
 
     /**
      * <p>Token to enable idempotency for VM import requests.</p>
@@ -192,7 +201,7 @@ namespace Model
     /**
      * <p>The name of the role to use when not using the default role, 'vmimport'.</p>
      */
-    inline void SetRoleName(Aws::String&& value) { m_roleNameHasBeenSet = true; m_roleName = value; }
+    inline void SetRoleName(Aws::String&& value) { m_roleNameHasBeenSet = true; m_roleName = std::move(value); }
 
     /**
      * <p>The name of the role to use when not using the default role, 'vmimport'.</p>
@@ -207,7 +216,7 @@ namespace Model
     /**
      * <p>The name of the role to use when not using the default role, 'vmimport'.</p>
      */
-    inline ImportSnapshotRequest& WithRoleName(Aws::String&& value) { SetRoleName(value); return *this;}
+    inline ImportSnapshotRequest& WithRoleName(Aws::String&& value) { SetRoleName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the role to use when not using the default role, 'vmimport'.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/application-autoscaling/ApplicationAutoScaling_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -22,6 +23,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/application-autoscaling/model/Alarm.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
 {
 
   /**
-   * <p>An object representing a scaling policy.</p>
+   * <p>Represents a scaling policy.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/application-autoscaling-2016-02-06/ScalingPolicy">AWS
+   * API Reference</a></p>
    */
   class AWS_APPLICATIONAUTOSCALING_API ScalingPolicy
   {
@@ -61,7 +65,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the scaling policy.</p>
      */
-    inline void SetPolicyARN(Aws::String&& value) { m_policyARNHasBeenSet = true; m_policyARN = value; }
+    inline void SetPolicyARN(Aws::String&& value) { m_policyARNHasBeenSet = true; m_policyARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the scaling policy.</p>
@@ -76,7 +80,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the scaling policy.</p>
      */
-    inline ScalingPolicy& WithPolicyARN(Aws::String&& value) { SetPolicyARN(value); return *this;}
+    inline ScalingPolicy& WithPolicyARN(Aws::String&& value) { SetPolicyARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the scaling policy.</p>
@@ -96,7 +100,7 @@ namespace Model
     /**
      * <p>The name of the scaling policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the scaling policy.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The name of the scaling policy.</p>
      */
-    inline ScalingPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline ScalingPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the scaling policy.</p>
@@ -119,166 +123,230 @@ namespace Model
     inline ScalingPolicy& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
 
     /**
-     * <p>The namespace for the AWS service that the scaling policy is associated with.
-     * For more information, see <a
+     * <p>The namespace of the AWS service. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.</p>
+     * Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.</p>
      */
     inline const ServiceNamespace& GetServiceNamespace() const{ return m_serviceNamespace; }
 
     /**
-     * <p>The namespace for the AWS service that the scaling policy is associated with.
-     * For more information, see <a
+     * <p>The namespace of the AWS service. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.</p>
+     * Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.</p>
      */
     inline void SetServiceNamespace(const ServiceNamespace& value) { m_serviceNamespaceHasBeenSet = true; m_serviceNamespace = value; }
 
     /**
-     * <p>The namespace for the AWS service that the scaling policy is associated with.
-     * For more information, see <a
+     * <p>The namespace of the AWS service. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.</p>
+     * Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.</p>
      */
-    inline void SetServiceNamespace(ServiceNamespace&& value) { m_serviceNamespaceHasBeenSet = true; m_serviceNamespace = value; }
+    inline void SetServiceNamespace(ServiceNamespace&& value) { m_serviceNamespaceHasBeenSet = true; m_serviceNamespace = std::move(value); }
 
     /**
-     * <p>The namespace for the AWS service that the scaling policy is associated with.
-     * For more information, see <a
+     * <p>The namespace of the AWS service. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.</p>
+     * Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.</p>
      */
     inline ScalingPolicy& WithServiceNamespace(const ServiceNamespace& value) { SetServiceNamespace(value); return *this;}
 
     /**
-     * <p>The namespace for the AWS service that the scaling policy is associated with.
-     * For more information, see <a
+     * <p>The namespace of the AWS service. For more information, see <a
      * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-     * Service Namespaces</a> in the Amazon Web Services General Reference.</p>
+     * Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.</p>
      */
-    inline ScalingPolicy& WithServiceNamespace(ServiceNamespace&& value) { SetServiceNamespace(value); return *this;}
+    inline ScalingPolicy& WithServiceNamespace(ServiceNamespace&& value) { SetServiceNamespace(std::move(value)); return *this;}
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
     inline const Aws::String& GetResourceId() const{ return m_resourceId; }
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
     inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
     inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
     inline ScalingPolicy& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
-    inline ScalingPolicy& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline ScalingPolicy& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
-     * <p>The resource type and unique identifier string for the resource associated
-     * with the scaling policy. For Amazon ECS services, the resource type is
-     * <code>services</code>, and the identifier is the cluster name and service name;
-     * for example, <code>service/default/sample-webapp</code>. For Amazon EC2 Spot
-     * fleet requests, the resource type is <code>spot-fleet-request</code>, and the
-     * identifier is the Spot fleet request ID; for example,
+     * <p>The identifier of the resource associated with the scaling policy. This
+     * string consists of the resource type and unique identifier.</p> <ul> <li> <p>ECS
+     * service - The resource type is <code>service</code> and the unique identifier is
+     * the cluster name and service name. Example:
+     * <code>service/default/sample-webapp</code>.</p> </li> <li> <p>Spot fleet request
+     * - The resource type is <code>spot-fleet-request</code> and the unique identifier
+     * is the Spot fleet request ID. Example:
      * <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.</p>
+     * </li> <li> <p>EMR cluster - The resource type is <code>instancegroup</code> and
+     * the unique identifier is the cluster ID and instance group ID. Example:
+     * <code>instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0</code>.</p> </li> <li>
+     * <p>AppStream 2.0 fleet - The resource type is <code>fleet</code> and the unique
+     * identifier is the fleet name. Example: <code>fleet/sample-fleet</code>.</p>
+     * </li> </ul>
      */
     inline ScalingPolicy& WithResourceId(const char* value) { SetResourceId(value); return *this;}
 
     /**
-     * <p>The scalable dimension associated with the scaling policy. The scalable
-     * dimension contains the service namespace, resource type, and scaling property,
-     * such as <code>ecs:service:DesiredCount</code> for the desired task count of an
-     * Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     * the target capacity of an Amazon EC2 Spot fleet request.</p>
+     * <p>The scalable dimension. This string consists of the service namespace,
+     * resource type, and scaling property.</p> <ul> <li> <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS
+     * service.</p> </li> <li> <p> <code>ec2:spot-fleet-request:TargetCapacity</code> -
+     * The target capacity of a Spot fleet request.</p> </li> <li> <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count
+     * of an EMR Instance Group.</p> </li> <li> <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an
+     * AppStream 2.0 fleet.</p> </li> </ul>
      */
     inline const ScalableDimension& GetScalableDimension() const{ return m_scalableDimension; }
 
     /**
-     * <p>The scalable dimension associated with the scaling policy. The scalable
-     * dimension contains the service namespace, resource type, and scaling property,
-     * such as <code>ecs:service:DesiredCount</code> for the desired task count of an
-     * Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     * the target capacity of an Amazon EC2 Spot fleet request.</p>
+     * <p>The scalable dimension. This string consists of the service namespace,
+     * resource type, and scaling property.</p> <ul> <li> <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS
+     * service.</p> </li> <li> <p> <code>ec2:spot-fleet-request:TargetCapacity</code> -
+     * The target capacity of a Spot fleet request.</p> </li> <li> <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count
+     * of an EMR Instance Group.</p> </li> <li> <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an
+     * AppStream 2.0 fleet.</p> </li> </ul>
      */
     inline void SetScalableDimension(const ScalableDimension& value) { m_scalableDimensionHasBeenSet = true; m_scalableDimension = value; }
 
     /**
-     * <p>The scalable dimension associated with the scaling policy. The scalable
-     * dimension contains the service namespace, resource type, and scaling property,
-     * such as <code>ecs:service:DesiredCount</code> for the desired task count of an
-     * Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     * the target capacity of an Amazon EC2 Spot fleet request.</p>
+     * <p>The scalable dimension. This string consists of the service namespace,
+     * resource type, and scaling property.</p> <ul> <li> <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS
+     * service.</p> </li> <li> <p> <code>ec2:spot-fleet-request:TargetCapacity</code> -
+     * The target capacity of a Spot fleet request.</p> </li> <li> <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count
+     * of an EMR Instance Group.</p> </li> <li> <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an
+     * AppStream 2.0 fleet.</p> </li> </ul>
      */
-    inline void SetScalableDimension(ScalableDimension&& value) { m_scalableDimensionHasBeenSet = true; m_scalableDimension = value; }
+    inline void SetScalableDimension(ScalableDimension&& value) { m_scalableDimensionHasBeenSet = true; m_scalableDimension = std::move(value); }
 
     /**
-     * <p>The scalable dimension associated with the scaling policy. The scalable
-     * dimension contains the service namespace, resource type, and scaling property,
-     * such as <code>ecs:service:DesiredCount</code> for the desired task count of an
-     * Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     * the target capacity of an Amazon EC2 Spot fleet request.</p>
+     * <p>The scalable dimension. This string consists of the service namespace,
+     * resource type, and scaling property.</p> <ul> <li> <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS
+     * service.</p> </li> <li> <p> <code>ec2:spot-fleet-request:TargetCapacity</code> -
+     * The target capacity of a Spot fleet request.</p> </li> <li> <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count
+     * of an EMR Instance Group.</p> </li> <li> <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an
+     * AppStream 2.0 fleet.</p> </li> </ul>
      */
     inline ScalingPolicy& WithScalableDimension(const ScalableDimension& value) { SetScalableDimension(value); return *this;}
 
     /**
-     * <p>The scalable dimension associated with the scaling policy. The scalable
-     * dimension contains the service namespace, resource type, and scaling property,
-     * such as <code>ecs:service:DesiredCount</code> for the desired task count of an
-     * Amazon ECS service, or <code>ec2:spot-fleet-request:TargetCapacity</code> for
-     * the target capacity of an Amazon EC2 Spot fleet request.</p>
+     * <p>The scalable dimension. This string consists of the service namespace,
+     * resource type, and scaling property.</p> <ul> <li> <p>
+     * <code>ecs:service:DesiredCount</code> - The desired task count of an ECS
+     * service.</p> </li> <li> <p> <code>ec2:spot-fleet-request:TargetCapacity</code> -
+     * The target capacity of a Spot fleet request.</p> </li> <li> <p>
+     * <code>elasticmapreduce:instancegroup:InstanceCount</code> - The instance count
+     * of an EMR Instance Group.</p> </li> <li> <p>
+     * <code>appstream:fleet:DesiredCapacity</code> - The desired capacity of an
+     * AppStream 2.0 fleet.</p> </li> </ul>
      */
-    inline ScalingPolicy& WithScalableDimension(ScalableDimension&& value) { SetScalableDimension(value); return *this;}
+    inline ScalingPolicy& WithScalableDimension(ScalableDimension&& value) { SetScalableDimension(std::move(value)); return *this;}
 
     /**
      * <p>The scaling policy type.</p>
@@ -293,7 +361,7 @@ namespace Model
     /**
      * <p>The scaling policy type.</p>
      */
-    inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = value; }
+    inline void SetPolicyType(PolicyType&& value) { m_policyTypeHasBeenSet = true; m_policyType = std::move(value); }
 
     /**
      * <p>The scaling policy type.</p>
@@ -303,7 +371,7 @@ namespace Model
     /**
      * <p>The scaling policy type.</p>
      */
-    inline ScalingPolicy& WithPolicyType(PolicyType&& value) { SetPolicyType(value); return *this;}
+    inline ScalingPolicy& WithPolicyType(PolicyType&& value) { SetPolicyType(std::move(value)); return *this;}
 
     /**
      * <p>The configuration for the step scaling policy.</p>
@@ -318,7 +386,7 @@ namespace Model
     /**
      * <p>The configuration for the step scaling policy.</p>
      */
-    inline void SetStepScalingPolicyConfiguration(StepScalingPolicyConfiguration&& value) { m_stepScalingPolicyConfigurationHasBeenSet = true; m_stepScalingPolicyConfiguration = value; }
+    inline void SetStepScalingPolicyConfiguration(StepScalingPolicyConfiguration&& value) { m_stepScalingPolicyConfigurationHasBeenSet = true; m_stepScalingPolicyConfiguration = std::move(value); }
 
     /**
      * <p>The configuration for the step scaling policy.</p>
@@ -328,42 +396,42 @@ namespace Model
     /**
      * <p>The configuration for the step scaling policy.</p>
      */
-    inline ScalingPolicy& WithStepScalingPolicyConfiguration(StepScalingPolicyConfiguration&& value) { SetStepScalingPolicyConfiguration(value); return *this;}
+    inline ScalingPolicy& WithStepScalingPolicyConfiguration(StepScalingPolicyConfiguration&& value) { SetStepScalingPolicyConfiguration(std::move(value)); return *this;}
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
     inline const Aws::Vector<Alarm>& GetAlarms() const{ return m_alarms; }
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
     inline void SetAlarms(const Aws::Vector<Alarm>& value) { m_alarmsHasBeenSet = true; m_alarms = value; }
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
-    inline void SetAlarms(Aws::Vector<Alarm>&& value) { m_alarmsHasBeenSet = true; m_alarms = value; }
+    inline void SetAlarms(Aws::Vector<Alarm>&& value) { m_alarmsHasBeenSet = true; m_alarms = std::move(value); }
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
     inline ScalingPolicy& WithAlarms(const Aws::Vector<Alarm>& value) { SetAlarms(value); return *this;}
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
-    inline ScalingPolicy& WithAlarms(Aws::Vector<Alarm>&& value) { SetAlarms(value); return *this;}
+    inline ScalingPolicy& WithAlarms(Aws::Vector<Alarm>&& value) { SetAlarms(std::move(value)); return *this;}
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
     inline ScalingPolicy& AddAlarms(const Alarm& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(value); return *this; }
 
     /**
-     * <p>The CloudWatch alarms that are associated with the scaling policy.</p>
+     * <p>The CloudWatch alarms associated with the scaling policy.</p>
      */
-    inline ScalingPolicy& AddAlarms(Alarm&& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(value); return *this; }
+    inline ScalingPolicy& AddAlarms(Alarm&& value) { m_alarmsHasBeenSet = true; m_alarms.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Unix timestamp for when the scaling policy was created.</p>
@@ -378,7 +446,7 @@ namespace Model
     /**
      * <p>The Unix timestamp for when the scaling policy was created.</p>
      */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
+    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
 
     /**
      * <p>The Unix timestamp for when the scaling policy was created.</p>
@@ -388,7 +456,7 @@ namespace Model
     /**
      * <p>The Unix timestamp for when the scaling policy was created.</p>
      */
-    inline ScalingPolicy& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(value); return *this;}
+    inline ScalingPolicy& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
 
   private:
     Aws::String m_policyARN;

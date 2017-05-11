@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/workspaces/WorkSpaces_EXPORTS.h>
 #include <aws/workspaces/WorkSpacesRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/workspaces/model/TerminateRequest.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>
+   * <p>Contains the inputs for the <a>TerminateWorkspaces</a>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/TerminateWorkspacesRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_WORKSPACES_API TerminateWorkspacesRequest : public WorkSpacesRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
@@ -49,7 +55,7 @@ namespace Model
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
      */
-    inline void SetTerminateWorkspaceRequests(Aws::Vector<TerminateRequest>&& value) { m_terminateWorkspaceRequestsHasBeenSet = true; m_terminateWorkspaceRequests = value; }
+    inline void SetTerminateWorkspaceRequests(Aws::Vector<TerminateRequest>&& value) { m_terminateWorkspaceRequestsHasBeenSet = true; m_terminateWorkspaceRequests = std::move(value); }
 
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
@@ -59,7 +65,7 @@ namespace Model
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
      */
-    inline TerminateWorkspacesRequest& WithTerminateWorkspaceRequests(Aws::Vector<TerminateRequest>&& value) { SetTerminateWorkspaceRequests(value); return *this;}
+    inline TerminateWorkspacesRequest& WithTerminateWorkspaceRequests(Aws::Vector<TerminateRequest>&& value) { SetTerminateWorkspaceRequests(std::move(value)); return *this;}
 
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
@@ -69,7 +75,7 @@ namespace Model
     /**
      * <p>An array of structures that specify the WorkSpaces to terminate.</p>
      */
-    inline TerminateWorkspacesRequest& AddTerminateWorkspaceRequests(TerminateRequest&& value) { m_terminateWorkspaceRequestsHasBeenSet = true; m_terminateWorkspaceRequests.push_back(value); return *this; }
+    inline TerminateWorkspacesRequest& AddTerminateWorkspaceRequests(TerminateRequest&& value) { m_terminateWorkspaceRequestsHasBeenSet = true; m_terminateWorkspaceRequests.push_back(std::move(value)); return *this; }
 
   private:
     Aws::Vector<TerminateRequest> m_terminateWorkspaceRequests;

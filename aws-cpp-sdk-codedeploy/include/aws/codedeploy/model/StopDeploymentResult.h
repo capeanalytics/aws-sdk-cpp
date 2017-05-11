@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/model/StopStatus.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace CodeDeploy
 namespace Model
 {
   /**
-   * <p>Represents the output of a stop deployment operation.</p>
+   * <p>Represents the output of a stop deployment operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/StopDeploymentOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API StopDeploymentResult
   {
@@ -44,39 +49,39 @@ namespace Model
     StopDeploymentResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>The status of the stop deployment operation:</p> <ul> <li>Pending: The stop
-     * operation is pending.</li> <li>Succeeded: The stop operation was
-     * successful.</li> </ul>
+     * <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The
+     * stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was
+     * successful.</p> </li> </ul>
      */
     inline const StopStatus& GetStatus() const{ return m_status; }
 
     /**
-     * <p>The status of the stop deployment operation:</p> <ul> <li>Pending: The stop
-     * operation is pending.</li> <li>Succeeded: The stop operation was
-     * successful.</li> </ul>
+     * <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The
+     * stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was
+     * successful.</p> </li> </ul>
      */
     inline void SetStatus(const StopStatus& value) { m_status = value; }
 
     /**
-     * <p>The status of the stop deployment operation:</p> <ul> <li>Pending: The stop
-     * operation is pending.</li> <li>Succeeded: The stop operation was
-     * successful.</li> </ul>
+     * <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The
+     * stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was
+     * successful.</p> </li> </ul>
      */
-    inline void SetStatus(StopStatus&& value) { m_status = value; }
+    inline void SetStatus(StopStatus&& value) { m_status = std::move(value); }
 
     /**
-     * <p>The status of the stop deployment operation:</p> <ul> <li>Pending: The stop
-     * operation is pending.</li> <li>Succeeded: The stop operation was
-     * successful.</li> </ul>
+     * <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The
+     * stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was
+     * successful.</p> </li> </ul>
      */
     inline StopDeploymentResult& WithStatus(const StopStatus& value) { SetStatus(value); return *this;}
 
     /**
-     * <p>The status of the stop deployment operation:</p> <ul> <li>Pending: The stop
-     * operation is pending.</li> <li>Succeeded: The stop operation was
-     * successful.</li> </ul>
+     * <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The
+     * stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was
+     * successful.</p> </li> </ul>
      */
-    inline StopDeploymentResult& WithStatus(StopStatus&& value) { SetStatus(value); return *this;}
+    inline StopDeploymentResult& WithStatus(StopStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>An accompanying status message.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>An accompanying status message.</p>
      */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = value; }
+    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = std::move(value); }
 
     /**
      * <p>An accompanying status message.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>An accompanying status message.</p>
      */
-    inline StopDeploymentResult& WithStatusMessage(Aws::String&& value) { SetStatusMessage(value); return *this;}
+    inline StopDeploymentResult& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
 
     /**
      * <p>An accompanying status message.</p>

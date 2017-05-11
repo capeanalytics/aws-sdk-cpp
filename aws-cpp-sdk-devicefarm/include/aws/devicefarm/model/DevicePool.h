@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/devicefarm/model/DevicePoolType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/devicefarm/model/Rule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
 {
 
   /**
-   * <p>Represents a collection of device types.</p>
+   * <p>Represents a collection of device types.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DevicePool">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API DevicePool
   {
@@ -57,7 +61,7 @@ namespace Model
     /**
      * <p>The device pool's ARN.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The device pool's ARN.</p>
@@ -72,7 +76,7 @@ namespace Model
     /**
      * <p>The device pool's ARN.</p>
      */
-    inline DevicePool& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline DevicePool& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The device pool's ARN.</p>
@@ -92,7 +96,7 @@ namespace Model
     /**
      * <p>The device pool's name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The device pool's name.</p>
@@ -107,7 +111,7 @@ namespace Model
     /**
      * <p>The device pool's name.</p>
      */
-    inline DevicePool& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline DevicePool& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The device pool's name.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The device pool's description.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The device pool's description.</p>
@@ -142,7 +146,7 @@ namespace Model
     /**
      * <p>The device pool's description.</p>
      */
-    inline DevicePool& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline DevicePool& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The device pool's description.</p>
@@ -150,44 +154,44 @@ namespace Model
     inline DevicePool& WithDescription(const char* value) { SetDescription(value); return *this;}
 
     /**
-     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline const DevicePoolType& GetType() const{ return m_type; }
 
     /**
-     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline void SetType(const DevicePoolType& value) { m_typeHasBeenSet = true; m_type = value; }
 
     /**
-     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
-    inline void SetType(DevicePoolType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(DevicePoolType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
-     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
     inline DevicePool& WithType(const DevicePoolType& value) { SetType(value); return *this;}
 
     /**
-     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul>
-     * <li><p>CURATED: A device pool that is created and managed by AWS Device
-     * Farm.</p></li> <li><p>PRIVATE: A device pool that is created and managed by the
-     * device pool developer.</p></li> </ul>
+     * <p>The device pool's type.</p> <p>Allowed values include:</p> <ul> <li>
+     * <p>CURATED: A device pool that is created and managed by AWS Device Farm.</p>
+     * </li> <li> <p>PRIVATE: A device pool that is created and managed by the device
+     * pool developer.</p> </li> </ul>
      */
-    inline DevicePool& WithType(DevicePoolType&& value) { SetType(value); return *this;}
+    inline DevicePool& WithType(DevicePoolType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>Information about the device pool's rules.</p>
@@ -202,7 +206,7 @@ namespace Model
     /**
      * <p>Information about the device pool's rules.</p>
      */
-    inline void SetRules(Aws::Vector<Rule>&& value) { m_rulesHasBeenSet = true; m_rules = value; }
+    inline void SetRules(Aws::Vector<Rule>&& value) { m_rulesHasBeenSet = true; m_rules = std::move(value); }
 
     /**
      * <p>Information about the device pool's rules.</p>
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>Information about the device pool's rules.</p>
      */
-    inline DevicePool& WithRules(Aws::Vector<Rule>&& value) { SetRules(value); return *this;}
+    inline DevicePool& WithRules(Aws::Vector<Rule>&& value) { SetRules(std::move(value)); return *this;}
 
     /**
      * <p>Information about the device pool's rules.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>Information about the device pool's rules.</p>
      */
-    inline DevicePool& AddRules(Rule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(value); return *this; }
+    inline DevicePool& AddRules(Rule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_arn;

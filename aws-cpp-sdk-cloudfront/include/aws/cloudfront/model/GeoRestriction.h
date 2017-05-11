@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudfront/CloudFront_EXPORTS.h>
 #include <aws/cloudfront/model/GeoRestrictionType.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -38,7 +40,9 @@ namespace Model
    * the Amazon CloudFront Developer Guide. CloudFront determines the location of
    * your users using MaxMind GeoIP databases. For information about the accuracy of
    * these databases, see How accurate are your GeoIP databases? on the MaxMind
-   * website.
+   * website.<p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudfront-2016-01-28/GeoRestriction">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFRONT_API GeoRestriction
   {
@@ -77,7 +81,7 @@ namespace Model
      * whitelist: The Location elements specify the countries in which you want
      * CloudFront to distribute your content.
      */
-    inline void SetRestrictionType(GeoRestrictionType&& value) { m_restrictionTypeHasBeenSet = true; m_restrictionType = value; }
+    inline void SetRestrictionType(GeoRestrictionType&& value) { m_restrictionTypeHasBeenSet = true; m_restrictionType = std::move(value); }
 
     /**
      * The method that you want to use to restrict distribution of your content by
@@ -97,7 +101,7 @@ namespace Model
      * whitelist: The Location elements specify the countries in which you want
      * CloudFront to distribute your content.
      */
-    inline GeoRestriction& WithRestrictionType(GeoRestrictionType&& value) { SetRestrictionType(value); return *this;}
+    inline GeoRestriction& WithRestrictionType(GeoRestrictionType&& value) { SetRestrictionType(std::move(value)); return *this;}
 
     /**
      * When geo restriction is enabled, this is the number of countries in your
@@ -157,7 +161,7 @@ namespace Model
      * Organization for Standardization website. You can also refer to the country list
      * in the CloudFront console, which includes both country names and codes.
      */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = value; }
+    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
 
     /**
      * A complex type that contains a Location element for each country in which you
@@ -183,7 +187,7 @@ namespace Model
      * Organization for Standardization website. You can also refer to the country list
      * in the CloudFront console, which includes both country names and codes.
      */
-    inline GeoRestriction& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(value); return *this;}
+    inline GeoRestriction& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
 
     /**
      * A complex type that contains a Location element for each country in which you
@@ -209,7 +213,7 @@ namespace Model
      * Organization for Standardization website. You can also refer to the country list
      * in the CloudFront console, which includes both country names and codes.
      */
-    inline GeoRestriction& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
+    inline GeoRestriction& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
 
     /**
      * A complex type that contains a Location element for each country in which you

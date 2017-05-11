@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ecs/model/TaskDefinition.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -32,12 +33,15 @@ TaskDefinition::TaskDefinition() :
     m_containerDefinitionsHasBeenSet(false),
     m_familyHasBeenSet(false),
     m_taskRoleArnHasBeenSet(false),
+    m_networkMode(NetworkMode::NOT_SET),
     m_networkModeHasBeenSet(false),
     m_revision(0),
     m_revisionHasBeenSet(false),
     m_volumesHasBeenSet(false),
+    m_status(TaskDefinitionStatus::NOT_SET),
     m_statusHasBeenSet(false),
-    m_requiresAttributesHasBeenSet(false)
+    m_requiresAttributesHasBeenSet(false),
+    m_placementConstraintsHasBeenSet(false)
 {
 }
 
@@ -46,12 +50,15 @@ TaskDefinition::TaskDefinition(const JsonValue& jsonValue) :
     m_containerDefinitionsHasBeenSet(false),
     m_familyHasBeenSet(false),
     m_taskRoleArnHasBeenSet(false),
+    m_networkMode(NetworkMode::NOT_SET),
     m_networkModeHasBeenSet(false),
     m_revision(0),
     m_revisionHasBeenSet(false),
     m_volumesHasBeenSet(false),
+    m_status(TaskDefinitionStatus::NOT_SET),
     m_statusHasBeenSet(false),
-    m_requiresAttributesHasBeenSet(false)
+    m_requiresAttributesHasBeenSet(false),
+    m_placementConstraintsHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -130,6 +137,16 @@ TaskDefinition& TaskDefinition::operator =(const JsonValue& jsonValue)
     m_requiresAttributesHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("placementConstraints"))
+  {
+    Array<JsonValue> placementConstraintsJsonList = jsonValue.GetArray("placementConstraints");
+    for(unsigned placementConstraintsIndex = 0; placementConstraintsIndex < placementConstraintsJsonList.GetLength(); ++placementConstraintsIndex)
+    {
+      m_placementConstraints.push_back(placementConstraintsJsonList[placementConstraintsIndex].AsObject());
+    }
+    m_placementConstraintsHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -201,6 +218,17 @@ JsonValue TaskDefinition::Jsonize() const
      requiresAttributesJsonList[requiresAttributesIndex].AsObject(m_requiresAttributes[requiresAttributesIndex].Jsonize());
    }
    payload.WithArray("requiresAttributes", std::move(requiresAttributesJsonList));
+
+  }
+
+  if(m_placementConstraintsHasBeenSet)
+  {
+   Array<JsonValue> placementConstraintsJsonList(m_placementConstraints.size());
+   for(unsigned placementConstraintsIndex = 0; placementConstraintsIndex < placementConstraintsJsonList.GetLength(); ++placementConstraintsIndex)
+   {
+     placementConstraintsJsonList[placementConstraintsIndex].AsObject(m_placementConstraints[placementConstraintsIndex].Jsonize());
+   }
+   payload.WithArray("placementConstraints", std::move(placementConstraintsJsonList));
 
   }
 

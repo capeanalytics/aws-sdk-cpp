@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codecommit/model/RepositoryMetadata.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace CodeCommit
 namespace Model
 {
   /**
-   * <p>Represents the output of a batch get repositories operation.</p>
+   * <p>Represents the output of a batch get repositories operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetRepositoriesOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API BatchGetRepositoriesResult
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>A list of repositories returned by the batch get repositories operation.</p>
      */
-    inline void SetRepositories(Aws::Vector<RepositoryMetadata>&& value) { m_repositories = value; }
+    inline void SetRepositories(Aws::Vector<RepositoryMetadata>&& value) { m_repositories = std::move(value); }
 
     /**
      * <p>A list of repositories returned by the batch get repositories operation.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>A list of repositories returned by the batch get repositories operation.</p>
      */
-    inline BatchGetRepositoriesResult& WithRepositories(Aws::Vector<RepositoryMetadata>&& value) { SetRepositories(value); return *this;}
+    inline BatchGetRepositoriesResult& WithRepositories(Aws::Vector<RepositoryMetadata>&& value) { SetRepositories(std::move(value)); return *this;}
 
     /**
      * <p>A list of repositories returned by the batch get repositories operation.</p>
@@ -77,7 +82,7 @@ namespace Model
     /**
      * <p>A list of repositories returned by the batch get repositories operation.</p>
      */
-    inline BatchGetRepositoriesResult& AddRepositories(RepositoryMetadata&& value) { m_repositories.push_back(value); return *this; }
+    inline BatchGetRepositoriesResult& AddRepositories(RepositoryMetadata&& value) { m_repositories.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Returns a list of repository names for which information could not be
@@ -95,7 +100,7 @@ namespace Model
      * <p>Returns a list of repository names for which information could not be
      * found.</p>
      */
-    inline void SetRepositoriesNotFound(Aws::Vector<Aws::String>&& value) { m_repositoriesNotFound = value; }
+    inline void SetRepositoriesNotFound(Aws::Vector<Aws::String>&& value) { m_repositoriesNotFound = std::move(value); }
 
     /**
      * <p>Returns a list of repository names for which information could not be
@@ -107,7 +112,7 @@ namespace Model
      * <p>Returns a list of repository names for which information could not be
      * found.</p>
      */
-    inline BatchGetRepositoriesResult& WithRepositoriesNotFound(Aws::Vector<Aws::String>&& value) { SetRepositoriesNotFound(value); return *this;}
+    inline BatchGetRepositoriesResult& WithRepositoriesNotFound(Aws::Vector<Aws::String>&& value) { SetRepositoriesNotFound(std::move(value)); return *this;}
 
     /**
      * <p>Returns a list of repository names for which information could not be
@@ -119,7 +124,7 @@ namespace Model
      * <p>Returns a list of repository names for which information could not be
      * found.</p>
      */
-    inline BatchGetRepositoriesResult& AddRepositoriesNotFound(Aws::String&& value) { m_repositoriesNotFound.push_back(value); return *this; }
+    inline BatchGetRepositoriesResult& AddRepositoriesNotFound(Aws::String&& value) { m_repositoriesNotFound.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Returns a list of repository names for which information could not be

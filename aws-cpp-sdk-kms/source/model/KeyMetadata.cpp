@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/kms/model/KeyMetadata.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -35,11 +36,15 @@ KeyMetadata::KeyMetadata() :
     m_enabled(false),
     m_enabledHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_keyUsage(KeyUsageType::NOT_SET),
     m_keyUsageHasBeenSet(false),
+    m_keyState(KeyState::NOT_SET),
     m_keyStateHasBeenSet(false),
     m_deletionDateHasBeenSet(false),
     m_validToHasBeenSet(false),
+    m_origin(OriginType::NOT_SET),
     m_originHasBeenSet(false),
+    m_expirationModel(ExpirationModelType::NOT_SET),
     m_expirationModelHasBeenSet(false)
 {
 }
@@ -52,11 +57,15 @@ KeyMetadata::KeyMetadata(const JsonValue& jsonValue) :
     m_enabled(false),
     m_enabledHasBeenSet(false),
     m_descriptionHasBeenSet(false),
+    m_keyUsage(KeyUsageType::NOT_SET),
     m_keyUsageHasBeenSet(false),
+    m_keyState(KeyState::NOT_SET),
     m_keyStateHasBeenSet(false),
     m_deletionDateHasBeenSet(false),
     m_validToHasBeenSet(false),
+    m_origin(OriginType::NOT_SET),
     m_originHasBeenSet(false),
+    m_expirationModel(ExpirationModelType::NOT_SET),
     m_expirationModelHasBeenSet(false)
 {
   *this = jsonValue;

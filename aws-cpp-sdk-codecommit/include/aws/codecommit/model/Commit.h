@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/codecommit/model/UserInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace Model
 {
 
   /**
-   * <p>Returns information about a specific commit.</p>
+   * <p>Returns information about a specific commit.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/Commit">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API Commit
   {
@@ -56,7 +60,7 @@ namespace Model
     /**
      * <p>Tree information for the specified commit.</p>
      */
-    inline void SetTreeId(Aws::String&& value) { m_treeIdHasBeenSet = true; m_treeId = value; }
+    inline void SetTreeId(Aws::String&& value) { m_treeIdHasBeenSet = true; m_treeId = std::move(value); }
 
     /**
      * <p>Tree information for the specified commit.</p>
@@ -71,7 +75,7 @@ namespace Model
     /**
      * <p>Tree information for the specified commit.</p>
      */
-    inline Commit& WithTreeId(Aws::String&& value) { SetTreeId(value); return *this;}
+    inline Commit& WithTreeId(Aws::String&& value) { SetTreeId(std::move(value)); return *this;}
 
     /**
      * <p>Tree information for the specified commit.</p>
@@ -91,7 +95,7 @@ namespace Model
     /**
      * <p>The parent list for the specified commit.</p>
      */
-    inline void SetParents(Aws::Vector<Aws::String>&& value) { m_parentsHasBeenSet = true; m_parents = value; }
+    inline void SetParents(Aws::Vector<Aws::String>&& value) { m_parentsHasBeenSet = true; m_parents = std::move(value); }
 
     /**
      * <p>The parent list for the specified commit.</p>
@@ -101,7 +105,7 @@ namespace Model
     /**
      * <p>The parent list for the specified commit.</p>
      */
-    inline Commit& WithParents(Aws::Vector<Aws::String>&& value) { SetParents(value); return *this;}
+    inline Commit& WithParents(Aws::Vector<Aws::String>&& value) { SetParents(std::move(value)); return *this;}
 
     /**
      * <p>The parent list for the specified commit.</p>
@@ -111,7 +115,7 @@ namespace Model
     /**
      * <p>The parent list for the specified commit.</p>
      */
-    inline Commit& AddParents(Aws::String&& value) { m_parentsHasBeenSet = true; m_parents.push_back(value); return *this; }
+    inline Commit& AddParents(Aws::String&& value) { m_parentsHasBeenSet = true; m_parents.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The parent list for the specified commit.</p>
@@ -119,104 +123,129 @@ namespace Model
     inline Commit& AddParents(const char* value) { m_parentsHasBeenSet = true; m_parents.push_back(value); return *this; }
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
     inline const Aws::String& GetMessage() const{ return m_message; }
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
     inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
     inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
     inline Commit& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
-    inline Commit& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline Commit& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
-     * <p>The message associated with the specified commit.</p>
+     * <p>The commit message associated with the specified commit.</p>
      */
     inline Commit& WithMessage(const char* value) { SetMessage(value); return *this;}
 
     /**
-     * <p>Information about the author of the specified commit.</p>
+     * <p>Information about the author of the specified commit. Information includes
+     * the date in timestamp format with GMT offset, the name of the author, and the
+     * email address for the author, as configured in Git.</p>
      */
     inline const UserInfo& GetAuthor() const{ return m_author; }
 
     /**
-     * <p>Information about the author of the specified commit.</p>
+     * <p>Information about the author of the specified commit. Information includes
+     * the date in timestamp format with GMT offset, the name of the author, and the
+     * email address for the author, as configured in Git.</p>
      */
     inline void SetAuthor(const UserInfo& value) { m_authorHasBeenSet = true; m_author = value; }
 
     /**
-     * <p>Information about the author of the specified commit.</p>
+     * <p>Information about the author of the specified commit. Information includes
+     * the date in timestamp format with GMT offset, the name of the author, and the
+     * email address for the author, as configured in Git.</p>
      */
-    inline void SetAuthor(UserInfo&& value) { m_authorHasBeenSet = true; m_author = value; }
+    inline void SetAuthor(UserInfo&& value) { m_authorHasBeenSet = true; m_author = std::move(value); }
 
     /**
-     * <p>Information about the author of the specified commit.</p>
+     * <p>Information about the author of the specified commit. Information includes
+     * the date in timestamp format with GMT offset, the name of the author, and the
+     * email address for the author, as configured in Git.</p>
      */
     inline Commit& WithAuthor(const UserInfo& value) { SetAuthor(value); return *this;}
 
     /**
-     * <p>Information about the author of the specified commit.</p>
+     * <p>Information about the author of the specified commit. Information includes
+     * the date in timestamp format with GMT offset, the name of the author, and the
+     * email address for the author, as configured in Git.</p>
      */
-    inline Commit& WithAuthor(UserInfo&& value) { SetAuthor(value); return *this;}
+    inline Commit& WithAuthor(UserInfo&& value) { SetAuthor(std::move(value)); return *this;}
 
     /**
      * <p>Information about the person who committed the specified commit, also known
-     * as the committer. For more information about the difference between an author
-     * and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing
-     * the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+     * as the committer. Information includes the date in timestamp format with GMT
+     * offset, the name of the committer, and the email address for the committer, as
+     * configured in Git.</p> <p>For more information about the difference between an
+     * author and a committer in Git, see <a
+     * href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro
+     * Git by Scott Chacon and Ben Straub.</p>
      */
     inline const UserInfo& GetCommitter() const{ return m_committer; }
 
     /**
      * <p>Information about the person who committed the specified commit, also known
-     * as the committer. For more information about the difference between an author
-     * and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing
-     * the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+     * as the committer. Information includes the date in timestamp format with GMT
+     * offset, the name of the committer, and the email address for the committer, as
+     * configured in Git.</p> <p>For more information about the difference between an
+     * author and a committer in Git, see <a
+     * href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro
+     * Git by Scott Chacon and Ben Straub.</p>
      */
     inline void SetCommitter(const UserInfo& value) { m_committerHasBeenSet = true; m_committer = value; }
 
     /**
      * <p>Information about the person who committed the specified commit, also known
-     * as the committer. For more information about the difference between an author
-     * and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing
-     * the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+     * as the committer. Information includes the date in timestamp format with GMT
+     * offset, the name of the committer, and the email address for the committer, as
+     * configured in Git.</p> <p>For more information about the difference between an
+     * author and a committer in Git, see <a
+     * href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro
+     * Git by Scott Chacon and Ben Straub.</p>
      */
-    inline void SetCommitter(UserInfo&& value) { m_committerHasBeenSet = true; m_committer = value; }
+    inline void SetCommitter(UserInfo&& value) { m_committerHasBeenSet = true; m_committer = std::move(value); }
 
     /**
      * <p>Information about the person who committed the specified commit, also known
-     * as the committer. For more information about the difference between an author
-     * and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing
-     * the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+     * as the committer. Information includes the date in timestamp format with GMT
+     * offset, the name of the committer, and the email address for the committer, as
+     * configured in Git.</p> <p>For more information about the difference between an
+     * author and a committer in Git, see <a
+     * href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro
+     * Git by Scott Chacon and Ben Straub.</p>
      */
     inline Commit& WithCommitter(const UserInfo& value) { SetCommitter(value); return *this;}
 
     /**
      * <p>Information about the person who committed the specified commit, also known
-     * as the committer. For more information about the difference between an author
-     * and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing
-     * the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+     * as the committer. Information includes the date in timestamp format with GMT
+     * offset, the name of the committer, and the email address for the committer, as
+     * configured in Git.</p> <p>For more information about the difference between an
+     * author and a committer in Git, see <a
+     * href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro
+     * Git by Scott Chacon and Ben Straub.</p>
      */
-    inline Commit& WithCommitter(UserInfo&& value) { SetCommitter(value); return *this;}
+    inline Commit& WithCommitter(UserInfo&& value) { SetCommitter(std::move(value)); return *this;}
 
     /**
      * <p>Any additional data associated with the specified commit.</p>
@@ -231,7 +260,7 @@ namespace Model
     /**
      * <p>Any additional data associated with the specified commit.</p>
      */
-    inline void SetAdditionalData(Aws::String&& value) { m_additionalDataHasBeenSet = true; m_additionalData = value; }
+    inline void SetAdditionalData(Aws::String&& value) { m_additionalDataHasBeenSet = true; m_additionalData = std::move(value); }
 
     /**
      * <p>Any additional data associated with the specified commit.</p>
@@ -246,7 +275,7 @@ namespace Model
     /**
      * <p>Any additional data associated with the specified commit.</p>
      */
-    inline Commit& WithAdditionalData(Aws::String&& value) { SetAdditionalData(value); return *this;}
+    inline Commit& WithAdditionalData(Aws::String&& value) { SetAdditionalData(std::move(value)); return *this;}
 
     /**
      * <p>Any additional data associated with the specified commit.</p>

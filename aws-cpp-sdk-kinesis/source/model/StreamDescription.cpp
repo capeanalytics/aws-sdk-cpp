@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/kinesis/model/StreamDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,12 +31,14 @@ namespace Model
 StreamDescription::StreamDescription() : 
     m_streamNameHasBeenSet(false),
     m_streamARNHasBeenSet(false),
+    m_streamStatus(StreamStatus::NOT_SET),
     m_streamStatusHasBeenSet(false),
     m_shardsHasBeenSet(false),
     m_hasMoreShards(false),
     m_hasMoreShardsHasBeenSet(false),
     m_retentionPeriodHours(0),
     m_retentionPeriodHoursHasBeenSet(false),
+    m_streamCreationTimestampHasBeenSet(false),
     m_enhancedMonitoringHasBeenSet(false)
 {
 }
@@ -43,12 +46,14 @@ StreamDescription::StreamDescription() :
 StreamDescription::StreamDescription(const JsonValue& jsonValue) : 
     m_streamNameHasBeenSet(false),
     m_streamARNHasBeenSet(false),
+    m_streamStatus(StreamStatus::NOT_SET),
     m_streamStatusHasBeenSet(false),
     m_shardsHasBeenSet(false),
     m_hasMoreShards(false),
     m_hasMoreShardsHasBeenSet(false),
     m_retentionPeriodHours(0),
     m_retentionPeriodHoursHasBeenSet(false),
+    m_streamCreationTimestampHasBeenSet(false),
     m_enhancedMonitoringHasBeenSet(false)
 {
   *this = jsonValue;
@@ -99,6 +104,13 @@ StreamDescription& StreamDescription::operator =(const JsonValue& jsonValue)
     m_retentionPeriodHours = jsonValue.GetInteger("RetentionPeriodHours");
 
     m_retentionPeriodHoursHasBeenSet = true;
+  }
+
+  if(jsonValue.ValueExists("StreamCreationTimestamp"))
+  {
+    m_streamCreationTimestamp = jsonValue.GetDouble("StreamCreationTimestamp");
+
+    m_streamCreationTimestampHasBeenSet = true;
   }
 
   if(jsonValue.ValueExists("EnhancedMonitoring"))
@@ -156,6 +168,11 @@ JsonValue StreamDescription::Jsonize() const
   {
    payload.WithInteger("RetentionPeriodHours", m_retentionPeriodHours);
 
+  }
+
+  if(m_streamCreationTimestampHasBeenSet)
+  {
+   payload.WithDouble("StreamCreationTimestamp", m_streamCreationTimestamp.SecondsWithMSPrecision());
   }
 
   if(m_enhancedMonitoringHasBeenSet)

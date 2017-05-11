@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codepipeline/model/ActionTypeId.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -28,7 +29,9 @@ namespace Model
 {
 
 ActionTypeId::ActionTypeId() : 
+    m_category(ActionCategory::NOT_SET),
     m_categoryHasBeenSet(false),
+    m_owner(ActionOwner::NOT_SET),
     m_ownerHasBeenSet(false),
     m_providerHasBeenSet(false),
     m_versionHasBeenSet(false)
@@ -36,7 +39,9 @@ ActionTypeId::ActionTypeId() :
 }
 
 ActionTypeId::ActionTypeId(const JsonValue& jsonValue) : 
+    m_category(ActionCategory::NOT_SET),
     m_categoryHasBeenSet(false),
+    m_owner(ActionOwner::NOT_SET),
     m_ownerHasBeenSet(false),
     m_providerHasBeenSet(false),
     m_versionHasBeenSet(false)

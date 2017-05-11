@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/gamelift/GameLift_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace GameLift
 namespace Model
 {
   /**
-   * <p>Represents the returned data in response to a request action.</p>
+   * <p>Represents the returned data in response to a request action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/gamelift-2015-10-01/GetGameSessionLogUrlOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GAMELIFT_API GetGameSessionLogUrlResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>Location of the requested game session logs, available for download.</p>
      */
-    inline void SetPreSignedUrl(Aws::String&& value) { m_preSignedUrl = value; }
+    inline void SetPreSignedUrl(Aws::String&& value) { m_preSignedUrl = std::move(value); }
 
     /**
      * <p>Location of the requested game session logs, available for download.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>Location of the requested game session logs, available for download.</p>
      */
-    inline GetGameSessionLogUrlResult& WithPreSignedUrl(Aws::String&& value) { SetPreSignedUrl(value); return *this;}
+    inline GetGameSessionLogUrlResult& WithPreSignedUrl(Aws::String&& value) { SetPreSignedUrl(std::move(value)); return *this;}
 
     /**
      * <p>Location of the requested game session logs, available for download.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elastictranscoder/ElasticTranscoder_EXPORTS.h>
 #include <aws/elastictranscoder/model/Job.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,9 @@ namespace ElasticTranscoder
 namespace Model
 {
   /**
-   * <p>The <code>ReadJobResponse</code> structure.</p>
+   * <p>The <code>ReadJobResponse</code> structure.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elastictranscoder-2012-09-25/ReadJobResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICTRANSCODER_API ReadJobResult
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>A section of the response body that provides information about the job.</p>
      */
-    inline void SetJob(Job&& value) { m_job = value; }
+    inline void SetJob(Job&& value) { m_job = std::move(value); }
 
     /**
      * <p>A section of the response body that provides information about the job.</p>
@@ -65,7 +69,7 @@ namespace Model
     /**
      * <p>A section of the response body that provides information about the job.</p>
      */
-    inline ReadJobResult& WithJob(Job&& value) { SetJob(value); return *this;}
+    inline ReadJobResult& WithJob(Job&& value) { SetJob(std::move(value)); return *this;}
 
   private:
     Job m_job;

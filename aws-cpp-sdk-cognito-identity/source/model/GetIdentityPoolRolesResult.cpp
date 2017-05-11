@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/cognito-identity/model/GetIdentityPoolRolesResult.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/AmazonWebServiceResult.h>
@@ -48,6 +49,15 @@ GetIdentityPoolRolesResult& GetIdentityPoolRolesResult::operator =(const AmazonW
     for(auto& rolesItem : rolesJsonMap)
     {
       m_roles[rolesItem.first] = rolesItem.second.AsString();
+    }
+  }
+
+  if(jsonValue.ValueExists("RoleMappings"))
+  {
+    Aws::Map<Aws::String, JsonValue> roleMappingsJsonMap = jsonValue.GetObject("RoleMappings").GetAllObjects();
+    for(auto& roleMappingsItem : roleMappingsJsonMap)
+    {
+      m_roleMappings[roleMappingsItem.first] = roleMappingsItem.second.AsObject();
     }
   }
 

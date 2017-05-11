@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iot/model/CACertificateDescription.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -30,10 +31,12 @@ namespace Model
 CACertificateDescription::CACertificateDescription() : 
     m_certificateArnHasBeenSet(false),
     m_certificateIdHasBeenSet(false),
+    m_status(CACertificateStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_certificatePemHasBeenSet(false),
     m_ownedByHasBeenSet(false),
     m_creationDateHasBeenSet(false),
+    m_autoRegistrationStatus(AutoRegistrationStatus::NOT_SET),
     m_autoRegistrationStatusHasBeenSet(false)
 {
 }
@@ -41,10 +44,12 @@ CACertificateDescription::CACertificateDescription() :
 CACertificateDescription::CACertificateDescription(const JsonValue& jsonValue) : 
     m_certificateArnHasBeenSet(false),
     m_certificateIdHasBeenSet(false),
+    m_status(CACertificateStatus::NOT_SET),
     m_statusHasBeenSet(false),
     m_certificatePemHasBeenSet(false),
     m_ownedByHasBeenSet(false),
     m_creationDateHasBeenSet(false),
+    m_autoRegistrationStatus(AutoRegistrationStatus::NOT_SET),
     m_autoRegistrationStatusHasBeenSet(false)
 {
   *this = jsonValue;

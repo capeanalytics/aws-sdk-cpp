@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/config/ConfigService_EXPORTS.h>
 #include <aws/config/model/DeliveryStatus.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Model
 
   /**
    * <p>A list that contains the status of the delivery of either the snapshot or the
-   * configuration history to the specified Amazon S3 bucket.</p>
+   * configuration history to the specified Amazon S3 bucket.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigExportDeliveryInfo">AWS
+   * API Reference</a></p>
    */
   class AWS_CONFIGSERVICE_API ConfigExportDeliveryInfo
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>Status of the last attempted delivery.</p>
      */
-    inline void SetLastStatus(DeliveryStatus&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = value; }
+    inline void SetLastStatus(DeliveryStatus&& value) { m_lastStatusHasBeenSet = true; m_lastStatus = std::move(value); }
 
     /**
      * <p>Status of the last attempted delivery.</p>
@@ -67,7 +72,7 @@ namespace Model
     /**
      * <p>Status of the last attempted delivery.</p>
      */
-    inline ConfigExportDeliveryInfo& WithLastStatus(DeliveryStatus&& value) { SetLastStatus(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithLastStatus(DeliveryStatus&& value) { SetLastStatus(std::move(value)); return *this;}
 
     /**
      * <p>The error code from the last attempted delivery.</p>
@@ -82,7 +87,7 @@ namespace Model
     /**
      * <p>The error code from the last attempted delivery.</p>
      */
-    inline void SetLastErrorCode(Aws::String&& value) { m_lastErrorCodeHasBeenSet = true; m_lastErrorCode = value; }
+    inline void SetLastErrorCode(Aws::String&& value) { m_lastErrorCodeHasBeenSet = true; m_lastErrorCode = std::move(value); }
 
     /**
      * <p>The error code from the last attempted delivery.</p>
@@ -97,7 +102,7 @@ namespace Model
     /**
      * <p>The error code from the last attempted delivery.</p>
      */
-    inline ConfigExportDeliveryInfo& WithLastErrorCode(Aws::String&& value) { SetLastErrorCode(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithLastErrorCode(Aws::String&& value) { SetLastErrorCode(std::move(value)); return *this;}
 
     /**
      * <p>The error code from the last attempted delivery.</p>
@@ -117,7 +122,7 @@ namespace Model
     /**
      * <p>The error message from the last attempted delivery.</p>
      */
-    inline void SetLastErrorMessage(Aws::String&& value) { m_lastErrorMessageHasBeenSet = true; m_lastErrorMessage = value; }
+    inline void SetLastErrorMessage(Aws::String&& value) { m_lastErrorMessageHasBeenSet = true; m_lastErrorMessage = std::move(value); }
 
     /**
      * <p>The error message from the last attempted delivery.</p>
@@ -132,7 +137,7 @@ namespace Model
     /**
      * <p>The error message from the last attempted delivery.</p>
      */
-    inline ConfigExportDeliveryInfo& WithLastErrorMessage(Aws::String&& value) { SetLastErrorMessage(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithLastErrorMessage(Aws::String&& value) { SetLastErrorMessage(std::move(value)); return *this;}
 
     /**
      * <p>The error message from the last attempted delivery.</p>
@@ -152,7 +157,7 @@ namespace Model
     /**
      * <p>The time of the last attempted delivery.</p>
      */
-    inline void SetLastAttemptTime(Aws::Utils::DateTime&& value) { m_lastAttemptTimeHasBeenSet = true; m_lastAttemptTime = value; }
+    inline void SetLastAttemptTime(Aws::Utils::DateTime&& value) { m_lastAttemptTimeHasBeenSet = true; m_lastAttemptTime = std::move(value); }
 
     /**
      * <p>The time of the last attempted delivery.</p>
@@ -162,7 +167,7 @@ namespace Model
     /**
      * <p>The time of the last attempted delivery.</p>
      */
-    inline ConfigExportDeliveryInfo& WithLastAttemptTime(Aws::Utils::DateTime&& value) { SetLastAttemptTime(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithLastAttemptTime(Aws::Utils::DateTime&& value) { SetLastAttemptTime(std::move(value)); return *this;}
 
     /**
      * <p>The time of the last successful delivery.</p>
@@ -177,7 +182,7 @@ namespace Model
     /**
      * <p>The time of the last successful delivery.</p>
      */
-    inline void SetLastSuccessfulTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulTimeHasBeenSet = true; m_lastSuccessfulTime = value; }
+    inline void SetLastSuccessfulTime(Aws::Utils::DateTime&& value) { m_lastSuccessfulTimeHasBeenSet = true; m_lastSuccessfulTime = std::move(value); }
 
     /**
      * <p>The time of the last successful delivery.</p>
@@ -187,7 +192,7 @@ namespace Model
     /**
      * <p>The time of the last successful delivery.</p>
      */
-    inline ConfigExportDeliveryInfo& WithLastSuccessfulTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulTime(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithLastSuccessfulTime(Aws::Utils::DateTime&& value) { SetLastSuccessfulTime(std::move(value)); return *this;}
 
     /**
      * <p>The time that the next delivery occurs.</p>
@@ -202,7 +207,7 @@ namespace Model
     /**
      * <p>The time that the next delivery occurs.</p>
      */
-    inline void SetNextDeliveryTime(Aws::Utils::DateTime&& value) { m_nextDeliveryTimeHasBeenSet = true; m_nextDeliveryTime = value; }
+    inline void SetNextDeliveryTime(Aws::Utils::DateTime&& value) { m_nextDeliveryTimeHasBeenSet = true; m_nextDeliveryTime = std::move(value); }
 
     /**
      * <p>The time that the next delivery occurs.</p>
@@ -212,7 +217,7 @@ namespace Model
     /**
      * <p>The time that the next delivery occurs.</p>
      */
-    inline ConfigExportDeliveryInfo& WithNextDeliveryTime(Aws::Utils::DateTime&& value) { SetNextDeliveryTime(value); return *this;}
+    inline ConfigExportDeliveryInfo& WithNextDeliveryTime(Aws::Utils::DateTime&& value) { SetNextDeliveryTime(std::move(value)); return *this;}
 
   private:
     DeliveryStatus m_lastStatus;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,8 +12,10 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/dms/model/ImportCertificateRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/HashingUtils.h>
 
 #include <utility>
 
@@ -23,7 +25,8 @@ using namespace Aws::Utils;
 
 ImportCertificateRequest::ImportCertificateRequest() : 
     m_certificateIdentifierHasBeenSet(false),
-    m_certificatePemHasBeenSet(false)
+    m_certificatePemHasBeenSet(false),
+    m_certificateWalletHasBeenSet(false)
 {
 }
 
@@ -43,6 +46,11 @@ Aws::String ImportCertificateRequest::SerializePayload() const
 
   }
 
+  if(m_certificateWalletHasBeenSet)
+  {
+   payload.WithString("CertificateWallet", HashingUtils::Base64Encode(m_certificateWallet));
+  }
+
   return payload.WriteReadable();
 }
 
@@ -53,6 +61,7 @@ Aws::Http::HeaderValueCollection ImportCertificateRequest::GetRequestSpecificHea
   return headers;
 
 }
+
 
 
 

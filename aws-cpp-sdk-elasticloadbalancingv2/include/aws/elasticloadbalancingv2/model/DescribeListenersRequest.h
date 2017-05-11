@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2_EXPORTS.h>
 #include <aws/elasticloadbalancingv2/ElasticLoadBalancingv2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,6 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for DescribeListeners.</p>
    */
   class AWS_ELASTICLOADBALANCINGV2_API DescribeListenersRequest : public ElasticLoadBalancingv2Request
   {
@@ -34,6 +35,11 @@ namespace Model
     DescribeListenersRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
@@ -47,7 +53,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = value; }
+    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
@@ -62,7 +68,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline DescribeListenersRequest& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(value); return *this;}
+    inline DescribeListenersRequest& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
@@ -82,7 +88,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
      */
-    inline void SetListenerArns(Aws::Vector<Aws::String>&& value) { m_listenerArnsHasBeenSet = true; m_listenerArns = value; }
+    inline void SetListenerArns(Aws::Vector<Aws::String>&& value) { m_listenerArnsHasBeenSet = true; m_listenerArns = std::move(value); }
 
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
@@ -92,7 +98,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
      */
-    inline DescribeListenersRequest& WithListenerArns(Aws::Vector<Aws::String>&& value) { SetListenerArns(value); return *this;}
+    inline DescribeListenersRequest& WithListenerArns(Aws::Vector<Aws::String>&& value) { SetListenerArns(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
@@ -102,7 +108,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
      */
-    inline DescribeListenersRequest& AddListenerArns(Aws::String&& value) { m_listenerArnsHasBeenSet = true; m_listenerArns.push_back(value); return *this; }
+    inline DescribeListenersRequest& AddListenerArns(Aws::String&& value) { m_listenerArnsHasBeenSet = true; m_listenerArns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The Amazon Resource Names (ARN) of the listeners.</p>
@@ -125,7 +131,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = value; }
+    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a
@@ -143,7 +149,7 @@ namespace Model
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline DescribeListenersRequest& WithMarker(Aws::String&& value) { SetMarker(value); return *this;}
+    inline DescribeListenersRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
 
     /**
      * <p>The marker for the next set of results. (You received this marker from a

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/MovingAddressStatus.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Contains the output of DescribeMovingAddresses.</p>
+   * <p>Contains the output of DescribeMovingAddresses.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeMovingAddressesResult">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API DescribeMovingAddressesResponse
   {
@@ -58,7 +62,7 @@ namespace Model
     /**
      * <p>The status for each Elastic IP address.</p>
      */
-    inline void SetMovingAddressStatuses(Aws::Vector<MovingAddressStatus>&& value) { m_movingAddressStatuses = value; }
+    inline void SetMovingAddressStatuses(Aws::Vector<MovingAddressStatus>&& value) { m_movingAddressStatuses = std::move(value); }
 
     /**
      * <p>The status for each Elastic IP address.</p>
@@ -68,7 +72,7 @@ namespace Model
     /**
      * <p>The status for each Elastic IP address.</p>
      */
-    inline DescribeMovingAddressesResponse& WithMovingAddressStatuses(Aws::Vector<MovingAddressStatus>&& value) { SetMovingAddressStatuses(value); return *this;}
+    inline DescribeMovingAddressesResponse& WithMovingAddressStatuses(Aws::Vector<MovingAddressStatus>&& value) { SetMovingAddressStatuses(std::move(value)); return *this;}
 
     /**
      * <p>The status for each Elastic IP address.</p>
@@ -78,7 +82,7 @@ namespace Model
     /**
      * <p>The status for each Elastic IP address.</p>
      */
-    inline DescribeMovingAddressesResponse& AddMovingAddressStatuses(MovingAddressStatus&& value) { m_movingAddressStatuses.push_back(value); return *this; }
+    inline DescribeMovingAddressesResponse& AddMovingAddressStatuses(MovingAddressStatus&& value) { m_movingAddressStatuses.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The token to use to retrieve the next page of results. This value is
@@ -96,7 +100,7 @@ namespace Model
      * <p>The token to use to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
      * <p>The token to use to retrieve the next page of results. This value is
@@ -114,7 +118,7 @@ namespace Model
      * <p>The token to use to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline DescribeMovingAddressesResponse& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeMovingAddressesResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The token to use to retrieve the next page of results. This value is
@@ -129,13 +133,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline DescribeMovingAddressesResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline DescribeMovingAddressesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline DescribeMovingAddressesResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::Vector<MovingAddressStatus> m_movingAddressStatuses;

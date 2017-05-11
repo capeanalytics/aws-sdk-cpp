@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 
 #include <aws/core/client/CoreErrors.h>
@@ -44,7 +45,13 @@ enum class EC2Errors
   RESOURCE_NOT_FOUND = 16,
   UNRECOGNIZED_CLIENT = 17,
   MALFORMED_QUERY_STRING = 18,
+  SLOW_DOWN = 19,
+  REQUEST_TIME_TOO_SKEWED = 20,
+  INVALID_SIGNATURE = 21,
+  SIGNATURE_DOES_NOT_MATCH = 22,
+  INVALID_ACCESS_KEY_ID = 23,
   NETWORK_CONNECTION = 99,
+  
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,6 +65,7 @@ enum class EC2Errors
   CUSTOMER_GATEWAY_LIMIT_EXCEEDED,
   DEPENDENCY_VIOLATION,
   DISK_IMAGE_SIZE_TOO_LARGE,
+  DRY_RUN_OPERATION,
   ENCRYPTED_VOLUMES_NOT_SUPPORTED,
   FILTER_LIMIT_EXCEEDED,
   FLOW_LOGS_LIMIT_EXCEEDED,
@@ -170,8 +178,8 @@ enum class EC2Errors
   INVALID_VPC_I_D__NOT_FOUND,
   INVALID_VPC_PEERING_CONNECTION_ID__MALFORMED,
   INVALID_VPC_PEERING_CONNECTION_I_D__NOT_FOUND,
-  INVALID_VPC_RANGE,
   INVALID_VPC_STATE,
+  INVALID_VPC__RANGE,
   INVALID_VPN_CONNECTION_I_D,
   INVALID_VPN_CONNECTION_I_D__NOT_FOUND,
   INVALID_VPN_GATEWAY_ATTACHMENT__NOT_FOUND,
@@ -202,7 +210,6 @@ enum class EC2Errors
   SECURITY_GROUPS_PER_INSTANCE_LIMIT_EXCEEDED,
   SECURITY_GROUPS_PER_INTERFACE_LIMIT_EXCEEDED,
   SECURITY_GROUP_LIMIT_EXCEEDED,
-  SIGNATURE_DOES_NOT_MATCH,
   SNAPSHOT_LIMIT_EXCEEDED,
   SUBNET_LIMIT_EXCEEDED,
   TAG_LIMIT_EXCEEDED,

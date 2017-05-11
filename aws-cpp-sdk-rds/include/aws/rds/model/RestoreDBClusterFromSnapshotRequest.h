@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/rds/RDSRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/rds/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,9 @@ namespace Model
 {
 
   /**
-   * <p/>
+   * <p/><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RestoreDBClusterFromSnapshotMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API RestoreDBClusterFromSnapshotRequest : public RDSRequest
   {
@@ -35,6 +39,11 @@ namespace Model
     RestoreDBClusterFromSnapshotRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
      * cluster can be created in.</p>
@@ -51,7 +60,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
      * cluster can be created in.</p>
      */
-    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
+    inline void SetAvailabilityZones(Aws::Vector<Aws::String>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
@@ -63,7 +72,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
      * cluster can be created in.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithAvailabilityZones(Aws::Vector<Aws::String>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
@@ -75,7 +84,7 @@ namespace Model
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
      * cluster can be created in.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
+    inline RestoreDBClusterFromSnapshotRequest& AddAvailabilityZones(Aws::String&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Provides the list of EC2 Availability Zones that instances in the restored DB
@@ -111,7 +120,7 @@ namespace Model
      * two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code>
      * </p>
      */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
+    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
 
     /**
      * <p>The name of the DB cluster to create from the DB cluster snapshot. This
@@ -141,7 +150,7 @@ namespace Model
      * two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code>
      * </p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB cluster to create from the DB cluster snapshot. This
@@ -178,7 +187,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline void SetSnapshotIdentifier(Aws::String&& value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier = value; }
+    inline void SetSnapshotIdentifier(Aws::String&& value) { m_snapshotIdentifierHasBeenSet = true; m_snapshotIdentifier = std::move(value); }
 
     /**
      * <p>The identifier for the DB cluster snapshot to restore from.</p>
@@ -205,7 +214,7 @@ namespace Model
      * </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p>
      * </li> </ul>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithSnapshotIdentifier(Aws::String&& value) { SetSnapshotIdentifier(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithSnapshotIdentifier(Aws::String&& value) { SetSnapshotIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The identifier for the DB cluster snapshot to restore from.</p>
@@ -235,7 +244,7 @@ namespace Model
      * as source</p> <p>Constraint: Must be compatible with the engine of the
      * source</p>
      */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = value; }
+    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
 
     /**
      * <p>The database engine to use for the new DB cluster.</p> <p>Default: The same
@@ -256,7 +265,7 @@ namespace Model
      * as source</p> <p>Constraint: Must be compatible with the engine of the
      * source</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithEngine(Aws::String&& value) { SetEngine(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
 
     /**
      * <p>The database engine to use for the new DB cluster.</p> <p>Default: The same
@@ -278,7 +287,7 @@ namespace Model
     /**
      * <p>The version of the database engine to use for the new DB cluster.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>The version of the database engine to use for the new DB cluster.</p>
@@ -293,7 +302,7 @@ namespace Model
     /**
      * <p>The version of the database engine to use for the new DB cluster.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version of the database engine to use for the new DB cluster.</p>
@@ -343,7 +352,7 @@ namespace Model
      * underscores, spaces, or hyphens. Must not be default.</p> <p>Example:
      * <code>mySubnetgroup</code> </p>
      */
-    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = value; }
+    inline void SetDBSubnetGroupName(Aws::String&& value) { m_dBSubnetGroupNameHasBeenSet = true; m_dBSubnetGroupName = std::move(value); }
 
     /**
      * <p>The name of the DB subnet group to use for the new DB cluster.</p>
@@ -367,7 +376,7 @@ namespace Model
      * underscores, spaces, or hyphens. Must not be default.</p> <p>Example:
      * <code>mySubnetgroup</code> </p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithDBSubnetGroupName(Aws::String&& value) { SetDBSubnetGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the DB subnet group to use for the new DB cluster.</p>
@@ -390,7 +399,7 @@ namespace Model
     /**
      * <p>The database name for the restored DB cluster.</p>
      */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
+    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
 
     /**
      * <p>The database name for the restored DB cluster.</p>
@@ -405,7 +414,7 @@ namespace Model
     /**
      * <p>The database name for the restored DB cluster.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
 
     /**
      * <p>The database name for the restored DB cluster.</p>
@@ -425,7 +434,7 @@ namespace Model
     /**
      * <p>The name of the option group to use for the restored DB cluster.</p>
      */
-    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = value; }
+    inline void SetOptionGroupName(Aws::String&& value) { m_optionGroupNameHasBeenSet = true; m_optionGroupName = std::move(value); }
 
     /**
      * <p>The name of the option group to use for the restored DB cluster.</p>
@@ -440,7 +449,7 @@ namespace Model
     /**
      * <p>The name of the option group to use for the restored DB cluster.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithOptionGroupName(Aws::String&& value) { SetOptionGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the option group to use for the restored DB cluster.</p>
@@ -460,7 +469,7 @@ namespace Model
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
      */
-    inline void SetVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = value; }
+    inline void SetVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds = std::move(value); }
 
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
@@ -470,7 +479,7 @@ namespace Model
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupIds(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithVpcSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetVpcSecurityGroupIds(std::move(value)); return *this;}
 
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
@@ -480,7 +489,7 @@ namespace Model
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& AddVpcSecurityGroupIds(Aws::String&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(value); return *this; }
+    inline RestoreDBClusterFromSnapshotRequest& AddVpcSecurityGroupIds(Aws::String&& value) { m_vpcSecurityGroupIdsHasBeenSet = true; m_vpcSecurityGroupIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of VPC security groups that the new DB cluster will belong to.</p>
@@ -500,7 +509,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the restored DB cluster.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>The tags to be assigned to the restored DB cluster.</p>
@@ -510,7 +519,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the restored DB cluster.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>The tags to be assigned to the restored DB cluster.</p>
@@ -520,7 +529,7 @@ namespace Model
     /**
      * <p>The tags to be assigned to the restored DB cluster.</p>
      */
-    inline RestoreDBClusterFromSnapshotRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline RestoreDBClusterFromSnapshotRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The KMS key identifier to use when restoring an encrypted DB cluster from a
@@ -568,7 +577,7 @@ namespace Model
      * the restored DB cluster is encrypted using the specified encryption key.</p>
      * </li> </ul>
      */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
+    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
 
     /**
      * <p>The KMS key identifier to use when restoring an encrypted DB cluster from a
@@ -616,7 +625,7 @@ namespace Model
      * the restored DB cluster is encrypted using the specified encryption key.</p>
      * </li> </ul>
      */
-    inline RestoreDBClusterFromSnapshotRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(value); return *this;}
+    inline RestoreDBClusterFromSnapshotRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The KMS key identifier to use when restoring an encrypted DB cluster from a
@@ -633,6 +642,27 @@ namespace Model
      * </li> </ul>
      */
     inline RestoreDBClusterFromSnapshotRequest& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
+
+    /**
+     * <p>A Boolean value that is true to enable mapping of AWS Identity and Access
+     * Management (IAM) accounts to database accounts, and otherwise false.</p>
+     * <p>Default: <code>false</code> </p>
+     */
+    inline bool GetEnableIAMDatabaseAuthentication() const{ return m_enableIAMDatabaseAuthentication; }
+
+    /**
+     * <p>A Boolean value that is true to enable mapping of AWS Identity and Access
+     * Management (IAM) accounts to database accounts, and otherwise false.</p>
+     * <p>Default: <code>false</code> </p>
+     */
+    inline void SetEnableIAMDatabaseAuthentication(bool value) { m_enableIAMDatabaseAuthenticationHasBeenSet = true; m_enableIAMDatabaseAuthentication = value; }
+
+    /**
+     * <p>A Boolean value that is true to enable mapping of AWS Identity and Access
+     * Management (IAM) accounts to database accounts, and otherwise false.</p>
+     * <p>Default: <code>false</code> </p>
+     */
+    inline RestoreDBClusterFromSnapshotRequest& WithEnableIAMDatabaseAuthentication(bool value) { SetEnableIAMDatabaseAuthentication(value); return *this;}
 
   private:
     Aws::Vector<Aws::String> m_availabilityZones;
@@ -659,6 +689,8 @@ namespace Model
     bool m_tagsHasBeenSet;
     Aws::String m_kmsKeyId;
     bool m_kmsKeyIdHasBeenSet;
+    bool m_enableIAMDatabaseAuthentication;
+    bool m_enableIAMDatabaseAuthenticationHasBeenSet;
   };
 
 } // namespace Model

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>The database details of an Amazon RDS database.</p>
+   * <p>The database details of an Amazon RDS database.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/RDSDatabase">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API RDSDatabase
   {
@@ -54,7 +58,7 @@ namespace Model
     /**
      * <p>The ID of an RDS DB instance.</p>
      */
-    inline void SetInstanceIdentifier(Aws::String&& value) { m_instanceIdentifierHasBeenSet = true; m_instanceIdentifier = value; }
+    inline void SetInstanceIdentifier(Aws::String&& value) { m_instanceIdentifierHasBeenSet = true; m_instanceIdentifier = std::move(value); }
 
     /**
      * <p>The ID of an RDS DB instance.</p>
@@ -69,7 +73,7 @@ namespace Model
     /**
      * <p>The ID of an RDS DB instance.</p>
      */
-    inline RDSDatabase& WithInstanceIdentifier(Aws::String&& value) { SetInstanceIdentifier(value); return *this;}
+    inline RDSDatabase& WithInstanceIdentifier(Aws::String&& value) { SetInstanceIdentifier(std::move(value)); return *this;}
 
     /**
      * <p>The ID of an RDS DB instance.</p>
@@ -83,7 +87,7 @@ namespace Model
     inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
 
     
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
+    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
 
     
     inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
@@ -92,7 +96,7 @@ namespace Model
     inline RDSDatabase& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
 
     
-    inline RDSDatabase& WithDatabaseName(Aws::String&& value) { SetDatabaseName(value); return *this;}
+    inline RDSDatabase& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
 
     
     inline RDSDatabase& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}

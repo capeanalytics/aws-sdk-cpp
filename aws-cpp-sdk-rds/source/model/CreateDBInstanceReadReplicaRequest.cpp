@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/CreateDBInstanceReadReplicaRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -40,7 +41,11 @@ CreateDBInstanceReadReplicaRequest::CreateDBInstanceReadReplicaRequest() :
     m_copyTagsToSnapshotHasBeenSet(false),
     m_monitoringInterval(0),
     m_monitoringIntervalHasBeenSet(false),
-    m_monitoringRoleArnHasBeenSet(false)
+    m_monitoringRoleArnHasBeenSet(false),
+    m_kmsKeyIdHasBeenSet(false),
+    m_preSignedUrlHasBeenSet(false),
+    m_enableIAMDatabaseAuthentication(false),
+    m_enableIAMDatabaseAuthenticationHasBeenSet(false)
 {
 }
 
@@ -75,7 +80,7 @@ Aws::String CreateDBInstanceReadReplicaRequest::SerializePayload() const
 
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-    ss << "AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+    ss << "AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
 
   if(m_iopsHasBeenSet)
@@ -90,7 +95,7 @@ Aws::String CreateDBInstanceReadReplicaRequest::SerializePayload() const
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-    ss << "PubliclyAccessible=" << m_publiclyAccessible << "&";
+    ss << "PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -115,7 +120,7 @@ Aws::String CreateDBInstanceReadReplicaRequest::SerializePayload() const
 
   if(m_copyTagsToSnapshotHasBeenSet)
   {
-    ss << "CopyTagsToSnapshot=" << m_copyTagsToSnapshot << "&";
+    ss << "CopyTagsToSnapshot=" << std::boolalpha << m_copyTagsToSnapshot << "&";
   }
 
   if(m_monitoringIntervalHasBeenSet)
@@ -128,7 +133,27 @@ Aws::String CreateDBInstanceReadReplicaRequest::SerializePayload() const
     ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
   }
 
+  if(m_kmsKeyIdHasBeenSet)
+  {
+    ss << "KmsKeyId=" << StringUtils::URLEncode(m_kmsKeyId.c_str()) << "&";
+  }
+
+  if(m_preSignedUrlHasBeenSet)
+  {
+    ss << "PreSignedUrl=" << StringUtils::URLEncode(m_preSignedUrl.c_str()) << "&";
+  }
+
+  if(m_enableIAMDatabaseAuthenticationHasBeenSet)
+  {
+    ss << "EnableIAMDatabaseAuthentication=" << std::boolalpha << m_enableIAMDatabaseAuthentication << "&";
+  }
+
   ss << "Version=2014-10-31";
   return ss.str();
 }
 
+
+void  CreateDBInstanceReadReplicaRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

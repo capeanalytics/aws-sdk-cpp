@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/devicefarm/DeviceFarm_EXPORTS.h>
 #include <aws/devicefarm/DeviceFarmRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents a request to the list unique problems operation.</p>
+   * <p>Represents a request to the list unique problems operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/ListUniqueProblemsRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_DEVICEFARM_API ListUniqueProblemsRequest : public DeviceFarmRequest
   {
@@ -34,6 +39,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The unique problems' ARNs.</p>
@@ -48,7 +54,7 @@ namespace Model
     /**
      * <p>The unique problems' ARNs.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The unique problems' ARNs.</p>
@@ -63,7 +69,7 @@ namespace Model
     /**
      * <p>The unique problems' ARNs.</p>
      */
-    inline ListUniqueProblemsRequest& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline ListUniqueProblemsRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The unique problems' ARNs.</p>
@@ -86,7 +92,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,
@@ -104,7 +110,7 @@ namespace Model
      * <p>An identifier that was returned from the previous call to this operation,
      * which can be used to return the next set of items in the list.</p>
      */
-    inline ListUniqueProblemsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListUniqueProblemsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>An identifier that was returned from the previous call to this operation,

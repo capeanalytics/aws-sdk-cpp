@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/storagegateway/StorageGateway_EXPORTS.h>
 #include <aws/storagegateway/StorageGatewayRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>CancelRetrievalInput</p>
+   * <p>CancelRetrievalInput</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/CancelRetrievalInput">AWS
+   * API Reference</a></p>
    */
   class AWS_STORAGEGATEWAY_API CancelRetrievalRequest : public StorageGatewayRequest
   {
@@ -35,6 +39,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     
     inline const Aws::String& GetGatewayARN() const{ return m_gatewayARN; }
 
@@ -42,7 +47,7 @@ namespace Model
     inline void SetGatewayARN(const Aws::String& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
 
     
-    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = value; }
+    inline void SetGatewayARN(Aws::String&& value) { m_gatewayARNHasBeenSet = true; m_gatewayARN = std::move(value); }
 
     
     inline void SetGatewayARN(const char* value) { m_gatewayARNHasBeenSet = true; m_gatewayARN.assign(value); }
@@ -51,7 +56,7 @@ namespace Model
     inline CancelRetrievalRequest& WithGatewayARN(const Aws::String& value) { SetGatewayARN(value); return *this;}
 
     
-    inline CancelRetrievalRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(value); return *this;}
+    inline CancelRetrievalRequest& WithGatewayARN(Aws::String&& value) { SetGatewayARN(std::move(value)); return *this;}
 
     
     inline CancelRetrievalRequest& WithGatewayARN(const char* value) { SetGatewayARN(value); return *this;}
@@ -72,7 +77,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel
      * retrieval for.</p>
      */
-    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = value; }
+    inline void SetTapeARN(Aws::String&& value) { m_tapeARNHasBeenSet = true; m_tapeARN = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel
@@ -90,7 +95,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel
      * retrieval for.</p>
      */
-    inline CancelRetrievalRequest& WithTapeARN(Aws::String&& value) { SetTapeARN(value); return *this;}
+    inline CancelRetrievalRequest& WithTapeARN(Aws::String&& value) { SetTapeARN(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel

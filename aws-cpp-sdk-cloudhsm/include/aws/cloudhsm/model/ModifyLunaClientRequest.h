@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudhsm/CloudHSM_EXPORTS.h>
 #include <aws/cloudhsm/CloudHSMRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ARN of the client.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The ARN of the client.</p>
      */
-    inline void SetClientArn(Aws::String&& value) { m_clientArnHasBeenSet = true; m_clientArn = value; }
+    inline void SetClientArn(Aws::String&& value) { m_clientArnHasBeenSet = true; m_clientArn = std::move(value); }
 
     /**
      * <p>The ARN of the client.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The ARN of the client.</p>
      */
-    inline ModifyLunaClientRequest& WithClientArn(Aws::String&& value) { SetClientArn(value); return *this;}
+    inline ModifyLunaClientRequest& WithClientArn(Aws::String&& value) { SetClientArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN of the client.</p>
@@ -82,7 +85,7 @@ namespace Model
     /**
      * <p>The new certificate for the client.</p>
      */
-    inline void SetCertificate(Aws::String&& value) { m_certificateHasBeenSet = true; m_certificate = value; }
+    inline void SetCertificate(Aws::String&& value) { m_certificateHasBeenSet = true; m_certificate = std::move(value); }
 
     /**
      * <p>The new certificate for the client.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>The new certificate for the client.</p>
      */
-    inline ModifyLunaClientRequest& WithCertificate(Aws::String&& value) { SetCertificate(value); return *this;}
+    inline ModifyLunaClientRequest& WithCertificate(Aws::String&& value) { SetCertificate(std::move(value)); return *this;}
 
     /**
      * <p>The new certificate for the client.</p>

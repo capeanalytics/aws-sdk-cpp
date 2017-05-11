@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/glacier/Glacier_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Glacier
 namespace Model
 {
   /**
-   * <p>Contains the Amazon Glacier response to your request.</p>
+   * <p>Contains the Amazon Glacier response to your request.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/GetVaultLockOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_GLACIER_API GetVaultLockResult
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The vault lock policy as a JSON string, which uses "\" as an escape
      * character.</p>
      */
-    inline void SetPolicy(Aws::String&& value) { m_policy = value; }
+    inline void SetPolicy(Aws::String&& value) { m_policy = std::move(value); }
 
     /**
      * <p>The vault lock policy as a JSON string, which uses "\" as an escape
@@ -76,7 +81,7 @@ namespace Model
      * <p>The vault lock policy as a JSON string, which uses "\" as an escape
      * character.</p>
      */
-    inline GetVaultLockResult& WithPolicy(Aws::String&& value) { SetPolicy(value); return *this;}
+    inline GetVaultLockResult& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
 
     /**
      * <p>The vault lock policy as a JSON string, which uses "\" as an escape
@@ -100,7 +105,7 @@ namespace Model
      * <p>The state of the vault lock. <code>InProgress</code> or
      * <code>Locked</code>.</p>
      */
-    inline void SetState(Aws::String&& value) { m_state = value; }
+    inline void SetState(Aws::String&& value) { m_state = std::move(value); }
 
     /**
      * <p>The state of the vault lock. <code>InProgress</code> or
@@ -118,7 +123,7 @@ namespace Model
      * <p>The state of the vault lock. <code>InProgress</code> or
      * <code>Locked</code>.</p>
      */
-    inline GetVaultLockResult& WithState(Aws::String&& value) { SetState(value); return *this;}
+    inline GetVaultLockResult& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The state of the vault lock. <code>InProgress</code> or
@@ -142,7 +147,7 @@ namespace Model
      * <p>The UTC date and time at which the lock ID expires. This value can be
      * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
      */
-    inline void SetExpirationDate(Aws::String&& value) { m_expirationDate = value; }
+    inline void SetExpirationDate(Aws::String&& value) { m_expirationDate = std::move(value); }
 
     /**
      * <p>The UTC date and time at which the lock ID expires. This value can be
@@ -160,7 +165,7 @@ namespace Model
      * <p>The UTC date and time at which the lock ID expires. This value can be
      * <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
      */
-    inline GetVaultLockResult& WithExpirationDate(Aws::String&& value) { SetExpirationDate(value); return *this;}
+    inline GetVaultLockResult& WithExpirationDate(Aws::String&& value) { SetExpirationDate(std::move(value)); return *this;}
 
     /**
      * <p>The UTC date and time at which the lock ID expires. This value can be
@@ -184,7 +189,7 @@ namespace Model
      * <p>The UTC date and time at which the vault lock was put into the
      * <code>InProgress</code> state.</p>
      */
-    inline void SetCreationDate(Aws::String&& value) { m_creationDate = value; }
+    inline void SetCreationDate(Aws::String&& value) { m_creationDate = std::move(value); }
 
     /**
      * <p>The UTC date and time at which the vault lock was put into the
@@ -202,7 +207,7 @@ namespace Model
      * <p>The UTC date and time at which the vault lock was put into the
      * <code>InProgress</code> state.</p>
      */
-    inline GetVaultLockResult& WithCreationDate(Aws::String&& value) { SetCreationDate(value); return *this;}
+    inline GetVaultLockResult& WithCreationDate(Aws::String&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>The UTC date and time at which the vault lock was put into the

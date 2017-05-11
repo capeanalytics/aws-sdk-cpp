@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/autoscaling/AutoScaling_EXPORTS.h>
 #include <aws/autoscaling/AutoScalingErrors.h>
 #include <aws/core/client/AWSError.h>
 #include <aws/core/client/ClientConfiguration.h>
+#include <aws/core/AmazonSerializableWebServiceRequest.h>
 #include <aws/core/client/AWSClient.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
@@ -345,6 +347,12 @@ namespace Model
 
         virtual ~AutoScalingClient();
 
+       /**
+        * Converts any request object to a presigned URL with the GET method, using region for the signer and a timeout of 15 minutes.
+        */
+        Aws::String ConvertRequestToPresignedUrl(const AmazonSerializableWebServiceRequest& requestToConvert, const char* region) const;
+
+
         /**
          * <p>Attaches one or more EC2 instances to the specified Auto Scaling group.</p>
          * <p>When you attach instances, Auto Scaling increases the desired capacity of the
@@ -355,9 +363,11 @@ namespace Model
          * load balancer. If there are target groups attached to your Auto Scaling group,
          * the instances are also registered with the target groups.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-instance-asg.html">Attach
          * EC2 Instances to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachInstances">AWS
+         * API Reference</a></p>
          */
         virtual Model::AttachInstancesOutcome AttachInstances(const Model::AttachInstancesRequest& request) const;
 
@@ -371,9 +381,11 @@ namespace Model
          * load balancer. If there are target groups attached to your Auto Scaling group,
          * the instances are also registered with the target groups.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-instance-asg.html">Attach
          * EC2 Instances to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachInstances">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -389,9 +401,11 @@ namespace Model
          * load balancer. If there are target groups attached to your Auto Scaling group,
          * the instances are also registered with the target groups.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-instance-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-instance-asg.html">Attach
          * EC2 Instances to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachInstances">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -403,9 +417,11 @@ namespace Model
          * <a>DescribeLoadBalancerTargetGroups</a>. To detach the target group from the
          * Auto Scaling group, use <a>DetachLoadBalancerTargetGroups</a>.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          */
         virtual Model::AttachLoadBalancerTargetGroupsOutcome AttachLoadBalancerTargetGroups(const Model::AttachLoadBalancerTargetGroupsRequest& request) const;
 
@@ -415,9 +431,11 @@ namespace Model
          * <a>DescribeLoadBalancerTargetGroups</a>. To detach the target group from the
          * Auto Scaling group, use <a>DetachLoadBalancerTargetGroups</a>.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -429,9 +447,11 @@ namespace Model
          * <a>DescribeLoadBalancerTargetGroups</a>. To detach the target group from the
          * Auto Scaling group, use <a>DetachLoadBalancerTargetGroups</a>.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -444,9 +464,11 @@ namespace Model
          * an Auto Scaling group, use <a>DescribeLoadBalancers</a>. To detach the load
          * balancer from the Auto Scaling group, use <a>DetachLoadBalancers</a>.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers">AWS
+         * API Reference</a></p>
          */
         virtual Model::AttachLoadBalancersOutcome AttachLoadBalancers(const Model::AttachLoadBalancersRequest& request) const;
 
@@ -457,9 +479,11 @@ namespace Model
          * an Auto Scaling group, use <a>DescribeLoadBalancers</a>. To detach the load
          * balancer from the Auto Scaling group, use <a>DetachLoadBalancers</a>.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -472,9 +496,11 @@ namespace Model
          * an Auto Scaling group, use <a>DescribeLoadBalancers</a>. To detach the load
          * balancer from the Auto Scaling group, use <a>DetachLoadBalancers</a>.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/attach-load-balancer-asg.html">Attach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/attach-load-balancer-asg.html">Attach
          * a Load Balancer to Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/AttachLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -494,8 +520,11 @@ namespace Model
          * heartbeat to keep the instance in a pending state.</p> </li> <li> <p> <b>If you
          * finish before the timeout period ends, complete the lifecycle action.</b> </p>
          * </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleAction">AWS
+         * API Reference</a></p>
          */
         virtual Model::CompleteLifecycleActionOutcome CompleteLifecycleAction(const Model::CompleteLifecycleActionRequest& request) const;
 
@@ -513,8 +542,11 @@ namespace Model
          * heartbeat to keep the instance in a pending state.</p> </li> <li> <p> <b>If you
          * finish before the timeout period ends, complete the lifecycle action.</b> </p>
          * </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleAction">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -534,8 +566,11 @@ namespace Model
          * heartbeat to keep the instance in a pending state.</p> </li> <li> <p> <b>If you
          * finish before the timeout period ends, complete the lifecycle action.</b> </p>
          * </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CompleteLifecycleAction">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -546,8 +581,11 @@ namespace Model
          * <p>If you exceed your maximum limit of Auto Scaling groups, which by default is
          * 20 per region, the call fails. For information about viewing and updating this
          * limit, see <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroup.html">Auto
-         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html">Auto
+         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateAutoScalingGroup">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateAutoScalingGroupOutcome CreateAutoScalingGroup(const Model::CreateAutoScalingGroupRequest& request) const;
 
@@ -556,8 +594,11 @@ namespace Model
          * <p>If you exceed your maximum limit of Auto Scaling groups, which by default is
          * 20 per region, the call fails. For information about viewing and updating this
          * limit, see <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroup.html">Auto
-         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html">Auto
+         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -568,8 +609,11 @@ namespace Model
          * <p>If you exceed your maximum limit of Auto Scaling groups, which by default is
          * 20 per region, the call fails. For information about viewing and updating this
          * limit, see <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroup.html">Auto
-         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroup.html">Auto
+         * Scaling Groups</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -580,8 +624,11 @@ namespace Model
          * launch configurations, which by default is 100 per region, the call fails. For
          * information about viewing and updating this limit, see
          * <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/LaunchConfiguration.html">Launch
-         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html">Launch
+         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateLaunchConfigurationOutcome CreateLaunchConfiguration(const Model::CreateLaunchConfigurationRequest& request) const;
 
@@ -590,8 +637,11 @@ namespace Model
          * launch configurations, which by default is 100 per region, the call fails. For
          * information about viewing and updating this limit, see
          * <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/LaunchConfiguration.html">Launch
-         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html">Launch
+         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -602,8 +652,11 @@ namespace Model
          * launch configurations, which by default is 100 per region, the call fails. For
          * information about viewing and updating this limit, see
          * <a>DescribeAccountLimits</a>.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/LaunchConfiguration.html">Launch
-         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/LaunchConfiguration.html">Launch
+         * Configurations</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateLaunchConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -614,8 +667,11 @@ namespace Model
          * specify a tag with a key that already exists, the operation overwrites the
          * previous tag definition, and you do not get an error message.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html">Tagging
-         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging
+         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::CreateOrUpdateTagsOutcome CreateOrUpdateTags(const Model::CreateOrUpdateTagsRequest& request) const;
 
@@ -624,8 +680,11 @@ namespace Model
          * specify a tag with a key that already exists, the operation overwrites the
          * previous tag definition, and you do not get an error message.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html">Tagging
-         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging
+         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -636,8 +695,11 @@ namespace Model
          * specify a tag with a key that already exists, the operation overwrites the
          * previous tag definition, and you do not get an error message.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASTagging.html">Tagging
-         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging
+         * Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/CreateOrUpdateTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -653,7 +715,10 @@ namespace Model
          * instances and the option to decrement the desired capacity so that Auto Scaling
          * does not launch replacement instances.</p> <p>To terminate all instances before
          * deleting the Auto Scaling group, call <a>UpdateAutoScalingGroup</a> and set the
-         * minimum size and desired capacity of the Auto Scaling group to zero.</p>
+         * minimum size and desired capacity of the Auto Scaling group to
+         * zero.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteAutoScalingGroup">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteAutoScalingGroupOutcome DeleteAutoScalingGroup(const Model::DeleteAutoScalingGroupRequest& request) const;
 
@@ -667,7 +732,10 @@ namespace Model
          * instances and the option to decrement the desired capacity so that Auto Scaling
          * does not launch replacement instances.</p> <p>To terminate all instances before
          * deleting the Auto Scaling group, call <a>UpdateAutoScalingGroup</a> and set the
-         * minimum size and desired capacity of the Auto Scaling group to zero.</p>
+         * minimum size and desired capacity of the Auto Scaling group to
+         * zero.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -683,7 +751,10 @@ namespace Model
          * instances and the option to decrement the desired capacity so that Auto Scaling
          * does not launch replacement instances.</p> <p>To terminate all instances before
          * deleting the Auto Scaling group, call <a>UpdateAutoScalingGroup</a> and set the
-         * minimum size and desired capacity of the Auto Scaling group to zero.</p>
+         * minimum size and desired capacity of the Auto Scaling group to
+         * zero.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -692,14 +763,20 @@ namespace Model
         /**
          * <p>Deletes the specified launch configuration.</p> <p>The launch configuration
          * must not be attached to an Auto Scaling group. When this call completes, the
-         * launch configuration is no longer available for use.</p>
+         * launch configuration is no longer available for use.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLaunchConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteLaunchConfigurationOutcome DeleteLaunchConfiguration(const Model::DeleteLaunchConfigurationRequest& request) const;
 
         /**
          * <p>Deletes the specified launch configuration.</p> <p>The launch configuration
          * must not be attached to an Auto Scaling group. When this call completes, the
-         * launch configuration is no longer available for use.</p>
+         * launch configuration is no longer available for use.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLaunchConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -708,7 +785,10 @@ namespace Model
         /**
          * <p>Deletes the specified launch configuration.</p> <p>The launch configuration
          * must not be attached to an Auto Scaling group. When this call completes, the
-         * launch configuration is no longer available for use.</p>
+         * launch configuration is no longer available for use.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLaunchConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -717,14 +797,20 @@ namespace Model
         /**
          * <p>Deletes the specified lifecycle hook.</p> <p>If there are any outstanding
          * lifecycle actions, they are completed first (<code>ABANDON</code> for launching
-         * instances, <code>CONTINUE</code> for terminating instances).</p>
+         * instances, <code>CONTINUE</code> for terminating instances).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLifecycleHook">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteLifecycleHookOutcome DeleteLifecycleHook(const Model::DeleteLifecycleHookRequest& request) const;
 
         /**
          * <p>Deletes the specified lifecycle hook.</p> <p>If there are any outstanding
          * lifecycle actions, they are completed first (<code>ABANDON</code> for launching
-         * instances, <code>CONTINUE</code> for terminating instances).</p>
+         * instances, <code>CONTINUE</code> for terminating instances).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLifecycleHook">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -733,26 +819,35 @@ namespace Model
         /**
          * <p>Deletes the specified lifecycle hook.</p> <p>If there are any outstanding
          * lifecycle actions, they are completed first (<code>ABANDON</code> for launching
-         * instances, <code>CONTINUE</code> for terminating instances).</p>
+         * instances, <code>CONTINUE</code> for terminating instances).</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteLifecycleHook">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteLifecycleHookAsync(const Model::DeleteLifecycleHookRequest& request, const DeleteLifecycleHookResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified notification.</p>
+         * <p>Deletes the specified notification.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteNotificationConfigurationOutcome DeleteNotificationConfiguration(const Model::DeleteNotificationConfigurationRequest& request) const;
 
         /**
-         * <p>Deletes the specified notification.</p>
+         * <p>Deletes the specified notification.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteNotificationConfigurationOutcomeCallable DeleteNotificationConfigurationCallable(const Model::DeleteNotificationConfigurationRequest& request) const;
 
         /**
-         * <p>Deletes the specified notification.</p>
+         * <p>Deletes the specified notification.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteNotificationConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -761,14 +856,18 @@ namespace Model
         /**
          * <p>Deletes the specified Auto Scaling policy.</p> <p>Deleting a policy deletes
          * the underlying alarm action, but does not delete the alarm, even if it no longer
-         * has an associated action.</p>
+         * has an associated action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeletePolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeletePolicyOutcome DeletePolicy(const Model::DeletePolicyRequest& request) const;
 
         /**
          * <p>Deletes the specified Auto Scaling policy.</p> <p>Deleting a policy deletes
          * the underlying alarm action, but does not delete the alarm, even if it no longer
-         * has an associated action.</p>
+         * has an associated action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeletePolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -777,45 +876,59 @@ namespace Model
         /**
          * <p>Deletes the specified Auto Scaling policy.</p> <p>Deleting a policy deletes
          * the underlying alarm action, but does not delete the alarm, even if it no longer
-         * has an associated action.</p>
+         * has an associated action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeletePolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeletePolicyAsync(const Model::DeletePolicyRequest& request, const DeletePolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified scheduled action.</p>
+         * <p>Deletes the specified scheduled action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteScheduledAction">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteScheduledActionOutcome DeleteScheduledAction(const Model::DeleteScheduledActionRequest& request) const;
 
         /**
-         * <p>Deletes the specified scheduled action.</p>
+         * <p>Deletes the specified scheduled action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteScheduledAction">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteScheduledActionOutcomeCallable DeleteScheduledActionCallable(const Model::DeleteScheduledActionRequest& request) const;
 
         /**
-         * <p>Deletes the specified scheduled action.</p>
+         * <p>Deletes the specified scheduled action.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteScheduledAction">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DeleteScheduledActionAsync(const Model::DeleteScheduledActionRequest& request, const DeleteScheduledActionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Deletes the specified tags.</p>
+         * <p>Deletes the specified tags.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::DeleteTagsOutcome DeleteTags(const Model::DeleteTagsRequest& request) const;
 
         /**
-         * <p>Deletes the specified tags.</p>
+         * <p>Deletes the specified tags.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DeleteTagsOutcomeCallable DeleteTagsCallable(const Model::DeleteTagsRequest& request) const;
 
         /**
-         * <p>Deletes the specified tags.</p>
+         * <p>Deletes the specified tags.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DeleteTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -825,7 +938,10 @@ namespace Model
          * <p>Describes the current Auto Scaling resource limits for your AWS account.</p>
          * <p>For information about requesting an increase in these limits, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAccountLimits">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAccountLimitsOutcome DescribeAccountLimits(const Model::DescribeAccountLimitsRequest& request) const;
 
@@ -833,7 +949,10 @@ namespace Model
          * <p>Describes the current Auto Scaling resource limits for your AWS account.</p>
          * <p>For information about requesting an increase in these limits, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAccountLimits">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -843,7 +962,10 @@ namespace Model
          * <p>Describes the current Auto Scaling resource limits for your AWS account.</p>
          * <p>For information about requesting an increase in these limits, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAccountLimits">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -851,13 +973,17 @@ namespace Model
 
         /**
          * <p>Describes the policy adjustment types for use with
-         * <a>PutScalingPolicy</a>.</p>
+         * <a>PutScalingPolicy</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAdjustmentTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAdjustmentTypesOutcome DescribeAdjustmentTypes(const Model::DescribeAdjustmentTypesRequest& request) const;
 
         /**
          * <p>Describes the policy adjustment types for use with
-         * <a>PutScalingPolicy</a>.</p>
+         * <a>PutScalingPolicy</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAdjustmentTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -865,140 +991,196 @@ namespace Model
 
         /**
          * <p>Describes the policy adjustment types for use with
-         * <a>PutScalingPolicy</a>.</p>
+         * <a>PutScalingPolicy</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAdjustmentTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeAdjustmentTypesAsync(const Model::DescribeAdjustmentTypesRequest& request, const DescribeAdjustmentTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes one or more Auto Scaling groups.</p>
+         * <p>Describes one or more Auto Scaling groups.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingGroups">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAutoScalingGroupsOutcome DescribeAutoScalingGroups(const Model::DescribeAutoScalingGroupsRequest& request) const;
 
         /**
-         * <p>Describes one or more Auto Scaling groups.</p>
+         * <p>Describes one or more Auto Scaling groups.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingGroups">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeAutoScalingGroupsOutcomeCallable DescribeAutoScalingGroupsCallable(const Model::DescribeAutoScalingGroupsRequest& request) const;
 
         /**
-         * <p>Describes one or more Auto Scaling groups.</p>
+         * <p>Describes one or more Auto Scaling groups.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingGroups">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeAutoScalingGroupsAsync(const Model::DescribeAutoScalingGroupsRequest& request, const DescribeAutoScalingGroupsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes one or more Auto Scaling instances.</p>
+         * <p>Describes one or more Auto Scaling instances.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstances">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAutoScalingInstancesOutcome DescribeAutoScalingInstances(const Model::DescribeAutoScalingInstancesRequest& request) const;
 
         /**
-         * <p>Describes one or more Auto Scaling instances.</p>
+         * <p>Describes one or more Auto Scaling instances.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstances">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeAutoScalingInstancesOutcomeCallable DescribeAutoScalingInstancesCallable(const Model::DescribeAutoScalingInstancesRequest& request) const;
 
         /**
-         * <p>Describes one or more Auto Scaling instances.</p>
+         * <p>Describes one or more Auto Scaling instances.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingInstances">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeAutoScalingInstancesAsync(const Model::DescribeAutoScalingInstancesRequest& request, const DescribeAutoScalingInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the notification types that are supported by Auto Scaling.</p>
+         * <p>Describes the notification types that are supported by Auto
+         * Scaling.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingNotificationTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeAutoScalingNotificationTypesOutcome DescribeAutoScalingNotificationTypes(const Model::DescribeAutoScalingNotificationTypesRequest& request) const;
 
         /**
-         * <p>Describes the notification types that are supported by Auto Scaling.</p>
+         * <p>Describes the notification types that are supported by Auto
+         * Scaling.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingNotificationTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeAutoScalingNotificationTypesOutcomeCallable DescribeAutoScalingNotificationTypesCallable(const Model::DescribeAutoScalingNotificationTypesRequest& request) const;
 
         /**
-         * <p>Describes the notification types that are supported by Auto Scaling.</p>
+         * <p>Describes the notification types that are supported by Auto
+         * Scaling.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeAutoScalingNotificationTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeAutoScalingNotificationTypesAsync(const Model::DescribeAutoScalingNotificationTypesRequest& request, const DescribeAutoScalingNotificationTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes one or more launch configurations.</p>
+         * <p>Describes one or more launch configurations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLaunchConfigurations">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeLaunchConfigurationsOutcome DescribeLaunchConfigurations(const Model::DescribeLaunchConfigurationsRequest& request) const;
 
         /**
-         * <p>Describes one or more launch configurations.</p>
+         * <p>Describes one or more launch configurations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLaunchConfigurations">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeLaunchConfigurationsOutcomeCallable DescribeLaunchConfigurationsCallable(const Model::DescribeLaunchConfigurationsRequest& request) const;
 
         /**
-         * <p>Describes one or more launch configurations.</p>
+         * <p>Describes one or more launch configurations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLaunchConfigurations">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeLaunchConfigurationsAsync(const Model::DescribeLaunchConfigurationsRequest& request, const DescribeLaunchConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the available types of lifecycle hooks.</p>
+         * <p>Describes the available types of lifecycle hooks.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHookTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeLifecycleHookTypesOutcome DescribeLifecycleHookTypes(const Model::DescribeLifecycleHookTypesRequest& request) const;
 
         /**
-         * <p>Describes the available types of lifecycle hooks.</p>
+         * <p>Describes the available types of lifecycle hooks.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHookTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeLifecycleHookTypesOutcomeCallable DescribeLifecycleHookTypesCallable(const Model::DescribeLifecycleHookTypesRequest& request) const;
 
         /**
-         * <p>Describes the available types of lifecycle hooks.</p>
+         * <p>Describes the available types of lifecycle hooks.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHookTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeLifecycleHookTypesAsync(const Model::DescribeLifecycleHookTypesRequest& request, const DescribeLifecycleHookTypesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the lifecycle hooks for the specified Auto Scaling group.</p>
+         * <p>Describes the lifecycle hooks for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHooks">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeLifecycleHooksOutcome DescribeLifecycleHooks(const Model::DescribeLifecycleHooksRequest& request) const;
 
         /**
-         * <p>Describes the lifecycle hooks for the specified Auto Scaling group.</p>
+         * <p>Describes the lifecycle hooks for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHooks">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeLifecycleHooksOutcomeCallable DescribeLifecycleHooksCallable(const Model::DescribeLifecycleHooksRequest& request) const;
 
         /**
-         * <p>Describes the lifecycle hooks for the specified Auto Scaling group.</p>
+         * <p>Describes the lifecycle hooks for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLifecycleHooks">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeLifecycleHooksAsync(const Model::DescribeLifecycleHooksRequest& request, const DescribeLifecycleHooksResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the target groups for the specified Auto Scaling group.</p>
+         * <p>Describes the target groups for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeLoadBalancerTargetGroupsOutcome DescribeLoadBalancerTargetGroups(const Model::DescribeLoadBalancerTargetGroupsRequest& request) const;
 
         /**
-         * <p>Describes the target groups for the specified Auto Scaling group.</p>
+         * <p>Describes the target groups for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeLoadBalancerTargetGroupsOutcomeCallable DescribeLoadBalancerTargetGroupsCallable(const Model::DescribeLoadBalancerTargetGroupsRequest& request) const;
 
         /**
-         * <p>Describes the target groups for the specified Auto Scaling group.</p>
+         * <p>Describes the target groups for the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1008,7 +1190,9 @@ namespace Model
          * <p>Describes the load balancers for the specified Auto Scaling group.</p>
          * <p>Note that this operation describes only Classic load balancers. If you have
          * Application load balancers, use <a>DescribeLoadBalancerTargetGroups</a>
-         * instead.</p>
+         * instead.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancers">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeLoadBalancersOutcome DescribeLoadBalancers(const Model::DescribeLoadBalancersRequest& request) const;
 
@@ -1016,7 +1200,9 @@ namespace Model
          * <p>Describes the load balancers for the specified Auto Scaling group.</p>
          * <p>Note that this operation describes only Classic load balancers. If you have
          * Application load balancers, use <a>DescribeLoadBalancerTargetGroups</a>
-         * instead.</p>
+         * instead.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1026,7 +1212,9 @@ namespace Model
          * <p>Describes the load balancers for the specified Auto Scaling group.</p>
          * <p>Note that this operation describes only Classic load balancers. If you have
          * Application load balancers, use <a>DescribeLoadBalancerTargetGroups</a>
-         * instead.</p>
+         * instead.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1036,7 +1224,9 @@ namespace Model
          * <p>Describes the available CloudWatch metrics for Auto Scaling.</p> <p>Note that
          * the <code>GroupStandbyInstances</code> metric is not returned by default. You
          * must explicitly request this metric when calling
-         * <a>EnableMetricsCollection</a>.</p>
+         * <a>EnableMetricsCollection</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeMetricCollectionTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeMetricCollectionTypesOutcome DescribeMetricCollectionTypes(const Model::DescribeMetricCollectionTypesRequest& request) const;
 
@@ -1044,7 +1234,9 @@ namespace Model
          * <p>Describes the available CloudWatch metrics for Auto Scaling.</p> <p>Note that
          * the <code>GroupStandbyInstances</code> metric is not returned by default. You
          * must explicitly request this metric when calling
-         * <a>EnableMetricsCollection</a>.</p>
+         * <a>EnableMetricsCollection</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeMetricCollectionTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1054,7 +1246,9 @@ namespace Model
          * <p>Describes the available CloudWatch metrics for Auto Scaling.</p> <p>Note that
          * the <code>GroupStandbyInstances</code> metric is not returned by default. You
          * must explicitly request this metric when calling
-         * <a>EnableMetricsCollection</a>.</p>
+         * <a>EnableMetricsCollection</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeMetricCollectionTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1062,13 +1256,17 @@ namespace Model
 
         /**
          * <p>Describes the notification actions associated with the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurations">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeNotificationConfigurationsOutcome DescribeNotificationConfigurations(const Model::DescribeNotificationConfigurationsRequest& request) const;
 
         /**
          * <p>Describes the notification actions associated with the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurations">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1076,26 +1274,37 @@ namespace Model
 
         /**
          * <p>Describes the notification actions associated with the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeNotificationConfigurations">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeNotificationConfigurationsAsync(const Model::DescribeNotificationConfigurationsRequest& request, const DescribeNotificationConfigurationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the policies for the specified Auto Scaling group.</p>
+         * <p>Describes the policies for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribePolicies">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribePoliciesOutcome DescribePolicies(const Model::DescribePoliciesRequest& request) const;
 
         /**
-         * <p>Describes the policies for the specified Auto Scaling group.</p>
+         * <p>Describes the policies for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribePolicies">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribePoliciesOutcomeCallable DescribePoliciesCallable(const Model::DescribePoliciesRequest& request) const;
 
         /**
-         * <p>Describes the policies for the specified Auto Scaling group.</p>
+         * <p>Describes the policies for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribePolicies">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1103,13 +1312,17 @@ namespace Model
 
         /**
          * <p>Describes one or more scaling activities for the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivities">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeScalingActivitiesOutcome DescribeScalingActivities(const Model::DescribeScalingActivitiesRequest& request) const;
 
         /**
          * <p>Describes one or more scaling activities for the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivities">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1117,7 +1330,9 @@ namespace Model
 
         /**
          * <p>Describes one or more scaling activities for the specified Auto Scaling
-         * group.</p>
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingActivities">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1125,13 +1340,17 @@ namespace Model
 
         /**
          * <p>Describes the scaling process types for use with <a>ResumeProcesses</a> and
-         * <a>SuspendProcesses</a>.</p>
+         * <a>SuspendProcesses</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingProcessTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeScalingProcessTypesOutcome DescribeScalingProcessTypes(const Model::DescribeScalingProcessTypesRequest& request) const;
 
         /**
          * <p>Describes the scaling process types for use with <a>ResumeProcesses</a> and
-         * <a>SuspendProcesses</a>.</p>
+         * <a>SuspendProcesses</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingProcessTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1139,7 +1358,9 @@ namespace Model
 
         /**
          * <p>Describes the scaling process types for use with <a>ResumeProcesses</a> and
-         * <a>SuspendProcesses</a>.</p>
+         * <a>SuspendProcesses</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScalingProcessTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1148,14 +1369,18 @@ namespace Model
         /**
          * <p>Describes the actions scheduled for your Auto Scaling group that haven't run.
          * To describe the actions that have already run, use
-         * <a>DescribeScalingActivities</a>.</p>
+         * <a>DescribeScalingActivities</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeScheduledActionsOutcome DescribeScheduledActions(const Model::DescribeScheduledActionsRequest& request) const;
 
         /**
          * <p>Describes the actions scheduled for your Auto Scaling group that haven't run.
          * To describe the actions that have already run, use
-         * <a>DescribeScalingActivities</a>.</p>
+         * <a>DescribeScalingActivities</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1164,7 +1389,9 @@ namespace Model
         /**
          * <p>Describes the actions scheduled for your Auto Scaling group that haven't run.
          * To describe the actions that have already run, use
-         * <a>DescribeScalingActivities</a>.</p>
+         * <a>DescribeScalingActivities</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeScheduledActions">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1177,7 +1404,9 @@ namespace Model
          * one of the specified values for it to be included in the results.</p> <p>You can
          * also specify multiple filters. The result includes information for a particular
          * tag only if it matches all the filters. If there's no match, no special message
-         * is returned.</p>
+         * is returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTagsOutcome DescribeTags(const Model::DescribeTagsRequest& request) const;
 
@@ -1188,7 +1417,9 @@ namespace Model
          * one of the specified values for it to be included in the results.</p> <p>You can
          * also specify multiple filters. The result includes information for a particular
          * tag only if it matches all the filters. If there's no match, no special message
-         * is returned.</p>
+         * is returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1201,26 +1432,37 @@ namespace Model
          * one of the specified values for it to be included in the results.</p> <p>You can
          * also specify multiple filters. The result includes information for a particular
          * tag only if it matches all the filters. If there's no match, no special message
-         * is returned.</p>
+         * is returned.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTags">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DescribeTagsAsync(const Model::DescribeTagsRequest& request, const DescribeTagsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Describes the termination policies supported by Auto Scaling.</p>
+         * <p>Describes the termination policies supported by Auto Scaling.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTerminationPolicyTypes">AWS
+         * API Reference</a></p>
          */
         virtual Model::DescribeTerminationPolicyTypesOutcome DescribeTerminationPolicyTypes(const Model::DescribeTerminationPolicyTypesRequest& request) const;
 
         /**
-         * <p>Describes the termination policies supported by Auto Scaling.</p>
+         * <p>Describes the termination policies supported by Auto Scaling.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTerminationPolicyTypes">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DescribeTerminationPolicyTypesOutcomeCallable DescribeTerminationPolicyTypesCallable(const Model::DescribeTerminationPolicyTypesRequest& request) const;
 
         /**
-         * <p>Describes the termination policies supported by Auto Scaling.</p>
+         * <p>Describes the termination policies supported by Auto Scaling.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DescribeTerminationPolicyTypes">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1235,9 +1477,11 @@ namespace Model
          * the Auto Scaling group, the instances are deregistered from the load balancer.
          * If there are target groups attached to the Auto Scaling group, the instances are
          * deregistered from the target groups.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/detach-instance-asg.html">Detach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html">Detach
          * EC2 Instances from Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachInstances">AWS
+         * API Reference</a></p>
          */
         virtual Model::DetachInstancesOutcome DetachInstances(const Model::DetachInstancesRequest& request) const;
 
@@ -1250,9 +1494,11 @@ namespace Model
          * the Auto Scaling group, the instances are deregistered from the load balancer.
          * If there are target groups attached to the Auto Scaling group, the instances are
          * deregistered from the target groups.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/detach-instance-asg.html">Detach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html">Detach
          * EC2 Instances from Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachInstances">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1267,28 +1513,39 @@ namespace Model
          * the Auto Scaling group, the instances are deregistered from the load balancer.
          * If there are target groups attached to the Auto Scaling group, the instances are
          * deregistered from the target groups.</p> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/detach-instance-asg.html">Detach
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/detach-instance-asg.html">Detach
          * EC2 Instances from Your Auto Scaling Group</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachInstances">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DetachInstancesAsync(const Model::DetachInstancesRequest& request, const DetachInstancesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Detaches one or more target groups from the specified Auto Scaling group.</p>
+         * <p>Detaches one or more target groups from the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          */
         virtual Model::DetachLoadBalancerTargetGroupsOutcome DetachLoadBalancerTargetGroups(const Model::DetachLoadBalancerTargetGroupsRequest& request) const;
 
         /**
-         * <p>Detaches one or more target groups from the specified Auto Scaling group.</p>
+         * <p>Detaches one or more target groups from the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DetachLoadBalancerTargetGroupsOutcomeCallable DetachLoadBalancerTargetGroupsCallable(const Model::DetachLoadBalancerTargetGroupsRequest& request) const;
 
         /**
-         * <p>Detaches one or more target groups from the specified Auto Scaling group.</p>
+         * <p>Detaches one or more target groups from the specified Auto Scaling
+         * group.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancerTargetGroups">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1302,7 +1559,9 @@ namespace Model
          * <code>Removing</code> state while deregistering the instances in the group. When
          * all instances are deregistered, then you can no longer describe the load
          * balancer using <a>DescribeLoadBalancers</a>. Note that the instances remain
-         * running.</p>
+         * running.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancers">AWS
+         * API Reference</a></p>
          */
         virtual Model::DetachLoadBalancersOutcome DetachLoadBalancers(const Model::DetachLoadBalancersRequest& request) const;
 
@@ -1314,7 +1573,9 @@ namespace Model
          * <code>Removing</code> state while deregistering the instances in the group. When
          * all instances are deregistered, then you can no longer describe the load
          * balancer using <a>DescribeLoadBalancers</a>. Note that the instances remain
-         * running.</p>
+         * running.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1328,26 +1589,37 @@ namespace Model
          * <code>Removing</code> state while deregistering the instances in the group. When
          * all instances are deregistered, then you can no longer describe the load
          * balancer using <a>DescribeLoadBalancers</a>. Note that the instances remain
-         * running.</p>
+         * running.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DetachLoadBalancers">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void DetachLoadBalancersAsync(const Model::DetachLoadBalancersRequest& request, const DetachLoadBalancersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Disables group metrics for the specified Auto Scaling group.</p>
+         * <p>Disables group metrics for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DisableMetricsCollection">AWS
+         * API Reference</a></p>
          */
         virtual Model::DisableMetricsCollectionOutcome DisableMetricsCollection(const Model::DisableMetricsCollectionRequest& request) const;
 
         /**
-         * <p>Disables group metrics for the specified Auto Scaling group.</p>
+         * <p>Disables group metrics for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DisableMetricsCollection">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::DisableMetricsCollectionOutcomeCallable DisableMetricsCollectionCallable(const Model::DisableMetricsCollectionRequest& request) const;
 
         /**
-         * <p>Disables group metrics for the specified Auto Scaling group.</p>
+         * <p>Disables group metrics for the specified Auto Scaling group.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/DisableMetricsCollection">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1356,18 +1628,22 @@ namespace Model
         /**
          * <p>Enables group metrics for the specified Auto Scaling group. For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/userguide/as-instance-monitoring.html">Monitoring
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html">Monitoring
          * Your Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnableMetricsCollection">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnableMetricsCollectionOutcome EnableMetricsCollection(const Model::EnableMetricsCollectionRequest& request) const;
 
         /**
          * <p>Enables group metrics for the specified Auto Scaling group. For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/userguide/as-instance-monitoring.html">Monitoring
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html">Monitoring
          * Your Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnableMetricsCollection">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1376,9 +1652,11 @@ namespace Model
         /**
          * <p>Enables group metrics for the specified Auto Scaling group. For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/userguide/as-instance-monitoring.html">Monitoring
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html">Monitoring
          * Your Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnableMetricsCollection">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1387,16 +1665,22 @@ namespace Model
         /**
          * <p>Moves the specified instances into <code>Standby</code> mode.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnterStandby">AWS
+         * API Reference</a></p>
          */
         virtual Model::EnterStandbyOutcome EnterStandby(const Model::EnterStandbyRequest& request) const;
 
         /**
          * <p>Moves the specified instances into <code>Standby</code> mode.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnterStandby">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1405,27 +1689,36 @@ namespace Model
         /**
          * <p>Moves the specified instances into <code>Standby</code> mode.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/EnterStandby">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         virtual void EnterStandbyAsync(const Model::EnterStandbyRequest& request, const EnterStandbyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const;
 
         /**
-         * <p>Executes the specified policy.</p>
+         * <p>Executes the specified policy.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExecutePolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::ExecutePolicyOutcome ExecutePolicy(const Model::ExecutePolicyRequest& request) const;
 
         /**
-         * <p>Executes the specified policy.</p>
+         * <p>Executes the specified policy.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExecutePolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
         virtual Model::ExecutePolicyOutcomeCallable ExecutePolicyCallable(const Model::ExecutePolicyRequest& request) const;
 
         /**
-         * <p>Executes the specified policy.</p>
+         * <p>Executes the specified policy.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExecutePolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1434,16 +1727,22 @@ namespace Model
         /**
          * <p>Moves the specified instances out of <code>Standby</code> mode.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExitStandby">AWS
+         * API Reference</a></p>
          */
         virtual Model::ExitStandbyOutcome ExitStandby(const Model::ExitStandbyRequest& request) const;
 
         /**
          * <p>Moves the specified instances out of <code>Standby</code> mode.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExitStandby">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1452,8 +1751,11 @@ namespace Model
         /**
          * <p>Moves the specified instances out of <code>Standby</code> mode.</p> <p>For
          * more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ExitStandby">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1475,12 +1777,15 @@ namespace Model
          * time, record the lifecycle action heartbeat to keep the instance in a pending
          * state.</p> </li> <li> <p>If you finish before the timeout period ends, complete
          * the lifecycle action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html">Auto
+         * Scaling Lifecycle Hooks</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
          * exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto
          * Scaling group, the call fails. For information about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutLifecycleHook">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutLifecycleHookOutcome PutLifecycleHook(const Model::PutLifecycleHookRequest& request) const;
 
@@ -1500,12 +1805,15 @@ namespace Model
          * time, record the lifecycle action heartbeat to keep the instance in a pending
          * state.</p> </li> <li> <p>If you finish before the timeout period ends, complete
          * the lifecycle action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html">Auto
+         * Scaling Lifecycle Hooks</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
          * exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto
          * Scaling group, the call fails. For information about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutLifecycleHook">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1527,12 +1835,15 @@ namespace Model
          * time, record the lifecycle action heartbeat to keep the instance in a pending
          * state.</p> </li> <li> <p>If you finish before the timeout period ends, complete
          * the lifecycle action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html">Auto
+         * Scaling Lifecycle Hooks</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you
          * exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto
          * Scaling group, the call fails. For information about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutLifecycleHook">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1543,9 +1854,11 @@ namespace Model
          * take place. Subscribers to the specified topic can have messages delivered to an
          * endpoint such as a web server or an email address.</p> <p>This configuration
          * overwrites any existing configuration.</p> <p>For more information see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html">Getting
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/ASGettingNotifications.html">Getting
          * SNS Notifications When Your Auto Scaling Group Scales</a> in the <i>Auto Scaling
-         * User Guide</i>.</p>
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfiguration">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutNotificationConfigurationOutcome PutNotificationConfiguration(const Model::PutNotificationConfigurationRequest& request) const;
 
@@ -1554,9 +1867,11 @@ namespace Model
          * take place. Subscribers to the specified topic can have messages delivered to an
          * endpoint such as a web server or an email address.</p> <p>This configuration
          * overwrites any existing configuration.</p> <p>For more information see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html">Getting
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/ASGettingNotifications.html">Getting
          * SNS Notifications When Your Auto Scaling Group Scales</a> in the <i>Auto Scaling
-         * User Guide</i>.</p>
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfiguration">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1567,9 +1882,11 @@ namespace Model
          * take place. Subscribers to the specified topic can have messages delivered to an
          * endpoint such as a web server or an email address.</p> <p>This configuration
          * overwrites any existing configuration.</p> <p>For more information see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/ASGettingNotifications.html">Getting
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/ASGettingNotifications.html">Getting
          * SNS Notifications When Your Auto Scaling Group Scales</a> in the <i>Auto Scaling
-         * User Guide</i>.</p>
+         * User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutNotificationConfiguration">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1583,7 +1900,10 @@ namespace Model
          * adjustments, which by default is 20 per region, the call fails. For information
          * about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicy">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutScalingPolicyOutcome PutScalingPolicy(const Model::PutScalingPolicyRequest& request) const;
 
@@ -1595,7 +1915,10 @@ namespace Model
          * adjustments, which by default is 20 per region, the call fails. For information
          * about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicy">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1609,7 +1932,10 @@ namespace Model
          * adjustments, which by default is 20 per region, the call fails. For information
          * about updating this limit, see <a
          * href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
-         * Service Limits</a> in the <i>Amazon Web Services General Reference</i>.</p>
+         * Service Limits</a> in the <i>Amazon Web Services General
+         * Reference</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScalingPolicy">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1618,20 +1944,22 @@ namespace Model
         /**
          * <p>Creates or updates a scheduled scaling action for an Auto Scaling group. When
          * updating a scheduled scaling action, if you leave a parameter unspecified, the
-         * corresponding value remains unchanged in the affected Auto Scaling group.</p>
-         * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html">Scheduled
-         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * corresponding value remains unchanged.</p> <p>For more information, see <a
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/schedule_time.html">Scheduled
+         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupAction">AWS
+         * API Reference</a></p>
          */
         virtual Model::PutScheduledUpdateGroupActionOutcome PutScheduledUpdateGroupAction(const Model::PutScheduledUpdateGroupActionRequest& request) const;
 
         /**
          * <p>Creates or updates a scheduled scaling action for an Auto Scaling group. When
          * updating a scheduled scaling action, if you leave a parameter unspecified, the
-         * corresponding value remains unchanged in the affected Auto Scaling group.</p>
-         * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html">Scheduled
-         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * corresponding value remains unchanged.</p> <p>For more information, see <a
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/schedule_time.html">Scheduled
+         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupAction">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1640,10 +1968,11 @@ namespace Model
         /**
          * <p>Creates or updates a scheduled scaling action for an Auto Scaling group. When
          * updating a scheduled scaling action, if you leave a parameter unspecified, the
-         * corresponding value remains unchanged in the affected Auto Scaling group.</p>
-         * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html">Scheduled
-         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * corresponding value remains unchanged.</p> <p>For more information, see <a
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/schedule_time.html">Scheduled
+         * Scaling</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/PutScheduledUpdateGroupAction">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1664,8 +1993,11 @@ namespace Model
          * action heartbeat to keep the instance in a pending state.</b> </p> </li> <li>
          * <p>If you finish before the timeout period ends, complete the lifecycle
          * action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/RecordLifecycleActionHeartbeat">AWS
+         * API Reference</a></p>
          */
         virtual Model::RecordLifecycleActionHeartbeatOutcome RecordLifecycleActionHeartbeat(const Model::RecordLifecycleActionHeartbeatRequest& request) const;
 
@@ -1684,8 +2016,11 @@ namespace Model
          * action heartbeat to keep the instance in a pending state.</b> </p> </li> <li>
          * <p>If you finish before the timeout period ends, complete the lifecycle
          * action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/RecordLifecycleActionHeartbeat">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1706,8 +2041,11 @@ namespace Model
          * action heartbeat to keep the instance in a pending state.</b> </p> </li> <li>
          * <p>If you finish before the timeout period ends, complete the lifecycle
          * action.</p> </li> </ol> <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html">Auto
-         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto
+         * Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/RecordLifecycleActionHeartbeat">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1717,9 +2055,11 @@ namespace Model
          * <p>Resumes the specified suspended Auto Scaling processes, or all suspended
          * process, for the specified Auto Scaling group.</p> <p>For more information, see
          * <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ResumeProcesses">AWS
+         * API Reference</a></p>
          */
         virtual Model::ResumeProcessesOutcome ResumeProcesses(const Model::ResumeProcessesRequest& request) const;
 
@@ -1727,9 +2067,11 @@ namespace Model
          * <p>Resumes the specified suspended Auto Scaling processes, or all suspended
          * process, for the specified Auto Scaling group.</p> <p>For more information, see
          * <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ResumeProcesses">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1739,9 +2081,11 @@ namespace Model
          * <p>Resumes the specified suspended Auto Scaling processes, or all suspended
          * process, for the specified Auto Scaling group.</p> <p>For more information, see
          * <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/ResumeProcesses">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1750,16 +2094,22 @@ namespace Model
         /**
          * <p>Sets the size of the specified Auto Scaling group.</p> <p>For more
          * information about desired capacity, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/WhatIsAutoScaling.html">What
-         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html">What
+         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetDesiredCapacity">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetDesiredCapacityOutcome SetDesiredCapacity(const Model::SetDesiredCapacityRequest& request) const;
 
         /**
          * <p>Sets the size of the specified Auto Scaling group.</p> <p>For more
          * information about desired capacity, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/WhatIsAutoScaling.html">What
-         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html">What
+         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetDesiredCapacity">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1768,8 +2118,11 @@ namespace Model
         /**
          * <p>Sets the size of the specified Auto Scaling group.</p> <p>For more
          * information about desired capacity, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/WhatIsAutoScaling.html">What
-         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html">What
+         * Is Auto Scaling?</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetDesiredCapacity">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1778,16 +2131,20 @@ namespace Model
         /**
          * <p>Sets the health status of the specified instance.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html">Health
-         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health
+         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceHealth">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetInstanceHealthOutcome SetInstanceHealth(const Model::SetInstanceHealthRequest& request) const;
 
         /**
          * <p>Sets the health status of the specified instance.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html">Health
-         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health
+         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceHealth">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1796,8 +2153,10 @@ namespace Model
         /**
          * <p>Sets the health status of the specified instance.</p> <p>For more
          * information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/healthcheck.html">Health
-         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health
+         * Checks</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceHealth">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1806,16 +2165,22 @@ namespace Model
         /**
          * <p>Updates the instance protection settings of the specified instances.</p>
          * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingBehavior.InstanceTermination.html#instance-protection">Instance
-         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html#instance-protection">Instance
+         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceProtection">AWS
+         * API Reference</a></p>
          */
         virtual Model::SetInstanceProtectionOutcome SetInstanceProtection(const Model::SetInstanceProtectionRequest& request) const;
 
         /**
          * <p>Updates the instance protection settings of the specified instances.</p>
          * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingBehavior.InstanceTermination.html#instance-protection">Instance
-         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html#instance-protection">Instance
+         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceProtection">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1824,8 +2189,11 @@ namespace Model
         /**
          * <p>Updates the instance protection settings of the specified instances.</p>
          * <p>For more information, see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingBehavior.InstanceTermination.html#instance-protection">Instance
-         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p>
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html#instance-protection">Instance
+         * Protection</a> in the <i>Auto Scaling User Guide</i>.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SetInstanceProtection">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1838,9 +2206,11 @@ namespace Model
          * other process types from functioning properly.</p> <p>To resume processes that
          * have been suspended, use <a>ResumeProcesses</a>.</p> <p>For more information,
          * see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses">AWS
+         * API Reference</a></p>
          */
         virtual Model::SuspendProcessesOutcome SuspendProcesses(const Model::SuspendProcessesRequest& request) const;
 
@@ -1851,9 +2221,11 @@ namespace Model
          * other process types from functioning properly.</p> <p>To resume processes that
          * have been suspended, use <a>ResumeProcesses</a>.</p> <p>For more information,
          * see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1866,9 +2238,11 @@ namespace Model
          * other process types from functioning properly.</p> <p>To resume processes that
          * have been suspended, use <a>ResumeProcesses</a>.</p> <p>For more information,
          * see <a
-         * href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/US_SuspendResume.html">Suspending
+         * href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html">Suspending
          * and Resuming Auto Scaling Processes</a> in the <i>Auto Scaling User
-         * Guide</i>.</p>
+         * Guide</i>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/SuspendProcesses">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1877,14 +2251,18 @@ namespace Model
         /**
          * <p>Terminates the specified instance and optionally adjusts the desired group
          * size.</p> <p>This call simply makes a termination request. The instance is not
-         * terminated immediately.</p>
+         * terminated immediately.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/TerminateInstanceInAutoScalingGroup">AWS
+         * API Reference</a></p>
          */
         virtual Model::TerminateInstanceInAutoScalingGroupOutcome TerminateInstanceInAutoScalingGroup(const Model::TerminateInstanceInAutoScalingGroupRequest& request) const;
 
         /**
          * <p>Terminates the specified instance and optionally adjusts the desired group
          * size.</p> <p>This call simply makes a termination request. The instance is not
-         * terminated immediately.</p>
+         * terminated immediately.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/TerminateInstanceInAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1893,7 +2271,9 @@ namespace Model
         /**
          * <p>Terminates the specified instance and optionally adjusts the desired group
          * size.</p> <p>This call simply makes a termination request. The instance is not
-         * terminated immediately.</p>
+         * terminated immediately.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/TerminateInstanceInAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */
@@ -1918,7 +2298,9 @@ namespace Model
          * smaller than the current size of the group, we implicitly call
          * <a>SetDesiredCapacity</a> to set the size of the group to the new value of
          * <code>MaxSize</code>.</p> </li> <li> <p>All other optional parameters are left
-         * unchanged if not specified.</p> </li> </ul>
+         * unchanged if not specified.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/UpdateAutoScalingGroup">AWS
+         * API Reference</a></p>
          */
         virtual Model::UpdateAutoScalingGroupOutcome UpdateAutoScalingGroup(const Model::UpdateAutoScalingGroupRequest& request) const;
 
@@ -1941,7 +2323,9 @@ namespace Model
          * smaller than the current size of the group, we implicitly call
          * <a>SetDesiredCapacity</a> to set the size of the group to the new value of
          * <code>MaxSize</code>.</p> </li> <li> <p>All other optional parameters are left
-         * unchanged if not specified.</p> </li> </ul>
+         * unchanged if not specified.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/UpdateAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * returns a future to the operation so that it can be executed in parallel to other requests.
          */
@@ -1966,7 +2350,9 @@ namespace Model
          * smaller than the current size of the group, we implicitly call
          * <a>SetDesiredCapacity</a> to set the size of the group to the new value of
          * <code>MaxSize</code>.</p> </li> <li> <p>All other optional parameters are left
-         * unchanged if not specified.</p> </li> </ul>
+         * unchanged if not specified.</p> </li> </ul><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01/UpdateAutoScalingGroup">AWS
+         * API Reference</a></p>
          *
          * Queues the request into a thread executor and triggers associated callback when operation has finished.
          */

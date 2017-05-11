@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/importexport/ImportExport_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/importexport/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -47,7 +49,7 @@ namespace Model
     inline void SetShippingLabelURL(const Aws::String& value) { m_shippingLabelURL = value; }
 
     
-    inline void SetShippingLabelURL(Aws::String&& value) { m_shippingLabelURL = value; }
+    inline void SetShippingLabelURL(Aws::String&& value) { m_shippingLabelURL = std::move(value); }
 
     
     inline void SetShippingLabelURL(const char* value) { m_shippingLabelURL.assign(value); }
@@ -56,7 +58,7 @@ namespace Model
     inline GetShippingLabelResult& WithShippingLabelURL(const Aws::String& value) { SetShippingLabelURL(value); return *this;}
 
     
-    inline GetShippingLabelResult& WithShippingLabelURL(Aws::String&& value) { SetShippingLabelURL(value); return *this;}
+    inline GetShippingLabelResult& WithShippingLabelURL(Aws::String&& value) { SetShippingLabelURL(std::move(value)); return *this;}
 
     
     inline GetShippingLabelResult& WithShippingLabelURL(const char* value) { SetShippingLabelURL(value); return *this;}
@@ -68,7 +70,7 @@ namespace Model
     inline void SetWarning(const Aws::String& value) { m_warning = value; }
 
     
-    inline void SetWarning(Aws::String&& value) { m_warning = value; }
+    inline void SetWarning(Aws::String&& value) { m_warning = std::move(value); }
 
     
     inline void SetWarning(const char* value) { m_warning.assign(value); }
@@ -77,7 +79,7 @@ namespace Model
     inline GetShippingLabelResult& WithWarning(const Aws::String& value) { SetWarning(value); return *this;}
 
     
-    inline GetShippingLabelResult& WithWarning(Aws::String&& value) { SetWarning(value); return *this;}
+    inline GetShippingLabelResult& WithWarning(Aws::String&& value) { SetWarning(std::move(value)); return *this;}
 
     
     inline GetShippingLabelResult& WithWarning(const char* value) { SetWarning(value); return *this;}
@@ -89,13 +91,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetShippingLabelResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetShippingLabelResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetShippingLabelResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_shippingLabelURL;

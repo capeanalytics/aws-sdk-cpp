@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/UpgradeTarget.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -112,12 +113,12 @@ void UpgradeTarget::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_autoUpgradeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoUpgrade=" << m_autoUpgrade << "&";
+      oStream << location << index << locationValue << ".AutoUpgrade=" << std::boolalpha << m_autoUpgrade << "&";
   }
 
   if(m_isMajorVersionUpgradeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".IsMajorVersionUpgrade=" << m_isMajorVersionUpgrade << "&";
+      oStream << location << index << locationValue << ".IsMajorVersionUpgrade=" << std::boolalpha << m_isMajorVersionUpgrade << "&";
   }
 
 }
@@ -138,11 +139,11 @@ void UpgradeTarget::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_autoUpgradeHasBeenSet)
   {
-      oStream << location << ".AutoUpgrade=" << m_autoUpgrade << "&";
+      oStream << location << ".AutoUpgrade=" << std::boolalpha << m_autoUpgrade << "&";
   }
   if(m_isMajorVersionUpgradeHasBeenSet)
   {
-      oStream << location << ".IsMajorVersionUpgrade=" << m_isMajorVersionUpgrade << "&";
+      oStream << location << ".IsMajorVersionUpgrade=" << std::boolalpha << m_isMajorVersionUpgrade << "&";
   }
 }
 

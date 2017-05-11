@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBCluster.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -45,6 +46,8 @@ DBCluster::DBCluster() :
     m_earliestRestorableTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_readerEndpointHasBeenSet(false),
+    m_multiAZ(false),
+    m_multiAZHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
     m_latestRestorableTimeHasBeenSet(false),
@@ -63,7 +66,11 @@ DBCluster::DBCluster() :
     m_storageEncryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
     m_dbClusterResourceIdHasBeenSet(false),
-    m_dBClusterArnHasBeenSet(false)
+    m_dBClusterArnHasBeenSet(false),
+    m_associatedRolesHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
+    m_clusterCreateTimeHasBeenSet(false)
 {
 }
 
@@ -83,6 +90,8 @@ DBCluster::DBCluster(const XmlNode& xmlNode) :
     m_earliestRestorableTimeHasBeenSet(false),
     m_endpointHasBeenSet(false),
     m_readerEndpointHasBeenSet(false),
+    m_multiAZ(false),
+    m_multiAZHasBeenSet(false),
     m_engineHasBeenSet(false),
     m_engineVersionHasBeenSet(false),
     m_latestRestorableTimeHasBeenSet(false),
@@ -101,7 +110,11 @@ DBCluster::DBCluster(const XmlNode& xmlNode) :
     m_storageEncryptedHasBeenSet(false),
     m_kmsKeyIdHasBeenSet(false),
     m_dbClusterResourceIdHasBeenSet(false),
-    m_dBClusterArnHasBeenSet(false)
+    m_dBClusterArnHasBeenSet(false),
+    m_associatedRolesHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false),
+    m_clusterCreateTimeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -195,6 +208,12 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
     {
       m_readerEndpoint = StringUtils::Trim(readerEndpointNode.GetText().c_str());
       m_readerEndpointHasBeenSet = true;
+    }
+    XmlNode multiAZNode = resultNode.FirstChild("MultiAZ");
+    if(!multiAZNode.IsNull())
+    {
+      m_multiAZ = StringUtils::ConvertToBool(StringUtils::Trim(multiAZNode.GetText().c_str()).c_str());
+      m_multiAZHasBeenSet = true;
     }
     XmlNode engineNode = resultNode.FirstChild("Engine");
     if(!engineNode.IsNull())
@@ -322,6 +341,30 @@ DBCluster& DBCluster::operator =(const XmlNode& xmlNode)
       m_dBClusterArn = StringUtils::Trim(dBClusterArnNode.GetText().c_str());
       m_dBClusterArnHasBeenSet = true;
     }
+    XmlNode associatedRolesNode = resultNode.FirstChild("AssociatedRoles");
+    if(!associatedRolesNode.IsNull())
+    {
+      XmlNode associatedRolesMember = associatedRolesNode.FirstChild("DBClusterRole");
+      while(!associatedRolesMember.IsNull())
+      {
+        m_associatedRoles.push_back(associatedRolesMember);
+        associatedRolesMember = associatedRolesMember.NextNode("DBClusterRole");
+      }
+
+      m_associatedRolesHasBeenSet = true;
+    }
+    XmlNode iAMDatabaseAuthenticationEnabledNode = resultNode.FirstChild("IAMDatabaseAuthenticationEnabled");
+    if(!iAMDatabaseAuthenticationEnabledNode.IsNull())
+    {
+      m_iAMDatabaseAuthenticationEnabled = StringUtils::ConvertToBool(StringUtils::Trim(iAMDatabaseAuthenticationEnabledNode.GetText().c_str()).c_str());
+      m_iAMDatabaseAuthenticationEnabledHasBeenSet = true;
+    }
+    XmlNode clusterCreateTimeNode = resultNode.FirstChild("ClusterCreateTime");
+    if(!clusterCreateTimeNode.IsNull())
+    {
+      m_clusterCreateTime = DateTime(StringUtils::Trim(clusterCreateTimeNode.GetText().c_str()).c_str(), DateFormat::ISO_8601);
+      m_clusterCreateTimeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -396,6 +439,11 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   if(m_readerEndpointHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReaderEndpoint=" << StringUtils::URLEncode(m_readerEndpoint.c_str()) << "&";
+  }
+
+  if(m_multiAZHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".MultiAZ=" << std::boolalpha << m_multiAZ << "&";
   }
 
   if(m_engineHasBeenSet)
@@ -487,7 +535,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_storageEncryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StorageEncrypted=" << m_storageEncrypted << "&";
+      oStream << location << index << locationValue << ".StorageEncrypted=" << std::boolalpha << m_storageEncrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -503,6 +551,27 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location, unsi
   if(m_dBClusterArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBClusterArn=" << StringUtils::URLEncode(m_dBClusterArn.c_str()) << "&";
+  }
+
+  if(m_associatedRolesHasBeenSet)
+  {
+      unsigned associatedRolesIdx = 1;
+      for(auto& item : m_associatedRoles)
+      {
+        Aws::StringStream associatedRolesSs;
+        associatedRolesSs << location << index << locationValue << ".DBClusterRole." << associatedRolesIdx++;
+        item.OutputToStream(oStream, associatedRolesSs.str().c_str());
+      }
+  }
+
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
+  }
+
+  if(m_clusterCreateTimeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 
 }
@@ -564,6 +633,10 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   if(m_readerEndpointHasBeenSet)
   {
       oStream << location << ".ReaderEndpoint=" << StringUtils::URLEncode(m_readerEndpoint.c_str()) << "&";
+  }
+  if(m_multiAZHasBeenSet)
+  {
+      oStream << location << ".MultiAZ=" << std::boolalpha << m_multiAZ << "&";
   }
   if(m_engineHasBeenSet)
   {
@@ -641,7 +714,7 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_storageEncryptedHasBeenSet)
   {
-      oStream << location << ".StorageEncrypted=" << m_storageEncrypted << "&";
+      oStream << location << ".StorageEncrypted=" << std::boolalpha << m_storageEncrypted << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {
@@ -654,6 +727,24 @@ void DBCluster::OutputToStream(Aws::OStream& oStream, const char* location) cons
   if(m_dBClusterArnHasBeenSet)
   {
       oStream << location << ".DBClusterArn=" << StringUtils::URLEncode(m_dBClusterArn.c_str()) << "&";
+  }
+  if(m_associatedRolesHasBeenSet)
+  {
+      unsigned associatedRolesIdx = 1;
+      for(auto& item : m_associatedRoles)
+      {
+        Aws::StringStream associatedRolesSs;
+        associatedRolesSs << location <<  ".DBClusterRole." << associatedRolesIdx++;
+        item.OutputToStream(oStream, associatedRolesSs.str().c_str());
+      }
+  }
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
+  }
+  if(m_clusterCreateTimeHasBeenSet)
+  {
+      oStream << location << ".ClusterCreateTime=" << StringUtils::URLEncode(m_clusterCreateTime.ToGmtString(DateFormat::ISO_8601).c_str()) << "&";
   }
 }
 

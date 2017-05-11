@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,10 @@ namespace Model
 {
 
   /**
-   * <p>Represents information about an error in AWS CodePipeline.</p>
+   * <p>Represents information about an error in AWS CodePipeline.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ErrorDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API ErrorDetails
   {
@@ -54,7 +59,7 @@ namespace Model
     /**
      * <p>The system ID or error number code of the error.</p>
      */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
      * <p>The system ID or error number code of the error.</p>
@@ -69,7 +74,7 @@ namespace Model
     /**
      * <p>The system ID or error number code of the error.</p>
      */
-    inline ErrorDetails& WithCode(Aws::String&& value) { SetCode(value); return *this;}
+    inline ErrorDetails& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>The system ID or error number code of the error.</p>
@@ -89,7 +94,7 @@ namespace Model
     /**
      * <p>The text of the error message.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>The text of the error message.</p>
@@ -104,7 +109,7 @@ namespace Model
     /**
      * <p>The text of the error message.</p>
      */
-    inline ErrorDetails& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline ErrorDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>The text of the error message.</p>

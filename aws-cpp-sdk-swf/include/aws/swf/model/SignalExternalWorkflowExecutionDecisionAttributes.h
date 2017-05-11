@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -43,7 +45,9 @@ namespace Model
    * attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
    * details and example IAM policies, see <a
    * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
-   * IAM to Manage Access to Amazon SWF Workflows</a>.</p>
+   * IAM to Manage Access to Amazon SWF Workflows</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/SignalExternalWorkflowExecutionDecisionAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API SignalExternalWorkflowExecutionDecisionAttributes
   {
@@ -69,7 +73,7 @@ namespace Model
      * <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be
      * signaled.</p>
      */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
+    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
 
     /**
      * <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be
@@ -87,7 +91,7 @@ namespace Model
      * <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be
      * signaled.</p>
      */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(Aws::String&& value) { SetWorkflowId(value); return *this;}
+    inline SignalExternalWorkflowExecutionDecisionAttributes& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be
@@ -108,7 +112,7 @@ namespace Model
     /**
      * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
      */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = value; }
+    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
 
     /**
      * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
@@ -123,7 +127,7 @@ namespace Model
     /**
      * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
      */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(Aws::String&& value) { SetRunId(value); return *this;}
+    inline SignalExternalWorkflowExecutionDecisionAttributes& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
 
     /**
      * <p>The <code>runId</code> of the workflow execution to be signaled.</p>
@@ -146,7 +150,7 @@ namespace Model
      * <p><b>Required.</b> The name of the signal.The target workflow execution will
      * use the signal name and input to process the signal.</p>
      */
-    inline void SetSignalName(Aws::String&& value) { m_signalNameHasBeenSet = true; m_signalName = value; }
+    inline void SetSignalName(Aws::String&& value) { m_signalNameHasBeenSet = true; m_signalName = std::move(value); }
 
     /**
      * <p><b>Required.</b> The name of the signal.The target workflow execution will
@@ -164,7 +168,7 @@ namespace Model
      * <p><b>Required.</b> The name of the signal.The target workflow execution will
      * use the signal name and input to process the signal.</p>
      */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(Aws::String&& value) { SetSignalName(value); return *this;}
+    inline SignalExternalWorkflowExecutionDecisionAttributes& WithSignalName(Aws::String&& value) { SetSignalName(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The name of the signal.The target workflow execution will
@@ -191,7 +195,7 @@ namespace Model
      * workflow execution will use the signal name and input data to process the
      * signal.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Input data to be provided with the signal. The target
@@ -212,7 +216,7 @@ namespace Model
      * workflow execution will use the signal name and input data to process the
      * signal.</p>
      */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline SignalExternalWorkflowExecutionDecisionAttributes& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Input data to be provided with the signal. The target
@@ -237,7 +241,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent decision tasks.</p>
      */
-    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = value; }
+    inline void SetControl(Aws::String&& value) { m_controlHasBeenSet = true; m_control = std::move(value); }
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
@@ -255,7 +259,7 @@ namespace Model
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider
      * in subsequent decision tasks.</p>
      */
-    inline SignalExternalWorkflowExecutionDecisionAttributes& WithControl(Aws::String&& value) { SetControl(value); return *this;}
+    inline SignalExternalWorkflowExecutionDecisionAttributes& WithControl(Aws::String&& value) { SetControl(std::move(value)); return *this;}
 
     /**
      * <p><i>Optional.</i> Data attached to the event that can be used by the decider

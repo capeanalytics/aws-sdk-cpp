@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticbeanstalk/ElasticBeanstalk_EXPORTS.h>
 #include <aws/elasticbeanstalk/ElasticBeanstalkRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -25,7 +27,9 @@ namespace Model
 {
 
   /**
-   * <p>Request to terminate an environment.</p>
+   * <p>Request to terminate an environment.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticbeanstalk-2010-12-01/TerminateEnvironmentMessage">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICBEANSTALK_API TerminateEnvironmentRequest : public ElasticBeanstalkRequest
   {
@@ -33,6 +37,11 @@ namespace Model
     TerminateEnvironmentRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>The ID of the environment to terminate.</p> <p> Condition: You must specify
      * either this or an EnvironmentName, or both. If you do not specify either, AWS
@@ -52,7 +61,7 @@ namespace Model
      * either this or an EnvironmentName, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
+    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
 
     /**
      * <p>The ID of the environment to terminate.</p> <p> Condition: You must specify
@@ -73,7 +82,7 @@ namespace Model
      * either this or an EnvironmentName, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline TerminateEnvironmentRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(value); return *this;}
+    inline TerminateEnvironmentRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the environment to terminate.</p> <p> Condition: You must specify
@@ -101,7 +110,7 @@ namespace Model
      * either this or an EnvironmentId, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
+    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
 
     /**
      * <p>The name of the environment to terminate.</p> <p> Condition: You must specify
@@ -122,7 +131,7 @@ namespace Model
      * either this or an EnvironmentId, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline TerminateEnvironmentRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(value); return *this;}
+    inline TerminateEnvironmentRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the environment to terminate.</p> <p> Condition: You must specify
@@ -132,41 +141,41 @@ namespace Model
     inline TerminateEnvironmentRequest& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
 
     /**
-     * <p> Indicates whether the associated AWS resources should shut down when the
-     * environment is terminated: </p> <ul> <li> <code>true</code>: The specified
+     * <p>Indicates whether the associated AWS resources should shut down when the
+     * environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified
      * environment as well as the associated AWS resources, such as Auto Scaling group
-     * and LoadBalancer, are terminated. </li> <li> <code>false</code>: AWS Elastic
-     * Beanstalk resource management is removed from the environment, but the AWS
-     * resources continue to operate. </li> </ul> <p> For more information, see the <a
-     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic
-     * Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid
-     * Values: <code>true</code> | <code>false</code> </p>
+     * and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS
+     * Elastic Beanstalk resource management is removed from the environment, but the
+     * AWS resources continue to operate.</p> </li> </ul> <p> For more information, see
+     * the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p>
+     * Valid Values: <code>true</code> | <code>false</code> </p>
      */
     inline bool GetTerminateResources() const{ return m_terminateResources; }
 
     /**
-     * <p> Indicates whether the associated AWS resources should shut down when the
-     * environment is terminated: </p> <ul> <li> <code>true</code>: The specified
+     * <p>Indicates whether the associated AWS resources should shut down when the
+     * environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified
      * environment as well as the associated AWS resources, such as Auto Scaling group
-     * and LoadBalancer, are terminated. </li> <li> <code>false</code>: AWS Elastic
-     * Beanstalk resource management is removed from the environment, but the AWS
-     * resources continue to operate. </li> </ul> <p> For more information, see the <a
-     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic
-     * Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid
-     * Values: <code>true</code> | <code>false</code> </p>
+     * and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS
+     * Elastic Beanstalk resource management is removed from the environment, but the
+     * AWS resources continue to operate.</p> </li> </ul> <p> For more information, see
+     * the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p>
+     * Valid Values: <code>true</code> | <code>false</code> </p>
      */
     inline void SetTerminateResources(bool value) { m_terminateResourcesHasBeenSet = true; m_terminateResources = value; }
 
     /**
-     * <p> Indicates whether the associated AWS resources should shut down when the
-     * environment is terminated: </p> <ul> <li> <code>true</code>: The specified
+     * <p>Indicates whether the associated AWS resources should shut down when the
+     * environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified
      * environment as well as the associated AWS resources, such as Auto Scaling group
-     * and LoadBalancer, are terminated. </li> <li> <code>false</code>: AWS Elastic
-     * Beanstalk resource management is removed from the environment, but the AWS
-     * resources continue to operate. </li> </ul> <p> For more information, see the <a
-     * href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic
-     * Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid
-     * Values: <code>true</code> | <code>false</code> </p>
+     * and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS
+     * Elastic Beanstalk resource management is removed from the environment, but the
+     * AWS resources continue to operate.</p> </li> </ul> <p> For more information, see
+     * the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS
+     * Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p>
+     * Valid Values: <code>true</code> | <code>false</code> </p>
      */
     inline TerminateEnvironmentRequest& WithTerminateResources(bool value) { SetTerminateResources(value); return *this;}
 

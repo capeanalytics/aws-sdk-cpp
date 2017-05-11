@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReservedInstances.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -31,6 +32,7 @@ namespace Model
 
 ReservedInstances::ReservedInstances() : 
     m_reservedInstancesIdHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_startHasBeenSet(false),
@@ -43,18 +45,28 @@ ReservedInstances::ReservedInstances() :
     m_fixedPriceHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
+    m_state(ReservedInstanceState::NOT_SET),
     m_stateHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_instanceTenancy(Tenancy::NOT_SET),
     m_instanceTenancyHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
+    m_offeringType(OfferingTypeValues::NOT_SET),
     m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false)
+    m_recurringChargesHasBeenSet(false),
+    m_offeringClass(OfferingClassType::NOT_SET),
+    m_offeringClassHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
 }
 
 ReservedInstances::ReservedInstances(const XmlNode& xmlNode) : 
     m_reservedInstancesIdHasBeenSet(false),
+    m_instanceType(InstanceType::NOT_SET),
     m_instanceTypeHasBeenSet(false),
     m_availabilityZoneHasBeenSet(false),
     m_startHasBeenSet(false),
@@ -67,13 +79,22 @@ ReservedInstances::ReservedInstances(const XmlNode& xmlNode) :
     m_fixedPriceHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
+    m_productDescription(RIProductDescription::NOT_SET),
     m_productDescriptionHasBeenSet(false),
+    m_state(ReservedInstanceState::NOT_SET),
     m_stateHasBeenSet(false),
     m_tagsHasBeenSet(false),
+    m_instanceTenancy(Tenancy::NOT_SET),
     m_instanceTenancyHasBeenSet(false),
+    m_currencyCode(CurrencyCodeValues::NOT_SET),
     m_currencyCodeHasBeenSet(false),
+    m_offeringType(OfferingTypeValues::NOT_SET),
     m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false)
+    m_recurringChargesHasBeenSet(false),
+    m_offeringClass(OfferingClassType::NOT_SET),
+    m_offeringClassHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -192,6 +213,18 @@ ReservedInstances& ReservedInstances::operator =(const XmlNode& xmlNode)
 
       m_recurringChargesHasBeenSet = true;
     }
+    XmlNode offeringClassNode = resultNode.FirstChild("offeringClass");
+    if(!offeringClassNode.IsNull())
+    {
+      m_offeringClass = OfferingClassTypeMapper::GetOfferingClassTypeForName(StringUtils::Trim(offeringClassNode.GetText().c_str()).c_str());
+      m_offeringClassHasBeenSet = true;
+    }
+    XmlNode scopeNode = resultNode.FirstChild("scope");
+    if(!scopeNode.IsNull())
+    {
+      m_scope = ScopeMapper::GetScopeForName(StringUtils::Trim(scopeNode.GetText().c_str()).c_str());
+      m_scopeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -291,6 +324,16 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
       }
   }
 
+  if(m_offeringClassHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".OfferingClass=" << OfferingClassTypeMapper::GetNameForOfferingClassType(m_offeringClass) << "&";
+  }
+
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
+  }
+
 }
 
 void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -345,7 +388,7 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".item." << tagsIdx++;
+        tagsSs << location <<  ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -367,9 +410,17 @@ void ReservedInstances::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location <<  ".item." << recurringChargesIdx++;
+        recurringChargesSs << location <<  ".RecurringCharges." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
+  }
+  if(m_offeringClassHasBeenSet)
+  {
+      oStream << location << ".OfferingClass=" << OfferingClassTypeMapper::GetNameForOfferingClassType(m_offeringClass) << "&";
+  }
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
   }
 }
 

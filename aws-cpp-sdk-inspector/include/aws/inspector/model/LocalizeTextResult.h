@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -53,7 +55,7 @@ namespace Model
     /**
      * <p>Confirmation details of the action performed.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_message = std::move(value); }
 
     /**
      * <p>Confirmation details of the action performed.</p>
@@ -68,7 +70,7 @@ namespace Model
     /**
      * <p>Confirmation details of the action performed.</p>
      */
-    inline LocalizeTextResult& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline LocalizeTextResult& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>Confirmation details of the action performed.</p>
@@ -88,7 +90,7 @@ namespace Model
     /**
      * <p>The resulting list of user-readable texts.</p>
      */
-    inline void SetResults(Aws::Vector<Aws::String>&& value) { m_results = value; }
+    inline void SetResults(Aws::Vector<Aws::String>&& value) { m_results = std::move(value); }
 
     /**
      * <p>The resulting list of user-readable texts.</p>
@@ -98,7 +100,7 @@ namespace Model
     /**
      * <p>The resulting list of user-readable texts.</p>
      */
-    inline LocalizeTextResult& WithResults(Aws::Vector<Aws::String>&& value) { SetResults(value); return *this;}
+    inline LocalizeTextResult& WithResults(Aws::Vector<Aws::String>&& value) { SetResults(std::move(value)); return *this;}
 
     /**
      * <p>The resulting list of user-readable texts.</p>
@@ -108,7 +110,7 @@ namespace Model
     /**
      * <p>The resulting list of user-readable texts.</p>
      */
-    inline LocalizeTextResult& AddResults(Aws::String&& value) { m_results.push_back(value); return *this; }
+    inline LocalizeTextResult& AddResults(Aws::String&& value) { m_results.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The resulting list of user-readable texts.</p>

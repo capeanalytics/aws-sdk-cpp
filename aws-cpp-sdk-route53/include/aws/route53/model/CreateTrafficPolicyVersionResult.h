@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/model/TrafficPolicy.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>A complex type that contains the response information for the
-   * <code>CreateTrafficPolicyVersion</code> request.</p>
+   * <code>CreateTrafficPolicyVersion</code> request.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyVersionResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API CreateTrafficPolicyVersionResult
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>A complex type that contains settings for the new version of the traffic
      * policy.</p>
      */
-    inline void SetTrafficPolicy(TrafficPolicy&& value) { m_trafficPolicy = value; }
+    inline void SetTrafficPolicy(TrafficPolicy&& value) { m_trafficPolicy = std::move(value); }
 
     /**
      * <p>A complex type that contains settings for the new version of the traffic
@@ -72,27 +76,41 @@ namespace Model
      * <p>A complex type that contains settings for the new version of the traffic
      * policy.</p>
      */
-    inline CreateTrafficPolicyVersionResult& WithTrafficPolicy(TrafficPolicy&& value) { SetTrafficPolicy(value); return *this;}
+    inline CreateTrafficPolicyVersionResult& WithTrafficPolicy(TrafficPolicy&& value) { SetTrafficPolicy(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
     inline const Aws::String& GetLocation() const{ return m_location; }
 
-    
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
     inline void SetLocation(const Aws::String& value) { m_location = value; }
 
-    
-    inline void SetLocation(Aws::String&& value) { m_location = value; }
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
+    inline void SetLocation(Aws::String&& value) { m_location = std::move(value); }
 
-    
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
     inline void SetLocation(const char* value) { m_location.assign(value); }
 
-    
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
     inline CreateTrafficPolicyVersionResult& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
 
-    
-    inline CreateTrafficPolicyVersionResult& WithLocation(Aws::String&& value) { SetLocation(value); return *this;}
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
+    inline CreateTrafficPolicyVersionResult& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
 
-    
+    /**
+     * <p>A unique URL that represents a new traffic policy version.</p>
+     */
     inline CreateTrafficPolicyVersionResult& WithLocation(const char* value) { SetLocation(value); return *this;}
 
   private:

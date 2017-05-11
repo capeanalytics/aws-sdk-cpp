@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/servicecatalog/ServiceCatalog_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 
   /**
    * <p>An administrator-specified constraint to apply when provisioning a
-   * product.</p>
+   * product.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ConstraintSummary">AWS
+   * API Reference</a></p>
    */
   class AWS_SERVICECATALOG_API ConstraintSummary
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The type of the constraint. </p>
      */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of the constraint. </p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The type of the constraint. </p>
      */
-    inline ConstraintSummary& WithType(Aws::String&& value) { SetType(value); return *this;}
+    inline ConstraintSummary& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The type of the constraint. </p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The text description of the constraint.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>The text description of the constraint.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The text description of the constraint.</p>
      */
-    inline ConstraintSummary& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline ConstraintSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>The text description of the constraint.</p>

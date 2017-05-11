@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecr/ECR_EXPORTS.h>
 #include <aws/ecr/ECRRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,6 +35,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The name to use for the repository. The repository name may be specified on
@@ -56,7 +59,7 @@ namespace Model
      * namespace to group the repository into a category (such as
      * <code>project-a/nginx-web-app</code>).</p>
      */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
+    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
 
     /**
      * <p>The name to use for the repository. The repository name may be specified on
@@ -80,7 +83,7 @@ namespace Model
      * namespace to group the repository into a category (such as
      * <code>project-a/nginx-web-app</code>).</p>
      */
-    inline CreateRepositoryRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(value); return *this;}
+    inline CreateRepositoryRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
 
     /**
      * <p>The name to use for the repository. The repository name may be specified on

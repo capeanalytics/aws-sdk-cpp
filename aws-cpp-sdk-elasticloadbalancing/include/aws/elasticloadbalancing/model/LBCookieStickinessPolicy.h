@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Information about a policy for duration-based session stickiness.</p>
+   * <p>Information about a policy for duration-based session
+   * stickiness.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/LBCookieStickinessPolicy">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API LBCookieStickinessPolicy
   {
@@ -60,7 +65,7 @@ namespace Model
      * <p>The name of the policy. This name must be unique within the set of policies
      * for this load balancer.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy. This name must be unique within the set of policies
@@ -78,7 +83,7 @@ namespace Model
      * <p>The name of the policy. This name must be unique within the set of policies
      * for this load balancer.</p>
      */
-    inline LBCookieStickinessPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline LBCookieStickinessPolicy& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy. This name must be unique within the set of policies

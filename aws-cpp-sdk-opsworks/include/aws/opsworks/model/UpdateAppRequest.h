@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
@@ -24,6 +25,7 @@
 #include <aws/opsworks/model/DataSource.h>
 #include <aws/opsworks/model/AppAttributesKeys.h>
 #include <aws/opsworks/model/EnvironmentVariable.h>
+#include <utility>
 
 namespace Aws
 {
@@ -42,6 +44,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The app ID.</p>
      */
@@ -55,7 +58,7 @@ namespace Model
     /**
      * <p>The app ID.</p>
      */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = value; }
+    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
 
     /**
      * <p>The app ID.</p>
@@ -70,7 +73,7 @@ namespace Model
     /**
      * <p>The app ID.</p>
      */
-    inline UpdateAppRequest& WithAppId(Aws::String&& value) { SetAppId(value); return *this;}
+    inline UpdateAppRequest& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
 
     /**
      * <p>The app ID.</p>
@@ -90,7 +93,7 @@ namespace Model
     /**
      * <p>The app name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The app name.</p>
@@ -105,7 +108,7 @@ namespace Model
     /**
      * <p>The app name.</p>
      */
-    inline UpdateAppRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline UpdateAppRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The app name.</p>
@@ -125,7 +128,7 @@ namespace Model
     /**
      * <p>A description of the app.</p>
      */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = value; }
+    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
 
     /**
      * <p>A description of the app.</p>
@@ -140,7 +143,7 @@ namespace Model
     /**
      * <p>A description of the app.</p>
      */
-    inline UpdateAppRequest& WithDescription(Aws::String&& value) { SetDescription(value); return *this;}
+    inline UpdateAppRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
 
     /**
      * <p>A description of the app.</p>
@@ -160,7 +163,7 @@ namespace Model
     /**
      * <p>The app's data sources.</p>
      */
-    inline void SetDataSources(Aws::Vector<DataSource>&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = value; }
+    inline void SetDataSources(Aws::Vector<DataSource>&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::move(value); }
 
     /**
      * <p>The app's data sources.</p>
@@ -170,7 +173,7 @@ namespace Model
     /**
      * <p>The app's data sources.</p>
      */
-    inline UpdateAppRequest& WithDataSources(Aws::Vector<DataSource>&& value) { SetDataSources(value); return *this;}
+    inline UpdateAppRequest& WithDataSources(Aws::Vector<DataSource>&& value) { SetDataSources(std::move(value)); return *this;}
 
     /**
      * <p>The app's data sources.</p>
@@ -180,7 +183,7 @@ namespace Model
     /**
      * <p>The app's data sources.</p>
      */
-    inline UpdateAppRequest& AddDataSources(DataSource&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(value); return *this; }
+    inline UpdateAppRequest& AddDataSources(DataSource&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The app type.</p>
@@ -195,7 +198,7 @@ namespace Model
     /**
      * <p>The app type.</p>
      */
-    inline void SetType(AppType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(AppType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The app type.</p>
@@ -205,7 +208,7 @@ namespace Model
     /**
      * <p>The app type.</p>
      */
-    inline UpdateAppRequest& WithType(AppType&& value) { SetType(value); return *this;}
+    inline UpdateAppRequest& WithType(AppType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>A <code>Source</code> object that specifies the app repository.</p>
@@ -220,7 +223,7 @@ namespace Model
     /**
      * <p>A <code>Source</code> object that specifies the app repository.</p>
      */
-    inline void SetAppSource(Source&& value) { m_appSourceHasBeenSet = true; m_appSource = value; }
+    inline void SetAppSource(Source&& value) { m_appSourceHasBeenSet = true; m_appSource = std::move(value); }
 
     /**
      * <p>A <code>Source</code> object that specifies the app repository.</p>
@@ -230,7 +233,7 @@ namespace Model
     /**
      * <p>A <code>Source</code> object that specifies the app repository.</p>
      */
-    inline UpdateAppRequest& WithAppSource(Source&& value) { SetAppSource(value); return *this;}
+    inline UpdateAppRequest& WithAppSource(Source&& value) { SetAppSource(std::move(value)); return *this;}
 
     /**
      * <p>The app's virtual host settings, with multiple domains separated by commas.
@@ -248,7 +251,7 @@ namespace Model
      * <p>The app's virtual host settings, with multiple domains separated by commas.
      * For example: <code>'www.example.com, example.com'</code> </p>
      */
-    inline void SetDomains(Aws::Vector<Aws::String>&& value) { m_domainsHasBeenSet = true; m_domains = value; }
+    inline void SetDomains(Aws::Vector<Aws::String>&& value) { m_domainsHasBeenSet = true; m_domains = std::move(value); }
 
     /**
      * <p>The app's virtual host settings, with multiple domains separated by commas.
@@ -260,7 +263,7 @@ namespace Model
      * <p>The app's virtual host settings, with multiple domains separated by commas.
      * For example: <code>'www.example.com, example.com'</code> </p>
      */
-    inline UpdateAppRequest& WithDomains(Aws::Vector<Aws::String>&& value) { SetDomains(value); return *this;}
+    inline UpdateAppRequest& WithDomains(Aws::Vector<Aws::String>&& value) { SetDomains(std::move(value)); return *this;}
 
     /**
      * <p>The app's virtual host settings, with multiple domains separated by commas.
@@ -272,7 +275,7 @@ namespace Model
      * <p>The app's virtual host settings, with multiple domains separated by commas.
      * For example: <code>'www.example.com, example.com'</code> </p>
      */
-    inline UpdateAppRequest& AddDomains(Aws::String&& value) { m_domainsHasBeenSet = true; m_domains.push_back(value); return *this; }
+    inline UpdateAppRequest& AddDomains(Aws::String&& value) { m_domainsHasBeenSet = true; m_domains.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The app's virtual host settings, with multiple domains separated by commas.
@@ -308,7 +311,7 @@ namespace Model
     /**
      * <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
      */
-    inline void SetSslConfiguration(SslConfiguration&& value) { m_sslConfigurationHasBeenSet = true; m_sslConfiguration = value; }
+    inline void SetSslConfiguration(SslConfiguration&& value) { m_sslConfigurationHasBeenSet = true; m_sslConfiguration = std::move(value); }
 
     /**
      * <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
@@ -318,7 +321,7 @@ namespace Model
     /**
      * <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
      */
-    inline UpdateAppRequest& WithSslConfiguration(SslConfiguration&& value) { SetSslConfiguration(value); return *this;}
+    inline UpdateAppRequest& WithSslConfiguration(SslConfiguration&& value) { SetSslConfiguration(std::move(value)); return *this;}
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
@@ -336,7 +339,7 @@ namespace Model
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline void SetAttributes(Aws::Map<AppAttributesKeys, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = value; }
+    inline void SetAttributes(Aws::Map<AppAttributesKeys, Aws::String>&& value) { m_attributesHasBeenSet = true; m_attributes = std::move(value); }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
@@ -348,43 +351,43 @@ namespace Model
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& WithAttributes(Aws::Map<AppAttributesKeys, Aws::String>&& value) { SetAttributes(value); return *this;}
+    inline UpdateAppRequest& WithAttributes(Aws::Map<AppAttributesKeys, Aws::String>&& value) { SetAttributes(std::move(value)); return *this;}
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, const Aws::String& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, Aws::String&& value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(AppAttributesKeys&& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>One or more user-defined key/value pairs to be added to the stack
      * attributes.</p>
      */
-    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, const char* value) { m_attributesHasBeenSet = true; m_attributes[key] = value; return *this; }
+    inline UpdateAppRequest& AddAttributes(const AppAttributesKeys& key, const char* value) { m_attributesHasBeenSet = true; m_attributes.emplace(key, value); return *this; }
 
     /**
      * <p>An array of <code>EnvironmentVariable</code> objects that specify environment
@@ -435,7 +438,7 @@ namespace Model
      * Chef 11.10 stacks. If you have specified one or more environment variables, you
      * cannot modify the stack's Chef version.</p> </note>
      */
-    inline void SetEnvironment(Aws::Vector<EnvironmentVariable>&& value) { m_environmentHasBeenSet = true; m_environment = value; }
+    inline void SetEnvironment(Aws::Vector<EnvironmentVariable>&& value) { m_environmentHasBeenSet = true; m_environment = std::move(value); }
 
     /**
      * <p>An array of <code>EnvironmentVariable</code> objects that specify environment
@@ -469,7 +472,7 @@ namespace Model
      * Chef 11.10 stacks. If you have specified one or more environment variables, you
      * cannot modify the stack's Chef version.</p> </note>
      */
-    inline UpdateAppRequest& WithEnvironment(Aws::Vector<EnvironmentVariable>&& value) { SetEnvironment(value); return *this;}
+    inline UpdateAppRequest& WithEnvironment(Aws::Vector<EnvironmentVariable>&& value) { SetEnvironment(std::move(value)); return *this;}
 
     /**
      * <p>An array of <code>EnvironmentVariable</code> objects that specify environment
@@ -503,7 +506,7 @@ namespace Model
      * Chef 11.10 stacks. If you have specified one or more environment variables, you
      * cannot modify the stack's Chef version.</p> </note>
      */
-    inline UpdateAppRequest& AddEnvironment(EnvironmentVariable&& value) { m_environmentHasBeenSet = true; m_environment.push_back(value); return *this; }
+    inline UpdateAppRequest& AddEnvironment(EnvironmentVariable&& value) { m_environmentHasBeenSet = true; m_environment.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_appId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
   /**
    * <p>Represents the output of an <code>UpdateEvaluation</code> operation.</p>
    * <p>You can see the updated content by using the <code>GetEvaluation</code>
-   * operation.</p>
+   * operation.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/UpdateEvaluationOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API UpdateEvaluationResult
   {
@@ -63,7 +67,7 @@ namespace Model
      * should be identical to the value of the <code>Evaluation</code> in the
      * request.</p>
      */
-    inline void SetEvaluationId(Aws::String&& value) { m_evaluationId = value; }
+    inline void SetEvaluationId(Aws::String&& value) { m_evaluationId = std::move(value); }
 
     /**
      * <p>The ID assigned to the <code>Evaluation</code> during creation. This value
@@ -84,7 +88,7 @@ namespace Model
      * should be identical to the value of the <code>Evaluation</code> in the
      * request.</p>
      */
-    inline UpdateEvaluationResult& WithEvaluationId(Aws::String&& value) { SetEvaluationId(value); return *this;}
+    inline UpdateEvaluationResult& WithEvaluationId(Aws::String&& value) { SetEvaluationId(std::move(value)); return *this;}
 
     /**
      * <p>The ID assigned to the <code>Evaluation</code> during creation. This value

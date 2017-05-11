@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -22,6 +23,7 @@
 #include <aws/ec2/model/ResponseMetadata.h>
 #include <aws/ec2/model/VolumeAttachment.h>
 #include <aws/ec2/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -40,7 +42,9 @@ namespace EC2
 namespace Model
 {
   /**
-   * <p>Describes a volume.</p>
+   * <p>Describes a volume.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/Volume">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API CreateVolumeResponse
   {
@@ -62,7 +66,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeId = value; }
+    inline void SetVolumeId(Aws::String&& value) { m_volumeId = std::move(value); }
 
     /**
      * <p>The ID of the volume.</p>
@@ -77,7 +81,7 @@ namespace Model
     /**
      * <p>The ID of the volume.</p>
      */
-    inline CreateVolumeResponse& WithVolumeId(Aws::String&& value) { SetVolumeId(value); return *this;}
+    inline CreateVolumeResponse& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the volume.</p>
@@ -112,7 +116,7 @@ namespace Model
     /**
      * <p>The snapshot from which the volume was created, if applicable.</p>
      */
-    inline void SetSnapshotId(Aws::String&& value) { m_snapshotId = value; }
+    inline void SetSnapshotId(Aws::String&& value) { m_snapshotId = std::move(value); }
 
     /**
      * <p>The snapshot from which the volume was created, if applicable.</p>
@@ -127,7 +131,7 @@ namespace Model
     /**
      * <p>The snapshot from which the volume was created, if applicable.</p>
      */
-    inline CreateVolumeResponse& WithSnapshotId(Aws::String&& value) { SetSnapshotId(value); return *this;}
+    inline CreateVolumeResponse& WithSnapshotId(Aws::String&& value) { SetSnapshotId(std::move(value)); return *this;}
 
     /**
      * <p>The snapshot from which the volume was created, if applicable.</p>
@@ -147,7 +151,7 @@ namespace Model
     /**
      * <p>The Availability Zone for the volume.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZone = std::move(value); }
 
     /**
      * <p>The Availability Zone for the volume.</p>
@@ -162,7 +166,7 @@ namespace Model
     /**
      * <p>The Availability Zone for the volume.</p>
      */
-    inline CreateVolumeResponse& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline CreateVolumeResponse& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The Availability Zone for the volume.</p>
@@ -182,7 +186,7 @@ namespace Model
     /**
      * <p>The volume state.</p>
      */
-    inline void SetState(VolumeState&& value) { m_state = value; }
+    inline void SetState(VolumeState&& value) { m_state = std::move(value); }
 
     /**
      * <p>The volume state.</p>
@@ -192,7 +196,7 @@ namespace Model
     /**
      * <p>The volume state.</p>
      */
-    inline CreateVolumeResponse& WithState(VolumeState&& value) { SetState(value); return *this;}
+    inline CreateVolumeResponse& WithState(VolumeState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The time stamp when volume creation was initiated.</p>
@@ -207,7 +211,7 @@ namespace Model
     /**
      * <p>The time stamp when volume creation was initiated.</p>
      */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTime = value; }
+    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTime = std::move(value); }
 
     /**
      * <p>The time stamp when volume creation was initiated.</p>
@@ -217,7 +221,7 @@ namespace Model
     /**
      * <p>The time stamp when volume creation was initiated.</p>
      */
-    inline CreateVolumeResponse& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(value); return *this;}
+    inline CreateVolumeResponse& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
 
     /**
      * <p>Information about the volume attachments.</p>
@@ -232,7 +236,7 @@ namespace Model
     /**
      * <p>Information about the volume attachments.</p>
      */
-    inline void SetAttachments(Aws::Vector<VolumeAttachment>&& value) { m_attachments = value; }
+    inline void SetAttachments(Aws::Vector<VolumeAttachment>&& value) { m_attachments = std::move(value); }
 
     /**
      * <p>Information about the volume attachments.</p>
@@ -242,7 +246,7 @@ namespace Model
     /**
      * <p>Information about the volume attachments.</p>
      */
-    inline CreateVolumeResponse& WithAttachments(Aws::Vector<VolumeAttachment>&& value) { SetAttachments(value); return *this;}
+    inline CreateVolumeResponse& WithAttachments(Aws::Vector<VolumeAttachment>&& value) { SetAttachments(std::move(value)); return *this;}
 
     /**
      * <p>Information about the volume attachments.</p>
@@ -252,7 +256,7 @@ namespace Model
     /**
      * <p>Information about the volume attachments.</p>
      */
-    inline CreateVolumeResponse& AddAttachments(VolumeAttachment&& value) { m_attachments.push_back(value); return *this; }
+    inline CreateVolumeResponse& AddAttachments(VolumeAttachment&& value) { m_attachments.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any tags assigned to the volume.</p>
@@ -267,7 +271,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the volume.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the volume.</p>
@@ -277,7 +281,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the volume.</p>
      */
-    inline CreateVolumeResponse& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline CreateVolumeResponse& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the volume.</p>
@@ -287,7 +291,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the volume.</p>
      */
-    inline CreateVolumeResponse& AddTags(Tag&& value) { m_tags.push_back(value); return *this; }
+    inline CreateVolumeResponse& AddTags(Tag&& value) { m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
@@ -311,7 +315,7 @@ namespace Model
      * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
      * Magnetic volumes.</p>
      */
-    inline void SetVolumeType(VolumeType&& value) { m_volumeType = value; }
+    inline void SetVolumeType(VolumeType&& value) { m_volumeType = std::move(value); }
 
     /**
      * <p>The volume type. This can be <code>gp2</code> for General Purpose SSD,
@@ -327,7 +331,7 @@ namespace Model
      * Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for
      * Magnetic volumes.</p>
      */
-    inline CreateVolumeResponse& WithVolumeType(VolumeType&& value) { SetVolumeType(value); return *this;}
+    inline CreateVolumeResponse& WithVolumeType(VolumeType&& value) { SetVolumeType(std::move(value)); return *this;}
 
     /**
      * <p>The number of I/O operations per second (IOPS) that the volume supports. For
@@ -411,7 +415,7 @@ namespace Model
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) customer master key
      * (CMK) that was used to protect the volume encryption key for the volume.</p>
      */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyId = value; }
+    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyId = std::move(value); }
 
     /**
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) customer master key
@@ -429,7 +433,7 @@ namespace Model
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) customer master key
      * (CMK) that was used to protect the volume encryption key for the volume.</p>
      */
-    inline CreateVolumeResponse& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(value); return *this;}
+    inline CreateVolumeResponse& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
 
     /**
      * <p>The full ARN of the AWS Key Management Service (AWS KMS) customer master key
@@ -444,13 +448,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline CreateVolumeResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline CreateVolumeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline CreateVolumeResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_volumeId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/iam/model/ListPoliciesRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -20,6 +21,7 @@ using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
 ListPoliciesRequest::ListPoliciesRequest() : 
+    m_scope(PolicyScopeType::NOT_SET),
     m_scopeHasBeenSet(false),
     m_onlyAttached(false),
     m_onlyAttachedHasBeenSet(false),
@@ -41,7 +43,7 @@ Aws::String ListPoliciesRequest::SerializePayload() const
 
   if(m_onlyAttachedHasBeenSet)
   {
-    ss << "OnlyAttached=" << m_onlyAttached << "&";
+    ss << "OnlyAttached=" << std::boolalpha << m_onlyAttached << "&";
   }
 
   if(m_pathPrefixHasBeenSet)
@@ -63,3 +65,8 @@ Aws::String ListPoliciesRequest::SerializePayload() const
   return ss.str();
 }
 
+
+void  ListPoliciesRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

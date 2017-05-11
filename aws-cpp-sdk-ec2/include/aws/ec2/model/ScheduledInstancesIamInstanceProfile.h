@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Describes an IAM instance profile for a Scheduled Instance.</p>
+   * <p>Describes an IAM instance profile for a Scheduled Instance.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ScheduledInstancesIamInstanceProfile">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API ScheduledInstancesIamInstanceProfile
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN).</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN).</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN).</p>
      */
-    inline ScheduledInstancesIamInstanceProfile& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline ScheduledInstancesIamInstanceProfile& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN).</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The name.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The name.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The name.</p>
      */
-    inline ScheduledInstancesIamInstanceProfile& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ScheduledInstancesIamInstanceProfile& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The name.</p>

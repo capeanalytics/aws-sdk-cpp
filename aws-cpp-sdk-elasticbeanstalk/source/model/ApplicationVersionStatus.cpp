@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticbeanstalk/model/ApplicationVersionStatus.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/core/Globals.h>
@@ -33,6 +34,7 @@ namespace Aws
         static const int Unprocessed_HASH = HashingUtils::HashString("Unprocessed");
         static const int Failed_HASH = HashingUtils::HashString("Failed");
         static const int Processing_HASH = HashingUtils::HashString("Processing");
+        static const int Building_HASH = HashingUtils::HashString("Building");
 
 
         ApplicationVersionStatus GetApplicationVersionStatusForName(const Aws::String& name)
@@ -53,6 +55,10 @@ namespace Aws
           else if (hashCode == Processing_HASH)
           {
             return ApplicationVersionStatus::Processing;
+          }
+          else if (hashCode == Building_HASH)
+          {
+            return ApplicationVersionStatus::Building;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -76,6 +82,8 @@ namespace Aws
             return "Failed";
           case ApplicationVersionStatus::Processing:
             return "Processing";
+          case ApplicationVersionStatus::Building:
+            return "Building";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

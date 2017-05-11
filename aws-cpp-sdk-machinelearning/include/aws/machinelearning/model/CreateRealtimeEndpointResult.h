@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/machinelearning/MachineLearning_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/machinelearning/model/RealtimeEndpointInfo.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
    * endpoint information for the <code>MLModel</code>.</p> <note> <p>The endpoint
    * information includes the URI of the <code>MLModel</code>; that is, the location
    * to send online prediction requests for the specified <code>MLModel</code>.</p>
-   * </note>
+   * </note><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/machinelearning-2014-12-12/CreateRealtimeEndpointOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_MACHINELEARNING_API CreateRealtimeEndpointResult
   {
@@ -67,7 +71,7 @@ namespace Model
      * value should be identical to the value of the <code>MLModelId</code> in the
      * request.</p>
      */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelId = value; }
+    inline void SetMLModelId(Aws::String&& value) { m_mLModelId = std::move(value); }
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This
@@ -88,7 +92,7 @@ namespace Model
      * value should be identical to the value of the <code>MLModelId</code> in the
      * request.</p>
      */
-    inline CreateRealtimeEndpointResult& WithMLModelId(Aws::String&& value) { SetMLModelId(value); return *this;}
+    inline CreateRealtimeEndpointResult& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
 
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This
@@ -110,7 +114,7 @@ namespace Model
     /**
      * <p>The endpoint information of the <code>MLModel</code> </p>
      */
-    inline void SetRealtimeEndpointInfo(RealtimeEndpointInfo&& value) { m_realtimeEndpointInfo = value; }
+    inline void SetRealtimeEndpointInfo(RealtimeEndpointInfo&& value) { m_realtimeEndpointInfo = std::move(value); }
 
     /**
      * <p>The endpoint information of the <code>MLModel</code> </p>
@@ -120,7 +124,7 @@ namespace Model
     /**
      * <p>The endpoint information of the <code>MLModel</code> </p>
      */
-    inline CreateRealtimeEndpointResult& WithRealtimeEndpointInfo(RealtimeEndpointInfo&& value) { SetRealtimeEndpointInfo(value); return *this;}
+    inline CreateRealtimeEndpointResult& WithRealtimeEndpointInfo(RealtimeEndpointInfo&& value) { SetRealtimeEndpointInfo(std::move(value)); return *this;}
 
   private:
     Aws::String m_mLModelId;

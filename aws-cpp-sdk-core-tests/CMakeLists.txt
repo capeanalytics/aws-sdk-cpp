@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(aws-cpp-sdk-core-tests)
+add_project(aws-cpp-sdk-core-tests 
+    "Tests for the AWS Core C++ Library"
+    testing-resources 
+    aws-cpp-sdk-core )
 
 # Headers are included in the source so that they show up in Visual Studio.
 # They are included elsewhere for consistency.
@@ -13,7 +15,6 @@ file(GLOB UTILS_CRYPTO_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/crypto/*.cpp")
 file(GLOB UTILS_JSON_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/json/*.cpp")
 file(GLOB UTILS_STREAM_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/stream/*.cpp")
 file(GLOB UTILS_LOGGING_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/logging/*.cpp")
-file(GLOB UTILS_MEMORY_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/memory/*.cpp")
 file(GLOB UTILS_RATE_LIMITER_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/ratelimiter/*.cpp")
 file(GLOB UTILS_XML_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/xml/*.cpp")
 
@@ -30,7 +31,6 @@ file(GLOB AWS_CPP_SDK_CORE_TESTS_SRC
   ${UTILS_STREAM_SRC}
   ${UTILS_XML_SRC}
   ${UTILS_LOGGING_SRC}
-  ${UTILS_MEMORY_SRC}
   ${UTILS_RATE_LIMITER_SRC}
 )
 
@@ -47,17 +47,15 @@ if(PLATFORM_WINDOWS)
     source_group("Source Files\\utils\\stream" FILES ${UTILS_STREAM_SRC})
     source_group("Source Files\\utils\\xml" FILES ${UTILS_XML_SRC})
     source_group("Source Files\\utils\\logging" FILES ${UTILS_LOGGING_SRC})
-    source_group("Source Files\\utils\\memory" FILES ${UTILS_MEMORY_SRC})
     source_group("Source Files\\utils\\ratelimiter" FILES ${UTILS_RATE_LIMITER_SRC})
   endif()
 endif()
 
-set(TestApplication_INCLUDES
-  "${AWS_NATIVE_SDK_ROOT}/aws-cpp-sdk-core/include/"
-  "${AWS_NATIVE_SDK_ROOT}/testing-resources/include/"
-)
-
-include_directories(${TestApplication_INCLUDES})
+if(PLATFORM_CUSTOM)
+    if(COMMAND add_custom_core_testing_definitions)
+        add_custom_core_testing_definitions()
+    endif()
+endif()
 
 enable_testing()
 
@@ -66,17 +64,21 @@ if(USE_WINDOWS_DLL_SEMANTICS AND BUILD_SHARED_LIBS)
 endif()
 
 if(PLATFORM_ANDROID AND BUILD_SHARED_LIBS)
-    add_library(runCoreUnitTests ${LIBTYPE} ${AWS_CPP_SDK_CORE_TESTS_SRC})
+    add_library(${PROJECT_NAME} ${LIBTYPE} ${AWS_CPP_SDK_CORE_TESTS_SRC})
 else()
-    add_executable(runCoreUnitTests ${AWS_CPP_SDK_CORE_TESTS_SRC})
+    add_executable(${PROJECT_NAME} ${AWS_CPP_SDK_CORE_TESTS_SRC})
 endif()
 
-target_link_libraries(runCoreUnitTests aws-cpp-sdk-core testing-resources)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_LIBS})
 
-copyDlls(runCoreUnitTests aws-cpp-sdk-core testing-resources)
+copyDlls(${PROJECT_NAME} ${PROJECT_LIBS})
+
+add_custom_command(TARGET aws-cpp-sdk-core-tests PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                   ${CMAKE_CURRENT_SOURCE_DIR}/resources ${CMAKE_CURRENT_BINARY_DIR})
 
 if(NOT CMAKE_CROSSCOMPILING)
-    ADD_CUSTOM_COMMAND( TARGET runCoreUnitTests POST_BUILD COMMAND $<TARGET_FILE:runCoreUnitTests>)
-    SET_TARGET_PROPERTIES(runCoreUnitTests PROPERTIES OUTPUT_NAME runCoreUnitTests)
+    ADD_CUSTOM_COMMAND( TARGET ${PROJECT_NAME} POST_BUILD COMMAND $<TARGET_FILE:${PROJECT_NAME}>)
+    SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 endif()
 

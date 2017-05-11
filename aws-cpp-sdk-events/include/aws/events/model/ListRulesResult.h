@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/events/CloudWatchEvents_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/events/model/Rule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,9 +36,6 @@ namespace CloudWatchEvents
 {
 namespace Model
 {
-  /**
-   * <p>The result of the <a>ListRules</a> operation.</p>
-   */
   class AWS_CLOUDWATCHEVENTS_API ListRulesResult
   {
   public:
@@ -45,72 +44,100 @@ namespace Model
     ListRulesResult& operator=(const AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
     inline const Aws::Vector<Rule>& GetRules() const{ return m_rules; }
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
     inline void SetRules(const Aws::Vector<Rule>& value) { m_rules = value; }
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
-    inline void SetRules(Aws::Vector<Rule>&& value) { m_rules = value; }
+    inline void SetRules(Aws::Vector<Rule>&& value) { m_rules = std::move(value); }
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
     inline ListRulesResult& WithRules(const Aws::Vector<Rule>& value) { SetRules(value); return *this;}
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
-    inline ListRulesResult& WithRules(Aws::Vector<Rule>&& value) { SetRules(value); return *this;}
+    inline ListRulesResult& WithRules(Aws::Vector<Rule>&& value) { SetRules(std::move(value)); return *this;}
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
     inline ListRulesResult& AddRules(const Rule& value) { m_rules.push_back(value); return *this; }
 
     /**
-     * <p>List of rules matching the specified criteria.</p>
+     * <zonbook> <simpara>The rules that match the specified criteria.</simpara>
+     * </zonbook> <xhtml> <p>The rules that match the specified criteria.</p> </xhtml>
      */
-    inline ListRulesResult& AddRules(Rule&& value) { m_rules.push_back(value); return *this; }
+    inline ListRulesResult& AddRules(Rule&& value) { m_rules.push_back(std::move(value)); return *this; }
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
     inline const Aws::String& GetNextToken() const{ return m_nextToken; }
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
     inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
     inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
     inline ListRulesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
-    inline ListRulesResult& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListRulesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
-     * <p>Indicates that there are additional results to retrieve.</p>
+     * <zonbook> <simpara>Indicates whether there are additional results to retrieve.
+     * If there are no more results, the value is null.</simpara> </zonbook> <xhtml>
+     * <p>Indicates whether there are additional results to retrieve. If there are no
+     * more results, the value is null.</p> </xhtml>
      */
     inline ListRulesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
 

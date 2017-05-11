@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/CognitoIdentityProviderRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cognito-idp/model/ChallengeNameType.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>The request to respond to an authentication challenge.</p>
+   * <p>The request to respond to an authentication challenge.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/RespondToAuthChallengeRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_COGNITOIDENTITYPROVIDER_API RespondToAuthChallengeRequest : public CognitoIdentityProviderRequest
   {
@@ -36,6 +41,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The client ID.</p>
@@ -50,7 +56,7 @@ namespace Model
     /**
      * <p>The client ID.</p>
      */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
+    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
 
     /**
      * <p>The client ID.</p>
@@ -65,7 +71,7 @@ namespace Model
     /**
      * <p>The client ID.</p>
      */
-    inline RespondToAuthChallengeRequest& WithClientId(Aws::String&& value) { SetClientId(value); return *this;}
+    inline RespondToAuthChallengeRequest& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
 
     /**
      * <p>The client ID.</p>
@@ -85,7 +91,7 @@ namespace Model
     /**
      * <p>The name of the challenge.</p>
      */
-    inline void SetChallengeName(ChallengeNameType&& value) { m_challengeNameHasBeenSet = true; m_challengeName = value; }
+    inline void SetChallengeName(ChallengeNameType&& value) { m_challengeNameHasBeenSet = true; m_challengeName = std::move(value); }
 
     /**
      * <p>The name of the challenge.</p>
@@ -95,7 +101,7 @@ namespace Model
     /**
      * <p>The name of the challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& WithChallengeName(ChallengeNameType&& value) { SetChallengeName(value); return *this;}
+    inline RespondToAuthChallengeRequest& WithChallengeName(ChallengeNameType&& value) { SetChallengeName(std::move(value)); return *this;}
 
     /**
      * <p>The session.</p>
@@ -110,7 +116,7 @@ namespace Model
     /**
      * <p>The session.</p>
      */
-    inline void SetSession(Aws::String&& value) { m_sessionHasBeenSet = true; m_session = value; }
+    inline void SetSession(Aws::String&& value) { m_sessionHasBeenSet = true; m_session = std::move(value); }
 
     /**
      * <p>The session.</p>
@@ -125,7 +131,7 @@ namespace Model
     /**
      * <p>The session.</p>
      */
-    inline RespondToAuthChallengeRequest& WithSession(Aws::String&& value) { SetSession(value); return *this;}
+    inline RespondToAuthChallengeRequest& WithSession(Aws::String&& value) { SetSession(std::move(value)); return *this;}
 
     /**
      * <p>The session.</p>
@@ -145,7 +151,7 @@ namespace Model
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline void SetChallengeResponses(Aws::Map<Aws::String, Aws::String>&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses = value; }
+    inline void SetChallengeResponses(Aws::Map<Aws::String, Aws::String>&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses = std::move(value); }
 
     /**
      * <p>The responses to the authentication challenge.</p>
@@ -155,42 +161,42 @@ namespace Model
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& WithChallengeResponses(Aws::Map<Aws::String, Aws::String>&& value) { SetChallengeResponses(value); return *this;}
+    inline RespondToAuthChallengeRequest& WithChallengeResponses(Aws::Map<Aws::String, Aws::String>&& value) { SetChallengeResponses(std::move(value)); return *this;}
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(const Aws::String& key, const Aws::String& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(const Aws::String& key, const Aws::String& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(key, value); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, const Aws::String& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, const Aws::String& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(const Aws::String& key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(const Aws::String& key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(std::move(key), std::move(value)); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(const char* key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(const char* key, Aws::String&& value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(key, std::move(value)); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, const char* value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(Aws::String&& key, const char* value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(std::move(key), value); return *this; }
 
     /**
      * <p>The responses to the authentication challenge.</p>
      */
-    inline RespondToAuthChallengeRequest& AddChallengeResponses(const char* key, const char* value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses[key] = value; return *this; }
+    inline RespondToAuthChallengeRequest& AddChallengeResponses(const char* key, const char* value) { m_challengeResponsesHasBeenSet = true; m_challengeResponses.emplace(key, value); return *this; }
 
   private:
     Aws::String m_clientId;

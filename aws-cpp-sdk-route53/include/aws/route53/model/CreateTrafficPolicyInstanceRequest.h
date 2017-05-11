@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/route53/Route53_EXPORTS.h>
 #include <aws/route53/Route53Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,13 +28,17 @@ namespace Model
 
   /**
    * <p>A complex type that contains information about the resource record sets that
-   * you want to create based on a specified traffic policy.</p>
+   * you want to create based on a specified traffic policy.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/CreateTrafficPolicyInstanceRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_ROUTE53_API CreateTrafficPolicyInstanceRequest : public Route53Request
   {
   public:
     CreateTrafficPolicyInstanceRequest();
     Aws::String SerializePayload() const override;
+
 
     /**
      * <p>The ID of the hosted zone in which you want Amazon Route 53 to create
@@ -50,7 +56,7 @@ namespace Model
      * <p>The ID of the hosted zone in which you want Amazon Route 53 to create
      * resource record sets by using the configuration in a traffic policy.</p>
      */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
+    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
 
     /**
      * <p>The ID of the hosted zone in which you want Amazon Route 53 to create
@@ -68,7 +74,7 @@ namespace Model
      * <p>The ID of the hosted zone in which you want Amazon Route 53 to create
      * resource record sets by using the configuration in a traffic policy.</p>
      */
-    inline CreateTrafficPolicyInstanceRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(value); return *this;}
+    inline CreateTrafficPolicyInstanceRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the hosted zone in which you want Amazon Route 53 to create
@@ -98,7 +104,7 @@ namespace Model
      * resource record sets that Amazon Route 53 creates for this traffic policy
      * instance.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>The domain name (such as example.com) or subdomain name (such as
@@ -122,7 +128,7 @@ namespace Model
      * resource record sets that Amazon Route 53 creates for this traffic policy
      * instance.</p>
      */
-    inline CreateTrafficPolicyInstanceRequest& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline CreateTrafficPolicyInstanceRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>The domain name (such as example.com) or subdomain name (such as
@@ -166,7 +172,7 @@ namespace Model
      * <p>The ID of the traffic policy that you want to use to create resource record
      * sets in the specified hosted zone.</p>
      */
-    inline void SetTrafficPolicyId(Aws::String&& value) { m_trafficPolicyIdHasBeenSet = true; m_trafficPolicyId = value; }
+    inline void SetTrafficPolicyId(Aws::String&& value) { m_trafficPolicyIdHasBeenSet = true; m_trafficPolicyId = std::move(value); }
 
     /**
      * <p>The ID of the traffic policy that you want to use to create resource record
@@ -184,7 +190,7 @@ namespace Model
      * <p>The ID of the traffic policy that you want to use to create resource record
      * sets in the specified hosted zone.</p>
      */
-    inline CreateTrafficPolicyInstanceRequest& WithTrafficPolicyId(Aws::String&& value) { SetTrafficPolicyId(value); return *this;}
+    inline CreateTrafficPolicyInstanceRequest& WithTrafficPolicyId(Aws::String&& value) { SetTrafficPolicyId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the traffic policy that you want to use to create resource record

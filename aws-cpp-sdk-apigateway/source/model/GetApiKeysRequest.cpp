@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/apigateway/model/GetApiKeysRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 #include <aws/core/http/URI.h>
@@ -29,6 +30,7 @@ GetApiKeysRequest::GetApiKeysRequest() :
     m_limit(0),
     m_limitHasBeenSet(false),
     m_nameQueryHasBeenSet(false),
+    m_customerIdHasBeenSet(false),
     m_includeValues(false),
     m_includeValuesHasBeenSet(false)
 {
@@ -63,6 +65,13 @@ void GetApiKeysRequest::AddQueryStringParameters(URI& uri) const
       ss.str("");
     }
 
+    if(m_customerIdHasBeenSet)
+    {
+      ss << m_customerId;
+      uri.AddQueryStringParameter("customerId", ss.str());
+      ss.str("");
+    }
+
     if(m_includeValuesHasBeenSet)
     {
       ss << m_includeValues;
@@ -71,5 +80,6 @@ void GetApiKeysRequest::AddQueryStringParameters(URI& uri) const
     }
 
 }
+
 
 

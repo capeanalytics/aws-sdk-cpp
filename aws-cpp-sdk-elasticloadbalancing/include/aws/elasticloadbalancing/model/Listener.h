@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticloadbalancing/ElasticLoadBalancing_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * the ports supported by Elastic Load Balancing, see <a
    * href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html">Listeners
    * for Your Classic Load Balancer</a> in the <i>Classic Load Balancers
-   * Guide</i>.</p>
+   * Guide</i>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancing-2012-06-01/Listener">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICLOADBALANCING_API Listener
   {
@@ -64,7 +68,7 @@ namespace Model
      * <p>The load balancer transport protocol to use for routing: HTTP, HTTPS, TCP, or
      * SSL.</p>
      */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
 
     /**
      * <p>The load balancer transport protocol to use for routing: HTTP, HTTPS, TCP, or
@@ -82,7 +86,7 @@ namespace Model
      * <p>The load balancer transport protocol to use for routing: HTTP, HTTPS, TCP, or
      * SSL.</p>
      */
-    inline Listener& WithProtocol(Aws::String&& value) { SetProtocol(value); return *this;}
+    inline Listener& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The load balancer transport protocol to use for routing: HTTP, HTTPS, TCP, or
@@ -148,7 +152,7 @@ namespace Model
      * <code>InstanceProtocol</code> is HTTP or TCP, the listener's
      * <code>InstanceProtocol</code> must be HTTP or TCP.</p>
      */
-    inline void SetInstanceProtocol(Aws::String&& value) { m_instanceProtocolHasBeenSet = true; m_instanceProtocol = value; }
+    inline void SetInstanceProtocol(Aws::String&& value) { m_instanceProtocolHasBeenSet = true; m_instanceProtocol = std::move(value); }
 
     /**
      * <p>The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP, or
@@ -187,7 +191,7 @@ namespace Model
      * <code>InstanceProtocol</code> is HTTP or TCP, the listener's
      * <code>InstanceProtocol</code> must be HTTP or TCP.</p>
      */
-    inline Listener& WithInstanceProtocol(Aws::String&& value) { SetInstanceProtocol(value); return *this;}
+    inline Listener& WithInstanceProtocol(Aws::String&& value) { SetInstanceProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP, or
@@ -230,7 +234,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the server certificate.</p>
      */
-    inline void SetSSLCertificateId(Aws::String&& value) { m_sSLCertificateIdHasBeenSet = true; m_sSLCertificateId = value; }
+    inline void SetSSLCertificateId(Aws::String&& value) { m_sSLCertificateIdHasBeenSet = true; m_sSLCertificateId = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the server certificate.</p>
@@ -245,7 +249,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the server certificate.</p>
      */
-    inline Listener& WithSSLCertificateId(Aws::String&& value) { SetSSLCertificateId(value); return *this;}
+    inline Listener& WithSSLCertificateId(Aws::String&& value) { SetSSLCertificateId(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the server certificate.</p>

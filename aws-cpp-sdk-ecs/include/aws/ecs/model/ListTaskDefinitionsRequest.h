@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ecs/ECS_EXPORTS.h>
 #include <aws/ecs/ECSRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ecs/model/TaskDefinitionStatus.h>
 #include <aws/ecs/model/SortOrder.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The full family name with which to filter the
@@ -58,7 +61,7 @@ namespace Model
      * limits the listed task definitions to task definition revisions that belong to
      * that family.</p>
      */
-    inline void SetFamilyPrefix(Aws::String&& value) { m_familyPrefixHasBeenSet = true; m_familyPrefix = value; }
+    inline void SetFamilyPrefix(Aws::String&& value) { m_familyPrefixHasBeenSet = true; m_familyPrefix = std::move(value); }
 
     /**
      * <p>The full family name with which to filter the
@@ -82,7 +85,7 @@ namespace Model
      * limits the listed task definitions to task definition revisions that belong to
      * that family.</p>
      */
-    inline ListTaskDefinitionsRequest& WithFamilyPrefix(Aws::String&& value) { SetFamilyPrefix(value); return *this;}
+    inline ListTaskDefinitionsRequest& WithFamilyPrefix(Aws::String&& value) { SetFamilyPrefix(std::move(value)); return *this;}
 
     /**
      * <p>The full family name with which to filter the
@@ -123,7 +126,7 @@ namespace Model
      * output, be sure to keep the <code>status</code> value constant in each
      * subsequent request.</p>
      */
-    inline void SetStatus(TaskDefinitionStatus&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(TaskDefinitionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The task definition status with which to filter the
@@ -145,7 +148,7 @@ namespace Model
      * output, be sure to keep the <code>status</code> value constant in each
      * subsequent request.</p>
      */
-    inline ListTaskDefinitionsRequest& WithStatus(TaskDefinitionStatus&& value) { SetStatus(value); return *this;}
+    inline ListTaskDefinitionsRequest& WithStatus(TaskDefinitionStatus&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The order in which to sort the results. Valid values are <code>ASC</code> and
@@ -175,7 +178,7 @@ namespace Model
      * parameter to <code>DESC</code> reverses the sort order on family name and
      * revision so that the newest task definitions in a family are listed first.</p>
      */
-    inline void SetSort(SortOrder&& value) { m_sortHasBeenSet = true; m_sort = value; }
+    inline void SetSort(SortOrder&& value) { m_sortHasBeenSet = true; m_sort = std::move(value); }
 
     /**
      * <p>The order in which to sort the results. Valid values are <code>ASC</code> and
@@ -195,7 +198,7 @@ namespace Model
      * parameter to <code>DESC</code> reverses the sort order on family name and
      * revision so that the newest task definitions in a family are listed first.</p>
      */
-    inline ListTaskDefinitionsRequest& WithSort(SortOrder&& value) { SetSort(value); return *this;}
+    inline ListTaskDefinitionsRequest& WithSort(SortOrder&& value) { SetSort(std::move(value)); return *this;}
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated
@@ -231,7 +234,7 @@ namespace Model
      * to retrieve the next items in a list and not for other programmatic
      * purposes.</p> </note>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated
@@ -267,7 +270,7 @@ namespace Model
      * to retrieve the next items in a list and not for other programmatic
      * purposes.</p> </note>
      */
-    inline ListTaskDefinitionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline ListTaskDefinitionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>The <code>nextToken</code> value returned from a previous paginated

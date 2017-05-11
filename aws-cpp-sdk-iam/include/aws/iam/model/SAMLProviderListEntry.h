@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the list of SAML providers for this account.</p>
+   * <p>Contains the list of SAML providers for this account.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/SAMLProviderListEntry">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API SAMLProviderListEntry
   {
@@ -58,7 +63,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
@@ -73,7 +78,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
      */
-    inline SAMLProviderListEntry& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline SAMLProviderListEntry& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
@@ -93,7 +98,7 @@ namespace Model
     /**
      * <p>The expiration date and time for the SAML provider.</p>
      */
-    inline void SetValidUntil(Aws::Utils::DateTime&& value) { m_validUntilHasBeenSet = true; m_validUntil = value; }
+    inline void SetValidUntil(Aws::Utils::DateTime&& value) { m_validUntilHasBeenSet = true; m_validUntil = std::move(value); }
 
     /**
      * <p>The expiration date and time for the SAML provider.</p>
@@ -103,7 +108,7 @@ namespace Model
     /**
      * <p>The expiration date and time for the SAML provider.</p>
      */
-    inline SAMLProviderListEntry& WithValidUntil(Aws::Utils::DateTime&& value) { SetValidUntil(value); return *this;}
+    inline SAMLProviderListEntry& WithValidUntil(Aws::Utils::DateTime&& value) { SetValidUntil(std::move(value)); return *this;}
 
     /**
      * <p>The date and time when the SAML provider was created.</p>
@@ -118,7 +123,7 @@ namespace Model
     /**
      * <p>The date and time when the SAML provider was created.</p>
      */
-    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = value; }
+    inline void SetCreateDate(Aws::Utils::DateTime&& value) { m_createDateHasBeenSet = true; m_createDate = std::move(value); }
 
     /**
      * <p>The date and time when the SAML provider was created.</p>
@@ -128,7 +133,7 @@ namespace Model
     /**
      * <p>The date and time when the SAML provider was created.</p>
      */
-    inline SAMLProviderListEntry& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(value); return *this;}
+    inline SAMLProviderListEntry& WithCreateDate(Aws::Utils::DateTime&& value) { SetCreateDate(std::move(value)); return *this;}
 
   private:
     Aws::String m_arn;

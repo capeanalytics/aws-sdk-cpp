@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/rds/RDS_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,9 @@ namespace Model
   /**
    * <p>Option group option settings are used to display settings available for each
    * option with their default values and other information. These values are used
-   * with the DescribeOptionGroupOptions action.</p>
+   * with the DescribeOptionGroupOptions action.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/OptionGroupOptionSetting">AWS
+   * API Reference</a></p>
    */
   class AWS_RDS_API OptionGroupOptionSetting
   {
@@ -59,7 +63,7 @@ namespace Model
     /**
      * <p>The name of the option group option.</p>
      */
-    inline void SetSettingName(Aws::String&& value) { m_settingNameHasBeenSet = true; m_settingName = value; }
+    inline void SetSettingName(Aws::String&& value) { m_settingNameHasBeenSet = true; m_settingName = std::move(value); }
 
     /**
      * <p>The name of the option group option.</p>
@@ -74,7 +78,7 @@ namespace Model
     /**
      * <p>The name of the option group option.</p>
      */
-    inline OptionGroupOptionSetting& WithSettingName(Aws::String&& value) { SetSettingName(value); return *this;}
+    inline OptionGroupOptionSetting& WithSettingName(Aws::String&& value) { SetSettingName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the option group option.</p>
@@ -94,7 +98,7 @@ namespace Model
     /**
      * <p>The description of the option group option.</p>
      */
-    inline void SetSettingDescription(Aws::String&& value) { m_settingDescriptionHasBeenSet = true; m_settingDescription = value; }
+    inline void SetSettingDescription(Aws::String&& value) { m_settingDescriptionHasBeenSet = true; m_settingDescription = std::move(value); }
 
     /**
      * <p>The description of the option group option.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The description of the option group option.</p>
      */
-    inline OptionGroupOptionSetting& WithSettingDescription(Aws::String&& value) { SetSettingDescription(value); return *this;}
+    inline OptionGroupOptionSetting& WithSettingDescription(Aws::String&& value) { SetSettingDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the option group option.</p>
@@ -129,7 +133,7 @@ namespace Model
     /**
      * <p>The default value for the option group option.</p>
      */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
+    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
 
     /**
      * <p>The default value for the option group option.</p>
@@ -144,7 +148,7 @@ namespace Model
     /**
      * <p>The default value for the option group option.</p>
      */
-    inline OptionGroupOptionSetting& WithDefaultValue(Aws::String&& value) { SetDefaultValue(value); return *this;}
+    inline OptionGroupOptionSetting& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
 
     /**
      * <p>The default value for the option group option.</p>
@@ -164,7 +168,7 @@ namespace Model
     /**
      * <p>The DB engine specific parameter type for the option group option.</p>
      */
-    inline void SetApplyType(Aws::String&& value) { m_applyTypeHasBeenSet = true; m_applyType = value; }
+    inline void SetApplyType(Aws::String&& value) { m_applyTypeHasBeenSet = true; m_applyType = std::move(value); }
 
     /**
      * <p>The DB engine specific parameter type for the option group option.</p>
@@ -179,7 +183,7 @@ namespace Model
     /**
      * <p>The DB engine specific parameter type for the option group option.</p>
      */
-    inline OptionGroupOptionSetting& WithApplyType(Aws::String&& value) { SetApplyType(value); return *this;}
+    inline OptionGroupOptionSetting& WithApplyType(Aws::String&& value) { SetApplyType(std::move(value)); return *this;}
 
     /**
      * <p>The DB engine specific parameter type for the option group option.</p>
@@ -199,7 +203,7 @@ namespace Model
     /**
      * <p>Indicates the acceptable values for the option group option.</p>
      */
-    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
+    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
 
     /**
      * <p>Indicates the acceptable values for the option group option.</p>
@@ -214,7 +218,7 @@ namespace Model
     /**
      * <p>Indicates the acceptable values for the option group option.</p>
      */
-    inline OptionGroupOptionSetting& WithAllowedValues(Aws::String&& value) { SetAllowedValues(value); return *this;}
+    inline OptionGroupOptionSetting& WithAllowedValues(Aws::String&& value) { SetAllowedValues(std::move(value)); return *this;}
 
     /**
      * <p>Indicates the acceptable values for the option group option.</p>

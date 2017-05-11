@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opsworks/model/StackConfigurationManager.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The stack ID.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>The stack ID.</p>
@@ -63,7 +66,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline DescribeAgentVersionsRequest& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline DescribeAgentVersionsRequest& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The stack ID.</p>
@@ -83,7 +86,7 @@ namespace Model
     /**
      * <p>The configuration manager.</p>
      */
-    inline void SetConfigurationManager(StackConfigurationManager&& value) { m_configurationManagerHasBeenSet = true; m_configurationManager = value; }
+    inline void SetConfigurationManager(StackConfigurationManager&& value) { m_configurationManagerHasBeenSet = true; m_configurationManager = std::move(value); }
 
     /**
      * <p>The configuration manager.</p>
@@ -93,7 +96,7 @@ namespace Model
     /**
      * <p>The configuration manager.</p>
      */
-    inline DescribeAgentVersionsRequest& WithConfigurationManager(StackConfigurationManager&& value) { SetConfigurationManager(value); return *this;}
+    inline DescribeAgentVersionsRequest& WithConfigurationManager(StackConfigurationManager&& value) { SetConfigurationManager(std::move(value)); return *this;}
 
   private:
     Aws::String m_stackId;

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/model/StepStateChangeReasonCode.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>The details of the step state change reason.</p>
+   * <p>The details of the step state change reason.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/StepStateChangeReason">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API StepStateChangeReason
   {
@@ -58,7 +62,7 @@ namespace Model
      * <p>The programmable code for the state change reason. Note: Currently, the
      * service provides no code for the state change.</p>
      */
-    inline void SetCode(StepStateChangeReasonCode&& value) { m_codeHasBeenSet = true; m_code = value; }
+    inline void SetCode(StepStateChangeReasonCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
 
     /**
      * <p>The programmable code for the state change reason. Note: Currently, the
@@ -70,7 +74,7 @@ namespace Model
      * <p>The programmable code for the state change reason. Note: Currently, the
      * service provides no code for the state change.</p>
      */
-    inline StepStateChangeReason& WithCode(StepStateChangeReasonCode&& value) { SetCode(value); return *this;}
+    inline StepStateChangeReason& WithCode(StepStateChangeReasonCode&& value) { SetCode(std::move(value)); return *this;}
 
     /**
      * <p>The descriptive message for the state change reason.</p>
@@ -85,7 +89,7 @@ namespace Model
     /**
      * <p>The descriptive message for the state change reason.</p>
      */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = value; }
+    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
 
     /**
      * <p>The descriptive message for the state change reason.</p>
@@ -100,7 +104,7 @@ namespace Model
     /**
      * <p>The descriptive message for the state change reason.</p>
      */
-    inline StepStateChangeReason& WithMessage(Aws::String&& value) { SetMessage(value); return *this;}
+    inline StepStateChangeReason& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
 
     /**
      * <p>The descriptive message for the state change reason.</p>

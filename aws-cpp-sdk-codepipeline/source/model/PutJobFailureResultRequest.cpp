@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/codepipeline/model/PutJobFailureResultRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -49,10 +50,11 @@ Aws::String PutJobFailureResultRequest::SerializePayload() const
 Aws::Http::HeaderValueCollection PutJobFailureResultRequest::GetRequestSpecificHeaders() const
 {
   Aws::Http::HeaderValueCollection headers;
-  headers.insert(Aws::Http::HeaderValuePair("X-Amz-Target", "CodePipeline_20150709.PutJobFailure"));
+  headers.insert(Aws::Http::HeaderValuePair("X-Amz-Target", "CodePipeline_20150709.PutJobFailureResult"));
   return headers;
 
 }
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codecommit/CodeCommit_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about a repository.</p>
+   * <p>Information about a repository.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/RepositoryMetadata">AWS
+   * API Reference</a></p>
    */
   class AWS_CODECOMMIT_API RepositoryMetadata
   {
@@ -55,7 +59,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account associated with the repository.</p>
      */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
+    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
 
     /**
      * <p>The ID of the AWS account associated with the repository.</p>
@@ -70,7 +74,7 @@ namespace Model
     /**
      * <p>The ID of the AWS account associated with the repository.</p>
      */
-    inline RepositoryMetadata& WithAccountId(Aws::String&& value) { SetAccountId(value); return *this;}
+    inline RepositoryMetadata& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the AWS account associated with the repository.</p>
@@ -90,7 +94,7 @@ namespace Model
     /**
      * <p>The ID of the repository.</p>
      */
-    inline void SetRepositoryId(Aws::String&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = value; }
+    inline void SetRepositoryId(Aws::String&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = std::move(value); }
 
     /**
      * <p>The ID of the repository.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>The ID of the repository.</p>
      */
-    inline RepositoryMetadata& WithRepositoryId(Aws::String&& value) { SetRepositoryId(value); return *this;}
+    inline RepositoryMetadata& WithRepositoryId(Aws::String&& value) { SetRepositoryId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the repository.</p>
@@ -125,7 +129,7 @@ namespace Model
     /**
      * <p>The repository's name.</p>
      */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
+    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
 
     /**
      * <p>The repository's name.</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>The repository's name.</p>
      */
-    inline RepositoryMetadata& WithRepositoryName(Aws::String&& value) { SetRepositoryName(value); return *this;}
+    inline RepositoryMetadata& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
 
     /**
      * <p>The repository's name.</p>
@@ -160,7 +164,7 @@ namespace Model
     /**
      * <p>A comment or description about the repository.</p>
      */
-    inline void SetRepositoryDescription(Aws::String&& value) { m_repositoryDescriptionHasBeenSet = true; m_repositoryDescription = value; }
+    inline void SetRepositoryDescription(Aws::String&& value) { m_repositoryDescriptionHasBeenSet = true; m_repositoryDescription = std::move(value); }
 
     /**
      * <p>A comment or description about the repository.</p>
@@ -175,7 +179,7 @@ namespace Model
     /**
      * <p>A comment or description about the repository.</p>
      */
-    inline RepositoryMetadata& WithRepositoryDescription(Aws::String&& value) { SetRepositoryDescription(value); return *this;}
+    inline RepositoryMetadata& WithRepositoryDescription(Aws::String&& value) { SetRepositoryDescription(std::move(value)); return *this;}
 
     /**
      * <p>A comment or description about the repository.</p>
@@ -195,7 +199,7 @@ namespace Model
     /**
      * <p>The repository's default branch name.</p>
      */
-    inline void SetDefaultBranch(Aws::String&& value) { m_defaultBranchHasBeenSet = true; m_defaultBranch = value; }
+    inline void SetDefaultBranch(Aws::String&& value) { m_defaultBranchHasBeenSet = true; m_defaultBranch = std::move(value); }
 
     /**
      * <p>The repository's default branch name.</p>
@@ -210,7 +214,7 @@ namespace Model
     /**
      * <p>The repository's default branch name.</p>
      */
-    inline RepositoryMetadata& WithDefaultBranch(Aws::String&& value) { SetDefaultBranch(value); return *this;}
+    inline RepositoryMetadata& WithDefaultBranch(Aws::String&& value) { SetDefaultBranch(std::move(value)); return *this;}
 
     /**
      * <p>The repository's default branch name.</p>
@@ -230,7 +234,7 @@ namespace Model
     /**
      * <p>The date and time the repository was last modified, in timestamp format.</p>
      */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
+    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
 
     /**
      * <p>The date and time the repository was last modified, in timestamp format.</p>
@@ -240,7 +244,7 @@ namespace Model
     /**
      * <p>The date and time the repository was last modified, in timestamp format.</p>
      */
-    inline RepositoryMetadata& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(value); return *this;}
+    inline RepositoryMetadata& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
 
     /**
      * <p>The date and time the repository was created, in timestamp format.</p>
@@ -255,7 +259,7 @@ namespace Model
     /**
      * <p>The date and time the repository was created, in timestamp format.</p>
      */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
+    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
 
     /**
      * <p>The date and time the repository was created, in timestamp format.</p>
@@ -265,7 +269,7 @@ namespace Model
     /**
      * <p>The date and time the repository was created, in timestamp format.</p>
      */
-    inline RepositoryMetadata& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(value); return *this;}
+    inline RepositoryMetadata& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
 
     /**
      * <p>The URL to use for cloning the repository over HTTPS.</p>
@@ -280,7 +284,7 @@ namespace Model
     /**
      * <p>The URL to use for cloning the repository over HTTPS.</p>
      */
-    inline void SetCloneUrlHttp(Aws::String&& value) { m_cloneUrlHttpHasBeenSet = true; m_cloneUrlHttp = value; }
+    inline void SetCloneUrlHttp(Aws::String&& value) { m_cloneUrlHttpHasBeenSet = true; m_cloneUrlHttp = std::move(value); }
 
     /**
      * <p>The URL to use for cloning the repository over HTTPS.</p>
@@ -295,7 +299,7 @@ namespace Model
     /**
      * <p>The URL to use for cloning the repository over HTTPS.</p>
      */
-    inline RepositoryMetadata& WithCloneUrlHttp(Aws::String&& value) { SetCloneUrlHttp(value); return *this;}
+    inline RepositoryMetadata& WithCloneUrlHttp(Aws::String&& value) { SetCloneUrlHttp(std::move(value)); return *this;}
 
     /**
      * <p>The URL to use for cloning the repository over HTTPS.</p>
@@ -315,7 +319,7 @@ namespace Model
     /**
      * <p>The URL to use for cloning the repository over SSH.</p>
      */
-    inline void SetCloneUrlSsh(Aws::String&& value) { m_cloneUrlSshHasBeenSet = true; m_cloneUrlSsh = value; }
+    inline void SetCloneUrlSsh(Aws::String&& value) { m_cloneUrlSshHasBeenSet = true; m_cloneUrlSsh = std::move(value); }
 
     /**
      * <p>The URL to use for cloning the repository over SSH.</p>
@@ -330,7 +334,7 @@ namespace Model
     /**
      * <p>The URL to use for cloning the repository over SSH.</p>
      */
-    inline RepositoryMetadata& WithCloneUrlSsh(Aws::String&& value) { SetCloneUrlSsh(value); return *this;}
+    inline RepositoryMetadata& WithCloneUrlSsh(Aws::String&& value) { SetCloneUrlSsh(std::move(value)); return *this;}
 
     /**
      * <p>The URL to use for cloning the repository over SSH.</p>
@@ -350,7 +354,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the repository.</p>
      */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = value; }
+    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the repository.</p>
@@ -365,7 +369,7 @@ namespace Model
     /**
      * <p>The Amazon Resource Name (ARN) of the repository.</p>
      */
-    inline RepositoryMetadata& WithArn(Aws::String&& value) { SetArn(value); return *this;}
+    inline RepositoryMetadata& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the repository.</p>

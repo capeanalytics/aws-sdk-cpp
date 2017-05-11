@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/sts/STS_EXPORTS.h>
 #include <aws/sts/model/Credentials.h>
 #include <aws/sts/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 {
   /**
    * <p>Contains the response to a successful <a>GetSessionToken</a> request,
-   * including temporary AWS credentials that can be used to make AWS requests. </p>
+   * including temporary AWS credentials that can be used to make AWS requests.
+   * </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetSessionTokenResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_STS_API GetSessionTokenResult
   {
@@ -72,7 +77,7 @@ namespace Model
      * size is less than 4096 bytes, but that can vary. Also, future updates to AWS
      * might require larger sizes.</p>
      */
-    inline void SetCredentials(Credentials&& value) { m_credentials = value; }
+    inline void SetCredentials(Credentials&& value) { m_credentials = std::move(value); }
 
     /**
      * <p>The temporary security credentials, which include an access key ID, a secret
@@ -92,7 +97,7 @@ namespace Model
      * size is less than 4096 bytes, but that can vary. Also, future updates to AWS
      * might require larger sizes.</p>
      */
-    inline GetSessionTokenResult& WithCredentials(Credentials&& value) { SetCredentials(value); return *this;}
+    inline GetSessionTokenResult& WithCredentials(Credentials&& value) { SetCredentials(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -101,13 +106,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetSessionTokenResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetSessionTokenResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetSessionTokenResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Credentials m_credentials;

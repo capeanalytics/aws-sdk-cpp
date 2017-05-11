@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/swf/model/TaskList.h>
 #include <aws/swf/model/ChildPolicy.h>
+#include <utility>
 
 namespace Aws
 {
@@ -36,7 +38,9 @@ namespace Model
    * <p>The configuration settings for a workflow execution including timeout values,
    * tasklist etc. These configuration settings are determined from the defaults
    * specified when registering the workflow type and those specified when starting
-   * the workflow execution.</p>
+   * the workflow execution.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/WorkflowExecutionConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API WorkflowExecutionConfiguration
   {
@@ -65,7 +69,7 @@ namespace Model
      * execution.</p> <p>The duration is specified in seconds; an integer greater than
      * or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
      */
-    inline void SetTaskStartToCloseTimeout(Aws::String&& value) { m_taskStartToCloseTimeoutHasBeenSet = true; m_taskStartToCloseTimeout = value; }
+    inline void SetTaskStartToCloseTimeout(Aws::String&& value) { m_taskStartToCloseTimeoutHasBeenSet = true; m_taskStartToCloseTimeout = std::move(value); }
 
     /**
      * <p>The maximum duration allowed for decision tasks for this workflow
@@ -86,7 +90,7 @@ namespace Model
      * execution.</p> <p>The duration is specified in seconds; an integer greater than
      * or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
      */
-    inline WorkflowExecutionConfiguration& WithTaskStartToCloseTimeout(Aws::String&& value) { SetTaskStartToCloseTimeout(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithTaskStartToCloseTimeout(Aws::String&& value) { SetTaskStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The maximum duration allowed for decision tasks for this workflow
@@ -114,7 +118,7 @@ namespace Model
      * specified in seconds; an integer greater than or equal to 0. The value "NONE"
      * can be used to specify unlimited duration.</p>
      */
-    inline void SetExecutionStartToCloseTimeout(Aws::String&& value) { m_executionStartToCloseTimeoutHasBeenSet = true; m_executionStartToCloseTimeout = value; }
+    inline void SetExecutionStartToCloseTimeout(Aws::String&& value) { m_executionStartToCloseTimeoutHasBeenSet = true; m_executionStartToCloseTimeout = std::move(value); }
 
     /**
      * <p>The total duration for this workflow execution.</p> <p>The duration is
@@ -135,7 +139,7 @@ namespace Model
      * specified in seconds; an integer greater than or equal to 0. The value "NONE"
      * can be used to specify unlimited duration.</p>
      */
-    inline WorkflowExecutionConfiguration& WithExecutionStartToCloseTimeout(Aws::String&& value) { SetExecutionStartToCloseTimeout(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithExecutionStartToCloseTimeout(Aws::String&& value) { SetExecutionStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>The total duration for this workflow execution.</p> <p>The duration is
@@ -160,7 +164,7 @@ namespace Model
      * <p>The task list used for the decision tasks generated for this workflow
      * execution.</p>
      */
-    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = value; }
+    inline void SetTaskList(TaskList&& value) { m_taskListHasBeenSet = true; m_taskList = std::move(value); }
 
     /**
      * <p>The task list used for the decision tasks generated for this workflow
@@ -172,7 +176,7 @@ namespace Model
      * <p>The task list used for the decision tasks generated for this workflow
      * execution.</p>
      */
-    inline WorkflowExecutionConfiguration& WithTaskList(TaskList&& value) { SetTaskList(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithTaskList(TaskList&& value) { SetTaskList(std::move(value)); return *this;}
 
     /**
      * <p>The priority assigned to decision tasks for this workflow execution. Valid
@@ -205,7 +209,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = value; }
+    inline void SetTaskPriority(Aws::String&& value) { m_taskPriorityHasBeenSet = true; m_taskPriority = std::move(value); }
 
     /**
      * <p>The priority assigned to decision tasks for this workflow execution. Valid
@@ -238,7 +242,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting
      * Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
      */
-    inline WorkflowExecutionConfiguration& WithTaskPriority(Aws::String&& value) { SetTaskPriority(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithTaskPriority(Aws::String&& value) { SetTaskPriority(std::move(value)); return *this;}
 
     /**
      * <p>The priority assigned to decision tasks for this workflow execution. Valid
@@ -291,7 +295,7 @@ namespace Model
      * with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child
      * executions will continue to run.</li> </ul>
      */
-    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = value; }
+    inline void SetChildPolicy(ChildPolicy&& value) { m_childPolicyHasBeenSet = true; m_childPolicy = std::move(value); }
 
     /**
      * <p>The policy to use for the child workflow executions if this workflow
@@ -319,7 +323,7 @@ namespace Model
      * with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child
      * executions will continue to run.</li> </ul>
      */
-    inline WorkflowExecutionConfiguration& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithChildPolicy(ChildPolicy&& value) { SetChildPolicy(std::move(value)); return *this;}
 
     /**
      * <p>The IAM role used by this workflow execution when invoking AWS Lambda
@@ -337,7 +341,7 @@ namespace Model
      * <p>The IAM role used by this workflow execution when invoking AWS Lambda
      * functions.</p>
      */
-    inline void SetLambdaRole(Aws::String&& value) { m_lambdaRoleHasBeenSet = true; m_lambdaRole = value; }
+    inline void SetLambdaRole(Aws::String&& value) { m_lambdaRoleHasBeenSet = true; m_lambdaRole = std::move(value); }
 
     /**
      * <p>The IAM role used by this workflow execution when invoking AWS Lambda
@@ -355,7 +359,7 @@ namespace Model
      * <p>The IAM role used by this workflow execution when invoking AWS Lambda
      * functions.</p>
      */
-    inline WorkflowExecutionConfiguration& WithLambdaRole(Aws::String&& value) { SetLambdaRole(value); return *this;}
+    inline WorkflowExecutionConfiguration& WithLambdaRole(Aws::String&& value) { SetLambdaRole(std::move(value)); return *this;}
 
     /**
      * <p>The IAM role used by this workflow execution when invoking AWS Lambda

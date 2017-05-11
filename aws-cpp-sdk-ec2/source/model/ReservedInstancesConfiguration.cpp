@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReservedInstancesConfiguration.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -34,7 +35,10 @@ ReservedInstancesConfiguration::ReservedInstancesConfiguration() :
     m_platformHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false)
+    m_instanceType(InstanceType::NOT_SET),
+    m_instanceTypeHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
 }
 
@@ -43,7 +47,10 @@ ReservedInstancesConfiguration::ReservedInstancesConfiguration(const XmlNode& xm
     m_platformHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false)
+    m_instanceType(InstanceType::NOT_SET),
+    m_instanceTypeHasBeenSet(false),
+    m_scope(Scope::NOT_SET),
+    m_scopeHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -78,6 +85,12 @@ ReservedInstancesConfiguration& ReservedInstancesConfiguration::operator =(const
       m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(instanceTypeNode.GetText().c_str()).c_str());
       m_instanceTypeHasBeenSet = true;
     }
+    XmlNode scopeNode = resultNode.FirstChild("scope");
+    if(!scopeNode.IsNull())
+    {
+      m_scope = ScopeMapper::GetScopeForName(StringUtils::Trim(scopeNode.GetText().c_str()).c_str());
+      m_scopeHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -105,6 +118,11 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
       oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
   }
 
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
+  }
+
 }
 
 void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -124,6 +142,10 @@ void ReservedInstancesConfiguration::OutputToStream(Aws::OStream& oStream, const
   if(m_instanceTypeHasBeenSet)
   {
       oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+  }
+  if(m_scopeHasBeenSet)
+  {
+      oStream << location << ".Scope=" << ScopeMapper::GetNameForScope(m_scope) << "&";
   }
 }
 

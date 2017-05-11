@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ssm/model/SendCommandRequest.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -23,15 +24,20 @@ using namespace Aws::Utils;
 
 SendCommandRequest::SendCommandRequest() : 
     m_instanceIdsHasBeenSet(false),
+    m_targetsHasBeenSet(false),
     m_documentNameHasBeenSet(false),
     m_documentHashHasBeenSet(false),
+    m_documentHashType(DocumentHashType::NOT_SET),
     m_documentHashTypeHasBeenSet(false),
     m_timeoutSeconds(0),
     m_timeoutSecondsHasBeenSet(false),
     m_commentHasBeenSet(false),
     m_parametersHasBeenSet(false),
+    m_outputS3RegionHasBeenSet(false),
     m_outputS3BucketNameHasBeenSet(false),
     m_outputS3KeyPrefixHasBeenSet(false),
+    m_maxConcurrencyHasBeenSet(false),
+    m_maxErrorsHasBeenSet(false),
     m_serviceRoleArnHasBeenSet(false),
     m_notificationConfigHasBeenSet(false)
 {
@@ -49,6 +55,17 @@ Aws::String SendCommandRequest::SerializePayload() const
      instanceIdsJsonList[instanceIdsIndex].AsString(m_instanceIds[instanceIdsIndex]);
    }
    payload.WithArray("InstanceIds", std::move(instanceIdsJsonList));
+
+  }
+
+  if(m_targetsHasBeenSet)
+  {
+   Array<JsonValue> targetsJsonList(m_targets.size());
+   for(unsigned targetsIndex = 0; targetsIndex < targetsJsonList.GetLength(); ++targetsIndex)
+   {
+     targetsJsonList[targetsIndex].AsObject(m_targets[targetsIndex].Jsonize());
+   }
+   payload.WithArray("Targets", std::move(targetsJsonList));
 
   }
 
@@ -97,6 +114,12 @@ Aws::String SendCommandRequest::SerializePayload() const
 
   }
 
+  if(m_outputS3RegionHasBeenSet)
+  {
+   payload.WithString("OutputS3Region", m_outputS3Region);
+
+  }
+
   if(m_outputS3BucketNameHasBeenSet)
   {
    payload.WithString("OutputS3BucketName", m_outputS3BucketName);
@@ -106,6 +129,18 @@ Aws::String SendCommandRequest::SerializePayload() const
   if(m_outputS3KeyPrefixHasBeenSet)
   {
    payload.WithString("OutputS3KeyPrefix", m_outputS3KeyPrefix);
+
+  }
+
+  if(m_maxConcurrencyHasBeenSet)
+  {
+   payload.WithString("MaxConcurrency", m_maxConcurrency);
+
+  }
+
+  if(m_maxErrorsHasBeenSet)
+  {
+   payload.WithString("MaxErrors", m_maxErrors);
 
   }
 
@@ -131,6 +166,7 @@ Aws::Http::HeaderValueCollection SendCommandRequest::GetRequestSpecificHeaders()
   return headers;
 
 }
+
 
 
 

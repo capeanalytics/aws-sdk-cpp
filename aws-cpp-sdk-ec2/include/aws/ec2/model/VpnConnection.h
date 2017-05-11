@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -23,6 +24,7 @@
 #include <aws/ec2/model/Tag.h>
 #include <aws/ec2/model/VgwTelemetry.h>
 #include <aws/ec2/model/VpnStaticRoute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,7 +41,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a VPN connection.</p>
+   * <p>Describes a VPN connection.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/VpnConnection">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API VpnConnection
   {
@@ -64,7 +68,7 @@ namespace Model
     /**
      * <p>The ID of the VPN connection.</p>
      */
-    inline void SetVpnConnectionId(Aws::String&& value) { m_vpnConnectionIdHasBeenSet = true; m_vpnConnectionId = value; }
+    inline void SetVpnConnectionId(Aws::String&& value) { m_vpnConnectionIdHasBeenSet = true; m_vpnConnectionId = std::move(value); }
 
     /**
      * <p>The ID of the VPN connection.</p>
@@ -79,7 +83,7 @@ namespace Model
     /**
      * <p>The ID of the VPN connection.</p>
      */
-    inline VpnConnection& WithVpnConnectionId(Aws::String&& value) { SetVpnConnectionId(value); return *this;}
+    inline VpnConnection& WithVpnConnectionId(Aws::String&& value) { SetVpnConnectionId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the VPN connection.</p>
@@ -99,7 +103,7 @@ namespace Model
     /**
      * <p>The current state of the VPN connection.</p>
      */
-    inline void SetState(VpnState&& value) { m_stateHasBeenSet = true; m_state = value; }
+    inline void SetState(VpnState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
 
     /**
      * <p>The current state of the VPN connection.</p>
@@ -109,7 +113,7 @@ namespace Model
     /**
      * <p>The current state of the VPN connection.</p>
      */
-    inline VpnConnection& WithState(VpnState&& value) { SetState(value); return *this;}
+    inline VpnConnection& WithState(VpnState&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The configuration information for the VPN connection's customer gateway (in
@@ -136,7 +140,7 @@ namespace Model
      * <a>DescribeVpnConnections</a> response only if the VPN connection is in the
      * <code>pending</code> or <code>available</code> state.</p>
      */
-    inline void SetCustomerGatewayConfiguration(Aws::String&& value) { m_customerGatewayConfigurationHasBeenSet = true; m_customerGatewayConfiguration = value; }
+    inline void SetCustomerGatewayConfiguration(Aws::String&& value) { m_customerGatewayConfigurationHasBeenSet = true; m_customerGatewayConfiguration = std::move(value); }
 
     /**
      * <p>The configuration information for the VPN connection's customer gateway (in
@@ -163,7 +167,7 @@ namespace Model
      * <a>DescribeVpnConnections</a> response only if the VPN connection is in the
      * <code>pending</code> or <code>available</code> state.</p>
      */
-    inline VpnConnection& WithCustomerGatewayConfiguration(Aws::String&& value) { SetCustomerGatewayConfiguration(value); return *this;}
+    inline VpnConnection& WithCustomerGatewayConfiguration(Aws::String&& value) { SetCustomerGatewayConfiguration(std::move(value)); return *this;}
 
     /**
      * <p>The configuration information for the VPN connection's customer gateway (in
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The type of VPN connection.</p>
      */
-    inline void SetType(GatewayType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(GatewayType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
      * <p>The type of VPN connection.</p>
@@ -197,7 +201,7 @@ namespace Model
     /**
      * <p>The type of VPN connection.</p>
      */
-    inline VpnConnection& WithType(GatewayType&& value) { SetType(value); return *this;}
+    inline VpnConnection& WithType(GatewayType&& value) { SetType(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the customer gateway at your end of the VPN connection.</p>
@@ -212,7 +216,7 @@ namespace Model
     /**
      * <p>The ID of the customer gateway at your end of the VPN connection.</p>
      */
-    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = value; }
+    inline void SetCustomerGatewayId(Aws::String&& value) { m_customerGatewayIdHasBeenSet = true; m_customerGatewayId = std::move(value); }
 
     /**
      * <p>The ID of the customer gateway at your end of the VPN connection.</p>
@@ -227,7 +231,7 @@ namespace Model
     /**
      * <p>The ID of the customer gateway at your end of the VPN connection.</p>
      */
-    inline VpnConnection& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(value); return *this;}
+    inline VpnConnection& WithCustomerGatewayId(Aws::String&& value) { SetCustomerGatewayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the customer gateway at your end of the VPN connection.</p>
@@ -250,7 +254,7 @@ namespace Model
      * <p>The ID of the virtual private gateway at the AWS side of the VPN
      * connection.</p>
      */
-    inline void SetVpnGatewayId(Aws::String&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = value; }
+    inline void SetVpnGatewayId(Aws::String&& value) { m_vpnGatewayIdHasBeenSet = true; m_vpnGatewayId = std::move(value); }
 
     /**
      * <p>The ID of the virtual private gateway at the AWS side of the VPN
@@ -268,7 +272,7 @@ namespace Model
      * <p>The ID of the virtual private gateway at the AWS side of the VPN
      * connection.</p>
      */
-    inline VpnConnection& WithVpnGatewayId(Aws::String&& value) { SetVpnGatewayId(value); return *this;}
+    inline VpnConnection& WithVpnGatewayId(Aws::String&& value) { SetVpnGatewayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the virtual private gateway at the AWS side of the VPN
@@ -289,7 +293,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPN connection.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the VPN connection.</p>
@@ -299,7 +303,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPN connection.</p>
      */
-    inline VpnConnection& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline VpnConnection& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the VPN connection.</p>
@@ -309,7 +313,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the VPN connection.</p>
      */
-    inline VpnConnection& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline VpnConnection& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Information about the VPN tunnel.</p>
@@ -324,7 +328,7 @@ namespace Model
     /**
      * <p>Information about the VPN tunnel.</p>
      */
-    inline void SetVgwTelemetry(Aws::Vector<VgwTelemetry>&& value) { m_vgwTelemetryHasBeenSet = true; m_vgwTelemetry = value; }
+    inline void SetVgwTelemetry(Aws::Vector<VgwTelemetry>&& value) { m_vgwTelemetryHasBeenSet = true; m_vgwTelemetry = std::move(value); }
 
     /**
      * <p>Information about the VPN tunnel.</p>
@@ -334,7 +338,7 @@ namespace Model
     /**
      * <p>Information about the VPN tunnel.</p>
      */
-    inline VpnConnection& WithVgwTelemetry(Aws::Vector<VgwTelemetry>&& value) { SetVgwTelemetry(value); return *this;}
+    inline VpnConnection& WithVgwTelemetry(Aws::Vector<VgwTelemetry>&& value) { SetVgwTelemetry(std::move(value)); return *this;}
 
     /**
      * <p>Information about the VPN tunnel.</p>
@@ -344,7 +348,7 @@ namespace Model
     /**
      * <p>Information about the VPN tunnel.</p>
      */
-    inline VpnConnection& AddVgwTelemetry(VgwTelemetry&& value) { m_vgwTelemetryHasBeenSet = true; m_vgwTelemetry.push_back(value); return *this; }
+    inline VpnConnection& AddVgwTelemetry(VgwTelemetry&& value) { m_vgwTelemetryHasBeenSet = true; m_vgwTelemetry.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The VPN connection options.</p>
@@ -359,7 +363,7 @@ namespace Model
     /**
      * <p>The VPN connection options.</p>
      */
-    inline void SetOptions(VpnConnectionOptions&& value) { m_optionsHasBeenSet = true; m_options = value; }
+    inline void SetOptions(VpnConnectionOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
 
     /**
      * <p>The VPN connection options.</p>
@@ -369,7 +373,7 @@ namespace Model
     /**
      * <p>The VPN connection options.</p>
      */
-    inline VpnConnection& WithOptions(VpnConnectionOptions&& value) { SetOptions(value); return *this;}
+    inline VpnConnection& WithOptions(VpnConnectionOptions&& value) { SetOptions(std::move(value)); return *this;}
 
     /**
      * <p>The static routes associated with the VPN connection.</p>
@@ -384,7 +388,7 @@ namespace Model
     /**
      * <p>The static routes associated with the VPN connection.</p>
      */
-    inline void SetRoutes(Aws::Vector<VpnStaticRoute>&& value) { m_routesHasBeenSet = true; m_routes = value; }
+    inline void SetRoutes(Aws::Vector<VpnStaticRoute>&& value) { m_routesHasBeenSet = true; m_routes = std::move(value); }
 
     /**
      * <p>The static routes associated with the VPN connection.</p>
@@ -394,7 +398,7 @@ namespace Model
     /**
      * <p>The static routes associated with the VPN connection.</p>
      */
-    inline VpnConnection& WithRoutes(Aws::Vector<VpnStaticRoute>&& value) { SetRoutes(value); return *this;}
+    inline VpnConnection& WithRoutes(Aws::Vector<VpnStaticRoute>&& value) { SetRoutes(std::move(value)); return *this;}
 
     /**
      * <p>The static routes associated with the VPN connection.</p>
@@ -404,7 +408,7 @@ namespace Model
     /**
      * <p>The static routes associated with the VPN connection.</p>
      */
-    inline VpnConnection& AddRoutes(VpnStaticRoute&& value) { m_routesHasBeenSet = true; m_routes.push_back(value); return *this; }
+    inline VpnConnection& AddRoutes(VpnStaticRoute&& value) { m_routesHasBeenSet = true; m_routes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_vpnConnectionId;

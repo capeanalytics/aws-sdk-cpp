@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/inspector/Inspector_EXPORTS.h>
 #include <aws/inspector/InspectorRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,6 +36,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The ARN specifying the resource group that you want to describe.</p>
      */
@@ -47,7 +50,7 @@ namespace Model
     /**
      * <p>The ARN specifying the resource group that you want to describe.</p>
      */
-    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = value; }
+    inline void SetResourceGroupArn(Aws::String&& value) { m_resourceGroupArnHasBeenSet = true; m_resourceGroupArn = std::move(value); }
 
     /**
      * <p>The ARN specifying the resource group that you want to describe.</p>
@@ -62,7 +65,7 @@ namespace Model
     /**
      * <p>The ARN specifying the resource group that you want to describe.</p>
      */
-    inline DescribeResourceGroupRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(value); return *this;}
+    inline DescribeResourceGroupRequest& WithResourceGroupArn(Aws::String&& value) { SetResourceGroupArn(std::move(value)); return *this;}
 
     /**
      * <p>The ARN specifying the resource group that you want to describe.</p>

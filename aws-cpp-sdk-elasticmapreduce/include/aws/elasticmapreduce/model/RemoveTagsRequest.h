@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticmapreduce/EMR_EXPORTS.h>
 #include <aws/elasticmapreduce/EMRRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -26,7 +28,10 @@ namespace Model
 {
 
   /**
-   * <p>This input identifies a cluster and a list of tags to remove.</p>
+   * <p>This input identifies a cluster and a list of tags to remove.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/RemoveTagsInput">AWS
+   * API Reference</a></p>
    */
   class AWS_EMR_API RemoveTagsRequest : public EMRRequest
   {
@@ -35,6 +40,7 @@ namespace Model
     Aws::String SerializePayload() const override;
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
+
 
     /**
      * <p>The Amazon EMR resource identifier from which tags will be removed. This
@@ -52,7 +58,7 @@ namespace Model
      * <p>The Amazon EMR resource identifier from which tags will be removed. This
      * value must be a cluster identifier.</p>
      */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
+    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
 
     /**
      * <p>The Amazon EMR resource identifier from which tags will be removed. This
@@ -70,7 +76,7 @@ namespace Model
      * <p>The Amazon EMR resource identifier from which tags will be removed. This
      * value must be a cluster identifier.</p>
      */
-    inline RemoveTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(value); return *this;}
+    inline RemoveTagsRequest& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon EMR resource identifier from which tags will be removed. This
@@ -91,7 +97,7 @@ namespace Model
     /**
      * <p>A list of tag keys to remove from a resource.</p>
      */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
+    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
 
     /**
      * <p>A list of tag keys to remove from a resource.</p>
@@ -101,7 +107,7 @@ namespace Model
     /**
      * <p>A list of tag keys to remove from a resource.</p>
      */
-    inline RemoveTagsRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(value); return *this;}
+    inline RemoveTagsRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
 
     /**
      * <p>A list of tag keys to remove from a resource.</p>
@@ -111,7 +117,7 @@ namespace Model
     /**
      * <p>A list of tag keys to remove from a resource.</p>
      */
-    inline RemoveTagsRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
+    inline RemoveTagsRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of tag keys to remove from a resource.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudsearch/CloudSearch_EXPORTS.h>
 #include <aws/cloudsearch/model/AvailabilityOptionsStatus.h>
 #include <aws/cloudsearch/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
   /**
    * <p>The result of a <code>UpdateAvailabilityOptions</code> request. Contains the
-   * status of the domain's availability options. </p>
+   * status of the domain's availability options. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudsearch-2013-01-01/UpdateAvailabilityOptionsResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDSEARCH_API UpdateAvailabilityOptionsResult
   {
@@ -60,7 +64,7 @@ namespace Model
      * <p>The newly-configured availability options. Indicates whether Multi-AZ is
      * enabled for the domain. </p>
      */
-    inline void SetAvailabilityOptions(AvailabilityOptionsStatus&& value) { m_availabilityOptions = value; }
+    inline void SetAvailabilityOptions(AvailabilityOptionsStatus&& value) { m_availabilityOptions = std::move(value); }
 
     /**
      * <p>The newly-configured availability options. Indicates whether Multi-AZ is
@@ -72,7 +76,7 @@ namespace Model
      * <p>The newly-configured availability options. Indicates whether Multi-AZ is
      * enabled for the domain. </p>
      */
-    inline UpdateAvailabilityOptionsResult& WithAvailabilityOptions(AvailabilityOptionsStatus&& value) { SetAvailabilityOptions(value); return *this;}
+    inline UpdateAvailabilityOptionsResult& WithAvailabilityOptions(AvailabilityOptionsStatus&& value) { SetAvailabilityOptions(std::move(value)); return *this;}
 
     
     inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
@@ -81,13 +85,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline UpdateAvailabilityOptionsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline UpdateAvailabilityOptionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline UpdateAvailabilityOptionsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     AvailabilityOptionsStatus m_availabilityOptions;

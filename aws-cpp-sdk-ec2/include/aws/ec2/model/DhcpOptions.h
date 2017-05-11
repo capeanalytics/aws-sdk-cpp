@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
@@ -19,6 +20,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/DhcpConfiguration.h>
 #include <aws/ec2/model/Tag.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,9 @@ namespace Model
 {
 
   /**
-   * <p>Describes a set of DHCP options.</p>
+   * <p>Describes a set of DHCP options.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DhcpOptions">AWS API
+   * Reference</a></p>
    */
   class AWS_EC2_API DhcpOptions
   {
@@ -60,7 +64,7 @@ namespace Model
     /**
      * <p>The ID of the set of DHCP options.</p>
      */
-    inline void SetDhcpOptionsId(Aws::String&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = value; }
+    inline void SetDhcpOptionsId(Aws::String&& value) { m_dhcpOptionsIdHasBeenSet = true; m_dhcpOptionsId = std::move(value); }
 
     /**
      * <p>The ID of the set of DHCP options.</p>
@@ -75,7 +79,7 @@ namespace Model
     /**
      * <p>The ID of the set of DHCP options.</p>
      */
-    inline DhcpOptions& WithDhcpOptionsId(Aws::String&& value) { SetDhcpOptionsId(value); return *this;}
+    inline DhcpOptions& WithDhcpOptionsId(Aws::String&& value) { SetDhcpOptionsId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the set of DHCP options.</p>
@@ -95,7 +99,7 @@ namespace Model
     /**
      * <p>One or more DHCP options in the set.</p>
      */
-    inline void SetDhcpConfigurations(Aws::Vector<DhcpConfiguration>&& value) { m_dhcpConfigurationsHasBeenSet = true; m_dhcpConfigurations = value; }
+    inline void SetDhcpConfigurations(Aws::Vector<DhcpConfiguration>&& value) { m_dhcpConfigurationsHasBeenSet = true; m_dhcpConfigurations = std::move(value); }
 
     /**
      * <p>One or more DHCP options in the set.</p>
@@ -105,7 +109,7 @@ namespace Model
     /**
      * <p>One or more DHCP options in the set.</p>
      */
-    inline DhcpOptions& WithDhcpConfigurations(Aws::Vector<DhcpConfiguration>&& value) { SetDhcpConfigurations(value); return *this;}
+    inline DhcpOptions& WithDhcpConfigurations(Aws::Vector<DhcpConfiguration>&& value) { SetDhcpConfigurations(std::move(value)); return *this;}
 
     /**
      * <p>One or more DHCP options in the set.</p>
@@ -115,7 +119,7 @@ namespace Model
     /**
      * <p>One or more DHCP options in the set.</p>
      */
-    inline DhcpOptions& AddDhcpConfigurations(DhcpConfiguration&& value) { m_dhcpConfigurationsHasBeenSet = true; m_dhcpConfigurations.push_back(value); return *this; }
+    inline DhcpOptions& AddDhcpConfigurations(DhcpConfiguration&& value) { m_dhcpConfigurationsHasBeenSet = true; m_dhcpConfigurations.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
@@ -130,7 +134,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
 
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
@@ -140,7 +144,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
      */
-    inline DhcpOptions& WithTags(Aws::Vector<Tag>&& value) { SetTags(value); return *this;}
+    inline DhcpOptions& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
 
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
@@ -150,7 +154,7 @@ namespace Model
     /**
      * <p>Any tags assigned to the DHCP options set.</p>
      */
-    inline DhcpOptions& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
+    inline DhcpOptions& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_dhcpOptionsId;

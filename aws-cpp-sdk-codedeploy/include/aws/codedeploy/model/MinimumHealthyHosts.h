@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codedeploy/CodeDeploy_EXPORTS.h>
 #include <aws/codedeploy/model/MinimumHealthyHostsType.h>
+#include <utility>
 
 namespace Aws
 {
@@ -31,7 +33,9 @@ namespace Model
 {
 
   /**
-   * <p>Information about minimum healthy instance.</p>
+   * <p>Information about minimum healthy instance.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codedeploy-2014-10-06/MinimumHealthyHosts">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEDEPLOY_API MinimumHealthyHosts
   {
@@ -57,114 +61,119 @@ namespace Model
     inline MinimumHealthyHosts& WithValue(int value) { SetValue(value); return *this;}
 
     /**
-     * <p>The minimum healthy instance type:</p> <ul> <li>HOST_COUNT: The minimum
-     * number of healthy instance as an absolute value.</li> <li>FLEET_PERCENT: The
-     * minimum number of healthy instance as a percentage of the total number of
-     * instance in the deployment.</li> </ul> <p>In an example of nine instance, if a
-     * HOST_COUNT of six is specified, deploy to up to three instances at a time. The
-     * deployment will be successful if six or more instances are deployed to
-     * successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is
-     * specified, deploy to up to five instance at a time. The deployment will be
-     * successful if four or more instance are deployed to successfully; otherwise, the
-     * deployment fails.</p> <note>In a call to the get deployment configuration
-     * operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance
-     * type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one
-     * instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to
-     * HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime,
-     * AWS CodeDeploy will try to ensure that all instances but one are kept in a
-     * healthy state during the deployment. Although this allows one instance at a time
-     * to be taken offline for a new deployment, it also means that if the deployment
-     * to the last instance fails, the overall deployment still succeeds.</note>
+     * <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum
+     * number of healthy instance as an absolute value.</p> </li> <li>
+     * <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the
+     * total number of instance in the deployment.</p> </li> </ul> <p>In an example of
+     * nine instance, if a HOST_COUNT of six is specified, deploy to up to three
+     * instances at a time. The deployment will be successful if six or more instances
+     * are deployed to successfully; otherwise, the deployment fails. If a
+     * FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The
+     * deployment will be successful if four or more instance are deployed to
+     * successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the
+     * get deployment configuration operation, CodeDeployDefault.OneAtATime will return
+     * a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means
+     * a deployment to only one instance at a time. (You cannot set the type to
+     * MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+     * CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all
+     * instances but one are kept in a healthy state during the deployment. Although
+     * this allows one instance at a time to be taken offline for a new deployment, it
+     * also means that if the deployment to the last instance fails, the overall
+     * deployment still succeeds.</p> </note>
      */
     inline const MinimumHealthyHostsType& GetType() const{ return m_type; }
 
     /**
-     * <p>The minimum healthy instance type:</p> <ul> <li>HOST_COUNT: The minimum
-     * number of healthy instance as an absolute value.</li> <li>FLEET_PERCENT: The
-     * minimum number of healthy instance as a percentage of the total number of
-     * instance in the deployment.</li> </ul> <p>In an example of nine instance, if a
-     * HOST_COUNT of six is specified, deploy to up to three instances at a time. The
-     * deployment will be successful if six or more instances are deployed to
-     * successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is
-     * specified, deploy to up to five instance at a time. The deployment will be
-     * successful if four or more instance are deployed to successfully; otherwise, the
-     * deployment fails.</p> <note>In a call to the get deployment configuration
-     * operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance
-     * type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one
-     * instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to
-     * HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime,
-     * AWS CodeDeploy will try to ensure that all instances but one are kept in a
-     * healthy state during the deployment. Although this allows one instance at a time
-     * to be taken offline for a new deployment, it also means that if the deployment
-     * to the last instance fails, the overall deployment still succeeds.</note>
+     * <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum
+     * number of healthy instance as an absolute value.</p> </li> <li>
+     * <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the
+     * total number of instance in the deployment.</p> </li> </ul> <p>In an example of
+     * nine instance, if a HOST_COUNT of six is specified, deploy to up to three
+     * instances at a time. The deployment will be successful if six or more instances
+     * are deployed to successfully; otherwise, the deployment fails. If a
+     * FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The
+     * deployment will be successful if four or more instance are deployed to
+     * successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the
+     * get deployment configuration operation, CodeDeployDefault.OneAtATime will return
+     * a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means
+     * a deployment to only one instance at a time. (You cannot set the type to
+     * MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+     * CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all
+     * instances but one are kept in a healthy state during the deployment. Although
+     * this allows one instance at a time to be taken offline for a new deployment, it
+     * also means that if the deployment to the last instance fails, the overall
+     * deployment still succeeds.</p> </note>
      */
     inline void SetType(const MinimumHealthyHostsType& value) { m_typeHasBeenSet = true; m_type = value; }
 
     /**
-     * <p>The minimum healthy instance type:</p> <ul> <li>HOST_COUNT: The minimum
-     * number of healthy instance as an absolute value.</li> <li>FLEET_PERCENT: The
-     * minimum number of healthy instance as a percentage of the total number of
-     * instance in the deployment.</li> </ul> <p>In an example of nine instance, if a
-     * HOST_COUNT of six is specified, deploy to up to three instances at a time. The
-     * deployment will be successful if six or more instances are deployed to
-     * successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is
-     * specified, deploy to up to five instance at a time. The deployment will be
-     * successful if four or more instance are deployed to successfully; otherwise, the
-     * deployment fails.</p> <note>In a call to the get deployment configuration
-     * operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance
-     * type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one
-     * instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to
-     * HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime,
-     * AWS CodeDeploy will try to ensure that all instances but one are kept in a
-     * healthy state during the deployment. Although this allows one instance at a time
-     * to be taken offline for a new deployment, it also means that if the deployment
-     * to the last instance fails, the overall deployment still succeeds.</note>
+     * <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum
+     * number of healthy instance as an absolute value.</p> </li> <li>
+     * <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the
+     * total number of instance in the deployment.</p> </li> </ul> <p>In an example of
+     * nine instance, if a HOST_COUNT of six is specified, deploy to up to three
+     * instances at a time. The deployment will be successful if six or more instances
+     * are deployed to successfully; otherwise, the deployment fails. If a
+     * FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The
+     * deployment will be successful if four or more instance are deployed to
+     * successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the
+     * get deployment configuration operation, CodeDeployDefault.OneAtATime will return
+     * a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means
+     * a deployment to only one instance at a time. (You cannot set the type to
+     * MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+     * CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all
+     * instances but one are kept in a healthy state during the deployment. Although
+     * this allows one instance at a time to be taken offline for a new deployment, it
+     * also means that if the deployment to the last instance fails, the overall
+     * deployment still succeeds.</p> </note>
      */
-    inline void SetType(MinimumHealthyHostsType&& value) { m_typeHasBeenSet = true; m_type = value; }
+    inline void SetType(MinimumHealthyHostsType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
 
     /**
-     * <p>The minimum healthy instance type:</p> <ul> <li>HOST_COUNT: The minimum
-     * number of healthy instance as an absolute value.</li> <li>FLEET_PERCENT: The
-     * minimum number of healthy instance as a percentage of the total number of
-     * instance in the deployment.</li> </ul> <p>In an example of nine instance, if a
-     * HOST_COUNT of six is specified, deploy to up to three instances at a time. The
-     * deployment will be successful if six or more instances are deployed to
-     * successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is
-     * specified, deploy to up to five instance at a time. The deployment will be
-     * successful if four or more instance are deployed to successfully; otherwise, the
-     * deployment fails.</p> <note>In a call to the get deployment configuration
-     * operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance
-     * type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one
-     * instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to
-     * HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime,
-     * AWS CodeDeploy will try to ensure that all instances but one are kept in a
-     * healthy state during the deployment. Although this allows one instance at a time
-     * to be taken offline for a new deployment, it also means that if the deployment
-     * to the last instance fails, the overall deployment still succeeds.</note>
+     * <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum
+     * number of healthy instance as an absolute value.</p> </li> <li>
+     * <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the
+     * total number of instance in the deployment.</p> </li> </ul> <p>In an example of
+     * nine instance, if a HOST_COUNT of six is specified, deploy to up to three
+     * instances at a time. The deployment will be successful if six or more instances
+     * are deployed to successfully; otherwise, the deployment fails. If a
+     * FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The
+     * deployment will be successful if four or more instance are deployed to
+     * successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the
+     * get deployment configuration operation, CodeDeployDefault.OneAtATime will return
+     * a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means
+     * a deployment to only one instance at a time. (You cannot set the type to
+     * MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+     * CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all
+     * instances but one are kept in a healthy state during the deployment. Although
+     * this allows one instance at a time to be taken offline for a new deployment, it
+     * also means that if the deployment to the last instance fails, the overall
+     * deployment still succeeds.</p> </note>
      */
     inline MinimumHealthyHosts& WithType(const MinimumHealthyHostsType& value) { SetType(value); return *this;}
 
     /**
-     * <p>The minimum healthy instance type:</p> <ul> <li>HOST_COUNT: The minimum
-     * number of healthy instance as an absolute value.</li> <li>FLEET_PERCENT: The
-     * minimum number of healthy instance as a percentage of the total number of
-     * instance in the deployment.</li> </ul> <p>In an example of nine instance, if a
-     * HOST_COUNT of six is specified, deploy to up to three instances at a time. The
-     * deployment will be successful if six or more instances are deployed to
-     * successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is
-     * specified, deploy to up to five instance at a time. The deployment will be
-     * successful if four or more instance are deployed to successfully; otherwise, the
-     * deployment fails.</p> <note>In a call to the get deployment configuration
-     * operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance
-     * type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one
-     * instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to
-     * HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime,
-     * AWS CodeDeploy will try to ensure that all instances but one are kept in a
-     * healthy state during the deployment. Although this allows one instance at a time
-     * to be taken offline for a new deployment, it also means that if the deployment
-     * to the last instance fails, the overall deployment still succeeds.</note>
+     * <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum
+     * number of healthy instance as an absolute value.</p> </li> <li>
+     * <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the
+     * total number of instance in the deployment.</p> </li> </ul> <p>In an example of
+     * nine instance, if a HOST_COUNT of six is specified, deploy to up to three
+     * instances at a time. The deployment will be successful if six or more instances
+     * are deployed to successfully; otherwise, the deployment fails. If a
+     * FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The
+     * deployment will be successful if four or more instance are deployed to
+     * successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the
+     * get deployment configuration operation, CodeDeployDefault.OneAtATime will return
+     * a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means
+     * a deployment to only one instance at a time. (You cannot set the type to
+     * MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+     * CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all
+     * instances but one are kept in a healthy state during the deployment. Although
+     * this allows one instance at a time to be taken offline for a new deployment, it
+     * also means that if the deployment to the last instance fails, the overall
+     * deployment still succeeds.</p> </note>
      */
-    inline MinimumHealthyHosts& WithType(MinimumHealthyHostsType&& value) { SetType(value); return *this;}
+    inline MinimumHealthyHosts& WithType(MinimumHealthyHostsType&& value) { SetType(std::move(value)); return *this;}
 
   private:
     int m_value;

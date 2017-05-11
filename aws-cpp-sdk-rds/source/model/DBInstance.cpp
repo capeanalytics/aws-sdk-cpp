@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/rds/model/DBInstance.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -58,6 +59,7 @@ DBInstance::DBInstance() :
     m_autoMinorVersionUpgradeHasBeenSet(false),
     m_readReplicaSourceDBInstanceIdentifierHasBeenSet(false),
     m_readReplicaDBInstanceIdentifiersHasBeenSet(false),
+    m_readReplicaDBClusterIdentifiersHasBeenSet(false),
     m_licenseModelHasBeenSet(false),
     m_iops(0),
     m_iopsHasBeenSet(false),
@@ -86,7 +88,10 @@ DBInstance::DBInstance() :
     m_monitoringRoleArnHasBeenSet(false),
     m_promotionTier(0),
     m_promotionTierHasBeenSet(false),
-    m_dBInstanceArnHasBeenSet(false)
+    m_dBInstanceArnHasBeenSet(false),
+    m_timezoneHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false)
 {
 }
 
@@ -119,6 +124,7 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_autoMinorVersionUpgradeHasBeenSet(false),
     m_readReplicaSourceDBInstanceIdentifierHasBeenSet(false),
     m_readReplicaDBInstanceIdentifiersHasBeenSet(false),
+    m_readReplicaDBClusterIdentifiersHasBeenSet(false),
     m_licenseModelHasBeenSet(false),
     m_iops(0),
     m_iopsHasBeenSet(false),
@@ -147,7 +153,10 @@ DBInstance::DBInstance(const XmlNode& xmlNode) :
     m_monitoringRoleArnHasBeenSet(false),
     m_promotionTier(0),
     m_promotionTierHasBeenSet(false),
-    m_dBInstanceArnHasBeenSet(false)
+    m_dBInstanceArnHasBeenSet(false),
+    m_timezoneHasBeenSet(false),
+    m_iAMDatabaseAuthenticationEnabled(false),
+    m_iAMDatabaseAuthenticationEnabledHasBeenSet(false)
 {
   *this = xmlNode;
 }
@@ -326,6 +335,18 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
 
       m_readReplicaDBInstanceIdentifiersHasBeenSet = true;
     }
+    XmlNode readReplicaDBClusterIdentifiersNode = resultNode.FirstChild("ReadReplicaDBClusterIdentifiers");
+    if(!readReplicaDBClusterIdentifiersNode.IsNull())
+    {
+      XmlNode readReplicaDBClusterIdentifiersMember = readReplicaDBClusterIdentifiersNode.FirstChild("ReadReplicaDBClusterIdentifier");
+      while(!readReplicaDBClusterIdentifiersMember.IsNull())
+      {
+        m_readReplicaDBClusterIdentifiers.push_back(StringUtils::Trim(readReplicaDBClusterIdentifiersMember.GetText().c_str()));
+        readReplicaDBClusterIdentifiersMember = readReplicaDBClusterIdentifiersMember.NextNode("ReadReplicaDBClusterIdentifier");
+      }
+
+      m_readReplicaDBClusterIdentifiersHasBeenSet = true;
+    }
     XmlNode licenseModelNode = resultNode.FirstChild("LicenseModel");
     if(!licenseModelNode.IsNull())
     {
@@ -476,6 +497,18 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
       m_dBInstanceArn = StringUtils::Trim(dBInstanceArnNode.GetText().c_str());
       m_dBInstanceArnHasBeenSet = true;
     }
+    XmlNode timezoneNode = resultNode.FirstChild("Timezone");
+    if(!timezoneNode.IsNull())
+    {
+      m_timezone = StringUtils::Trim(timezoneNode.GetText().c_str());
+      m_timezoneHasBeenSet = true;
+    }
+    XmlNode iAMDatabaseAuthenticationEnabledNode = resultNode.FirstChild("IAMDatabaseAuthenticationEnabled");
+    if(!iAMDatabaseAuthenticationEnabledNode.IsNull())
+    {
+      m_iAMDatabaseAuthenticationEnabled = StringUtils::ConvertToBool(StringUtils::Trim(iAMDatabaseAuthenticationEnabledNode.GetText().c_str()).c_str());
+      m_iAMDatabaseAuthenticationEnabledHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -604,7 +637,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_multiAZHasBeenSet)
   {
-      oStream << location << index << locationValue << ".MultiAZ=" << m_multiAZ << "&";
+      oStream << location << index << locationValue << ".MultiAZ=" << std::boolalpha << m_multiAZ << "&";
   }
 
   if(m_engineVersionHasBeenSet)
@@ -614,7 +647,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+      oStream << location << index << locationValue << ".AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
 
   if(m_readReplicaSourceDBInstanceIdentifierHasBeenSet)
@@ -628,6 +661,15 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
       for(auto& item : m_readReplicaDBInstanceIdentifiers)
       {
         oStream << location << index << locationValue << ".ReadReplicaDBInstanceIdentifier." << readReplicaDBInstanceIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+
+  if(m_readReplicaDBClusterIdentifiersHasBeenSet)
+  {
+      unsigned readReplicaDBClusterIdentifiersIdx = 1;
+      for(auto& item : m_readReplicaDBClusterIdentifiers)
+      {
+        oStream << location << index << locationValue << ".ReadReplicaDBClusterIdentifier." << readReplicaDBClusterIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -664,7 +706,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << index << locationValue << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
 
   if(m_statusInfosHasBeenSet)
@@ -700,7 +742,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_storageEncryptedHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StorageEncrypted=" << m_storageEncrypted << "&";
+      oStream << location << index << locationValue << ".StorageEncrypted=" << std::boolalpha << m_storageEncrypted << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -731,7 +773,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_copyTagsToSnapshotHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CopyTagsToSnapshot=" << m_copyTagsToSnapshot << "&";
+      oStream << location << index << locationValue << ".CopyTagsToSnapshot=" << std::boolalpha << m_copyTagsToSnapshot << "&";
   }
 
   if(m_monitoringIntervalHasBeenSet)
@@ -757,6 +799,16 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
   if(m_dBInstanceArnHasBeenSet)
   {
       oStream << location << index << locationValue << ".DBInstanceArn=" << StringUtils::URLEncode(m_dBInstanceArn.c_str()) << "&";
+  }
+
+  if(m_timezoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Timezone=" << StringUtils::URLEncode(m_timezone.c_str()) << "&";
+  }
+
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
   }
 
 }
@@ -865,7 +917,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_multiAZHasBeenSet)
   {
-      oStream << location << ".MultiAZ=" << m_multiAZ << "&";
+      oStream << location << ".MultiAZ=" << std::boolalpha << m_multiAZ << "&";
   }
   if(m_engineVersionHasBeenSet)
   {
@@ -873,7 +925,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_autoMinorVersionUpgradeHasBeenSet)
   {
-      oStream << location << ".AutoMinorVersionUpgrade=" << m_autoMinorVersionUpgrade << "&";
+      oStream << location << ".AutoMinorVersionUpgrade=" << std::boolalpha << m_autoMinorVersionUpgrade << "&";
   }
   if(m_readReplicaSourceDBInstanceIdentifierHasBeenSet)
   {
@@ -885,6 +937,14 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_readReplicaDBInstanceIdentifiers)
       {
         oStream << location << ".ReadReplicaDBInstanceIdentifier." << readReplicaDBInstanceIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+      }
+  }
+  if(m_readReplicaDBClusterIdentifiersHasBeenSet)
+  {
+      unsigned readReplicaDBClusterIdentifiersIdx = 1;
+      for(auto& item : m_readReplicaDBClusterIdentifiers)
+      {
+        oStream << location << ".ReadReplicaDBClusterIdentifier." << readReplicaDBClusterIdentifiersIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_licenseModelHasBeenSet)
@@ -915,7 +975,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_publiclyAccessibleHasBeenSet)
   {
-      oStream << location << ".PubliclyAccessible=" << m_publiclyAccessible << "&";
+      oStream << location << ".PubliclyAccessible=" << std::boolalpha << m_publiclyAccessible << "&";
   }
   if(m_statusInfosHasBeenSet)
   {
@@ -945,7 +1005,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_storageEncryptedHasBeenSet)
   {
-      oStream << location << ".StorageEncrypted=" << m_storageEncrypted << "&";
+      oStream << location << ".StorageEncrypted=" << std::boolalpha << m_storageEncrypted << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {
@@ -971,7 +1031,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_copyTagsToSnapshotHasBeenSet)
   {
-      oStream << location << ".CopyTagsToSnapshot=" << m_copyTagsToSnapshot << "&";
+      oStream << location << ".CopyTagsToSnapshot=" << std::boolalpha << m_copyTagsToSnapshot << "&";
   }
   if(m_monitoringIntervalHasBeenSet)
   {
@@ -992,6 +1052,14 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
   if(m_dBInstanceArnHasBeenSet)
   {
       oStream << location << ".DBInstanceArn=" << StringUtils::URLEncode(m_dBInstanceArn.c_str()) << "&";
+  }
+  if(m_timezoneHasBeenSet)
+  {
+      oStream << location << ".Timezone=" << StringUtils::URLEncode(m_timezone.c_str()) << "&";
+  }
+  if(m_iAMDatabaseAuthenticationEnabledHasBeenSet)
+  {
+      oStream << location << ".IAMDatabaseAuthenticationEnabled=" << std::boolalpha << m_iAMDatabaseAuthenticationEnabled << "&";
   }
 }
 

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/codepipeline/CodePipeline_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace CodePipeline
 namespace Model
 {
   /**
-   * <p>Represents the output of a start pipeline execution action.</p>
+   * <p>Represents the output of a start pipeline execution action.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StartPipelineExecutionOutput">AWS
+   * API Reference</a></p>
    */
   class AWS_CODEPIPELINE_API StartPipelineExecutionResult
   {
@@ -58,7 +63,7 @@ namespace Model
      * <p>The unique system-generated ID of the pipeline execution that was
      * started.</p>
      */
-    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionId = value; }
+    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionId = std::move(value); }
 
     /**
      * <p>The unique system-generated ID of the pipeline execution that was
@@ -76,7 +81,7 @@ namespace Model
      * <p>The unique system-generated ID of the pipeline execution that was
      * started.</p>
      */
-    inline StartPipelineExecutionResult& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(value); return *this;}
+    inline StartPipelineExecutionResult& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(std::move(value)); return *this;}
 
     /**
      * <p>The unique system-generated ID of the pipeline execution that was

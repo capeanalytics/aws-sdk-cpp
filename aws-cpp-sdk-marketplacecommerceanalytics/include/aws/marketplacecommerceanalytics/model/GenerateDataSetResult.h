@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/marketplacecommerceanalytics/MarketplaceCommerceAnalytics_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace MarketplaceCommerceAnalytics
 namespace Model
 {
   /**
-   * Container for the result of the GenerateDataSet operation.
+   * Container for the result of the GenerateDataSet operation.<p><h3>See Also:</h3> 
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/marketplacecommerceanalytics-2015-07-01/GenerateDataSetResult">AWS
+   * API Reference</a></p>
    */
   class AWS_MARKETPLACECOMMERCEANALYTICS_API GenerateDataSetResult
   {
@@ -61,7 +66,7 @@ namespace Model
      * operation. This identifier can be used to correlate a request with notifications
      * from the SNS topic.
      */
-    inline void SetDataSetRequestId(Aws::String&& value) { m_dataSetRequestId = value; }
+    inline void SetDataSetRequestId(Aws::String&& value) { m_dataSetRequestId = std::move(value); }
 
     /**
      * A unique identifier representing a specific request to the GenerateDataSet
@@ -82,7 +87,7 @@ namespace Model
      * operation. This identifier can be used to correlate a request with notifications
      * from the SNS topic.
      */
-    inline GenerateDataSetResult& WithDataSetRequestId(Aws::String&& value) { SetDataSetRequestId(value); return *this;}
+    inline GenerateDataSetResult& WithDataSetRequestId(Aws::String&& value) { SetDataSetRequestId(std::move(value)); return *this;}
 
     /**
      * A unique identifier representing a specific request to the GenerateDataSet

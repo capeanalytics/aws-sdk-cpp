@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
@@ -21,6 +22,7 @@
 #include <aws/opsworks/model/Architecture.h>
 #include <aws/opsworks/model/RootDeviceType.h>
 #include <aws/opsworks/model/BlockDeviceMapping.h>
+#include <utility>
 
 namespace Aws
 {
@@ -39,6 +41,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>The stack ID.</p>
      */
@@ -52,7 +55,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>The stack ID.</p>
@@ -67,7 +70,7 @@ namespace Model
     /**
      * <p>The stack ID.</p>
      */
-    inline CreateInstanceRequest& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline CreateInstanceRequest& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>The stack ID.</p>
@@ -87,7 +90,7 @@ namespace Model
     /**
      * <p>An array that contains the instance's layer IDs.</p>
      */
-    inline void SetLayerIds(Aws::Vector<Aws::String>&& value) { m_layerIdsHasBeenSet = true; m_layerIds = value; }
+    inline void SetLayerIds(Aws::Vector<Aws::String>&& value) { m_layerIdsHasBeenSet = true; m_layerIds = std::move(value); }
 
     /**
      * <p>An array that contains the instance's layer IDs.</p>
@@ -97,7 +100,7 @@ namespace Model
     /**
      * <p>An array that contains the instance's layer IDs.</p>
      */
-    inline CreateInstanceRequest& WithLayerIds(Aws::Vector<Aws::String>&& value) { SetLayerIds(value); return *this;}
+    inline CreateInstanceRequest& WithLayerIds(Aws::Vector<Aws::String>&& value) { SetLayerIds(std::move(value)); return *this;}
 
     /**
      * <p>An array that contains the instance's layer IDs.</p>
@@ -107,7 +110,7 @@ namespace Model
     /**
      * <p>An array that contains the instance's layer IDs.</p>
      */
-    inline CreateInstanceRequest& AddLayerIds(Aws::String&& value) { m_layerIdsHasBeenSet = true; m_layerIds.push_back(value); return *this; }
+    inline CreateInstanceRequest& AddLayerIds(Aws::String&& value) { m_layerIdsHasBeenSet = true; m_layerIds.push_back(std::move(value)); return *this; }
 
     /**
      * <p>An array that contains the instance's layer IDs.</p>
@@ -148,7 +151,7 @@ namespace Model
      * types are in the <b>API Name</b> column of the <b>Available Instance Types</b>
      * table.</p>
      */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
 
     /**
      * <p>The instance type, such as <code>t2.micro</code>. For a list of supported
@@ -184,7 +187,7 @@ namespace Model
      * types are in the <b>API Name</b> column of the <b>Available Instance Types</b>
      * table.</p>
      */
-    inline CreateInstanceRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(value); return *this;}
+    inline CreateInstanceRequest& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
 
     /**
      * <p>The instance type, such as <code>t2.micro</code>. For a list of supported
@@ -214,7 +217,7 @@ namespace Model
      * <p>For load-based or time-based instances, the type. Windows stacks can use only
      * time-based instances.</p>
      */
-    inline void SetAutoScalingType(AutoScalingType&& value) { m_autoScalingTypeHasBeenSet = true; m_autoScalingType = value; }
+    inline void SetAutoScalingType(AutoScalingType&& value) { m_autoScalingTypeHasBeenSet = true; m_autoScalingType = std::move(value); }
 
     /**
      * <p>For load-based or time-based instances, the type. Windows stacks can use only
@@ -226,7 +229,7 @@ namespace Model
      * <p>For load-based or time-based instances, the type. Windows stacks can use only
      * time-based instances.</p>
      */
-    inline CreateInstanceRequest& WithAutoScalingType(AutoScalingType&& value) { SetAutoScalingType(value); return *this;}
+    inline CreateInstanceRequest& WithAutoScalingType(AutoScalingType&& value) { SetAutoScalingType(std::move(value)); return *this;}
 
     /**
      * <p>The instance host name.</p>
@@ -241,7 +244,7 @@ namespace Model
     /**
      * <p>The instance host name.</p>
      */
-    inline void SetHostname(Aws::String&& value) { m_hostnameHasBeenSet = true; m_hostname = value; }
+    inline void SetHostname(Aws::String&& value) { m_hostnameHasBeenSet = true; m_hostname = std::move(value); }
 
     /**
      * <p>The instance host name.</p>
@@ -256,7 +259,7 @@ namespace Model
     /**
      * <p>The instance host name.</p>
      */
-    inline CreateInstanceRequest& WithHostname(Aws::String&& value) { SetHostname(value); return *this;}
+    inline CreateInstanceRequest& WithHostname(Aws::String&& value) { SetHostname(std::move(value)); return *this;}
 
     /**
      * <p>The instance host name.</p>
@@ -266,28 +269,28 @@ namespace Model
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
@@ -296,28 +299,28 @@ namespace Model
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
@@ -326,58 +329,58 @@ namespace Model
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
-    inline void SetOs(Aws::String&& value) { m_osHasBeenSet = true; m_os = value; }
+    inline void SetOs(Aws::String&& value) { m_osHasBeenSet = true; m_os = std::move(value); }
 
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
@@ -386,28 +389,28 @@ namespace Model
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
@@ -416,58 +419,58 @@ namespace Model
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
-    inline CreateInstanceRequest& WithOs(Aws::String&& value) { SetOs(value); return *this;}
+    inline CreateInstanceRequest& WithOs(Aws::String&& value) { SetOs(std::move(value)); return *this;}
 
     /**
      * <p>The instance's operating system, which must be set to one of the
      * following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux
-     * version, such as <code>Amazon Linux 2016.03</code>, <code>Amazon Linux
-     * 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A
-     * supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>,
-     * <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li>
-     * <p> <code>CentOS 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux
-     * 7</code> </p> </li> <li> <p>A supported Windows operating system, such as
-     * <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows
-     * Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server
-     * 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012
-     * R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI:
-     * <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported
-     * operating systems, see <a
+     * version, such as <code>Amazon Linux 2016.09</code>, <code>Amazon Linux
+     * 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux
+     * 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as
+     * <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu
+     * 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li>
+     * <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported
+     * Windows operating system, such as <code>Microsoft Windows Server 2012 R2
+     * Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server
+     * Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul>
+     * <p>For more information on the supported operating systems, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS
-     * OpsWorks Operating Systems</a>.</p> <p>The default option is the current Amazon
-     * Linux version. If you set this parameter to <code>Custom</code>, you must use
-     * the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
+     * OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current
+     * Amazon Linux version. If you set this parameter to <code>Custom</code>, you must
+     * use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI
      * that you want to use. Block device mappings are not supported if the value is
      * <code>Custom</code>. For more information on the supported operating systems,
      * see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating
-     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks, see
-     * <a
+     * Systems</a>For more information on how to use custom AMIs with AWS OpsWorks
+     * Stacks, see <a
      * href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using
      * Custom AMIs</a>.</p>
      */
@@ -498,7 +501,7 @@ namespace Model
      * Custom AMIs</a>.</p> <note> <p>If you specify a custom AMI, you must set
      * <code>Os</code> to <code>Custom</code>.</p> </note>
      */
-    inline void SetAmiId(Aws::String&& value) { m_amiIdHasBeenSet = true; m_amiId = value; }
+    inline void SetAmiId(Aws::String&& value) { m_amiIdHasBeenSet = true; m_amiId = std::move(value); }
 
     /**
      * <p>A custom AMI ID to be used to create the instance. The AMI should be based on
@@ -525,7 +528,7 @@ namespace Model
      * Custom AMIs</a>.</p> <note> <p>If you specify a custom AMI, you must set
      * <code>Os</code> to <code>Custom</code>.</p> </note>
      */
-    inline CreateInstanceRequest& WithAmiId(Aws::String&& value) { SetAmiId(value); return *this;}
+    inline CreateInstanceRequest& WithAmiId(Aws::String&& value) { SetAmiId(std::move(value)); return *this;}
 
     /**
      * <p>A custom AMI ID to be used to create the instance. The AMI should be based on
@@ -549,7 +552,7 @@ namespace Model
     /**
      * <p>The instance's Amazon EC2 key-pair name.</p>
      */
-    inline void SetSshKeyName(Aws::String&& value) { m_sshKeyNameHasBeenSet = true; m_sshKeyName = value; }
+    inline void SetSshKeyName(Aws::String&& value) { m_sshKeyNameHasBeenSet = true; m_sshKeyName = std::move(value); }
 
     /**
      * <p>The instance's Amazon EC2 key-pair name.</p>
@@ -564,7 +567,7 @@ namespace Model
     /**
      * <p>The instance's Amazon EC2 key-pair name.</p>
      */
-    inline CreateInstanceRequest& WithSshKeyName(Aws::String&& value) { SetSshKeyName(value); return *this;}
+    inline CreateInstanceRequest& WithSshKeyName(Aws::String&& value) { SetSshKeyName(std::move(value)); return *this;}
 
     /**
      * <p>The instance's Amazon EC2 key-pair name.</p>
@@ -590,7 +593,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and
      * Endpoints</a>.</p>
      */
-    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = value; }
+    inline void SetAvailabilityZone(Aws::String&& value) { m_availabilityZoneHasBeenSet = true; m_availabilityZone = std::move(value); }
 
     /**
      * <p>The instance Availability Zone. For more information, see <a
@@ -611,7 +614,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and
      * Endpoints</a>.</p>
      */
-    inline CreateInstanceRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(value); return *this;}
+    inline CreateInstanceRequest& WithAvailabilityZone(Aws::String&& value) { SetAvailabilityZone(std::move(value)); return *this;}
 
     /**
      * <p>The instance Availability Zone. For more information, see <a
@@ -636,7 +639,7 @@ namespace Model
      * <p>The instance's virtualization type, <code>paravirtual</code> or
      * <code>hvm</code>.</p>
      */
-    inline void SetVirtualizationType(Aws::String&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = value; }
+    inline void SetVirtualizationType(Aws::String&& value) { m_virtualizationTypeHasBeenSet = true; m_virtualizationType = std::move(value); }
 
     /**
      * <p>The instance's virtualization type, <code>paravirtual</code> or
@@ -654,7 +657,7 @@ namespace Model
      * <p>The instance's virtualization type, <code>paravirtual</code> or
      * <code>hvm</code>.</p>
      */
-    inline CreateInstanceRequest& WithVirtualizationType(Aws::String&& value) { SetVirtualizationType(value); return *this;}
+    inline CreateInstanceRequest& WithVirtualizationType(Aws::String&& value) { SetVirtualizationType(std::move(value)); return *this;}
 
     /**
      * <p>The instance's virtualization type, <code>paravirtual</code> or
@@ -665,49 +668,49 @@ namespace Model
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
     inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
     inline void SetSubnetId(const Aws::String& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
+    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
     inline void SetSubnetId(const char* value) { m_subnetIdHasBeenSet = true; m_subnetId.assign(value); }
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
     inline CreateInstanceRequest& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
-    inline CreateInstanceRequest& WithSubnetId(Aws::String&& value) { SetSubnetId(value); return *this;}
+    inline CreateInstanceRequest& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the instance's subnet. If the stack is running in a VPC, you can
      * use this parameter to override the stack's default subnet ID value and direct
-     * AWS OpsWorks to launch the instance in a different subnet.</p>
+     * AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
      */
     inline CreateInstanceRequest& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
 
@@ -736,7 +739,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>.</p>
      */
-    inline void SetArchitecture(Architecture&& value) { m_architectureHasBeenSet = true; m_architecture = value; }
+    inline void SetArchitecture(Architecture&& value) { m_architectureHasBeenSet = true; m_architecture = std::move(value); }
 
     /**
      * <p>The instance architecture. The default option is <code>x86_64</code>.
@@ -754,7 +757,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance
      * Families and Types</a>.</p>
      */
-    inline CreateInstanceRequest& WithArchitecture(Architecture&& value) { SetArchitecture(value); return *this;}
+    inline CreateInstanceRequest& WithArchitecture(Architecture&& value) { SetArchitecture(std::move(value)); return *this;}
 
     /**
      * <p>The instance root device type. For more information, see <a
@@ -775,7 +778,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
      * for the Root Device</a>.</p>
      */
-    inline void SetRootDeviceType(RootDeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = value; }
+    inline void SetRootDeviceType(RootDeviceType&& value) { m_rootDeviceTypeHasBeenSet = true; m_rootDeviceType = std::move(value); }
 
     /**
      * <p>The instance root device type. For more information, see <a
@@ -789,7 +792,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage
      * for the Root Device</a>.</p>
      */
-    inline CreateInstanceRequest& WithRootDeviceType(RootDeviceType&& value) { SetRootDeviceType(value); return *this;}
+    inline CreateInstanceRequest& WithRootDeviceType(RootDeviceType&& value) { SetRootDeviceType(std::move(value)); return *this;}
 
     /**
      * <p>An array of <code>BlockDeviceMapping</code> objects that specify the
@@ -816,7 +819,7 @@ namespace Model
      * Device Mapping</a>. Note that block device mappings are not supported for custom
      * AMIs.</p>
      */
-    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = value; }
+    inline void SetBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings = std::move(value); }
 
     /**
      * <p>An array of <code>BlockDeviceMapping</code> objects that specify the
@@ -834,7 +837,7 @@ namespace Model
      * Device Mapping</a>. Note that block device mappings are not supported for custom
      * AMIs.</p>
      */
-    inline CreateInstanceRequest& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(value); return *this;}
+    inline CreateInstanceRequest& WithBlockDeviceMappings(Aws::Vector<BlockDeviceMapping>&& value) { SetBlockDeviceMappings(std::move(value)); return *this;}
 
     /**
      * <p>An array of <code>BlockDeviceMapping</code> objects that specify the
@@ -852,7 +855,7 @@ namespace Model
      * Device Mapping</a>. Note that block device mappings are not supported for custom
      * AMIs.</p>
      */
-    inline CreateInstanceRequest& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(value); return *this; }
+    inline CreateInstanceRequest& AddBlockDeviceMappings(BlockDeviceMapping&& value) { m_blockDeviceMappingsHasBeenSet = true; m_blockDeviceMappings.push_back(std::move(value)); return *this; }
 
     /**
      * <p>Whether to install operating system and package updates when the instance
@@ -909,100 +912,100 @@ namespace Model
     inline CreateInstanceRequest& WithEbsOptimized(bool value) { SetEbsOptimized(value); return *this;}
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
     inline const Aws::String& GetAgentVersion() const{ return m_agentVersion; }
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
     inline void SetAgentVersion(const Aws::String& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
-    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = value; }
+    inline void SetAgentVersion(Aws::String&& value) { m_agentVersionHasBeenSet = true; m_agentVersion = std::move(value); }
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
     inline void SetAgentVersion(const char* value) { m_agentVersionHasBeenSet = true; m_agentVersion.assign(value); }
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
     inline CreateInstanceRequest& WithAgentVersion(const Aws::String& value) { SetAgentVersion(value); return *this;}
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
-    inline CreateInstanceRequest& WithAgentVersion(Aws::String&& value) { SetAgentVersion(value); return *this;}
+    inline CreateInstanceRequest& WithAgentVersion(Aws::String&& value) { SetAgentVersion(std::move(value)); return *this;}
 
     /**
-     * <p>The default AWS OpsWorks agent version. You have the following options:</p>
-     * <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version
-     * setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent
-     * version. This value overrides the stack's default setting. To update the agent
-     * version, edit the instance configuration and specify a new version. AWS OpsWorks
-     * then automatically installs that version on the instance.</p> </li> </ul> <p>The
-     * default setting is <code>INHERIT</code>. To specify an agent version, you must
-     * use the complete version number, not the abbreviated number shown on the
-     * console. For a list of available agent version numbers, call
-     * <a>DescribeAgentVersions</a>.</p>
+     * <p>The default AWS OpsWorks Stacks agent version. You have the following
+     * options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent
+     * version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified
+     * agent version. This value overrides the stack's default setting. To update the
+     * agent version, edit the instance configuration and specify a new version. AWS
+     * OpsWorks Stacks then automatically installs that version on the instance.</p>
+     * </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent
+     * version, you must use the complete version number, not the abbreviated number
+     * shown on the console. For a list of available agent version numbers, call
+     * <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
      */
     inline CreateInstanceRequest& WithAgentVersion(const char* value) { SetAgentVersion(value); return *this;}
 
@@ -1055,7 +1058,7 @@ namespace Model
      * href="http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/">Amazon
      * EC2 Dedicated Instances</a>.</p>
      */
-    inline void SetTenancy(Aws::String&& value) { m_tenancyHasBeenSet = true; m_tenancy = value; }
+    inline void SetTenancy(Aws::String&& value) { m_tenancyHasBeenSet = true; m_tenancy = std::move(value); }
 
     /**
      * <p>The instance's tenancy option. The default option is no tenancy, or if the
@@ -1106,7 +1109,7 @@ namespace Model
      * href="http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/">Amazon
      * EC2 Dedicated Instances</a>.</p>
      */
-    inline CreateInstanceRequest& WithTenancy(Aws::String&& value) { SetTenancy(value); return *this;}
+    inline CreateInstanceRequest& WithTenancy(Aws::String&& value) { SetTenancy(std::move(value)); return *this;}
 
     /**
      * <p>The instance's tenancy option. The default option is no tenancy, or if the

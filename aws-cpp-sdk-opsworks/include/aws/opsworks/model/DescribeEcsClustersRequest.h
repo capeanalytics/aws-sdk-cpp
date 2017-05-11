@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/opsworks/OpsWorks_EXPORTS.h>
 #include <aws/opsworks/OpsWorksRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,6 +37,7 @@ namespace Model
 
     Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
      */
@@ -48,7 +51,7 @@ namespace Model
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
      */
-    inline void SetEcsClusterArns(Aws::Vector<Aws::String>&& value) { m_ecsClusterArnsHasBeenSet = true; m_ecsClusterArns = value; }
+    inline void SetEcsClusterArns(Aws::Vector<Aws::String>&& value) { m_ecsClusterArnsHasBeenSet = true; m_ecsClusterArns = std::move(value); }
 
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
@@ -58,7 +61,7 @@ namespace Model
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
      */
-    inline DescribeEcsClustersRequest& WithEcsClusterArns(Aws::Vector<Aws::String>&& value) { SetEcsClusterArns(value); return *this;}
+    inline DescribeEcsClustersRequest& WithEcsClusterArns(Aws::Vector<Aws::String>&& value) { SetEcsClusterArns(std::move(value)); return *this;}
 
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
@@ -68,7 +71,7 @@ namespace Model
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
      */
-    inline DescribeEcsClustersRequest& AddEcsClusterArns(Aws::String&& value) { m_ecsClusterArnsHasBeenSet = true; m_ecsClusterArns.push_back(value); return *this; }
+    inline DescribeEcsClustersRequest& AddEcsClusterArns(Aws::String&& value) { m_ecsClusterArnsHasBeenSet = true; m_ecsClusterArns.push_back(std::move(value)); return *this; }
 
     /**
      * <p>A list of ARNs, one for each cluster to be described.</p>
@@ -91,7 +94,7 @@ namespace Model
      * <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the
      * cluster that is registered with the stack.</p>
      */
-    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = value; }
+    inline void SetStackId(Aws::String&& value) { m_stackIdHasBeenSet = true; m_stackId = std::move(value); }
 
     /**
      * <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the
@@ -109,7 +112,7 @@ namespace Model
      * <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the
      * cluster that is registered with the stack.</p>
      */
-    inline DescribeEcsClustersRequest& WithStackId(Aws::String&& value) { SetStackId(value); return *this;}
+    inline DescribeEcsClustersRequest& WithStackId(Aws::String&& value) { SetStackId(std::move(value)); return *this;}
 
     /**
      * <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the
@@ -148,7 +151,7 @@ namespace Model
      * the previous response object's <code>NextToken</code> parameter is set to
      * <code>null</code>.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
 
     /**
      * <p>If the previous paginated request did not return all of the remaining
@@ -181,7 +184,7 @@ namespace Model
      * the previous response object's <code>NextToken</code> parameter is set to
      * <code>null</code>.</p>
      */
-    inline DescribeEcsClustersRequest& WithNextToken(Aws::String&& value) { SetNextToken(value); return *this;}
+    inline DescribeEcsClustersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
 
     /**
      * <p>If the previous paginated request did not return all of the remaining

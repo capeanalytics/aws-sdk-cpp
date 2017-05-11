@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/IpPermission.h>
+#include <utility>
 
 namespace Aws
 {
@@ -27,7 +29,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains the parameters for RevokeSecurityGroupEgress.</p>
+   * <p>Contains the parameters for RevokeSecurityGroupEgress.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RevokeSecurityGroupEgressRequest">AWS
+   * API Reference</a></p>
    */
   class AWS_EC2_API RevokeSecurityGroupEgressRequest : public EC2Request
   {
@@ -35,6 +40,11 @@ namespace Model
     RevokeSecurityGroupEgressRequest();
     Aws::String SerializePayload() const override;
 
+
+  protected:
+    void DumpBodyToUrl(Aws::Http::URI& uri ) const override;
+
+  public:
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
@@ -72,7 +82,7 @@ namespace Model
     /**
      * <p>The ID of the security group.</p>
      */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
+    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
 
     /**
      * <p>The ID of the security group.</p>
@@ -87,7 +97,7 @@ namespace Model
     /**
      * <p>The ID of the security group.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithGroupId(Aws::String&& value) { SetGroupId(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
 
     /**
      * <p>The ID of the security group.</p>
@@ -113,7 +123,7 @@ namespace Model
      * destination security group, we recommend that you use a set of IP permissions
      * instead.</p>
      */
-    inline void SetSourceSecurityGroupName(Aws::String&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = value; }
+    inline void SetSourceSecurityGroupName(Aws::String&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = std::move(value); }
 
     /**
      * <p>The name of a destination security group. To revoke outbound access to a
@@ -134,7 +144,7 @@ namespace Model
      * destination security group, we recommend that you use a set of IP permissions
      * instead.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(Aws::String&& value) { SetSourceSecurityGroupName(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(Aws::String&& value) { SetSourceSecurityGroupName(std::move(value)); return *this;}
 
     /**
      * <p>The name of a destination security group. To revoke outbound access to a
@@ -162,7 +172,7 @@ namespace Model
      * access to a destination security group, we recommend that you use a set of IP
      * permissions instead.</p>
      */
-    inline void SetSourceSecurityGroupOwnerId(Aws::String&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = value; }
+    inline void SetSourceSecurityGroupOwnerId(Aws::String&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = std::move(value); }
 
     /**
      * <p>The AWS account number for a destination security group. To revoke outbound
@@ -183,7 +193,7 @@ namespace Model
      * access to a destination security group, we recommend that you use a set of IP
      * permissions instead.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(Aws::String&& value) { SetSourceSecurityGroupOwnerId(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(Aws::String&& value) { SetSourceSecurityGroupOwnerId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS account number for a destination security group. To revoke outbound
@@ -208,7 +218,7 @@ namespace Model
      * <p>The IP protocol name or number. We recommend that you specify the protocol in
      * a set of IP permissions instead.</p>
      */
-    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = value; }
+    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::move(value); }
 
     /**
      * <p>The IP protocol name or number. We recommend that you specify the protocol in
@@ -226,7 +236,7 @@ namespace Model
      * <p>The IP protocol name or number. We recommend that you specify the protocol in
      * a set of IP permissions instead.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithIpProtocol(Aws::String&& value) { SetIpProtocol(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithIpProtocol(Aws::String&& value) { SetIpProtocol(std::move(value)); return *this;}
 
     /**
      * <p>The IP protocol name or number. We recommend that you specify the protocol in
@@ -292,7 +302,7 @@ namespace Model
      * <p>The CIDR IP address range. We recommend that you specify the CIDR range in a
      * set of IP permissions instead.</p>
      */
-    inline void SetCidrIp(Aws::String&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = value; }
+    inline void SetCidrIp(Aws::String&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = std::move(value); }
 
     /**
      * <p>The CIDR IP address range. We recommend that you specify the CIDR range in a
@@ -310,7 +320,7 @@ namespace Model
      * <p>The CIDR IP address range. We recommend that you specify the CIDR range in a
      * set of IP permissions instead.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithCidrIp(Aws::String&& value) { SetCidrIp(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithCidrIp(Aws::String&& value) { SetCidrIp(std::move(value)); return *this;}
 
     /**
      * <p>The CIDR IP address range. We recommend that you specify the CIDR range in a
@@ -334,7 +344,7 @@ namespace Model
      * <p>A set of IP permissions. You can't specify a destination security group and a
      * CIDR IP address range.</p>
      */
-    inline void SetIpPermissions(Aws::Vector<IpPermission>&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = value; }
+    inline void SetIpPermissions(Aws::Vector<IpPermission>&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = std::move(value); }
 
     /**
      * <p>A set of IP permissions. You can't specify a destination security group and a
@@ -346,7 +356,7 @@ namespace Model
      * <p>A set of IP permissions. You can't specify a destination security group and a
      * CIDR IP address range.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithIpPermissions(Aws::Vector<IpPermission>&& value) { SetIpPermissions(value); return *this;}
+    inline RevokeSecurityGroupEgressRequest& WithIpPermissions(Aws::Vector<IpPermission>&& value) { SetIpPermissions(std::move(value)); return *this;}
 
     /**
      * <p>A set of IP permissions. You can't specify a destination security group and a
@@ -358,7 +368,7 @@ namespace Model
      * <p>A set of IP permissions. You can't specify a destination security group and a
      * CIDR IP address range.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& AddIpPermissions(IpPermission&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(value); return *this; }
+    inline RevokeSecurityGroupEgressRequest& AddIpPermissions(IpPermission&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(std::move(value)); return *this; }
 
   private:
     bool m_dryRun;

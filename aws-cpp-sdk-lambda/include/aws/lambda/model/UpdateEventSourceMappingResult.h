@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/lambda/Lambda_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace Lambda
 namespace Model
 {
   /**
-   * <p>Describes mapping between an Amazon Kinesis stream and a Lambda function.</p>
+   * <p>Describes mapping between an Amazon Kinesis stream and a Lambda
+   * function.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/EventSourceMappingConfiguration">AWS
+   * API Reference</a></p>
    */
   class AWS_LAMBDA_API UpdateEventSourceMappingResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
      */
-    inline void SetUUID(Aws::String&& value) { m_uUID = value; }
+    inline void SetUUID(Aws::String&& value) { m_uUID = std::move(value); }
 
     /**
      * <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
      */
-    inline UpdateEventSourceMappingResult& WithUUID(Aws::String&& value) { SetUUID(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithUUID(Aws::String&& value) { SetUUID(std::move(value)); return *this;}
 
     /**
      * <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
@@ -115,7 +120,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
      * source of events.</p>
      */
-    inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArn = value; }
+    inline void SetEventSourceArn(Aws::String&& value) { m_eventSourceArn = std::move(value); }
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
@@ -133,7 +138,7 @@ namespace Model
      * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
      * source of events.</p>
      */
-    inline UpdateEventSourceMappingResult& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithEventSourceArn(Aws::String&& value) { SetEventSourceArn(std::move(value)); return *this;}
 
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the
@@ -157,7 +162,7 @@ namespace Model
      * <p>The Lambda function to invoke when AWS Lambda detects an event on the
      * stream.</p>
      */
-    inline void SetFunctionArn(Aws::String&& value) { m_functionArn = value; }
+    inline void SetFunctionArn(Aws::String&& value) { m_functionArn = std::move(value); }
 
     /**
      * <p>The Lambda function to invoke when AWS Lambda detects an event on the
@@ -175,7 +180,7 @@ namespace Model
      * <p>The Lambda function to invoke when AWS Lambda detects an event on the
      * stream.</p>
      */
-    inline UpdateEventSourceMappingResult& WithFunctionArn(Aws::String&& value) { SetFunctionArn(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithFunctionArn(Aws::String&& value) { SetFunctionArn(std::move(value)); return *this;}
 
     /**
      * <p>The Lambda function to invoke when AWS Lambda detects an event on the
@@ -199,7 +204,7 @@ namespace Model
      * <p>The UTC time string indicating the last time the event mapping was
      * updated.</p>
      */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModified = value; }
+    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModified = std::move(value); }
 
     /**
      * <p>The UTC time string indicating the last time the event mapping was
@@ -211,7 +216,7 @@ namespace Model
      * <p>The UTC time string indicating the last time the event mapping was
      * updated.</p>
      */
-    inline UpdateEventSourceMappingResult& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
 
     /**
      * <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
@@ -226,7 +231,7 @@ namespace Model
     /**
      * <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
      */
-    inline void SetLastProcessingResult(Aws::String&& value) { m_lastProcessingResult = value; }
+    inline void SetLastProcessingResult(Aws::String&& value) { m_lastProcessingResult = std::move(value); }
 
     /**
      * <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
@@ -241,7 +246,7 @@ namespace Model
     /**
      * <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
      */
-    inline UpdateEventSourceMappingResult& WithLastProcessingResult(Aws::String&& value) { SetLastProcessingResult(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithLastProcessingResult(Aws::String&& value) { SetLastProcessingResult(std::move(value)); return *this;}
 
     /**
      * <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
@@ -267,7 +272,7 @@ namespace Model
      * <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>,
      * <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
      */
-    inline void SetState(Aws::String&& value) { m_state = value; }
+    inline void SetState(Aws::String&& value) { m_state = std::move(value); }
 
     /**
      * <p>The state of the event source mapping. It can be <code>Creating</code>,
@@ -288,7 +293,7 @@ namespace Model
      * <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>,
      * <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
      */
-    inline UpdateEventSourceMappingResult& WithState(Aws::String&& value) { SetState(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
 
     /**
      * <p>The state of the event source mapping. It can be <code>Creating</code>,
@@ -313,7 +318,7 @@ namespace Model
      * <p>The reason the event source mapping is in its current state. It is either
      * user-requested or an AWS Lambda-initiated state transition.</p>
      */
-    inline void SetStateTransitionReason(Aws::String&& value) { m_stateTransitionReason = value; }
+    inline void SetStateTransitionReason(Aws::String&& value) { m_stateTransitionReason = std::move(value); }
 
     /**
      * <p>The reason the event source mapping is in its current state. It is either
@@ -331,7 +336,7 @@ namespace Model
      * <p>The reason the event source mapping is in its current state. It is either
      * user-requested or an AWS Lambda-initiated state transition.</p>
      */
-    inline UpdateEventSourceMappingResult& WithStateTransitionReason(Aws::String&& value) { SetStateTransitionReason(value); return *this;}
+    inline UpdateEventSourceMappingResult& WithStateTransitionReason(Aws::String&& value) { SetStateTransitionReason(std::move(value)); return *this;}
 
     /**
      * <p>The reason the event source mapping is in its current state. It is either

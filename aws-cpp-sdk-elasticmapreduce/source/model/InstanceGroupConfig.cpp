@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/elasticmapreduce/model/InstanceGroupConfig.h>
 #include <aws/core/utils/json/JsonSerializer.h>
 
@@ -29,27 +30,33 @@ namespace Model
 
 InstanceGroupConfig::InstanceGroupConfig() : 
     m_nameHasBeenSet(false),
+    m_market(MarketType::NOT_SET),
     m_marketHasBeenSet(false),
+    m_instanceRole(InstanceRoleType::NOT_SET),
     m_instanceRoleHasBeenSet(false),
     m_bidPriceHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
     m_configurationsHasBeenSet(false),
-    m_ebsConfigurationHasBeenSet(false)
+    m_ebsConfigurationHasBeenSet(false),
+    m_autoScalingPolicyHasBeenSet(false)
 {
 }
 
 InstanceGroupConfig::InstanceGroupConfig(const JsonValue& jsonValue) : 
     m_nameHasBeenSet(false),
+    m_market(MarketType::NOT_SET),
     m_marketHasBeenSet(false),
+    m_instanceRole(InstanceRoleType::NOT_SET),
     m_instanceRoleHasBeenSet(false),
     m_bidPriceHasBeenSet(false),
     m_instanceTypeHasBeenSet(false),
     m_instanceCount(0),
     m_instanceCountHasBeenSet(false),
     m_configurationsHasBeenSet(false),
-    m_ebsConfigurationHasBeenSet(false)
+    m_ebsConfigurationHasBeenSet(false),
+    m_autoScalingPolicyHasBeenSet(false)
 {
   *this = jsonValue;
 }
@@ -115,6 +122,13 @@ InstanceGroupConfig& InstanceGroupConfig::operator =(const JsonValue& jsonValue)
     m_ebsConfigurationHasBeenSet = true;
   }
 
+  if(jsonValue.ValueExists("AutoScalingPolicy"))
+  {
+    m_autoScalingPolicy = jsonValue.GetObject("AutoScalingPolicy");
+
+    m_autoScalingPolicyHasBeenSet = true;
+  }
+
   return *this;
 }
 
@@ -170,6 +184,12 @@ JsonValue InstanceGroupConfig::Jsonize() const
   if(m_ebsConfigurationHasBeenSet)
   {
    payload.WithObject("EbsConfiguration", m_ebsConfiguration.Jsonize());
+
+  }
+
+  if(m_autoScalingPolicyHasBeenSet)
+  {
+   payload.WithObject("AutoScalingPolicy", m_autoScalingPolicy.Jsonize());
 
   }
 

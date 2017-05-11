@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,12 +12,14 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/cloudformation/CloudFormation_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/cloudformation/model/ResourceAttribute.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/cloudformation/model/RequiresRecreation.h>
+#include <utility>
 
 namespace Aws
 {
@@ -35,7 +37,10 @@ namespace Model
 
   /**
    * <p>The field that AWS CloudFormation will change, such as the name of a
-   * resource's property, and whether the resource will be recreated.</p>
+   * resource's property, and whether the resource will be recreated.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ResourceTargetDefinition">AWS
+   * API Reference</a></p>
    */
   class AWS_CLOUDFORMATION_API ResourceTargetDefinition
   {
@@ -66,7 +71,7 @@ namespace Model
      * change in the resource attribute's <code>Metadata</code>,
      * <code>Properties</code>, or <code>Tags</code>.</p>
      */
-    inline void SetAttribute(ResourceAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline void SetAttribute(ResourceAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
 
     /**
      * <p>Indicates which resource attribute is triggering this update, such as a
@@ -80,7 +85,7 @@ namespace Model
      * change in the resource attribute's <code>Metadata</code>,
      * <code>Properties</code>, or <code>Tags</code>.</p>
      */
-    inline ResourceTargetDefinition& WithAttribute(ResourceAttribute&& value) { SetAttribute(value); return *this;}
+    inline ResourceTargetDefinition& WithAttribute(ResourceAttribute&& value) { SetAttribute(std::move(value)); return *this;}
 
     /**
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of
@@ -98,7 +103,7 @@ namespace Model
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of
      * the property. For all other attributes, the value is null.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of
@@ -116,7 +121,7 @@ namespace Model
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of
      * the property. For all other attributes, the value is null.</p>
      */
-    inline ResourceTargetDefinition& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ResourceTargetDefinition& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of
@@ -155,7 +160,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">property</a>
      * in the AWS CloudFormation User Guide.</p>
      */
-    inline void SetRequiresRecreation(RequiresRecreation&& value) { m_requiresRecreationHasBeenSet = true; m_requiresRecreation = value; }
+    inline void SetRequiresRecreation(RequiresRecreation&& value) { m_requiresRecreationHasBeenSet = true; m_requiresRecreation = std::move(value); }
 
     /**
      * <p>If the <code>Attribute</code> value is <code>Properties</code>, indicates
@@ -177,7 +182,7 @@ namespace Model
      * href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">property</a>
      * in the AWS CloudFormation User Guide.</p>
      */
-    inline ResourceTargetDefinition& WithRequiresRecreation(RequiresRecreation&& value) { SetRequiresRecreation(value); return *this;}
+    inline ResourceTargetDefinition& WithRequiresRecreation(RequiresRecreation&& value) { SetRequiresRecreation(std::move(value)); return *this;}
 
   private:
     ResourceAttribute m_attribute;

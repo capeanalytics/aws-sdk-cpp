@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/swf/SWF_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -48,7 +50,9 @@ namespace Model
    * attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For
    * details and example IAM policies, see <a
    * href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
-   * IAM to Manage Access to Amazon SWF Workflows</a>.</p>
+   * IAM to Manage Access to Amazon SWF Workflows</a>.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/swf-2012-01-25/ScheduleLambdaFunctionDecisionAttributes">AWS
+   * API Reference</a></p>
    */
   class AWS_SWF_API ScheduleLambdaFunctionDecisionAttributes
   {
@@ -83,7 +87,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = value; }
+    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
 
     /**
      * <p><b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p> <p>The
@@ -110,7 +114,7 @@ namespace Model
      * or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
      * contain the literal string quotarnquot.</p>
      */
-    inline ScheduleLambdaFunctionDecisionAttributes& WithId(Aws::String&& value) { SetId(value); return *this;}
+    inline ScheduleLambdaFunctionDecisionAttributes& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p> <p>The
@@ -134,7 +138,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
      */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = value; }
+    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
 
     /**
      * <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
@@ -149,7 +153,7 @@ namespace Model
     /**
      * <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
      */
-    inline ScheduleLambdaFunctionDecisionAttributes& WithName(Aws::String&& value) { SetName(value); return *this;}
+    inline ScheduleLambdaFunctionDecisionAttributes& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
 
     /**
      * <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
@@ -169,7 +173,7 @@ namespace Model
     /**
      * <p>The input provided to the AWS Lambda function.</p>
      */
-    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = value; }
+    inline void SetInput(Aws::String&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
 
     /**
      * <p>The input provided to the AWS Lambda function.</p>
@@ -184,7 +188,7 @@ namespace Model
     /**
      * <p>The input provided to the AWS Lambda function.</p>
      */
-    inline ScheduleLambdaFunctionDecisionAttributes& WithInput(Aws::String&& value) { SetInput(value); return *this;}
+    inline ScheduleLambdaFunctionDecisionAttributes& WithInput(Aws::String&& value) { SetInput(std::move(value)); return *this;}
 
     /**
      * <p>The input provided to the AWS Lambda function.</p>
@@ -204,7 +208,7 @@ namespace Model
     /**
      * <p>If set, specifies the maximum duration the function may take to execute.</p>
      */
-    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = value; }
+    inline void SetStartToCloseTimeout(Aws::String&& value) { m_startToCloseTimeoutHasBeenSet = true; m_startToCloseTimeout = std::move(value); }
 
     /**
      * <p>If set, specifies the maximum duration the function may take to execute.</p>
@@ -219,7 +223,7 @@ namespace Model
     /**
      * <p>If set, specifies the maximum duration the function may take to execute.</p>
      */
-    inline ScheduleLambdaFunctionDecisionAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(value); return *this;}
+    inline ScheduleLambdaFunctionDecisionAttributes& WithStartToCloseTimeout(Aws::String&& value) { SetStartToCloseTimeout(std::move(value)); return *this;}
 
     /**
      * <p>If set, specifies the maximum duration the function may take to execute.</p>

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ds/model/Attribute.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace Model
 {
 
   /**
-   * <p>Contains information about a computer account in a directory.</p>
+   * <p>Contains information about a computer account in a directory.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/Computer">AWS API
+   * Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API Computer
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The identifier of the computer.</p>
      */
-    inline void SetComputerId(Aws::String&& value) { m_computerIdHasBeenSet = true; m_computerId = value; }
+    inline void SetComputerId(Aws::String&& value) { m_computerIdHasBeenSet = true; m_computerId = std::move(value); }
 
     /**
      * <p>The identifier of the computer.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The identifier of the computer.</p>
      */
-    inline Computer& WithComputerId(Aws::String&& value) { SetComputerId(value); return *this;}
+    inline Computer& WithComputerId(Aws::String&& value) { SetComputerId(std::move(value)); return *this;}
 
     /**
      * <p>The identifier of the computer.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The computer name.</p>
      */
-    inline void SetComputerName(Aws::String&& value) { m_computerNameHasBeenSet = true; m_computerName = value; }
+    inline void SetComputerName(Aws::String&& value) { m_computerNameHasBeenSet = true; m_computerName = std::move(value); }
 
     /**
      * <p>The computer name.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The computer name.</p>
      */
-    inline Computer& WithComputerName(Aws::String&& value) { SetComputerName(value); return *this;}
+    inline Computer& WithComputerName(Aws::String&& value) { SetComputerName(std::move(value)); return *this;}
 
     /**
      * <p>The computer name.</p>
@@ -129,7 +134,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects containing the LDAP attributes that
      * belong to the computer account.</p>
      */
-    inline void SetComputerAttributes(Aws::Vector<Attribute>&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes = value; }
+    inline void SetComputerAttributes(Aws::Vector<Attribute>&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes = std::move(value); }
 
     /**
      * <p>An array of <a>Attribute</a> objects containing the LDAP attributes that
@@ -141,7 +146,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects containing the LDAP attributes that
      * belong to the computer account.</p>
      */
-    inline Computer& WithComputerAttributes(Aws::Vector<Attribute>&& value) { SetComputerAttributes(value); return *this;}
+    inline Computer& WithComputerAttributes(Aws::Vector<Attribute>&& value) { SetComputerAttributes(std::move(value)); return *this;}
 
     /**
      * <p>An array of <a>Attribute</a> objects containing the LDAP attributes that
@@ -153,7 +158,7 @@ namespace Model
      * <p>An array of <a>Attribute</a> objects containing the LDAP attributes that
      * belong to the computer account.</p>
      */
-    inline Computer& AddComputerAttributes(Attribute&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes.push_back(value); return *this; }
+    inline Computer& AddComputerAttributes(Attribute&& value) { m_computerAttributesHasBeenSet = true; m_computerAttributes.push_back(std::move(value)); return *this; }
 
   private:
     Aws::String m_computerId;

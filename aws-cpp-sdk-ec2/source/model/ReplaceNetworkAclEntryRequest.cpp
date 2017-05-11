@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/ReplaceNetworkAclEntryRequest.h>
 #include <aws/core/utils/StringUtils.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
@@ -26,10 +27,12 @@ ReplaceNetworkAclEntryRequest::ReplaceNetworkAclEntryRequest() :
     m_ruleNumber(0),
     m_ruleNumberHasBeenSet(false),
     m_protocolHasBeenSet(false),
+    m_ruleAction(RuleAction::NOT_SET),
     m_ruleActionHasBeenSet(false),
     m_egress(false),
     m_egressHasBeenSet(false),
     m_cidrBlockHasBeenSet(false),
+    m_ipv6CidrBlockHasBeenSet(false),
     m_icmpTypeCodeHasBeenSet(false),
     m_portRangeHasBeenSet(false)
 {
@@ -41,7 +44,7 @@ Aws::String ReplaceNetworkAclEntryRequest::SerializePayload() const
   ss << "Action=ReplaceNetworkAclEntry&";
   if(m_dryRunHasBeenSet)
   {
-    ss << "DryRun=" << m_dryRun << "&";
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   if(m_networkAclIdHasBeenSet)
@@ -66,7 +69,7 @@ Aws::String ReplaceNetworkAclEntryRequest::SerializePayload() const
 
   if(m_egressHasBeenSet)
   {
-    ss << "Egress=" << m_egress << "&";
+    ss << "Egress=" << std::boolalpha << m_egress << "&";
   }
 
   if(m_cidrBlockHasBeenSet)
@@ -74,9 +77,14 @@ Aws::String ReplaceNetworkAclEntryRequest::SerializePayload() const
     ss << "CidrBlock=" << StringUtils::URLEncode(m_cidrBlock.c_str()) << "&";
   }
 
+  if(m_ipv6CidrBlockHasBeenSet)
+  {
+    ss << "Ipv6CidrBlock=" << StringUtils::URLEncode(m_ipv6CidrBlock.c_str()) << "&";
+  }
+
   if(m_icmpTypeCodeHasBeenSet)
   {
-    m_icmpTypeCode.OutputToStream(ss, "IcmpTypeCode");
+    m_icmpTypeCode.OutputToStream(ss, "Icmp");
   }
 
   if(m_portRangeHasBeenSet)
@@ -84,7 +92,12 @@ Aws::String ReplaceNetworkAclEntryRequest::SerializePayload() const
     m_portRange.OutputToStream(ss, "PortRange");
   }
 
-  ss << "Version=2015-10-01";
+  ss << "Version=2016-11-15";
   return ss.str();
 }
 
+
+void  ReplaceNetworkAclEntryRequest::DumpBodyToUrl(Aws::Http::URI& uri ) const
+{
+  uri.SetQueryString(SerializePayload());
+}

@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #include <aws/ec2/model/AttributeBooleanValue.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/StringUtils.h>
@@ -63,7 +64,7 @@ void AttributeBooleanValue::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_valueHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Value=" << m_value << "&";
+      oStream << location << index << locationValue << ".Value=" << std::boolalpha << m_value << "&";
   }
 
 }
@@ -72,7 +73,7 @@ void AttributeBooleanValue::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_valueHasBeenSet)
   {
-      oStream << location << ".Value=" << m_value << "&";
+      oStream << location << ".Value=" << std::boolalpha << m_value << "&";
   }
 }
 

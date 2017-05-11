@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/elasticache/ElastiCache_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -32,7 +34,10 @@ namespace Model
 {
 
   /**
-   * <p>Provides all of the details about a particular cache engine version.</p>
+   * <p>Provides all of the details about a particular cache engine
+   * version.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CacheEngineVersion">AWS
+   * API Reference</a></p>
    */
   class AWS_ELASTICACHE_API CacheEngineVersion
   {
@@ -57,7 +62,7 @@ namespace Model
     /**
      * <p>The name of the cache engine.</p>
      */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = value; }
+    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
 
     /**
      * <p>The name of the cache engine.</p>
@@ -72,7 +77,7 @@ namespace Model
     /**
      * <p>The name of the cache engine.</p>
      */
-    inline CacheEngineVersion& WithEngine(Aws::String&& value) { SetEngine(value); return *this;}
+    inline CacheEngineVersion& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache engine.</p>
@@ -92,7 +97,7 @@ namespace Model
     /**
      * <p>The version number of the cache engine.</p>
      */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
+    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
 
     /**
      * <p>The version number of the cache engine.</p>
@@ -107,7 +112,7 @@ namespace Model
     /**
      * <p>The version number of the cache engine.</p>
      */
-    inline CacheEngineVersion& WithEngineVersion(Aws::String&& value) { SetEngineVersion(value); return *this;}
+    inline CacheEngineVersion& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
 
     /**
      * <p>The version number of the cache engine.</p>
@@ -116,43 +121,50 @@ namespace Model
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline const Aws::String& GetCacheParameterGroupFamily() const{ return m_cacheParameterGroupFamily; }
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline void SetCacheParameterGroupFamily(const Aws::String& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = value; }
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
-    inline void SetCacheParameterGroupFamily(Aws::String&& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = value; }
+    inline void SetCacheParameterGroupFamily(Aws::String&& value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily = std::move(value); }
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline void SetCacheParameterGroupFamily(const char* value) { m_cacheParameterGroupFamilyHasBeenSet = true; m_cacheParameterGroupFamily.assign(value); }
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline CacheEngineVersion& WithCacheParameterGroupFamily(const Aws::String& value) { SetCacheParameterGroupFamily(value); return *this;}
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
-    inline CacheEngineVersion& WithCacheParameterGroupFamily(Aws::String&& value) { SetCacheParameterGroupFamily(value); return *this;}
+    inline CacheEngineVersion& WithCacheParameterGroupFamily(Aws::String&& value) { SetCacheParameterGroupFamily(std::move(value)); return *this;}
 
     /**
      * <p>The name of the cache parameter group family associated with this cache
-     * engine.</p>
+     * engine.</p> <p>Valid values are: <code>memcached1.4</code> |
+     * <code>redis2.6</code> | <code>redis2.8</code> | <code>redis3.2</code> </p>
      */
     inline CacheEngineVersion& WithCacheParameterGroupFamily(const char* value) { SetCacheParameterGroupFamily(value); return *this;}
 
@@ -169,7 +181,7 @@ namespace Model
     /**
      * <p>The description of the cache engine.</p>
      */
-    inline void SetCacheEngineDescription(Aws::String&& value) { m_cacheEngineDescriptionHasBeenSet = true; m_cacheEngineDescription = value; }
+    inline void SetCacheEngineDescription(Aws::String&& value) { m_cacheEngineDescriptionHasBeenSet = true; m_cacheEngineDescription = std::move(value); }
 
     /**
      * <p>The description of the cache engine.</p>
@@ -184,7 +196,7 @@ namespace Model
     /**
      * <p>The description of the cache engine.</p>
      */
-    inline CacheEngineVersion& WithCacheEngineDescription(Aws::String&& value) { SetCacheEngineDescription(value); return *this;}
+    inline CacheEngineVersion& WithCacheEngineDescription(Aws::String&& value) { SetCacheEngineDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the cache engine.</p>
@@ -204,7 +216,7 @@ namespace Model
     /**
      * <p>The description of the cache engine version.</p>
      */
-    inline void SetCacheEngineVersionDescription(Aws::String&& value) { m_cacheEngineVersionDescriptionHasBeenSet = true; m_cacheEngineVersionDescription = value; }
+    inline void SetCacheEngineVersionDescription(Aws::String&& value) { m_cacheEngineVersionDescriptionHasBeenSet = true; m_cacheEngineVersionDescription = std::move(value); }
 
     /**
      * <p>The description of the cache engine version.</p>
@@ -219,7 +231,7 @@ namespace Model
     /**
      * <p>The description of the cache engine version.</p>
      */
-    inline CacheEngineVersion& WithCacheEngineVersionDescription(Aws::String&& value) { SetCacheEngineVersionDescription(value); return *this;}
+    inline CacheEngineVersion& WithCacheEngineVersionDescription(Aws::String&& value) { SetCacheEngineVersionDescription(std::move(value)); return *this;}
 
     /**
      * <p>The description of the cache engine version.</p>

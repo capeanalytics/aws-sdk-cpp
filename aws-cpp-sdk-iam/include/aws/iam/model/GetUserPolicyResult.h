@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,10 +12,12 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/iam/IAM_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/iam/model/ResponseMetadata.h>
+#include <utility>
 
 namespace Aws
 {
@@ -34,7 +36,10 @@ namespace IAM
 namespace Model
 {
   /**
-   * <p>Contains the response to a successful <a>GetUserPolicy</a> request. </p>
+   * <p>Contains the response to a successful <a>GetUserPolicy</a> request.
+   * </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetUserPolicyResponse">AWS
+   * API Reference</a></p>
    */
   class AWS_IAM_API GetUserPolicyResult
   {
@@ -56,7 +61,7 @@ namespace Model
     /**
      * <p>The user the policy is associated with.</p>
      */
-    inline void SetUserName(Aws::String&& value) { m_userName = value; }
+    inline void SetUserName(Aws::String&& value) { m_userName = std::move(value); }
 
     /**
      * <p>The user the policy is associated with.</p>
@@ -71,7 +76,7 @@ namespace Model
     /**
      * <p>The user the policy is associated with.</p>
      */
-    inline GetUserPolicyResult& WithUserName(Aws::String&& value) { SetUserName(value); return *this;}
+    inline GetUserPolicyResult& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
 
     /**
      * <p>The user the policy is associated with.</p>
@@ -91,7 +96,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline void SetPolicyName(Aws::String&& value) { m_policyName = value; }
+    inline void SetPolicyName(Aws::String&& value) { m_policyName = std::move(value); }
 
     /**
      * <p>The name of the policy.</p>
@@ -106,7 +111,7 @@ namespace Model
     /**
      * <p>The name of the policy.</p>
      */
-    inline GetUserPolicyResult& WithPolicyName(Aws::String&& value) { SetPolicyName(value); return *this;}
+    inline GetUserPolicyResult& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
 
     /**
      * <p>The name of the policy.</p>
@@ -126,7 +131,7 @@ namespace Model
     /**
      * <p>The policy document.</p>
      */
-    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocument = value; }
+    inline void SetPolicyDocument(Aws::String&& value) { m_policyDocument = std::move(value); }
 
     /**
      * <p>The policy document.</p>
@@ -141,7 +146,7 @@ namespace Model
     /**
      * <p>The policy document.</p>
      */
-    inline GetUserPolicyResult& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(value); return *this;}
+    inline GetUserPolicyResult& WithPolicyDocument(Aws::String&& value) { SetPolicyDocument(std::move(value)); return *this;}
 
     /**
      * <p>The policy document.</p>
@@ -155,13 +160,13 @@ namespace Model
     inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
 
     
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = value; }
+    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
 
     
     inline GetUserPolicyResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
 
     
-    inline GetUserPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(value); return *this;}
+    inline GetUserPolicyResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
 
   private:
     Aws::String m_userName;

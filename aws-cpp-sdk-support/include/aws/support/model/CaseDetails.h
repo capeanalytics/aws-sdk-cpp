@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,11 +12,13 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/support/Support_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/support/model/RecentCaseCommunications.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <utility>
 
 namespace Aws
 {
@@ -58,7 +60,9 @@ namespace Model
    * Center.</p> </li> <li> <p> <b>subject.</b> The subject line of the case.</p>
    * </li> <li> <p> <b>submittedBy.</b> The email address of the account that
    * submitted the case.</p> </li> <li> <p> <b>timeCreated.</b> The time the case was
-   * created, in ISO-8601 format.</p> </li> </ul>
+   * created, in ISO-8601 format.</p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/support-2013-04-15/CaseDetails">AWS
+   * API Reference</a></p>
    */
   class AWS_SUPPORT_API CaseDetails
   {
@@ -87,7 +91,7 @@ namespace Model
      * alphanumeric string formatted as shown in this example:
      * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
-    inline void SetCaseId(Aws::String&& value) { m_caseIdHasBeenSet = true; m_caseId = value; }
+    inline void SetCaseId(Aws::String&& value) { m_caseIdHasBeenSet = true; m_caseId = std::move(value); }
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
@@ -108,7 +112,7 @@ namespace Model
      * alphanumeric string formatted as shown in this example:
      * case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
      */
-    inline CaseDetails& WithCaseId(Aws::String&& value) { SetCaseId(value); return *this;}
+    inline CaseDetails& WithCaseId(Aws::String&& value) { SetCaseId(std::move(value)); return *this;}
 
     /**
      * <p>The AWS Support case ID requested or returned in the call. The case ID is an
@@ -133,7 +137,7 @@ namespace Model
      * <p>The ID displayed for the case in the AWS Support Center. This is a numeric
      * string.</p>
      */
-    inline void SetDisplayId(Aws::String&& value) { m_displayIdHasBeenSet = true; m_displayId = value; }
+    inline void SetDisplayId(Aws::String&& value) { m_displayIdHasBeenSet = true; m_displayId = std::move(value); }
 
     /**
      * <p>The ID displayed for the case in the AWS Support Center. This is a numeric
@@ -151,7 +155,7 @@ namespace Model
      * <p>The ID displayed for the case in the AWS Support Center. This is a numeric
      * string.</p>
      */
-    inline CaseDetails& WithDisplayId(Aws::String&& value) { SetDisplayId(value); return *this;}
+    inline CaseDetails& WithDisplayId(Aws::String&& value) { SetDisplayId(std::move(value)); return *this;}
 
     /**
      * <p>The ID displayed for the case in the AWS Support Center. This is a numeric
@@ -172,7 +176,7 @@ namespace Model
     /**
      * <p>The subject line for the case in the AWS Support Center.</p>
      */
-    inline void SetSubject(Aws::String&& value) { m_subjectHasBeenSet = true; m_subject = value; }
+    inline void SetSubject(Aws::String&& value) { m_subjectHasBeenSet = true; m_subject = std::move(value); }
 
     /**
      * <p>The subject line for the case in the AWS Support Center.</p>
@@ -187,7 +191,7 @@ namespace Model
     /**
      * <p>The subject line for the case in the AWS Support Center.</p>
      */
-    inline CaseDetails& WithSubject(Aws::String&& value) { SetSubject(value); return *this;}
+    inline CaseDetails& WithSubject(Aws::String&& value) { SetSubject(std::move(value)); return *this;}
 
     /**
      * <p>The subject line for the case in the AWS Support Center.</p>
@@ -207,7 +211,7 @@ namespace Model
     /**
      * <p>The status of the case.</p>
      */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
 
     /**
      * <p>The status of the case.</p>
@@ -222,7 +226,7 @@ namespace Model
     /**
      * <p>The status of the case.</p>
      */
-    inline CaseDetails& WithStatus(Aws::String&& value) { SetStatus(value); return *this;}
+    inline CaseDetails& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
 
     /**
      * <p>The status of the case.</p>
@@ -245,7 +249,7 @@ namespace Model
      * <p>The code for the AWS service returned by the call to
      * <a>DescribeServices</a>.</p>
      */
-    inline void SetServiceCode(Aws::String&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = value; }
+    inline void SetServiceCode(Aws::String&& value) { m_serviceCodeHasBeenSet = true; m_serviceCode = std::move(value); }
 
     /**
      * <p>The code for the AWS service returned by the call to
@@ -263,7 +267,7 @@ namespace Model
      * <p>The code for the AWS service returned by the call to
      * <a>DescribeServices</a>.</p>
      */
-    inline CaseDetails& WithServiceCode(Aws::String&& value) { SetServiceCode(value); return *this;}
+    inline CaseDetails& WithServiceCode(Aws::String&& value) { SetServiceCode(std::move(value)); return *this;}
 
     /**
      * <p>The code for the AWS service returned by the call to
@@ -284,7 +288,7 @@ namespace Model
     /**
      * <p>The category of problem for the AWS Support case.</p>
      */
-    inline void SetCategoryCode(Aws::String&& value) { m_categoryCodeHasBeenSet = true; m_categoryCode = value; }
+    inline void SetCategoryCode(Aws::String&& value) { m_categoryCodeHasBeenSet = true; m_categoryCode = std::move(value); }
 
     /**
      * <p>The category of problem for the AWS Support case.</p>
@@ -299,7 +303,7 @@ namespace Model
     /**
      * <p>The category of problem for the AWS Support case.</p>
      */
-    inline CaseDetails& WithCategoryCode(Aws::String&& value) { SetCategoryCode(value); return *this;}
+    inline CaseDetails& WithCategoryCode(Aws::String&& value) { SetCategoryCode(std::move(value)); return *this;}
 
     /**
      * <p>The category of problem for the AWS Support case.</p>
@@ -322,7 +326,7 @@ namespace Model
      * <p>The code for the severity level returned by the call to
      * <a>DescribeSeverityLevels</a>.</p>
      */
-    inline void SetSeverityCode(Aws::String&& value) { m_severityCodeHasBeenSet = true; m_severityCode = value; }
+    inline void SetSeverityCode(Aws::String&& value) { m_severityCodeHasBeenSet = true; m_severityCode = std::move(value); }
 
     /**
      * <p>The code for the severity level returned by the call to
@@ -340,7 +344,7 @@ namespace Model
      * <p>The code for the severity level returned by the call to
      * <a>DescribeSeverityLevels</a>.</p>
      */
-    inline CaseDetails& WithSeverityCode(Aws::String&& value) { SetSeverityCode(value); return *this;}
+    inline CaseDetails& WithSeverityCode(Aws::String&& value) { SetSeverityCode(std::move(value)); return *this;}
 
     /**
      * <p>The code for the severity level returned by the call to
@@ -361,7 +365,7 @@ namespace Model
     /**
      * <p>The email address of the account that submitted the case.</p>
      */
-    inline void SetSubmittedBy(Aws::String&& value) { m_submittedByHasBeenSet = true; m_submittedBy = value; }
+    inline void SetSubmittedBy(Aws::String&& value) { m_submittedByHasBeenSet = true; m_submittedBy = std::move(value); }
 
     /**
      * <p>The email address of the account that submitted the case.</p>
@@ -376,7 +380,7 @@ namespace Model
     /**
      * <p>The email address of the account that submitted the case.</p>
      */
-    inline CaseDetails& WithSubmittedBy(Aws::String&& value) { SetSubmittedBy(value); return *this;}
+    inline CaseDetails& WithSubmittedBy(Aws::String&& value) { SetSubmittedBy(std::move(value)); return *this;}
 
     /**
      * <p>The email address of the account that submitted the case.</p>
@@ -396,7 +400,7 @@ namespace Model
     /**
      * <p>The time that the case was case created in the AWS Support Center.</p>
      */
-    inline void SetTimeCreated(Aws::String&& value) { m_timeCreatedHasBeenSet = true; m_timeCreated = value; }
+    inline void SetTimeCreated(Aws::String&& value) { m_timeCreatedHasBeenSet = true; m_timeCreated = std::move(value); }
 
     /**
      * <p>The time that the case was case created in the AWS Support Center.</p>
@@ -411,7 +415,7 @@ namespace Model
     /**
      * <p>The time that the case was case created in the AWS Support Center.</p>
      */
-    inline CaseDetails& WithTimeCreated(Aws::String&& value) { SetTimeCreated(value); return *this;}
+    inline CaseDetails& WithTimeCreated(Aws::String&& value) { SetTimeCreated(std::move(value)); return *this;}
 
     /**
      * <p>The time that the case was case created in the AWS Support Center.</p>
@@ -437,7 +441,7 @@ namespace Model
      * including the IDs of any attachments to the communications. Also includes a
      * <code>nextToken</code> that you can use to retrieve earlier communications.</p>
      */
-    inline void SetRecentCommunications(RecentCaseCommunications&& value) { m_recentCommunicationsHasBeenSet = true; m_recentCommunications = value; }
+    inline void SetRecentCommunications(RecentCaseCommunications&& value) { m_recentCommunicationsHasBeenSet = true; m_recentCommunications = std::move(value); }
 
     /**
      * <p>The five most recent communications between you and AWS Support Center,
@@ -451,7 +455,7 @@ namespace Model
      * including the IDs of any attachments to the communications. Also includes a
      * <code>nextToken</code> that you can use to retrieve earlier communications.</p>
      */
-    inline CaseDetails& WithRecentCommunications(RecentCaseCommunications&& value) { SetRecentCommunications(value); return *this;}
+    inline CaseDetails& WithRecentCommunications(RecentCaseCommunications&& value) { SetRecentCommunications(std::move(value)); return *this;}
 
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
@@ -466,7 +470,7 @@ namespace Model
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
      */
-    inline void SetCcEmailAddresses(Aws::Vector<Aws::String>&& value) { m_ccEmailAddressesHasBeenSet = true; m_ccEmailAddresses = value; }
+    inline void SetCcEmailAddresses(Aws::Vector<Aws::String>&& value) { m_ccEmailAddressesHasBeenSet = true; m_ccEmailAddresses = std::move(value); }
 
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
@@ -476,7 +480,7 @@ namespace Model
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
      */
-    inline CaseDetails& WithCcEmailAddresses(Aws::Vector<Aws::String>&& value) { SetCcEmailAddresses(value); return *this;}
+    inline CaseDetails& WithCcEmailAddresses(Aws::Vector<Aws::String>&& value) { SetCcEmailAddresses(std::move(value)); return *this;}
 
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
@@ -486,7 +490,7 @@ namespace Model
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
      */
-    inline CaseDetails& AddCcEmailAddresses(Aws::String&& value) { m_ccEmailAddressesHasBeenSet = true; m_ccEmailAddresses.push_back(value); return *this; }
+    inline CaseDetails& AddCcEmailAddresses(Aws::String&& value) { m_ccEmailAddressesHasBeenSet = true; m_ccEmailAddresses.push_back(std::move(value)); return *this; }
 
     /**
      * <p>The email addresses that receive copies of communication about the case.</p>
@@ -512,7 +516,7 @@ namespace Model
      * Support currently supports English ("en") and Japanese ("ja"). Language
      * parameters must be passed explicitly for operations that take them.</p>
      */
-    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = value; }
+    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
 
     /**
      * <p>The ISO 639-1 code for the language in which AWS provides support. AWS
@@ -533,7 +537,7 @@ namespace Model
      * Support currently supports English ("en") and Japanese ("ja"). Language
      * parameters must be passed explicitly for operations that take them.</p>
      */
-    inline CaseDetails& WithLanguage(Aws::String&& value) { SetLanguage(value); return *this;}
+    inline CaseDetails& WithLanguage(Aws::String&& value) { SetLanguage(std::move(value)); return *this;}
 
     /**
      * <p>The ISO 639-1 code for the language in which AWS provides support. AWS

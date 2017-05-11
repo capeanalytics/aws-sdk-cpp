@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+* Copyright 2010-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License").
 * You may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
 * express or implied. See the License for the specific language governing
 * permissions and limitations under the License.
 */
+
 #pragma once
 #include <aws/ds/DirectoryService_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <utility>
 
 namespace Aws
 {
@@ -33,7 +35,10 @@ namespace DirectoryService
 namespace Model
 {
   /**
-   * <p>Contains the results of the <a>DeleteDirectory</a> operation.</p>
+   * <p>Contains the results of the <a>DeleteDirectory</a> operation.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/ds-2015-04-16/DeleteDirectoryResult">AWS
+   * API Reference</a></p>
    */
   class AWS_DIRECTORYSERVICE_API DeleteDirectoryResult
   {
@@ -55,7 +60,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryId = value; }
+    inline void SetDirectoryId(Aws::String&& value) { m_directoryId = std::move(value); }
 
     /**
      * <p>The directory identifier.</p>
@@ -70,7 +75,7 @@ namespace Model
     /**
      * <p>The directory identifier.</p>
      */
-    inline DeleteDirectoryResult& WithDirectoryId(Aws::String&& value) { SetDirectoryId(value); return *this;}
+    inline DeleteDirectoryResult& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
 
     /**
      * <p>The directory identifier.</p>
